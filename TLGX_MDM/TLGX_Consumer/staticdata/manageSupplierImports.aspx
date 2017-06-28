@@ -174,7 +174,7 @@
                         }
                         if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
-                            $(".activityper").append(per + "%");
+                            $(".hotelrumper").append(per + "%");
                             var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
                             for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
                                 if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
@@ -594,7 +594,7 @@
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b><br />
-                        <b class="rumper"></b></h3>
+                        <b class="hotelrumper"></b></h3>
                 </div>
                 <div id="hotelrum"></div>
                 <div class="panel-body">
