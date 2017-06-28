@@ -114,7 +114,7 @@
                                     <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' Enabled="false" />
 
                                     <label for="txtCityCode">City Code</label>
-                                    <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' />
+                                    <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
                                     <label for="ddlState">State</label>
                                     <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True">

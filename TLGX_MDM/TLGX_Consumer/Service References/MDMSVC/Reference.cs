@@ -14241,6 +14241,99 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Address_GeoCodeForNearBy", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
+    [System.SerializableAttribute()]
+    public partial class DC_Address_GeoCodeForNearBy : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlaceTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string radiusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PlaceType {
+            get {
+                return this.PlaceTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlaceTypeField, value) != true)) {
+                    this.PlaceTypeField = value;
+                    this.RaisePropertyChanged("PlaceType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string radius {
+            get {
+                return this.radiusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.radiusField, value) != true)) {
+                    this.radiusField = value;
+                    this.RaisePropertyChanged("radius");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Mapping_ShiftMapping_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
     [System.SerializableAttribute()]
     public partial class DC_Mapping_ShiftMapping_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -24471,6 +24564,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetGeoLocationByLatLng", ReplyAction="http://tempuri.org/IGeoLocation/GetGeoLocationByLatLngResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_GeoLocation> GetGeoLocationByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCode AG);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLng", ReplyAction="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLngResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLngDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[] GetNearByPlacesByLatLng(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLng", ReplyAction="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLngResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetNearByPlacesByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/ShiftAccommodationMappings", ReplyAction="http://tempuri.org/IMapping/ShiftAccommodationMappingsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/ShiftAccommodationMappingsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         bool ShiftAccommodationMappings(TLGX_Consumer.MDMSVC.DC_Mapping_ShiftMapping_RQ obj);
@@ -26050,6 +26150,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_GeoLocation> GetGeoLocationByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCode AG) {
             return base.Channel.GetGeoLocationByLatLngAsync(AG);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[] GetNearByPlacesByLatLng(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG) {
+            return base.Channel.GetNearByPlacesByLatLng(AG);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetNearByPlacesByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG) {
+            return base.Channel.GetNearByPlacesByLatLngAsync(AG);
         }
         
         public bool ShiftAccommodationMappings(TLGX_Consumer.MDMSVC.DC_Mapping_ShiftMapping_RQ obj) {

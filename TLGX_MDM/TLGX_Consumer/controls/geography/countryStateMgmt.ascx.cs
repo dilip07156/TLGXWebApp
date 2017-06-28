@@ -270,7 +270,7 @@ namespace TLGX_Consumer.controls.geography
                 MDMSVC.DC_City _objCityMaster = new DC_City();
                 _objCityMaster.City_Id = myCityRow_Id;
                 _objCityMaster.Name = Convert.ToString(txtCityName.Text).Trim();
-                _objCityMaster.Code = Convert.ToString(txtCityCode.Text).Trim();
+                //_objCityMaster.Code = Convert.ToString(txtCityCode.Text).Trim();
                 _objCityMaster.State_Id = stateid;
                 //Get Country Details
                 var resultCountry = _objMaster.GetCountryMasterData(new DC_Country_Search_RQ() { Country_Id = Guid.Parse(Countryid) });

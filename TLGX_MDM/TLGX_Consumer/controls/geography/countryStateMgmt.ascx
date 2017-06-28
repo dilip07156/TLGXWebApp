@@ -547,8 +547,6 @@
                                                 <div class="form-group row">
                                                     <label for="txtCityCode" class="col-md-4 col-form-label">
                                                         City Code
-                                            <asp:RequiredFieldValidator ValidationGroup="City" runat="server" ControlToValidate="txtCityCode" Text="*"
-                                                CssClass="text-danger" ErrorMessage="The city code is required." />
                                                     </label>
                                                     <div class="col-md-8">
                                                         <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" />
@@ -589,7 +587,7 @@
                                 <div class="container">
                                     <div class="row col-lg-6">
                                         <div class="panel panel-default">
-                                            <div class="panel-heading">Add State Information</div>
+                                            <div class="panel-heading">Add City Information</div>
                                             <div class="panel-body">
                                                 <div class="form-group row">
                                                     <label for="txtCityName" class="col-md-4 col-form-label">
@@ -601,11 +599,9 @@
                                                         <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
+                                                <div class="form-group row" style="display:none">
                                                     <label for="txtCityCode" class="col-md-4 col-form-label">
                                                         City Code
-                                            <asp:RequiredFieldValidator ValidationGroup="City" runat="server" ControlToValidate="txtCityCode" Text="*"
-                                                CssClass="text-danger" ErrorMessage="The city code is required." />
                                                     </label>
                                                     <div class="col-md-8">
                                                         <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" />
