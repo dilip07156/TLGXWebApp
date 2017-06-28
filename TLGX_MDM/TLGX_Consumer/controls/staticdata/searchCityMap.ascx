@@ -622,7 +622,7 @@
                                                             <asp:TextBox ID="txtAddCityName" runat="server" CssClass="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" style="display: none;">
                                                         <label class="control-label col-sm-4" for="txtAddCode">Code</label>
                                                         <div class="col-sm-8">
                                                             <asp:TextBox ID="txtAddCode" runat="server" CssClass="form-control"></asp:TextBox>

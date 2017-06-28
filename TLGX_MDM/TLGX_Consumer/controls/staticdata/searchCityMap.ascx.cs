@@ -496,7 +496,7 @@ namespace TLGX_Consumer.controls.staticdata
             dvAddCity.Style.Add("display", "none");
         }
 
-        protected void ddlSystemCityName_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlSystemCityName_SelectedIndexChanged()
         {
             DropDownList ddlSystemCityName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditCityMap.FindControl("txtSystemCityCode");
@@ -523,13 +523,18 @@ namespace TLGX_Consumer.controls.staticdata
                 //    txtSystemStateName.Text = state.StateName;
                 //}
                 var result = masterSVc.GetStateByCity(ddlSystemCityName.SelectedValue);
-                if(result != null && result.Count > 0)
+                if (result != null && result.Count > 0)
                 {
                     txtSystemStateCode.Text = result[0].StateCode;
                     txtSystemStateName.Text = result[0].StateName;
                 }
                 btnAddCity.Visible = false;
             }
+        }
+
+        protected void ddlSystemCityName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlSystemCityName_SelectedIndexChanged();
         }
 
         protected void grdCityMaps_SelectedIndexChanged(object sender, EventArgs e)
@@ -782,7 +787,7 @@ namespace TLGX_Consumer.controls.staticdata
                     City_Id = Guid.NewGuid(),
                     Name = txtAddCityName.Text,
                     Country_Id = Guid.Parse(ddlSystemCountryName.SelectedItem.Value),
-                    Code = txtAddCode.Text,
+                    //Code = txtAddCode.Text,
                     CountryName = txtAddCityCName.Text,
                     Status = "ACTIVE",
                     Create_Date = DateTime.Now,
@@ -813,6 +818,7 @@ namespace TLGX_Consumer.controls.staticdata
                     btnAddCity.Visible = false;
                     fillcities(ddlSystemCityName, ddlSystemCountryName);
                     ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(txtAddCityName.Text));
+                    ddlSystemCityName_SelectedIndexChanged();
                     BootstrapAlert.BootstrapAlertMessage(dvMsg2, result.StatusMessage, BootstrapAlertType.Success);
                     hdnFlag.Value = "false";
 

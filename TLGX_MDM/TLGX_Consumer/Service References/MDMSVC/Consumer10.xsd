@@ -31,4 +31,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Address_GeoCode" nillable="true" type="tns:DC_Address_GeoCode" />
+  <xs:complexType name="DC_Address_GeoCodeForNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlaceType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="radius" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Address_GeoCodeForNearBy" nillable="true" type="tns:DC_Address_GeoCodeForNearBy" />
 </xs:schema>
