@@ -9,16 +9,17 @@
 
     <link href="../Scripts/ChartJS/bootstrap-print-md.css" rel="stylesheet" media="print" />--%>
     <style>
-        @media(min-width: 992px){
-            .col5{
-            width: 20%;
-            float: left;
-            position: relative;
-            min-height: 1px;
-            padding-right: 15px;
-            padding-left: 15px;
+        @media(min-width: 992px) {
+            .col5 {
+                width: 20%;
+                float: left;
+                position: relative;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
             }
         }
+
         #pdfHeader {
             font-weight: bold;
             text-align: center;
@@ -40,13 +41,15 @@
             font-weight: bold;
             font-size: small;
         }
-       /*.mbox{
+
+        .page-header {
+            border-bottom: none;
+        }
+        /*.mbox{
           width: 20px;
           display: inline-block;
           margin: 5px;
        }*/
-
-        
     </style>
 
     <script type="text/javascript">
@@ -68,7 +71,7 @@
                 $("#dvUnmappedData").css("display", "block");
                 getAllSupplierData();
                 sid = '00000000-0000-0000-0000-000000000000'
-            } 
+            }
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
                 data: { 'Supplier_Id': sid },
@@ -104,13 +107,13 @@
                                     contryArray.push(resultDataForCountry[iCountryMappingData]);
                                     $("#detailcountry").append(resultDataForCountry[iCountryMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount + "<br>");
                                     if (resultDataForCountry[iCountryMappingData].Status == "UNMAPPED") {
-                                        $("#allcountryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);  
+                                        $("#allcountryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
                                     }
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-                                   
-                                   
+
+
 
                                 }
                             }
@@ -214,16 +217,16 @@
 
                     });
                     Morris.Donut({
-                       element: 'city',
-                       data: cityArray,
-                       colors: [
-                           '#007F00',
-                           '#e7bd0d',
-                           '#e14949'
-                       ],
-                       resize: true
-                   });
-                     Morris.Donut({
+                        element: 'city',
+                        data: cityArray,
+                        colors: [
+                            '#007F00',
+                            '#e7bd0d',
+                            '#e14949'
+                        ],
+                        resize: true
+                    });
+                    Morris.Donut({
                         element: 'product',
                         data: productArray,
                         colors: [
@@ -232,18 +235,18 @@
                             '#e14949'
                         ],
                         resize: true
-                     });
-                     Morris.Donut({
-                         element: 'activity',
-                         data: activityArray,
-                         colors: [
-                             '#007F00',
-                             '#e7bd0d',
-                             '#e14949'
-                         ],
-                         resize: true
-                     });
-                  
+                    });
+                    Morris.Donut({
+                        element: 'activity',
+                        data: activityArray,
+                        colors: [
+                            '#007F00',
+                            '#e7bd0d',
+                            '#e14949'
+                        ],
+                        resize: true
+                    });
+
 
                     if (contryArray.length == 0) {
                         $("#country").append("<br/><br/>No Static Data Found").addClass("nodata");
@@ -273,7 +276,7 @@
                 url: '../../../Service/AllSupplierDataForChart.ashx',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                type:'GET',
+                type: 'GET',
                 success: function (result) {
                     debugger;
                     var allcontryArray = [];
@@ -341,11 +344,11 @@
                     var allcountryChart = Morris.Donut({
                         element: 'allcountry',
                         data: allcontryArray,
-                        colors :colorsArray,
+                        colors: colorsArray,
                         resize: true,
 
                     })
-                    var allcityChart =Morris.Donut({
+                    var allcityChart = Morris.Donut({
                         element: 'allcity',
                         data: allcityArray,
                         colors: colorsArray,
@@ -403,7 +406,7 @@
                           .css('margin', '5px');
                         $('#legendac').append(legendItem)
                     });
-                    
+
                 },
                 error: function (xhr, status, error) {
                     alert("failed to load  all supplier data file");
@@ -423,18 +426,18 @@
             getChartData();
         });
 
-       //// pdf logic
-       // $(document).ready(function () {
-       //     $("#btnExport").click(function () {
-       //         var da = new Date();
-       //         var e = document.getElementById("MainContent_ddlSupplierName");
-       //         var sid = e.options[e.selectedIndex].innerText;
-       //         $("#pdfHeader").append(sid + "<br/>" + "Date and Time  :&nbsp;&nbsp;" + da);
-       //         return xepOnline.Formatter.Format('printfrom', { render: 'download', pageWidth: '216mm', pageHeight: '600mm', cssStyle: [{ fontfamily: 'sans-serif' }] });
+        //// pdf logic
+        // $(document).ready(function () {
+        //     $("#btnExport").click(function () {
+        //         var da = new Date();
+        //         var e = document.getElementById("MainContent_ddlSupplierName");
+        //         var sid = e.options[e.selectedIndex].innerText;
+        //         $("#pdfHeader").append(sid + "<br/>" + "Date and Time  :&nbsp;&nbsp;" + da);
+        //         return xepOnline.Formatter.Format('printfrom', { render: 'download', pageWidth: '216mm', pageHeight: '600mm', cssStyle: [{ fontfamily: 'sans-serif' }] });
 
-       //     });
-       // });
-       // //end
+        //     });
+        // });
+        // //end
     </script>
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
@@ -450,175 +453,179 @@
             <div class="form-inline">
                 <br />
                 <br />
-                <div class="form-group">
+                <div class="form-group pull-right ">
                     <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
                         <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                     </asp:DropDownList>
                     <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />
-                  <%--<button class="btn btn-primary btn-sm" id="btnExport">Export to PDF</button>--%>
-                     <%--<asp:Button runat="server" Text="Download CSV File" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>--%>
+                    <%--<button class="btn btn-primary btn-sm" id="btnExport">Export to PDF</button>--%>
+                    <%--<asp:Button runat="server" Text="Download CSV File" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>--%>
                 </div>
             </div>
         </div>
     </div>
+    <hr />
     <%--for first three charts--%>
-    <%--<div class="container-fluid">--%>
-        <div class="row">
-            <div class="col5 col-sm-6" id="countrydiv" style="text-align: left">
-                    <div class="panel  panel-default" style="text-align: center">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Country Mapped</b><br /><b class="countryper"></b></h3>
-                        </div>
-                        <div id="country"></div>
-                        <div class="panel-body">
-                            <b><span id="detailcountry" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="countryTotal"></b></h4>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Country Mapped</b><br />
+                        <b class="countryper"></b></h3>
                 </div>
-            <div class="col5 col-sm-6 " id="citydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading" style="text-align: center">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>City Mapped</b><br /><b class="cityper"></b></h3>
-                        </div>
-                        <div id="city"></div>
-                        <div class="panel-body">
-                            <b><span id="detailcity" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body" style="text-align: center">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer ">
-                            <h4><b id="cityTotal"></b></h4>
-                        </div>
-                    </div>
+                <div id="country"></div>
+                <div class="panel-body">
+                    <b><span id="detailcountry" style="font-size: small"></span></b>
                 </div>
-            <div class="col5 col-sm-6" id="productdiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading" style="text-align: center">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Hotel Mapped</b><br /><b class="productper"></b></h3>
-                        </div>
-                        <div id="product"></div>
-                        <div class="panel-body">
-                            <b><span id="detailproduct" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="productTotal"></b></h4>
-                        </div>
-                    </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
                 </div>
-            <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading" style="text-align: center">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Room Mapped</b><br /><b class="rumper"></b></h3>
-                        </div>
-                        <div id="hotelrum"></div>
-                        <div class="panel-body">
-                            <b><span id="detailhotelrum" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="hotelrumTotal"></b></h4>
-                        </div>
-                    </div>
+                <div class="panel-footer">
+                    <h4><b id="countryTotal"></b></h4>
                 </div>
-            <div class="col5 col-sm-6" id="activitydiv" >
-                    <div class="panel  panel-default">
-                        <div class="panel-heading" style="text-align: center">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Activity Mapped</b><br /><b class="activityper"></b></h3>
-                        </div>
-                        <div id="activity"></div>
-                        <div class="panel-body">
-                            <b><span id="detailactivity" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="activityTotal"></b></h4>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </div>
+        <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>City Mapped</b><br />
+                        <b class="cityper"></b></h3>
+                </div>
+                <div id="city"></div>
+                <div class="panel-body">
+                    <b><span id="detailcity" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body" style="text-align: center">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer ">
+                    <h4><b id="cityTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Hotel Mapped</b><br />
+                        <b class="productper"></b></h3>
+                </div>
+                <div id="product"></div>
+                <div class="panel-body">
+                    <b><span id="detailproduct" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="productTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Room Mapped</b><br />
+                        <b class="rumper"></b></h3>
+                </div>
+                <div id="hotelrum"></div>
+                <div class="panel-body">
+                    <b><span id="detailhotelrum" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="hotelrumTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Activity Mapped</b><br />
+                        <b class="activityper"></b></h3>
+                </div>
+                <div id="activity"></div>
+                <div class="panel-body">
+                    <b><span id="detailactivity" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="activityTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+    </div>
     <%-- for last three pie charts--%>
-        <div class="row" id="dvUnmappedData" style="display:none" >
-             <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Country UnMapped</b></h3>
-                        </div>
-                        <div id="allcountry"></div>
-                        <div class="panel-body" style="text-align:left">
-                            <div id="legendco" class="donut-legend" ></div>
-                        </div>
-                    </div>
+    <div class="row" id="dvUnmappedData" style="display: none">
+        <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Country UnMapped</b></h3>
                 </div>
-                <div class="col5 col-sm-6" id="allcitydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>City UnMapped</b></h3>
-                        </div>
-                        <div id="allcity"></div>
-                        <div class="panel-body" style="text-align:left">
-                            <div id="legendci" class="donut-legend" ></div>
-                        </div>
-                    </div>
+                <div id="allcountry"></div>
+                <div class="panel-body">
+                    <div id="legendco" class="donut-legend"></div>
                 </div>
-                <div class="col5 col-sm-6" id="allproductdiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Hotel UnMapped</b></h3>
-                        </div>
-                        <div id="allproduct"></div>
-                        <div class="panel-body" style="text-align:left">
-                            <div id="legendpr" class="donut-legend" ></div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="allcitydiv" style="text-align: left">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>City UnMapped</b></h3>
                 </div>
-                <div class="col5 col-sm-6" id="allhotelrumdiv">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Room Mapped</b></h3>
-                        </div>
-                        <div id="allhotelrum"></div>
-                        <div class="panel-body">
-                          <div id="legendhr" class="donut-legend" ></div>
-                        </div>
-                    </div>
+                <div id="allcity"></div>
+                <div class="panel-body">
+                    <div id="legendci" class="donut-legend"></div>
                 </div>
-                <div class="col5 col-sm-6" id="allactivitydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Activity UnMapped</b></h3>
-                        </div>
-                        <div id="allactivity"></div>
-                        <div class="panel-body">
-                             <div id="legendac" class="donut-legend" ></div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="allproductdiv" style="text-align: left">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Hotel UnMapped</b></h3>
                 </div>
-     </div>
-      <%--</div>--%> 
+                <div id="allproduct"></div>
+                <div class="panel-body">
+                    <div id="legendpr" class="donut-legend"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="allhotelrumdiv" style="text-align: left">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Room Mapped</b></h3>
+                </div>
+                <div id="allhotelrum"></div>
+                <div class="panel-body">
+                    <div id="legendhr" class="donut-legend"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="allactivitydiv" style="text-align: left">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Activity UnMapped</b></h3>
+                </div>
+                <div id="allactivity"></div>
+                <div class="panel-body">
+                    <div id="legendac" class="donut-legend"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
