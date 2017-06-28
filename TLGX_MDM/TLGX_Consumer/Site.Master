@@ -106,7 +106,8 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" runat="server" href="~/">
-                        <img src="/images/logo-cnk.gif" /> <%--<span class="glyphicon glyphicon-map-marker"></span>TLGX--%></a>
+                        <img src="/images/logo-cnk.gif" style="width: 50%; padding: 0px; margin: 0px;" />
+                        <%--<span class="glyphicon glyphicon-map-marker"></span>TLGX--%></a>
                 </div>
                 <div class="navbar-collapse collapse">
 
