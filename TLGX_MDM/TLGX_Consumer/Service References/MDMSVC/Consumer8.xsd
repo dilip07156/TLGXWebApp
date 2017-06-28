@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="DC_SupplierImportAttributes_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="For" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportAttribute_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportAttributes_RQ" nillable="true" type="tns:DC_SupplierImportAttributes_RQ" />
+  <xs:complexType name="ArrayOfDC_SupplierImportAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierImportAttributes" nillable="true" type="tns:DC_SupplierImportAttributes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierImportAttributes" nillable="true" type="tns:ArrayOfDC_SupplierImportAttributes" />
+  <xs:complexType name="DC_SupplierImportAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CREATE_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CREATE_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EDIT_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EDIT_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="For" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportAttribute_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportAttributes" nillable="true" type="tns:DC_SupplierImportAttributes" />
+  <xs:complexType name="DC_SupplierImportAttributeValues_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="For" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportAttributeValue_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierImportAttribute_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportAttributeValues_RQ" nillable="true" type="tns:DC_SupplierImportAttributeValues_RQ" />
+  <xs:complexType name="ArrayOfDC_SupplierImportAttributeValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierImportAttributeValues" nillable="true" type="tns:DC_SupplierImportAttributeValues" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierImportAttributeValues" nillable="true" type="tns:ArrayOfDC_SupplierImportAttributeValues" />
+  <xs:complexType name="DC_SupplierImportAttributeValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CREATE_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CREATE_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EDIT_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EDIT_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportAttributeValue_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierImportAttribute_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportAttributeValues" nillable="true" type="tns:DC_SupplierImportAttributeValues" />
+  <xs:complexType name="DC_SupplierImportFileDetails_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportFile_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportFileDetails_RQ" nillable="true" type="tns:DC_SupplierImportFileDetails_RQ" />
+  <xs:complexType name="ArrayOfDC_SupplierImportFileDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierImportFileDetails" nillable="true" type="tns:DC_SupplierImportFileDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierImportFileDetails" nillable="true" type="tns:ArrayOfDC_SupplierImportFileDetails" />
+  <xs:complexType name="DC_SupplierImportFileDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArchiveFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CREATE_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CREATE_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OriginalFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PROCESS_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PROCESS_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SavedFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportFile_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportFileDetails" nillable="true" type="tns:DC_SupplierImportFileDetails" />
+  <xs:complexType name="DC_SupplierImportFile_ErrorLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ErrorDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Error_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Error_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportFile_ErrorLog_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierImportFile_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportFile_ErrorLog" nillable="true" type="tns:DC_SupplierImportFile_ErrorLog" />
+  <xs:complexType name="DC_SupplierImportFile_ErrorLog_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorCode" type="xs:int" />
+      <xs:element minOccurs="0" name="ErrorType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportFile_ErrorLog_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierImportFile_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportFile_ErrorLog_RQ" nillable="true" type="tns:DC_SupplierImportFile_ErrorLog_RQ" />
+  <xs:complexType name="ArrayOfDC_SupplierImportFile_ErrorLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierImportFile_ErrorLog" nillable="true" type="tns:DC_SupplierImportFile_ErrorLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierImportFile_ErrorLog" nillable="true" type="tns:ArrayOfDC_SupplierImportFile_ErrorLog" />
+  <xs:complexType name="DC_SupplierImportFileDetails_TestProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true">
+        <xs:complexType>
+          <xs:annotation>
+            <xs:appinfo>
+              <ActualType Name="DataSet" Namespace="http://schemas.datacontract.org/2004/07/System.Data" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+            </xs:appinfo>
+          </xs:annotation>
+          <xs:sequence>
+            <xs:element ref="xs:schema" />
+            <xs:any />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="No_Of_Records_ToProcess" type="xs:int" />
+      <xs:element minOccurs="0" name="PROCESS_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SavedFilePath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImportFile_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Supplier_Id" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierImportFileDetails_TestProcess" nillable="true" type="tns:DC_SupplierImportFileDetails_TestProcess" />
+</xs:schema>

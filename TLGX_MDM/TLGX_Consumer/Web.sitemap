@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode title="Home" url="~/login.aspx">
+    <!--<siteMapNode title="Home" url="~/"></siteMapNode>-->
+
+    <siteMapNode title="Hotels" roles="Administrator">
+      <siteMapNode title="Manage Accommodation" url="~/hotels/search" roles="Administrator"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Attractions">
+      <siteMapNode title="Search" url="~/Attractions/search"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Holidays">
+      <siteMapNode title="Search" url="~/holidays/search"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Static Data">
+      <siteMapNode title="Manage Supplier Imports" url="~/staticdata/manageSupplierImports"></siteMapNode>
+      <siteMapNode title="Manage Supplier Country Mapping" url="~/staticdata/country/search"></siteMapNode>
+      <siteMapNode title="Manage Supplier City Mapping" url="~/staticdata/city/search/"></siteMapNode>
+      <siteMapNode title="Manage Supplier Hotel Mapping" url="~/staticdata/hotels/search"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Data Projects">
+      <siteMapNode title="Manage Projects" url="~/projects/search"></siteMapNode>
+      <siteMapNode title="Project Teams" url="~/projects/masterteams/search"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Masters">
+      <siteMapNode title="Manage Attributes" url="~/masters/manageattributes"></siteMapNode>
+      <siteMapNode title="Manage Keywords" url="~/masters/managekeywords"></siteMapNode>
+      <siteMapNode title="Manage Country Master" url="~/geography/country"></siteMapNode>
+      <siteMapNode title="Manage City Master" url="~/geography/city"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="Entities">
+      <siteMapNode title="Manage Org Structure" url="~/orgstructure/search"></siteMapNode>
+      <siteMapNode title="Manage Suppliers" url="~/suppliers/search"></siteMapNode>
+      <siteMapNode title="Manage Clients" url="~/clients/search"></siteMapNode>
+    </siteMapNode>
+
+    <siteMapNode title="SysAd">
+      <siteMapNode title="Manage Users" url="~/admin/userAdmin"></siteMapNode>
+      <siteMapNode title="Manage Roles" url="~/admin/roleAdmin"></siteMapNode>
+      <siteMapNode title="Manage Workflow " url="~/admin/manageWorkflowMaster"></siteMapNode>
+
+    </siteMapNode>
+
+
+
+
+  </siteMapNode>
+
+
+
+</siteMap>

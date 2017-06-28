@@ -1,0 +1,2219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{31DEC952-A076-499B-B959-15B6B2DD46A6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TLGX_Consumer</RootNamespace>
+    <AssemblyName>TLGX_Consumer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.bootstrap, Version=3.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.3.7\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.1.1\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetadataExtractor, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetadataExtractor.1.5.3\lib\net45\MetadataExtractor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MultiLevelFormsBootstrapMenu, Version=1.0.6252.35937, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\MultiLevelFormsBootstrapMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.MSAjax">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ScriptManager.WebForms">
+      <HintPath>..\packages\Microsoft.AspNet.ScriptManager.WebForms.5.0.0\lib\net45\Microsoft.ScriptManager.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Web.Optimization.WebForms">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.WebForms.1.1.3\lib\net45\Microsoft.AspNet.Web.Optimization.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="XmpCore, Version=5.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XmpCore.1.2.2\lib\net35\XmpCore.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\AddPhoneNumber.aspx" />
+    <Content Include="Account\Confirm.aspx" />
+    <Content Include="Account\Forgot.aspx" />
+    <Content Include="Account\Lockout.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="Account\Manage.aspx" />
+    <Content Include="Account\ManageLogins.aspx" />
+    <Content Include="Account\ManagePassword.aspx" />
+    <Content Include="Account\ManageRoles.aspx" />
+    <Content Include="Account\OpenAuthProviders.ascx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Account\ResetPassword.aspx" />
+    <Content Include="Account\ResetPasswordConfirmation.aspx" />
+    <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
+    <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="activity\ckis\manage.aspx" />
+    <Content Include="activity\ckis\search.aspx" />
+    <Content Include="admin\manageApplication.aspx" />
+    <Content Include="admin\manageDistributionLayer.aspx" />
+    <Content Include="admin\manageWorkflowMaster.aspx" />
+    <Content Include="admin\RegisterUser.aspx" />
+    <Content Include="admin\RoleAdmin.aspx" />
+    <Content Include="admin\sitemap.aspx" />
+    <Content Include="admin\UserAdmin.aspx" />
+    <Content Include="activity\manage.aspx" />
+    <Content Include="activity\search.aspx" />
+    <Content Include="clients\manage.aspx" />
+    <Content Include="clients\search.aspx" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.cosmo.css" />
+    <Content Include="Content\bootstrap.cosmo.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cnk.css" />
+    <Content Include="Content\cnklogo.jpg" />
+    <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\load-aniround.gif" />
+    <Content Include="Content\multilevelformsbootstrapmenu.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
+    <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
+    <Content Include="controls\activity\manageActivityProductName.ascx" />
+    <Content Include="controls\activity\searchActivityProductName.ascx" />
+    <Content Include="controls\admin\UserManagement.ascx" />
+    <Content Include="controls\attributes\attributeManager.ascx" />
+    <Content Include="controls\businessentities\manageClient.ascx" />
+    <Content Include="controls\businessentities\manageOrgstructure.ascx" />
+    <Content Include="controls\businessentities\manageSupplier.ascx" />
+    <Content Include="controls\businessentities\searchClient.ascx" />
+    <Content Include="controls\businessentities\searchOrgStructure.ascx" />
+    <Content Include="controls\businessentities\searchSupplier.ascx" />
+    <Content Include="controls\businessentities\supplierCredentials.ascx" />
+    <Content Include="controls\businessentities\supplierMarket.ascx" />
+    <Content Include="controls\businessentities\supplierProductCategory.ascx" />
+    <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
+    <Content Include="controls\geography\cityManager.ascx" />
+    <Content Include="controls\geography\countryStateMgmt.ascx" />
+    <Content Include="controls\geography\uc_portManage.ascx" />
+    <Content Include="controls\geography\supplierCityMapping.ascx" />
+    <Content Include="controls\geography\supplierCountryMapping.ascx" />
+    <Content Include="controls\geography\uc_portSearch.ascx" />
+    <Content Include="controls\hotel\AddNew.ascx" />
+    <Content Include="controls\hotel\AddressCheck.ascx" />
+    <Content Include="controls\hotel\ClassificationAttributes.ascx" />
+    <Content Include="controls\hotel\DynamicAttributesForHotel.ascx" />
+    <Content Include="controls\geography\countryManager.ascx" />
+    <Content Include="controls\hotel\ancilary.ascx" />
+    <Content Include="controls\hotel\contacts.ascx" />
+    <Content Include="controls\hotel\descriptions.ascx" />
+    <Content Include="controls\hotel\facilities.ascx" />
+    <Content Include="controls\hotel\googlePlacesLookup.ascx" />
+    <Content Include="controls\hotel\head.ascx" />
+    <Content Include="controls\hotel\healthandsafety.ascx" />
+    <Content Include="controls\hotel\inandaround.ascx" />
+    <Content Include="controls\hotel\media.ascx" />
+    <Content Include="controls\hotel\overview.ascx" />
+    <Content Include="controls\hotel\passengeroccupancy.ascx" />
+    <Content Include="controls\hotel\RoomAmenities.ascx" />
+    <Content Include="controls\hotel\roominfo.ascx" />
+    <Content Include="controls\hotel\roomtypemapping.ascx" />
+    <Content Include="controls\hotel\route.ascx" />
+    <Content Include="controls\hotel\rules.ascx" />
+    <Content Include="controls\hotel\searchHotelascx.ascx" />
+    <Content Include="controls\hotel\status.ascx" />
+    <Content Include="controls\hotel\supplierHotelMapping.ascx" />
+    <Content Include="controls\hotel\suppliermapping.ascx" />
+    <Content Include="controls\hotel\updates.ascx" />
+    <Content Include="controls\integrations\supplierIntegrations.ascx" />
+    <Content Include="controls\keywords\keywordManager.ascx" />
+    <Content Include="controls\masters\ActivityMaster.ascx" />
+    <Content Include="controls\masters\ApprovalRoleMaster.ascx" />
+    <Content Include="controls\masters\ApprovalStatusMaster.ascx" />
+    <Content Include="controls\places\placeManager.ascx" />
+    <Content Include="controls\projects\manageMasterTeam.ascx" />
+    <Content Include="controls\projects\manageProjects.ascx" />
+    <Content Include="controls\projects\productsinproject.ascx" />
+    <Content Include="controls\projects\rolesinproject.ascx" />
+    <Content Include="controls\projects\searchMasterTeams.ascx" />
+    <Content Include="controls\projects\searchProjects.ascx" />
+    <Content Include="controls\projects\teammembersinproject.ascx" />
+    <Content Include="controls\projects\workflowinproject.ascx" />
+    <Content Include="controls\roomtype\manageRoomTypeMapping.ascx" />
+    <Content Include="controls\roomtype\searchRoomTypes.ascx" />
+    <Content Include="controls\staticdataconfig\manageFIleUpload.ascx" />
+    <Content Include="controls\staticdataconfig\manageStaticDataConfig.ascx" />
+    <Content Include="controls\staticdataconfig\searchStaticDataConfig.ascx" />
+    <Content Include="controls\staticdata\supplierWiseDataChart.ascx" />
+    <Content Include="controls\staticdata\bulkHotelMapping.ascx" />
+    <Content Include="controls\staticdata\CityMap.ascx" />
+    <Content Include="controls\staticdata\manageActivityMapping.ascx" />
+    <Content Include="controls\staticdata\searchAccoMapping.ascx" />
+    <Content Include="controls\staticdata\bulkCityMapping.ascx" />
+    <Content Include="controls\staticdata\allSupplierDataChart.ascx" />
+    <Content Include="controls\staticdata\searchActivityMapping.ascx" />
+    <Content Include="controls\staticdata\searchAttributeMapping.ascx" />
+    <Content Include="controls\staticdata\searchCityMap.ascx" />
+    <Content Include="controls\staticdata\searchCountryMap.ascx" />
+    <Content Include="Account\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="controls\masters\workflowmessagecomposer.ascx" />
+    <Content Include="geography\CountryStateMgmt.aspx" />
+    <Content Include="geography\PortManage.aspx" />
+    <Content Include="geography\portSearch.aspx" />
+    <Content Include="hotels\addnew.aspx" />
+    <Content Include="hotels\rollOffReports.aspx" />
+    <Content Include="images\ajax-loader-blue.gif" />
+    <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\ajax-loader_SMALL.gif" />
+    <Content Include="images\ajaxloadernew.gif" />
+    <Content Include="images\collapse.jpg" />
+    <Content Include="images\expand.jpg" />
+    <Content Include="images\logo-cnk.gif" />
+    <Content Include="masters\managePlaces.aspx" />
+    <Content Include="Models\TLGX_Mapper_Entity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
+      <LastGenOutput>TLGX_Mapper_Entity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TLGX_Mapper_Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
+      <LastGenOutput>TLGX_Mapper_Entity.cs</LastGenOutput>
+    </Content>
+    <Content Include="projects\manage.aspx" />
+    <Content Include="projects\masterteams\manage.aspx" />
+    <Content Include="projects\masterteams\search.aspx" />
+    <Content Include="projects\search.aspx" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
+    <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
+    <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootStrap-TimePicker\bootstrap-timepicker.js" />
+    <Content Include="Scripts\bootStrap-TimePicker\bootstrap-datetimepicker.css" />
+    <Content Include="Scripts\ChartJS\morris.css" />
+    <Content Include="Scripts\ChartJS\morris.min.js" />
+    <Content Include="Scripts\ChartJS\raphael-min.js" />
+    <Content Include="Scripts\ChartJS\xepOnline.jqPlugin.008.js" />
+    <Content Include="Scripts\jquery.ae.image.resize.min.js" />
+    <Content Include="Scripts\JqueryUI\jquery-ui.css" />
+    <Content Include="Scripts\JqueryUI\jquery-ui.js" />
+    <Content Include="Scripts\JqueryUI\jquery-ui.min.css" />
+    <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
+    <Content Include="Scripts\Styles\bootstrap.css" />
+    <Content Include="Scripts\Styles\Pagging.css" />
+    <Content Include="Scripts\Styles\ProgressBarStyles.css" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
+    <None Include="Service References\MDMSVC\configuration91.svcinfo" />
+    <None Include="Service References\MDMSVC\configuration.svcinfo" />
+    <None Include="Service References\MDMSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <None Include="Service References\MDMSVC\Consumer.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Contact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Facility.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_HealthAndSafety.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_HotelUpdates.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Media.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_PaxOccupancy.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_RouteInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Media_Attributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_SupplierRoomTypeMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMappingForDDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Content.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ApplicationMgmt.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_City.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_CityArea.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_CityAreaLocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_CityMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_City_Master_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_CountryMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_CountryMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_DynamicAttributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EntityDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EntityType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_GenericMasterDetails_ByIDOrName.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_GeoLocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Keyword.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MappingStats.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttribute.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_City.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Country.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_State.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Message.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterattribute.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterattributelists.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterattributevalue.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterparentattributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PortMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Roles.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportRule.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SiteMap.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_State_Master_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Statuses.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierImportFile_ErrorLog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierMarket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_ProductCategory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_Schedule.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Teams.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UserDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UserEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service\CountryAutoComplete.ashx" />
+    <None Include="Service\CityAutoComplete.ashx" />
+    <Content Include="staticdata\city\bulkCityMap.aspx" />
+    <Content Include="staticdata\city\search.aspx" />
+    <Content Include="staticdata\config\manage.aspx" />
+    <Content Include="staticdata\config\search.aspx" />
+    <Content Include="staticdata\files\upload.aspx" />
+    <Content Include="staticdata\hotels\addProductMapping.aspx" />
+    <Content Include="staticdata\hotels\roomtype\manage.aspx" />
+    <Content Include="staticdata\hotels\roomtype\search.aspx" />
+    <Content Include="staticdata\manageSupplierImports.aspx" />
+    <Content Include="staticdata\valuemapping\search.aspx" />
+    <Content Include="UnAuthorized.aspx" />
+    <Content Include="workflow\manageTask.aspx" />
+    <Content Include="controls\workflow\listTasks.ascx" />
+    <Content Include="controls\workflow\managetask.ascx" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="holidays\manage.aspx" />
+    <Content Include="holidays\search.aspx" />
+    <Content Include="hotels\manage.aspx" />
+    <Content Include="hotels\search.aspx" />
+    <Content Include="masters\manageattributes.aspx" />
+    <Content Include="masters\managekeywords.aspx" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="geography\City.aspx" />
+    <Content Include="geography\Country.aspx" />
+    <Content Include="orgstructure\manage.aspx" />
+    <Content Include="orgstructure\search.aspx" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <EntityDeploy Include="Models\TLGX_Mapper_Entity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TLGX_Mapper_Entity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TLGX_Mapper_Entity.edmx.diagram">
+      <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.js" />
+    <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Site.Master" />
+    <Content Include="staticdata\activity\search.aspx" />
+    <Content Include="staticdata\country\search.aspx" />
+    <Content Include="staticdata\holidays\search.aspx" />
+    <Content Include="staticdata\hotels\search.aspx" />
+    <Content Include="suppliers\manage.aspx" />
+    <Content Include="suppliers\search.aspx" />
+    <Content Include="ViewSwitcher.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Bundle.config" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Site.Mobile.Master" />
+    <Content Include="Views\web.config" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Service\HotelNameAutoComplete.ashx" />
+    <Content Include="Service\ToFillDDL.ashx" />
+    <Content Include="Service\SupplierWiseDataForChart.ashx" />
+    <Content Include="Service\AllSupplierDataForChart.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\AddPhoneNumber.aspx.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\AddPhoneNumber.aspx.designer.cs">
+      <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Confirm.aspx.designer.cs">
+      <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Forgot.aspx.designer.cs">
+      <DependentUpon>Forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Lockout.aspx.designer.cs">
+      <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Manage.aspx.designer.cs">
+      <DependentUpon>Manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageLogins.aspx.designer.cs">
+      <DependentUpon>ManageLogins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManagePassword.aspx.designer.cs">
+      <DependentUpon>ManagePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageRoles.aspx.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ManageRoles.aspx.designer.cs">
+      <DependentUpon>ManageRoles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\OpenAuthProviders.ascx.designer.cs">
+      <DependentUpon>OpenAuthProviders.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
+      <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\TwoFactorAuthenticationSignIn.aspx.designer.cs">
+      <DependentUpon>TwoFactorAuthenticationSignIn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
+      <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\ckis\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\ckis\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\ckis\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\ckis\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manageApplication.aspx.cs">
+      <DependentUpon>manageApplication.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manageApplication.aspx.designer.cs">
+      <DependentUpon>manageApplication.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manageDistributionLayer.aspx.cs">
+      <DependentUpon>manageDistributionLayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manageDistributionLayer.aspx.designer.cs">
+      <DependentUpon>manageDistributionLayer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\manageWorkflowMaster.aspx.cs">
+      <DependentUpon>manageWorkflowMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\manageWorkflowMaster.aspx.designer.cs">
+      <DependentUpon>manageWorkflowMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\RegisterUser.aspx.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\RegisterUser.aspx.designer.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\RoleAdmin.aspx.cs">
+      <DependentUpon>RoleAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\RoleAdmin.aspx.designer.cs">
+      <DependentUpon>RoleAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\sitemap.aspx.cs">
+      <DependentUpon>sitemap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\sitemap.aspx.designer.cs">
+      <DependentUpon>sitemap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\UserAdmin.aspx.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\UserAdmin.aspx.designer.cs">
+      <DependentUpon>UserAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\BootstrapAlert.cs" />
+    <Compile Include="App_Code\Authorize.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="activity\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="clients\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="clients\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="clients\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="clients\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\AccomodationSVC.cs" />
+    <Compile Include="Controller\AdminSVCs.cs" />
+    <Compile Include="Controller\MappingSVCs.cs" />
+    <Compile Include="Controller\MasterDataSVCs.cs" />
+    <Compile Include="Controller\MDMSvcProxy.cs" />
+    <Compile Include="Controller\ScheduleDataSVCs.cs" />
+    <Compile Include="Controller\ServiceURI.cs" />
+    <Compile Include="controls\activity\ckis\manageCKISMaster.ascx.cs">
+      <DependentUpon>manageCKISMaster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ckis\manageCKISMaster.ascx.designer.cs">
+      <DependentUpon>manageCKISMaster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ckis\searchCKISMasters.ascx.cs">
+      <DependentUpon>searchCKISMasters.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ckis\searchCKISMasters.ascx.designer.cs">
+      <DependentUpon>searchCKISMasters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\manageActivityProductName.ascx.cs">
+      <DependentUpon>manageActivityProductName.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\manageActivityProductName.ascx.designer.cs">
+      <DependentUpon>manageActivityProductName.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\searchActivityProductName.ascx.cs">
+      <DependentUpon>searchActivityProductName.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\searchActivityProductName.ascx.designer.cs">
+      <DependentUpon>searchActivityProductName.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\UserManagement.ascx.cs">
+      <DependentUpon>UserManagement.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\UserManagement.ascx.designer.cs">
+      <DependentUpon>UserManagement.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\manageSupplier.ascx.cs">
+      <DependentUpon>manageSupplier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\manageSupplier.ascx.designer.cs">
+      <DependentUpon>manageSupplier.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierCredentials.ascx.cs">
+      <DependentUpon>supplierCredentials.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierCredentials.ascx.designer.cs">
+      <DependentUpon>supplierCredentials.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierMarket.ascx.cs">
+      <DependentUpon>supplierMarket.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierMarket.ascx.designer.cs">
+      <DependentUpon>supplierMarket.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierProductCategory.ascx.cs">
+      <DependentUpon>supplierProductCategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierProductCategory.ascx.designer.cs">
+      <DependentUpon>supplierProductCategory.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierStaticDataHandling.ascx.cs">
+      <DependentUpon>supplierStaticDataHandling.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierStaticDataHandling.ascx.designer.cs">
+      <DependentUpon>supplierStaticDataHandling.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\countryStateMgmt.ascx.cs">
+      <DependentUpon>countryStateMgmt.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\countryStateMgmt.ascx.designer.cs">
+      <DependentUpon>countryStateMgmt.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\uc_portManage.ascx.cs">
+      <DependentUpon>uc_portManage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\uc_portManage.ascx.designer.cs">
+      <DependentUpon>uc_portManage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\uc_portSearch.ascx.cs">
+      <DependentUpon>uc_portSearch.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\uc_portSearch.ascx.designer.cs">
+      <DependentUpon>uc_portSearch.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\AddNew.ascx.cs">
+      <DependentUpon>AddNew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\AddNew.ascx.designer.cs">
+      <DependentUpon>AddNew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\AddressCheck.ascx.cs">
+      <DependentUpon>AddressCheck.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\AddressCheck.ascx.designer.cs">
+      <DependentUpon>AddressCheck.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\ClassificationAttributes.ascx.cs">
+      <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\ClassificationAttributes.ascx.designer.cs">
+      <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\googlePlacesLookup.ascx.cs">
+      <DependentUpon>googlePlacesLookup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\googlePlacesLookup.ascx.designer.cs">
+      <DependentUpon>googlePlacesLookup.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\RoomAmenities.ascx.cs">
+      <DependentUpon>RoomAmenities.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\RoomAmenities.ascx.designer.cs">
+      <DependentUpon>RoomAmenities.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\roomtypemapping.ascx.cs">
+      <DependentUpon>roomtypemapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\roomtypemapping.ascx.designer.cs">
+      <DependentUpon>roomtypemapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\searchHotelascx.ascx.cs">
+      <DependentUpon>searchHotelascx.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\searchHotelascx.ascx.designer.cs">
+      <DependentUpon>searchHotelascx.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\supplierHotelMapping.ascx.cs">
+      <DependentUpon>supplierHotelMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\supplierHotelMapping.ascx.designer.cs">
+      <DependentUpon>supplierHotelMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\places\placeManager.ascx.cs">
+      <DependentUpon>placeManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\places\placeManager.ascx.designer.cs">
+      <DependentUpon>placeManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\roomtype\manageRoomTypeMapping.ascx.cs">
+      <DependentUpon>manageRoomTypeMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\roomtype\manageRoomTypeMapping.ascx.designer.cs">
+      <DependentUpon>manageRoomTypeMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\roomtype\searchRoomTypes.ascx.cs">
+      <DependentUpon>searchRoomTypes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\roomtype\searchRoomTypes.ascx.designer.cs">
+      <DependentUpon>searchRoomTypes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageFIleUpload.ascx.cs">
+      <DependentUpon>manageFIleUpload.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageFIleUpload.ascx.designer.cs">
+      <DependentUpon>manageFIleUpload.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageStaticDataConfig.ascx.cs">
+      <DependentUpon>manageStaticDataConfig.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageStaticDataConfig.ascx.designer.cs">
+      <DependentUpon>manageStaticDataConfig.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\searchStaticDataConfig.ascx.cs">
+      <DependentUpon>searchStaticDataConfig.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\searchStaticDataConfig.ascx.designer.cs">
+      <DependentUpon>searchStaticDataConfig.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\supplierWiseDataChart.ascx.cs">
+      <DependentUpon>supplierWiseDataChart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\supplierWiseDataChart.ascx.designer.cs">
+      <DependentUpon>supplierWiseDataChart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\bulkCityMapping.ascx.cs">
+      <DependentUpon>bulkCityMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\bulkCityMapping.ascx.designer.cs">
+      <DependentUpon>bulkCityMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\bulkHotelMapping.ascx.cs">
+      <DependentUpon>bulkHotelMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\bulkHotelMapping.ascx.designer.cs">
+      <DependentUpon>bulkHotelMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\manageActivityMapping.ascx.cs">
+      <DependentUpon>manageActivityMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\manageActivityMapping.ascx.designer.cs">
+      <DependentUpon>manageActivityMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\allSupplierDataChart.ascx.cs">
+      <DependentUpon>allSupplierDataChart.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\allSupplierDataChart.ascx.designer.cs">
+      <DependentUpon>allSupplierDataChart.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\searchActivityMapping.ascx.cs">
+      <DependentUpon>searchActivityMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\searchActivityMapping.ascx.designer.cs">
+      <DependentUpon>searchActivityMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\searchAttributeMapping.ascx.cs">
+      <DependentUpon>searchAttributeMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\searchAttributeMapping.ascx.designer.cs">
+      <DependentUpon>searchAttributeMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\searchCityMap.ascx.cs">
+      <DependentUpon>searchCityMap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\searchCityMap.ascx.designer.cs">
+      <DependentUpon>searchCityMap.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\CountryStateMgmt.aspx.cs">
+      <DependentUpon>CountryStateMgmt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\CountryStateMgmt.aspx.designer.cs">
+      <DependentUpon>CountryStateMgmt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\PortManage.aspx.cs">
+      <DependentUpon>PortManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\PortManage.aspx.designer.cs">
+      <DependentUpon>PortManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\portSearch.aspx.cs">
+      <DependentUpon>portSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\portSearch.aspx.designer.cs">
+      <DependentUpon>portSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotels\addnew.aspx.cs">
+      <DependentUpon>addnew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotels\addnew.aspx.designer.cs">
+      <DependentUpon>addnew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotels\rollOffReports.aspx.cs">
+      <DependentUpon>rollOffReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotels\rollOffReports.aspx.designer.cs">
+      <DependentUpon>rollOffReports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="masters\managePlaces.aspx.cs">
+      <DependentUpon>managePlaces.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masters\managePlaces.aspx.designer.cs">
+      <DependentUpon>managePlaces.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_ClassificationAttributes.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_ProductMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_RoomFacility.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_Status.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_SupplierRoomTypeMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccomodationContract.cs" />
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BootstrapMenu.cs" />
+    <Compile Include="controls\attributes\attributeManager.ascx.cs">
+      <DependentUpon>attributeManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\attributes\attributeManager.ascx.designer.cs">
+      <DependentUpon>attributeManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\manageClient.ascx.cs">
+      <DependentUpon>manageClient.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\manageClient.ascx.designer.cs">
+      <DependentUpon>manageClient.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\manageOrgstructure.ascx.cs">
+      <DependentUpon>manageOrgstructure.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\manageOrgstructure.ascx.designer.cs">
+      <DependentUpon>manageOrgstructure.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\searchClient.ascx.cs">
+      <DependentUpon>searchClient.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\searchClient.ascx.designer.cs">
+      <DependentUpon>searchClient.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\searchOrgStructure.ascx.cs">
+      <DependentUpon>searchOrgStructure.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\searchOrgStructure.ascx.designer.cs">
+      <DependentUpon>searchOrgStructure.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\searchSupplier.ascx.cs">
+      <DependentUpon>searchSupplier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\searchSupplier.ascx.designer.cs">
+      <DependentUpon>searchSupplier.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\cityManager.ascx.cs">
+      <DependentUpon>cityManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\cityManager.ascx.designer.cs">
+      <DependentUpon>cityManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\supplierCityMapping.ascx.cs">
+      <DependentUpon>supplierCityMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\supplierCityMapping.ascx.designer.cs">
+      <DependentUpon>supplierCityMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\supplierCountryMapping.ascx.cs">
+      <DependentUpon>supplierCountryMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\supplierCountryMapping.ascx.designer.cs">
+      <DependentUpon>supplierCountryMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\DynamicAttributesForHotel.ascx.cs">
+      <DependentUpon>DynamicAttributesForHotel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\DynamicAttributesForHotel.ascx.designer.cs">
+      <DependentUpon>DynamicAttributesForHotel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\countryManager.ascx.cs">
+      <DependentUpon>countryManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\countryManager.ascx.designer.cs">
+      <DependentUpon>countryManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\ancilary.ascx.cs">
+      <DependentUpon>ancilary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\ancilary.ascx.designer.cs">
+      <DependentUpon>ancilary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\contacts.ascx.cs">
+      <DependentUpon>contacts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\contacts.ascx.designer.cs">
+      <DependentUpon>contacts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\descriptions.ascx.cs">
+      <DependentUpon>descriptions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\descriptions.ascx.designer.cs">
+      <DependentUpon>descriptions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\facilities.ascx.cs">
+      <DependentUpon>facilities.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\facilities.ascx.designer.cs">
+      <DependentUpon>facilities.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\head.ascx.cs">
+      <DependentUpon>head.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\head.ascx.designer.cs">
+      <DependentUpon>head.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\healthandsafety.ascx.cs">
+      <DependentUpon>healthandsafety.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\healthandsafety.ascx.designer.cs">
+      <DependentUpon>healthandsafety.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\inandaround.ascx.cs">
+      <DependentUpon>inandaround.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\inandaround.ascx.designer.cs">
+      <DependentUpon>inandaround.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\media.ascx.cs">
+      <DependentUpon>media.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\media.ascx.designer.cs">
+      <DependentUpon>media.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\overview.ascx.cs">
+      <DependentUpon>overview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\overview.ascx.designer.cs">
+      <DependentUpon>overview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\passengeroccupancy.ascx.cs">
+      <DependentUpon>passengeroccupancy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\passengeroccupancy.ascx.designer.cs">
+      <DependentUpon>passengeroccupancy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\roominfo.ascx.cs">
+      <DependentUpon>roominfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\roominfo.ascx.designer.cs">
+      <DependentUpon>roominfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\route.ascx.cs">
+      <DependentUpon>route.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\route.ascx.designer.cs">
+      <DependentUpon>route.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\rules.ascx.cs">
+      <DependentUpon>rules.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\rules.ascx.designer.cs">
+      <DependentUpon>rules.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\status.ascx.cs">
+      <DependentUpon>status.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\status.ascx.designer.cs">
+      <DependentUpon>status.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\suppliermapping.ascx.cs">
+      <DependentUpon>suppliermapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\suppliermapping.ascx.designer.cs">
+      <DependentUpon>suppliermapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\hotel\updates.ascx.cs">
+      <DependentUpon>updates.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\hotel\updates.ascx.designer.cs">
+      <DependentUpon>updates.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\integrations\supplierIntegrations.ascx.cs">
+      <DependentUpon>supplierIntegrations.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\integrations\supplierIntegrations.ascx.designer.cs">
+      <DependentUpon>supplierIntegrations.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\keywords\keywordManager.ascx.cs">
+      <DependentUpon>keywordManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\keywords\keywordManager.ascx.designer.cs">
+      <DependentUpon>keywordManager.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\masters\ActivityMaster.ascx.cs">
+      <DependentUpon>ActivityMaster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\masters\ActivityMaster.ascx.designer.cs">
+      <DependentUpon>ActivityMaster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\masters\ApprovalRoleMaster.ascx.cs">
+      <DependentUpon>ApprovalRoleMaster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\masters\ApprovalRoleMaster.ascx.designer.cs">
+      <DependentUpon>ApprovalRoleMaster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\masters\ApprovalStatusMaster.ascx.cs">
+      <DependentUpon>ApprovalStatusMaster.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\masters\ApprovalStatusMaster.ascx.designer.cs">
+      <DependentUpon>ApprovalStatusMaster.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\manageMasterTeam.ascx.cs">
+      <DependentUpon>manageMasterTeam.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\manageMasterTeam.ascx.designer.cs">
+      <DependentUpon>manageMasterTeam.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\manageProjects.ascx.cs">
+      <DependentUpon>manageProjects.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\manageProjects.ascx.designer.cs">
+      <DependentUpon>manageProjects.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\productsinproject.ascx.cs">
+      <DependentUpon>productsinproject.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\productsinproject.ascx.designer.cs">
+      <DependentUpon>productsinproject.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\rolesinproject.ascx.cs">
+      <DependentUpon>rolesinproject.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\rolesinproject.ascx.designer.cs">
+      <DependentUpon>rolesinproject.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\searchMasterTeams.ascx.cs">
+      <DependentUpon>searchMasterTeams.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\searchMasterTeams.ascx.designer.cs">
+      <DependentUpon>searchMasterTeams.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\searchProjects.ascx.cs">
+      <DependentUpon>searchProjects.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\searchProjects.ascx.designer.cs">
+      <DependentUpon>searchProjects.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\teammembersinproject.ascx.cs">
+      <DependentUpon>teammembersinproject.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\teammembersinproject.ascx.designer.cs">
+      <DependentUpon>teammembersinproject.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\projects\workflowinproject.ascx.cs">
+      <DependentUpon>workflowinproject.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\projects\workflowinproject.ascx.designer.cs">
+      <DependentUpon>workflowinproject.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\searchAccoMapping.ascx.cs">
+      <DependentUpon>searchAccoMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\searchAccoMapping.ascx.designer.cs">
+      <DependentUpon>searchAccoMapping.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\searchCountryMap.ascx.cs">
+      <DependentUpon>searchCountryMap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\searchCountryMap.ascx.designer.cs">
+      <DependentUpon>searchCountryMap.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\workflow\listTasks.ascx.cs">
+      <DependentUpon>listTasks.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\workflow\listTasks.ascx.designer.cs">
+      <DependentUpon>listTasks.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\workflow\managetask.ascx.cs">
+      <DependentUpon>managetask.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\workflow\managetask.ascx.designer.cs">
+      <DependentUpon>managetask.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\masters\workflowmessagecomposer.ascx.cs">
+      <DependentUpon>workflowmessagecomposer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\masters\workflowmessagecomposer.ascx.designer.cs">
+      <DependentUpon>workflowmessagecomposer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\City.aspx.cs">
+      <DependentUpon>City.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\City.aspx.designer.cs">
+      <DependentUpon>City.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\Country.aspx.cs">
+      <DependentUpon>Country.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\Country.aspx.designer.cs">
+      <DependentUpon>Country.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="holidays\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="holidays\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="holidays\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="holidays\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotels\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotels\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotels\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotels\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="masters\manageattributes.aspx.cs">
+      <DependentUpon>manageattributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masters\manageattributes.aspx.designer.cs">
+      <DependentUpon>manageattributes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="masters\managekeywords.aspx.cs">
+      <DependentUpon>managekeywords.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="masters\managekeywords.aspx.designer.cs">
+      <DependentUpon>managekeywords.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Accommodation.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_Contact.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_Descriptions.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_Facility.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_HealthAndSafety.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_HotelUpdates.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_Media.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_NearbyPlaces.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_PaxOccupancy.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_RoomInfo.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_RouteInfo.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Accommodation_RuleInfo.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Application.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Approval_Status.cs" />
+    <Compile Include="Models\Approval_Status_Contract.cs" />
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aspnet_SchemaVersions.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BusinessEntity.cs" />
+    <Compile Include="Models\businessEntityDAL.cs" />
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConversionClass.cs" />
+    <Compile Include="Models\Counter.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dataProject.cs" />
+    <Compile Include="Models\dataProjectDAL.cs" />
+    <Compile Include="Models\DynamicAttribute.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DynamicWorkflow.cs" />
+    <Compile Include="Models\EntityConnection.cs" />
+    <Compile Include="Models\ErrorNotifier.cs" />
+    <Compile Include="Models\GoogleGeoCode.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\log_audit.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\lookupAttributeDAL.cs" />
+    <Compile Include="Models\MasterDataContract.cs" />
+    <Compile Include="Models\MasterDataDAL.cs" />
+    <Compile Include="Models\Media_Attributes.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Activity_Master.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Approval_RoleMaster.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Approval_StatusFlow.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Approval_StatusMaster.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CityArea.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CityAreaLocation.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CityMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CityMaster.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CountryMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CountryMappingR1.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_CountryMaster.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Currency.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_EntityType.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_keyword.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_keyword_alias.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_masterattribute.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_masterattributevalue.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_States.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Statuses.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_TeamMembers.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_Teams.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_transformationfield.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_transformationkeyword.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_WorkflowMaster.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_WorkFlowMessage.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\m_WorkflowSteps.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Organisation_Company.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Organisation_Market.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_ObjectsInProject.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_Team.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_TeamMembers.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_TeamMembersRoles.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_UserBucket.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_UserTasks.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_ViewBag.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_ViewBagDuration.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_WorkFlowMessage.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_WorkflowSteps.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Project_WorkflowStepsActivity.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Roles_NIU.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SiteMap.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stg_ezhtlfs_hotel_format.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stg_ezhtlfs_htl_images.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stg_ezhtlf_hotel_mapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stg_SupplierCityMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stg_SupplierCountryMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\stg_SupplierProductMapping.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supplier.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supplier_Market.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Supplier_ProductCategory.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TLGX_Mapper_Entity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TLGX_Mapper_Entity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TLGX_Mapper_Entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TLGX_Mapper_Entity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserInRoles_NIU.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users_Contract.cs" />
+    <Compile Include="Models\UsersInRoles_NIU.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vwMappingStat.cs">
+      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="orgstructure\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orgstructure\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orgstructure\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orgstructure\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="projects\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="projects\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="projects\masterteams\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="projects\masterteams\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="projects\masterteams\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="projects\masterteams\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="projects\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="projects\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\MDMSVC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ActivityNameAutoComplete.ashx.cs">
+      <DependentUpon>ActivityNameAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CityFillForDDL.ashx.cs">
+      <DependentUpon>CityFillForDDL.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CityAutoComplete.ashx.cs">
+      <DependentUpon>CityAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CountryAutoComplete.ashx.cs">
+      <DependentUpon>CountryAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\HotelNameAutoComplete.ashx.cs">
+      <DependentUpon>HotelNameAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AllSupplierDataForChart.ashx.cs">
+      <DependentUpon>AllSupplierDataForChart.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
+      <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ToFillDDL.ashx.cs">
+      <DependentUpon>ToFillDDL.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SqlSiteMapProvider.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="staticdata\activity\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\activity\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\city\bulkCityMap.aspx.cs">
+      <DependentUpon>bulkCityMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\city\bulkCityMap.aspx.designer.cs">
+      <DependentUpon>bulkCityMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\city\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\city\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\config\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\config\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\config\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\config\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\country\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\country\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\files\upload.aspx.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\files\upload.aspx.designer.cs">
+      <DependentUpon>upload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\holidays\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\holidays\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\hotels\addProductMapping.aspx.cs">
+      <DependentUpon>addProductMapping.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\addProductMapping.aspx.designer.cs">
+      <DependentUpon>addProductMapping.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\hotels\roomtype\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\roomtype\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\hotels\roomtype\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\roomtype\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\hotels\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\manageSupplierImports.aspx.cs">
+      <DependentUpon>manageSupplierImports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\manageSupplierImports.aspx.designer.cs">
+      <DependentUpon>manageSupplierImports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\valuemapping\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\valuemapping\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\manage.aspx.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\manage.aspx.designer.cs">
+      <DependentUpon>manage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UnAuthorized.aspx.cs">
+      <DependentUpon>UnAuthorized.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UnAuthorized.aspx.designer.cs">
+      <DependentUpon>UnAuthorized.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="workflow\manageTask.aspx.cs">
+      <DependentUpon>manageTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="workflow\manageTask.aspx.designer.cs">
+      <DependentUpon>manageTask.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="controls\holidays\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MDMSVC\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61096</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61096/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e6c502956429476a8d53b71386467ac3" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_ClassificationAttributes" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_Contact" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_Descriptions" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_Facility" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_HealthAndSafety" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_HotelUpdates" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_Media" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_NearbyPlaces" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_PaxOccupancy" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_ProductMapping" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_RoomFacility" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_RoomInfo" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_RouteInfo" Width="1.5" PointX="13.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_RuleInfo" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_Status" Width="1.5" PointX="2.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation_SupplierRoomTypeMapping" Width="1.5" PointX="15.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Address" Width="1.5" PointX="15.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Application" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.aspnet_SchemaVersions" Width="1.5" PointX="7.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Comment" Width="1.5" PointX="9.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Counter" Width="1.5" PointX="15.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.DynamicAttribute" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.GoogleGeoCode" Width="1.5" PointX="17.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.log_audit" Width="1.5" PointX="17.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Activity_Master" Width="1.5" PointX="11.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Approval_RoleMaster" Width="1.5" PointX="17.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Approval_StatusFlow" Width="1.5" PointX="13.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Approval_StatusMaster" Width="1.5" PointX="15.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CityArea" Width="1.5" PointX="17.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CityAreaLocation" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CityMapping" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CityMaster" Width="1.5" PointX="2.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CountryMapping" Width="1.5" PointX="19.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CountryMappingR1" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_CountryMaster" Width="1.5" PointX="6.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_keyword" Width="1.5" PointX="8.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_keyword_alias" Width="1.5" PointX="19.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_masterattribute" Width="1.5" PointX="19.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_masterattributevalue" Width="1.5" PointX="19.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_States" Width="1.5" PointX="19.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Statuses" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_TeamMembers" Width="1.5" PointX="21.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Teams" Width="1.5" PointX="21.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_transformationfield" Width="1.5" PointX="10.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_transformationkeyword" Width="1.5" PointX="21.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_WorkflowMaster" Width="1.5" PointX="21.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_WorkFlowMessage" Width="1.5" PointX="21.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_WorkflowSteps" Width="1.5" PointX="12.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Media_Attributes" Width="1.5" PointX="14.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_ObjectsInProject" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_Team" Width="1.5" PointX="23.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_TeamMembers" Width="1.5" PointX="23.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_TeamMembersRoles" Width="1.5" PointX="23.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_UserBucket" Width="1.5" PointX="23.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_UserTasks" Width="1.5" PointX="23.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_ViewBag" Width="1.5" PointX="21.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_ViewBagDuration" Width="1.5" PointX="23.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_WorkFlowMessage" Width="1.5" PointX="0.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_WorkflowSteps" Width="1.5" PointX="2.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project_WorkflowStepsActivity" Width="1.5" PointX="8.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Project" Width="1.5" PointX="18.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Roles_NIU" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.SiteMap" Width="1.5" PointX="25.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.stg_ezhtlf_hotel_mapping" Width="1.5" PointX="25.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.stg_ezhtlfs_hotel_format" Width="1.5" PointX="25.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.stg_ezhtlfs_htl_images" Width="1.5" PointX="14.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.stg_SupplierCityMapping" Width="1.5" PointX="23.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.stg_SupplierCountryMapping" Width="1.5" PointX="25.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Supplier" Width="1.5" PointX="4.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Supplier_Market" Width="1.5" PointX="27.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Supplier_ProductCategory" Width="1.5" PointX="10.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.sysdiagram" Width="1.5" PointX="27.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.UserInRoles_NIU" Width="1.5" PointX="27.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.User" Width="1.5" PointX="27.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.UsersInRoles_NIU" Width="1.5" PointX="27.75" PointY="20.75" IsExpanded="true" />
+        <AssociationConnector Association="TLGX_MAPPERModel.RoleEntity_Application" ManuallyRouted="false" />
+        <AssociationConnector Association="TLGX_MAPPERModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TLGX_MAPPERModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="TLGX_MAPPERModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.stg_SupplierProductMapping" Width="1.5" PointX="7.375" PointY="28.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Accommodation" Width="1.5" PointX="17.375" PointY="28.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.vwMappingStat" Width="1.5" PointX="28.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Client" Width="1.5" PointX="28.375" PointY="3.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_EntityType" Width="1.5" PointX="19.375" PointY="28.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Organisation_Company" Width="1.5" PointX="28.375" PointY="23.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.m_Currency" Width="1.5" PointX="28.75" PointY="27.75" />
+        <EntityTypeShape EntityType="TLGX_MAPPERModel.Organisation_Market" Width="1.5" PointX="0.75" PointY="29.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
