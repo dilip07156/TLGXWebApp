@@ -1,7 +1,35 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="roominfo.ascx.cs" Inherits="TLGX_Consumer.controls.hotel.roominfo" %>
 <%@ Register Src="~/controls/hotel/RoomAmenities.ascx" TagPrefix="uc1" TagName="RoomAmenities" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
+<script src="../../Scripts/JqueryUI/jquery-ui.js"></script>
+<link href="../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        callajax();
+    });
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    prm.add_endRequest(function () {
+        callajax();
+    });
+    function callajax() {
+        $("#MainContent_roominfo_frmRoomInfo_txtRoomCategory").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '../../Service/RoomCategoryAutoComplete.ashx',
+                    dataType: "json",
+                    data: {
+                        term: request.term                       
+                    },
+                    success: function (data) {
+                        response(data);
+                    }
+                });
+            },
+            min_length: 3,
+            delay: 300
+        });
+    }
+</script>
 <asp:UpdatePanel ID="updPanRoomInfo" runat="server">
 
     <ContentTemplate>
@@ -27,7 +55,8 @@
                                         <div class="panel-heading">Room Details</div>
                                         <div class="panel-body">
                                             <div class="form-group">
-                                                <label class="control-label-mand col-sm-4" for="txtRoomCategory">Room Category
+                                                <label class="control-label-mand col-sm-4" for="txtRoomCategory">
+                                                    Room Category
                                                     <asp:RequiredFieldValidator ID="vldtxtFrom" runat="server" ControlToValidate="txtRoomCategory" ErrorMessage="Please enter room category" Text="*" ValidationGroup="vldRoomInfo" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-sm-8">
@@ -50,7 +79,7 @@
                                                     <asp:TextBox ID="txtNumberOfRooms" runat="server" CssClass="form-control" />
                                                     <cc1:FilteredTextBoxExtender ID="axfte_txtNumberOfRooms" runat="server" FilterType="Numbers" TargetControlID="txtNumberOfRooms" />
                                                 </div>
-                                                
+
                                             </div>
 
                                             <div class="form-group">
@@ -105,7 +134,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="control-label col-sm-6" for="txtFloorNumber">Floor Number
+                                                <label class="control-label col-sm-6" for="txtFloorNumber">
+                                                    Floor Number
                                                 </label>
                                                 <div class="col-sm-6">
                                                     <asp:TextBox ID="txtFloorNumber" runat="server" class="form-control" />
@@ -224,7 +254,8 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="control-label-mand col-sm-4" for="txtNumberOfRooms">Number of Rooms
+                                                <label class="control-label-mand col-sm-4" for="txtNumberOfRooms">
+                                                    Number of Rooms
                                                     <asp:RequiredFieldValidator ID="vldtxtNumberOfRooms" runat="server" ControlToValidate="txtNumberOfRooms" ErrorMessage="Please enter number of rooms" Text="*" ValidationGroup="vldRoomInfo" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-sm-6">
@@ -390,21 +421,21 @@
                             <asp:BoundField DataField="RoomDecor" HeaderText="Decor" SortExpression="RoomDecor" />
                             <asp:BoundField DataField="Smoking" HeaderText="Smoking" SortExpression="Smoking" />
 
-<%--                            <asp:ButtonField Text="Select" CommandName="Select">
+                            <%--                            <asp:ButtonField Text="Select" CommandName="Select">
                                 <ControlStyle CssClass="btn btn-primary btn-sm" />
                             </asp:ButtonField>--%>
 
-                            <asp:TemplateField ShowHeader ="false">
+                            <asp:TemplateField ShowHeader="false">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID ="btnSelect" runat ="server" CausesValidation ="false"  CommandName ="Select" CssClass ="btn btn-default" Enabled=<%# Eval("IsActive") %> CommandArgument ='<%# Bind("Accommodation_RoomInfo_Id") %>'>
+                                    <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default" Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Accommodation_RoomInfo_Id") %>'>
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
                                     </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField ShowHeader ="false">
+                            <asp:TemplateField ShowHeader="false">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID ="btnDelete" runat ="server" CausesValidation ="false"  CommandName =  '<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'  CssClass ="btn btn-default" CommandArgument ='<%# Bind("Accommodation_RoomInfo_Id") %>' >
+                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("Accommodation_RoomInfo_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
                                         <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                                     </asp:LinkButton>

@@ -30,6 +30,13 @@ namespace TLGX_Consumer.Controller
             return result as List<string>;
         }
 
+        public List<string> GetRoomCategoryMaster(MDMSVC.DC_RoomCategoryMaster_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_RoomCategoryMaster"], RQParams, typeof(MDMSVC.DC_RoomCategoryMaster_RQ), typeof(List<string>), out result);
+            return result as List<string>;
+        }
+
         public List<DC_Accomodation> GetHotelDetails(Guid AccommodationId)
         {
             object result = null;

@@ -66,11 +66,11 @@ namespace TLGX_Consumer.controls.keywords
                 MDMSVC.DC_Keyword aliasObj = new MDMSVC.DC_Keyword
                 {
                     Keyword_Id = keywrd_Id,
-                    AliasKeywordAlias_Id = Guid.NewGuid(),
-                    AliasValue = aliasValue,
-                    AliasStatus="ACTIVE",
-                    AliasCreate_Date=DateTime.Now,
-                    AliasCreate_User= System.Web.HttpContext.Current.User.Identity.Name
+                    //AliasKeywordAlias_Id = Guid.NewGuid(),
+                    //AliasValue = aliasValue,
+                    //AliasStatus="ACTIVE",
+                    //AliasCreate_Date=DateTime.Now,
+                    //AliasCreate_User= System.Web.HttpContext.Current.User.Identity.Name
                 };
                 
                 lstAlias.Add(aliasObj);
@@ -121,10 +121,10 @@ namespace TLGX_Consumer.controls.keywords
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Status = "ACTIVE",
-                    AliasValue = txtAddAlias.InnerText,
-                    AliasStatus = "ACTIVE",
-                    AliasEdit_Date = DateTime.Now,
-                    AliasEdit_User = System.Web.HttpContext.Current.User.Identity.Name
+                    //AliasValue = txtAddAlias.InnerText,
+                    //AliasStatus = "ACTIVE",
+                    //AliasEdit_Date = DateTime.Now,
+                    //AliasEdit_User = System.Web.HttpContext.Current.User.Identity.Name
                 };
                 lstobj.Add(obj);
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
@@ -136,7 +136,7 @@ namespace TLGX_Consumer.controls.keywords
         {
             MDMSVC.DC_Keyword_RQ RQParam = new MDMSVC.DC_Keyword_RQ();
             if (txtKeyword.Text != String.Empty)
-                RQParam.SystemWord = txtKeyword.Text;
+                //RQParam.SystemWord = txtKeyword.Text;
             if (txtAlias.Text != String.Empty)
                 RQParam.Alias = txtAlias.Text;
             if (ddlStatus.SelectedItem.Value != "0")
@@ -179,7 +179,7 @@ namespace TLGX_Consumer.controls.keywords
                 if (result!=null && result.Count > 0)
                 {
                     txtAddKeyword.Text = Convert.ToString(result[0].Keyword);
-                    txtAddAlias.InnerText = Convert.ToString(result[0].AliasValue);
+                   // txtAddAlias.InnerText = Convert.ToString(result[0].AliasValue);
                 }
             }
 
