@@ -538,4 +538,24 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_RollOffReportRule" nillable="true" type="tns:DC_RollOffReportRule" />
+  <xs:complexType name="ArrayOfDC_RollOffReportStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_RollOffReportStatus" nillable="true" type="tns:DC_RollOffReportStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_RollOffReportStatus" nillable="true" type="tns:ArrayOfDC_RollOffReportStatus" />
+  <xs:complexType name="DC_RollOffReportStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Companymarket" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotelid" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotelname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastupdateDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastupdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Validfrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Validto" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_RollOffReportStatus" nillable="true" type="tns:DC_RollOffReportStatus" />
 </xs:schema>

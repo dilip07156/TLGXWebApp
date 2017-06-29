@@ -39,11 +39,11 @@ namespace TLGX_Consumer.controls.keywords
         protected void btnAdd_Click(object sender, EventArgs e)
         {
 
-            //TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
-            //HtmlInputText DynamicTextBox = (HtmlInputText)frmAddKeyword.FindControl("DynamicTextBox");
-            //int count = Convert.ToInt32(hdnFieldTotalTextboxes.Value);
+            TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
+            HtmlInputText DynamicTextBox = (HtmlInputText)frmAddKeyword.FindControl("DynamicTextBox");
+            int count = Convert.ToInt32(hdnFieldTotalTextboxes.Value);
 
-            //List<MDMSVC.DC_Keyword> lstAlias = new List<MDMSVC.DC_Keyword>();
+            //List<MDMSVC.DC_Keyword> lstKeyword = new List<MDMSVC.DC_Keyword>();
             //Guid keywrd_Id = Guid.NewGuid();
 
             //MDMSVC.DC_Keyword keywordObj = new MDMSVC.DC_Keyword
@@ -55,29 +55,65 @@ namespace TLGX_Consumer.controls.keywords
             //    Status = "ACTIVE"
             //};
 
-            //lstAlias.Add(keywordObj);
+            //lstKeyword.Add(keywordObj);
             //MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
-            //dc = mappingScv.SaveKeyword(lstAlias);
+            //dc = mappingScv.SaveKeyword(lstKeyword);
 
-            //for (int i = 1; i <= count; i++)
+            //List<MDMSVC.DC_keyword_alias> lstKeyword = new List<MDMSVC.DC_keyword_alias>();
+            //Guid keywrd_Id = Guid.NewGuid();
+
+            //MDMSVC.DC_keyword_alias keywordObj = new MDMSVC.DC_keyword_alias
             //{
-            //    string strId = "DynamicTxt" + i.ToString();
-            //    string aliasValue = Request.Form[strId].ToString();
+            //    Keyword_Id = keywrd_Id,
+            //    Keyword = txtAddKeyword.Text,
+            //    Create_Date = DateTime.Now,
+            //    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+            //    Status = "ACTIVE"
+            //};
 
-            //    MDMSVC.DC_Keyword aliasObj = new MDMSVC.DC_Keyword
-            //    {
-            //        Keyword_Id = keywrd_Id,
-            //        AliasKeywordAlias_Id = Guid.NewGuid(),
-            //        AliasValue = aliasValue,
-            //        AliasStatus = "ACTIVE",
-            //        AliasCreate_Date = DateTime.Now,
-            //        AliasCreate_User = System.Web.HttpContext.Current.User.Identity.Name
-            //    };
+            //lstKeyword.Add(keywordObj);
+            //MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
+            //dc = mappingScv.AddUpdateKeywordAlias(lstKeyword);
 
-            //    lstAlias.Add(aliasObj);
-            //    MDMSVC.DC_Message dcAlias = new MDMSVC.DC_Message();
-            //    dcAlias = mappingScv.AddUpdateKeywordAlias(lstAlias);
-            //}
+
+
+            List<MDMSVC.DC_keyword_alias> lstAlias = new List<MDMSVC.DC_keyword_alias>();
+            MDMSVC.DC_keyword_alias aliasObj = new MDMSVC.DC_keyword_alias
+            {
+                //Keyword_Id = keywrd_Id,
+                Keyword = txtAddKeyword.Text,
+                KeywordAlias_Id = Guid.NewGuid(),
+                Value = DynamicTextBox.Value,
+                Status = "ACTIVE",
+                Create_Date = DateTime.Now,
+                Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                Edit_Date = DateTime.Now,
+                Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+            };
+            lstAlias.Add(aliasObj);
+
+            for (int i = 1; i <= count; i++)
+            {
+                string strId = "DynamicTxt" + i.ToString();
+                string aliasValue = Request.Form[strId].ToString();
+
+                MDMSVC.DC_keyword_alias aliasObjD = new MDMSVC.DC_keyword_alias
+                {
+                    //Keyword_Id = keywrd_Id,
+                    Keyword = txtAddKeyword.Text,
+                    KeywordAlias_Id = Guid.NewGuid(),
+                    Value = aliasValue,
+                    Status = "ACTIVE",
+                    Create_Date=DateTime.Now,
+                    Create_User=System.Web.HttpContext.Current.User.Identity.Name,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                };
+
+                lstAlias.Add(aliasObjD);
+            }
+            MDMSVC.DC_Message dcAlias = new MDMSVC.DC_Message();
+            dcAlias = mappingScv.AddUpdateKeywordAlias(lstAlias);
 
             #region "Old Code"
             //frmAddKeyword.ChangeMode(FormViewMode.Insert);

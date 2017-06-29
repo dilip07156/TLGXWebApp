@@ -537,6 +537,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_Search_RS" nillable="true" type="tns:DC_Accomodation_Search_RS" />
+  <xs:complexType name="DC_RoomCategoryMaster_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_RoomCategoryMaster_RQ" nillable="true" type="tns:DC_RoomCategoryMaster_RQ" />
   <xs:complexType name="DC_Accomodation_UpdateStatus_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_Id" type="ser:guid" />
