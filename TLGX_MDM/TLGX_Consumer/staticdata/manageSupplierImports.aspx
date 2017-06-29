@@ -83,6 +83,7 @@
                     var cityArray = [];
                     var productArray = [];
                     var activityArray = [];
+                    var hotelroomArray = [];
                     var iNodes = 0;
                     var iMappingData = 0;
                     var nxtrun = result[0].NextRun;
@@ -171,6 +172,20 @@
                                 }
                             }
                         }
+                        if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
+                            var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
+                            $(".hotelrumper").append(per + "%");
+                            var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
+                            for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
+                                if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
+                                    hotelroomArray.push(resultDataForHotelRum[iHotelRumMappingData]);
+                                    $("#detailhotelrum").append(resultDataForHotelRum[iHotelRumMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount + "<br>");
+                                }
+                                else {
+                                    $("#hotelrumTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount);
+                                }
+                            }
+                        }
                     }
                     //changing key names to label and value Start
                     for (var i = 0; i < contryArray.length; i++) {
@@ -197,6 +212,13 @@
                     }
                     for (var i = 0; i < activityArray.length; i++) {
                         var o = activityArray[i];
+                        o.label = o.Status;
+                        delete o.Status;
+                        o.value = o.TotalCount;
+                        delete o.TotalCount;
+                    } 
+                    for (var i = 0; i < hotelroomArray.length; i++) {
+                        var o = hotelroomArray[i];
                         o.label = o.Status;
                         delete o.Status;
                         o.value = o.TotalCount;
@@ -246,6 +268,16 @@
                         ],
                         resize: true
                     });
+                    Morris.Donut({
+                        element: 'hotelrum',
+                        data: hotelroomArray,
+                        colors: [
+                            '#007F00',
+                            '#e7bd0d',
+                            '#e14949'
+                        ],
+                        resize: true
+                    });
 
 
                     if (contryArray.length == 0) {
@@ -259,6 +291,9 @@
                     }
                     if (activityArray.length == 0) {
                         $("#activity").append("<br/><br/>No Static Data Found").addClass("nodata");
+                    }
+                    if (hotelroomArray.length == 0) {
+                        $("#hotelrum").append("<br/><br/>No Static Data Found").addClass("nodata");
                     }
 
                 },
@@ -283,6 +318,7 @@
                     var allcityArray = [];
                     var allproductArray = [];
                     var allactivityArray = [];
+                    var allhotelroomArray = [];
                     var inodes = 0;
                     for (; inodes < result.length; inodes++) {
                         if (result[inodes].Mappingfor == "Country") {
@@ -307,6 +343,12 @@
                             delete result[inodes].Mappingfor;
                             allactivityArray.push(result[inodes]);
                             $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+
+                        }
+                        if (result[inodes].Mappingfor == "HotelRum") {
+                            delete result[inodes].Mappingfor;
+                            allhotelroomArray.push(result[inodes]);
+                            $("#alldetailhotelrum").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
 
                         }
                     }
@@ -338,6 +380,13 @@
                         delete o.SupplierName;
                         o.value = o.totalcount;
                         delete o.totalcount;
+                    } 
+                    for (var i = 0; i < allhotelroomArray.length; i++) {
+                        var o = allhotelroomArray[i];
+                        o.label = o.SupplierName;
+                        delete o.SupplierName;
+                        o.value = o.totalcount;
+                        delete o.totalcount;
                     }
                     //end
 
@@ -365,6 +414,13 @@
                     var allactivityChart = Morris.Donut({
                         element: 'allactivity',
                         data: allactivityArray,
+                        colors: colorsArray,
+                        resize: true,
+
+                    })
+                    var allhotelrumChart = Morris.Donut({
+                        element: 'allhotelrum',
+                        data: allhotelroomArray,
                         colors: colorsArray,
                         resize: true,
 
@@ -405,6 +461,15 @@
                           .css('display', 'inline-block')
                           .css('margin', '5px');
                         $('#legendac').append(legendItem)
+                    });
+                    allhotelrumChart.options.data.forEach(function (label, i) {
+                        var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
+                        legendItem.find('span')
+                          .css('backgroundColor', allhotelrumChart.options.colors[i])
+                        .css('width', '20px')
+                          .css('display', 'inline-block')
+                          .css('margin', '5px');
+                        $('#legendhr').append(legendItem)
                     });
 
                 },
@@ -529,7 +594,7 @@
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b><br />
-                        <b class="rumper"></b></h3>
+                        <b class="hotelrumper"></b></h3>
                 </div>
                 <div id="hotelrum"></div>
                 <div class="panel-body">
