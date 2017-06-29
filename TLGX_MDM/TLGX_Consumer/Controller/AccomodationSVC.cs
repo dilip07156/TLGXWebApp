@@ -397,8 +397,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomURI"], Accommodation_Id, Accommodation_RoomInfo_Id), typeof(List<DC_Accommodation_RoomInfo>), out result);
             return result as List<DC_Accommodation_RoomInfo>;
         }
-
-
+        public List<DC_Accomodation_Category_DDL> GetRoomDetails_RoomCategory(Guid Accommodation_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomCategory"], Accommodation_Id), typeof(List<DC_Accomodation_Category_DDL>), out result);
+            return result as List<DC_Accomodation_Category_DDL>;
+        }
         public bool AddRoom(MDMSVC.DC_Accommodation_RoomInfo AF)
         {
             object result = null;

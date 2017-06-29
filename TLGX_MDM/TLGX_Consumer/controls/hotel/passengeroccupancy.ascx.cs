@@ -27,10 +27,6 @@ namespace TLGX_Consumer.controls.hotel
             {
                 Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
                 fillOccupancy();
-                DropDownList ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
-                DropDownList ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
-                fillcategories(ddlRoomCategory);
-                filltype(ddlRoomType);
             }
         }
 
@@ -161,7 +157,7 @@ namespace TLGX_Consumer.controls.hotel
                 DropDownList ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
                 DropDownList ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
 
-                fillcategories(ddlRoomCategory);
+                BindCategory(ddlRoomCategory);
                 filltype(ddlRoomType);
                 ddlRoomCategory.SelectedIndex = ddlRoomCategory.Items.IndexOf(ddlRoomCategory.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdOccupanyDetail.Rows[index].Cells[0].Text)));
                 ddlRoomType.SelectedIndex = ddlRoomType.Items.IndexOf(ddlRoomType.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdOccupanyDetail.Rows[index].Cells[1].Text)));
@@ -264,11 +260,13 @@ namespace TLGX_Consumer.controls.hotel
                     frmPassengerOCcupancy.DataBind();
                     fillOccupancy();
 
-                    ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
-                    fillcategories(ddlRoomCategory);
+                    //ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
+                    //fillcategories(ddlRoomCategory);
 
-                    ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
-                    filltype(ddlRoomType);
+                    //ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
+                    //filltype(ddlRoomType);
+                    hdnFlag.Value = "true";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), DateTime.Today.Ticks.ToString(),"alert('Hi');", true);
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Occupancy has been added successfully", BootstrapAlertType.Success);
                 }
                 else
@@ -312,11 +310,12 @@ namespace TLGX_Consumer.controls.hotel
 
                         fillOccupancy();
 
-                        ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
-                        fillcategories(ddlRoomCategory);
+                        //ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
+                        //fillcategories(ddlRoomCategory);
 
-                        ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
-                        filltype(ddlRoomType);
+                        //ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
+                        //filltype(ddlRoomType);
+                        hdnFlag.Value = "true";
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Occupancy has been updated successfully", BootstrapAlertType.Success);
                     }
                     else
@@ -361,6 +360,34 @@ namespace TLGX_Consumer.controls.hotel
                     e.Row.Font.Strikeout = true;
                 }
             }
+        }
+
+        protected void ddlRoomCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnNewCreate_Click(object sender, EventArgs e)
+        {
+            hdnFlag.Value = "false";
+            frmPassengerOCcupancy.ChangeMode(FormViewMode.Insert);
+            frmPassengerOCcupancy.DataBind();
+            DropDownList ddlRoomCategory = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomCategory");
+            DropDownList ddlRoomType = (DropDownList)frmPassengerOCcupancy.FindControl("ddlRoomType");
+            if (Accomodation_ID == Guid.Empty)
+            {
+                Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
+            }
+            BindCategory(ddlRoomCategory);
+            filltype(ddlRoomType);
+        }
+        private void BindCategory(DropDownList obj)
+        {
+            var result = AccSvc.GetRoomDetails_RoomCategory(Accomodation_ID);
+            obj.DataSource = result;
+            obj.DataTextField = "RoomCategory";
+            obj.DataValueField = "Accommodation_RoomInfo_Id";
+            obj.DataBind();
         }
     }
 }
