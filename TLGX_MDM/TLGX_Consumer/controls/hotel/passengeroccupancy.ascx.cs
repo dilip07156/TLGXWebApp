@@ -369,6 +369,7 @@ namespace TLGX_Consumer.controls.hotel
 
         protected void btnNewCreate_Click(object sender, EventArgs e)
         {
+            dvMsg.Style.Add(HtmlTextWriterStyle.Display, "none");
             hdnFlag.Value = "false";
             frmPassengerOCcupancy.ChangeMode(FormViewMode.Insert);
             frmPassengerOCcupancy.DataBind();

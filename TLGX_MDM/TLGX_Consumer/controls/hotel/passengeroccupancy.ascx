@@ -8,8 +8,11 @@
     function showAddUpdateOccupancy() {
         $("#moOccupancy").modal('show');
     }
-    function pageLoad(sender, args) {
-        alert('Hi');
+    function InIEventOccupancy() {
+        ClosePopupOccupancy();
+    }
+    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(InIEventOccupancy);
+    function ClosePopupOccupancy() {
         var hv = $('#MainContent_passengeroccupancy_hdnFlag').val();
         if (hv == "true") {
             closeAddUpdateOccupancy();
