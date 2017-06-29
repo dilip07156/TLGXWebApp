@@ -546,6 +546,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_UpdateStatus_RQ" nillable="true" type="tns:DC_Accomodation_UpdateStatus_RQ" />
+  <xs:complexType name="ArrayOfDC_Accomodation_Category_DDL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accomodation_Category_DDL" nillable="true" type="tns:DC_Accomodation_Category_DDL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Accomodation_Category_DDL" nillable="true" type="tns:ArrayOfDC_Accomodation_Category_DDL" />
+  <xs:complexType name="DC_Accomodation_Category_DDL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Accomodation_Category_DDL" nillable="true" type="tns:DC_Accomodation_Category_DDL" />
   <xs:complexType name="ArrayOfDC_Master_Country">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Master_Country" nillable="true" type="tns:DC_Master_Country" />

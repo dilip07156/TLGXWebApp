@@ -29,6 +29,8 @@
       <xs:element minOccurs="0" name="Country_Code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
     </xs:sequence>
@@ -68,6 +70,8 @@
       <xs:element minOccurs="0" name="ISO4217_currency_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ISO4217_currency_numeric_code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ISOofficial_name_en" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MARC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
@@ -129,6 +133,8 @@
       <xs:element minOccurs="0" name="City_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
@@ -152,6 +158,8 @@
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Google_PlaceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
@@ -635,13 +643,6 @@
   <xs:element name="ArrayOfDC_Keyword" nillable="true" type="tns:ArrayOfDC_Keyword" />
   <xs:complexType name="DC_Keyword">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AliasCreate_Date" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="AliasCreate_User" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AliasEdit_Date" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="AliasEdit_User" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AliasKeywordAlias_Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="AliasStatus" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AliasValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
@@ -651,6 +652,7 @@
       <xs:element minOccurs="0" name="Keyword_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Missing" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Keyword" nillable="true" type="tns:DC_Keyword" />
@@ -659,8 +661,10 @@
       <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AliasKeywordAlias_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Keyword_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SystemWord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="systemWord" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Keyword_RQ" nillable="true" type="tns:DC_Keyword_RQ" />
@@ -680,6 +684,7 @@
       <xs:element minOccurs="0" name="KeywordAlias_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Keyword_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
       <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

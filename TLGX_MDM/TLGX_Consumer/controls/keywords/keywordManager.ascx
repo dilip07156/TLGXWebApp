@@ -88,16 +88,16 @@
                 <div class="form-group pull-right">
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                        <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control">
-                            <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>15</asp:ListItem>
-                            <asp:ListItem>20</asp:ListItem>
-                            <asp:ListItem>25</asp:ListItem>
-                            <asp:ListItem>30</asp:ListItem>
-                            <asp:ListItem>35</asp:ListItem>
-                            <asp:ListItem>40</asp:ListItem>
-                            <asp:ListItem>45</asp:ListItem>
-                            <asp:ListItem>50</asp:ListItem>
+                        <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                            <asp:ListItem Value="10" >10</asp:ListItem>
+                            <asp:ListItem Value="15" >15</asp:ListItem>
+                            <asp:ListItem Value="20" >20</asp:ListItem>
+                            <asp:ListItem Value="25" >25</asp:ListItem>
+                            <asp:ListItem Value="30" >30</asp:ListItem>
+                            <asp:ListItem Value="35" >35</asp:ListItem>
+                            <asp:ListItem Value="40" >40</asp:ListItem>
+                            <asp:ListItem Value="45" >45</asp:ListItem>
+                            <asp:ListItem Value="50" >50</asp:ListItem>
                         </asp:DropDownList>
                     </div>
                 </div>
@@ -109,7 +109,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <h4 class="panel-title pull-left">
-                            <a data-toggle="collapse" data-parent="#accordion1" href="#collapseSearchResult">Search Results</a>
+                            <a data-toggle="collapse" data-parent="#accordion1" href="#collapseSearchResult">Search Results (Total Count:<asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a>
                             <%--<asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a>--%>
                         </h4>
                     </div>
@@ -117,15 +117,16 @@
                     <div id="collapseSearchResult" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <div class="col-lg-12">
-                                <asp:GridView ID="gvSearchResult" runat="server" CssClass="table table-striped" AllowPaging="true" AutoGenerateColumns="false"
-                                    DataKeyNames="Keyword_Id,AliasKeywordAlias_Id" OnRowCommand="gvSearchResult_RowCommand">
+                                <asp:GridView ID="gvSearchResult" runat="server" 
+                                    EmptyDataText="No data for search conditions" CssClass="table table-striped" AllowPaging="true" AllowCustomPaging="True" AutoGenerateColumns="false"
+                                    DataKeyNames="Keyword_Id,KeywordAlias_Id" OnRowCommand="gvSearchResult_RowCommand" OnPageIndexChanging="gvSearchResult_PageIndexChanging">
                                     <Columns>
                                         <asp:BoundField DataField="Keyword" HeaderText="Keyword" />
-                                        <asp:BoundField DataField="AliasValue" HeaderText="Alias" />
-                                        <asp:BoundField DataField="AliasStatus" HeaderText="Status" />
+                                        <asp:BoundField DataField="Value" HeaderText="Alias" />
+                                        <asp:BoundField DataField="Status" HeaderText="Status" />
                                         <asp:TemplateField ShowHeader="false">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="btnEdit" runat="server" CssClass="btn btn-default" Enabled="true" CommandArgument='<%# Bind("AliasKeywordAlias_Id")%>' OnClientClick="showModal();" CommandName="EditKeyWordMgmr">
+                                                <asp:LinkButton ID="btnEdit" runat="server" CssClass="btn btn-default" Enabled="true" CommandArgument='<%# Bind("KeywordAlias_Id")%>' OnClientClick="showModal();" CommandName="EditKeyWordMgmr">
                                             <span aria-hidden="true">Edit</span>
                                                 </asp:LinkButton>
                                             </ItemTemplate>
