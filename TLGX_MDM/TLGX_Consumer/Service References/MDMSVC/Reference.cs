@@ -6158,6 +6158,51 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_RoomCategoryMaster_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_RoomCategoryMaster_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCategoryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCategory {
+            get {
+                return this.RoomCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCategoryField, value) != true)) {
+                    this.RoomCategoryField = value;
+                    this.RaisePropertyChanged("RoomCategory");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation_UpdateStatus_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
     public partial class DC_Accomodation_UpdateStatus_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -6251,6 +6296,67 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation_Category_DDL", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accomodation_Category_DDL : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_RoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCategoryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_RoomInfo_Id {
+            get {
+                return this.Accommodation_RoomInfo_IdField;
+            }
+            set {
+                if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
+                    this.Accommodation_RoomInfo_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCategory {
+            get {
+                return this.RoomCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCategoryField, value) != true)) {
+                    this.RoomCategoryField = value;
+                    this.RaisePropertyChanged("RoomCategory");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_Search_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
     [System.SerializableAttribute()]
     public partial class DC_Country_Search_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -6266,6 +6372,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Country_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PageNoField;
@@ -6318,6 +6430,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Country_NameField, value) != true)) {
                     this.Country_NameField = value;
                     this.RaisePropertyChanged("Country_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -6521,6 +6659,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ISOofficial_name_enField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MARCField;
@@ -6881,6 +7025,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ISOofficial_name_enField, value) != true)) {
                     this.ISOofficial_name_enField = value;
                     this.RaisePropertyChanged("ISOofficial_name_en");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -7466,6 +7636,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string Country_NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -7545,6 +7721,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Country_NameField, value) != true)) {
                     this.Country_NameField = value;
                     this.RaisePropertyChanged("Country_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -7776,6 +7978,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string Google_PlaceIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -7916,6 +8124,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Google_PlaceIdField, value) != true)) {
                     this.Google_PlaceIdField = value;
                     this.RaisePropertyChanged("Google_PlaceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -12803,27 +13037,6 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> AliasCreate_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AliasCreate_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> AliasEdit_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AliasEdit_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid AliasKeywordAlias_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AliasStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AliasValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Create_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -12850,6 +13063,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordsField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -12857,97 +13073,6 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> AliasCreate_Date {
-            get {
-                return this.AliasCreate_DateField;
-            }
-            set {
-                if ((this.AliasCreate_DateField.Equals(value) != true)) {
-                    this.AliasCreate_DateField = value;
-                    this.RaisePropertyChanged("AliasCreate_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AliasCreate_User {
-            get {
-                return this.AliasCreate_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AliasCreate_UserField, value) != true)) {
-                    this.AliasCreate_UserField = value;
-                    this.RaisePropertyChanged("AliasCreate_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> AliasEdit_Date {
-            get {
-                return this.AliasEdit_DateField;
-            }
-            set {
-                if ((this.AliasEdit_DateField.Equals(value) != true)) {
-                    this.AliasEdit_DateField = value;
-                    this.RaisePropertyChanged("AliasEdit_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AliasEdit_User {
-            get {
-                return this.AliasEdit_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AliasEdit_UserField, value) != true)) {
-                    this.AliasEdit_UserField = value;
-                    this.RaisePropertyChanged("AliasEdit_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid AliasKeywordAlias_Id {
-            get {
-                return this.AliasKeywordAlias_IdField;
-            }
-            set {
-                if ((this.AliasKeywordAlias_IdField.Equals(value) != true)) {
-                    this.AliasKeywordAlias_IdField = value;
-                    this.RaisePropertyChanged("AliasKeywordAlias_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AliasStatus {
-            get {
-                return this.AliasStatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AliasStatusField, value) != true)) {
-                    this.AliasStatusField = value;
-                    this.RaisePropertyChanged("AliasStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AliasValue {
-            get {
-                return this.AliasValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AliasValueField, value) != true)) {
-                    this.AliasValueField = value;
-                    this.RaisePropertyChanged("AliasValue");
-                }
             }
         }
         
@@ -13068,6 +13193,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
         }
         
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
@@ -13097,10 +13235,16 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Keyword_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SystemWordField;
+        private string systemWordField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -13152,6 +13296,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageNo {
+            get {
+                return this.PageNoField;
+            }
+            set {
+                if ((this.PageNoField.Equals(value) != true)) {
+                    this.PageNoField = value;
+                    this.RaisePropertyChanged("PageNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Status {
             get {
                 return this.StatusField;
@@ -13165,14 +13335,14 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SystemWord {
+        public string systemWord {
             get {
-                return this.SystemWordField;
+                return this.systemWordField;
             }
             set {
-                if ((object.ReferenceEquals(this.SystemWordField, value) != true)) {
-                    this.SystemWordField = value;
-                    this.RaisePropertyChanged("SystemWord");
+                if ((object.ReferenceEquals(this.systemWordField, value) != true)) {
+                    this.systemWordField = value;
+                    this.RaisePropertyChanged("systemWord");
                 }
             }
         }
@@ -13219,6 +13389,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ValueField;
@@ -13333,6 +13506,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
                 }
             }
         }
@@ -14241,6 +14427,99 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Address_GeoCodeForNearBy", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
+    [System.SerializableAttribute()]
+    public partial class DC_Address_GeoCodeForNearBy : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlaceTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string radiusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PlaceType {
+            get {
+                return this.PlaceTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlaceTypeField, value) != true)) {
+                    this.PlaceTypeField = value;
+                    this.RaisePropertyChanged("PlaceType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string radius {
+            get {
+                return this.radiusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.radiusField, value) != true)) {
+                    this.radiusField = value;
+                    this.RaisePropertyChanged("radius");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Mapping_ShiftMapping_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
     [System.SerializableAttribute()]
     public partial class DC_Mapping_ShiftMapping_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -14438,6 +14717,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RemarksField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StarRatingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StateCodeField;
@@ -14805,6 +15087,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StarRating {
+            get {
+                return this.StarRatingField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StarRatingField, value) != true)) {
+                    this.StarRatingField = value;
+                    this.RaisePropertyChanged("StarRating");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string StateCode {
             get {
                 return this.StateCodeField;
@@ -15159,6 +15454,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string SourceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StarRatingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -15356,6 +15654,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SourceField, value) != true)) {
                     this.SourceField = value;
                     this.RaisePropertyChanged("Source");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StarRating {
+            get {
+                return this.StarRatingField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StarRatingField, value) != true)) {
+                    this.StarRatingField = value;
+                    this.RaisePropertyChanged("StarRating");
                 }
             }
         }
@@ -15984,6 +16295,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Country_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -16026,6 +16343,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Country_IdField.Equals(value) != true)) {
                     this.Country_IdField = value;
                     this.RaisePropertyChanged("Country_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -16179,6 +16522,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MapIDField;
@@ -16335,6 +16684,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> MapID {
             get {
                 return this.MapIDField;
@@ -16483,6 +16858,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Country_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -16567,6 +16948,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Country_IdField.Equals(value) != true)) {
                     this.Country_IdField = value;
                     this.RaisePropertyChanged("Country_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -16739,6 +17146,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MapIDField;
@@ -16925,6 +17338,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -21402,6 +21841,179 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_RollOffReportStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_RollOffReportStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanymarketField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HotelidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastupdateDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LastupdatedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReasonField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValidfromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ValidtoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Companymarket {
+            get {
+                return this.CompanymarketField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanymarketField, value) != true)) {
+                    this.CompanymarketField = value;
+                    this.RaisePropertyChanged("Companymarket");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Hotelid {
+            get {
+                return this.HotelidField;
+            }
+            set {
+                if ((this.HotelidField.Equals(value) != true)) {
+                    this.HotelidField = value;
+                    this.RaisePropertyChanged("Hotelid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Hotelname {
+            get {
+                return this.HotelnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelnameField, value) != true)) {
+                    this.HotelnameField = value;
+                    this.RaisePropertyChanged("Hotelname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastupdateDate {
+            get {
+                return this.LastupdateDateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastupdateDateField, value) != true)) {
+                    this.LastupdateDateField = value;
+                    this.RaisePropertyChanged("LastupdateDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LastupdatedBy {
+            get {
+                return this.LastupdatedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LastupdatedByField, value) != true)) {
+                    this.LastupdatedByField = value;
+                    this.RaisePropertyChanged("LastupdatedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Reason {
+            get {
+                return this.ReasonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReasonField, value) != true)) {
+                    this.ReasonField = value;
+                    this.RaisePropertyChanged("Reason");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Validfrom {
+            get {
+                return this.ValidfromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValidfromField, value) != true)) {
+                    this.ValidfromField = value;
+                    this.RaisePropertyChanged("Validfrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Validto {
+            get {
+                return this.ValidtoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValidtoField, value) != true)) {
+                    this.ValidtoField = value;
+                    this.RaisePropertyChanged("Validto");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_Schedule", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
     [System.SerializableAttribute()]
     public partial class DC_Supplier_Schedule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -23507,6 +24119,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationNames", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationNamesResponse")]
         System.Threading.Tasks.Task<string[]> GetAccomodationNamesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ Accomodation_Request);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetRoomCategoryMaster", ReplyAction="http://tempuri.org/IAccomodation/GetRoomCategoryMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetRoomCategoryMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string[] GetRoomCategoryMaster(TLGX_Consumer.MDMSVC.DC_RoomCategoryMaster_RQ RoomCategory);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetRoomCategoryMaster", ReplyAction="http://tempuri.org/IAccomodation/GetRoomCategoryMasterResponse")]
+        System.Threading.Tasks.Task<string[]> GetRoomCategoryMasterAsync(TLGX_Consumer.MDMSVC.DC_RoomCategoryMaster_RQ RoomCategory);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationShortInfo", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationShortInfoResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationShortInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Accomodation GetAccomodationShortInfo(string Accomodation_Id);
@@ -23772,6 +24391,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfoResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]> GetAccomodationRoomInfoAsync(string Accomodation_Id, string DataKey_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategory", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategoryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategoryDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL[] GetAccomodationRoomInfo_RoomCategory(string Accomodation_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategory", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategoryResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL[]> GetAccomodationRoomInfo_RoomCategoryAsync(string Accomodation_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/AddAccomodationRoomInfoResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddAccomodationRoomInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -24436,12 +25063,12 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SaveKeyword", ReplyAction="http://tempuri.org/IMasters/SaveKeywordResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SaveKeywordAsync(TLGX_Consumer.MDMSVC.DC_Keyword[] param);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/UpdateKeyword", ReplyAction="http://tempuri.org/IMasters/UpdateKeywordResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/UpdateKeywordDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message UpdateKeyword(TLGX_Consumer.MDMSVC.DC_Keyword[] param);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/AddUpdateKeyword", ReplyAction="http://tempuri.org/IMasters/AddUpdateKeywordResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/AddUpdateKeywordDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AddUpdateKeyword(TLGX_Consumer.MDMSVC.DC_Keyword[] param);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/UpdateKeyword", ReplyAction="http://tempuri.org/IMasters/UpdateKeywordResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateKeywordAsync(TLGX_Consumer.MDMSVC.DC_Keyword[] param);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/AddUpdateKeyword", ReplyAction="http://tempuri.org/IMasters/AddUpdateKeywordResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateKeywordAsync(TLGX_Consumer.MDMSVC.DC_Keyword[] param);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchKeyword", ReplyAction="http://tempuri.org/IMasters/SearchKeywordResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/SearchKeywordDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -24450,12 +25077,19 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchKeyword", ReplyAction="http://tempuri.org/IMasters/SearchKeywordResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Keyword[]> SearchKeywordAsync(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SaveAliasForKeyword", ReplyAction="http://tempuri.org/IMasters/SaveAliasForKeywordResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/SaveAliasForKeywordDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message SaveAliasForKeyword(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchKeywordAlias", ReplyAction="http://tempuri.org/IMasters/SearchKeywordAliasResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/SearchKeywordAliasDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_keyword_alias[] SearchKeywordAlias(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SaveAliasForKeyword", ReplyAction="http://tempuri.org/IMasters/SaveAliasForKeywordResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SaveAliasForKeywordAsync(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchKeywordAlias", ReplyAction="http://tempuri.org/IMasters/SearchKeywordAliasResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_keyword_alias[]> SearchKeywordAliasAsync(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/AddUpdateKeywordAlias", ReplyAction="http://tempuri.org/IMasters/AddUpdateKeywordAliasResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/AddUpdateKeywordAliasDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AddUpdateKeywordAlias(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/AddUpdateKeywordAlias", ReplyAction="http://tempuri.org/IMasters/AddUpdateKeywordAliasResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateKeywordAliasAsync(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetGeoLocationByAddress", ReplyAction="http://tempuri.org/IGeoLocation/GetGeoLocationByAddressResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IGeoLocation/GetGeoLocationByAddressDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -24470,6 +25104,13 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetGeoLocationByLatLng", ReplyAction="http://tempuri.org/IGeoLocation/GetGeoLocationByLatLngResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_GeoLocation> GetGeoLocationByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCode AG);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLng", ReplyAction="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLngResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLngDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[] GetNearByPlacesByLatLng(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLng", ReplyAction="http://tempuri.org/IGeoLocation/GetNearByPlacesByLatLngResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetNearByPlacesByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/ShiftAccommodationMappings", ReplyAction="http://tempuri.org/IMapping/ShiftAccommodationMappingsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/ShiftAccommodationMappingsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -24774,6 +25415,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RollOffReportRule[]> getStatisticforRuleReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforStatusReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforStatusReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforStatusReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_RollOffReportStatus[] getStatisticforStatusReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforStatusReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforStatusReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RollOffReportStatus[]> getStatisticforStatusReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id);
@@ -24978,6 +25626,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<string[]> GetAccomodationNamesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ Accomodation_Request) {
             return base.Channel.GetAccomodationNamesAsync(Accomodation_Request);
+        }
+        
+        public string[] GetRoomCategoryMaster(TLGX_Consumer.MDMSVC.DC_RoomCategoryMaster_RQ RoomCategory) {
+            return base.Channel.GetRoomCategoryMaster(RoomCategory);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetRoomCategoryMasterAsync(TLGX_Consumer.MDMSVC.DC_RoomCategoryMaster_RQ RoomCategory) {
+            return base.Channel.GetRoomCategoryMasterAsync(RoomCategory);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation GetAccomodationShortInfo(string Accomodation_Id) {
@@ -25266,6 +25922,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]> GetAccomodationRoomInfoAsync(string Accomodation_Id, string DataKey_Id) {
             return base.Channel.GetAccomodationRoomInfoAsync(Accomodation_Id, DataKey_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL[] GetAccomodationRoomInfo_RoomCategory(string Accomodation_Id) {
+            return base.Channel.GetAccomodationRoomInfo_RoomCategory(Accomodation_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL[]> GetAccomodationRoomInfo_RoomCategoryAsync(string Accomodation_Id) {
+            return base.Channel.GetAccomodationRoomInfo_RoomCategoryAsync(Accomodation_Id);
         }
         
         public bool AddAccomodationRoomInfo(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo RI) {
@@ -26012,12 +26676,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SaveKeywordAsync(param);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message UpdateKeyword(TLGX_Consumer.MDMSVC.DC_Keyword[] param) {
-            return base.Channel.UpdateKeyword(param);
+        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateKeyword(TLGX_Consumer.MDMSVC.DC_Keyword[] param) {
+            return base.Channel.AddUpdateKeyword(param);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateKeywordAsync(TLGX_Consumer.MDMSVC.DC_Keyword[] param) {
-            return base.Channel.UpdateKeywordAsync(param);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateKeywordAsync(TLGX_Consumer.MDMSVC.DC_Keyword[] param) {
+            return base.Channel.AddUpdateKeywordAsync(param);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Keyword[] SearchKeyword(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ) {
@@ -26028,12 +26692,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SearchKeywordAsync(RQ);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message SaveAliasForKeyword(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param) {
-            return base.Channel.SaveAliasForKeyword(param);
+        public TLGX_Consumer.MDMSVC.DC_keyword_alias[] SearchKeywordAlias(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ) {
+            return base.Channel.SearchKeywordAlias(RQ);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SaveAliasForKeywordAsync(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param) {
-            return base.Channel.SaveAliasForKeywordAsync(param);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_keyword_alias[]> SearchKeywordAliasAsync(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ) {
+            return base.Channel.SearchKeywordAliasAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateKeywordAlias(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param) {
+            return base.Channel.AddUpdateKeywordAlias(param);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateKeywordAliasAsync(TLGX_Consumer.MDMSVC.DC_keyword_alias[] param) {
+            return base.Channel.AddUpdateKeywordAliasAsync(param);
         }
         
         public TLGX_Consumer.MDMSVC.DC_GeoLocation GetGeoLocationByAddress(TLGX_Consumer.MDMSVC.DC_Address_Physical PA) {
@@ -26050,6 +26722,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_GeoLocation> GetGeoLocationByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCode AG) {
             return base.Channel.GetGeoLocationByLatLngAsync(AG);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[] GetNearByPlacesByLatLng(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG) {
+            return base.Channel.GetNearByPlacesByLatLng(AG);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetNearByPlacesByLatLngAsync(TLGX_Consumer.MDMSVC.DC_Address_GeoCodeForNearBy AG) {
+            return base.Channel.GetNearByPlacesByLatLngAsync(AG);
         }
         
         public bool ShiftAccommodationMappings(TLGX_Consumer.MDMSVC.DC_Mapping_ShiftMapping_RQ obj) {
@@ -26386,6 +27066,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RollOffReportRule[]> getStatisticforRuleReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
             return base.Channel.getStatisticforRuleReportAsync(parm);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_RollOffReportStatus[] getStatisticforStatusReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
+            return base.Channel.getStatisticforStatusReport(parm);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RollOffReportStatus[]> getStatisticforStatusReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
+            return base.Channel.getStatisticforStatusReportAsync(parm);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {

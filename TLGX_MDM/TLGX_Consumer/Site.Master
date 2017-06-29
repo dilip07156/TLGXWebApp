@@ -99,15 +99,16 @@
 
         <div class="navbar navbar-default navbar-fixed-top header" data-spy="affix" data-offset-top="197">
             <div class="container">
+
+
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">
-                        <img src="/images/logo-cnk.gif" style="width: 50%; padding: 0px; margin: 0px;" />
-                        <%--<span class="glyphicon glyphicon-map-marker"></span>TLGX--%></a>
+
                 </div>
                 <div class="navbar-collapse collapse">
 
@@ -119,10 +120,16 @@
                         </AnonymousTemplate>
 
                         <LoggedInTemplate>
+                            <ul class="nav nav-nav navbar-left">
+                                <li><a href="../" class="navbar-brand">
+                                    <img src="/images/logo-cnk.gif" class="img-responsive" style="width: 50px; float: none" /></a></li>
+                            </ul>
+
                             <asp:SiteMapDataSource ID="AspNetSqlSiteMapProvider" runat="server" ShowStartingNode="false" />
                             <bootmenu:BootstrapMenu runat="server"
                                 DataSourceID="AspNetSqlSiteMapProvider"
                                 Orientation="Horizontal" />
+
                             <!-- this is the right hand side for everyone currently hard coded for demo-->
                             <ul class="nav navbar-nav navbar-right">
 

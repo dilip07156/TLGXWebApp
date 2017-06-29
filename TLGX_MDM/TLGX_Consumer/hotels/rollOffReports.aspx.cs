@@ -52,10 +52,12 @@ namespace TLGX_Consumer.hotels
                     if (lstFileHeader.Contains(item.Name))
                         csv += item.Name + ',';
                 }
+               sb.Append(string.Format("{0},{1},{2},{3},{4},{5},{6}", "Hotel Id", "Hotel Name", "Rule Name", "Description", "Internal Flag", "Last Updated Date", "Last Updated By"));
                 sb.Append(string.Format("{0}", csv) + Environment.NewLine);
+               
                 foreach (var item in res)
                 {
-                    sb.Append(string.Format("{0},{1},{2},{3},{4},{5},{6}", Convert.ToString(item.Hotelid), Convert.ToString(item.Hotelname), Convert.ToString(item.RuleName), Convert.ToString(item.Description), Convert.ToString(item.Internal_Flag), Convert.ToString(item.LastupdateDate), Convert.ToString(item.LastupdatedBy)));
+                    sb.Append(string.Format("{0},{1},{2},{3},{4},{5},{6}", Convert.ToString(item.Hotelid),("\""+ Convert.ToString(item.Hotelname)+ "\""), ("\"" + Convert.ToString(item.RuleName) + "\""), ("\"" + Convert.ToString(item.Description) + "\""), Convert.ToString(item.Internal_Flag), Convert.ToString(item.LastupdateDate), Convert.ToString(item.LastupdatedBy)));
                     sb.Append(Environment.NewLine);
                 }
 
