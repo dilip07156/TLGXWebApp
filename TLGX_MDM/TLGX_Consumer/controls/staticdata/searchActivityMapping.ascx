@@ -661,13 +661,13 @@
                                                                                         <asp:Label ID="Label10" runat="server" Text='<%# Eval("PhysicalLevel") %>'></asp:Label></td>
                                                                                 </tr>
                                                                                 <tr id="trAdvisory" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("Advisory")) %>'--%>>
+                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("Advisory")) %>'--%>
                                                                                     <td><strong>Advisory</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label11" runat="server" Text='<%# Eval("Advisory") %>'></asp:Label></td>
                                                                                 </tr>
                                                                                 <tr id="trThingsToCarry" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("ThingsToCarry")) %>'--%>>
+                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("ThingsToCarry")) %>'--%>
                                                                                     <td><strong>Things To Carry</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label12" runat="server" Text='<%# Eval("ThingsToCarry") %>'></asp:Label></td>
