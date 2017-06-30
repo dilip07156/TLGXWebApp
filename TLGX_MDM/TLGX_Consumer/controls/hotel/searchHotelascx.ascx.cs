@@ -124,6 +124,7 @@ namespace TLGX_Consumer.controls.hotel
                 RQParams.Country = ddlCountry.SelectedItem.Text;
             if (ddlCity.SelectedItem.Text != "---ALL---")
                 RQParams.City = ddlCity.SelectedItem.Text;
+            RQParams.Searchfrom = "hotalsearch";
 
             RQParams.PageNo = pageIndex;
             RQParams.PageSize = pageSize;

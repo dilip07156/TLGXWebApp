@@ -404,6 +404,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomURI"], Accommodation_Id, Accommodation_RoomInfo_Id), typeof(List<DC_Accommodation_RoomInfo>), out result);
             return result as List<DC_Accommodation_RoomInfo>;
         }
+        public List<DC_Accommodation_RoomInfo> GetRoomDetailsByWithPagging(DC_Accommodation_RoomInfo_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_RoomInfor_URI"], RQ, typeof(DC_Accommodation_RoomInfo_RQ), typeof(List<DC_Accommodation_RoomInfo>), out result);
+            return result as List<DC_Accommodation_RoomInfo>;
+        }
         public List<DC_Accomodation_Category_DDL> GetRoomDetails_RoomCategory(Guid Accommodation_Id)
         {
             object result = null;
@@ -422,6 +428,13 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_UpdateRoomURI"], AF, typeof(DC_Accommodation_RoomInfo), typeof(bool), out result);
             return (bool)result;
+
+        }
+        public DC_Message CopyAccomodationInfo(MDMSVC.DC_Accomodation_CopyRoomDef AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_CopyAccoRoomInfo"], AF, typeof(DC_Accomodation_CopyRoomDef), typeof(DC_Message), out result);
+            return result as DC_Message;
 
         }
 
