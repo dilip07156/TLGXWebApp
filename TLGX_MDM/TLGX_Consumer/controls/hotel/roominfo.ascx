@@ -428,26 +428,26 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Existing Hotel Rooms
-                      <div class="form-group pull-right">
-                          <div class="input-group">
-                              <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                              <asp:DropDownList ID="ddlShowEntries" runat="server" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
-                                  <asp:ListItem>5</asp:ListItem>
-                                  <asp:ListItem>10</asp:ListItem>
-                                  <asp:ListItem>15</asp:ListItem>
-                                  <asp:ListItem>20</asp:ListItem>
-                                  <asp:ListItem>25</asp:ListItem>
-                                  <asp:ListItem>30</asp:ListItem>
-                                  <asp:ListItem>35</asp:ListItem>
-                                  <asp:ListItem>40</asp:ListItem>
-                                  <asp:ListItem>45</asp:ListItem>
-                                  <asp:ListItem>50</asp:ListItem>
-                              </asp:DropDownList>
-                          </div>
-                      </div>
+                      
                 </div>
                 <div class="panel-body">
-
+                    <div class="form-group pull-right">
+                        <div class="input-group">
+                            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                            <asp:DropDownList ID="ddlShowEntries" runat="server" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
+                                <asp:ListItem>5</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>15</asp:ListItem>
+                                <asp:ListItem>20</asp:ListItem>
+                                <asp:ListItem>25</asp:ListItem>
+                                <asp:ListItem>30</asp:ListItem>
+                                <asp:ListItem>35</asp:ListItem>
+                                <asp:ListItem>40</asp:ListItem>
+                                <asp:ListItem>45</asp:ListItem>
+                                <asp:ListItem>50</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
                     <asp:GridView ID="grdRoomTypes" runat="server" AutoGenerateColumns="False" DataKeyNames="Accommodation_RoomInfo_Id" CssClass="table table-hover table-striped" AllowPaging="True" EmptyDataText="Not Hotel Rooms defined for this Product" PageSize="5" AllowCustomPaging="true" OnPageIndexChanging="grdRoomTypes_PageIndexChanging" OnRowCommand="grdRoomTypes_SelectedIndexChanged" OnRowDataBound="grdRoomTypes_RowDataBound">
                         <Columns>
                             <asp:BoundField DataField="RoomId" HeaderText="Id" SortExpression="RoomId" />
