@@ -42,41 +42,7 @@ namespace TLGX_Consumer.controls.keywords
             TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
             HtmlInputText DynamicTextBox = (HtmlInputText)frmAddKeyword.FindControl("DynamicTextBox");
             int count = Convert.ToInt32(hdnFieldTotalTextboxes.Value);
-
-            //List<MDMSVC.DC_Keyword> lstKeyword = new List<MDMSVC.DC_Keyword>();
-            //Guid keywrd_Id = Guid.NewGuid();
-
-            //MDMSVC.DC_Keyword keywordObj = new MDMSVC.DC_Keyword
-            //{
-            //    Keyword_Id = keywrd_Id,
-            //    Keyword = txtAddKeyword.Text,
-            //    Create_Date = DateTime.Now,
-            //    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-            //    Status = "ACTIVE"
-            //};
-
-            //lstKeyword.Add(keywordObj);
-            //MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
-            //dc = mappingScv.SaveKeyword(lstKeyword);
-
-            //List<MDMSVC.DC_keyword_alias> lstKeyword = new List<MDMSVC.DC_keyword_alias>();
-            //Guid keywrd_Id = Guid.NewGuid();
-
-            //MDMSVC.DC_keyword_alias keywordObj = new MDMSVC.DC_keyword_alias
-            //{
-            //    Keyword_Id = keywrd_Id,
-            //    Keyword = txtAddKeyword.Text,
-            //    Create_Date = DateTime.Now,
-            //    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-            //    Status = "ACTIVE"
-            //};
-
-            //lstKeyword.Add(keywordObj);
-            //MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
-            //dc = mappingScv.AddUpdateKeywordAlias(lstKeyword);
-
-
-
+            
             List<MDMSVC.DC_keyword_alias> lstAlias = new List<MDMSVC.DC_keyword_alias>();
             MDMSVC.DC_keyword_alias aliasObj = new MDMSVC.DC_keyword_alias
             {
@@ -145,29 +111,27 @@ namespace TLGX_Consumer.controls.keywords
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            //TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
-            //HtmlTextArea txtAddAlias = (HtmlTextArea)frmAddKeyword.FindControl("txtAddAlias");
-            //frmAddKeyword.ChangeMode(FormViewMode.Edit);
-            //frmAddKeyword.DataBind();
+            TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
+            HtmlTextArea txtAddAlias = (HtmlTextArea)frmAddKeyword.FindControl("txtAddAlias");
+            frmAddKeyword.ChangeMode(FormViewMode.Edit);
+            frmAddKeyword.DataBind();
 
-            //if (txtAddKeyword.Text != String.Empty || txtAddAlias.InnerText != String.Empty)
-            //{
-            //    List<MDMSVC.DC_Keyword> lstobj = new List<MDMSVC.DC_Keyword>();
-            //    MDMSVC.DC_Keyword obj = new MDMSVC.DC_Keyword
-            //    {
-            //        Keyword = txtAddKeyword.Text,
-            //        Edit_Date = DateTime.Now,
-            //        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-            //        Status = "ACTIVE",
-            //        AliasValue = txtAddAlias.InnerText,
-            //        AliasStatus = "ACTIVE",
-            //        AliasEdit_Date = DateTime.Now,
-            //        AliasEdit_User = System.Web.HttpContext.Current.User.Identity.Name
-            //    };
-            //    lstobj.Add(obj);
-            //    MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
-            //    dc = mappingScv.AddUpdateKeywordAlias(lstobj);
-            //}
+            if (txtAddKeyword.Text != String.Empty || txtAddAlias.InnerText != String.Empty)
+            {
+                List<MDMSVC.DC_keyword_alias> lstobj = new List<MDMSVC.DC_keyword_alias>();
+                MDMSVC.DC_keyword_alias obj = new MDMSVC.DC_keyword_alias
+                {
+                    KeywordAlias_Id= Guid.Parse(hdnAliasId.Value),
+                    Keyword = txtAddKeyword.Text,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Status = "ACTIVE",
+                    Value=txtAddAlias.InnerText,
+                };
+                lstobj.Add(obj);
+                MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
+                dc = mappingScv.AddUpdateKeywordAlias(lstobj);
+            }
         }
 
         public void fillkeywordalias()
@@ -206,29 +170,30 @@ namespace TLGX_Consumer.controls.keywords
         protected void gvSearchResult_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            //if (e.CommandName=="EditKeyWordMgmr")
-            //{
-            //    frmAddKeyword.ChangeMode(FormViewMode.Edit);
-            //    List<MDMSVC.DC_Keyword_RQ> _blanckDatalst = new List<MDMSVC.DC_Keyword_RQ>();
-            //    _blanckDatalst.Add(new MDMSVC.DC_Keyword_RQ() { });
-            //    frmAddKeyword.DataSource = _blanckDatalst;
-            //    frmAddKeyword.DataBind();
-            //    TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
-            //    HtmlTextArea txtAddAlias = (HtmlTextArea)frmAddKeyword.FindControl("txtAddAlias");
-            //    //var txtAddAlias = Request.Form["Alias1"];
-            //    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-            //    int index = row.RowIndex;
-            //    //Guid myRow_Id = Guid.Parse(gvSearchResult.DataKeys[index].Values[0].ToString());
-            //    Guid myRow_Id=Guid.Parse(e.CommandArgument.ToString());
+            if (e.CommandName == "EditKeyWordMgmr")
+            {
+                frmAddKeyword.ChangeMode(FormViewMode.Edit);
+                List<MDMSVC.DC_Keyword_RQ> _blanckDatalst = new List<MDMSVC.DC_Keyword_RQ>();
+                _blanckDatalst.Add(new MDMSVC.DC_Keyword_RQ() { });
+                frmAddKeyword.DataSource = _blanckDatalst;
+                frmAddKeyword.DataBind();
+                TextBox txtAddKeyword = (TextBox)frmAddKeyword.FindControl("txtAddKeyword");
+                HtmlTextArea txtAddAlias = (HtmlTextArea)frmAddKeyword.FindControl("txtAddAlias");
+                //var txtAddAlias = Request.Form["Alias1"];
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                //Guid myRow_Id = Guid.Parse(gvSearchResult.DataKeys[index].Values[0].ToString());
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                hdnAliasId.Value = Convert.ToString(myRow_Id);
 
-            //    var result = mappingScv.SearchKeyword(new MDMSVC.DC_Keyword_RQ() { AliasKeywordAlias_Id = myRow_Id });
+                var result = mappingScv.SearchKeywordAlias(new MDMSVC.DC_Keyword_RQ() { AliasKeywordAlias_Id = myRow_Id });
 
-            //    if (result!=null && result.Count > 0)
-            //    {
-            //        txtAddKeyword.Text = Convert.ToString(result[0].Keyword);
-            //        txtAddAlias.InnerText = Convert.ToString(result[0].AliasValue);
-            //    }
-            //}
+                if (result != null && result.Count > 0)
+                {
+                    txtAddKeyword.Text = Convert.ToString(result[0].Keyword);
+                    txtAddAlias.InnerText = Convert.ToString(result[0].Value);
+                }
+            }
 
         }
 

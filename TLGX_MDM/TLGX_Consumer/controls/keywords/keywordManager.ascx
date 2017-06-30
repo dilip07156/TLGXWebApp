@@ -27,6 +27,7 @@
 <asp:UpdatePanel ID="updatepnl" runat="server">
     <ContentTemplate>
         <asp:HiddenField ID="hdnFieldTotalTextboxes" Value="1" runat="server" />
+        <asp:HiddenField ID="hdnAliasId" runat="server" value="" />
         <div class="container">
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
