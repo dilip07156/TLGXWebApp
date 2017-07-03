@@ -370,52 +370,38 @@
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <None Include="Service References\MDMSVC\Consumer.disco" />
+    <None Include="Service References\MDMSVC\Arrays.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
+    <None Include="Service References\MDMSVC\DataContracts.Admin.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.DC_Address.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Masters.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Schedulers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <None Include="Service References\MDMSVC\Consumer.wsdl" />
-    <None Include="Service References\MDMSVC\Consumer.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer10.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer11.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer7.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer9.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -648,6 +634,19 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\MDMSVC\service.wsdl" />
+    <None Include="Service References\MDMSVC\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\System.Net.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
