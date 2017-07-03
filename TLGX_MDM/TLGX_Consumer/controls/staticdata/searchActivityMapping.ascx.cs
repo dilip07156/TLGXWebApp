@@ -55,6 +55,8 @@ namespace TLGX_Consumer.controls.staticdata
         public static int intSupplierActivityfvPageNo;
         public static int TotalCountSupplierActivityByProduct = 0;
 
+        public static Guid SelectedMasterAcitivityIDForTab2 = Guid.Empty;
+
 
         #endregion
         #region Page Method
@@ -324,6 +326,8 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 if (activityBasic[0].TotalRecord > 1)
                     btnNext.Enabled = true;
+                else
+                    btnNext.Enabled = false;
                 TotalCountActivityByProduct = Convert.ToInt32(activityBasic[0].TotalRecord);
                 lblTotalCountActivity.Text = Convert.ToString(TotalCountActivityByProduct);
                 lblProductName.Text = Convert.ToString(activityBasic[0].Product_Name);
@@ -356,7 +360,11 @@ namespace TLGX_Consumer.controls.staticdata
 
                     }
                 }
-                fillMappedActivityGrid(ActivitySupplierProductMapping_Id);
+                bool isMapped = false;
+                fillMappedActivityGrid(ActivitySupplierProductMapping_Id, ref isMapped);
+                //Enable & Disable btnMapp
+                btnMapActivityMap.Enabled = (!isMapped);
+
             }
             else
             {
@@ -370,7 +378,7 @@ namespace TLGX_Consumer.controls.staticdata
                 ActivityFormView.DataBind();
             }
         }
-        private void fillMappedActivityGrid(Guid activitySupplierProductMapping_Id)
+        private void fillMappedActivityGrid(Guid activitySupplierProductMapping_Id, ref bool Ismapped)
         {
             try
             {
@@ -380,12 +388,15 @@ namespace TLGX_Consumer.controls.staticdata
                     // divMapped.Style.Add(HtmlTextWriterStyle.Display, "block");
                     grdActivityMapped.DataSource = res;
                     grdActivityMapped.DataBind();
+                    Ismapped = true;
                 }
                 else
                 {
                     //divMapped.Style.Add(HtmlTextWriterStyle.Display, "none");
                     grdActivityMapped.DataSource = null;
                     grdActivityMapped.DataBind();
+                    Ismapped = false;
+
                 }
             }
             catch (Exception)
@@ -599,7 +610,9 @@ namespace TLGX_Consumer.controls.staticdata
             if (_msg.StatusCode == ReadOnlyMessageStatusCode.Success)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvmsg, _msg.StatusMessage, BootstrapAlertType.Success);
-                fillMappedActivityGrid(ActivitySupplierProductMapping_Id);
+                bool isMapped = false;
+                fillMappedActivityGrid(ActivitySupplierProductMapping_Id, ref isMapped);
+                btnMapActivityMap.Enabled = (!isMapped);
                 BindActivityDeatils();
                 SearchActivityMappingData(ref _blnDataExist);
             }
@@ -663,7 +676,9 @@ namespace TLGX_Consumer.controls.staticdata
                 if (_msg.StatusCode == ReadOnlyMessageStatusCode.Success)
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsgUnMapped, _msg.StatusMessage, BootstrapAlertType.Success);
-                    fillMappedActivityGrid(ActivitySupplierProductMapping_Id);
+                    bool isMapped = false;
+                    fillMappedActivityGrid(ActivitySupplierProductMapping_Id, ref isMapped);
+                    btnMapActivityMap.Enabled = (!isMapped);
                     BindActivityDeatils();
                     SearchActivityMappingData(ref _blnDataExist);
                 }
@@ -909,6 +924,10 @@ namespace TLGX_Consumer.controls.staticdata
                 frmVwMasterActivityDetails.DataBind();
                 SupplierCityForBind = res[0].City;
                 SupplierCountryForBind = res[0].Country;
+                txtCountryFileterByProductSupplier.Text = res[0].Country.Trim();
+                txtCountryFileterByProductSupplier.ReadOnly = true;
+                txtCityFileterByProductSupplier.Text = res[0].City.Trim();
+
 
                 if (Convert.ToString(res[0].Activity_Id) != null)
                 {
@@ -936,6 +955,9 @@ namespace TLGX_Consumer.controls.staticdata
 
                     }
                 }
+                //fill filter country and city
+
+
                 // fillSupplierActivityFormView();
             }
             else
@@ -944,6 +966,7 @@ namespace TLGX_Consumer.controls.staticdata
                 frmVwMasterActivityDetails.DataBind();
             }
         }
+
         #endregion
         #region Control Event
         protected void btnSearchActivityByProduct_Click(object sender, EventArgs e)
@@ -1087,12 +1110,11 @@ namespace TLGX_Consumer.controls.staticdata
                     //Bind Dropdown Supplier for filter  
                     BindSupplierActivityDropDown();
                     //Bind Supplier Activity Details With respect to Country and City
-
+                    SelectedMasterAcitivityIDForTab2 = myRow_Id;
                     Supplier_IDByProductSearch = Guid.Empty;
                     SupplierCountryForSearch = null;
                     SupplierCityForSearch = null;
                     SupplierKeyWorForSearch = null;
-
                     BindSupplierActivityDetails();
                     //Bind Mapped Data With Respect to selected master activity
                     BindMappedSupplierActivityForByProduct(myRow_Id);
@@ -1164,7 +1186,6 @@ namespace TLGX_Consumer.controls.staticdata
                     _objSearch.SupplierCountryName = SupplierCountryForBind;
                 if (!string.IsNullOrWhiteSpace(SupplierCityForBind))
                     _objSearch.SupplierCityName = SupplierCityForBind;
-
                 //For search
                 if (Supplier_IDByProductSearch != Guid.Empty)
                     _objSearch.Supplier_ID = Supplier_IDByProductSearch;
@@ -1174,17 +1195,28 @@ namespace TLGX_Consumer.controls.staticdata
                     _objSearch.SystemCityName = SupplierCityForSearch;
                 if (!string.IsNullOrWhiteSpace(SupplierKeyWorForSearch))
                     _objSearch.KeyWord = SupplierKeyWorForSearch;
+                _objSearch.SearchFor = "activitymapping";
 
 
-
-                _objSearch.StatusExcept = "MAPPED";
+                //_objSearch.StatusExcept = "MAPPED";
                 frmvwSupplierActivtiy.DataSource = null;
                 frmvwSupplierActivtiy.DataBind();
-                var result = _mapping.GetActivitySupplierProductMappingSearch(_objSearch);
+                var result = _mapping.GetActivitySupplierProductMappingSearchForMapping(_objSearch);
+
+                //var filteredresult = 
+
                 if (result != null && result.Count > 0)
                 {
                     if (result[0].TotalCount > 1)
                         btnNextByProduct.Enabled = true;
+                    else
+                        btnNextByProduct.Enabled = false;
+                    //Button enable disable
+                    if (SelectedMasterAcitivityIDForTab2 != Guid.Empty)
+                    {
+                        btnMapActivityByProduct.Enabled = !Convert.ToBoolean(_mapping.IsMappedWithSupplier(Convert.ToString(SelectedMasterAcitivityIDForTab2), Convert.ToString(result[0].Supplier_ID)));
+                    }
+
                     TotalCountSupplierActivityByProduct = Convert.ToInt32(result[0].TotalCount);
                     lblTotalCountActivityByProduct.Text = Convert.ToString(TotalCountSupplierActivityByProduct);
                     frmvwSupplierActivtiy.DataSource = result;
