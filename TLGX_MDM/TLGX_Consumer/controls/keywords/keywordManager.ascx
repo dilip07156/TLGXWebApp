@@ -362,8 +362,9 @@
                                                     <EditItemTemplate>
                                                         <asp:TextBox ID="txtAliasSequence" runat="server" CssClass="form-control" Text='<%# Bind("Sequence") %>'></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="vldtxtAliasEditSequence" runat="server" ControlToValidate="txtAliasSequence"
-                                                            ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasEditSequence" CssClass="text-danger">
+                                                            ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasEdit" CssClass="text-danger">
                                                         </asp:RequiredFieldValidator>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAliasSequence" runat="server" FilterType="Numbers" TargetControlID="txtAliasSequence" />
                                                     </EditItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField ShowHeader="false">
