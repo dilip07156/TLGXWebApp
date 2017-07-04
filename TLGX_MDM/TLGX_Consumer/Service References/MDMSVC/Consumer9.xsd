@@ -336,7 +336,6 @@
       <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomView" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Smoking" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accommodation_RoomInfo" nillable="true" type="tns:DC_Accommodation_RoomInfo" />
@@ -507,8 +506,6 @@
       <xs:element name="PageSize" type="xs:int" />
       <xs:element name="ProductCategory" nillable="true" type="xs:string" />
       <xs:element name="ProductCategorySubType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Searchfrom" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Starrating" nillable="true" type="xs:string" />
       <xs:element name="Status" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -535,7 +532,6 @@
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapCount" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Starrating" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
     </xs:sequence>
@@ -547,43 +543,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_RoomCategoryMaster_RQ" nillable="true" type="tns:DC_RoomCategoryMaster_RQ" />
-  <xs:complexType name="DC_Accommodation_RoomInfo_RQ">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Accommodation_Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_Accommodation_RoomInfo_RQ" nillable="true" type="tns:DC_Accommodation_RoomInfo_RQ" />
-  <xs:complexType name="DC_Accomodation_CopyRoomDef">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Accommodation_Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="NewRoomCategory" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_Accomodation_CopyRoomDef" nillable="true" type="tns:DC_Accomodation_CopyRoomDef" />
-  <xs:complexType name="DC_Message">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="StatusCode" type="tns:ReadOnlyMessage.StatusCode" />
-      <xs:element minOccurs="0" name="StatusMessage" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_Message" nillable="true" type="tns:DC_Message" />
-  <xs:simpleType name="ReadOnlyMessage.StatusCode">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Plain" />
-      <xs:enumeration value="Success" />
-      <xs:enumeration value="Information" />
-      <xs:enumeration value="Warning" />
-      <xs:enumeration value="Danger" />
-      <xs:enumeration value="Primary" />
-      <xs:enumeration value="Duplicate" />
-      <xs:enumeration value="Failed" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ReadOnlyMessage.StatusCode" nillable="true" type="tns:ReadOnlyMessage.StatusCode" />
   <xs:complexType name="DC_Accomodation_UpdateStatus_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_Id" type="ser:guid" />
@@ -620,6 +579,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Master_Country" nillable="true" type="tns:DC_Master_Country" />
+  <xs:complexType name="DC_Message">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StatusCode" type="tns:ReadOnlyMessage.StatusCode" />
+      <xs:element minOccurs="0" name="StatusMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Message" nillable="true" type="tns:DC_Message" />
+  <xs:simpleType name="ReadOnlyMessage.StatusCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Plain" />
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Information" />
+      <xs:enumeration value="Warning" />
+      <xs:enumeration value="Danger" />
+      <xs:enumeration value="Primary" />
+      <xs:enumeration value="Duplicate" />
+      <xs:enumeration value="Failed" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReadOnlyMessage.StatusCode" nillable="true" type="tns:ReadOnlyMessage.StatusCode" />
   <xs:complexType name="ArrayOfDC_Master_City">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Master_City" nillable="true" type="tns:DC_Master_City" />
