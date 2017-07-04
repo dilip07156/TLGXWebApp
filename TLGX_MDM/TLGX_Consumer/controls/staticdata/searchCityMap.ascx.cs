@@ -181,6 +181,7 @@ namespace TLGX_Consumer.controls.staticdata
             RQParam.PageNo = MatchedPageIndex;
             RQParam.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
             RQParam.SortBy = (SortBy + " " + SortEx).Trim();
+            RQParam.IsExact = ckboxIsExactMatch.Checked;
             var res = mapperSVc.GetCityMappingData(RQParam);
             grdMatchingCity.DataSource = res;
             if (res != null)
@@ -1193,6 +1194,11 @@ namespace TLGX_Consumer.controls.staticdata
         {
             SimilarPageIndex = e.NewPageIndex;
             fillsimilarcities();
+        }
+
+        protected void ckboxIsExactMatch_CheckedChanged(object sender, EventArgs e)
+        {
+            fillmatchingdata("");
         }
     }
 }

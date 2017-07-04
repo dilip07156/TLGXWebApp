@@ -755,7 +755,7 @@
                                             <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    <asp:CheckBox runat="server" id="ckboxIsExactMatch" CssClass="form-control" /><
+                                                    <asp:CheckBox runat="server" id="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged"/>
                                                     <%--<input type="checkbox" aria-label="Checkbox for following text input" cssclass="form-control" runat="server" id="ckboxIsExactMatch" />--%>
                                                 </span>
                                                 <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>

@@ -325,5 +325,14 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+
+        #region Process Or Test Uploaded Files
+        public DC_Message StaticFileUploadProcessFile(DC_SupplierImportFileDetails obj)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Process_Uploaded_Files"], obj, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }
