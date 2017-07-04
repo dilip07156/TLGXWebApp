@@ -279,17 +279,10 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Keyword Mapping
-        public DC_Message SaveKeyword(List<DC_Keyword> param)
+        public DC_Message AddUpdateKeyword(DC_Keyword param)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Keyword_Add"], param, typeof(List<DC_Keyword>), typeof(DC_Message), out result);
-            return result as DC_Message;
-        }
-
-        public DC_Message AddUpdateKeyword(List<DC_Keyword> param)
-        {
-            object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Keyword_AddUpdate"], param, typeof(List<DC_Keyword>), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Keyword_AddUpdate"], param, typeof(DC_Keyword), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         public List<DC_Keyword> SearchKeyword(DC_Keyword_RQ RQ)
@@ -303,14 +296,6 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["KeywordAlias_Get"], RQ, typeof(DC_Keyword_RQ), typeof(List<DC_keyword_alias>), out result);
             return result as List<DC_keyword_alias>;
-        }
-
-
-        public DC_Message AddUpdateKeywordAlias(List<DC_keyword_alias> param)
-        {
-            object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["KeywordAlias_AddUpdate"], param, typeof(List<DC_keyword_alias>), typeof(DC_Message), out result);
-            return result as DC_Message;
         }
         #endregion
     }
