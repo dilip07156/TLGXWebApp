@@ -635,14 +635,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_DDL" nillable="true" type="tns:DC_Activity_DDL" />
-  <xs:complexType name="ArrayOfDC_Keyword">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Keyword" nillable="true" type="tns:DC_Keyword" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_Keyword" nillable="true" type="tns:ArrayOfDC_Keyword" />
   <xs:complexType name="DC_Keyword">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Alias" nillable="true" type="tns:ArrayOfDC_keyword_alias" />
+      <xs:element minOccurs="0" name="Attribute" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
@@ -651,23 +647,12 @@
       <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Keyword_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Missing" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Keyword" nillable="true" type="tns:DC_Keyword" />
-  <xs:complexType name="DC_Keyword_RQ">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AliasKeywordAlias_Id" nillable="true" type="ser:guid" />
-      <xs:element minOccurs="0" name="Keyword_Id" nillable="true" type="ser:guid" />
-      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="systemWord" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_Keyword_RQ" nillable="true" type="tns:DC_Keyword_RQ" />
   <xs:complexType name="ArrayOfDC_keyword_alias">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_keyword_alias" nillable="true" type="tns:DC_keyword_alias" />
@@ -680,13 +665,31 @@
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="KeywordAlias_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Keyword_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
       <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_keyword_alias" nillable="true" type="tns:DC_keyword_alias" />
+  <xs:complexType name="DC_Keyword_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Attribute" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Keyword_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="systemWord" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Keyword_RQ" nillable="true" type="tns:DC_Keyword_RQ" />
+  <xs:complexType name="ArrayOfDC_Keyword">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Keyword" nillable="true" type="tns:DC_Keyword" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Keyword" nillable="true" type="tns:ArrayOfDC_Keyword" />
 </xs:schema>
