@@ -114,6 +114,38 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_RollOffReportRule>;
         }
         #endregion
+        #region rdlc reports
+        public List<DC_UnmappedCountryReport> GetsupplierwiseUnmappedCountryReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["countryUnmapped_report"], Supplier_Id), typeof(List<DC_UnmappedCountryReport>), out result);
+            return result as List<DC_UnmappedCountryReport>;
+        }
+        public List<DC_UnmappedCityReport> GetsupplierwiseUnmappedCityReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["cityUnmapped_report"], Supplier_Id), typeof(List<DC_UnmappedCityReport>), out result);
+            return result as List<DC_UnmappedCityReport>;
+        }
+        public List<DC_unmappedProductReport> GetsupplierwiseUnmappedProductReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["productUnmapped_report"], Supplier_Id), typeof(List<DC_unmappedProductReport>), out result);
+            return result as List<DC_unmappedProductReport>;
+        }
+        public List<DC_unmappedActivityReport> GetsupplierwiseUnmappedActivityReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["activityUnmapped_report"], Supplier_Id), typeof(List<DC_unmappedActivityReport>), out result);
+            return result as List<DC_unmappedActivityReport>;
+        }
+        public List<DC_supplierwisesummaryReport> GetsupplierwiseSummaryReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["summary_report"], Supplier_Id), typeof(List<DC_supplierwisesummaryReport>), out result);
+            return result as List<DC_supplierwisesummaryReport>;
+        }
+        #endregion
 
         #region Attribute Mapping
         public List<DC_MasterAttributeMapping_RS> Mapping_Attribute_Search(DC_MasterAttributeMapping_RQ RQ)

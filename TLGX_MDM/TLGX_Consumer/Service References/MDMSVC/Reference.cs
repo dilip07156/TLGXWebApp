@@ -22873,6 +22873,115 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_supplierwisesummaryReport", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_supplierwisesummaryReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MappingforField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReviewField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SuppliernameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UnmappedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Mapped {
+            get {
+                return this.MappedField;
+            }
+            set {
+                if ((this.MappedField.Equals(value) != true)) {
+                    this.MappedField = value;
+                    this.RaisePropertyChanged("Mapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mappingfor {
+            get {
+                return this.MappingforField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MappingforField, value) != true)) {
+                    this.MappingforField = value;
+                    this.RaisePropertyChanged("Mappingfor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Review {
+            get {
+                return this.ReviewField;
+            }
+            set {
+                if ((this.ReviewField.Equals(value) != true)) {
+                    this.ReviewField = value;
+                    this.RaisePropertyChanged("Review");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Suppliername {
+            get {
+                return this.SuppliernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuppliernameField, value) != true)) {
+                    this.SuppliernameField = value;
+                    this.RaisePropertyChanged("Suppliername");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmapped {
+            get {
+                return this.UnmappedField;
+            }
+            set {
+                if ((this.UnmappedField.Equals(value) != true)) {
+                    this.UnmappedField = value;
+                    this.RaisePropertyChanged("Unmapped");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_Schedule", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
     [System.SerializableAttribute()]
     public partial class DC_Supplier_Schedule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -26338,6 +26447,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetsupplierwiseUnmappedActivityReport", ReplyAction="http://tempuri.org/IStaticData/GetsupplierwiseUnmappedActivityReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_unmappedActivityReport[]> GetsupplierwiseUnmappedActivityReportAsync(string SupplierID);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetsupplierwiseSummaryReport", ReplyAction="http://tempuri.org/IStaticData/GetsupplierwiseSummaryReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetsupplierwiseSummaryReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport[] GetsupplierwiseSummaryReport(string SupplierID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetsupplierwiseSummaryReport", ReplyAction="http://tempuri.org/IStaticData/GetsupplierwiseSummaryReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport[]> GetsupplierwiseSummaryReportAsync(string SupplierID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id);
@@ -28046,6 +28162,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_unmappedActivityReport[]> GetsupplierwiseUnmappedActivityReportAsync(string SupplierID) {
             return base.Channel.GetsupplierwiseUnmappedActivityReportAsync(SupplierID);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport[] GetsupplierwiseSummaryReport(string SupplierID) {
+            return base.Channel.GetsupplierwiseSummaryReport(SupplierID);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport[]> GetsupplierwiseSummaryReportAsync(string SupplierID) {
+            return base.Channel.GetsupplierwiseSummaryReportAsync(SupplierID);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {

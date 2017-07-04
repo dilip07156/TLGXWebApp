@@ -640,4 +640,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_unmappedProductReport" nillable="true" type="tns:DC_unmappedProductReport" />
+  <xs:complexType name="ArrayOfDC_supplierwisesummaryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_supplierwisesummaryReport" nillable="true" type="tns:DC_supplierwisesummaryReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_supplierwisesummaryReport" nillable="true" type="tns:ArrayOfDC_supplierwisesummaryReport" />
+  <xs:complexType name="DC_supplierwisesummaryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Mapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Mappingfor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review" type="xs:int" />
+      <xs:element minOccurs="0" name="Suppliername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unmapped" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_supplierwisesummaryReport" nillable="true" type="tns:DC_supplierwisesummaryReport" />
 </xs:schema>
