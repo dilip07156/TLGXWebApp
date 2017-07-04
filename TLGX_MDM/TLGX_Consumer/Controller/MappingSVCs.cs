@@ -251,6 +251,18 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Activity_Search"], RQ, typeof(DC_Acitivity_SupplierProductMapping_Search_RQ), typeof(List<DC_Acitivity_SupplierProductMapping>), out result);
             return result as List<DC_Acitivity_SupplierProductMapping>;
         }
+        public List<DC_Acitivity_SupplierProductMapping> GetActivitySupplierProductMappingSearchForMapping(DC_Acitivity_SupplierProductMapping_Search_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Activity_SearchForMapping"], RQ, typeof(DC_Acitivity_SupplierProductMapping_Search_RQ), typeof(List<DC_Acitivity_SupplierProductMapping>), out result);
+            return result as List<DC_Acitivity_SupplierProductMapping>;
+        }
+        public bool IsMappedWithSupplier(string masterActivityID, string supplierID)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_Activity_IsMappedWithSupplier"], masterActivityID, supplierID), typeof(bool), out result);
+            return (bool)result;
+        }
         public List<DC_Acitivity_SupplierProductMapping> GetActivitySupplierProductMapping(int PageNo, int PageSize, Guid Activity_Id, string Status)
         {
             object result = null;
@@ -296,6 +308,15 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["KeywordAlias_Get"], RQ, typeof(DC_Keyword_RQ), typeof(List<DC_keyword_alias>), out result);
             return result as List<DC_keyword_alias>;
+        }
+        #endregion
+
+        #region Process Or Test Uploaded Files
+        public DC_Message StaticFileUploadProcessFile(DC_SupplierImportFileDetails obj)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Process_Uploaded_Files"], obj, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
         }
         #endregion
     }

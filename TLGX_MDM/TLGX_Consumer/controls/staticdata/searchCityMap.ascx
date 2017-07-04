@@ -131,26 +131,26 @@
     function SelectedRow(element) {
         var ddlStatus = $('#MainContent_CityMap_ddlStatus option:selected').html();
         if (ddlStatus == "REVIEW") {
-            element.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[15].lastElementChild.focus();
         }
         else if (ddlStatus == "UNMAPPED") {
-            element.parentNode.parentNode.nextSibling.childNodes[11].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[12].lastElementChild.focus();
 
         }
     }
     function MatchedSelect(elem) {
-        elem.parentNode.parentNode.nextSibling.childNodes[13].lastElementChild.focus();
+        elem.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild.focus();
     }
     //var onClick = true;
     //Fill City dropdown in Grid
     function fillDropDown(record, onClick) {
         //alert(onClick);
         if (onClick) {
-            var country_id = record.parentNode.parentNode.childNodes[15].lastElementChild.value;
+            var country_id = record.parentNode.parentNode.childNodes[16].lastElementChild.value;
             if (country_id != null) {
                 //Getting Dropdown
                 var currentRow = $(record).parent().parent();
-                var CityDDL = currentRow.find("td:eq(10)").find('select');
+                var CityDDL = currentRow.find("td:eq(11)").find('select');
                 var selectedText = CityDDL.find("option:selected").text();
                 var selectedOption = CityDDL.find("option");
                 var selectedVal = CityDDL.val();
@@ -187,13 +187,13 @@
     function RemoveExtra(record, onClick) {
         if (!onClick) {
             var currentRow = $(record).parent().parent();
-            var CityDDL = currentRow.find("td:eq(10)").find('select');
+            var CityDDL = currentRow.find("td:eq(11)").find('select');
             var selectedText = CityDDL.find("option:selected").text();
             var selectedVal = CityDDL.val();
             CityDDL.find("option:not(:first)").remove();
             var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
             CityDDL.append(listItems);
-            var city_id = record.parentNode.parentNode.childNodes[15].firstElementChild;
+            var city_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
             city_id.value = selectedVal;
         }
     }
@@ -361,6 +361,9 @@
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
+                                            <HeaderStyle BackColor="Turquoise" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="MasterStateName" HeaderText="State Name">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
@@ -747,6 +750,15 @@
                                                 <asp:DropDownList ID="ddlMatchingStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlMatchingStatus_SelectedIndexChanged">
                                                     <asp:ListItem Value="0">Select</asp:ListItem>
                                                 </asp:DropDownList>
+                                            </div>
+                                            <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <asp:CheckBox runat="server" id="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged"/>
+                                                    <%--<input type="checkbox" aria-label="Checkbox for following text input" cssclass="form-control" runat="server" id="ckboxIsExactMatch" />--%>
+                                                </span>
+                                                <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
                                             </div>
                                         </div>
                                         <div class="form-group">

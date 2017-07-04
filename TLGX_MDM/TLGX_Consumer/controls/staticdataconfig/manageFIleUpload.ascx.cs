@@ -364,6 +364,28 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
 
                 }
+                if(e.CommandName.ToString()== "Process")
+                {
+                    MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
+                    MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                    SelectedSupplierImportAttributeValue_Id = myRowId;
+                    SupplierImportFile_Id = myRowId;
+                    RQ.SupplierImportFile_Id = myRowId;
+                    RQ.PageNo = 0;
+                    RQ.PageSize = int.MaxValue;
+                    var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+
+
+                    SelectedSupplierImportAttributeValue_Id = myRowId;
+                    obj.SupplierImportFile_Id = res[0].SupplierImportFile_Id;
+                    obj.Supplier_Id = res[0].Supplier_Id;
+                    obj.SavedFilePath = res[0].SavedFilePath;
+                    obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
+                    obj.Entity = res[0].Entity;
+                    obj.STATUS = res[0].STATUS;
+                    var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
+                    
+                }
             }
             catch (Exception ex)
             {
