@@ -113,6 +113,18 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_RuleReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_RollOffReportRule>), out result);
             return result as List<DC_RollOffReportRule>;
         }
+        public List<DC_RollOffReportStatus> getStatisticforStatusReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_StatusReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_RollOffReportStatus>), out result);
+            return result as List<DC_RollOffReportStatus>;
+        }
+        public List<DC_RollOffReportUpdate> getStatisticforUpdateReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_UpdateReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_RollOffReportUpdate>), out result);
+            return result as List<DC_RollOffReportUpdate>;
+        }
         #endregion
         #region rdlc reports
         public List<DC_UnmappedCountryReport> GetsupplierwiseUnmappedCountryReport(string Supplier_Id)
