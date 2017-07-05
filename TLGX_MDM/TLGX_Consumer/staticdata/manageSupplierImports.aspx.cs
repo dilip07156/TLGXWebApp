@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Reporting.WebForms;
 
 namespace TLGX_Consumer.staticdata
 {
@@ -30,7 +31,9 @@ namespace TLGX_Consumer.staticdata
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+
             {
+                ReportViewersupplierwise.Visible = false;
                 fillsuppliers();
 
             }
@@ -49,52 +52,37 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
         {
-             var SupplierId = ddlSupplierName.SelectedValue.ToString();
-            if (SupplierId == "0")
-            {
-                SupplierId = "00000000-0000-0000-0000-000000000000";
-            }
-            MappingSVCs _objmapping = new MappingSVCs();
-            var res = _objmapping.GetMappingStatistics(SupplierId);
-            var res1 = _objmapping.GetMappingStatisticsForSuppliers();
+            supplierwisedata.Style.Add("display", "none");
+            string SupplierID = ddlSupplierName.SelectedValue;
+            Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
+            var DataSet1 = MapSvc.GetsupplierwiseUnmappedCountryReport(SupplierID);
+            var DataSet2 = MapSvc.GetsupplierwiseUnmappedCityReport(SupplierID);
+            var DataSet3 = MapSvc.GetsupplierwiseUnmappedProductReport(SupplierID);
+            var DataSet4 = MapSvc.GetsupplierwiseUnmappedActivityReport(SupplierID);
+            var DataSet5 = MapSvc.GetsupplierwiseSummaryReport(SupplierID);
+            ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
 
-            if (res != null && res.Count > 0)
-            {
-                //Writeing CSV file
-                StringBuilder sb = new StringBuilder();
+            ReportDataSource rds2 = new ReportDataSource("DataSet2", DataSet2);
+            ReportDataSource rds3 = new ReportDataSource("DataSet3", DataSet3);
+            ReportDataSource rds4 = new ReportDataSource("DataSet4", DataSet4);
+            ReportDataSource rds5 = new ReportDataSource("DataSet5", DataSet5);
+            ReportViewersupplierwise.LocalReport.DataSources.Clear();
 
-                string csv = string.Empty;
-                List <string> lstFileHeader = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Mapping_Staitistics_Get"]).Split(',').ToList();
+            ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
 
-                foreach (var item in res[0].GetType().GetProperties())
-                {
-                    if (lstFileHeader.Contains(item.Name))
-                        csv += item.Name + ',';
-                }
-                sb.Append(string.Format("{0}", csv) + Environment.NewLine);
-                foreach (var item in res)
-                {
-                    sb.Append(string.Format("{0},{1},{2}", Convert.ToString(item.SupplierId), Convert.ToString(item.SupplierName), Convert.ToString(item.MappingStatsFor)));
-                    sb.Append(Environment.NewLine);
-                }
-
-                byte[] bytes = Encoding.ASCII.GetBytes(sb.ToString());
-                sb = null;
-                if (bytes != null)
-                {
-                    //Download the CSV file.
-                    var response = HttpContext.Current.Response;
-                    response.Clear();
-                    response.ContentType = "text/csv";
-                    response.AddHeader("Content-Length", bytes.Length.ToString());
-                    string filename = "Data";
-                    response.AddHeader("Content-disposition", "attachment; filename=\"" + filename + ".csv" + "\"");
-                    response.BinaryWrite(bytes);
-                    response.Flush();
-                    response.End();
-                }
-            }
-
+            ReportViewersupplierwise.LocalReport.DataSources.Add(rds2);
+            ReportViewersupplierwise.LocalReport.DataSources.Add(rds3);
+            ReportViewersupplierwise.LocalReport.DataSources.Add(rds4);
+            ReportViewersupplierwise.LocalReport.DataSources.Add(rds5);
+            //ReportDataSource datasource = new ReportDataSource("DataSet1", DataSet1);
+            //ReportViewer1.LocalReport.DataSources.Clear();
+            // ReportViewer1.LocalReport.DataSources.Add(datasource);
+            //Populate Report Paramater for passing current date (month)
+            //  ReportParameter p1 = new ReportParameter("ReportParameter1", SupplierID);
+            // ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { p1 });
+            ReportViewersupplierwise.Visible = true;
+            ReportViewersupplierwise.DataBind(); // Added
+            ReportViewersupplierwise.LocalReport.Refresh();
         }
     }
 }
