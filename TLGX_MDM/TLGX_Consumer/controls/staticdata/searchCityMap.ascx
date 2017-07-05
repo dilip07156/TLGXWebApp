@@ -763,7 +763,7 @@
                                         </div>
                                         <div class="form-group">
                                             <asp:GridView ID="grdMatchingCity" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
-                                                EmptyDataText="No Static Updates" CssClass="table table-hover table-striped" DataKeyNames="CityMapping_Id,Supplier_Id,Country_Id,City_Id"
+                                                EmptyDataText="No Static Updates" CssClass="table table-hover table-striped" DataKeyNames="CityMapping_Id,Supplier_Id,Country_Id,City_Id,StateName"
                                                 OnSelectedIndexChanged="grdMatchingCity_SelectedIndexChanged" OnPageIndexChanging="grdMatchingCity_PageIndexChanging" OnRowCommand="grdMatchingCity_RowCommand"
                                                 OnRowDataBound="grdMatchingCity_RowDataBound" OnDataBound="grdMatchingCity_DataBound">
 
