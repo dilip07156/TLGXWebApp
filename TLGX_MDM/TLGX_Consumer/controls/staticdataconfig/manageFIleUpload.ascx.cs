@@ -653,6 +653,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 RQ.Status = "ACTIVE";
                 RQ.Entity = ddlEntityList.SelectedItem.Text;
                 RQ.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedItem.Value);
+                RQ.For = "MAPPING";
 
                 var res = _objMappingSVCs.GetStaticDataMappingAttributeValues(RQ);
                 
