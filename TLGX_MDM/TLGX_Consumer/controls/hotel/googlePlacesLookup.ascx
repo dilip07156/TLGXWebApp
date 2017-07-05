@@ -1,13 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="googlePlacesLookup.ascx.cs" Inherits="TLGX_Consumer.controls.hotel.googlePlacesLookup" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMaiicvgxsZeI8LqtPfEE6k7dufNqWsEA&libraries=places" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
+<script src="../../Scripts/Google_Related/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
     function getNearByPlaces() {
         debugger;
         var map;
         var infowindow;
-        var latitude = $('#MainContent_inandaround_googlePlacesLookup_hdnLat').val();
-        var longitude = $('#MainContent_inandaround_googlePlacesLookup_hdnLong').val();
+        var latitude = '19.1115198';//$('#MainContent_inandaround_googlePlacesLookup_hdnLat').val();
+        var longitude = '72.88234390000002'; //$('#MainContent_inandaround_googlePlacesLookup_hdnLong').val();
         var G_PlaceID = $('#MainContent_inandaround_googlePlacesLookup_hdnG_PlaceID').val();
         //var address = document.getElementById("address").value;
         //var geocoder = new google.maps.Geocoder();
@@ -21,7 +22,7 @@
         if (latitude != null && longitude != null) {
             var pyrmont = new google.maps.LatLng(latitude, longitude);
             debugger;
-            map = new google.maps.Map(document.getElementById('mapdiv'), {
+            map = new google.maps.Map(document.getElementById('MainContent_inandaround_googlePlacesLookup_mapdiv'), {
                 center: pyrmont,
                 zoom: 15
             });
@@ -38,26 +39,28 @@
             function callback(results, status) {
                 debugger;
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < results.length; i++) {
-                        debugger;
-                        // createMarker(results[i]);
-                    }
+                    //var newData = "[['Name', 'Types', 'Vicinity', 'Include'],";
+                              
+                    //for (var i = 0; i < results.length; i++) {
+                    //    var local = "["
+                    //}
+                    //newData = newData + "]";
                 }
             }
 
-            function createMarker(place) {
-                debugger;
-                var placeLoc = place.geometry.location;
-                var marker = new google.maps.Marker({
-                    map: map,
-                    position: place.geometry.location
-                });
+            //function createMarker(place) {
+            //    debugger;
+            //    var placeLoc = place.geometry.location;
+            //    var marker = new google.maps.Marker({
+            //        map: map,
+            //        position: place.geometry.location
+            //    });
 
-                google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent(place.name);
-                    infowindow.open(map, this);
-                });
-            }
+            //    google.maps.event.addListener(marker, 'click', function () {
+            //        infowindow.setContent(place.name);
+            //        infowindow.open(map, this);
+            //    });
+            //}
             //    }
             //    else
             //        alert(status);
@@ -69,6 +72,7 @@
 
     <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="vldInAndAroundLookup" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
     <div id="msgAlert" runat="server" style="display: none;"></div>
+    <div id="mapdiv" runat="server" style="display: none;"></div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading">Add Nearby Place</div>

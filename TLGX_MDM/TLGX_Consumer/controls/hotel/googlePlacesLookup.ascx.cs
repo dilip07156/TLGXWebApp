@@ -38,6 +38,7 @@ namespace TLGX_Consumer.controls.hotel
                         //    hdnLat.Value = strLat;
                     }
                 }
+                btnAdd.Attributes.Add("onClick", "return false;");
                 BindCategory();
             }
         }

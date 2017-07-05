@@ -76,6 +76,27 @@
                 var x = results[0].geometry.location.lat();
                 var y = results[0].geometry.location.lng();
                 inputPlaceId.value = results[0].place_id;
+                //Getting State name from result set
+                var address_components = results[0].address_components;
+                var state;
+                if (typeof address_components != "undefined") {
+                    for (var i = 0; i < address_components.length; i++) {
+                        var types = address_components[i].types;
+                        if (typeof types != "undefined") {
+                            for (var j = 0; j < types.length; j++) {
+                                var typesg = types[j];
+                                if (typeof typesg != "undefined" && typesg == "administrative_area_level_1") {
+                                    state = address_components[i].long_name;
+                                    var ddlstate = $('#MainContent_CityMap_frmEditCityMap_ddlAddCityState');
+                                    ddlstate.find("option").prop('selected', false).filter(function () {
+                                        return $(this).text() == state;
+                                    }).attr("selected", "selected");
+                                }
+                            }
+                        }
+                    }
+                }
+
                 var latlng = new google.maps.LatLng(x, y);
                 var myOptions = {
                     zoom: 14,
@@ -93,10 +114,31 @@
                 });
                 infowindow.open(map, marker);
                 google.maps.event.addDomListener(window, 'load');
+                SetStateCode();
             } else {
                 res.innerHTML = "Enter correct Details: " + status;
             }
         });
+    }
+    function SetStateCode() {
+        var ddlstate = $('#MainContent_CityMap_frmEditCityMap_ddlAddCityState').val();
+        var statecode = $('#MainContent_CityMap_frmEditCityMap_txtAddCitySCode');
+
+
+        if (ddlstate != null) {
+            $.ajax({
+                url: '../../../Service/GetCodeById_Service.ashx',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { 'state_id': ddlstate },
+                responseType: "json",
+                success: function (result) {
+                    statecode.val(result);
+                },
+                failure: function () {
+                }
+            });
+        }
     }
 </script>
 <script type="text/javascript">
@@ -755,7 +797,7 @@
                                             <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    <asp:CheckBox runat="server" id="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged"/>
+                                                    <asp:CheckBox runat="server" ID="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged" />
                                                     <%--<input type="checkbox" aria-label="Checkbox for following text input" cssclass="form-control" runat="server" id="ckboxIsExactMatch" />--%>
                                                 </span>
                                                 <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
