@@ -106,6 +106,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     gvFileUploadSearch.VirtualItemCount = res[0].TotalRecords;
 
                     lblTotalRecords.Text = res[0].TotalRecords.ToString();
+                    
                 }
 
                 gvFileUploadSearch.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
@@ -335,11 +336,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void gvFileUploadSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            
             try
             {
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
                 Guid myRowId = Guid.Parse(gvFileUploadSearch.DataKeys[index].Values[0].ToString());
+                
 
                 if (e.CommandName.ToString() == "ViewDetails")
                 {
@@ -384,7 +387,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     obj.Entity = res[0].Entity;
                     obj.STATUS = res[0].STATUS;
                     var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
-                    
+
+                    LinkButton btnProcess = (LinkButton)gvFileUploadSearch.Rows[index].FindControl("btnProcess");
+                    btnProcess.Enabled = false;
+                    //row.Cells[5]
+                    //(e.CommandSource as LinkButton).Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -601,6 +608,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 FileUpld.Enabled = true;
             else
                 FileUpld.Enabled = false;
+        }
+
+        protected void gvFileUploadSearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
         }
     }
 }
