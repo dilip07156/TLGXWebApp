@@ -668,6 +668,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedActivityReport1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportUpdate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -2211,9 +2214,12 @@
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="hotels\rptStatusreport.rdlc" />
+    <EmbeddedResource Include="hotels\rptUpdateReport.rdlc" />
     <EmbeddedResource Include="staticdata\Report1.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="hotels\rptRuleReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
