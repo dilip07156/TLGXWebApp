@@ -352,6 +352,7 @@
     <Content Include="projects\masterteams\search.aspx" />
     <Content Include="projects\search.aspx" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\PublishProfiles\TLGX MDM UI PREPROD.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
