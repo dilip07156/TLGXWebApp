@@ -10,6 +10,8 @@ using System.Configuration;
 using TLGX_Consumer.Controller;
 using System.Data;
 using System.Text;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace TLGX_Consumer.controls.staticdataconfig
 {
@@ -364,7 +366,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
 
                 }
-                if(e.CommandName.ToString()== "Process")
+                if (e.CommandName.ToString() == "Process")
                 {
                     MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
                     MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
@@ -384,7 +386,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     obj.Entity = res[0].Entity;
                     obj.STATUS = res[0].STATUS;
                     var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
-                    
+
                 }
             }
             catch (Exception ex)
@@ -571,10 +573,22 @@ namespace TLGX_Consumer.controls.staticdataconfig
             Session["EntityListSelected"] = ddlEntityList.SelectedItem.Text;
             //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
             if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-                FileUpld.Enabled = true;
+            {
+                string allowedFileType = StaticFileTypes();
+                if (!string.IsNullOrWhiteSpace(allowedFileType))
+                {
+                    FileUpld.Enabled = true;
+                    FileUpld.AllowedFileTypes = allowedFileType;
+                }
+                else
+                {
+                    FileUpld.Enabled = false;
+                }
+            }
             if (ddlEntityList.SelectedValue == "0")
             {
                 Session.Remove("EntityListSelected");
+                FileUpld.Enabled = false;
             }
         }
 
@@ -583,13 +597,24 @@ namespace TLGX_Consumer.controls.staticdataconfig
             Session["SupplierListSelected"] = ddlSupplierList.SelectedItem.Text;
             Session["SupplierListSelectedValue"] = ddlSupplierList.SelectedValue;
             //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
-            if(ddlSupplierList.SelectedValue!="0" && ddlEntityList.SelectedValue!="0")
-                FileUpld.Enabled = true;
+            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+            {
+                string allowedFileType = StaticFileTypes();
+                if (!string.IsNullOrWhiteSpace(allowedFileType))
+                {
+                    FileUpld.Enabled = true;
+                    FileUpld.AllowedFileTypes = allowedFileType;
+                }
+                else
+                {
+                    FileUpld.Enabled = false;
+                }
+            }
             if (ddlSupplierList.SelectedValue == "0")
             {
                 Session.Remove("SupplierListSelected");
                 Session.Remove("SupplierListSelectedValue");
-
+                FileUpld.Enabled = false;
             }
         }
 
@@ -598,9 +623,96 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlSupplierList.SelectedIndex = 0;
             ddlEntityList.SelectedIndex = 0;
             if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-                FileUpld.Enabled = true;
+            {
+                string allowedFileType = StaticFileTypes();
+                if (!string.IsNullOrWhiteSpace(allowedFileType))
+                {
+                    FileUpld.Enabled = true;
+                    FileUpld.AllowedFileTypes = allowedFileType;
+                }
+                else
+                {
+                    FileUpld.Enabled = false;
+                }
+            }
             else
+            {
                 FileUpld.Enabled = false;
+            }
+        }
+
+        public string StaticFileTypes()
+        {
+            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+            {
+                MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
+                RQ.PageNo = 0;
+                RQ.PageSize = 1;
+                RQ.AttributeType = "FileDetails";
+                RQ.AttributeValue = "FORMAT";
+                RQ.Status = "ACTIVE";
+                RQ.Entity = ddlEntityList.SelectedItem.Text;
+                RQ.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedItem.Value);
+
+                var res = _objMappingSVCs.GetStaticDataMappingAttributeValues(RQ);
+                
+                if (res != null)
+                {
+                    if (res.Count > 0)
+                    {
+                        if(res.First().AttributeName == "TEXT")
+                        {
+                            return "txt";
+                        }
+                        else if(res.First().AttributeName == "XLS")
+                        {
+                            return "xls";
+                        }
+                        else if (res.First().AttributeName == "XLSX")
+                        {
+                            return "xlsx";
+                        }
+                        else if (res.First().AttributeName == "XML")
+                        {
+                            return "xml";
+                        }
+                        else if (res.First().AttributeName == "JSON")
+                        {
+                            return "json";
+                        }
+                        else if (res.First().AttributeName == "CSV")
+                        {
+                            return "csv";
+                        }
+                        else if (res.First().AttributeName == "ZIP")
+                        {
+                            return "zip";
+                        }
+                        else if (res.First().AttributeName == "RAR")
+                        {
+                            return "rar";
+                        }
+                        else
+                        {
+                            return string.Empty;
+                        }
+                    }
+                    else
+                    {
+                        BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "No file type has been defined.", BootstrapAlertType.Danger);
+                        return string.Empty;
+                    }
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "No file type has been defined.", BootstrapAlertType.Danger);
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
     }
 }
