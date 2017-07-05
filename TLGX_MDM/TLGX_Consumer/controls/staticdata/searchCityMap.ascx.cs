@@ -343,7 +343,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //sData = masters.GetSupplierDataByMapping_Id("city", myRow_Id);
                     //string supCode = sData.Code;
 
-                    var result = masterSVc.GetSupplierDataByMapping_Id("CITY",Convert.ToString(myRow_Id));
+                    var result = masterSVc.GetSupplierDataByMapping_Id("CITY", Convert.ToString(myRow_Id));
                     string supCode = string.Empty;
                     if (result != null)
                         supCode = result.Code;
@@ -653,11 +653,12 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid myCountry_Id = Guid.Empty;
                 Guid myCity_Id = Guid.Empty;
                 bool res = false;
+                string mystatename = string.Empty;
                 foreach (GridViewRow row in grdMatchingCity.Rows)
                 {
                     HtmlInputCheckBox chk = row.Cells[12].Controls[1] as HtmlInputCheckBox;
 
-                   // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
+                    // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
                     if (chk != null && chk.Checked)
                     {
                         myRow_Id = Guid.Empty;
@@ -668,6 +669,10 @@ namespace TLGX_Consumer.controls.staticdata
                         mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
                         myCountry_Id = MappedCountry_ID;
                         myCity_Id = MappedCity_ID;
+                        //Checking state name from grid row to update in mapping master
+                        string strtext = Convert.ToString((row.Cells[8]).Text);
+                        if (strtext == "&nbsp;" || strtext == string.Empty)
+                            mystatename = txtSystemStateName.Text;
                     }
                     if (myRow_Id != Guid.Empty)
                     {
@@ -679,6 +684,8 @@ namespace TLGX_Consumer.controls.staticdata
                             param.Country_Id = myCountry_Id;
                         if (myCity_Id != null)
                             param.City_Id = myCity_Id;
+                        if (mystatename != null)
+                            param.StateName = mystatename;
                         param.Status = MatchedStatus;
                         param.Edit_Date = DateTime.Now;
                         param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
@@ -1199,6 +1206,7 @@ namespace TLGX_Consumer.controls.staticdata
         protected void ckboxIsExactMatch_CheckedChanged(object sender, EventArgs e)
         {
             fillmatchingdata("");
+            dvMsg.Visible = false;
         }
     }
 }
