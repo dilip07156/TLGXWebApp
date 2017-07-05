@@ -2220,6 +2220,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="hotels\rptRuleReport.rdlc" />
+    <EmbeddedResource Include="staticdata\rptAllSupplierReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
