@@ -273,7 +273,7 @@
                                             <div class="form-group">
                                                 <label class="control-label-mand col-sm-4" for="txtNumberOfRooms">
                                                     Number of Rooms
-                                                    <asp:RequiredFieldValidator ID="vldtxtNumberOfRooms" runat="server" ControlToValidate="txtNumberOfRooms" ErrorMessage="Please enter number of rooms" Text="*" ValidationGroup="vldRoomInfo" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                                    <%--<asp:RequiredFieldValidator ID="vldtxtNumberOfRooms" runat="server" ControlToValidate="txtNumberOfRooms" ErrorMessage="Please enter number of rooms" Text="*" ValidationGroup="vldRoomInfo" CssClass="text-danger"></asp:RequiredFieldValidator>--%>
                                                 </label>
                                                 <div class="col-sm-6">
                                                     <asp:TextBox ID="txtNumberOfRooms" runat="server" CssClass="form-control" TextMode="Number" Text='<%# Bind("NoOfRooms") %>' />
