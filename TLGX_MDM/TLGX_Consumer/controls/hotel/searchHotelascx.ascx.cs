@@ -26,8 +26,26 @@ namespace TLGX_Consumer.controls.hotel
                 fillcountrydropdown("search");
                 fillstatusdropdown();
                 fillproductcaterogy();
+                fillStarRating();
                 dvPageSize.Visible = false;
                 dvGrid.Visible = false;
+            }
+        }
+
+        private void fillStarRating()
+        {
+            try
+            {
+                ddlStarRating.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("hotelinfo", "Stars").MasterAttributeValues;
+                ddlStarRating.DataTextField = "AttributeValue";
+                ddlStarRating.DataValueField = "MasterAttributeValue_Id";
+                ddlStarRating.DataBind();
+                ddlStarRating.Items.Insert(0, new ListItem("---ALL---", "0"));
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -126,6 +144,8 @@ namespace TLGX_Consumer.controls.hotel
                 RQParams.City = ddlCity.SelectedItem.Text;
             RQParams.Searchfrom = "hotalsearch";
 
+            if (ddlStarRating.SelectedValue != "0")
+                RQParams.Starrating = ddlStarRating.SelectedItem.Text;
             RQParams.PageNo = pageIndex;
             RQParams.PageSize = pageSize;
         }

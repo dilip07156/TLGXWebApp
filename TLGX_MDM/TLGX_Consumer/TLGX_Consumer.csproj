@@ -72,6 +72,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="MultiLevelFormsBootstrapMenu, Version=1.0.6252.35937, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MultiLevelFormsBootstrapMenu.dll</HintPath>
@@ -361,6 +362,7 @@
     <Content Include="Scripts\ChartJS\morris.min.js" />
     <Content Include="Scripts\ChartJS\raphael-min.js" />
     <Content Include="Scripts\ChartJS\xepOnline.jqPlugin.008.js" />
+    <Content Include="Scripts\Google_Related\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.ae.image.resize.min.js" />
     <Content Include="Scripts\JqueryUI\jquery-ui.css" />
     <Content Include="Scripts\JqueryUI\jquery-ui.js" />
@@ -373,12 +375,25 @@
     <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
@@ -416,6 +431,13 @@
     <None Include="Service References\MDMSVC\Consumer9.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer.disco" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -456,6 +478,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes.datasource">
@@ -539,6 +564,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Keyword.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_keyword_alias.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MappingStats.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -590,6 +618,12 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportRule.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportUpdate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SiteMap.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -617,6 +651,12 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierMarket.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_supplierwiseUnmappedReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_DDL.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -629,6 +669,18 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Teams.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedActivityReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UnmappedCityReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UnmappedCountryReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedProductReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UserDetails.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -636,16 +688,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_keyword_alias.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportUpdate.datasource">
@@ -2207,6 +2249,18 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hotels\rptStatusreport.rdlc" />
+    <Content Include="hotels\rptUpdateReport.rdlc" />
+    <Content Include="staticdata\Report1.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="hotels\rptRuleReport.rdlc" />
+    <Content Include="staticdata\rptAllSupplierReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />

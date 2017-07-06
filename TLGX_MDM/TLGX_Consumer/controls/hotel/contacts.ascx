@@ -1,6 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="contacts.ascx.cs" Inherits="TLGX_Consumer.controls.hotel.contacts" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
+<script type="text/javascript">
+    function TrimEmailText() {
+        $("#MainContent_overview_frmHotelOverview_contacts_frmContactDetaiil_txtEmail").val($.trim($("#MainContent_overview_frmHotelOverview_contacts_frmContactDetaiil_txtEmail").val()));
+    }
+</script>
 <asp:UpdatePanel ID="updPanContacts" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
 
@@ -18,8 +22,7 @@
 
             <InsertItemTemplate>
 
-                <div class="form-group">
-
+                <div class="form-group row">
                     <div class="col-xs-2">
                         <br />
                         <label id="lblTel">Telephone</label>
@@ -32,7 +35,7 @@
                             <asp:RegularExpressionValidator ID="rvtxtTelCountryCode" runat="server" ErrorMessage="Invalid Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtTelCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
-                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtTelCountryCode" />
+                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtTelCountryCode" />
                     </div>
 
                     <div class="col-xs-2">
@@ -57,7 +60,7 @@
 
                 </div>
 
-                <div class="form-group">
+                <div class="form-group row">
 
                     <div class="col-xs-2">
                         <br />
@@ -95,42 +98,47 @@
                     </div>
                 </div>
 
-                <form id="uriForm" class="form-horizontal">
+                <div class="form-group row">
+                    <div class="col-md-10">
+                        <form id="uriForm" class="form-horizontal">
 
-                    <br />
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="txtWebsite">
-                            Website
-                        </label>
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-sm-2" for="txtEmail">
-                            Email
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="txtWebsite">
+                                    Website
+                                </label>
+                                <div class="col-sm-10">
+                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="txtEmail">
+                                    Email
                             <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="HotelContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
-                        </label>
+                                </label>
 
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
+                                <div class="col-sm-10">
+                                    <asp:TextBox ID="txtEmail" runat="server" onkeyup="TrimEmailText()" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="display: none;">
+                                <label class="control-label col-sm-2" for="txtEmail">Hotel ID</label>
+                                <div class="col-sm-10">
+                                    <asp:TextBox ID="txtLegacyHtlId" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group" style="visibility: hidden">
-                        <label class="control-label col-sm-2" for="txtEmail">Hotel ID</label>
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtLegacyHtlId" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
+                    <div class="col-md-2">
+                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
+
                     </div>
-                </form>
-                <br />
-                <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
+                </div>
 
             </InsertItemTemplate>
 
             <EditItemTemplate>
-                
-                <div class="form-group">
+
+                <div class="form-group row">
 
                     <div class="col-xs-2">
                         <br />
@@ -169,7 +177,7 @@
 
                 </div>
 
-                <div class="form-group">
+                <div class="form-group row">
 
                     <div class="col-xs-2">
                         <br />
@@ -210,7 +218,7 @@
                 <form id="uriForm" class="form-horizontal">
 
                     <br />
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label class="control-label col-sm-2" for="txtWebsite">
                             Website
                         </label>
@@ -218,7 +226,7 @@
                             <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group row">
                         <label class="control-label col-sm-2" for="txtEmail">
                             Email
                             <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="HotelContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
@@ -230,7 +238,7 @@
 
                         </div>
                     </div>
-                    <div class="form-group" style="visibility: hidden">
+                    <div class="form-group row" style="visibility: hidden">
                         <label class="control-label col-sm-2" for="txtEmail">Hotel ID</label>
                         <div class="col-sm-10">
                             <asp:TextBox ID="txtLegacyHtlId" runat="server" CssClass="form-control"></asp:TextBox>

@@ -106,6 +106,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     gvFileUploadSearch.VirtualItemCount = res[0].TotalRecords;
 
                     lblTotalRecords.Text = res[0].TotalRecords.ToString();
+                    
                 }
 
                 gvFileUploadSearch.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
@@ -335,11 +336,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void gvFileUploadSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            
             try
             {
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
                 Guid myRowId = Guid.Parse(gvFileUploadSearch.DataKeys[index].Values[0].ToString());
+                
 
                 if (e.CommandName.ToString() == "ViewDetails")
                 {
@@ -363,6 +366,32 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         frmErrorlog();
                     }
 
+                }
+                if(e.CommandName.ToString()== "Process")
+                {
+                    MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
+                    MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                    SelectedSupplierImportAttributeValue_Id = myRowId;
+                    SupplierImportFile_Id = myRowId;
+                    RQ.SupplierImportFile_Id = myRowId;
+                    RQ.PageNo = 0;
+                    RQ.PageSize = int.MaxValue;
+                    var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+
+
+                    SelectedSupplierImportAttributeValue_Id = myRowId;
+                    obj.SupplierImportFile_Id = res[0].SupplierImportFile_Id;
+                    obj.Supplier_Id = res[0].Supplier_Id;
+                    obj.SavedFilePath = res[0].SavedFilePath;
+                    obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
+                    obj.Entity = res[0].Entity;
+                    obj.STATUS = res[0].STATUS;
+                    var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
+
+                    LinkButton btnProcess = (LinkButton)gvFileUploadSearch.Rows[index].FindControl("btnProcess");
+                    btnProcess.Enabled = false;
+                    //row.Cells[5]
+                    //(e.CommandSource as LinkButton).Enabled = false;
                 }
             }
             catch (Exception ex)
@@ -579,6 +608,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 FileUpld.Enabled = true;
             else
                 FileUpld.Enabled = false;
+        }
+
+        protected void gvFileUploadSearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
         }
     }
 }

@@ -103,21 +103,12 @@ namespace TLGX_Consumer.hotels {
         protected global::System.Web.UI.WebControls.Button btnUpdateCsv;
         
         /// <summary>
-        /// dvMsg1 control.
+        /// ReportViewer1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg1;
-        
-        /// <summary>
-        /// grdrule control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdrule;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

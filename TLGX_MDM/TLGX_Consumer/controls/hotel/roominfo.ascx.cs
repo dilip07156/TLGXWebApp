@@ -394,8 +394,8 @@ namespace TLGX_Consumer.controls.hotel
             Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
             var result = AccSvc.GetRoomDetailsByWithPagging(new MDMSVC.DC_Accommodation_RoomInfo_RQ() { Accommodation_Id = Accomodation_ID, PageNo = intPageIndex, PageSize = PageSize });
             grdRoomTypes.DataSource = result;
-            grdRoomTypes.PageSize = PageSize;
             grdRoomTypes.PageIndex = intPageIndex;
+            grdRoomTypes.PageSize = PageSize;
             if (result != null && result.Count > 0)
             {
                 grdRoomTypes.VirtualItemCount = Convert.ToInt32(result[0].TotalRecords);
