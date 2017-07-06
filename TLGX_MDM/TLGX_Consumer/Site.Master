@@ -133,7 +133,7 @@
                             <!-- this is the right hand side for everyone currently hard coded for demo-->
                             <ul class="nav navbar-nav navbar-right">
 
-                                <li class="dropdown">
+                                <%--<li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-flag"></span><span class="label label-danger">2</span>
                                         <span class="caret"></span>
                                     </a>
@@ -143,7 +143,7 @@
                                         <li><a href="#">Item 2</a></li>
                                     </ul>
 
-                                </li>
+                                </li>--%>
 
 
 
