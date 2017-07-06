@@ -121,7 +121,7 @@
 
                         <LoggedInTemplate>
                             <ul class="nav nav-nav navbar-left">
-                                <li><a href="../" class="navbar-brand">
+                                <li><a href="/" class="navbar-brand">
                                     <img src="/images/logo-cnk.gif" class="img-responsive" style="width: 50px; float: none" /></a></li>
                             </ul>
 

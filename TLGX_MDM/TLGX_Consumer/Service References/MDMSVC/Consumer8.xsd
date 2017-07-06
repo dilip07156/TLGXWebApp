@@ -41,6 +41,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="For" nillable="true" type="xs:string" />

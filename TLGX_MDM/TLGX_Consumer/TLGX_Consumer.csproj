@@ -372,6 +372,7 @@
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
     <None Include="Service References\MDMSVC\Consumer10.xsd">
@@ -390,6 +391,9 @@
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
@@ -397,7 +401,7 @@
     <None Include="Service References\MDMSVC\Consumer1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1211.xsd">
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer11.xsd">
@@ -412,7 +416,7 @@
     <None Include="Service References\MDMSVC\Consumer4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer126.xsd">
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer6.xsd">
@@ -424,7 +428,7 @@
     <None Include="Service References\MDMSVC\Consumer8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer7.xsd">
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
@@ -434,16 +438,6 @@
     <None Include="Service References\MDMSVC\Consumer.disco" />
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedActivityReport1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportUpdate.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -627,6 +621,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RollOffReportUpdate.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SiteMap.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -654,6 +651,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierMarket.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_supplierwiseUnmappedReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -667,6 +667,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Teams.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedActivityReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UnmappedCityReport.datasource">
@@ -2227,9 +2230,6 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\MDMSVC\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="hotels\rptStatusreport.rdlc" />
     <EmbeddedResource Include="hotels\rptUpdateReport.rdlc" />
     <EmbeddedResource Include="staticdata\Report1.rdlc">
@@ -2237,6 +2237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="hotels\rptRuleReport.rdlc" />
     <EmbeddedResource Include="staticdata\rptAllSupplierReport.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\MDMSVC\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
