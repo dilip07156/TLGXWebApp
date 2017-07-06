@@ -17506,6 +17506,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalRecordsField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string oldCityNameField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -17850,6 +17853,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.TotalRecordsField.Equals(value) != true)) {
                     this.TotalRecordsField = value;
                     this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string oldCityName {
+            get {
+                return this.oldCityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.oldCityNameField, value) != true)) {
+                    this.oldCityNameField = value;
+                    this.RaisePropertyChanged("oldCityName");
                 }
             }
         }

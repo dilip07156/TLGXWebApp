@@ -2230,13 +2230,16 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="hotels\rptStatusreport.rdlc" />
-    <EmbeddedResource Include="hotels\rptUpdateReport.rdlc" />
-    <EmbeddedResource Include="staticdata\Report1.rdlc">
+    <Content Include="hotels\rptStatusreport.rdlc" />
+    <Content Include="hotels\rptUpdateReport.rdlc" />
+    <Content Include="staticdata\Report1.rdlc">
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="hotels\rptRuleReport.rdlc" />
-    <EmbeddedResource Include="staticdata\rptAllSupplierReport.rdlc" />
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="hotels\rptRuleReport.rdlc" />
+    <Content Include="staticdata\rptAllSupplierReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
