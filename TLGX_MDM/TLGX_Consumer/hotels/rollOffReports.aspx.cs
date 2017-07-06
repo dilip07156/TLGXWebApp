@@ -42,7 +42,7 @@ namespace TLGX_Consumer.hotels
             var DataSet1 = MapSvc.getStatisticforRuleReport(parm);
             ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
             ReportViewer1.LocalReport.DataSources.Clear();
-           // ReportViewer1.LocalReport.ReportPath = "rptRuleReport.rdlc";
+            ReportViewer1.LocalReport.ReportPath = "hotels/rptRuleReport.rdlc";
             ReportViewer1.LocalReport.DataSources.Add(rds);
             ReportViewer1.Visible = true;
             ReportViewer1.DataBind(); 
