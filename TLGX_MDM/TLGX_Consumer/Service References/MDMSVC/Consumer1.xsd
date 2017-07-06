@@ -239,6 +239,7 @@
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+      <xs:element minOccurs="0" name="oldCityName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_CityMapping" nillable="true" type="tns:DC_CityMapping" />
@@ -562,6 +563,26 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_RollOffReportStatus" nillable="true" type="tns:DC_RollOffReportStatus" />
+  <xs:complexType name="ArrayOfDC_RollOffReportUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_RollOffReportUpdate" nillable="true" type="tns:DC_RollOffReportUpdate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_RollOffReportUpdate" nillable="true" type="tns:ArrayOfDC_RollOffReportUpdate" />
+  <xs:complexType name="DC_RollOffReportUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descriptionsource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotelid" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotelname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotelupdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Internal_Flag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastupdateDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastupdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Validfrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Validto" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_RollOffReportUpdate" nillable="true" type="tns:DC_RollOffReportUpdate" />
   <xs:complexType name="ArrayOfDC_supplierwiseUnmappedReport">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_supplierwiseUnmappedReport" nillable="true" type="tns:DC_supplierwiseUnmappedReport" />

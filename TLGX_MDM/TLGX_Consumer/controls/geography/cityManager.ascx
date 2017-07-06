@@ -72,12 +72,7 @@
                                             <asp:BoundField HeaderText="# Hotels" />
                                             <asp:BoundField HeaderText="# Attractions" />
                                             <asp:BoundField HeaderText="# Holidays" />
-                                            <asp:HyperLinkField DataNavigateUrlFields="City_Id" DataNavigateUrlFormatString="~/geography/city?City_Id={0}" Text="Manage" NavigateUrl="~/geography/city" HeaderText="Manage" />
-                                            <%--<asp:TemplateField ShowHeader="true">
-                                                <ItemTemplate>
-                                                    <asp:LinkButton ID="btnManage" runat="server" CausesValidation="false" CssClass="btn btn-default" Enabled="true" CommandArgument='<%#Bind("City_Id") %>' PostBackUrl='<%# Eval("City_Id","~/geography/city?City_Id={0}")%>'>Manage</asp:LinkButton>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>--%>
+                                            <asp:HyperLinkField DataNavigateUrlFields="City_Id" ControlStyle-CssClass="btn btn-default" DataNavigateUrlFormatString="~/geography/city?City_Id={0}" Text="Manage" NavigateUrl="~/geography/city" HeaderText="Manage" />
                                         </Columns>
                                         <PagerStyle CssClass="pagination-ys" />
                                     </asp:GridView>
