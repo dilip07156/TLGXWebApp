@@ -55,7 +55,7 @@ namespace TLGX_Consumer.hotels
                 int days = diff.Days;
                 if (days < 0)
                 {
-                    errorrange.InnerHtml = "Please select FROM date greater than To date !!";
+                    errorrange.InnerHtml = "Please select TO date greater than FROM date !!";
                     result = false;
                 }
                  else if (days > 90)

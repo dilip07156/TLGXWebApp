@@ -4,23 +4,6 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-    <script>
-        function validatedate() {
-            $("#dateerror").hide();
-            var startDate = new Date($('#MainContent_fromDate').val());
-            var endDate = new Date($('#MainContent_toDate').val());
-            days = (endDate - startDate) / (1000 * 60 * 60 * 24);
-            if (days > 90 || startDate > endDate) {
-                $("#dateerror").show();
-                $("#dateerror").append("Please select date greater than From Date and between 90 days..!!!")
-                $("#MainContent_btnRuleCsv").css("pointer-events", "none");
-                $("#MainContent_btnStatusCsv").css("pointer-events", "none");
-                $("#MainContent_btnUpdateCsv").css("pointer-events", "none");
-            }
-
-        }
-    </script>
     <div class="row">
             <div class="col-md-12">
                 <h1 class="page-header">ROLL OFF REPORTS</h1>
@@ -63,8 +46,6 @@
         </div>
         <div id="errordiv" runat="server" class="col-md-6 alert alert-danger" >
             <p id="nulldate" runat="server"></p>
-            <%--<p id="errorfromdate" runat="server" ></p>
-            <p id="errortodate" runat="server"></p>--%>
             <p id="errorrange" runat="server"></p>
         </div>
     </div>
@@ -72,17 +53,14 @@
     <div class="row">
         <div class="col-sm-4">
             <asp:Label ID="lblrule" runat="server" Text="Rules report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
-                 <%--<asp:Button runat="server" Text="" ></asp:Button>--%>
             <asp:Button runat="server" Text="View Status" ID="btnRuleCsv" OnClick="btnRuleCsv_Click" CssClass="btn btn-primary "></asp:Button>
         </div>
         <div class="col-sm-4">
             <asp:Label ID="lblstatus" runat="server" Text="Status report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
-                 <%--<asp:Button runat="server" Text="" ></asp:Button>--%>
             <asp:Button runat="server" Text="View Status" ID="btnStatusCsv" OnClick="btnStatusCsv_Click" CssClass="btn btn-primary"></asp:Button>
         </div>
         <div class="col-sm-4">
             <asp:Label ID="lblupdate" runat="server" Text="Updates report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
-                 <%--<asp:Button runat="server" Text="" ></asp:Button>--%>
             <asp:Button runat="server" Text="View Status" ID="btnUpdateCsv" OnClick="btnUpdateCsv_Click" CssClass="btn btn-primary"></asp:Button>
         </div>
     </div>
