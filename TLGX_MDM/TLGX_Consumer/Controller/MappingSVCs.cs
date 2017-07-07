@@ -106,6 +106,7 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_MappingStatsForSuppliers>;
         }
         #endregion
+
         #region roll_off_reports
         public List<DC_RollOffReportRule> getStatisticforRuleReport(MDMSVC.DC_RollOFParams parm)
         {
@@ -126,6 +127,7 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_RollOffReportUpdate>;
         }
         #endregion
+
         #region rdlc reports
         public List<DC_UnmappedCountryReport> GetsupplierwiseUnmappedCountryReport(string Supplier_Id)
         {
@@ -151,11 +153,17 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["activityUnmapped_report"], Supplier_Id), typeof(List<DC_unmappedActivityReport>), out result);
             return result as List<DC_unmappedActivityReport>;
         }
-        public List<DC_supplierwisesummaryReport> GetsupplierwiseSummaryReport(string Supplier_Id)
+        public List<DC_supplierwisesummaryReport> GetsupplierwiseSummaryReport()
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["summary_report"], Supplier_Id), typeof(List<DC_supplierwisesummaryReport>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["summary_report"]), typeof(List<DC_supplierwisesummaryReport>), out result);
             return result as List<DC_supplierwisesummaryReport>;
+        }
+        public List<DC_supplierwiseunmappedsummaryReport> GetsupplierwiseUnmappedSummaryReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["unmapped_summary_report"], Supplier_Id), typeof(List<DC_supplierwiseunmappedsummaryReport>), out result);
+            return result as List<DC_supplierwiseunmappedsummaryReport>;
         }
         #endregion
 

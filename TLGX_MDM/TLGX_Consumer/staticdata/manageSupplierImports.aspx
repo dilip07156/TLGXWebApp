@@ -680,7 +680,7 @@
 
     <%--Export Report--%>
     <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="staticdata\Report1.rdlc">
+        <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
             <DataSources>
                 <rsweb:ReportDataSource Name="DataSet1" />
             </DataSources>

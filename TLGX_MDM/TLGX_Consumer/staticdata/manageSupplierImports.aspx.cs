@@ -57,8 +57,8 @@ namespace TLGX_Consumer.staticdata
             string SupplierID = ddlSupplierName.SelectedValue;
             if (SupplierID == "0")
             {
-                SupplierID = "00000000-0000-0000-0000-000000000000";
-                var DataSet1 = MapSvc.GetsupplierwiseSummaryReport(SupplierID);
+               
+                var DataSet1 = MapSvc.GetsupplierwiseSummaryReport();
                 ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewersupplierwise.LocalReport.DataSources.Clear();
                 ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptAllSupplierReport.rdlc"; 
@@ -70,26 +70,28 @@ namespace TLGX_Consumer.staticdata
             else
             {
 
-                var DataSet1 = MapSvc.GetsupplierwiseUnmappedCountryReport(SupplierID);
-                var DataSet2 = MapSvc.GetsupplierwiseUnmappedCityReport(SupplierID);
-                var DataSet3 = MapSvc.GetsupplierwiseUnmappedProductReport(SupplierID);
-                var DataSet4 = MapSvc.GetsupplierwiseUnmappedActivityReport(SupplierID);
-                var DataSet5 = MapSvc.GetsupplierwiseSummaryReport(SupplierID);
-                ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
+                //var DataSet1 = MapSvc.GetsupplierwiseUnmappedCountryReport(SupplierID);
+                //var DataSet2 = MapSvc.GetsupplierwiseUnmappedCityReport(SupplierID);
+                //var DataSet3 = MapSvc.GetsupplierwiseUnmappedProductReport(SupplierID);
+                //var DataSet4 = MapSvc.GetsupplierwiseUnmappedActivityReport(SupplierID);
+                //var DataSet5 = MapSvc.GetsupplierwiseSummaryReport(SupplierID);
+                var DataSet1 = MapSvc.GetsupplierwiseUnmappedSummaryReport(SupplierID);
+                //ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
 
-                ReportDataSource rds2 = new ReportDataSource("DataSet2", DataSet2);
-                ReportDataSource rds3 = new ReportDataSource("DataSet3", DataSet3);
-                ReportDataSource rds4 = new ReportDataSource("DataSet4", DataSet4);
-                ReportDataSource rds5 = new ReportDataSource("DataSet5", DataSet5);
+                //ReportDataSource rds2 = new ReportDataSource("DataSet2", DataSet2);
+                // ReportDataSource rds3 = new ReportDataSource("DataSet3", DataSet3);
+                //ReportDataSource rds4 = new ReportDataSource("DataSet4", DataSet4);
+                //ReportDataSource rds5 = new ReportDataSource("DataSet5", DataSet5);
+                ReportDataSource rds1 = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewersupplierwise.LocalReport.DataSources.Clear();
+                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptSupplierwiseReport.rdlc";
+               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
 
-                ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
-
-                ReportViewersupplierwise.LocalReport.DataSources.Add(rds2);
-                ReportViewersupplierwise.LocalReport.DataSources.Add(rds3);
-                ReportViewersupplierwise.LocalReport.DataSources.Add(rds4);
-                ReportViewersupplierwise.LocalReport.DataSources.Add(rds5);
-
+               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds2);
+               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds3);
+                //ReportViewersupplierwise.LocalReport.DataSources.Add(rds4);
+                //ReportViewersupplierwise.LocalReport.DataSources.Add(rds5);
+                ReportViewersupplierwise.LocalReport.DataSources.Add(rds1);
                 //Populate Report Paramater for passing current date (month)
                 //  ReportParameter p1 = new ReportParameter("ReportParameter1", SupplierID);
                 // ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { p1 });
