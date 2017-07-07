@@ -74,6 +74,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Brand" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Chain" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
@@ -186,6 +187,7 @@
   <xs:element name="DC_CountryMapping" nillable="true" type="tns:DC_CountryMapping" />
   <xs:complexType name="DC_CityMapping_RQ">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
