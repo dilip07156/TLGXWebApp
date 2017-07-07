@@ -21,7 +21,7 @@
         </AnonymousTemplate>
 
         <LoggedInTemplate>
-            <h1 class="page-header">*** Supplier Status*** </h1>
+            <h1 class="page-header">Supplier Status</h1>
           <uc1:allSupplierDataChart runat="server" id="allSupplierDataChart" />
         </LoggedInTemplate>
     </asp:LoginView>
