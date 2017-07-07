@@ -309,8 +309,14 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_UpdateNearbyPlacesURI"], AF, typeof(DC_Accommodation_NearbyPlaces), typeof(bool), out result);
             return (bool)result;
         }
+        public DC_Message AddUpdatePlaces(MDMSVC.DC_GooglePlaceNearByWithAccoID _lst)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AddUpldate_Places"], _lst, typeof(MDMSVC.DC_GooglePlaceNearByWithAccoID), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
-        
+
         #region Hotel Rules
 
 
