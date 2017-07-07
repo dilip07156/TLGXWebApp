@@ -543,6 +543,7 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <BackgroundColor>LightGrey</BackgroundColor>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -609,18 +610,6 @@
             <PaddingBottom>2pt</PaddingBottom>
           </Style>
         </Textbox>
-        <Line Name="Line2">
-          <Top>2.53683cm</Top>
-          <Left>18.41182cm</Left>
-          <Height>0cm</Height>
-          <Width>-18.41182cm</Width>
-          <ZIndex>3</ZIndex>
-          <Style>
-            <Border>
-              <Style>Solid</Style>
-            </Border>
-          </Style>
-        </Line>
       </ReportItems>
       <Style>
         <Border>

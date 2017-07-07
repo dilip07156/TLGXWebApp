@@ -266,7 +266,6 @@
 
                 },
                 error: function (xhr, status, error) {
-                    alert("failed to load supplierwise data file");
                 }
 
 
@@ -442,7 +441,6 @@
 
             },
             error: function (xhr, status, error) {
-                alert("failed to load  all supplier data file");
             }
         });
     }
