@@ -120,26 +120,36 @@ namespace TLGX_Consumer.controls.businessentities
             if (ProductSubCategoryType != "0")
                 _objSearch.CategorySubType_ID = ProductSubCategoryType;
             if (ddlStatusValue != "0")
-                _objSearch.Code = SupplierCode;
-            if (!string.IsNullOrWhiteSpace(SupplierCode))
-                _objSearch.Code = SupplierCode;
+                _objSearch.StatusCode = ddlStatusValue;
             divDropdownForEntries.Visible = true;
             var result = _objMaster.GetSupplier(_objSearch);
-            grdSupplierList.DataSource = result;
-            grdSupplierList.PageIndex = intPageIndex;
-            grdSupplierList.PageSize = intPageSize;
+            
             if (result != null)
             {
                 if (result.Count > 0)
                 {
                     grdSupplierList.VirtualItemCount = result[0].TotalRecords;
+
+                    lblTotalRecords.Text = result[0].TotalRecords.ToString();
                 }
                 else
                 {
+                    grdSupplierList.DataSource = null;
+                    grdSupplierList.DataBind();
+                    lblTotalRecords.Text = String.Empty;
                     divDropdownForEntries.Visible = false;
                 }
+                grdSupplierList.DataSource = result;
+                grdSupplierList.PageIndex = intPageIndex;
+                grdSupplierList.PageSize = intPageSize;
+                grdSupplierList.DataBind();
             }
-            grdSupplierList.DataBind();
+            else
+            {
+                grdSupplierList.DataSource = null;
+                grdSupplierList.DataBind();
+                lblTotalRecords.Text = String.Empty;
+            }
         }
         #endregion
         #region Controls Events

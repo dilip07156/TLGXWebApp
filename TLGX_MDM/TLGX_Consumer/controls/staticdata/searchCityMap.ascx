@@ -328,13 +328,12 @@
                         <div class="panel-heading clearfix">
                             <h4 class="panel-title pull-left">
                                 <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">Search Results (Total Count:
-            <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
-                            </a>
-                    </h4>
-                     <div class="form-group pull-right">
-                         <asp:Button ID="btnMapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMapSelected_Click" />
-                         <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" OnClick="btnMapAll_Click" />
-                     </div>
+                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>
+
+                            <div class="form-group pull-right">
+                                <asp:Button ID="btnMapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMapSelected_Click" />
+                                <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" OnClick="btnMapAll_Click" />
+                            </div>
                         </div>
 
 
@@ -354,7 +353,6 @@
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                        <asp:BoundField DataField="" HeaderText="" />
                                         <asp:BoundField DataField="CityCode" HeaderText="City Code" />
                                         <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                         <asp:BoundField DataField="StateName" HeaderText="State" />
@@ -756,7 +754,7 @@
                                             <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    <asp:CheckBox runat="server" id="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged"/>
+                                                    <asp:CheckBox runat="server" ID="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged" />
                                                     <%--<input type="checkbox" aria-label="Checkbox for following text input" cssclass="form-control" runat="server" id="ckboxIsExactMatch" />--%>
                                                 </span>
                                                 <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
@@ -773,6 +771,7 @@
                                                     <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                                     <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
+                                                    <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />
                                                     <asp:BoundField DataField="CityCode" HeaderText="City Code" />
                                                     <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
@@ -781,7 +780,7 @@
                                                     <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="StateName" HeaderText="State">
+                                                    <asp:BoundField DataField="StateName" HeaderText="State Name (State Code)">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
                                                     <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
