@@ -31,15 +31,6 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgAlert;
         
         /// <summary>
-        /// mapdiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mapdiv;
-        
-        /// <summary>
         /// vldddlPlaceCategory control.
         /// </summary>
         /// <remarks>
@@ -76,22 +67,13 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNoToGet;
         
         /// <summary>
-        /// txtCountLookups control.
+        /// ddlNoOfItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCountLookups;
-        
-        /// <summary>
-        /// FilteredTextBoxExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNoOfItem;
         
         /// <summary>
         /// rfvtxtRadius control.
@@ -103,31 +85,13 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtRadius;
         
         /// <summary>
-        /// cmpvtxtCountLookups control.
+        /// ddlRadius control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CompareValidator cmpvtxtCountLookups;
-        
-        /// <summary>
-        /// txtRadius control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRadius;
-        
-        /// <summary>
-        /// axfte_txtMediaPosition control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtMediaPosition;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRadius;
         
         /// <summary>
         /// hdnLat control.
@@ -166,30 +130,21 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.WebControls.HiddenField hdnAddress;
         
         /// <summary>
-        /// LinkButton1 control.
+        /// lnkbtnMapSelected control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnMapSelected;
         
         /// <summary>
-        /// LinkButton2 control.
+        /// lnkbtnMapAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
-        
-        /// <summary>
-        /// grdNearByPlaces control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdNearByPlaces;
+        protected global::System.Web.UI.WebControls.LinkButton lnkbtnMapAll;
     }
 }
