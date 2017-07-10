@@ -99,40 +99,55 @@
         </div>
 
         <div class="container">
-            <h4>Suppliers</h4>
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="col-md-12">
-                        <div id="dvMsg" runat="server" style="display: none;"></div>
-                        <div class="form-group pull-right">
-                            <div class="input-group" runat="server" id="divDropdownForEntries">
-                                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                                <asp:DropDownList ID="ddlShowEntries" runat="server" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
-                                    <asp:ListItem>10</asp:ListItem>
-                                    <asp:ListItem>15</asp:ListItem>
-                                    <asp:ListItem>20</asp:ListItem>
-                                    <asp:ListItem>25</asp:ListItem>
-                                    <asp:ListItem>30</asp:ListItem>
-                                    <asp:ListItem>35</asp:ListItem>
-                                    <asp:ListItem>40</asp:ListItem>
-                                    <asp:ListItem>45</asp:ListItem>
-                                    <asp:ListItem>50</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group pull-right">
+                        <div class="input-group" runat="server" id="divDropdownForEntries">
+                            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                            <asp:DropDownList ID="ddlShowEntries" runat="server" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>15</asp:ListItem>
+                                <asp:ListItem>20</asp:ListItem>
+                                <asp:ListItem>25</asp:ListItem>
+                                <asp:ListItem>30</asp:ListItem>
+                                <asp:ListItem>35</asp:ListItem>
+                                <asp:ListItem>40</asp:ListItem>
+                                <asp:ListItem>45</asp:ListItem>
+                                <asp:ListItem>50</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="panel-group" id="accordionSupplierSearch">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch1">Search Results (Total Records: 
+                            <asp:Label ID="lblTotalRecords" runat="server" Text="{0}"></asp:Label>)
+                        </a></h4>
+                    </div>
+                    <div id="collapseSearch1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                <div id="dvMsg" runat="server" style="display: none;"></div>
+                            </div>
 
-                    <asp:GridView ID="grdSupplierList" runat="server" AllowCustomPaging="true" AllowPaging="true" AutoGenerateColumns="False" DataKeyNames="Supplier_Id"
-                        CssClass="table table-hover table-striped table-bordered table-fixed" EmptyDataText="No Data Found" OnPageIndexChanging="grdSupplierList_PageIndexChanging" OnSelectedIndexChanging="grdSupplierList_SelectedIndexChanging">
-                        <Columns>
-                            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
-                            <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
-                            <asp:BoundField HeaderText="SupplierType" SortExpression="Code" />
-                            <asp:BoundField DataField="Create_User" HeaderText="Create_User" SortExpression="Create_User" />
-                            <asp:HyperLinkField DataNavigateUrlFields="Supplier_Id" DataNavigateUrlFormatString="~/suppliers/Manage?Supplier_Id={0}" Text="Manage" NavigateUrl="~/suppliers/Manage.aspx" />
-                        </Columns>
-                        <PagerStyle CssClass="pagination-ys" />
-                    </asp:GridView>
+                            <asp:GridView ID="grdSupplierList" runat="server" AllowCustomPaging="true" AllowPaging="true" AutoGenerateColumns="False" DataKeyNames="Supplier_Id"
+                                CssClass="table table-hover table-striped table-bordered table-fixed" EmptyDataText="No Data Found" OnPageIndexChanging="grdSupplierList_PageIndexChanging" OnSelectedIndexChanging="grdSupplierList_SelectedIndexChanging">
+                                <Columns>
+                                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                                    <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
+                                    <asp:BoundField HeaderText="SupplierType" SortExpression="Code" />
+                                    <asp:BoundField HeaderText="Status" DataField="StatusCode" />
+                                    <asp:BoundField DataField="Create_User" HeaderText="Create_User" SortExpression="Create_User" />
+                                    <asp:HyperLinkField DataNavigateUrlFields="Supplier_Id" DataNavigateUrlFormatString="~/suppliers/Manage?Supplier_Id={0}" Text="Manage" NavigateUrl="~/suppliers/Manage.aspx" />
+                                </Columns>
+                                <PagerStyle CssClass="pagination-ys" />
+                            </asp:GridView>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

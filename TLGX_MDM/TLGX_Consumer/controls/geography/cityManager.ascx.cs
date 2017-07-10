@@ -107,7 +107,7 @@ namespace TLGX_Consumer.controls.geography
         {
             // dtCityArea = objMasterDataDAL.GetMasterCityAreaData(Guid.Parse(City_Id));
             var result = _objMasterData.GetMasterCityAreaData(City_Id);
-            grdCityAreas.DataSource = dtCityArea;
+            grdCityAreas.DataSource = result;
             grdCityAreas.DataBind();
         }
 
@@ -115,7 +115,7 @@ namespace TLGX_Consumer.controls.geography
         {
             //dtCityAreaLocation = objMasterDataDAL.GetMasterCityAreaLocationData(Guid.Parse(CityArea_Id));\
             var result = _objMasterData.GetMasterCityAreaLocationData(CityArea_Id);
-            grdCityAreaLocation.DataSource = dtCityAreaLocation;
+            grdCityAreaLocation.DataSource = result;
             grdCityAreaLocation.DataBind();
         }
 
@@ -168,16 +168,16 @@ namespace TLGX_Consumer.controls.geography
             _obj.Code = txtCityAreaCode.Text.Trim();
             if (e.CommandName.ToString() == "Add")
             {
-                //_obj.CityArea_Id = Guid.NewGuid();
-                //_obj.Option = "Save";
-                //_objMasterData.SaveCityArea(_obj);
+                _obj.CityArea_Id = Guid.NewGuid();
+                _obj.Option = "Save";
+                _objMasterData.SaveCityArea(_obj);
 
-                //// objMasterDataDAL.SaveCityArea(obj, Models.MasterDataDAL.operation.Save);
+                // objMasterDataDAL.SaveCityArea(obj, Models.MasterDataDAL.operation.Save);
 
-                //fillCityArea(Request.QueryString["City_Id"]);
-                //txtCityAreaName.Text = "";
-                //txtCityAreaCode.Text = "";
-                //frmCityArea.ChangeMode(FormViewMode.Insert);
+                fillCityArea(Request.QueryString["City_Id"]);
+                txtCityAreaName.Text = "";
+                txtCityAreaCode.Text = "";
+                frmCityArea.ChangeMode(FormViewMode.Insert);
 
 
             }
