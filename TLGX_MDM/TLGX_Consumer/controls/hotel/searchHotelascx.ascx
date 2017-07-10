@@ -49,7 +49,7 @@
 <asp:UpdatePanel ID="udpSearchDllChange" runat="server">
     <ContentTemplate>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-12">
                 <div class="panel-group" id="accordion">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -66,81 +66,91 @@
                                         <br />
                                         <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="HotelSearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-6" for="ddlProductCategorySubType">
-                                        Sub Category
+                                    <div class="col-md-12">
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="ddlProductCategorySubType">
+                                                    Sub Category
                                         <asp:RequiredFieldValidator ID="vddlProductCategorySubType" runat="server" ErrorMessage="Please select product sub category."
                                             ControlToValidate="ddlProductCategorySubType" InitialValue="" CssClass="text-danger" ValidationGroup="HotelSearch"
                                             Text="*"></asp:RequiredFieldValidator>
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlProductCategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                            <asp:ListItem Value="">-Select-</asp:ListItem>
-                                        </asp:DropDownList>
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlProductCategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Value="">-Select-</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="txtCommon">Common Hotel ID</label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox ID="txtCommon" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="txtHotelName">Hotel Name</label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox ID="txtHotelName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="ddlStarRating">
+                                                    Star Rating
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlStarRating" runat="server" CssClass="form-control">
+                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="ddlCountry">Country</label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                                                        <asp:ListItem Text="---ALL---" Value=""></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="ddlCity">City</label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
+                                                        <asp:ListItem Text="---ALL---" Value=""></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="ddlStatus">
+                                                    Status
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
+                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" CausesValidation="true" ValidationGroup="HotelSearch" />
+                                                    <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClientClick="formreset();" OnClick="btnReset_Click" />
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <asp:LinkButton ID="btnAdd2" runat="server" CausesValidation="false" CommandName="AddProduct" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" PostBackUrl="~/hotels/addnew.aspx" />
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-6" for="txtCommon">Common Hotel ID</label>
-                                    <div class="col-sm-6">
-                                        <asp:TextBox ID="txtCommon" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-6" for="txtHotelName">Hotel Name</label>
-                                    <div class="col-sm-6">
-                                        <asp:TextBox ID="txtHotelName" runat="server" CssClass="form-control"></asp:TextBox>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-6" for="ddlCountry">Country</label>
-                                    <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
-                                            <asp:ListItem Text="---ALL---" Value=""></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-6" for="ddlCity">City</label>
-                                    <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
-                                            <asp:ListItem Text="---ALL---" Value=""></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row">
-                                    <label class="control-label col-sm-6" for="ddlStatus">
-                                        Status
-                                    </label>
-                                    <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
-                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-12">
-                                        <br />
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" CausesValidation="true" ValidationGroup="HotelSearch" />
-                                        <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClientClick="formreset();" OnClick="btnReset_Click" />
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <asp:LinkButton ID="btnAdd2" runat="server" CausesValidation="false" CommandName="AddProduct" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" PostBackUrl="~/hotels/addnew.aspx" />
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
 
@@ -179,6 +189,7 @@
                             <asp:BoundField DataField="Country" HeaderText="Country Name" SortExpression="Country" />
                             <asp:BoundField DataField="City" HeaderText="City Name" SortExpression="City" />
                             <asp:BoundField DataField="HotelName" HeaderText="Hotel Name" SortExpression="HotelName" />
+                            <asp:BoundField DataField="Starrating" HeaderText="Star Rating" SortExpression="Starrating" />
                             <asp:HyperLinkField DataNavigateUrlFields="AccomodationId" DataNavigateUrlFormatString="~/hotels/manage.aspx?Hotel_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/hotels/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
                         </Columns>
                         <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />

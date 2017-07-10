@@ -72,8 +72,7 @@
                                             <asp:BoundField HeaderText="# Hotels" />
                                             <asp:BoundField HeaderText="# Attractions" />
                                             <asp:BoundField HeaderText="# Holidays" />
-                                            <asp:HyperLinkField DataNavigateUrlFields="City_Id" DataNavigateUrlFormatString="~/geography/city?City_Id={0}" DataTextField="City_Id" NavigateUrl="~/geography/city" HeaderText="Manage" />
-
+                                            <asp:HyperLinkField DataNavigateUrlFields="City_Id" ControlStyle-CssClass="btn btn-default" DataNavigateUrlFormatString="~/geography/city?City_Id={0}" Text="Manage" NavigateUrl="~/geography/city" HeaderText="Manage" />
                                         </Columns>
                                         <PagerStyle CssClass="pagination-ys" />
                                     </asp:GridView>
@@ -167,14 +166,16 @@
 
                                 </div>
                                 <div class="col-lg-4">
-
+                                    <asp:ValidationSummary ID="vlSumCityArea" runat="server" DisplayMode="BulletList" ValidationGroup="vlgrpCityArea" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                                     <asp:FormView ID="frmCityArea" runat="server" DataKeyNames="CityArea_Id" DefaultMode="Insert" OnItemCommand="frmCityArea_ItemCommand" OnItemInserting="frmCityArea_ItemInserting">
                                         <InsertItemTemplate>
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">Add City Area</div>
                                                 <div class="panel-body">
 
-                                                    <label for="txtCityAreaName">Area Name</label>
+                                                    <label for="txtCityAreaName">Area Name 
+                                                        <asp:RequiredFieldValidator ID="vlCityArea" runat="server" ControlToValidate="txtCityAreaName" ValidationGroup="vlgrpCityArea" ErrorMessage="Please Enter the Area Name." Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
+                                                    </label>
                                                     <asp:TextBox ID="txtCityAreaName" runat="server" CssClass="form-control" />
 
                                                     <label for="txtCityAreaCode">Area Code</label>
@@ -182,7 +183,7 @@
 
 
                                                     <br />
-                                                    <asp:Button ID="btnCityArea" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary btn-sm" />
+                                                    <asp:Button ID="btnCityArea" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityArea"/>
                                                 </div>
                                             </div>
 

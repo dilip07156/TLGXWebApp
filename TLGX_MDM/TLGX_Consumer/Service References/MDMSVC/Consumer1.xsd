@@ -34,6 +34,7 @@
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
@@ -189,6 +190,7 @@
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsExact" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
@@ -228,6 +230,7 @@
       <xs:element minOccurs="0" name="MasterCityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterCountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MasterStateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Master_CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
@@ -414,6 +417,7 @@
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductValidFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchFor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SuplierProductCode" nillable="true" type="xs:string" />
@@ -558,4 +562,118 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_RollOffReportStatus" nillable="true" type="tns:DC_RollOffReportStatus" />
+  <xs:complexType name="ArrayOfDC_RollOffReportUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_RollOffReportUpdate" nillable="true" type="tns:DC_RollOffReportUpdate" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_RollOffReportUpdate" nillable="true" type="tns:ArrayOfDC_RollOffReportUpdate" />
+  <xs:complexType name="DC_RollOffReportUpdate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descriptionsource" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotelid" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotelname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotelupdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Internal_Flag" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastupdateDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastupdatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Validfrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Validto" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_RollOffReportUpdate" nillable="true" type="tns:DC_RollOffReportUpdate" />
+  <xs:complexType name="ArrayOfDC_supplierwiseUnmappedReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_supplierwiseUnmappedReport" nillable="true" type="tns:DC_supplierwiseUnmappedReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_supplierwiseUnmappedReport" nillable="true" type="tns:ArrayOfDC_supplierwiseUnmappedReport" />
+  <xs:complexType name="DC_supplierwiseUnmappedReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Unmappedactivity" nillable="true" type="tns:ArrayOfDC_unmappedActivityReport" />
+      <xs:element minOccurs="0" name="Unmappedcity" nillable="true" type="tns:ArrayOfDC_UnmappedCityReport" />
+      <xs:element minOccurs="0" name="Unmappedcountry" nillable="true" type="tns:ArrayOfDC_UnmappedCountryReport" />
+      <xs:element minOccurs="0" name="Unmappedproduct" nillable="true" type="tns:ArrayOfDC_unmappedProductReport" />
+      <xs:element minOccurs="0" name="_SupplierId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_supplierwiseUnmappedReport" nillable="true" type="tns:DC_supplierwiseUnmappedReport" />
+  <xs:complexType name="ArrayOfDC_unmappedActivityReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_unmappedActivityReport" nillable="true" type="tns:DC_unmappedActivityReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_unmappedActivityReport" nillable="true" type="tns:ArrayOfDC_unmappedActivityReport" />
+  <xs:complexType name="DC_unmappedActivityReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activityname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierActivityId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_unmappedActivityReport" nillable="true" type="tns:DC_unmappedActivityReport" />
+  <xs:complexType name="ArrayOfDC_UnmappedCityReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_UnmappedCityReport" nillable="true" type="tns:DC_UnmappedCityReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_UnmappedCityReport" nillable="true" type="tns:ArrayOfDC_UnmappedCityReport" />
+  <xs:complexType name="DC_UnmappedCityReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Citycode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cityname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Countrycode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Countryname" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_UnmappedCityReport" nillable="true" type="tns:DC_UnmappedCityReport" />
+  <xs:complexType name="ArrayOfDC_UnmappedCountryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_UnmappedCountryReport" nillable="true" type="tns:DC_UnmappedCountryReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_UnmappedCountryReport" nillable="true" type="tns:ArrayOfDC_UnmappedCountryReport" />
+  <xs:complexType name="DC_UnmappedCountryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contryname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Countrycode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_UnmappedCountryReport" nillable="true" type="tns:DC_UnmappedCountryReport" />
+  <xs:complexType name="ArrayOfDC_unmappedProductReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_unmappedProductReport" nillable="true" type="tns:DC_unmappedProductReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_unmappedProductReport" nillable="true" type="tns:ArrayOfDC_unmappedProductReport" />
+  <xs:complexType name="DC_unmappedProductReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hotelname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierHotelId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_unmappedProductReport" nillable="true" type="tns:DC_unmappedProductReport" />
+  <xs:complexType name="ArrayOfDC_supplierwisesummaryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_supplierwisesummaryReport" nillable="true" type="tns:DC_supplierwisesummaryReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_supplierwisesummaryReport" nillable="true" type="tns:ArrayOfDC_supplierwisesummaryReport" />
+  <xs:complexType name="DC_supplierwisesummaryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Mapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Mappingfor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review" type="xs:int" />
+      <xs:element minOccurs="0" name="Suppliername" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unmapped" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_supplierwisesummaryReport" nillable="true" type="tns:DC_supplierwisesummaryReport" />
 </xs:schema>

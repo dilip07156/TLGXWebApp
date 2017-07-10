@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Reporting.WebForms;
 
 namespace TLGX_Consumer.staticdata
 {
@@ -30,7 +31,9 @@ namespace TLGX_Consumer.staticdata
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+
             {
+                ReportViewersupplierwise.Visible = false;
                 fillsuppliers();
 
             }
@@ -49,52 +52,55 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
         {
-             var SupplierId = ddlSupplierName.SelectedValue.ToString();
-            if (SupplierId == "0")
+            supplierwisedata.Style.Add("display", "none");
+            Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
+            string SupplierID = ddlSupplierName.SelectedValue;
+            if (SupplierID == "0")
             {
-                SupplierId = "00000000-0000-0000-0000-000000000000";
+               
+                var DataSet1 = MapSvc.GetsupplierwiseSummaryReport();
+                ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
+                ReportViewersupplierwise.LocalReport.DataSources.Clear();
+                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptAllSupplierReport.rdlc"; 
+                ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
+                ReportViewersupplierwise.Visible = true;
+                ReportViewersupplierwise.DataBind();
+                ReportViewersupplierwise.LocalReport.Refresh();
             }
-            MappingSVCs _objmapping = new MappingSVCs();
-            var res = _objmapping.GetMappingStatistics(SupplierId);
-            var res1 = _objmapping.GetMappingStatisticsForSuppliers();
-
-            if (res != null && res.Count > 0)
+            else
             {
-                //Writeing CSV file
-                StringBuilder sb = new StringBuilder();
 
-                string csv = string.Empty;
-                List <string> lstFileHeader = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Mapping_Staitistics_Get"]).Split(',').ToList();
+                //var DataSet1 = MapSvc.GetsupplierwiseUnmappedCountryReport(SupplierID);
+                //var DataSet2 = MapSvc.GetsupplierwiseUnmappedCityReport(SupplierID);
+                //var DataSet3 = MapSvc.GetsupplierwiseUnmappedProductReport(SupplierID);
+                //var DataSet4 = MapSvc.GetsupplierwiseUnmappedActivityReport(SupplierID);
+                //var DataSet5 = MapSvc.GetsupplierwiseSummaryReport(SupplierID);
+                var DataSet1 = MapSvc.GetsupplierwiseUnmappedSummaryReport(SupplierID);
+                //ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
 
-                foreach (var item in res[0].GetType().GetProperties())
-                {
-                    if (lstFileHeader.Contains(item.Name))
-                        csv += item.Name + ',';
-                }
-                sb.Append(string.Format("{0}", csv) + Environment.NewLine);
-                foreach (var item in res)
-                {
-                    sb.Append(string.Format("{0},{1},{2}", Convert.ToString(item.SupplierId), Convert.ToString(item.SupplierName), Convert.ToString(item.MappingStatsFor)));
-                    sb.Append(Environment.NewLine);
-                }
+                //ReportDataSource rds2 = new ReportDataSource("DataSet2", DataSet2);
+                // ReportDataSource rds3 = new ReportDataSource("DataSet3", DataSet3);
+                //ReportDataSource rds4 = new ReportDataSource("DataSet4", DataSet4);
+                //ReportDataSource rds5 = new ReportDataSource("DataSet5", DataSet5);
+                ReportDataSource rds1 = new ReportDataSource("DataSet1", DataSet1);
+                ReportViewersupplierwise.LocalReport.DataSources.Clear();
+                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptSupplierwiseReport.rdlc";
+               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
 
-                byte[] bytes = Encoding.ASCII.GetBytes(sb.ToString());
-                sb = null;
-                if (bytes != null)
-                {
-                    //Download the CSV file.
-                    var response = HttpContext.Current.Response;
-                    response.Clear();
-                    response.ContentType = "text/csv";
-                    response.AddHeader("Content-Length", bytes.Length.ToString());
-                    string filename = "Data";
-                    response.AddHeader("Content-disposition", "attachment; filename=\"" + filename + ".csv" + "\"");
-                    response.BinaryWrite(bytes);
-                    response.Flush();
-                    response.End();
-                }
+               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds2);
+               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds3);
+                //ReportViewersupplierwise.LocalReport.DataSources.Add(rds4);
+                //ReportViewersupplierwise.LocalReport.DataSources.Add(rds5);
+                ReportViewersupplierwise.LocalReport.DataSources.Add(rds1);
+                //Populate Report Paramater for passing current date (month)
+                //  ReportParameter p1 = new ReportParameter("ReportParameter1", SupplierID);
+                // ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { p1 });
+                ReportViewersupplierwise.Visible = true;
+                ReportViewersupplierwise.DataBind(); // Added
+                ReportViewersupplierwise.LocalReport.Refresh();
+
             }
-
+           
         }
     }
 }

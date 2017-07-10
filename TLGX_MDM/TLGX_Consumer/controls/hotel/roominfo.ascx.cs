@@ -16,6 +16,8 @@ namespace TLGX_Consumer.controls.hotel
         public Guid Accomodation_RoomInfo_ID;
         public static Guid Accomodation_RoomInfo_Static_ID;
         Controller.AccomodationSVC AccSvc = new Controller.AccomodationSVC();
+        public int PageSize = 5;
+        public int intPageIndex = 0;
 
         MasterDataDAL MasterData = new MasterDataDAL();
 
@@ -54,24 +56,14 @@ namespace TLGX_Consumer.controls.hotel
 
 
 
-        protected void GetRoomInfoDetails()
-        {
 
-            Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
-            grdRoomTypes.DataSource = AccSvc.GetRoomDetails(Accomodation_ID, Guid.Empty);
-            grdRoomTypes.DataBind();
-
-            GetLookupValues();
-
-
-        }
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                GetRoomInfoDetails();
+                GetRoomInfoDetails(PageSize, intPageIndex);
             }
         }
 
@@ -159,7 +151,7 @@ namespace TLGX_Consumer.controls.hotel
                 if (AccSvc.AddRoom(newObj))
                 {
                     frmRoomInfo.DataBind();
-                    GetRoomInfoDetails();
+                    GetRoomInfoDetails(PageSize, intPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "RoomInfo has been added successfully", BootstrapAlertType.Success);
                 }
                 else
@@ -187,7 +179,7 @@ namespace TLGX_Consumer.controls.hotel
                         BathRoomType = ddlBathRoomType.SelectedIndex != 0 ? ddlBathRoomType.SelectedItem.Text.Trim() : string.Empty,
                         BedType = ddlBedType.SelectedIndex != 0 ? ddlBedType.SelectedItem.Text.Trim() : string.Empty,
                         Category = txtRoomCategory.Text.Trim(),
-                        CompanyRoomCategory = ddlCompanyRoomCategory.SelectedIndex !=0 ? ddlCompanyRoomCategory.SelectedItem.Text.Trim() : string.Empty,
+                        CompanyRoomCategory = ddlCompanyRoomCategory.SelectedIndex != 0 ? ddlCompanyRoomCategory.SelectedItem.Text.Trim() : string.Empty,
                         Edit_Date = DateTime.Now,
                         Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                         FloorName = txtFloorName.Text.Trim(),
@@ -219,7 +211,7 @@ namespace TLGX_Consumer.controls.hotel
                         Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
                         frmRoomInfo.ChangeMode(FormViewMode.Insert);
                         frmRoomInfo.DataBind();
-                        GetRoomInfoDetails();
+                        GetRoomInfoDetails(PageSize, intPageIndex);
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "RoomInfo has been Updated successfully", BootstrapAlertType.Success);
                     }
                     else
@@ -238,10 +230,11 @@ namespace TLGX_Consumer.controls.hotel
         {
             //int index = Convert.ToInt32(e.CommandArgument);
 
-            Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+            
 
             if (e.CommandName.ToString() == "Select")
             {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                 Accomodation_RoomInfo_Static_ID = Guid.Empty;
                 dvMsg.Style.Add("display", "none");
                 //Guid myRow_Id = Guid.Parse(grdRoomTypes.DataKeys[index]["Accommodation_RoomInfo_Id"].ToString());
@@ -286,6 +279,7 @@ namespace TLGX_Consumer.controls.hotel
 
             else if (e.CommandName.ToString() == "SoftDelete")
             {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                 TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo newObj = new MDMSVC.DC_Accommodation_RoomInfo
                 {
                     Accommodation_RoomInfo_Id = myRow_Id,
@@ -296,7 +290,7 @@ namespace TLGX_Consumer.controls.hotel
 
                 if (AccSvc.UpdateRoom(newObj))
                 {
-                    GetRoomInfoDetails();
+                    GetRoomInfoDetails(PageSize, intPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "RoomInfo has been deleted successfully", BootstrapAlertType.Success);
                 };
 
@@ -304,6 +298,7 @@ namespace TLGX_Consumer.controls.hotel
 
             else if (e.CommandName.ToString() == "UnDelete")
             {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                 TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo newObj = new MDMSVC.DC_Accommodation_RoomInfo
                 {
                     Accommodation_RoomInfo_Id = myRow_Id,
@@ -314,10 +309,17 @@ namespace TLGX_Consumer.controls.hotel
 
                 if (AccSvc.UpdateRoom(newObj))
                 {
-                    GetRoomInfoDetails();
+                    GetRoomInfoDetails(PageSize, intPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "RoomInfo has been retrived successfully", BootstrapAlertType.Success);
                 };
 
+            }
+            else if (e.CommandName.ToString() == "CopyRoomTypes")
+            {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                dvmsgCopyStatus.Style.Add(HtmlTextWriterStyle.Display, "none");
+                hdnAccommodation_RoomInfo_Id.Value = Convert.ToString(myRow_Id);
+                hdnFlagCopyRoomInfo.Value = "false";
             }
         }
 
@@ -331,7 +333,7 @@ namespace TLGX_Consumer.controls.hotel
                 myRoomAmenities.Accommodation_RoomInfo_Id = Accomodation_RoomInfo_Static_ID;
                 myRoomAmenities.GetRoomAmenityDetails();
             }
-            
+
         }
 
         protected void grdRoomTypes_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -345,4 +347,67 @@ namespace TLGX_Consumer.controls.hotel
                 }
             }
         }
-    } }
+
+        protected void btnCopyRoomDef_Click(object sender, EventArgs e)
+        {
+            //Get Accommodation_RoomInfo_Id and  Category 
+            Accomodation_ID = Guid.Parse(Request.QueryString["Hotel_Id"]);
+            TLGX_Consumer.MDMSVC.DC_Accomodation_CopyRoomDef newObj = new MDMSVC.DC_Accomodation_CopyRoomDef
+            {
+                Accommodation_RoomInfo_Id = Guid.Parse(hdnAccommodation_RoomInfo_Id.Value),
+                Accommodation_Id = Accomodation_ID,
+                NewRoomCategory = txtRoomCategory.Text,
+                Create_User = System.Web.HttpContext.Current.User.Identity.Name
+            };
+            MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
+            _msg = AccSvc.CopyAccomodationInfo(newObj);
+            if (_msg != null)
+            {
+                if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                {
+                    GetRoomInfoDetails(PageSize, intPageIndex);
+                    hdnFlagCopyRoomInfo.Value = "true";
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, _msg.StatusMessage, BootstrapAlertType.Success);
+                }
+                else if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Duplicate)
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgCopyStatus, _msg.StatusMessage, BootstrapAlertType.Duplicate);
+                }
+
+            };
+        }
+
+        protected void btnResetRoomDef_Click(object sender, EventArgs e)
+        {
+            hdnFlagCopyRoomInfo.Value = "false";
+            txtRoomCategory.Text = string.Empty;
+        }
+
+        protected void grdRoomTypes_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            intPageIndex = e.NewPageIndex;
+            GetRoomInfoDetails(PageSize, intPageIndex);
+        }
+        protected void GetRoomInfoDetails(int PageSize, int intPageIndex)
+        {
+
+            Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
+            var result = AccSvc.GetRoomDetailsByWithPagging(new MDMSVC.DC_Accommodation_RoomInfo_RQ() { Accommodation_Id = Accomodation_ID, PageNo = intPageIndex, PageSize = PageSize });
+            grdRoomTypes.DataSource = result;
+            grdRoomTypes.PageIndex = intPageIndex;
+            grdRoomTypes.PageSize = PageSize;
+            if (result != null && result.Count > 0)
+            {
+                grdRoomTypes.VirtualItemCount = Convert.ToInt32(result[0].TotalRecords);
+            }
+            grdRoomTypes.DataBind();
+            GetLookupValues();
+        }
+
+        protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            GetRoomInfoDetails(PageSize, intPageIndex);
+        }
+    }
+}

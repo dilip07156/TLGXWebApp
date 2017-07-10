@@ -1,13 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="manageSupplierImports.aspx.cs" Inherits="TLGX_Consumer.staticdata.manageSupplierImports" EnableEventValidation="false" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
-
-    <%-- <link href="../Scripts/ChartJS/bootstrap-print.css" rel="stylesheet" media="print" />
-
-    <link href="../Scripts/ChartJS/bootstrap-print-md.css" rel="stylesheet" media="print" />--%>
     <style>
         @media(min-width: 992px) {
             .col5 {
@@ -64,6 +60,7 @@
         }
         //end
         function getChartData() {
+            $("#supplierwisedata").css("display", "block");
             var e = document.getElementById("MainContent_ddlSupplierName");
             var sid = e.options[e.selectedIndex].value.toString();
             if (sid == '0') {
@@ -216,7 +213,7 @@
                         delete o.Status;
                         o.value = o.TotalCount;
                         delete o.TotalCount;
-                    } 
+                    }
                     for (var i = 0; i < hotelroomArray.length; i++) {
                         var o = hotelroomArray[i];
                         o.label = o.Status;
@@ -380,7 +377,7 @@
                         delete o.SupplierName;
                         o.value = o.totalcount;
                         delete o.totalcount;
-                    } 
+                    }
                     for (var i = 0; i < allhotelroomArray.length; i++) {
                         var o = allhotelroomArray[i];
                         o.label = o.SupplierName;
@@ -487,22 +484,12 @@
         });
 
         $("#MainContent_btnUpdateSupplier").click(function (event) {
+          $("#supplierwisedata").css("display", "block");
+            $("#ctl00_MainContent_ReportViewersupplierwise_ReportViewer").css("display", "None");
             event.preventDefault();
+
             getChartData();
         });
-
-        //// pdf logic
-        // $(document).ready(function () {
-        //     $("#btnExport").click(function () {
-        //         var da = new Date();
-        //         var e = document.getElementById("MainContent_ddlSupplierName");
-        //         var sid = e.options[e.selectedIndex].innerText;
-        //         $("#pdfHeader").append(sid + "<br/>" + "Date and Time  :&nbsp;&nbsp;" + da);
-        //         return xepOnline.Formatter.Format('printfrom', { render: 'download', pageWidth: '216mm', pageHeight: '600mm', cssStyle: [{ fontfamily: 'sans-serif' }] });
-
-        //     });
-        // });
-        // //end
     </script>
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
@@ -523,15 +510,14 @@
                         <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                     </asp:DropDownList>
                     <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />
-                    <%--<button class="btn btn-primary btn-sm" id="btnExport">Export to PDF</button>--%>
-                    <%--<asp:Button runat="server" Text="Download CSV File" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>--%>
+                    <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
             </div>
         </div>
     </div>
     <hr />
     <%--for first three charts--%>
-    <div class="row">
+    <div class="row" id="supplierwisedata" runat="server" style="display:none">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -692,6 +678,13 @@
         </div>
     </div>
 
-
+    <%--Export Report--%>
+    <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+        <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
+            <DataSources>
+                <rsweb:ReportDataSource Name="DataSet1" />
+            </DataSources>
+        </LocalReport>
+    </rsweb:ReportViewer>
 
 </asp:Content>
