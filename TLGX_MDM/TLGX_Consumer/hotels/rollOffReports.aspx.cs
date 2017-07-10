@@ -120,6 +120,7 @@ namespace TLGX_Consumer.hotels
                 ReportViewer1.LocalReport.ReportPath = "hotels/rptStatusreport.rdlc";
                 ReportViewer1.LocalReport.DataSources.Add(rds);
                 ReportViewer1.Visible = true;
+                ReportViewer1.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
                 ReportViewer1.DataBind();
                 ReportViewer1.LocalReport.Refresh();
             }
