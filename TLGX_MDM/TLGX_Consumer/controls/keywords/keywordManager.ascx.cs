@@ -68,6 +68,7 @@ namespace TLGX_Consumer.controls.keywords
             {
                 gvSearchResult.DataSource = null;
                 gvSearchResult.DataBind();
+                lblTotalCount.Text = String.Empty;
             }
         }
 

@@ -10,6 +10,8 @@ using System.Configuration;
 using TLGX_Consumer.Controller;
 using System.Data;
 using System.Text;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace TLGX_Consumer.controls.staticdataconfig
 {
@@ -106,7 +108,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     gvFileUploadSearch.VirtualItemCount = res[0].TotalRecords;
 
                     lblTotalRecords.Text = res[0].TotalRecords.ToString();
-                    
                 }
 
                 gvFileUploadSearch.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
@@ -336,13 +337,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void gvFileUploadSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
             try
             {
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
                 Guid myRowId = Guid.Parse(gvFileUploadSearch.DataKeys[index].Values[0].ToString());
-                
 
                 if (e.CommandName.ToString() == "ViewDetails")
                 {
@@ -367,7 +366,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
 
                 }
-                if(e.CommandName.ToString()== "Process")
+                if (e.CommandName.ToString() == "Process")
                 {
                     MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
                     MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
@@ -388,11 +387,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     obj.STATUS = res[0].STATUS;
                     var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
 
-                    //LinkButton btnProcess = (LinkButton)gvFileUploadSearch.Rows[index].FindControl("btnProcess");
-                    //btnProcess.Enabled = false;
-                    //row.Cells[5]
-                    //(e.CommandSource as LinkButton).Enabled = false;
-                    fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
                 }
             }
             catch (Exception ex)
@@ -426,21 +420,22 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 btnNext.Visible = true;
                 btnDownload.Visible = true;
             }
-            else {
+            else
+            {
                 btnDownload.Visible = false;
             }
         }
 
         protected void FileUpld_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
         {
-
             FileUpload(e.FileName);
         }
-
+        
         protected void FileUpld_UploadStart(object sender, AjaxControlToolkit.AjaxFileUploadStartEventArgs e)
         {
             //hdnEntityListSelected.Value = ddlEntityList.SelectedItem.Text;
             //hdnSupplierListSelected.Value = ddlSupplierList.SelectedItem.Text;
+
         }
 
         protected void ddlEntityList_SelectedIndexChanged(object sender, EventArgs e)
@@ -448,10 +443,22 @@ namespace TLGX_Consumer.controls.staticdataconfig
             Session["EntityListSelected"] = ddlEntityList.SelectedItem.Text;
             //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
             if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-                FileUpld.Enabled = true;
+            {
+                string allowedFileType = StaticFileTypes();
+                if (!string.IsNullOrWhiteSpace(allowedFileType))
+                {
+                    FileUpld.Enabled = true;
+                    FileUpld.AllowedFileTypes = allowedFileType;
+                }
+                else
+                {
+                    FileUpld.Enabled = false;
+                }
+            }
             if (ddlEntityList.SelectedValue == "0")
             {
                 Session.Remove("EntityListSelected");
+                FileUpld.Enabled = false;
             }
         }
 
@@ -460,13 +467,24 @@ namespace TLGX_Consumer.controls.staticdataconfig
             Session["SupplierListSelected"] = ddlSupplierList.SelectedItem.Text;
             Session["SupplierListSelectedValue"] = ddlSupplierList.SelectedValue;
             //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
-            if(ddlSupplierList.SelectedValue!="0" && ddlEntityList.SelectedValue!="0")
-                FileUpld.Enabled = true;
+            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+            {
+                string allowedFileType = StaticFileTypes();
+                if (!string.IsNullOrWhiteSpace(allowedFileType))
+                {
+                    FileUpld.Enabled = true;
+                    FileUpld.AllowedFileTypes = allowedFileType;
+                }
+                else
+                {
+                    FileUpld.Enabled = false;
+                }
+            }
             if (ddlSupplierList.SelectedValue == "0")
             {
                 Session.Remove("SupplierListSelected");
                 Session.Remove("SupplierListSelectedValue");
-
+                FileUpld.Enabled = false;
             }
         }
 
@@ -475,20 +493,103 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlSupplierList.SelectedIndex = 0;
             ddlEntityList.SelectedIndex = 0;
             if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-                FileUpld.Enabled = true;
+            {
+                string allowedFileType = StaticFileTypes();
+                if (!string.IsNullOrWhiteSpace(allowedFileType))
+                {
+                    FileUpld.Enabled = true;
+                    FileUpld.AllowedFileTypes = allowedFileType;
+                }
+                else
+                {
+                    FileUpld.Enabled = false;
+                }
+            }
             else
+            {
                 FileUpld.Enabled = false;
+            }
         }
 
-        protected void gvFileUploadSearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        public string StaticFileTypes()
         {
+            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+            {
+                MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
+                RQ.PageNo = 0;
+                RQ.PageSize = 1;
+                RQ.AttributeType = "FileDetails";
+                RQ.AttributeValue = "FORMAT";
+                RQ.Status = "ACTIVE";
+                RQ.Entity = ddlEntityList.SelectedItem.Text;
+                RQ.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedItem.Value);
+
+                var res = _objMappingSVCs.GetStaticDataMappingAttributeValues(RQ);
+
+                if (res != null)
+                {
+                    if (res.Count > 0)
+                    {
+                        if (res.First().AttributeName == "TEXT")
+                        {
+                            return "txt";
+                        }
+                        else if (res.First().AttributeName == "XLS")
+                        {
+                            return "xls";
+                        }
+                        else if (res.First().AttributeName == "XLSX")
+                        {
+                            return "xlsx";
+                        }
+                        else if (res.First().AttributeName == "XML")
+                        {
+                            return "xml";
+                        }
+                        else if (res.First().AttributeName == "JSON")
+                        {
+                            return "json";
+                        }
+                        else if (res.First().AttributeName == "CSV")
+                        {
+                            return "csv";
+                        }
+                        else if (res.First().AttributeName == "ZIP")
+                        {
+                            return "zip";
+                        }
+                        else if (res.First().AttributeName == "RAR")
+                        {
+                            return "rar";
+                        }
+                        else
+                        {
+                            return string.Empty;
+                        }
+                    }
+                    else
+                    {
+                        BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "No file type has been defined.", BootstrapAlertType.Danger);
+                        return string.Empty;
+                    }
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "No file type has been defined.", BootstrapAlertType.Danger);
+                    return string.Empty;
+                }
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         protected void frmViewDetailsConfig_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
             try
             {
-                if(e.CommandName== "Previous")
+                if (e.CommandName == "Previous")
                 {
                     LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
                     if (intActivityPageIndex >= 0)
@@ -503,7 +604,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         frmErrorlog();
                     }
                 }
-                if(e.CommandName== "Next")
+                if (e.CommandName == "Next")
                 {
                     LinkButton btnNext = (LinkButton)frmViewDetailsConfig.FindControl("btnNext");
                     LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
@@ -520,7 +621,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         frmErrorlog();
                     }
                 }
-                if(e.CommandName== "Archive")
+                if (e.CommandName == "Archive")
                 {
                     TextBox txtSupplier = (TextBox)frmViewDetailsConfig.FindControl("txtSupplier");
                     TextBox txtEntity = (TextBox)frmViewDetailsConfig.FindControl("txtEntity");
@@ -578,7 +679,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         hdnViewDetailsFlag.Value = "true";
                     }
                 }
-                if(e.CommandName== "Download")
+                if (e.CommandName == "Download")
                 {
                     MDMSVC.DC_SupplierImportFile_ErrorLog_RQ _objSearch = new MDMSVC.DC_SupplierImportFile_ErrorLog_RQ();
                     TextBox txtPath = (TextBox)frmViewDetailsConfig.FindControl("txtPath");
