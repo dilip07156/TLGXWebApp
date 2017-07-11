@@ -121,9 +121,15 @@ namespace TLGX_Consumer.controls.geography
 
         private void fillStateByCountryId(string Country_Id)
         {
+            //frmCityMaster.ChangeMode(FormViewMode.Edit);
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
+            //var result = _objMasterData.
+            
+
             var result = _objMasterData.GetStatesByCountry(Country_Id);
             ddlState.DataSource = result;
+            ddlState.DataTextField = "State_Name";
+            ddlState.DataValueField = "State_Id";
             ddlState.DataBind();
         }
 
@@ -139,7 +145,7 @@ namespace TLGX_Consumer.controls.geography
                     panSearchConditions.Visible = false;
                     fillCityForm(Request.QueryString["City_Id"]);
                     fillCityArea((Request.QueryString["City_Id"]));
-
+                    fillStateByCountryId(Session["Country_id"].ToString());
                 }
 
 
@@ -283,10 +289,9 @@ namespace TLGX_Consumer.controls.geography
 
         protected void btnGetCities_Click(object sender, EventArgs e)
         {
-
             CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
             fillgvCityyList(CountryID, 0);
-            fillStateByCountryId(ddlCountry.SelectedValue.ToString());
+            Session["Country_id"] = ddlCountry.SelectedValue.ToString();
         }
 
         protected void grdCityList_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -299,6 +304,26 @@ namespace TLGX_Consumer.controls.geography
         {
             CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
             fillgvCityyList(CountryID, 0);
+        }
+
+        protected void frmCityMaster_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+            if(e.CommandName.ToString()== "Update")
+            {
+                //_obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
+                //_obj.Option = "UPDATE";
+                //_objMasterData.SaveCityArea(_obj);
+
+                //fillCityArea(Request.QueryString["City_Id"]);
+                //frmCityArea.ChangeMode(FormViewMode.Insert);
+
+            
+            }
+        }
+
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlState.
         }
     }
 }

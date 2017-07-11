@@ -106,7 +106,7 @@
                         <div class="panel-heading">City Details</div>
                         <div class="panel-body">
 
-                            <asp:FormView ID="frmCityMaster" runat="server" DataKeyNames="City_Id" DefaultMode="Edit" CssClass="form-group">
+                            <asp:FormView ID="frmCityMaster" runat="server" DataKeyNames="City_Id" DefaultMode="Edit" CssClass="form-group" OnItemCommand="frmCityMaster_ItemCommand">
                                 <EditItemTemplate>
 
                                     <label for="txtCityName">City Name</label>
@@ -116,7 +116,7 @@
                                     <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
                                     <label for="ddlState">State</label>
-                                    <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                     </asp:DropDownList>
 
