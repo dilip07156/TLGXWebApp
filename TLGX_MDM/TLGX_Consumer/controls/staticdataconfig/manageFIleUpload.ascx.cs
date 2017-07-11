@@ -242,14 +242,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
             string fileName = filename;
             try
             {
-                var destinationDir = Server.MapPath(ServerPath) + Convert.ToString(Session["SupplierListSelected"]) + "//" + Convert.ToString(Session["EntityListSelected"]);
+                var destinationDir = Server.MapPath(ServerPath) + Convert.ToString(Session["SupplierListSelected"]) + "\\" + Convert.ToString(Session["EntityListSelected"]);
                 if (!Directory.Exists(destinationDir))
                 {
                     Directory.CreateDirectory(destinationDir);
                 }
 
                 var newFileID = Guid.NewGuid();
-                string fileSavePath = destinationDir + "//" + Path.GetFileNameWithoutExtension(fileName) + "-" + newFileID.ToString() + Path.GetExtension(fileName);
+                string fileSavePath = destinationDir + "\\" + Path.GetFileNameWithoutExtension(fileName) + "-" + newFileID.ToString() + Path.GetExtension(fileName);
 
                 FileUpld.SaveAs(fileSavePath);
 
