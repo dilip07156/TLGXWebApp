@@ -48,8 +48,10 @@ namespace TLGX_Consumer.hotels
 
             else
             {
-                Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                 string   fd = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                 Fromdate = Convert.ToDateTime(fd);
+                 string td = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                ToDate = Convert.ToDateTime(td);
 
                 TimeSpan diff = ToDate - Fromdate;
                 int days = diff.Days;
