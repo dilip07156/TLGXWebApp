@@ -34,6 +34,8 @@ namespace TLGX_Consumer.staticdata
 
             {
                 ReportViewersupplierwise.Visible = false;
+                supplierwisedata.Visible = true;
+                //allsupplierdata.Visible = true;
                 fillsuppliers();
 
             }
@@ -43,7 +45,6 @@ namespace TLGX_Consumer.staticdata
 
         private void fillsuppliers()
         {
-            //ddlSupplierName.DataSource = objMasterDataDAL.GetSupplierMasterData();
             ddlSupplierName.DataSource = _objMasterSVC.GetSupplierMasterData();
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
@@ -52,7 +53,7 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
         {
-            supplierwisedata.Style.Add("display", "none");
+           
             Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
             string SupplierID = ddlSupplierName.SelectedValue;
             if (SupplierID == "0")
@@ -69,28 +70,10 @@ namespace TLGX_Consumer.staticdata
             }
             else
             {
-
-                //var DataSet1 = MapSvc.GetsupplierwiseUnmappedCountryReport(SupplierID);
-                //var DataSet2 = MapSvc.GetsupplierwiseUnmappedCityReport(SupplierID);
-                //var DataSet3 = MapSvc.GetsupplierwiseUnmappedProductReport(SupplierID);
-                //var DataSet4 = MapSvc.GetsupplierwiseUnmappedActivityReport(SupplierID);
-                //var DataSet5 = MapSvc.GetsupplierwiseSummaryReport(SupplierID);
                 var DataSet1 = MapSvc.GetsupplierwiseUnmappedSummaryReport(SupplierID);
-                //ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
-
-                //ReportDataSource rds2 = new ReportDataSource("DataSet2", DataSet2);
-                // ReportDataSource rds3 = new ReportDataSource("DataSet3", DataSet3);
-                //ReportDataSource rds4 = new ReportDataSource("DataSet4", DataSet4);
-                //ReportDataSource rds5 = new ReportDataSource("DataSet5", DataSet5);
                 ReportDataSource rds1 = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewersupplierwise.LocalReport.DataSources.Clear();
                 ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptSupplierwiseReport.rdlc";
-               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
-
-               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds2);
-               // ReportViewersupplierwise.LocalReport.DataSources.Add(rds3);
-                //ReportViewersupplierwise.LocalReport.DataSources.Add(rds4);
-                //ReportViewersupplierwise.LocalReport.DataSources.Add(rds5);
                 ReportViewersupplierwise.LocalReport.DataSources.Add(rds1);
                 //Populate Report Paramater for passing current date (month)
                 //  ReportParameter p1 = new ReportParameter("ReportParameter1", SupplierID);
