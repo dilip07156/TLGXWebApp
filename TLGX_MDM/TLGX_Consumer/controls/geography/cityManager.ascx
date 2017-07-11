@@ -110,7 +110,7 @@
                                 <EditItemTemplate>
 
                                     <label for="txtCityName">City Name</label>
-                                    <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' Enabled="false" />
+                                    <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' Enabled="true" />
 
                                     <label for="txtCityCode">City Code</label>
                                     <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
@@ -121,7 +121,7 @@
                                     </asp:DropDownList>
 
                                     <label for="txtCityCode">State Code</label>
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' />
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false"/>
 
 
 

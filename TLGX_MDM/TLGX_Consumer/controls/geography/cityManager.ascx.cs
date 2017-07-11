@@ -119,6 +119,14 @@ namespace TLGX_Consumer.controls.geography
             grdCityAreaLocation.DataBind();
         }
 
+        private void fillStateByCountryId(string Country_Id)
+        {
+            DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
+            var result = _objMasterData.GetStatesByCountry(Country_Id);
+            ddlState.DataSource = result;
+            ddlState.DataBind();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -278,7 +286,7 @@ namespace TLGX_Consumer.controls.geography
 
             CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
             fillgvCityyList(CountryID, 0);
-
+            fillStateByCountryId(ddlCountry.SelectedValue.ToString());
         }
 
         protected void grdCityList_PageIndexChanging(object sender, GridViewPageEventArgs e)
