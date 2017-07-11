@@ -170,7 +170,7 @@
                         <asp:GridView ID="gvFileUploadSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging"
-                            OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id" OnRowDataBound="gvFileUploadSearch_RowDataBound">
+                            OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id">
                             <Columns>
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />

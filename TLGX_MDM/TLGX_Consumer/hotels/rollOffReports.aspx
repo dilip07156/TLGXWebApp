@@ -5,13 +5,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        #ctl00_MainContent_ReportViewer1_fixedTable{
-               height: 100%;
-               width: 100%;
-
+        #ctl00_MainContent_ReportViewer1_fixedTable {
+            height: 100%;
+            width: 100%;
         }
-
-</style> 
+    </style>
     <div class="row">
         <div class="col-md-12">
             <h1 class="page-header">ROLL OFF REPORTS</h1>
@@ -65,33 +63,33 @@
                             <p id="nulldate" runat="server"></p>
                             <p id="errorrange" runat="server"></p>
                         </div>
-                     </div>
+                    </div>
                     <br />
-                     <div class="row">
-                            <div class="col-sm-4" style="display:None">
-                                <asp:Label ID="lblrule" runat="server" Text="Rules report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
+                    <div class="row">
+                        <div class="col-sm-4" style="display: None">
+                            <asp:Label ID="lblrule" runat="server" Text="Rules report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
                                  <asp:Button runat="server" Text="View Status" ID="btnRuleCsv" OnClick="btnRuleCsv_Click" CssClass="btn btn-primary "></asp:Button>
-                            </div>
-                            <div class="col-sm-4">
-                                <asp:Label ID="lblstatus" runat="server" Text="Status report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
-                                 <asp:Button runat="server" Text="View Status" ID="btnStatusCsv" OnClick="btnStatusCsv_Click" CssClass="btn btn-primary"></asp:Button>
-                            </div>
-                            <div class="col-sm-4">
-                                <asp:Label ID="lblupdate" runat="server" Text="Updates report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
-                                 <asp:Button runat="server" Text="View Status" ID="btnUpdateCsv" OnClick="btnUpdateCsv_Click" CssClass="btn btn-primary"></asp:Button>
-                            </div>
                         </div>
+                        <div class="col-sm-4">
+                            <asp:Label ID="lblstatus" runat="server" Text="Status report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
+                                 <asp:Button runat="server" Text="View Status" ID="btnStatusCsv" OnClick="btnStatusCsv_Click" CssClass="btn btn-primary"></asp:Button>
+                        </div>
+                        <div class="col-sm-4">
+                            <asp:Label ID="lblupdate" runat="server" Text="Updates report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
+                                 <asp:Button runat="server" Text="View Status" ID="btnUpdateCsv" OnClick="btnUpdateCsv_Click" CssClass="btn btn-primary"></asp:Button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="container">
-        <%--<div class="row col-md-12">--%>
-            <div style="width:100% ; height:100%">
-                <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage"   ShowFindControls="False">
-                      <LocalReport ReportPath="hotels\rptRuleReport.rdlc"> </LocalReport>
-                </rsweb:ReportViewer>
-           </div>
+        <div style="width: 100%; height: 100%">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+                <LocalReport ReportPath="hotels\rptRuleReport.rdlc">
+                </LocalReport>
+
+            </rsweb:ReportViewer>
         </div>
-   <%-- </div>--%>
+    </div>
 </asp:Content>
