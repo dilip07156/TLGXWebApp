@@ -71,7 +71,7 @@ namespace TLGX_Consumer.controls.staticdata
                 RQParams.Accommodation_Id = Accomodation_ID;
                 RQParams.PageNo = PageIndexMapped;
                 RQParams.PageSize = 10;
-                RQParams.StatusExcept = "MAPPED";
+                RQParams.StatusExcept = "UNMAPPED";
 
                 //var resmapped = MapSvc.GetProductMappingMasterData(PageIndexMapped, 10, Accomodation_ID, "MAPPED,REVIEW");
                 var resmapped = MapSvc.GetProductMappingMasterData(RQParams);
