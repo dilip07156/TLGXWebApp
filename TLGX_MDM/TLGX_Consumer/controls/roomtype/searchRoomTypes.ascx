@@ -73,6 +73,15 @@ $(document).ready(function(){
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6" for="txtPRoductName">
+                                                Product                                       
+                                            </label>
+                                            <div class="col-sm-6">
+                                                <asp:TextBox ID="txtPRoductName" runat="server" CssClass="form-control" ></asp:TextBox>
+                                            </div>
+                                        </div>
+
 
 
                                         <div class="form-group">
