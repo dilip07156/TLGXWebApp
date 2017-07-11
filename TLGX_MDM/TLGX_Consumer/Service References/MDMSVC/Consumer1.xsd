@@ -75,6 +75,7 @@
   <xs:element name="DC_Accomodation_ProductMapping" nillable="true" type="tns:DC_Accomodation_ProductMapping" />
   <xs:complexType name="DC_Mapping_ProductSupplier_Search_RQ">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Brand" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />

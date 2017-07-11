@@ -15001,6 +15001,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Address_txField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -15085,6 +15088,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
             }
         }
         
@@ -27578,10 +27594,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetAccomodationProductMapping", ReplyAction="http://tempuri.org/IMapping/GetAccomodationProductMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetAccomodationProductMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[] GetAccomodationProductMapping(string PageNo, string PageSize, string Accomodation_Id, string Status);
+        TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[] GetAccomodationProductMapping(TLGX_Consumer.MDMSVC.DC_Mapping_ProductSupplier_Search_RQ obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetAccomodationProductMapping", ReplyAction="http://tempuri.org/IMapping/GetAccomodationProductMappingResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[]> GetAccomodationProductMappingAsync(string PageNo, string PageSize, string Accomodation_Id, string Status);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[]> GetAccomodationProductMappingAsync(TLGX_Consumer.MDMSVC.DC_Mapping_ProductSupplier_Search_RQ obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetProductSupplierMappingSearch", ReplyAction="http://tempuri.org/IMapping/GetProductSupplierMappingSearchResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetProductSupplierMappingSearchDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -29285,12 +29301,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetAccomodationProductMappingByIdAsync(Accommodation_ProductMapping_Id);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[] GetAccomodationProductMapping(string PageNo, string PageSize, string Accomodation_Id, string Status) {
-            return base.Channel.GetAccomodationProductMapping(PageNo, PageSize, Accomodation_Id, Status);
+        public TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[] GetAccomodationProductMapping(TLGX_Consumer.MDMSVC.DC_Mapping_ProductSupplier_Search_RQ obj) {
+            return base.Channel.GetAccomodationProductMapping(obj);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[]> GetAccomodationProductMappingAsync(string PageNo, string PageSize, string Accomodation_Id, string Status) {
-            return base.Channel.GetAccomodationProductMappingAsync(PageNo, PageSize, Accomodation_Id, Status);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[]> GetAccomodationProductMappingAsync(TLGX_Consumer.MDMSVC.DC_Mapping_ProductSupplier_Search_RQ obj) {
+            return base.Channel.GetAccomodationProductMappingAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation_ProductMapping[] GetProductSupplierMappingSearch(TLGX_Consumer.MDMSVC.DC_Mapping_ProductSupplier_Search_RQ obj) {
