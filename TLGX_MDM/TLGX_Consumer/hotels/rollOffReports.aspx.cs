@@ -112,14 +112,16 @@ namespace TLGX_Consumer.hotels
             else
             {
                 ReportViewer1.Visible = true;
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
+                var fd = txtFrom.Text.Trim();
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
                 var DataSet1 = MapSvc.getStatisticforStatusReport(parm);
                 ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewer1.LocalReport.DataSources.Clear();
                 ReportViewer1.LocalReport.ReportPath = "hotels/rptStatusreport.rdlc";
                 ReportViewer1.LocalReport.DataSources.Add(rds);
                 ReportViewer1.Visible = true;
+                ReportViewer1.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
                 ReportViewer1.DataBind();
                 ReportViewer1.LocalReport.Refresh();
             }
@@ -144,6 +146,7 @@ namespace TLGX_Consumer.hotels
                 ReportViewer1.LocalReport.ReportPath = "hotels/rptUpdateReport.rdlc";
                 ReportViewer1.LocalReport.DataSources.Add(rds);
                 ReportViewer1.Visible = true;
+                ReportViewer1.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
                 ReportViewer1.DataBind();
                 ReportViewer1.LocalReport.Refresh();
             }
