@@ -85,8 +85,8 @@ namespace TLGX_Consumer.hotels
             {
                 ReportViewer1.Visible = true;
                 errordiv.Visible = false;
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
                 //parm.Fromdate = fromDate.Value.ToString();
                 // parm.ToDate = toDate.Value.ToString();
                 var DataSet1 = MapSvc.getStatisticforRuleReport(parm);
@@ -112,8 +112,8 @@ namespace TLGX_Consumer.hotels
             else
             {
                 ReportViewer1.Visible = true;
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
                 var DataSet1 = MapSvc.getStatisticforStatusReport(parm);
                 ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewer1.LocalReport.DataSources.Clear();
@@ -137,8 +137,8 @@ namespace TLGX_Consumer.hotels
             else
             {
                 ReportViewer1.Visible = true;
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString();
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
                 var DataSet1 = MapSvc.getStatisticforUpdateReport(parm);
                 ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewer1.LocalReport.DataSources.Clear();
