@@ -65,25 +65,33 @@ namespace TLGX_Consumer.controls.staticdata
             //RQAPM = null;
             if (Accomodation_ID != null)
             {
-            }
-            PageIndexMapped = intMappedgrvwPageNo;
-            var resmapped = MapSvc.GetProductMappingMasterData(PageIndexMapped, 10, Accomodation_ID, "MAPPED");
-            if (resmapped != null)
-            {
-                grdAccoMaps.DataSource = resmapped;
-                if (resmapped.Count > 0)
+                PageIndexMapped = intMappedgrvwPageNo;
+
+                MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQParams = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
+                RQParams.Accommodation_Id = Accomodation_ID;
+                RQParams.PageNo = PageIndexMapped;
+                RQParams.PageSize = 10;
+                RQParams.StatusExcept = "UNMAPPED";
+
+                //var resmapped = MapSvc.GetProductMappingMasterData(PageIndexMapped, 10, Accomodation_ID, "MAPPED,REVIEW");
+                var resmapped = MapSvc.GetProductMappingMasterData(RQParams);
+                if (resmapped != null)
                 {
-                    grdAccoMaps.VirtualItemCount = resmapped[0].TotalRecords;
-                    lblMappedData.Text = resmapped[0].TotalRecords.ToString();
+                    grdAccoMaps.DataSource = resmapped;
+                    if (resmapped.Count > 0)
+                    {
+                        grdAccoMaps.VirtualItemCount = resmapped[0].TotalRecords;
+                        lblMappedData.Text = resmapped[0].TotalRecords.ToString();
+                    }
+                    else
+                        lblMappedData.Text = "0";
                 }
                 else
                     lblMappedData.Text = "0";
+                grdAccoMaps.PageIndex = PageIndexMapped;
+                grdAccoMaps.PageSize = 10;
+                grdAccoMaps.DataBind();
             }
-            else
-                lblMappedData.Text = "0";
-            grdAccoMaps.PageIndex = PageIndexMapped;
-            grdAccoMaps.PageSize = 10;
-            grdAccoMaps.DataBind();
         }
         protected void grdAccoMaps_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -418,8 +426,13 @@ namespace TLGX_Consumer.controls.staticdata
                 int index = Convert.ToInt32(e.CommandArgument);
                 Guid myRow_Id = Guid.Parse(grdProductSearch.DataKeys[index].Value.ToString());
 
-                grdAccoMaps.DataSource = AccSvc.GetAccomodation_ProductMapping(myRow_Id, 0, 10);
-                grdAccoMaps.DataBind();
+                if (myRow_Id != null && myRow_Id != Guid.Empty)
+                {
+                    Accomodation_ID = myRow_Id;
+                    fillmappeddata();
+                }
+                //grdAccoMaps.DataSource = AccSvc.GetAccomodation_ProductMapping(myRow_Id, 0, 10);
+                //grdAccoMaps.DataBind();
 
                 //#2 set the starting search for existing maps - there's an issue on the servie at the moment so this is stub data just to populate the UI
                 grdSupplierDump.DataSource = AccSvc.GetAccomodation_ProductMapping(Guid.Empty, 0, 5);

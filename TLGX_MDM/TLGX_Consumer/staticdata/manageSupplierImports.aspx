@@ -47,7 +47,6 @@
           margin: 5px;
        }*/
     </style>
-
     <script type="text/javascript">
         //color array for charts
         var colorsArray = [];
@@ -60,12 +59,11 @@
         }
         //end
         function getChartData() {
-            $("#supplierwisedata").css("display", "block");
             var e = document.getElementById("MainContent_ddlSupplierName");
             var sid = e.options[e.selectedIndex].value.toString();
             if (sid == '0') {
                 //for last three charts.
-                $("#dvUnmappedData").css("display", "block");
+              //  $("#allsupplierdata").css("display", "block");
                 getAllSupplierData();
                 sid = '00000000-0000-0000-0000-000000000000'
             }
@@ -478,15 +476,15 @@
 
 
         }
-
         $(window).on('load', function () {
             getChartData();
         });
 
         $("#MainContent_btnUpdateSupplier").click(function (event) {
-          $("#supplierwisedata").css("display", "block");
-            $("#ctl00_MainContent_ReportViewersupplierwise_ReportViewer").css("display", "None");
-            event.preventDefault();
+            var e = document.getElementById("MainContent_ddlSupplierName");
+            var sid = e.options[e.selectedIndex].value.toString();
+            if (sid == '0') {
+                $("#allsupplierdata").css("display", "block");
 
             getChartData();
         });
@@ -517,7 +515,7 @@
     </div>
     <hr />
     <%--for first three charts--%>
-    <div class="row" id="supplierwisedata" runat="server" style="display:none">
+    <div class="row" id="supplierwisedata" runat="server" >
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -615,7 +613,7 @@
         </div>
     </div>
     <%-- for last three pie charts--%>
-    <div class="row" id="dvUnmappedData" style="display: none">
+    <div class="row" id="allsupplierdata" style="display: none">
         <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
             <div class="panel  panel-default">
                 <div class="panel-heading">
