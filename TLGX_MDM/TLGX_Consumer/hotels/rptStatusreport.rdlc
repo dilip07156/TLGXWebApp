@@ -2,35 +2,35 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <Body>
     <ReportItems>
-      <Tablix Name="RuleTable">
+      <Tablix Name="StatusTable">
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1.60042cm</Width>
+              <Width>2.80618cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.20896cm</Width>
+              <Width>3.41472cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.60607cm</Width>
+              <Width>2.81183cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.23cm</Width>
+              <Width>2.43576cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.11667cm</Width>
+              <Width>3.32243cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.65333cm</Width>
+              <Width>2.85909cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.57396cm</Width>
+              <Width>2.77972cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.70576cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.86451cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -343,7 +343,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Hotelid</rd:DefaultName>
@@ -632,9 +634,9 @@
         <KeepTogether>true</KeepTogether>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.49802cm</Top>
-        <Left>0.12491cm</Left>
+        <Left>0.37902cm</Left>
         <Height>1.2cm</Height>
-        <Width>16.98941cm</Width>
+        <Width>28cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -645,7 +647,7 @@
     <Height>0.86458in</Height>
     <Style />
   </Body>
-  <Width>7.37884in</Width>
+  <Width>11.33061in</Width>
   <Page>
     <PageHeader>
       <Height>2.38125cm</Height>
@@ -659,23 +661,27 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>                                  Status Report</Value>
-                  <Style />
+                  <Value>Status Report</Value>
+                  <Style>
+                    <FontSize>14pt</FontSize>
+                    <TextDecoration>Underline</TextDecoration>
+                  </Style>
                 </TextRun>
               </TextRuns>
-              <Style />
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
           <Top>0.29104cm</Top>
-          <Left>3.2114cm</Left>
-          <Height>0.6cm</Height>
-          <Width>9.82896cm</Width>
+          <Left>0.52599cm</Left>
+          <Height>0.75875cm</Height>
+          <Width>3.74354cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
-            <BackgroundColor>LightGrey</BackgroundColor>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -698,6 +704,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
           <Top>1.41139cm</Top>
+          <Left>0.52599cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>1</ZIndex>
@@ -769,7 +776,7 @@
           </Paragraphs>
           <rd:DefaultName>Textbox49</rd:DefaultName>
           <Top>0.18203cm</Top>
-          <Left>0.52599cm</Left>
+          <Left>0.49071cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <Style>
