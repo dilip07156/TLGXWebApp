@@ -323,7 +323,6 @@ namespace TLGX_Consumer.controls.geography
 
         protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ddlState.
         }
     }
 }
