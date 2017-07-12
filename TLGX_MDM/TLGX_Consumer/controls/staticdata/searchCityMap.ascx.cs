@@ -1211,6 +1211,7 @@ namespace TLGX_Consumer.controls.staticdata
         protected void ckboxIsExactMatch_CheckedChanged(object sender, EventArgs e)
         {
             fillmatchingdata("");
+            dvMsg.Visible = false;
         }
     }
 }
