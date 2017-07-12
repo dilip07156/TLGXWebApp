@@ -587,7 +587,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>= formatdatetime(today)</Value>
+                  <Value>=format(CDate(today), "dd/MM/yyyy")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>

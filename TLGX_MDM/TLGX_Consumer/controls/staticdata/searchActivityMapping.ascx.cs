@@ -273,11 +273,14 @@ namespace TLGX_Consumer.controls.staticdata
                 ddlActivityFilterCountry.DataValueField = "Country_Id";
                 ddlActivityFilterCountry.DataTextField = "Country_Name";
                 ddlActivityFilterCountry.DataBind();
-                foreach(ListItem item in ddlActivityFilterCountry.Items)
+                if (!string.IsNullOrWhiteSpace(SupplierCountryName))
                 {
-                    if(item.Text.ToLower() == SupplierCountryName.ToLower())
+                    foreach (ListItem item in ddlActivityFilterCountry.Items)
                     {
-                        ddlActivityFilterCountry.SelectedIndex = ddlActivityFilterCountry.Items.IndexOf(ddlActivityFilterCountry.Items.FindByText(System.Web.HttpUtility.HtmlDecode(item.Text)));
+                        if (item.Text.ToLower() == SupplierCountryName.ToLower())
+                        {
+                            ddlActivityFilterCountry.SelectedIndex = ddlActivityFilterCountry.Items.IndexOf(ddlActivityFilterCountry.Items.FindByText(System.Web.HttpUtility.HtmlDecode(item.Text)));
+                        }
                     }
                 }
 
@@ -289,17 +292,20 @@ namespace TLGX_Consumer.controls.staticdata
                 ddlActivityFilterCity.DataValueField = "City_ID";
                 ddlActivityFilterCity.DataTextField = "Name";
                 ddlActivityFilterCity.DataBind();
-                foreach (ListItem item in ddlActivityFilterCity.Items)
+                if (!string.IsNullOrWhiteSpace(SupplierCityName))
                 {
-                    if (item.Text.ToLower() == SupplierCityName.ToLower())
+                    foreach (ListItem item in ddlActivityFilterCity.Items)
                     {
-                        ddlActivityFilterCity.SelectedIndex = ddlActivityFilterCity.Items.IndexOf(ddlActivityFilterCity.Items.FindByText(System.Web.HttpUtility.HtmlDecode(item.Text)));
+                        if (item.Text.ToLower() == SupplierCityName.ToLower())
+                        {
+                            ddlActivityFilterCity.SelectedIndex = ddlActivityFilterCity.Items.IndexOf(ddlActivityFilterCity.Items.FindByText(System.Web.HttpUtility.HtmlDecode(item.Text)));
+                        }
                     }
                 }
               //  ddlActivityFilterCity.SelectedIndex = ddlActivityFilterCity.Items.IndexOf(ddlActivityFilterCity.Items.FindByText(System.Web.HttpUtility.HtmlDecode(SupplierCityName)));
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
@@ -538,7 +544,7 @@ namespace TLGX_Consumer.controls.staticdata
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

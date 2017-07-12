@@ -68,7 +68,7 @@ namespace TLGX_Consumer.controls.staticdata
                 PageIndexMapped = intMappedgrvwPageNo;
 
                 MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQParams = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
-                RQParams.Accommodation_Id = Accomodation_ID;
+                RQParams.Accommodation_Id = Accomodation_ID;    
                 RQParams.PageNo = PageIndexMapped;
                 RQParams.PageSize = 10;
                 RQParams.StatusExcept = "UNMAPPED";

@@ -655,7 +655,7 @@ namespace TLGX_Consumer.controls.staticdata
                 bool res = false;
                 foreach (GridViewRow row in grdMatchingCity.Rows)
                 {
-                    HtmlInputCheckBox chk = row.Cells[12].Controls[1] as HtmlInputCheckBox;
+                    HtmlInputCheckBox chk = row.Cells[13].Controls[1] as HtmlInputCheckBox;
 
                    // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
                     if (chk != null && chk.Checked)
