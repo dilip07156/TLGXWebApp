@@ -107,7 +107,7 @@ namespace TLGX_Consumer.controls.geography
         {
             // dtCityArea = objMasterDataDAL.GetMasterCityAreaData(Guid.Parse(City_Id));
             var result = _objMasterData.GetMasterCityAreaData(City_Id);
-            grdCityAreas.DataSource = dtCityArea;
+            grdCityAreas.DataSource = result;
             grdCityAreas.DataBind();
         }
 
@@ -115,8 +115,22 @@ namespace TLGX_Consumer.controls.geography
         {
             //dtCityAreaLocation = objMasterDataDAL.GetMasterCityAreaLocationData(Guid.Parse(CityArea_Id));\
             var result = _objMasterData.GetMasterCityAreaLocationData(CityArea_Id);
-            grdCityAreaLocation.DataSource = dtCityAreaLocation;
+            grdCityAreaLocation.DataSource = result;
             grdCityAreaLocation.DataBind();
+        }
+
+        private void fillStateByCountryId(string Country_Id)
+        {
+            //frmCityMaster.ChangeMode(FormViewMode.Edit);
+            DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
+            //var result = _objMasterData.
+            
+
+            var result = _objMasterData.GetStatesByCountry(Country_Id);
+            ddlState.DataSource = result;
+            ddlState.DataTextField = "State_Name";
+            ddlState.DataValueField = "State_Id";
+            ddlState.DataBind();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -131,7 +145,7 @@ namespace TLGX_Consumer.controls.geography
                     panSearchConditions.Visible = false;
                     fillCityForm(Request.QueryString["City_Id"]);
                     fillCityArea((Request.QueryString["City_Id"]));
-
+                    fillStateByCountryId(Session["Country_id"].ToString());
                 }
 
 
@@ -168,16 +182,16 @@ namespace TLGX_Consumer.controls.geography
             _obj.Code = txtCityAreaCode.Text.Trim();
             if (e.CommandName.ToString() == "Add")
             {
-                //_obj.CityArea_Id = Guid.NewGuid();
-                //_obj.Option = "Save";
-                //_objMasterData.SaveCityArea(_obj);
+                _obj.CityArea_Id = Guid.NewGuid();
+                _obj.Option = "Save";
+                _objMasterData.SaveCityArea(_obj);
 
-                //// objMasterDataDAL.SaveCityArea(obj, Models.MasterDataDAL.operation.Save);
+                // objMasterDataDAL.SaveCityArea(obj, Models.MasterDataDAL.operation.Save);
 
-                //fillCityArea(Request.QueryString["City_Id"]);
-                //txtCityAreaName.Text = "";
-                //txtCityAreaCode.Text = "";
-                //frmCityArea.ChangeMode(FormViewMode.Insert);
+                fillCityArea(Request.QueryString["City_Id"]);
+                txtCityAreaName.Text = "";
+                txtCityAreaCode.Text = "";
+                frmCityArea.ChangeMode(FormViewMode.Insert);
 
 
             }
@@ -275,10 +289,9 @@ namespace TLGX_Consumer.controls.geography
 
         protected void btnGetCities_Click(object sender, EventArgs e)
         {
-
             CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
             fillgvCityyList(CountryID, 0);
-
+            Session["Country_id"] = ddlCountry.SelectedValue.ToString();
         }
 
         protected void grdCityList_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -291,6 +304,25 @@ namespace TLGX_Consumer.controls.geography
         {
             CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
             fillgvCityyList(CountryID, 0);
+        }
+
+        protected void frmCityMaster_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+            if(e.CommandName.ToString()== "Update")
+            {
+                //_obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
+                //_obj.Option = "UPDATE";
+                //_objMasterData.SaveCityArea(_obj);
+
+                //fillCityArea(Request.QueryString["City_Id"]);
+                //frmCityArea.ChangeMode(FormViewMode.Insert);
+
+            
+            }
+        }
+
+        protected void ddlState_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

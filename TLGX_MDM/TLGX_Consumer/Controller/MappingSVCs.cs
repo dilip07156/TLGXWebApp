@@ -65,10 +65,16 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_GetProductMappingByIdURI"], Accommodation_ProductMapping_Id), typeof(List<DC_Accomodation_ProductMapping>), out result);
             return result as List<DC_Accomodation_ProductMapping>;
         }
-        public List<DC_Accomodation_ProductMapping> GetProductMappingMasterData(int PageNo, int PageSize, Guid Accommodation_Id, string Status)
+        //public List<DC_Accomodation_ProductMapping> GetProductMappingMasterData(int PageNo, int PageSize, Guid Accommodation_Id, string Status)
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_GetProductMappingMasterURI"], PageNo, PageSize, Accommodation_Id, Status), typeof(List<DC_Accomodation_ProductMapping>), out result);
+        //    return result as List<DC_Accomodation_ProductMapping>;
+        //}
+        public List<DC_Accomodation_ProductMapping> GetProductMappingMasterData(MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_GetProductMappingMasterURI"], PageNo, PageSize, Accommodation_Id, Status), typeof(List<DC_Accomodation_ProductMapping>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_GetProductMappingMasterURI"], RQParams, typeof(MDMSVC.DC_Mapping_ProductSupplier_Search_RQ), typeof(List<MDMSVC.DC_Accomodation_ProductMapping>), out result);
             return result as List<DC_Accomodation_ProductMapping>;
         }
 

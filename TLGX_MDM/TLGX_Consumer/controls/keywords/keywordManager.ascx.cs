@@ -68,6 +68,7 @@ namespace TLGX_Consumer.controls.keywords
             {
                 gvSearchResult.DataSource = null;
                 gvSearchResult.DataBind();
+                lblTotalCount.Text = String.Empty;
             }
         }
 
@@ -231,6 +232,7 @@ namespace TLGX_Consumer.controls.keywords
             txtKeyword.Text = String.Empty;
             txtAlias.Text = String.Empty;
             ddlStatus.SelectedIndex = 0;
+            lblTotalCount.Text = "0";
             gvSearchResult.DataSource = null;
             gvSearchResult.DataBind();
         }

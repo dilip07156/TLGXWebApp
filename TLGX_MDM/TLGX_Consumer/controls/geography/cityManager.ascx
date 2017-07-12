@@ -106,22 +106,22 @@
                         <div class="panel-heading">City Details</div>
                         <div class="panel-body">
 
-                            <asp:FormView ID="frmCityMaster" runat="server" DataKeyNames="City_Id" DefaultMode="Edit" CssClass="form-group">
+                            <asp:FormView ID="frmCityMaster" runat="server" DataKeyNames="City_Id" DefaultMode="Edit" CssClass="form-group" OnItemCommand="frmCityMaster_ItemCommand">
                                 <EditItemTemplate>
 
                                     <label for="txtCityName">City Name</label>
-                                    <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' Enabled="false" />
+                                    <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' Enabled="true" />
 
                                     <label for="txtCityCode">City Code</label>
                                     <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
                                     <label for="ddlState">State</label>
-                                    <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True">
+                                    <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                     </asp:DropDownList>
 
                                     <label for="txtCityCode">State Code</label>
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' />
+                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false"/>
 
 
 
@@ -155,7 +155,8 @@
                             <div class="row">
                                 <div class="col-lg-8">
 
-                                    <asp:GridView ID="grdCityAreas" DataKeyNames="CityArea_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="False" EmptyDataText="No City Areas defined" OnSelectedIndexChanged="grdCityAreas_SelectedIndexChanged">
+                                    <asp:GridView ID="grdCityAreas" DataKeyNames="CityArea_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="False" 
+                                        EmptyDataText="No City Areas defined" OnSelectedIndexChanged="grdCityAreas_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField HeaderText="Name" DataField="Name" SortExpression="Name" />
                                             <asp:BoundField HeaderText="Code" DataField="Code" SortExpression="Code" />
@@ -222,7 +223,8 @@
                             <div class="row" runat="server" id="dvCityAreaLocations" visible="false">
                                 <div class="col-lg-8">
 
-                                    <asp:GridView ID="grdCityAreaLocation" DataKeyNames="CityAreaLocation_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="false" EmptyDataText="No City Areas Locations defined" OnSelectedIndexChanged="grdCityAreaLocation_SelectedIndexChanged">
+                                    <asp:GridView ID="grdCityAreaLocation" DataKeyNames="CityAreaLocation_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="false" 
+                                        EmptyDataText="No City Areas Locations defined" OnSelectedIndexChanged="grdCityAreaLocation_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField HeaderText="Name" DataField="Name" SortExpression="Name" />
                                             <asp:BoundField HeaderText="Code" DataField="Code" SortExpression="Code" />

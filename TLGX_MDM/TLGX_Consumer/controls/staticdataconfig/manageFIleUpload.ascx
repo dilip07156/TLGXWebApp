@@ -144,7 +144,7 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click"/>
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
             </div>
         </div>
 
@@ -170,17 +170,23 @@
                         <asp:GridView ID="gvFileUploadSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging"
-                            OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id" OnRowDataBound="gvFileUploadSearch_RowDataBound">
+                            OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id">
                             <Columns>
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="Server File Path" DataField="SavedFilePath" />
                                 <asp:BoundField HeaderText="Status" DataField="STATUS" />
                                 <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" />
+
+                                <%--<asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("Accommodation_Description_Id") %>'>
+                                         <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
+                                        <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
+                                    </asp:LinkButton>--%>
+
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnProcess" runat="server" CausesValidation="false" CommandName="Process" CssClass="btn btn-default" Enabled="true">
-                                   <span aria-hidden="true">Process</span>
+                                        <asp:LinkButton ID="btnProcess" runat="server" CausesValidation="false" CommandName="Process" CssClass='<%# Eval("STATUS").ToString() == "UPLOADED" ? "btn btn-default" : "btn btn-default disabled" %>'>
+                                            <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "PROCESSED   " %></span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -257,7 +263,7 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="true" OnClientUploadComplete="OnClientUploadComplete()"
-                                        OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px"/>
+                                        OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />
                                 </div>
                             </div>
                         </div>
@@ -287,7 +293,7 @@
                 <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id">
+                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand">
 
                             <ItemTemplate>
                                 <div class="col-lg-12">
@@ -313,8 +319,17 @@
                                     </div>
 
                                     <div>
-                                        <asp:Button ID="btnPrevious" OnClick="btnPrevious_Click" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" Text="<" />
-                                        <asp:Button ID="btnNext" runat="server" OnClick="btnNext_Click" Visible="false" CssClass="btn btn-default pull-right" Text=">" />
+
+                                        <asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
+                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
+                                        </asp:LinkButton>
+
+                                        <asp:LinkButton ID="btnNext" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default pull-right" CommandName="Next">
+                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-right"></span>
+                                        </asp:LinkButton>
+
+                                        <%--<asp:Button ID="btnPrevious" OnClick="btnPrevious_Click" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" Text="<" />
+                                        <asp:Button ID="btnNext" runat="server" OnClick="btnNext_Click" Visible="false" CssClass="btn btn-default pull-right" Text=">" />--%>
                                         <asp:Label ID="lblTotalCount" runat="server"></asp:Label>
                                         <asp:Repeater ID="rptrErrorLog" runat="server">
                                             <HeaderTemplate>
@@ -356,8 +371,8 @@
                         </asp:FormView>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" OnClick="btnArchive_Click" />
-                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" OnClick="btnDownload_Click" />
+                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive"/>
+                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download"/>
                             </div>
                         </div>
                     </ContentTemplate>
