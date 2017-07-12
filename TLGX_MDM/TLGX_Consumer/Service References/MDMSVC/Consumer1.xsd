@@ -237,6 +237,7 @@
       <xs:element minOccurs="0" name="MasterCityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterCountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MasterStateCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterStateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Master_CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
