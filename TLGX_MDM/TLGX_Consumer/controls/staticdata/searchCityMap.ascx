@@ -45,6 +45,9 @@
     #map #infowindow-content {
         display: inline;
     }
+    .x-lg{
+        width:1100px;
+    }
 </style>
 
 <script type="text/javascript">
@@ -421,12 +424,12 @@
 
 <br />
 <!-- OPEN IN MODAL -->
-<div class="modal fade" id="moCityMapping" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="moCityMapping" role="dialog" >
+    <div class="modal-dialog modal-lg x-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="panel panel-default">
+                <div class="panel-title">
                     <h4 class="modal-title">Update Supplier City Mapping</h4>
                 </div>
             </div>
@@ -780,9 +783,14 @@
                                                     <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="StateName" HeaderText="State Name (State Code)">
+                                                    <%--<asp:BoundField DataField="StateName" HeaderText="State Name (State Code)">
                                                         <HeaderStyle BackColor="Turquoise" />
-                                                    </asp:BoundField>
+                                                    </asp:BoundField>--%>
+                                                    <asp:TemplateField ShowHeader="true" HeaderStyle-BackColor="Turquoise" HeaderText="State Name (State Code)">
+                                                        <ItemTemplate>
+                                                            <span aria-hidden="true"><%# Eval("MasterStateName")+ "(" + Eval("MasterStateCode") + ")" %></span>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
