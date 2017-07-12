@@ -381,6 +381,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     SelectedSupplierImportAttributeValue_Id = myRowId;
                     obj.SupplierImportFile_Id = res[0].SupplierImportFile_Id;
                     obj.Supplier_Id = res[0].Supplier_Id;
+                    obj.Supplier = res[0].Supplier;
                     obj.SavedFilePath = res[0].SavedFilePath;
                     obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
                     obj.Entity = res[0].Entity;

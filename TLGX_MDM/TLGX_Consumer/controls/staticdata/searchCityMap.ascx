@@ -46,7 +46,7 @@
         display: inline;
     }
     .x-lg{
-        width:1100px;
+        width:1200px;
     }
 </style>
 
@@ -774,7 +774,12 @@
                                                     <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                                     <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                                    <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />
+                                                     <asp:TemplateField ShowHeader="true" HeaderText="State Name (State Code)">
+                                                        <ItemTemplate>
+                                                            <span aria-hidden="true"><%# Eval("StateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("StateCode"))) ? "(" + Eval("StateCode") + ")" : string.Empty) %></span>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                   <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
                                                     <asp:BoundField DataField="CityCode" HeaderText="City Code" />
                                                     <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
@@ -788,7 +793,7 @@
                                                     </asp:BoundField>--%>
                                                     <asp:TemplateField ShowHeader="true" HeaderStyle-BackColor="Turquoise" HeaderText="State Name (State Code)">
                                                         <ItemTemplate>
-                                                            <span aria-hidden="true"><%# Eval("MasterStateName")+ "(" + Eval("MasterStateCode") + ")" %></span>
+                                                            <span aria-hidden="true"><%# Eval("MasterStateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MasterStateCode"))) ? "(" + Eval("MasterStateCode") + ")" : string.Empty) %></span>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
