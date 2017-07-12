@@ -25,8 +25,10 @@
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
@@ -67,13 +69,16 @@
       <xs:element minOccurs="0" name="Website" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="mstAcco_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="mstHotelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="oldProductName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_ProductMapping" nillable="true" type="tns:DC_Accomodation_ProductMapping" />
   <xs:complexType name="DC_Mapping_ProductSupplier_Search_RQ">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Brand" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Chain" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
@@ -186,6 +191,7 @@
   <xs:element name="DC_CountryMapping" nillable="true" type="tns:DC_CountryMapping" />
   <xs:complexType name="DC_CityMapping_RQ">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
@@ -197,6 +203,7 @@
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
       <xs:element minOccurs="0" name="ResultSet" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCityName" nillable="true" type="xs:string" />
@@ -235,10 +242,12 @@
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+      <xs:element minOccurs="0" name="oldCityName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_CityMapping" nillable="true" type="tns:DC_CityMapping" />
@@ -668,12 +677,28 @@
   <xs:element name="ArrayOfDC_supplierwisesummaryReport" nillable="true" type="tns:ArrayOfDC_supplierwisesummaryReport" />
   <xs:complexType name="DC_supplierwisesummaryReport">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Mapped" type="xs:int" />
-      <xs:element minOccurs="0" name="Mappingfor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Review" type="xs:int" />
+      <xs:element minOccurs="0" name="Activity" type="xs:int" />
+      <xs:element minOccurs="0" name="City" type="xs:int" />
+      <xs:element minOccurs="0" name="Country" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotelrooom" type="xs:int" />
+      <xs:element minOccurs="0" name="Product" type="xs:int" />
       <xs:element minOccurs="0" name="Suppliername" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Unmapped" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_supplierwisesummaryReport" nillable="true" type="tns:DC_supplierwisesummaryReport" />
+  <xs:complexType name="ArrayOfDC_supplierwiseunmappedsummaryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_supplierwiseunmappedsummaryReport" nillable="true" type="tns:DC_supplierwiseunmappedsummaryReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_supplierwiseunmappedsummaryReport" nillable="true" type="tns:ArrayOfDC_supplierwiseunmappedsummaryReport" />
+  <xs:complexType name="DC_supplierwiseunmappedsummaryReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cityname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Countryname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Noofproducts" type="xs:int" />
+      <xs:element minOccurs="0" name="Suppliername" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_supplierwiseunmappedsummaryReport" nillable="true" type="tns:DC_supplierwiseunmappedsummaryReport" />
 </xs:schema>

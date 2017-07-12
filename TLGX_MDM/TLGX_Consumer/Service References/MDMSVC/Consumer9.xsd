@@ -37,18 +37,21 @@
       <xs:element minOccurs="0" name="CheckOutTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_ISO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CompanyHotelID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CompanyRating" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CompanyRecommended" type="xs:boolean" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country_ISO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FinanceControlID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hashtag" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
@@ -523,9 +526,11 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="AccomodationId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CompanyHotelId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelBrand" nillable="true" type="xs:string" />
@@ -593,6 +598,95 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_UpdateStatus_RQ" nillable="true" type="tns:DC_Accomodation_UpdateStatus_RQ" />
+  <xs:complexType name="DC_GooglePlaceNearByWithAccoID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accomodation_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GooglePlaceNearBy" nillable="true" type="tns:ArrayOfDC_GooglePlaceNearBy" />
+      <xs:element minOccurs="0" name="PlaceCategory" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_GooglePlaceNearByWithAccoID" nillable="true" type="tns:DC_GooglePlaceNearByWithAccoID" />
+  <xs:complexType name="ArrayOfDC_GooglePlaceNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_GooglePlaceNearBy" nillable="true" type="tns:DC_GooglePlaceNearBy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_GooglePlaceNearBy" nillable="true" type="tns:ArrayOfDC_GooglePlaceNearBy" />
+  <xs:complexType name="DC_GooglePlaceNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="geometry" nillable="true" type="tns:GeometryGooglePlaceNearBy" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="html_attributions" nillable="true" type="q3:ArrayOfanyType" />
+      <xs:element minOccurs="0" name="icon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="opening_hours" nillable="true" type="tns:OpeningHoursGooglePlaceNearBy" />
+      <xs:element minOccurs="0" name="photos" nillable="true" type="tns:ArrayOfPhotoGooglePlaceNearBy" />
+      <xs:element minOccurs="0" name="place_id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rating" type="xs:double" />
+      <xs:element minOccurs="0" name="reference" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="scope" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element minOccurs="0" name="vicinity" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_GooglePlaceNearBy" nillable="true" type="tns:DC_GooglePlaceNearBy" />
+  <xs:complexType name="GeometryGooglePlaceNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="location" nillable="true" type="tns:Location" />
+      <xs:element minOccurs="0" name="viewport" nillable="true" type="tns:Viewport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeometryGooglePlaceNearBy" nillable="true" type="tns:GeometryGooglePlaceNearBy" />
+  <xs:complexType name="Location">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lat" type="xs:float" />
+      <xs:element minOccurs="0" name="lng" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Location" nillable="true" type="tns:Location" />
+  <xs:complexType name="Viewport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="northeast" nillable="true" type="tns:Northeast" />
+      <xs:element minOccurs="0" name="southwest" nillable="true" type="tns:Southwest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Viewport" nillable="true" type="tns:Viewport" />
+  <xs:complexType name="Northeast">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lat" type="xs:float" />
+      <xs:element minOccurs="0" name="lng" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Northeast" nillable="true" type="tns:Northeast" />
+  <xs:complexType name="Southwest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="lat" type="xs:float" />
+      <xs:element minOccurs="0" name="lng" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Southwest" nillable="true" type="tns:Southwest" />
+  <xs:complexType name="OpeningHoursGooglePlaceNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="open_now" type="xs:boolean" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="weekday_text" nillable="true" type="q5:ArrayOfanyType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OpeningHoursGooglePlaceNearBy" nillable="true" type="tns:OpeningHoursGooglePlaceNearBy" />
+  <xs:complexType name="ArrayOfPhotoGooglePlaceNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhotoGooglePlaceNearBy" nillable="true" type="tns:PhotoGooglePlaceNearBy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPhotoGooglePlaceNearBy" nillable="true" type="tns:ArrayOfPhotoGooglePlaceNearBy" />
+  <xs:complexType name="PhotoGooglePlaceNearBy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="height" type="xs:int" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="html_attributions" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element minOccurs="0" name="width" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PhotoGooglePlaceNearBy" nillable="true" type="tns:PhotoGooglePlaceNearBy" />
   <xs:complexType name="ArrayOfDC_Accomodation_Category_DDL">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accomodation_Category_DDL" nillable="true" type="tns:DC_Accomodation_Category_DDL" />
@@ -709,7 +803,7 @@
       <xs:element minOccurs="0" name="geometry" nillable="true" type="tns:Geometry" />
       <xs:element minOccurs="0" name="partial_match" type="xs:boolean" />
       <xs:element minOccurs="0" name="place_id" nillable="true" type="xs:string" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q7:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Result" nillable="true" type="tns:Result" />
@@ -723,7 +817,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="long_name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="short_name" nillable="true" type="xs:string" />
-      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="types" nillable="true" type="q8:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Address_Components" nillable="true" type="tns:Address_Components" />
@@ -743,32 +837,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bounds" nillable="true" type="tns:Bounds" />
-  <xs:complexType name="Northeast">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="lat" type="xs:float" />
-      <xs:element minOccurs="0" name="lng" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Northeast" nillable="true" type="tns:Northeast" />
-  <xs:complexType name="Southwest">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="lat" type="xs:float" />
-      <xs:element minOccurs="0" name="lng" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Southwest" nillable="true" type="tns:Southwest" />
-  <xs:complexType name="Location">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="lat" type="xs:float" />
-      <xs:element minOccurs="0" name="lng" type="xs:float" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Location" nillable="true" type="tns:Location" />
-  <xs:complexType name="Viewport">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="northeast" nillable="true" type="tns:Northeast" />
-      <xs:element minOccurs="0" name="southwest" nillable="true" type="tns:Southwest" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Viewport" nillable="true" type="tns:Viewport" />
 </xs:schema>
