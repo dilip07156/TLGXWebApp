@@ -462,7 +462,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Validfrom.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>dd/MM/yyyy</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -492,7 +494,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Validto.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>dd/MM/yyyy</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -552,7 +556,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!LastupdateDate.Value</Value>
-                              <Style />
+                              <Style>
+                                <Format>dd-MM-yyyy</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -570,6 +576,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>

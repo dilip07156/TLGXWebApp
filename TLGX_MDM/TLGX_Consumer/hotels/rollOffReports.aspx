@@ -10,6 +10,15 @@
             width: 100%;
         }
     </style>
+    <script>
+        //$(document).ready(function () {
+
+        //    $("a[title=PDF]").remove();
+        //    $("a[title=Word]").remove();
+
+        //});
+        
+    </script>
     <div class="row">
         <div class="col-md-12">
             <h1 class="page-header">ROLL OFF REPORTS</h1>
@@ -73,7 +82,6 @@
                                  <asp:Button runat="server" Text="View Status Report" ID="btnStatusCsv" OnClick="btnStatusCsv_Click" CssClass="btn btn-primary"></asp:Button>
                         </div>
                         <div class="col-sm-4">
-                            <asp:Label ID="lblupdate" runat="server" Text="Updates report" CssClass="font-weight: bold; "></asp:Label>&nbsp:&nbsp
                                  <asp:Button runat="server" Text="View Update report" ID="btnUpdateCsv" OnClick="btnUpdateCsv_Click" CssClass="btn btn-primary"></asp:Button>
                         </div>
                     </div>
@@ -83,7 +91,7 @@
     </div>
     <div class="container">
         <div style="width: 100%; height: 100%">
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False" OnLoad="DocReady" >
                 <LocalReport ReportPath="hotels\rptRuleReport.rdlc">
                 </LocalReport>
 

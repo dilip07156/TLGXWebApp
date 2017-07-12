@@ -9,6 +9,7 @@ using TLGX_Consumer.App_Code;
 using System.Configuration;
 using System.Text;
 using Microsoft.Reporting.WebForms;
+using System.Collections;
 
 namespace TLGX_Consumer.hotels
 {
@@ -147,5 +148,19 @@ namespace TLGX_Consumer.hotels
                 ReportViewer1.LocalReport.Refresh();
             }
         }
+        protected void ReportViewer_OnLoad(object sender, EventArgs e)
+        {
+            //string exportOption = "Excel";
+            // string exportOption1 = "Word";
+            string exportOption = "PDF";
+            RenderingExtension extension = ReportViewer1.LocalReport.ListRenderingExtensions().ToList().Find(x => x.Name.Equals(exportOption, StringComparison.CurrentCultureIgnoreCase));
+            if (extension != null)
+            {
+                System.Reflection.FieldInfo fieldInfo = extension.GetType().GetField("m_isVisible", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                fieldInfo.SetValue(extension, false);
+            }
+  
+        }
+
     }
 }
