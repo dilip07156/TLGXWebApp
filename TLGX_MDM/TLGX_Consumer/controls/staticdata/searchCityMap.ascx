@@ -788,7 +788,7 @@
                                                     </asp:BoundField>--%>
                                                     <asp:TemplateField ShowHeader="true" HeaderStyle-BackColor="Turquoise" HeaderText="State Name (State Code)">
                                                         <ItemTemplate>
-                                                            <span aria-hidden="true"><%# Eval("MasterStateName")+ "(" + Eval("MasterStateCode") + ")" %></span>
+                                                            <span aria-hidden="true"><%# Eval("MasterStateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MasterStateCode"))) ? "(" + Eval("MasterStateCode") + ")" : string.Empty) %></span>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
