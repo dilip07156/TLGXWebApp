@@ -94,15 +94,6 @@ namespace TLGX_Consumer.hotels {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorrange;
         
         /// <summary>
-        /// lblrule control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblrule;
-        
-        /// <summary>
         /// btnRuleCsv control.
         /// </summary>
         /// <remarks>
@@ -112,15 +103,6 @@ namespace TLGX_Consumer.hotels {
         protected global::System.Web.UI.WebControls.Button btnRuleCsv;
         
         /// <summary>
-        /// lblstatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblstatus;
-        
-        /// <summary>
         /// btnStatusCsv control.
         /// </summary>
         /// <remarks>
@@ -128,15 +110,6 @@ namespace TLGX_Consumer.hotels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnStatusCsv;
-        
-        /// <summary>
-        /// lblupdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblupdate;
         
         /// <summary>
         /// btnUpdateCsv control.
