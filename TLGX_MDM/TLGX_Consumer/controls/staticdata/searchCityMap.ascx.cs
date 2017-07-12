@@ -652,8 +652,8 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid mySupplier_Id = Guid.Empty;
                 Guid myCountry_Id = Guid.Empty;
                 Guid myCity_Id = Guid.Empty;
-                string mystateName = txtSystemStateName.Text;
-                string mystateCode = txtSystemStateCode.Text;
+                //string mystateName = txtSystemStateName.Text;
+                //string mystateCode = txtSystemStateCode.Text;
                 bool res = false;
                 foreach (GridViewRow row in grdMatchingCity.Rows)
                 {
@@ -681,10 +681,10 @@ namespace TLGX_Consumer.controls.staticdata
                             param.Country_Id = myCountry_Id;
                         if (myCity_Id != null)
                             param.City_Id = myCity_Id;
-                        if (mystateName != null)
-                            param.StateName = mystateName;
-                        if (mystateCode != null)
-                            param.StateCode = mystateCode;
+                        //if (mystateName != null)
+                        //    param.StateName = mystateName;
+                        //if (mystateCode != null)
+                        //    param.StateCode = mystateCode;
                         param.Status = MatchedStatus;
                         param.Edit_Date = DateTime.Now;
                         param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
@@ -715,8 +715,8 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid mySupplier_Id = Guid.Empty;
                 Guid myCountry_Id = Guid.Empty;
                 Guid myCity_Id = Guid.Empty;
-                string mystateName = txtSystemStateName.Text;
-                string mystateCode = txtSystemStateCode.Text;
+                //string mystateName = txtSystemStateName.Text;
+                //string mystateCode = txtSystemStateCode.Text;
                 bool res = false;
                 foreach (GridViewRow row in grdMatchingCity.Rows)
                 {
@@ -739,10 +739,10 @@ namespace TLGX_Consumer.controls.staticdata
                             param.Country_Id = myCountry_Id;
                         if (myCity_Id != null)
                             param.City_Id = myCity_Id;
-                        if (mystateName != null)
-                            param.StateName = mystateName;
-                        if (mystateCode != null)
-                            param.StateCode = mystateCode;
+                        //if (mystateName != null)
+                        //    param.StateName = mystateName;
+                        //if (mystateCode != null)
+                        //    param.StateCode = mystateCode;
                         param.Status = MatchedStatus;
                         param.Edit_Date = DateTime.Now;
                         param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
