@@ -93,7 +93,7 @@
 
 
 
-
+<asp:HiddenField ID="hdnCountryCode" runat="server" ClientIDMode="Static" Value="" EnableViewState="true" />
 <asp:UpdatePanel ID="updatePanel1" runat="server">
     <ContentTemplate>
 
@@ -104,8 +104,10 @@
                 <div class="col-lg-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">City Details</div>
+                        <asp:ValidationSummary ID="vlsum" runat="server" ValidationGroup="CityDetails" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                         <div class="panel-body">
-
+                            
+                           
                             <asp:FormView ID="frmCityMaster" runat="server" DataKeyNames="City_Id" DefaultMode="Edit" CssClass="form-group" OnItemCommand="frmCityMaster_ItemCommand">
                                 <EditItemTemplate>
 
@@ -115,13 +117,19 @@
                                     <label for="txtCityCode">City Code</label>
                                     <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
-                                    <label for="ddlState">State</label>
+
+                                    <label for="ddlState">
+                                        State
+                                        <asp:RequiredFieldValidator ValidationGroup="CityDetails" runat="server" ControlToValidate="ddlState"
+                                            Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please select a State." />
+                                    </label>
                                     <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                     </asp:DropDownList>
 
-                                    <label for="txtCityCode">State Code</label>
-                                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false"/>
+
+                                    <label for="txtStateCode">State Code</label>
+                                    <asp:TextBox ID="txtStateCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
 
 
@@ -132,7 +140,7 @@
                                     <asp:TextBox ID="txtEditDate" runat="server" CssClass="form-control" Text='<%# Bind("Edit_Date") %>' Enabled="false" />
 
                                     <br />
-                                    <asp:Button ID="btnUpdateCityMaster" runat="server" Text="Update" CommandName="Update" CssClass="btn btn-primary btn-sm" />
+                                    <asp:Button ID="btnUpdateCityMaster" runat="server" Text="Update" CommandName="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="CityDetails"/>
 
 
                                 </EditItemTemplate>
@@ -155,7 +163,7 @@
                             <div class="row">
                                 <div class="col-lg-8">
 
-                                    <asp:GridView ID="grdCityAreas" DataKeyNames="CityArea_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="False" 
+                                    <asp:GridView ID="grdCityAreas" DataKeyNames="CityArea_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="False"
                                         EmptyDataText="No City Areas defined" OnSelectedIndexChanged="grdCityAreas_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField HeaderText="Name" DataField="Name" SortExpression="Name" />
@@ -174,7 +182,8 @@
                                                 <div class="panel-heading">Add City Area</div>
                                                 <div class="panel-body">
 
-                                                    <label for="txtCityAreaName">Area Name 
+                                                    <label for="txtCityAreaName">
+                                                        Area Name 
                                                         <asp:RequiredFieldValidator ID="vlCityArea" runat="server" ControlToValidate="txtCityAreaName" ValidationGroup="vlgrpCityArea" ErrorMessage="Please Enter the Area Name." Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <asp:TextBox ID="txtCityAreaName" runat="server" CssClass="form-control" />
@@ -184,7 +193,7 @@
 
 
                                                     <br />
-                                                    <asp:Button ID="btnCityArea" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityArea"/>
+                                                    <asp:Button ID="btnCityArea" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityArea" />
                                                 </div>
                                             </div>
 
@@ -223,7 +232,7 @@
                             <div class="row" runat="server" id="dvCityAreaLocations" visible="false">
                                 <div class="col-lg-8">
 
-                                    <asp:GridView ID="grdCityAreaLocation" DataKeyNames="CityAreaLocation_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="false" 
+                                    <asp:GridView ID="grdCityAreaLocation" DataKeyNames="CityAreaLocation_Id" runat="server" CssClass="table table-hover table-striped" AutoGenerateColumns="false"
                                         EmptyDataText="No City Areas Locations defined" OnSelectedIndexChanged="grdCityAreaLocation_SelectedIndexChanged">
                                         <Columns>
                                             <asp:BoundField HeaderText="Name" DataField="Name" SortExpression="Name" />
