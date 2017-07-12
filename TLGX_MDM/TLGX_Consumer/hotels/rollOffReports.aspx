@@ -11,12 +11,13 @@
         }
     </style>
     <script>
-        //$(document).ready(function () {
+        $(document).ready(function () {
 
-        //    $("a[title=PDF]").remove();
-        //    $("a[title=Word]").remove();
-
-        //});
+            $("a[title=PDF]").remove();
+            $("a[title=Word]").remove();
+            $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(1).remove();
+            $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
+        });
         
     </script>
     <div class="row">
@@ -91,10 +92,9 @@
     </div>
     <div class="container">
         <div style="width: 100%; height: 100%">
-            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False" OnLoad="DocReady" >
+            <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False"  >
                 <LocalReport ReportPath="hotels\rptRuleReport.rdlc">
                 </LocalReport>
-
             </rsweb:ReportViewer>
         </div>
     </div>

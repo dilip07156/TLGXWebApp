@@ -33,6 +33,7 @@ namespace TLGX_Consumer.hotels
         protected void Page_Load(object sender, EventArgs e)
         {
             errordiv.Visible = false;
+            ReportViewer1.Visible = false;
         }
         protected Boolean validatedate()
         {
@@ -73,6 +74,7 @@ namespace TLGX_Consumer.hotels
 
         protected void btnRuleCsv_Click(object sender, EventArgs e)
         {
+            ReportViewer1.Visible = true;
             var res = validatedate();
             if (res == false)
             {
@@ -101,6 +103,7 @@ namespace TLGX_Consumer.hotels
 
         protected void btnStatusCsv_Click(object sender, EventArgs e)
         {
+            ReportViewer1.Visible = true;
             var res = validatedate();
             if (res == false)
             {
@@ -126,6 +129,7 @@ namespace TLGX_Consumer.hotels
 
         protected void btnUpdateCsv_Click(object sender, EventArgs e)
         {
+            ReportViewer1.Visible = true;
             var res = validatedate();
             if (res == false)
             {
