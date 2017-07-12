@@ -16829,6 +16829,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string MasterCountryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MasterStateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MasterStateNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -17088,6 +17091,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.MasterCountryNameField, value) != true)) {
                     this.MasterCountryNameField = value;
                     this.RaisePropertyChanged("MasterCountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MasterStateCode {
+            get {
+                return this.MasterStateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MasterStateCodeField, value) != true)) {
+                    this.MasterStateCodeField = value;
+                    this.RaisePropertyChanged("MasterStateCode");
                 }
             }
         }
