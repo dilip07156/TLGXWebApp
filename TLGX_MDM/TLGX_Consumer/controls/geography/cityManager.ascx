@@ -151,7 +151,7 @@
                                     <asp:TextBox ID="txtEditDate" runat="server" CssClass="form-control" Text='<%# Bind("Edit_Date") %>' Enabled="false" />
 
                                     <br />
-                                    <asp:Button ID="btnUpdateCityMaster" runat="server" Text="Update" CommandName="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="CityDetails" />
+                                    <asp:Button ID="btnUpdateCityMaster" runat="server" Text="Update" CommandName="UpdateCityManager" CssClass="btn btn-primary btn-sm" ValidationGroup="CityDetails" />
 
 
                                 </EditItemTemplate>

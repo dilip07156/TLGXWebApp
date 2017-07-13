@@ -307,7 +307,7 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
             TextBox txtCityName = (TextBox)frmCityMaster.FindControl("txtCityName");
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
-            if (e.CommandName.ToString()== "Update")
+            if (e.CommandName.ToString()== "UpdateCityManager")
             {
                 MDMSVC.DC_City _obj = new MDMSVC.DC_City();
                 _obj.City_Id = Guid.Parse(Request.QueryString["City_Id"]);
