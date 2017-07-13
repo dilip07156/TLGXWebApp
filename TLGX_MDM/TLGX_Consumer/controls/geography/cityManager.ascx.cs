@@ -8,6 +8,7 @@ using System.Data;
 using TLGX_Consumer;
 using TLGX_Consumer.Models;
 using TLGX_Consumer.Controller;
+using TLGX_Consumer.App_Code;
 
 namespace TLGX_Consumer.controls.geography
 {
@@ -319,8 +320,16 @@ namespace TLGX_Consumer.controls.geography
                 _obj.StateCode = txtStateCode.Text;
                 _obj.Edit_Date = DateTime.Now;
                 _obj.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-                _objMasterData.UpdateCityMasterData(_obj);
-                
+                MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
+                _msg = _objMasterData.UpdateCityMasterData(_obj);
+                if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgCity, "City has been updated successfully", BootstrapAlertType.Success);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgCity, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+                }
             }
         }
 

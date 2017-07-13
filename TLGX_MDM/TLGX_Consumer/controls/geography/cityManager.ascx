@@ -115,6 +115,7 @@
                 <div class="col-lg-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">City Details</div>
+                        <div id="dvMsgCity" runat="server" style="display: none;"></div>
                         <asp:ValidationSummary ID="vlsum" runat="server" ValidationGroup="CityDetails" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                         <div class="panel-body">
 
