@@ -22,15 +22,6 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
-        /// btnUpdateSupplier control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateSupplier;
-        
-        /// <summary>
         /// btnExportCsv control.
         /// </summary>
         /// <remarks>
@@ -38,15 +29,6 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnExportCsv;
-        
-        /// <summary>
-        /// supplierwisedata control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl supplierwisedata;
         
         /// <summary>
         /// ReportViewersupplierwise control.

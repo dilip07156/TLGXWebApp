@@ -49,6 +49,7 @@
     </style>
     <script type="text/javascript">
         //color array for charts
+        var isPageLoad = true;
         var colorsArray = [];
         while (colorsArray.length < 200) {
             do {
@@ -59,13 +60,20 @@
         }
         //end
         function getChartData() {
-            var e = document.getElementById("MainContent_ddlSupplierName");
-            var sid = e.options[e.selectedIndex].value.toString();
+
+            //var e = document.getElementById("MainContent_ddlSupplierName");
+            var sid = $('#MainContent_ddlSupplierName').val();
             if (sid == '0') {
-                //for last three charts.
-              //  $("#allsupplierdata").css("display", "block");
+                //For all supplier Show both Div
+                $('#supplierwisedata').show();
+                $('#allsupplierdata').show();
                 getAllSupplierData();
                 sid = '00000000-0000-0000-0000-000000000000'
+            }
+            else
+            {
+                $('#supplierwisedata').show();
+                $('#allsupplierdata').hide();
             }
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
@@ -299,8 +307,6 @@
 
             });
         }
-
-
         function getAllSupplierData() {
             $.ajax({
                 url: '../../../Service/AllSupplierDataForChart.ashx',
@@ -477,16 +483,24 @@
 
         }
         $(window).on('load', function () {
-            getChartData();
+            debugger;
+            if (isPageLoad) {
+                getChartData();
+            }
         });
 
-        $("#MainContent_btnUpdateSupplier").click(function (event) {
-            var e = document.getElementById("MainContent_ddlSupplierName");
-            var sid = e.options[e.selectedIndex].value.toString();
-            if (sid == '0') {
-                $("#allsupplierdata").css("display", "block");
-
+        $("#btnUpdateSupplier").click(function (e) {
+            e.preventDefault();
+            isPageLoad = true;
+            //$("#ReportViewersupplierwise").css("display", "none");
             getChartData();
+        });
+        $("#MainContent_btnExportCsv").click(function (e) {
+            debugger;
+            $('#supplierwisedata').hide();
+            $('#allsupplierdata').hide();
+            $('#report').show();
+            isPageLoad = false;
         });
     </script>
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
@@ -507,7 +521,8 @@
                     <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
                         <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />
+                    <%--<asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />--%>
+                    <button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>
                     <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
             </div>
@@ -515,7 +530,7 @@
     </div>
     <hr />
     <%--for first three charts--%>
-    <div class="row" id="supplierwisedata" runat="server" >
+    <div class="row" id="supplierwisedata" style="display: none">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -677,12 +692,13 @@
     </div>
 
     <%--Export Report--%>
-    <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-        <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
-            <DataSources>
-                <rsweb:ReportDataSource Name="DataSet1" />
-            </DataSources>
-        </LocalReport>
-    </rsweb:ReportViewer>
-
+    <div class="container" id="report" style="display: none">
+        <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
+            <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
+                <DataSources>
+                    <rsweb:ReportDataSource Name="DataSet1" />
+                </DataSources>
+            </LocalReport>
+        </rsweb:ReportViewer>
+    </div>
 </asp:Content>
