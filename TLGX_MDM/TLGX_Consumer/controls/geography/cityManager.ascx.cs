@@ -307,14 +307,8 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
             TextBox txtCityName = (TextBox)frmCityMaster.FindControl("txtCityName");
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
-            if (e.CommandName.ToString()== "Update")
+            if (e.CommandName.ToString()== "UpdateCityManager")
             {
-                //_obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
-                //_obj.Option = "UPDATE";
-                //_objMasterData.SaveCityArea(_obj);
-
-                //fillCityArea(Request.QueryString["City_Id"]);
-                //frmCityArea.ChangeMode(FormViewMode.Insert);
                 MDMSVC.DC_City _obj = new MDMSVC.DC_City();
                 _obj.City_Id = Guid.Parse(Request.QueryString["City_Id"]);
                 _obj.Country_Id = refCountryId;
@@ -326,7 +320,7 @@ namespace TLGX_Consumer.controls.geography
                 _obj.Edit_Date = DateTime.Now;
                 _obj.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                 _objMasterData.UpdateCityMasterData(_obj);
-            
+                
             }
         }
 
