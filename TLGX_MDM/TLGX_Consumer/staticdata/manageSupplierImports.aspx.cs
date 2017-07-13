@@ -31,11 +31,18 @@ namespace TLGX_Consumer.staticdata
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-
             {
-                ReportViewersupplierwise.Visible = false;
-                fillsuppliers();
-
+                fillsuppliers();   
+            }
+            supplierwisedata.Visible = true;
+            report.Visible = false;
+            if (ddlSupplierName.SelectedValue == "0")
+            {
+                allsupplierdata.Visible = true;
+            }
+            else
+            {
+                allsupplierdata.Visible = false;
             }
         }
 
@@ -51,6 +58,9 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
         {
+            supplierwisedata.Visible = false;
+            allsupplierdata.Visible = false;
+            report.Visible = true;
             if (ddlSupplierName.SelectedValue == "0")
             {
                 var DataSet1 = MapSvc.GetsupplierwiseSummaryReport();
