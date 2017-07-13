@@ -13735,6 +13735,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Keyword_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NewHitsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfHitsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int SequenceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -13835,6 +13841,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NewHits {
+            get {
+                return this.NewHitsField;
+            }
+            set {
+                if ((this.NewHitsField.Equals(value) != true)) {
+                    this.NewHitsField = value;
+                    this.RaisePropertyChanged("NewHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Sequence {
             get {
                 return this.SequenceField;
@@ -13909,7 +13941,10 @@ namespace TLGX_Consumer.MDMSVC {
         private string AliasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool AttributeField;
+        private string AliasStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> AttributeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Keyword_IdField;
@@ -13950,7 +13985,20 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Attribute {
+        public string AliasStatus {
+            get {
+                return this.AliasStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AliasStatusField, value) != true)) {
+                    this.AliasStatusField = value;
+                    this.RaisePropertyChanged("AliasStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Attribute {
             get {
                 return this.AttributeField;
             }
@@ -27168,10 +27216,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/UpdateCityMaster", ReplyAction="http://tempuri.org/IMasters/UpdateCityMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/UpdateCityMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        bool UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj);
+        TLGX_Consumer.MDMSVC.DC_Message UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/UpdateCityMaster", ReplyAction="http://tempuri.org/IMasters/UpdateCityMasterResponse")]
-        System.Threading.Tasks.Task<bool> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCityAlphaPaging", ReplyAction="http://tempuri.org/IMasters/GetCityAlphaPagingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCityAlphaPagingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -28813,11 +28861,11 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddCityMasterAsync(obj);
         }
         
-        public bool UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj) {
+        public TLGX_Consumer.MDMSVC.DC_Message UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj) {
             return base.Channel.UpdateCityMaster(obj);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj) {
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj) {
             return base.Channel.UpdateCityMasterAsync(obj);
         }
         

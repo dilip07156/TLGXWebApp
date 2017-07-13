@@ -373,7 +373,7 @@ namespace TLGX_Consumer.controls.keywords
         protected void grdAlias_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             TextBox txtAlias = (TextBox)grdAlias.Rows[e.RowIndex].FindControl("txtAlias");
-            TextBox txtAliasSequence = (TextBox)grdAlias.HeaderRow.FindControl("txtAliasSequence");
+            TextBox txtAliasSequence = (TextBox)grdAlias.Rows[e.RowIndex].FindControl("txtAliasSequence");
             MDMSVC.DC_keyword_alias newAlias = new MDMSVC.DC_keyword_alias
             {
                 Create_Date = DateTime.Now,
@@ -408,7 +408,7 @@ namespace TLGX_Consumer.controls.keywords
 
             MDMSVC.DC_Keyword Keyword = new MDMSVC.DC_Keyword
             {
-                Attribute = chkAttribute.Checked,
+                Attribute = chkNewKeywordAttribute.Checked,
                 Create_Date = DateTime.Now,
                 Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Edit_Date = DateTime.Now,
