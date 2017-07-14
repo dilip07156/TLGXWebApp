@@ -17,7 +17,7 @@ namespace TLGX_Consumer.staticdata
 
         Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
-
+        Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -31,13 +31,18 @@ namespace TLGX_Consumer.staticdata
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-
             {
-                ReportViewersupplierwise.Visible = false;
-                supplierwisedata.Visible = true;
-                //allsupplierdata.Visible = true;
-                fillsuppliers();
-
+                fillsuppliers();   
+            }
+            supplierwisedata.Visible = true;
+            report.Visible = false;
+            if (ddlSupplierName.SelectedValue == "0")
+            {
+                allsupplierdata.Visible = true;
+            }
+            else
+            {
+                allsupplierdata.Visible = false;
             }
         }
 
@@ -53,37 +58,36 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
         {
-           
-            Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
-            string SupplierID = ddlSupplierName.SelectedValue;
-            if (SupplierID == "0")
+            supplierwisedata.Visible = false;
+            allsupplierdata.Visible = false;
+            report.Visible = true;
+            if (ddlSupplierName.SelectedValue == "0")
             {
-               
                 var DataSet1 = MapSvc.GetsupplierwiseSummaryReport();
                 ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewersupplierwise.LocalReport.DataSources.Clear();
-                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptAllSupplierReport.rdlc"; 
+                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptAllSupplierReport.rdlc";
                 ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
                 ReportViewersupplierwise.Visible = true;
+                ReportViewersupplierwise.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
                 ReportViewersupplierwise.DataBind();
                 ReportViewersupplierwise.LocalReport.Refresh();
             }
             else
             {
-                var DataSet1 = MapSvc.GetsupplierwiseUnmappedSummaryReport(SupplierID);
-                ReportDataSource rds1 = new ReportDataSource("DataSet1", DataSet1);
+                string supplierid = ddlSupplierName.SelectedValue;
+                var DataSet1 = MapSvc.GetsupplierwiseUnmappedSummaryReport(supplierid);
+                ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
                 ReportViewersupplierwise.LocalReport.DataSources.Clear();
                 ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptSupplierwiseReport.rdlc";
-                ReportViewersupplierwise.LocalReport.DataSources.Add(rds1);
-                //Populate Report Paramater for passing current date (month)
-                //  ReportParameter p1 = new ReportParameter("ReportParameter1", SupplierID);
-                // ReportViewer1.LocalReport.SetParameters(new ReportParameter[] { p1 });
+                ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
                 ReportViewersupplierwise.Visible = true;
-                ReportViewersupplierwise.DataBind(); // Added
+                ReportViewersupplierwise.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
+                ReportViewersupplierwise.DataBind();
                 ReportViewersupplierwise.LocalReport.Refresh();
-
             }
-           
+
+
         }
     }
 }

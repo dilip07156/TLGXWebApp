@@ -13857,6 +13857,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int NewHits {
             get {
                 return this.NewHitsField;
@@ -13865,6 +13878,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.NewHitsField.Equals(value) != true)) {
                     this.NewHitsField = value;
                     this.RaisePropertyChanged("NewHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NewHits {
+            get {
+                return this.NewHitsField;
+            }
+            set {
+                if ((this.NewHitsField.Equals(value) != true)) {
+                    this.NewHitsField = value;
+                    this.RaisePropertyChanged("NewHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
                 }
             }
         }
@@ -13958,6 +13997,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AliasStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> AttributeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> AttributeField;
