@@ -19,7 +19,10 @@ namespace TLGX_Consumer.controls.hotel
         // used for retrieving drop down list attribute values from masters
         lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         public static string AttributeOptionFor = "Landmark";
-        
+        public static int intPageIndex = 0;
+
+        public static int PageSize = 5;
+
         #region DataBinding
 
         protected void GetLookupValues()
@@ -28,7 +31,7 @@ namespace TLGX_Consumer.controls.hotel
             DropDownList ddlPlaceCategory = (DropDownList)frmLandmark.FindControl("ddlPlaceCategory");
             DropDownList ddlUnitOfMeasure = (DropDownList)frmLandmark.FindControl("ddlUnitOfMeasure");
 
-            ddlPlaceCategory.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionFor, "PlaceCategory").MasterAttributeValues;
+            ddlPlaceCategory.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("InAndAround", "PlaceCategoryGoogle").MasterAttributeValues;
             ddlPlaceCategory.DataTextField = "AttributeValue";
             ddlPlaceCategory.DataValueField = "MasterAttributeValue_Id";
             ddlPlaceCategory.DataBind();
@@ -44,16 +47,25 @@ namespace TLGX_Consumer.controls.hotel
         protected void BindNearbyPlaces()
         {
             Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
-            grdInAndAround.DataSource = AccSvc.GetNearbyPlacesDetails(Accomodation_ID, Guid.Empty);
+            var result = AccSvc.GetNearbyPlacesDetailsWithPaging(Accomodation_ID, Guid.Empty, Convert.ToString(PageSize), Convert.ToString(intPageIndex));
+            grdInAndAround.DataSource = result;
+            grdInAndAround.PageIndex = intPageIndex;
+            grdInAndAround.PageSize = PageSize;
+            if (result != null)
+            {
+                if (result.Count > 0)
+                {
+                    grdInAndAround.VirtualItemCount = result[0].TotalRecords ?? 0;
+                }
+            }
             grdInAndAround.DataBind();
-
             GetLookupValues();
-            
+
         }
 
 
         #endregion
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -74,7 +86,7 @@ namespace TLGX_Consumer.controls.hotel
             TextBox txtDescription = (TextBox)frmLandmark.FindControl("txtDescription");
             TextBox txtPlaceName = (TextBox)frmLandmark.FindControl("txtPlaceName");
             TextBox txtDistance = (TextBox)frmLandmark.FindControl("txtDistance");
-            
+
             if (e.CommandName.ToString() == "Add")
             {
                 TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces newObj = new MDMSVC.DC_Accommodation_NearbyPlaces
@@ -152,20 +164,19 @@ namespace TLGX_Consumer.controls.hotel
 
         protected void grdInAndAround_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
-            Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-            int index = row.RowIndex;
-
             if (e.CommandName.ToString() == "Select")
             {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+
                 dvMsg.Style.Add("display", "none");
                 Accomodation_ID = Guid.Parse(Request.QueryString["Hotel_Id"]);
-                
+
                 frmLandmark.ChangeMode(FormViewMode.Edit);
                 frmLandmark.DataSource = AccSvc.GetNearbyPlacesDetails(Accomodation_ID, myRow_Id);
                 frmLandmark.DataBind();
-                
+
                 GetLookupValues();
 
                 DropDownList ddlPlaceCategory = (DropDownList)frmLandmark.FindControl("ddlPlaceCategory");
@@ -175,19 +186,27 @@ namespace TLGX_Consumer.controls.hotel
 
                 if (ddlPlaceCategory.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
-                        ddlPlaceCategory.SelectedIndex = ddlPlaceCategory.Items.IndexOf(ddlPlaceCategory.Items.FindByText(rowView.PlaceCategory.ToString()));
+                    //ddlPlaceCategory.SelectedIndex = ddlPlaceCategory.Items.IndexOf(ddlPlaceCategory.Items.FindByText(rowView.PlaceCategory.ToString()));
+                    ddlPlaceCategory.SelectedIndex = ddlPlaceCategory.Items.IndexOf(ddlPlaceCategory.Items.Cast<ListItem>().FirstOrDefault(i => i.Text.Equals(rowView.PlaceCategory.ToString(), StringComparison.InvariantCultureIgnoreCase)));
+
                 }
 
 
                 if (ddlUnitOfMeasure.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
-                    ddlUnitOfMeasure.SelectedIndex = ddlUnitOfMeasure.Items.IndexOf(ddlUnitOfMeasure.Items.FindByText(rowView.DistanceUnit.ToString()));
+                    // ddlUnitOfMeasure.SelectedIndex = ddlUnitOfMeasure.Items.IndexOf(ddlUnitOfMeasure.Items.FindByText(rowView.DistanceUnit.ToString()));
+                    ddlUnitOfMeasure.SelectedIndex = ddlUnitOfMeasure.Items.IndexOf(ddlUnitOfMeasure.Items.Cast<ListItem>().FirstOrDefault(i => i.Text.Equals(rowView.DistanceUnit.ToString(), StringComparison.InvariantCultureIgnoreCase)));
+
                 }
 
             }
 
             else if (e.CommandName.ToString() == "SoftDelete")
             {
+
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
                 TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces newObj = new MDMSVC.DC_Accommodation_NearbyPlaces
                 {
                     Accommodation_NearbyPlace_Id = myRow_Id,
@@ -205,6 +224,10 @@ namespace TLGX_Consumer.controls.hotel
 
             else if (e.CommandName.ToString() == "UnDelete")
             {
+
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
                 TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces newObj = new MDMSVC.DC_Accommodation_NearbyPlaces
                 {
                     Accommodation_NearbyPlace_Id = myRow_Id,
@@ -238,6 +261,37 @@ namespace TLGX_Consumer.controls.hotel
         protected void btnAddNewLookUP_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void MyApp()
+        {
+            //USERCONTROL = your control with the StatusUpdated event
+            this.googlePlacesLookup.StatusUpdated += new EventHandler(MyEventHandlerFunction_StatusUpdated);
+        }
+
+        public void MyEventHandlerFunction_StatusUpdated(object sender, EventArgs e)
+        {
+            //your code here
+        }
+
+        protected void btnRefreshGrid_Click(object sender, EventArgs e)
+        {
+            BindNearbyPlaces();
+        }
+
+        protected void grdInAndAround_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dvMsg.Style.Add(HtmlTextWriterStyle.Display, "none");
+            intPageIndex = Convert.ToInt32(e.NewPageIndex);
+            BindNearbyPlaces();
+        }
+
+        protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dvMsg.Style.Add(HtmlTextWriterStyle.Display, "none");
+            PageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            intPageIndex = 0;
+            BindNearbyPlaces();
         }
     }
 }
