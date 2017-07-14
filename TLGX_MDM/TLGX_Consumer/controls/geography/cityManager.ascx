@@ -1,6 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="cityManager.ascx.cs" Inherits="TLGX_Consumer.controls.geography.cityMapper" %>
 <script type="text/javascript">
     function showCityMappingModal() {
+        //var country = $('#<%= ddlCountry.ClientID %>').val();
+        var country = $("#MainContent_cityManager_ddlCountry option:selected").text();
+        $("#lblCountryForCity").text(country);
         $("#moCityAddUpdate").modal('show');
     }
     function closeCityMappingModal() {
@@ -30,7 +33,7 @@
                             <asp:RequiredFieldValidator ValidationGroup="CityManager" runat="server" ControlToValidate="ddlCountry"
                                 Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please select a country before search !" />
                                 </label>
-                                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AppendDataBoundItems="True">
+                                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
                                     <asp:ListItem Value="0">-Select-</asp:ListItem>
                                 </asp:DropDownList>
 
@@ -38,7 +41,7 @@
                                 <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" />
 
                                 <asp:LinkButton ID="btnGetCities" runat="server" CommandName="Search" Text="Search" CssClass="btn btn-primary btn-sm" ValidationGroup="CityManager" OnClick="btnGetCities_Click" />
-                                <asp:LinkButton ID="btnNewCity" runat="server" CommandName="Create" Text="Create City" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showCityMappingModal();" />
+                                <asp:LinkButton ID="btnNewCity" runat="server" CommandName="Create" Text="Create City" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnNewCity_Click" OnClientClick="showCityMappingModal();" Visible="false"/>
                             </div>
                         </div>
 
@@ -73,7 +76,7 @@
                                             </div>
                                         </div>
 
-                                        <asp:GridView ID="grdCityList" EmptyDataText="No Data Found." runat="server" AllowPaging="True" AllowCustomPaging="true" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="City_Id" CssClass="table table-hover table-striped" OnPageIndexChanging="grdCityList_PageIndexChanging">
+                                        <asp:GridView ID="grdCityList" EmptyDataText="No Data Found." runat="server" AllowPaging="True" AllowCustomPaging="true" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="City_Id, Country_Id" CssClass="table table-hover table-striped" OnPageIndexChanging="grdCityList_PageIndexChanging">
                                             <Columns>
                                                 <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                                                 <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
@@ -117,7 +120,7 @@
                         <div class="panel-heading">City Details</div>
                         <asp:ValidationSummary ID="vlsum" runat="server" ValidationGroup="CityDetails" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                         <div class="panel-body">
-
+                            <div id="dvMsgCity" runat="server" style="display: none;"></div>
 
                             <asp:FormView ID="frmCityMaster" runat="server" DataKeyNames="City_Id" DefaultMode="Edit" CssClass="form-group" OnItemCommand="frmCityMaster_ItemCommand">
                                 <EditItemTemplate>

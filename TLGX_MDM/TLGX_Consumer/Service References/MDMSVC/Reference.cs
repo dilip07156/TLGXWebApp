@@ -13735,6 +13735,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Keyword_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NewHitsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NoOfHitsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -13851,6 +13854,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NewHits {
+            get {
+                return this.NewHitsField;
+            }
+            set {
+                if ((this.NewHitsField.Equals(value) != true)) {
+                    this.NewHitsField = value;
+                    this.RaisePropertyChanged("NewHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Sequence {
             get {
                 return this.SequenceField;
@@ -13925,7 +13954,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string AliasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AliasStatusField;
+        private bool AttributeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> AttributeField;
@@ -27200,10 +27229,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/UpdateCityMaster", ReplyAction="http://tempuri.org/IMasters/UpdateCityMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/UpdateCityMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        bool UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj);
+        TLGX_Consumer.MDMSVC.DC_Message UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/UpdateCityMaster", ReplyAction="http://tempuri.org/IMasters/UpdateCityMasterResponse")]
-        System.Threading.Tasks.Task<bool> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCityAlphaPaging", ReplyAction="http://tempuri.org/IMasters/GetCityAlphaPagingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCityAlphaPagingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -28845,11 +28874,11 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddCityMasterAsync(obj);
         }
         
-        public bool UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj) {
+        public TLGX_Consumer.MDMSVC.DC_Message UpdateCityMaster(TLGX_Consumer.MDMSVC.DC_City obj) {
             return base.Channel.UpdateCityMaster(obj);
         }
         
-        public System.Threading.Tasks.Task<bool> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj) {
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateCityMasterAsync(TLGX_Consumer.MDMSVC.DC_City obj) {
             return base.Channel.UpdateCityMasterAsync(obj);
         }
         

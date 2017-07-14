@@ -8,6 +8,7 @@ using System.Data;
 using TLGX_Consumer;
 using TLGX_Consumer.Models;
 using TLGX_Consumer.Controller;
+using TLGX_Consumer.App_Code;
 
 namespace TLGX_Consumer.controls.geography
 {
@@ -130,7 +131,26 @@ namespace TLGX_Consumer.controls.geography
             ddlState.DataValueField = "State_Id";
             ddlState.DataBind();
         }
+        private void fillStateList()
+        {
+            try
+            {
+                DropDownList ddlStates = (DropDownList)frmvwCity.FindControl("ddlStates");
 
+                var result = _objMasterData.GetStatesByCountry(ddlCountry.SelectedValue);
+                ddlStates.DataSource = result;
+                ddlStates.DataTextField = "State_Name";
+                ddlStates.DataValueField = "State_Id";
+                ddlStates.DataBind();
+                ddlStates.Items.Insert(0, new ListItem { Selected = true, Text = "-Select-", Value = "0" });
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -143,7 +163,6 @@ namespace TLGX_Consumer.controls.geography
                     panSearchConditions.Visible = false;
                     fillCityForm(Request.QueryString["City_Id"], ref refCountryId);
                     fillCityArea((Request.QueryString["City_Id"]));
-                    //fillStateByCountryId(hdnCountryCode.Value);
                     fillStateByCountryId(Convert.ToString(refCountryId));
                 }
 
@@ -220,13 +239,7 @@ namespace TLGX_Consumer.controls.geography
 
             TextBox txtCityAreaName = (TextBox)frmCityAreaLocation.FindControl("txtCityAreaName");
             TextBox txtCityAreaCode = (TextBox)frmCityAreaLocation.FindControl("txtCityAreaCode");
-
-            //Models.CityAreaLocationE obj = new Models.CityAreaLocationE();
-            //obj.City_Id = Guid.Parse(Request.QueryString["City_Id"].ToString());
-            //obj.Name = txtCityAreaName.Text.Trim();
-            //obj.Code = txtCityAreaCode.Text.Trim();
-            //obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
-
+            
             MDMSVC.DC_CityAreaLocation obj = new MDMSVC.DC_CityAreaLocation();
             obj.City_Id = Guid.Parse(Request.QueryString["City_Id"].ToString());
             obj.Name = txtCityAreaName.Text.Trim();
@@ -246,6 +259,7 @@ namespace TLGX_Consumer.controls.geography
                         txtCityAreaName.Text = "";
                         txtCityAreaCode.Text = "";
                         frmCityAreaLocation.ChangeMode(FormViewMode.Insert);
+                        dvMsgCity.Visible = false;
                     };
                     break;
 
@@ -259,6 +273,7 @@ namespace TLGX_Consumer.controls.geography
                         txtCityAreaName.Text = "";
                         txtCityAreaCode.Text = "";
                         frmCityAreaLocation.ChangeMode(FormViewMode.Insert);
+                        dvMsgCity.Visible = false;
                     };
                     break;
             }
@@ -274,6 +289,7 @@ namespace TLGX_Consumer.controls.geography
         protected void btnresetCityAreaLocation_Click(object sender, EventArgs e)
         {
             frmCityArea.ChangeMode(FormViewMode.Insert);
+            dvMsgCity.Visible = false;
         }
 
         protected void frmCityArea_ItemInserting(object sender, FormViewInsertEventArgs e)
@@ -285,8 +301,10 @@ namespace TLGX_Consumer.controls.geography
         {
             CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
             fillgvCityyList(CountryID, 0);
-            //Session["Country_id"] = ddlCountry.SelectedValue.ToString();
-            //hdnCountryCode.Value = ddlCountry.SelectedValue.ToString();
+            if(ddlCountry.SelectedIndex!=0)
+                btnNewCity.Visible = true;
+            else
+                btnNewCity.Visible = false;
         }
 
         protected void grdCityList_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -307,6 +325,7 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
             TextBox txtCityName = (TextBox)frmCityMaster.FindControl("txtCityName");
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
+            dvMsgCity.Visible = true;
             if (e.CommandName.ToString()== "UpdateCityManager")
             {
                 MDMSVC.DC_City _obj = new MDMSVC.DC_City();
@@ -319,8 +338,16 @@ namespace TLGX_Consumer.controls.geography
                 _obj.StateCode = txtStateCode.Text;
                 _obj.Edit_Date = DateTime.Now;
                 _obj.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-                _objMasterData.UpdateCityMasterData(_obj);
-                
+                MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
+                _msg = _objMasterData.UpdateCityMasterData(_obj);
+                if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgCity, "City has been updated successfully", BootstrapAlertType.Success);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgCity, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+                }
             }
         }
 
@@ -328,7 +355,6 @@ namespace TLGX_Consumer.controls.geography
         {
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
-            //hdnCountryCode.Value = Session["Country_id"].ToString();
 
             var result = _objMasterData.GetStatesByCountry(Convert.ToString(refCountryId));
             int statecode = (ddlState.SelectedIndex) - 1;
@@ -336,6 +362,17 @@ namespace TLGX_Consumer.controls.geography
             {
                 txtStateCode.Text = result[statecode].State_Code.ToString();
             }
+        }
+
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlCountry.SelectedIndex == 0)
+                btnNewCity.Visible = false;
+        }
+
+        protected void btnNewCity_Click(object sender, EventArgs e)
+        {
+            fillStateList();
         }
     }
 }

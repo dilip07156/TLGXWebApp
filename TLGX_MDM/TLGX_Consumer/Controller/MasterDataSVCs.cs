@@ -79,11 +79,11 @@ namespace TLGX_Consumer.Controller
             return result as List<City_AlphaPage>;
         }
 
-        public bool UpdateCityMasterData(MDMSVC.DC_City RQ)
+        public MDMSVC.DC_Message UpdateCityMasterData(MDMSVC.DC_City RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_CityUpdate"], RQ, typeof(MDMSVC.DC_City), typeof(bool), out result);
-            return (bool)result;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_CityUpdate"], RQ, typeof(MDMSVC.DC_City), typeof(MDMSVC.DC_Message), out result);
+            return result as MDMSVC.DC_Message;
         }
         public MDMSVC.DC_Message AddCityMasterData(MDMSVC.DC_City RQ)
         {
