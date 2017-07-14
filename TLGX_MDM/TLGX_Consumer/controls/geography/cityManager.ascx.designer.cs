@@ -121,15 +121,6 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.UpdatePanel updatePanel1;
         
         /// <summary>
-        /// dvMsgCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCity;
-        
-        /// <summary>
         /// vlsum control.
         /// </summary>
         /// <remarks>
@@ -137,6 +128,15 @@ namespace TLGX_Consumer.controls.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vlsum;
+        
+        /// <summary>
+        /// dvMsgCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCity;
         
         /// <summary>
         /// frmCityMaster control.
