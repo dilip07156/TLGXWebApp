@@ -13735,6 +13735,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Keyword_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfHitsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int SequenceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -13835,6 +13838,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Sequence {
             get {
                 return this.SequenceField;
@@ -13909,7 +13925,10 @@ namespace TLGX_Consumer.MDMSVC {
         private string AliasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool AttributeField;
+        private string AliasStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> AttributeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Keyword_IdField;
@@ -13950,7 +13969,20 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool Attribute {
+        public string AliasStatus {
+            get {
+                return this.AliasStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AliasStatusField, value) != true)) {
+                    this.AliasStatusField = value;
+                    this.RaisePropertyChanged("AliasStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Attribute {
             get {
                 return this.AttributeField;
             }
