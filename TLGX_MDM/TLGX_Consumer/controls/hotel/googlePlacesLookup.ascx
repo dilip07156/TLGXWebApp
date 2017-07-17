@@ -38,10 +38,19 @@
             data: JSON.stringify(localproducts),
             responseType: "json",
             success: function (result) {
-                __doPostBack('MainContent_inandaround_btnRefreshGrid', 'btnRefreshGrid_Click');
+                document.getElementById('MainContent_inandaround_btnRefreshGrid').click();
+                //__doPostBack('MainContent_inandaround_btnRefreshGrid', '');
+                $('#msgSuccessful').css('opacity', '0');
+                $('#moAddnearbyplace').modal('hide');
+                // document.getElementById("msgSuccessful").style.visibility = "visible";
                 $('#msgSuccessful').show();
             },
             failure: function () {
+                $('#msgSuccessful').css('opacity', '1');
+                $('#msgSuccessful').hide();
+
+                //document.getElementById("msgSuccessful").style.visibility = "hidden";
+
             }
         });
     }
@@ -185,11 +194,14 @@
 
             }
 
-            if (lat != null && long != null) {
+            if ((lat != null && lat.trim() != '') && (long != null && long.trim() != '')) {
+                $('#msgNoDataFoundForSearchByNearByPlaces').css('opacity', '0');
+                $('#msgNoDataFoundForSearchByNearByPlaces').hide();
                 getNearByPlacesWithLatLong(lat, long)
             }
             else {
-                $('#msgNoDataFoundForSearchByNearByPlaces').attr('display', 'block');
+                $('#msgNoDataFoundForSearchByNearByPlaces').css('opacity', '1');
+                $('#msgNoDataFoundForSearchByNearByPlaces').show();
             }
         }
     }
@@ -324,15 +336,7 @@
     <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="vldInAndAroundLookup" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
     <div id="SummaryValidation" class="alert alert-danger" style="display: none;"></div>
     <div id="msgAlert" runat="server" style="display: none;"></div>
-    <div id="msgSuccessful" style="display: none;">
-        <script type="text/javascript">
-            setTimeout(function () { $("#msgSuccessful").fadeTo(500, 0).slideUp(500) }, 3000);
-
-        </script>
-
-        <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success!</strong> <span>Dynamic Attributes has been added successfully
-    </div>
-    <div id="msgNoDataFoundForSearchByNearByPlaces" style="display: none;">
+    <div id="msgNoDataFoundForSearchByNearByPlaces" style="display: none;" class="alert alert-warning">
         <script type="text/javascript">
             setTimeout(function () { $("#msgNoDataFoundForSearchByNearByPlaces").fadeTo(500, 0).slideUp(500) }, 3000);
         </script>
