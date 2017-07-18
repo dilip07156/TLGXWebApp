@@ -76,6 +76,24 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cityResult;
         
         /// <summary>
+        /// dvMsgCity2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCity2;
+        
+        /// <summary>
+        /// hdnFlagCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlagCity;
+        
+        /// <summary>
         /// divEntries control.
         /// </summary>
         /// <remarks>
@@ -101,15 +119,6 @@ namespace TLGX_Consumer.controls.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdCityList;
-        
-        /// <summary>
-        /// hdnCountryCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnCountryCode;
         
         /// <summary>
         /// updatePanel1 control.
