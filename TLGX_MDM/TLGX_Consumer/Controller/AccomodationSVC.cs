@@ -20,7 +20,7 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_SearchURI"], RQParams, typeof(MDMSVC.DC_Accomodation_Search_RQ), typeof(List<MDMSVC.DC_Accomodation_Search_RS>), out result);
-            return result as List<DC_Accomodation_Search_RS>; 
+            return result as List<DC_Accomodation_Search_RS>;
         }
 
         public List<string> GetAccomodationNames(MDMSVC.DC_Accomodation_Search_RQ RQParams)
@@ -294,7 +294,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_NearbyPlacesURI"], Accommodation_Id, Accommodation_NearbyPlace_Id), typeof(List<DC_Accommodation_NearbyPlaces>), out result);
             return result as List<DC_Accommodation_NearbyPlaces>;
         }
-
+        public List<DC_Accommodation_NearbyPlaces> GetNearbyPlacesDetailsWithPaging(Guid Accommodation_Id, Guid Accommodation_NearbyPlace_Id, string pageSize, string pageindex)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_NearbyPlacesURIWithPaging"], Accommodation_Id, Accommodation_NearbyPlace_Id, pageSize, pageindex), typeof(List<DC_Accommodation_NearbyPlaces>), out result);
+            return result as List<DC_Accommodation_NearbyPlaces>;
+        }
 
         public bool AddNearbyPlaces(MDMSVC.DC_Accommodation_NearbyPlaces AF)
         {
@@ -340,7 +345,7 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_UpdateHotelRulesURI"], AF, typeof(DC_Accommodation_RuleInfo), typeof(bool), out result);
             return (bool)result;
-                 
+
 
         }
         #endregion
@@ -472,7 +477,7 @@ namespace TLGX_Consumer.Controller
         }
 
         #endregion
-        
+
         #region Geo Location
         public DC_GeoLocation GetGeoLocationByAddress(MDMSVC.DC_Address_Physical AP)
         {
@@ -488,7 +493,7 @@ namespace TLGX_Consumer.Controller
             return result as DC_GeoLocation;
         }
         #endregion
-        
+
         #region Address Heirarchy Update
         public bool UpdateAdressHeirarchy(MDMSVC.DC_Country_State_City_Area_Location obj)
         {
@@ -497,7 +502,7 @@ namespace TLGX_Consumer.Controller
             return (bool)result;
         }
         #endregion
-        
+
         #region Classification Attrbiutes
         public List<DC_Accomodation_ClassificationAttributes> GetClassificationAttributes(Guid Accommodation_Id, Guid Accommodation_ClassificationAttribute_Id)
         {
@@ -523,7 +528,7 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Site Map
-        public List<DC_SiteMap> GetSiteMapMaster(int ID,string applicationID = "0")
+        public List<DC_SiteMap> GetSiteMapMaster(int ID, string applicationID = "0")
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["SiteMap_Get"], ID, applicationID), typeof(List<DC_SiteMap>), out result);

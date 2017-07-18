@@ -2606,6 +2606,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PlaceTypeField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalRecordsField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -2794,6 +2797,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.PlaceTypeField, value) != true)) {
                     this.PlaceTypeField = value;
                     this.RaisePropertyChanged("PlaceType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
                 }
             }
         }
@@ -13841,6 +13857,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int NewHits {
             get {
                 return this.NewHitsField;
@@ -13849,6 +13878,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.NewHitsField.Equals(value) != true)) {
                     this.NewHitsField = value;
                     this.RaisePropertyChanged("NewHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NewHits {
+            get {
+                return this.NewHitsField;
+            }
+            set {
+                if ((this.NewHitsField.Equals(value) != true)) {
+                    this.NewHitsField = value;
+                    this.RaisePropertyChanged("NewHits");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfHits {
+            get {
+                return this.NoOfHitsField;
+            }
+            set {
+                if ((this.NoOfHitsField.Equals(value) != true)) {
+                    this.NoOfHitsField = value;
+                    this.RaisePropertyChanged("NoOfHits");
                 }
             }
         }
@@ -13942,6 +13997,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AliasStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> AttributeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> AttributeField;
@@ -26885,6 +26943,14 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationNearbyPlaces", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationNearbyPlacesResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetAccomodationNearbyPlacesAsync(string Accomodation_Id, string DataKey_Id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetNearbyPlacesDetailsWithPaging", ReplyAction="http://tempuri.org/IAccomodation/GetNearbyPlacesDetailsWithPagingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetNearbyPlacesDetailsWithPagingDC_ErrorStatusFa" +
+            "ult", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[] GetNearbyPlacesDetailsWithPaging(string Accomodation_Id, string DataKey_Id, string pageSize, string pageindex);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetNearbyPlacesDetailsWithPaging", ReplyAction="http://tempuri.org/IAccomodation/GetNearbyPlacesDetailsWithPagingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetNearbyPlacesDetailsWithPagingAsync(string Accomodation_Id, string DataKey_Id, string pageSize, string pageindex);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddAccomodationNearbyPlaces", ReplyAction="http://tempuri.org/IAccomodation/AddAccomodationNearbyPlacesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddAccomodationNearbyPlacesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         bool AddAccomodationNearbyPlaces(TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces NP);
@@ -28499,6 +28565,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetAccomodationNearbyPlacesAsync(string Accomodation_Id, string DataKey_Id) {
             return base.Channel.GetAccomodationNearbyPlacesAsync(Accomodation_Id, DataKey_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[] GetNearbyPlacesDetailsWithPaging(string Accomodation_Id, string DataKey_Id, string pageSize, string pageindex) {
+            return base.Channel.GetNearbyPlacesDetailsWithPaging(Accomodation_Id, DataKey_Id, pageSize, pageindex);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces[]> GetNearbyPlacesDetailsWithPagingAsync(string Accomodation_Id, string DataKey_Id, string pageSize, string pageindex) {
+            return base.Channel.GetNearbyPlacesDetailsWithPagingAsync(Accomodation_Id, DataKey_Id, pageSize, pageindex);
         }
         
         public bool AddAccomodationNearbyPlaces(TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces NP) {
