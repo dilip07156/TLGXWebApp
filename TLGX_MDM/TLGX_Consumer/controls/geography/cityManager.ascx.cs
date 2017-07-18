@@ -398,6 +398,7 @@ namespace TLGX_Consumer.controls.geography
                 if (resultCountry != null)
                 {
                     _objCityMaster.Country_Id = ddlCountry_Id_Value;
+                    _objCityMaster.CountryCode = resultCountry[0].Code;
                     _objCityMaster.CountryName = Convert.ToString(resultCountry[0].Name).Trim();
                     _objCityMaster.Google_PlaceId = Convert.ToString(resultCountry[0].GooglePlaceID);
                 }
@@ -417,13 +418,19 @@ namespace TLGX_Consumer.controls.geography
                 {
                     fillgvCityyList(ddlCountry_Id_Value, 0);
                     hdnFlagCity.Value = "true";
+                    dvMsgCity2.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsgCity2, _msg.StatusMessage, BootstrapAlertType.Success);
                 }
                 else
                 {
+                    dvMsgCity2.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvmsgCityAlert, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
                 }
             }
+            txtCityName.Text = String.Empty;
+            txtCityCode.Text = String.Empty;
+            ddlState.SelectedIndex = 0;
+            ddlStatus.SelectedIndex = 0;
         }
     }
 }

@@ -347,7 +347,7 @@
             <div class="modal-header">
                 <div class="panel panel-default">
                     <div class="input-group">
-                        <h4 class="input-group-addon">Add/Update City for </h4>
+                        <h4 class="input-group-addon">Add City for </h4>
                         <strong>
                             <label id="lblCountryForCity" class="form-control"></label>
                         </strong>
