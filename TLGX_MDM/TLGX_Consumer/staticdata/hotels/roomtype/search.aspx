@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="search.aspx.cs" Inherits="TLGX_Consumer.staticdata.hotels.roomtype.search" %>
+﻿<%@ Page Title="Room Type Mapping" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="search.aspx.cs" Inherits="TLGX_Consumer.staticdata.hotels.roomtype.search" %>
 <%@ Register Src="~/controls/roomtype/searchRoomTypes.ascx" TagPrefix="uc1" TagName="searchRoomTypes" %>
 
 
