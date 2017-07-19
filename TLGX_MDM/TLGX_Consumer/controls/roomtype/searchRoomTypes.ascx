@@ -104,6 +104,18 @@ $(document).ready(function(){
                                         </div>
 
 
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-6" for="ddlMappingType">Mapping Type</label>
+                                            <div class="col-sm-6">
+                                                <asp:DropDownList ID="ddlMappingType" runat="server" CssClass="form-control">
+                                                    <asp:ListItem Text="---ALL---" Value=""></asp:ListItem>
+                                                    <asp:ListItem Text="Static File" Value="" Selected="True"></asp:ListItem>
+                                                    <asp:ListItem Text="Dynamic Search Results" Value=""></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+
+
 
                                     </div>
                                 </div>
@@ -206,7 +218,7 @@ $(document).ready(function(){
                                             <asp:CheckBox runat="server" ID="chkRows" />
                                         </td>
                                     </tr>
-                                    <tr>
+                      <%--              <tr>
                                         <td>EXPEDIA</td>
                                         <td>192346</td>
                                         <td>Abba Queensgate Hotel</td>
@@ -228,8 +240,8 @@ $(document).ready(function(){
                                         <td>
                                             <asp:CheckBox runat="server" ID="CheckBox1" />
                                         </td>
-                                    </tr>
-                                    <tr>
+                                    </tr>--%>
+                      <%--              <tr>
                                         <td>EXPEDIA</td>
                                         <td>192346</td>
                                         <td>Abba Queensgate Hotel</td>
@@ -251,7 +263,7 @@ $(document).ready(function(){
                                         <td>
                                             <asp:CheckBox runat="server" ID="CheckBox2" />
                                         </td>
-                                    </tr>
+                                    </tr>--%>
 
                                     <!-- sample suggested map format, with room on product -->
                                     <tr>

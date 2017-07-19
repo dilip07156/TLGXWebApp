@@ -63,6 +63,23 @@ namespace TLGX_Consumer.controls.hotel
 
         }
 
+        protected void BindNearbyPlacesByAjax()
+        {
+            Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
+            var result = AccSvc.GetNearbyPlacesDetailsWithPaging(Accomodation_ID, Guid.Empty, Convert.ToString(PageSize), Convert.ToString(intPageIndex));
+            grdInAndAround.DataSource = result;
+            grdInAndAround.PageIndex = intPageIndex;
+            grdInAndAround.PageSize = PageSize;
+            if (result != null)
+            {
+                if (result.Count > 0)
+                {
+                    grdInAndAround.VirtualItemCount = result[0].TotalRecords ?? 0;
+                }
+            }
+            grdInAndAround.DataBind();
+        }
+
 
         #endregion
 
@@ -276,7 +293,7 @@ namespace TLGX_Consumer.controls.hotel
 
         protected void btnRefreshGrid_Click(object sender, EventArgs e)
         {
-            BindNearbyPlaces();
+            BindNearbyPlacesByAjax();
         }
 
         protected void grdInAndAround_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -293,5 +310,6 @@ namespace TLGX_Consumer.controls.hotel
             intPageIndex = 0;
             BindNearbyPlaces();
         }
+
     }
 }

@@ -23,6 +23,12 @@
 
 <asp:UpdatePanel runat="server" ID="updPanNEaryby">
     <ContentTemplate>
+        <div id="msgSuccessful" style="display: none;">
+            <script type="text/javascript">
+                //setTimeout(function () { $("#msgSuccessful").fadeTo(500, 0).slideUp(500) }, 3000);
+            </script>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success!</strong> <span>In adn Around place has been added successfully.
+        </div>
         <div id="dvMsg" runat="server" style="display: none;"></div>
         <asp:FormView ID="frmLandmark" runat="server" DataKeyNames="Accommodation_NearbyPlace_Id" DefaultMode="Insert" OnItemCommand="frmLandmark_ItemCommand">
             <HeaderTemplate>

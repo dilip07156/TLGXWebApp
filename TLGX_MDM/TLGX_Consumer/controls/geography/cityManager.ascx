@@ -9,12 +9,19 @@
     function closeCityMappingModal() {
         $("#moCityAddUpdate").modal('hide');
     }
-    
+    function pageLoad(sender, args) {
+        var hvCity = $('#MainContent_cityManager_hdnFlagCity').val();
+
+        if(hvCity=="true"){
+            closeCityMappingModal();
+            $('#MainContent_cityManager_hdnFlagCity').val("false");
+        }
+    }
+
 </script>
 
 <asp:UpdatePanel ID="panSearchConditions" runat="server">
     <ContentTemplate>
-        <%--<asp:Panel ID="panSearchConditions" runat="server">--%>
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -28,6 +35,7 @@
                     <div class="row">
                         <div class="form-inline">
                             <div class="col-sm-12">
+
                                 <label for="ddlCountry">
                                     Country
                             <asp:RequiredFieldValidator ValidationGroup="CityManager" runat="server" ControlToValidate="ddlCountry"
@@ -37,11 +45,13 @@
                                     <asp:ListItem Value="0">-Select-</asp:ListItem>
                                 </asp:DropDownList>
 
+
                                 <label for="txtCityName">CityName</label>
                                 <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" />
 
                                 <asp:LinkButton ID="btnGetCities" runat="server" CommandName="Search" Text="Search" CssClass="btn btn-primary btn-sm" ValidationGroup="CityManager" OnClick="btnGetCities_Click" />
-                                <asp:LinkButton ID="btnNewCity" runat="server" CommandName="Create" Text="Create City" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnNewCity_Click" OnClientClick="showCityMappingModal();" Visible="false"/>
+                                <asp:LinkButton ID="btnNewCity" runat="server" CommandName="Create" Text="Create City" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnNewCity_Click" OnClientClick="showCityMappingModal();" Visible="false" />
+
                             </div>
                         </div>
 
@@ -59,6 +69,8 @@
                                 </div>
                                 <div id="collapseSearch" class="panel-collapse collapse in">
                                     <div class="panel-body">
+                                        <div id="dvMsgCity2" runat="server" style="display: none;"></div>
+                                        <asp:HiddenField ID="hdnFlagCity" runat="server" Value="" EnableViewState="false" />
                                         <div class="form-group pull-right col-md-2 " id="divEntries" runat="server">
                                             <div class="input-group">
                                                 <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
@@ -98,7 +110,6 @@
                 </div>
             </div>
         </div>
-        <%--</asp:Panel>--%>
     </ContentTemplate>
 </asp:UpdatePanel>
 
@@ -107,7 +118,6 @@
 
 
 
-<asp:HiddenField ID="hdnCountryCode" runat="server" ClientIDMode="Static" Value="" EnableViewState="true" />
 <asp:UpdatePanel ID="updatePanel1" runat="server">
     <ContentTemplate>
 
@@ -131,21 +141,21 @@
                                     <label for="txtCityCode">City Code</label>
                                     <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
-
                                     <label for="ddlState">
                                         State
                                         <asp:RequiredFieldValidator ValidationGroup="CityDetails" runat="server" ControlToValidate="ddlState"
                                             Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please select a State." />
                                     </label>
+
                                     <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                     </asp:DropDownList>
 
-
                                     <label for="txtStateCode">State Code</label>
                                     <asp:TextBox ID="txtStateCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
-
+                                    <label for="txtGooglePlaceId">Google Place Id</label>
+                                    <asp:TextBox ID="txtGooglePlaceId" runat="server" CssClass="form-control" Text='<%# Bind("Google_PlaceId") %>' Enabled="false" />
 
                                     <label for="txtEditUser">Edit User</label>
                                     <asp:TextBox ID="txtEditUser" runat="server" CssClass="form-control" Text='<%# Bind("Edit_User") %>' Enabled="false" />
@@ -182,7 +192,7 @@
                                         <Columns>
                                             <asp:BoundField HeaderText="Name" DataField="Name" SortExpression="Name" />
                                             <asp:BoundField HeaderText="Code" DataField="Code" SortExpression="Code" />
-                                            <asp:CommandField ShowSelectButton="True" SelectText="Edit"/>
+                                            <asp:CommandField ShowSelectButton="True" SelectText="Edit" />
                                         </Columns>
                                     </asp:GridView>
                                     <br />
@@ -219,7 +229,8 @@
                                                 <div class="panel-heading">Update City Area</div>
                                                 <div class="panel-body">
 
-                                                    <label for="txtCityAreaName">Name
+                                                    <label for="txtCityAreaName">
+                                                        Name
                                                         <asp:RequiredFieldValidator ID="vlCityAreaLoc" runat="server" ControlToValidate="txtCityAreaName" ValidationGroup="vlgrpCityArea" ErrorMessage="Please Enter the Area Name." Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <asp:TextBox ID="txtCityAreaName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' />
@@ -229,7 +240,7 @@
 
 
                                                     <br />
-                                                    <asp:Button ID="btnCityArea" runat="server" Text="Save" CommandName="Save" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityArea"/>
+                                                    <asp:Button ID="btnCityArea" runat="server" Text="Save" CommandName="Save" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityArea" />
                                                     <asp:Button ID="btnresetCityAreaLocation" runat="server" Text="Reset" CssClass="btn btn-primary btn-sm" OnClick="btnresetCityAreaLocation_Click" />
 
                                                 </div>
@@ -253,7 +264,7 @@
                                         <Columns>
                                             <asp:BoundField HeaderText="Name" DataField="Name" SortExpression="Name" />
                                             <asp:BoundField HeaderText="Code" DataField="Code" SortExpression="Code" />
-                                            <asp:CommandField ShowSelectButton="True" SelectText="Edit"/>
+                                            <asp:CommandField ShowSelectButton="True" SelectText="Edit" />
                                         </Columns>
                                     </asp:GridView>
 
@@ -269,7 +280,8 @@
                                                 <div class="panel-heading">Add City Area Location </div>
                                                 <div class="panel-body">
 
-                                                    <label for="txtCityAreaName">Area Name
+                                                    <label for="txtCityAreaName">
+                                                        Area Name
                                                         <asp:RequiredFieldValidator ID="vlCityAreaLoc" runat="server" ControlToValidate="txtCityAreaName" ValidationGroup="vlgrpCityAreaLoc" ErrorMessage="Please Enter the Area Location Name." Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <asp:TextBox ID="txtCityAreaName" runat="server" CssClass="form-control" />
@@ -279,7 +291,7 @@
 
 
                                                     <br />
-                                                    <asp:Button ID="btnCityAreaLocation" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityAreaLoc"/>
+                                                    <asp:Button ID="btnCityAreaLocation" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vlgrpCityAreaLoc" />
                                                 </div>
                                             </div>
 
@@ -291,7 +303,8 @@
                                                 <div class="panel-heading">Update City Area Location</div>
                                                 <div class="panel-body">
 
-                                                    <label for="txtCityAreaName">Name
+                                                    <label for="txtCityAreaName">
+                                                        Name
                                                         <asp:RequiredFieldValidator ID="vlCityAreaLoc" runat="server" ControlToValidate="txtCityAreaName" ValidationGroup="vlgrpCityAreaLoc" ErrorMessage="Please Enter the Area Name Location." Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <asp:TextBox ID="txtCityAreaName" runat="server" CssClass="form-control" Text='<%# Bind("Name") %>' />
@@ -334,7 +347,7 @@
             <div class="modal-header">
                 <div class="panel panel-default">
                     <div class="input-group">
-                        <h4 class="input-group-addon">Add/Update City for </h4>
+                        <h4 class="input-group-addon">Add City for </h4>
                         <strong>
                             <label id="lblCountryForCity" class="form-control"></label>
                         </strong>
@@ -355,8 +368,8 @@
                                 </div>
                             </div>
                         </div>
-                        <asp:FormView ID="frmvwCity" runat="server" DataKeyNames="City_Id" DefaultMode="Insert">
-                            <EditItemTemplate>
+                        <asp:FormView ID="frmvwCity" runat="server" DataKeyNames="City_Id" DefaultMode="Insert" OnItemCommand="frmvwCity_ItemCommand">
+                            <%--<EditItemTemplate>
                                 <div class="container">
                                     <div class="row col-lg-6">
                                         <div class="panel panel-default">
@@ -410,7 +423,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </EditItemTemplate>
+                            </EditItemTemplate>--%>
                             <InsertItemTemplate>
                                 <div class="container">
                                     <div class="row col-lg-6">
@@ -459,7 +472,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row pull-right col-md-3">
-                                                    <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Add" Text="Save City" CssClass="btn btn-primary btn-sm" ValidationGroup="City" />
+                                                    <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="AddCity" Text="Save City" CssClass="btn btn-primary btn-sm" ValidationGroup="City" />
                                                 </div>
                                             </div>
                                         </div>
