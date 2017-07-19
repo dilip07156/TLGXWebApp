@@ -417,7 +417,7 @@
 
                         </label>
                         <div class="col-lg-8">
-                            <asp:DropDownList ID="ddlAddState" AutoPostBack="true" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddCountry_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlAddState" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddState_SelectedIndexChanged">
                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                             </asp:DropDownList>
                         </div>

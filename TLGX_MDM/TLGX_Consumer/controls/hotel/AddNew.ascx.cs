@@ -98,6 +98,7 @@ namespace TLGX_Consumer.controls.hotel
         {
             try
             {
+                ddlAddState.Items.Clear();
                 var result = _objMasterData.GetStatesByCountry(Country_ID);
                 if (Country_ID != "")
                 {
@@ -125,7 +126,7 @@ namespace TLGX_Consumer.controls.hotel
                 ddlAddCity.DataValueField = "City_Id";
                 ddlAddCity.DataTextField = "Name";
                 ddlAddCity.DataBind();
-                ddlAddCity.Items.Insert(0, new ListItem("---ALL---", ""));
+                ddlAddCity.Items.Insert(0, new ListItem("--ALL--", ""));
             }
         }
 
@@ -663,15 +664,37 @@ namespace TLGX_Consumer.controls.hotel
             if (ddlAddCountry.SelectedValue != "")
             {
                 fillStatedropdown(ddlAddCountry.SelectedValue);
+            }
+        }
+
+        protected void ddlAddState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlAddState.SelectedIndex==0)
+            {
+                ddlAddCity.Items.Clear();
                 fillcitydropdown(ddlAddCountry.SelectedValue);
             }
             else
             {
-                fillStatedropdown("");
-                fillcitydropdown("");
+                Guid ddlstate_id = Guid.Parse(ddlAddState.SelectedValue);
+                var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() {State_Id=ddlstate_id });
+
+                if (result != null)
+                {
+                    ddlAddCity.Items.Clear();
+
+                    ddlAddCity.DataSource = result;
+                    ddlAddCity.DataValueField = "City_Id";
+                    ddlAddCity.DataTextField = "Name";
+                    ddlAddCity.DataBind();
+                    ddlAddCity.Items.Insert(0, new ListItem("--ALL--", ""));
+                }
+                else
+                {
+                    fillcitydropdown(ddlAddCountry.SelectedValue);
+                }
             }
         }
-
         protected void btnAddNew_Command1(object sender, CommandEventArgs e)
         {
 
