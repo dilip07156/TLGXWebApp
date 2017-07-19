@@ -141,21 +141,21 @@
                                     <label for="txtCityCode">City Code</label>
                                     <asp:TextBox ID="txtCityCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
-
                                     <label for="ddlState">
                                         State
                                         <asp:RequiredFieldValidator ValidationGroup="CityDetails" runat="server" ControlToValidate="ddlState"
                                             Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please select a State." />
                                     </label>
+
                                     <asp:DropDownList ID="ddlState" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                     </asp:DropDownList>
 
-
                                     <label for="txtStateCode">State Code</label>
                                     <asp:TextBox ID="txtStateCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
 
-
+                                    <label for="txtGooglePlaceId">Google Place Id</label>
+                                    <asp:TextBox ID="txtGooglePlaceId" runat="server" CssClass="form-control" Text='<%# Bind("Google_PlaceId") %>' Enabled="false" />
 
                                     <label for="txtEditUser">Edit User</label>
                                     <asp:TextBox ID="txtEditUser" runat="server" CssClass="form-control" Text='<%# Bind("Edit_User") %>' Enabled="false" />
