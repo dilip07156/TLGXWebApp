@@ -5,6 +5,13 @@
     });
 </script>
 <script type="text/javascript">
+    function SelectedRow(element) {
+        debugger;
+        var row = $(element).parent().parent().closest('tr').next();
+        if (row != null)
+            if (row.find('.dropdownforBind') != null)
+                row.find('.dropdownforBind').focus();
+    }
     function fillDropDown(record, onClick) {
         debugger;
         if (onClick) {
@@ -63,19 +70,19 @@
             }
         }
     }
-    function RemoveExtra(record, onClick) {
-        if (!onClick) {
-            var currentRow = $(record).parent().parent();
-            var CityDDL = currentRow.find("td:eq(11)").find('select');
-            var selectedText = CityDDL.find("option:selected").text();
-            var selectedVal = CityDDL.val();
-            CityDDL.find("option:not(:first)").remove();
-            var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
-            CityDDL.append(listItems);
-            var city_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
-            city_id.value = selectedVal;
-        }
-    }
+    //function RemoveExtra(record, onClick) {
+    //    if (!onClick) {
+    //        var currentRow = $(record).parent().parent();
+    //        var CityDDL = currentRow.find("td:eq(11)").find('select');
+    //        var selectedText = CityDDL.find("option:selected").text();
+    //        var selectedVal = CityDDL.val();
+    //        CityDDL.find("option:not(:first)").remove();
+    //        var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
+    //        CityDDL.append(listItems);
+    //        var city_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
+    //        city_id.value = selectedVal;
+    //    }
+    //}
 </script>
 
 <div class="navbar">
@@ -165,7 +172,7 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
-                                                 <div class="form-group row">
+                                                <div class="form-group row">
                                                     <label class="control-label col-sm-6" for="ddlStatusBySupplier">
                                                         Product Name
                                                     </label>
@@ -256,7 +263,7 @@
                                             <asp:BoundField HeaderText="Supplier Room Type Name" DataField="SupplierRoomName" ItemStyle-Wrap="true" ItemStyle-Width="12%" />
                                             <asp:TemplateField HeaderText="Suggested Room Info">
                                                 <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onchange="RemoveExtra(this,false);" onclick="fillDropDown(this,true);">
+                                                    <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);">
                                                         <asp:ListItem Value="0">Select</asp:ListItem>
                                                     </asp:DropDownList>
                                                     <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
