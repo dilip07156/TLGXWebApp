@@ -392,5 +392,13 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+        #region hotel report
+        public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_NewHotelsReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_newHotelsReport>), out result);
+            return result as List<DC_newHotelsReport>;
+        }
+        #endregion
     }
 }
