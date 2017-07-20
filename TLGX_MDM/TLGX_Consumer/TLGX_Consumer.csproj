@@ -373,6 +373,7 @@
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
@@ -458,6 +459,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation.datasource">
@@ -592,6 +596,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterparentattributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_newHotelsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PortMaster.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -684,6 +691,7 @@
     <Content Include="staticdata\config\search.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
+    <Content Include="staticdata\hotels\newHotelReport.aspx" />
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
@@ -2126,6 +2134,13 @@
     <Compile Include="staticdata\hotels\addProductMapping.aspx.designer.cs">
       <DependentUpon>addProductMapping.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\hotels\newHotelReport.aspx.cs">
+      <DependentUpon>newHotelReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\newHotelReport.aspx.designer.cs">
+      <DependentUpon>newHotelReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\hotels\roomtype\manage.aspx.cs">
       <DependentUpon>manage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2229,6 +2244,9 @@
     <Content Include="staticdata\rptAllSupplierReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="staticdata\hotels\rptNewhotelsReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
