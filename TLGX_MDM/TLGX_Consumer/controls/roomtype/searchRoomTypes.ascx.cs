@@ -212,7 +212,6 @@ namespace TLGX_Consumer.controls.roomtype
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //DataRowView drv = (DataRowView)e.Row.DataItem;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Guid Accoid = Guid.Parse(Convert.ToString(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[e.Row.RowIndex][1]));
@@ -227,7 +226,6 @@ namespace TLGX_Consumer.controls.roomtype
                     string RoomInfo_Name = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Name);
                     if (blnHaveRoomInfo_Id && RoomInfo_Name != null && RoomInfo_Name != "")
                     {
-                        //if ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomName != null 
                         string Accommodation_RoomInfo_Id = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.Value);
                         ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(RoomInfo_Name, Accommodation_RoomInfo_Id));
                         if (ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id) != null)
@@ -256,7 +254,6 @@ namespace TLGX_Consumer.controls.roomtype
         }
         protected void btnMapSelectedBySupplier_Click(object sender, EventArgs e)
         {
-            //   divMsgForUnMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             Guid myRow_Id;
             Guid myAcco_Id;
             MDMSVC.DC_Message _newmsg = new MDMSVC.DC_Message();
@@ -331,9 +328,7 @@ namespace TLGX_Consumer.controls.roomtype
             List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update> _lstUpdate = new List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>();
             foreach (GridViewRow row in grdRoomTypeMappingSearchResultsBySupplier.Rows)
             {
-                //HtmlInputCheckBox chkSelect = (HtmlInputCheckBox)row.FindControl("chkSelect");
-                //if (chkSelect != null && chkSelect.Checked)
-                //{
+
                 int rowindex = row.RowIndex;
                 myRow_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[rowindex].Values[0].ToString());
                 myAcco_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[rowindex].Values[1].ToString());
@@ -376,8 +371,6 @@ namespace TLGX_Consumer.controls.roomtype
                         }
                     }
                 }
-
-                //}
             }
             if (_lstUpdate.Count > 0)
             {

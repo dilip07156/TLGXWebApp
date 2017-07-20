@@ -6,14 +6,12 @@
 </script>
 <script type="text/javascript">
     function SelectedRow(element) {
-        debugger;
         var row = $(element).parent().parent().closest('tr').next();
         if (row != null)
             if (row.find('.dropdownforBind') != null)
                 row.find('.dropdownforBind').focus();
     }
     function fillDropDown(record, onClick) {
-        debugger;
         if (onClick) {
             var currentRow = $(record).parent().parent();
             var acco_id = currentRow.find('.hidnAcoo_Id').val();
@@ -39,7 +37,6 @@
                         },
                         responseType: "json",
                         success: function (result) {
-                            debugger;
                             if (ddlRoomInfo.find("option:not(:first)").length > 0) {
                                 ddlRoomInfo.find("option:not(:first)").remove();
                             }
@@ -62,7 +59,6 @@
                             }
                         },
                         failure: function () {
-                            debugger;
                         }
                     });
                 }
@@ -70,19 +66,6 @@
             }
         }
     }
-    //function RemoveExtra(record, onClick) {
-    //    if (!onClick) {
-    //        var currentRow = $(record).parent().parent();
-    //        var CityDDL = currentRow.find("td:eq(11)").find('select');
-    //        var selectedText = CityDDL.find("option:selected").text();
-    //        var selectedVal = CityDDL.val();
-    //        CityDDL.find("option:not(:first)").remove();
-    //        var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
-    //        CityDDL.append(listItems);
-    //        var city_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
-    //        city_id.value = selectedVal;
-    //    }
-    //}
 </script>
 
 <div class="navbar">
