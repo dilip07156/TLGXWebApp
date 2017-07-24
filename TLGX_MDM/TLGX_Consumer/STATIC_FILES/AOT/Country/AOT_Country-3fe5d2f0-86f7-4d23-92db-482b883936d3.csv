@@ -1,0 +1,78 @@
+country_code,name,ISActive
+AU,Australia,YES
+NZ,New Zealand,YES
+FJ,Fiji,YES
+VU,Vanuatu,YES
+CK,Cook Islands,YES
+WS,Samoa,YES
+TO,Tonga,YES
+PG,Papua New Guinea,YES
+NC,New Caledonia,YES
+NU,Niue,YES
+TH,Thailand,YES
+CA,Canada,YES
+CN,China,YES
+GB,United Kingdom,YES
+US,United States of America,YES
+PF,French Polynesia,YES
+JP,Japan,YES
+ID,Indonesia,YES
+IE,Ireland,NO
+AE,United Arab Emirates,NO
+HK,Hong Kong,NO
+ES,Spain,NO
+MO,Macau,NO
+MY,Malaysia,NO
+SG,Singapore,NO
+VN,Vietnam,NO
+AT,Austria,NO
+BE,Belgium,NO
+CZ,Czech Republic,NO
+DK,Denmark,NO
+FR,France,NO
+DE,Germany,NO
+GR,Greece,YES
+HU,Hungary,YES
+IT,Italy,YES
+LU,Luxembourg,YES
+NL,Netherlands,YES
+NO,Norway,YES
+PL,Poland,YES
+PT,Portugal,YES
+SE,Sweden,YES
+CH,Switzerland,YES
+TR,Turkey,YES
+MV,Maldives,YES
+AR,Argentina,YES
+BH,Bahrain,YES
+BO,Bolivia,YES
+BW,Botswana,YES
+BR,Brazil,YES
+KH,Cambodia,YES
+CL,Chile,YES
+CO,Columbia,YES
+HR,Croatia,YES
+EG,Egypt,YES
+IN,India,YES
+JM,Jamaica,YES
+KE,Kenya,YES
+KW,Kuwait,YES
+LB,Lebanon,YES
+MU,Mauritius,YES
+MX,Mexico,YES
+MA,Morocco,YES
+NA,Namibia,YES
+NG,Nigeria,YES
+OM,Oman,YES
+PE,Peru,YES
+PH,Philippines,YES
+PR,Puerto Rico,YES
+QA,Qatar,YES
+RU,Russia,YES
+SA,Saudi Arabia,YES
+ZA,South Africa,YES
+KR,South Korea,YES
+LK,Sri Lanka,YES
+UY,Uruguay,YES
+ZW,Zimbabwe,YES
+AS,American Samoa,YES

@@ -1,13 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="manageSupplierImports.aspx.cs" Inherits="TLGX_Consumer.staticdata.manageSupplierImports" EnableEventValidation="false" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
-
-    <%-- <link href="../Scripts/ChartJS/bootstrap-print.css" rel="stylesheet" media="print" />
-
-    <link href="../Scripts/ChartJS/bootstrap-print-md.css" rel="stylesheet" media="print" />--%>
     <style>
         @media(min-width: 992px) {
             .col5 {
@@ -20,19 +16,6 @@
             }
         }
 
-        #pdfHeader {
-            font-weight: bold;
-            text-align: center;
-            font-size: medium;
-            display: none;
-        }
-
-        @media print {
-            #pdfHeader {
-                display: block;
-            }
-        }
-
         .nxtrundate {
             font-size: small;
         }
@@ -42,19 +25,13 @@
             font-size: small;
         }
 
-        .page-header {
-            border-bottom: none;
+        table{
+                 width:100%;
         }
-        /*.mbox{
-          width: 20px;
-          display: inline-block;
-          margin: 5px;
-       }*/
     </style>
-
     <script type="text/javascript">
-        //color array for charts
         var colorsArray = [];
+       // var isPageLoad = false;
         while (colorsArray.length < 200) {
             do {
                 var color = Math.floor((Math.random() * 1000000) + 2);
@@ -62,15 +39,21 @@
             while (colorsArray.indexOf(color) >= 0);
             colorsArray.push("#" + ("ffffff" + color.toString(16)).slice(-6));
         }
-        //end
+
         function getChartData() {
-            var e = document.getElementById("MainContent_ddlSupplierName");
-            var sid = e.options[e.selectedIndex].value.toString();
+            var sid = $('#MainContent_ddlSupplierName').val();
             if (sid == '0') {
-                //for last three charts.
-                $("#dvUnmappedData").css("display", "block");
+                //For all supplier Show both Div
+                //$('#supplierwisedata').show();
+               // $('#allsupplierdata').show();
+                $('#ReportViewersupplierwise').hide();
                 getAllSupplierData();
                 sid = '00000000-0000-0000-0000-000000000000'
+            }
+            else {
+                //$('#supplierwisedata').show();
+               // $('#allsupplierdata').hide();
+                $('#ReportViewersupplierwise').hide();
             }
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
@@ -174,7 +157,7 @@
                         }
                         if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
-                            $(".activityper").append(per + "%");
+                            $(".hotelrumper").append(per + "%");
                             var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
                             for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
                                 if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
@@ -216,7 +199,7 @@
                         delete o.Status;
                         o.value = o.TotalCount;
                         delete o.TotalCount;
-                    } 
+                    }
                     for (var i = 0; i < hotelroomArray.length; i++) {
                         var o = hotelroomArray[i];
                         o.label = o.Status;
@@ -298,22 +281,17 @@
 
                 },
                 error: function (xhr, status, error) {
-                    alert("failed to load file");
+                   // alert("failed to load file");
                 }
-
-
             });
         }
-
-
-        function getAllSupplierData() {
+         function getAllSupplierData() {
             $.ajax({
                 url: '../../../Service/AllSupplierDataForChart.ashx',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 type: 'GET',
                 success: function (result) {
-                    debugger;
                     var allcontryArray = [];
                     var allcityArray = [];
                     var allproductArray = [];
@@ -380,7 +358,7 @@
                         delete o.SupplierName;
                         o.value = o.totalcount;
                         delete o.totalcount;
-                    } 
+                    }
                     for (var i = 0; i < allhotelroomArray.length; i++) {
                         var o = allhotelroomArray[i];
                         o.label = o.SupplierName;
@@ -474,35 +452,28 @@
 
                 },
                 error: function (xhr, status, error) {
-                    alert("failed to load  all supplier data file");
+                   // alert("failed to load  all supplier data file");
                 }
             });
-
-
-
         }
-
+         $(document).ready(function () {
+             $("a[title=PDF]").remove();
+             $("a[title=Word]").remove();
+             $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(1).remove();
+             $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
+         });
         $(window).on('load', function () {
-            getChartData();
+            debugger;
+            $("#MainContent_btnExportCsv").click(function () {
+               // alert('Export');
+                $('#ReportViewersupplierwise').show();
+            });
+
+            $("#btnUpdateSupplier").click(function () {
+                $("#ReportViewersupplierwise").hide();
+            });
+                getChartData();
         });
-
-        $("#MainContent_btnUpdateSupplier").click(function (event) {
-            event.preventDefault();
-            getChartData();
-        });
-
-        //// pdf logic
-        // $(document).ready(function () {
-        //     $("#btnExport").click(function () {
-        //         var da = new Date();
-        //         var e = document.getElementById("MainContent_ddlSupplierName");
-        //         var sid = e.options[e.selectedIndex].innerText;
-        //         $("#pdfHeader").append(sid + "<br/>" + "Date and Time  :&nbsp;&nbsp;" + da);
-        //         return xepOnline.Formatter.Format('printfrom', { render: 'download', pageWidth: '216mm', pageHeight: '600mm', cssStyle: [{ fontfamily: 'sans-serif' }] });
-
-        //     });
-        // });
-        // //end
     </script>
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
@@ -511,7 +482,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <h1 class="page-header">Suppliers Status</h1>
+            <h1 class="page-header" style=" border-bottom:none">Suppliers Status</h1>
         </div>
 
         <div class="col-md-6 ">
@@ -522,16 +493,16 @@
                     <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
                         <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                     </asp:DropDownList>
-                    <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />
-                    <%--<button class="btn btn-primary btn-sm" id="btnExport">Export to PDF</button>--%>
-                    <%--<asp:Button runat="server" Text="Download CSV File" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>--%>
+                    <%--<asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />--%>
+                    <button id="btnUpdateSupplier" class="btn btn-primary btn-sm" >View Status</button>
+                    <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
             </div>
         </div>
     </div>
-    <hr />
+    <hr />  
     <%--for first three charts--%>
-    <div class="row">
+    <div class="row" id="supplierwisedata" runat="server">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -594,7 +565,7 @@
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b><br />
-                        <b class="rumper"></b></h3>
+                        <b class="hotelrumper"></b></h3>
                 </div>
                 <div id="hotelrum"></div>
                 <div class="panel-body">
@@ -629,7 +600,7 @@
         </div>
     </div>
     <%-- for last three pie charts--%>
-    <div class="row" id="dvUnmappedData" style="display: none">
+    <div class="row" id="allsupplierdata"  runat="server">
         <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -691,7 +662,16 @@
             </div>
         </div>
     </div>
-
-
-
+    <%--Export Report--%>
+    <div class="container" id="report" runat="server">
+        <div style="width: 100%; height: 100%">
+            <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+                <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
+                    <DataSources>
+                        <rsweb:ReportDataSource Name="DataSet1" />
+                    </DataSources>
+                </LocalReport>
+            </rsweb:ReportViewer>
+        </div>
+    </div>
 </asp:Content>

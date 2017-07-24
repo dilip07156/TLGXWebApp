@@ -13,49 +13,85 @@ namespace TLGX_Consumer.hotels {
     public partial class rollOffReports {
         
         /// <summary>
-        /// lblfromdate control.
+        /// txtFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblfromdate;
+        protected global::System.Web.UI.WebControls.TextBox txtFrom;
         
         /// <summary>
-        /// fromDate control.
+        /// calFromDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl fromDate;
+        protected global::AjaxControlToolkit.CalendarExtender calFromDate;
         
         /// <summary>
-        /// lbltodate control.
+        /// axfte_txtFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbltodate;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFrom;
         
         /// <summary>
-        /// toDate control.
+        /// txtTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl toDate;
+        protected global::System.Web.UI.WebControls.TextBox txtTo;
         
         /// <summary>
-        /// lblrule control.
+        /// calToDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblrule;
+        protected global::AjaxControlToolkit.CalendarExtender calToDate;
+        
+        /// <summary>
+        /// axfte_txtTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtTo;
+        
+        /// <summary>
+        /// errordiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errordiv;
+        
+        /// <summary>
+        /// nulldate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nulldate;
+        
+        /// <summary>
+        /// errorrange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorrange;
         
         /// <summary>
         /// btnRuleCsv control.
@@ -67,15 +103,6 @@ namespace TLGX_Consumer.hotels {
         protected global::System.Web.UI.WebControls.Button btnRuleCsv;
         
         /// <summary>
-        /// lblstatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblstatus;
-        
-        /// <summary>
         /// btnStatusCsv control.
         /// </summary>
         /// <remarks>
@@ -83,15 +110,6 @@ namespace TLGX_Consumer.hotels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnStatusCsv;
-        
-        /// <summary>
-        /// lblupdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblupdate;
         
         /// <summary>
         /// btnUpdateCsv control.
@@ -103,21 +121,12 @@ namespace TLGX_Consumer.hotels {
         protected global::System.Web.UI.WebControls.Button btnUpdateCsv;
         
         /// <summary>
-        /// dvMsg1 control.
+        /// ReportViewer1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg1;
-        
-        /// <summary>
-        /// grdrule control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdrule;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

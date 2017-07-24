@@ -31,13 +31,13 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// frmPassengerOCcupancy control.
+        /// btnNewCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmPassengerOCcupancy;
+        protected global::System.Web.UI.WebControls.Button btnNewCreate;
         
         /// <summary>
         /// grdOccupanyDetail control.
@@ -47,5 +47,41 @@ namespace TLGX_Consumer.controls.hotel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdOccupanyDetail;
+        
+        /// <summary>
+        /// UpdCountryMapModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdCountryMapModal;
+        
+        /// <summary>
+        /// hdnFlag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
+        
+        /// <summary>
+        /// vlsSumm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
+        
+        /// <summary>
+        /// frmPassengerOCcupancy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView frmPassengerOCcupancy;
     }
 }

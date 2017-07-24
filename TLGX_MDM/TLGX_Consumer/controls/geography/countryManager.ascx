@@ -75,7 +75,7 @@
                                     <asp:BoundField HeaderText="# Attractions" />
                                     <asp:BoundField HeaderText="# Holidays" />
                                     <asp:HyperLinkField DataNavigateUrlFields="Country_Id" DataNavigateUrlFormatString="~/geography/CountryStateMgmt?Country_Id={0}"
-                                        Text="Select" NavigateUrl="~/geography/CountryStateMgmt" HeaderText="Manage" />
+                                        Text="Select" NavigateUrl="~/geography/CountryStateMgmt" HeaderText="Manage" ControlStyle-CssClass="btn btn-default"/>
                                 </Columns>
                                 <PagerStyle CssClass="pagination-ys" />
                             </asp:GridView>

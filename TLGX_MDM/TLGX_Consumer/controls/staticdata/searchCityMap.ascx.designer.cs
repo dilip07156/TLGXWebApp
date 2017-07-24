@@ -247,6 +247,15 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlMatchingStatus;
         
         /// <summary>
+        /// ckboxIsExactMatch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ckboxIsExactMatch;
+        
+        /// <summary>
         /// grdMatchingCity control.
         /// </summary>
         /// <remarks>

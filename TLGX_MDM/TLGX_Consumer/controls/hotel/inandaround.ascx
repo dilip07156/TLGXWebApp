@@ -15,9 +15,20 @@
         $('#hdnFlagFornearbyPlace').val("false");
     }
 </script>
+<style>
+    .hide {
+        display: none;
+    }
+</style>
 
 <asp:UpdatePanel runat="server" ID="updPanNEaryby">
     <ContentTemplate>
+        <div id="msgSuccessful" style="display: none;">
+            <script type="text/javascript">
+                //setTimeout(function () { $("#msgSuccessful").fadeTo(500, 0).slideUp(500) }, 3000);
+            </script>
+            <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success!</strong> <span>In adn Around place has been added successfully.
+        </div>
         <div id="dvMsg" runat="server" style="display: none;"></div>
         <asp:FormView ID="frmLandmark" runat="server" DataKeyNames="Accommodation_NearbyPlace_Id" DefaultMode="Insert" OnItemCommand="frmLandmark_ItemCommand">
             <HeaderTemplate>
@@ -90,7 +101,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <label class="control-label-mand col-sm-6" for="ddlPlaceCategory">
                                             Place Category
                                             <asp:RequiredFieldValidator ID="vldddlPlaceCategory" ControlToValidate="ddlPlaceCategory" runat="server" ErrorMessage="Please select place category" Text="*"
@@ -102,7 +113,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <label class="control-label col-sm-6" for="txtDescription">Description</label>
                                         <div class="col-sm-6">
                                             <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="5" Text='<%# Bind("Description") %>' />
@@ -110,21 +121,21 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <label class="control-label col-sm-6" for="txtPlaceName">Place Name</label>
                                         <div class="col-sm-6">
                                             <asp:TextBox ID="txtPlaceName" runat="server" CssClass="form-control" Text='<%# Bind("PlaceName") %>' />
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <label class="control-label col-sm-6" for="txtDistance">Distance</label>
                                         <div class="col-sm-6">
                                             <asp:TextBox ID="txtDistance" runat="server" CssClass="form-control" Text='<%# Bind("DistanceFromProperty") %>' />
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group row">
                                         <label class="control-label-mand col-sm-6" for="ddlPlaceCategory">
                                             Distance Measure
                                             <asp:RequiredFieldValidator ID="vldddlUnitOfMeasure" ControlToValidate="ddlUnitOfMeasure" runat="server" ErrorMessage="Please select unit od measure" Text="*"
@@ -161,8 +172,28 @@
                         </div>
                     </div>
                 </div>
+                <%--<asp:UpdatePanel runat="server" ID="UpdatePanel1">
+                    <ContentTemplate>--%>
                 <div class="panel-body">
-                    <asp:GridView ID="grdInAndAround" runat="server" AutoGenerateColumns="False" DataKeyNames="Accommodation_NearbyPlace_Id" CssClass="table table-hover table-striped" EmptyDataText="There are no Nearby Places for this property" OnRowCommand="grdInAndAround_RowCommand" OnRowDataBound="grdInAndAround_RowDataBound">
+                    <asp:Button ID="btnRefreshGrid" runat="server" CssClass="hide" OnClick="btnRefreshGrid_Click" />
+                    <div class="form-group pull-right">
+                        <div class="input-group">
+                            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                            <asp:DropDownList ID="ddlShowEntries" runat="server" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
+                                <asp:ListItem>5</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                                <asp:ListItem>15</asp:ListItem>
+                                <asp:ListItem>20</asp:ListItem>
+                                <asp:ListItem>25</asp:ListItem>
+                                <asp:ListItem>30</asp:ListItem>
+                                <asp:ListItem>35</asp:ListItem>
+                                <asp:ListItem>40</asp:ListItem>
+                                <asp:ListItem>45</asp:ListItem>
+                                <asp:ListItem>50</asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <asp:GridView ID="grdInAndAround" runat="server" AutoGenerateColumns="False" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdInAndAround_PageIndexChanging" DataKeyNames="Accommodation_NearbyPlace_Id" CssClass="table table-hover table-striped" EmptyDataText="There are no Nearby Places for this property" OnRowCommand="grdInAndAround_RowCommand" OnRowDataBound="grdInAndAround_RowDataBound">
                         <Columns>
                             <asp:BoundField DataField="PlaceCategory" HeaderText="PlaceCategory" SortExpression="PlaceCategory" />
                             <asp:BoundField DataField="PlaceName" HeaderText="PlaceName" SortExpression="PlaceName" />
@@ -187,8 +218,11 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+                        <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
                     </asp:GridView>
                 </div>
+                <%--   </ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
         </div>
     </ContentTemplate>

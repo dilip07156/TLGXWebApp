@@ -45,6 +45,9 @@
     #map #infowindow-content {
         display: inline;
     }
+    .x-lg{
+        width:1200px;
+    }
 </style>
 
 <script type="text/javascript">
@@ -131,26 +134,26 @@
     function SelectedRow(element) {
         var ddlStatus = $('#MainContent_CityMap_ddlStatus option:selected').html();
         if (ddlStatus == "REVIEW") {
-            element.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[15].lastElementChild.focus();
         }
         else if (ddlStatus == "UNMAPPED") {
-            element.parentNode.parentNode.nextSibling.childNodes[11].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[12].lastElementChild.focus();
 
         }
     }
     function MatchedSelect(elem) {
-        elem.parentNode.parentNode.nextSibling.childNodes[13].lastElementChild.focus();
+        elem.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild.focus();
     }
     //var onClick = true;
     //Fill City dropdown in Grid
     function fillDropDown(record, onClick) {
         //alert(onClick);
         if (onClick) {
-            var country_id = record.parentNode.parentNode.childNodes[15].lastElementChild.value;
+            var country_id = record.parentNode.parentNode.childNodes[16].lastElementChild.value;
             if (country_id != null) {
                 //Getting Dropdown
                 var currentRow = $(record).parent().parent();
-                var CityDDL = currentRow.find("td:eq(10)").find('select');
+                var CityDDL = currentRow.find("td:eq(11)").find('select');
                 var selectedText = CityDDL.find("option:selected").text();
                 var selectedOption = CityDDL.find("option");
                 var selectedVal = CityDDL.val();
@@ -187,13 +190,13 @@
     function RemoveExtra(record, onClick) {
         if (!onClick) {
             var currentRow = $(record).parent().parent();
-            var CityDDL = currentRow.find("td:eq(10)").find('select');
+            var CityDDL = currentRow.find("td:eq(11)").find('select');
             var selectedText = CityDDL.find("option:selected").text();
             var selectedVal = CityDDL.val();
             CityDDL.find("option:not(:first)").remove();
             var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
             CityDDL.append(listItems);
-            var city_id = record.parentNode.parentNode.childNodes[15].firstElementChild;
+            var city_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
             city_id.value = selectedVal;
         }
     }
@@ -328,13 +331,12 @@
                         <div class="panel-heading clearfix">
                             <h4 class="panel-title pull-left">
                                 <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">Search Results (Total Count:
-            <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
-                            </a>
-                    </h4>
-                     <div class="form-group pull-right">
-                         <asp:Button ID="btnMapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMapSelected_Click" />
-                         <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" OnClick="btnMapAll_Click" />
-                     </div>
+                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>
+
+                            <div class="form-group pull-right">
+                                <asp:Button ID="btnMapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMapSelected_Click" />
+                                <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" OnClick="btnMapAll_Click" />
+                            </div>
                         </div>
 
 
@@ -361,6 +363,9 @@
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
+                                            <HeaderStyle BackColor="Turquoise" />
+                                        </asp:BoundField>
+                                        <asp:BoundField DataField="MasterStateName" HeaderText="State Name">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
@@ -419,12 +424,12 @@
 
 <br />
 <!-- OPEN IN MODAL -->
-<div class="modal fade" id="moCityMapping" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="moCityMapping" role="dialog" >
+    <div class="modal-dialog modal-lg x-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="panel panel-default">
+                <div class="panel-title">
                     <h4 class="modal-title">Update Supplier City Mapping</h4>
                 </div>
             </div>
@@ -748,6 +753,15 @@
                                                     <asp:ListItem Value="0">Select</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                            <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <asp:CheckBox runat="server" ID="ckboxIsExactMatch" CssClass="form-control" AutoPostBack="true" OnCheckedChanged="ckboxIsExactMatch_CheckedChanged" />
+                                                    <%--<input type="checkbox" aria-label="Checkbox for following text input" cssclass="form-control" runat="server" id="ckboxIsExactMatch" />--%>
+                                                </span>
+                                                <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <asp:GridView ID="grdMatchingCity" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
@@ -760,6 +774,12 @@
                                                     <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                                     <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
+                                                     <asp:TemplateField ShowHeader="true" HeaderText="State Name (State Code)">
+                                                        <ItemTemplate>
+                                                            <span aria-hidden="true"><%# Eval("StateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("StateCode"))) ? "(" + Eval("StateCode") + ")" : string.Empty) %></span>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                   <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
                                                     <asp:BoundField DataField="CityCode" HeaderText="City Code" />
                                                     <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
@@ -768,9 +788,14 @@
                                                     <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
-                                                    <asp:BoundField DataField="StateName" HeaderText="State">
+                                                    <%--<asp:BoundField DataField="StateName" HeaderText="State Name (State Code)">
                                                         <HeaderStyle BackColor="Turquoise" />
-                                                    </asp:BoundField>
+                                                    </asp:BoundField>--%>
+                                                    <asp:TemplateField ShowHeader="true" HeaderStyle-BackColor="Turquoise" HeaderText="State Name (State Code)">
+                                                        <ItemTemplate>
+                                                            <span aria-hidden="true"><%# Eval("MasterStateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MasterStateCode"))) ? "(" + Eval("MasterStateCode") + ")" : string.Empty) %></span>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <asp:BoundField DataField="MasterCityCode" HeaderText="City Code">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>

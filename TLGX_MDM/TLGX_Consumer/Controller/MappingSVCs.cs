@@ -65,10 +65,16 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_GetProductMappingByIdURI"], Accommodation_ProductMapping_Id), typeof(List<DC_Accomodation_ProductMapping>), out result);
             return result as List<DC_Accomodation_ProductMapping>;
         }
-        public List<DC_Accomodation_ProductMapping> GetProductMappingMasterData(int PageNo, int PageSize, Guid Accommodation_Id, string Status)
+        //public List<DC_Accomodation_ProductMapping> GetProductMappingMasterData(int PageNo, int PageSize, Guid Accommodation_Id, string Status)
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_GetProductMappingMasterURI"], PageNo, PageSize, Accommodation_Id, Status), typeof(List<DC_Accomodation_ProductMapping>), out result);
+        //    return result as List<DC_Accomodation_ProductMapping>;
+        //}
+        public List<DC_Accomodation_ProductMapping> GetProductMappingMasterData(MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_GetProductMappingMasterURI"], PageNo, PageSize, Accommodation_Id, Status), typeof(List<DC_Accomodation_ProductMapping>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_GetProductMappingMasterURI"], RQParams, typeof(MDMSVC.DC_Mapping_ProductSupplier_Search_RQ), typeof(List<MDMSVC.DC_Accomodation_ProductMapping>), out result);
             return result as List<DC_Accomodation_ProductMapping>;
         }
 
@@ -106,12 +112,64 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_MappingStatsForSuppliers>;
         }
         #endregion
+
         #region roll_off_reports
         public List<DC_RollOffReportRule> getStatisticforRuleReport(MDMSVC.DC_RollOFParams parm)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_RuleReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_RollOffReportRule>), out result);
             return result as List<DC_RollOffReportRule>;
+        }
+        public List<DC_RollOffReportStatus> getStatisticforStatusReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_StatusReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_RollOffReportStatus>), out result);
+            return result as List<DC_RollOffReportStatus>;
+        }
+        public List<DC_RollOffReportUpdate> getStatisticforUpdateReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_UpdateReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_RollOffReportUpdate>), out result);
+            return result as List<DC_RollOffReportUpdate>;
+        }
+        #endregion
+
+        #region rdlc reports
+        public List<DC_UnmappedCountryReport> GetsupplierwiseUnmappedCountryReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["countryUnmapped_report"], Supplier_Id), typeof(List<DC_UnmappedCountryReport>), out result);
+            return result as List<DC_UnmappedCountryReport>;
+        }
+        public List<DC_UnmappedCityReport> GetsupplierwiseUnmappedCityReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["cityUnmapped_report"], Supplier_Id), typeof(List<DC_UnmappedCityReport>), out result);
+            return result as List<DC_UnmappedCityReport>;
+        }
+        public List<DC_unmappedProductReport> GetsupplierwiseUnmappedProductReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["productUnmapped_report"], Supplier_Id), typeof(List<DC_unmappedProductReport>), out result);
+            return result as List<DC_unmappedProductReport>;
+        }
+        public List<DC_unmappedActivityReport> GetsupplierwiseUnmappedActivityReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["activityUnmapped_report"], Supplier_Id), typeof(List<DC_unmappedActivityReport>), out result);
+            return result as List<DC_unmappedActivityReport>;
+        }
+        public List<DC_supplierwisesummaryReport> GetsupplierwiseSummaryReport()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["summary_report"]), typeof(List<DC_supplierwisesummaryReport>), out result);
+            return result as List<DC_supplierwisesummaryReport>;
+        }
+        public List<DC_supplierwiseunmappedsummaryReport> GetsupplierwiseUnmappedSummaryReport(string Supplier_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["unmapped_summary_report"], Supplier_Id), typeof(List<DC_supplierwiseunmappedsummaryReport>), out result);
+            return result as List<DC_supplierwiseunmappedsummaryReport>;
         }
         #endregion
 
@@ -251,6 +309,18 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Activity_Search"], RQ, typeof(DC_Acitivity_SupplierProductMapping_Search_RQ), typeof(List<DC_Acitivity_SupplierProductMapping>), out result);
             return result as List<DC_Acitivity_SupplierProductMapping>;
         }
+        public List<DC_Acitivity_SupplierProductMapping> GetActivitySupplierProductMappingSearchForMapping(DC_Acitivity_SupplierProductMapping_Search_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Activity_SearchForMapping"], RQ, typeof(DC_Acitivity_SupplierProductMapping_Search_RQ), typeof(List<DC_Acitivity_SupplierProductMapping>), out result);
+            return result as List<DC_Acitivity_SupplierProductMapping>;
+        }
+        public bool IsMappedWithSupplier(string masterActivityID, string supplierID)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_Activity_IsMappedWithSupplier"], masterActivityID, supplierID), typeof(bool), out result);
+            return (bool)result;
+        }
         public List<DC_Acitivity_SupplierProductMapping> GetActivitySupplierProductMapping(int PageNo, int PageSize, Guid Activity_Id, string Status)
         {
             object result = null;
@@ -279,30 +349,55 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Keyword Mapping
-        public DC_Message SaveKeyword(List<DC_Keyword> param)
+        public DC_Message AddUpdateKeyword(DC_Keyword param)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_KeywordAdd"], param, typeof(List<DC_Keyword>), typeof(DC_Message), out result);
-            return result as DC_Message;
-        }
-
-        public DC_Message UpdateKeyword(List<DC_Keyword> param)
-        {
-            object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_KeywordUpdate"], param, typeof(List<DC_Keyword>), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Keyword_AddUpdate"], param, typeof(DC_Keyword), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         public List<DC_Keyword> SearchKeyword(DC_Keyword_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_KeywordSearch"], RQ, typeof(DC_Keyword_RQ), typeof(List<DC_Keyword>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Keyword_Get"], RQ, typeof(DC_Keyword_RQ), typeof(List<DC_Keyword>), out result);
             return result as List<DC_Keyword>;
         }
-        public DC_Keyword SearchKeywordById(Guid Keyword_Id)
+        public List<DC_keyword_alias> SearchKeywordAlias(DC_Keyword_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_KeywordSearchById"], Keyword_Id.ToString()), typeof(DC_Keyword), out result);
-            return result as DC_Keyword;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["KeywordAlias_Get"], RQ, typeof(DC_Keyword_RQ), typeof(List<DC_keyword_alias>), out result);
+            return result as List<DC_keyword_alias>;
+        }
+        #endregion
+
+        #region Process Or Test Uploaded Files
+        public DC_Message StaticFileUploadProcessFile(DC_SupplierImportFileDetails obj)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Process_Uploaded_Files"], obj, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
+        #region RoomType Mapping
+        public List<DC_Accommodation_SupplierRoomTypeMap_SearchRS> GetAccomodationSupplierRoomTypeMapping_Search(MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_GetAccoSupplierRoomType"], RQParams, typeof(MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRQ), typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS>), out result);
+            return result as List<DC_Accommodation_SupplierRoomTypeMap_SearchRS>;
+        }
+        public DC_Message AccomodationSupplierRoomTypeMapping_UpdateMap(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_UpdateMap"], RQParams, typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+        #region hotel report
+        public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_NewHotelsReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_newHotelsReport>), out result);
+            return result as List<DC_newHotelsReport>;
         }
         #endregion
     }

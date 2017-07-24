@@ -13,6 +13,186 @@ namespace TLGX_Consumer.controls.roomtype {
     public partial class searchRoomTypes {
         
         /// <summary>
+        /// updActivityMappingSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updActivityMappingSearch;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
+        /// ddlSupplierNameBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierNameBySupplier;
+        
+        /// <summary>
+        /// ddlCountryBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountryBySupplier;
+        
+        /// <summary>
+        /// ddlCityBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCityBySupplier;
+        
+        /// <summary>
+        /// ddlMappingTypeBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMappingTypeBySupplier;
+        
+        /// <summary>
+        /// ddlStatusBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatusBySupplier;
+        
+        /// <summary>
+        /// txtProductNameBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProductNameBySupplier;
+        
+        /// <summary>
+        /// btnSearchBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSearchBySupplier;
+        
+        /// <summary>
+        /// btnResetBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnResetBySupplier;
+        
+        /// <summary>
+        /// lblSupplierRoomSearchCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSupplierRoomSearchCount;
+        
+        /// <summary>
+        /// btnMapSelectedBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMapSelectedBySupplier;
+        
+        /// <summary>
+        /// btnMapAllBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMapAllBySupplier;
+        
+        /// <summary>
+        /// btnTTFUSelectedBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTTFUSelectedBySupplier;
+        
+        /// <summary>
+        /// btnTTFUAllBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTTFUAllBySupplier;
+        
+        /// <summary>
+        /// divPagging control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPagging;
+        
+        /// <summary>
+        /// ddlPageSizeBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPageSizeBySupplier;
+        
+        /// <summary>
+        /// divMsgForMapping control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgForMapping;
+        
+        /// <summary>
+        /// grdRoomTypeMappingSearchResultsBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdRoomTypeMappingSearchResultsBySupplier;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// vlsSumm control.
         /// </summary>
         /// <remarks>
@@ -22,102 +202,102 @@ namespace TLGX_Consumer.controls.roomtype {
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
-        /// vddlProductCategorySubType control.
+        /// ddlCountryByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vddlProductCategorySubType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountryByProduct;
         
         /// <summary>
-        /// ddlProductCategorySubType control.
+        /// ddlCityByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategorySubType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCityByProduct;
         
         /// <summary>
-        /// txtCommon control.
+        /// txtCommonByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCommon;
+        protected global::System.Web.UI.WebControls.TextBox txtCommonByProduct;
         
         /// <summary>
-        /// txtHotelName control.
+        /// txtHotelNameByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtHotelName;
+        protected global::System.Web.UI.WebControls.TextBox txtHotelNameByProduct;
         
         /// <summary>
-        /// udpSearchDllChange control.
+        /// ddlStatusByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel udpSearchDllChange;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatusByProduct;
         
         /// <summary>
-        /// ddlCountry control.
+        /// btnSearchByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
+        protected global::System.Web.UI.WebControls.Button btnSearchByProduct;
         
         /// <summary>
-        /// ddlCity control.
+        /// btnResetByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCity;
+        protected global::System.Web.UI.WebControls.Button btnResetByProduct;
         
         /// <summary>
-        /// vddlStatus control.
+        /// lblProductCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vddlStatus;
+        protected global::System.Web.UI.WebControls.Label lblProductCount;
         
         /// <summary>
-        /// ddlStatus control.
+        /// div1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
         
         /// <summary>
-        /// btnSearch control.
+        /// grdRoomTypeMappingSearchResultsByProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.GridView grdRoomTypeMappingSearchResultsByProduct;
         
         /// <summary>
-        /// btnReset control.
+        /// Button4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
+        protected global::System.Web.UI.WebControls.Button Button4;
     }
 }

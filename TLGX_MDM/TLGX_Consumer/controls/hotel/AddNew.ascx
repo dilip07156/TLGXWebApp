@@ -383,7 +383,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="txtStreet2">Street 2</label>
+                        <label class="control-label-mand col-lg-4" for="txtStreet2">Street 2</label>
                         <div class="col-lg-8">
                             <asp:TextBox ID="txtStreet2" runat="server" CssClass="form-control" />
                         </div>
@@ -411,13 +411,13 @@
                         </div>
                     </div>
                       <div class="form-group">
-                        <label class="control-label-mand col-lg-4" for="ddlAddState">
+                        <label class="control-label col-lg-4" for="ddlAddState">
                             State
-                            <asp:RequiredFieldValidator ID="vddlAddState" runat="server" ErrorMessage="Please select State" Text="*" ControlToValidate="ddlAddState" InitialValue="0" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
+                            <%--<asp:RequiredFieldValidator ID="vddlAddState" runat="server" ErrorMessage="Please select State" Text="*" ControlToValidate="ddlAddState" InitialValue="0" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>--%>
 
                         </label>
                         <div class="col-lg-8">
-                            <asp:DropDownList ID="ddlAddState" AutoPostBack="true" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddCountry_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlAddState" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddState_SelectedIndexChanged">
                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                             </asp:DropDownList>
                         </div>

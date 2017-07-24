@@ -612,74 +612,71 @@
                                                                                     <td>
                                                                                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProductCategory") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trStartingPoint" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("StartingPoint")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Starting Point</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("StartingPoint") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trEndingPoint" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("EndingPoint")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Ending Point</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("EndingPoint") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trDuration" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("Duration")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Duration</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label4" runat="server" Text='<%# Eval("Duration") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trCompanyRecommended" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("CompanyRecommended")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Company Recommended</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label5" runat="server" Text='<%# Eval("CompanyRecommended") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trMealsYN" runat="server">
-                                                                                    <%--visible='<%# Convert.ToString(Eval("MealsYN")) == string.Empty ? false : true %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Meals</strong></td>
                                                                                     <td>
-                                                                                        <asp:Label ID="Label7" runat="server" Text='<%# Eval("MealsYN")  %>'></asp:Label></td>
+                                                                                        <asp:Label ID="Label21" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MealsYN"))) ? Eval("MealsYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
+
+                                                                                    <%--<asp:Label ID="Label7" runat="server" Text='<%# Convert.ToBoolean(Eval("MealsYN")) == true ? "Yes" : "No" %>'></asp:Label>--%>
+                                                                                    </td>
                                                                                 </tr>
-                                                                                <tr id="trGuideYN" runat="server">
-                                                                                    <%--visible='<%# Convert.ToString(Eval("GuideYN")) == string.Empty ? false : true %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Guide</strong></td>
                                                                                     <td>
-                                                                                        <asp:Label ID="Label8" runat="server" Text='<%# Eval("GuideYN") %>'></asp:Label></td>
+                                                                                        <asp:Label ID="Label22" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("GuideYN"))) ? Eval("GuideYN") : "false") == true ? "Yes" : "No" %>'></asp:Label>
+
+                                                                                    <%--<asp:Label ID="Label8" runat="server" Text='<%# Convert.ToBoolean(Eval("GuideYN")) == true ? "Yes" : "No" %>'></asp:Label>--%>
+                                                                                    </td>
                                                                                 </tr>
-                                                                                <tr id="trTransferYN" runat="server">
-                                                                                    <%--visible='<%# Convert.ToString(Eval("TransferYN")) == string.Empty ? false : true %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Transfer</strong></td>
                                                                                     <td>
-                                                                                        <asp:Label ID="Label9" runat="server" Text='<%# Eval("TransferYN") %>'></asp:Label></td>
+                                                                                        <asp:Label ID="Label23" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("TransferYN"))) ? Eval("TransferYN") : "false") == true ? "Yes" : "No" %>'></asp:Label>
+
+                                                                                    <%--<asp:Label ID="Label9" runat="server" Text='<%# Convert.ToBoolean(Eval("TransferYN")) == true ? "Yes" : "No" %>'></asp:Label>--%>
+                                                                                    </td>
                                                                                 </tr>
-                                                                                <tr id="trPhysicalLevel" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("PhysicalLevel")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Physical Level</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label10" runat="server" Text='<%# Eval("PhysicalLevel") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trAdvisory" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("Advisory")) %>'--%>>
+                                                                                <tr>
                                                                                     <td><strong>Advisory</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label11" runat="server" Text='<%# Eval("Advisory") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trThingsToCarry" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("ThingsToCarry")) %>'--%>>
+                                                                                <tr>
                                                                                     <td><strong>Things To Carry</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label12" runat="server" Text='<%# Eval("ThingsToCarry") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trDeparturePoint" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("DeparturePoint")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Departure Point </strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label13" runat="server" Text='<%# Eval("DeparturePoint") %>'></asp:Label></td>
                                                                                 </tr>
-                                                                                <tr id="trTourType" runat="server">
-                                                                                    <%--visible='<%# !string.IsNullOrWhiteSpace((string)Eval("TourType")) %>'--%>
+                                                                                <tr>
                                                                                     <td><strong>Tour Type</strong></td>
                                                                                     <td>
                                                                                         <asp:Label ID="Label14" runat="server" Text='<%# Eval("TourType") %>'></asp:Label></td>
@@ -1011,6 +1008,11 @@
                                                                 <table class="table table-condensed">
                                                                     <tbody>
                                                                         <tr>
+                                                                            <td><strong>Product Name</strong></td>
+                                                                            <td>
+                                                                                <asp:Label ID="Label19" runat="server" Text='<%# Eval("Product_Name") %>'></asp:Label></td>
+                                                                        </tr>
+                                                                        <tr>
                                                                             <td><strong>CKIS Type</strong></td>
                                                                             <td>
                                                                                 <asp:HiddenField ID="hdnActivityId" runat="server" Value='<%# Eval("Activity_Id") %>' />
@@ -1021,62 +1023,62 @@
                                                                             <td>
                                                                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("ProductCategory") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trStartingPoint" runat="server" visible='<%# !string.IsNullOrWhiteSpace((string)Eval("StartingPoint")) %>'>
+                                                                        <tr>
                                                                             <td><strong>Starting Point</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label2" runat="server" Text='<%# Eval("StartingPoint") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trEndingPoint" runat="server" visible='<%# !string.IsNullOrWhiteSpace((string)Eval("EndingPoint")) %>'>
+                                                                        <tr>
                                                                             <td><strong>Ending Point</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label3" runat="server" Text='<%# Eval("EndingPoint") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trDuration" runat="server" visible='<%# !string.IsNullOrWhiteSpace((string)Eval("Duration")) %>'>
+                                                                        <tr>
                                                                             <td><strong>Duration</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label4" runat="server" Text='<%# Eval("Duration") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trCompanyRecommended" runat="server" visible='<%# !string.IsNullOrWhiteSpace((string)Eval("CompanyRecommended")) %>'>
+                                                                        <tr>
                                                                             <td><strong>Company Recommended</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label5" runat="server" Text='<%# Eval("CompanyRecommended") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trMealsYN" runat="server" visible='<%# Convert.ToString(Eval("MealsYN")) == string.Empty ? false : true %>'>
-                                                                            <td><strong>MealsYN</strong></td>
+                                                                        <tr>
+                                                                            <td><strong>Meals</strong></td>
                                                                             <td>
-                                                                                <asp:Label ID="Label7" runat="server" Text='<%# Eval("MealsYN") %>'></asp:Label></td>
+                                                                                <asp:Label ID="Label7" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MealsYN"))) ? Eval("MealsYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trGuideYN" runat="server" >
-                                                                            <td><strong>GuideYN</strong></td>
+                                                                        <tr>
+                                                                            <td><strong>Guide</strong></td>
                                                                             <td>
-                                                                                <asp:Label ID="Label8" runat="server" Text='<%# Eval("GuideYN") %>'></asp:Label></td>
+                                                                                <asp:Label ID="Label8" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("GuideYN"))) ? Eval("GuideYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trTransferYN" runat="server" >
-                                                                            <td><strong>TransferYN</strong></td>
+                                                                        <tr>
+                                                                            <td><strong>Transfer</strong></td>
                                                                             <td>
-                                                                                <asp:Label ID="Label9" runat="server" Text='<%# Eval("TransferYN") %>'></asp:Label></td>
+                                                                                <asp:Label ID="Label9" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("TransferYN"))) ? Eval("TransferYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trPhysicalLevel" runat="server" >
+                                                                        <tr>
                                                                             <td><strong>Physical Level</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label10" runat="server" Text='<%# Eval("PhysicalLevel") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trAdvisory" runat="server" >
+                                                                        <tr>
                                                                             <td><strong>Advisory</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label11" runat="server" Text='<%# Eval("Advisory") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trThingsToCarry" runat="server" >
+                                                                        <tr>
                                                                             <td><strong>Things To Carry</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label12" runat="server" Text='<%# Eval("ThingsToCarry") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trDeparturePoint" runat="server" >
+                                                                        <tr>
                                                                             <td><strong>Departure Point </strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label13" runat="server" Text='<%# Eval("DeparturePoint") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr id="trTourType" runat="server" >
+                                                                        <tr>
                                                                             <td><strong>Tour Type</strong></td>
                                                                             <td>
                                                                                 <asp:Label ID="Label14" runat="server" Text='<%# Eval("TourType") %>'></asp:Label></td>
@@ -1281,6 +1283,11 @@
                                                                         <table class="table table-condensed span">
                                                                             <tbody>
                                                                                 <tr>
+                                                                                    <td><strong>Supplier Name</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="Label20" runat="server" Text='<%# Eval("SupplierName") + (Convert.ToString(Eval("SupplierCode")) == string.Empty ? "" : "(" + Convert.ToString(Eval("SupplierCode")) + ")") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
                                                                                     <td><strong>ID</strong></td>
                                                                                     <td>
                                                                                         <asp:HiddenField ID="hdnActivitySupplierProductMapping_Id" runat="server" Value='<%# Eval("ActivitySupplierProductMapping_Id") %>' />
@@ -1315,6 +1322,46 @@
                                                                                     <td>
                                                                                         <asp:Label ID="Label18" runat="server" Text='<%# Eval("Address") %>'></asp:Label></td>
                                                                                 </tr>
+                                                                                <tr>
+                                                                                    <td><strong>Duration</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblSupplierProDuration" runat="server" Text='<%# Eval("Duration") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>DeparturePoint</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblDeparturePoint" runat="server" Text='<%# Eval("DeparturePoint") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>Currency</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblCurrency" runat="server" Text='<%# Eval("Currency") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>DepartureTime</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblDepartureTime" runat="server" Text='<%# Eval("DepartureTime") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>ProductValidFor</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblProductValidFor" runat="server" Text='<%# Eval("ProductValidFor") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>Latitude</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblLatitude" runat="server" Text='<%# Eval("Latitude") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>Longitude</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblLongitude" runat="server" Text='<%# Eval("Longitude") %>'></asp:Label></td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td><strong>Theme</strong></td>
+                                                                                    <td>
+                                                                                        <asp:Label ID="lblTheme" runat="server" Text='<%# Eval("Theme") %>'></asp:Label></td>
+                                                                                </tr>
                                                                             </tbody>
                                                                         </table>
                                                                         <p><strong>Inclusions</strong></p>
@@ -1327,6 +1374,39 @@
                                                                         <hr />
                                                                         <p>
                                                                             <asp:Label ID="lblExclusionsSupplierByProduct" runat="server" Text='<%# Eval("Exclusions") %>'></asp:Label>
+                                                                        </p>
+                                                                        <p>
+                                                                            <strong>Introduction
+                                                                            </strong>
+                                                                        </p>
+                                                                        <hr />
+                                                                        <p>
+                                                                            <asp:Label ID="lblIntroduction" runat="server" Text='<%# Eval("Introduction") %>'></asp:Label>
+                                                                        </p>
+
+                                                                        <p>
+                                                                            <strong>Conditions
+                                                                            </strong>
+                                                                        </p>
+                                                                        <hr />
+                                                                        <p>
+                                                                            <asp:Label ID="lblConditions" runat="server" Text='<%# Eval("Conditions") %>'></asp:Label>
+                                                                        </p>
+                                                                        <p>
+                                                                            <strong>AdditionalInformation
+                                                                            </strong>
+                                                                        </p>
+                                                                        <hr />
+                                                                        <p>
+                                                                            <asp:Label ID="lblAdditionalInformation" runat="server" Text='<%# Eval("AdditionalInformation") %>'></asp:Label>
+                                                                        </p>
+                                                                        <p>
+                                                                            <strong>ProductDescription
+                                                                            </strong>
+                                                                        </p>
+                                                                        <hr />
+                                                                        <p>
+                                                                            <asp:Label ID="lblProductDescription" runat="server" Text='<%# Eval("ProductDescription") %>'></asp:Label>
                                                                         </p>
                                                                     </div>
                                                                 </div>

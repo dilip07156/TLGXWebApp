@@ -8,6 +8,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.Reporting.WebForms;
 
 namespace TLGX_Consumer.staticdata
 {
@@ -16,7 +17,7 @@ namespace TLGX_Consumer.staticdata
 
         Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
-
+        Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -31,8 +32,17 @@ namespace TLGX_Consumer.staticdata
         {
             if (!IsPostBack)
             {
-                fillsuppliers();
-
+                fillsuppliers();   
+            }
+            supplierwisedata.Visible = true;
+            report.Visible = false;
+            if (ddlSupplierName.SelectedValue == "0")
+            {
+                allsupplierdata.Visible = true;
+            }
+            else
+            {
+                allsupplierdata.Visible = false;
             }
         }
 
@@ -40,7 +50,6 @@ namespace TLGX_Consumer.staticdata
 
         private void fillsuppliers()
         {
-            //ddlSupplierName.DataSource = objMasterDataDAL.GetSupplierMasterData();
             ddlSupplierName.DataSource = _objMasterSVC.GetSupplierMasterData();
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
@@ -49,51 +58,35 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
         {
-             var SupplierId = ddlSupplierName.SelectedValue.ToString();
-            if (SupplierId == "0")
+            supplierwisedata.Visible = false;
+            allsupplierdata.Visible = false;
+            report.Visible = true;
+            if (ddlSupplierName.SelectedValue == "0")
             {
-                SupplierId = "00000000-0000-0000-0000-000000000000";
+                var DataSet1 = MapSvc.GetsupplierwiseSummaryReport();
+                ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
+                ReportViewersupplierwise.LocalReport.DataSources.Clear();
+                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptAllSupplierReport.rdlc";
+                ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
+                ReportViewersupplierwise.Visible = true;
+                ReportViewersupplierwise.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
+                ReportViewersupplierwise.DataBind();
+                ReportViewersupplierwise.LocalReport.Refresh();
             }
-            MappingSVCs _objmapping = new MappingSVCs();
-            var res = _objmapping.GetMappingStatistics(SupplierId);
-            var res1 = _objmapping.GetMappingStatisticsForSuppliers();
-
-            if (res != null && res.Count > 0)
+            else
             {
-                //Writeing CSV file
-                StringBuilder sb = new StringBuilder();
-
-                string csv = string.Empty;
-                List <string> lstFileHeader = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["Mapping_Staitistics_Get"]).Split(',').ToList();
-
-                foreach (var item in res[0].GetType().GetProperties())
-                {
-                    if (lstFileHeader.Contains(item.Name))
-                        csv += item.Name + ',';
-                }
-                sb.Append(string.Format("{0}", csv) + Environment.NewLine);
-                foreach (var item in res)
-                {
-                    sb.Append(string.Format("{0},{1},{2}", Convert.ToString(item.SupplierId), Convert.ToString(item.SupplierName), Convert.ToString(item.MappingStatsFor)));
-                    sb.Append(Environment.NewLine);
-                }
-
-                byte[] bytes = Encoding.ASCII.GetBytes(sb.ToString());
-                sb = null;
-                if (bytes != null)
-                {
-                    //Download the CSV file.
-                    var response = HttpContext.Current.Response;
-                    response.Clear();
-                    response.ContentType = "text/csv";
-                    response.AddHeader("Content-Length", bytes.Length.ToString());
-                    string filename = "Data";
-                    response.AddHeader("Content-disposition", "attachment; filename=\"" + filename + ".csv" + "\"");
-                    response.BinaryWrite(bytes);
-                    response.Flush();
-                    response.End();
-                }
+                string supplierid = ddlSupplierName.SelectedValue;
+                var DataSet1 = MapSvc.GetsupplierwiseUnmappedSummaryReport(supplierid);
+                ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
+                ReportViewersupplierwise.LocalReport.DataSources.Clear();
+                ReportViewersupplierwise.LocalReport.ReportPath = "staticdata/rptSupplierwiseReport.rdlc";
+                ReportViewersupplierwise.LocalReport.DataSources.Add(rds);
+                ReportViewersupplierwise.Visible = true;
+                ReportViewersupplierwise.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
+                ReportViewersupplierwise.DataBind();
+                ReportViewersupplierwise.LocalReport.Refresh();
             }
+
 
         }
     }

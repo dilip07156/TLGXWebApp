@@ -22,12 +22,48 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
-        /// btnUpdateSupplier control.
+        /// btnExportCsv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateSupplier;
+        protected global::System.Web.UI.WebControls.Button btnExportCsv;
+        
+        /// <summary>
+        /// supplierwisedata control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl supplierwisedata;
+        
+        /// <summary>
+        /// allsupplierdata control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl allsupplierdata;
+        
+        /// <summary>
+        /// report control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl report;
+        
+        /// <summary>
+        /// ReportViewersupplierwise control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewersupplierwise;
     }
 }

@@ -19,7 +19,7 @@ namespace TLGX_Consumer.controls.geography {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panSearchConditions;
+        protected global::System.Web.UI.UpdatePanel panSearchConditions;
         
         /// <summary>
         /// vlsSumm control.
@@ -58,6 +58,15 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.LinkButton btnGetCities;
         
         /// <summary>
+        /// btnNewCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnNewCity;
+        
+        /// <summary>
         /// cityResult control.
         /// </summary>
         /// <remarks>
@@ -65,6 +74,24 @@ namespace TLGX_Consumer.controls.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl cityResult;
+        
+        /// <summary>
+        /// dvMsgCity2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCity2;
+        
+        /// <summary>
+        /// hdnFlagCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlagCity;
         
         /// <summary>
         /// divEntries control.
@@ -103,6 +130,24 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.UpdatePanel updatePanel1;
         
         /// <summary>
+        /// vlsum control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsum;
+        
+        /// <summary>
+        /// dvMsgCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCity;
+        
+        /// <summary>
         /// frmCityMaster control.
         /// </summary>
         /// <remarks>
@@ -119,6 +164,15 @@ namespace TLGX_Consumer.controls.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdCityAreas;
+        
+        /// <summary>
+        /// vlSumCityArea control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vlSumCityArea;
         
         /// <summary>
         /// frmCityArea control.
@@ -157,6 +211,15 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvCityAreaLocationDetail;
         
         /// <summary>
+        /// vlSumCityAreaLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vlSumCityAreaLoc;
+        
+        /// <summary>
         /// frmCityAreaLocation control.
         /// </summary>
         /// <remarks>
@@ -164,5 +227,41 @@ namespace TLGX_Consumer.controls.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FormView frmCityAreaLocation;
+        
+        /// <summary>
+        /// updpnlCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updpnlCity;
+        
+        /// <summary>
+        /// vldsumCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vldsumCity;
+        
+        /// <summary>
+        /// dvmsgCityAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvmsgCityAlert;
+        
+        /// <summary>
+        /// frmvwCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView frmvwCity;
     }
 }

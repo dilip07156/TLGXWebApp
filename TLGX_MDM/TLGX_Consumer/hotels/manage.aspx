@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Manage Hotel" Culture="en-GB" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="manage.aspx.cs" Inherits="TLGX_Consumer.hotels.manage" MaintainScrollPositionOnPostback="true" %>
+﻿<%@ Page Title="Manage Hotel" Culture="en-GB" EnableEventValidation="false" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="manage.aspx.cs" Inherits="TLGX_Consumer.hotels.manage" MaintainScrollPositionOnPostback="true" %>
 
 <%@ PreviousPageType VirtualPath="search.aspx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
@@ -147,6 +147,7 @@
             $('#myWizard a:first').tab('show')
 
         })
+
     </script>
 
 </asp:Content>
