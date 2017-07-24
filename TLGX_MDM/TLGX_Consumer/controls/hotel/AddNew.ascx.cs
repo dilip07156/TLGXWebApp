@@ -22,6 +22,7 @@ namespace TLGX_Consumer.controls.hotel
         public static string AttributeOptionFor = "HotelInfo";
         public static string ParentPageName = "";
         MasterDataSVCs _objMasterData = new MasterDataSVCs();
+        public static bool InsertFrom = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -54,6 +55,7 @@ namespace TLGX_Consumer.controls.hotel
 
             if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
             {
+                InsertFrom = true;
                 dvKeyFacts.Visible = false;
                 btnReset.Visible = false;
                 txtHotelName.Enabled = false;
@@ -66,6 +68,7 @@ namespace TLGX_Consumer.controls.hotel
             }
             else
             {
+                InsertFrom = false;
                 dvKeyFacts.Visible = true;
                 btnReset.Visible = true;
                 txtHotelName.Enabled = true;
@@ -510,6 +513,7 @@ namespace TLGX_Consumer.controls.hotel
             OverviewData.Create_Date = DateTime.Now;
             OverviewData.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
             OverviewData.IsActive = true;
+            OverviewData.InsertFrom = InsertFrom;
 
             if (AccSvc.AddHotelDetail(OverviewData))
             {

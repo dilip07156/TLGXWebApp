@@ -56,6 +56,7 @@
       <xs:element minOccurs="0" name="Hashtag" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelRating" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertFrom" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="InternalRemarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsMysteryProduct" type="xs:boolean" />
@@ -506,6 +507,7 @@
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertFrom" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element name="PageNo" type="xs:int" />
       <xs:element name="PageSize" type="xs:int" />
@@ -538,6 +540,7 @@
       <xs:element minOccurs="0" name="HotelChain" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelNameWithCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertFrom" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapCount" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
