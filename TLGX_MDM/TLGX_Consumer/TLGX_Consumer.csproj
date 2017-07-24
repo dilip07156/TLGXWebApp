@@ -2258,7 +2258,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="staticdata\hotels\rptNewhotelsReport.rdlc" />
+    <Content Include="staticdata\hotels\rptNewhotelsReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
