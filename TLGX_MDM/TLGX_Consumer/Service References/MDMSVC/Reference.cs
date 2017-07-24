@@ -13841,19 +13841,6 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int NoOfHits {
-            get {
-                return this.NoOfHitsField;
-            }
-            set {
-                if ((this.NoOfHitsField.Equals(value) != true)) {
-                    this.NoOfHitsField = value;
-                    this.RaisePropertyChanged("NoOfHits");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int NewHits {
             get {
                 return this.NewHitsField;
@@ -13954,7 +13941,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string AliasField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool AttributeField;
+        private string AliasStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> AttributeField;
