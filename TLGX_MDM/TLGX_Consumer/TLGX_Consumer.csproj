@@ -75,7 +75,7 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="MultiLevelFormsBootstrapMenu, Version=1.0.6252.35937, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\MultiLevelFormsBootstrapMenu.dll</HintPath>
+      <HintPath>TPDLLS\MultiLevelFormsBootstrapMenu.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -374,6 +374,7 @@
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
+    <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD.pubxml" />
     <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
@@ -696,6 +697,10 @@
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
     <Content Include="staticdata\valuemapping\search.aspx" />
+    <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\velocityReport.aspx" />
     <Content Include="UnAuthorized.aspx" />
     <Content Include="workflow\manageTask.aspx" />
     <Content Include="controls\workflow\listTasks.ascx" />
@@ -2176,6 +2181,13 @@
     <Compile Include="staticdata\valuemapping\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\velocityReport.aspx.cs">
+      <DependentUpon>velocityReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\velocityReport.aspx.designer.cs">
+      <DependentUpon>velocityReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="suppliers\manage.aspx.cs">
       <DependentUpon>manage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2246,7 +2258,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="staticdata\hotels\rptNewhotelsReport.rdlc" />
+    <Content Include="staticdata\hotels\rptNewhotelsReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
