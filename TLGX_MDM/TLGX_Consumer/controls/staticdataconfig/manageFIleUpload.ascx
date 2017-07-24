@@ -61,6 +61,11 @@
 
                 <div id="collapseSearch" class="panel-collapse collapse in">
                     <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <asp:ValidationSummary ID="vlSumm" runat="server" ValidationGroup="vldgrpFileSearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                            </div>
+                        </div>
                         <div class="container">
                             <div class="row">
 
@@ -83,10 +88,6 @@
                                         </div>
                                     </div>
 
-                                </div>
-
-                                <div class="col-sm-6">
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="ddlStatus">Status</label>
                                         <div class="col-sm-8">
@@ -96,9 +97,47 @@
                                         </div>
                                     </div>
 
+                                </div>
+
+                                <div class="col-sm-6">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4" for="txtFrom">From</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" id="iCalFrom">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </button>
+                                                </span>
+                                                <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
+                                                <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4" for="txtTo">To</label>
+                                        <div class="col-sm-7">
+                                            <div class="input-group">
+                                                <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" />
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button" id="iCalTo">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </button>
+                                                </span>
+                                                
+                                            </div>
+                                            <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
+                                                <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                                <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group row">
                                         <div class="col-sm-12">
-                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
+                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" ValidationGroup="vldgrpFileSearch" />
                                             <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
                                         </div>
                                         <div class="col-sm-12">&nbsp; </div>
@@ -170,11 +209,11 @@
                         <asp:GridView ID="gvFileUploadSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging"
-                            OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id">
+                            OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id" OnRowDataBound="gvFileUploadSearch_RowDataBound">
                             <Columns>
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
-                                <asp:BoundField HeaderText="Server File Path" DataField="SavedFilePath" />
+                                <asp:BoundField HeaderText="File Name" DataField="OriginalFilePath" />
                                 <asp:BoundField HeaderText="Status" DataField="STATUS" />
                                 <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" />
 
@@ -194,6 +233,16 @@
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true" OnClientClick="showDetailsModal();">
                                     <span aria-hidden="true">View Details</span>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                                            CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportFile_Id") %>'>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -371,8 +420,8 @@
                         </asp:FormView>
                         <div class="form-group row">
                             <div class="col-sm-4">
-                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive"/>
-                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download"/>
+                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
+                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
                             </div>
                         </div>
                     </ContentTemplate>

@@ -136,7 +136,8 @@ namespace TLGX_Consumer.controls.geography
             ddlState.DataTextField = "State_Name";
             ddlState.DataValueField = "State_Id";
             ddlState.DataBind();
-            ddlState.Items.FindByValue(Convert.ToString(CityState_id)).Selected = true;
+            if (CityState_id!=null)
+                ddlState.Items.FindByValue(Convert.ToString(CityState_id)).Selected = true; 
             fillStateCode();
         }
         private void fillStateList()
@@ -376,11 +377,11 @@ namespace TLGX_Consumer.controls.geography
             fillStateCode();
         }
 
-        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlCountry.SelectedIndex == 0)
-                btnNewCity.Visible = false;
-        }
+        //protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (ddlCountry.SelectedIndex == 0)
+        //        btnNewCity.Visible = false;
+        //}
 
         protected void btnNewCity_Click(object sender, EventArgs e)
         {

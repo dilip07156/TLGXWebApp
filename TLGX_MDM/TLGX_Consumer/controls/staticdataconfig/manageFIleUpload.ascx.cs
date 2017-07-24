@@ -96,7 +96,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 RQParam.Entity = ddlMasterCountry.SelectedItem.Text;
             if (ddlStatus.SelectedItem.Value != "0")
                 RQParam.STATUS = ddlStatus.SelectedItem.Text;
-
+            if (txtFrom.Text != String.Empty && txtTo.Text != String.Empty)
+            { 
+                RQParam.From_Date = DateTime.Parse(txtFrom.Text);
+                RQParam.TO_Date = DateTime.Parse(txtTo.Text).AddDays(1); //added 1 day to include all the files added on 'To date' (upto time '23:59:59' by default it takes '00:00:00')
+            }
+            
             RQParam.PageNo = PageNo;
             RQParam.PageSize = PageSize;// Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
 
@@ -309,6 +314,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlSupplierName.SelectedIndex = 0;
             ddlMasterCountry.SelectedIndex = 0;
             ddlStatus.SelectedIndex = 0;
+            txtFrom.Text = String.Empty;
+            txtTo.Text = String.Empty;
             gvFileUploadSearch.DataSource = null;
             gvFileUploadSearch.DataBind();
             lblTotalRecords.Text = "0";
@@ -389,6 +396,48 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
 
                 }
+                if (e.CommandName == "SoftDelete")
+                {
+                    MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                    RQ.SupplierImportFile_Id = myRowId;
+                    RQ.PageNo = 0;
+                    RQ.PageSize = int.MaxValue;
+                    var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+
+                    MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails
+                    {
+                        SupplierImportFile_Id = myRowId,
+                        STATUS = res[0].STATUS,
+                        PROCESS_DATE = DateTime.Now,
+                        PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name,
+                        IsActive = false
+                    };
+
+                    var result = _objMappingSVCs.UpdateSupplierStaticFileDetails(obj);
+                    fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "File has been deleted Successfully", (BootstrapAlertType)result.StatusCode);
+                }
+                if(e.CommandName== "UnDelete")
+                {
+                    MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                    RQ.SupplierImportFile_Id = myRowId;
+                    RQ.PageNo = 0;
+                    RQ.PageSize = int.MaxValue;
+                    var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+                    MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails
+                    {
+                        SupplierImportFile_Id = myRowId,
+                        STATUS = res[0].STATUS,
+                        PROCESS_DATE = DateTime.Now,
+                        PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name,
+                        IsActive = true
+                    };
+                    var result = _objMappingSVCs.UpdateSupplierStaticFileDetails(obj);
+                    fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "File has been un deleted Successfully", (BootstrapAlertType)result.StatusCode);
+                }
             }
             catch (Exception ex)
             {
@@ -431,7 +480,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             FileUpload(e.FileName);
         }
-        
+
         protected void FileUpld_UploadStart(object sender, AjaxControlToolkit.AjaxFileUploadStartEventArgs e)
         {
             //hdnEntityListSelected.Value = ddlEntityList.SelectedItem.Text;
@@ -729,6 +778,18 @@ namespace TLGX_Consumer.controls.staticdataconfig
             catch
             {
 
+            }
+        }
+
+        protected void gvFileUploadSearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.DataItem != null)
+            {
+                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+                if (btnDelete.CommandName == "UnDelete")
+                {
+                    e.Row.Font.Strikeout = true;
+                }
             }
         }
     }

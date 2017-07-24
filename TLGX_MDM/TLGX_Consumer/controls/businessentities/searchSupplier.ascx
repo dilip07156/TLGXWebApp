@@ -140,9 +140,11 @@
                                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                                     <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
                                     <asp:BoundField HeaderText="SupplierType" SortExpression="Code" />
+                                    <%--<asp:BoundField DataField="Create_User" HeaderText="Create_User" SortExpression="Create_User" />--%>
+                                    <asp:BoundField DataField="Edit_User" HeaderText="Edit User" SortExpression="Edit_User" />
+                                    <asp:BoundField DataField="Edit_Date" HeaderText="Edit Date" SortExpression="Edit_Date" />
                                     <asp:BoundField HeaderText="Status" DataField="StatusCode" />
-                                    <asp:BoundField DataField="Create_User" HeaderText="Create_User" SortExpression="Create_User" />
-                                    <asp:HyperLinkField DataNavigateUrlFields="Supplier_Id" DataNavigateUrlFormatString="~/suppliers/Manage?Supplier_Id={0}" Text="Manage" NavigateUrl="~/suppliers/Manage.aspx" />
+                                    <asp:HyperLinkField DataNavigateUrlFields="Supplier_Id" DataNavigateUrlFormatString="~/suppliers/Manage?Supplier_Id={0}" Text="Manage" NavigateUrl="~/suppliers/Manage.aspx" ControlStyle-CssClass="btn btn-default"/>
                                 </Columns>
                                 <PagerStyle CssClass="pagination-ys" />
                             </asp:GridView>
