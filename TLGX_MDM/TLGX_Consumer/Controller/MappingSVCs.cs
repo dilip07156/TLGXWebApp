@@ -377,5 +377,28 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+
+        #region RoomType Mapping
+        public List<DC_Accommodation_SupplierRoomTypeMap_SearchRS> GetAccomodationSupplierRoomTypeMapping_Search(MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_GetAccoSupplierRoomType"], RQParams, typeof(MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRQ), typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS>), out result);
+            return result as List<DC_Accommodation_SupplierRoomTypeMap_SearchRS>;
+        }
+        public DC_Message AccomodationSupplierRoomTypeMapping_UpdateMap(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_UpdateMap"], RQParams, typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+        #region hotel report
+        public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_NewHotelsReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_newHotelsReport>), out result);
+            return result as List<DC_newHotelsReport>;
+        }
+        #endregion
     }
 }

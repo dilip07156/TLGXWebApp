@@ -222,7 +222,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>Suppliername</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -636,10 +636,15 @@
         <RepeatRowHeaders>true</RepeatRowHeaders>
         <KeepTogether>true</KeepTogether>
         <DataSetName>DataSet1</DataSetName>
+        <SortExpressions>
+          <SortExpression>
+            <Value>=Fields!Suppliername.Value</Value>
+          </SortExpression>
+        </SortExpressions>
         <Top>0.95278cm</Top>
         <Left>0.28457cm</Left>
         <Height>1.8cm</Height>
-        <Width>29.6cm</Width>
+        <Width>29.59998cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>

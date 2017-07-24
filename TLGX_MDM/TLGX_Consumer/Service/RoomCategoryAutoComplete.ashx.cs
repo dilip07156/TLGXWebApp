@@ -13,7 +13,7 @@ namespace TLGX_Consumer.Service
     /// <summary>
     /// Summary description for CountryAutoComplete
     /// </summary>
-    
+
     public class RoomCategoryAutoComplete : IHttpHandler
     {
         Controller.AccomodationSVC Acco = new Controller.AccomodationSVC();
@@ -21,11 +21,27 @@ namespace TLGX_Consumer.Service
         public void ProcessRequest(HttpContext context)
         {
             var PrefixText = context.Request.QueryString["term"];
-            RQ = new MDMSVC.DC_RoomCategoryMaster_RQ();
-            if (PrefixText != "")
-                RQ.RoomCategory = PrefixText;
-            var res = Acco.GetRoomCategoryMaster(RQ);
-            context.Response.Write(new JavaScriptSerializer().Serialize(res));
+            var type = context.Request.QueryString["type"];
+            var acco_id = context.Request.QueryString["acco_id"];
+
+            if (type != null && type == "fillcategory")
+            {
+                RQ = new MDMSVC.DC_RoomCategoryMaster_RQ();
+                if (acco_id != "")
+                {
+                    var res = Acco.GetRoomDetails_RoomCategory(Guid.Parse(acco_id));
+                    context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                }
+            }
+            else
+            {
+                RQ = new MDMSVC.DC_RoomCategoryMaster_RQ();
+                if (PrefixText != "")
+                    RQ.RoomCategory = PrefixText;
+                var res = Acco.GetRoomCategoryMaster(RQ);
+                context.Response.Write(new JavaScriptSerializer().Serialize(res));
+            }
+
         }
         public bool IsReusable
         {

@@ -75,7 +75,7 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="MultiLevelFormsBootstrapMenu, Version=1.0.6252.35937, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\MultiLevelFormsBootstrapMenu.dll</HintPath>
+      <HintPath>TPDLLS\MultiLevelFormsBootstrapMenu.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -362,6 +362,7 @@
     <Content Include="Scripts\ChartJS\morris.min.js" />
     <Content Include="Scripts\ChartJS\raphael-min.js" />
     <Content Include="Scripts\ChartJS\xepOnline.jqPlugin.008.js" />
+    <Content Include="Scripts\Google_Related\dataTables.bootstrap.min.css" />
     <Content Include="Scripts\Google_Related\jquery.dataTables.min.js" />
     <Content Include="Scripts\jquery.ae.image.resize.min.js" />
     <Content Include="Scripts\JqueryUI\jquery-ui.css" />
@@ -372,6 +373,7 @@
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
@@ -457,6 +459,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation.datasource">
@@ -591,6 +596,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterparentattributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_newHotelsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PortMaster.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -683,10 +691,14 @@
     <Content Include="staticdata\config\search.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
+    <Content Include="staticdata\hotels\newHotelReport.aspx" />
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
     <Content Include="staticdata\valuemapping\search.aspx" />
+    <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="UnAuthorized.aspx" />
     <Content Include="workflow\manageTask.aspx" />
     <Content Include="controls\workflow\listTasks.ascx" />
@@ -2125,6 +2137,13 @@
     <Compile Include="staticdata\hotels\addProductMapping.aspx.designer.cs">
       <DependentUpon>addProductMapping.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\hotels\newHotelReport.aspx.cs">
+      <DependentUpon>newHotelReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\newHotelReport.aspx.designer.cs">
+      <DependentUpon>newHotelReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\hotels\roomtype\manage.aspx.cs">
       <DependentUpon>manage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2228,6 +2247,9 @@
     <Content Include="staticdata\rptAllSupplierReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="staticdata\hotels\rptNewhotelsReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />

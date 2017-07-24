@@ -35,7 +35,7 @@ namespace TLGX_Consumer.controls.hotel
 
         private void setParentPage()
         {
-            var a = this.Parent;            
+            var a = this.Parent;
             string vPath = "";
             Type typo = this.BindingContainer.GetType();
             if (typo.FullName == "System.Web.UI.WebControls.FormView")
@@ -47,7 +47,7 @@ namespace TLGX_Consumer.controls.hotel
                 //((TLGX_Consumer.staticdata.searchAccommodationProductMapping)this.BindingContainer).searchAccoMapping.dtCountrMappingDetail
                 vPath = ((System.Web.UI.TemplateControl)this.BindingContainer).AppRelativeVirtualPath;
             }
-            
+
             string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
 
             ParentPageName = vPath.Replace(dir, "");
@@ -91,7 +91,28 @@ namespace TLGX_Consumer.controls.hotel
             ddlAddCountry.DataTextField = "Country_Name";
             ddlAddCountry.DataBind();
 
-            
+
+        }
+
+        private void fillStatedropdown(string Country_ID)
+        {
+            try
+            {
+                ddlAddState.Items.Clear();
+                var result = _objMasterData.GetStatesByCountry(Country_ID);
+                if (Country_ID != "")
+                {
+                    ddlAddState.DataSource = result;
+                    ddlAddState.DataTextField = "State_Name";
+                    ddlAddState.DataValueField = "State_Id";
+                    ddlAddState.DataBind();
+                    ddlAddState.Items.Insert(0, new ListItem { Selected = true, Text = "-Select-", Value = "0" });
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void fillcitydropdown(string Country_ID)
@@ -105,7 +126,7 @@ namespace TLGX_Consumer.controls.hotel
                 ddlAddCity.DataValueField = "City_Id";
                 ddlAddCity.DataTextField = "Name";
                 ddlAddCity.DataBind();
-                ddlAddCity.Items.Insert(0, new ListItem("---ALL---", ""));
+                ddlAddCity.Items.Insert(0, new ListItem("--ALL--", ""));
             }
         }
 
@@ -131,7 +152,7 @@ namespace TLGX_Consumer.controls.hotel
         private string CheckForDuplicate()
         {
             string ret = "";
-            
+
             //DropDownList ddlCountry = (DropDownList)frmHotelOverview.FindControl("ddlCountry");
             //DropDownList ddlCity = (DropDownList)frmHotelOverview.FindControl("ddlCity");
             //DropDownList ddlProductCategorySubType = (DropDownList)frmHotelOverview.FindControl("ddlProductCategorySubType");
@@ -200,24 +221,15 @@ namespace TLGX_Consumer.controls.hotel
                     //}
                     //else
                     //{
-                        foreach (MDMSVC.DC_Accomodation_Search_RS rs in res)
+                    foreach (MDMSVC.DC_Accomodation_Search_RS rs in res)
+                    {
+                        if (rs.Country.ToUpper() == ddlAddCountry.SelectedItem.Text.ToUpper())
                         {
-                            if (rs.Country.ToUpper() == ddlAddCountry.SelectedItem.Text.ToUpper())
+                            if (rs.City.ToUpper() == ddlAddCity.SelectedItem.Text.ToUpper())
                             {
-                                if (rs.City.ToUpper() == ddlAddCity.SelectedItem.Text.ToUpper())
+                                if (!string.IsNullOrWhiteSpace(rs.PostalCode))
                                 {
-                                    if (!string.IsNullOrWhiteSpace(rs.PostalCode))
-                                    {
-                                        if (rs.PostalCode.ToUpper() == txtPostalCode.Text.ToUpper())
-                                        {
-                                            if (rs.HotelName.TrimStart().TrimEnd().ToUpper().Replace("HOTEL", "").Replace("'", "").Replace("-", "").Replace(" ","") == txtHotelName.Text.TrimStart().TrimEnd().ToUpper().Replace("HOTEL", "").Replace("'", "").Replace("-", "").Replace(" ", ""))
-                                            {
-                                                ret = "names";
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    else
+                                    if (rs.PostalCode.ToUpper() == txtPostalCode.Text.ToUpper())
                                     {
                                         if (rs.HotelName.TrimStart().TrimEnd().ToUpper().Replace("HOTEL", "").Replace("'", "").Replace("-", "").Replace(" ", "") == txtHotelName.Text.TrimStart().TrimEnd().ToUpper().Replace("HOTEL", "").Replace("'", "").Replace("-", "").Replace(" ", ""))
                                         {
@@ -226,8 +238,17 @@ namespace TLGX_Consumer.controls.hotel
                                         }
                                     }
                                 }
+                                else
+                                {
+                                    if (rs.HotelName.TrimStart().TrimEnd().ToUpper().Replace("HOTEL", "").Replace("'", "").Replace("-", "").Replace(" ", "") == txtHotelName.Text.TrimStart().TrimEnd().ToUpper().Replace("HOTEL", "").Replace("'", "").Replace("-", "").Replace(" ", ""))
+                                    {
+                                        ret = "names";
+                                        break;
+                                    }
+                                }
                             }
                         }
+                    }
                     //}
                 }
             }
@@ -235,7 +256,7 @@ namespace TLGX_Consumer.controls.hotel
         }
 
         public void fillHotelSearchGrid(int pageIndex, int pageSize)
-        {                        
+        {
             grdSearchResults.DataSource = res;
             if (res != null)
             {
@@ -444,7 +465,7 @@ namespace TLGX_Consumer.controls.hotel
             btnAddProduct.Visible = false;
             this.Parent.Visible = false;
 
-           // return ret;
+            // return ret;
         }
 
         public bool AddHotel(Guid NewHotel_Id)
@@ -597,10 +618,10 @@ namespace TLGX_Consumer.controls.hotel
                     //}
                     //else
                     //{
-                        if ((res != null) && (res.Count > 0))
-                            showgrid = true;
-                        else
-                            IsToAdd = true;
+                    if ((res != null) && (res.Count > 0))
+                        showgrid = true;
+                    else
+                        IsToAdd = true;
                     //}
                     if (showgrid)
                     {
@@ -631,7 +652,7 @@ namespace TLGX_Consumer.controls.hotel
             else
             {
                 Guid NewHotel_Id = Guid.NewGuid();
-                if(AddHotel(NewHotel_Id))
+                if (AddHotel(NewHotel_Id))
                 {
 
                 }
@@ -642,17 +663,41 @@ namespace TLGX_Consumer.controls.hotel
         {
             if (ddlAddCountry.SelectedValue != "")
             {
+                fillStatedropdown(ddlAddCountry.SelectedValue);
+            }
+        }
+
+        protected void ddlAddState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ddlAddState.SelectedIndex==0)
+            {
+                ddlAddCity.Items.Clear();
                 fillcitydropdown(ddlAddCountry.SelectedValue);
             }
             else
             {
-                fillcitydropdown("");
+                Guid ddlstate_id = Guid.Parse(ddlAddState.SelectedValue);
+                var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() {State_Id=ddlstate_id });
+
+                if (result != null)
+                {
+                    ddlAddCity.Items.Clear();
+
+                    ddlAddCity.DataSource = result;
+                    ddlAddCity.DataValueField = "City_Id";
+                    ddlAddCity.DataTextField = "Name";
+                    ddlAddCity.DataBind();
+                    ddlAddCity.Items.Insert(0, new ListItem("--ALL--", ""));
+                }
+                else
+                {
+                    fillcitydropdown(ddlAddCountry.SelectedValue);
+                }
             }
         }
-
         protected void btnAddNew_Command1(object sender, CommandEventArgs e)
         {
-            
+
         }
 
         protected void btnReset_Click(object sender, EventArgs e)

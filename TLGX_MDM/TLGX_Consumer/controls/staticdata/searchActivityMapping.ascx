@@ -635,17 +635,26 @@
                                                                                 <tr>
                                                                                     <td><strong>Meals</strong></td>
                                                                                     <td>
-                                                                                        <asp:Label ID="Label7" runat="server" Text='<%# Convert.ToBoolean(Eval("MealsYN")) == true ? "Yes" : "No" %>'></asp:Label></td>
+                                                                                        <asp:Label ID="Label21" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MealsYN"))) ? Eval("MealsYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
+
+                                                                                    <%--<asp:Label ID="Label7" runat="server" Text='<%# Convert.ToBoolean(Eval("MealsYN")) == true ? "Yes" : "No" %>'></asp:Label>--%>
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td><strong>Guide</strong></td>
                                                                                     <td>
-                                                                                        <asp:Label ID="Label8" runat="server" Text='<%# Convert.ToBoolean(Eval("GuideYN")) == true ? "Yes" : "No" %>'></asp:Label></td>
+                                                                                        <asp:Label ID="Label22" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("GuideYN"))) ? Eval("GuideYN") : "false") == true ? "Yes" : "No" %>'></asp:Label>
+
+                                                                                    <%--<asp:Label ID="Label8" runat="server" Text='<%# Convert.ToBoolean(Eval("GuideYN")) == true ? "Yes" : "No" %>'></asp:Label>--%>
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td><strong>Transfer</strong></td>
                                                                                     <td>
-                                                                                        <asp:Label ID="Label9" runat="server" Text='<%# Convert.ToBoolean(Eval("TransferYN")) == true ? "Yes" : "No" %>'></asp:Label></td>
+                                                                                        <asp:Label ID="Label23" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("TransferYN"))) ? Eval("TransferYN") : "false") == true ? "Yes" : "No" %>'></asp:Label>
+
+                                                                                    <%--<asp:Label ID="Label9" runat="server" Text='<%# Convert.ToBoolean(Eval("TransferYN")) == true ? "Yes" : "No" %>'></asp:Label>--%>
+                                                                                    </td>
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td><strong>Physical Level</strong></td>
@@ -1034,20 +1043,20 @@
                                                                             <td>
                                                                                 <asp:Label ID="Label5" runat="server" Text='<%# Eval("CompanyRecommended") %>'></asp:Label></td>
                                                                         </tr>
-                                                                        <tr i>
+                                                                        <tr>
                                                                             <td><strong>Meals</strong></td>
                                                                             <td>
-                                                                                <asp:Label ID="Label7" runat="server" Text='<%# Convert.ToBoolean(Eval("MealsYN")) == true ? "Yes" : "No" %>'></asp:Label></td>
+                                                                                <asp:Label ID="Label7" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("MealsYN"))) ? Eval("MealsYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><strong>Guide</strong></td>
                                                                             <td>
-                                                                                <asp:Label ID="Label8" runat="server" Text='<%# Convert.ToBoolean(Eval("GuideYN")) == true ? "Yes" : "No" %>'></asp:Label></td>
+                                                                                <asp:Label ID="Label8" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("GuideYN"))) ? Eval("GuideYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><strong>Transfer</strong></td>
                                                                             <td>
-                                                                                <asp:Label ID="Label9" runat="server" Text='<%# Convert.ToBoolean(Eval("TransferYN")) == true ? "Yes" : "No" %>'></asp:Label></td>
+                                                                                <asp:Label ID="Label9" runat="server" Text='<%# Convert.ToBoolean(!string.IsNullOrWhiteSpace(Convert.ToString(Eval("TransferYN"))) ? Eval("TransferYN") : "false") == true ? "Yes" : "No" %>'></asp:Label></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td><strong>Physical Level</strong></td>

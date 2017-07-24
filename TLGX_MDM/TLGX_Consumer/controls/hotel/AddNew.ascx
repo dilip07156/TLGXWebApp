@@ -352,7 +352,7 @@
                         </div>
                     </div>
                     <div class="form-group" id="dvAddProductCategorySubType" runat="server">
-                        <label class="control-label col-lg-4" for="ddlAddProductCategorySubType">
+                        <label class="control-label-mand col-lg-4" for="ddlAddProductCategorySubType">
                             Subcategory
                             <asp:RequiredFieldValidator ID="vddlAddProductCategorySubType" runat="server" ErrorMessage="Please select SubCategory" Text="*" ControlToValidate="ddlAddProductCategorySubType" InitialValue="0" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
                         </label>
@@ -364,7 +364,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="txtHotelName">
+                        <label class="control-label-mand col-lg-4" for="txtHotelName">
                             Name
                             <asp:RequiredFieldValidator ID="vtxtHotelName" runat="server" ErrorMessage="Please enter Hotel Name" Text="*" ControlToValidate="txtHotelName" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
                         </label>
@@ -374,7 +374,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="txtStreet">
+                        <label class="control-label-mand col-lg-4" for="txtStreet">
                             Street
                             <asp:RequiredFieldValidator ID="vtxtStreet" runat="server" ErrorMessage="Please enter Street" Text="*" ControlToValidate="txtStreet" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                         <div class="col-lg-8">
@@ -383,14 +383,14 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="txtStreet2">Street 2</label>
+                        <label class="control-label-mand col-lg-4" for="txtStreet2">Street 2</label>
                         <div class="col-lg-8">
                             <asp:TextBox ID="txtStreet2" runat="server" CssClass="form-control" />
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="txtPostalCode">
+                        <label class="control-label-mand col-lg-4" for="txtPostalCode">
                             Postal Code
                             <asp:RequiredFieldValidator ID="vtxtPostalCode" runat="server" ErrorMessage="Please enter Postal Code" Text="*" ControlToValidate="txtPostalCode" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                         <div class="col-lg-8">
@@ -399,7 +399,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="ddlAddCountry">
+                        <label class="control-label-mand col-lg-4" for="ddlAddCountry">
                             Country
                             <asp:RequiredFieldValidator ID="vddlAddCountry" runat="server" ErrorMessage="Please select Country" Text="*" ControlToValidate="ddlAddCountry" InitialValue="0" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
 
@@ -417,13 +417,13 @@
 
                         </label>
                         <div class="col-lg-8">
-                            <asp:DropDownList ID="ddlAddState" AutoPostBack="true" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddCountry_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlAddState" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddState_SelectedIndexChanged">
                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="control-label col-lg-4" for="ddlAddCity">
+                        <label class="control-label-mand col-lg-4" for="ddlAddCity">
                             City
                             <asp:RequiredFieldValidator ID="vddlAddCity" runat="server" ErrorMessage="Please select City" Text="*" ControlToValidate="ddlAddCity" InitialValue="0" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                         <div class="col-lg-8">
@@ -439,7 +439,7 @@
                 <div class="panel-body">
 
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="txtCheckinTime">
+                        <label class="control-label-mand col-sm-6" for="txtCheckinTime">
                             Check In
                             <asp:RequiredFieldValidator ID="vtxtCheckinTime" runat="server" ErrorMessage="Please enter CheckIn Time" Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                         <div class="col-sm-6">
@@ -451,7 +451,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="txtCheckOut">
+                        <label class="control-label-mand col-sm-6" for="txtCheckOut">
                             Check Out
                             <asp:RequiredFieldValidator ID="vtxtCheckOut" runat="server" ErrorMessage="Please enter CheckOut Time" Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                         <div class="col-sm-6">
@@ -463,7 +463,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-sm-6" for="ddlStarRating">
+                        <label class="control-label-mand col-sm-6" for="ddlStarRating">
                             Star Rating
                             <asp:RequiredFieldValidator ID="vddlStarRating" runat="server" ErrorMessage="Please select Star Rating" Text="*" ControlToValidate="ddlStarRating" InitialValue="0" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
                         </label>

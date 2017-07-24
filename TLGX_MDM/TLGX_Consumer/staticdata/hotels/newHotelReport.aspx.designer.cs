@@ -7,90 +7,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.controls.hotel {
+namespace TLGX_Consumer.staticdata.hotels {
     
     
-    public partial class inandaround {
+    public partial class newHotelReport {
         
         /// <summary>
-        /// updPanNEaryby control.
+        /// txtFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanNEaryby;
+        protected global::System.Web.UI.WebControls.TextBox txtFrom;
         
         /// <summary>
-        /// dvMsg control.
+        /// calFromDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        protected global::AjaxControlToolkit.CalendarExtender calFromDate;
         
         /// <summary>
-        /// frmLandmark control.
+        /// axfte_txtFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmLandmark;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFrom;
         
         /// <summary>
-        /// btnAddNewLookUP control.
+        /// txtTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNewLookUP;
+        protected global::System.Web.UI.WebControls.TextBox txtTo;
         
         /// <summary>
-        /// btnRefreshGrid control.
+        /// calToDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRefreshGrid;
+        protected global::AjaxControlToolkit.CalendarExtender calToDate;
         
         /// <summary>
-        /// ddlShowEntries control.
+        /// axfte_txtTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtTo;
         
         /// <summary>
-        /// grdInAndAround control.
+        /// errordiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdInAndAround;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errordiv;
         
         /// <summary>
-        /// hdnFlagFornearbyPlace control.
+        /// nulldate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnFlagFornearbyPlace;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nulldate;
         
         /// <summary>
-        /// googlePlacesLookup control.
+        /// errorrange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.googlePlacesLookup googlePlacesLookup;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorrange;
+        
+        /// <summary>
+        /// btnviewreport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnviewreport;
+        
+        /// <summary>
+        /// ReportViewer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
     }
 }

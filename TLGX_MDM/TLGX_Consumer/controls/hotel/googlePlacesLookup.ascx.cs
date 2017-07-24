@@ -39,6 +39,8 @@ namespace TLGX_Consumer.controls.hotel
                             hdnG_PlaceID.Value = strG_PlaceID;
                         if (!string.IsNullOrWhiteSpace(strAddress))
                             hdnAddress.Value = strAddress;
+                        ddlNoOfItem.SelectedValue = "5";
+                        ddlRadius.SelectedValue = "2000";
                     }
                 }
                 btnAdd.Attributes.Add("onClick", "return false;");
@@ -50,6 +52,7 @@ namespace TLGX_Consumer.controls.hotel
 
         private void BindCategory()
         {
+            ddlPlaceCategory.Items.Clear();
             ddlPlaceCategory.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("InAndAround", "PlaceCategoryGoogle").MasterAttributeValues;
             ddlPlaceCategory.DataTextField = "AttributeValue";
             ddlPlaceCategory.DataValueField = "MasterAttributeValue_Id";
@@ -75,6 +78,24 @@ namespace TLGX_Consumer.controls.hotel
                 }
 
             }
+        }
+        public event EventHandler StatusUpdated;
+
+        private void FunctionThatRaisesEvent()
+        {
+            //Null check makes sure the main page is attached to the event
+            if (this.StatusUpdated != null)
+                this.StatusUpdated(this, new EventArgs());
+        }
+
+        protected void lnkbtnMapSelected_Click(object sender, EventArgs e)
+        {
+            FunctionThatRaisesEvent();
+        }
+
+        protected void lnkbtnMapAll_Click(object sender, EventArgs e)
+        {
+            FunctionThatRaisesEvent();
         }
     }
 }
