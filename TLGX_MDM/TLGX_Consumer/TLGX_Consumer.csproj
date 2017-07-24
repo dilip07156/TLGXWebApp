@@ -696,6 +696,7 @@
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
     <Content Include="staticdata\valuemapping\search.aspx" />
+    <Content Include="staticdata\velocityReport.aspx" />
     <Content Include="UnAuthorized.aspx" />
     <Content Include="workflow\manageTask.aspx" />
     <Content Include="controls\workflow\listTasks.ascx" />
@@ -2175,6 +2176,13 @@
     </Compile>
     <Compile Include="staticdata\valuemapping\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\velocityReport.aspx.cs">
+      <DependentUpon>velocityReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\velocityReport.aspx.designer.cs">
+      <DependentUpon>velocityReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="suppliers\manage.aspx.cs">
       <DependentUpon>manage.aspx</DependentUpon>
