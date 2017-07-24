@@ -10,20 +10,9 @@
     function closeModal() {
         $("#moKeywordMapping").modal('hide');
     }
-    <%--function AddTextBox() {
-        document.getElementById('<%=hdnFieldTotalTextboxes.ClientID%>').value = count;
-        $("#AliasTextBox").append("<div><input type='text' class='form-control' id='DynamicTextBox" + count + "' name='DynamicTxt" + count + "'/><br></div>");
-        count++;
-    };
-    function RemoveTextBox() {
-        $("#AliasTextBox").children().last().remove();
-        count--;
-    };--%>
-
     function SetGlyphicon(control) {
-        debugger;
         var selectedtext = control.options[control.selectedIndex].innerHTML;
-        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('glyphicon').addClass("glyphicon-" + selectedtext);
+        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('input-group-addon').addClass('glyphicon').addClass("glyphicon-" + selectedtext);
     }
 
 </script>
@@ -318,35 +307,16 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="icondropdownmenu">Attribute &nbsp;&nbsp;&nbsp;<span id="spanglyphicon" runat="server" class=""></span></label>
-                                            <div class="col-sm-8">
-                                                <%--<select runat="server" id="glyphiconForAttributes" onchange="SetGlyphicon()" data-show-icon="true" class="form-control">
-                                                    <option value="0">select</option>
-                                                </select>--%>
-
-                                                <asp:DropDownList runat="server" ID="ddlglyphiconForAttributes" onchange="SetGlyphicon(this)" data-show-icon="true" CssClass="form-control">
-                                                    <asp:ListItem Value="0">Select</asp:ListItem>
-                                                </asp:DropDownList>
-
-                                                <%-- <ul class="nav navbar-nav">
-                                                    <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">-- Select --</a>
-                                                        <ul class="dropdown-menu" id="icondropdownmenu">
-                                                            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Messages <span class="badge pull-right">42 </span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>--%>
+                                            <label class="control-label col-sm-4" for="icondropdownmenu">Attribute &nbsp;&nbsp;&nbsp;</label>
+                                            <div class="form-group col-sm-8">
+                                                <div class="input-group">
+                                                    <asp:DropDownList runat="server" ID="ddlglyphiconForAttributes" onchange="SetGlyphicon(this)" data-show-icon="true" CssClass="form-control">
+                                                        <asp:ListItem Value="0">Select</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                    <div class="input-group-addon"><span id="spanglyphicon" runat="server" class=""></span></div>
+                                                </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="btnSave"></label>
                                             <div class="col-sm-8">
