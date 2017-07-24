@@ -265,6 +265,24 @@ namespace TLGX_Consumer.controls.keywords {
         protected global::System.Web.UI.WebControls.CheckBox chkNewKeywordAttribute;
         
         /// <summary>
+        /// spanglyphicon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanglyphicon;
+        
+        /// <summary>
+        /// ddlglyphiconForAttributes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlglyphiconForAttributes;
+        
+        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>

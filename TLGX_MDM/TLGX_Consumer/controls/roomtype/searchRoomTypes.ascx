@@ -2,6 +2,7 @@
 <script>
     $(document).ready(function () {
         $('[data-toggle="tooltip"]').tooltip();
+
     });
 </script>
 <script type="text/javascript">
@@ -252,9 +253,15 @@
                                                     <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="A?">
+                                            <asp:TemplateField HeaderText="A?" ItemStyle-Width="7%">
                                                 <ItemTemplate>
-                                                    <input type="button" value='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? Convert.ToString(Eval("NumberOfRooms")) : "No" %>' class='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "Greenbtn" : "Redbtn" %>' />
+                                                    <%--<input type="button" value='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? Convert.ToString(Eval("NumberOfRooms")) : "No" %>' class='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "Greenbtn" : "Redbtn" %>' />--%>
+                                                    <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
+                                                        RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
+                                                        <ItemTemplate>
+                                                            <h4><span aria-hidden="true" data-toggle="tooltip" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
+                                                        </ItemTemplate>
+                                                    </asp:DataList>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Status">

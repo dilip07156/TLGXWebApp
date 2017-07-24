@@ -142,6 +142,18 @@ namespace TLGX_Consumer.controls.keywords
 
                 AliasPageNo = 0;
                 ddlShowEntriesAlias.SelectedIndex = 0;
+                
+                Label lblIconText = (Label)row.FindControl("lblIconText");
+                if (lblIconText != null)
+                {
+                    spanglyphicon.Attributes.Add("class", "glyphicon glyphicon-" + lblIconText.Text);
+                    fillGlyphiconForAttributes(Convert.ToString(lblIconText.Text));
+                }
+                else
+                {
+                    fillGlyphiconForAttributes(string.Empty);
+                }
+
                 fillkeywordalias();
             }
             else if (e.CommandName == "SoftDelete")
@@ -183,6 +195,44 @@ namespace TLGX_Consumer.controls.keywords
                 fillkeyword();
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+            }
+        }
+
+        private void fillGlyphiconForAttributes(string strIcon)
+        {
+            try
+            {
+                MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+                RQ.MasterFor = "Icons";
+                RQ.Name = "GlyphIcons";
+                var res = masterscv.GetAllAttributeAndValues(RQ);
+
+                //foreach (var item in res)
+                //{
+                //    ListItem lstitem = new ListItem();
+                //    lstitem.Value = Convert.ToString(item.MasterAttributeValue_Id);
+                //    //  lstitem.Text = Server.HtmlDecode(@"<span class=""" + item.AttributeValue + @"""></span>") + Convert.ToString(item.AttributeValue).Split(' ')[1];
+                //    lstitem.Text = Convert.ToString(item.AttributeValue);
+                //    // lstitem.Attributes.Add("data-icon", Convert.ToString(item.AttributeValue).Split(' ')[1]);
+                //    ddlglyphiconForAttributes.Items.Add(lstitem);
+                //}
+
+                ddlglyphiconForAttributes.DataSource = res;
+                ddlglyphiconForAttributes.DataTextField = "AttributeValue";
+                ddlglyphiconForAttributes.DataValueField = "MasterAttributeValue_Id";
+                ddlglyphiconForAttributes.DataBind();
+
+                ddlglyphiconForAttributes.Items.Insert(0, new ListItem("---ALL---", "0"));
+                if (!String.IsNullOrEmpty(strIcon))
+                {
+                    if (ddlglyphiconForAttributes.Items.FindByText(strIcon) != null)
+                        ddlglyphiconForAttributes.Items.FindByText(strIcon).Selected = true;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
@@ -416,7 +466,8 @@ namespace TLGX_Consumer.controls.keywords
                 Keyword = txtAddNewKeyword.Text,
                 Keyword_Id = Keyword_Id,
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
-                Status = "ACTIVE"
+                Status = "ACTIVE",
+                Icon = ddlglyphiconForAttributes.SelectedItem.Text
             };
 
             var result = mappingScv.AddUpdateKeyword(Keyword);

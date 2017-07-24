@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="keywordManager.ascx.cs" Inherits="TLGX_Consumer.controls.keywords.keywordManager" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
+<link href="../../Content/bootstrap-select.min.css" rel="stylesheet" />
 <script type="text/javascript">
     var count;
     function showModal() {
@@ -19,6 +19,12 @@
         $("#AliasTextBox").children().last().remove();
         count--;
     };--%>
+
+    function SetGlyphicon(control) {
+        debugger;
+        var selectedtext = control.options[control.selectedIndex].innerHTML;
+        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('glyphicon').addClass("glyphicon-" + selectedtext);
+    }
 
 </script>
 
@@ -145,6 +151,15 @@
                                         <asp:BoundField DataField="Keyword" HeaderText="Keyword" />
                                         <asp:BoundField DataField="Attribute" HeaderText="Attribute" />
                                         <asp:BoundField DataField="Sequence" HeaderText="Sequence" />
+                                        <asp:TemplateField ShowHeader="true">
+                                            <HeaderTemplate>
+                                                Icon
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text='<%# Eval("Icon") %>' ID="lblIconText"></asp:Label>
+                                                <span aria-hidden="true" class="glyphicon glyphicon-<%# Eval("Icon") %>"></span>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField DataField="Status" HeaderText="Status" />
 
                                         <asp:TemplateField ShowHeader="true">
@@ -303,9 +318,17 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="icondropdownmenu">Attribute</label>
+                                            <label class="control-label col-sm-4" for="icondropdownmenu">Attribute &nbsp;&nbsp;&nbsp;<span id="spanglyphicon" runat="server" class=""></span></label>
                                             <div class="col-sm-8">
-                                                <ul class="nav navbar-nav">
+                                                <%--<select runat="server" id="glyphiconForAttributes" onchange="SetGlyphicon()" data-show-icon="true" class="form-control">
+                                                    <option value="0">select</option>
+                                                </select>--%>
+
+                                                <asp:DropDownList runat="server" ID="ddlglyphiconForAttributes" onchange="SetGlyphicon(this)" data-show-icon="true" CssClass="form-control">
+                                                    <asp:ListItem Value="0">Select</asp:ListItem>
+                                                </asp:DropDownList>
+
+                                                <%-- <ul class="nav navbar-nav">
                                                     <li class="dropdown">
                                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">-- Select --</a>
                                                         <ul class="dropdown-menu" id="icondropdownmenu">
@@ -320,7 +343,7 @@
                                                             <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
                                                         </ul>
                                                     </li>
-                                                </ul>
+                                                </ul>--%>
                                             </div>
                                         </div>
 

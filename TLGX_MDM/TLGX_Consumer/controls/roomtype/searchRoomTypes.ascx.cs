@@ -110,6 +110,7 @@ namespace TLGX_Consumer.controls.roomtype
         {
             bool blnDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
+            intPageIndex = 0;
             SearchRoomTypeMappingData(ref blnDataExist);
         }
         public void MappingButtonShowHide(bool blnStatus)
