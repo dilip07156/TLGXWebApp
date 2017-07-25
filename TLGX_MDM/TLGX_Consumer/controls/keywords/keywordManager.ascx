@@ -10,20 +10,9 @@
     function closeModal() {
         $("#moKeywordMapping").modal('hide');
     }
-    <%--function AddTextBox() {
-        document.getElementById('<%=hdnFieldTotalTextboxes.ClientID%>').value = count;
-        $("#AliasTextBox").append("<div><input type='text' class='form-control' id='DynamicTextBox" + count + "' name='DynamicTxt" + count + "'/><br></div>");
-        count++;
-    };
-    function RemoveTextBox() {
-        $("#AliasTextBox").children().last().remove();
-        count--;
-    };--%>
-
     function SetGlyphicon(control) {
-        debugger;
         var selectedtext = control.options[control.selectedIndex].innerHTML;
-        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('glyphicon').addClass("glyphicon-" + selectedtext);
+        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('input-group-addon').addClass('glyphicon').addClass("glyphicon-" + selectedtext);
     }
 
 </script>
@@ -162,7 +151,7 @@
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="Status" HeaderText="Status" />
 
-                                        <asp:TemplateField ShowHeader="true">
+                                        <asp:TemplateField ShowHeader="true" HeaderStyle-Width="20%">
                                             <HeaderTemplate>
                                                 Alias
                                             </HeaderTemplate>
@@ -346,7 +335,6 @@
                                                 </ul>--%>
                                             </div>
                                         </div>
-
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="chklistEntityFor">Entity For</label>
                                             <div class="col-sm-8">
