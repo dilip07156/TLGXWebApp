@@ -38,7 +38,7 @@ namespace TLGX_Consumer.controls.keywords
             ddlStatus.Items.Insert(0, new ListItem("---ALL---", "0"));
         }
 
-        public void fillkeyword()
+        public void fillkeyword(int PageSize, int PageNo)
         {
 
             MDMSVC.DC_Keyword_RQ RQParam = new MDMSVC.DC_Keyword_RQ();
@@ -51,7 +51,7 @@ namespace TLGX_Consumer.controls.keywords
                 RQParam.Status = ddlStatus.SelectedItem.Text;
 
             RQParam.PageNo = PageNo;
-            RQParam.PageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            RQParam.PageSize = PageSize;
 
             var result = mappingScv.SearchKeyword(RQParam);
 
@@ -63,6 +63,7 @@ namespace TLGX_Consumer.controls.keywords
                 gvSearchResult.PageSize = RQParam.PageSize;
                 gvSearchResult.PageIndex = RQParam.PageNo;
                 gvSearchResult.DataBind();
+                //gvSearchResult.Columns[5].ItemStyle.Width = new Unit(50, UnitType.Percentage);
             }
             else
             {
@@ -87,7 +88,7 @@ namespace TLGX_Consumer.controls.keywords
             var result = mappingScv.SearchKeywordAlias(RQParam);
             if (result != null && result.Count > 0)
             {
-                lblTotalAlias.Text = result[0].TotalRecords.ToString();
+                //lblTotalAlias.Text = result[0].TotalRecords.ToString();
                 grdAlias.DataSource = result;
                 grdAlias.VirtualItemCount = result[0].TotalRecords;
                 grdAlias.PageSize = RQParam.PageSize;
@@ -119,7 +120,7 @@ namespace TLGX_Consumer.controls.keywords
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            fillkeyword();
+            fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
         }
 
         protected void gvSearchResult_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -172,7 +173,7 @@ namespace TLGX_Consumer.controls.keywords
                 };
 
                 var result = mappingScv.AddUpdateKeyword(Keyword);
-                fillkeyword();
+                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
@@ -192,7 +193,7 @@ namespace TLGX_Consumer.controls.keywords
                 };
 
                 var result = mappingScv.AddUpdateKeyword(Keyword);
-                fillkeyword();
+                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
@@ -235,7 +236,7 @@ namespace TLGX_Consumer.controls.keywords
                 throw;
             }
         }
-
+        
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             dvMsg.InnerText = string.Empty;
@@ -283,6 +284,7 @@ namespace TLGX_Consumer.controls.keywords
             txtAlias.Text = String.Empty;
             ddlStatus.SelectedIndex = 0;
             lblTotalCount.Text = "0";
+            PageNo = 0;
             gvSearchResult.DataSource = null;
             gvSearchResult.DataBind();
         }
@@ -296,7 +298,7 @@ namespace TLGX_Consumer.controls.keywords
             dvMsgAlias.Style.Add("display", "none");
 
             PageNo = 0;
-            fillkeyword();
+            fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
         }
 
         protected void gvSearchResult_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -308,7 +310,7 @@ namespace TLGX_Consumer.controls.keywords
             dvMsgAlias.Style.Add("display", "none");
 
             PageNo = e.NewPageIndex;
-            fillkeyword();
+            fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
 
         protected void UpdateGridView(MDMSVC.DC_keyword_alias Row)

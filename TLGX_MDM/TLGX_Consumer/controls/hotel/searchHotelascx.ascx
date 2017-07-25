@@ -159,46 +159,79 @@
             </div>
         </div>
 
-        <fieldset>
-
-            <legend></legend>
-
-            <div id="dvPageSize" runat="server" class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label class="input-group-addon" for="ddlPageSize"><strong>Page Size</strong></label>
-                            <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" Width="100px">
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                                <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                                <asp:ListItem Text="25" Value="25" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                <asp:ListItem Text="100" Value="100"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
+        <div id="dvPageSize" runat="server" class="row">
+            <div class="col-sm-12">
+                <div class="form-group pull-right">
+                    <div class="input-group">
+                        <label class="input-group-addon" for="ddlPageSize"><strong>Page Size</strong></label>
+                        <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged" Width="100px">
+                            <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                            <asp:ListItem Text="25" Value="25" Selected="True"></asp:ListItem>
+                            <asp:ListItem Text="50" Value="50"></asp:ListItem>
+                            <asp:ListItem Text="100" Value="100"></asp:ListItem>
+                        </asp:DropDownList>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div id="dvGrid" runat="server" class="row">
-                <div class="col-sm-12">
-                    <asp:GridView ID="grdSearchResults" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="AccomodationId"
-                        CssClass="table table-responsive table-hover table-striped table-bordered" OnPageIndexChanging="grdSearchResults_PageIndexChanging" PagerStyle-CssClass="Page navigation">
-                        <Columns>
-                            <asp:BoundField DataField="CompanyHotelId" HeaderText="Hotel Id" InsertVisible="False" ReadOnly="True" SortExpression="CompanyHotelId" />
-                            <asp:BoundField DataField="Country" HeaderText="Country Name" SortExpression="Country" />
-                            <asp:BoundField DataField="City" HeaderText="City Name" SortExpression="City" />
-                            <asp:BoundField DataField="HotelName" HeaderText="Hotel Name" SortExpression="HotelName" />
-                            <asp:BoundField DataField="Starrating" HeaderText="Star Rating" SortExpression="Starrating" />
-                            <asp:HyperLinkField DataNavigateUrlFields="AccomodationId" DataNavigateUrlFormatString="~/hotels/manage.aspx?Hotel_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/hotels/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
-                        </Columns>
-                        <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
-                    </asp:GridView>
+        <%--<div class="panel-group" id="searchResults">
+                <div class="panel panel-default">
+
+                    <div id="collapseSearchResult" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <div id="dvGrid" runat="server" class="row">
+                                <div class="col-sm-12">
+                                    <asp:GridView ID="grdSearchResults" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="AccomodationId"
+                                        CssClass="table table-responsive table-hover table-striped table-bordered" OnPageIndexChanging="grdSearchResults_PageIndexChanging" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mappings for search conditions">
+                                        <Columns>
+                                            <asp:BoundField DataField="CompanyHotelId" HeaderText="Hotel Id" InsertVisible="False" ReadOnly="True" SortExpression="CompanyHotelId" />
+                                            <asp:BoundField DataField="Country" HeaderText="Country Name" SortExpression="Country" />
+                                            <asp:BoundField DataField="City" HeaderText="City Name" SortExpression="City" />
+                                            <asp:BoundField DataField="HotelName" HeaderText="Hotel Name" SortExpression="HotelName" />
+                                            <asp:BoundField DataField="Starrating" HeaderText="Star Rating" SortExpression="Starrating" />
+                                            <asp:HyperLinkField DataNavigateUrlFields="AccomodationId" DataNavigateUrlFormatString="~/hotels/manage.aspx?Hotel_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/hotels/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
+                                        </Columns>
+                                        <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
+                                    </asp:GridView>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-        </fieldset>
+            </div>--%>
 
 
+                <div class="panel-group" id="searchResult">
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading clearfix">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
+                                <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a>
+                            </h4>
+                        </div>
+
+                        <div id="collapseSearchResult" class="panel-collapse collapse-in">
+                            <div class="panel-body">
+                                <asp:GridView ID="grdSearchResults" runat="server" EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
+                                    AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="false" OnPageIndexChanging="grdSearchResults_PageIndexChanging"
+                                    OnRowCommand="grdSearchResults_RowCommand" DataKeyNames="AccomodationId" OnRowDataBound="grdSearchResults_RowDataBound">
+                                    <Columns>
+                                        <asp:BoundField DataField="CompanyHotelId" HeaderText="Hotel Id" InsertVisible="False" ReadOnly="True" SortExpression="CompanyHotelId" />
+                                        <asp:BoundField DataField="Country" HeaderText="Country Name" SortExpression="Country" />
+                                        <asp:BoundField DataField="City" HeaderText="City Name" SortExpression="City" />
+                                        <asp:BoundField DataField="HotelName" HeaderText="Hotel Name" SortExpression="HotelName" />
+                                        <asp:BoundField DataField="Starrating" HeaderText="Star Rating" SortExpression="Starrating" />
+                                        <asp:HyperLinkField DataNavigateUrlFields="AccomodationId" DataNavigateUrlFormatString="~/hotels/manage.aspx?Hotel_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/hotels/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
+                                    </Columns>
+                                    <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
+                                </asp:GridView>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
     </ContentTemplate>
 </asp:UpdatePanel>

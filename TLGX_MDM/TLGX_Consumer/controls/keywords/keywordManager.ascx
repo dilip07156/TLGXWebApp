@@ -151,7 +151,7 @@
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="Status" HeaderText="Status" />
 
-                                        <asp:TemplateField ShowHeader="true">
+                                        <asp:TemplateField ShowHeader="true" HeaderStyle-Width="20%">
                                             <HeaderTemplate>
                                                 Alias
                                             </HeaderTemplate>
@@ -246,12 +246,12 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <%--<div class="col-md-6">
                                 <label class="control-label">Total Alias Records :</label>
                                 <asp:Label runat="server" ID="lblTotalAlias" Text="0" CssClass="control-label"></asp:Label>
-                            </div>
+                            </div>--%>
 
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group pull-right">
                                     <div class="input-group">
                                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
@@ -375,10 +375,11 @@
                                                         <asp:Label ID="lblAliasSequence" runat="server" CssClass="control-label" Text='<%# Bind("Sequence") %>'></asp:Label>
                                                     </ItemTemplate>
                                                     <EditItemTemplate>
-                                                        <asp:TextBox ID="txtAliasSequence" runat="server" CssClass="form-control" Text='<%# Bind("Sequence") %>'></asp:TextBox>
+                                                        <asp:TextBox ID="txtAliasSequence" runat="server" CssClass="form-control" Text='<%# Bind("Sequence") %>' MaxLength="3"></asp:TextBox>
                                                         <asp:RequiredFieldValidator ID="vldtxtAliasEditSequence" runat="server" ControlToValidate="txtAliasSequence"
                                                             ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasEditSequence" CssClass="text-danger">
                                                         </asp:RequiredFieldValidator>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAliasSequence" runat="server" FilterType="Numbers" TargetControlID="txtAliasSequence" />
                                                     </EditItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField ShowHeader="false">
