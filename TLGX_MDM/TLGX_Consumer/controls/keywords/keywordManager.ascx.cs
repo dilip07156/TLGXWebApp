@@ -22,6 +22,7 @@ namespace TLGX_Consumer.controls.keywords
             if (!IsPostBack)
             {
                 fillddlstatus();
+                fillEntityFor();
             }
         }
 
@@ -36,6 +37,19 @@ namespace TLGX_Consumer.controls.keywords
             ddlStatus.DataValueField = "MasterAttributeValue_Id";
             ddlStatus.DataBind();
             ddlStatus.Items.Insert(0, new ListItem("---ALL---", "0"));
+        }
+
+        protected void fillEntityFor()
+        {
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = "MappingFileConfig";
+            RQ.Name = "MappingEntity";
+            var res = masterscv.GetAllAttributeAndValues(RQ);
+            chklistEntityFor.DataSource = res;
+            chklistEntityFor.DataTextField = "AttributeValue";
+            chklistEntityFor.DataValueField = "MasterAttributeValue_Id";
+            chklistEntityFor.DataBind();
+            RQ = null;
         }
 
         public void fillkeyword()
@@ -87,7 +101,7 @@ namespace TLGX_Consumer.controls.keywords
             var result = mappingScv.SearchKeywordAlias(RQParam);
             if (result != null && result.Count > 0)
             {
-                //lblTotalAlias.Text = result[0].TotalRecords.ToString();
+                lblTotalAlias.Text = result[0].TotalRecords.ToString();
                 grdAlias.DataSource = result;
                 grdAlias.VirtualItemCount = result[0].TotalRecords;
                 grdAlias.PageSize = RQParam.PageSize;
@@ -114,6 +128,8 @@ namespace TLGX_Consumer.controls.keywords
                 grdAlias.Rows[0].Cells.Add(new TableCell());
                 grdAlias.Rows[0].Cells[0].ColumnSpan = columncount;
                 grdAlias.Rows[0].Cells[0].Text = "No Alias defined yet.";
+
+                lblTotalAlias.Text = "0";
             }
         }
 
@@ -231,7 +247,6 @@ namespace TLGX_Consumer.controls.keywords
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -250,6 +265,7 @@ namespace TLGX_Consumer.controls.keywords
             txtAddNewKeyword.Text = string.Empty;
             txtKeywordSequence.Text = string.Empty;
             chkNewKeywordAttribute.Checked = false;
+            chklistEntityFor.ClearSelection();
 
             List<MDMSVC.DC_keyword_alias> aliasList = new List<MDMSVC.DC_keyword_alias>();
             aliasList.Add(new MDMSVC.DC_keyword_alias
