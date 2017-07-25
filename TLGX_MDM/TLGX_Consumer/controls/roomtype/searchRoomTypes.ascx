@@ -267,11 +267,10 @@
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
                                                     <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control" runat="server">
-                                                        <asp:ListItem Value="0">-?-</asp:ListItem>
-                                                        <asp:ListItem Value="Add">Add</asp:ListItem>
-                                                        <asp:ListItem Value="Mapped">Mapped</asp:ListItem>
-                                                        <asp:ListItem Value="Unmapped">Unmapped</asp:ListItem>
-                                                        <asp:ListItem Value="Review">Review</asp:ListItem>
+                                                        <asp:ListItem Value="ADD">ADD</asp:ListItem>
+                                                        <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
+                                                        <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
+                                                        <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
