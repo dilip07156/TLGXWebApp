@@ -87,7 +87,7 @@ namespace TLGX_Consumer.controls.keywords
             var result = mappingScv.SearchKeywordAlias(RQParam);
             if (result != null && result.Count > 0)
             {
-                lblTotalAlias.Text = result[0].TotalRecords.ToString();
+                //lblTotalAlias.Text = result[0].TotalRecords.ToString();
                 grdAlias.DataSource = result;
                 grdAlias.VirtualItemCount = result[0].TotalRecords;
                 grdAlias.PageSize = RQParam.PageSize;
@@ -235,7 +235,7 @@ namespace TLGX_Consumer.controls.keywords
                 throw;
             }
         }
-
+        
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             dvMsg.InnerText = string.Empty;
