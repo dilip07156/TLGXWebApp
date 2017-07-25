@@ -647,6 +647,7 @@
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityFor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Extra" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Icon" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Keyword" nillable="true" type="xs:string" />

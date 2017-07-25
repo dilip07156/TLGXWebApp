@@ -6985,6 +6985,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityDashboard[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ))]
@@ -7514,6 +7516,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityDashboard[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ))]
@@ -13648,6 +13652,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityForField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> ExtraField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -13755,6 +13762,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EntityFor {
+            get {
+                return this.EntityForField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityForField, value) != true)) {
+                    this.EntityForField = value;
+                    this.RaisePropertyChanged("EntityFor");
                 }
             }
         }
@@ -22961,6 +22981,131 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityDashboard", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_VelocityDashboard : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MappinForField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalcountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MappinFor {
+            get {
+                return this.MappinForField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MappinForField, value) != true)) {
+                    this.MappinForField = value;
+                    this.RaisePropertyChanged("MappinFor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierId {
+            get {
+                return this.SupplierIdField;
+            }
+            set {
+                if ((this.SupplierIdField.Equals(value) != true)) {
+                    this.SupplierIdField = value;
+                    this.RaisePropertyChanged("SupplierId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Totalcount {
+            get {
+                return this.TotalcountField;
+            }
+            set {
+                if ((this.TotalcountField.Equals(value) != true)) {
+                    this.TotalcountField = value;
+                    this.RaisePropertyChanged("Totalcount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_Schedule", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
     [System.SerializableAttribute()]
     public partial class DC_Supplier_Schedule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -29420,6 +29565,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getNewHotelsAddedReport", ReplyAction="http://tempuri.org/IStaticData/getNewHotelsAddedReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetVelocityDashboard", ReplyAction="http://tempuri.org/IStaticData/GetVelocityDashboardResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetVelocityDashboardDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_VelocityDashboard[] GetVelocityDashboard(string SupplierID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetVelocityDashboard", ReplyAction="http://tempuri.org/IStaticData/GetVelocityDashboardResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityDashboard[]> GetVelocityDashboardAsync(string SupplierID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id);
@@ -31200,6 +31352,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
             return base.Channel.getNewHotelsAddedReportAsync(parm);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_VelocityDashboard[] GetVelocityDashboard(string SupplierID) {
+            return base.Channel.GetVelocityDashboard(SupplierID);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityDashboard[]> GetVelocityDashboardAsync(string SupplierID) {
+            return base.Channel.GetVelocityDashboardAsync(SupplierID);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {

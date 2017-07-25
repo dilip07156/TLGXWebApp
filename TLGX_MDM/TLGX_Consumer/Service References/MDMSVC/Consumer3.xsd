@@ -822,4 +822,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_newHotelsReport" nillable="true" type="tns:DC_newHotelsReport" />
+  <xs:complexType name="ArrayOfDC_VelocityDashboard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityDashboard" nillable="true" type="tns:DC_VelocityDashboard" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityDashboard" nillable="true" type="tns:ArrayOfDC_VelocityDashboard" />
+  <xs:complexType name="DC_VelocityDashboard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MappinFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierId" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Totalcount" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityDashboard" nillable="true" type="tns:DC_VelocityDashboard" />
 </xs:schema>
