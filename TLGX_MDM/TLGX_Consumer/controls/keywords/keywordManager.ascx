@@ -162,7 +162,7 @@
                                         </asp:TemplateField>
                                         <asp:BoundField DataField="Status" HeaderText="Status" />
 
-                                        <asp:TemplateField ShowHeader="true">
+                                        <asp:TemplateField ShowHeader="true" HeaderStyle-Width="20%">
                                             <HeaderTemplate>
                                                 Alias
                                             </HeaderTemplate>
