@@ -113,7 +113,7 @@
                                                     </label>
                                                     <div class="col-sm-6">
                                                         <asp:DropDownList ID="ddlSupplierNameBySupplier" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                            <asp:ListItem Value="0">---ALL---</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
@@ -278,6 +278,7 @@
                                                 <ItemTemplate>
                                                     <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
                                                     <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
+                                                    <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
                                                     <input type="hidden" class="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
 
                                                 </ItemTemplate>

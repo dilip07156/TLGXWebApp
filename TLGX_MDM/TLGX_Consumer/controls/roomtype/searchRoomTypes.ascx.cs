@@ -123,7 +123,6 @@ namespace TLGX_Consumer.controls.roomtype
                 divPagging.Style.Add(HtmlTextWriterStyle.Display, "block");
             else if (!blnStatus)
                 divPagging.Style.Add(HtmlTextWriterStyle.Display, "none");
-
             ddlPageSizeBySupplier.Visible = blnStatus;
         }
         private void SearchRoomTypeMappingData(ref bool blnDataExist)
@@ -199,6 +198,11 @@ namespace TLGX_Consumer.controls.roomtype
             ddlStatusBySupplier.SelectedValue = "0";
             ddlPageSizeBySupplier.SelectedValue = "5";
             txtProductNameBySupplier.Text = string.Empty;
+            MappingButtonShowHide(false);
+            lblSupplierRoomSearchCount.Text = "0";
+            grdRoomTypeMappingSearchResultsBySupplier.DataSource = null;
+            grdRoomTypeMappingSearchResultsBySupplier.DataBind();
+
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -221,20 +225,31 @@ namespace TLGX_Consumer.controls.roomtype
                 DropDownList ddlSuggestedRoomInGridBySupplier = (DropDownList)e.Row.FindControl("ddlSuggestedRoomInGridBySupplier");
                 DropDownList ddlMappingStatusInGridBySupplier = (DropDownList)e.Row.FindControl("ddlMappingStatusInGridBySupplier");
                 HtmlTextArea txtSuggestedRoomInfoInGridBySupplier = (HtmlTextArea)e.Row.FindControl("txtSuggestedRoomInfoInGridBySupplier");
-
-                if (ddlSuggestedRoomInGridBySupplier != null)
+                HtmlInputHidden hdnRoomCount = (HtmlInputHidden)e.Row.FindControl("hdnRoomCount");
+                int intRoomCount = 0;
+                bool hasRoom = int.TryParse(hdnRoomCount.Value, out intRoomCount);
+                if (hdnRoomCount != null && hasRoom && intRoomCount > 0)
                 {
-                    bool blnHaveRoomInfo_Id = ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.HasValue;
-                    string RoomInfo_Name = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Name);
-                    if (blnHaveRoomInfo_Id && RoomInfo_Name != null && RoomInfo_Name != "")
+                    if (ddlSuggestedRoomInGridBySupplier != null)
                     {
-                        string Accommodation_RoomInfo_Id = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.Value);
-                        ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(RoomInfo_Name, Accommodation_RoomInfo_Id));
-                        if (ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id) != null)
+                        ddlSuggestedRoomInGridBySupplier.Style.Add(HtmlTextWriterStyle.Display, "block");
+                        bool blnHaveRoomInfo_Id = ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.HasValue;
+                        string RoomInfo_Name = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Name);
+                        if (blnHaveRoomInfo_Id && RoomInfo_Name != null && RoomInfo_Name != "")
+                        {
+                            string Accommodation_RoomInfo_Id = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.Value);
+                            ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(RoomInfo_Name, Accommodation_RoomInfo_Id));
+                            if (ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id) != null)
+                                ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id).Selected = true;
                             ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id).Selected = true;
-                        ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id).Selected = true;
-                    }
+                        }
 
+                    }
+                }
+                else
+                {
+                    if (ddlSuggestedRoomInGridBySupplier != null)
+                        ddlSuggestedRoomInGridBySupplier.Style.Add(HtmlTextWriterStyle.Display, "none");
                 }
                 if (ddlMappingStatusInGridBySupplier != null)
                 {
@@ -260,10 +275,19 @@ namespace TLGX_Consumer.controls.roomtype
                         }
                         else if (mappingStatus.ToUpper() == "UNMAPPED")
                         {
-                            if (ddlSuggestedRoomInGridBySupplier.SelectedValue != "0")
+                            if (hasRoom && intRoomCount == 0)
+                            {
+                                ddlMappingStatusInGridBySupplier.ClearSelection();
+                                ddlMappingStatusInGridBySupplier.Items.FindByValue("ADD").Selected = true;
+                            }
+                            else if (hasRoom && intRoomCount > 0 && ddlSuggestedRoomInGridBySupplier.SelectedValue != "0")
                             {
                                 ddlMappingStatusInGridBySupplier.ClearSelection();
                                 ddlMappingStatusInGridBySupplier.Items.FindByValue("REVIEW").Selected = true;
+                            }
+                            else if (hasRoom && intRoomCount > 0 && ddlSuggestedRoomInGridBySupplier.SelectedValue == "0")
+                            {
+
                             }
                         }
                     }
