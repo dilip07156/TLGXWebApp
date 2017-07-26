@@ -12,7 +12,20 @@
     }
     function SetGlyphicon(control) {
         var selectedtext = control.options[control.selectedIndex].innerHTML;
-        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('input-group-addon').addClass('glyphicon').addClass("glyphicon-" + selectedtext);
+        $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('glyphicon').addClass("glyphicon-" + selectedtext); //.addClass('input-group-addon')
+    }
+
+    function ValidateCheckBoxList(sender, args) {
+        var checkBoxList = document.getElementById("<%=chkAttribute.ClientID %>");
+        var checkboxes = checkBoxList.getElementsByTagName("input");
+        var isValid = false;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                isValid = true;
+                break;
+            }
+        }
+        args.IsValid = isValid;
     }
 
 </script>
@@ -149,6 +162,9 @@
                                                 <span aria-hidden="true" class="glyphicon glyphicon-<%# Eval("Icon") %>"></span>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+
+                                        <asp:BoundField DataField="EntityFor" HeaderText="EntityFor" />
+
                                         <asp:BoundField DataField="Status" HeaderText="Status" />
 
                                         <asp:TemplateField ShowHeader="true" HeaderStyle-Width="20%">
@@ -336,127 +352,145 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="chklistEntityFor">Entity For</label>
+                                            <label class="control-label col-sm-4" for="chklistEntityFor">
+                                                Entity For
+                                                 <%--<asp:CustomValidator ID="cusChkListEntity" ClientValidationFunction="ValidateCheckBoxList" runat="server"
+                                                     ErrorMessage="Please select atleast one Entity" Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger"/>--%>
+                                            </label>
                                             <div class="col-sm-8">
                                                 <div class="form-horizontal">
                                                     <fieldset class="form-group">
                                                         <div class="col-sm-12">
                                                             <asp:CheckBoxList ID="chklistEntityFor" runat="server"></asp:CheckBoxList>
                                                         </div>
-                                                </fieldset>
+                                                    </fieldset>
+                                                </div>
+
                                             </div>
-
                                         </div>
-                                    </div>
 
-                                    <div class="form-group row">
-                                        <label class="control-label col-sm-4" for="btnSave"></label>
-                                        <div class="col-sm-8">
-                                            <asp:Button runat="server" ID="btnSave" CausesValidation="true" ValidationGroup="vldgrpKeyword"
-                                                CssClass="btn btn-sm btn-primary pull-right" Text="Save" OnClick="btnSave_Click" />
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4" for="btnSave"></label>
+                                            <div class="col-sm-8">
+                                                <asp:Button runat="server" ID="btnSave" CausesValidation="true" ValidationGroup="vldgrpKeyword"
+                                                    CssClass="btn btn-sm btn-primary pull-right" Text="Save" OnClick="btnSave_Click" />
+                                            </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-8">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <strong>Alias</strong>
-                                </div>
-                                <div class="panel-body">
+                            <div class="col-md-8">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <strong>Alias</strong>
+                                    </div>
+                                    <div class="panel-body">
 
-                                    <asp:GridView ID="grdAlias" runat="server"
-                                        CssClass="table table-bordered table-hover" AllowPaging="true" AllowCustomPaging="True" AutoGenerateColumns="false"
-                                        DataKeyNames="KeywordAlias_Id" OnRowCommand="grdAlias_RowCommand" OnPageIndexChanging="grdAlias_PageIndexChanging"
-                                        ShowHeader="true" EmptyDataText="No Alias defined yet."
-                                        OnRowDeleting="grdAlias_RowDeleting" OnRowCancelingEdit="grdAlias_RowCancelingEdit" OnRowUpdating="grdAlias_RowUpdating"
-                                        OnRowEditing="grdAlias_RowEditing" ShowHeaderWhenEmpty="false" OnRowDataBound="grdAlias_RowDataBound">
+                                        <asp:GridView ID="grdAlias" runat="server"
+                                            CssClass="table table-bordered table-hover" AllowPaging="true" AllowCustomPaging="True" AutoGenerateColumns="false"
+                                            DataKeyNames="KeywordAlias_Id" OnRowCommand="grdAlias_RowCommand" OnPageIndexChanging="grdAlias_PageIndexChanging"
+                                            ShowHeader="true" EmptyDataText="No Alias defined yet."
+                                            OnRowDeleting="grdAlias_RowDeleting" OnRowCancelingEdit="grdAlias_RowCancelingEdit" OnRowUpdating="grdAlias_RowUpdating"
+                                            OnRowEditing="grdAlias_RowEditing" ShowHeaderWhenEmpty="false" OnRowDataBound="grdAlias_RowDataBound">
 
-                                        <Columns>
-                                            <asp:TemplateField>
-                                                <HeaderTemplate>
-                                                    Alias Value
+                                            <Columns>
+                                                <asp:TemplateField>
+                                                    <HeaderTemplate>
+                                                        Alias Value
                                                         <asp:TextBox ID="txtAlias" runat="server" CssClass="form-control"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="vldtxtAliasNew" runat="server" ControlToValidate="txtAlias"
-                                                        ErrorMessage="Alias cannot be empty." Text="*" ValidationGroup="vldgrpAliasNew" CssClass="text-danger">
-                                                    </asp:RequiredFieldValidator>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblAlias" runat="server" CssClass="control-label" Text='<%# Bind("Value") %>'></asp:Label>
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="txtAlias" runat="server" CssClass="form-control" Text='<%# Bind("Value") %>'></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="vldtxtAliasEdit" runat="server" ControlToValidate="txtAlias"
-                                                        ErrorMessage="Alias cannot be empty." Text="*" ValidationGroup="vldgrpAliasEdit" CssClass="text-danger">
-                                                    </asp:RequiredFieldValidator>
-                                                </EditItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField>
-                                                <HeaderTemplate>
-                                                    Alias Sequence
+                                                        <asp:RequiredFieldValidator ID="vldtxtAliasNew" runat="server" ControlToValidate="txtAlias"
+                                                            ErrorMessage="Alias cannot be empty." Text="*" ValidationGroup="vldgrpAliasNew" CssClass="text-danger">
+                                                        </asp:RequiredFieldValidator>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblAlias" runat="server" CssClass="control-label" Text='<%# Bind("Value") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="txtAlias" runat="server" CssClass="form-control" Text='<%# Bind("Value") %>'></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="vldtxtAliasEdit" runat="server" ControlToValidate="txtAlias"
+                                                            ErrorMessage="Alias cannot be empty." Text="*" ValidationGroup="vldgrpAliasEdit" CssClass="text-danger">
+                                                        </asp:RequiredFieldValidator>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField>
+                                                    <HeaderTemplate>
+                                                        Alias Sequence
                                                         <asp:TextBox ID="txtAliasSequence" runat="server" CssClass="form-control" MaxLength="3"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="vldtxtAliasNewSequence" runat="server" ControlToValidate="txtAliasSequence"
-                                                        ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasNew" CssClass="text-danger">
-                                                    </asp:RequiredFieldValidator>
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtAliasSequence" runat="server" FilterType="Numbers" TargetControlID="txtAliasSequence" />
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label ID="lblAliasSequence" runat="server" CssClass="control-label" Text='<%# Bind("Sequence") %>'></asp:Label>
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
-                                                    <asp:TextBox ID="txtAliasSequence" runat="server" CssClass="form-control" Text='<%# Bind("Sequence") %>' MaxLength="3"></asp:TextBox>
-                                                    <asp:RequiredFieldValidator ID="vldtxtAliasEditSequence" runat="server" ControlToValidate="txtAliasSequence"
-                                                        ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasEditSequence" CssClass="text-danger">
-                                                    </asp:RequiredFieldValidator>
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtAliasSequence" runat="server" FilterType="Numbers" TargetControlID="txtAliasSequence" />
-                                                </EditItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField ShowHeader="false">
-                                                <HeaderTemplate>
-                                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" CommandName="AddNew" ToolTip="Add Alias"
-                                                        ValidationGroup="vldgrpAliasNew" CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
+                                                        <asp:RequiredFieldValidator ID="vldtxtAliasNewSequence" runat="server" ControlToValidate="txtAliasSequence"
+                                                            ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasNew" CssClass="text-danger">
+                                                        </asp:RequiredFieldValidator>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAliasSequence" runat="server" FilterType="Numbers" TargetControlID="txtAliasSequence" />
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblAliasSequence" runat="server" CssClass="control-label" Text='<%# Bind("Sequence") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:TextBox ID="txtAliasSequence" runat="server" CssClass="form-control" Text='<%# Bind("Sequence") %>' MaxLength="3"></asp:TextBox>
+                                                        <asp:RequiredFieldValidator ID="vldtxtAliasEditSequence" runat="server" ControlToValidate="txtAliasSequence"
+                                                            ErrorMessage="Alias Sequence cannot be empty." Text="*" ValidationGroup="vldgrpAliasEditSequence" CssClass="text-danger">
+                                                        </asp:RequiredFieldValidator>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAliasSequence" runat="server" FilterType="Numbers" TargetControlID="txtAliasSequence" />
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField>
+                                                    <HeaderTemplate>
+                                                        No Of Hits
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblAliasNoOfHits" runat="server" CssClass="control-label" Text='<%# Bind("NoOfHits") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:Label ID="lblAliasNoOfHits" runat="server" CssClass="control-label" Text='<%# Bind("NoOfHits") %>'></asp:Label>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+
+                                                <asp:TemplateField ShowHeader="false">
+                                                    <HeaderTemplate>
+                                                        <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" CommandName="AddNew" ToolTip="Add Alias"
+                                                            ValidationGroup="vldgrpAliasNew" CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
                                                                         <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>
-                                                    </asp:LinkButton>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
+                                                        </asp:LinkButton>
+                                                    </HeaderTemplate>
+                                                    <ItemTemplate>
 
-                                                    <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" CssClass="btn btn-default"
-                                                        CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip="Edit Alias">
+                                                        <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" CssClass="btn btn-default"
+                                                            CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip="Edit Alias">
                                                             <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
-                                                    </asp:LinkButton>
+                                                        </asp:LinkButton>
 
-                                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "Delete" : "UnDelete" %>'
-                                                        CssClass="btn btn-default" CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip='<%# Eval("Status").ToString() == "ACTIVE" ? "Delete" : "UnDelete"   %>'>
+                                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "Delete" : "UnDelete" %>'
+                                                            CssClass="btn btn-default" CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip='<%# Eval("Status").ToString() == "ACTIVE" ? "Delete" : "UnDelete"   %>'>
                                                             <span aria-hidden="true" class='<%# Eval("Status").ToString() == "ACTIVE" ? "glyphicon glyphicon-trash" : "glyphicon glyphicon-repeat" %>'></span>
-                                                    </asp:LinkButton>
+                                                        </asp:LinkButton>
 
-                                                </ItemTemplate>
-                                                <EditItemTemplate>
-                                                    <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="true" ValidationGroup="vldgrpAliasEdit"
-                                                        CommandName="Update" CssClass="btn btn-default" CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip="Update Alias">
+                                                    </ItemTemplate>
+                                                    <EditItemTemplate>
+                                                        <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="true" ValidationGroup="vldgrpAliasEdit"
+                                                            CommandName="Update" CssClass="btn btn-default" CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip="Update Alias">
                                                                         <span aria-hidden="true" class="glyphicon glyphicon-ok"></span>
-                                                    </asp:LinkButton>
-                                                    <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel" CssClass="btn btn-default"
-                                                        CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip="Cancel Update">
+                                                        </asp:LinkButton>
+                                                        <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel" CssClass="btn btn-default"
+                                                            CommandArgument='<%# Bind("KeywordAlias_Id") %>' ToolTip="Cancel Update">
                                                                         <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
-                                                    </asp:LinkButton>
-                                                </EditItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                        <PagerStyle CssClass="pagination-ys" />
-                                    </asp:GridView>
+                                                        </asp:LinkButton>
+                                                    </EditItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <PagerStyle CssClass="pagination-ys" />
+                                        </asp:GridView>
 
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class=" pull-right">
-                                <asp:Button runat="server" ID="btnClose" CssClass="btn btn-sm btn-primary" Text="Close" data-dismiss="modal" />
-                            </div>
+                                <div class=" pull-right">
+                                    <asp:Button runat="server" ID="btnClose" CssClass="btn btn-sm btn-primary" Text="Close" data-dismiss="modal" />
+                                </div>
 
-                        </div>
+                            </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

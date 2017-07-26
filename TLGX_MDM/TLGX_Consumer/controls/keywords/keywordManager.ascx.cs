@@ -22,6 +22,7 @@ namespace TLGX_Consumer.controls.keywords
             if (!IsPostBack)
             {
                 fillddlstatus();
+                fillEntityFor();
             }
         }
 
@@ -38,9 +39,21 @@ namespace TLGX_Consumer.controls.keywords
             ddlStatus.Items.Insert(0, new ListItem("---ALL---", "0"));
         }
 
+        protected void fillEntityFor()
+        {
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = "MappingFileConfig";
+            RQ.Name = "MappingEntity";
+            var res = masterscv.GetAllAttributeAndValues(RQ);
+            chklistEntityFor.DataSource = res;
+            chklistEntityFor.DataTextField = "AttributeValue";
+            chklistEntityFor.DataValueField = "AttributeValue";
+            chklistEntityFor.DataBind();
+            RQ = null;
+        }
+
         public void fillkeyword(int PageSize, int PageNo)
         {
-
             MDMSVC.DC_Keyword_RQ RQParam = new MDMSVC.DC_Keyword_RQ();
 
             RQParam.systemWord = txtKeyword.Text;
@@ -140,10 +153,23 @@ namespace TLGX_Consumer.controls.keywords
                 txtAddNewKeyword.Text = row.Cells[0].Text;
                 chkNewKeywordAttribute.Checked = Convert.ToBoolean(row.Cells[1].Text);
                 txtKeywordSequence.Text = row.Cells[2].Text;
+                chklistEntityFor.ClearSelection();
 
+                if (!string.IsNullOrWhiteSpace(row.Cells[4].Text))
+                {
+                    var EntityFor = row.Cells[4].Text.Split(',');
+                    for (int count = 0; count < chklistEntityFor.Items.Count; count++)
+                    {
+                        if (EntityFor.Contains(chklistEntityFor.Items[count].ToString()))
+                        {
+                            chklistEntityFor.Items[count].Selected = true;
+                        }
+                    }
+                }
+                
                 AliasPageNo = 0;
                 ddlShowEntriesAlias.SelectedIndex = 0;
-                
+
                 Label lblIconText = (Label)row.FindControl("lblIconText");
                 if (lblIconText != null)
                 {
@@ -236,7 +262,7 @@ namespace TLGX_Consumer.controls.keywords
                 throw;
             }
         }
-        
+
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             dvMsg.InnerText = string.Empty;
@@ -251,6 +277,7 @@ namespace TLGX_Consumer.controls.keywords
             txtAddNewKeyword.Text = string.Empty;
             txtKeywordSequence.Text = string.Empty;
             chkNewKeywordAttribute.Checked = false;
+            chklistEntityFor.ClearSelection();
 
             List<MDMSVC.DC_keyword_alias> aliasList = new List<MDMSVC.DC_keyword_alias>();
             aliasList.Add(new MDMSVC.DC_keyword_alias
@@ -285,6 +312,9 @@ namespace TLGX_Consumer.controls.keywords
             ddlStatus.SelectedIndex = 0;
             lblTotalCount.Text = "0";
             PageNo = 0;
+
+            chklistEntityFor.ClearSelection();
+
             gvSearchResult.DataSource = null;
             gvSearchResult.DataBind();
         }
@@ -319,6 +349,9 @@ namespace TLGX_Consumer.controls.keywords
 
             List<MDMSVC.DC_keyword_alias> aliasList = new List<MDMSVC.DC_keyword_alias>();
             aliasList.Add(Row);
+
+            string[] EntityFor = chklistEntityFor.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray();
+
             MDMSVC.DC_Keyword Keyword = new MDMSVC.DC_Keyword
             {
                 Alias = aliasList.ToArray(),
@@ -330,7 +363,9 @@ namespace TLGX_Consumer.controls.keywords
                 Keyword = txtAddNewKeyword.Text,
                 Keyword_Id = Keyword_Id,
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
-                Status = "ACTIVE"
+                Status = "ACTIVE",
+                EntityFor = string.Join(",", EntityFor),
+                Icon = ddlglyphiconForAttributes.SelectedItem.Text
             };
 
             var result = mappingScv.AddUpdateKeyword(Keyword);
@@ -469,7 +504,8 @@ namespace TLGX_Consumer.controls.keywords
                 Keyword_Id = Keyword_Id,
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
                 Status = "ACTIVE",
-                Icon = ddlglyphiconForAttributes.SelectedItem.Text
+                Icon = ddlglyphiconForAttributes.SelectedItem.Text,
+                EntityFor = string.Join(",", chklistEntityFor.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray())
             };
 
             var result = mappingScv.AddUpdateKeyword(Keyword);
