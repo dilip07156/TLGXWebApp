@@ -15,8 +15,12 @@
         $('#MainContent_keywordManager_spanglyphicon').removeClass().addClass('glyphicon').addClass("glyphicon-" + selectedtext); //.addClass('input-group-addon')
     }
 
+    function EnableDisableValidationForIcons(chk) {
+        var valName = document.getElementById("<%=rfvicondropdownmenu.ClientID%>");
+        ValidatorEnable(valName, chk.checked);
+    }
     function ValidateCheckBoxList(sender, args) {
-        var checkBoxList = document.getElementById("<%=chkAttribute.ClientID %>");
+        var checkBoxList = document.getElementById("<%=chklistEntityFor.ClientID %>");
         var checkboxes = checkBoxList.getElementsByTagName("input");
         var isValid = false;
         for (var i = 0; i < checkboxes.length; i++) {
@@ -27,6 +31,7 @@
         }
         args.IsValid = isValid;
     }
+
 
 </script>
 
@@ -167,30 +172,21 @@
 
                                         <asp:BoundField DataField="Status" HeaderText="Status" />
 
-                                        <asp:TemplateField ShowHeader="true" HeaderStyle-Width="20%">
+                                        <asp:TemplateField ShowHeader="true">
                                             <HeaderTemplate>
                                                 Alias
                                             </HeaderTemplate>
                                             <ItemTemplate>
-                                                <%--<asp:GridView ID="gvAlias" runat="server" CssClass="table table-bordered table-hover" DataKeyNames="KeywordAlias_Id"
-                                                    AutoGenerateColumns="false" DataSource='<%# Bind("Alias") %>' HeaderStyle-CssClass="info">
-                                                    <Columns>
-                                                        <asp:BoundField DataField="Value" HeaderText="Value" />
-                                                        <asp:BoundField DataField="Sequence" HeaderText="Sequence" />
-                                                        <asp:BoundField DataField="Status" HeaderText="Status" />
-                                                    </Columns>
-                                                </asp:GridView>--%>
-                                                <%-- <asp:ListView ID="lstAliad" runat="server" DataSource='<%# Bind("Alias") %>'
-                                                    ></asp:ListView>--%>
 
                                                 <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("Alias") %>'
-                                                    RepeatLayout="Table" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="table-bordered">
+                                                    RepeatLayout="Flow" RepeatDirection="Horizontal" CssClass="table table-bordered table-striped">
                                                     <ItemTemplate>
-                                                        <span class='<%# Eval("Status").ToString() == "ACTIVE" ? "label label-primary" : "label label-default" %>' style="font-size: smaller">
+                                                        <span class='<%# Eval("Status").ToString() == "ACTIVE" ? "label label-primary form-control" : "label label-default form-control" %>' style="font-size: smaller">
                                                             <%# Eval("Value") %>
                                                         </span>
                                                     </ItemTemplate>
                                                 </asp:DataList>
+
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
@@ -318,12 +314,18 @@
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="chkNewKeywordAttribute">Attribute</label>
                                             <div class="col-sm-8">
-                                                <asp:CheckBox ID="chkNewKeywordAttribute" runat="server" />
+                                                <asp:CheckBox ID="chkNewKeywordAttribute" onclick="EnableDisableValidationForIcons(this);" runat="server" />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="icondropdownmenu">Icon&nbsp;<span id="spanglyphicon" runat="server" class=""></span></label>
+                                            <label class="control-label col-sm-4" for="icondropdownmenu">
+                                                Icon&nbsp;
+                                                <asp:RequiredFieldValidator ID="rfvicondropdownmenu" runat="server" ControlToValidate="ddlglyphiconForAttributes"
+                                                    ErrorMessage="Please select icon." InitialValue="0" Text="*" Enabled="false" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
+                                                </asp:RequiredFieldValidator>
+                                                <span id="spanglyphicon" runat="server" class=""></span>
+                                            </label>
                                             <div class="col-sm-8">
                                                 <%--<select runat="server" id="glyphiconForAttributes" onchange="SetGlyphicon()" data-show-icon="true" class="form-control">
                                                     <option value="0">select</option>
@@ -354,8 +356,8 @@
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="chklistEntityFor">
                                                 Entity For
-                                                 <%--<asp:CustomValidator ID="cusChkListEntity" ClientValidationFunction="ValidateCheckBoxList" runat="server"
-                                                     ErrorMessage="Please select atleast one Entity" Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger"/>--%>
+                                                 <asp:CustomValidator ID="cusChkListEntity" ClientValidationFunction="ValidateCheckBoxList" runat="server"
+                                                     ErrorMessage="Please select atleast one Entity" Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger" />
                                             </label>
                                             <div class="col-sm-8">
                                                 <div class="form-horizontal">
@@ -498,4 +500,3 @@
         </div>
     </div>
 </div>
-
