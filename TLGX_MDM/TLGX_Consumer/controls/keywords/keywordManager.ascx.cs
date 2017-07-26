@@ -505,7 +505,7 @@ namespace TLGX_Consumer.controls.keywords
                 Keyword_Id = Keyword_Id,
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
                 Status = "ACTIVE",
-                Icon = ddlglyphiconForAttributes.SelectedItem.Text,
+                Icon = ddlglyphiconForAttributes.SelectedIndex == 0 ? string.Empty : ddlglyphiconForAttributes.SelectedItem.Text,
                 EntityFor = string.Join(",", chklistEntityFor.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray())
             };
 
