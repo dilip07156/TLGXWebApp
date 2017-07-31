@@ -176,6 +176,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_AttributeGetFor"], RQParams, typeof(MDMSVC.DC_MasterAttribute), typeof(List<MDMSVC.DC_MasterAttribute>), out result);
             return result as List<DC_MasterAttribute>;
         }
+        public List<MDMSVC.DC_MasterAttribute> GetAllAttributeAndValuesByParentAttributeValue(MDMSVC.DC_MasterAttribute RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_AttributeByParentAttributeValue"], RQParams, typeof(MDMSVC.DC_MasterAttribute), typeof(List<MDMSVC.DC_MasterAttribute>), out result);
+            return result as List<DC_MasterAttribute>;
+        }
         public List<MDMSVC.DC_MasterAttribute> GetAllAttributeAndValues(MDMSVC.DC_MasterAttribute RQParams)
         {
             object result = null;

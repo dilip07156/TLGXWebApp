@@ -224,9 +224,13 @@ namespace TLGX_Consumer.controls.roomtype
                 var result = _accoService.GetRoomDetails_RoomCategory(Accoid);
                 DropDownList ddlSuggestedRoomInGridBySupplier = (DropDownList)e.Row.FindControl("ddlSuggestedRoomInGridBySupplier");
                 DropDownList ddlMappingStatusInGridBySupplier = (DropDownList)e.Row.FindControl("ddlMappingStatusInGridBySupplier");
-                HtmlTextArea txtSuggestedRoomInfoInGridBySupplier = (HtmlTextArea)e.Row.FindControl("txtSuggestedRoomInfoInGridBySupplier");
+              //  Label lblSupplierRoomTypeName = (Label)e.Row.FindControl("lblSupplierRoomTypeName");
                 HtmlInputHidden hdnRoomCount = (HtmlInputHidden)e.Row.FindControl("hdnRoomCount");
+                HtmlTextArea txtSuggestedRoomInfoInGridBySupplier = (HtmlTextArea)e.Row.FindControl("txtSuggestedRoomInfoInGridBySupplier");
+                //HtmlInputHidden hdnRoomDescription = (HtmlInputHidden)e.Row.FindControl("hdnRoomDescription");
                 int intRoomCount = 0;
+                //if(lblSupplierRoomTypeName != null && hdnRoomDescription != null)
+                //    lblSupplierRoomTypeName.ToolTip = HttpUtility.HtmlEncode(hdnRoomDescription.Value);
                 bool hasRoom = int.TryParse(hdnRoomCount.Value, out intRoomCount);
                 if (hdnRoomCount != null && hasRoom && intRoomCount > 0)
                 {

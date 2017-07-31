@@ -41,7 +41,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 RQ.SupplierImportAttribute_Id = Config_Id;
                 RQ.PageNo = PageIndex;
                 RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
-                
+
                 var res = mappingsvc.GetStaticDataMappingAttributeValues(RQ);
                 if (res != null)
                 {
@@ -202,23 +202,50 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     frmAddConfig.DataBind();
                     if (res != null && res.Count > 0)
                     {
+
+
                         hdnFlag.Value = "false";
                         DropDownList ddlAttributeType = (DropDownList)frmAddConfig.FindControl("ddlAttributeType");
                         DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
                         TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
+                        DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
+
                         TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
                         TextBox txtPriority = (TextBox)frmAddConfig.FindControl("txtPriority"); //New Field added for Priority in Modal
                         HtmlTextArea txtDescription = (HtmlTextArea)frmAddConfig.FindControl("txtDescription");//New Field added for Description in Modal
                         DropDownList ddlAddStatus = (DropDownList)frmAddConfig.FindControl("ddlAddStatus");
                         System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
                         System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
+
+
+                        //Take data And Bind Dropdown and set it
+                        if (!string.IsNullOrWhiteSpace(res[0].AttributeValue))
+                        {
+                            var resultForAttribute = mastersvc.GetAllAttributeAndValuesByParentAttributeValue(new MDMSVC.DC_MasterAttribute() { AttributeValue = res[0].AttributeValue });
+                            if (resultForAttribute != null && resultForAttribute.Count > 0)
+                            {
+                                HideShowAttributeNameControls(true);
+                                ddlAttributeName.Items.Clear();
+                                ddlAttributeName.DataSource = resultForAttribute;
+                                ddlAttributeName.DataTextField = "AttributeValue";
+                                ddlAttributeName.DataValueField = "MasterAttributeValue_Id";
+                                ddlAttributeName.DataBind();
+                                ddlAttributeName.Items.Insert(0, new ListItem("---Select---", "0"));
+
+                                if (ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()) != null)
+                                    ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()).Selected = true;
+                            }
+
+                        }
+
+
                         fillstatus(ddlAddStatus);
                         fillattributes(AttributeOptionForType, "AttributeType", ddlAttributeType);
                         ddlAttributeType.SelectedIndex = ddlAttributeType.Items.IndexOf(ddlAttributeType.Items.FindByText(res[0].AttributeType));
                         ddlAddStatus.SelectedIndex = ddlAddStatus.Items.IndexOf(ddlAddStatus.Items.FindByText(res[0].STATUS));
                         txtAttributeName.Text = res[0].AttributeName.ToString();
                         txtPriority.Text = res[0].Priority.ToString();
-                        if(res[0].Description!=null)
+                        if (res[0].Description != null)
                             txtDescription.InnerText = res[0].Description.ToString();
                         bool isFound = false;
                         if (ddlAttributeType.SelectedItem.Value != "0")
@@ -337,7 +364,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             DropDownList ddlAttributeType = (DropDownList)frmAddConfig.FindControl("ddlAttributeType");
             DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
+
+            DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
             TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
+
             TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
             TextBox txtPriority = (TextBox)frmAddConfig.FindControl("txtPriority"); //New Field added for priority
             HtmlTextArea txtDescription = (HtmlTextArea)frmAddConfig.FindControl("txtDescription");//New Field added for Description
@@ -347,12 +377,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
             if (e.CommandName == "Add")
             {
+                string strAttributeName = string.Empty;
+                if (ddlAttributeName.Visible)
+                    strAttributeName = ddlAttributeName.SelectedItem.ToString();
+                else
+                    strAttributeName = txtAttributeName.Text;
                 MDMSVC.DC_SupplierImportAttributeValues newObj = new MDMSVC.DC_SupplierImportAttributeValues
                 {
                     SupplierImportAttributeValue_Id = Guid.NewGuid(),
                     SupplierImportAttribute_Id = Config_Id,
                     AttributeType = ddlAttributeType.SelectedItem.Text,
-                    AttributeName = txtAttributeName.Text,
+                    AttributeName = strAttributeName,
                     Priority = Convert.ToInt32(txtPriority.Text),
                     Description = txtDescription.InnerText,
                     STATUS = "ACTIVE",
@@ -376,18 +411,24 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     //PageIndex = 0;
                     fillmappingattributes();
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
-                    
+
                 }
             }
             else if (e.CommandName == "Save")
             {
                 List<MDMSVC.DC_SupplierImportAttributeValues> lstNewObj = new List<MDMSVC.DC_SupplierImportAttributeValues>();
+                string strAttributeName = string.Empty;
+                if (ddlAttributeName.Visible)
+                    strAttributeName = ddlAttributeName.SelectedItem.ToString();
+                else
+                    strAttributeName = txtAttributeName.Text;
+
                 MDMSVC.DC_SupplierImportAttributeValues newObj = new MDMSVC.DC_SupplierImportAttributeValues
                 {
                     SupplierImportAttributeValue_Id = SelectedSupplierImportAttributeValue_Id,
                     SupplierImportAttribute_Id = Config_Id,
                     AttributeType = ddlAttributeType.SelectedItem.Text,
-                    AttributeName = txtAttributeName.Text,
+                    AttributeName = strAttributeName,
                     STATUS = ddlAddStatus.SelectedItem.Text,
                     Priority = Convert.ToInt32(txtPriority.Text),
                     Description = txtDescription.InnerText,
@@ -410,7 +451,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     hdnFlag.Value = "true";
                     fillmappingattributes();
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
-                    
+
                 }
             }
             else if (e.CommandName == "Reset")
@@ -483,13 +524,50 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
             }
 
-            if(!isFound)
+            if (!isFound)
             {
                 dvtxtAttributeValue.Visible = true;
                 dvddlAttributeValue.Visible = false;
             }
         }
 
+        protected void ddlAttributeValue_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DropDownList ddlAttributeType = (DropDownList)frmAddConfig.FindControl("ddlAttributeType");
+            DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
+            DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
+            TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
+            TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
+            System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
+            System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
+            if (ddlAttributeValue.SelectedItem.Value != "0")
+            {
+                var resvalues = mastersvc.GetAllAttributeAndValuesByParentAttributeValue(new MDMSVC.DC_MasterAttribute() { ParentAttributeValue_Id = Guid.Parse(ddlAttributeValue.SelectedValue) });
+                if (resvalues != null && resvalues.Count > 0)
+                {
+                    HideShowAttributeNameControls(true);
+                    ddlAttributeName.Items.Clear();
+                    ddlAttributeName.DataSource = resvalues;
+                    ddlAttributeName.DataTextField = "AttributeValue";
+                    ddlAttributeName.DataValueField = "MasterAttributeValue_Id";
+                    ddlAttributeName.DataBind();
+                    ddlAttributeName.Items.Insert(0, new ListItem("---Select---", "0"));
+                }
+                else
+                {
+                    HideShowAttributeNameControls(false);
+                }
+
+            }
+        }
+
+        protected void HideShowAttributeNameControls(bool blnFlag)
+        {
+            DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
+            TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
+            ddlAttributeName.Visible = blnFlag;
+            txtAttributeName.Visible = !blnFlag;
+        }
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
@@ -505,5 +583,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             grdMappingAttrValues.DataSource = null;
             grdMappingAttrValues.DataBind();
         }
+
+
+
     }
 }
