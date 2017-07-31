@@ -265,6 +265,15 @@ namespace TLGX_Consumer.controls.keywords {
         protected global::System.Web.UI.WebControls.CheckBox chkNewKeywordAttribute;
         
         /// <summary>
+        /// rfvicondropdownmenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvicondropdownmenu;
+        
+        /// <summary>
         /// spanglyphicon control.
         /// </summary>
         /// <remarks>
@@ -281,6 +290,15 @@ namespace TLGX_Consumer.controls.keywords {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlglyphiconForAttributes;
+        
+        /// <summary>
+        /// cusChkListEntity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cusChkListEntity;
         
         /// <summary>
         /// chklistEntityFor control.

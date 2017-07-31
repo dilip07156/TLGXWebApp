@@ -23,6 +23,7 @@ namespace TLGX_Consumer.controls.keywords
             {
                 fillddlstatus();
                 fillEntityFor();
+                fillIcons();
             }
         }
 
@@ -52,6 +53,21 @@ namespace TLGX_Consumer.controls.keywords
             RQ = null;
         }
 
+        protected void fillIcons()
+        {
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = "Icons";
+            RQ.Name = "GlyphIcons";
+            var res = masterscv.GetAllAttributeAndValues(RQ);
+
+            ddlglyphiconForAttributes.DataSource = res;
+            ddlglyphiconForAttributes.DataTextField = "AttributeValue";
+            ddlglyphiconForAttributes.DataValueField = "MasterAttributeValue_Id";
+            ddlglyphiconForAttributes.DataBind();
+
+            ddlglyphiconForAttributes.Items.Insert(0, new ListItem("--Select--", "0"));
+        }
+
         public void fillkeyword(int PageSize, int PageNo)
         {
             MDMSVC.DC_Keyword_RQ RQParam = new MDMSVC.DC_Keyword_RQ();
@@ -76,7 +92,6 @@ namespace TLGX_Consumer.controls.keywords
                 gvSearchResult.PageSize = RQParam.PageSize;
                 gvSearchResult.PageIndex = RQParam.PageNo;
                 gvSearchResult.DataBind();
-                //gvSearchResult.Columns[5].ItemStyle.Width = new Unit(50, UnitType.Percentage);
             }
             else
             {
@@ -101,7 +116,7 @@ namespace TLGX_Consumer.controls.keywords
             var result = mappingScv.SearchKeywordAlias(RQParam);
             if (result != null && result.Count > 0)
             {
-                //lblTotalAlias.Text = result[0].TotalRecords.ToString();
+                lblTotalAlias.Text = result[0].TotalRecords.ToString();
                 grdAlias.DataSource = result;
                 grdAlias.VirtualItemCount = result[0].TotalRecords;
                 grdAlias.PageSize = RQParam.PageSize;
@@ -128,6 +143,8 @@ namespace TLGX_Consumer.controls.keywords
                 grdAlias.Rows[0].Cells.Add(new TableCell());
                 grdAlias.Rows[0].Cells[0].ColumnSpan = columncount;
                 grdAlias.Rows[0].Cells[0].Text = "No Alias defined yet.";
+
+                lblTotalAlias.Text = "0";
             }
         }
 
@@ -166,19 +183,27 @@ namespace TLGX_Consumer.controls.keywords
                         }
                     }
                 }
-                
+
                 AliasPageNo = 0;
                 ddlShowEntriesAlias.SelectedIndex = 0;
+
+                ddlglyphiconForAttributes.ClearSelection();
+                ddlglyphiconForAttributes.SelectedIndex = 0;
+                spanglyphicon.Attributes.Remove("class");
 
                 Label lblIconText = (Label)row.FindControl("lblIconText");
                 if (lblIconText != null)
                 {
-                    spanglyphicon.Attributes.Add("class", "glyphicon glyphicon-" + lblIconText.Text);
-                    fillGlyphiconForAttributes(Convert.ToString(lblIconText.Text));
-                }
-                else
-                {
-                    fillGlyphiconForAttributes(string.Empty);
+                    ddlglyphiconForAttributes.ClearSelection();
+                    if (!String.IsNullOrWhiteSpace(lblIconText.Text))
+                    {
+                        if (ddlglyphiconForAttributes.Items.FindByText(lblIconText.Text) != null)
+                        {
+                            ddlglyphiconForAttributes.Items.FindByText(lblIconText.Text).Selected = true;
+                            spanglyphicon.Attributes.Add("class", "glyphicon glyphicon-" + lblIconText.Text);
+                        }
+                    }
+                    
                 }
 
                 fillkeywordalias();
@@ -225,44 +250,6 @@ namespace TLGX_Consumer.controls.keywords
             }
         }
 
-        private void fillGlyphiconForAttributes(string strIcon)
-        {
-            try
-            {
-                MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
-                RQ.MasterFor = "Icons";
-                RQ.Name = "GlyphIcons";
-                var res = masterscv.GetAllAttributeAndValues(RQ);
-
-                //foreach (var item in res)
-                //{
-                //    ListItem lstitem = new ListItem();
-                //    lstitem.Value = Convert.ToString(item.MasterAttributeValue_Id);
-                //    //  lstitem.Text = Server.HtmlDecode(@"<span class=""" + item.AttributeValue + @"""></span>") + Convert.ToString(item.AttributeValue).Split(' ')[1];
-                //    lstitem.Text = Convert.ToString(item.AttributeValue);
-                //    // lstitem.Attributes.Add("data-icon", Convert.ToString(item.AttributeValue).Split(' ')[1]);
-                //    ddlglyphiconForAttributes.Items.Add(lstitem);
-                //}
-
-                ddlglyphiconForAttributes.DataSource = res;
-                ddlglyphiconForAttributes.DataTextField = "AttributeValue";
-                ddlglyphiconForAttributes.DataValueField = "MasterAttributeValue_Id";
-                ddlglyphiconForAttributes.DataBind();
-
-                ddlglyphiconForAttributes.Items.Insert(0, new ListItem("---ALL---", "0"));
-                if (!String.IsNullOrEmpty(strIcon))
-                {
-                    if (ddlglyphiconForAttributes.Items.FindByText(strIcon) != null)
-                        ddlglyphiconForAttributes.Items.FindByText(strIcon).Selected = true;
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
         protected void btnAddNew_Click(object sender, EventArgs e)
         {
             dvMsg.InnerText = string.Empty;
@@ -297,6 +284,12 @@ namespace TLGX_Consumer.controls.keywords
             grdAlias.Rows[0].Cells.Add(new TableCell());
             grdAlias.Rows[0].Cells[0].ColumnSpan = columncount;
             grdAlias.Rows[0].Cells[0].Text = "No Alias defined yet.";
+
+            lblTotalAlias.Text = "0";
+
+            ddlglyphiconForAttributes.ClearSelection();
+            ddlglyphiconForAttributes.SelectedIndex = 0;
+            spanglyphicon.Attributes.Remove("class");
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
@@ -365,7 +358,7 @@ namespace TLGX_Consumer.controls.keywords
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
                 Status = "ACTIVE",
                 EntityFor = string.Join(",", EntityFor),
-                Icon = ddlglyphiconForAttributes.SelectedItem.Text
+                Icon = ddlglyphiconForAttributes.SelectedIndex == 0 ? string.Empty : ddlglyphiconForAttributes.SelectedItem.Text
             };
 
             var result = mappingScv.AddUpdateKeyword(Keyword);
@@ -395,6 +388,8 @@ namespace TLGX_Consumer.controls.keywords
                 {
                     Create_Date = DateTime.Now,
                     Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Keyword_Id = Guid.Parse(hdnKeywordId.Value),
                     KeywordAlias_Id = Guid.Parse(e.CommandArgument.ToString()),
                     Value = txtAlias.Text,
@@ -408,6 +403,8 @@ namespace TLGX_Consumer.controls.keywords
             {
                 MDMSVC.DC_keyword_alias newAlias = new MDMSVC.DC_keyword_alias
                 {
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Keyword_Id = Guid.Parse(hdnKeywordId.Value),
@@ -435,6 +432,8 @@ namespace TLGX_Consumer.controls.keywords
         {
             MDMSVC.DC_keyword_alias newAlias = new MDMSVC.DC_keyword_alias
             {
+                Create_Date = DateTime.Now,
+                Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Edit_Date = DateTime.Now,
                 Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Keyword_Id = Guid.Parse(hdnKeywordId.Value),
@@ -465,6 +464,8 @@ namespace TLGX_Consumer.controls.keywords
             {
                 Create_Date = DateTime.Now,
                 Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                Edit_Date = DateTime.Now,
+                Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Keyword_Id = Guid.Parse(hdnKeywordId.Value),
                 KeywordAlias_Id = Guid.Parse(grdAlias.DataKeys[e.RowIndex].Value.ToString()),
                 Value = txtAlias.Text,
@@ -504,7 +505,7 @@ namespace TLGX_Consumer.controls.keywords
                 Keyword_Id = Keyword_Id,
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
                 Status = "ACTIVE",
-                Icon = ddlglyphiconForAttributes.SelectedItem.Text,
+                Icon = ddlglyphiconForAttributes.SelectedIndex == 0 ? string.Empty : ddlglyphiconForAttributes.SelectedItem.Text,
                 EntityFor = string.Join(",", chklistEntityFor.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray())
             };
 
