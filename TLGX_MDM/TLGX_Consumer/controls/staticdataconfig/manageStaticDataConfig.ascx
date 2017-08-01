@@ -15,6 +15,10 @@
     .alert {
         display: none;
     }
+
+    .hide {
+        display: none;
+    }
 </style>
 <script type="text/javascript">
     var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -44,6 +48,25 @@
         else {
             ValidatorEnable(myVal, false);
         }
+    }
+    function AttributeNameValidation(sender, args) {
+     <%--    debugger;
+        var checkBoxList = document.getElementById("<%=txtAttributeName.ClientID %>");
+        var checkboxes = checkBoxList.getElementsByTagName("input");
+        var ddlicon = $('#MainContent_keywordManager_ddlglyphiconForAttributes').sele
+        var isValid = false;
+        if ($('#MainContent_keywordManager_chkNewKeywordAttribute').prop("checked")) {
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    isValid = true;
+                    break;
+                }
+            }
+        }
+        else {
+            isValid = true;
+        }
+        args.IsValid = isValid;--%>
     }
 </script>
 
@@ -227,10 +250,26 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="txtAttributeName">Name</label>
+                                            <div class="form-group row" id="dvddlAttributeValue" runat="server">
+                                                <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
                                                 <div class="col-sm-8">
-                                                    <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeValue_SelectedIndexChanged" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-4" for="txtAttributeName">
+                                                    Name
+                                                    <asp:CustomValidator ID="cvtxtAttributeName" ControlToValidate="txtAttributeName" ErrorMessage="*" CssClass="text-danger" ClientValidationFunction="AttributeNameValidation" runat="server" ValidationGroup="AddConfigValues"></asp:CustomValidator>
+
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
+                                                    <asp:DropDownList ID="ddlAttributeName" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+
                                                 </div>
                                             </div>
                                             <div class="form-group row" id="dvtxtAttributeValue" runat="server">
@@ -239,14 +278,7 @@
                                                     <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="form-group row" id="dvddlAttributeValue" runat="server">
-                                                <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
+
                                         </div>
 
                                         <div class="col-sm-6">
@@ -296,7 +328,10 @@
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="txtAttributeName">Name</label>
                                                 <div class="col-sm-8">
-                                                    <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
+                                                    <asp:DropDownList ID="ddlAttributeName" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group row">

@@ -1,8 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchRoomTypes.ascx.cs" Inherits="TLGX_Consumer.controls.roomtype.searchRoomTypes" %>
 <script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip({ 'placement': 'top' });
     });
 </script>
 <script type="text/javascript">
@@ -113,7 +112,7 @@
                                                     </label>
                                                     <div class="col-sm-6">
                                                         <asp:DropDownList ID="ddlSupplierNameBySupplier" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                            <asp:ListItem Value="0">---ALL---</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
@@ -234,32 +233,45 @@
                                         CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
                                         OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
                                         <Columns>
-                                            <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
-                                            <asp:BoundField HeaderText="TLGX Id" DataField="CommonProductId" />
+                                            <asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />
                                             <asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="12%" />
-                                            <asp:BoundField HeaderText="Location" DataField="Location" />
-                                            <asp:TemplateField HeaderText="Rooms">
+                                            <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
+                                            <asp:TemplateField HeaderText="TLGX Rooms">
                                                 <ItemTemplate>
                                                     <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField HeaderText="S Room Id" DataField="SupplierRoomId" />
-                                            <asp:BoundField HeaderText="Supplier Room Type Name" DataField="SupplierRoomName" ItemStyle-Wrap="true" ItemStyle-Width="12%" />
+                                            <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
+                                            <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomId" />
+                                            <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
+                                            <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
+                                                <ItemTemplate>
+                                                   <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
+                                                    <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
+                                                    <a href="#" data-toggle="popover" class="glyphicon glyphicon-info-sign" title='<%#Convert.ToString(Eval("RoomDescription")) %>' data-content='<%#Server.HtmlDecode(Convert.ToString(Eval("RoomDescription"))) %>'></a>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Suggested Room Info">
+                                                <ItemTemplate>
+                                                    <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="System Created Room Info">
                                                 <ItemTemplate>
                                                     <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);">
                                                         <asp:ListItem Value="0">Select</asp:ListItem>
                                                     </asp:DropDownList>
-                                                    <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
+                                                    <%--     <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>--%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="A?" ItemStyle-Width="7%">
+
+                                            <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
                                                 <ItemTemplate>
                                                     <%--<input type="button" value='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? Convert.ToString(Eval("NumberOfRooms")) : "No" %>' class='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "Greenbtn" : "Redbtn" %>' />--%>
                                                     <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
                                                         RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
                                                         <ItemTemplate>
-                                                            <h4><span aria-hidden="true" data-toggle="tooltip" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
+                                                            <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
                                                         </ItemTemplate>
                                                     </asp:DataList>
                                                 </ItemTemplate>
@@ -267,11 +279,10 @@
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
                                                     <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control" runat="server">
-                                                        <asp:ListItem Value="0">-?-</asp:ListItem>
-                                                        <asp:ListItem Value="Add">Add</asp:ListItem>
-                                                        <asp:ListItem Value="Mapped">Mapped</asp:ListItem>
-                                                        <asp:ListItem Value="Unmapped">Unmapped</asp:ListItem>
-                                                        <asp:ListItem Value="Review">Review</asp:ListItem>
+                                                        <asp:ListItem Value="ADD">ADD</asp:ListItem>
+                                                        <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
+                                                        <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
+                                                        <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -279,8 +290,9 @@
                                                 <ItemTemplate>
                                                     <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
                                                     <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
+                                                    <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
                                                     <input type="hidden" class="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
-
+                                                    <%-- <input type="hidden" class="hdnRoomDescription" id="hdnRoomDescription" runat="server" value='<%# Eval("RoomDescription") %>' />--%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -395,16 +407,16 @@
                                         OnRowDataBound="grdRoomTypeMappingSearchResultsByProduct_RowDataBound">
                                         <Columns>
                                             <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
-                                            <asp:BoundField HeaderText="TLGX Id" DataField="CommonProductId" />
+                                            <asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />
                                             <asp:BoundField HeaderText="Product Name" DataField="ProductName" />
-                                            <asp:BoundField HeaderText="Location" DataField="Location" />
+                                            <asp:BoundField HeaderText="City Name ( Country)" DataField="Location" />
                                             <asp:TemplateField HeaderText="Has Rooms">
                                                 <ItemTemplate>
                                                     <input type="button" value='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? Convert.ToString(Eval("NumberOfRooms")) : "No" %>' class='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "Greenbtn" : "Redbtn" %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="NumberOfRooms" />
-                                            <asp:BoundField HeaderText="S Room Id" DataField="SupplierRoomId" />
+                                            <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomId" />
                                             <asp:BoundField HeaderText="Supplier Room Type Name" />
                                             <asp:BoundField HeaderText="Suggested Room Info">
                                                 <HeaderStyle BackColor="Turquoise" />

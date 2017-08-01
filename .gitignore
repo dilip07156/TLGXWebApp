@@ -240,18 +240,3 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer23.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer22.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer21.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer20.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer19.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer18.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer17.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer16.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer15.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer14.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer13.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer12.xsd
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer1.wsdl
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/Consumer1.disco
-/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS1.datasource
