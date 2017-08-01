@@ -356,13 +356,13 @@
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" />
-                                        <asp:BoundField DataField="CityName" HeaderText="City Name" />
+                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%"/>
+                                        <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%"/>
                                         <asp:BoundField DataField="StateName" HeaderText="State" />
                                         <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
+                                        <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name" ItemStyle-Width="7%">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="MasterStateName" HeaderText="State Name">

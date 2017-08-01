@@ -112,6 +112,15 @@ namespace TLGX_Consumer.controls.roomtype {
         protected global::System.Web.UI.WebControls.Label lblSupplierRoomSearchCount;
         
         /// <summary>
+        /// upnlbtns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlbtns;
+        
+        /// <summary>
         /// btnMapSelectedBySupplier control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace TLGX_Consumer.controls.roomtype {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgForMapping;
+        
+        /// <summary>
+        /// testlbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label testlbl;
         
         /// <summary>
         /// grdRoomTypeMappingSearchResultsBySupplier control.
