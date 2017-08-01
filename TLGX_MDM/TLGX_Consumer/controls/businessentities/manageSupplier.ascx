@@ -24,17 +24,18 @@
             padding-left: 15px;
         }
     }
+
     .nxtrundate {
         font-size: small;
     }
-     .nodata {
+
+    .nodata {
         font-weight: bold;
         font-size: small;
     }
-   
 </style>
 <script type="text/javascript">
-  
+
     function getChartData() {
         //get supplierid from page;
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
@@ -192,20 +193,20 @@
                 }
 
                 //-- Changing Key names End
-              
-                    Morris.Donut({
-                        element: 'country',
-                        data: contryArray,
-                        colors: [
-                            '#007F00',
-                            '#e7bd0d',
-                            '#e14949'
-                        ],
-                        resize: true,
 
-                    });
-              
-              
+                Morris.Donut({
+                    element: 'country',
+                    data: contryArray,
+                    colors: [
+                        '#007F00',
+                        '#e7bd0d',
+                        '#e14949'
+                    ],
+                    resize: true,
+
+                });
+
+
                 Morris.Donut({
                     element: 'city',
                     data: cityArray,
@@ -290,7 +291,7 @@
     })
 
 </script>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
@@ -395,133 +396,133 @@
         <br />
         <asp:HiddenField ID="TabName" runat="server" />
         <div class="panel panel-default">
-            <div class="panel-body">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
-                    <li><a data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
-                    <li><a data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
-                    <li><a data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
-                    <li><a data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
+            <div id="Tabs" class="panel-body" role="tabpanel">
+                <ul class="nav nav-tabs tabs" role="tablist">
+                    <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="ShowSupplierMarkets" class="tab-pane fade in active">
+                    <div role="tabpanel" id="ShowSupplierMarkets" class="tab-pane fade in active">
                         <br />
                         <uc1:supplierMarket runat="server" ID="supplierMarket" />
                     </div>
-                    <div id="ShowSupplierProductMapping" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierProductMapping" class="tab-pane fade in">
                         <br />
-                        <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
+                       <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
                     </div>
-                    <div id="ShowSupplierStaticData" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierStaticData" class="tab-pane fade in">
                         <br />
                         <uc1:supplierStaticDataHandling runat="server" ID="supplierStaticDataHandling" />
                     </div>
-                    <div id="ShowSupplierCredentials" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierCredentials" class="tab-pane fade in">
                         <br />
                         <uc1:supplierCredentials runat="server" ID="suppliersCredentials" />
                     </div>
                     <%--for charts--%>
-                    <div id="ShowSupplierStatusChart" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierStatusChart" class="tab-pane fade in">
                         <br />
-                      <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
-                           <div id="nodatafound" style="display:none"></div>
-                            <div class="row" style="width: 100%; height: auto; ">
-        <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Country Mapped</b><br />
-                        <b class="countryper"></b></h3>
-                </div>
-                <div id="country"></div>
-                <div class="panel-body">
-                    <b><span id="detailcountry" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="countryTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>City Mapped</b><br />
-                        <b class="cityper"></b></h3>
-                </div>
-                <div id="city"></div>
-                <div class="panel-body">
-                    <b><span id="detailcity" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body" style="text-align: center">
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer ">
-                    <h4><b id="cityTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Hotel Mapped</b><br />
-                        <b class="productper"></b></h3>
-                </div>
-                <div id="product"></div>
-                <div class="panel-body">
-                    <b><span id="detailproduct" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="productTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Room Mapped</b><br />
-                        <b class="rumper"></b></h3>
-                </div>
-                <div id="hotelrum"></div>
-                <div class="panel-body">
-                    <b><span id="detailhotelrum" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="hotelrumTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Activity Mapped</b><br />
-                        <b class="activityper"></b></h3>
-                </div>
-                <div id="activity"></div>
-                <div class="panel-body">
-                    <b><span id="detailactivity" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="activityTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
+                        <div id="nodatafound" style="display: none"></div>
+                        <div class="row" style="width: 100%; height: auto;">
+                            <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Country Mapped</b><br />
+                                            <b class="countryper"></b></h3>
+                                    </div>
+                                    <div id="country"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailcountry" style="font-size: small"></span></b>
+                                    </div>
+                                    <div class="panel-body">
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="countryTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>City Mapped</b><br />
+                                            <b class="cityper"></b></h3>
+                                    </div>
+                                    <div id="city"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailcity" style="font-size: small"></span></b>
+                                    </div>
+                                    <div class="panel-body" style="text-align: center">
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer ">
+                                        <h4><b id="cityTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Hotel Mapped</b><br />
+                                            <b class="productper"></b></h3>
+                                    </div>
+                                    <div id="product"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailproduct" style="font-size: small"></span></b>
+                                    </div>
+                                    <div class="panel-body">
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="productTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Room Mapped</b><br />
+                                            <b class="rumper"></b></h3>
+                                    </div>
+                                    <div id="hotelrum"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailhotelrum" style="font-size: small"></span></b>
+                                    </div>
+                                    <div class="panel-body">
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="hotelrumTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Activity Mapped</b><br />
+                                            <b class="activityper"></b></h3>
+                                    </div>
+                                    <div id="activity"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailactivity" style="font-size: small"></span></b>
+                                    </div>
+                                    <div class="panel-body">
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="activityTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -529,7 +530,5 @@
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>
-
-
 
 
