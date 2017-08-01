@@ -1,7 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="supplierMarket.ascx.cs" Inherits="TLGX_Consumer.controls.businessentities.supplierMarket" %>
-
-
-<asp:UpdatePanel ID="panSupplierMarkets" runat="server">
+<asp:UpdatePanel ID="panSupplierMarkets" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <div id="dvMsg" runat="server" style="display: none;"></div>
         <div class="panel panel-default">

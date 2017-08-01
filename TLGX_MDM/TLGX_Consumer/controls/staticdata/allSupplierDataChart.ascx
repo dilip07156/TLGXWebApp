@@ -140,17 +140,17 @@
                                 }
                             }
                         }
-                        if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
+                        if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom") {
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
-                            $(".hotelrumper").append(per + "%");
-                            var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
-                            for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
-                                if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
-                                    hotelroomArray.push(resultDataForHotelRum[iHotelRumMappingData]);
-                                    $("#detailhotelrum").append(resultDataForHotelRum[iHotelRumMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount + "<br>");
+                            $(".HotelRoomper").append(per + "%");
+                            var resultDataForHotelRoom = result[0].MappingStatsFor[iNodes].MappingData;
+                            for (var iHotelRoomMappingData = 0 ; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
+                                if (resultDataForHotelRoom[iHotelRoomMappingData].Status != "ALL") {
+                                    hotelroomArray.push(resultDataForHotelRoom[iHotelRoomMappingData]);
+                                    $("#detailHotelRoom").append(resultDataForHotelRoom[iHotelRoomMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount + "<br>");
                                 }
                                 else {
-                                    $("#hotelrumTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount);
+                                    $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
                                 }
                             }
                         }
@@ -237,7 +237,7 @@
                         resize: true
                     });
                     Morris.Donut({
-                        element: 'hotelrum',
+                        element: 'HotelRoom',
                         data: hotelroomArray,
                         colors: [
                             '#007F00',
@@ -261,7 +261,7 @@
                         $("#activity").append("<br/><br/>No Static Data Found").addClass("nodata");
                     }
                     if (hotelroomArray.length == 0) {
-                        $("#hotelrum").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#HotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
                     }
 
                 },
@@ -312,10 +312,10 @@
                         $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
 
                     }
-                    if (result[inodes].Mappingfor == "HotelRum") {
+                    if (result[inodes].Mappingfor == "HotelRoom") {
                         delete result[inodes].Mappingfor;
                         allhotelroomArray.push(result[inodes]);
-                        $("#alldetailhotelrum").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                        $("#alldetailHotelRoom").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
 
                     }
                 }
@@ -385,8 +385,8 @@
                     resize: true,
 
                 })
-                var allhotelrumChart = Morris.Donut({
-                    element: 'allhotelrum',
+                var allHotelRoomChart = Morris.Donut({
+                    element: 'allHotelRoom',
                     data: allhotelroomArray,
                     colors: colorsArray,
                     resize: true,
@@ -429,10 +429,10 @@
                       .css('margin', '5px');
                     $('#legendac').append(legendItem)
                 });
-                allhotelrumChart.options.data.forEach(function (label, i) {
+                allHotelRoomChart.options.data.forEach(function (label, i) {
                     var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                     legendItem.find('span')
-                      .css('backgroundColor', allhotelrumChart.options.colors[i])
+                      .css('backgroundColor', allHotelRoomChart.options.colors[i])
                     .css('width', '20px')
                       .css('display', 'inline-block')
                       .css('margin', '5px');
@@ -511,22 +511,22 @@
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
+        <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b><br />
-                        <b class="hotelrumper"></b></h3>
+                        <b class="HotelRoomper"></b></h3>
                 </div>
-                <div id="hotelrum"></div>
+                <div id="HotelRoom"></div>
                 <div class="panel-body">
-                    <b><span id="detailhotelrum" style="font-size: small"></span></b>
+                    <b><span id="detailHotelRoom" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer">
-                    <h4><b id="hotelrumTotal"></b></h4>
+                    <h4><b id="HotelRoomTotal"></b></h4>
                 </div>
             </div>
         </div>
@@ -588,13 +588,13 @@
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6" id="allhotelrumdiv" style="text-align: left">
+        <div class="col5 col-sm-6" id="allHotelRoomdiv" style="text-align: left">
             <div class="panel  panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b></h3>
                 </div>
-                <div id="allhotelrum"></div>
+                <div id="allHotelRoom"></div>
                 <div class="panel-body">
                     <div id="legendhr" class="donut-legend"></div>
                 </div>
