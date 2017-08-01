@@ -10957,10 +10957,16 @@ namespace TLGX_Consumer.MDMSVC {
         private string Create_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CurrentBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Edit_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> File_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
@@ -10982,6 +10988,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalBatchField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalRecordsField;
@@ -11062,6 +11071,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> CurrentBatch {
+            get {
+                return this.CurrentBatchField;
+            }
+            set {
+                if ((this.CurrentBatchField.Equals(value) != true)) {
+                    this.CurrentBatchField = value;
+                    this.RaisePropertyChanged("CurrentBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.DateTime> Edit_Date {
             get {
                 return this.Edit_DateField;
@@ -11083,6 +11105,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> File_Id {
+            get {
+                return this.File_IdField;
+            }
+            set {
+                if ((this.File_IdField.Equals(value) != true)) {
+                    this.File_IdField = value;
+                    this.RaisePropertyChanged("File_Id");
                 }
             }
         }
@@ -11174,6 +11209,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Supplier_IdField.Equals(value) != true)) {
                     this.Supplier_IdField = value;
                     this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalBatch {
+            get {
+                return this.TotalBatchField;
+            }
+            set {
+                if ((this.TotalBatchField.Equals(value) != true)) {
+                    this.TotalBatchField = value;
+                    this.RaisePropertyChanged("TotalBatch");
                 }
             }
         }
@@ -21704,6 +21752,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string FromdateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ToDateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -21725,6 +21776,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.FromdateField, value) != true)) {
                     this.FromdateField = value;
                     this.RaisePropertyChanged("Fromdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierID {
+            get {
+                return this.SupplierIDField;
+            }
+            set {
+                if ((this.SupplierIDField.Equals(value) != true)) {
+                    this.SupplierIDField = value;
+                    this.RaisePropertyChanged("SupplierID");
                 }
             }
         }
@@ -23188,7 +23252,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string MappingForField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalField;
+        private int UnmappeddataField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -23227,14 +23291,14 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Total {
+        public int Unmappeddata {
             get {
-                return this.TotalField;
+                return this.UnmappeddataField;
             }
             set {
-                if ((this.TotalField.Equals(value) != true)) {
-                    this.TotalField = value;
-                    this.RaisePropertyChanged("Total");
+                if ((this.UnmappeddataField.Equals(value) != true)) {
+                    this.UnmappeddataField = value;
+                    this.RaisePropertyChanged("Unmappeddata");
                 }
             }
         }
@@ -23259,6 +23323,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SequenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalcountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -23271,6 +23338,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Sequence {
+            get {
+                return this.SequenceField;
+            }
+            set {
+                if ((this.SequenceField.Equals(value) != true)) {
+                    this.SequenceField = value;
+                    this.RaisePropertyChanged("Sequence");
+                }
             }
         }
         
@@ -25309,12 +25389,6 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PageNoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> PageSizeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -25322,9 +25396,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StepField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> SupplierImportFileProgress_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> SupplierImportFile_IdField;
@@ -25336,32 +25407,6 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PageNo {
-            get {
-                return this.PageNoField;
-            }
-            set {
-                if ((this.PageNoField.Equals(value) != true)) {
-                    this.PageNoField = value;
-                    this.RaisePropertyChanged("PageNo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> PageSize {
-            get {
-                return this.PageSizeField;
-            }
-            set {
-                if ((this.PageSizeField.Equals(value) != true)) {
-                    this.PageSizeField = value;
-                    this.RaisePropertyChanged("PageSize");
-                }
             }
         }
         
@@ -25405,19 +25450,6 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> SupplierImportFileProgress_Id {
-            get {
-                return this.SupplierImportFileProgress_IdField;
-            }
-            set {
-                if ((this.SupplierImportFileProgress_IdField.Equals(value) != true)) {
-                    this.SupplierImportFileProgress_IdField = value;
-                    this.RaisePropertyChanged("SupplierImportFileProgress_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.Guid> SupplierImportFile_Id {
             get {
                 return this.SupplierImportFile_IdField;
@@ -25450,6 +25482,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CurrentBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PercentageValueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -25465,6 +25500,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> SupplierImportFile_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalCountField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -25474,6 +25512,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CurrentBatch {
+            get {
+                return this.CurrentBatchField;
+            }
+            set {
+                if ((this.CurrentBatchField.Equals(value) != true)) {
+                    this.CurrentBatchField = value;
+                    this.RaisePropertyChanged("CurrentBatch");
+                }
             }
         }
         
@@ -25538,6 +25589,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.SupplierImportFile_IdField.Equals(value) != true)) {
                     this.SupplierImportFile_IdField = value;
                     this.RaisePropertyChanged("SupplierImportFile_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalBatch {
+            get {
+                return this.TotalBatchField;
+            }
+            set {
+                if ((this.TotalBatchField.Equals(value) != true)) {
+                    this.TotalBatchField = value;
+                    this.RaisePropertyChanged("TotalBatch");
                 }
             }
         }
@@ -30283,10 +30347,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetVelocityDashboard", ReplyAction="http://tempuri.org/IStaticData/GetVelocityDashboardResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetVelocityDashboardDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(string SupplierID);
+        TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetVelocityDashboard", ReplyAction="http://tempuri.org/IStaticData/GetVelocityDashboardResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(string SupplierID);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -32094,12 +32158,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.getNewHotelsAddedReportAsync(parm);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(string SupplierID) {
-            return base.Channel.GetVelocityDashboard(SupplierID);
+        public TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
+            return base.Channel.GetVelocityDashboard(parm);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(string SupplierID) {
-            return base.Channel.GetVelocityDashboardAsync(SupplierID);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
+            return base.Channel.GetVelocityDashboardAsync(parm);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {

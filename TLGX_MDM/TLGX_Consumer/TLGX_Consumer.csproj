@@ -355,6 +355,8 @@
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
+    <Content Include="Scripts\autosize.js" />
+    <Content Include="Scripts\autosize.min.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootStrap-TimePicker\bootstrap-timepicker.js" />
     <Content Include="Scripts\bootStrap-TimePicker\bootstrap-datetimepicker.css" />

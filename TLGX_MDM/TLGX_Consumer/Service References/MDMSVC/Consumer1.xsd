@@ -350,8 +350,10 @@
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentBatch" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="File_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductCategory_ID" nillable="true" type="xs:string" />
@@ -359,6 +361,7 @@
       <xs:element minOccurs="0" name="SupplierOwner" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalBatch" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
