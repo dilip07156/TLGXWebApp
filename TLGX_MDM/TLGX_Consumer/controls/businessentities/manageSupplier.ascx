@@ -29,13 +29,13 @@
         font-size: small;
     }
 
-    .nodata {
+     .nodata {
         font-weight: bold;
         font-size: small;
     }
 </style>
 <script type="text/javascript">
-
+  
     function getChartData() {
         //get supplierid from page;
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
@@ -139,17 +139,17 @@
                             }
                         }
                     }
-                    if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
+                    if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom") {
                         var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
-                        $(".hotelrumper").append(per + "%");
-                        var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
-                        for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
-                            if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
-                                hotelroomArray.push(resultDataForHotelRum[iHotelRumMappingData]);
-                                $("#detailhotelrum").append(resultDataForHotelRum[iHotelRumMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount + "<br>");
+                        $(".HotelRoomper").append(per + "%");
+                        var resultDataForHotelRoom = result[0].MappingStatsFor[iNodes].MappingData;
+                        for (var iHotelRoomMappingData = 0 ; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
+                            if (resultDataForHotelRoom[iHotelRoomMappingData].Status != "ALL") {
+                                hotelroomArray.push(resultDataForHotelRoom[iHotelRoomMappingData]);
+                                $("#detailHotelRoom").append(resultDataForHotelRoom[iHotelRoomMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount + "<br>");
                             }
                             else {
-                                $("#hotelrumTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount);
+                                $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
                             }
                         }
                     }
@@ -193,20 +193,20 @@
                 }
 
                 //-- Changing Key names End
+              
+                    Morris.Donut({
+                        element: 'country',
+                        data: contryArray,
+                        colors: [
+                            '#007F00',
+                            '#e7bd0d',
+                            '#e14949'
+                        ],
+                        resize: true,
 
-                Morris.Donut({
-                    element: 'country',
-                    data: contryArray,
-                    colors: [
-                        '#007F00',
-                        '#e7bd0d',
-                        '#e14949'
-                    ],
-                    resize: true,
-
-                });
-
-
+                    });
+              
+              
                 Morris.Donut({
                     element: 'city',
                     data: cityArray,
@@ -238,7 +238,7 @@
                     resize: true
                 });
                 Morris.Donut({
-                    element: 'hotelrum',
+                    element: 'HotelRoom',
                     data: hotelroomArray,
                     colors: [
                         '#007F00',
@@ -262,7 +262,7 @@
                     $("#activity").append("<br/><br/>No Static Data Found").addClass("nodata");
                 }
                 if (hotelroomArray.length == 0) {
-                    $("#hotelrum").append("<br/><br/>No Static Data Found").addClass("nodata");
+                    $("#HotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
                 }
 
             },
@@ -411,7 +411,7 @@
                     </div>
                     <div role="tabpanel" id="ShowSupplierProductMapping" class="tab-pane fade in">
                         <br />
-                       <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
+                        <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
                     </div>
                     <div role="tabpanel" id="ShowSupplierStaticData" class="tab-pane fade in">
                         <br />
@@ -424,105 +424,105 @@
                     <%--for charts--%>
                     <div role="tabpanel" id="ShowSupplierStatusChart" class="tab-pane fade in">
                         <br />
-                        <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
+                      <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
                         <div id="nodatafound" style="display: none"></div>
                         <div class="row" style="width: 100%; height: auto;">
-                            <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h3><b>Country Mapped</b><br />
-                                            <b class="countryper"></b></h3>
-                                    </div>
-                                    <div id="country"></div>
-                                    <div class="panel-body">
-                                        <b><span id="detailcountry" style="font-size: small"></span></b>
-                                    </div>
-                                    <div class="panel-body">
-                                        <b><span class="nxtrundate"></span></b>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <h4><b id="countryTotal"></b></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h3><b>City Mapped</b><br />
-                                            <b class="cityper"></b></h3>
-                                    </div>
-                                    <div id="city"></div>
-                                    <div class="panel-body">
-                                        <b><span id="detailcity" style="font-size: small"></span></b>
-                                    </div>
-                                    <div class="panel-body" style="text-align: center">
-                                        <b><span class="nxtrundate"></span></b>
-                                    </div>
-                                    <div class="panel-footer ">
-                                        <h4><b id="cityTotal"></b></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h3><b>Hotel Mapped</b><br />
-                                            <b class="productper"></b></h3>
-                                    </div>
-                                    <div id="product"></div>
-                                    <div class="panel-body">
-                                        <b><span id="detailproduct" style="font-size: small"></span></b>
-                                    </div>
-                                    <div class="panel-body">
-                                        <b><span class="nxtrundate"></span></b>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <h4><b id="productTotal"></b></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h3><b>Room Mapped</b><br />
-                                            <b class="rumper"></b></h3>
-                                    </div>
-                                    <div id="hotelrum"></div>
-                                    <div class="panel-body">
-                                        <b><span id="detailhotelrum" style="font-size: small"></span></b>
-                                    </div>
-                                    <div class="panel-body">
-                                        <b><span class="nxtrundate"></span></b>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <h4><b id="hotelrumTotal"></b></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h3><b>Activity Mapped</b><br />
-                                            <b class="activityper"></b></h3>
-                                    </div>
-                                    <div id="activity"></div>
-                                    <div class="panel-body">
-                                        <b><span id="detailactivity" style="font-size: small"></span></b>
-                                    </div>
-                                    <div class="panel-body">
-                                        <b><span class="nxtrundate"></span></b>
-                                    </div>
-                                    <div class="panel-footer">
-                                        <h4><b id="activityTotal"></b></h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Country Mapped</b><br />
+                        <b class="countryper"></b></h3>
+                </div>
+                <div id="country"></div>
+                <div class="panel-body">
+                    <b><span id="detailcountry" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="countryTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>City Mapped</b><br />
+                        <b class="cityper"></b></h3>
+                </div>
+                <div id="city"></div>
+                <div class="panel-body">
+                    <b><span id="detailcity" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body" style="text-align: center">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer ">
+                    <h4><b id="cityTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Hotel Mapped</b><br />
+                        <b class="productper"></b></h3>
+                </div>
+                <div id="product"></div>
+                <div class="panel-body">
+                    <b><span id="detailproduct" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="productTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Room Mapped</b><br />
+                        <b class="rumper"></b></h3>
+                </div>
+                <div id="HotelRoom"></div>
+                <div class="panel-body">
+                    <b><span id="detailHotelRoom" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="HotelRoomTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
+            <div class="panel  panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                    <h3><b>Activity Mapped</b><br />
+                        <b class="activityper"></b></h3>
+                </div>
+                <div id="activity"></div>
+                <div class="panel-body">
+                    <b><span id="detailactivity" style="font-size: small"></span></b>
+                </div>
+                <div class="panel-body">
+                    <b><span class="nxtrundate"></span></b>
+                </div>
+                <div class="panel-footer">
+                    <h4><b id="activityTotal"></b></h4>
+                </div>
+            </div>
+        </div>
+    </div>
 
                     </div>
                 </div>
@@ -530,5 +530,7 @@
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>
+
+
 
 
