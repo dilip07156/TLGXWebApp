@@ -639,6 +639,7 @@
   <xs:complexType name="DC_RollOFParams">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fromdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierID" type="ser:guid" />
       <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -852,7 +853,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="MappingData" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
       <xs:element minOccurs="0" name="MappingFor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Total" type="xs:int" />
+      <xs:element minOccurs="0" name="Unmappeddata" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
@@ -864,6 +865,7 @@
   <xs:element name="ArrayOfDC_VelocityMappingdata" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
   <xs:complexType name="DC_VelocityMappingdata">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
       <xs:element minOccurs="0" name="Totalcount" type="xs:int" />
       <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
     </xs:sequence>
