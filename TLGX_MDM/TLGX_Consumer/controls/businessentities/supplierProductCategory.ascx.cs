@@ -77,7 +77,8 @@ namespace TLGX_Consumer.controls.businessentities
             DropDownList ddlproductCategoryBind = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategory");
             DropDownList ddlProductCategorySubTypeBind = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategorySubType");
             BindProductCategorySubType(ddlProductCategorySubTypeBind, ddlproductCategoryBind.SelectedValue.ToString());
-
+            supplierProduct.Update();
+            dvMsg.Visible = false;
         }
 
         private void BindProductCategorySubType(DropDownList ddlProductCategorySubTypeBind, string val)
@@ -103,7 +104,7 @@ namespace TLGX_Consumer.controls.businessentities
             DropDownList ddlProductCategorySubType = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategorySubType");
             HtmlInputCheckBox chckbIsDefaultSupplier = (HtmlInputCheckBox)frmSupplierProductCategory.FindControl("chckbIsDefaultSupplier");
             MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
-
+            dvMsg.Visible = true;
             if (e.CommandName.ToString() == "Add")
             {
                 MDMSVC.DC_Supplier_ProductCategory newObj = new MDMSVC.DC_Supplier_ProductCategory
@@ -225,7 +226,7 @@ namespace TLGX_Consumer.controls.businessentities
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
                 }
-
+                BindPageData();
             }
 
             else if (e.CommandName.ToString() == "UnDelete")
@@ -248,6 +249,7 @@ namespace TLGX_Consumer.controls.businessentities
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
                 }
+                BindPageData();
             }
         }
     }

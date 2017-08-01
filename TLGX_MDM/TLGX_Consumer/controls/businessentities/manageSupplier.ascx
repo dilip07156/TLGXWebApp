@@ -24,14 +24,15 @@
             padding-left: 15px;
         }
     }
+
     .nxtrundate {
         font-size: small;
     }
+
      .nodata {
         font-weight: bold;
         font-size: small;
     }
-   
 </style>
 <script type="text/javascript">
   
@@ -138,17 +139,17 @@
                             }
                         }
                     }
-                    if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
+                    if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom") {
                         var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
-                        $(".hotelrumper").append(per + "%");
-                        var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
-                        for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
-                            if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
-                                hotelroomArray.push(resultDataForHotelRum[iHotelRumMappingData]);
-                                $("#detailhotelrum").append(resultDataForHotelRum[iHotelRumMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount + "<br>");
+                        $(".HotelRoomper").append(per + "%");
+                        var resultDataForHotelRoom = result[0].MappingStatsFor[iNodes].MappingData;
+                        for (var iHotelRoomMappingData = 0 ; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
+                            if (resultDataForHotelRoom[iHotelRoomMappingData].Status != "ALL") {
+                                hotelroomArray.push(resultDataForHotelRoom[iHotelRoomMappingData]);
+                                $("#detailHotelRoom").append(resultDataForHotelRoom[iHotelRoomMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount + "<br>");
                             }
                             else {
-                                $("#hotelrumTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount);
+                                $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
                             }
                         }
                     }
@@ -237,7 +238,7 @@
                     resize: true
                 });
                 Morris.Donut({
-                    element: 'hotelrum',
+                    element: 'HotelRoom',
                     data: hotelroomArray,
                     colors: [
                         '#007F00',
@@ -261,7 +262,7 @@
                     $("#activity").append("<br/><br/>No Static Data Found").addClass("nodata");
                 }
                 if (hotelroomArray.length == 0) {
-                    $("#hotelrum").append("<br/><br/>No Static Data Found").addClass("nodata");
+                    $("#HotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
                 }
 
             },
@@ -290,7 +291,7 @@
     })
 
 </script>
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
@@ -395,37 +396,37 @@
         <br />
         <asp:HiddenField ID="TabName" runat="server" />
         <div class="panel panel-default">
-            <div class="panel-body">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
-                    <li><a data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
-                    <li><a data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
-                    <li><a data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
-                    <li><a data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
+            <div id="Tabs" class="panel-body" role="tabpanel">
+                <ul class="nav nav-tabs tabs" role="tablist">
+                    <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div id="ShowSupplierMarkets" class="tab-pane fade in active">
+                    <div role="tabpanel" id="ShowSupplierMarkets" class="tab-pane fade in active">
                         <br />
                         <uc1:supplierMarket runat="server" ID="supplierMarket" />
                     </div>
-                    <div id="ShowSupplierProductMapping" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierProductMapping" class="tab-pane fade in">
                         <br />
                         <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
                     </div>
-                    <div id="ShowSupplierStaticData" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierStaticData" class="tab-pane fade in">
                         <br />
                         <uc1:supplierStaticDataHandling runat="server" ID="supplierStaticDataHandling" />
                     </div>
-                    <div id="ShowSupplierCredentials" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierCredentials" class="tab-pane fade in">
                         <br />
                         <uc1:supplierCredentials runat="server" ID="suppliersCredentials" />
                     </div>
                     <%--for charts--%>
-                    <div id="ShowSupplierStatusChart" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierStatusChart" class="tab-pane fade in">
                         <br />
                       <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
-                           <div id="nodatafound" style="display:none"></div>
-                            <div class="row" style="width: 100%; height: auto; ">
+                        <div id="nodatafound" style="display: none"></div>
+                        <div class="row" style="width: 100%; height: auto;">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -483,22 +484,22 @@
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
+        <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b><br />
                         <b class="rumper"></b></h3>
                 </div>
-                <div id="hotelrum"></div>
+                <div id="HotelRoom"></div>
                 <div class="panel-body">
-                    <b><span id="detailhotelrum" style="font-size: small"></span></b>
+                    <b><span id="detailHotelRoom" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer">
-                    <h4><b id="hotelrumTotal"></b></h4>
+                    <h4><b id="HotelRoomTotal"></b></h4>
                 </div>
             </div>
         </div>
