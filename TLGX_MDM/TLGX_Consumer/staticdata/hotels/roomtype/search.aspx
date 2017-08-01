@@ -85,7 +85,6 @@
         }
         function RemoveExtra(record, onClick) {
             if (!onClick) {
-                debugger;
                 var currentRow = $(record).parent().parent();
                 var ddlRoomInfo = currentRow.find('.dropdownforBind');
                 var selectedText = ddlRoomInfo.find("option:selected").text();
@@ -96,7 +95,6 @@
                 ddlRoomInfo.append(listItems);
                 var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id');
                 hdnAccommodation_RoomInfo_Id.val(selectedVal);
-
             }
         }
     </script>

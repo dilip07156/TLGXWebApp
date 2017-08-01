@@ -2,16 +2,22 @@
 <script src="../../../Scripts/autosize.min.js"></script>
 <script>
     $(document).ready(function () {
-     
+
         $('[data-toggle="tooltip"]').tooltip();
     });
 
     function pageLoad(sender, args) {
-        debugger;
         var ta = document.querySelectorAll('textarea');
         autosize(ta);
     }
 </script>
+<style>
+    .floatingButton {
+        position: fixed;
+        bottom: 15px;
+        z-index: 1000;
+    }
+</style>
 <script type="text/javascript">
 
     function SelectedRow(element) {
@@ -226,113 +232,116 @@
                                 <asp:Label ID="lblSupplierRoomSearchCount" runat="server" Text="0"></asp:Label>)</a>
                                     </h4>
                                 </div>
-                                <div class="col-lg-4  pull right">
-                                    <asp:UpdatePanel runat="server" ID="upnlbtns">
-                                        <ContentTemplate>
-                                            <div class="form-group">
-                                                <asp:Button ID="btnMapSelectedBySupplier" OnClick="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
-                                                <asp:Button ID="btnMapAllBySupplier" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
-
-                                                <asp:Button ID="btnTTFUSelectedBySupplier" runat="server" OnClick="btnTTFUSelectedBySupplier_Click" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU Selected" />
-                                                <asp:Button ID="btnTTFUAllBySupplier" OnClick="btnTTFUAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU All" />
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
+                                <div class="col-lg-4 ">
+                                    &nbsp;
                                 </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="form-group pull-right" id="divPagging" runat="server" style="display: none;">
-                                    <div class="input-group">
-                                        <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                                        <asp:DropDownList ID="ddlPageSizeBySupplier" runat="server" Visible="false" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSizeBySupplier_SelectedIndexChanged" CssClass="form-control col-lg-3">
-                                            <asp:ListItem Text="5" Value="5" Selected="True"></asp:ListItem>
-                                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                                            <asp:ListItem Text="25" Value="25"></asp:ListItem>
-                                            <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                            <asp:ListItem Text="100" Value="100"></asp:ListItem>
-                                        </asp:DropDownList>
+
+                                <div class="col-lg-2">
+                                    <div class="form-group pull-right" id="divPagging" runat="server" style="display: none;">
+                                        <div class="input-group">
+                                            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                                            <asp:DropDownList ID="ddlPageSizeBySupplier" runat="server" Visible="false" AutoPostBack="true" OnSelectedIndexChanged="ddlPageSizeBySupplier_SelectedIndexChanged" CssClass="form-control col-lg-3">
+                                                <asp:ListItem Text="5" Value="5" Selected="True"></asp:ListItem>
+                                                <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                                                <asp:ListItem Text="25" Value="25"></asp:ListItem>
+                                                <asp:ListItem Text="50" Value="50"></asp:ListItem>
+                                                <asp:ListItem Text="100" Value="100"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="floatingButton">
+                                <asp:UpdatePanel runat="server" ID="upnlbtns">
+                                    <ContentTemplate>
+                                        <asp:Button ID="btnMapSelectedBySupplier" OnClick="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
+                                        <asp:Button ID="btnMapAllBySupplier" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
+
+                                        <asp:Button ID="btnTTFUSelectedBySupplier" runat="server" OnClick="btnTTFUSelectedBySupplier_Click" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU Selected" />
+                                        <asp:Button ID="btnTTFUAllBySupplier" OnClick="btnTTFUAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU All" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div id="divMsgForMapping" runat="server" style="display: none;"></div>
-                                <asp:Label ID="testlbl" ClientIDMode="Static" runat="server"></asp:Label>
-                                <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
-                                    DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id"
-                                    CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
-                                    OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
-                                    <Columns>
-                                        <asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />
-                                        <asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="10%" />
-                                        <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
-                                        <asp:TemplateField HeaderText="TLGX Rooms">
-                                            <ItemTemplate>
-                                                <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
-                                        <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomId" />
-                                        <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
-                                        <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
-                                            <ItemTemplate>
-                                                <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
-                                                <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
-                                                <a href="#" data-toggle="popover" class="glyphicon glyphicon-info-sign" title='<%#Convert.ToString(Eval("RoomDescription")) %>' data-content='<%#Server.HtmlDecode(Convert.ToString(Eval("RoomDescription"))) %>'></a>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Suggested Room Info">
-                                            <ItemTemplate>
-                                                <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="System Created Room Info">
-                                            <ItemTemplate>
-                                                <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
-                                                </asp:DropDownList>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
 
-                                        <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
-                                            <ItemTemplate>
-                                                <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
-                                                    RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
-                                                    <ItemTemplate>
-                                                        <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
-                                                    </ItemTemplate>
-                                                </asp:DataList>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="Status">
-                                            <ItemTemplate>
-                                                <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control" runat="server">
-                                                    <asp:ListItem Value="ADD">ADD</asp:ListItem>
-                                                    <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
-                                                    <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
-                                                    <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField ShowHeader="false">
-                                            <ItemTemplate>
-                                                <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
-                                                <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
-                                                <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
-                                                <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
-                                                <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="divMsgForMapping" runat="server" style="display: none;"></div>
+                                    <asp:Label ID="testlbl" ClientIDMode="Static" runat="server"></asp:Label>
+                                    <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
+                                        DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id"
+                                        CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
+                                        OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />
+                                            <asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="10%" />
+                                            <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
+                                            <asp:TemplateField HeaderText="TLGX Rooms">
+                                                <ItemTemplate>
+                                                    <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
+                                            <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomId" />
+                                            <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
+                                            <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
+                                                <ItemTemplate>
+                                                    <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
+                                                    <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
+                                                    <a href="#" data-toggle="popover" class="glyphicon glyphicon-info-sign" title='<%#Convert.ToString(Eval("RoomDescription")) %>' data-content='<%#Server.HtmlDecode(Convert.ToString(Eval("RoomDescription"))) %>'></a>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Suggested Room Info">
+                                                <ItemTemplate>
+                                                    <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="TLGX Room Info">
+                                                <ItemTemplate>
+                                                    <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
+                                                    </asp:DropDownList>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
-                                                <%-- <input type="hidden" class="hdnRoomDescription" id="hdnRoomDescription" runat="server" value='<%# Eval("RoomDescription") %>' />--%>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <PagerStyle CssClass="pagination-ys" />
-                                </asp:GridView>
+                                            <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
+                                                <ItemTemplate>
+                                                    <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
+                                                        RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
+                                                        <ItemTemplate>
+                                                            <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
+                                                        </ItemTemplate>
+                                                    </asp:DataList>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField HeaderText="Status">
+                                                <ItemTemplate>
+                                                    <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control" runat="server">
+                                                        <asp:ListItem Value="ADD">ADD</asp:ListItem>
+                                                        <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
+                                                        <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
+                                                        <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField ShowHeader="false">
+                                                <ItemTemplate>
+                                                    <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
+                                                    <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
+                                                    <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
+                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
+                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+
+                                                    <%-- <input type="hidden" class="hdnRoomDescription" id="hdnRoomDescription" runat="server" value='<%# Eval("RoomDescription") %>' />--%>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <PagerStyle CssClass="pagination-ys" />
+                                    </asp:GridView>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </ContentTemplate>
         </asp:UpdatePanel>
