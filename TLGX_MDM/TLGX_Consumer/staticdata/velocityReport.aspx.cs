@@ -14,6 +14,7 @@ namespace TLGX_Consumer.staticdata
     {
         Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
+        MDMSVC.DC_RollOFParams parm = new MDMSVC.DC_RollOFParams();
         Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
 
         protected void Page_Init(object sender, EventArgs e)
@@ -30,7 +31,11 @@ namespace TLGX_Consumer.staticdata
             if (!IsPostBack)
             {
                 fillsuppliers();
+                getData(true);
+
             }
+
+
         }
         private void fillsuppliers()
         {
@@ -39,5 +44,104 @@ namespace TLGX_Consumer.staticdata
             ddlSupplierName.DataTextField = "Name";
             ddlSupplierName.DataBind();
         }
+        private void getData(bool IsPageLoad)
+        {
+            string SupplierID = ddlSupplierName.SelectedValue;
+            if (SupplierID == "0")
+            {
+                SupplierID = "00000000-0000-0000-0000-000000000000";
+            }
+
+            parm.SupplierID = Guid.Parse(SupplierID);
+
+            if (IsPageLoad)
+            {
+                DateTime d = DateTime.Today;
+                d = d.AddMonths(-1);
+                parm.Fromdate = d.ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.Today.ToString("dd-MMM-yyyy");
+            }
+            else
+            {
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+            }
+
+            var res = MapSvc.GetVelocityDashboard(parm);
+
+
+            //lstusers.DataSource = res;
+            //lstusers.DataBind();
+            var iNodes = 0;
+            bool blnIsCityDataExist = false;
+            bool blnIsCountryDataExist = false;
+            bool blnProductDataExist = false;
+            bool blnActivityDataExist = false;
+            bool blnHotelroomDataExist = false;
+            
+            for (; iNodes < res[0].MappingStatsFor.Length; iNodes++)
+            {
+                if (res[0].MappingStatsFor[iNodes].MappingFor == "Country")
+                {
+                    var resultDataForCountry = res[0].MappingStatsFor[iNodes].MappingData;
+                     var UnmappedCountry = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    gvcountry.DataSource = resultDataForCountry;
+                    gvcountry.DataBind();
+                    lblcountry.Text = Convert.ToString(UnmappedCountry);
+                    blnIsCountryDataExist = true;
+
+                }
+                else if (res[0].MappingStatsFor[iNodes].MappingFor == "City")
+                {
+                    var resultDataForCity = res[0].MappingStatsFor[iNodes].MappingData;
+                    var UnmappedCity = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    gvcity.DataSource = resultDataForCity;
+                    gvcity.DataBind();
+                    lblcity.Text = Convert.ToString(UnmappedCity);
+                    blnIsCityDataExist = true;
+                }
+                else if (res[0].MappingStatsFor[iNodes].MappingFor == "Product")
+                {
+                    var resultDataForProduct = res[0].MappingStatsFor[iNodes].MappingData;
+                    var UnmappedProduct = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    gvproduct.DataSource = resultDataForProduct;
+                    gvproduct.DataBind();
+                    lblproduct.Text = Convert.ToString(UnmappedProduct);
+                    blnProductDataExist = true;
+                }
+                else if (res[0].MappingStatsFor[iNodes].MappingFor == "Activity")
+                {
+                    var resultDataForActivity = res[0].MappingStatsFor[iNodes].MappingData;
+                   var  UnmappedActivity = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    gvactivity.DataSource = resultDataForActivity;
+                    gvactivity.DataBind();
+                    lblactivity.Text = Convert.ToString(UnmappedActivity);
+                    blnActivityDataExist = true;
+                }
+                else if (res[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom")
+                {
+                    var resultDataForhotelRoom = res[0].MappingStatsFor[iNodes].MappingData;
+                    var UnmappedHotelroom = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    gvroomtype.DataSource = resultDataForhotelRoom;
+                    gvroomtype.DataBind();
+                    lblhotelroom.Text = Convert.ToString(UnmappedHotelroom);
+                    blnHotelroomDataExist = true;
+                }
+            }
+            //Assigning nothing to gridview
+            if (!blnHotelroomDataExist)
+            {
+                gvroomtype.DataSource = null;
+                gvroomtype.DataBind();
+            }
+
+        }
+
+        protected void btnViewStatus_Click(object sender, EventArgs e)
+        {
+            getData(false);
+        }
     }
+
+
 }
