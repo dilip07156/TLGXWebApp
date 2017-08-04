@@ -13,6 +13,15 @@ namespace TLGX_Consumer.staticdata {
     public partial class velocityReport {
         
         /// <summary>
+        /// updatevelocityDash control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatevelocityDash;
+        
+        /// <summary>
         /// ddlSupplierName control.
         /// </summary>
         /// <remarks>
@@ -76,57 +85,147 @@ namespace TLGX_Consumer.staticdata {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtTo;
         
         /// <summary>
-        /// Btncountry control.
+        /// btnViewStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btncountry;
+        protected global::System.Web.UI.WebControls.Button btnViewStatus;
         
         /// <summary>
-        /// Btncity control.
+        /// gvcountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btncity;
+        protected global::System.Web.UI.WebControls.GridView gvcountry;
         
         /// <summary>
-        /// Btnproduct control.
+        /// lblcountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btnproduct;
+        protected global::System.Web.UI.WebControls.Label lblcountry;
         
         /// <summary>
-        /// Btnhotelroom control.
+        /// lblcountryestimate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btnhotelroom;
+        protected global::System.Web.UI.WebControls.Label lblcountryestimate;
         
         /// <summary>
-        /// Btnactivity control.
+        /// gvcity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btnactivity;
+        protected global::System.Web.UI.WebControls.GridView gvcity;
         
         /// <summary>
-        /// Tblcountry control.
+        /// lblcity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Tblcountry;
+        protected global::System.Web.UI.WebControls.Label lblcity;
+        
+        /// <summary>
+        /// lblcityestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcityestimate;
+        
+        /// <summary>
+        /// gvproduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvproduct;
+        
+        /// <summary>
+        /// lblproduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblproduct;
+        
+        /// <summary>
+        /// lblproductestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblproductestimate;
+        
+        /// <summary>
+        /// gvroomtype control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvroomtype;
+        
+        /// <summary>
+        /// lblhotelroom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblhotelroom;
+        
+        /// <summary>
+        /// lblhotelroomestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblhotelroomestimate;
+        
+        /// <summary>
+        /// gvactivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvactivity;
+        
+        /// <summary>
+        /// lblactivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblactivity;
+        
+        /// <summary>
+        /// lblactivityestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblactivityestimate;
     }
 }

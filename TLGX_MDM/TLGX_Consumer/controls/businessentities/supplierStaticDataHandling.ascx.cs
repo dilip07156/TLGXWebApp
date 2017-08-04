@@ -230,12 +230,34 @@ namespace TLGX_Consumer.controls.businessentities
             }
             catch (Exception ex)
             {
-
                 throw;
             }
+            supplerStaticData.Update();
         }
         protected void btnReset_Click(object sender, EventArgs e)
         {
+            resetControls();
+            supplerStaticData.Update();
+        }
+
+        protected void resetControls()
+        {
+            rdbtnIsAPIXMLSupplier.ClearSelection();
+            rdbFrequency.ClearSelection();
+            rdbIsUpdateFrequencyRequired.ClearSelection();
+            ddlTheSequencyWeek_Month.SelectedIndex = 0;
+            ddlTheDaysOf_Month.SelectedIndex = 0;
+            ddlMonths_Year.SelectedIndex = 0;
+            ddlWeek_Year.SelectedIndex = 0;
+            ddlMonthWeekList_Year.SelectedIndex = 0;
+            ddlYearMonth_Year.SelectedIndex = 0;
+            txtDayOf_Monthly.Text = String.Empty;
+            txtDayOfEvery_Monthly.Text = String.Empty;
+            txtMonthDay_Year.Text = String.Empty;
+            txtOccurEvery_Month.Text = String.Empty;
+            txtOccur_Daily.Text = String.Empty;
+            txtRecur_Hourly.Text = String.Empty;
+            chckbxWeek_Weekly.ClearSelection();
 
         }
         protected void rdbFrequency_SelectedIndexChanged(object sender, EventArgs e)
