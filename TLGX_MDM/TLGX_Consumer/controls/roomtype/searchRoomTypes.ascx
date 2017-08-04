@@ -268,7 +268,6 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div id="divMsgForMapping" runat="server" style="display: none;"></div>
-                                    <asp:Label ID="testlbl" ClientIDMode="Static" runat="server"></asp:Label>
                                     <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                         DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id"
                                         CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
