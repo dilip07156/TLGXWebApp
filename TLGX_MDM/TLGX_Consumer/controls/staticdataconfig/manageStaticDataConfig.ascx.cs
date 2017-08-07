@@ -19,6 +19,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
         public static int PageIndex = 0;
         public static Guid Config_Id = Guid.Empty;
         public static Guid SelectedSupplierImportAttributeValue_Id = Guid.Empty;
+
+        public static bool IsMapping = false;
+        public static int configresultCount = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -49,12 +52,19 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         grdMappingAttrValues.VirtualItemCount = res[0].TotalRecords;
                         lblTotalUploadConfig.Text = res[0].TotalRecords.ToString();
+                        configresultCount = Convert.ToInt32(res[0].TotalRecords);
                     }
                     else
+                    {
                         lblTotalUploadConfig.Text = "0";
+                        configresultCount = 0;
+                    }
                 }
                 else
+                {
                     lblTotalUploadConfig.Text = "0";
+                    configresultCount = 0;
+                }
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                 //grdMappingAttrValues.DataSource = (from a in res orderby a.EDIT_DATE select a).ToList();
                 grdMappingAttrValues.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
@@ -80,6 +90,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     if (res.Count > 0)
                     {
                         ddlFor.SelectedIndex = ddlFor.Items.IndexOf(ddlFor.Items.FindByText(res[0].For));
+                        if (res[0].For.ToLower() == "mapping")
+                            IsMapping = true;
+                        else if (res[0].For.ToLower() == "matching")
+                            IsMapping = false;
                         ddlSupplierName.SelectedIndex = ddlSupplierName.Items.IndexOf(ddlSupplierName.Items.FindByValue(res[0].Supplier_Id.ToString()));
                         ddlEntity.SelectedIndex = ddlEntity.Items.IndexOf(ddlEntity.Items.FindByText(res[0].Entity));
                         ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(res[0].Status));
@@ -134,6 +148,19 @@ namespace TLGX_Consumer.controls.staticdataconfig
             RQ.MasterFor = masterfor;
             RQ.Name = attributename;
             var resvalues = mastersvc.GetAllAttributeAndValues(RQ);
+            //Apply business logic 
+            if (resvalues != null && resvalues.Count > 0)
+            {
+                if (ddl.ID == "ddlAttributeType")
+                {
+                    //If for == matching then show only two options into type dropdown match and map 
+                    if (!IsMapping)
+                        resvalues = (from x in resvalues where x.AttributeValue.ToLower() == "mapping" || x.AttributeValue.ToLower() == "matching" select x).ToList();
+                    else
+                        resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "match" select x).ToList();
+                }
+
+            }
             ddl.DataSource = resvalues;
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
@@ -221,7 +248,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         //Take data And Bind Dropdown and set it
                         if (!string.IsNullOrWhiteSpace(res[0].AttributeValue))
                         {
-                            var resultForAttribute = mastersvc.GetAllAttributeAndValuesByParentAttributeValue(new MDMSVC.DC_MasterAttribute() { AttributeValue = res[0].AttributeValue });
+                            var resultForAttribute = mastersvc.GetAllAttributeAndValuesByParentAttributeValue(new MDMSVC.DC_MasterAttribute() { ParentAttributeValue_Id = res[0].AttributeValue_ID });
                             if (resultForAttribute != null && resultForAttribute.Count > 0)
                             {
                                 HideShowAttributeNameControls(true);
@@ -234,6 +261,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                                 if (ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()) != null)
                                     ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()).Selected = true;
+                            }
+                            else
+                            {
+                                ddlAttributeName.Visible = false;
+                                txtAttributeName.Visible = true;
+                                txtAttributeName.Text = Convert.ToString(res[0].AttributeName);
                             }
 
                         }
@@ -378,6 +411,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             if (e.CommandName == "Add")
             {
                 string strAttributeName = string.Empty;
+                Guid? AttributeValue_id = Guid.Empty;
+                AttributeValue_id = Guid.Parse(ddlAttributeValue.SelectedValue);
                 if (ddlAttributeName.Visible)
                     strAttributeName = ddlAttributeName.SelectedItem.ToString();
                 else
@@ -388,6 +423,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     SupplierImportAttribute_Id = Config_Id,
                     AttributeType = ddlAttributeType.SelectedItem.Text,
                     AttributeName = strAttributeName,
+                    AttributeValue_ID = AttributeValue_id,
                     Priority = Convert.ToInt32(txtPriority.Text),
                     Description = txtDescription.InnerText,
                     STATUS = "ACTIVE",
@@ -418,6 +454,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             {
                 List<MDMSVC.DC_SupplierImportAttributeValues> lstNewObj = new List<MDMSVC.DC_SupplierImportAttributeValues>();
                 string strAttributeName = string.Empty;
+                Guid? AttributeValue_id = Guid.Empty;
+                AttributeValue_id = Guid.Parse(ddlAttributeValue.SelectedValue);
                 if (ddlAttributeName.Visible)
                     strAttributeName = ddlAttributeName.SelectedItem.ToString();
                 else
@@ -429,6 +467,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     SupplierImportAttribute_Id = Config_Id,
                     AttributeType = ddlAttributeType.SelectedItem.Text,
                     AttributeName = strAttributeName,
+                    AttributeValue_ID = AttributeValue_id,
                     STATUS = ddlAddStatus.SelectedItem.Text,
                     Priority = Convert.ToInt32(txtPriority.Text),
                     Description = txtDescription.InnerText,
@@ -582,6 +621,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlShowEntries.SelectedIndex = 0;
             grdMappingAttrValues.DataSource = null;
             grdMappingAttrValues.DataBind();
+        }
+
+
+        public void bussinessLogic()
+        {
+
+            //1. Only FileDetails will show in dropdown when there is no config
+
         }
 
 
