@@ -8,8 +8,20 @@
     //function closeFileUpload() {
     //    $("#moFileUpload").modal('hide');
     //}
-    function showDetailsModal() {
+    function test(fileid) {
+        alert(fileid);
+    }
+    function showDetailsModal(fileid) {
         $("#moViewDetials").modal('show');
+        $("#read").empty();
+        $("#map").empty();
+        $("#tx").empty();
+        $("#match").empty();
+        $("#currentbatch").empty();
+        $("#totalbatch").empty();
+        getChartData(fileid); 
+        //$("#ttfu").empty();
+        
     }
     function closeDetailsModal() {
         $("#moViewDetials").modal('hide');
@@ -44,10 +56,144 @@
 
     }
 </script>
+<script>
+    function getChartData(fileid) {
+        var colorarray = ["#007F00", "#faebd7"];
+        var readarray = [];
+        var txarray = [];
+        var maparray = [];
+        var ttfuarray = [];
+        var matcharray = [];
+        $.ajax({
+            type: 'GET',
+            url: '../../../Service/FileProcessingReport.ashx?FileId=' + fileid,
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                //alert(result[0].SupplierImportFile_Id);
+                //alert(result.length+"length");
+              
+                for (var inode = 0; inode < result.length; inode++) {
+                    if (result[inode].Step == "READ") {
+                        var a = result[inode].PercentageValue;
+                        var b = 100 - a;
+                        readarray.push({ label: "Completed", value: a });
+                        readarray.push({ label: "Remaining", value: b });
+                    }
+                   else if (result[inode].Step == "TRANSFORM") {
+                        var a = result[inode].PercentageValue;
+                        var b = 100 - a;
+                        txarray.push({label: "Completed", value: a});
+                        txarray.push({ label: "Remaining", value: b });
+                        $("#currentbatch").append(result[inode].CurrentBatch);
+
+                        $("#totalbatch").append(result[inode].TotalBatch);
+                    }
+                   else if (result[inode].Step == "MAP") {
+                        var a = result[inode].PercentageValue;
+                        var b = 100 - a;
+                        maparray.push({ label: "Completed", value: a });
+                        maparray.push({ label: "Remaining", value: b });
+                    }
+                    else if (result[inode].Step == "MATCH") {
+                        var a = result[inode].PercentageValue;
+                        var b = 100 - a;
+                        matcharray.push({ label: "Completed", value: a });
+                        matcharray.push({ label: "Remaining", value: b });
+                    }
+                   else  {
+                        var a = result[inode].PercentageValue;
+                        var b = 100 - a;
+                        ttfuarray.push({ label: "Completed", value: a });
+                        ttfuarray.push({ label: "Remaining", value: b });
+                    }
+                }
+                Morris.Donut({
+                    element: 'read',
+                    data:readarray,
+                    colors: colorarray,
+                    resize: true,
+                    hideHover: "always"
+                });
+                Morris.Donut({
+                    element: 'tx',
+                    data:txarray,
+                    colors: colorarray,
+                    resize: true,
+                    hideHover: "always"
+                });
+                Morris.Donut({
+                    element: 'map',
+                    data: maparray,
+                    colors: colorarray,
+                    resize: true,
+                    hideHover: "always"
+                });
+
+                //Morris.Donut({
+                //    element: 'ttfu',
+                //    data:ttfuarray,
+                //    colors: colorarray,
+                //    resize: true,
+                //hideHover: "always"
+                //});
+                Morris.Donut({
+                    element: 'match',
+                    data: matcharray,
+                    colors: colorarray,
+                    resize: true,
+                    hideHover: "always"
+                });
+            },
+            error: function () {
+                debugger;
+                alert("Error fetching filr processing data");
+            },
+        });
+    }
+    $(document).ready(function () {
+        prepareMorrisDonutChart();
+    });
+
+    function prepareMorrisDonutChart() {
+        $("#morrisDonutChart tspan:first").css("display", "none");
+        $("#morrisDonutChart tspan:nth-child(1)").css("font-size", "40px");
+
+        var isi = $("#morrisDonutChart tspan:first").html();
+        $('#morrisDonutChartSpan').text(isi);
+    }
+</script>
+<script src="../../Scripts/ChartJS/raphael-min.js"></script>
+<script src="../../Scripts/ChartJS/morris.min.js"></script>
 <style>
+    .morris-hover {  
+  opacity: 0;
+}
     .tablestyle {
         border-bottom: 1px solid #dddddd;
     }
+    
+    @media (min-width: 768px) {
+        .modal-xl {
+            width: 80%;
+            max-width: 1200px;
+        }
+    }
+    .chartheight{
+        height:150px;
+    }
+       @media(min-width: 992px) {
+            .col5 {
+                width: 20%;
+                float: left;
+                position: relative;
+                min-height: 1px;
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+        }
+
+
 </style>
 <asp:UpdatePanel ID="updUserGrid" runat="server">
     <ContentTemplate>
@@ -127,11 +273,11 @@
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </button>
                                                 </span>
-                                                
+
                                             </div>
                                             <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
-                                                <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
-                                                <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
+                                            <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                            <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
                                         </div>
                                     </div>
 
@@ -231,8 +377,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true" OnClientClick="showDetailsModal();">
-                                    <span aria-hidden="true">View Details</span>
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true">
+                                            <%--OnClientClick='<%# "showDetailsModal('\''"+ Convert.ToString(Eval("SupplierImportFile_Id")) + "'\'');" %>'--%>
+      <%--OnClientClicking='<%#string.Format("showDetailsModal('{0}');",Eval("SupplierImportFile_Id ")) %>'                                            
+                                           <%-- showDetailsModal('<%# Eval("SupplierImportFile_Id")%>');--%>
+                                            
+                                                 <span aria-hidden="true">View Details</span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -329,7 +479,7 @@
 </div>
 
 <div class="modal fade" id="moViewDetials" role="dialog">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -343,92 +493,154 @@
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                         <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand">
-
                             <ItemTemplate>
+
                                 <div class="col-lg-12">
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Supplier</label>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label">Supplier</label>
                                         <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Entity</label>
+                                    <div class="form-group  col-md-4">
+                                        <label class="col-form-label">Entity</label>
                                         <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Path</label>
+                                    <div class="form-group  col-md-4">
+                                        <label class="col-form-label">Path</label>
                                         <asp:TextBox ID="txtPath" runat="server" ReadOnly="true" Text='<%# Bind("SavedFilePath") %>' CssClass="form-control"></asp:TextBox>
+                                            <hr />
                                     </div>
+                                    
+                                </div>
+                        
+                            </ItemTemplate>
+                        </asp:FormView> 
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:PostBackTrigger ControlID="btnDownload" />
+                    </Triggers>
+                </asp:UpdatePanel>
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Status</label>
-                                        <asp:TextBox ID="txtStatus" runat="server" ReadOnly="true" Text='<%# Bind("STATUS") %>' CssClass="form-control"></asp:TextBox>
+                                <div class="row">
+                                    <div class="col-sm-2 col5" id="readdiv" style="text-align: center">
+                                        <div class="panel  panel-default ">
+                                            <div class="panel-heading">
+                                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                                <h5><b>READ</b></h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id="read" class="chartheight"></div>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div>
-
-                                        <asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
-                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
-                                        </asp:LinkButton>
-
-                                        <asp:LinkButton ID="btnNext" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default pull-right" CommandName="Next">
-                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-right"></span>
-                                        </asp:LinkButton>
-
-                                        <%--<asp:Button ID="btnPrevious" OnClick="btnPrevious_Click" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" Text="<" />
-                                        <asp:Button ID="btnNext" runat="server" OnClick="btnNext_Click" Visible="false" CssClass="btn btn-default pull-right" Text=">" />--%>
-                                        <asp:Label ID="lblTotalCount" runat="server"></asp:Label>
-                                        <asp:Repeater ID="rptrErrorLog" runat="server">
-                                            <HeaderTemplate>
-                                                <table class="table table-bordered table-striped">
-                                                    <th>Error Date</th>
-                                                    <th>Error Details</th>
-                                            </HeaderTemplate>
-
-                                            <ItemTemplate>
-                                                <tr>
-                                                    <td><span><%# Eval("Error_DATE") %></span></td>
-
-                                                    <td>
-                                                        <table>
-                                                            <tr class="tablestyle">
-                                                                <td><b>Error Code: </b></td>
-                                                                <td><span><%# Eval("ErrorCode") %></span></td>
-                                                            </tr>
-                                                            <tr class="tablestyle">
-                                                                <td><b>Error Description: </b></td>
-                                                                <td style="word-wrap: break-word;"><span><%# Eval("ErrorDescription") %></span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><b>Error Type: </b></td>
-                                                                <td><span><%# Eval("ErrorType") %></span></td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </ItemTemplate>
-                                            <FooterTemplate>
-                                                </table>
-                                            </FooterTemplate>
-                                        </asp:Repeater>
+                                    <div class="col-sm-6">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                                <h5><b>Batch &nbsp;:&nbsp;</b></h5><p id="currentbatch"></p>/<p id="totalbatch"></p>
+                                            </div>
+                                                <div class="panel  panel-default col-sm-4" id="txdiv" style="text-align: center">
+                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                                    <h5><b>TRANSFORM</b></h5>
+                                                    <div id="tx" class="chartheight"></div>
+                                                </div>
+                                                <div class="panel  panel-default col-sm-4" id="mapdiv" style="text-align: center">
+                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                                    <h6><b>MAP</b></h6>
+                                                    <div id="map" class="chartheight"></div>
+                                                </div>
+                                                <div class="panel  panel-default col-sm-4 " id="ttfudiv" style="text-align: center">
+                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                                    <h6><b>TTFU</b></h6>
+                                                    <div id="ttfu" class="chartheight"></div>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 col5" id="matchdiv" style="text-align: center">
+                                        <div class="panel  panel-default">
+                                            <div class="panel-heading">
+                                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                                <h5><b>MATCH</b></h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div id="match" class="chartheight"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="panel panel-default">
+                                        <div class="panel-header">
+                                            <h4>VERBOSE LOG</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <%--<asp:GridView ID="gvVerboseLog" runat="server" AutoGenerateColumns="false" CssClass="table " 
+                                                ShowHeaderWhenEmpty="True" EmptyDataText="No mapping activity has not been done for this date range.">
+                                                <Columns>
+                                                    <asp:BoundField  DataField="TmieStamp" />
+                                                    <asp:BoundField  DataField="Step" />
+                                                    <asp:BoundField  DataField="Message" />
+                                                </Columns>
+                                            </asp:GridView>--%>
+                                        </div>
                                     </div>
                                 </div>
 
-                            </ItemTemplate>
-                        </asp:FormView>
+                        
+
+                                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
+                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
+                                </asp:LinkButton>
+
+                                <asp:LinkButton ID="btnNext" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default pull-right" CommandName="Next">
+                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-right"></span>
+                                </asp:LinkButton>
+                                <asp:Label ID="lblTotalCount" runat="server"></asp:Label>
+                                <asp:Repeater ID="rptrErrorLog" runat="server">
+                                    <HeaderTemplate>
+                                        <table class="table table-bordered table-striped">
+                                            <th>Error Date</th>
+                                            <th>Error Details</th>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td><span><%# Eval("Error_DATE") %></span></td>
+
+                                            <td>
+                                                <table>
+                                                    <tr class="tablestyle">
+                                                        <td><b>Error Code: </b></td>
+                                                        <td><span><%# Eval("ErrorCode") %></span></td>
+                                                    </tr>
+                                                    <tr class="tablestyle">
+                                                        <td><b>Error Description: </b></td>
+                                                        <td style="word-wrap: break-word;"><span><%# Eval("ErrorDescription") %></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Error Type: </b></td>
+                                                        <td><span><%# Eval("ErrorType") %></span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                                </div>
+                                </div>--%>
+
                         <div class="form-group row">
                             <div class="col-sm-4">
                                 <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
                                 <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
                             </div>
                         </div>
-                    </ContentTemplate>
-                    <Triggers>
-                        <asp:PostBackTrigger ControlID="btnDownload" />
-                    </Triggers>
-                </asp:UpdatePanel>
+                   
 
             </div>
             <div class="modal-footer">
@@ -436,6 +648,9 @@
             </div>
         </div>
     </div>
+    <script>
+      
+    </script>
 </div>
 
 

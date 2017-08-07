@@ -414,5 +414,13 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_VelocityMappingStats>;
         }
         #endregion
+        #region File Progress Report
+        public List<DC_SupplierImportFile_Progress> GetStaticDataUploadProcessLog(MDMSVC.DC_SupplierImportFile_Progress_RQ parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_Fileprogress_Report"], parm, typeof(MDMSVC.DC_SupplierImportFile_Progress_RQ), typeof(List<DC_SupplierImportFile_Progress>), out result);
+            return result as List<DC_SupplierImportFile_Progress>;
+        }
+        #endregion
     }
 }

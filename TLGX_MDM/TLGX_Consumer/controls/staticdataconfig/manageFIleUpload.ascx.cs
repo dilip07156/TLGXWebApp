@@ -12,6 +12,7 @@ using System.Data;
 using System.Text;
 using System.ComponentModel;
 using System.Reflection;
+using System.Web.Script.Serialization;
 
 namespace TLGX_Consumer.controls.staticdataconfig
 {
@@ -97,11 +98,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
             if (ddlStatus.SelectedItem.Value != "0")
                 RQParam.STATUS = ddlStatus.SelectedItem.Text;
             if (txtFrom.Text != String.Empty && txtTo.Text != String.Empty)
-            { 
+            {
                 RQParam.From_Date = DateTime.Parse(txtFrom.Text);
                 RQParam.TO_Date = DateTime.Parse(txtTo.Text).AddDays(1); //added 1 day to include all the files added on 'To date' (upto time '23:59:59' by default it takes '00:00:00')
             }
-            
+
             RQParam.PageNo = PageNo;
             RQParam.PageSize = PageSize;// Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
 
@@ -418,7 +419,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "File has been deleted Successfully", (BootstrapAlertType)result.StatusCode);
                 }
-                if(e.CommandName== "UnDelete")
+                if (e.CommandName == "UnDelete")
                 {
                     MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
                     RQ.SupplierImportFile_Id = myRowId;
@@ -785,6 +786,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             if (e.Row.DataItem != null)
             {
+                //DataRowView rowView = (DataRowView)e.Row.DataItem;
+
+
+                // Retrieve the key value for the current row. Here it is an int.
+                string SupplierImportFile_Id = gvFileUploadSearch.DataKeys[e.Row.RowIndex].Values[0].ToString();// Convert.ToString(rowView["SupplierImportFile_Id"]);
+                LinkButton btnViewDetail = (LinkButton)e.Row.FindControl("btnViewDetail");
+                if (btnViewDetail != null)
+                {
+                    btnViewDetail.Attributes.Add("onclick", "showDetailsModal('" + SupplierImportFile_Id + "');");
+                  //  btnViewDetail.Attributes.Add("onclick", "test();");
+                }
                 LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
                 if (btnDelete.CommandName == "UnDelete")
                 {
@@ -792,6 +804,15 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
             }
         }
+
+        //public  void  getDataForChart( string fileid)
+        //{
+        //    MDMSVC.DC_SupplierImportFile_Progress_RQ RQParams = new MDMSVC.DC_SupplierImportFile_Progress_RQ();
+        //    RQParams.SupplierImportFile_Id = fileid;
+        //    var res = _objMappingSVCs.GetStaticDataUploadProcessLog(RQParams);
+        //          Response.Write (new JavaScriptSerializer().Serialize(res));
+        //}
+
     }
 }
 
