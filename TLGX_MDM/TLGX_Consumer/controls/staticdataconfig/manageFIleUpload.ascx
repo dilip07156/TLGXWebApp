@@ -5,32 +5,24 @@
     function showFileUpload() {
         $("#moFileUpload").modal('show');
     }
-    //function closeFileUpload() {
-    //    $("#moFileUpload").modal('hide');
-    //}
-    function test(fileid) {
-        alert(fileid);
+    function closeFileUpload() {
+        $("#moFileUpload").modal('hide');
     }
     function showDetailsModal(fileid) {
         $("#moViewDetials").modal('show');
-        $("#read").empty();
-        $("#map").empty();
-        $("#tx").empty();
-        $("#match").empty();
-        $("#currentbatch").empty();
-        $("#totalbatch").empty();
-        getChartData(fileid); 
-        //$("#ttfu").empty();
-        
+        $('#moViewDetials').one('shown.bs.modal', function () {
+            debugger;
+            getChartData(fileid);
+        });
     }
     function closeDetailsModal() {
         $("#moViewDetials").modal('hide');
     }
+
     function pageLoad(sender, args) {
         var hdnViewDetailsFlag = $('#<%=hdnViewDetailsFlag.ClientID%>').val();
 
         if (hdnViewDetailsFlag == "true") {
-            //closeFileUpload();
             closeDetailsModal();
         }
         $('#hdnViewDetailsFlag').val("false");
@@ -38,26 +30,16 @@
     function OnClientUploadComplete() {
         var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
         var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
-         <%--  var rfventity = document.getElementById("<%=rfvddlSupplierList.ClientID%>");
-        var rfvSupplier = document.getElementById("<%=rfvddlSupplierList.ClientID%>");
-        debugger;
-        if (typeof ddlSupplierList != 'undefined')
-            if (ddlSupplierList.value == '0') {
-                ValidatorEnable(rfvSupplier, true);
-                return false;
-            }
-        if (typeof ddlEntityList != 'undefined')
-            if (ddlEntityList.value == '0') {
-                ValidatorEnable(rfventity, true);
-                return false;
-            }--%>
-        //ddlSupplierList.value = "0";
-        //ddlEntityList.value = "0";
-
     }
 </script>
 <script>
     function getChartData(fileid) {
+        $("#read").empty();
+        $("#map").empty();
+        $("#tx").empty();
+        $("#match").empty();
+        $("#currentbatch").empty();
+        $("#totalbatch").empty();
         var colorarray = ["#007F00", "#faebd7"];
         var readarray = [];
         var txarray = [];
@@ -72,7 +54,7 @@
                 debugger;
                 //alert(result[0].SupplierImportFile_Id);
                 //alert(result.length+"length");
-              
+
                 for (var inode = 0; inode < result.length; inode++) {
                     if (result[inode].Step == "READ") {
                         var a = result[inode].PercentageValue;
@@ -80,16 +62,16 @@
                         readarray.push({ label: "Completed", value: a });
                         readarray.push({ label: "Remaining", value: b });
                     }
-                   else if (result[inode].Step == "TRANSFORM") {
+                    else if (result[inode].Step == "TRANSFORM") {
                         var a = result[inode].PercentageValue;
                         var b = 100 - a;
-                        txarray.push({label: "Completed", value: a});
+                        txarray.push({ label: "Completed", value: a });
                         txarray.push({ label: "Remaining", value: b });
                         $("#currentbatch").append(result[inode].CurrentBatch);
 
                         $("#totalbatch").append(result[inode].TotalBatch);
                     }
-                   else if (result[inode].Step == "MAP") {
+                    else if (result[inode].Step == "MAP") {
                         var a = result[inode].PercentageValue;
                         var b = 100 - a;
                         maparray.push({ label: "Completed", value: a });
@@ -101,7 +83,7 @@
                         matcharray.push({ label: "Completed", value: a });
                         matcharray.push({ label: "Remaining", value: b });
                     }
-                   else  {
+                    else {
                         var a = result[inode].PercentageValue;
                         var b = 100 - a;
                         ttfuarray.push({ label: "Completed", value: a });
@@ -110,14 +92,14 @@
                 }
                 Morris.Donut({
                     element: 'read',
-                    data:readarray,
+                    data: readarray,
                     colors: colorarray,
                     resize: true,
                     hideHover: "always"
                 });
                 Morris.Donut({
                     element: 'tx',
-                    data:txarray,
+                    data: txarray,
                     colors: colorarray,
                     resize: true,
                     hideHover: "always"
@@ -144,6 +126,7 @@
                     resize: true,
                     hideHover: "always"
                 });
+
             },
             error: function () {
                 debugger;
@@ -151,49 +134,40 @@
             },
         });
     }
-    $(document).ready(function () {
-        prepareMorrisDonutChart();
-    });
 
-    function prepareMorrisDonutChart() {
-        $("#morrisDonutChart tspan:first").css("display", "none");
-        $("#morrisDonutChart tspan:nth-child(1)").css("font-size", "40px");
-
-        var isi = $("#morrisDonutChart tspan:first").html();
-        $('#morrisDonutChartSpan').text(isi);
-    }
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
 <style>
-    .morris-hover {  
-  opacity: 0;
-}
+    .morris-hover {
+        opacity: 0;
+    }
+
     .tablestyle {
         border-bottom: 1px solid #dddddd;
     }
-    
+
     @media (min-width: 768px) {
         .modal-xl {
             width: 80%;
             max-width: 1200px;
         }
     }
-    .chartheight{
-        height:150px;
+
+    .chartheight {
+        height: 150px;
     }
-       @media(min-width: 992px) {
-            .col5 {
-                width: 20%;
-                float: left;
-                position: relative;
-                min-height: 1px;
-                padding-right: 15px;
-                padding-left: 15px;
-            }
+
+    @media(min-width: 992px) {
+        .col5 {
+            width: 20%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
         }
-
-
+    }
 </style>
 <asp:UpdatePanel ID="updUserGrid" runat="server">
     <ContentTemplate>
@@ -478,7 +452,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="moViewDetials" role="dialog">
+<div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
@@ -492,91 +466,97 @@
                 <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand">
+                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px" >
                             <ItemTemplate>
 
                                 <div class="col-lg-12">
 
-                                    <div class="form-group col-md-4">
+                                    <div class="col-md-4">
                                         <label class="col-form-label">Supplier</label>
                                         <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group  col-md-4">
+                                    <div class="col-md-4">
                                         <label class="col-form-label">Entity</label>
                                         <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group  col-md-4">
+                                    <div class="col-md-4">
                                         <label class="col-form-label">Path</label>
                                         <asp:TextBox ID="txtPath" runat="server" ReadOnly="true" Text='<%# Bind("SavedFilePath") %>' CssClass="form-control"></asp:TextBox>
-                                            <hr />
+                                        
                                     </div>
-                                    
+
                                 </div>
-                        
+
                             </ItemTemplate>
-                        </asp:FormView> 
+                        </asp:FormView>
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="btnDownload" />
                     </Triggers>
                 </asp:UpdatePanel>
-
-                                <div class="row">
-                                    <div class="col-sm-2 col5" id="readdiv" style="text-align: center">
-                                        <div class="panel  panel-default ">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                <h5><b>READ</b></h5>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div id="read" class="chartheight"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                <h5><b>Batch &nbsp;:&nbsp;</b></h5><p id="currentbatch"></p>/<p id="totalbatch"></p>
-                                            </div>
-                                                <div class="panel  panel-default col-sm-4" id="txdiv" style="text-align: center">
-                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                    <h5><b>TRANSFORM</b></h5>
-                                                    <div id="tx" class="chartheight"></div>
-                                                </div>
-                                                <div class="panel  panel-default col-sm-4" id="mapdiv" style="text-align: center">
-                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                    <h6><b>MAP</b></h6>
-                                                    <div id="map" class="chartheight"></div>
-                                                </div>
-                                                <div class="panel  panel-default col-sm-4 " id="ttfudiv" style="text-align: center">
-                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                    <h6><b>TTFU</b></h6>
-                                                    <div id="ttfu" class="chartheight"></div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 col5" id="matchdiv" style="text-align: center">
-                                        <div class="panel  panel-default">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                <h5><b>MATCH</b></h5>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div id="match" class="chartheight"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                <br />
+                <div class="row">
+                    <div class="col-sm-2 col5" id="readdiv" style="text-align: center">
+                        <div class="panel  panel-default ">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h5><b>READ</b></h5>
+                            </div>
+                            <div class="panel-body" style="height: 190px;">
+                                <div id="read" class="chartheight"></div>
+                                <div id="readspan"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class=" panel panel-default">
+                            <div class="panel-heading" style="height: 44px;text-align: center;">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch"></span>/<span id="totalbatch"></span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TRANSFORM</b>
+                                    <div id="tx" class="chartheight"></div>
+                                    <div id="txspan"></div>
                                 </div>
-                                <div class="row">
-                                    <div class="panel panel-default">
-                                        <div class="panel-header">
-                                            <h4>VERBOSE LOG</h4>
-                                        </div>
-                                        <div class="panel-body">
-                                            <%--<asp:GridView ID="gvVerboseLog" runat="server" AutoGenerateColumns="false" CssClass="table " 
+                                <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>MAP</b>
+                                    <div id="map" class="chartheight"></div>
+                                </div>
+                                <div class=" col-sm-4 " id="ttfudiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TTFU</b>
+                                    <div id="ttfu" class="chartheight"></div>
+                                    <div id="ttfuspan"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col5" id="matchdiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h5><b>MATCH</b></h5>
+                            </div>
+                            <div class="panel-body" style="height: 190px;">
+                                <div id="match" class="chartheight"></div>
+                                <div id="matchspan"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-header">
+                            <h4>VERBOSE LOG</h4>
+                        </div>
+                        <div class="panel-body">
+                            <%--<asp:GridView ID="gvVerboseLog" runat="server" AutoGenerateColumns="false" CssClass="table " 
                                                 ShowHeaderWhenEmpty="True" EmptyDataText="No mapping activity has not been done for this date range.">
                                                 <Columns>
                                                     <asp:BoundField  DataField="TmieStamp" />
@@ -584,13 +564,13 @@
                                                     <asp:BoundField  DataField="Message" />
                                                 </Columns>
                                             </asp:GridView>--%>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
 
-                        
 
-                                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
+
+                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
                                          <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
                                 </asp:LinkButton>
 
@@ -634,13 +614,13 @@
                                 </div>
                                 </div>--%>
 
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
-                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
-                            </div>
-                        </div>
-                   
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
+                        <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
+                    </div>
+                </div>
+
 
             </div>
             <div class="modal-footer">
