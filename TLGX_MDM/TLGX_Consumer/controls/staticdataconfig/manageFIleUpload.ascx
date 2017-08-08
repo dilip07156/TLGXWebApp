@@ -34,12 +34,15 @@
 </script>
 <script>
     function getChartData(fileid) {
+        console.log(fileid);
         $("#read").empty();
         $("#map").empty();
         $("#tx").empty();
         $("#match").empty();
+        $("#ttfu").empty();
         $("#currentbatch").empty();
         $("#totalbatch").empty();
+        $('#tblveboselog').empty();
         var colorarray = ["#007F00", "#faebd7"];
         var readarray = [];
         var txarray = [];
@@ -48,43 +51,41 @@
         var matcharray = [];
         $.ajax({
             type: 'GET',
-            url: '../../../Service/FileProcessingReport.ashx?FileId=' + fileid,
+            url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
             dataType: "json",
             success: function (result) {
-                debugger;
-                //alert(result[0].SupplierImportFile_Id);
-                //alert(result.length+"length");
-
-                for (var inode = 0; inode < result.length; inode++) {
-                    if (result[inode].Step == "READ") {
-                        var a = result[inode].PercentageValue;
+                // debugger;
+                //process charts
+                for (var inode = 0; inode < result.ProgressLog.length; inode++) {
+                    if (result.ProgressLog[inode].Step == "READ") {
+                        var a = result.ProgressLog[inode].PercentageValue;
                         var b = 100 - a;
                         readarray.push({ label: "Completed", value: a });
                         readarray.push({ label: "Remaining", value: b });
                     }
-                    else if (result[inode].Step == "TRANSFORM") {
-                        var a = result[inode].PercentageValue;
+                    else if (result.ProgressLog[inode].Step == "TRANSFORM") {
+                        var a = result.ProgressLog[inode].PercentageValue;
                         var b = 100 - a;
                         txarray.push({ label: "Completed", value: a });
                         txarray.push({ label: "Remaining", value: b });
-                        $("#currentbatch").append(result[inode].CurrentBatch);
+                        $("#currentbatch").append(result.ProgressLog[inode].CurrentBatch);
 
-                        $("#totalbatch").append(result[inode].TotalBatch);
+                        $("#totalbatch").append(result.ProgressLog[inode].TotalBatch);
                     }
-                    else if (result[inode].Step == "MAP") {
-                        var a = result[inode].PercentageValue;
+                    else if (result.ProgressLog[inode].Step == "MAP") {
+                        var a = result.ProgressLog[inode].PercentageValue;
                         var b = 100 - a;
                         maparray.push({ label: "Completed", value: a });
                         maparray.push({ label: "Remaining", value: b });
                     }
-                    else if (result[inode].Step == "MATCH") {
-                        var a = result[inode].PercentageValue;
+                    else if (result.ProgressLog[inode].Step == "MATCH") {
+                        var a = result.ProgressLog[inode].PercentageValue;
                         var b = 100 - a;
                         matcharray.push({ label: "Completed", value: a });
                         matcharray.push({ label: "Remaining", value: b });
                     }
                     else {
-                        var a = result[inode].PercentageValue;
+                        var a = result.ProgressLog[inode].PercentageValue;
                         var b = 100 - a;
                         ttfuarray.push({ label: "Completed", value: a });
                         ttfuarray.push({ label: "Remaining", value: b });
@@ -111,7 +112,6 @@
                     resize: true,
                     hideHover: "always"
                 });
-
                 //Morris.Donut({
                 //    element: 'ttfu',
                 //    data:ttfuarray,
@@ -126,10 +126,26 @@
                     resize: true,
                     hideHover: "always"
                 });
+                //verbose log
+                for (var i = 0; i < result.VerboseLog.length; i++) {
+                    //var dateString = result.VerboseLog[i].TimeStamp.substr(6);;
+                    //var currentTime = new Date(parseInt(dateString));
+                    //var month = currentTime.getMonth() + 1;
+                    //var day = currentTime.getDate();
+                    //var year = currentTime.getFullYear();
+                    //var date = day + "/" + month + "/" + year;
+                    var date =new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                    var tr;
+                        tr = $('<tr/>');
+                        tr.append("<td>" + date + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
+                        $("#verboselog table").append(tr);
+                }
 
             },
             error: function () {
-                debugger;
+                //  debugger;
                 alert("Error fetching filr processing data");
             },
         });
@@ -466,7 +482,7 @@
                 <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px" >
+                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
                             <ItemTemplate>
 
                                 <div class="col-lg-12">
@@ -484,7 +500,7 @@
                                     <div class="col-md-4">
                                         <label class="col-form-label">Path</label>
                                         <asp:TextBox ID="txtPath" runat="server" ReadOnly="true" Text='<%# Bind("SavedFilePath") %>' CssClass="form-control"></asp:TextBox>
-                                        
+
                                     </div>
 
                                 </div>
@@ -512,7 +528,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class=" panel panel-default">
-                            <div class="panel-heading" style="height: 44px;text-align: center;">
+                            <div class="panel-heading" style="height: 44px; text-align: center;">
                                 <i class="fa fa-bar-chart-o fa-fw"></i>
                                 <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch"></span>/<span id="totalbatch"></span>
                             </div>
@@ -551,19 +567,25 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default col-md-12">
                         <div class="panel-header">
                             <h4>VERBOSE LOG</h4>
                         </div>
                         <div class="panel-body">
-                            <%--<asp:GridView ID="gvVerboseLog" runat="server" AutoGenerateColumns="false" CssClass="table " 
-                                                ShowHeaderWhenEmpty="True" EmptyDataText="No mapping activity has not been done for this date range.">
-                                                <Columns>
-                                                    <asp:BoundField  DataField="TmieStamp" />
-                                                    <asp:BoundField  DataField="Step" />
-                                                    <asp:BoundField  DataField="Message" />
-                                                </Columns>
-                                            </asp:GridView>--%>
+                            <div id="verboselog" style="overflow: scroll; height:500px">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Step</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblveboselog">
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
