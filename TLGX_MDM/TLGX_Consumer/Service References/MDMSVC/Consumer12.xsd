@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataContracts.Masters" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="ArrayOfDC_DynamicAttributes">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_DynamicAttributes" nillable="true" type="tns:DC_DynamicAttributes" />
@@ -646,6 +646,10 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Alias" nillable="true" type="tns:ArrayOfDC_keyword_alias" />
       <xs:element minOccurs="0" name="Attribute" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="AttributeLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeSubLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeSubLevelValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
