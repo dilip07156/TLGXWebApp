@@ -1,7 +1,148 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
+<script>
+    function getChartData(fileid) {
+        if (fileid != null && fileid != "") {
+            console.log(fileid);
+            $("#read").empty();
+            $("#map").empty();
+            $("#tx").empty();
+            $("#match").empty();
+            $("#ttfu").empty();
+            $("#currentbatch").empty();
+            $("#totalbatch").empty();
+            $('#tblveboselog').empty();
+            var colorarray = ["#007F00", "#faebd7"];
+            var readarray = [];
+            var txarray = [];
+            var maparray = [];
+            var ttfuarray = [];
+            var matcharray = [];
+            $.ajax({
+                type: 'GET',
+                url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
+                dataType: "json",
+                success: function (result) {
+                    // debugger;
+                    //process charts
+                    for (var inode = 0; inode < result.ProgressLog.length; inode++) {
+                        if (result.ProgressLog[inode].Step == "READ") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            readarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                readarray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else if (result.ProgressLog[inode].Step == "TRANSFORM") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            txarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                txarray.push({ label: "Remaining", value: b });
+                            }
+                            $("#currentbatch").append(result.ProgressLog[inode].CurrentBatch);
+                            $("#totalbatch").append(result.ProgressLog[inode].TotalBatch);
+                        }
+                        else if (result.ProgressLog[inode].Step == "MAP") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            maparray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                maparray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else if (result.ProgressLog[inode].Step == "MATCH") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            matcharray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                matcharray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            ttfuarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                ttfuarray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                    }
+                    Morris.Donut({
+                        element: 'read',
+                        data: readarray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    Morris.Donut({
+                        element: 'tx',
+                        data: txarray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    Morris.Donut({
+                        element: 'map',
+                        data: maparray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    //Morris.Donut({
+                    //    element: 'ttfu',
+                    //    data:ttfuarray,
+                    //    colors: colorarray,
+                    //    resize: true,
+                    //hideHover: "always"
+                    //});
+                    Morris.Donut({
+                        element: 'match',
+                        data: matcharray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    //verbose log
+                    for (var i = 0; i < result.VerboseLog.length; i++) {
+                        //var dateString = result.VerboseLog[i].TimeStamp.substr(6);;
+                        //var currentTime = new Date(parseInt(dateString));
+                        //var month = currentTime.getMonth() + 1;
+                        //var day = currentTime.getDate();
+                        //var year = currentTime.getFullYear();
+                        //var date = day + "/" + month + "/" + year;
+                        var d = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                        var date = d.toLocaleString("en-GB");
+                        var tr;
+                        tr = $('<tr/>');
+                        tr.append("<td>" + date + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
+                        $("#verboselog table").append(tr);
+                    }
+
+                },
+                error: function () {
+                    //  debugger;
+                    alert("Error fetching filr processing data");
+                },
+            });
+        }
+    }
+
+</script>
 <script type="text/javascript">
+    var x = setInterval(myTimer, 3000);
+    function myTimer() {
+        var d = new Date();
+        var hdnval = document.getElementById("hdnFileId").value;
+        //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+        getChartData(hdnval);
+        var elem = document.getElementById('verboselog');
+        elem.scrollTop = elem.scrollHeight;
+    }
     function showFileUpload() {
         $("#moFileUpload").modal('show');
     }
@@ -11,10 +152,16 @@
     function showDetailsModal(fileid) {
         $("#moViewDetials").modal('show');
         $('#moViewDetials').one('shown.bs.modal', function () {
+           // debugger;
+            //getChartData(fileid);
+            document.getElementById("hdnFileId").value = fileid;
+        });
+        $('#moViewDetials').on('hidden.bs.modal', function () {
             debugger;
-            getChartData(fileid);
+            window.clearInterval(x);
         });
     }
+    
     function closeDetailsModal() {
         $("#moViewDetials").modal('hide');
     }
@@ -31,126 +178,6 @@
         var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
         var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
     }
-</script>
-<script>
-    function getChartData(fileid) {
-        console.log(fileid);
-        $("#read").empty();
-        $("#map").empty();
-        $("#tx").empty();
-        $("#match").empty();
-        $("#ttfu").empty();
-        $("#currentbatch").empty();
-        $("#totalbatch").empty();
-        $('#tblveboselog').empty();
-        var colorarray = ["#007F00", "#faebd7"];
-        var readarray = [];
-        var txarray = [];
-        var maparray = [];
-        var ttfuarray = [];
-        var matcharray = [];
-        $.ajax({
-            type: 'GET',
-            url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
-            dataType: "json",
-            success: function (result) {
-                // debugger;
-                //process charts
-                for (var inode = 0; inode < result.ProgressLog.length; inode++) {
-                    if (result.ProgressLog[inode].Step == "READ") {
-                        var a = result.ProgressLog[inode].PercentageValue;
-                        var b = 100 - a;
-                        readarray.push({ label: "Completed", value: a });
-                        readarray.push({ label: "Remaining", value: b });
-                    }
-                    else if (result.ProgressLog[inode].Step == "TRANSFORM") {
-                        var a = result.ProgressLog[inode].PercentageValue;
-                        var b = 100 - a;
-                        txarray.push({ label: "Completed", value: a });
-                        txarray.push({ label: "Remaining", value: b });
-                        $("#currentbatch").append(result.ProgressLog[inode].CurrentBatch);
-
-                        $("#totalbatch").append(result.ProgressLog[inode].TotalBatch);
-                    }
-                    else if (result.ProgressLog[inode].Step == "MAP") {
-                        var a = result.ProgressLog[inode].PercentageValue;
-                        var b = 100 - a;
-                        maparray.push({ label: "Completed", value: a });
-                        maparray.push({ label: "Remaining", value: b });
-                    }
-                    else if (result.ProgressLog[inode].Step == "MATCH") {
-                        var a = result.ProgressLog[inode].PercentageValue;
-                        var b = 100 - a;
-                        matcharray.push({ label: "Completed", value: a });
-                        matcharray.push({ label: "Remaining", value: b });
-                    }
-                    else {
-                        var a = result.ProgressLog[inode].PercentageValue;
-                        var b = 100 - a;
-                        ttfuarray.push({ label: "Completed", value: a });
-                        ttfuarray.push({ label: "Remaining", value: b });
-                    }
-                }
-                Morris.Donut({
-                    element: 'read',
-                    data: readarray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-                Morris.Donut({
-                    element: 'tx',
-                    data: txarray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-                Morris.Donut({
-                    element: 'map',
-                    data: maparray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-                //Morris.Donut({
-                //    element: 'ttfu',
-                //    data:ttfuarray,
-                //    colors: colorarray,
-                //    resize: true,
-                //hideHover: "always"
-                //});
-                Morris.Donut({
-                    element: 'match',
-                    data: matcharray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-                //verbose log
-                for (var i = 0; i < result.VerboseLog.length; i++) {
-                    //var dateString = result.VerboseLog[i].TimeStamp.substr(6);;
-                    //var currentTime = new Date(parseInt(dateString));
-                    //var month = currentTime.getMonth() + 1;
-                    //var day = currentTime.getDate();
-                    //var year = currentTime.getFullYear();
-                    //var date = day + "/" + month + "/" + year;
-                    var date =new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
-                    var tr;
-                        tr = $('<tr/>');
-                        tr.append("<td>" + date + "</td>");
-                        tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
-                        tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
-                        $("#verboselog table").append(tr);
-                }
-
-            },
-            error: function () {
-                //  debugger;
-                alert("Error fetching filr processing data");
-            },
-        });
-    }
-
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
@@ -475,6 +502,7 @@
             <div class="modal-header">
                 <div class="panel-title">
                     <h4 class="modal-title">File Status</h4>
+                    <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
                 </div>
             </div>
 
@@ -513,8 +541,9 @@
                     </Triggers>
                 </asp:UpdatePanel>
                 <br />
+              <div class="container">
                 <div class="row">
-                    <div class="col-sm-2 col5" id="readdiv" style="text-align: center">
+                    <div class="col-sm-3 col5" id="readdiv" style="text-align: center">
                         <div class="panel  panel-default ">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i>
@@ -526,7 +555,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-7">
                         <div class=" panel panel-default">
                             <div class="panel-heading" style="height: 44px; text-align: center;">
                                 <i class="fa fa-bar-chart-o fa-fw"></i>
@@ -553,7 +582,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 col5" id="matchdiv" style="text-align: center">
+                    <div class="col-sm-3 col5" id="matchdiv" style="text-align: center">
                         <div class="panel  panel-default">
                             <div class="panel-heading">
                                 <i class="fa fa-bar-chart-o fa-fw"></i>
@@ -566,14 +595,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="panel panel-default col-md-12">
-                        <div class="panel-header">
-                            <h4>VERBOSE LOG</h4>
+                  <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4><b>xVERBOSE LOG</b></h4>
                         </div>
-                        <div class="panel-body">
-                            <div id="verboselog" style="overflow: scroll; height:500px">
-                                <table class="table">
+                            <div id="verboselog" style="overflow:scroll ;height:300px" >
+                                <table class="table table-fixed table-condensed">
                                     <thead>
                                         <tr>
                                             <th>Date</th>
@@ -587,10 +615,8 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                      </div>
                 </div>
-
-
 
                 <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
                                          <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
@@ -642,8 +668,6 @@
                         <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
                     </div>
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
