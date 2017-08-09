@@ -275,15 +275,18 @@ namespace TLGX_Consumer.controls.roomtype
                         }
                         //if (ddlMappingStatusInGridBySupplier.Items.FindByValue(Convert.ToString(mappingStatus)) != null)
                         //    ddlMappingStatusInGridBySupplier.Items.FindByValue(Convert.ToString(mappingStatus)).Selected = true;
-                        if (mappingStatus.ToUpper() == "MAPPED")
-                        {
-                            if (txtSuggestedRoomInfoInGridBySupplier != null)
-                            {
-                                txtSuggestedRoomInfoInGridBySupplier.Style.Add(HtmlTextWriterStyle.Display, "none");
-                            }
-                            //else { txtSuggestedRoomInfoInGridBySupplier.Style.Add(HtmlTextWriterStyle.Display, "block"); }
-                        }
-                        else if (mappingStatus.ToUpper() == "UNMAPPED")
+
+                        //To Show Suggested Room Info for all (Suggested By Matt)
+                        //if (mappingStatus.ToUpper() == "MAPPED")
+                        //{
+                        //    if (txtSuggestedRoomInfoInGridBySupplier != null)
+                        //    {
+                        //        txtSuggestedRoomInfoInGridBySupplier.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        //    }
+                        //    //else { txtSuggestedRoomInfoInGridBySupplier.Style.Add(HtmlTextWriterStyle.Display, "block"); }
+                        //}
+                        //else 
+                        if (mappingStatus.ToUpper() == "UNMAPPED")
                         {
                             if (hasRoom && intRoomCount == 0)
                             {

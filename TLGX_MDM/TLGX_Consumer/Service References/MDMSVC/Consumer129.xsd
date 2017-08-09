@@ -4,6 +4,7 @@
   <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
   <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Net" />
   <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
   <xs:complexType name="ArrayOfDC_Accomodation">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accomodation" nillable="true" type="tns:DC_Accomodation" />
@@ -845,4 +846,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bounds" nillable="true" type="tns:Bounds" />
+  <xs:complexType name="DC_FileProgressDashboard">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="FileDetails" nillable="true" type="q9:ArrayOfDC_SupplierImportFile_Statistics" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ProgressLog" nillable="true" type="q10:ArrayOfDC_SupplierImportFile_Progress" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="VerboseLog" nillable="true" type="q11:ArrayOfDC_SupplierImportFile_VerboseLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_FileProgressDashboard" nillable="true" type="tns:DC_FileProgressDashboard" />
 </xs:schema>

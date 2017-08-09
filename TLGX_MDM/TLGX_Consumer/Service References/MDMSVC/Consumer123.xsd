@@ -3223,4 +3223,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getFileProgressDashBoardData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFileProgressDashBoardDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q315="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="getFileProgressDashBoardDataResult" nillable="true" type="q315:DC_FileProgressDashboard" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

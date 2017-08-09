@@ -7165,6 +7165,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Address_Components))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Geometry))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Bounds))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_Physical))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_GeoCode))]
@@ -7709,6 +7710,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Address_Components))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Geometry))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Bounds))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_Physical))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_GeoCode))]
@@ -29246,6 +29248,83 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_FileProgressDashboard", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_FileProgressDashboard : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Progress[] ProgressLogField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_VerboseLog[] VerboseLogField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileDetails {
+            get {
+                return this.FileDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileDetailsField, value) != true)) {
+                    this.FileDetailsField = value;
+                    this.RaisePropertyChanged("FileDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Progress[] ProgressLog {
+            get {
+                return this.ProgressLogField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProgressLogField, value) != true)) {
+                    this.ProgressLogField = value;
+                    this.RaisePropertyChanged("ProgressLog");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFile_VerboseLog[] VerboseLog {
+            get {
+                return this.VerboseLogField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.VerboseLogField, value) != true)) {
+                    this.VerboseLogField = value;
+                    this.RaisePropertyChanged("VerboseLog");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_State_City_Area_Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
     [System.SerializableAttribute()]
     public partial class DC_Country_State_City_Area_Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -31331,6 +31410,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/StaticFileUpload_TestFile_Transform", ReplyAction="http://tempuri.org/IUploadStaticData/StaticFileUpload_TestFile_TransformResponse")]
         System.Threading.Tasks.Task<System.Data.DataSet> StaticFileUpload_TestFile_TransformAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails_TestProcess obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardData", ReplyAction="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardDataResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardDataDC_ErrorStatusFa" +
+            "ult", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_FileProgressDashboard getFileProgressDashBoardData(string fileid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardData", ReplyAction="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardDataResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileProgressDashboard> getFileProgressDashBoardDataAsync(string fileid);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -33166,6 +33253,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<System.Data.DataSet> StaticFileUpload_TestFile_TransformAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails_TestProcess obj) {
             return base.Channel.StaticFileUpload_TestFile_TransformAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_FileProgressDashboard getFileProgressDashBoardData(string fileid) {
+            return base.Channel.getFileProgressDashBoardData(fileid);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileProgressDashboard> getFileProgressDashBoardDataAsync(string fileid) {
+            return base.Channel.getFileProgressDashBoardDataAsync(fileid);
         }
     }
 }
