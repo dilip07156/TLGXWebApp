@@ -142,7 +142,7 @@
         //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
         getChartData(hdnval);
         var elem = document.getElementById('verboselog');
-        elem.scrollTop = elem.scrollHeight;
+        //elem.scrollTop = elem.scrollHeight;
     }
     function showFileUpload() {
         $("#moFileUpload").modal('show');
