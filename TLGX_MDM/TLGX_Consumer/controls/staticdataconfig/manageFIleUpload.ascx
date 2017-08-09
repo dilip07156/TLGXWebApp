@@ -4,15 +4,8 @@
 <script>
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
-            console.log(fileid);
-            $("#read").empty();
-            $("#map").empty();
-            $("#tx").empty();
-            $("#match").empty();
-            $("#ttfu").empty();
-            $("#currentbatch").empty();
-            $("#totalbatch").empty();
-            $('#tblveboselog').empty();
+            //console.log(fileid);
+            
             var colorarray = ["#007F00", "#faebd7"];
             var readarray = [];
             var txarray = [];
@@ -24,6 +17,14 @@
                 url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
                 dataType: "json",
                 success: function (result) {
+                    $("#read").empty();
+                    $("#map").empty();
+                    $("#tx").empty();
+                    $("#match").empty();
+                    $("#ttfu").empty();
+                    $("#currentbatch").empty();
+                    $("#totalbatch").empty();
+                    $('#tblveboselog').empty();
                     // debugger;
                     //process charts
                     for (var inode = 0; inode < result.ProgressLog.length; inode++) {
