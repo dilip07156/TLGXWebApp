@@ -29256,7 +29256,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileDetailsField;
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] FileDetailsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Progress[] ProgressLogField;
@@ -29275,7 +29275,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileDetails {
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] FileDetails {
             get {
                 return this.FileDetailsField;
             }
