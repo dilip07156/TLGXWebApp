@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/TLGX_MDM/TLGX_Consumer/Service References/MDMSVC/TLGX_Consumer.MDMSVC.DC_FileProgressDashboard.datasource
