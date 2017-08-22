@@ -3,10 +3,11 @@
 <%@ Register Src="~/controls/geography/supplierCityMapping.ascx" TagPrefix="uc1" TagName="supplierCityMapping" %>
 <%@ Register Src="../integrations/supplierIntegrations.ascx" TagName="supplierIntegrations" TagPrefix="uc2" %>
 <%@ Register Src="~/controls/businessentities/supplierMarket.ascx" TagPrefix="uc1" TagName="supplierMarket" %>
-
 <%@ Register Src="~/controls/businessentities/supplierProductCategory.ascx" TagPrefix="uc1" TagName="supplierProductCategory" %>
 <%@ Register Src="~/controls/businessentities/supplierStaticDataHandling.ascx" TagPrefix="uc1" TagName="supplierStaticDataHandling" %>
 <%@ Register Src="~/controls/businessentities/supplierCredentials.ascx" TagPrefix="uc1" TagName="supplierCredentials" %>
+<%@ Register Src="~/controls/businessentities/supplierApiLocation.ascx" TagPrefix="uc1" TagName="supplierApiLocation" %>
+
 <%--for charts--%>
 <%--<%@ Register Src="~/controls/staticdata/supplierWiseDataChart.ascx" TagPrefix="uc1" TagName="supplierWiseDataChart" %>--%>
 <link href="../../Scripts/ChartJS/morris.css" rel="stylesheet" />
@@ -422,7 +423,8 @@
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
-                </ul>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierApiLocation" href="#ShowSupplierApiLocation" id="apiLocation">Supplier API Location</a></li>
+                     </ul>
                 <div class="tab-content">
                     <div role="tabpanel" id="ShowSupplierMarkets" class="tab-pane fade in active">
                         <br />
@@ -532,7 +534,12 @@
             </div>
         </div>
     </div>
-
+                    </div>
+                    <%--End--%>
+                    <div role="tabpanel" id="ShowSupplierApiLocation" class="tab-pane fade in">
+                        <br />
+                      
+                       <%-- <uc1:supplierApiLocation runat="server" id="supplierApiLocation" />--%>
                     </div>
                 </div>
             </div>

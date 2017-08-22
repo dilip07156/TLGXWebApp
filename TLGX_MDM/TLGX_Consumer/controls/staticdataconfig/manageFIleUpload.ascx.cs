@@ -469,11 +469,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 rptrErrorLog.DataBind();
                 btnPrevious.Visible = true;
                 btnNext.Visible = true;
-                btnDownload.Visible = true;
+                //btnDownload.Visible = true;
             }
             else
             {
-                btnDownload.Visible = false;
+                //btnDownload.Visible = false;
             }
         }
 
