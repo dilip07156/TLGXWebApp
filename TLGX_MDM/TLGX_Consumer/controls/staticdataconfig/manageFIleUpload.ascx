@@ -25,14 +25,15 @@
                     $("#currentbatch").empty();
                     $("#totalbatch").empty();
                     $('#tblveboselog').empty();
+                    $("#tblstatastic").empty();
                     // debugger;
                     //process charts
                     for (var inode = 0; inode < result.ProgressLog.length; inode++) {
                         if (result.ProgressLog[inode].Step == "READ") {
-                            var a = result.ProgressLog[inode].PercentageValue;
+                            var a = result.ProgressLog[inode].PercentageValue ;
                             readarray.push({ label: "Completed", value: a });
                             if (a != 100) {
-                                var b = 100 - a;
+                                var b = (100 - a);
                                 readarray.push({ label: "Remaining", value: b });
                             }
                         }
@@ -40,17 +41,17 @@
                             var a = result.ProgressLog[inode].PercentageValue;
                             txarray.push({ label: "Completed", value: a });
                             if (a != 100) {
-                                var b = 100 - a;
+                                var b = (100 - a);
                                 txarray.push({ label: "Remaining", value: b });
                             }
-                            $("#currentbatch").append(result.ProgressLog[inode].CurrentBatch);
-                            $("#totalbatch").append(result.ProgressLog[inode].TotalBatch);
+                            $("#currentbatch").text(result.ProgressLog[inode].CurrentBatch);
+                            $("#totalbatch").text(result.ProgressLog[inode].TotalBatch);
                         }
                         else if (result.ProgressLog[inode].Step == "MAP") {
                             var a = result.ProgressLog[inode].PercentageValue;
                             maparray.push({ label: "Completed", value: a });
                             if (a != 100) {
-                                var b = 100 - a;
+                                var b = (100 - a);
                                 maparray.push({ label: "Remaining", value: b });
                             }
                         }
@@ -58,15 +59,15 @@
                             var a = result.ProgressLog[inode].PercentageValue;
                             matcharray.push({ label: "Completed", value: a });
                             if (a != 100) {
-                                var b = 100 - a;
-                                matcharray.push({ label: "Remaining", value: b });
+                                var b = (100 - a);
+                                matcharray.push({ label: "Remaining", value: b});
                             }
                         }
                         else {
                             var a = result.ProgressLog[inode].PercentageValue;
                             ttfuarray.push({ label: "Completed", value: a });
                             if (a != 100) {
-                                var b = 100 - a;
+                                var b = (100 - a);
                                 ttfuarray.push({ label: "Remaining", value: b });
                             }
                         }
@@ -92,13 +93,6 @@
                         resize: true,
                         hideHover: "always"
                     });
-                    //Morris.Donut({
-                    //    element: 'ttfu',
-                    //    data:ttfuarray,
-                    //    colors: colorarray,
-                    //    resize: true,
-                    //hideHover: "always"
-                    //});
                     Morris.Donut({
                         element: 'match',
                         data: matcharray,
@@ -106,14 +100,16 @@
                         resize: true,
                         hideHover: "always"
                     });
+                    Morris.Donut({
+                        element: 'ttfu',
+                        data:ttfuarray,
+                        colors: colorarray,
+                        resize: true,
+                    hideHover: "always"
+                    });
+
                     //verbose log
                     for (var i = 0; i < result.VerboseLog.length; i++) {
-                        //var dateString = result.VerboseLog[i].TimeStamp.substr(6);;
-                        //var currentTime = new Date(parseInt(dateString));
-                        //var month = currentTime.getMonth() + 1;
-                        //var day = currentTime.getDate();
-                        //var year = currentTime.getFullYear();
-                        //var date = day + "/" + month + "/" + year;
                         var d = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
                         var date = d.toLocaleString("en-GB");
                         var tr;
@@ -122,12 +118,34 @@
                         tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
                         tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
                         $("#verboselog table").append(tr);
-                    }
+                        if (i == result.VerboseLog.length-1) {
+                            //timediff = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6))) - new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                            //timediff /= 60000;
+                            var end_actual_time = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6)));
+                            var start_actual_time=new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                            var diff = end_actual_time - start_actual_time;
+                            var diffSeconds = diff/1000;
+                            var HH = Math.floor(diffSeconds/3600);
+                            var MM = Math.floor(diffSeconds%3600)/60;
 
+                            var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
+                           // alert(formatted);
+                            debugger;
+                            $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lbltimeDiff").text(formatted +" (hh:mm:ss)");
+                        }
+                    }
+                    //File Statistics
+                    //for (var i = 0; i < result.FileStatistics.length; i++) {
+                    //     tr = $('<tr/>');
+                    //    tr.append("<td>" + result.FileStatistics[i].TotalRows + "</td>");
+                    //    tr.append("<td>" + result.FileStatistics[i].Mapped + "</td>");
+                    //    tr.append("<td>" + result.FileStatistics[i].Unmapped + "</td>");
+                    //    $("#dvstatastic table").append(tr);
+                    //}
                 },
                 error: function () {
                     //  debugger;
-                    alert("Error fetching filr processing data");
+                    alert("Error fetching file processing data");
                 },
             });
         }
@@ -135,15 +153,13 @@
 
 </script>
 <script type="text/javascript">
-    var x = setInterval(myTimer, 3000);
+    var x = setInterval(myTimer, 10000);
     function myTimer() {
         var d = new Date();
         var hdnval = document.getElementById("hdnFileId").value;
-        //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
         getChartData(hdnval);
-        var elem = document.getElementById('verboselog');
-        elem.scrollTop = elem.scrollHeight;
     }
+
     function showFileUpload() {
         $("#moFileUpload").modal('show');
     }
@@ -153,13 +169,12 @@
     function showDetailsModal(fileid) {
         $("#moViewDetials").modal('show');
         $('#moViewDetials').one('shown.bs.modal', function () {
-           // debugger;
             //getChartData(fileid);
             document.getElementById("hdnFileId").value = fileid;
         });
-        $('#moViewDetials').on('hidden.bs.modal', function () {
+         $('#moViewDetials').on('hidden.bs.modal', function () {
             debugger;
-            window.clearInterval(x);
+          //  window.clearInterval(x);
         });
     }
     
@@ -455,7 +470,7 @@
                                 CssClass="text-danger" ErrorMessage="The Suppplier is required." InitialValue="0" />
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlSupplierList" runat="server" class="form-control" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlSupplierList" runat="server"  OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -468,7 +483,7 @@
                                   CssClass="text-danger" ID="rfvddlEntityList" ErrorMessage="The Entity is required." InitialValue="0" />
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlEntityList" runat="server" class="form-control" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlEntityList" runat="server"  OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -499,109 +514,110 @@
 <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-
-            <div class="modal-header">
-                <div class="panel-title">
-                    <h4 class="modal-title">File Status</h4>
+            <div class="modal-header" style="padding:0px 5px 0px 15px;">
+                    <h4 class="modal-title"><b>File Status </b><span><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button></span></h4> 
                     <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
-                </div>
             </div>
-
             <div class="modal-body">
-                <asp:UpdatePanel ID="pnlViewDetails" runat="server">
+                <div class="container">
+                    <div class="row">
+                        <%--<div class="col-md-12">--%>
+                         <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                         <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
                             <ItemTemplate>
-
-                                <div class="col-lg-12">
-
-                                    <div class="col-md-4">
+                                <div class="col-md-12">
+                                    <div class="col-sm-2 col5">
                                         <label class="col-form-label">Supplier</label>
-                                        <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>' ReadOnly="true"></asp:TextBox>
+                                        <asp:Label ID="lblSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>'></asp:Label>
                                     </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-sm-2 col5">
                                         <label class="col-form-label">Entity</label>
-                                        <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>' ReadOnly="true"></asp:TextBox>
+                                        <asp:Label ID="lblEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>'></asp:Label>
                                     </div>
-
-                                    <div class="col-md-4">
-                                        <label class="col-form-label">Path</label>
-                                        <asp:TextBox ID="txtPath" runat="server" ReadOnly="true" Text='<%# Bind("SavedFilePath") %>' CssClass="form-control"></asp:TextBox>
-
-                                    </div>
-
+                                    <div class="col-sm-2 col5">
+                                        <label class="col-form-label">File</label>
+                                        <asp:Label ID="lblPath" CssClass="form-control" runat="server" Text='<%# Bind("OriginalFilePath") %>'></asp:Label>
+                                   </div>
+                                     <div class="col-sm-2 col5">
+                                        <label class="col-form-label">Status</label>
+                                        <asp:Label ID="lblstatus" CssClass="form-control" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
+                                   </div>
+                                    <div class="col-sm-2 col5">
+                                        <label class="col-form-label">Elapsed Time</label>
+                                        <asp:Label ID="lbltimeDiff" CssClass="form-control" runat="server" ></asp:Label>
+                                   </div>
                                 </div>
-
                             </ItemTemplate>
                         </asp:FormView>
                     </ContentTemplate>
-                    <Triggers>
+                    <%--<Triggers>
                         <asp:PostBackTrigger ControlID="btnDownload" />
-                    </Triggers>
+                    </Triggers>--%>
                 </asp:UpdatePanel>
-                <br />
-              <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 col5" id="readdiv" style="text-align: center">
-                        <div class="panel  panel-default ">
-                            <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                <h5><b>READ</b></h5>
+                       <%--</div>--%>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-sm-2 " id="readdiv" >
+                                <div class="panel  panel-default "  style="text-align: center">
+                                    <div class="panel-heading"  style="padding-top:5px;padding-bottom:5px">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h4 style="margin-top:5px"><b>READ</b></h4>
+                                    </div>
+                               <%--   <div class="panel-body" style="height: 190px;">--%>
+                                        <div id="read" class="chartheight" style="height:160px"></div>
+                                <%--    </div>--%>
+                                </div>
                             </div>
-                            <div class="panel-body" style="height: 190px;">
-                                <div id="read" class="chartheight"></div>
-                                <div id="readspan"></div>
+                            <div class="col-sm-8" >
+                                <div class=" panel panel-default ">
+                                    <div class="panel-heading" style="text-align: center; padding-top:5px;padding-bottom:5px">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                       <h4 style="margin-top:5px"> <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font:bold"></span>/<span id="totalbatch" style="font:bold"></span></h4>
+                                    </div>
+                                    <div class="panel-body" style="padding:0px;">
+                                        <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                            <b>TRANSFORM</b>
+                                            <div id="tx" class="chartheight"></div>
+                                        </div>
+                                        <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                            <b>MAP</b>
+                                            <div id="map" class="chartheight"></div>
+                                        </div>
+                                        <div class="col-sm-4" id="ttfudiv" style="text-align: center">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                            <b>TTFU</b>
+                                            <div id="ttfu" class="chartheight"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading" style="padding-top:5px;padding-bottom:5px ">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h4 style= "margin-top:5px"><b>MATCH</b></h4>
+                                    </div>
+                                   <%-- <div class="panel-body" style="height: 190px;">--%>
+                                        <div id="match" class="chartheight" style="height:160px" ></div>
+                                   <%-- </div>--%>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-7">
-                        <div class=" panel panel-default">
-                            <div class="panel-heading" style="height: 44px; text-align: center;">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch"></span>/<span id="totalbatch"></span>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                         <div class="panel panel-default">
+                            <div class="panel-heading" style=" padding-top:5px;padding-bottom:5px">
+                                <h4 style="margin-top:5px"><b>VERBOSE LOG</b></h4>
                             </div>
-                            <div class="panel-body">
-                                <div class="col-sm-4" id="txdiv" style="text-align: center">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                    <b>TRANSFORM</b>
-                                    <div id="tx" class="chartheight"></div>
-                                    <div id="txspan"></div>
-                                </div>
-                                <div class="col-sm-4" id="mapdiv" style="text-align: center">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                    <b>MAP</b>
-                                    <div id="map" class="chartheight"></div>
-                                </div>
-                                <div class=" col-sm-4 " id="ttfudiv" style="text-align: center">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                    <b>TTFU</b>
-                                    <div id="ttfu" class="chartheight"></div>
-                                    <div id="ttfuspan"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col5" id="matchdiv" style="text-align: center">
-                        <div class="panel  panel-default">
-                            <div class="panel-heading">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                <h5><b>MATCH</b></h5>
-                            </div>
-                            <div class="panel-body" style="height: 190px;">
-                                <div id="match" class="chartheight"></div>
-                                <div id="matchspan"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                  <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" >
-                            <h4><b>xVERBOSE LOG</b></h4>
-                        </div>
-                            <div id="verboselog" style="overflow:scroll ;height:300px" >
+                            <div id="verboselog" style="overflow: scroll; height: 200px">
                                 <table class="table table-fixed table-condensed">
                                     <thead>
                                         <tr>
@@ -611,12 +627,37 @@
                                         </tr>
                                     </thead>
                                     <tbody id="tblveboselog">
-
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                      </div>
+                           </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style=" padding-top:5px;padding-bottom:5px">
+                                    <h4 style="margin-top:5px"><b>File Statistic</b></h4>
+                                </div>
+                                <div id="dvstatastic"  style="height: 50px">
+                                <table class="table table-fixed table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>TotalRows</th>
+                                            <th>Mapped</th>
+                                            <th>Unmapped</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblstatastic">
+                                    </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                            </div>
+                    </div>
                 </div>
 
                 <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
@@ -663,16 +704,16 @@
                                 </div>
                                 </div>--%>
 
-                <div class="form-group row">
+                <%--                <div class="form-group row">
                     <div class="col-sm-4">
                         <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
                         <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
                     </div>
-                </div>
+                </div>--%>
             </div>
-            <div class="modal-footer">
+           <%-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            </div>--%>
         </div>
     </div>
     <script>
