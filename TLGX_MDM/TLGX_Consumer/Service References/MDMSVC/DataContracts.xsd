@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataContracts" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataContracts" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
-  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Net" />
-  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Net" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
   <xs:complexType name="ArrayOfDC_Accomodation">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accomodation" nillable="true" type="tns:DC_Accomodation" />
@@ -85,6 +86,7 @@
       <xs:element minOccurs="0" name="StreetNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SuburbDowntown" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalFloors" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
       <xs:element minOccurs="0" name="TotalRooms" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Town" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="YearBuilt" nillable="true" type="xs:string" />
@@ -505,6 +507,7 @@
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CompanyHotelId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InsertFrom" nillable="true" type="xs:boolean" />
@@ -516,6 +519,8 @@
       <xs:element minOccurs="0" name="Searchfrom" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Starrating" nillable="true" type="xs:string" />
       <xs:element name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_Search_RQ" nillable="true" type="tns:DC_Accomodation_Search_RQ" />
@@ -841,4 +846,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bounds" nillable="true" type="tns:Bounds" />
+  <xs:complexType name="DC_FileProgressDashboard">
+    <xs:sequence>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="FileStatistics" nillable="true" type="q9:ArrayOfDC_SupplierImportFile_Statistics" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ProgressLog" nillable="true" type="q10:ArrayOfDC_SupplierImportFile_Progress" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="VerboseLog" nillable="true" type="q11:ArrayOfDC_SupplierImportFile_VerboseLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_FileProgressDashboard" nillable="true" type="tns:DC_FileProgressDashboard" />
 </xs:schema>

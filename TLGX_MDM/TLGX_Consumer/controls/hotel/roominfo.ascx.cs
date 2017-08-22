@@ -230,7 +230,7 @@ namespace TLGX_Consumer.controls.hotel
         {
             //int index = Convert.ToInt32(e.CommandArgument);
 
-            
+
 
             if (e.CommandName.ToString() == "Select")
             {
@@ -256,22 +256,26 @@ namespace TLGX_Consumer.controls.hotel
 
                 if (ddlCompanyRoomCategory.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
-                    ddlCompanyRoomCategory.SelectedIndex = ddlCompanyRoomCategory.Items.IndexOf(ddlCompanyRoomCategory.Items.FindByText(rowView.CompanyRoomCategory.ToString()));
+                    if (Convert.ToString(rowView.CompanyRoomCategory) != null)
+                        ddlCompanyRoomCategory.SelectedIndex = ddlCompanyRoomCategory.Items.IndexOf(ddlCompanyRoomCategory.Items.FindByText(rowView.CompanyRoomCategory.ToString()));
                 }
 
                 if (ddlBedType.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
-                    ddlBedType.SelectedIndex = ddlBedType.Items.IndexOf(ddlBedType.Items.FindByText(rowView.BedType.ToString()));
+                    if (Convert.ToString(rowView.BedType) != null)
+                        ddlBedType.SelectedIndex = ddlBedType.Items.IndexOf(ddlBedType.Items.FindByText(rowView.BedType.ToString()));
                 }
 
                 if (ddlBathRoomType.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
-                    ddlBathRoomType.SelectedIndex = ddlBathRoomType.Items.IndexOf(ddlBathRoomType.Items.FindByText(rowView.BathRoomType.ToString()));
+                    if (Convert.ToString(rowView.BathRoomType) != null)
+                        ddlBathRoomType.SelectedIndex = ddlBathRoomType.Items.IndexOf(ddlBathRoomType.Items.FindByText(rowView.BathRoomType.ToString()));
                 }
 
                 if (ddlSmoking.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
-                    ddlSmoking.SelectedIndex = ddlSmoking.Items.IndexOf(ddlSmoking.Items.FindByText(rowView.Smoking.ToString()));
+                    if (Convert.ToString(rowView.Smoking) != null)
+                        ddlSmoking.SelectedIndex = ddlSmoking.Items.IndexOf(ddlSmoking.Items.FindByText(rowView.Smoking.ToString()));
                 }
 
 

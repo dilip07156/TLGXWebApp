@@ -13,6 +13,15 @@ namespace TLGX_Consumer.staticdata {
     public partial class velocityReport {
         
         /// <summary>
+        /// updatevelocityDash control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatevelocityDash;
+        
+        /// <summary>
         /// ddlSupplierName control.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.Label lblcountry;
         
         /// <summary>
+        /// lblcountryestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcountryestimate;
+        
+        /// <summary>
         /// gvcity control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblcity;
+        
+        /// <summary>
+        /// lblcityestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblcityestimate;
         
         /// <summary>
         /// gvproduct control.
@@ -139,6 +166,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.Label lblproduct;
         
         /// <summary>
+        /// lblproductestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblproductestimate;
+        
+        /// <summary>
         /// gvroomtype control.
         /// </summary>
         /// <remarks>
@@ -157,6 +193,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.Label lblhotelroom;
         
         /// <summary>
+        /// lblhotelroomestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblhotelroomestimate;
+        
+        /// <summary>
         /// gvactivity control.
         /// </summary>
         /// <remarks>
@@ -173,5 +218,14 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblactivity;
+        
+        /// <summary>
+        /// lblactivityestimate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblactivityestimate;
     }
 }

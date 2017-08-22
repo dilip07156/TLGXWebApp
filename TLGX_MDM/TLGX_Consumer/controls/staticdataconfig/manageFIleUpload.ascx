@@ -1,24 +1,176 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
+<script>
+    function getChartData(fileid) {
+        if (fileid != null && fileid != "") {
+            //console.log(fileid);
+            
+            var colorarray = ["#007F00", "#faebd7"];
+            var readarray = [];
+            var txarray = [];
+            var maparray = [];
+            var ttfuarray = [];
+            var matcharray = [];
+            $.ajax({
+                type: 'GET',
+                url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
+                dataType: "json",
+                success: function (result) {
+                    $("#read").empty();
+                    $("#map").empty();
+                    $("#tx").empty();
+                    $("#match").empty();
+                    $("#ttfu").empty();
+                    $("#currentbatch").empty();
+                    $("#totalbatch").empty();
+                    $('#tblveboselog').empty();
+                    // debugger;
+                    //process charts
+                    for (var inode = 0; inode < result.ProgressLog.length; inode++) {
+                        if (result.ProgressLog[inode].Step == "READ") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            readarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                readarray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else if (result.ProgressLog[inode].Step == "TRANSFORM") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            txarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                txarray.push({ label: "Remaining", value: b });
+                            }
+                            $("#currentbatch").append(result.ProgressLog[inode].CurrentBatch);
+                            $("#totalbatch").append(result.ProgressLog[inode].TotalBatch);
+                        }
+                        else if (result.ProgressLog[inode].Step == "MAP") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            maparray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                maparray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else if (result.ProgressLog[inode].Step == "MATCH") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            matcharray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                matcharray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            ttfuarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                ttfuarray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                    }
+                    Morris.Donut({
+                        element: 'read',
+                        data: readarray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    Morris.Donut({
+                        element: 'tx',
+                        data: txarray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    Morris.Donut({
+                        element: 'map',
+                        data: maparray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    //Morris.Donut({
+                    //    element: 'ttfu',
+                    //    data:ttfuarray,
+                    //    colors: colorarray,
+                    //    resize: true,
+                    //hideHover: "always"
+                    //});
+                    Morris.Donut({
+                        element: 'match',
+                        data: matcharray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    //verbose log
+                    for (var i = 0; i < result.VerboseLog.length; i++) {
+                        //var dateString = result.VerboseLog[i].TimeStamp.substr(6);;
+                        //var currentTime = new Date(parseInt(dateString));
+                        //var month = currentTime.getMonth() + 1;
+                        //var day = currentTime.getDate();
+                        //var year = currentTime.getFullYear();
+                        //var date = day + "/" + month + "/" + year;
+                        var d = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                        var date = d.toLocaleString("en-GB");
+                        var tr;
+                        tr = $('<tr/>');
+                        tr.append("<td>" + date + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
+                        $("#verboselog table").append(tr);
+                    }
+
+                },
+                error: function () {
+                    //  debugger;
+                    alert("Error fetching filr processing data");
+                },
+            });
+        }
+    }
+
+</script>
 <script type="text/javascript">
+    var x = setInterval(myTimer, 3000);
+    function myTimer() {
+        var d = new Date();
+        var hdnval = document.getElementById("hdnFileId").value;
+        //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+        getChartData(hdnval);
+        var elem = document.getElementById('verboselog');
+        //elem.scrollTop = elem.scrollHeight;
+    }
     function showFileUpload() {
         $("#moFileUpload").modal('show');
     }
-    //function closeFileUpload() {
-    //    $("#moFileUpload").modal('hide');
-    //}
-    function showDetailsModal() {
-        $("#moViewDetials").modal('show');
+    function closeFileUpload() {
+        $("#moFileUpload").modal('hide');
     }
+    function showDetailsModal(fileid) {
+        $("#moViewDetials").modal('show');
+        $('#moViewDetials').one('shown.bs.modal', function () {
+           // debugger;
+            //getChartData(fileid);
+            document.getElementById("hdnFileId").value = fileid;
+        });
+        $('#moViewDetials').on('hidden.bs.modal', function () {
+            debugger;
+            window.clearInterval(x);
+        });
+    }
+    
     function closeDetailsModal() {
         $("#moViewDetials").modal('hide');
     }
+
     function pageLoad(sender, args) {
         var hdnViewDetailsFlag = $('#<%=hdnViewDetailsFlag.ClientID%>').val();
 
         if (hdnViewDetailsFlag == "true") {
-            //closeFileUpload();
             closeDetailsModal();
         }
         $('#hdnViewDetailsFlag').val("false");
@@ -26,27 +178,39 @@
     function OnClientUploadComplete() {
         var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
         var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
-         <%--  var rfventity = document.getElementById("<%=rfvddlSupplierList.ClientID%>");
-        var rfvSupplier = document.getElementById("<%=rfvddlSupplierList.ClientID%>");
-        debugger;
-        if (typeof ddlSupplierList != 'undefined')
-            if (ddlSupplierList.value == '0') {
-                ValidatorEnable(rfvSupplier, true);
-                return false;
-            }
-        if (typeof ddlEntityList != 'undefined')
-            if (ddlEntityList.value == '0') {
-                ValidatorEnable(rfventity, true);
-                return false;
-            }--%>
-        //ddlSupplierList.value = "0";
-        //ddlEntityList.value = "0";
-
     }
 </script>
+<script src="../../Scripts/ChartJS/raphael-min.js"></script>
+<script src="../../Scripts/ChartJS/morris.min.js"></script>
 <style>
+    .morris-hover {
+        opacity: 0;
+    }
+
     .tablestyle {
         border-bottom: 1px solid #dddddd;
+    }
+
+    @media (min-width: 768px) {
+        .modal-xl {
+            width: 80%;
+            max-width: 1200px;
+        }
+    }
+
+    .chartheight {
+        height: 150px;
+    }
+
+    @media(min-width: 992px) {
+        .col5 {
+            width: 20%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
     }
 </style>
 <asp:UpdatePanel ID="updUserGrid" runat="server">
@@ -127,11 +291,11 @@
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </button>
                                                 </span>
-                                                
+
                                             </div>
                                             <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
-                                                <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
-                                                <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
+                                            <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                            <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
                                         </div>
                                     </div>
 
@@ -231,8 +395,12 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true" OnClientClick="showDetailsModal();">
-                                    <span aria-hidden="true">View Details</span>
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true">
+                                            <%--OnClientClick='<%# "showDetailsModal('\''"+ Convert.ToString(Eval("SupplierImportFile_Id")) + "'\'');" %>'--%>
+      <%--OnClientClicking='<%#string.Format("showDetailsModal('{0}');",Eval("SupplierImportFile_Id ")) %>'                                            
+                                           <%-- showDetailsModal('<%# Eval("SupplierImportFile_Id")%>');--%>
+                                            
+                                                 <span aria-hidden="true">View Details</span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -328,13 +496,14 @@
     </div>
 </div>
 
-<div class="modal fade" id="moViewDetials" role="dialog">
-    <div class="modal-dialog modal-md">
+<div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
             <div class="modal-header">
                 <div class="panel-title">
                     <h4 class="modal-title">File Status</h4>
+                    <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
                 </div>
             </div>
 
@@ -342,100 +511,173 @@
                 <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand">
-
+                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
                             <ItemTemplate>
+
                                 <div class="col-lg-12">
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Supplier</label>
+                                    <div class="col-md-4">
+                                        <label class="col-form-label">Supplier</label>
                                         <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Entity</label>
+                                    <div class="col-md-4">
+                                        <label class="col-form-label">Entity</label>
                                         <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Path</label>
+                                    <div class="col-md-4">
+                                        <label class="col-form-label">Path</label>
                                         <asp:TextBox ID="txtPath" runat="server" ReadOnly="true" Text='<%# Bind("SavedFilePath") %>' CssClass="form-control"></asp:TextBox>
+
                                     </div>
 
-                                    <div class="form-group row col-md-12">
-                                        <label class="col-md-4 col-form-label">Status</label>
-                                        <asp:TextBox ID="txtStatus" runat="server" ReadOnly="true" Text='<%# Bind("STATUS") %>' CssClass="form-control"></asp:TextBox>
-                                    </div>
-
-                                    <div>
-
-                                        <asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
-                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
-                                        </asp:LinkButton>
-
-                                        <asp:LinkButton ID="btnNext" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default pull-right" CommandName="Next">
-                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-right"></span>
-                                        </asp:LinkButton>
-
-                                        <%--<asp:Button ID="btnPrevious" OnClick="btnPrevious_Click" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" Text="<" />
-                                        <asp:Button ID="btnNext" runat="server" OnClick="btnNext_Click" Visible="false" CssClass="btn btn-default pull-right" Text=">" />--%>
-                                        <asp:Label ID="lblTotalCount" runat="server"></asp:Label>
-                                        <asp:Repeater ID="rptrErrorLog" runat="server">
-                                            <HeaderTemplate>
-                                                <table class="table table-bordered table-striped">
-                                                    <th>Error Date</th>
-                                                    <th>Error Details</th>
-                                            </HeaderTemplate>
-
-                                            <ItemTemplate>
-                                                <tr>
-                                                    <td><span><%# Eval("Error_DATE") %></span></td>
-
-                                                    <td>
-                                                        <table>
-                                                            <tr class="tablestyle">
-                                                                <td><b>Error Code: </b></td>
-                                                                <td><span><%# Eval("ErrorCode") %></span></td>
-                                                            </tr>
-                                                            <tr class="tablestyle">
-                                                                <td><b>Error Description: </b></td>
-                                                                <td style="word-wrap: break-word;"><span><%# Eval("ErrorDescription") %></span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><b>Error Type: </b></td>
-                                                                <td><span><%# Eval("ErrorType") %></span></td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </ItemTemplate>
-                                            <FooterTemplate>
-                                                </table>
-                                            </FooterTemplate>
-                                        </asp:Repeater>
-                                    </div>
                                 </div>
 
                             </ItemTemplate>
                         </asp:FormView>
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
-                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
-                            </div>
-                        </div>
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="btnDownload" />
                     </Triggers>
                 </asp:UpdatePanel>
+                <br />
+              <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col5" id="readdiv" style="text-align: center">
+                        <div class="panel  panel-default ">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h5><b>READ</b></h5>
+                            </div>
+                            <div class="panel-body" style="height: 190px;">
+                                <div id="read" class="chartheight"></div>
+                                <div id="readspan"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class=" panel panel-default">
+                            <div class="panel-heading" style="height: 44px; text-align: center;">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch"></span>/<span id="totalbatch"></span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TRANSFORM</b>
+                                    <div id="tx" class="chartheight"></div>
+                                    <div id="txspan"></div>
+                                </div>
+                                <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>MAP</b>
+                                    <div id="map" class="chartheight"></div>
+                                </div>
+                                <div class=" col-sm-4 " id="ttfudiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TTFU</b>
+                                    <div id="ttfu" class="chartheight"></div>
+                                    <div id="ttfuspan"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col5" id="matchdiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h5><b>MATCH</b></h5>
+                            </div>
+                            <div class="panel-body" style="height: 190px;">
+                                <div id="match" class="chartheight"></div>
+                                <div id="matchspan"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4><b>xVERBOSE LOG</b></h4>
+                        </div>
+                            <div id="verboselog" style="overflow:scroll ;height:300px" >
+                                <table class="table table-fixed table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Step</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblveboselog">
 
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+
+                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
+                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
+                                </asp:LinkButton>
+
+                                <asp:LinkButton ID="btnNext" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default pull-right" CommandName="Next">
+                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-right"></span>
+                                </asp:LinkButton>
+                                <asp:Label ID="lblTotalCount" runat="server"></asp:Label>
+                                <asp:Repeater ID="rptrErrorLog" runat="server">
+                                    <HeaderTemplate>
+                                        <table class="table table-bordered table-striped">
+                                            <th>Error Date</th>
+                                            <th>Error Details</th>
+                                    </HeaderTemplate>
+
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td><span><%# Eval("Error_DATE") %></span></td>
+
+                                            <td>
+                                                <table>
+                                                    <tr class="tablestyle">
+                                                        <td><b>Error Code: </b></td>
+                                                        <td><span><%# Eval("ErrorCode") %></span></td>
+                                                    </tr>
+                                                    <tr class="tablestyle">
+                                                        <td><b>Error Description: </b></td>
+                                                        <td style="word-wrap: break-word;"><span><%# Eval("ErrorDescription") %></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>Error Type: </b></td>
+                                                        <td><span><%# Eval("ErrorType") %></span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                                </div>
+                                </div>--%>
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
+                        <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+    <script>
+      
+    </script>
 </div>
 
 

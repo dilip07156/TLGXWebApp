@@ -85,46 +85,62 @@ namespace TLGX_Consumer.staticdata
                 {
                     var resultDataForCountry = res[0].MappingStatsFor[iNodes].MappingData;
                      var UnmappedCountry = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    var estimate = res[0].MappingStatsFor[iNodes].Estimate;
+                    string.Format("{0:n0}", UnmappedCountry);
                     gvcountry.DataSource = resultDataForCountry;
                     gvcountry.DataBind();
                     lblcountry.Text = Convert.ToString(UnmappedCountry);
+                    lblcountryestimate.Text = Convert.ToString(estimate);
                     blnIsCountryDataExist = true;
+                    
 
                 }
                 else if (res[0].MappingStatsFor[iNodes].MappingFor == "City")
                 {
                     var resultDataForCity = res[0].MappingStatsFor[iNodes].MappingData;
                     var UnmappedCity = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    string.Format("{0:n0}", UnmappedCity);
                     gvcity.DataSource = resultDataForCity;
                     gvcity.DataBind();
                     lblcity.Text = Convert.ToString(UnmappedCity);
+                    var estimate = res[0].MappingStatsFor[iNodes].Estimate;
+                    lblcityestimate.Text = Convert.ToString(estimate);
                     blnIsCityDataExist = true;
                 }
                 else if (res[0].MappingStatsFor[iNodes].MappingFor == "Product")
                 {
                     var resultDataForProduct = res[0].MappingStatsFor[iNodes].MappingData;
                     var UnmappedProduct = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    string.Format("{0:n0}", UnmappedProduct);
                     gvproduct.DataSource = resultDataForProduct;
                     gvproduct.DataBind();
                     lblproduct.Text = Convert.ToString(UnmappedProduct);
+                    var estimate = res[0].MappingStatsFor[iNodes].Estimate;
+                    lblproductestimate.Text = Convert.ToString(estimate);
                     blnProductDataExist = true;
                 }
                 else if (res[0].MappingStatsFor[iNodes].MappingFor == "Activity")
                 {
                     var resultDataForActivity = res[0].MappingStatsFor[iNodes].MappingData;
                    var  UnmappedActivity = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    string.Format("{0:n0}", UnmappedActivity);
                     gvactivity.DataSource = resultDataForActivity;
                     gvactivity.DataBind();
                     lblactivity.Text = Convert.ToString(UnmappedActivity);
+                    var estimate = res[0].MappingStatsFor[iNodes].Estimate;
+                    lblactivityestimate.Text = Convert.ToString(estimate);
                     blnActivityDataExist = true;
                 }
                 else if (res[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom")
                 {
                     var resultDataForhotelRoom = res[0].MappingStatsFor[iNodes].MappingData;
                     var UnmappedHotelroom = res[0].MappingStatsFor[iNodes].Unmappeddata;
+                    string.Format("{0:n0}", UnmappedHotelroom);
                     gvroomtype.DataSource = resultDataForhotelRoom;
                     gvroomtype.DataBind();
                     lblhotelroom.Text = Convert.ToString(UnmappedHotelroom);
+                    var estimate = res[0].MappingStatsFor[iNodes].Estimate;
+                    lblhotelroomestimate.Text = Convert.ToString(estimate);
                     blnHotelroomDataExist = true;
                 }
             }
@@ -140,6 +156,15 @@ namespace TLGX_Consumer.staticdata
         protected void btnViewStatus_Click(object sender, EventArgs e)
         {
             getData(false);
+        }
+        private int getEstimatedate(DateTime fromdate,DateTime todate,int total,int unmapped)
+        {
+            int ans = 0;
+            var days = (todate - fromdate).TotalDays;
+            var perday = (total / days);
+             ans = Convert.ToInt32(unmapped / perday);
+            return ans;
+
         }
     }
 

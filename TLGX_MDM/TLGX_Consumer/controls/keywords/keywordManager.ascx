@@ -1,11 +1,29 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="keywordManager.ascx.cs" Inherits="TLGX_Consumer.controls.keywords.keywordManager" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <link href="../../Content/bootstrap-select.min.css" rel="stylesheet" />
+<style>
+    @media (min-width: 768px) {
+        .modal-xl {
+            width: 80%;
+            max-width: 1200px;
+        }
+    }
+</style>
 <script type="text/javascript">
+
+    $(document).ready(ajustamodal);
+    $(window).resize(ajustamodal);
+    function ajustamodal() {
+        var altura = $(window).height() - 120; //value corresponding to the modal heading + footer
+        $(".modal-scroll").css({ "height": altura, "overflow-y": "auto" });
+    }
+
     var count;
     function showModal() {
         $("#moKeywordMapping").modal('show');
         count = 1;
+        $('.AttributeLevel_Hide').collapse('hide');
+        $('.AttributeLevel_RoomInfo_Hide').collapse('hide');
     }
     function closeModal() {
         $("#moKeywordMapping").modal('hide');
@@ -18,7 +36,10 @@
     function EnableDisableValidationForIcons(chk) {
         var valName = document.getElementById("<%=rfvicondropdownmenu.ClientID%>");
         ValidatorEnable(valName, chk.checked);
+
+        chk.checked == true ? $('#MainContent_keywordManager_dvAttrDetails').css("display", "block") : $('#MainContent_keywordManager_dvAttrDetails').css("display", "none");
     }
+
     function ValidateCheckBoxList(sender, args) {
         var checkBoxList = document.getElementById("<%=chklistEntityFor.ClientID %>");
         var checkboxes = checkBoxList.getElementsByTagName("input");
@@ -32,6 +53,28 @@
         args.IsValid = isValid;
     }
 
+    function hideshowAttrLvl(ctrl) {
+        //debugger;
+        //Saves in a variable the wanted div
+        var selector = '.AttributeLevel_' + $('#' + ctrl).find("option:selected").text().replace(' ', '');
+
+        //hide all elements
+        $('.AttributeLevel_Hide').collapse('hide');
+
+        //show only element connected to selected option
+        $(selector).collapse('show');
+    };
+
+    function hideshowAttrLvlRoomSchema(ctrl) {
+        //Saves in a variable the wanted div
+        var selector = '.AttributeLevel_RoomInfo_' + $('#' + ctrl).find("option:selected").text().replace(' ', '');
+
+        //hide all elements
+        $('.AttributeLevel_RoomInfo_Hide').collapse('hide');
+
+        //show only element connected to selected option
+        $(selector).collapse('show');
+    };
 
 </script>
 
@@ -220,8 +263,8 @@
 </asp:UpdatePanel>
 
 <!-- Add MODAL -->
-<div class="modal fade" id="moKeywordMapping" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="moKeywordMapping" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -229,7 +272,7 @@
                 </h4>
             </div>
 
-            <div class="modal-body">
+            <div class="modal-body modal-scroll">
                 <asp:UpdatePanel ID="pnlupdate" runat="server">
                     <ContentTemplate>
 
@@ -258,10 +301,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6">
+                            <%--<div class="col-md-6">
                                 <label class="control-label">Total Alias Records :</label>
                                 <asp:Label runat="server" ID="lblTotalAlias" Text="0" CssClass="control-label"></asp:Label>
-                            </div>
+                            </div>--%>
 
                             <div class="col-md-12">
                                 <div class="form-group pull-right">
@@ -285,74 +328,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><strong>Keyword</strong></div>
                                     <div class="panel-body">
-                                        <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="txtAddNewKeyword">
-                                                Keyword
-                                                <asp:RequiredFieldValidator ID="vldtxtKeyword" runat="server" ControlToValidate="txtAddNewKeyword"
-                                                    ErrorMessage="Keyword cannot be empty." Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
-                                                </asp:RequiredFieldValidator>
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <asp:TextBox ID="txtAddNewKeyword" runat="server" CssClass="form-control"></asp:TextBox>
-                                            </div>
-                                            <asp:HiddenField ID="hdnKeywordId" runat="server" />
-                                        </div>
 
-                                        <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="txtAddNewKeyword">
-                                                Sequence
-                                                <asp:RequiredFieldValidator ID="vldtxtKeywordSequence" runat="server" ControlToValidate="txtKeywordSequence"
-                                                    ErrorMessage="Keyword Sequence cannot be empty." Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
-                                                </asp:RequiredFieldValidator>
-                                                <cc1:FilteredTextBoxExtender ID="axfte_txtKeywordSequence" runat="server" FilterType="Numbers" TargetControlID="txtKeywordSequence" />
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <asp:TextBox ID="txtKeywordSequence" runat="server" CssClass="form-control" MaxLength="3"></asp:TextBox>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="chkNewKeywordAttribute">Attribute</label>
-                                            <div class="col-sm-8">
-                                                <asp:CheckBox ID="chkNewKeywordAttribute" onclick="EnableDisableValidationForIcons(this);" runat="server" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="icondropdownmenu">
-                                                Icon&nbsp;
-                                                <asp:RequiredFieldValidator ID="rfvicondropdownmenu" runat="server" ControlToValidate="ddlglyphiconForAttributes"
-                                                    ErrorMessage="Please select icon." InitialValue="0" Text="*" Enabled="false" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
-                                                </asp:RequiredFieldValidator>
-                                                <span id="spanglyphicon" runat="server" class=""></span>
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <%--<select runat="server" id="glyphiconForAttributes" onchange="SetGlyphicon()" data-show-icon="true" class="form-control">
-                                                    <option value="0">select</option>
-                                                </select>--%>
-
-                                                <asp:DropDownList runat="server" ID="ddlglyphiconForAttributes" onchange="SetGlyphicon(this)" data-show-icon="true" CssClass="form-control">
-                                                    <asp:ListItem Value="0">Select</asp:ListItem>
-                                                </asp:DropDownList>
-
-                                                <%-- <ul class="nav navbar-nav">
-                                                    <li class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">-- Select --</a>
-                                                        <ul class="dropdown-menu" id="icondropdownmenu">
-                                                            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Messages <span class="badge pull-right">42 </span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-                                                            <li class="divider"></li>
-                                                            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>--%>
-                                            </div>
-                                        </div>
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="chklistEntityFor">
                                                 Entity For
@@ -370,6 +346,176 @@
 
                                             </div>
                                         </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4" for="txtAddNewKeyword">
+                                                Keyword
+                                                <asp:RequiredFieldValidator ID="vldtxtKeyword" runat="server" ControlToValidate="txtAddNewKeyword"
+                                                    ErrorMessage="Keyword cannot be empty." Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
+                                                </asp:RequiredFieldValidator>
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <asp:TextBox ID="txtAddNewKeyword" runat="server" CssClass="form-control"></asp:TextBox>
+                                            </div>
+                                            <asp:HiddenField ID="hdnKeywordId" runat="server" />
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4" for="txtKeywordSequence">
+                                                Sequence
+                                                <asp:RequiredFieldValidator ID="vldtxtKeywordSequence" runat="server" ControlToValidate="txtKeywordSequence"
+                                                    ErrorMessage="Keyword Sequence cannot be empty." Text="*" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
+                                                </asp:RequiredFieldValidator>
+                                                <cc1:FilteredTextBoxExtender ID="axfte_txtKeywordSequence" runat="server" FilterType="Numbers" TargetControlID="txtKeywordSequence" />
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <asp:TextBox ID="txtKeywordSequence" runat="server" CssClass="form-control" MaxLength="3"></asp:TextBox>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4" for="chkNewKeywordAttribute">Attribute</label>
+                                            <div class="col-sm-8">
+                                                <asp:CheckBox ID="chkNewKeywordAttribute" onclick="EnableDisableValidationForIcons(this);" runat="server" />
+                                                <%--data-toggle="collapse" data-target="#MainContent_keywordManager_dvAttrDetails" --%>
+                                            </div>
+                                        </div>
+
+                                        <div class="well">
+
+                                            <div id="dvAttrDetails" runat="server">
+
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="icondropdownmenu">
+                                                        Icon&nbsp;
+                                                <asp:RequiredFieldValidator ID="rfvicondropdownmenu" runat="server" ControlToValidate="ddlglyphiconForAttributes"
+                                                    ErrorMessage="Please select icon." InitialValue="0" Text="*" Enabled="false" ValidationGroup="vldgrpKeyword" CssClass="text-danger">
+                                                </asp:RequiredFieldValidator>
+                                                        <span id="spanglyphicon" runat="server" class=""></span>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList runat="server" ID="ddlglyphiconForAttributes" onchange="SetGlyphicon(this)" data-show-icon="true" CssClass="form-control">
+                                                            <asp:ListItem Value="0">Select</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlAttrType">
+                                                        Attribute Type
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList runat="server" ID="ddlAttrType" CssClass="form-control">
+                                                            <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                            <asp:ListItem Value="1">Extract & Strip</asp:ListItem>
+                                                            <asp:ListItem Value="2">Extract Only</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlAttrLvl">
+                                                        Attribute Level
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList runat="server" ID="ddlAttrLvl" CssClass="form-control ddlAttrLvl" onchange="hideshowAttrLvl('MainContent_keywordManager_ddlAttrLvl');">
+                                                            <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                            <asp:ListItem Value="1">Room Info</asp:ListItem>
+                                                            <asp:ListItem Value="2">Room Amenity</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row AttributeLevel_Hide AttributeLevel_RoomAmenity collapse">
+                                                    <label class="control-label col-sm-4" for="ddlAmentityType">
+                                                        Amentity Type
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList runat="server" ID="ddlAmentityType" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                                <div class="AttributeLevel_Hide AttributeLevel_RoomInfo collapse">
+
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-4" for="ddlAmentityType">
+                                                            Location
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList runat="server" ID="ddlRoomSchemaLoc" CssClass="form-control ddlRoomSchemaLoc" onchange="hideshowAttrLvlRoomSchema('MainContent_keywordManager_ddlRoomSchemaLoc');">
+                                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                                <asp:ListItem Value="1">Number Of Rooms</asp:ListItem>
+                                                                <asp:ListItem Value="2">Room Category</asp:ListItem>
+                                                                <asp:ListItem Value="3">Floor Name</asp:ListItem>
+                                                                <asp:ListItem Value="4">Floor Number</asp:ListItem>
+                                                                <asp:ListItem Value="5">Room View</asp:ListItem>
+                                                                <asp:ListItem Value="6">Room Decor</asp:ListItem>
+                                                                <asp:ListItem Value="7">Bed Type</asp:ListItem>
+                                                                <asp:ListItem Value="8">Bathroom Type</asp:ListItem>
+                                                                <asp:ListItem Value="9">Smoking</asp:ListItem>
+                                                                <asp:ListItem Value="10">Room Size</asp:ListItem>
+                                                                <asp:ListItem Value="11">Inter Rooms</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row AttributeLevel_RoomInfo_Hide AttributeLevel_RoomInfo_RoomCategory collapse">
+                                                        <label class="control-label col-sm-4" for="ddlRoomInfo_Category">
+                                                            Room Category
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList runat="server" ID="ddlRoomInfo_Category" CssClass="form-control" AppendDataBoundItems="true">
+                                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row AttributeLevel_RoomInfo_Hide AttributeLevel_RoomInfo_BedType collapse">
+                                                        <label class="control-label col-sm-4" for="ddlRoomInfo_BedType">
+                                                            Bed Type
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList runat="server" ID="ddlRoomInfo_BedType" CssClass="form-control" AppendDataBoundItems="true">
+                                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row AttributeLevel_RoomInfo_Hide AttributeLevel_RoomInfo_BathroomType collapse">
+                                                        <label class="control-label col-sm-4" for="ddlRoomInfo_BathroomType">
+                                                            Bathroom Type
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList runat="server" ID="ddlRoomInfo_BathroomType" CssClass="form-control" AppendDataBoundItems="true">
+                                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row AttributeLevel_RoomInfo_Hide AttributeLevel_RoomInfo_Smoking collapse">
+                                                        <label class="control-label col-sm-4" for="ddlRoomInfo_Smoking">
+                                                            Smoking?
+                                                        </label>
+                                                        <div class="col-sm-8">
+                                                            <asp:DropDownList runat="server" ID="ddlRoomInfo_Smoking" CssClass="form-control">
+                                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                                                <asp:ListItem Value="1">YES</asp:ListItem>
+                                                                <asp:ListItem Value="2">NO</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+
+
+
 
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="btnSave"></label>

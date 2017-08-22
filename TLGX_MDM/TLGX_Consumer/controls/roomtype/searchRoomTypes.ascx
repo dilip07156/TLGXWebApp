@@ -1,71 +1,108 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchRoomTypes.ascx.cs" Inherits="TLGX_Consumer.controls.roomtype.searchRoomTypes" %>
+<script src="../../../Scripts/autosize.min.js"></script>
 <script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip({ 'placement': 'top' });
+    $(document).ready(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
     });
+
+    function pageLoad(sender, args) {
+        var ta = document.querySelectorAll('textarea');
+        autosize(ta);
+    }
 </script>
+<style>
+    .floatingButton {
+        position: fixed;
+        bottom: 15px;
+        z-index: 1000;
+    }
+</style>
 <script type="text/javascript">
+
     function SelectedRow(element) {
         var row = $(element).parent().parent().closest('tr').next();
         if (row != null)
             if (row.find('.dropdownforBind') != null)
                 row.find('.dropdownforBind').focus();
     }
-    function fillDropDown(record, onClick) {
-        if (onClick) {
-            var currentRow = $(record).parent().parent();
-            var acco_id = currentRow.find('.hidnAcoo_Id').val();
-            var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id').val();
-            var ddlRoomInfo = currentRow.find('.dropdownforBind');
-            if (acco_id != null && ddlRoomInfo != null) {
-                var selectedText = null;
-                var selectedOption = null;
-                var selectedVal = null;
-                if (ddlRoomInfo.find("option").length > 0) {
-                    selectedText = ddlRoomInfo.find("option:selected").text();
-                    selectedOption = ddlRoomInfo.find("option");
-                    selectedVal = ddlRoomInfo.val();
-                }
-                if (ddlRoomInfo != null && ddlRoomInfo.is("select")) {
-                    $.ajax({
-                        url: '../../../Service/RoomCategoryAutoComplete.ashx',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        data: {
-                            'acco_id': acco_id,
-                            'type': 'fillcategory'
-                        },
-                        responseType: "json",
-                        success: function (result) {
-                            if (ddlRoomInfo.find("option:not(:first)").length > 0) {
-                                ddlRoomInfo.find("option:not(:first)").remove();
-                            }
-                            var value = JSON.stringify(result);
-                            var listItems = '';
-                            if (result != null) {
-                                for (var i = 0; i < result.length; i++) {
-                                    listItems += "<option value='" + result[i].Accommodation_RoomInfo_Id + "'>" + result[i].RoomCategory + "</option>";
-                                }
-                                ddlRoomInfo.append(listItems);
-                            }
-                            if (selectedText != null && selectedText != "Select")
-                                ddlRoomInfo.find("option").prop('selected', false).filter(function () {
-                                    return $(this).text() == selectedText;
-                                }).attr("selected", "selected");
-                            else if (hdnAccommodation_RoomInfo_Id != null && hdnAccommodation_RoomInfo_Id != '') {
-                                ddlRoomInfo.find("option").prop('selected', false).filter(function () {
-                                    return $(this).val() == hdnAccommodation_RoomInfo_Id;
-                                }).attr("selected", "selected");
-                            }
-                        },
-                        failure: function () {
-                        }
-                    });
-                }
+    //function fillDropDown(record, onClick) {
 
-            }
-        }
-    }
+    //    if (onClick) {
+    //        var currentRow = $(record).parent().parent();
+    //        var acco_id = currentRow.find('.hidnAcoo_Id').val();
+    //        var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id');
+
+    //        var ddlRoomInfo = currentRow.find('.dropdownforBind');
+    //        if (acco_id != null && ddlRoomInfo != null) {
+    //            var selectedText = null;
+    //            var selectedOption = null;
+    //            var selectedVal = null;
+    //            if (ddlRoomInfo.find("option").length > 1) {
+    //                selectedText = ddlRoomInfo.find("option:selected").text();
+    //                selectedOption = ddlRoomInfo.find("option");
+    //                selectedVal = ddlRoomInfo.val();
+    //            }
+    //            if (ddlRoomInfo != null && ddlRoomInfo.is("select")) {
+    //                $.ajax({
+    //                    url: '../../../Service/RoomCategoryAutoComplete.ashx',
+    //                    contentType: "application/json; charset=utf-8",
+    //                    dataType: "json",
+    //                    data: {
+    //                        'acco_id': acco_id,
+    //                        'type': 'fillcategory'
+    //                    },
+    //                    responseType: "json",
+    //                    success: function (result) {
+    //                        //if (ddlRoomInfo.find("option:not(:first)").length > 0) {
+    //                        ddlRoomInfo.find("option:not(:first)").remove();
+    //                        //}
+
+    //                        var value = JSON.stringify(result);
+    //                        var listItems = '';
+    //                        if (result != null) {
+    //                            for (var i = 0; i < result.length; i++) {
+    //                                listItems += "<option value='" + result[i].Accommodation_RoomInfo_Id + "'>" + result[i].RoomCategory + "</option>";
+    //                            }
+    //                            ddlRoomInfo.append(listItems);
+    //                        }
+    //                        $('option:selected', ddlRoomInfo).remove();
+    //                        if (selectedText != null && selectedText != "Select")
+    //                            ddlRoomInfo.find("option").prop('selected', false).filter(function () {
+    //                                return $(this).text() == selectedText;
+    //                            }).attr("selected", "selected");
+    //                        else if (hdnAccommodation_RoomInfo_Id != null && hdnAccommodation_RoomInfo_Id.val() != '') {
+    //                            ddlRoomInfo.find("option").prop('selected', false).filter(function () {
+    //                                return $(this).val() == hdnAccommodation_RoomInfo_Id.val();
+    //                            }).attr("selected", "selected");
+    //                        }
+    //                        hdnAccommodation_RoomInfo_Id.val(ddlRoomInfo.val());
+    //                        onClick = false;
+    //                    },
+    //                    failure: function () {
+    //                    }
+    //                });
+    //            }
+
+    //        }
+    //    }
+    //}
+    //function RemoveExtra(record, onClick) {
+    //    if (!onClick) {
+    //        debugger;
+    //        var currentRow = $(record).parent().parent();
+    //        var ddlRoomInfo = currentRow.find('.dropdownforBind');
+    //        var selectedText = ddlRoomInfo.find("option:selected").text();
+    //        var selectedVal = ddlRoomInfo.val();
+    //        ddlRoomInfo.find("option").remove();
+    //        var listItems = "<option value='0'>Select</option>";
+    //        listItems += "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
+    //        ddlRoomInfo.append(listItems);
+    //        var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id');
+    //        hdnAccommodation_RoomInfo_Id.val(selectedVal);
+
+    //    }
+    //}
 </script>
 
 <div class="navbar">
@@ -195,19 +232,10 @@
                                 <asp:Label ID="lblSupplierRoomSearchCount" runat="server" Text="0"></asp:Label>)</a>
                                     </h4>
                                 </div>
-
-
-
-                                <div class="col-lg-4  pull right">
-
-                                    <div class="form-group">
-                                        <asp:Button ID="btnMapSelectedBySupplier" OnClick="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
-                                        <asp:Button ID="btnMapAllBySupplier" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
-
-                                        <asp:Button ID="btnTTFUSelectedBySupplier" runat="server" OnClick="btnTTFUSelectedBySupplier_Click" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU Selected" />
-                                        <asp:Button ID="btnTTFUAllBySupplier" OnClick="btnTTFUAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU All" />
-                                    </div>
+                                <div class="col-lg-4 ">
+                                    &nbsp;
                                 </div>
+
                                 <div class="col-lg-2">
                                     <div class="form-group pull-right" id="divPagging" runat="server" style="display: none;">
                                         <div class="input-group">
@@ -223,7 +251,19 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="floatingButton">
+                                <asp:UpdatePanel runat="server" ID="upnlbtns">
+                                    <ContentTemplate>
+                                        <asp:Button ID="btnMapSelectedBySupplier" OnClick="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
+                                        <asp:Button ID="btnMapAllBySupplier" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
+
+                                        <asp:Button ID="btnTTFUSelectedBySupplier" runat="server" OnClick="btnTTFUSelectedBySupplier_Click" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU Selected" />
+                                        <asp:Button ID="btnTTFUAllBySupplier" OnClick="btnTTFUAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU All" />
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+                            </div>
                         </div>
+
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
@@ -234,7 +274,7 @@
                                         OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
                                         <Columns>
                                             <asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />
-                                            <asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="12%" />
+                                            <asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="10%" />
                                             <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
                                             <asp:TemplateField HeaderText="TLGX Rooms">
                                                 <ItemTemplate>
@@ -246,7 +286,7 @@
                                             <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
                                             <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
                                                 <ItemTemplate>
-                                                   <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
+                                                    <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
                                                     <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
                                                     <a href="#" data-toggle="popover" class="glyphicon glyphicon-info-sign" title='<%#Convert.ToString(Eval("RoomDescription")) %>' data-content='<%#Server.HtmlDecode(Convert.ToString(Eval("RoomDescription"))) %>'></a>
                                                 </ItemTemplate>
@@ -256,18 +296,15 @@
                                                     <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="System Created Room Info">
+                                            <asp:TemplateField HeaderText="TLGX Room Info">
                                                 <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);">
-                                                        <asp:ListItem Value="0">Select</asp:ListItem>
+                                                    <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind" runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
                                                     </asp:DropDownList>
-                                                    <%--     <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>--%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
                                                 <ItemTemplate>
-                                                    <%--<input type="button" value='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? Convert.ToString(Eval("NumberOfRooms")) : "No" %>' class='<%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "Greenbtn" : "Redbtn" %>' />--%>
                                                     <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
                                                         RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
                                                         <ItemTemplate>
@@ -291,7 +328,9 @@
                                                     <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
                                                     <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
                                                     <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
-                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
+                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
+                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+
                                                     <%-- <input type="hidden" class="hdnRoomDescription" id="hdnRoomDescription" runat="server" value='<%# Eval("RoomDescription") %>' />--%>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
