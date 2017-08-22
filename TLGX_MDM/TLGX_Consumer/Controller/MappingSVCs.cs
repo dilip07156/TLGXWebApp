@@ -422,5 +422,10 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_SupplierImportFile_Progress>;
         }
         #endregion
+
+
+        #region fileConfig
+
+        #endregion
     }
 }
