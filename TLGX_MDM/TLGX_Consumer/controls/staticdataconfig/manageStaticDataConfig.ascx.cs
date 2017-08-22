@@ -909,6 +909,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeName.DataValueField = "MasterAttributeValue_Id";
                         ddlAttributeName.DataBind();
                         ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        txtAttributeValue.Visible = true;
                     }
                     else
                     {
@@ -1073,6 +1074,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
 
             Guid ParentAttributeValue_Id = Guid.Empty;
+            ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
             bool blnIsGuid = Guid.TryParse(ddlAttributeName.SelectedItem.Value, out ParentAttributeValue_Id);
             if (blnIsGuid && ddlAttributeName.SelectedItem.Value != "0")
             {
@@ -1080,7 +1082,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 var resvalues = mastersvc.GetAllAttributeAndValuesByParentAttributeValue(new MDMSVC.DC_MasterAttribute() { ParentAttributeValue_Id = ParentAttributeValue_Id });
                 if (resvalues != null && resvalues.Count > 0)
                 {
-                    HideShowAttributeNameControls(true);
+                    ddlAttributeValue.Visible = true;
                     ddlAttributeValue.Items.Clear();
                     ddlAttributeValue.DataSource = resvalues;
                     ddlAttributeValue.DataTextField = "AttributeValue";
