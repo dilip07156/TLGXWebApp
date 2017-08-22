@@ -172,7 +172,7 @@
             //getChartData(fileid);
             document.getElementById("hdnFileId").value = fileid;
         });
-         $('#moViewDetials').on('hidden.bs.modal', function () {
+        $('#moViewDetials').on('hidden.bs.modal', function () {
             debugger;
           //  window.clearInterval(x);
         });
@@ -517,12 +517,12 @@
             <div class="modal-header" style="padding:0px 5px 0px 15px;">
                     <h4 class="modal-title"><b>File Status </b><span><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button></span></h4> 
                     <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
-            </div>
+                </div>
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
                         <%--<div class="col-md-12">--%>
-                         <asp:UpdatePanel ID="pnlViewDetails" runat="server">
+                <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                         <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
@@ -543,11 +543,11 @@
                                      <div class="col-sm-2 col5">
                                         <label class="col-form-label">Status</label>
                                         <asp:Label ID="lblstatus" CssClass="form-control" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
-                                   </div>
+                                    </div>
                                     <div class="col-sm-2 col5">
                                         <label class="col-form-label">Elapsed Time</label>
                                         <asp:Label ID="lbltimeDiff" CssClass="form-control" runat="server" ></asp:Label>
-                                   </div>
+                                    </div>
                                 </div>
                             </ItemTemplate>
                         </asp:FormView>
@@ -558,65 +558,65 @@
                 </asp:UpdatePanel>
                        <%--</div>--%>
                     </div>
-                    <br />
-                    <div class="row">
+                <br />
+                <div class="row">
                         <div class="col-md-12">
                             <div class="col-sm-2 " id="readdiv" >
                                 <div class="panel  panel-default "  style="text-align: center">
                                     <div class="panel-heading"  style="padding-top:5px;padding-bottom:5px">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
                                         <h4 style="margin-top:5px"><b>READ</b></h4>
-                                    </div>
+                            </div>
                                <%--   <div class="panel-body" style="height: 190px;">--%>
                                         <div id="read" class="chartheight" style="height:160px"></div>
                                 <%--    </div>--%>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
                             <div class="col-sm-8" >
                                 <div class=" panel panel-default ">
                                     <div class="panel-heading" style="text-align: center; padding-top:5px;padding-bottom:5px">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
                                        <h4 style="margin-top:5px"> <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font:bold"></span>/<span id="totalbatch" style="font:bold"></span></h4>
-                                    </div>
-                                    <div class="panel-body" style="padding:0px;">
-                                        <div class="col-sm-4" id="txdiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>TRANSFORM</b>
-                                            <div id="tx" class="chartheight"></div>
-                                        </div>
-                                        <div class="col-sm-4" id="mapdiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>MAP</b>
-                                            <div id="map" class="chartheight"></div>
-                                        </div>
-                                        <div class="col-sm-4" id="ttfudiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>TTFU</b>
-                                            <div id="ttfu" class="chartheight"></div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
-                            <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading" style="padding-top:5px;padding-bottom:5px ">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style= "margin-top:5px"><b>MATCH</b></h4>
-                                    </div>
-                                   <%-- <div class="panel-body" style="height: 190px;">--%>
-                                        <div id="match" class="chartheight" style="height:160px" ></div>
-                                   <%-- </div>--%>
+                                    <div class="panel-body" style="padding:0px;">
+                                <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TRANSFORM</b>
+                                    <div id="tx" class="chartheight"></div>
+                                </div>
+                                <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>MAP</b>
+                                    <div id="map" class="chartheight"></div>
+                                </div>
+                                        <div class="col-sm-4" id="ttfudiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TTFU</b>
+                                    <div id="ttfu" class="chartheight"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                            <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                                    <div class="panel-heading" style="padding-top:5px;padding-bottom:5px ">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h4 style= "margin-top:5px"><b>MATCH</b></h4>
+                            </div>
+                                   <%-- <div class="panel-body" style="height: 190px;">--%>
+                                        <div id="match" class="chartheight" style="height:160px" ></div>
+                                   <%-- </div>--%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-12">
-                         <div class="panel panel-default">
+                    <div class="panel panel-default">
                             <div class="panel-heading" style=" padding-top:5px;padding-bottom:5px">
                                 <h4 style="margin-top:5px"><b>VERBOSE LOG</b></h4>
-                            </div>
+                        </div>
                             <div id="verboselog" style="overflow: scroll; height: 200px">
                                 <table class="table table-fixed table-condensed">
                                     <thead>
@@ -654,9 +654,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            </div>
                         </div>
-                            </div>
+                      </div>
+                </div>
                     </div>
                 </div>
 
