@@ -352,6 +352,7 @@
     <Content Include="projects\masterteams\search.aspx" />
     <Content Include="projects\search.aspx" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
@@ -806,7 +807,7 @@
     <Content Include="Service\ToFillDDL.ashx" />
     <Content Include="Service\SupplierWiseDataForChart.ashx" />
     <Content Include="Service\AllSupplierDataForChart.ashx" />
-    <Content Include="Service\FileProcessingReport.ashx" />
+    <Content Include="Service\FileProgressDashboard.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2072,8 +2073,8 @@
     <Compile Include="Service\AllSupplierDataForChart.ashx.cs">
       <DependentUpon>AllSupplierDataForChart.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Service\FileProcessingReport.ashx.cs">
-      <DependentUpon>FileProcessingReport.ashx</DependentUpon>
+    <Compile Include="Service\FileProgressDashboard.ashx.cs">
+      <DependentUpon>FileProgressDashboard.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
       <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>

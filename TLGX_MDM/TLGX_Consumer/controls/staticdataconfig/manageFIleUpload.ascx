@@ -1,36 +1,176 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
+<script>
+    function getChartData(fileid) {
+        if (fileid != null && fileid != "") {
+            //console.log(fileid);
+            
+            var colorarray = ["#007F00", "#faebd7"];
+            var readarray = [];
+            var txarray = [];
+            var maparray = [];
+            var ttfuarray = [];
+            var matcharray = [];
+            $.ajax({
+                type: 'GET',
+                url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
+                dataType: "json",
+                success: function (result) {
+                    $("#read").empty();
+                    $("#map").empty();
+                    $("#tx").empty();
+                    $("#match").empty();
+                    $("#ttfu").empty();
+                    $("#currentbatch").empty();
+                    $("#totalbatch").empty();
+                    $('#tblveboselog').empty();
+                    // debugger;
+                    //process charts
+                    for (var inode = 0; inode < result.ProgressLog.length; inode++) {
+                        if (result.ProgressLog[inode].Step == "READ") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            readarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                readarray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else if (result.ProgressLog[inode].Step == "TRANSFORM") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            txarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                txarray.push({ label: "Remaining", value: b });
+                            }
+                            $("#currentbatch").append(result.ProgressLog[inode].CurrentBatch);
+                            $("#totalbatch").append(result.ProgressLog[inode].TotalBatch);
+                        }
+                        else if (result.ProgressLog[inode].Step == "MAP") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            maparray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                maparray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else if (result.ProgressLog[inode].Step == "MATCH") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            matcharray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                matcharray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                        else {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            ttfuarray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = 100 - a;
+                                ttfuarray.push({ label: "Remaining", value: b });
+                            }
+                        }
+                    }
+                    Morris.Donut({
+                        element: 'read',
+                        data: readarray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    Morris.Donut({
+                        element: 'tx',
+                        data: txarray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    Morris.Donut({
+                        element: 'map',
+                        data: maparray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    //Morris.Donut({
+                    //    element: 'ttfu',
+                    //    data:ttfuarray,
+                    //    colors: colorarray,
+                    //    resize: true,
+                    //hideHover: "always"
+                    //});
+                    Morris.Donut({
+                        element: 'match',
+                        data: matcharray,
+                        colors: colorarray,
+                        resize: true,
+                        hideHover: "always"
+                    });
+                    //verbose log
+                    for (var i = 0; i < result.VerboseLog.length; i++) {
+                        //var dateString = result.VerboseLog[i].TimeStamp.substr(6);;
+                        //var currentTime = new Date(parseInt(dateString));
+                        //var month = currentTime.getMonth() + 1;
+                        //var day = currentTime.getDate();
+                        //var year = currentTime.getFullYear();
+                        //var date = day + "/" + month + "/" + year;
+                        var d = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                        var date = d.toLocaleString("en-GB");
+                        var tr;
+                        tr = $('<tr/>');
+                        tr.append("<td>" + date + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
+                        $("#verboselog table").append(tr);
+                    }
+
+                },
+                error: function () {
+                    //  debugger;
+                    alert("Error fetching filr processing data");
+                },
+            });
+        }
+    }
+
+</script>
 <script type="text/javascript">
+    var x = setInterval(myTimer, 3000);
+    function myTimer() {
+        var d = new Date();
+        var hdnval = document.getElementById("hdnFileId").value;
+        //document.getElementById("demo").innerHTML = d.toLocaleTimeString();
+        getChartData(hdnval);
+        var elem = document.getElementById('verboselog');
+        //elem.scrollTop = elem.scrollHeight;
+    }
     function showFileUpload() {
         $("#moFileUpload").modal('show');
     }
-    //function closeFileUpload() {
-    //    $("#moFileUpload").modal('hide');
-    //}
-    function test(fileid) {
-        alert(fileid);
+    function closeFileUpload() {
+        $("#moFileUpload").modal('hide');
     }
     function showDetailsModal(fileid) {
         $("#moViewDetials").modal('show');
-        $("#read").empty();
-        $("#map").empty();
-        $("#tx").empty();
-        $("#match").empty();
-        $("#currentbatch").empty();
-        $("#totalbatch").empty();
-        getChartData(fileid); 
-        //$("#ttfu").empty();
-        
+        $('#moViewDetials').one('shown.bs.modal', function () {
+           // debugger;
+            //getChartData(fileid);
+            document.getElementById("hdnFileId").value = fileid;
+        });
+        $('#moViewDetials').on('hidden.bs.modal', function () {
+            debugger;
+            window.clearInterval(x);
+        });
     }
+    
     function closeDetailsModal() {
         $("#moViewDetials").modal('hide');
     }
+
     function pageLoad(sender, args) {
         var hdnViewDetailsFlag = $('#<%=hdnViewDetailsFlag.ClientID%>').val();
 
         if (hdnViewDetailsFlag == "true") {
-            //closeFileUpload();
             closeDetailsModal();
         }
         $('#hdnViewDetailsFlag').val("false");
@@ -38,162 +178,40 @@
     function OnClientUploadComplete() {
         var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
         var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
-         <%--  var rfventity = document.getElementById("<%=rfvddlSupplierList.ClientID%>");
-        var rfvSupplier = document.getElementById("<%=rfvddlSupplierList.ClientID%>");
-        debugger;
-        if (typeof ddlSupplierList != 'undefined')
-            if (ddlSupplierList.value == '0') {
-                ValidatorEnable(rfvSupplier, true);
-                return false;
-            }
-        if (typeof ddlEntityList != 'undefined')
-            if (ddlEntityList.value == '0') {
-                ValidatorEnable(rfventity, true);
-                return false;
-            }--%>
-        //ddlSupplierList.value = "0";
-        //ddlEntityList.value = "0";
-
-    }
-</script>
-<script>
-    function getChartData(fileid) {
-        var colorarray = ["#007F00", "#faebd7"];
-        var readarray = [];
-        var txarray = [];
-        var maparray = [];
-        var ttfuarray = [];
-        var matcharray = [];
-        $.ajax({
-            type: 'GET',
-            url: '../../../Service/FileProcessingReport.ashx?FileId=' + fileid,
-            dataType: "json",
-            success: function (result) {
-                debugger;
-                //alert(result[0].SupplierImportFile_Id);
-                //alert(result.length+"length");
-              
-                for (var inode = 0; inode < result.length; inode++) {
-                    if (result[inode].Step == "READ") {
-                        var a = result[inode].PercentageValue;
-                        var b = 100 - a;
-                        readarray.push({ label: "Completed", value: a });
-                        readarray.push({ label: "Remaining", value: b });
-                    }
-                   else if (result[inode].Step == "TRANSFORM") {
-                        var a = result[inode].PercentageValue;
-                        var b = 100 - a;
-                        txarray.push({label: "Completed", value: a});
-                        txarray.push({ label: "Remaining", value: b });
-                        $("#currentbatch").append(result[inode].CurrentBatch);
-
-                        $("#totalbatch").append(result[inode].TotalBatch);
-                    }
-                   else if (result[inode].Step == "MAP") {
-                        var a = result[inode].PercentageValue;
-                        var b = 100 - a;
-                        maparray.push({ label: "Completed", value: a });
-                        maparray.push({ label: "Remaining", value: b });
-                    }
-                    else if (result[inode].Step == "MATCH") {
-                        var a = result[inode].PercentageValue;
-                        var b = 100 - a;
-                        matcharray.push({ label: "Completed", value: a });
-                        matcharray.push({ label: "Remaining", value: b });
-                    }
-                   else  {
-                        var a = result[inode].PercentageValue;
-                        var b = 100 - a;
-                        ttfuarray.push({ label: "Completed", value: a });
-                        ttfuarray.push({ label: "Remaining", value: b });
-                    }
-                }
-                Morris.Donut({
-                    element: 'read',
-                    data:readarray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-                Morris.Donut({
-                    element: 'tx',
-                    data:txarray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-                Morris.Donut({
-                    element: 'map',
-                    data: maparray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-
-                //Morris.Donut({
-                //    element: 'ttfu',
-                //    data:ttfuarray,
-                //    colors: colorarray,
-                //    resize: true,
-                //hideHover: "always"
-                //});
-                Morris.Donut({
-                    element: 'match',
-                    data: matcharray,
-                    colors: colorarray,
-                    resize: true,
-                    hideHover: "always"
-                });
-            },
-            error: function () {
-                debugger;
-                alert("Error fetching filr processing data");
-            },
-        });
-    }
-    $(document).ready(function () {
-        prepareMorrisDonutChart();
-    });
-
-    function prepareMorrisDonutChart() {
-        $("#morrisDonutChart tspan:first").css("display", "none");
-        $("#morrisDonutChart tspan:nth-child(1)").css("font-size", "40px");
-
-        var isi = $("#morrisDonutChart tspan:first").html();
-        $('#morrisDonutChartSpan').text(isi);
     }
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
 <style>
-    .morris-hover {  
-  opacity: 0;
-}
+    .morris-hover {
+        opacity: 0;
+    }
+
     .tablestyle {
         border-bottom: 1px solid #dddddd;
     }
-    
+
     @media (min-width: 768px) {
         .modal-xl {
             width: 80%;
             max-width: 1200px;
         }
     }
-    .chartheight{
-        height:150px;
+
+    .chartheight {
+        height: 150px;
     }
-       @media(min-width: 992px) {
-            .col5 {
-                width: 20%;
-                float: left;
-                position: relative;
-                min-height: 1px;
-                padding-right: 15px;
-                padding-left: 15px;
-            }
+
+    @media(min-width: 992px) {
+        .col5 {
+            width: 20%;
+            float: left;
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
         }
-
-
+    }
 </style>
 <asp:UpdatePanel ID="updUserGrid" runat="server">
     <ContentTemplate>
@@ -478,13 +496,14 @@
     </div>
 </div>
 
-<div class="modal fade" id="moViewDetials" role="dialog">
+<div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
 
             <div class="modal-header">
                 <div class="panel-title">
                     <h4 class="modal-title">File Status</h4>
+                    <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
                 </div>
             </div>
 
@@ -492,105 +511,115 @@
                 <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand">
+                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
                             <ItemTemplate>
 
                                 <div class="col-lg-12">
 
-                                    <div class="form-group col-md-4">
+                                    <div class="col-md-4">
                                         <label class="col-form-label">Supplier</label>
                                         <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group  col-md-4">
+                                    <div class="col-md-4">
                                         <label class="col-form-label">Entity</label>
                                         <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>' ReadOnly="true"></asp:TextBox>
                                     </div>
 
-                                    <div class="form-group  col-md-4">
+                                    <div class="col-md-4">
                                         <label class="col-form-label">Path</label>
                                         <asp:TextBox ID="txtPath" runat="server" ReadOnly="true" Text='<%# Bind("SavedFilePath") %>' CssClass="form-control"></asp:TextBox>
-                                            <hr />
+
                                     </div>
-                                    
+
                                 </div>
-                        
+
                             </ItemTemplate>
-                        </asp:FormView> 
+                        </asp:FormView>
                     </ContentTemplate>
                     <Triggers>
                         <asp:PostBackTrigger ControlID="btnDownload" />
                     </Triggers>
                 </asp:UpdatePanel>
-
-                                <div class="row">
-                                    <div class="col-sm-2 col5" id="readdiv" style="text-align: center">
-                                        <div class="panel  panel-default ">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                <h5><b>READ</b></h5>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div id="read" class="chartheight"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                <h5><b>Batch &nbsp;:&nbsp;</b></h5><p id="currentbatch"></p>/<p id="totalbatch"></p>
-                                            </div>
-                                                <div class="panel  panel-default col-sm-4" id="txdiv" style="text-align: center">
-                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                    <h5><b>TRANSFORM</b></h5>
-                                                    <div id="tx" class="chartheight"></div>
-                                                </div>
-                                                <div class="panel  panel-default col-sm-4" id="mapdiv" style="text-align: center">
-                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                    <h6><b>MAP</b></h6>
-                                                    <div id="map" class="chartheight"></div>
-                                                </div>
-                                                <div class="panel  panel-default col-sm-4 " id="ttfudiv" style="text-align: center">
-                                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                    <h6><b>TTFU</b></h6>
-                                                    <div id="ttfu" class="chartheight"></div>
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-2 col5" id="matchdiv" style="text-align: center">
-                                        <div class="panel  panel-default">
-                                            <div class="panel-heading">
-                                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                                <h5><b>MATCH</b></h5>
-                                            </div>
-                                            <div class="panel-body">
-                                                <div id="match" class="chartheight"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                <br />
+              <div class="container">
+                <div class="row">
+                    <div class="col-sm-3 col5" id="readdiv" style="text-align: center">
+                        <div class="panel  panel-default ">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h5><b>READ</b></h5>
+                            </div>
+                            <div class="panel-body" style="height: 190px;">
+                                <div id="read" class="chartheight"></div>
+                                <div id="readspan"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class=" panel panel-default">
+                            <div class="panel-heading" style="height: 44px; text-align: center;">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch"></span>/<span id="totalbatch"></span>
+                            </div>
+                            <div class="panel-body">
+                                <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TRANSFORM</b>
+                                    <div id="tx" class="chartheight"></div>
+                                    <div id="txspan"></div>
                                 </div>
-                                <div class="row">
-                                    <div class="panel panel-default">
-                                        <div class="panel-header">
-                                            <h4>VERBOSE LOG</h4>
-                                        </div>
-                                        <div class="panel-body">
-                                            <%--<asp:GridView ID="gvVerboseLog" runat="server" AutoGenerateColumns="false" CssClass="table " 
-                                                ShowHeaderWhenEmpty="True" EmptyDataText="No mapping activity has not been done for this date range.">
-                                                <Columns>
-                                                    <asp:BoundField  DataField="TmieStamp" />
-                                                    <asp:BoundField  DataField="Step" />
-                                                    <asp:BoundField  DataField="Message" />
-                                                </Columns>
-                                            </asp:GridView>--%>
-                                        </div>
-                                    </div>
+                                <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>MAP</b>
+                                    <div id="map" class="chartheight"></div>
                                 </div>
+                                <div class=" col-sm-4 " id="ttfudiv" style="text-align: center">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <b>TTFU</b>
+                                    <div id="ttfu" class="chartheight"></div>
+                                    <div id="ttfuspan"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col5" id="matchdiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h5><b>MATCH</b></h5>
+                            </div>
+                            <div class="panel-body" style="height: 190px;">
+                                <div id="match" class="chartheight"></div>
+                                <div id="matchspan"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" >
+                            <h4><b>xVERBOSE LOG</b></h4>
+                        </div>
+                            <div id="verboselog" style="overflow:scroll ;height:300px" >
+                                <table class="table table-fixed table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Step</th>
+                                            <th>Message</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tblveboselog">
 
-                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                      </div>
+                </div>
 
-                                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
+                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
                                          <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
                                 </asp:LinkButton>
 
@@ -634,14 +663,12 @@
                                 </div>
                                 </div>--%>
 
-                        <div class="form-group row">
-                            <div class="col-sm-4">
-                                <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
-                                <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
-                            </div>
-                        </div>
-                   
-
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
+                        <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -29256,7 +29256,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileStatisticsField;
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] FileDetailsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Progress[] ProgressLogField;
@@ -29275,14 +29275,14 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileStatistics {
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] FileDetails {
             get {
-                return this.FileStatisticsField;
+                return this.FileDetailsField;
             }
             set {
-                if ((object.ReferenceEquals(this.FileStatisticsField, value) != true)) {
-                    this.FileStatisticsField = value;
-                    this.RaisePropertyChanged("FileStatistics");
+                if ((object.ReferenceEquals(this.FileDetailsField, value) != true)) {
+                    this.FileDetailsField = value;
+                    this.RaisePropertyChanged("FileDetails");
                 }
             }
         }
@@ -30782,13 +30782,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchKeywordAlias", ReplyAction="http://tempuri.org/IMasters/SearchKeywordAliasResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_keyword_alias[]> SearchKeywordAliasAsync(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetListOfColumnNamesByTable", ReplyAction="http://tempuri.org/IMasters/GetListOfColumnNamesByTableResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetListOfColumnNamesByTableDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string[] GetListOfColumnNamesByTable(string TableName);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetListOfColumnNamesByTable", ReplyAction="http://tempuri.org/IMasters/GetListOfColumnNamesByTableResponse")]
-        System.Threading.Tasks.Task<string[]> GetListOfColumnNamesByTableAsync(string TableName);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetGeoLocationByAddress", ReplyAction="http://tempuri.org/IGeoLocation/GetGeoLocationByAddressResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IGeoLocation/GetGeoLocationByAddressDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -32596,14 +32589,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_keyword_alias[]> SearchKeywordAliasAsync(TLGX_Consumer.MDMSVC.DC_Keyword_RQ RQ) {
             return base.Channel.SearchKeywordAliasAsync(RQ);
-        }
-        
-        public string[] GetListOfColumnNamesByTable(string TableName) {
-            return base.Channel.GetListOfColumnNamesByTable(TableName);
-        }
-        
-        public System.Threading.Tasks.Task<string[]> GetListOfColumnNamesByTableAsync(string TableName) {
-            return base.Channel.GetListOfColumnNamesByTableAsync(TableName);
         }
         
         public TLGX_Consumer.MDMSVC.DC_GeoLocation GetGeoLocationByAddress(TLGX_Consumer.MDMSVC.DC_Address_Physical PA) {

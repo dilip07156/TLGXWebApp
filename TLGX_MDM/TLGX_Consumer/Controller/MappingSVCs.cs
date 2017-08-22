@@ -414,13 +414,14 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_VelocityMappingStats>;
         }
         #endregion
-        #region File Progress Report
-        public List<DC_SupplierImportFile_Progress> GetStaticDataUploadProcessLog(MDMSVC.DC_SupplierImportFile_Progress_RQ parm)
+        #region File Progress Dashboard
+        public DC_FileProgressDashboard getFileProgressDashBoardData(string fileid)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_Fileprogress_Report"], parm, typeof(MDMSVC.DC_SupplierImportFile_Progress_RQ), typeof(List<DC_SupplierImportFile_Progress>), out result);
-            return result as List<DC_SupplierImportFile_Progress>;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_FileProgress_Dashboard"], fileid), typeof(DC_FileProgressDashboard), out result);
+            return result as DC_FileProgressDashboard;
         }
+
         #endregion
 
 

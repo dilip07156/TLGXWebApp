@@ -17,15 +17,13 @@ namespace TLGX_Consumer.Service
     /// Summary description for CityAutoComplete
     /// </summary>
    
-    public class FileProcessingReport : IHttpHandler
+    public class FileProgressDashboard : IHttpHandler
     {
         Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
-        MDMSVC.DC_SupplierImportFile_Progress_RQ RQParams = new MDMSVC.DC_SupplierImportFile_Progress_RQ();
         public void ProcessRequest(HttpContext context)
         {
-            var SupplierImportFile_Id =  context.Request.QueryString["FileId"];
-            RQParams.SupplierImportFile_Id = SupplierImportFile_Id;
-            var res = MapSvc.GetStaticDataUploadProcessLog(RQParams);
+            string SupplierImportFile_Id =  context.Request.QueryString["FileId"];
+            var res = MapSvc.getFileProgressDashBoardData(SupplierImportFile_Id);
             context.Response.Write(new JavaScriptSerializer().Serialize(res));
         }
         public bool IsReusable
