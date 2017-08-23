@@ -5,7 +5,7 @@
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
-            
+
             var colorarray = ["#007F00", "#faebd7"];
             var readarray = [];
             var txarray = [];
@@ -22,15 +22,13 @@
                     $("#tx").empty();
                     $("#match").empty();
                     $("#ttfu").empty();
-                    $("#currentbatch").empty();
-                    $("#totalbatch").empty();
                     $('#tblveboselog').empty();
                     $("#tblstatastic").empty();
                     // debugger;
                     //process charts
                     for (var inode = 0; inode < result.ProgressLog.length; inode++) {
                         if (result.ProgressLog[inode].Step == "READ") {
-                            var a = result.ProgressLog[inode].PercentageValue ;
+                            var a = result.ProgressLog[inode].PercentageValue;
                             readarray.push({ label: "Completed", value: a });
                             if (a != 100) {
                                 var b = (100 - a);
@@ -60,8 +58,10 @@
                             matcharray.push({ label: "Completed", value: a });
                             if (a != 100) {
                                 var b = (100 - a);
-                                matcharray.push({ label: "Remaining", value: b});
+                                matcharray.push({ label: "Remaining", value: b });
                             }
+                            $("#Mcurrentbatch").html(result.ProgressLog[inode].CurrentBatch);
+                            $("#Mtotalbatch").html(result.ProgressLog[inode].TotalBatch);
                         }
                         else {
                             var a = result.ProgressLog[inode].PercentageValue;
@@ -102,10 +102,10 @@
                     });
                     Morris.Donut({
                         element: 'ttfu',
-                        data:ttfuarray,
+                        data: ttfuarray,
                         colors: colorarray,
                         resize: true,
-                    hideHover: "always"
+                        hideHover: "always"
                     });
 
                     //verbose log
@@ -118,30 +118,30 @@
                         tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
                         tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
                         $("#verboselog table").append(tr);
-                        if (i == result.VerboseLog.length-1) {
+                        if (i == result.VerboseLog.length - 1) {
                             //timediff = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6))) - new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
                             //timediff /= 60000;
                             var end_actual_time = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6)));
-                            var start_actual_time=new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
+                            var start_actual_time = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
                             var diff = end_actual_time - start_actual_time;
-                            var diffSeconds = diff/1000;
-                            var HH = Math.floor(diffSeconds/3600);
-                            var MM = Math.floor(diffSeconds%3600)/60;
+                            var diffSeconds = diff / 1000;
+                            var HH = Math.floor(diffSeconds / 3600);
+                            var MM = Math.floor(diffSeconds % 3600) / 60;
 
                             var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                           // alert(formatted);
+                            // alert(formatted);
                             debugger;
-                            $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lbltimeDiff").text(formatted +" (hh:mm:ss)");
+                            $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lbltimeDiff").text(formatted);
                         }
                     }
                     //File Statistics
-                    //for (var i = 0; i < result.FileStatistics.length; i++) {
-                    //     tr = $('<tr/>');
-                    //    tr.append("<td>" + result.FileStatistics[i].TotalRows + "</td>");
-                    //    tr.append("<td>" + result.FileStatistics[i].Mapped + "</td>");
-                    //    tr.append("<td>" + result.FileStatistics[i].Unmapped + "</td>");
-                    //    $("#dvstatastic table").append(tr);
-                    //}
+                    for (var i = 0; i < result.FileStatistics.length; i++) {
+                        tr = $('<tr/>');
+                        tr.append("<td>" + result.FileStatistics[i].TotalRows + "</td>");
+                        tr.append("<td>" + result.FileStatistics[i].Mapped + "</td>");
+                        tr.append("<td>" + result.FileStatistics[i].Unmapped + "</td>");
+                        $("#dvstatastic table").append(tr);
+                    }
                 },
                 error: function () {
                     //  debugger;
@@ -153,10 +153,11 @@
 
 </script>
 <script type="text/javascript">
-    var x = setInterval(myTimer, 10000);
+    var x = setInterval(myTimer, 5000);
     function myTimer() {
         var d = new Date();
         var hdnval = document.getElementById("hdnFileId").value;
+       // console.log(hdnval);
         getChartData(hdnval);
     }
 
@@ -169,15 +170,14 @@
     function showDetailsModal(fileid) {
         $("#moViewDetials").modal('show');
         $('#moViewDetials').one('shown.bs.modal', function () {
-            //getChartData(fileid);
             document.getElementById("hdnFileId").value = fileid;
         });
         $('#moViewDetials').on('hidden.bs.modal', function () {
             debugger;
-          //  window.clearInterval(x);
+            //  window.clearInterval(x);
         });
     }
-    
+
     function closeDetailsModal() {
         $("#moViewDetials").modal('hide');
     }
@@ -470,7 +470,7 @@
                                 CssClass="text-danger" ErrorMessage="The Suppplier is required." InitialValue="0" />
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlSupplierList" runat="server"  OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlSupplierList" runat="server" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -483,7 +483,7 @@
                                   CssClass="text-danger" ID="rfvddlEntityList" ErrorMessage="The Entity is required." InitialValue="0" />
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlEntityList" runat="server"  OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlEntityList" runat="server" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -514,149 +514,148 @@
 <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-header" style="padding:0px 5px 0px 15px;">
-                    <h4 class="modal-title"><b>File Status </b><span><button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button></span></h4> 
-                    <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
-                </div>
+            <div class="modal-header" style="padding: 5px 5px 5px 15px;">
+                <h4 class="modal-title"><b>File Status </b><span>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button></span></h4>
+                <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
+            </div>
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
                         <%--<div class="col-md-12">--%>
-                <asp:UpdatePanel ID="pnlViewDetails" runat="server">
-                    <ContentTemplate>
-                        <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
-                            <ItemTemplate>
-                                <div class="col-md-12">
-                                    <div class="col-sm-2 col5">
-                                        <label class="col-form-label">Supplier</label>
-                                        <asp:Label ID="lblSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>'></asp:Label>
-                                    </div>
-                                    <div class="col-sm-2 col5">
-                                        <label class="col-form-label">Entity</label>
-                                        <asp:Label ID="lblEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>'></asp:Label>
-                                    </div>
-                                    <div class="col-sm-2 col5">
-                                        <label class="col-form-label">File</label>
-                                        <asp:Label ID="lblPath" CssClass="form-control" runat="server" Text='<%# Bind("OriginalFilePath") %>'></asp:Label>
-                                   </div>
-                                     <div class="col-sm-2 col5">
-                                        <label class="col-form-label">Status</label>
-                                        <asp:Label ID="lblstatus" CssClass="form-control" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
-                                    </div>
-                                    <div class="col-sm-2 col5">
-                                        <label class="col-form-label">Elapsed Time</label>
-                                        <asp:Label ID="lbltimeDiff" CssClass="form-control" runat="server" ></asp:Label>
-                                    </div>
-                                </div>
-                            </ItemTemplate>
-                        </asp:FormView>
-                    </ContentTemplate>
-                    <%--<Triggers>
+                        <asp:UpdatePanel ID="pnlViewDetails" runat="server">
+                            <ContentTemplate>
+                                <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                                <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
+                                    <ItemTemplate>
+                                        <div class="col-md-12">
+                                            <div class="col-sm-2 col5">
+                                                <label class="col-form-label">Supplier</label>
+                                                <asp:Label ID="lblSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>'></asp:Label>
+                                            </div>
+                                            <div class="col-sm-2 col5">
+                                                <label class="col-form-label">Entity</label>
+                                                <asp:Label ID="lblEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>'></asp:Label>
+                                            </div>
+                                            <div class="col-sm-2 col5">
+                                                <label class="col-form-label">File</label>
+                                                <asp:Label ID="lblPath" CssClass="form-control" runat="server" Text='<%# Bind("OriginalFilePath") %>'></asp:Label>
+                                            </div>
+                                            <div class="col-sm-2 col5">
+                                                <label class="col-form-label">Status</label>
+                                                <asp:Label ID="lblstatus" CssClass="form-control" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
+                                            </div>
+                                            <div class="col-sm-2 col5">
+                                                <label class="col-form-label">Elapsed Time</label>
+                                                <asp:Label ID="lbltimeDiff" CssClass="form-control" runat="server"></asp:Label>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:FormView>
+                            </ContentTemplate>
+                            <%--<Triggers>
                         <asp:PostBackTrigger ControlID="btnDownload" />
                     </Triggers>--%>
-                </asp:UpdatePanel>
-                       <%--</div>--%>
+                        </asp:UpdatePanel>
+                        <%--</div>--%>
                     </div>
-                <br />
-                <div class="row">
+                    <br />
+                    <div class="row">
                         <div class="col-md-12">
-                            <div class="col-sm-2 " id="readdiv" >
-                                <div class="panel  panel-default "  style="text-align: center">
-                                    <div class="panel-heading"  style="padding-top:5px;padding-bottom:5px">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top:5px"><b>READ</b></h4>
+                            <div class="col-sm-2 " id="readdiv">
+                                <div class="panel  panel-default " style="text-align: center">
+                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h4 style="margin-top: 5px"><b>READ</b></h4>
+                                    </div>
+                                    <div id="read" class="chartheight" style="height: 160px"></div>
+                                </div>
                             </div>
-                               <%--   <div class="panel-body" style="height: 190px;">--%>
-                                        <div id="read" class="chartheight" style="height:160px"></div>
-                                <%--    </div>--%>
-                        </div>
-                    </div>
-                            <div class="col-sm-8" >
+                            <div class="col-sm-8">
                                 <div class=" panel panel-default ">
-                                    <div class="panel-heading" style="text-align: center; padding-top:5px;padding-bottom:5px">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                       <h4 style="margin-top:5px"> <b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font:bold"></span>/<span id="totalbatch" style="font:bold"></span></h4>
-                            </div>
-                                    <div class="panel-body" style="padding:0px;">
-                                <div class="col-sm-4" id="txdiv" style="text-align: center">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                    <b>TRANSFORM</b>
-                                    <div id="tx" class="chartheight"></div>
-                                </div>
-                                <div class="col-sm-4" id="mapdiv" style="text-align: center">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                    <b>MAP</b>
-                                    <div id="map" class="chartheight"></div>
-                                </div>
+                                    <div class="panel-heading" style="text-align: center; padding-top: 5px; padding-bottom: 5px">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h4 style="margin-top: 5px"><b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font: bold">0</span>/<span id="totalbatch" style="font: bold">0</span></h4>
+                                    </div>
+                                    <div class="panel-body" style="padding: 0px;">
+                                        <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                            <b>TRANSFORM</b>
+                                            <div id="tx" class="chartheight"></div>
+                                        </div>
+                                        <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                            <b>MAP</b>
+                                            <div id="map" class="chartheight"></div>
+                                        </div>
                                         <div class="col-sm-4" id="ttfudiv" style="text-align: center">
-                                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                                    <b>TTFU</b>
-                                    <div id="ttfu" class="chartheight"></div>
+                                            <i class="fa fa-bar-chart-o fa-fw"></i>
+                                            <b>TTFU</b>
+                                            <div id="ttfu" class="chartheight"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
                             <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
-                        <div class="panel  panel-default">
-                                    <div class="panel-heading" style="padding-top:5px;padding-bottom:5px ">
-                                <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style= "margin-top:5px"><b>MATCH</b></h4>
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h4 style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></h4>
+                                    </div>
+                                    <%-- <div class="panel-body" style="height: 190px;">--%>
+                                    <div id="match" class="chartheight" style="height: 160px"></div>
+                                    <%-- </div>--%>
+                                </div>
                             </div>
-                                   <%-- <div class="panel-body" style="height: 190px;">--%>
-                                        <div id="match" class="chartheight" style="height:160px" ></div>
-                                   <%-- </div>--%>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                  <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-md-12">
-                    <div class="panel panel-default">
-                            <div class="panel-heading" style=" padding-top:5px;padding-bottom:5px">
-                                <h4 style="margin-top:5px"><b>VERBOSE LOG</b></h4>
-                        </div>
-                            <div id="verboselog" style="overflow: scroll; height: 200px">
-                                <table class="table table-fixed table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>Date</th>
-                                            <th>Step</th>
-                                            <th>Message</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tblveboselog">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                           </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading" style=" padding-top:5px;padding-bottom:5px">
-                                    <h4 style="margin-top:5px"><b>File Statistic</b></h4>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                        <h4 style="margin-top: 5px"><b>VERBOSE LOG</b></h4>
+                                    </div>
+                                    <div id="verboselog" style="overflow: scroll; height: 200px">
+                                        <table class="table table-fixed table-condensed">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Step</th>
+                                                    <th>Message</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblveboselog">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                                <div id="dvstatastic"  style="height: 50px">
-                                <table class="table table-fixed table-condensed">
-                                    <thead>
-                                        <tr>
-                                            <th>TotalRows</th>
-                                            <th>Mapped</th>
-                                            <th>Unmapped</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tblstatastic">
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
-                      </div>
-                </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                        <h4 style="margin-top: 5px"><b>File Statistic</b></h4>
+                                    </div>
+                                    <div id="dvstatastic" style="height: 50px">
+                                        <table class="table table-fixed table-condensed">
+                                            <thead>
+                                                <tr>
+                                                    <th>TotalRows</th>
+                                                    <th>Mapped</th>
+                                                    <th>Unmapped</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tblstatastic">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -711,7 +710,7 @@
                     </div>
                 </div>--%>
             </div>
-           <%-- <div class="modal-footer">
+            <%-- <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>--%>
         </div>
