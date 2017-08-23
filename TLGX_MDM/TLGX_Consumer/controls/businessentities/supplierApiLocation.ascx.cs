@@ -25,5 +25,9 @@ namespace TLGX_Consumer.controls.businessentities
         }
         #endregion
 
+        protected void frmSupplierApiLoc_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+
+        }
     }
 }
