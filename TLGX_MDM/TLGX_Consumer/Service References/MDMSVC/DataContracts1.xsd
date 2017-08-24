@@ -77,6 +77,7 @@
       <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RecommendedFor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room_Amenities" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State_ISO" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="State_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Street3" nillable="true" type="xs:string" />
@@ -87,6 +88,19 @@
       <xs:element minOccurs="0" name="SuburbDowntown" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalFloors" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_Descriptions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_Facility" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_HealthAndSafety" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_HotelUpdates" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_Media" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_NearbyPlaces" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_PaxOccupancy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_RoomInfo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_RouteInfo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accommodation_RuleInfo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accomodation_ClassificationAttributes" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accomodation_Contact" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords_Accomodation_Status" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TotalRooms" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Town" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="YearBuilt" nillable="true" type="xs:string" />
