@@ -280,7 +280,7 @@
                                                     <asp:DropDownList ID="ddlAttributeName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
-
+                                                    <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
 
                                                     <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeName" />
@@ -294,8 +294,11 @@
                                                     <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeValue_SelectedIndexChanged1" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
+                                                    <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
+
+
                                                     <%--For TextBox Values--%>
-                                                    <asp:TextBox ID="txtAttributeValue" runat="server" Visible ="false" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAttributeValue" runat="server" Visible="false" CssClass="form-control"></asp:TextBox>
                                                     <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeValue" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
 
                                                     <%--For For Multi TextBox Values--%>
@@ -303,6 +306,22 @@
                                                     <div id="dvValueForFilter" runat="server" style="display: none;">
                                                         <input id="txtValueForFilter" type="text" class="form-control" /><span id="btnAddValue" style="cursor: pointer" class="glyphicon glyphicon-plus"></span>
                                                     </div>
+
+                                                    <%--For For Multi TextBox Values--%>
+                                                    <asp:HiddenField runat="server" ID="hdnReplaceWith" ClientIDMode="Static" />
+                                                    <div runat="server" id="divReplaceValue" style="display: none;">
+                                                        <div class="form-group col-md-12">
+                                                            <div class="col-md-6">
+                                                                <label>From</label><br />
+                                                                <asp:TextBox ID="txtReplaceFrom" runat="server" CssClass="form-control"></asp:TextBox>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>To</label><br />
+                                                                <asp:TextBox ID="txtReplaceTo" runat="server" CssClass="form-control"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -356,6 +375,7 @@
                                                     <asp:DropDownList ID="ddlAttributeName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged">
                                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
+                                                    <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -366,6 +386,7 @@
                                                     <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
+                                                    <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
                                                     <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
                                                     <div id="dvValueForFilter" runat="server" style="display: none;">
                                                         <input id="txtValueForFilter" type="text" class="form-control" /><span id="btnAddValue" style="cursor: pointer" class="glyphicon glyphicon-plus"></span>

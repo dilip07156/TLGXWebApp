@@ -29,6 +29,9 @@
       <xs:element minOccurs="0" name="EDIT_USER" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="For" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mapping_Table" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Master_Table" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="STG_Table" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierImportAttribute_Id" type="ser:guid" />

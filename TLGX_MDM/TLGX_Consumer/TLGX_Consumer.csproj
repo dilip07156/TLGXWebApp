@@ -329,6 +329,7 @@
     <Content Include="geography\PortManage.aspx" />
     <Content Include="geography\portSearch.aspx" />
     <Content Include="hotels\addnew.aspx" />
+    <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
     <Content Include="images\ajax-loader-blue.gif" />
     <Content Include="images\ajax-loader.gif" />
@@ -354,6 +355,7 @@
     <Content Include="projects\search.aspx" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="hotels\rptMissingAttribute.rdlc" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
@@ -702,6 +704,9 @@
     <None Include="Service References\MDMSVC\System.Net.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -1312,6 +1317,13 @@
     </Compile>
     <Compile Include="hotels\addnew.aspx.designer.cs">
       <DependentUpon>addnew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotels\missingAttributeReports.aspx.cs">
+      <DependentUpon>missingAttributeReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotels\missingAttributeReports.aspx.designer.cs">
+      <DependentUpon>missingAttributeReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="hotels\rollOffReports.aspx.cs">
       <DependentUpon>rollOffReports.aspx</DependentUpon>
