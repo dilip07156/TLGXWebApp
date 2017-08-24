@@ -55,7 +55,6 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
-
         #region "City Data"
 
         public List<string> GetCityNameList(MDMSVC.DC_City_Search_RQ RQParams)
@@ -299,6 +298,27 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ProductCategory_SoftDelete"], RQParams, typeof(MDMSVC.DC_Supplier_ProductCategory), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+
+        public List<MDMSVC.DC_Supplier_ApiLocation> Supplier_ApiLoc_Get(MDMSVC.DC_Supplier_ApiLocation RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Get"], RQParams, RQParams.GetType(), typeof(List<MDMSVC.DC_Supplier_ApiLocation>), out result);
+            return result as List<MDMSVC.DC_Supplier_ApiLocation>;
+        }
+
+        public DC_Message Supplier_ApiLoc_Add(MDMSVC.DC_Supplier_ApiLocation RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Add"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+        public DC_Message Supplier_ApiLoc_Update(MDMSVC.DC_Supplier_ApiLocation RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Update"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
 
         #region Statuses
@@ -337,6 +357,7 @@ namespace TLGX_Consumer.Controller
             return result as List<string>;
         }
         #endregion
+
         #region Common Funciton to Get Codes by Entity Type
         public string GetCodeById(string objName, string obj_Id)
         {
@@ -395,8 +416,6 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetSupplierMasterData"]), typeof(List<DC_Supplier_DDL>), out result);
             return result as List<MDMSVC.DC_Supplier_DDL>;
         }
-
-
         public List<DC_State_Master_DDL> GetStateByCity(string City_Id)
         {
             object result = null;
