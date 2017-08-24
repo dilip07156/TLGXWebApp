@@ -13,6 +13,33 @@ namespace TLGX_Consumer.controls.businessentities {
     public partial class supplierApiLocation {
         
         /// <summary>
+        /// panSupplierApiLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel panSupplierApiLoc;
+        
+        /// <summary>
+        /// dvMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
+        /// frmSupplierApiLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView frmSupplierApiLoc;
+        
+        /// <summary>
         /// gvNewTabData control.
         /// </summary>
         /// <remarks>
@@ -20,23 +47,5 @@ namespace TLGX_Consumer.controls.businessentities {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvNewTabData;
-        
-        /// <summary>
-        /// ddlEntityList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEntityList;
-        
-        /// <summary>
-        /// ddlStatusList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatusList;
     }
 }

@@ -384,27 +384,51 @@
     <None Include="Service References\MDMSVC\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Arrays2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
     <None Include="Service References\MDMSVC\DataContracts.Admin.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\DataContracts.Admin2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\DataContracts.DC_Address.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.DC_Address2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\DataContracts.Mapping.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\DataContracts.Mapping2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\DataContracts.Masters.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Masters2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\DataContracts.Schedulers.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\DataContracts.Schedulers2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\DataContracts.UploadStaticData.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\DataContracts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
@@ -691,6 +715,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileProgressDashboard.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\MDMSVC\service.wsdl" />
     <None Include="Service References\MDMSVC\service.xsd">
       <SubType>Designer</SubType>
@@ -698,7 +725,17 @@
     <None Include="Service References\MDMSVC\service1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\service2.wsdl" />
     <None Include="Service References\MDMSVC\service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service6.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\System.Net.xsd">
@@ -2305,6 +2342,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="hotels\rptMissingAttribute.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
