@@ -3,10 +3,11 @@
 <%@ Register Src="~/controls/geography/supplierCityMapping.ascx" TagPrefix="uc1" TagName="supplierCityMapping" %>
 <%@ Register Src="../integrations/supplierIntegrations.ascx" TagName="supplierIntegrations" TagPrefix="uc2" %>
 <%@ Register Src="~/controls/businessentities/supplierMarket.ascx" TagPrefix="uc1" TagName="supplierMarket" %>
-
 <%@ Register Src="~/controls/businessentities/supplierProductCategory.ascx" TagPrefix="uc1" TagName="supplierProductCategory" %>
 <%@ Register Src="~/controls/businessentities/supplierStaticDataHandling.ascx" TagPrefix="uc1" TagName="supplierStaticDataHandling" %>
 <%@ Register Src="~/controls/businessentities/supplierCredentials.ascx" TagPrefix="uc1" TagName="supplierCredentials" %>
+<%@ Register Src="~/controls/businessentities/supplierApiLocation.ascx" TagPrefix="uc1" TagName="supplierApiLocation" %>
+
 <%--for charts--%>
 <%--<%@ Register Src="~/controls/staticdata/supplierWiseDataChart.ascx" TagPrefix="uc1" TagName="supplierWiseDataChart" %>--%>
 <link href="../../Scripts/ChartJS/morris.css" rel="stylesheet" />
@@ -26,18 +27,19 @@
         font-size: small;
     }
 
-     .nodata {
+    .nodata {
         font-weight: bold;
         font-size: small;
-        height:100px;
+        height: 100px;
         text-align: center;
     }
-      .chartheight{
-            height:200px;
-        }
+
+    .chartheight {
+        height: 200px;
+    }
 </style>
 <script type="text/javascript">
-  
+
     function getChartData() {
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
         $.ajax({
@@ -101,7 +103,7 @@
                             if (resultDataForCountry[iCountryMappingData].Status != "ALL") {
                                 contryArray.push(resultDataForCountry[iCountryMappingData]);
                                 $("#detailcountry").append(resultDataForCountry[iCountryMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount + "<br>");
-                                
+
                             }
                             else {
                                 $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
@@ -119,7 +121,7 @@
                             if (resultDataForCity[iCityMappingData].Status != "ALL") {
                                 cityArray.push(resultDataForCity[iCityMappingData]);
                                 $("#detailcity").append(resultDataForCity[iCityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount + "<br>");
-                                
+
                             }
                             else {
                                 $("#cityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
@@ -136,7 +138,7 @@
                             if (resultDataForProduct[iProductMappingData].Status != "ALL") {
                                 productArray.push(resultDataForProduct[iProductMappingData]);
                                 $("#detailproduct").append(resultDataForProduct[iProductMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount + "<br>");
-                               
+
                             }
                             else {
                                 $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
@@ -151,7 +153,7 @@
                             if (resultDataForActivity[iActivityMappingData].Status != "ALL") {
                                 activityArray.push(resultDataForActivity[iActivityMappingData]);
                                 $("#detailactivity").append(resultDataForActivity[iActivityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount + "<br>");
-                                
+
                             }
                             else {
                                 $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
@@ -212,20 +214,20 @@
                 }
 
                 //-- Changing Key names End
-              
-                    Morris.Donut({
-                        element: 'country',
-                        data: contryArray,
-                        colors: [
-                            '#007F00',
-                            '#e7bd0d',
-                            '#e14949'
-                        ],
-                        resize: true,
 
-                    });
-              
-              
+                Morris.Donut({
+                    element: 'country',
+                    data: contryArray,
+                    colors: [
+                        '#007F00',
+                        '#e7bd0d',
+                        '#e14949'
+                    ],
+                    resize: true,
+
+                });
+
+
                 Morris.Donut({
                     element: 'city',
                     data: cityArray,
@@ -310,6 +312,7 @@
     })
 
 </script>
+
 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
@@ -422,6 +425,7 @@
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierApiLocation" href="#ShowSupplierApiLocation" id="apiLocation">Supplier API Location</a></li>
                 </ul>
                 <div class="tab-content">
                     <div role="tabpanel" id="ShowSupplierMarkets" class="tab-pane fade in active">
@@ -443,96 +447,105 @@
                     <%--for charts--%>
                     <div role="tabpanel" id="ShowSupplierStatusChart" class="tab-pane fade in">
                         <br />
-                      <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
+                        <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
                         <div id="nodatafound" style="display: none"></div>
                         <div class="row" style="width: 100%; height: auto;">
-        <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Country Mapped</b><br />
-                        <b class="countryper"></b></h3>
-                </div>
-                <div id="country" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailcountry" style="font-size: small"></span></b><br />
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="countryTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>City Mapped</b><br />
-                        <b class="cityper"></b></h3>
-                </div>
-                <div id="city" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailcity" style="font-size: small"></span></b><br />
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer ">
-                    <h4><b id="cityTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Hotel Mapped</b><br />
-                        <b class="productper"></b></h3>
-                </div>
-                <div id="product" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailproduct" style="font-size: small"></span></b><br />
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="productTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Room Mapped</b><br />
-                        <b class="HotelRoomper"></b></h3>
-                </div>
-                <div id="HotelRoom" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailHotelRoom" style="font-size: small"></span></b><br />
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="HotelRoomTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Activity Mapped</b><br />
-                        <b class="activityper"></b></h3>
-                </div>
-                <div id="activity" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailactivity" style="font-size: small"></span></b><br />
-                    <b><span class="nxtrundate"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="activityTotal"></b></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-
+                            <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Country Mapped</b><br />
+                                            <b class="countryper"></b></h3>
+                                    </div>
+                                    <div id="country" class="chartheight"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailcountry" style="font-size: small"></span></b>
+                                        <br />
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="countryTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>City Mapped</b><br />
+                                            <b class="cityper"></b></h3>
+                                    </div>
+                                    <div id="city" class="chartheight"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailcity" style="font-size: small"></span></b>
+                                        <br />
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer ">
+                                        <h4><b id="cityTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Hotel Mapped</b><br />
+                                            <b class="productper"></b></h3>
+                                    </div>
+                                    <div id="product" class="chartheight"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailproduct" style="font-size: small"></span></b>
+                                        <br />
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="productTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Room Mapped</b><br />
+                                            <b class="HotelRoomper"></b></h3>
+                                    </div>
+                                    <div id="HotelRoom" class="chartheight"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailHotelRoom" style="font-size: small"></span></b>
+                                        <br />
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="HotelRoomTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
+                                <div class="panel  panel-default">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <h3><b>Activity Mapped</b><br />
+                                            <b class="activityper"></b></h3>
+                                    </div>
+                                    <div id="activity" class="chartheight"></div>
+                                    <div class="panel-body">
+                                        <b><span id="detailactivity" style="font-size: small"></span></b>
+                                        <br />
+                                        <b><span class="nxtrundate"></span></b>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <h4><b id="activityTotal"></b></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <%--End--%>
+                    <div role="tabpanel" id="ShowSupplierApiLocation" class="tab-pane fade in">
+                        <br />
+                        <uc1:supplierApiLocation runat="server" ID="supplierApiLocation" />
                     </div>
                 </div>
             </div>

@@ -254,6 +254,7 @@
     <Content Include="controls\businessentities\searchClient.ascx" />
     <Content Include="controls\businessentities\searchOrgStructure.ascx" />
     <Content Include="controls\businessentities\searchSupplier.ascx" />
+    <Content Include="controls\businessentities\supplierApiLocation.ascx" />
     <Content Include="controls\businessentities\supplierCredentials.ascx" />
     <Content Include="controls\businessentities\supplierMarket.ascx" />
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
@@ -1114,6 +1115,13 @@
     </Compile>
     <Compile Include="controls\businessentities\manageSupplier.ascx.designer.cs">
       <DependentUpon>manageSupplier.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierApiLocation.ascx.cs">
+      <DependentUpon>supplierApiLocation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierApiLocation.ascx.designer.cs">
+      <DependentUpon>supplierApiLocation.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\businessentities\supplierCredentials.ascx.cs">
       <DependentUpon>supplierCredentials.ascx</DependentUpon>
