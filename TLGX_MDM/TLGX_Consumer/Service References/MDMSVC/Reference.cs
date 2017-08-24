@@ -16869,6 +16869,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string SupplierNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierRoomNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Supplier_IdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -16994,6 +16997,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
                     this.SupplierNameField = value;
                     this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierRoomName {
+            get {
+                return this.SupplierRoomNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierRoomNameField, value) != true)) {
+                    this.SupplierRoomNameField = value;
+                    this.RaisePropertyChanged("SupplierRoomName");
                 }
             }
         }
