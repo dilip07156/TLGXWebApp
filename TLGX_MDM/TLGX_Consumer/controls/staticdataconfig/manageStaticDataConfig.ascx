@@ -19,6 +19,10 @@
     .hide {
         display: none;
     }
+
+    .inputTypeForFilter {
+        width: 80% !important;
+    }
 </style>
 <script type="text/javascript">
     //var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -32,18 +36,17 @@
         $("#moActivityManage").modal('hide');
     }
     function pageLoad(sender, args) {
-        debugger;
         $("#btnAddValue").click(function () {
-            debugger;
             var Contain = "";
             $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter input[type=text]").each(function () {
                 Contain += $(this).val() + ",";
             });
             $('#hdnValueWithCommaSeprated').val(Contain);
-            $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter").append('<div class="con inner-addon right-addon">' + '<i id="btnAddValue" style="cursor:pointer" class="btnRemove glyphicon glyphicon-minus"></i><input type="text" id="Text1" class="form-control" value="" /></div>');
+            $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter").append('<div class="con"><input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" /><div class="input-group-btn  col-md-4" style="padding-left: 0px !important;"><button class="btn btn-default btnRemove" id="btnAddValue" type="button"><i class="glyphicon glyphicon-minus"></i></button></div></div>');
         });
         $('body').on('click', '.btnRemove', function () {
-            $(this).parent('div.con').remove()
+            debugger;
+            $(this).parent('div').parent('div.con').remove()
 
         });
 
@@ -291,7 +294,7 @@
                                                 <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
                                                 <div class="col-sm-8">
                                                     <%--For Dropdown Values--%>
-                                                    <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeValue_SelectedIndexChanged1" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
@@ -303,12 +306,17 @@
 
                                                     <%--For For Multi TextBox Values--%>
                                                     <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
-                                                    <div id="dvValueForFilter" runat="server" style="display: none;">
-                                                        <input id="txtValueForFilter" type="text" class="form-control" /><span id="btnAddValue" style="cursor: pointer" class="glyphicon glyphicon-plus"></span>
+                                                    <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
+                                                        <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
+                                                        <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
+                                                            <button class="btn btn-default" id="btnAddValue" type="button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
 
                                                     <%--For For Multi TextBox Values--%>
-                                                    <asp:HiddenField runat="server" ID="hdnReplaceWith" ClientIDMode="Static" />
+                                                    <asp:HiddenField runat="server" ID="hdnIsReplaceWith" ClientIDMode="Static" />
                                                     <div runat="server" id="divReplaceValue" style="display: none;">
                                                         <div class="form-group col-md-12">
                                                             <div class="col-md-6">
@@ -388,8 +396,27 @@
                                                     </asp:DropDownList>
                                                     <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
                                                     <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
-                                                    <div id="dvValueForFilter" runat="server" style="display: none;">
-                                                        <input id="txtValueForFilter" type="text" class="form-control" /><span id="btnAddValue" style="cursor: pointer" class="glyphicon glyphicon-plus"></span>
+                                                    <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
+                                                        <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
+                                                        <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
+                                                            <button class="btn btn-default" id="btnAddValue" type="button">
+                                                                <i class="glyphicon glyphicon-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <asp:HiddenField runat="server" ID="hdnIsReplaceWith" ClientIDMode="Static" />
+                                                    <div runat="server" id="divReplaceValue" style="display: none;">
+                                                        <div class="form-group col-md-12">
+                                                            <div class="col-md-6">
+                                                                <label>From</label><br />
+                                                                <asp:TextBox ID="txtReplaceFrom" runat="server" CssClass="form-control"></asp:TextBox>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label>To</label><br />
+                                                                <asp:TextBox ID="txtReplaceTo" runat="server" CssClass="form-control"></asp:TextBox>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

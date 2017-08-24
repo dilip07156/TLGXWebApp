@@ -217,13 +217,18 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
 
                     //For Xpath and Jpath option available only
-                    if (intNumberOfColumnHasBeenAdded > 0 && !IsFileDetailsFileFormatXPath)
-                        resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "xpath" select x).ToList();
-                    if (intNumberOfColumnHasBeenAdded > 0 && !IsFileDetailsFileFormatJPath)
-                        resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "jpath" select x).ToList();
-
-
-
+                    if (intNumberOfColumnHasBeenAdded > 0)
+                    {
+                        if (IsFileDetailsFileFormatXPath || IsFileDetailsFileFormatJPath)
+                        {
+                            if (IsFileDetailsFileFormatXPath)
+                                resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "jpath" select x).ToList();
+                            else if (IsFileDetailsFileFormatJPath)
+                                resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "xpath" select x).ToList();
+                        }
+                        else
+                            resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "xpath" && x.AttributeValue.ToLower() != "jpath" select x).ToList();
+                    }
                 }
 
             }
@@ -313,8 +318,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         FilteredTextBoxExtender axfte_txtAttributeName = (FilteredTextBoxExtender)frmAddConfig.FindControl("axfte_txtAttributeName");
                         HtmlGenericControl dvtxtPriority = (HtmlGenericControl)frmAddConfig.FindControl("dvtxtPriority");
                         HtmlGenericControl dvValueForFilter = (HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
+                        HtmlGenericControl divReplaceValue = (HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
+
                         HiddenField hdnddlAttributeTableName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableName");
                         HiddenField hdnddlAttributeTableValueName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableValueName");
+                        HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
+                        TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom");
+                        TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo");
+
 
                         #endregion //Get All Controls
 
@@ -355,7 +366,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 }
 
                             }
-                            if (ddlAttributeType.SelectedItem.Text.ToLower() == "map" || ddlAttributeType.SelectedItem.Text.ToLower() == "match")
+                            else if (ddlAttributeType.SelectedItem.Text.ToLower() == "map" || ddlAttributeType.SelectedItem.Text.ToLower() == "match")
                             {
                                 List<string> lstAttributeName = new List<string>();
                                 if (!IsMapping && res[0].AttributeType.ToLower() == "map")
@@ -398,6 +409,20 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 }
 
                             }
+                            else if (ddlAttributeType.SelectedItem.Text.ToLower() == "jpath" || ddlAttributeType.SelectedItem.Text.ToLower() == "xpath")
+                            {
+                                int intNoOfColumn = intNumberOfColumnHasBeenAdded;
+                                ddlAttributeName.Visible = true;
+                                if (intNumberOfColumnHasBeenAdded > 0)
+                                {
+                                    ddlAttributeName.Items.Clear();
+                                    for (int i = --intNoOfColumn; i >= 0; i--)
+                                        ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
+
+                                    if (ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()) != null)
+                                        ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()).Selected = true;
+                                }
+                            }
                             #endregion
                             else
                             {
@@ -408,6 +433,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 var resvalues = mastersvc.GetAllAttributeAndValues(RQAttr);
                                 if (resvalues != null && resvalues.Count > 0)
                                 {
+                                    ddlAttributeName.Visible = true;
                                     isFound = true;
                                     ddlAttributeName.Items.Clear();
                                     ddlAttributeName.DataSource = resvalues;
@@ -428,7 +454,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         #region Fill & Set Attribute Value
                         string strAttributeValue = Convert.ToString(res[0].AttributeValue);
                         ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
-                        dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "none");
+                        divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
                         if (!string.IsNullOrWhiteSpace(strAttributeValue))
                         {
                             #region For Filter
@@ -440,9 +466,18 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 sbinnerhtml.Append(dvValueForFilter.InnerHtml);
                                 for (int i = 0; i < strArrayAttributeValue.Count(); i++)
                                 {
-                                    sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
+
+                                    //sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
+                                    //string strID = "txt" + i.ToString();
+                                    //sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control' value=" + strArrayAttributeValue[i] + " /></div>");
+                                    sbinnerhtml.Append("<div class='con'>");
                                     string strID = "txt" + i.ToString();
-                                    sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control' value=" + strArrayAttributeValue[i] + " /></div>");
+                                    // sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
+                                    sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strArrayAttributeValue[i] + " />");
+                                    sbinnerhtml.Append("<div class='input-group-btn col-md-4' style='padding-left: 0px !important;'><button class='btn btn-default btnRemove' id='btnAddValue' type='button'>");
+                                    sbinnerhtml.Append("<i class='glyphicon glyphicon-minus'></i></button>");
+                                    sbinnerhtml.Append("</div>");
+                                    sbinnerhtml.Append("</div>");
                                 }
                                 dvValueForFilter.InnerHtml = sbinnerhtml.ToString();
                             }
@@ -474,6 +509,26 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeValue.DataBind();
                                     ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
                                     ddlAttributeValue.SelectedIndex = ddlAttributeValue.Items.IndexOf(ddlAttributeValue.Items.FindByText(res[0].AttributeValue.ToString().Split('.')[1]));
+                                }
+                            }
+                            else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format")
+                            {
+                                if (ddlAttributeName.SelectedItem.Text.ToLower() != "replace") {
+                                    divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+                                    hdnIsReplaceWith.Value = Convert.ToString(false);
+                                    txtAttributeValue.Visible = true;
+                                    txtAttributeValue.Text = res[0].AttributeName;
+                                }
+                                else
+                                {
+                                    divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "block");
+                                    hdnIsReplaceWith.Value = Convert.ToString(true);
+                                    var data = Convert.ToString(res[0].AttributeName).Split(new string[] { "\",\"" }, StringSplitOptions.None);
+                                    if (!string.IsNullOrWhiteSpace(res[0].AttributeName) && data.Length > 1)
+                                    {
+                                        txtReplaceFrom.Text = data[0].TrimStart('"');
+                                        txtReplaceTo.Text = data[1].TrimEnd('"');
+                                    }
                                 }
                             }
                             else
@@ -622,9 +677,16 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
+            System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
             HiddenField hdnValueWithCommaSeprated = (HiddenField)frmAddConfig.FindControl("hdnValueWithCommaSeprated");
             HiddenField hdnddlAttributeTableName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableName");
             HiddenField hdnddlAttributeTableValueName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableValueName");
+            HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
+
+
+            TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom"); //New Field added for priority
+            TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo"); //New Field added for priority
+
 
 
 
@@ -643,12 +705,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 if (ddlAttributeName.Visible)
                 {
-                    if (hdnddlAttributeTableName != null)
+                    if (hdnddlAttributeTableName != null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
                     {
                         if (!string.IsNullOrEmpty(hdnddlAttributeTableName.Value) && hdnddlAttributeTableName.Value != "0")
-                            strAttributeValue = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
+                            strAttributeName = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
                         else
-                            strAttributeValue = ddlAttributeName.SelectedItem.ToString();
+                            strAttributeName = ddlAttributeName.SelectedItem.ToString();
                     }
                     else
                         strAttributeValue = ddlAttributeName.SelectedItem.ToString();
@@ -660,12 +722,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (ddlAttributeValue.Visible)
                 {
                     if (hdnddlAttributeTableValueName != null && !string.IsNullOrEmpty(hdnddlAttributeTableValueName.Value))
-                        strAttributeName = hdnddlAttributeTableValueName.Value + "." + ddlAttributeValue.SelectedItem.Text;
+                        strAttributeValue = hdnddlAttributeTableValueName.Value + "." + ddlAttributeValue.SelectedItem.Text;
                     else
                         strAttributeName = ddlAttributeValue.SelectedItem.Text;
                 }
                 else if (txtAttributeValue.Visible)
                     strAttributeName = txtAttributeValue.Text;
+                else if (Convert.ToBoolean(hdnIsReplaceWith.Value))
+                {
+                    string strReplace = "\"" + txtReplaceFrom.Text + "\",\"" + txtReplaceTo.Text + "\"";
+                    strAttributeName = strReplace;
+                }
                 else
                     strAttributeName = hdnValueWithCommaSeprated.Value != string.Empty ? Convert.ToString(hdnValueWithCommaSeprated.Value).TrimEnd(',') : string.Empty;
 
@@ -730,12 +797,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 if (ddlAttributeName.Visible)
                 {
-                    if (hdnddlAttributeTableName != null)
+                    if (hdnddlAttributeTableName != null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
                     {
                         if (!string.IsNullOrEmpty(hdnddlAttributeTableName.Value) && hdnddlAttributeTableName.Value != "0")
-                            strAttributeValue = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
+                            strAttributeName = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
                         else
-                            strAttributeValue = ddlAttributeName.SelectedItem.ToString();
+                            strAttributeName = ddlAttributeName.SelectedItem.ToString();
                     }
                     else
                         strAttributeValue = ddlAttributeName.SelectedItem.ToString();
@@ -753,6 +820,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
                 else if (txtAttributeValue.Visible)
                     strAttributeName = txtAttributeValue.Text;
+                else if (!string.IsNullOrWhiteSpace(hdnIsReplaceWith.Value) && Convert.ToBoolean(hdnIsReplaceWith.Value))
+                {
+                    string strReplace = "\"" + txtReplaceFrom.Text + "\",\"" + txtReplaceTo.Text + "\"";
+                    strAttributeName = strReplace;
+                }
                 else
                     strAttributeName = hdnValueWithCommaSeprated.Value != string.Empty ? Convert.ToString(hdnValueWithCommaSeprated.Value).TrimEnd(',') : string.Empty;
 
@@ -961,6 +1033,19 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
                     }
                 }
+                else if (IsMapping && (strAttributeType == "jpath" || strAttributeType == "xpath"))
+                {
+                    ddlAttributeName.Visible = true;
+                    if (intNumberOfColumnHasBeenAdded > 0)
+                    {
+                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
+                        ddlAttributeName.Items.Clear();
+                        for (int i = --intNoOfColumn; i >= 0; i--)
+                            ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
+
+                    }
+                    txtAttributeValue.Visible = true;
+                }
                 else
                 {
                     MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
@@ -1055,14 +1140,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
             grdMappingAttrValues.DataBind();
         }
 
-
-        public void bussinessLogic()
-        {
-
-            //1. Only FileDetails will show in dropdown when there is no config
-
-        }
-
         protected void ddlAttributeName_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddlAttributeType = (DropDownList)frmAddConfig.FindControl("ddlAttributeType");
@@ -1075,6 +1152,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             FilteredTextBoxExtender axfte_txtAttributeValue = (FilteredTextBoxExtender)frmAddConfig.FindControl("axfte_txtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
             System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
+            HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
+
 
 
 
@@ -1083,6 +1162,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 Guid ParentAttributeValue_Id = Guid.Empty;
                 ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
                 divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+                hdnIsReplaceWith.Value = Convert.ToString(false);
                 bool blnIsGuid = Guid.TryParse(ddlAttributeName.SelectedItem.Value, out ParentAttributeValue_Id);
                 if (blnIsGuid && ddlAttributeName.SelectedItem.Value != "0")
                 {
@@ -1107,10 +1187,19 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             txtAttributeValue.Visible = true;
                             axfte_txtAttributeValue.Enabled = true;
                         }
+
                         else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace")
                         {
+                            hdnIsReplaceWith.Value = Convert.ToString(true);
                             ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "block");
+                        }
+                        else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace all spcl chrs")
+                        {
+                            hdnIsReplaceWith.Value = Convert.ToString(false);
+                            ddlAttributeValue.Visible =false;
+                            txtAttributeValue.Visible = true;
+                            divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
                         }
                         else
                             axfte_txtAttributeValue.Enabled = false;
@@ -1119,16 +1208,23 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
                 else
                 {
-                    dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
+                    if (ddlAttributeType.SelectedItem.Text.ToLower() == "xpath" || ddlAttributeType.SelectedItem.Text.ToLower() == "jpath")
+                    {
+                        txtAttributeValue.Visible = true;
+                    }
+                    else if (ddlAttributeType.SelectedItem.Text.ToLower() == "distinct")
+                    {
+                        txtAttributeValue.Visible = true;
+                    }
+                    else
+                    {
+                        dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
+                    }
                 }
             }
-           
+
 
         }
 
-        protected void ddlAttributeValue_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
