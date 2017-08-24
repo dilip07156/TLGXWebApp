@@ -220,10 +220,10 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeDetails"], MasterAttribute_Id), typeof(DC_M_masterattribute), out result);
             return result as DC_M_masterattribute;
         }
-        public List<MDMSVC.DC_M_masterattributevalue> GetAttributeValues(string MasterAttribute_Id,string pagesize , string pageno)
+        public List<MDMSVC.DC_M_masterattributevalue> GetAttributeValues(string MasterAttribute_Id, string pagesize, string pageno)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeValuesById"], MasterAttribute_Id,pagesize,pageno), typeof(List<DC_M_masterattributevalue>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeValuesById"], MasterAttribute_Id, pagesize, pageno), typeof(List<DC_M_masterattributevalue>), out result);
             return result as List<DC_M_masterattributevalue>;
         }
 
@@ -380,7 +380,7 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region To Fill Dropdown
-        public List<MDMSVC.DC_Accomodation_DDL>GetProductByCity(DC_Accomodation_DDL _obj)
+        public List<MDMSVC.DC_Accomodation_DDL> GetProductByCity(DC_Accomodation_DDL _obj)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetProductByCity"], _obj, typeof(MDMSVC.DC_Accomodation_DDL), typeof(List<MDMSVC.DC_Accomodation_DDL>), out result);
@@ -444,7 +444,7 @@ namespace TLGX_Consumer.Controller
             return result as List<MDMSVC.DC_CountryMaster>;
 
         }
-        public List<DC_Activity_DDL>GetActivityByCountryCity(string countryname, string cityname)
+        public List<DC_Activity_DDL> GetActivityByCountryCity(string countryname, string cityname)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetActivityForDDL"], countryname, cityname), typeof(List<DC_Activity_DDL>), out result);
@@ -458,7 +458,7 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Master_SaveCityAreaLocation"], _obj, typeof(MDMSVC.DC_CityAreaLocation), typeof(bool), out result);
-            return (bool)result ;
+            return (bool)result;
         }
         public bool SaveCityArea(DC_CityArea _obj)
         {
@@ -478,6 +478,15 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Master_GetMasterCityAreaData"], City_Id), typeof(List<DC_CityArea>), out result);
             return result as List<MDMSVC.DC_CityArea>;
+        }
+        #endregion
+
+        #region FileConfig
+        public List<string> GetListOfColumnNamesByTable(string tblname)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["StaticDataConfig_GetTableColumn"], tblname), typeof(List<string>), out result);
+            return result as List<string>;
         }
         #endregion
     }

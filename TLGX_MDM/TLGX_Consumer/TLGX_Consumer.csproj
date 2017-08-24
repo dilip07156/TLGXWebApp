@@ -329,6 +329,7 @@
     <Content Include="geography\PortManage.aspx" />
     <Content Include="geography\portSearch.aspx" />
     <Content Include="hotels\addnew.aspx" />
+    <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
     <Content Include="images\ajax-loader-blue.gif" />
     <Content Include="images\ajax-loader.gif" />
@@ -354,6 +355,7 @@
     <Content Include="projects\search.aspx" />
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="hotels\rptMissingAttribute.rdlc" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
@@ -379,30 +381,54 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD.pubxml" />
-    <None Include="Service References\MDMSVC\Arrays.xsd">
+    <None Include="Service References\MDMSVC\Arrays11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Arrays2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\DataContracts.Admin.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Admin11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.DC_Address.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Admin2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Mapping.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.DC_Address11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Masters.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.DC_Address2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Schedulers.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Mapping11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Mapping2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Masters11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Masters2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Schedulers11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.Schedulers2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\DataContracts2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
@@ -689,17 +715,33 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileProgressDashboard.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\MDMSVC\service.wsdl" />
-    <None Include="Service References\MDMSVC\service.xsd">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\MDMSVC\service11.wsdl" />
+    <None Include="Service References\MDMSVC\service2.wsdl" />
+    <None Include="Service References\MDMSVC\service33.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\service1.xsd">
+    <None Include="Service References\MDMSVC\service34.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\service2.xsd">
+    <None Include="Service References\MDMSVC\service35.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\System.Net.xsd">
+    <None Include="Service References\MDMSVC\service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\service6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\MDMSVC\System.Net11.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service\CountryAutoComplete.ashx" />
@@ -1312,6 +1354,13 @@
     </Compile>
     <Compile Include="hotels\addnew.aspx.designer.cs">
       <DependentUpon>addnew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="hotels\missingAttributeReports.aspx.cs">
+      <DependentUpon>missingAttributeReports.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="hotels\missingAttributeReports.aspx.designer.cs">
+      <DependentUpon>missingAttributeReports.aspx</DependentUpon>
     </Compile>
     <Compile Include="hotels\rollOffReports.aspx.cs">
       <DependentUpon>rollOffReports.aspx</DependentUpon>
@@ -2293,6 +2342,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="hotels\rptMissingAttribute.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
