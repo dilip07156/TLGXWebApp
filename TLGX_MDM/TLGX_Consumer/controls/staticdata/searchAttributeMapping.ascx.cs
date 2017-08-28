@@ -172,18 +172,20 @@ namespace TLGX_Consumer.controls.staticdata
 
         public void fillSearchGrid(int pageIndex)
         {
-            var SupplierId = ddlSearchSupplier.SelectedValue;
-            var AttributeId = ddlSearchAttributeType.SelectedValue;
-            var PageSize = ddlShowEntries.SelectedItem.Text;
+            MDMSVC.DC_MasterAttributeMapping_RQ RQ = new MDMSVC.DC_MasterAttributeMapping_RQ();
+            if(ddlSearchSupplier.SelectedIndex != 0)
+            {
+                RQ.Supplier_Id = Guid.Parse(ddlSearchSupplier.SelectedValue);
+            }
+            if (ddlSearchAttributeType.SelectedIndex != 0)
+            {
+                RQ.MasterAttributeType_Id = Guid.Parse(ddlSearchAttributeType.SelectedValue);
+            }
+            
+            RQ.PageSize = int.Parse(ddlShowEntries.SelectedItem.Text);
+            RQ.PageNo = pageIndex;
 
-            var searchResult = MapSvc.Mapping_Attribute_Search(
-                new MDMSVC.DC_MasterAttributeMapping_RQ
-                {
-                    MasterAttributeType_Id = Guid.Parse(AttributeId),
-                    Supplier_Id = Guid.Parse(SupplierId),
-                    PageNo = pageIndex,
-                    PageSize = int.Parse(PageSize)
-                });
+            var searchResult = MapSvc.Mapping_Attribute_Search(RQ);
 
             grdSearchResults.DataSource = searchResult;
             grdSearchResults.DataBind();

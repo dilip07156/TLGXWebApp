@@ -22,24 +22,6 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.UpdatePanel updAttributeMappingSearch;
         
         /// <summary>
-        /// vldAttrMapSearch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vldAttrMapSearch;
-        
-        /// <summary>
-        /// vldReqddlSupplier control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldReqddlSupplier;
-        
-        /// <summary>
         /// ddlSearchSupplier control.
         /// </summary>
         /// <remarks>
@@ -47,15 +29,6 @@ namespace TLGX_Consumer.controls.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlSearchSupplier;
-        
-        /// <summary>
-        /// vldReqddlAttributeType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldReqddlAttributeType;
         
         /// <summary>
         /// ddlSearchAttributeType control.
