@@ -30318,14 +30318,6 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationDetails", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationDetailsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation> GetAccomodationDetailsAsync(string Accomodation_Id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetColumnNameWhichValuesIsNull", ReplyAction="http://tempuri.org/IAccomodation/GetColumnNameWhichValuesIsNullResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetColumnNameWhichValuesIsNullDC_ErrorStatusFaul" +
-            "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string GetColumnNameWhichValuesIsNull(string Accomodation_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetColumnNameWhichValuesIsNull", ReplyAction="http://tempuri.org/IAccomodation/GetColumnNameWhichValuesIsNullResponse")]
-        System.Threading.Tasks.Task<string> GetColumnNameWhichValuesIsNullAsync(string Accomodation_Id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationListForMissingAttributeReports", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationListForMissingAttributeReportsRes" +
             "ponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationListForMissingAttributeReportsDC_" +
@@ -31874,6 +31866,18 @@ namespace TLGX_Consumer.MDMSVC {
             "esponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateStaticDataMappingAttributeValueStatusAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues[] obj);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributeValuesForFilter" +
+            "", ReplyAction="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributeValuesForFilter" +
+            "Response")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributeValuesForFilter" +
+            "DC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string[] GetStaticDataMappingAttributeValuesForFilter(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues_RQ obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributeValuesForFilter" +
+            "", ReplyAction="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributeValuesForFilter" +
+            "Response")]
+        System.Threading.Tasks.Task<string[]> GetStaticDataMappingAttributeValuesForFilterAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues_RQ obj);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/GetStaticDataFileDetail", ReplyAction="http://tempuri.org/IUploadStaticData/GetStaticDataFileDetailResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/GetStaticDataFileDetailDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] GetStaticDataFileDetail(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails_RQ obj);
@@ -32050,14 +32054,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation> GetAccomodationDetailsAsync(string Accomodation_Id) {
             return base.Channel.GetAccomodationDetailsAsync(Accomodation_Id);
-        }
-        
-        public string GetColumnNameWhichValuesIsNull(string Accomodation_Id) {
-            return base.Channel.GetColumnNameWhichValuesIsNull(Accomodation_Id);
-        }
-        
-        public System.Threading.Tasks.Task<string> GetColumnNameWhichValuesIsNullAsync(string Accomodation_Id) {
-            return base.Channel.GetColumnNameWhichValuesIsNullAsync(Accomodation_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation[] GetAccomodationListForMissingAttributeReports(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ RQ) {
@@ -33746,6 +33742,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateStaticDataMappingAttributeValueStatusAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues[] obj) {
             return base.Channel.UpdateStaticDataMappingAttributeValueStatusAsync(obj);
+        }
+        
+        public string[] GetStaticDataMappingAttributeValuesForFilter(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues_RQ obj) {
+            return base.Channel.GetStaticDataMappingAttributeValuesForFilter(obj);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetStaticDataMappingAttributeValuesForFilterAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributeValues_RQ obj) {
+            return base.Channel.GetStaticDataMappingAttributeValuesForFilterAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] GetStaticDataFileDetail(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails_RQ obj) {

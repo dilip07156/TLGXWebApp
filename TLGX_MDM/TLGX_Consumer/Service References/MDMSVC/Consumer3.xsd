@@ -93,20 +93,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetColumnNameWhichValuesIsNull">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="Accomodation_Id" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetColumnNameWhichValuesIsNullResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="GetColumnNameWhichValuesIsNullResult" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetAccomodationListForMissingAttributeReports">
     <xs:complexType>
       <xs:sequence>
@@ -3087,150 +3073,164 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetStaticDataMappingAttributeValuesForFilter">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q300="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q300:DC_SupplierImportAttributeValues_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStaticDataMappingAttributeValuesForFilterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q301="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetStaticDataMappingAttributeValuesForFilterResult" nillable="true" type="q301:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetStaticDataFileDetail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q300="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q300:DC_SupplierImportFileDetails_RQ" />
+        <xs:element xmlns:q302="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q302:DC_SupplierImportFileDetails_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataFileDetailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q301="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataFileDetailResult" nillable="true" type="q301:ArrayOfDC_SupplierImportFileDetails" />
+        <xs:element xmlns:q303="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataFileDetailResult" nillable="true" type="q303:ArrayOfDC_SupplierImportFileDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddStaticDataFileDetail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q302="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q302:DC_SupplierImportFileDetails" />
+        <xs:element xmlns:q304="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q304:DC_SupplierImportFileDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddStaticDataFileDetailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q303="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddStaticDataFileDetailResult" nillable="true" type="q303:DC_Message" />
+        <xs:element xmlns:q305="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddStaticDataFileDetailResult" nillable="true" type="q305:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateStaticDataFileDetail">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q304="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q304:ArrayOfDC_SupplierImportFileDetails" />
+        <xs:element xmlns:q306="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q306:ArrayOfDC_SupplierImportFileDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateStaticDataFileDetailResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q305="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateStaticDataFileDetailResult" nillable="true" type="q305:DC_Message" />
+        <xs:element xmlns:q307="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateStaticDataFileDetailResult" nillable="true" type="q307:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateStaticDataFileDetailStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q306="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q306:DC_SupplierImportFileDetails" />
+        <xs:element xmlns:q308="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q308:DC_SupplierImportFileDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateStaticDataFileDetailStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q307="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateStaticDataFileDetailStatusResult" nillable="true" type="q307:DC_Message" />
+        <xs:element xmlns:q309="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateStaticDataFileDetailStatusResult" nillable="true" type="q309:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddStaticDataUploadErrorLog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q308="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q308:DC_SupplierImportFile_ErrorLog" />
+        <xs:element xmlns:q310="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q310:DC_SupplierImportFile_ErrorLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddStaticDataUploadErrorLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q309="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddStaticDataUploadErrorLogResult" nillable="true" type="q309:DC_Message" />
+        <xs:element xmlns:q311="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddStaticDataUploadErrorLogResult" nillable="true" type="q311:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadErrorLog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q310="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q310:DC_SupplierImportFile_ErrorLog_RQ" />
+        <xs:element xmlns:q312="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q312:DC_SupplierImportFile_ErrorLog_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadErrorLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q311="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadErrorLogResult" nillable="true" type="q311:ArrayOfDC_SupplierImportFile_ErrorLog" />
+        <xs:element xmlns:q313="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadErrorLogResult" nillable="true" type="q313:ArrayOfDC_SupplierImportFile_ErrorLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadProcessLog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q312="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q312:DC_SupplierImportFile_Progress_RQ" />
+        <xs:element xmlns:q314="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q314:DC_SupplierImportFile_Progress_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadProcessLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q313="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadProcessLogResult" nillable="true" type="q313:ArrayOfDC_SupplierImportFile_Progress" />
+        <xs:element xmlns:q315="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadProcessLogResult" nillable="true" type="q315:ArrayOfDC_SupplierImportFile_Progress" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadVerboseLog">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q314="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q314:DC_SupplierImportFile_VerboseLog_RQ" />
+        <xs:element xmlns:q316="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q316:DC_SupplierImportFile_VerboseLog_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadVerboseLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q315="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadVerboseLogResult" nillable="true" type="q315:ArrayOfDC_SupplierImportFile_VerboseLog" />
+        <xs:element xmlns:q317="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadVerboseLogResult" nillable="true" type="q317:ArrayOfDC_SupplierImportFile_VerboseLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadStatistics">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q316="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="RQ" nillable="true" type="q316:DC_SupplierImportFile_Statistics_RQ" />
+        <xs:element xmlns:q318="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="RQ" nillable="true" type="q318:DC_SupplierImportFile_Statistics_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetStaticDataUploadStatisticsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q317="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadStatisticsResult" nillable="true" type="q317:ArrayOfDC_SupplierImportFile_Statistics" />
+        <xs:element xmlns:q319="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="GetStaticDataUploadStatisticsResult" nillable="true" type="q319:ArrayOfDC_SupplierImportFile_Statistics" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="StaticFileUploadProcessFile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q318="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q318:DC_SupplierImportFileDetails" />
+        <xs:element xmlns:q320="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q320:DC_SupplierImportFileDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="StaticFileUploadProcessFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q319="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="StaticFileUploadProcessFileResult" nillable="true" type="q319:DC_Message" />
+        <xs:element xmlns:q321="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="StaticFileUploadProcessFileResult" nillable="true" type="q321:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="StaticFileUpload_TestFile_Read">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q320="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q320:DC_SupplierImportFileDetails_TestProcess" />
+        <xs:element xmlns:q322="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q322:DC_SupplierImportFileDetails_TestProcess" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3256,7 +3256,7 @@
   <xs:element name="StaticFileUpload_TestFile_Transform">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q321="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q321:DC_SupplierImportFileDetails_TestProcess" />
+        <xs:element xmlns:q323="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q323:DC_SupplierImportFileDetails_TestProcess" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3289,7 +3289,7 @@
   <xs:element name="getFileProgressDashBoardDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q322="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="getFileProgressDashBoardDataResult" nillable="true" type="q322:DC_FileProgressDashboard" />
+        <xs:element xmlns:q324="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="getFileProgressDashBoardDataResult" nillable="true" type="q324:DC_FileProgressDashboard" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

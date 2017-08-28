@@ -174,28 +174,50 @@
                     <div class="panel-title row">
                         <div class="row">
                             <div class="panel-group" id="accordionSearchResult">
-                                <div class="col-lg-8">
+                                <div class="col-md-3">
                                     <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">
                                         <h4 class="panel-title">Search Results (Total Count:
                                             <asp:Label ID="lblTotalUploadConfig" runat="server" Text="0"></asp:Label>)</h4>
                                     </a>
-                                </div>
-                                <div class="col-lg-3">
 
-                                    <div class="form-group pull-right">
-                                        <div class="input-group" runat="server" id="divDropdownForEntries">
-                                            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                                            <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                                                <asp:ListItem>10</asp:ListItem>
-                                                <asp:ListItem>15</asp:ListItem>
-                                                <asp:ListItem>20</asp:ListItem>
-                                                <asp:ListItem>25</asp:ListItem>
-                                                <asp:ListItem>30</asp:ListItem>
-                                                <asp:ListItem>35</asp:ListItem>
-                                                <asp:ListItem>40</asp:ListItem>
-                                                <asp:ListItem>45</asp:ListItem>
-                                                <asp:ListItem>50</asp:ListItem>
-                                            </asp:DropDownList>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group" runat="server" id="div1">
+                                                <label class="input-group-addon" for="ddlShowEntries">Attribute Type</label>
+                                                <asp:DropDownList ID="ddlFilterAttributeType" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlFilterAttributeType_SelectedIndexChanged">
+                                                     <asp:ListItem Value="-1">All</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group" runat="server" id="div2">
+                                                <label class="input-group-addon" for="ddlShowEntries">Priority</label>
+                                                <asp:DropDownList ID="ddlFilterPriority" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlFilterPriority_SelectedIndexChanged">
+                                                    <asp:ListItem Value="-1">All</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group" runat="server" id="divDropdownForEntries">
+                                                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                                                <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                                                    <asp:ListItem>10</asp:ListItem>
+                                                    <asp:ListItem>15</asp:ListItem>
+                                                    <asp:ListItem>20</asp:ListItem>
+                                                    <asp:ListItem>25</asp:ListItem>
+                                                    <asp:ListItem>30</asp:ListItem>
+                                                    <asp:ListItem>35</asp:ListItem>
+                                                    <asp:ListItem>40</asp:ListItem>
+                                                    <asp:ListItem>45</asp:ListItem>
+                                                    <asp:ListItem>50</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

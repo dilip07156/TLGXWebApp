@@ -44,6 +44,34 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     fillconfigdata();
                     fillmappingattributes();
+                    fillattributeFilters();
+                }
+            }
+        }
+
+        private void fillattributeFilters()
+        {
+            if (Config_Id != Guid.Empty)
+            {
+                //Fill Filter for attribute type and priority
+                var attributes = mappingsvc.GetStaticDataMappingAttributeValuesForFilter(new MDMSVC.DC_SupplierImportAttributeValues_RQ() { For = "attributetype", SupplierImportAttribute_Id = Config_Id });
+                if (attributes != null && attributes.Count > 0)
+                {
+                    ddlFilterAttributeType.Items.Clear();
+                    ddlFilterAttributeType.DataSource = attributes;
+                    ddlFilterAttributeType.DataBind();
+                    ddlFilterAttributeType.Items.Insert(0, new ListItem("All", "-1"));
+
+                }
+
+                var prioritys = mappingsvc.GetStaticDataMappingAttributeValuesForFilter(new MDMSVC.DC_SupplierImportAttributeValues_RQ() { For = "priority", SupplierImportAttribute_Id = Config_Id });
+                if (prioritys != null && prioritys.Count > 0)
+                {
+                    ddlFilterPriority.Items.Clear();
+                    ddlFilterPriority.DataSource = prioritys;
+                    ddlFilterPriority.DataBind();
+                    ddlFilterPriority.Items.Insert(0, new ListItem("All", "-1"));
+
                 }
             }
         }
@@ -55,6 +83,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
                 RQ.SupplierImportAttribute_Id = Config_Id;
                 RQ.PageNo = PageIndex;
+
+                if (ddlFilterPriority.SelectedItem.Value != "-1")
+                    RQ.Priority = Convert.ToInt32(ddlFilterPriority.SelectedItem.Text); //intFilterPriority;
+                else
+                    RQ.Priority = -1;
+                if (ddlFilterAttributeType.SelectedItem.Value != "-1")
+                    RQ.AttributeType = ddlFilterAttributeType.SelectedItem.Text; //strFilterAttributeType;
                 RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
 
                 var res = mappingsvc.GetStaticDataMappingAttributeValues(RQ);
@@ -90,8 +125,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
 
 
-
-
                     }
                     else
                     {
@@ -111,7 +144,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 grdMappingAttrValues.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
                 grdMappingAttrValues.DataBind();
                 dvMsg.Style.Add("display", "block");
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Data was populated sucessfully", BootstrapAlertType.Success);
+                //BootstrapAlert.BootstrapAlertMessage(dvMsg, "Data was populated sucessfully", BootstrapAlertType.Success);
             }
         }
 
@@ -513,7 +546,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             }
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format")
                             {
-                                if (ddlAttributeName.SelectedItem.Text.ToLower() != "replace") {
+                                if (ddlAttributeName.SelectedItem.Text.ToLower() != "replace")
+                                {
                                     divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
                                     hdnIsReplaceWith.Value = Convert.ToString(false);
                                     txtAttributeValue.Visible = true;
@@ -776,6 +810,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     hdnFlag.Value = "true";
                     //PageIndex = 0;
                     fillmappingattributes();
+                    fillattributeFilters();
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
 
                 }
@@ -864,6 +899,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     hdnFlag.Value = "true";
                     fillmappingattributes();
+                    fillattributeFilters();
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
 
                 }
@@ -1197,7 +1233,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace all spcl chrs")
                         {
                             hdnIsReplaceWith.Value = Convert.ToString(false);
-                            ddlAttributeValue.Visible =false;
+                            ddlAttributeValue.Visible = false;
                             txtAttributeValue.Visible = true;
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
                         }
@@ -1226,5 +1262,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         }
 
+        protected void ddlFilterPriority_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillmappingattributes();
+        }
+
+        protected void ddlFilterAttributeType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillmappingattributes();
+        }
     }
 }
