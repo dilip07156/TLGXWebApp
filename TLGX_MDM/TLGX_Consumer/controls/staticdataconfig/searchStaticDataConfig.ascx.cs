@@ -252,6 +252,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
             else
             {
                 hdnFlag.Value = "true";
+                //Added code to fill filter and show added data.
+                ddlSupplierName.SelectedIndex = ddlAddSupplier.Items.IndexOf(ddlSupplierName.Items.FindByValue(Convert.ToString(newObj.Supplier_Id)));
+                ddlFor.SelectedIndex = ddlAddFor.Items.IndexOf(ddlAddFor.Items.FindByText(Convert.ToString(newObj.For)));
+                ddlEntity.SelectedIndex = ddlAddEntity.Items.IndexOf(ddlAddEntity.Items.FindByText(Convert.ToString(newObj.Entity)));
                 fillconfigdata();
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
             }
