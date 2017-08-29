@@ -561,8 +561,6 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSystemRemark = (TextBox)frmEditCityMap.FindControl("txtSystemRemark");
             TextBox txtSystemStateCode = (TextBox)frmEditCityMap.FindControl("txtSystemStateCode");
             TextBox txtSystemStateName = (TextBox)frmEditCityMap.FindControl("txtSystemStateName");
-            Button btnMatchedMapSelected = (Button)frmEditCityMap.FindControl("btnMatchedMapSelected");
-            Button btnMatchedMapAll = (Button)frmEditCityMap.FindControl("btnMatchedMapAll");
 
             TextBox txtAddCityName = (TextBox)frmEditCityMap.FindControl("txtAddCityName");
             TextBox txtAddCode = (TextBox)frmEditCityMap.FindControl("txtAddCode");

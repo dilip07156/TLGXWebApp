@@ -14,14 +14,6 @@
     <ContentTemplate>
 
         <div class="container">
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <asp:ValidationSummary ID="vldAttrMapSearch" runat="server" ValidationGroup="vldgrpAttrMapSearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
 
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
@@ -39,8 +31,6 @@
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlSearchSupplier">
                                                 Supplier Name
-                                                <asp:RequiredFieldValidator ID="vldReqddlSupplier" runat="server" ControlToValidate="ddlSearchSupplier" InitialValue="0" ErrorMessage="Please select a Supplier" Text="*" ValidationGroup="vldgrpAttrMapSearch" CssClass="text-danger">
-                                                </asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlSearchSupplier" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -52,8 +42,6 @@
                                         <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlSearchAttributeType">
                                                 System Attribute
-                                                <asp:RequiredFieldValidator ID="vldReqddlAttributeType" runat="server" ControlToValidate="ddlSearchAttributeType" InitialValue="0" ErrorMessage="Please select a Attribute Type" Text="*" ValidationGroup="vldgrpAttrMapSearch" CssClass="text-danger">
-                                                </asp:RequiredFieldValidator>
                                             </label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlSearchAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -63,7 +51,7 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-10">
-                                                <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" CausesValidation="true" ValidationGroup="vldgrpAttrMapSearch" />
+                                                <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" CausesValidation="true" />
                                                 <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
                                                 <asp:Button ID="btnAddNew" runat="server" CssClass="btn btn-primary btn-sm" Text="Add New" OnClick="btnAddNew_Click" OnClientClick="showAddUpdateModal();" />
                                             </div>
@@ -155,7 +143,6 @@
 
                 </div>
             </div>
-
 
         </div>
 

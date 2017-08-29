@@ -144,6 +144,8 @@ namespace TLGX_Consumer.controls.roomtype
                     _objSearch.Status = ddlStatusBySupplier.SelectedItem.Text;
                 if (!string.IsNullOrWhiteSpace(txtProductNameBySupplier.Text))
                     _objSearch.ProductName = txtProductNameBySupplier.Text.Trim();
+                if (!string.IsNullOrWhiteSpace(txtSupplierRoomName.Text))
+                    _objSearch.SupplierRoomName = txtSupplierRoomName.Text.Trim();
 
                 _objSearch.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
 

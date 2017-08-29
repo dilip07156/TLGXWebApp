@@ -193,13 +193,23 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-6" for="ddlStatusBySupplier">
+                                                    <label class="control-label col-sm-6" for="txtProductNameBySupplier">
                                                         Product Name
                                                     </label>
                                                     <div class="col-sm-6">
                                                         <asp:TextBox runat="server" ID="txtProductNameBySupplier" CssClass="form-control"></asp:TextBox>
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-6" for="txtSupplierRoomName">
+                                                        Supplier RoomName
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <asp:TextBox runat="server" ID="txtSupplierRoomName" CssClass="form-control"></asp:TextBox>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group row">
                                                     <div class="col-sm-6">
                                                         <asp:Button ID="btnSearchBySupplier" runat="server" OnClick="btnSearchBySupplier_Click" CssClass="btn btn-primary btn-sm" Text="Search" ValidationGroup="HotelSearch" />

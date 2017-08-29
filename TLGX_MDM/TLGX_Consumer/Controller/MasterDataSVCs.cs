@@ -55,7 +55,6 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
-
         #region "City Data"
 
         public List<string> GetCityNameList(MDMSVC.DC_City_Search_RQ RQParams)
@@ -221,10 +220,10 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeDetails"], MasterAttribute_Id), typeof(DC_M_masterattribute), out result);
             return result as DC_M_masterattribute;
         }
-        public List<MDMSVC.DC_M_masterattributevalue> GetAttributeValues(string MasterAttribute_Id,string pagesize , string pageno)
+        public List<MDMSVC.DC_M_masterattributevalue> GetAttributeValues(string MasterAttribute_Id, string pagesize, string pageno)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeValuesById"], MasterAttribute_Id,pagesize,pageno), typeof(List<DC_M_masterattributevalue>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeValuesById"], MasterAttribute_Id, pagesize, pageno), typeof(List<DC_M_masterattributevalue>), out result);
             return result as List<DC_M_masterattributevalue>;
         }
 
@@ -299,6 +298,27 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ProductCategory_SoftDelete"], RQParams, typeof(MDMSVC.DC_Supplier_ProductCategory), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+
+        public List<MDMSVC.DC_Supplier_ApiLocation> Supplier_ApiLoc_Get(MDMSVC.DC_Supplier_ApiLocation RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Get"], RQParams, RQParams.GetType(), typeof(List<MDMSVC.DC_Supplier_ApiLocation>), out result);
+            return result as List<MDMSVC.DC_Supplier_ApiLocation>;
+        }
+
+        public DC_Message Supplier_ApiLoc_Add(MDMSVC.DC_Supplier_ApiLocation RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Add"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+        public DC_Message Supplier_ApiLoc_Update(MDMSVC.DC_Supplier_ApiLocation RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Update"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
 
         #region Statuses
@@ -337,6 +357,7 @@ namespace TLGX_Consumer.Controller
             return result as List<string>;
         }
         #endregion
+
         #region Common Funciton to Get Codes by Entity Type
         public string GetCodeById(string objName, string obj_Id)
         {
@@ -359,7 +380,7 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region To Fill Dropdown
-        public List<MDMSVC.DC_Accomodation_DDL>GetProductByCity(DC_Accomodation_DDL _obj)
+        public List<MDMSVC.DC_Accomodation_DDL> GetProductByCity(DC_Accomodation_DDL _obj)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetProductByCity"], _obj, typeof(MDMSVC.DC_Accomodation_DDL), typeof(List<MDMSVC.DC_Accomodation_DDL>), out result);
@@ -395,8 +416,6 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetSupplierMasterData"]), typeof(List<DC_Supplier_DDL>), out result);
             return result as List<MDMSVC.DC_Supplier_DDL>;
         }
-
-
         public List<DC_State_Master_DDL> GetStateByCity(string City_Id)
         {
             object result = null;
@@ -425,7 +444,7 @@ namespace TLGX_Consumer.Controller
             return result as List<MDMSVC.DC_CountryMaster>;
 
         }
-        public List<DC_Activity_DDL>GetActivityByCountryCity(string countryname, string cityname)
+        public List<DC_Activity_DDL> GetActivityByCountryCity(string countryname, string cityname)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetActivityForDDL"], countryname, cityname), typeof(List<DC_Activity_DDL>), out result);
@@ -439,7 +458,7 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Master_SaveCityAreaLocation"], _obj, typeof(MDMSVC.DC_CityAreaLocation), typeof(bool), out result);
-            return (bool)result ;
+            return (bool)result;
         }
         public bool SaveCityArea(DC_CityArea _obj)
         {
@@ -459,6 +478,15 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Master_GetMasterCityAreaData"], City_Id), typeof(List<DC_CityArea>), out result);
             return result as List<MDMSVC.DC_CityArea>;
+        }
+        #endregion
+
+        #region FileConfig
+        public List<string> GetListOfColumnNamesByTable(string tblname)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["StaticDataConfig_GetTableColumn"], tblname), typeof(List<string>), out result);
+            return result as List<string>;
         }
         #endregion
     }
