@@ -151,7 +151,7 @@
     function myTimer() {
         var d = new Date();
         var hdnval = document.getElementById("hdnFileId").value;
-       alert(hdnval);
+       //alert(hdnval);
         getChartData(hdnval);
     }
     function myStopFunction() {
