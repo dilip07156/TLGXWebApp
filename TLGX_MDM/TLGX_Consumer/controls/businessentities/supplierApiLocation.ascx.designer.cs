@@ -31,21 +31,93 @@ namespace TLGX_Consumer.controls.businessentities {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// frmSupplierApiLoc control.
+        /// vlsSumm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmSupplierApiLoc;
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
-        /// gvNewTabData control.
+        /// rfvSupApiLocEntity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNewTabData;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupApiLocEntity;
+        
+        /// <summary>
+        /// ddlSupplierApiLocEntity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierApiLocEntity;
+        
+        /// <summary>
+        /// rfvSupApiLocEndPoint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupApiLocEndPoint;
+        
+        /// <summary>
+        /// txtSupplierApiLocEndPoint control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupplierApiLocEndPoint;
+        
+        /// <summary>
+        /// rfvSupApiLocStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupApiLocStatus;
+        
+        /// <summary>
+        /// ddlSupplierApiLocStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierApiLocStatus;
+        
+        /// <summary>
+        /// lnkButtonAddUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkButtonAddUpdate;
+        
+        /// <summary>
+        /// lnkButtonReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkButtonReset;
+        
+        /// <summary>
+        /// gvSupplierApiLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSupplierApiLoc;
     }
 }

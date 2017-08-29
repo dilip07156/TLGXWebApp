@@ -249,6 +249,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UploadStaticDataValue_Get"], RQ, typeof(MDMSVC.DC_SupplierImportAttributeValues_RQ), typeof(List<DC_SupplierImportAttributeValues>), out result);
             return result as List<DC_SupplierImportAttributeValues>;
         }
+        public List<string> GetStaticDataMappingAttributeValuesForFilter(MDMSVC.DC_SupplierImportAttributeValues_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UploadStaticDataValueFilter_Get"], RQ, typeof(MDMSVC.DC_SupplierImportAttributeValues_RQ), typeof(List<string>), out result);
+            return result as List<string>;
+        }
         public DC_Message AddStaticDataMappingAttributeValue(MDMSVC.DC_SupplierImportAttributeValues RQ)
         {
             object result = null;
