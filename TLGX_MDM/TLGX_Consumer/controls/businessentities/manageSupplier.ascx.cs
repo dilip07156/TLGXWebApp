@@ -79,21 +79,29 @@ namespace TLGX_Consumer.controls.businessentities
                         BindStatus();
                         DropDownList ddlStatusEdit = (DropDownList)frmSupplierDetail.FindControl("ddlStatusEdit");
                         DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
-                        ddlStatusEdit.Items.FindByText(result[0].StatusCode ?? "--Select--").Selected = true;
-                        ddlSupplierType.Items.FindByText(result[0].SupplierType ?? "--Select--").Selected = true;
 
+                        if(result[0].StatusCode==string.Empty)
+                            ddlStatusEdit.Items.FindByText("--Select--").Selected = true;
+                        else
+                            ddlStatusEdit.Items.FindByText(result[0].StatusCode).Selected = true;
+                        if (result[0].SupplierType == string.Empty)
+                            ddlSupplierType.Items.FindByText("--Select--").Selected = true;
+                        else
+                            ddlSupplierType.Items.FindByText(result[0].SupplierType).Selected = true;
+                        //ddlStatusEdit.Items.FindByText(result[0].StatusCode ?? "--Select--").Selected = true;
+                        //ddlSupplierType.Items.FindByText(result[0].SupplierType ?? "--Select--").Selected = true;
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
                 throw;
             }
         }
 
         protected void frmSupplierDetail_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
+            string supplierType;
             DropDownList ddlStatusEdit = (DropDownList)frmSupplierDetail.FindControl("ddlStatusEdit");
             DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
             TextBox txtNameSupplierEdit = (TextBox)frmSupplierDetail.FindControl("txtNameSupplierEdit");
@@ -102,12 +110,18 @@ namespace TLGX_Consumer.controls.businessentities
 
             if (e.CommandName == "EditCommand")
             {
+
+                if (ddlSupplierType.SelectedIndex == 0)
+                    supplierType = string.Empty;
+                else
+                    supplierType = ddlSupplierType.SelectedItem.Text;
+
                 _msg = _objMaster.AddUpdateSupplier(new MDMSVC.DC_Supplier()
                 {
                     Supplier_Id = mySupplier_Id,
                     Name = txtNameSupplierEdit.Text.Trim(),
                     Code = txtCodeSupplierEdit.Text.Trim(),
-                    SupplierType = ddlSupplierType.SelectedItem.Text,
+                    SupplierType = supplierType,
                     StatusCode = ddlStatusEdit.SelectedItem.Text,
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name
@@ -125,7 +139,7 @@ namespace TLGX_Consumer.controls.businessentities
                     hdnFlag.Value = "false";
                     BootstrapAlert.BootstrapAlertMessage(dvMsgUpdateSupplierDetails, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
                 }
-               
+
             }
         }
     }
