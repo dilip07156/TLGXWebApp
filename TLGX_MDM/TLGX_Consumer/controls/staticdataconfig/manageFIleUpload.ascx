@@ -1,11 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
-<script>
+<script type="text/javascript">
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
-
             var colorarray = ["#007F00", "#faebd7"];
             var readarray = [];
             var txarray = [];
@@ -24,7 +23,6 @@
                     $("#ttfu").empty();
                     $('#tblveboselog').empty();
                     $("#tblstatastic").empty();
-                    // debugger;
                     //process charts
                     for (var inode = 0; inode < result.ProgressLog.length; inode++) {
                         if (result.ProgressLog[inode].Step == "READ") {
@@ -62,6 +60,10 @@
                             }
                             $("#Mcurrentbatch").html(result.ProgressLog[inode].CurrentBatch);
                             $("#Mtotalbatch").html(result.ProgressLog[inode].TotalBatch);
+                            //stop timer on completion of remaining jobs 
+                            if (a=100)
+                                myStopFunction(x);
+                            //end
                         }
                         else {
                             var a = result.ProgressLog[inode].PercentageValue;
@@ -119,18 +121,13 @@
                         tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
                         $("#verboselog table").append(tr);
                         if (i == result.VerboseLog.length - 1) {
-                            //timediff = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6))) - new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
-                            //timediff /= 60000;
                             var end_actual_time = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6)));
                             var start_actual_time = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
                             var diff = end_actual_time - start_actual_time;
                             var diffSeconds = diff / 1000;
                             var HH = Math.floor(diffSeconds / 3600);
                             var MM = Math.floor(diffSeconds % 3600) / 60;
-
                             var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                            // alert(formatted);
-                            debugger;
                             $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lbltimeDiff").text(formatted);
                         }
                     }
@@ -144,23 +141,23 @@
                     }
                 },
                 error: function () {
-                    //  debugger;
-                    alert("Error fetching file processing data");
+                    //alert("Error fetching file processing data");
                 },
             });
         }
     }
-
-</script>
-<script type="text/javascript">
-    var x = setInterval(myTimer, 5000);
+    //timer logic
+    var x;
     function myTimer() {
         var d = new Date();
         var hdnval = document.getElementById("hdnFileId").value;
-       // console.log(hdnval);
+       alert(hdnval);
         getChartData(hdnval);
     }
-
+    function myStopFunction() {
+        clearInterval(x);
+    }
+    //end
     function showFileUpload() {
         $("#moFileUpload").modal('show');
     }
@@ -171,10 +168,20 @@
         $("#moViewDetials").modal('show');
         $('#moViewDetials').one('shown.bs.modal', function () {
             document.getElementById("hdnFileId").value = fileid;
+            var filestatus =$("#MainContent_manageFIleUpload_frmViewDetailsConfig_lblstatus").text();
+            getChartData(fileid);
+            if (filestatus == "PROCESSED" || filestatus == "ERROR") {
+                //stop timer
+               // myStopFunction();
+            }
+            else {
+                //strat timer
+                x = setInterval(function () { myTimer() }, 5000);
+            }
         });
         $('#moViewDetials').on('hidden.bs.modal', function () {
-            debugger;
-            //  window.clearInterval(x);
+            //stop timer on close of modal 
+            myStopFunction();
         });
     }
 
@@ -522,7 +529,6 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <%--<div class="col-md-12">--%>
                         <asp:UpdatePanel ID="pnlViewDetails" runat="server">
                             <ContentTemplate>
                                 <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
@@ -557,7 +563,6 @@
                         <asp:PostBackTrigger ControlID="btnDownload" />
                     </Triggers>--%>
                         </asp:UpdatePanel>
-                        <%--</div>--%>
                     </div>
                     <br />
                     <div class="row">
@@ -602,9 +607,7 @@
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
                                         <h4 style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></h4>
                                     </div>
-                                    <%-- <div class="panel-body" style="height: 190px;">--%>
                                     <div id="match" class="chartheight" style="height: 160px"></div>
-                                    <%-- </div>--%>
                                 </div>
                             </div>
                         </div>
