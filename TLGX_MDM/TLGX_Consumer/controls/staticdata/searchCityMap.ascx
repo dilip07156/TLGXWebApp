@@ -45,8 +45,9 @@
     #map #infowindow-content {
         display: inline;
     }
-    .x-lg{
-        width:1200px;
+
+    .x-lg {
+        width: 1200px;
     }
 </style>
 
@@ -397,8 +398,8 @@
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%"/>
-                                        <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%"/>
+                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%" />
+                                        <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%" />
                                         <asp:BoundField DataField="StateName" HeaderText="State" />
                                         <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                             <HeaderStyle BackColor="Turquoise" />
@@ -465,7 +466,7 @@
 
 <br />
 <!-- OPEN IN MODAL -->
-<div class="modal fade" id="moCityMapping" role="dialog" >
+<div class="modal fade" id="moCityMapping" role="dialog">
     <div class="modal-dialog modal-lg x-lg">
         <div class="modal-content">
 
@@ -629,17 +630,17 @@
 
                                                     </div>
 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Actions</div>
+                                                <div class="panel-body">
                                                     <div class="form-group">
                                                         <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" />
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
-                                                        <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary btn-sm" Text="Submit" CommandName="Submit" data-dismiss="modal" CausesValidation="false" Visible="false" />
-                                                        <asp:Button ID="btnLock" runat="server" CssClass="btn btn-primary btn-sm" Text="Lock" CommandName="Lock" CausesValidation="false" Visible="false" />
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" CausesValidation="false" />
-                                                        <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" CausesValidation="false" />
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -803,6 +804,10 @@
                                                 </span>
                                                 <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
                                             </div>
+                                            <div class="form-group pull-right">
+                                                <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" CausesValidation="false" />
+                                                <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" CausesValidation="false" />
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <asp:GridView ID="grdMatchingCity" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
@@ -815,12 +820,12 @@
                                                     <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                                     <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                                     <asp:TemplateField ShowHeader="true" HeaderText="State Name (State Code)">
+                                                    <asp:TemplateField ShowHeader="true" HeaderText="State Name (State Code)">
                                                         <ItemTemplate>
                                                             <span aria-hidden="true"><%# Eval("StateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("StateCode"))) ? "(" + Eval("StateCode") + ")" : string.Empty) %></span>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                   <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
+                                                    <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
                                                     <asp:BoundField DataField="CityCode" HeaderText="City Code" />
                                                     <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">

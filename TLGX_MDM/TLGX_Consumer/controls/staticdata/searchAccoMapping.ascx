@@ -8,6 +8,10 @@
     .hideColumn {
         display: none;
     }
+
+    .x-lg {
+        width: 1200px;
+    }
 </style>
 <script type="text/javascript">
     $(function () {
@@ -405,16 +409,16 @@
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <%--<asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
-                                                 <asp:BoundField DataField="SystemProductName" HeaderText="System Product">
+                                                <asp:BoundField DataField="SystemProductName" HeaderText="System Product">
                                                     <HeaderStyle BackColor="Turquoise" />
                                                 </asp:BoundField>
-                                                 <asp:BoundField DataField="SystemCountryName" HeaderText="Country Name">
+                                                <asp:BoundField DataField="SystemCountryName" HeaderText="Country Name">
                                                     <HeaderStyle BackColor="Turquoise" />
                                                 </asp:BoundField>
                                                 <asp:BoundField DataField="SystemCityName" HeaderText="City Name">
                                                     <HeaderStyle BackColor="Turquoise" />
                                                 </asp:BoundField>
-                                               <asp:BoundField DataField="SystemFullAddress" HeaderText="Address">
+                                                <asp:BoundField DataField="SystemFullAddress" HeaderText="Address">
                                                     <HeaderStyle BackColor="Turquoise" />
                                                 </asp:BoundField>
                                                 <asp:TemplateField ShowHeader="true" HeaderText="Master Product Name">
@@ -642,12 +646,12 @@
     <br />
     <!-- OPEN IN MODAL -->
     <div class="modal fade" id="moCityMapping" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg x-lg">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <div class="panel panel-default">
-                        Update Supplier Product Mapping
+                    <div class="panel-heading">
+                        <h4 class="modal-title">Update Supplier Product Mapping</h4>
                     </div>
                 </div>
                 <div class="modal-body">
@@ -659,44 +663,7 @@
                                     <!-- should be edit item template, but using insert just to show UI -->
                                     <div class="container">
                                         <div class="row">
-                                            <div class="col-lg-9">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-body">
-                                                        <div class="form-group form-inline">
-                                                            <div class="input-group">
-                                                                <label class="input-group-addon" for="ddlStatus">
-                                                                    Status
-                                                                        <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
-                                                                </label>
-                                                                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control col-lg-3" AppendDataBoundItems="true">
-                                                                    <asp:ListItem Value="0">Select</asp:ListItem>
-                                                                </asp:DropDownList>
-                                                            </div>
-                                                            <div class="form-group">&nbsp;</div>
-                                                            <div class="form-group">
-                                                                <label for="txtSystemRemark">Remark</label>
-                                                                <asp:TextBox ID="txtSystemRemark" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            </div>
-                                                            <div class="form-group">&nbsp;</div>
-                                                            <div class="form-group">&nbsp;</div>
-                                                            <div class="form-group">&nbsp;</div>
-                                                            <div class="form-group">
-                                                                <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" />
-                                                                <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
-                                                                <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary btn-sm" Text="Submit" CommandName="Submit" data-dismiss="modal" CausesValidation="false" Visible="false" />
-                                                                <asp:Button ID="btnLock" runat="server" CssClass="btn btn-primary btn-sm" Text="Lock" CommandName="Lock" CausesValidation="false" Visible="false" />
-                                                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                                              
-
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-4">
+                                            <div class="col-lg-3">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">Supplier</div>
                                                     <div class="panel-body">
@@ -755,7 +722,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-5">
+                                            <div class="col-lg-6">
                                                 <div class="panel panel-default">
                                                     <div class="panel-heading">System</div>
                                                     <div class="panel-body">
@@ -850,6 +817,33 @@
                                                                 <asp:Button ID="btnAddProduct" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Hotel" CommandName="OpenAddProduct" CausesValidation="true" ValidationGroup="AddCity" />
                                                             </div>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">Status</div>
+                                                    <div class="panel-body">
+                                                        <div class="form-group">
+                                                            <label for="ddlStatus">
+                                                                Status
+                                                                        <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                            </label>
+                                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control col-lg-3" AppendDataBoundItems="true">
+                                                                <asp:ListItem Value="0">Select</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <div class="form-group">&nbsp;</div>
+                                                            <div class="form-group">
+                                                                <label for="txtSystemRemark">Remark</label>
+                                                                <asp:TextBox ID="txtSystemRemark" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" />
+                                                                <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </div>
