@@ -61,7 +61,7 @@
                             $("#Mcurrentbatch").html(result.ProgressLog[inode].CurrentBatch);
                             $("#Mtotalbatch").html(result.ProgressLog[inode].TotalBatch);
                             //stop timer on completion of remaining jobs 
-                            if (a=100)
+                            if (a = 100)
                                 myStopFunction(x);
                             //end
                         }
@@ -151,7 +151,7 @@
     function myTimer() {
         var d = new Date();
         var hdnval = document.getElementById("hdnFileId").value;
-       //alert(hdnval);
+        //alert(hdnval);
         getChartData(hdnval);
     }
     function myStopFunction() {
@@ -168,11 +168,11 @@
         $("#moViewDetials").modal('show');
         $('#moViewDetials').one('shown.bs.modal', function () {
             document.getElementById("hdnFileId").value = fileid;
-            var filestatus =$("#MainContent_manageFIleUpload_frmViewDetailsConfig_lblstatus").text();
+            var filestatus = $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lblstatus").text();
             getChartData(fileid);
             if (filestatus == "PROCESSED" || filestatus == "ERROR") {
                 //stop timer
-               // myStopFunction();
+                // myStopFunction();
             }
             else {
                 //strat timer
@@ -477,7 +477,8 @@
                                 CssClass="text-danger" ErrorMessage="The Suppplier is required." InitialValue="0" />
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlSupplierList" runat="server" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlSupplierList" runat="server" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged"
+                                        AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control">
                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
@@ -490,7 +491,8 @@
                                   CssClass="text-danger" ID="rfvddlEntityList" ErrorMessage="The Entity is required." InitialValue="0" />
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlEntityList" runat="server" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:DropDownList ID="ddlEntityList" runat="server" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged"
+                                        AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control">
                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
