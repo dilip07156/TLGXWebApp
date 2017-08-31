@@ -27,7 +27,6 @@
                     $("#tblstatastic").empty();
                     //file Details
                     for (var inode = 0; inode < result.FileDetails.length; inode++) {
-                        debugger;
                         $("#lblSupplier").html(result.FileDetails[0].Supplier);
                         $("#lblEntity").html(result.FileDetails[0].Entity);
                         $("#lblPath").html(result.FileDetails[0].OriginalFilePath);
@@ -143,11 +142,8 @@
                     }
                     //error log
                     for (var i = 0; i < result.ErrorLog.length; i++) {
-                        debugger;
                         if (result.ErrorLog.length > 0) {
-                            alert(fileid);
-                            debugger;
-                            $("#errorlogtab").css("display","block");
+                            $("#errorlogtab").css("display", "block");
                             var d = new Date(parseInt(result.ErrorLog[i].Error_DATE.substr(6)));
                             var date = d.toLocaleString("en-GB");
                             var tr;
@@ -265,15 +261,15 @@
             padding-left: 15px;
         }
     }
-    .TextBoxStyle
-        {
-        text-align:left;
+
+    .TextBoxStyle {
+        text-align: left;
         border-color: black;
         border-width: 1px;
         border-style: solid;
         font-family: Calibri;
         font-size: 14px;
-        }
+    }
 </style>
 <asp:UpdatePanel ID="updUserGrid" runat="server">
     <ContentTemplate>
@@ -571,28 +567,28 @@
                     <div class="row">
                         <div class="col-md-12">
                             <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                                      
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Supplier</label>
-                                                <label ID="lblSupplier" Class="form-control " ></label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Entity</label>
-                                                <label ID="lblEntity" Class="form-control" ></label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">File</label>
-                                                <label ID="lblPath" Class="form-control"  ></label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Status</label>
-                                                <label ID="lblstatus" Class="form-control" ></label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Elapsed Time</label>
-                                                <label ID="lbltimeDiff" Class="form-control"></label>
-                                            </div>
-                                      
+
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Supplier</label>
+                                <label id="lblSupplier" class="form-control "></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Entity</label>
+                                <label id="lblEntity" class="form-control"></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">File</label>
+                                <label id="lblPath" class="form-control"></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Status</label>
+                                <label id="lblstatus" class="form-control"></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Elapsed Time</label>
+                                <label id="lbltimeDiff" class="form-control"></label>
+                            </div>
+
                         </div>
                     </div>
                     <br />
@@ -650,7 +646,7 @@
                                     <div id="Tabs" class="panel-body" role="tabpanel">
                                         <ul class="nav nav-tabs tabs" role="tablist">
                                             <li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#ShowVerboselog">Verbose Log</a></li>
-                                            <li id="errorlogtab" role="presentation" style="display:none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red" ></span></a></li>
+                                            <li id="errorlogtab" role="presentation" style="display: none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red"></span></a></li>
                                         </ul>
                                         <div class="tab-content">
                                             <div role="tabpanel" id="ShowVerboselog" class="tab-pane fade in active">
