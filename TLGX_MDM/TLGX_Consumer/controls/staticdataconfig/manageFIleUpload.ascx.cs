@@ -363,14 +363,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     RQ.PageSize = int.MaxValue;
                     var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
 
-                    frmViewDetailsConfig.Visible = true;
-                    frmViewDetailsConfig.DataSource = res;
-                    frmViewDetailsConfig.DataBind();
+                    //frmViewDetailsConfig.Visible = true;
+                   // frmViewDetailsConfig.DataSource = res;
+                   // frmViewDetailsConfig.DataBind();
 
                     if (res != null && res.Count > 0)
                     {
                         hdnViewDetailsFlag.Value = "false";
-                        frmErrorlog();
+                        //frmErrorlog();
                     }
 
                 }
@@ -445,37 +445,37 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
             }
         }
-        protected void frmErrorlog()
-        {
-            Repeater rptrErrorLog = (Repeater)frmViewDetailsConfig.FindControl("rptrErrorLog");
-            LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
-            LinkButton btnNext = (LinkButton)frmViewDetailsConfig.FindControl("btnNext");
-            Label lblTotalCount = (Label)frmViewDetailsConfig.FindControl("lblTotalCount");
+        //protected void frmErrorlog()
+        //{
+        //    Repeater rptrErrorLog = (Repeater)frmViewDetailsConfig.FindControl("rptrErrorLog");
+        //    LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
+        //    LinkButton btnNext = (LinkButton)frmViewDetailsConfig.FindControl("btnNext");
+        //    Label lblTotalCount = (Label)frmViewDetailsConfig.FindControl("lblTotalCount");
 
-            MDMSVC.DC_SupplierImportFile_ErrorLog_RQ _objSearch = new MDMSVC.DC_SupplierImportFile_ErrorLog_RQ();
-            _objSearch.SupplierImportFile_Id = Guid.Parse(frmViewDetailsConfig.DataKey[0].ToString());
-            _objSearch.PageNo = intActivityPageIndex;
-            _objSearch.PageSize = 5;
+        //    MDMSVC.DC_SupplierImportFile_ErrorLog_RQ _objSearch = new MDMSVC.DC_SupplierImportFile_ErrorLog_RQ();
+        //    _objSearch.SupplierImportFile_Id = Guid.Parse(frmViewDetailsConfig.DataKey[0].ToString());
+        //    _objSearch.PageNo = intActivityPageIndex;
+        //    _objSearch.PageSize = 5;
 
-            var result = _objMappingSVCs.GetStaticDataUploadErrorLog(_objSearch);
-            if (result != null && result.Count > 0)
-            {
-                TotalCountActivity = result[0].TotalCount;
-                lblTotalCount.Text = "Total Record Count: " + TotalCountActivity.ToString();
-                intTotalPage = (int)Math.Ceiling((double)TotalCountActivity / 5);
-                if (intTotalPage > intActivityPageIndex + 1)
-                    btnNext.Enabled = true;
-                rptrErrorLog.DataSource = result;
-                rptrErrorLog.DataBind();
-                btnPrevious.Visible = true;
-                btnNext.Visible = true;
-                //btnDownload.Visible = true;
-            }
-            else
-            {
-                //btnDownload.Visible = false;
-            }
-        }
+        //    var result = _objMappingSVCs.GetStaticDataUploadErrorLog(_objSearch);
+        //    if (result != null && result.Count > 0)
+        //    {
+        //        TotalCountActivity = result[0].TotalCount;
+        //        lblTotalCount.Text = "Total Record Count: " + TotalCountActivity.ToString();
+        //        intTotalPage = (int)Math.Ceiling((double)TotalCountActivity / 5);
+        //        if (intTotalPage > intActivityPageIndex + 1)
+        //            btnNext.Enabled = true;
+        //        rptrErrorLog.DataSource = result;
+        //        rptrErrorLog.DataBind();
+        //        btnPrevious.Visible = true;
+        //        btnNext.Visible = true;
+        //        //btnDownload.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        //btnDownload.Visible = false;
+        //    }
+        //}
 
         protected void FileUpld_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
         {
@@ -636,151 +636,151 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
-        protected void frmViewDetailsConfig_ItemCommand(object sender, FormViewCommandEventArgs e)
-        {
-            try
-            {
-                if (e.CommandName == "Previous")
-                {
-                    LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
-                    if (intActivityPageIndex >= 0)
-                    {
-                        intActivityPageIndex = intActivityPageIndex - 1;
-                        if (intActivityPageIndex == 0)
-                        {
-                            btnPrevious.Visible = false;
-                        }
-                        else
-                            btnPrevious.Enabled = true;
-                        frmErrorlog();
-                    }
-                }
-                if (e.CommandName == "Next")
-                {
-                    LinkButton btnNext = (LinkButton)frmViewDetailsConfig.FindControl("btnNext");
-                    LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
-                    if (intActivityPageIndex <= intTotalPage)
-                    {
-                        intActivityPageIndex++;
-                        btnPrevious.Enabled = true;
-                        if (intActivityPageIndex + 1 >= intTotalPage)
-                        {
-                            btnNext.Visible = false;
-                        }
-                        else
-                            btnNext.Enabled = true;
-                        frmErrorlog();
-                    }
-                }
-                if (e.CommandName == "Archive")
-                {
-                    TextBox txtSupplier = (TextBox)frmViewDetailsConfig.FindControl("txtSupplier");
-                    TextBox txtEntity = (TextBox)frmViewDetailsConfig.FindControl("txtEntity");
-                    TextBox txtPath = (TextBox)frmViewDetailsConfig.FindControl("txtPath");
-                    TextBox txtStatus = (TextBox)frmViewDetailsConfig.FindControl("txtStatus");
+        //protected void frmViewDetailsConfig_ItemCommand(object sender, FormViewCommandEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.CommandName == "Previous")
+        //        {
+        //            LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
+        //            if (intActivityPageIndex >= 0)
+        //            {
+        //                intActivityPageIndex = intActivityPageIndex - 1;
+        //                if (intActivityPageIndex == 0)
+        //                {
+        //                    btnPrevious.Visible = false;
+        //                }
+        //                else
+        //                    btnPrevious.Enabled = true;
+        //                frmErrorlog();
+        //            }
+        //        }
+        //        if (e.CommandName == "Next")
+        //        {
+        //            LinkButton btnNext = (LinkButton)frmViewDetailsConfig.FindControl("btnNext");
+        //            LinkButton btnPrevious = (LinkButton)frmViewDetailsConfig.FindControl("btnPrevious");
+        //            if (intActivityPageIndex <= intTotalPage)
+        //            {
+        //                intActivityPageIndex++;
+        //                btnPrevious.Enabled = true;
+        //                if (intActivityPageIndex + 1 >= intTotalPage)
+        //                {
+        //                    btnNext.Visible = false;
+        //                }
+        //                else
+        //                    btnNext.Enabled = true;
+        //                frmErrorlog();
+        //            }
+        //        }
+        //        if (e.CommandName == "Archive")
+        //        {
+        //            TextBox txtSupplier = (TextBox)frmViewDetailsConfig.FindControl("txtSupplier");
+        //            TextBox txtEntity = (TextBox)frmViewDetailsConfig.FindControl("txtEntity");
+        //            TextBox txtPath = (TextBox)frmViewDetailsConfig.FindControl("txtPath");
+        //            TextBox txtStatus = (TextBox)frmViewDetailsConfig.FindControl("txtStatus");
 
-                    string serverPath = ConfigurationManager.AppSettings["STATIC_FILES_ARCHIVEDAbsPath"];
-                    string archivePath;
-                    string status;
+        //            string serverPath = ConfigurationManager.AppSettings["STATIC_FILES_ARCHIVEDAbsPath"];
+        //            string archivePath;
+        //            string status;
 
-                    archivePath = txtPath.Text;
-                    status = "ARCHIVED";
-                    var fileName = Path.GetFileName(txtPath.Text);
-                    var directoryName = Path.GetDirectoryName(txtPath.Text);
-                    var fullSourcePathWithFilename = directoryName + "\\" + fileName;
-                    var destinationDir = Server.MapPath(serverPath) + txtSupplier.Text + "//" + txtEntity.Text;
-                    if (File.Exists(fullSourcePathWithFilename))
-                    {
-                        if (!Directory.Exists(destinationDir))
-                        {
-                            Directory.CreateDirectory(destinationDir);
-                        }
-                        string fileSavePath = destinationDir + "//" + fileName;
+        //            archivePath = txtPath.Text;
+        //            status = "ARCHIVED";
+        //            var fileName = Path.GetFileName(txtPath.Text);
+        //            var directoryName = Path.GetDirectoryName(txtPath.Text);
+        //            var fullSourcePathWithFilename = directoryName + "\\" + fileName;
+        //            var destinationDir = Server.MapPath(serverPath) + txtSupplier.Text + "//" + txtEntity.Text;
+        //            if (File.Exists(fullSourcePathWithFilename))
+        //            {
+        //                if (!Directory.Exists(destinationDir))
+        //                {
+        //                    Directory.CreateDirectory(destinationDir);
+        //                }
+        //                string fileSavePath = destinationDir + "//" + fileName;
 
-                        File.Move(fullSourcePathWithFilename, fileSavePath);
-                        MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
-                        MappingSVCs _objMappingSVCs = new MappingSVCs();
-                        var fullPath = fileSavePath;
+        //                File.Move(fullSourcePathWithFilename, fileSavePath);
+        //                MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
+        //                MappingSVCs _objMappingSVCs = new MappingSVCs();
+        //                var fullPath = fileSavePath;
 
-                        obj.ArchiveFilePath = fullPath;
-                        obj.STATUS = status;
-                        obj.PROCESS_DATE = DateTime.Now;
-                        obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
-                        obj.SupplierImportFile_Id = Guid.Parse(frmViewDetailsConfig.DataKey[0].ToString());
+        //                obj.ArchiveFilePath = fullPath;
+        //                obj.STATUS = status;
+        //                obj.PROCESS_DATE = DateTime.Now;
+        //                obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
+        //                obj.SupplierImportFile_Id = Guid.Parse(frmViewDetailsConfig.DataKey[0].ToString());
 
-                        List<MDMSVC.DC_SupplierImportFileDetails> _lstDC_SupplierImportFileDetails = new List<MDMSVC.DC_SupplierImportFileDetails>();
-                        _lstDC_SupplierImportFileDetails.Add(obj);
-                        MDMSVC.DC_Message _objMsg = _objMappingSVCs.UpdateSupplierStaticFileDetails(obj);
+        //                List<MDMSVC.DC_SupplierImportFileDetails> _lstDC_SupplierImportFileDetails = new List<MDMSVC.DC_SupplierImportFileDetails>();
+        //                _lstDC_SupplierImportFileDetails.Add(obj);
+        //                MDMSVC.DC_Message _objMsg = _objMappingSVCs.UpdateSupplierStaticFileDetails(obj);
 
-                        if (_objMsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
-                        {
-                            BootstrapAlert.BootstrapAlertMessage(dvMsg, _objMsg.StatusMessage, BootstrapAlertType.Success);
-                        }
-                        else
-                        {
-                            BootstrapAlert.BootstrapAlertMessage(dvMsg, _objMsg.StatusMessage, BootstrapAlertType.Danger);
-                        }
-                        obj = null;
-                        fillmatchingdataArchive(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
-                        hdnViewDetailsFlag.Value = "true";
-                    }
-                    else
-                    {
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "File have been already archived.", BootstrapAlertType.Danger);
-                        hdnViewDetailsFlag.Value = "true";
-                    }
-                }
-                if (e.CommandName == "Download")
-                {
-                    MDMSVC.DC_SupplierImportFile_ErrorLog_RQ _objSearch = new MDMSVC.DC_SupplierImportFile_ErrorLog_RQ();
-                    TextBox txtPath = (TextBox)frmViewDetailsConfig.FindControl("txtPath");
-                    var filename = Path.GetFileNameWithoutExtension(txtPath.Text);
+        //                if (_objMsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+        //                {
+        //                    BootstrapAlert.BootstrapAlertMessage(dvMsg, _objMsg.StatusMessage, BootstrapAlertType.Success);
+        //                }
+        //                else
+        //                {
+        //                    BootstrapAlert.BootstrapAlertMessage(dvMsg, _objMsg.StatusMessage, BootstrapAlertType.Danger);
+        //                }
+        //                obj = null;
+        //                fillmatchingdataArchive(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+        //                hdnViewDetailsFlag.Value = "true";
+        //            }
+        //            else
+        //            {
+        //                BootstrapAlert.BootstrapAlertMessage(dvMsg, "File have been already archived.", BootstrapAlertType.Danger);
+        //                hdnViewDetailsFlag.Value = "true";
+        //            }
+        //        }
+        //        if (e.CommandName == "Download")
+        //        {
+        //            MDMSVC.DC_SupplierImportFile_ErrorLog_RQ _objSearch = new MDMSVC.DC_SupplierImportFile_ErrorLog_RQ();
+        //            TextBox txtPath = (TextBox)frmViewDetailsConfig.FindControl("txtPath");
+        //            var filename = Path.GetFileNameWithoutExtension(txtPath.Text);
 
-                    _objSearch.SupplierImportFile_Id = SupplierImportFile_Id;
-                    var result = _objMappingSVCs.GetStaticDataUploadErrorLog(_objSearch);
-                    if (result != null && result.Count > 0)
-                    {
-                        //Writeing CSV file
-                        StringBuilder sb = new StringBuilder();
+        //            _objSearch.SupplierImportFile_Id = SupplierImportFile_Id;
+        //            var result = _objMappingSVCs.GetStaticDataUploadErrorLog(_objSearch);
+        //            if (result != null && result.Count > 0)
+        //            {
+        //                //Writeing CSV file
+        //                StringBuilder sb = new StringBuilder();
 
-                        string csv = string.Empty;
-                        List<string> lstFileHeader = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["SupplierFileDetails_GetErrorLog_ColumnHeader"]).Split(',').ToList();
+        //                string csv = string.Empty;
+        //                List<string> lstFileHeader = Convert.ToString(System.Configuration.ConfigurationManager.AppSettings["SupplierFileDetails_GetErrorLog_ColumnHeader"]).Split(',').ToList();
 
-                        foreach (var item in result[0].GetType().GetProperties())
-                        {
-                            if (lstFileHeader.Contains(item.Name))
-                                csv += item.Name + ',';
-                        }
-                        sb.Append(string.Format("{0}", csv) + Environment.NewLine);
-                        foreach (var item in result)
-                        {
-                            sb.Append(string.Format("{0},{1},{2},{3}", Convert.ToString(item.Error_DATE), Convert.ToString(item.ErrorCode), Convert.ToString(item.ErrorType), Convert.ToString(item.ErrorDescription)));
-                            sb.Append(Environment.NewLine);
-                        }
+        //                foreach (var item in result[0].GetType().GetProperties())
+        //                {
+        //                    if (lstFileHeader.Contains(item.Name))
+        //                        csv += item.Name + ',';
+        //                }
+        //                sb.Append(string.Format("{0}", csv) + Environment.NewLine);
+        //                foreach (var item in result)
+        //                {
+        //                    sb.Append(string.Format("{0},{1},{2},{3}", Convert.ToString(item.Error_DATE), Convert.ToString(item.ErrorCode), Convert.ToString(item.ErrorType), Convert.ToString(item.ErrorDescription)));
+        //                    sb.Append(Environment.NewLine);
+        //                }
 
-                        byte[] bytes = Encoding.ASCII.GetBytes(sb.ToString());
-                        sb = null;
-                        if (bytes != null)
-                        {
-                            //Download the CSV file.
-                            var response = HttpContext.Current.Response;
-                            response.Clear();
-                            response.ContentType = "text/csv";
-                            response.AddHeader("Content-Length", bytes.Length.ToString());
-                            response.AddHeader("Content-disposition", "attachment; filename=\"" + filename + ".csv" + "\"");
-                            response.BinaryWrite(bytes);
-                            response.Flush();
-                            response.End();
-                        }
-                        // hdnFlag1.Value = "true";
-                    }
-                }
-            }
-            catch
-            {
+        //                byte[] bytes = Encoding.ASCII.GetBytes(sb.ToString());
+        //                sb = null;
+        //                if (bytes != null)
+        //                {
+        //                    //Download the CSV file.
+        //                    var response = HttpContext.Current.Response;
+        //                    response.Clear();
+        //                    response.ContentType = "text/csv";
+        //                    response.AddHeader("Content-Length", bytes.Length.ToString());
+        //                    response.AddHeader("Content-disposition", "attachment; filename=\"" + filename + ".csv" + "\"");
+        //                    response.BinaryWrite(bytes);
+        //                    response.Flush();
+        //                    response.End();
+        //                }
+        //                // hdnFlag1.Value = "true";
+        //            }
+        //        }
+        //    }
+        //    catch
+        //    {
 
-            }
-        }
+        //    }
+        //}
 
         protected void gvFileUploadSearch_RowDataBound(object sender, GridViewRowEventArgs e)
         {

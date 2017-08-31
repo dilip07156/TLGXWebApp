@@ -2,6 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <script type="text/javascript">
+   
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
@@ -16,13 +17,22 @@
                 url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
                 dataType: "json",
                 success: function (result) {
+                    $("#errorlogtab").css("display", "none");
                     $("#read").empty();
                     $("#map").empty();
                     $("#tx").empty();
                     $("#match").empty();
                     $("#ttfu").empty();
                     $('#tblveboselog').empty();
+                    $('#tblerrorlog').empty();
                     $("#tblstatastic").empty();
+                    //file Details
+                    for (var inode = 0; inode < result.FileDetails.length; inode++) {
+                        $("#lblSupplier").html(result.FileDetails[0].Supplier);
+                        $("#lblEntity").html(result.FileDetails[0].Entity);
+                        $("#lblPath").html(result.FileDetails[0].OriginalFilePath);
+                        $("#lblstatus").html(result.FileDetails[0].STATUS);
+                    }
                     //process charts
                     for (var inode = 0; inode < result.ProgressLog.length; inode++) {
                         if (result.ProgressLog[inode].Step == "READ") {
@@ -128,7 +138,22 @@
                             var HH = Math.floor(diffSeconds / 3600);
                             var MM = Math.floor(diffSeconds % 3600) / 60;
                             var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                            $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lbltimeDiff").text(formatted);
+                            $("#lbltimeDiff").text(formatted);
+                        }
+                    }
+                    //error log
+                    for (var i = 0; i < result.ErrorLog.length; i++) {
+                        if (result.ErrorLog.length > 0) {
+                            $("#errorlogtab").css("display", "block");
+                            var d = new Date(parseInt(result.ErrorLog[i].Error_DATE.substr(6)));
+                            var date = d.toLocaleString("en-GB");
+                            var tr;
+                            tr = $('<tr/>');
+                            tr.append("<td>" + date + "</td>");
+                            tr.append("<td>" + result.ErrorLog[i].ErrorCode + "</td>");
+                            tr.append("<td>" + result.ErrorLog[i].ErrorDescription + "</td>");
+                            tr.append("<td>" + result.ErrorLog[i].ErrorType + "</td>");
+                            $("#errorlog table").append(tr);
                         }
                     }
                     //File Statistics
@@ -233,6 +258,15 @@
             padding-right: 15px;
             padding-left: 15px;
         }
+    }
+
+    .TextBoxStyle {
+        text-align: left;
+        border-color: black;
+        border-width: 1px;
+        border-style: solid;
+        font-family: Calibri;
+        font-size: 14px;
     }
 </style>
 <asp:UpdatePanel ID="updUserGrid" runat="server">
@@ -531,40 +565,31 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <asp:UpdatePanel ID="pnlViewDetails" runat="server">
-                            <ContentTemplate>
-                                <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                                <asp:FormView ID="frmViewDetailsConfig" runat="server" DataKeyNames="SupplierImportFile_Id" OnItemCommand="frmViewDetailsConfig_ItemCommand" Width="1130px">
-                                    <ItemTemplate>
-                                        <div class="col-md-12">
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Supplier</label>
-                                                <asp:Label ID="lblSupplier" CssClass="form-control" runat="server" Text='<%# Bind("Supplier") %>'></asp:Label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Entity</label>
-                                                <asp:Label ID="lblEntity" CssClass="form-control" runat="server" Text='<%# Bind("Entity") %>'></asp:Label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">File</label>
-                                                <asp:Label ID="lblPath" CssClass="form-control" runat="server" Text='<%# Bind("OriginalFilePath") %>'></asp:Label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Status</label>
-                                                <asp:Label ID="lblstatus" CssClass="form-control" runat="server" Text='<%# Bind("STATUS") %>'></asp:Label>
-                                            </div>
-                                            <div class="col-sm-2 col5">
-                                                <label class="col-form-label">Elapsed Time</label>
-                                                <asp:Label ID="lbltimeDiff" CssClass="form-control" runat="server"></asp:Label>
-                                            </div>
-                                        </div>
-                                    </ItemTemplate>
-                                </asp:FormView>
-                            </ContentTemplate>
-                            <%--<Triggers>
-                        <asp:PostBackTrigger ControlID="btnDownload" />
-                    </Triggers>--%>
-                        </asp:UpdatePanel>
+                        <div class="col-md-12">
+                            <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Supplier</label>
+                                <label id="lblSupplier" class="form-control "></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Entity</label>
+                                <label id="lblEntity" class="form-control"></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">File</label>
+                                <label id="lblPath" class="form-control"></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Status</label>
+                                <label id="lblstatus" class="form-control"></label>
+                            </div>
+                            <div class="col-sm-2 col5">
+                                <label class="col-form-label">Elapsed Time</label>
+                                <label id="lbltimeDiff" class="form-control"></label>
+                            </div>
+
+                        </div>
                     </div>
                     <br />
                     <div class="row">
@@ -618,21 +643,44 @@
                         <div class="col-md-12">
                             <div class="col-md-12">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
-                                        <h4 style="margin-top: 5px"><b>VERBOSE LOG</b></h4>
-                                    </div>
-                                    <div id="verboselog" style="overflow: scroll; height: 200px">
-                                        <table class="table table-fixed table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>Date</th>
-                                                    <th>Step</th>
-                                                    <th>Message</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tblveboselog">
-                                            </tbody>
-                                        </table>
+                                    <div id="Tabs" class="panel-body" role="tabpanel">
+                                        <ul class="nav nav-tabs tabs" role="tablist">
+                                            <li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#ShowVerboselog">Verbose Log</a></li>
+                                            <li id="errorlogtab" role="presentation" style="display: none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red"></span></a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div role="tabpanel" id="ShowVerboselog" class="tab-pane fade in active">
+                                                <div id="verboselog" style="overflow: scroll; height: 200px">
+                                                    <table class="table table-fixed table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>Step</th>
+                                                                <th>Message</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tblveboselog">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" id="ShowErrorlog" class="tab-pane ">
+                                                <div id="errorlog" style="overflow: scroll; height: 200px">
+                                                    <table class="table table-fixed table-condensed">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Date</th>
+                                                                <th>Error Code</th>
+                                                                <th>Error Type</th>
+                                                                <th>Description</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tblerrorlog">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -663,68 +711,7 @@
                         </div>
                     </div>
                 </div>
-
-                <%--<asp:LinkButton ID="btnPrevious" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default" CommandName="Previous">
-                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span>
-                                </asp:LinkButton>
-
-                                <asp:LinkButton ID="btnNext" runat="server" Enabled="false" Visible="false" CssClass="btn btn-default pull-right" CommandName="Next">
-                                         <span aria-hidden="true" class="glyphicon glyphicon-arrow-right"></span>
-                                </asp:LinkButton>
-                                <asp:Label ID="lblTotalCount" runat="server"></asp:Label>
-                                <asp:Repeater ID="rptrErrorLog" runat="server">
-                                    <HeaderTemplate>
-                                        <table class="table table-bordered table-striped">
-                                            <th>Error Date</th>
-                                            <th>Error Details</th>
-                                    </HeaderTemplate>
-
-                                    <ItemTemplate>
-                                        <tr>
-                                            <td><span><%# Eval("Error_DATE") %></span></td>
-
-                                            <td>
-                                                <table>
-                                                    <tr class="tablestyle">
-                                                        <td><b>Error Code: </b></td>
-                                                        <td><span><%# Eval("ErrorCode") %></span></td>
-                                                    </tr>
-                                                    <tr class="tablestyle">
-                                                        <td><b>Error Description: </b></td>
-                                                        <td style="word-wrap: break-word;"><span><%# Eval("ErrorDescription") %></span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><b>Error Type: </b></td>
-                                                        <td><span><%# Eval("ErrorType") %></span></td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </ItemTemplate>
-                                    <FooterTemplate>
-                                        </table>
-                                    </FooterTemplate>
-                                </asp:Repeater>
-                                </div>
-                                </div>--%>
-
-                <%--                <div class="form-group row">
-                    <div class="col-sm-4">
-                        <asp:Button ID="btnArchive" CssClass="btn btn-primary btn-sm" runat="server" Text="Archive File" CommandName="Archive" />
-                        <asp:Button ID="btnDownload" CssClass="btn btn-primary btn-sm" runat="server" Text="Export To CSV" Visible="false" CommandName="Download" />
-                    </div>
-                </div>--%>
             </div>
-            <%-- <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>--%>
         </div>
     </div>
-    <script>
-      
-    </script>
 </div>
-
-
-
-
