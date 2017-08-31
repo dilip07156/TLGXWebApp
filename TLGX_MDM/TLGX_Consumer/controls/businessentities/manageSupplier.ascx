@@ -298,19 +298,23 @@
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
 <script type="text/javascript">
-    function pageLoad(sender, args) {
-        var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "SupplierMarkets";
-        $('#Tabs a[href="#' + tabName + '"]').tab('show');
-        $("#Tabs a").click(function () {
-            $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
-        });
-    };
-    $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
-        if (e.target.id == "ShowSupplier") {
-            getChartData();
-        }
-    })
-
+    //function pageLoad(sender, args) {
+    //    getChartData();
+    //    //var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "SupplierMarkets";
+    //    var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "SupplierStatusChart";
+    //    $('#Tabs a[href="#' + tabName + '"]').tab('show');
+    //    $("#Tabs a").click(function () {
+    //        $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
+    //    });
+    //};
+    //$(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
+    //    if (e.target.id == "ShowSupplier") {
+    //        getChartData();
+    //    }
+    //})
+    $(document).ready(function () {
+        getChartData();
+    });
 </script>
 
 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
@@ -420,34 +424,17 @@
         <div class="panel panel-default">
             <div id="Tabs" class="panel-body" role="tabpanel">
                 <ul class="nav nav-tabs tabs" role="tablist">
-                    <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
+                    <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
-                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
-                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierApiLocation" href="#ShowSupplierApiLocation" id="apiLocation">Supplier API Location</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div role="tabpanel" id="ShowSupplierMarkets" class="tab-pane fade in active">
-                        <br />
-                        <uc1:supplierMarket runat="server" ID="supplierMarket" />
-                    </div>
-                    <div role="tabpanel" id="ShowSupplierProductMapping" class="tab-pane fade in">
-                        <br />
-                        <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
-                    </div>
-                    <div role="tabpanel" id="ShowSupplierStaticData" class="tab-pane fade in">
-                        <br />
-                        <uc1:supplierStaticDataHandling runat="server" ID="supplierStaticDataHandling" />
-                    </div>
-                    <div role="tabpanel" id="ShowSupplierCredentials" class="tab-pane fade in">
-                        <br />
-                        <uc1:supplierCredentials runat="server" ID="suppliersCredentials" />
-                    </div>
                     <%--for charts--%>
-                    <div role="tabpanel" id="ShowSupplierStatusChart" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowSupplierStatusChart" class="tab-pane fade in active">
                         <br />
-                        <%--<uc1:supplierWiseDataChart runat="server" ID="supplierWiseDataChart" />--%>
                         <div id="nodatafound" style="display: none"></div>
                         <div class="row" style="width: 100%; height: auto;">
                             <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
@@ -543,9 +530,25 @@
                         </div>
                     </div>
                     <%--End--%>
+                    <div role="tabpanel" id="ShowSupplierProductMapping" class="tab-pane fade in">
+                        <br />
+                        <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
+                    </div>
+                    <div role="tabpanel" id="ShowSupplierStaticData" class="tab-pane fade in">
+                        <br />
+                        <uc1:supplierStaticDataHandling runat="server" ID="supplierStaticDataHandling" />
+                    </div>
                     <div role="tabpanel" id="ShowSupplierApiLocation" class="tab-pane fade in">
                         <br />
                         <uc1:supplierApiLocation runat="server" ID="supplierApiLocation" />
+                    </div>
+                    <div role="tabpanel" id="ShowSupplierMarkets" class="tab-pane fade in">
+                        <br />
+                        <uc1:supplierMarket runat="server" ID="supplierMarket" />
+                    </div>
+                    <div role="tabpanel" id="ShowSupplierCredentials" class="tab-pane fade in">
+                        <br />
+                        <uc1:supplierCredentials runat="server" ID="suppliersCredentials" />
                     </div>
                 </div>
             </div>

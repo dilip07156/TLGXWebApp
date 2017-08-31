@@ -33,6 +33,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
         private void fillfor(DropDownList ddl)
         {
             fillattributes(AttributeOptionFor, "AttributeFor", ddl);
+            //Setting default Mapping while adding config
+            if (ddl.ID.ToLower() == "ddladdfor")
+                ddl.SelectedIndex = ddl.Items.IndexOf(ddl.Items.FindByText(Convert.ToString("MAPPING")));
         }
 
         private void fillstatus()
@@ -235,7 +238,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             {
                 SupplierImportAttribute_Id = Guid.NewGuid(),
                 Supplier_Id = ddlAddFor.SelectedItem.Text.Trim().ToUpper() == "MATCHING" ? Guid.Empty : Guid.Parse(ddlAddSupplier.SelectedItem.Value),
-                Entity =  ddlAddEntity.SelectedItem.Text,
+                Entity = ddlAddEntity.SelectedItem.Text,
                 Status = "ACTIVE",
                 CREATE_DATE = DateTime.Now,
                 CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name,
@@ -252,6 +255,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
             else
             {
                 hdnFlag.Value = "true";
+                //Added code to fill filter and show added data.
+                ddlSupplierName.SelectedIndex = ddlAddSupplier.Items.IndexOf(ddlSupplierName.Items.FindByValue(Convert.ToString(newObj.Supplier_Id)));
+                ddlFor.SelectedIndex = ddlAddFor.Items.IndexOf(ddlAddFor.Items.FindByText(Convert.ToString(newObj.For)));
+                ddlEntity.SelectedIndex = ddlAddEntity.Items.IndexOf(ddlAddEntity.Items.FindByText(Convert.ToString(newObj.Entity)));
                 fillconfigdata();
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
             }
