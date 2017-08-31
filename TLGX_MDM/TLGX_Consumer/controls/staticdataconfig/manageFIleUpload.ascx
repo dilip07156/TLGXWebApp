@@ -2,7 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <script type="text/javascript">
-
+   
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
@@ -17,6 +17,7 @@
                 url: '../../../Service/FileProgressDashboard.ashx?FileId=' + fileid,
                 dataType: "json",
                 success: function (result) {
+                    $("#errorlogtab").css("display", "none");
                     $("#read").empty();
                     $("#map").empty();
                     $("#tx").empty();
@@ -153,9 +154,6 @@
                             tr.append("<td>" + result.ErrorLog[i].ErrorDescription + "</td>");
                             tr.append("<td>" + result.ErrorLog[i].ErrorType + "</td>");
                             $("#errorlog table").append(tr);
-                        }
-                        else {
-                            $("#errorlogtab").css("display", "none");
                         }
                     }
                     //File Statistics
