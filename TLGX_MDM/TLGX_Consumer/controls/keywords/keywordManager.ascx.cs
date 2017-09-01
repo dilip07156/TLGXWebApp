@@ -405,7 +405,7 @@ namespace TLGX_Consumer.controls.keywords
                 };
 
                 var result = mappingScv.AddUpdateKeyword(Keyword);
-                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), PageNo);
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
@@ -425,7 +425,7 @@ namespace TLGX_Consumer.controls.keywords
                 };
 
                 var result = mappingScv.AddUpdateKeyword(Keyword);
-                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), PageNo);
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }

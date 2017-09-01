@@ -429,7 +429,9 @@
                                                     </ItemTemplate>
                                                     <HeaderStyle BackColor="Turquoise" />
                                                 </asp:TemplateField>
-                                                <asp:BoundField HeaderText="Location" />
+                                                <asp:BoundField DataField="Location" HeaderText="Location">
+                                                    <HeaderStyle BackColor="Turquoise" />
+                                                </asp:BoundField>
                                                 <asp:BoundField DataField="Status" HeaderText="Status" />
                                                 <asp:TemplateField ShowHeader="false">
                                                     <ItemTemplate>
