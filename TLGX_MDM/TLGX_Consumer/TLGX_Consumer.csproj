@@ -307,6 +307,7 @@
     <Content Include="controls\projects\workflowinproject.ascx" />
     <Content Include="controls\roomtype\manageRoomTypeMapping.ascx" />
     <Content Include="controls\roomtype\searchRoomTypes.ascx" />
+    <Content Include="controls\staticdataconfig\manageAPILocation.ascx" />
     <Content Include="controls\staticdataconfig\manageFIleUpload.ascx" />
     <Content Include="controls\staticdataconfig\manageStaticDataConfig.ascx" />
     <Content Include="controls\staticdataconfig\searchStaticDataConfig.ascx" />
@@ -381,17 +382,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD.pubxml" />
-    <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service\CityFillForDDL.ashx" />
-    <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
@@ -403,6 +395,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer2.xsd">
@@ -429,6 +424,15 @@
     <None Include="Service References\MDMSVC\Consumer9.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer.disco" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -706,6 +710,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
@@ -1214,6 +1224,13 @@
     </Compile>
     <Compile Include="controls\roomtype\searchRoomTypes.ascx.designer.cs">
       <DependentUpon>searchRoomTypes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageAPILocation.ascx.cs">
+      <DependentUpon>manageAPILocation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageAPILocation.ascx.designer.cs">
+      <DependentUpon>manageAPILocation.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\staticdataconfig\manageFIleUpload.ascx.cs">
       <DependentUpon>manageFIleUpload.ascx</DependentUpon>

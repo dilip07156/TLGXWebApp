@@ -13,12 +13,12 @@ namespace TLGX_Consumer.staticdata.files {
     public partial class APIData {
         
         /// <summary>
-        /// manageFIleUpload control.
+        /// manageAPILocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.staticdataconfig.manageFIleUpload manageFIleUpload;
+        protected global::TLGX_Consumer.controls.staticdataconfig.manageAPILocation manageAPILocation;
     }
 }
