@@ -173,7 +173,7 @@
                 <ProgressTemplate>
                     <div class="progressbar">
                         <div class="progressbar-content">
-                            <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                            <img alt="Loading..." style="background-color: rgba(239,239,239,1);" src="../../../images/loading.gif" />
                         </div>
                     </div>
                 </ProgressTemplate>
