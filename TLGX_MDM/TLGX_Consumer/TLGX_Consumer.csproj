@@ -239,6 +239,7 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\GoogleFont\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
     <Content Include="Content\multilevelformsbootstrapmenu.css" />
     <Content Include="Content\Site.css" />
@@ -338,6 +339,7 @@
     <Content Include="images\ajaxloadernew.gif" />
     <Content Include="images\collapse.jpg" />
     <Content Include="images\expand.jpg" />
+    <Content Include="images\loading.gif" />
     <Content Include="images\logo-cnk.gif" />
     <Content Include="masters\managePlaces.aspx" />
     <Content Include="Models\TLGX_Mapper_Entity.Context.tt">
@@ -357,6 +359,13 @@
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="hotels\rptMissingAttribute.rdlc" />
+    <Content Include="Content\GoogleFont\59ZRklaO5bWGqF5A9baEERJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="Content\GoogleFont\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
+    <Content Include="Content\GoogleFont\K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="Content\GoogleFont\LWCjsQkB6EMdfHrEVqA1KRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="Content\GoogleFont\RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="Content\GoogleFont\u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="Content\GoogleFont\xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />

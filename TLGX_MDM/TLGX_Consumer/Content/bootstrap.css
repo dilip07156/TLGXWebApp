@@ -14,8 +14,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url('GoogleFont/OpenSans.css');
 html {
-    font-family: sans-serif;
+    font-family: 'Open Sans';
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
@@ -137,7 +138,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: monospace, monospace;
+    font-family: 'Open Sans';
     font-size: 1em;
 }
 
@@ -1411,7 +1412,8 @@ html {
 }
 
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    font-family: 'Open Sans';
     font-size: 10px;
     line-height: 1.42857143;
     color: #333333;
@@ -5567,8 +5569,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default {
-    background-color: #f8f8f8;
-    border-color: #e7e7e7;
+    background-color: #163572;
+    border-color: #163572;
 }
 
     .navbar-default .navbar-brand {
@@ -5586,12 +5588,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     }
 
     .navbar-default .navbar-nav > li > a {
-        color: #777777;
+        color: #ffffff;
     }
 
         .navbar-default .navbar-nav > li > a:hover,
         .navbar-default .navbar-nav > li > a:focus {
-            color: #333333;
+            color: #ffffff;
             background-color: transparent;
         }
 
@@ -5630,8 +5632,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     .navbar-default .navbar-nav > .open > a,
     .navbar-default .navbar-nav > .open > a:hover,
     .navbar-default .navbar-nav > .open > a:focus {
-        background-color: #e7e7e7;
-        color: #555555;
+        background-color: #1507E8;
+        color: #ffffff;
     }
 
 @media (max-width: 767px) {
