@@ -863,9 +863,11 @@
   <xs:element name="Bounds" nillable="true" type="tns:Bounds" />
   <xs:complexType name="DC_FileProgressDashboard">
     <xs:sequence>
-      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="FileStatistics" nillable="true" type="q9:ArrayOfDC_SupplierImportFile_Statistics" />
-      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ProgressLog" nillable="true" type="q10:ArrayOfDC_SupplierImportFile_Progress" />
-      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="VerboseLog" nillable="true" type="q11:ArrayOfDC_SupplierImportFile_VerboseLog" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ErrorLog" nillable="true" type="q9:ArrayOfDC_SupplierImportFile_ErrorLog" />
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="FileDetails" nillable="true" type="q10:ArrayOfDC_SupplierImportFileDetails" />
+      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="FileStatistics" nillable="true" type="q11:ArrayOfDC_SupplierImportFile_Statistics" />
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ProgressLog" nillable="true" type="q12:ArrayOfDC_SupplierImportFile_Progress" />
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="VerboseLog" nillable="true" type="q13:ArrayOfDC_SupplierImportFile_VerboseLog" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_FileProgressDashboard" nillable="true" type="tns:DC_FileProgressDashboard" />
