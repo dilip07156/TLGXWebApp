@@ -33,6 +33,7 @@
     <MetadataFile FileName="Consumer6.xsd" MetadataType="Schema" ID="42b672ae-b78b-444b-930d-4ddf1934d9c6" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd1" />
     <MetadataFile FileName="Consumer7.xsd" MetadataType="Schema" ID="da1fe9d9-ec8a-4cbc-8326-8da1fc6c2959" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd5" />
     <MetadataFile FileName="Consumer8.xsd" MetadataType="Schema" ID="c9b17899-a8e9-4e58-94aa-8108bab2af80" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd10" />
+    <MetadataFile FileName="Consumer121.xsd" MetadataType="Schema" ID="202ad457-8745-4923-ac06-789e4f2736ef" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd12" />
     <MetadataFile FileName="Consumer9.xsd" MetadataType="Schema" ID="163e020b-6360-4356-be95-22d0d2b633d0" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd2" />
     <MetadataFile FileName="Consumer10.xsd" MetadataType="Schema" ID="dcfac7e0-cb2a-4e61-811e-42c716078087" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd6" />
     <MetadataFile FileName="Consumer11.xsd" MetadataType="Schema" ID="a58e1a8b-6a46-48c4-a134-bb61e9f3468c" SourceId="1" SourceUrl="http://10.21.32.196:8080/Consumer.svc?xsd=xsd11" />
