@@ -14,9 +14,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-@import url('GoogleFont/OpenSans.css');
+@import url('OpenSans.css');
 html {
-    font-family: 'Open Sans';
+    font-family: Open-Sans;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
 }
@@ -138,7 +138,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: 'Open Sans';
+    font-family: Open-Sans,monospace, monospace;
     font-size: 1em;
 }
 
@@ -1412,8 +1412,7 @@ html {
 }
 
 body {
-    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-    font-family: 'Open Sans';
+    font-family:Open-Sans,"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 10px;
     line-height: 1.42857143;
     color: #333333;
@@ -1945,7 +1944,7 @@ code,
 kbd,
 pre,
 samp {
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: Open-Sans,monospace, monospace;
 }
 
 code {
@@ -7364,7 +7363,7 @@ button.close {
     position: absolute;
     z-index: 1070;
     display: block;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Open-Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-style: normal;
     font-weight: normal;
     letter-spacing: normal;
@@ -7498,7 +7497,7 @@ button.close {
     display: none;
     max-width: 276px;
     padding: 1px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Open-Sans,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-style: normal;
     font-weight: normal;
     letter-spacing: normal;
@@ -7807,7 +7806,7 @@ button.close {
         width: 20px;
         height: 20px;
         line-height: 1;
-        font-family: serif;
+        font-family: Open-Sans,serif;
     }
 
         .carousel-control .icon-prev:before {
