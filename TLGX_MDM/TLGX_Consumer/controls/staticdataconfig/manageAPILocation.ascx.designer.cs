@@ -139,31 +139,13 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// ddlSupplierList control.
+        /// errorinadding control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierList;
-        
-        /// <summary>
-        /// ddlEntityList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEntityList;
-        
-        /// <summary>
-        /// txtApiLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApiLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorinadding;
         
         /// <summary>
         /// errormsg control.
@@ -202,13 +184,31 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.HtmlControls.HtmlTableCell statusmessage;
         
         /// <summary>
-        /// errorinadding control.
+        /// ddlSupplierList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errorinadding;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierList;
+        
+        /// <summary>
+        /// ddlEntityList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEntityList;
+        
+        /// <summary>
+        /// txtApiLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApiLocation;
         
         /// <summary>
         /// btnadddetails control.

@@ -247,18 +247,50 @@
 <div class="modal fade" id="moAddApi" role="dialog">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-
             <div class="modal-header">
                 <div class="panel-title">
                     <h4 class="modal-title">Add new Supplier API</h4>
                 </div>
             </div>
-
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
-                        <div class="row">
-                            <div class="form-group ">
+                        <div class="">
+                            <div class="alert alert-danger fade in" runat="server" id="errorinadding" style="display: none">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Error!!</strong>
+                            </div>
+                            <div id="errormsg" runat="server" style="display: none">
+                                <div class="alert alert-warning fade in">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <p>Please Select Supplier Name and Entity Both !!!!!</p>
+                                </div>
+                            </div>
+                            <div class="row" runat="server" id="msgaddsuccessful" style="display: none">
+                                <%--<script type="text/javascript">
+                                    setTimeout(function () { $("#MainContent_UserManagement_dvMsg").fadeTo(500, 0).slideUp(500) }, 3000);
+
+                                </script>--%>
+                                <div class="alert alert-success fade in">
+                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                    <strong>SuccessFully Added!!</strong>
+                                    <table class="table  table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Status Code</th>
+                                                <th>Status Message</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td id="statuscode" runat="server"></td>
+                                                <td id="statusmessage" runat="server"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="control-label col-sm-4" for="ddlSupplierList">Supplier </label>
                                 <div class="col-sm-8">
                                     <asp:DropDownList ID="ddlSupplierList" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged" AutoPostBack="true">
@@ -266,8 +298,7 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <br />
-                            <div class="form-group ">
+                            <div class="form-group row ">
                                 <label class="control-label col-sm-4" for="ddlEntityList">Entity</label>
                                 <div class="col-sm-8">
                                     <asp:DropDownList ID="ddlEntityList" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged" AutoPostBack="true">
@@ -275,50 +306,16 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <br />
-                            <div class="form-group ">
+                            <div class="form-group row">
                                 <label class="control-label col-sm-4" for="txtApiLocation">API Path</label>
                                 <div class="col-sm-8">
                                     <asp:TextBox ID="txtApiLocation" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                                 </div>
                             </div>
-                        </div>
-                        <div id="errormsg" runat="server" style="display: none">
-                            <div class="alert alert-success fade in">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                <p>Please Select Supplier Name and Entity Both !!!!!</p>
+                            <div class="modal-footer">
+                                <asp:Button ID="btnadddetails" runat="server" Text="Add Details" OnClick="btnadddetails_Click" CssClass="btn btn-primary btn-sm" Enabled="false" />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
-                        </div>
-                        <div class="row" runat="server" id="msgaddsuccessful" style="display: none">
-                            <div class="alert alert-success fade in">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                <strong>SuccessFully Added!!</strong>
-                                <%-- </div>--%>
-                                <%--<div>--%>
-                                <table class="table  table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Status Code</th>
-                                            <th>Status Message</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id="statuscode" runat="server"></td>
-                                            <td id="statusmessage" runat="server"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="alert alert-danger fade in" runat="server" id="errorinadding" style="display: none">
-                            <a href="#" class="close" data-dismiss="alert">&times;</a>
-                            <strong>Error!!</strong>
-                        </div>
-                        <div class="modal-footer">
-                            <asp:Button ID="btnadddetails" runat="server" Text="Add Details" OnClick="btnadddetails_Click" CssClass="btn btn-primary btn-sm" Enabled="false" />
-                            <%-- <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnNewReset_Click" />--%>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
