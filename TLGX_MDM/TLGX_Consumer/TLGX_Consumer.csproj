@@ -409,6 +409,9 @@
     <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Consumer121.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -834,6 +837,7 @@
     <Content Include="Service\SupplierWiseDataForChart.ashx" />
     <Content Include="Service\AllSupplierDataForChart.ashx" />
     <Content Include="Service\FileProgressDashboard.ashx" />
+    <Content Include="Service\PentahoStepsInfo.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2107,6 +2111,9 @@
     </Compile>
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PentahoStepsInfo.ashx.cs">
+      <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\RoomCategoryAutoComplete.ashx.cs">
       <DependentUpon>RoomCategoryAutoComplete.ashx</DependentUpon>
