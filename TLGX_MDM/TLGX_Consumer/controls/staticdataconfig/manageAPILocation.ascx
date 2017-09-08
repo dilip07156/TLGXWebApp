@@ -1,7 +1,6 @@
 ﻿<%@ Control Language="c#" CodeBehind="manageAPILocation.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageAPILocation" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script>
-
     function getviewDetailsData(pentahoid) {
         //debugger;
         if (pentahoid != null && pentahoid != "") {
@@ -226,7 +225,7 @@
                                 <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName="Delete"
-                                            CssClass="btn btn-default">
+                                            CssClass="btn btn-default" Enabled="false">
                                                     <span aria-hidden="true" >Delete</span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
@@ -255,39 +254,10 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
-                        <div class="">
-                            <div class="alert alert-danger fade in" runat="server" id="errorinadding" style="display: none">
-                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                <strong>Error!!</strong>
-                            </div>
-                            <div id="errormsg" runat="server" style="display: none">
-                                <div class="alert alert-warning fade in">
-                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                    <p>Please Select Supplier Name and Entity Both !!!!!</p>
-                                </div>
-                            </div>
-                            <div class="row" runat="server" id="msgaddsuccessful" style="display: none">
-                                <%--<script type="text/javascript">
-                                    setTimeout(function () { $("#MainContent_UserManagement_dvMsg").fadeTo(500, 0).slideUp(500) }, 3000);
-
-                                </script>--%>
-                                <div class="alert alert-success fade in">
-                                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                    <strong>SuccessFully Added!!</strong>
-                                    <table class="table  table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Status Code</th>
-                                                <th>Status Message</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td id="statuscode" runat="server"></td>
-                                                <td id="statusmessage" runat="server"></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="dvError" runat="server" style="display: none;"></div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -313,7 +283,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <asp:Button ID="btnadddetails" runat="server" Text="Add Details" OnClick="btnadddetails_Click" CssClass="btn btn-primary btn-sm" Enabled="false" />
+                                <asp:Button ID="btnadddetails" runat="server" Text="Add Details" OnClick="btnadddetails_Click" CssClass="btn btn-primary btn-sm" />
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>

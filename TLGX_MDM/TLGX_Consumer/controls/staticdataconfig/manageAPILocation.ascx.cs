@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.controls.staticdataconfig
@@ -155,10 +156,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnNewUpload_Click(object sender, EventArgs e)
         {
-            msgaddsuccessful.Style.Add("display", "none");
-            errorinadding.Style.Add("display", "none");
-            errormsg.Style.Add("display", "none");
-            btnadddetails.Enabled = false;
+            dvError.Style.Add("display", "none");
             fillSupplierAddClick();
             fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
             ddlSupplierList.SelectedIndex = 0;
@@ -167,21 +165,27 @@ namespace TLGX_Consumer.controls.staticdataconfig
         }
         protected void btnadddetails_Click(object sender, EventArgs e)
         {
-
-            Guid applicationid = Guid.Parse(btnadddetails.CommandArgument);
-            string callby = System.Web.HttpContext.Current.User.Identity.Name;
-            var res = _objMappingSVCs.Pentaho_SupplierApi_Call(applicationid, callby);
-            if (res != null)
+            var supplier = ddlSupplierList.SelectedItem.Value;
+            var entity = ddlEntityList.SelectedItem.Value;
+            var path = txtApiLocation.Text;
+            if (supplier == "0" || entity == "0")
             {
-                //msgaddsuccessful.Disabled = false;
-                msgaddsuccessful.Style.Add("display", "block");
-                statuscode.InnerText = res.StatusCode.ToString();
-                statusmessage.InnerText = res.StatusMessage;
+                BootstrapAlert.BootstrapAlertMessage(dvError, "Please select both Entity and Supplier name!!", BootstrapAlertType.Warning);
+            }
+            else if (path == "No Data Found")
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvError, "No data found.Please select again!!", BootstrapAlertType.Danger);
             }
             else
             {
-                msgaddsuccessful.Style.Add("display", "none");
-                errorinadding.Style.Add("display", "block");
+                Guid applicationid = Guid.Parse(btnadddetails.CommandArgument);
+                string callby = System.Web.HttpContext.Current.User.Identity.Name;
+                var res = _objMappingSVCs.Pentaho_SupplierApi_Call(applicationid, callby);
+                if (res != null)
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvError, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                }
+                else BootstrapAlert.BootstrapAlertMessage(dvError, "Error!!", BootstrapAlertType.Danger);
             }
         }
 
@@ -194,8 +198,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void ddlSupplierList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            errormsg.Style.Add("display", "none");
-            msgaddsuccessful.Style.Add("display", "none");
+            dvError.Style.Add("Display", "none");
             txtApiLocation.Text = "";
             if (ddlSupplierList.SelectedIndex != 0 && ddlEntityList.SelectedIndex != 0)
             {
@@ -211,16 +214,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 else
                 {
                     txtApiLocation.Text = "No Data Found";
-                    btnadddetails.Enabled = false;
                 }
             }
-            else errormsg.Style.Add("display", "block");
+
         }
 
         protected void ddlEntityList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            errormsg.Style.Add("display", "none");
-            msgaddsuccessful.Style.Add("display", "none");
+            dvError.Style.Add("Display", "none");
             txtApiLocation.Text = "";
             if (ddlSupplierList.SelectedIndex != 0 && ddlEntityList.SelectedIndex != 0)
             {
@@ -231,15 +232,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     btnadddetails.CommandArgument = res[0].ApiLocation_Id.ToString();
                     txtApiLocation.Text = res[0].ApiEndPoint.ToString();
-                    btnadddetails.Enabled = true;
                 }
                 else
                 {
                     txtApiLocation.Text = "No Data Found";
-                    btnadddetails.Enabled = false;
+                   
                 }
             }
-            else errormsg.Style.Add("display", "block");
         }
 
         
