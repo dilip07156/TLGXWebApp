@@ -74,7 +74,6 @@
                 $(".productper").empty();
                 $(".HotelRoomper").empty();
                 $(".activityper").empty();
-                //debugger;
                 var contryArray = [];
                 var cityArray = [];
                 var productArray = [];

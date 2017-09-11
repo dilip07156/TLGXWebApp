@@ -45,7 +45,7 @@
             $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter").append('<div class="con"><input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" /><div class="input-group-btn  col-md-4" style="padding-left: 0px !important;"><button class="btn btn-default btnRemove" id="btnAddValue" type="button"><i class="glyphicon glyphicon-minus"></i></button></div></div>');
         });
         $('body').on('click', '.btnRemove', function () {
-            debugger;
+            //debugger;
             $(this).parent('div').parent('div.con').remove()
 
         });
@@ -72,7 +72,7 @@
     }
 
     function computeValue() {
-        debugger;
+       // debugger;
         var Contain = "";
         $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter input[type=text]").each(function () {
             Contain += $(this).val() + ",";
@@ -176,7 +176,7 @@
                             <div class="panel-group" id="accordionSearchResult">
                                 <div class="col-md-3">
                                     <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">
-                                        <h4 class="panel-title">Search Results (Total Count:
+                                        <h4 class="panel-title" style="padding-left:10px;">Search Results (Total Count:
                                             <asp:Label ID="lblTotalUploadConfig" runat="server" Text="0"></asp:Label>)</h4>
                                     </a>
 

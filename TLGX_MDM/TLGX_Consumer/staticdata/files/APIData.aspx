@@ -1,4 +1,4 @@
-﻿<%@ Page Title="SupplierAPIData" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="APIData.aspx.cs" Inherits="TLGX_Consumer.staticdata.files.APIData" %>
+﻿<%@ Page Title="SupplierAPIData" Language="C#" EnableViewStateMac="false" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="APIData.aspx.cs" Inherits="TLGX_Consumer.staticdata.files.APIData" %>
 
 <%@ Register Src="~/controls/staticdataconfig/manageAPILocation.ascx" TagPrefix="uc1" TagName="manageAPILocation" %>
 

@@ -32,6 +32,10 @@
                         $("#lblEntity").html(result.FileDetails[0].Entity);
                         $("#lblPath").html(result.FileDetails[0].OriginalFilePath);
                         $("#lblstatus").html(result.FileDetails[0].STATUS);
+                        var status = result.FileDetails[0].STATUS;
+                        if (status == "ERROR" || status == "PROCESSED") {
+                            myStopFunction();
+                        }
                     }
                     //process charts
                     for (var inode = 0; inode < result.ProgressLog.length; inode++) {
@@ -136,7 +140,7 @@
                             var diff = end_actual_time - start_actual_time;
                             var diffSeconds = diff / 1000;
                             var HH = Math.floor(diffSeconds / 3600);
-                            var MM = Math.floor(diffSeconds % 3600) / 60;
+                            var MM = (Math.floor(diffSeconds % 3600) / 60).toFixed(2);
                             var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
                             $("#lbltimeDiff").text(formatted);
                         }
@@ -193,17 +197,12 @@
         $("#moViewDetials").modal('show');
         $('#moViewDetials').one('shown.bs.modal', function () {
             document.getElementById("hdnFileId").value = fileid;
-            var filestatus = $("#MainContent_manageFIleUpload_frmViewDetailsConfig_lblstatus").text();
+            var filestatus = $("#lblstatus").text();
             getChartData(fileid);
-            if (filestatus == "PROCESSED" || filestatus == "ERROR") {
-                //stop timer
-                // myStopFunction();
-            }
-            else {
                 //strat timer
                 x = setInterval(function () { myTimer() }, 5000);
             }
-        });
+        );
         $('#moViewDetials').on('hidden.bs.modal', function () {
             //stop timer on close of modal 
             myStopFunction();
@@ -435,7 +434,7 @@
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="File Name" DataField="OriginalFilePath" />
                                 <asp:BoundField HeaderText="Status" DataField="STATUS" />
-                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" />
+                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}"/>
 
                                 <%--<asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("Accommodation_Description_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
@@ -558,8 +557,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header" style="padding: 5px 5px 5px 15px;">
-                <h4 class="modal-title"><b>File Status </b><span>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button></span></h4>
+                <h4 class="modal-title"><b>File Status </b></h4>
                 <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
             </div>
             <div class="modal-body">
@@ -711,6 +709,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

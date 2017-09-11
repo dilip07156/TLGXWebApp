@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.controls.staticdataconfig
@@ -23,6 +24,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 fillSuppliers();
                 fillEntity();
                 fillStatus();
+                fillSupplierAddClick();
+                fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
+                ddlEntityList.Items.RemoveAt(0);
+                ddlEntityList.Items.Insert(0, new ListItem("--Select --", "0"));
             }
         }
         protected void fillSuppliers()
@@ -92,37 +97,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 gvSupplierApiSearch.DataBind();
                 lblTotalRecords.Text = string.Empty;
             }
-
         }
-        
+
         protected void gvSupplierApiSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
-
-        protected void gvSupplierApiSearch_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            try
-            {
-                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-                int index = row.RowIndex;
-                Guid myRowId = Guid.Parse(gvSupplierApiSearch.DataKeys[index].Values[0].ToString());
-                if (e.CommandName.ToString() == "ViewDetails")
-                {
-
-                }
-            }
-           
-            catch(Exception ex)
-            {
-
-            }
-        }
-
-        protected void gvSupplierApiSearch_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-
-        }
+       
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -143,12 +124,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             gvSupplierApiSearch.DataBind();
             lblTotalRecords.Text = "0";
         }
-        
 
-        protected void btnViewDetail_Click(object sender, EventArgs e)
-        {
-
-        }
         protected void fillSupplierAddClick()
         {
             MDMSVC.DC_Supplier_Search_RQ RQParam = new MDMSVC.DC_Supplier_Search_RQ();
@@ -159,38 +135,42 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlSupplierList.DataValueField = "Supplier_Id";
             ddlSupplierList.DataTextField = "Name";
             ddlSupplierList.DataBind();
+            ddlSupplierList.Items.RemoveAt(0);
+            ddlSupplierList.Items.Insert(0, new ListItem("--Select --", "0"));
         }
 
         protected void btnNewUpload_Click(object sender, EventArgs e)
         {
-            msgaddsuccessful.Style.Add("display", "none");
-            errorinadding.Style.Add("display", "none");
-            errormsg.Style.Add("display", "none");
-            btnadddetails.Enabled = false;
-            fillSupplierAddClick();
-            fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
+            dvError.Style.Add("display", "none");
+            
             ddlSupplierList.SelectedIndex = 0;
             ddlEntityList.SelectedIndex = 0;
             txtApiLocation.Text = "";
-
         }
         protected void btnadddetails_Click(object sender, EventArgs e)
         {
-            
-            Guid applicationid = Guid.Parse( btnadddetails.CommandArgument);
-            string callby = System.Web.HttpContext.Current.User.Identity.Name;  
-            var  res = _objMappingSVCs.Pentaho_SupplierApi_Call(applicationid, callby);
-            if (res != null)
+            var supplier = ddlSupplierList.SelectedItem.Value;
+            var entity = ddlEntityList.SelectedItem.Value;
+            var path = txtApiLocation.Text;
+            if (supplier == "0" || entity == "0")
             {
-                //msgaddsuccessful.Disabled = false;
-                msgaddsuccessful.Style.Add("display", "block");
-                statuscode.InnerText = res.StatusCode.ToString();
-                statusmessage.InnerText = res.StatusMessage;
+                BootstrapAlert.BootstrapAlertMessage(dvError, "Please select both Entity and Supplier name!!", BootstrapAlertType.Warning);
             }
-            else {
-                msgaddsuccessful.Style.Add("display", "none"); 
-                errorinadding.Style.Add("display", "block");
-            }  
+            else if (path == "API Location not found")
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvError, "API Location not found.Please select again!!", BootstrapAlertType.Danger);
+            }
+            else
+            {
+                Guid applicationid = Guid.Parse(btnadddetails.CommandArgument);
+                string callby = System.Web.HttpContext.Current.User.Identity.Name;
+                var res = _objMappingSVCs.Pentaho_SupplierApi_Call(applicationid, callby);
+                if (res != null)
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvError, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                }
+                else BootstrapAlert.BootstrapAlertMessage(dvError, "Error!!", BootstrapAlertType.Danger);
+            }
         }
 
         //protected void btnNewReset_Click(object sender, EventArgs e)
@@ -202,57 +182,48 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void ddlSupplierList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            errormsg.Style.Add("display", "none");
-            msgaddsuccessful.Style.Add("display", "none");
+            dvError.Style.Add("Display", "none");
             txtApiLocation.Text = "";
             if (ddlSupplierList.SelectedIndex != 0 && ddlEntityList.SelectedIndex != 0)
             {
                 Guid supplierid = Guid.Parse(ddlSupplierList.SelectedItem.Value);
                 Guid entityid = Guid.Parse(ddlEntityList.SelectedItem.Value);
                 var res = _objMappingSVCs.Pentaho_SupplierApiLocationId_Get(supplierid, entityid);
-                if (res != null && res.Count > 0) {
+                if (res != null && res.Count > 0)
+                {
                     btnadddetails.CommandArgument = res[0].ApiLocation_Id.ToString();
                     txtApiLocation.Text = res[0].ApiEndPoint.ToString();
-                    btnadddetails.Enabled = true;
                 }
                 else
                 {
-                    txtApiLocation.Text = "No Data Found";
-                    btnadddetails.Enabled = false;
+                    txtApiLocation.Text = "API Location not found";
                 }
             }
-            else
-                errormsg.Style.Add("display", "block");
-
 
         }
 
         protected void ddlEntityList_SelectedIndexChanged(object sender, EventArgs e)
-         {
-            errormsg.Style.Add("display", "none");
-            msgaddsuccessful.Style.Add("display", "none");
+        {
+            dvError.Style.Add("Display", "none");
             txtApiLocation.Text = "";
             if (ddlSupplierList.SelectedIndex != 0 && ddlEntityList.SelectedIndex != 0)
             {
-                
                 Guid supplierid = Guid.Parse(ddlSupplierList.SelectedItem.Value);
                 Guid entityid = Guid.Parse(ddlEntityList.SelectedItem.Value);
                 var res = _objMappingSVCs.Pentaho_SupplierApiLocationId_Get(supplierid, entityid);
-                if (res != null && res.Count>0)
+                if (res != null && res.Count > 0)
                 {
                     btnadddetails.CommandArgument = res[0].ApiLocation_Id.ToString();
                     txtApiLocation.Text = res[0].ApiEndPoint.ToString();
-                    btnadddetails.Enabled = true;
                 }
                 else
                 {
-                    txtApiLocation.Text = "No Data Found";
-                    btnadddetails.Enabled = false;
+                    txtApiLocation.Text = "API Location not found";
+                   
                 }
             }
-            else
-                errormsg.Style.Add("display", "block");
         }
+
         
     }
 }

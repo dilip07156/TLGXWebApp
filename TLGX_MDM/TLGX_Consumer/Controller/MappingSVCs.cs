@@ -454,6 +454,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["get_supplier_apiLocationid"], SupplierId, EntityId), typeof(List<DC_Supplier_ApiLocation>), out result);
             return result as List<DC_Supplier_ApiLocation>;
         }
+        public DC_PentahoTransStatus_TransStatus Pentaho_SupplierApiCall_ViewDetails(string PentahoCall_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_api_viewdetails"], PentahoCall_Id), typeof(DC_PentahoTransStatus_TransStatus), out result);
+            return result as DC_PentahoTransStatus_TransStatus;
+        }
 
         #endregion
     }
