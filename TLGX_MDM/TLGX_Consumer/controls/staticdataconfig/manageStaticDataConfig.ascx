@@ -45,7 +45,7 @@
             $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter").append('<div class="con"><input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" /><div class="input-group-btn  col-md-4" style="padding-left: 0px !important;"><button class="btn btn-default btnRemove" id="btnAddValue" type="button"><i class="glyphicon glyphicon-minus"></i></button></div></div>');
         });
         $('body').on('click', '.btnRemove', function () {
-            debugger;
+            //debugger;
             $(this).parent('div').parent('div.con').remove()
 
         });
@@ -72,7 +72,7 @@
     }
 
     function computeValue() {
-        debugger;
+       // debugger;
         var Contain = "";
         $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter input[type=text]").each(function () {
             Contain += $(this).val() + ",";

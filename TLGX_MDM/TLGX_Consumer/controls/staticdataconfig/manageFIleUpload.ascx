@@ -33,7 +33,6 @@
                         $("#lblPath").html(result.FileDetails[0].OriginalFilePath);
                         $("#lblstatus").html(result.FileDetails[0].STATUS);
                         var status = result.FileDetails[0].STATUS;
-                        debugger;
                         if (status == "ERROR" || status == "PROCESSED") {
                             myStopFunction();
                         }
@@ -138,7 +137,6 @@
                         if (i == result.VerboseLog.length - 1) {
                             var end_actual_time = new Date(parseInt(result.VerboseLog[0].TimeStamp.substr(6)));
                             var start_actual_time = new Date(parseInt(result.VerboseLog[i].TimeStamp.substr(6)));
-                            debugger;
                             var diff = end_actual_time - start_actual_time;
                             var diffSeconds = diff / 1000;
                             var HH = Math.floor(diffSeconds / 3600);

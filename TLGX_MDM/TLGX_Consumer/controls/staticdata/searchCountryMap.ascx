@@ -90,7 +90,7 @@
 
     }
     function RemoveExtra(record, onClick) {
-        debugger;
+        //debugger;
         if (!onClick) {
             var currentRow = $(record).parent().parent();
             var CityDDL = currentRow.find("td:eq(5)").find('select');

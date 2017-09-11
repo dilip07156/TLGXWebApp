@@ -56,7 +56,7 @@
     }
     //Add selected Places
     function AddSelectedLookups() {
-        debugger;
+        //debugger;
         var table = $('#tblBodyForPlaces');
         var localproducts = {};
         var Hotel_Id = getParameterByName('Hotel_Id');
@@ -65,7 +65,7 @@
         localproducts.GooglePlaceNearBy = [];
 
         table.find('tr').each(function (i, el) {
-            debugger;
+            //debugger;
             var $tds = $(this).find('td');
             if ($tds.find('input').is(":checked")) {
                 localproducts.GooglePlaceNearBy.push(JSON.parse($tds.eq(3).text()));
@@ -82,7 +82,7 @@
         localproducts.PlaceCategory = $('#MainContent_inandaround_googlePlacesLookup_ddlPlaceCategory option:selected').text().toLowerCase();;
         localproducts.GooglePlaceNearBy = [];
         table.find('tr').each(function (i, el) {
-            debugger;
+            //debugger;
             var $tds = $(this).find('td');
             localproducts.GooglePlaceNearBy.push(JSON.parse($tds.eq(3).text()));
         });
@@ -91,7 +91,7 @@
     }
     //To get lat & lng by place id --It's not working
     var newCodes = function (placeId) {
-        debugger;
+        //debugger;
         var latitude = null;
         var longitude = null;
         document.geoCodeRequestCompleteFlag = 0;
@@ -154,7 +154,7 @@
     //Button call function to get Latitude and Longitude
 
     function getNearByPlaces() {
-        debugger;
+        //debugger;
         if (ValidatePage()) {
             var G_PlaceID = $('#MainContent_inandaround_googlePlacesLookup_hdnG_PlaceID').val();
             var latitude = $('#MainContent_inandaround_googlePlacesLookup_hdnLat').val();
@@ -248,7 +248,7 @@
         var itemcount = $('#MainContent_inandaround_googlePlacesLookup_ddlNoOfItem').val();
         var radius = $('#MainContent_inandaround_googlePlacesLookup_ddlRadius').val();
         var HotelName = $('#MainContent_overview_frmHotelOverview_txtHotelName').val();
-        debugger;
+       // debugger;
         var zoom = ZoomInOut();
         if (latitude != null && longitude != null) {
             $('#divResult').show();

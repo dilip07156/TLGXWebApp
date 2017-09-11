@@ -469,7 +469,7 @@
              $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
          });
         $(window).on('load', function () {
-            debugger;
+            //debugger;
             $("#MainContent_btnExportCsv").click(function () {
                // alert('Export');
                 $('#ReportViewersupplierwise').show();

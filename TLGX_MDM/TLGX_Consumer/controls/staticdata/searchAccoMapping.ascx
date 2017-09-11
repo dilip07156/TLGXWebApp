@@ -217,7 +217,7 @@
 
     }
     function RemoveExtra(record, onClick) {
-        debugger;
+       // debugger;
         if (!onClick) {
             var currentRow = $(record).parent().parent();
             var AccoDDL = currentRow.find("td:eq(10)").find('select');
