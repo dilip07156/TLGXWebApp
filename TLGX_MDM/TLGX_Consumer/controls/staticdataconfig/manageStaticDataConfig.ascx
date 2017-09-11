@@ -176,7 +176,7 @@
                             <div class="panel-group" id="accordionSearchResult">
                                 <div class="col-md-3">
                                     <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">
-                                        <h4 class="panel-title">Search Results (Total Count:
+                                        <h4 class="panel-title" style="padding-left:10px;">Search Results (Total Count:
                                             <asp:Label ID="lblTotalUploadConfig" runat="server" Text="0"></asp:Label>)</h4>
                                     </a>
 

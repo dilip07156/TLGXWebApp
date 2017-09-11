@@ -2,14 +2,12 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script>
     function getviewDetailsData(pentahoid) {
-        //debugger;
         if (pentahoid != null && pentahoid != "") {
             $.ajax({
                 type: 'GET',
                 url: '../../../Service/PentahoStepsInfo.ashx?Pentahoid=' + pentahoid,
                 dataType: "json",
                 success: function (result) {
-                    //debugger;
                     if (result != null) {
                         $("#tblsteps").empty();
                         for (var i = 0; i < result.Stepstatuslist.Stepstatus.length; i++) {
@@ -207,7 +205,7 @@
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="Status" DataField="Status" />
                                 <asp:BoundField HeaderText="API Job Name" DataField="ApiPath" />
-                                <asp:BoundField HeaderText="Create  Date" DataField="Create_Date" />
+                                <asp:BoundField HeaderText="Create  Date" DataField="Create_Date"  DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}"/>
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
                                         <%--<asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false"
@@ -323,8 +321,8 @@
                         </div>
                     </div>
                     <br />
-                    <div id="steps" style="overflow: auto; height: 210px;">
-                        <table class="table table-bordered">
+                    <div id="steps" >
+                        <table class="table  table-bordered border-collapse table-striped  table-fixed" style="overflow-y: scroll; height: 400px;">
                             <thead>
                                 <tr>
                                     <th>Stepname</th>
@@ -342,14 +340,14 @@
                                     <th>pr/in/out</th>
                                 </tr>
                             </thead>
-                            <tbody id="tblsteps">
+                            <tbody id="tblsteps" >
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info pull-right" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

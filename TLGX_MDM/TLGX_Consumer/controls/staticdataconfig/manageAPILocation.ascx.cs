@@ -99,28 +99,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
-        
-
-        //protected void gvSupplierApiSearch_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    if (e.Row.DataItem != null)
-        //    {
-        //        int index = e.Row.RowIndex;
-        //        LinkButton btnViewDetail = (LinkButton)e.Row.FindControl("btnViewDetail");
-        //        if (gvSupplierApiSearch.DataKeys[index].Values[1] != null)
-        //        {
-        //            string pentahoid = gvSupplierApiSearch.DataKeys[index].Values[1].ToString();
-        //            if (btnViewDetail != null)
-        //            {
-        //                btnViewDetail.Attributes.Add("OnClick", "showDetailsModal('" + pentahoid + "');");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            btnViewDetail.Enabled = false;
-        //        }
-        //    }
-        //}
+       
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -152,6 +131,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlSupplierList.DataValueField = "Supplier_Id";
             ddlSupplierList.DataTextField = "Name";
             ddlSupplierList.DataBind();
+            ddlSupplierList.Items.RemoveAt(0);
+            ddlSupplierList.Items.Insert(0, new ListItem("--Select --", "0"));
         }
 
         protected void btnNewUpload_Click(object sender, EventArgs e)
@@ -172,9 +153,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
             {
                 BootstrapAlert.BootstrapAlertMessage(dvError, "Please select both Entity and Supplier name!!", BootstrapAlertType.Warning);
             }
-            else if (path == "No Data Found")
+            else if (path == "API Location not found")
             {
-                BootstrapAlert.BootstrapAlertMessage(dvError, "No data found.Please select again!!", BootstrapAlertType.Danger);
+                BootstrapAlert.BootstrapAlertMessage(dvError, "API Location not found.Please select again!!", BootstrapAlertType.Danger);
             }
             else
             {
@@ -209,11 +190,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     btnadddetails.CommandArgument = res[0].ApiLocation_Id.ToString();
                     txtApiLocation.Text = res[0].ApiEndPoint.ToString();
-                    btnadddetails.Enabled = true;
                 }
                 else
                 {
-                    txtApiLocation.Text = "No Data Found";
+                    txtApiLocation.Text = "API Location not found";
                 }
             }
 
@@ -235,7 +215,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
                 else
                 {
-                    txtApiLocation.Text = "No Data Found";
+                    txtApiLocation.Text = "API Location not found";
                    
                 }
             }
