@@ -93,18 +93,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Aupplier API  Search</a>
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Supplier API  Search</a>
                     </h4>
                 </div>
 
                 <div id="collapseSearch" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <asp:ValidationSummary ID="vlSumm" runat="server" ValidationGroup="vldgrpFileSearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                            </div>
-                        </div>
-                        <div class="container">
+                       <%-- <div class="container">--%>
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group row">
@@ -138,15 +133,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group row">
                                     <div class="col-sm-12">
                                         <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" ValidationGroup="vldgrpFileSearch" />
                                         <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
                                     </div>
-                                    <div class="col-sm-12">&nbsp; </div>
-                                </div>
                             </div>
-                        </div>
+                       <%-- </div>--%>
                     </div>
                 </div>
 

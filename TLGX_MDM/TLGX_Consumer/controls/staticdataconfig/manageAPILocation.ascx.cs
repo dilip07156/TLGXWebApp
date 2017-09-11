@@ -24,6 +24,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 fillSuppliers();
                 fillEntity();
                 fillStatus();
+                fillSupplierAddClick();
+                fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
+                ddlEntityList.Items.RemoveAt(0);
+                ddlEntityList.Items.Insert(0, new ListItem("--Select --", "0"));
             }
         }
         protected void fillSuppliers()
@@ -138,8 +142,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void btnNewUpload_Click(object sender, EventArgs e)
         {
             dvError.Style.Add("display", "none");
-            fillSupplierAddClick();
-            fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
+            
             ddlSupplierList.SelectedIndex = 0;
             ddlEntityList.SelectedIndex = 0;
             txtApiLocation.Text = "";
