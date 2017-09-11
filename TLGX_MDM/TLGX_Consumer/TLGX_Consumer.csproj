@@ -219,7 +219,6 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="activity\ckis\manage.aspx" />
     <Content Include="activity\ckis\search.aspx" />
-    <Content Include="activity\SearchActivityMaster.aspx" />
     <Content Include="admin\manageApplication.aspx" />
     <Content Include="admin\manageDistributionLayer.aspx" />
     <Content Include="admin\manageWorkflowMaster.aspx" />
@@ -240,13 +239,13 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
     <Content Include="Content\multilevelformsbootstrapmenu.css" />
     <Content Include="Content\Site.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\manageActivityProductName.ascx" />
-    <Content Include="controls\activity\SearchActivityMasterControl.ascx" />
     <Content Include="controls\activity\searchActivityProductName.ascx" />
     <Content Include="controls\admin\UserManagement.ascx" />
     <Content Include="controls\attributes\attributeManager.ascx" />
@@ -309,6 +308,7 @@
     <Content Include="controls\projects\workflowinproject.ascx" />
     <Content Include="controls\roomtype\manageRoomTypeMapping.ascx" />
     <Content Include="controls\roomtype\searchRoomTypes.ascx" />
+    <Content Include="controls\staticdataconfig\manageAPILocation.ascx" />
     <Content Include="controls\staticdataconfig\manageFIleUpload.ascx" />
     <Content Include="controls\staticdataconfig\manageStaticDataConfig.ascx" />
     <Content Include="controls\staticdataconfig\searchStaticDataConfig.ascx" />
@@ -339,6 +339,7 @@
     <Content Include="images\ajaxloadernew.gif" />
     <Content Include="images\collapse.jpg" />
     <Content Include="images\expand.jpg" />
+    <Content Include="images\loading.gif" />
     <Content Include="images\logo-cnk.gif" />
     <Content Include="masters\managePlaces.aspx" />
     <Content Include="Models\TLGX_Mapper_Entity.Context.tt">
@@ -358,6 +359,13 @@
     <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
     <Content Include="ClassDiagram1.cd" />
     <Content Include="hotels\rptMissingAttribute.rdlc" />
+    <Content Include="fonts\GoogleFont\59ZRklaO5bWGqF5A9baEERJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="fonts\GoogleFont\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
+    <Content Include="fonts\GoogleFont\K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="fonts\GoogleFont\LWCjsQkB6EMdfHrEVqA1KRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="fonts\GoogleFont\RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="fonts\GoogleFont\u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="fonts\GoogleFont\xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
@@ -378,6 +386,7 @@
     <Content Include="Scripts\JqueryUI\jquery-ui.min.css" />
     <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
     <Content Include="Scripts\Styles\bootstrap.css" />
+    <Content Include="Scripts\Styles\bootstrap.min.css" />
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
@@ -386,43 +395,46 @@
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer110.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer111.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer112.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer13.xsd">
+    <None Include="Service References\MDMSVC\Consumer121.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer14.xsd">
+    <None Include="Service References\MDMSVC\Consumer2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer15.xsd">
+    <None Include="Service References\MDMSVC\Consumer3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer16.xsd">
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer17.xsd">
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer18.xsd">
+    <None Include="Service References\MDMSVC\Consumer6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer19.xsd">
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
@@ -713,6 +725,12 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -725,6 +743,7 @@
     <Content Include="staticdata\city\search.aspx" />
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
+    <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
     <Content Include="staticdata\hotels\newHotelReport.aspx" />
@@ -825,6 +844,7 @@
     <Content Include="Service\SupplierWiseDataForChart.ashx" />
     <Content Include="Service\AllSupplierDataForChart.ashx" />
     <Content Include="Service\FileProgressDashboard.ashx" />
+    <Content Include="Service\PentahoStepsInfo.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -961,13 +981,6 @@
     <Compile Include="activity\ckis\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
-    <Compile Include="activity\SearchActivityMaster.aspx.cs">
-      <DependentUpon>SearchActivityMaster.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="activity\SearchActivityMaster.aspx.designer.cs">
-      <DependentUpon>SearchActivityMaster.aspx</DependentUpon>
-    </Compile>
     <Compile Include="admin\manageApplication.aspx.cs">
       <DependentUpon>manageApplication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1077,13 +1090,6 @@
     </Compile>
     <Compile Include="controls\activity\manageActivityProductName.ascx.designer.cs">
       <DependentUpon>manageActivityProductName.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\activity\SearchActivityMasterControl.ascx.cs">
-      <DependentUpon>SearchActivityMasterControl.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="controls\activity\SearchActivityMasterControl.ascx.designer.cs">
-      <DependentUpon>SearchActivityMasterControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\searchActivityProductName.ascx.cs">
       <DependentUpon>searchActivityProductName.ascx</DependentUpon>
@@ -1238,6 +1244,13 @@
     </Compile>
     <Compile Include="controls\roomtype\searchRoomTypes.ascx.designer.cs">
       <DependentUpon>searchRoomTypes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageAPILocation.ascx.cs">
+      <DependentUpon>manageAPILocation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\manageAPILocation.ascx.designer.cs">
+      <DependentUpon>manageAPILocation.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\staticdataconfig\manageFIleUpload.ascx.cs">
       <DependentUpon>manageFIleUpload.ascx</DependentUpon>
@@ -2089,6 +2102,7 @@
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\Styles\BootstrapStyles.cs" />
     <Compile Include="Service References\MDMSVC\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2105,6 +2119,9 @@
     </Compile>
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\PentahoStepsInfo.ashx.cs">
+      <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\RoomCategoryAutoComplete.ashx.cs">
       <DependentUpon>RoomCategoryAutoComplete.ashx</DependentUpon>
@@ -2184,6 +2201,13 @@
     </Compile>
     <Compile Include="staticdata\country\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\files\APIData.aspx.cs">
+      <DependentUpon>APIData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\files\APIData.aspx.designer.cs">
+      <DependentUpon>APIData.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\files\upload.aspx.cs">
       <DependentUpon>upload.aspx</DependentUpon>

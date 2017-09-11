@@ -489,5 +489,14 @@ namespace TLGX_Consumer.Controller
             return result as List<string>;
         }
         #endregion
+        #region pentaho
+        public List<string> Pentaho_SupplierApiCall_Status()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_api_status"]), typeof(List<String>), out result);
+            return result as List<String>;
+
+        }
+        #endregion
     }
 }

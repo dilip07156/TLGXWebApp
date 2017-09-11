@@ -434,5 +434,33 @@ namespace TLGX_Consumer.Controller
         #region fileConfig
 
         #endregion
+        #region pentaho
+        public List<DC_PentahoApiCallLogDetails> Pentaho_SupplierApiCall_List(DC_PentahoApiCallLogDetails_RQ _obj)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_api_search"], _obj, typeof(DC_PentahoApiCallLogDetails_RQ), typeof(List<DC_PentahoApiCallLogDetails>), out result);
+            return result as List<DC_PentahoApiCallLogDetails>;
+
+        }
+        public  DC_Message Pentaho_SupplierApi_Call(Guid ApiLocationId, string CalledBy)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_newapi_add"], ApiLocationId, CalledBy), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public  List<DC_Supplier_ApiLocation> Pentaho_SupplierApiLocationId_Get(Guid SupplierId, Guid EntityId)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["get_supplier_apiLocationid"], SupplierId, EntityId), typeof(List<DC_Supplier_ApiLocation>), out result);
+            return result as List<DC_Supplier_ApiLocation>;
+        }
+        public DC_PentahoTransStatus_TransStatus Pentaho_SupplierApiCall_ViewDetails(string PentahoCall_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_api_viewdetails"], PentahoCall_Id), typeof(DC_PentahoTransStatus_TransStatus), out result);
+            return result as DC_PentahoTransStatus_TransStatus;
+        }
+
+        #endregion
     }
 }

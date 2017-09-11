@@ -7336,6 +7336,16 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails_TestProcess))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Result))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Resultfile[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Resultfile))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatuslist))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatus[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[]))]
@@ -7883,6 +7893,16 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails_TestProcess))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Result))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Resultfile[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Resultfile))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatuslist))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatus[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[]))]
@@ -15135,6 +15155,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -15496,6 +15519,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
                     this.LatitudeField = value;
                     this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
                 }
             }
         }
@@ -28385,6 +28421,1281 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoTransStatus_TransStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoTransStatus_TransStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Error_descField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string First_log_line_nrField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Last_log_line_nrField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Log_dateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Logging_stringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PausedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Result ResultField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Status_descField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatuslist StepstatuslistField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TransnameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Error_desc {
+            get {
+                return this.Error_descField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Error_descField, value) != true)) {
+                    this.Error_descField = value;
+                    this.RaisePropertyChanged("Error_desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string First_log_line_nr {
+            get {
+                return this.First_log_line_nrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.First_log_line_nrField, value) != true)) {
+                    this.First_log_line_nrField = value;
+                    this.RaisePropertyChanged("First_log_line_nr");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Last_log_line_nr {
+            get {
+                return this.Last_log_line_nrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Last_log_line_nrField, value) != true)) {
+                    this.Last_log_line_nrField = value;
+                    this.RaisePropertyChanged("Last_log_line_nr");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Log_date {
+            get {
+                return this.Log_dateField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Log_dateField, value) != true)) {
+                    this.Log_dateField = value;
+                    this.RaisePropertyChanged("Log_date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Logging_string {
+            get {
+                return this.Logging_stringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Logging_stringField, value) != true)) {
+                    this.Logging_stringField = value;
+                    this.RaisePropertyChanged("Logging_string");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Paused {
+            get {
+                return this.PausedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PausedField, value) != true)) {
+                    this.PausedField = value;
+                    this.RaisePropertyChanged("Paused");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Result Result {
+            get {
+                return this.ResultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultField, value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status_desc {
+            get {
+                return this.Status_descField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Status_descField, value) != true)) {
+                    this.Status_descField = value;
+                    this.RaisePropertyChanged("Status_desc");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatuslist Stepstatuslist {
+            get {
+                return this.StepstatuslistField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StepstatuslistField, value) != true)) {
+                    this.StepstatuslistField = value;
+                    this.RaisePropertyChanged("Stepstatuslist");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Transname {
+            get {
+                return this.TransnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TransnameField, value) != true)) {
+                    this.TransnameField = value;
+                    this.RaisePropertyChanged("Transname");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoTransStatus_Result", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoTransStatus_Result : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Entry_nrField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Exit_statusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Is_stoppedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_deletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_inputField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_outputField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_readField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_rejectedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_updatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Lines_writtenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Log_channel_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Log_textField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Nr_errorsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Nr_files_retrievedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Resultfile[] ResultfileField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResultrowsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string sResultField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Entry_nr {
+            get {
+                return this.Entry_nrField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Entry_nrField, value) != true)) {
+                    this.Entry_nrField = value;
+                    this.RaisePropertyChanged("Entry_nr");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Exit_status {
+            get {
+                return this.Exit_statusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Exit_statusField, value) != true)) {
+                    this.Exit_statusField = value;
+                    this.RaisePropertyChanged("Exit_status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Is_stopped {
+            get {
+                return this.Is_stoppedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Is_stoppedField, value) != true)) {
+                    this.Is_stoppedField = value;
+                    this.RaisePropertyChanged("Is_stopped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_deleted {
+            get {
+                return this.Lines_deletedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_deletedField, value) != true)) {
+                    this.Lines_deletedField = value;
+                    this.RaisePropertyChanged("Lines_deleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_input {
+            get {
+                return this.Lines_inputField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_inputField, value) != true)) {
+                    this.Lines_inputField = value;
+                    this.RaisePropertyChanged("Lines_input");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_output {
+            get {
+                return this.Lines_outputField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_outputField, value) != true)) {
+                    this.Lines_outputField = value;
+                    this.RaisePropertyChanged("Lines_output");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_read {
+            get {
+                return this.Lines_readField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_readField, value) != true)) {
+                    this.Lines_readField = value;
+                    this.RaisePropertyChanged("Lines_read");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_rejected {
+            get {
+                return this.Lines_rejectedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_rejectedField, value) != true)) {
+                    this.Lines_rejectedField = value;
+                    this.RaisePropertyChanged("Lines_rejected");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_updated {
+            get {
+                return this.Lines_updatedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_updatedField, value) != true)) {
+                    this.Lines_updatedField = value;
+                    this.RaisePropertyChanged("Lines_updated");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Lines_written {
+            get {
+                return this.Lines_writtenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Lines_writtenField, value) != true)) {
+                    this.Lines_writtenField = value;
+                    this.RaisePropertyChanged("Lines_written");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Log_channel_id {
+            get {
+                return this.Log_channel_idField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Log_channel_idField, value) != true)) {
+                    this.Log_channel_idField = value;
+                    this.RaisePropertyChanged("Log_channel_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Log_text {
+            get {
+                return this.Log_textField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Log_textField, value) != true)) {
+                    this.Log_textField = value;
+                    this.RaisePropertyChanged("Log_text");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nr_errors {
+            get {
+                return this.Nr_errorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Nr_errorsField, value) != true)) {
+                    this.Nr_errorsField = value;
+                    this.RaisePropertyChanged("Nr_errors");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nr_files_retrieved {
+            get {
+                return this.Nr_files_retrievedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Nr_files_retrievedField, value) != true)) {
+                    this.Nr_files_retrievedField = value;
+                    this.RaisePropertyChanged("Nr_files_retrieved");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Resultfile[] Resultfile {
+            get {
+                return this.ResultfileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultfileField, value) != true)) {
+                    this.ResultfileField = value;
+                    this.RaisePropertyChanged("Resultfile");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Resultrows {
+            get {
+                return this.ResultrowsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultrowsField, value) != true)) {
+                    this.ResultrowsField = value;
+                    this.RaisePropertyChanged("Resultrows");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string sResult {
+            get {
+                return this.sResultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.sResultField, value) != true)) {
+                    this.sResultField = value;
+                    this.RaisePropertyChanged("sResult");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoTransStatus_Resultfile", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoTransStatus_Resultfile : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OriginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentoriginField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TimestampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Comment {
+            get {
+                return this.CommentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommentField, value) != true)) {
+                    this.CommentField = value;
+                    this.RaisePropertyChanged("Comment");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string File {
+            get {
+                return this.FileField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileField, value) != true)) {
+                    this.FileField = value;
+                    this.RaisePropertyChanged("File");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Origin {
+            get {
+                return this.OriginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OriginField, value) != true)) {
+                    this.OriginField = value;
+                    this.RaisePropertyChanged("Origin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Parentorigin {
+            get {
+                return this.ParentoriginField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentoriginField, value) != true)) {
+                    this.ParentoriginField = value;
+                    this.RaisePropertyChanged("Parentorigin");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Timestamp {
+            get {
+                return this.TimestampField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TimestampField, value) != true)) {
+                    this.TimestampField = value;
+                    this.RaisePropertyChanged("Timestamp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoTransStatus_Stepstatuslist", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoTransStatus_Stepstatuslist : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatus[] StepstatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_Stepstatus[] Stepstatus {
+            get {
+                return this.StepstatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StepstatusField, value) != true)) {
+                    this.StepstatusField = value;
+                    this.RaisePropertyChanged("Stepstatus");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoTransStatus_Stepstatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoTransStatus_Stepstatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CopyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinesInputField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinesOutputField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinesReadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinesRejectedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinesUpdatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LinesWrittenField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PausedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SecondsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SpeedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StepnameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StoppedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Copy {
+            get {
+                return this.CopyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CopyField, value) != true)) {
+                    this.CopyField = value;
+                    this.RaisePropertyChanged("Copy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Errors {
+            get {
+                return this.ErrorsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorsField, value) != true)) {
+                    this.ErrorsField = value;
+                    this.RaisePropertyChanged("Errors");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinesInput {
+            get {
+                return this.LinesInputField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinesInputField, value) != true)) {
+                    this.LinesInputField = value;
+                    this.RaisePropertyChanged("LinesInput");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinesOutput {
+            get {
+                return this.LinesOutputField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinesOutputField, value) != true)) {
+                    this.LinesOutputField = value;
+                    this.RaisePropertyChanged("LinesOutput");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinesRead {
+            get {
+                return this.LinesReadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinesReadField, value) != true)) {
+                    this.LinesReadField = value;
+                    this.RaisePropertyChanged("LinesRead");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinesRejected {
+            get {
+                return this.LinesRejectedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinesRejectedField, value) != true)) {
+                    this.LinesRejectedField = value;
+                    this.RaisePropertyChanged("LinesRejected");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinesUpdated {
+            get {
+                return this.LinesUpdatedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinesUpdatedField, value) != true)) {
+                    this.LinesUpdatedField = value;
+                    this.RaisePropertyChanged("LinesUpdated");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LinesWritten {
+            get {
+                return this.LinesWrittenField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LinesWrittenField, value) != true)) {
+                    this.LinesWrittenField = value;
+                    this.RaisePropertyChanged("LinesWritten");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Paused {
+            get {
+                return this.PausedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PausedField, value) != true)) {
+                    this.PausedField = value;
+                    this.RaisePropertyChanged("Paused");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PriorityField, value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Seconds {
+            get {
+                return this.SecondsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SecondsField, value) != true)) {
+                    this.SecondsField = value;
+                    this.RaisePropertyChanged("Seconds");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Speed {
+            get {
+                return this.SpeedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpeedField, value) != true)) {
+                    this.SpeedField = value;
+                    this.RaisePropertyChanged("Speed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StatusDescription {
+            get {
+                return this.StatusDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusDescriptionField, value) != true)) {
+                    this.StatusDescriptionField = value;
+                    this.RaisePropertyChanged("StatusDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Stepname {
+            get {
+                return this.StepnameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StepnameField, value) != true)) {
+                    this.StepnameField = value;
+                    this.RaisePropertyChanged("Stepname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Stopped {
+            get {
+                return this.StoppedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StoppedField, value) != true)) {
+                    this.StoppedField = value;
+                    this.RaisePropertyChanged("Stopped");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoApiCallLogDetails_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoApiCallLogDetails_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Entity_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Entity_Id {
+            get {
+                return this.Entity_IdField;
+            }
+            set {
+                if ((this.Entity_IdField.Equals(value) != true)) {
+                    this.Entity_IdField = value;
+                    this.RaisePropertyChanged("Entity_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Supplier_Id {
+            get {
+                return this.Supplier_IdField;
+            }
+            set {
+                if ((this.Supplier_IdField.Equals(value) != true)) {
+                    this.Supplier_IdField = value;
+                    this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_PentahoApiCallLogDetails", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho")]
+    [System.SerializableAttribute()]
+    public partial class DC_PentahoApiCallLogDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ApiPathField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Entity_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> PentahoCall_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierApiCallLog_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SupplierApiLocation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ApiPath {
+            get {
+                return this.ApiPathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ApiPathField, value) != true)) {
+                    this.ApiPathField = value;
+                    this.RaisePropertyChanged("ApiPath");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Entity {
+            get {
+                return this.EntityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityField, value) != true)) {
+                    this.EntityField = value;
+                    this.RaisePropertyChanged("Entity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Entity_Id {
+            get {
+                return this.Entity_IdField;
+            }
+            set {
+                if ((this.Entity_IdField.Equals(value) != true)) {
+                    this.Entity_IdField = value;
+                    this.RaisePropertyChanged("Entity_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> PentahoCall_Id {
+            get {
+                return this.PentahoCall_IdField;
+            }
+            set {
+                if ((this.PentahoCall_IdField.Equals(value) != true)) {
+                    this.PentahoCall_IdField = value;
+                    this.RaisePropertyChanged("PentahoCall_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Supplier {
+            get {
+                return this.SupplierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierField, value) != true)) {
+                    this.SupplierField = value;
+                    this.RaisePropertyChanged("Supplier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierApiCallLog_Id {
+            get {
+                return this.SupplierApiCallLog_IdField;
+            }
+            set {
+                if ((this.SupplierApiCallLog_IdField.Equals(value) != true)) {
+                    this.SupplierApiCallLog_IdField = value;
+                    this.RaisePropertyChanged("SupplierApiCallLog_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SupplierApiLocation_Id {
+            get {
+                return this.SupplierApiLocation_IdField;
+            }
+            set {
+                if ((this.SupplierApiLocation_IdField.Equals(value) != true)) {
+                    this.SupplierApiLocation_IdField = value;
+                    this.RaisePropertyChanged("SupplierApiLocation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Supplier_Id {
+            get {
+                return this.Supplier_IdField;
+            }
+            set {
+                if ((this.Supplier_IdField.Equals(value) != true)) {
+                    this.Supplier_IdField = value;
+                    this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
     public partial class Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -29785,6 +31096,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_ErrorLog[] ErrorLogField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] FileDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TLGX_Consumer.MDMSVC.DC_SupplierImportFile_Statistics[] FileStatisticsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -29800,6 +31117,32 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFile_ErrorLog[] ErrorLog {
+            get {
+                return this.ErrorLogField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorLogField, value) != true)) {
+                    this.ErrorLogField = value;
+                    this.RaisePropertyChanged("ErrorLog");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails[] FileDetails {
+            get {
+                return this.FileDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileDetailsField, value) != true)) {
+                    this.FileDetailsField = value;
+                    this.RaisePropertyChanged("FileDetails");
+                }
             }
         }
         
@@ -31979,6 +33322,49 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardData", ReplyAction="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardDataResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileProgressDashboard> getFileProgressDashBoardDataAsync(string fileid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_Call", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_Call", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> Pentaho_SupplierApi_CallAsync(string ApiLocationId, string CalledBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ViewDetails", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ViewDetailsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ViewDetailsDC_ErrorStatusFaul" +
+            "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus Pentaho_SupplierApiCall_ViewDetails(string PentahoCallId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ViewDetails", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ViewDetailsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus> Pentaho_SupplierApiCall_ViewDetailsAsync(string PentahoCallId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiLocation_Get", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiLocation_GetResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiLocation_GetDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation[] Pentaho_SupplierApiLocation_Get(string SupplierId, string EntityId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiLocation_Get", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiLocation_GetResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation[]> Pentaho_SupplierApiLocation_GetAsync(string SupplierId, string EntityId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_Remove", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_RemoveResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_RemoveDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApiCall_Remove(string PentahoCallId, string CalledBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_Remove", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_RemoveResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> Pentaho_SupplierApiCall_RemoveAsync(string PentahoCallId, string CalledBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_List", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[] Pentaho_SupplierApiCall_List(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_List", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_ListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[]> Pentaho_SupplierApiCall_ListAsync(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_Status", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_StatusResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_StatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string[] Pentaho_SupplierApiCall_Status();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_Status", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_StatusResponse")]
+        System.Threading.Tasks.Task<string[]> Pentaho_SupplierApiCall_StatusAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -33854,6 +35240,54 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileProgressDashboard> getFileProgressDashBoardDataAsync(string fileid) {
             return base.Channel.getFileProgressDashBoardDataAsync(fileid);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy) {
+            return base.Channel.Pentaho_SupplierApi_Call(ApiLocationId, CalledBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> Pentaho_SupplierApi_CallAsync(string ApiLocationId, string CalledBy) {
+            return base.Channel.Pentaho_SupplierApi_CallAsync(ApiLocationId, CalledBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus Pentaho_SupplierApiCall_ViewDetails(string PentahoCallId) {
+            return base.Channel.Pentaho_SupplierApiCall_ViewDetails(PentahoCallId);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus> Pentaho_SupplierApiCall_ViewDetailsAsync(string PentahoCallId) {
+            return base.Channel.Pentaho_SupplierApiCall_ViewDetailsAsync(PentahoCallId);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation[] Pentaho_SupplierApiLocation_Get(string SupplierId, string EntityId) {
+            return base.Channel.Pentaho_SupplierApiLocation_Get(SupplierId, EntityId);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_ApiLocation[]> Pentaho_SupplierApiLocation_GetAsync(string SupplierId, string EntityId) {
+            return base.Channel.Pentaho_SupplierApiLocation_GetAsync(SupplierId, EntityId);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApiCall_Remove(string PentahoCallId, string CalledBy) {
+            return base.Channel.Pentaho_SupplierApiCall_Remove(PentahoCallId, CalledBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> Pentaho_SupplierApiCall_RemoveAsync(string PentahoCallId, string CalledBy) {
+            return base.Channel.Pentaho_SupplierApiCall_RemoveAsync(PentahoCallId, CalledBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[] Pentaho_SupplierApiCall_List(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ RQ) {
+            return base.Channel.Pentaho_SupplierApiCall_List(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[]> Pentaho_SupplierApiCall_ListAsync(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ RQ) {
+            return base.Channel.Pentaho_SupplierApiCall_ListAsync(RQ);
+        }
+        
+        public string[] Pentaho_SupplierApiCall_Status() {
+            return base.Channel.Pentaho_SupplierApiCall_Status();
+        }
+        
+        public System.Threading.Tasks.Task<string[]> Pentaho_SupplierApiCall_StatusAsync() {
+            return base.Channel.Pentaho_SupplierApiCall_StatusAsync();
         }
     }
 }
