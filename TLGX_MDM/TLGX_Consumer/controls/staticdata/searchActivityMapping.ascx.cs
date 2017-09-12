@@ -886,7 +886,7 @@ namespace TLGX_Consumer.controls.staticdata
                     if (res.Count > 0)
                     {
                         blnDataExist = true;
-                        grdActivitySearchByProduct.VirtualItemCount = res[0].TotalRecord;
+                        grdActivitySearchByProduct.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
                         lblCKISProductMasters.Text = res[0].TotalRecord.ToString();
                     }
                     else

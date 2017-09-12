@@ -739,6 +739,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -1073,6 +1076,7 @@
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\AccomodationSVC.cs" />
+    <Compile Include="Controller\ActivitySVC.cs" />
     <Compile Include="Controller\AdminSVCs.cs" />
     <Compile Include="Controller\MappingSVCs.cs" />
     <Compile Include="Controller\MasterDataSVCs.cs" />

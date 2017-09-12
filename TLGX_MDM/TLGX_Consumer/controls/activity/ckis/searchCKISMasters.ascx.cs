@@ -123,7 +123,7 @@ namespace TLGX_Consumer.controls.activity.ckis
             grdCKISData.DataSource = res;
             if (res != null && res.Count > 0)
             {
-                grdCKISData.VirtualItemCount = res[0].TotalRecord;
+                grdCKISData.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
                 lblTotalCount.Text = res[0].TotalRecord.ToString();
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Search Completed", BootstrapAlertType.Success);
             }
