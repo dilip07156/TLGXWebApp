@@ -151,12 +151,12 @@ namespace TLGX_Consumer.controls.activity
                 //var res = masterSVc.GetActivityMaster(_objSearch);
 
                 var res = activitySVC.ActivitySearch(_objSearch);
-                if (res != null)
+                if (res != null && res.Count!=0)
                 {
-                    gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
-                    lblTotalRecords.Text = res[0].TotalRecord.ToString();
                     if (res.Count > 0)
                     {
+                        gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
+                        lblTotalRecords.Text = res[0].TotalRecord.ToString();
                         gvActivitySearch.DataSource = res;
                         gvActivitySearch.PageIndex = pageindex;
                         gvActivitySearch.PageSize = pagesize;

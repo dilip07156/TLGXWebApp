@@ -150,7 +150,7 @@ namespace TLGX_Consumer.controls.activity.ckis
                 if (ddlCity.SelectedValue != "0")
                     RQParams.City = ddlCity.SelectedItem.Text;
                 if (ddlCKISType.SelectedValue != "0")
-                    RQParams.ProductSubType = ddlCKISType.SelectedItem.Text;
+                    RQParams.ProductCategorySubType = ddlCKISType.SelectedItem.Text;
                 if (ddlCKISActivityType.SelectedValue != "0")
                     RQParams.ProductCategory = ddlCKISActivityType.SelectedItem.Text;
                 if (!string.IsNullOrEmpty(txtHotelName.Text))
