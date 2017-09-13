@@ -494,6 +494,7 @@ namespace TLGX_Consumer.controls.keywords
 
             txtKeyword.Text = String.Empty;
             txtAlias.Text = String.Empty;
+            chkAttribute.Checked = false;
             ddlStatus.SelectedIndex = 0;
             lblTotalCount.Text = "0";
             PageNo = 0;

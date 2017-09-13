@@ -16,6 +16,7 @@ namespace TLGX_Consumer.controls.activity
         MasterDataSVCs _objMasterData = new MasterDataSVCs();
         lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         Controller.MasterDataSVCs masterSVc = new Controller.MasterDataSVCs();
+        Controller.ActivitySVC activitySVC = new ActivitySVC();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -134,17 +135,28 @@ namespace TLGX_Consumer.controls.activity
                     _objSearch.City = ddlCity.SelectedItem.Text;
                 _objSearch.PageNo = pageindex;
                 _objSearch.PageSize = pagesize;
+
+                if (ddlProductCategoryType.SelectedIndex != 0)
+                    _objSearch.ProductCategory = ddlProductCategoryType.SelectedItem.Text;
+                if (ddlProductCategorySubType.SelectedIndex != 0)
+                    _objSearch.ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text;
+                if (ddlProductType.SelectedIndex != 0)
+                    _objSearch.ProductType = ddlProductType.SelectedItem.Text;
+                if (ddlProductSubType.SelectedIndex != 0)
+                    _objSearch.ProductNameSubType = ddlProductSubType.SelectedItem.Text;
                 //if(ddlProductCategoryType.SelectedValue!="0")
                 //    _objSearch.ProductCategory = ddlProductCategoryType.SelectedItem.Text;
                 //if(ddlProductSubType.SelectedValue!="0")
                 //    _objSearch.ProductSubType = ddlProductSubType.SelectedItem.Text;
-                var res = masterSVc.GetActivityMaster(_objSearch);
-                if (res != null)
+                //var res = masterSVc.GetActivityMaster(_objSearch);
+
+                var res = activitySVC.ActivitySearch(_objSearch);
+                if (res != null && res.Count!=0)
                 {
-                    gvActivitySearch.VirtualItemCount = res[0].TotalRecord;
-                    lblTotalRecords.Text = res[0].TotalRecord.ToString();
                     if (res.Count > 0)
                     {
+                        gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
+                        lblTotalRecords.Text = res[0].TotalRecord.ToString();
                         gvActivitySearch.DataSource = res;
                         gvActivitySearch.PageIndex = pageindex;
                         gvActivitySearch.PageSize = pagesize;
