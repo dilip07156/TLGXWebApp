@@ -43,7 +43,7 @@ namespace TLGX_Consumer.Service
             if (!string.IsNullOrWhiteSpace(ckisproducttype))
             {
                 if (ckisproducttype.IndexOf("-") == -1)
-                    RQParams.ProductSubType = ckisproducttype;
+                    RQParams.ProductCategorySubType = ckisproducttype;
             }
 
             RQParams.PageNo = 0;

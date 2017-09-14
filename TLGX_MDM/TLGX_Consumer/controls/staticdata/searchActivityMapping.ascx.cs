@@ -338,7 +338,7 @@ namespace TLGX_Consumer.controls.staticdata
             _objfilter.Keyword = strProductByKeyWord;
             if (!string.IsNullOrWhiteSpace(Supplier_ID))
                 _objfilter.Supplier_Id = Supplier_ID;
-            _objfilter.ProductSubType = strProductSubType;
+            _objfilter.ProductCategorySubType = strProductSubType;
             lblActivityNo.Text = Convert.ToString(intActivityPageIndex + 1);
             ActivityFormView.DataSource = null;
             ActivityFormView.DataBind();
@@ -870,7 +870,7 @@ namespace TLGX_Consumer.controls.staticdata
                 if (ddlProdStatusActivityByProduct.SelectedValue != "0")
                     _objSearch.Status = ddlProdStatusActivityByProduct.SelectedItem.Text;
                 if (ddlCKISProductTypeActivityByProduct.SelectedValue != "0")
-                    _objSearch.ProductSubType = ddlCKISProductTypeActivityByProduct.SelectedItem.Text;
+                    _objSearch.ProductCategorySubType = ddlCKISProductTypeActivityByProduct.SelectedItem.Text;
                 _objSearch.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.Text);
                 if (!string.IsNullOrWhiteSpace(txtCKISProductNameActivityByProduct.Text))
                     _objSearch.Name = txtCKISProductNameActivityByProduct.Text;
@@ -886,7 +886,7 @@ namespace TLGX_Consumer.controls.staticdata
                     if (res.Count > 0)
                     {
                         blnDataExist = true;
-                        grdActivitySearchByProduct.VirtualItemCount = res[0].TotalRecord;
+                        grdActivitySearchByProduct.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
                         lblCKISProductMasters.Text = res[0].TotalRecord.ToString();
                     }
                     else

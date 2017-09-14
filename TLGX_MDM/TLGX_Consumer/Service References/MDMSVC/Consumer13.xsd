@@ -3379,18 +3379,4 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ActivitySearch">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q332="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Accomodation_Request" nillable="true" type="q332:DC_Activity_Search_RQ" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActivitySearchResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q333="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="ActivitySearchResult" nillable="true" type="q333:ArrayOfDC_ActivitySearch_RS" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
 </xs:schema>

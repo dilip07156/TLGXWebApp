@@ -219,6 +219,7 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="activity\ckis\manage.aspx" />
     <Content Include="activity\ckis\search.aspx" />
+    <Content Include="activity\SearchActivityMaster.aspx" />
     <Content Include="admin\manageApplication.aspx" />
     <Content Include="admin\manageDistributionLayer.aspx" />
     <Content Include="admin\manageWorkflowMaster.aspx" />
@@ -246,6 +247,7 @@
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\manageActivityProductName.ascx" />
+    <Content Include="controls\activity\SearchActivityMasterControl.ascx" />
     <Content Include="controls\activity\searchActivityProductName.ascx" />
     <Content Include="controls\admin\UserManagement.ascx" />
     <Content Include="controls\attributes\attributeManager.ascx" />
@@ -392,6 +394,8 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD.pubxml" />
+    <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
+    <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
@@ -737,6 +741,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -981,6 +988,13 @@
     <Compile Include="activity\ckis\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="activity\SearchActivityMaster.aspx.cs">
+      <DependentUpon>SearchActivityMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\SearchActivityMaster.aspx.designer.cs">
+      <DependentUpon>SearchActivityMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="admin\manageApplication.aspx.cs">
       <DependentUpon>manageApplication.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1064,6 +1078,7 @@
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controller\AccomodationSVC.cs" />
+    <Compile Include="Controller\ActivitySVC.cs" />
     <Compile Include="Controller\AdminSVCs.cs" />
     <Compile Include="Controller\MappingSVCs.cs" />
     <Compile Include="Controller\MasterDataSVCs.cs" />
@@ -1090,6 +1105,13 @@
     </Compile>
     <Compile Include="controls\activity\manageActivityProductName.ascx.designer.cs">
       <DependentUpon>manageActivityProductName.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\SearchActivityMasterControl.ascx.cs">
+      <DependentUpon>SearchActivityMasterControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\SearchActivityMasterControl.ascx.designer.cs">
+      <DependentUpon>SearchActivityMasterControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\searchActivityProductName.ascx.cs">
       <DependentUpon>searchActivityProductName.ascx</DependentUpon>

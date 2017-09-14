@@ -2150,6 +2150,15 @@
   <wsdl:message name="IConsumer_Pentaho_SupplierApiCall_Status_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q237="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q237:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_ActivitySearch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActivitySearch" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ActivitySearch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActivitySearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ActivitySearch_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q238="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q238:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="GetAccomodationList">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/GetAccomodationList" message="tns:IConsumer_GetAccomodationList_InputMessage" />
@@ -3335,6 +3344,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_Status" message="tns:IConsumer_Pentaho_SupplierApiCall_Status_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_StatusResponse" message="tns:IConsumer_Pentaho_SupplierApiCall_Status_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IPentaho/Pentaho_SupplierApiCall_StatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_Pentaho_SupplierApiCall_Status_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActivitySearch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/ActivitySearch" message="tns:IConsumer_ActivitySearch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/ActivitySearchResponse" message="tns:IConsumer_ActivitySearch_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/ActivitySearchDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_ActivitySearch_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />
