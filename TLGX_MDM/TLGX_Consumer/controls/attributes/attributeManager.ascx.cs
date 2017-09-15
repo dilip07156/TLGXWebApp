@@ -534,8 +534,15 @@ namespace TLGX_Consumer.controls.attributes
                 ddlMappingStatus.SelectedIndex = 0;
                 hiddenfield.Value = attributeid;
                 MDMSVC.DC_MasterAttributeMapping_RQ RQ = new MDMSVC.DC_MasterAttributeMapping_RQ();
+                grdMappingAttrVal.DataSource = null;
+                grdMappingAttrVal.DataBind();
                 if (attributeid!=null)
                     fillSearchGrid(0);
+                else
+                {
+                    grdSearchResults.DataSource = null;
+                    grdSearchResults.DataBind();
+                }
              
             }
         }
