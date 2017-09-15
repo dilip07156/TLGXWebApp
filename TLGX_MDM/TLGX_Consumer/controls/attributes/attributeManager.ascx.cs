@@ -846,17 +846,21 @@ namespace TLGX_Consumer.controls.attributes
                 RQ.PageSize = 5;
                 RQ.PageNo = pageindex;
                 var searchResult = MapSvc.Mapping_Attribute_Search(RQ);
-                if (searchResult != null || searchResult.Count > 0)
+                if (searchResult != null && searchResult.Count > 0)
                 {
+                    lblTotalCount.Text = searchResult[0].TotalRecords.ToString();
                     grdSearchResults.DataSource = searchResult;
+                    grdSearchResults.VirtualItemCount = searchResult[0].TotalRecords;
+                    grdSearchResults.PageSize = RQ.PageSize;
+                    grdSearchResults.PageIndex = RQ.PageNo;
                     grdSearchResults.DataBind();
                 }
-            }
                 else
                 {
                     grdSearchResults.DataSource = null;
                     grdSearchResults.DataBind();
                 }
+            }
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
@@ -938,9 +942,9 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void grdSearchResults_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
             if (e.CommandName.ToString()== "Editing")
             {
+                Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
                 addupdatemsg.Style.Add("display", "none");
                 ddlSuppliers.Enabled = false;
                 btnSave.Text = "Update";
@@ -967,6 +971,7 @@ namespace TLGX_Consumer.controls.attributes
             }
             else if (e.CommandName.ToString() == "SoftDelete")
             {
+                Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
                 addupdatemsg.Style.Add("display", "none");
                 MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
                 {
@@ -987,6 +992,7 @@ namespace TLGX_Consumer.controls.attributes
 
             else if (e.CommandName.ToString() == "UnDelete")
             {
+                Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
                 addupdatemsg.Style.Add("display", "none");
                 MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
                 {
@@ -1002,12 +1008,6 @@ namespace TLGX_Consumer.controls.attributes
                 BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
 
                 fillSearchGrid(grdSearchResults.PageIndex);
-
-            }
-            else if(e.CommandName.ToString()== "Remove")
-            {
-                addupdatemsg.Style.Add("display", "none");
-                Guid masterattributeid = Guid.Parse(e.CommandArgument.ToString());
 
             }
         }
