@@ -177,7 +177,7 @@
                 <div class="panel-heading clearfix">
                     <h4 class="panel-title pull-left">
                         <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
-                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a>
+                            <asp:Label ID="lblTotalRecords" runat="server"></asp:Label>)</a>
                     </h4>
                 </div>
 
@@ -216,7 +216,7 @@
 </asp:UpdatePanel>
 
 <div class="modal fade" id="moAddNewActivityModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
 
             <div class="modal-header">
@@ -243,7 +243,7 @@
                         <asp:FormView ID="frmVwNewActivity" runat="server" DefaultMode="Insert" OnItemCommand="frmVwNewActivity_ItemCommand">
                             <InsertItemTemplate>
                                 <div class="container">
-                                    <div class="col-lg-6">
+                                    <div class="row col-lg-6">
                                         <div class="panel-body">
                                             <div class="form-group row">
                                                 <label for="txtProductName" class="col-md-6 col-form-label">Product Name</label>
@@ -254,51 +254,51 @@
                                             <div class="form-group row">
                                                 <label for="frmddlCategorySubType" class="col-md-6">
                                                     Category Sub-Type
-                                                        <asp:RequiredFieldValidator runat="server" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlCategorySubType" ErrorMessage="Please select Category Sub Type."></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator runat="server" InitialValue="0" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlCategorySubType" ErrorMessage="Please select Category Sub Type."></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-md-6">
                                                     <asp:DropDownList ID="frmddlCategorySubType" runat="server" CssClass="form-control">
-                                                        <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
+                                                        <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="frmddlProductType" class="col-md-6">
                                                     Product Type
-                                                        <asp:RequiredFieldValidator runat="server" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlProductType" ErrorMessage="Please select Product Type."></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator runat="server" InitialValue="0" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlProductType" ErrorMessage="Please select Product Type."></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-md-6">
                                                     <asp:DropDownList ID="frmddlProductType" runat="server" CssClass="form-control">
-                                                        <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
+                                                        <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="frmddlCountry" class="col-md-6">
                                                     Country
-                                                        <asp:RequiredFieldValidator runat="server" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlCountry" ErrorMessage="Please select Country."></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator runat="server" InitialValue="0" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlCountry" ErrorMessage="Please select Country."></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-md-6">
                                                     <asp:DropDownList ID="frmddlCountry" runat="server" CssClass="form-control" OnSelectedIndexChanged="frmddlCountry_SelectedIndexChanged" AutoPostBack="true">
-                                                        <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
+                                                        <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="frmddlCity" class="col-md-6">
                                                     City
-                                                        <asp:RequiredFieldValidator runat="server" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlCity" ErrorMessage="Please select City."></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator runat="server" InitialValue="0" ValidationGroup="NewActivity" Text="*" CssClass="text-danger" ControlToValidate="frmddlCity" ErrorMessage="Please select City."></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-md-6">
-                                                    <asp:DropDownList ID="frmddlCity" runat="server" CssClass="col-sm-6 form-control">
-                                                        <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
+                                                    <asp:DropDownList ID="frmddlCity" runat="server" CssClass="form-control">
+                                                        <asp:ListItem Text="--Select--" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
                                             <div class="form-group row pull-right">
                                                 <div class="col-md-12">
-                                                    <asp:LinkButton ID="btnSaveActivity" CommandName="AddActivity" runat="server" Text="Save" CssClass="btn btn-primary btn-sm" ValidationGroup="NewActivity" CausesValidation="True" />
-                                                    <asp:LinkButton ID="btnReset" CommandName="ResetActivity" runat="server" Text="Reset" CssClass="btn btn-primary btn-sm" />
+                                                    <asp:LinkButton ID="btnSaveActivity" CommandName="AddActivity" runat="server" Text="Save" CssClass="btn btn-primary btn-md" ValidationGroup="NewActivity" CausesValidation="True" />
+                                                    <asp:LinkButton ID="btnReset" CommandName="ResetActivity" runat="server" Text="Reset" CssClass="btn btn-primary btn-md" />
                                                 </div>
                                             </div>
                                         </div>
@@ -306,8 +306,26 @@
                                 </div>
                             </InsertItemTemplate>
                         </asp:FormView>
+
+                        <div class="form-group">
+                            <div id="dvGrid" runat="server" class="control-label col-sm-12">
+                                <asp:GridView ID="grdSearchResults" runat="server" AllowPaging="false" AllowCustomPaging="false" AutoGenerateColumns="False" DataKeyNames="Activity_Id" CssClass="table table-hover table-striped">
+                                    <Columns>
+                                        <asp:BoundField DataField="CommonProductID" HeaderText="Product ID" />
+                                        <asp:BoundField DataField="Product_Name" HeaderText="Product_Name" />
+                                        <asp:BoundField DataField="ProductCategorySubType" HeaderText="Category Sub Type" />
+                                        <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
+                                        <asp:BoundField DataField="Country" HeaderText="Country" />
+                                        <asp:BoundField DataField="City" HeaderText="City" />
+                                        <asp:HyperLinkField DataNavigateUrlFields="Activity_Id" Text="Select" HeaderText="Hotel" />
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
+                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+
+
             </div>
 
             <div class="modal-footer">
