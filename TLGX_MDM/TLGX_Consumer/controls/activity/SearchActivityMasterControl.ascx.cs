@@ -8,6 +8,7 @@ using TLGX_Consumer.Models;
 using System.Runtime.Serialization.Json;
 using System.IO;
 using TLGX_Consumer.Controller;
+using TLGX_Consumer.App_Code;
 
 namespace TLGX_Consumer.controls.activity
 {
@@ -51,7 +52,7 @@ namespace TLGX_Consumer.controls.activity
                 ddl.DataValueField = "Country_Id";
                 ddl.DataTextField = "Country_Name";
                 ddl.DataBind();
-                ddl.Items.Insert(0, new ListItem("---ALL---", ""));
+                ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
             }
         }
         private void fillcitydropdown(string source, string Country_ID, DropDownList ddl)
@@ -70,7 +71,7 @@ namespace TLGX_Consumer.controls.activity
                 {
                     ddl.Items.Clear();
                 }
-                ddl.Items.Insert(0, new ListItem("---ALL---", ""));
+                ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
             }
         }
         private void fillproductcaterogytype(DropDownList ddl)
@@ -82,7 +83,7 @@ namespace TLGX_Consumer.controls.activity
                 ddl.DataTextField = "AttributeValue";
                 ddl.DataValueField = "MasterAttributeValue_Id";
                 ddl.DataBind();
-                ddl.Items.Insert(0, new ListItem("---ALL---"));
+                ddl.Items.Insert(0, new ListItem("---ALL---","0"));
             }
             catch (Exception)
             {
@@ -98,7 +99,7 @@ namespace TLGX_Consumer.controls.activity
                 ddl.DataTextField = "AttributeValue";
                 ddl.DataValueField = "MasterAttributeValue_Id";
                 ddl.DataBind();
-                ddl.Items.Insert(0, new ListItem("---ALL---"));
+                ddl.Items.Insert(0, new ListItem("---ALL---","0"));
             }
             catch
             {
@@ -112,7 +113,7 @@ namespace TLGX_Consumer.controls.activity
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
             ddl.DataBind();
-            ddl.Items.Insert(0, new ListItem("---ALL---"));
+            ddl.Items.Insert(0, new ListItem("---ALL---","0"));
         }
         private void fillproductsubtype(DropDownList ddl)
         {
@@ -121,7 +122,7 @@ namespace TLGX_Consumer.controls.activity
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
             ddl.DataBind();
-            ddl.Items.Insert(0, new ListItem("---ALL---"));
+            ddl.Items.Insert(0, new ListItem("---ALL---","0"));
         }
         private void searchActivityMaster(int pageindex, int pagesize)
         {
@@ -178,7 +179,7 @@ namespace TLGX_Consumer.controls.activity
         private void resetControls()
         {
             ddlCity.Items.Clear();
-            ddlCity.Items.Insert(0, new ListItem("---ALL---", ""));
+            ddlCity.Items.Insert(0, new ListItem("---ALL---", "0"));
             ddlStatus.SelectedIndex = 0;
             ddlCountry.SelectedIndex = 0;
             ddlProductType.SelectedIndex = 0;
@@ -232,27 +233,95 @@ namespace TLGX_Consumer.controls.activity
             DropDownList ddlProductType = (DropDownList)frmVwNewActivity.FindControl("frmddlProductType");
             DropDownList ddlCountry = (DropDownList)frmVwNewActivity.FindControl("frmddlCountry");
             DropDownList ddlCity = (DropDownList)frmVwNewActivity.FindControl("frmddlCity");
+            divMsgAlertActivity.Visible = true;
 
-            if (e.CommandName == "ResetActivity")
+            if (e.CommandName.ToString() == "ResetActivity")
             {
-                txtProductName.Text = string.Empty;
-                ddlCategorySubType.SelectedIndex = 0;
-                ddlProductType.SelectedIndex = 0;
-                ddlCountry.SelectedIndex = 0;
-                ddlCity.SelectedIndex = 0;
+                resetPopupControls();
             }
-            if(e.CommandName == "AddActivity")
+            if(e.CommandName.ToString() == "AddActivity")
             {
+                MDMSVC.DC_Activity _obj = new MDMSVC.DC_Activity();
 
+                _obj.Activity_Id = Guid.NewGuid();
+                _obj.Product_Name = txtProductName.Text;
+                _obj.ProductCategorySubType = ddlCategorySubType.SelectedItem.Text;
+                _obj.ProductType = ddlProductType.SelectedItem.Text;
+                _obj.Country_Id = Guid.Parse(ddlCountry.SelectedValue);
+                _obj.Country = ddlCountry.SelectedItem.Text;
+                _obj.City_Id = Guid.Parse(ddlCity.SelectedValue);
+                _obj.City = ddlCity.SelectedItem.Text;
+
+                MDMSVC.DC_Message _msg = activitySVC.AddUpdateActivity(_obj);
+                if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                {
+                    BootstrapAlert.BootstrapAlertMessage(divMsgAlertActivity, _msg.StatusMessage, BootstrapAlertType.Success);
+                }
+                else if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Duplicate)
+                {
+                    MDMSVC.DC_Activity_Search_RQ _objDup = new MDMSVC.DC_Activity_Search_RQ();
+                    _objDup.Name = txtProductName.Text;
+                    var res = activitySVC.ActivitySearch(_objDup);
+                    if (res != null && res.Count != 0)
+                    {
+                        if (res.Count > 0)
+                        {
+                            grdSearchResults.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
+                            grdSearchResults.DataSource = res;
+                            grdSearchResults.PageIndex = 0;
+                            grdSearchResults.PageSize = 1;
+                            grdSearchResults.DataBind();
+                            grdSearchResults.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        grdSearchResults.DataSource = null;
+                        grdSearchResults.DataBind();
+                    }
+
+                    divMsgAlertActivity.Visible = true;
+                    BootstrapAlert.BootstrapAlertMessage(divMsgAlertActivity, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+                }
+                else
+                {
+                    divMsgAlertActivity.Visible = true;
+                    BootstrapAlert.BootstrapAlertMessage(divMsgAlertActivity, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+                }
+                //frmVwNewActivity.ChangeMode(FormViewMode.Insert);
             }
         }
 
+        private void resetPopupControls()
+        {
+            DropDownList ddlCategorySubType = (DropDownList)frmVwNewActivity.FindControl("frmddlCategorySubType");
+            DropDownList ddlProductType = (DropDownList)frmVwNewActivity.FindControl("frmddlProductType");
+            DropDownList ddlCountry = (DropDownList)frmVwNewActivity.FindControl("frmddlCountry");
+            DropDownList ddlCity = (DropDownList)frmVwNewActivity.FindControl("frmddlCity");
+            TextBox txtProductName = (TextBox)frmVwNewActivity.FindControl("txtProductName");
+            
+            txtProductName.Text = string.Empty;
+            ddlCategorySubType.SelectedIndex = 0;
+            ddlProductType.SelectedIndex = 0;
+            ddlCountry.SelectedIndex = 0;
+            ddlCity.Items.Clear();
+            ddlCity.Items.Insert(0, new ListItem("--Select--", "0"));
+            divMsgAlertActivity.Visible = false;
+            grdSearchResults.Visible = false;
+        }
         protected void btnNewActivity_Click(object sender, EventArgs e)
         {
             DropDownList ddlCategorySubType = (DropDownList)frmVwNewActivity.FindControl("frmddlCategorySubType");
             DropDownList ddlProductType = (DropDownList)frmVwNewActivity.FindControl("frmddlProductType");
             DropDownList ddlCountry = (DropDownList)frmVwNewActivity.FindControl("frmddlCountry");
             DropDownList ddlCity = (DropDownList)frmVwNewActivity.FindControl("frmddlCity");
+            TextBox txtProductName = (TextBox)frmVwNewActivity.FindControl("txtProductName");
+
+            txtProductName.Text = string.Empty;
+            divMsgAlertActivity.Visible = false;
+            grdSearchResults.Visible = false;
+            ddlCity.Items.Clear();
+            ddlCity.Items.Insert(0, new ListItem("--Select--", "0"));
 
             fillproductcategorysubtype(ddlCategorySubType);
             fillProductType(ddlProductType);
