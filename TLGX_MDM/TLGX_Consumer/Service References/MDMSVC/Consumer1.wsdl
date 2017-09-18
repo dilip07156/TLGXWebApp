@@ -2,19 +2,19 @@
 <wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Consumer" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Net" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Admin" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd11" />
-      <xsd:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System.Net" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Admin" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd11" />
+      <xsd:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IConsumer_GetAccomodationList_InputMessage">
@@ -2159,6 +2159,15 @@
   <wsdl:message name="IConsumer_ActivitySearch_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q238="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q238:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivity_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivity" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivity_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q239="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q239:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="GetAccomodationList">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/GetAccomodationList" message="tns:IConsumer_GetAccomodationList_InputMessage" />
@@ -3349,6 +3358,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IActivity/ActivitySearch" message="tns:IConsumer_ActivitySearch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/ActivitySearchResponse" message="tns:IConsumer_ActivitySearch_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/ActivitySearchDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_ActivitySearch_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivity" message="tns:IConsumer_AddUpdateActivity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityResponse" message="tns:IConsumer_AddUpdateActivity_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivity_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />
