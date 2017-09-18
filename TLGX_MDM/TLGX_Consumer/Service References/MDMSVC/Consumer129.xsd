@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Admin" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
-  <xs:import schemaLocation="http://10.21.32.196:8080/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Admin" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
   <xs:element name="GetAccomodationList">
     <xs:complexType>
       <xs:sequence>
@@ -3390,6 +3390,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q333="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="ActivitySearchResult" nillable="true" type="q333:ArrayOfDC_ActivitySearch_RS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q334="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q334:DC_Activity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q335="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityResult" nillable="true" type="q335:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
