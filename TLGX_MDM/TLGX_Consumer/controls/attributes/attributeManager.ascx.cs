@@ -6,12 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
+using TLGX_Consumer.controls.staticdata;
+
 namespace TLGX_Consumer.controls.attributes
 {
     public partial class attributeManager : System.Web.UI.UserControl
     {
         MasterDataSVCs _objMst = new MasterDataSVCs();
-
+        Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
         public int intPageSize = 10;
         public int intPageIndex = 0;
         public int intPageSizeAttributeValue = 5;
@@ -21,15 +23,19 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!Page.IsPostBack)
             {
                 FillPageData();
+                BindSuppliers(ddlSuppliers);
+                BindSystemStatus(ddlMappingStatus);
+                
             }
             //if (grdMasterAttributeList.SelectedIndex == -1)
             //{
             //    //ShowHideAliasGrid(false);
             //}
-
+          
         }
 
         public void FillPageData()
@@ -480,7 +486,7 @@ namespace TLGX_Consumer.controls.attributes
             //    }
 
         }
-
+       
         protected void grdMasterAttributeList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Select")
@@ -500,39 +506,7 @@ namespace TLGX_Consumer.controls.attributes
                 int index = row.RowIndex;
 
                 txtNewAttribute.Text = System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[0].Text);
-
-
-
-                //if (ddlParent.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[1].Text)) != null)
-                //{
-                //    ddlParent.SelectedValue = ddlParent.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[1].Text)).Value;
-                //}
-                //else
-                //{
-                //    ddlParent.ClearSelection();
-                //    ddlParent.SelectedIndex = 0;
-                //}
-
-                //if (ddlMasterFor.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[2].Text)) != null)
-                //{
-                //    ddlMasterFor.SelectedItem.Text = System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[2].Text);
-                //}
-                //else
-                //{
-                //    ddlMasterFor.ClearSelection();
-                //    ddlMasterFor.SelectedIndex = 0;
-                //}
-
-                //txtOTATableCode.Text = System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[3].Text);
-                //txtOTATableName.Text = System.Web.HttpUtility.HtmlDecode(grdMasterAttributeList.Rows[index].Cells[4].Text);
-                //chkActiveMaster.Checked = grdMasterAttributeList.Rows[index].Cells[5].Text == "Y" ? true : false;
-
-                //lnkAddNewAttribute.CommandName = "Update";
-                //lnkAddNewAttribute.Text = "Update Base Attribute";
-
-                //lnkAddNewAttribute.Focus();
-
-                //Disable all Controls for "SystemConfig"
+                
                 bool _isEnable = (txtNewAttribute.Text.Trim().ToLower() == "systemconfig" ? true : false);
                 if (_isEnable)
                 {
@@ -544,6 +518,32 @@ namespace TLGX_Consumer.controls.attributes
                     lnkAddNewAttribute.Enabled = _isEnable;
                 }
 
+            }
+            if (e.CommandName.ToString() == "Mapping")
+            {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                var attributeid = e.CommandArgument.ToString();
+                var systemattributename = grdMasterAttributeList.Rows[index].Cells[0].Text;
+                sysAttrName.InnerText = systemattributename;
+                addupdatemsg.Style.Add("display", "none");
+                btnSave.Text = "Add";
+                txtSupplierAttributeName.Text = "";
+                ddlSuppliers.Enabled = true;
+                ddlSuppliers.SelectedIndex = 0;
+                ddlMappingStatus.SelectedIndex = 0;
+                hiddenfield.Value = attributeid;
+                MDMSVC.DC_MasterAttributeMapping_RQ RQ = new MDMSVC.DC_MasterAttributeMapping_RQ();
+                grdMappingAttrVal.DataSource = null;
+                grdMappingAttrVal.DataBind();
+                if (attributeid!=null)
+                    fillSearchGrid(0);
+                else
+                {
+                    grdSearchResults.DataSource = null;
+                    grdSearchResults.DataBind();
+                }
+             
             }
         }
         protected void grdAttributeValues_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -575,6 +575,8 @@ namespace TLGX_Consumer.controls.attributes
 
 
             }
+
+            
         }
 
         protected void lnkButtonResetForm_Click(object sender, EventArgs e)
@@ -841,5 +843,221 @@ namespace TLGX_Consumer.controls.attributes
             grdAttributeValues.DataBind();
 
         }
+        public void fillSearchGrid(int pageindex)
+        {
+            if (hiddenfield.Value != null)
+            {
+                Guid attributeid = Guid.Parse(hiddenfield.Value);
+                MDMSVC.DC_MasterAttributeMapping_RQ RQ = new MDMSVC.DC_MasterAttributeMapping_RQ();
+                RQ.MasterAttributeType_Id = attributeid;
+                RQ.PageSize = 5;
+                RQ.PageNo = pageindex;
+                var searchResult = MapSvc.Mapping_Attribute_Search(RQ);
+                if (searchResult != null && searchResult.Count > 0)
+                {
+                    lblTotalCount.Text = searchResult[0].TotalRecords.ToString();
+                    grdSearchResults.DataSource = searchResult;
+                    grdSearchResults.VirtualItemCount = searchResult[0].TotalRecords;
+                    grdSearchResults.PageSize = RQ.PageSize;
+                    grdSearchResults.PageIndex = RQ.PageNo;
+                    grdSearchResults.DataBind();
+                }
+                else
+                {
+                    grdSearchResults.DataSource = null;
+                    grdSearchResults.DataBind();
+                }
+            }
+        }
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            var id = hiddenfield.Value;
+            var a = ddlSuppliers.SelectedItem.Value;
+            var stat = ddlMappingStatus.SelectedItem.Text;
+            if (btnSave.Text == "Update")
+            {
+                Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
+
+                MDMSVC.DC_MasterAttributeMapping newObj1 = new MDMSVC.DC_MasterAttributeMapping
+                {
+                    MasterAttributeMapping_Id = MasterAttributeMappingId,
+                    SupplierMasterAttribute = txtSupplierAttributeName.Text,
+                    Supplier_Id = Guid.Parse(ddlSuppliers.SelectedValue),
+                    SystemMasterAttribute_Id = Guid.Parse(id),
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    IsActive = true,
+                    Status = ddlMappingStatus.SelectedItem.Text
+                };
+
+                var result1 = MapSvc.Mapping_Attribute_Update(newObj1);
+                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result1.StatusMessage, (BootstrapAlertType)(result1.StatusCode));
+            }
+            else
+            {
+                MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
+                {
+                    MasterAttributeMapping_Id = Guid.NewGuid(),
+                    SupplierMasterAttribute = txtSupplierAttributeName.Text,
+                    Supplier_Id = Guid.Parse(ddlSuppliers.SelectedValue),
+                    SystemMasterAttribute_Id = Guid.Parse(id),
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    IsActive = true,
+                    Status = "MAPPED"
+                };
+                var result = MapSvc.Mapping_Attribute_Add(newObj);
+                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+            }
+         }
+        private void BindSuppliers(DropDownList ddl)
+        {
+            Controller.MasterDataSVCs mdObj = new Controller.MasterDataSVCs();
+            MDMSVC.DC_Supplier_Search_RQ RQParam = new MDMSVC.DC_Supplier_Search_RQ();
+            RQParam.StatusCode = "ACTIVE";
+            RQParam.PageNo = 0;
+            RQParam.PageSize = int.MaxValue;
+            var result = mdObj.GetSupplier(RQParam);
+            ddl.DataSource = result;
+            ddl.DataValueField = "Supplier_Id";
+            ddl.DataTextField = "Name";
+            ddl.DataBind();
+            ddl.Items.RemoveAt(0);
+            ddl.Items.Insert(0, new ListItem("--Select --", "0"));
+            result = null;
+            mdObj = null;
+        }
+        private void BindSystemStatus(DropDownList ddl)
+        {
+            Models.lookupAttributeDAL LookupAtrributes = new Models.lookupAttributeDAL();
+            string AttributeOptionFor = "ProductSupplierMapping";
+
+            ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionFor, "MappingStatus").MasterAttributeValues;
+            ddl.DataTextField = "AttributeValue";
+            ddl.DataValueField = "MasterAttributeValue_Id";
+            ddl.DataBind();
+
+            LookupAtrributes = null;
+        }
+
+        protected void grdSearchResults_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            fillSearchGrid(e.NewPageIndex);
+        }
+
+        protected void grdSearchResults_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.ToString()== "Editing")
+            {
+                Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
+                addupdatemsg.Style.Add("display", "none");
+                ddlSuppliers.Enabled = false;
+                btnSave.Text = "Update";
+                hdn_MasterAttributeMapping_Id.Value = e.CommandArgument.ToString();
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                //update supplier attributes mapping
+                ddlSuppliers.SelectedIndex = ddlSuppliers.Items.IndexOf(ddlSuppliers.Items.FindByText(grdSearchResults.Rows[index].Cells[0].Text));
+                txtSupplierAttributeName.Text = grdSearchResults.Rows[index].Cells[1].Text;
+                ddlMappingStatus.SelectedIndex = ddlMappingStatus.Items.IndexOf(ddlMappingStatus.Items.FindByText(grdSearchResults.Rows[index].Cells[2].Text));
+                //fill supplier attribute value mapping
+                var mapattrvalresult = MapSvc.Mapping_AttributeValue_Get(masterattributemappingid);
+                if(mapattrvalresult!=null && mapattrvalresult.Count > 0)
+                {
+                    grdMappingAttrVal.DataSource = mapattrvalresult;
+                    grdMappingAttrVal.DataBind();
+                }
+                else
+                {
+                    grdMappingAttrVal.DataSource = null;
+                    grdMappingAttrVal.DataBind();
+                }
+
+            }
+            else if (e.CommandName.ToString() == "SoftDelete")
+            {
+                Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
+                addupdatemsg.Style.Add("display", "none");
+                MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
+                {
+                    MasterAttributeMapping_Id = masterattributemappingid,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    IsActive = false,
+                };
+
+                var result = MapSvc.Mapping_Attribute_Update(newObj);
+                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+
+                fillSearchGrid(grdSearchResults.PageIndex);
+
+            }
+
+            else if (e.CommandName.ToString() == "UnDelete")
+            {
+                Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
+                addupdatemsg.Style.Add("display", "none");
+                MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
+                {
+                    MasterAttributeMapping_Id = masterattributemappingid,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    IsActive = true,
+                };
+
+                var result = MapSvc.Mapping_Attribute_Update(newObj);
+                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+
+                fillSearchGrid(grdSearchResults.PageIndex);
+
+            }
+        }
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            addupdatemsg.Style.Add("display", "none");
+            ddlSuppliers.Enabled = true;
+            ddlSuppliers.SelectedIndex = 0;
+            ddlStatus.SelectedIndex = 0;
+            txtSupplierAttributeName.Text = "";
+        }
+
+        protected void grdMappingAttrVal_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
+            TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
+            Label SystemMasterAttributeValueId = (Label)row.FindControl("lblSystemMasterAttributeValueId");
+
+            if (e.CommandName.ToString()== "EditVal")
+            {
+                addupdatemsg.Style.Add("display", "none");
+                Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
+                Guid MasterAttributeValueMappingId = Guid.Parse(e.CommandArgument.ToString());
+                MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
+                {
+                    MasterAttributeMapping_Id = MasterAttributeMappingId,
+                    MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
+                    IsActive = chkAttrValIsActive.Checked,
+                    SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                   SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
+                };
+
+                var result = MapSvc.Mapping_AttributeValue_Update(newObj);
+                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+            }
+        }
+
+    
     }
 }

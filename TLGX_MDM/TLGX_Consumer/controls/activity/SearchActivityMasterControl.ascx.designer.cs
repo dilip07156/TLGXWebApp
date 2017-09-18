@@ -13,6 +13,15 @@ namespace TLGX_Consumer.controls.activity {
     public partial class SearchActivityMasterControl {
         
         /// <summary>
+        /// panSearchCondition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel panSearchCondition;
+        
+        /// <summary>
         /// vlsSumm control.
         /// </summary>
         /// <remarks>
@@ -121,13 +130,13 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// btnAddNew control.
+        /// btnNewActivity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddNew;
+        protected global::System.Web.UI.WebControls.LinkButton btnNewActivity;
         
         /// <summary>
         /// dvPageSize control.
@@ -164,5 +173,59 @@ namespace TLGX_Consumer.controls.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvActivitySearch;
+        
+        /// <summary>
+        /// updNewActivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updNewActivity;
+        
+        /// <summary>
+        /// vldSumActivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vldSumActivity;
+        
+        /// <summary>
+        /// divMsgAlertActivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertActivity;
+        
+        /// <summary>
+        /// frmVwNewActivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView frmVwNewActivity;
+        
+        /// <summary>
+        /// dvGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvGrid;
+        
+        /// <summary>
+        /// grdSearchResults control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdSearchResults;
     }
 }

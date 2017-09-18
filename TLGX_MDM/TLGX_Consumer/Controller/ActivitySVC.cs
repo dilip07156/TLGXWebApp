@@ -21,5 +21,14 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_ActivitySearch_RS>;
         }
         #endregion
+
+        #region "Activity Add/Update"
+        public DC_Message AddUpdateActivity(MDMSVC.DC_Activity RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdate"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }
