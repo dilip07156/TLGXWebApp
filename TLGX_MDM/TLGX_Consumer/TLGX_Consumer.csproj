@@ -368,7 +368,6 @@
     <Content Include="fonts\GoogleFont\RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2" />
     <Content Include="fonts\GoogleFont\u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2" />
     <Content Include="fonts\GoogleFont\xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2" />
-    <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
     <Content Include="Scripts\autosize.js" />
@@ -393,7 +392,6 @@
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
-    <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
