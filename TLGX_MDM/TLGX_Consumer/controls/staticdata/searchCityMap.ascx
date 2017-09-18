@@ -45,8 +45,9 @@
     #map #infowindow-content {
         display: inline;
     }
-    .x-lg{
-        width:1200px;
+
+    .x-lg {
+        width: 1200px;
     }
 </style>
 
@@ -79,6 +80,26 @@
                 var x = results[0].geometry.location.lat();
                 var y = results[0].geometry.location.lng();
                 inputPlaceId.value = results[0].place_id;
+                //Getting State name from result set
+                var address_components = results[0].address_components;
+                var state;
+                if (typeof address_components != "undefined") {
+                    for (var i = 0; i < address_components.length; i++) {
+                        var types = address_components[i].types;
+                        if (typeof types != "undefined") {
+                            for (var j = 0; j < types.length; j++) {
+                                var typesg = types[j];
+                                if (typeof typesg != "undefined" && typesg == "administrative_area_level_1") {
+                                    state = address_components[i].long_name;
+                                    var ddlstate = $('#MainContent_CityMap_frmEditCityMap_ddlAddCityState');
+                                    ddlstate.find("option").prop('selected', false).filter(function () {
+                                        return $(this).text() == state;
+                                    }).attr("selected", "selected");
+                                }
+                            }
+                        }
+                    }
+                }
                 var latlng = new google.maps.LatLng(x, y);
                 var myOptions = {
                     zoom: 14,
@@ -96,10 +117,31 @@
                 });
                 infowindow.open(map, marker);
                 google.maps.event.addDomListener(window, 'load');
+                SetStateCode();
             } else {
                 res.innerHTML = "Enter correct Details: " + status;
             }
         });
+    }
+    function SetStateCode() {
+        var ddlstate = $('#MainContent_CityMap_frmEditCityMap_ddlAddCityState').val();
+        var statecode = $('#MainContent_CityMap_frmEditCityMap_txtAddCitySCode');
+
+
+        if (ddlstate != null) {
+            $.ajax({
+                url: '../../../Service/GetCodeById_Service.ashx',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: { 'state_id': ddlstate },
+                responseType: "json",
+                success: function (result) {
+                    statecode.val(result);
+                },
+                failure: function () {
+                }
+            });
+        }
     }
 </script>
 <script type="text/javascript">
@@ -356,13 +398,13 @@
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" />
-                                        <asp:BoundField DataField="CityName" HeaderText="City Name" />
+                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%" />
+                                        <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%" />
                                         <asp:BoundField DataField="StateName" HeaderText="State" />
                                         <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name">
+                                        <asp:BoundField DataField="MasterCountryName" HeaderText="Country Name" ItemStyle-Width="7%">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="MasterStateName" HeaderText="State Name">
@@ -424,7 +466,7 @@
 
 <br />
 <!-- OPEN IN MODAL -->
-<div class="modal fade" id="moCityMapping" role="dialog" >
+<div class="modal fade" id="moCityMapping" role="dialog">
     <div class="modal-dialog modal-lg x-lg">
         <div class="modal-content">
 
@@ -588,17 +630,17 @@
 
                                                     </div>
 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Actions</div>
+                                                <div class="panel-body">
                                                     <div class="form-group">
                                                         <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" />
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
-                                                        <asp:Button ID="btnSubmit" runat="server" CssClass="btn btn-primary btn-sm" Text="Submit" CommandName="Submit" data-dismiss="modal" CausesValidation="false" Visible="false" />
-                                                        <asp:Button ID="btnLock" runat="server" CssClass="btn btn-primary btn-sm" Text="Lock" CommandName="Lock" CausesValidation="false" Visible="false" />
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" CausesValidation="false" />
-                                                        <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" CausesValidation="false" />
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -762,6 +804,10 @@
                                                 </span>
                                                 <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
                                             </div>
+                                            <div class="form-group pull-right">
+                                                <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" CausesValidation="false" />
+                                                <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" CausesValidation="false" />
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <asp:GridView ID="grdMatchingCity" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
@@ -774,12 +820,12 @@
                                                     <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                                     <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                                     <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                                     <asp:TemplateField ShowHeader="true" HeaderText="State Name (State Code)">
+                                                    <asp:TemplateField ShowHeader="true" HeaderText="State Name (State Code)">
                                                         <ItemTemplate>
                                                             <span aria-hidden="true"><%# Eval("StateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("StateCode"))) ? "(" + Eval("StateCode") + ")" : string.Empty) %></span>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                   <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
+                                                    <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
                                                     <asp:BoundField DataField="CityCode" HeaderText="City Code" />
                                                     <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">

@@ -19,12 +19,12 @@
     .nodata {
         font-weight: bold;
         font-size: small;
+        height:100px;
+        text-align: center;
     }
-    /*.mbox{
-          width: 20px;
-          display: inline-block;
-          margin: 5px;
-       }*/
+    .chartheight{
+            height:200px;
+        }
 </style>
 
 <script type="text/javascript">
@@ -46,7 +46,31 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    //debugger;
+                    $("#country").empty();
+                    $("#detailcountry").empty();
+                    $("#countryTotal").empty();
+
+                    $("#city").empty();
+                    $("#detailcity").empty();
+                    $("#cityTotal").empty();
+
+                    $("#product").empty();
+                    $("#detailproduct").empty();
+                    $("#productTotal").empty();
+
+                    $("#activity").empty();
+                    $("#detailactivity").empty();
+                    $("#activityTotal").empty();
+
+                    $("#HotelRoom").empty();
+                    $("#detailHotelRoom").empty();
+                    $("#HotelRoomTotal").empty();
+
+                    $(".countryper").empty();
+                    $(".cityper").empty();
+                    $(".productper").empty();
+                    $(".HotelRoomper").empty();
+                    $(".activityper").empty();
                     var contryArray = [];
                     var cityArray = [];
                     var productArray = [];
@@ -75,9 +99,7 @@
                                 if (resultDataForCountry[iCountryMappingData].Status != "ALL") {
                                     contryArray.push(resultDataForCountry[iCountryMappingData]);
                                     $("#detailcountry").append(resultDataForCountry[iCountryMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount + "<br>");
-                                    if (resultDataForCountry[iCountryMappingData].Status == "UNMAPPED") {
-                                        $("#allcountryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-                                    }
+                                    
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
@@ -95,9 +117,7 @@
                                 if (resultDataForCity[iCityMappingData].Status != "ALL") {
                                     cityArray.push(resultDataForCity[iCityMappingData]);
                                     $("#detailcity").append(resultDataForCity[iCityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount + "<br>");
-                                    if (resultDataForCity[iCityMappingData].Status == "UNMAPPED") {
-                                        $("#allcityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
-                                    }
+                                    
                                 }
                                 else {
                                     $("#cityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
@@ -114,9 +134,7 @@
                                 if (resultDataForProduct[iProductMappingData].Status != "ALL") {
                                     productArray.push(resultDataForProduct[iProductMappingData]);
                                     $("#detailproduct").append(resultDataForProduct[iProductMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount + "<br>");
-                                    if (resultDataForProduct[iProductMappingData].Status == "UNMAPPED") {
-                                        $("#allproductTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
-                                    }
+                                    
                                 }
                                 else {
                                     $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
@@ -131,26 +149,24 @@
                                 if (resultDataForActivity[iActivityMappingData].Status != "ALL") {
                                     activityArray.push(resultDataForActivity[iActivityMappingData]);
                                     $("#detailactivity").append(resultDataForActivity[iActivityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount + "<br>");
-                                    if (resultDataForActivity[iActivityMappingData].Status == "UNMAPPED") {
-                                        $("#allactivityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
-                                    }
+                                   
                                 }
                                 else {
                                     $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
                                 }
                             }
                         }
-                        if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRum") {
+                        if (result[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom") {
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
-                            $(".hotelrumper").append(per + "%");
-                            var resultDataForHotelRum = result[0].MappingStatsFor[iNodes].MappingData;
-                            for (var iHotelRumMappingData = 0 ; iHotelRumMappingData < resultDataForHotelRum.length; iHotelRumMappingData++) {
-                                if (resultDataForHotelRum[iHotelRumMappingData].Status != "ALL") {
-                                    hotelroomArray.push(resultDataForHotelRum[iHotelRumMappingData]);
-                                    $("#detailhotelrum").append(resultDataForHotelRum[iHotelRumMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount + "<br>");
+                            $(".HotelRoomper").append(per + "%");
+                            var resultDataForHotelRoom = result[0].MappingStatsFor[iNodes].MappingData;
+                            for (var iHotelRoomMappingData = 0 ; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
+                                if (resultDataForHotelRoom[iHotelRoomMappingData].Status != "ALL") {
+                                    hotelroomArray.push(resultDataForHotelRoom[iHotelRoomMappingData]);
+                                    $("#detailHotelRoom").append(resultDataForHotelRoom[iHotelRoomMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount + "<br>");
                                 }
                                 else {
-                                    $("#hotelrumTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRum[iHotelRumMappingData].TotalCount);
+                                    $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
                                 }
                             }
                         }
@@ -237,7 +253,7 @@
                         resize: true
                     });
                     Morris.Donut({
-                        element: 'hotelrum',
+                        element: 'HotelRoom',
                         data: hotelroomArray,
                         colors: [
                             '#007F00',
@@ -261,7 +277,7 @@
                         $("#activity").append("<br/><br/>No Static Data Found").addClass("nodata");
                     }
                     if (hotelroomArray.length == 0) {
-                        $("#hotelrum").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#HotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
                     }
 
                 },
@@ -280,7 +296,16 @@
             dataType: "json",
             type: 'GET',
             success: function (result) {
-                debugger;
+                $("#alldetailcountry").empty();
+                $("#alldetailcity").empty();
+                $("#alldetailproduct").empty();
+                $("#alldetailactivity").empty(); 
+                $("#alldetailHotelRoom").empty();
+                $("#allcountry").empty();
+                $("#allcity").empty();
+                $("#allproduct").empty();
+                $("#allactivity").empty();
+                $("#allHotelRoom").empty();
                 var allcontryArray = [];
                 var allcityArray = [];
                 var allproductArray = [];
@@ -312,10 +337,10 @@
                         $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
 
                     }
-                    if (result[inodes].Mappingfor == "HotelRum") {
+                    if (result[inodes].Mappingfor == "HotelRoom") {
                         delete result[inodes].Mappingfor;
                         allhotelroomArray.push(result[inodes]);
-                        $("#alldetailhotelrum").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                        $("#alldetailHotelRoom").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
 
                     }
                 }
@@ -385,8 +410,8 @@
                     resize: true,
 
                 })
-                var allhotelrumChart = Morris.Donut({
-                    element: 'allhotelrum',
+                var allHotelRoomChart = Morris.Donut({
+                    element: 'allHotelRoom',
                     data: allhotelroomArray,
                     colors: colorsArray,
                     resize: true,
@@ -429,15 +454,30 @@
                       .css('margin', '5px');
                     $('#legendac').append(legendItem)
                 });
-                allhotelrumChart.options.data.forEach(function (label, i) {
+                allHotelRoomChart.options.data.forEach(function (label, i) {
                     var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                     legendItem.find('span')
-                      .css('backgroundColor', allhotelrumChart.options.colors[i])
+                      .css('backgroundColor', allHotelRoomChart.options.colors[i])
                     .css('width', '20px')
                       .css('display', 'inline-block')
                       .css('margin', '5px');
                     $('#legendhr').append(legendItem)
                 });
+                if (allcontryArray.length == 0) {
+                    $("#allcountry").append("<br/><br/>No Static Data Found").addClass("nodata");
+                }
+                if (allcityArray.length == 0) {
+                    $("#allcity").append("<br/><br/>No Static Data Found").addClass("nodata");
+                }
+                if (allproductArray.length == 0) {
+                    $("#allproduct").append("<br/><br/>No Static Data Found").addClass("nodata");
+                }
+                if (allactivityArray.length == 0) {
+                    $("#allactivity").append("<br/><br/>No Static Data Found").addClass("nodata");
+                }
+                if (allhotelroomArray.length == 0) {
+                    $("#allHotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
+                }
 
             },
             error: function (xhr, status, error) {
@@ -461,12 +501,9 @@
                     <h3><b>Country Mapped</b><br />
                         <b class="countryper"></b></h3>
                 </div>
-                <div id="country"></div>
+                <div id="country" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailcountry" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer">
                     <h4><b id="countryTotal"></b></h4>
@@ -480,12 +517,9 @@
                     <h3><b>City Mapped</b><br />
                         <b class="cityper"></b></h3>
                 </div>
-                <div id="city"></div>
+                <div id="city" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailcity" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body" style="text-align: center">
-                    <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer ">
                     <h4><b id="cityTotal"></b></h4>
@@ -499,34 +533,28 @@
                     <h3><b>Hotel Mapped</b><br />
                         <b class="productper"></b></h3>
                 </div>
-                <div id="product"></div>
+                <div id="product" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailproduct" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer">
                     <h4><b id="productTotal"></b></h4>
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6" id="hotelrumdiv" style="text-align: center">
+        <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b><br />
-                        <b class="hotelrumper"></b></h3>
+                        <b class="HotelRoomper"></b></h3>
                 </div>
-                <div id="hotelrum"></div>
+                <div id="HotelRoom" class="chartheight"></div>
                 <div class="panel-body">
-                    <b><span id="detailhotelrum" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
+                    <b><span id="detailHotelRoom" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-footer">
-                    <h4><b id="hotelrumTotal"></b></h4>
+                    <h4><b id="HotelRoomTotal"></b></h4>
                 </div>
             </div>
         </div>
@@ -537,12 +565,9 @@
                     <h3><b>Activity Mapped</b><br />
                         <b class="activityper"></b></h3>
                 </div>
-                <div id="activity"></div>
+                <div id="activity" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailactivity" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-body">
-                    <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer">
                     <h4><b id="activityTotal"></b></h4>
@@ -558,7 +583,7 @@
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Country UnMapped</b></h3>
                 </div>
-                <div id="allcountry"></div>
+                <div id="allcountry" class="chartheight"></div>
                 <div class="panel-body">
                     <div id="legendco" class="donut-legend"></div>
                 </div>
@@ -570,7 +595,7 @@
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>City UnMapped</b></h3>
                 </div>
-                <div id="allcity"></div>
+                <div id="allcity" class="chartheight"></div>
                 <div class="panel-body">
                     <div id="legendci" class="donut-legend"></div>
                 </div>
@@ -582,19 +607,19 @@
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Hotel UnMapped</b></h3>
                 </div>
-                <div id="allproduct"></div>
+                <div id="allproduct" class="chartheight"></div>
                 <div class="panel-body">
                     <div id="legendpr" class="donut-legend"></div>
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6" id="allhotelrumdiv" style="text-align: left">
+        <div class="col5 col-sm-6" id="allHotelRoomdiv" style="text-align: left">
             <div class="panel  panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Room Mapped</b></h3>
                 </div>
-                <div id="allhotelrum"></div>
+                <div id="allHotelRoom" class="chartheight"></div>
                 <div class="panel-body">
                     <div id="legendhr" class="donut-legend"></div>
                 </div>
@@ -606,7 +631,7 @@
                     <i class="fa fa-bar-chart-o fa-fw"></i>
                     <h3><b>Activity UnMapped</b></h3>
                 </div>
-                <div id="allactivity"></div>
+                <div id="allactivity" class="chartheight"></div>
                 <div class="panel-body">
                     <div id="legendac" class="donut-legend"></div>
                 </div>

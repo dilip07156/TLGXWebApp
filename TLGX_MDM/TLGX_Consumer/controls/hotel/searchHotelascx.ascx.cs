@@ -28,7 +28,8 @@ namespace TLGX_Consumer.controls.hotel
                 fillproductcaterogy();
                 fillStarRating();
                 dvPageSize.Visible = false;
-                dvGrid.Visible = false;
+                //dvGrid.Visible = false;
+                grdSearchResults.Visible = false;
             }
         }
 
@@ -99,7 +100,7 @@ namespace TLGX_Consumer.controls.hotel
         {
             if (ddlCountry.SelectedValue != "")
             {
-                fillcitydropdown("search",ddlCountry.SelectedValue);
+                fillcitydropdown("search", ddlCountry.SelectedValue);
             }
             else
             {
@@ -154,20 +155,32 @@ namespace TLGX_Consumer.controls.hotel
         {
             CallHotelSearch(pageIndex, pageSize);
             var res = AccSvc.SearchHotels(RQParams);
-            grdSearchResults.DataSource = res;
-            if (res != null && res.Count > 0)
+            if (res != null)
             {
-                grdSearchResults.VirtualItemCount = res[0].TotalRecords;
+                if (res.Count > 0)
+                {
+                    grdSearchResults.VirtualItemCount = res[0].TotalRecords;
+                    lblTotalRecords.Text = res[0].TotalRecords.ToString();
+                }
+
+                grdSearchResults.DataSource = res;
+                grdSearchResults.PageIndex = pageIndex;
+                grdSearchResults.PageSize = pageSize;
+                grdSearchResults.DataBind();
             }
-            grdSearchResults.PageIndex = pageIndex;
-            grdSearchResults.PageSize = pageSize;
-            grdSearchResults.DataBind();
+            else
+            {
+                grdSearchResults.DataSource = null;
+                grdSearchResults.DataBind();
+                lblTotalRecords.Text = String.Empty;
+            }
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             fillHotelSearchGrid(0, Convert.ToInt32(ddlPageSize.SelectedItem.Value));
             dvPageSize.Visible = true;
-            dvGrid.Visible = true;
+            //dvGrid.Visible = true;
+            grdSearchResults.Visible = true;
         }
 
         protected void grdSearchResults_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -189,11 +202,11 @@ namespace TLGX_Consumer.controls.hotel
             ddlProductCategorySubType.DataBind();
             ddlProductCategorySubType.SelectedIndex = ddlProductCategorySubType.Items.IndexOf(ddlProductCategorySubType.Items.FindByText("Hotel"));
         }
-        
+
         private void fillAttributeValues(string Contol_Name, string Attribute_Name)
         {
-            
-            DropDownList ddl = (DropDownList)Page.FindControl(Contol_Name) ;
+
+            DropDownList ddl = (DropDownList)Page.FindControl(Contol_Name);
             ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionFor, Attribute_Name).MasterAttributeValues;
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
@@ -209,7 +222,19 @@ namespace TLGX_Consumer.controls.hotel
             grdSearchResults.DataSource = null;
             grdSearchResults.DataBind();
             dvPageSize.Visible = false;
-            dvGrid.Visible = false;
+            //dvGrid.Visible = false;
+            grdSearchResults.Visible = false;
+            lblTotalRecords.Text = String.Empty;
+        }
+
+        protected void grdSearchResults_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void grdSearchResults_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
         }
     }
 }

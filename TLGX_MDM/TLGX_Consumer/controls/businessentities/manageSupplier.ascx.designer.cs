@@ -67,15 +67,6 @@ namespace TLGX_Consumer.controls.businessentities {
         protected global::System.Web.UI.WebControls.HiddenField TabName;
         
         /// <summary>
-        /// supplierMarket control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierMarket supplierMarket;
-        
-        /// <summary>
         /// supplierProductCategory control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,24 @@ namespace TLGX_Consumer.controls.businessentities {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TLGX_Consumer.controls.businessentities.supplierStaticDataHandling supplierStaticDataHandling;
+        
+        /// <summary>
+        /// supplierApiLocation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TLGX_Consumer.controls.businessentities.supplierApiLocation supplierApiLocation;
+        
+        /// <summary>
+        /// supplierMarket control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TLGX_Consumer.controls.businessentities.supplierMarket supplierMarket;
         
         /// <summary>
         /// suppliersCredentials control.

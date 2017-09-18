@@ -22,6 +22,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_ProductMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
@@ -39,6 +40,7 @@
       <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
@@ -70,6 +72,7 @@
       <xs:element minOccurs="0" name="mstAcco_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="mstHotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="oldProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stg_AccoMapping_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_ProductMapping" nillable="true" type="tns:DC_Accomodation_ProductMapping" />
@@ -144,6 +147,7 @@
   <xs:element name="DC_Accomodation_SupplierRoomTypeMapping" nillable="true" type="tns:DC_Accomodation_SupplierRoomTypeMapping" />
   <xs:complexType name="DC_Accommodation_SupplierRoomTypeMap_SearchRQ">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="MappingType" nillable="true" type="xs:string" />
@@ -151,6 +155,8 @@
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierRoomName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
@@ -167,6 +173,7 @@
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CommonProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
@@ -176,10 +183,13 @@
       <xs:element minOccurs="0" name="MaxGuestOccupancy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MaxInfants" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="NumberOfRooms" type="xs:int" />
+      <xs:element minOccurs="0" name="OldSupplierRoomName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Oldstg_SupplierHotelRoomMapping_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Quantity" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="RatePlan" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RatePlanCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomTypeAttributes" nillable="true" type="tns:ArrayOfDC_SupplierRoomTypeAttributes" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductId" nillable="true" type="xs:string" />
@@ -194,6 +204,7 @@
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
       <xs:element minOccurs="0" name="Tx_ReorderedName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Tx_StrippedName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stg_SupplierHotelRoomMapping_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accommodation_SupplierRoomTypeMap_SearchRS" nillable="true" type="tns:DC_Accommodation_SupplierRoomTypeMap_SearchRS" />
@@ -232,6 +243,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accommodation_SupplierRoomTypeMap_Update" nillable="true" type="tns:DC_Accommodation_SupplierRoomTypeMap_Update" />
+  <xs:complexType name="ArrayOfDC_SupplierRoomType_TTFU_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierRoomType_TTFU_RQ" nillable="true" type="tns:DC_SupplierRoomType_TTFU_RQ" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierRoomType_TTFU_RQ" nillable="true" type="tns:ArrayOfDC_SupplierRoomType_TTFU_RQ" />
+  <xs:complexType name="DC_SupplierRoomType_TTFU_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Acco_RoomTypeMap_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="CurrentBatch" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="File_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalBatch" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierRoomType_TTFU_RQ" nillable="true" type="tns:DC_SupplierRoomType_TTFU_RQ" />
   <xs:complexType name="DC_CountryMappingRQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
@@ -256,6 +283,7 @@
   <xs:element name="ArrayOfDC_CountryMapping" nillable="true" type="tns:ArrayOfDC_CountryMapping" />
   <xs:complexType name="DC_CountryMapping">
     <xs:sequence>
+      <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryMapping_Id" type="ser:guid" />
@@ -271,11 +299,13 @@
       <xs:element minOccurs="0" name="MasterCountry_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldCountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecord" type="xs:int" />
+      <xs:element minOccurs="0" name="stg_Country_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_CountryMapping" nillable="true" type="tns:DC_CountryMapping" />
@@ -310,6 +340,7 @@
   <xs:element name="ArrayOfDC_CityMapping" nillable="true" type="tns:ArrayOfDC_CityMapping" />
   <xs:complexType name="DC_CityMapping">
     <xs:sequence>
+      <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
@@ -339,6 +370,7 @@
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
       <xs:element minOccurs="0" name="oldCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="stg_City_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_CityMapping" nillable="true" type="tns:DC_CityMapping" />
@@ -620,6 +652,7 @@
   <xs:complexType name="DC_RollOFParams">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fromdate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierID" type="ser:guid" />
       <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -809,4 +842,47 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_newHotelsReport" nillable="true" type="tns:DC_newHotelsReport" />
+  <xs:complexType name="ArrayOfDC_VelocityMappingStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingStats" nillable="true" type="tns:DC_VelocityMappingStats" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityMappingStats" nillable="true" type="tns:ArrayOfDC_VelocityMappingStats" />
+  <xs:complexType name="DC_VelocityMappingStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MappingStatsFor" nillable="true" type="tns:ArrayOfDC_VelocityMappingStatsFor" />
+      <xs:element minOccurs="0" name="SupplierId" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityMappingStats" nillable="true" type="tns:DC_VelocityMappingStats" />
+  <xs:complexType name="ArrayOfDC_VelocityMappingStatsFor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityMappingStatsFor" nillable="true" type="tns:ArrayOfDC_VelocityMappingStatsFor" />
+  <xs:complexType name="DC_VelocityMappingStatsFor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Estimate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MappingData" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
+      <xs:element minOccurs="0" name="MappingFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unmappeddata" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
+  <xs:complexType name="ArrayOfDC_VelocityMappingdata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityMappingdata" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
+  <xs:complexType name="DC_VelocityMappingdata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
+      <xs:element minOccurs="0" name="Totalcount" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
 </xs:schema>

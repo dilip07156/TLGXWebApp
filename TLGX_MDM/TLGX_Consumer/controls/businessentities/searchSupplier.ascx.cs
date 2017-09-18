@@ -16,8 +16,8 @@ namespace TLGX_Consumer.controls.businessentities
         #region Variables
         MasterDataSVCs _objMaster = new MasterDataSVCs();
         public DataTable dtSupplierData = new DataTable();
-        public int intPageIndex = 0;
-        public int intPageSize = 10;
+        //public int intPageIndex = 0;
+        //public int intPageSize = 10;
         #endregion
         #region Page Events
         protected void Page_Load(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace TLGX_Consumer.controls.businessentities
                 FillProductCategory();
                 FillSupplierType(ddlSupplierType);
                 FillStatuses(ddlStatus);
-                bindSupplierSearchGrid();
+                bindSupplierSearchGrid(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
             }
             catch (Exception)
             {
@@ -93,13 +93,13 @@ namespace TLGX_Consumer.controls.businessentities
         }
         #endregion
         #region Methods
-        protected void bindSupplierSearchGrid()
+        protected void bindSupplierSearchGrid(int intPageSize, int intPageIndex)
         {
             //Find Serarch Filter
             string SupplierCode = txtSupplierCode.Text.Trim();
             string SupplierName = txtSupplierName.Text.Trim();
 
-            string SupplierType = Convert.ToString(ddlSupplierType.SelectedValue);
+            string SupplierType = Convert.ToString(ddlSupplierType.SelectedItem.Text);
             string ProductCategory = Convert.ToString(ddlProductCategory.SelectedValue);
             string ProductSubCategoryType = Convert.ToString(ddlProductCategorySubType.SelectedValue);
             string ddlStatusValue = Convert.ToString(ddlStatus.SelectedValue);
@@ -113,8 +113,8 @@ namespace TLGX_Consumer.controls.businessentities
                 _objSearch.Code = SupplierCode;
             if (!string.IsNullOrWhiteSpace(SupplierName))
                 _objSearch.Name = SupplierName;
-            //if (SupplierType != "0")
-            //    _objSearch.t = SupplierType;
+            if (SupplierType != "--ALL--")
+                _objSearch.SupplierType = SupplierType;
             if (ProductCategory != "0")
                 _objSearch.ProductCategory_ID = ProductCategory;
             if (ProductSubCategoryType != "0")
@@ -160,8 +160,8 @@ namespace TLGX_Consumer.controls.businessentities
 
         protected void grdSupplierList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            intPageIndex = Convert.ToInt32(e.NewPageIndex);
-            bindSupplierSearchGrid();
+            //intPageIndex = Convert.ToInt32(e.NewPageIndex);
+            bindSupplierSearchGrid(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
         #endregion
 
@@ -186,18 +186,26 @@ namespace TLGX_Consumer.controls.businessentities
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
-            bindSupplierSearchGrid();
+            //intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            bindSupplierSearchGrid(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            bindSupplierSearchGrid();
+            bindSupplierSearchGrid(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-
+            txtSupplierCode.Text = String.Empty;
+            txtSupplierCode.Text = String.Empty;
+            ddlSupplierType.SelectedIndex = 0;
+            ddlProductCategory.SelectedIndex = 0;
+            ddlProductCategorySubType.SelectedIndex = 0;
+            ddlStatus.SelectedIndex = 0;
+            grdSupplierList.DataSource = null;
+            grdSupplierList.DataBind();
+            lblTotalRecords.Text = String.Empty;
         }
 
         protected void btnNewCreate_Click(object sender, EventArgs e)

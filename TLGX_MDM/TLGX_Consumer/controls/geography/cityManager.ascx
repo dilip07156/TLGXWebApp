@@ -41,7 +41,7 @@
                             <asp:RequiredFieldValidator ValidationGroup="CityManager" runat="server" ControlToValidate="ddlCountry"
                                 Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please select a country before search !" />
                                 </label>
-                                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AppendDataBoundItems="True" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AppendDataBoundItems="True">
                                     <asp:ListItem Value="0">-Select-</asp:ListItem>
                                 </asp:DropDownList>
 

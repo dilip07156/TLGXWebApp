@@ -85,6 +85,15 @@ namespace TLGX_Consumer.controls.roomtype {
         protected global::System.Web.UI.WebControls.TextBox txtProductNameBySupplier;
         
         /// <summary>
+        /// txtSupplierRoomName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSupplierRoomName;
+        
+        /// <summary>
         /// btnSearchBySupplier control.
         /// </summary>
         /// <remarks>
@@ -110,6 +119,33 @@ namespace TLGX_Consumer.controls.roomtype {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSupplierRoomSearchCount;
+        
+        /// <summary>
+        /// divPagging control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPagging;
+        
+        /// <summary>
+        /// ddlPageSizeBySupplier control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPageSizeBySupplier;
+        
+        /// <summary>
+        /// upnlbtns control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upnlbtns;
         
         /// <summary>
         /// btnMapSelectedBySupplier control.
@@ -146,24 +182,6 @@ namespace TLGX_Consumer.controls.roomtype {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnTTFUAllBySupplier;
-        
-        /// <summary>
-        /// divPagging control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divPagging;
-        
-        /// <summary>
-        /// ddlPageSizeBySupplier control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPageSizeBySupplier;
         
         /// <summary>
         /// divMsgForMapping control.

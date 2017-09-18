@@ -249,6 +249,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UploadStaticDataValue_Get"], RQ, typeof(MDMSVC.DC_SupplierImportAttributeValues_RQ), typeof(List<DC_SupplierImportAttributeValues>), out result);
             return result as List<DC_SupplierImportAttributeValues>;
         }
+        public List<string> GetStaticDataMappingAttributeValuesForFilter(MDMSVC.DC_SupplierImportAttributeValues_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UploadStaticDataValueFilter_Get"], RQ, typeof(MDMSVC.DC_SupplierImportAttributeValues_RQ), typeof(List<string>), out result);
+            return result as List<string>;
+        }
         public DC_Message AddStaticDataMappingAttributeValue(MDMSVC.DC_SupplierImportAttributeValues RQ)
         {
             object result = null;
@@ -391,6 +397,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_UpdateMap"], RQParams, typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+        public DC_Message AccomodationSupplierRoomTypeMapping_TTFUALL(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_UpdateTTFU"], RQParams, typeof(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
         #region hotel report
         public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)
@@ -399,6 +411,56 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_NewHotelsReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_newHotelsReport>), out result);
             return result as List<DC_newHotelsReport>;
         }
+        #endregion
+        #region velocity dashboard
+        public List<DC_VelocityMappingStats> GetVelocityDashboard(MDMSVC.DC_RollOFParams parm)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_velocityDashboard"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<DC_VelocityMappingStats>), out result);
+            return result as List<DC_VelocityMappingStats>;
+        }
+        #endregion
+        #region File Progress Dashboard
+        public DC_FileProgressDashboard getFileProgressDashBoardData(string fileid)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_FileProgress_Dashboard"], fileid), typeof(DC_FileProgressDashboard), out result);
+            return result as DC_FileProgressDashboard;
+        }
+
+        #endregion
+
+
+        #region fileConfig
+
+        #endregion
+        #region pentaho
+        public List<DC_PentahoApiCallLogDetails> Pentaho_SupplierApiCall_List(DC_PentahoApiCallLogDetails_RQ _obj)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_api_search"], _obj, typeof(DC_PentahoApiCallLogDetails_RQ), typeof(List<DC_PentahoApiCallLogDetails>), out result);
+            return result as List<DC_PentahoApiCallLogDetails>;
+
+        }
+        public  DC_Message Pentaho_SupplierApi_Call(Guid ApiLocationId, string CalledBy)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_newapi_add"], ApiLocationId, CalledBy), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public  List<DC_Supplier_ApiLocation> Pentaho_SupplierApiLocationId_Get(Guid SupplierId, Guid EntityId)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["get_supplier_apiLocationid"], SupplierId, EntityId), typeof(List<DC_Supplier_ApiLocation>), out result);
+            return result as List<DC_Supplier_ApiLocation>;
+        }
+        public DC_PentahoTransStatus_TransStatus Pentaho_SupplierApiCall_ViewDetails(string PentahoCall_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_api_viewdetails"], PentahoCall_Id), typeof(DC_PentahoTransStatus_TransStatus), out result);
+            return result as DC_PentahoTransStatus_TransStatus;
+        }
+
         #endregion
     }
 }

@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using TLGX_Consumer.App_Code;
+using TLGX_Consumer.Models;
 
 namespace TLGX_Consumer.controls.keywords
 {
@@ -16,12 +17,19 @@ namespace TLGX_Consumer.controls.keywords
         Controller.MappingSVCs mappingScv = new Controller.MappingSVCs();
         public static int PageNo = 0;
         public static int AliasPageNo = 0;
+        lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 fillddlstatus();
+                fillEntityFor();
+                fillIcons();
+                fillRoomAmenityTypes();
+                fillRoomBedType();
+                fillRoomBathroomType();
+                fillRoomCategory();
             }
         }
 
@@ -38,9 +46,36 @@ namespace TLGX_Consumer.controls.keywords
             ddlStatus.Items.Insert(0, new ListItem("---ALL---", "0"));
         }
 
-        public void fillkeyword()
+        protected void fillEntityFor()
         {
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = "MappingFileConfig";
+            RQ.Name = "MappingEntity";
+            var res = masterscv.GetAllAttributeAndValues(RQ);
+            chklistEntityFor.DataSource = res;
+            chklistEntityFor.DataTextField = "AttributeValue";
+            chklistEntityFor.DataValueField = "AttributeValue";
+            chklistEntityFor.DataBind();
+            RQ = null;
+        }
 
+        protected void fillIcons()
+        {
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = "Icons";
+            RQ.Name = "GlyphIcons";
+            var res = masterscv.GetAllAttributeAndValues(RQ);
+
+            ddlglyphiconForAttributes.DataSource = res;
+            ddlglyphiconForAttributes.DataTextField = "AttributeValue";
+            ddlglyphiconForAttributes.DataValueField = "MasterAttributeValue_Id";
+            ddlglyphiconForAttributes.DataBind();
+
+            ddlglyphiconForAttributes.Items.Insert(0, new ListItem("--Select--", "0"));
+        }
+
+        public void fillkeyword(int PageSize, int PageNo)
+        {
             MDMSVC.DC_Keyword_RQ RQParam = new MDMSVC.DC_Keyword_RQ();
 
             RQParam.systemWord = txtKeyword.Text;
@@ -51,7 +86,7 @@ namespace TLGX_Consumer.controls.keywords
                 RQParam.Status = ddlStatus.SelectedItem.Text;
 
             RQParam.PageNo = PageNo;
-            RQParam.PageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            RQParam.PageSize = PageSize;
 
             var result = mappingScv.SearchKeyword(RQParam);
 
@@ -87,7 +122,7 @@ namespace TLGX_Consumer.controls.keywords
             var result = mappingScv.SearchKeywordAlias(RQParam);
             if (result != null && result.Count > 0)
             {
-                lblTotalAlias.Text = result[0].TotalRecords.ToString();
+                //lblTotalAlias.Text = result[0].TotalRecords.ToString();
                 grdAlias.DataSource = result;
                 grdAlias.VirtualItemCount = result[0].TotalRecords;
                 grdAlias.PageSize = RQParam.PageSize;
@@ -114,12 +149,46 @@ namespace TLGX_Consumer.controls.keywords
                 grdAlias.Rows[0].Cells.Add(new TableCell());
                 grdAlias.Rows[0].Cells[0].ColumnSpan = columncount;
                 grdAlias.Rows[0].Cells[0].Text = "No Alias defined yet.";
+
+                //lblTotalAlias.Text = "0";
             }
+        }
+
+        public void fillRoomAmenityTypes()
+        {
+            ddlAmentityType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("RoomAmenities", "RoomAmenityType").MasterAttributeValues;
+            ddlAmentityType.DataTextField = "AttributeValue";
+            ddlAmentityType.DataValueField = "MasterAttributeValue_Id";
+            ddlAmentityType.DataBind();
+        }
+
+        public void fillRoomCategory()
+        {
+            ddlRoomInfo_Category.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("RoomInfo", "CompanyRoomCategory").MasterAttributeValues;
+            ddlRoomInfo_Category.DataTextField = "AttributeValue";
+            ddlRoomInfo_Category.DataValueField = "MasterAttributeValue_Id";
+            ddlRoomInfo_Category.DataBind();
+        }
+
+        public void fillRoomBedType()
+        {
+            ddlRoomInfo_BedType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("RoomInfo", "BedType").MasterAttributeValues;
+            ddlRoomInfo_BedType.DataTextField = "AttributeValue";
+            ddlRoomInfo_BedType.DataValueField = "MasterAttributeValue_Id";
+            ddlRoomInfo_BedType.DataBind();
+        }
+
+        public void fillRoomBathroomType()
+        {
+            ddlRoomInfo_BathroomType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("RoomInfo", "BathRoomType").MasterAttributeValues;
+            ddlRoomInfo_BathroomType.DataTextField = "AttributeValue";
+            ddlRoomInfo_BathroomType.DataValueField = "MasterAttributeValue_Id";
+            ddlRoomInfo_BathroomType.DataBind();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            fillkeyword();
+            fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
         }
 
         protected void gvSearchResult_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -134,15 +203,191 @@ namespace TLGX_Consumer.controls.keywords
 
                 hdnKeywordId.Value = e.CommandArgument.ToString();
 
-                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                MDMSVC.DC_Keyword_RQ RQParam = new MDMSVC.DC_Keyword_RQ();
 
-                txtAddNewKeyword.Text = row.Cells[0].Text;
-                chkNewKeywordAttribute.Checked = Convert.ToBoolean(row.Cells[1].Text);
-                txtKeywordSequence.Text = row.Cells[2].Text;
+                RQParam.Keyword_Id = Guid.Parse(hdnKeywordId.Value);
+                RQParam.PageNo = 0;
+                RQParam.PageSize = 1;
 
-                AliasPageNo = 0;
-                ddlShowEntriesAlias.SelectedIndex = 0;
-                fillkeywordalias();
+                var result = mappingScv.SearchKeyword(RQParam);
+
+                if (result != null && result.Count > 0)
+                {
+                    txtAddNewKeyword.Text = result[0].Keyword;
+
+                    dvAttrDetails.Attributes.Remove("class");
+                    if (result[0].Attribute ?? false)
+                    {
+                        dvAttrDetails.Style.Add("display", "block");
+                    }
+                    else
+                    {
+                        dvAttrDetails.Style.Add("display", "none");
+                    }
+
+                    chkNewKeywordAttribute.Checked = result[0].Attribute ?? false;
+
+                    txtKeywordSequence.Text = result[0].Sequence.ToString();
+                    chklistEntityFor.ClearSelection();
+
+                    if (!string.IsNullOrWhiteSpace(result[0].EntityFor))
+                    {
+                        var EntityFor = result[0].EntityFor.Split(',');
+                        for (int count = 0; count < chklistEntityFor.Items.Count; count++)
+                        {
+                            if (EntityFor.Contains(chklistEntityFor.Items[count].ToString()))
+                            {
+                                chklistEntityFor.Items[count].Selected = true;
+                            }
+                        }
+                    }
+
+                    ddlShowEntriesAlias.SelectedIndex = 0;
+                    ddlglyphiconForAttributes.ClearSelection();
+                    //ddlglyphiconForAttributes.SelectedIndex = 0;
+                    spanglyphicon.Attributes.Remove("class");
+
+                    if (result[0].Icon != null)
+                    {
+                        ddlglyphiconForAttributes.ClearSelection();
+                        if (!String.IsNullOrWhiteSpace(result[0].Icon))
+                        {
+                            if (ddlglyphiconForAttributes.Items.FindByText(result[0].Icon) != null)
+                            {
+                                ddlglyphiconForAttributes.Items.FindByText(result[0].Icon).Selected = true;
+                                spanglyphicon.Attributes.Add("class", "glyphicon glyphicon-" + result[0].Icon);
+                            }
+                        }
+                    }
+
+                    ddlAttrType.ClearSelection();
+                    //ddlAttrType.SelectedIndex = 0;
+                    if (!string.IsNullOrWhiteSpace(result[0].AttributeType))
+                    {
+                        if (ddlAttrType.Items.FindByText(result[0].AttributeType) != null)
+                        {
+                            ddlAttrType.Items.FindByText(result[0].AttributeType).Selected = true;
+                        }
+                    }
+
+                    ddlAttrLvl.ClearSelection();
+                    ddlAmentityType.ClearSelection();
+                    ddlRoomSchemaLoc.ClearSelection();
+                    ddlRoomInfo_BathroomType.ClearSelection();
+                    ddlRoomInfo_BedType.ClearSelection();
+                    ddlRoomInfo_Category.ClearSelection();
+                    ddlRoomInfo_Smoking.ClearSelection();
+
+                    //ddlAttrLvl.SelectedIndex = 0;
+                    //ddlAmentityType.SelectedIndex = 0;
+                    //ddlRoomSchemaLoc.SelectedIndex = 0;
+                    //ddlRoomInfo_BathroomType.SelectedIndex = 0;
+                    //ddlRoomInfo_BedType.SelectedIndex = 0;
+                    //ddlRoomInfo_Category.SelectedIndex = 0;
+                    //ddlRoomInfo_Smoking.SelectedIndex = 0;
+
+                    if (!string.IsNullOrWhiteSpace(result[0].AttributeLevel))
+                    {
+                        if (ddlAttrLvl.Items.FindByText(result[0].AttributeLevel) != null)
+                        {
+                            ddlAttrLvl.Items.FindByText(result[0].AttributeLevel).Selected = true;
+                        }
+
+                        if (result[0].AttributeLevel == "Room Info")
+                        {
+
+                            if (ddlRoomSchemaLoc.Items.FindByText(result[0].AttributeSubLevel) != null)
+                            {
+                                ddlRoomSchemaLoc.Items.FindByText(result[0].AttributeSubLevel).Selected = true;
+                            }
+
+                            if (result[0].AttributeSubLevel == "Room Category")
+                            {
+                                if (ddlRoomInfo_Category.Items.FindByText(result[0].AttributeSubLevelValue) != null)
+                                {
+                                    ddlRoomInfo_Category.Items.FindByText(result[0].AttributeSubLevelValue).Selected = true;
+                                }
+                            }
+                            else if (result[0].AttributeSubLevel == "Bed Type")
+                            {
+                                if (ddlRoomInfo_BedType.Items.FindByText(result[0].AttributeSubLevelValue) != null)
+                                {
+                                    ddlRoomInfo_BedType.Items.FindByText(result[0].AttributeSubLevelValue).Selected = true;
+                                }
+                            }
+                            else if (result[0].AttributeSubLevel == "Bathroom Type")
+                            {
+                                if (ddlRoomInfo_BathroomType.Items.FindByText(result[0].AttributeSubLevelValue) != null)
+                                {
+                                    ddlRoomInfo_BathroomType.Items.FindByText(result[0].AttributeSubLevelValue).Selected = true;
+                                }
+                            }
+                            else if (result[0].AttributeSubLevel == "Smoking")
+                            {
+                                if (ddlRoomInfo_Smoking.Items.FindByText(result[0].AttributeSubLevelValue) != null)
+                                {
+                                    ddlRoomInfo_Smoking.Items.FindByText(result[0].AttributeSubLevelValue).Selected = true;
+                                }
+                            }
+                        }
+                        else if (result[0].AttributeLevel == "Room Amenity")
+                        {
+                            if (ddlAmentityType.Items.FindByText(result[0].AttributeSubLevel) != null)
+                            {
+                                ddlAmentityType.Items.FindByText(result[0].AttributeSubLevel).Selected = true;
+                            }
+                        }
+                    }
+
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), Guid.NewGuid().ToString(), "hideshowAttrLvl('" + ddlAttrLvl.ClientID + "')", true);
+                    ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), Guid.NewGuid().ToString(), "hideshowAttrLvlRoomSchema('" + ddlRoomSchemaLoc.ClientID + "')", true);
+
+                    AliasPageNo = 0;
+                    fillkeywordalias();
+                }
+
+                //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+
+                //txtAddNewKeyword.Text = row.Cells[0].Text;
+                //chkNewKeywordAttribute.Checked = Convert.ToBoolean(row.Cells[1].Text);
+                //txtKeywordSequence.Text = row.Cells[2].Text;
+                //chklistEntityFor.ClearSelection();
+
+                //if (!string.IsNullOrWhiteSpace(row.Cells[4].Text))
+                //{
+                //    var EntityFor = row.Cells[4].Text.Split(',');
+                //    for (int count = 0; count < chklistEntityFor.Items.Count; count++)
+                //    {
+                //        if (EntityFor.Contains(chklistEntityFor.Items[count].ToString()))
+                //        {
+                //            chklistEntityFor.Items[count].Selected = true;
+                //        }
+                //    }
+                //}
+
+                //AliasPageNo = 0;
+                //ddlShowEntriesAlias.SelectedIndex = 0;
+
+                //ddlglyphiconForAttributes.ClearSelection();
+                //ddlglyphiconForAttributes.SelectedIndex = 0;
+                //spanglyphicon.Attributes.Remove("class");
+
+                //Label lblIconText = (Label)row.FindControl("lblIconText");
+                //if (lblIconText != null)
+                //{
+                //    ddlglyphiconForAttributes.ClearSelection();
+                //    if (!String.IsNullOrWhiteSpace(lblIconText.Text))
+                //    {
+                //        if (ddlglyphiconForAttributes.Items.FindByText(lblIconText.Text) != null)
+                //        {
+                //            ddlglyphiconForAttributes.Items.FindByText(lblIconText.Text).Selected = true;
+                //            spanglyphicon.Attributes.Add("class", "glyphicon glyphicon-" + lblIconText.Text);
+                //        }
+                //    }
+
+                //}
+
+                //fillkeywordalias();
             }
             else if (e.CommandName == "SoftDelete")
             {
@@ -160,7 +405,7 @@ namespace TLGX_Consumer.controls.keywords
                 };
 
                 var result = mappingScv.AddUpdateKeyword(Keyword);
-                fillkeyword();
+                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), PageNo);
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
@@ -180,7 +425,7 @@ namespace TLGX_Consumer.controls.keywords
                 };
 
                 var result = mappingScv.AddUpdateKeyword(Keyword);
-                fillkeyword();
+                fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), PageNo);
 
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
@@ -200,6 +445,18 @@ namespace TLGX_Consumer.controls.keywords
             txtAddNewKeyword.Text = string.Empty;
             txtKeywordSequence.Text = string.Empty;
             chkNewKeywordAttribute.Checked = false;
+            dvAttrDetails.Style.Add("display", "none");
+
+            chklistEntityFor.ClearSelection();
+
+            ddlAmentityType.SelectedIndex = 0;
+            ddlAttrLvl.SelectedIndex = 0;
+            ddlAttrType.SelectedIndex = 0;
+            ddlRoomSchemaLoc.SelectedIndex = 0;
+            ddlRoomInfo_BathroomType.SelectedIndex = 0;
+            ddlRoomInfo_BedType.SelectedIndex = 0;
+            ddlRoomInfo_Category.SelectedIndex = 0;
+            ddlRoomInfo_Smoking.SelectedIndex = 0;
 
             List<MDMSVC.DC_keyword_alias> aliasList = new List<MDMSVC.DC_keyword_alias>();
             aliasList.Add(new MDMSVC.DC_keyword_alias
@@ -219,6 +476,12 @@ namespace TLGX_Consumer.controls.keywords
             grdAlias.Rows[0].Cells.Add(new TableCell());
             grdAlias.Rows[0].Cells[0].ColumnSpan = columncount;
             grdAlias.Rows[0].Cells[0].Text = "No Alias defined yet.";
+
+            //lblTotalAlias.Text = "0";
+
+            ddlglyphiconForAttributes.ClearSelection();
+            ddlglyphiconForAttributes.SelectedIndex = 0;
+            spanglyphicon.Attributes.Remove("class");
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
@@ -231,8 +494,13 @@ namespace TLGX_Consumer.controls.keywords
 
             txtKeyword.Text = String.Empty;
             txtAlias.Text = String.Empty;
+            chkAttribute.Checked = false;
             ddlStatus.SelectedIndex = 0;
             lblTotalCount.Text = "0";
+            PageNo = 0;
+
+            chklistEntityFor.ClearSelection();
+
             gvSearchResult.DataSource = null;
             gvSearchResult.DataBind();
         }
@@ -246,7 +514,7 @@ namespace TLGX_Consumer.controls.keywords
             dvMsgAlias.Style.Add("display", "none");
 
             PageNo = 0;
-            fillkeyword();
+            fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
         }
 
         protected void gvSearchResult_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -258,19 +526,18 @@ namespace TLGX_Consumer.controls.keywords
             dvMsgAlias.Style.Add("display", "none");
 
             PageNo = e.NewPageIndex;
-            fillkeyword();
+            fillkeyword(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
 
         protected void UpdateGridView(MDMSVC.DC_keyword_alias Row)
         {
             Guid Keyword_Id = Guid.Parse(hdnKeywordId.Value);
 
-            List<MDMSVC.DC_keyword_alias> aliasList = new List<MDMSVC.DC_keyword_alias>();
-            aliasList.Add(Row);
+            string[] EntityFor = chklistEntityFor.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray();
+
             MDMSVC.DC_Keyword Keyword = new MDMSVC.DC_Keyword
             {
-                Alias = aliasList.ToArray(),
-                Attribute = chkAttribute.Checked,
+                Attribute = chkNewKeywordAttribute.Checked,
                 Create_Date = DateTime.Now,
                 Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Edit_Date = DateTime.Now,
@@ -278,10 +545,77 @@ namespace TLGX_Consumer.controls.keywords
                 Keyword = txtAddNewKeyword.Text,
                 Keyword_Id = Keyword_Id,
                 Sequence = Convert.ToInt32(txtKeywordSequence.Text),
-                Status = "ACTIVE"
+                Status = "ACTIVE",
+                EntityFor = string.Join(",", EntityFor),
+                Icon = ddlglyphiconForAttributes.SelectedIndex == 0 ? string.Empty : ddlglyphiconForAttributes.SelectedItem.Text,
             };
 
+            if (Row != null)
+            {
+                List<MDMSVC.DC_keyword_alias> aliasList = new List<MDMSVC.DC_keyword_alias>();
+                aliasList.Add(Row);
+                Keyword.Alias = aliasList.ToArray();
+            }
+
+            if (chkNewKeywordAttribute.Checked)
+            {
+                if (ddlAttrType.SelectedIndex != 0)
+                {
+                    Keyword.AttributeType = ddlAttrType.SelectedItem.Text;
+                }
+                if (ddlAttrLvl.SelectedIndex != 0)
+                {
+                    Keyword.AttributeLevel = ddlAttrLvl.SelectedItem.Text;
+
+                    if (Keyword.AttributeLevel == "Room Info")
+                    {
+                        Keyword.AttributeSubLevel = ddlRoomSchemaLoc.SelectedIndex == 0 ? string.Empty : ddlRoomSchemaLoc.SelectedItem.Text;
+                        if (Keyword.AttributeSubLevel == "Room Category")
+                        {
+                            Keyword.AttributeSubLevelValue = ddlRoomInfo_Category.SelectedIndex == 0 ? string.Empty : ddlRoomInfo_Category.SelectedItem.Text;
+                        }
+                        else if (Keyword.AttributeSubLevel == "Bed Type")
+                        {
+                            Keyword.AttributeSubLevelValue = ddlRoomInfo_BedType.SelectedIndex == 0 ? string.Empty : ddlRoomInfo_BedType.SelectedItem.Text;
+                        }
+                        else if (Keyword.AttributeSubLevel == "Bathroom Type")
+                        {
+                            Keyword.AttributeSubLevelValue = ddlRoomInfo_BathroomType.SelectedIndex == 0 ? string.Empty : ddlRoomInfo_BathroomType.SelectedItem.Text;
+                        }
+                        else if (Keyword.AttributeSubLevel == "Smoking")
+                        {
+                            Keyword.AttributeSubLevelValue = ddlRoomInfo_Smoking.SelectedIndex == 0 ? string.Empty : ddlRoomInfo_Smoking.SelectedItem.Text;
+                        }
+                        else
+                        {
+                            Keyword.AttributeSubLevelValue = string.Empty;
+                        }
+                    }
+                    else if (Keyword.AttributeLevel == "Room Amenity")
+                    {
+                        Keyword.AttributeSubLevel = ddlAmentityType.SelectedIndex == 0 ? string.Empty : ddlAmentityType.SelectedItem.Text;
+                        Keyword.AttributeSubLevelValue = string.Empty;
+                    }
+                    else
+                    {
+                        Keyword.AttributeSubLevel = string.Empty;
+                        Keyword.AttributeSubLevelValue = string.Empty;
+                    }
+
+                }
+            }
+            else
+            {
+                Keyword.AttributeType = string.Empty;
+                Keyword.AttributeLevel = string.Empty;
+                Keyword.AttributeSubLevel = string.Empty;
+                Keyword.AttributeSubLevelValue = string.Empty;
+            }
+
             var result = mappingScv.AddUpdateKeyword(Keyword);
+
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), Guid.NewGuid().ToString(), "hideshowAttrLvl('" + ddlAttrLvl.ClientID + "')", true);
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), Guid.NewGuid().ToString(), "hideshowAttrLvlRoomSchema('" + ddlRoomSchemaLoc.ClientID + "')", true);
 
             BootstrapAlert.BootstrapAlertMessage(dvMsgAlias, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
         }
@@ -308,6 +642,8 @@ namespace TLGX_Consumer.controls.keywords
                 {
                     Create_Date = DateTime.Now,
                     Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Keyword_Id = Guid.Parse(hdnKeywordId.Value),
                     KeywordAlias_Id = Guid.Parse(e.CommandArgument.ToString()),
                     Value = txtAlias.Text,
@@ -321,6 +657,8 @@ namespace TLGX_Consumer.controls.keywords
             {
                 MDMSVC.DC_keyword_alias newAlias = new MDMSVC.DC_keyword_alias
                 {
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Keyword_Id = Guid.Parse(hdnKeywordId.Value),
@@ -348,6 +686,8 @@ namespace TLGX_Consumer.controls.keywords
         {
             MDMSVC.DC_keyword_alias newAlias = new MDMSVC.DC_keyword_alias
             {
+                Create_Date = DateTime.Now,
+                Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Edit_Date = DateTime.Now,
                 Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Keyword_Id = Guid.Parse(hdnKeywordId.Value),
@@ -378,6 +718,8 @@ namespace TLGX_Consumer.controls.keywords
             {
                 Create_Date = DateTime.Now,
                 Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                Edit_Date = DateTime.Now,
+                Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                 Keyword_Id = Guid.Parse(hdnKeywordId.Value),
                 KeywordAlias_Id = Guid.Parse(grdAlias.DataKeys[e.RowIndex].Value.ToString()),
                 Value = txtAlias.Text,
@@ -404,24 +746,27 @@ namespace TLGX_Consumer.controls.keywords
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            Guid Keyword_Id = Guid.Parse(hdnKeywordId.Value);
+            UpdateGridView(null);
+            //Guid Keyword_Id = Guid.Parse(hdnKeywordId.Value);
 
-            MDMSVC.DC_Keyword Keyword = new MDMSVC.DC_Keyword
-            {
-                Attribute = chkNewKeywordAttribute.Checked,
-                Create_Date = DateTime.Now,
-                Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                Edit_Date = DateTime.Now,
-                Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                Keyword = txtAddNewKeyword.Text,
-                Keyword_Id = Keyword_Id,
-                Sequence = Convert.ToInt32(txtKeywordSequence.Text),
-                Status = "ACTIVE"
-            };
+            //MDMSVC.DC_Keyword Keyword = new MDMSVC.DC_Keyword
+            //{
+            //    Attribute = chkNewKeywordAttribute.Checked,
+            //    Create_Date = DateTime.Now,
+            //    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+            //    Edit_Date = DateTime.Now,
+            //    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+            //    Keyword = txtAddNewKeyword.Text,
+            //    Keyword_Id = Keyword_Id,
+            //    Sequence = Convert.ToInt32(txtKeywordSequence.Text),
+            //    Status = "ACTIVE",
+            //    Icon = ddlglyphiconForAttributes.SelectedIndex == 0 ? string.Empty : ddlglyphiconForAttributes.SelectedItem.Text,
+            //    EntityFor = string.Join(",", chklistEntityFor.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray())
+            //};
 
-            var result = mappingScv.AddUpdateKeyword(Keyword);
+            //var result = mappingScv.AddUpdateKeyword(Keyword);
 
-            BootstrapAlert.BootstrapAlertMessage(dvMsgAlias, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+            //BootstrapAlert.BootstrapAlertMessage(dvMsgAlias, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
         }
 
         protected void gvSearchResult_RowDataBound(object sender, GridViewRowEventArgs e)

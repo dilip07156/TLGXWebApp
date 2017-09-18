@@ -670,5 +670,12 @@ namespace TLGX_Consumer.Controller
             return (bool)result;
         }
         #endregion
+
+        public List<DC_Accomodation> GetAccomodationMissingAttributeDetails(MDMSVC.DC_Accomodation_Search_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_AccomodationDetails"], RQParams, typeof(MDMSVC.DC_Accomodation_Search_RQ), typeof(List<DC_Accomodation>), out result);
+            return result as List<DC_Accomodation>;
+        }
     }
 }

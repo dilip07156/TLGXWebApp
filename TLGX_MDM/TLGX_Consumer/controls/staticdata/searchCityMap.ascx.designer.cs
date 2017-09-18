@@ -256,6 +256,24 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.CheckBox ckboxIsExactMatch;
         
         /// <summary>
+        /// btnMatchedMapSelected control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMatchedMapSelected;
+        
+        /// <summary>
+        /// btnMatchedMapAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMatchedMapAll;
+        
+        /// <summary>
         /// grdMatchingCity control.
         /// </summary>
         /// <remarks>

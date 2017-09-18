@@ -517,7 +517,7 @@ namespace TLGX_Consumer.controls.staticdata
                         txtStreet2.Text = street2 + street3 + street4;
                         txtPostalCode.Text = string.IsNullOrWhiteSpace(masterRoduct[0].PostCode) ? string.Empty : masterRoduct[0].PostCode.ToString();
 
-                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].CountryName))
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemCountryName))
                         {
                             myCountryName = Convert.ToString(masterRoduct[0].SystemCountryName);
                         }
@@ -573,6 +573,10 @@ namespace TLGX_Consumer.controls.staticdata
                         });
                         if (selSysCountry_ID != null && selSysCountry_ID.ID != null && Guid.Parse(Convert.ToString(selSysCountry_ID.ID)) != Guid.Empty)
                             ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByValue(selSysCountry_ID.ID.ToString()));
+                        else
+                        {
+
+                        }
                         fillStates(ddlSystemCountryName, ddlSystemStateName);
                         if (ddlSystemStateName.Items.Count > 1)
                         {

@@ -24,7 +24,7 @@
         $("#moProductWiseMapping").modal('show');
     }
     function SelectedRow(element) {
-        debugger;
+       // debugger;
         var ddlStatus = $('#MainContent_searchActivityMapping_ddlMappingStatus option:selected').html();
         if (ddlStatus == "REVIEW") {
             element.parentNode.parentNode.nextSibling.childNodes[12].lastElementChild.focus();
@@ -99,7 +99,7 @@
     }
     function RemoveExtra(record, onClick) {
         if (!onClick) {
-            debugger;
+            //debugger;
             var currentRow = $(record).parent().parent();
             var ActivityDDL = currentRow.find("td:eq(9)").find('select');
             var selectedText = ActivityDDL.find("option:selected").text();

@@ -184,15 +184,6 @@ namespace TLGX_Consumer.controls.keywords {
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSummAliasEdit;
         
         /// <summary>
-        /// lblTotalAlias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalAlias;
-        
-        /// <summary>
         /// ddlShowEntriesAlias control.
         /// </summary>
         /// <remarks>
@@ -200,6 +191,24 @@ namespace TLGX_Consumer.controls.keywords {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlShowEntriesAlias;
+        
+        /// <summary>
+        /// cusChkListEntity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator cusChkListEntity;
+        
+        /// <summary>
+        /// chklistEntityFor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chklistEntityFor;
         
         /// <summary>
         /// vldtxtKeyword control.
@@ -263,6 +272,114 @@ namespace TLGX_Consumer.controls.keywords {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkNewKeywordAttribute;
+        
+        /// <summary>
+        /// dvAttrDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvAttrDetails;
+        
+        /// <summary>
+        /// rfvicondropdownmenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvicondropdownmenu;
+        
+        /// <summary>
+        /// spanglyphicon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanglyphicon;
+        
+        /// <summary>
+        /// ddlglyphiconForAttributes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlglyphiconForAttributes;
+        
+        /// <summary>
+        /// ddlAttrType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAttrType;
+        
+        /// <summary>
+        /// ddlAttrLvl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAttrLvl;
+        
+        /// <summary>
+        /// ddlAmentityType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAmentityType;
+        
+        /// <summary>
+        /// ddlRoomSchemaLoc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoomSchemaLoc;
+        
+        /// <summary>
+        /// ddlRoomInfo_Category control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoomInfo_Category;
+        
+        /// <summary>
+        /// ddlRoomInfo_BedType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoomInfo_BedType;
+        
+        /// <summary>
+        /// ddlRoomInfo_BathroomType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoomInfo_BathroomType;
+        
+        /// <summary>
+        /// ddlRoomInfo_Smoking control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoomInfo_Smoking;
         
         /// <summary>
         /// btnSave control.

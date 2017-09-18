@@ -176,123 +176,184 @@
 
     }
 </script>
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Supplier Content Update Frequency
-    </div>
-    <div id="msgAlert" runat="server" style="display: none;"></div>
-    <div class="panel-body">
-        <div class="form-group row">
-            <div class="col-sm-12">
-                <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="Frequency" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+<asp:UpdatePanel ID="supplerStaticData" runat="server" UpdateMode="Conditional">
+    <ContentTemplate>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Supplier Content Update Frequency
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="col-md-5">
-                <div class="input-group row">
-                    <label class="input-group-addon" for="rdbtnIsAPIXMLSupplier">
-                        <strong>Is API / XML Supplier</strong>
-                    </label>
-                    <asp:RadioButtonList ID="rdbtnIsAPIXMLSupplier" ClientIDMode="Static" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
-                        <asp:ListItem Selected="True" Value="1">Yes</asp:ListItem>
-                        <asp:ListItem Value="0">No</asp:ListItem>
-                    </asp:RadioButtonList>
+            <div id="msgAlert" runat="server" style="display: none;"></div>
+            <div class="panel-body">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="Frequency" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                    </div>
                 </div>
-                <div class="row clear">&nbsp;</div>
-                <div class="input-group row">
-                    <label class="input-group-addon radio" for="rdbtnIsAPIXMLSupplier">
-                        <strong>Frequency</strong>
-                    </label>
-                    <asp:RadioButtonList ID="rdbFrequency" ClientIDMode="Static" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
-                        <asp:ListItem Value="H" Text="Hourly"></asp:ListItem>
-                        <asp:ListItem Value="D" Text="Daily"></asp:ListItem>
-                        <asp:ListItem Value="W" Text="Weekly"></asp:ListItem>
-                        <asp:ListItem Value="M" Text="Monthly"></asp:ListItem>
-                        <asp:ListItem Selected="True" Value="Y" Text="Yearly"></asp:ListItem>
-                    </asp:RadioButtonList>
-                </div>
-            </div>
-            <div class="col-md-1">
-            </div>
-            <div class="col-md-5">
-                <div class="input-group row">
-                    <label class="input-group-addon" for="rdbtnIsAPIXMLSupplier">
-                        <strong>Is Update Frequencry Required
-                        </strong>
-                    </label>
-                    <asp:RadioButtonList ID="rdbIsUpdateFrequencyRequired" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
-                        <asp:ListItem Selected="True" Value="1">Yes</asp:ListItem>
-                        <asp:ListItem Value="0">No</asp:ListItem>
-                    </asp:RadioButtonList>
-                </div>
-                <div class="row clear">&nbsp;</div>
-                <div class="input-group row">
-                    <label class="input-group-addon" for="ddlStatus"><strong>Status</strong></label>
-                    <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server">
-                        <asp:ListItem Text="Active" Value="ACT"></asp:ListItem>
-                        <asp:ListItem Text="Inactive" Value="INA"></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div id="divYearly" runat="server" class="activediv">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="form-group row col-md-4">
-                        <div class="form-inline input-group">
-                            <label class="input-group-addon" for="txtRecurEveryYear">
-                                <strong>Recur every
-                                    <asp:RequiredFieldValidator ID="rfvRecurEvery_Year" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtRecurEvery_Year"
-                                        CssClass="text-danger" ErrorMessage="Year -Recur every field is required." Text="*" />
+                <div class="col-md-12">
+                    <div class="col-md-5">
+                        <div class="input-group row">
+                            <label class="input-group-addon" for="rdbtnIsAPIXMLSupplier">
+                                <strong>Is API / XML Supplier</strong>
+                            </label>
+                            <asp:RadioButtonList ID="rdbtnIsAPIXMLSupplier" ClientIDMode="Static" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
+                                <asp:ListItem Selected="True" Value="1">Yes</asp:ListItem>
+                                <asp:ListItem Value="0">No</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                        <div class="row clear">&nbsp;</div>
+                        <div class="input-group row">
+                            <label class="input-group-addon radio" for="rdbtnIsAPIXMLSupplier">
+                                <strong>Frequency</strong>
+                            </label>
+                            <asp:RadioButtonList ID="rdbFrequency" ClientIDMode="Static" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
+                                <asp:ListItem Value="H" Text="Hourly"></asp:ListItem>
+                                <asp:ListItem Value="D" Text="Daily"></asp:ListItem>
+                                <asp:ListItem Value="W" Text="Weekly"></asp:ListItem>
+                                <asp:ListItem Value="M" Text="Monthly"></asp:ListItem>
+                                <asp:ListItem Selected="True" Value="Y" Text="Yearly"></asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-5">
+                        <div class="input-group row">
+                            <label class="input-group-addon" for="rdbtnIsAPIXMLSupplier">
+                                <strong>Is Update Frequencry Required
                                 </strong>
                             </label>
-                            <asp:TextBox ID="txtRecurEvery_Year" runat="server" CssClass="form-control"></asp:TextBox>
-                            <label class="input-group-addon" for="txtRecurEveryYear">Year(s)</label>
+                            <asp:RadioButtonList ID="rdbIsUpdateFrequencyRequired" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
+                                <asp:ListItem Selected="True" Value="1">Yes</asp:ListItem>
+                                <asp:ListItem Value="0">No</asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                        <div class="row clear">&nbsp;</div>
+                        <div class="input-group row">
+                            <label class="input-group-addon" for="ddlStatus"><strong>Status</strong></label>
+                            <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server">
+                                <asp:ListItem Text="Active" Value="ACT"></asp:ListItem>
+                                <asp:ListItem Text="Inactive" Value="INA"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div id="divYearly" runat="server" class="activediv">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group row col-md-4">
+                                <div class="form-inline input-group">
+                                    <label class="input-group-addon" for="txtRecurEveryYear">
+                                        <strong>Recur every
+                                    <asp:RequiredFieldValidator ID="rfvRecurEvery_Year" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtRecurEvery_Year"
+                                        CssClass="text-danger" ErrorMessage="Year -Recur every field is required." Text="*" />
+                                        </strong>
+                                    </label>
+                                    <asp:TextBox ID="txtRecurEvery_Year" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <label class="input-group-addon" for="txtRecurEveryYear">Year(s)</label>
+                                </div>
+                            </div>
+                            <div class="form-group row col-md-12">
+                                <div class="form-inline">
+                                    <div class="col-md-1">
+                                        <asp:RadioButton ID="rbDay_Year" Checked="true" onchange="OptionYear();" ClientIDMode="Static" runat="server" Text="Day" GroupName="_year" />
+                                        <asp:RequiredFieldValidator ID="rfvMonthDay_Year" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtMonthDay_Year"
+                                            CssClass="text-danger" ErrorMessage="Year - Day of the month is required." Text="*" />
+                                    </div>
+                                    <div class="col-md-11">
+                                        <asp:DropDownList ID="ddlMonths_Year" runat="server" ClientIDMode="Static" CssClass="form-control">
+                                            <asp:ListItem Text="January" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="February" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="March" Value="3"></asp:ListItem>
+                                            <asp:ListItem Text="April" Value="4"></asp:ListItem>
+                                            <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                                            <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                                            <asp:ListItem Text="July" Value="7"></asp:ListItem>
+                                            <asp:ListItem Text="August" Value="8"></asp:ListItem>
+                                            <asp:ListItem Text="September" Value="9"></asp:ListItem>
+                                            <asp:ListItem Text="October" Value="10"></asp:ListItem>
+                                            <asp:ListItem Text="November" Value="11"></asp:ListItem>
+                                            <asp:ListItem Text="December" Value="12"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:TextBox ID="txtMonthDay_Year" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row col-md-12">
+                                <div class="form-inline">
+                                    <div class="col-md-1">
+                                        <asp:RadioButton ID="rbOnthe_Year" onchange="OptionYear();" ClientIDMode="Static" runat="server" Text="On the" GroupName="_year" />
+                                    </div>
+                                    <div class="col-md-11">
+                                        <asp:DropDownList ID="ddlWeek_Year" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control">
+                                            <asp:ListItem Text="First" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="Secord" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="Third" Value="3"></asp:ListItem>
+                                            <asp:ListItem Text="Four" Value="4"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="ddlMonthWeekList_Year" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control">
+                                            <asp:ListItem Text="Sunday" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="Monday" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="Tuesday" Value="3"></asp:ListItem>
+                                            <asp:ListItem Text="Wednesday" Value="4"></asp:ListItem>
+                                            <asp:ListItem Text="Thursday" Value="5"></asp:ListItem>
+                                            <asp:ListItem Text="Friday" Value="6"></asp:ListItem>
+                                            <asp:ListItem Text="Saturday" Value="7"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:DropDownList ID="ddlYearMonth_Year" ClientIDMode="Static" Enabled="false" runat="server" CssClass="form-control">
+                                            <asp:ListItem Text="January" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="February" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="March" Value="3"></asp:ListItem>
+                                            <asp:ListItem Text="April" Value="4"></asp:ListItem>
+                                            <asp:ListItem Text="May" Value="5"></asp:ListItem>
+                                            <asp:ListItem Text="June" Value="6"></asp:ListItem>
+                                            <asp:ListItem Text="July" Value="7"></asp:ListItem>
+                                            <asp:ListItem Text="August" Value="8"></asp:ListItem>
+                                            <asp:ListItem Text="September" Value="9"></asp:ListItem>
+                                            <asp:ListItem Text="October" Value="10"></asp:ListItem>
+                                            <asp:ListItem Text="November" Value="11"></asp:ListItem>
+                                            <asp:ListItem Text="December" Value="12"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="divMonthly" runat="server" class="Divdisplay">
+                    <div class="form-group row col-md-12">
+                        <div class="form-inline">
+                            <div class="col-md-1">
+                                <asp:RadioButton ID="rblDays_Monthly" onchange="OptionMonth();" ClientIDMode="Static" runat="server" Text="Day" Checked="true" GroupName="_month" />
+                            </div>
+                            <div class="col-md-11">
+                                <asp:TextBox ID="txtDayOf_Monthly" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator Enabled="false" ID="rfvDayOf_Monthly" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtDayOf_Monthly"
+                                    CssClass="text-danger" ErrorMessage="Monthly - Day of the month is required." Text="*" />
+                                <label>of every </label>
+                                <asp:TextBox ID="txtDayOfEvery_Monthly" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvDayOfEvery_Monthly" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtDayOfEvery_Monthly"
+                                    CssClass="text-danger" Enabled="false" ErrorMessage="Monthly-Month frequence is required." Text="*" />
+                                <label>Month(s)</label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row col-md-12">
                         <div class="form-inline">
                             <div class="col-md-1">
-                                <asp:RadioButton ID="rbDay_Year" Checked="true" onchange="OptionYear();" ClientIDMode="Static" runat="server" Text="Day" GroupName="_year" />
-                                <asp:RequiredFieldValidator ID="rfvMonthDay_Year" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtMonthDay_Year"
-                                    CssClass="text-danger" ErrorMessage="Year - Day of the month is required." Text="*" />
+                                <asp:RadioButton ID="rbThe_Montly" ClientIDMode="Static" onchange="OptionMonth();" runat="server" Text="The" GroupName="_month" />
                             </div>
                             <div class="col-md-11">
-                                <asp:DropDownList ID="ddlMonths_Year" runat="server" ClientIDMode="Static" CssClass="form-control" AutoPostBack="true">
-                                    <asp:ListItem Text="January" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="February" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="March" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="April" Value="4"></asp:ListItem>
-                                    <asp:ListItem Text="May" Value="5"></asp:ListItem>
-                                    <asp:ListItem Text="June" Value="6"></asp:ListItem>
-                                    <asp:ListItem Text="July" Value="7"></asp:ListItem>
-                                    <asp:ListItem Text="August" Value="8"></asp:ListItem>
-                                    <asp:ListItem Text="September" Value="9"></asp:ListItem>
-                                    <asp:ListItem Text="October" Value="10"></asp:ListItem>
-                                    <asp:ListItem Text="November" Value="11"></asp:ListItem>
-                                    <asp:ListItem Text="December" Value="12"></asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:TextBox ID="txtMonthDay_Year" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row col-md-12">
-                        <div class="form-inline">
-                            <div class="col-md-1">
-                                <asp:RadioButton ID="rbOnthe_Year" onchange="OptionYear();" ClientIDMode="Static" runat="server" Text="On the" GroupName="_year" />
-                            </div>
-                            <div class="col-md-11">
-                                <asp:DropDownList ID="ddlWeek_Year" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control" AutoPostBack="true">
+                                <asp:DropDownList ID="ddlTheSequencyWeek_Month" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control">
                                     <asp:ListItem Text="First" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Secord" Value="2"></asp:ListItem>
                                     <asp:ListItem Text="Third" Value="3"></asp:ListItem>
                                     <asp:ListItem Text="Four" Value="4"></asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:DropDownList ID="ddlMonthWeekList_Year" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control" AutoPostBack="true">
+                                <asp:DropDownList ID="ddlTheDaysOf_Month" Enabled="false" runat="server" ClientIDMode="Static" CssClass="form-control">
                                     <asp:ListItem Text="Sunday" Value="1"></asp:ListItem>
                                     <asp:ListItem Text="Monday" Value="2"></asp:ListItem>
                                     <asp:ListItem Text="Tuesday" Value="3"></asp:ListItem>
@@ -301,159 +362,102 @@
                                     <asp:ListItem Text="Friday" Value="6"></asp:ListItem>
                                     <asp:ListItem Text="Saturday" Value="7"></asp:ListItem>
                                 </asp:DropDownList>
-                                <asp:DropDownList ID="ddlYearMonth_Year" ClientIDMode="Static" Enabled="false" runat="server" CssClass="form-control" AutoPostBack="true">
-                                    <asp:ListItem Text="January" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="February" Value="2"></asp:ListItem>
-                                    <asp:ListItem Text="March" Value="3"></asp:ListItem>
-                                    <asp:ListItem Text="April" Value="4"></asp:ListItem>
-                                    <asp:ListItem Text="May" Value="5"></asp:ListItem>
-                                    <asp:ListItem Text="June" Value="6"></asp:ListItem>
-                                    <asp:ListItem Text="July" Value="7"></asp:ListItem>
-                                    <asp:ListItem Text="August" Value="8"></asp:ListItem>
-                                    <asp:ListItem Text="September" Value="9"></asp:ListItem>
-                                    <asp:ListItem Text="October" Value="10"></asp:ListItem>
-                                    <asp:ListItem Text="November" Value="11"></asp:ListItem>
-                                    <asp:ListItem Text="December" Value="12"></asp:ListItem>
-                                </asp:DropDownList>
+                                <label>of every </label>
+                                <asp:TextBox ID="txtOccurEvery_Month" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvOccurEvery_Month" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtOccurEvery_Month"
+                                    CssClass="text-danger" Enabled="false" ErrorMessage="Month- Day frequence is required." Text="*" />
+                                <label>month(s) </label>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="divMonthly" runat="server" class="Divdisplay">
-            <div class="form-group row col-md-12">
-                <div class="form-inline">
-                    <div class="col-md-1">
-                        <asp:RadioButton ID="rblDays_Monthly" onchange="OptionMonth();" ClientIDMode="Static" runat="server" Text="Day" Checked="true" GroupName="_month" />
-                    </div>
-                    <div class="col-md-11">
-                        <asp:TextBox ID="txtDayOf_Monthly" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator Enabled="false" ID="rfvDayOf_Monthly" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtDayOf_Monthly"
-                            CssClass="text-danger" ErrorMessage="Monthly - Day of the month is required." Text="*" />
-                        <label>of every </label>
-                        <asp:TextBox ID="txtDayOfEvery_Monthly" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvDayOfEvery_Monthly" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtDayOfEvery_Monthly"
-                            CssClass="text-danger" Enabled="false" ErrorMessage="Monthly-Month frequence is required." Text="*" />
-                        <label>Month(s)</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row col-md-12">
-                <div class="form-inline">
-                    <div class="col-md-1">
-                        <asp:RadioButton ID="rbThe_Montly" ClientIDMode="Static" onchange="OptionMonth();" runat="server" Text="The" GroupName="_month" />
-                    </div>
-                    <div class="col-md-11">
-                        <asp:DropDownList ID="ddlTheSequencyWeek_Month" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control" AutoPostBack="true">
-                            <asp:ListItem Text="First" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Secord" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Third" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Four" Value="4"></asp:ListItem>
-                        </asp:DropDownList>
-                        <asp:DropDownList ID="ddlTheDaysOf_Month" Enabled="false" runat="server" ClientIDMode="Static" CssClass="form-control" AutoPostBack="true">
-                            <asp:ListItem Text="Sunday" Value="1"></asp:ListItem>
-                            <asp:ListItem Text="Monday" Value="2"></asp:ListItem>
-                            <asp:ListItem Text="Tuesday" Value="3"></asp:ListItem>
-                            <asp:ListItem Text="Wednesday" Value="4"></asp:ListItem>
-                            <asp:ListItem Text="Thursday" Value="5"></asp:ListItem>
-                            <asp:ListItem Text="Friday" Value="6"></asp:ListItem>
-                            <asp:ListItem Text="Saturday" Value="7"></asp:ListItem>
-                        </asp:DropDownList>
-                        <label>of every </label>
-                        <asp:TextBox ID="txtOccurEvery_Month" Enabled="false" ClientIDMode="Static" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvOccurEvery_Month" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtOccurEvery_Month"
-                            CssClass="text-danger" Enabled="false" ErrorMessage="Month- Day frequence is required." Text="*" />
-                        <label>month(s) </label>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="divWeekly" class="Divdisplay" runat="server">
-            <div class="form-group row col-md-12">
-                <div class="form-inline">
-                    <label for="txtRecurEveryYear">
-                        Recur every
+                <div id="divWeekly" class="Divdisplay" runat="server">
+                    <div class="form-group row col-md-12">
+                        <div class="form-inline">
+                            <label for="txtRecurEveryYear">
+                                Recur every
                         <asp:RequiredFieldValidator ID="rfvRecur_Weekly" Enabled="false" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtRecur_Weekly"
                             CssClass="text-danger" ErrorMessage="Weekly - Recur frequence is required." Text="*" />
-                    </label>
-                    <asp:TextBox ID="txtRecur_Weekly" runat="server" CssClass="form-control "></asp:TextBox>
-                    <label>Week(s) on</label>
+                            </label>
+                            <asp:TextBox ID="txtRecur_Weekly" runat="server" CssClass="form-control "></asp:TextBox>
+                            <label>Week(s) on</label>
+                        </div>
+                    </div>
+                    <div class="form-group row col-md-12">
+                        <div class="form-inline">
+                            <asp:CheckBoxList ID="chckbxWeek_Weekly" CssClass="radioButtonList" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
+                                <asp:ListItem Text="Sunday" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Monday" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="Tuesday" Value="3"></asp:ListItem>
+                                <asp:ListItem Text="Wednesday" Value="4"></asp:ListItem>
+                                <asp:ListItem Text="Thursday" Value="5"></asp:ListItem>
+                                <asp:ListItem Text="Friday" Value="6"></asp:ListItem>
+                                <asp:ListItem Text="Saturday" Value="7"></asp:ListItem>
+                            </asp:CheckBoxList>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row col-md-12">
-                <div class="form-inline">
-                    <asp:CheckBoxList ID="chckbxWeek_Weekly" CssClass="radioButtonList" RepeatLayout="Flow" RepeatDirection="Horizontal" runat="server">
-                        <asp:ListItem Text="Sunday" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="Monday" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Tuesday" Value="3"></asp:ListItem>
-                        <asp:ListItem Text="Wednesday" Value="4"></asp:ListItem>
-                        <asp:ListItem Text="Thursday" Value="5"></asp:ListItem>
-                        <asp:ListItem Text="Friday" Value="6"></asp:ListItem>
-                        <asp:ListItem Text="Saturday" Value="7"></asp:ListItem>
-                    </asp:CheckBoxList>
-                </div>
-            </div>
-        </div>
-        <div id="divDaily" class="Divdisplay" runat="server">
-            <div class="form-group row col-md-12">
-                <div class="form-inline">
-                    <div class="form-inline col-md-12">
-                        <label for="txtRecurEveryYear">
-                            Recur every
+                <div id="divDaily" class="Divdisplay" runat="server">
+                    <div class="form-group row col-md-12">
+                        <div class="form-inline">
+                            <div class="form-inline col-md-12">
+                                <label for="txtRecurEveryYear">
+                                    Recur every
                   <asp:RequiredFieldValidator ID="rfvOccur_Daily" Enabled="false" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtOccur_Daily"
                       CssClass="text-danger listValidation" ErrorMessage="Daily -Recur frequence is required." Text="*" />
-                        </label>
-                        <asp:TextBox ID="txtOccur_Daily" runat="server" CssClass="form-control "></asp:TextBox>
-                        <label>Day(s) on</label>
+                                </label>
+                                <asp:TextBox ID="txtOccur_Daily" runat="server" CssClass="form-control "></asp:TextBox>
+                                <label>Day(s) on</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div id="divHourly" class="Divdisplay" runat="server">
-            <div class="form-group row col-md-12">
-                <div class="form-inline">
-                    <div class="form-inline col-md-12">
-                        <label for="txtRecurEveryYear">
-                            Recur every
+                <div id="divHourly" class="Divdisplay" runat="server">
+                    <div class="form-group row col-md-12">
+                        <div class="form-inline">
+                            <div class="form-inline col-md-12">
+                                <label for="txtRecurEveryYear">
+                                    Recur every
                  <asp:RequiredFieldValidator ID="rfvRecur_Hourly" ClientIDMode="Static" ValidationGroup="Frequency" runat="server" ControlToValidate="txtRecur_Hourly"
                      CssClass="text-danger listValidation" Enabled="false" ErrorMessage="Hourly - Recur frequence is required." Text="*" />
-                        </label>
-                        <asp:TextBox ID="txtRecur_Hourly" ClientIDMode="Static" runat="server" CssClass="form-control "></asp:TextBox>
-                        <label>Hour(s) on</label>
+                                </label>
+                                <asp:TextBox ID="txtRecur_Hourly" ClientIDMode="Static" runat="server" CssClass="form-control "></asp:TextBox>
+                                <label>Hour(s) on</label>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <hr />
+                    <label>Download Time</label>
+                </div>
+                <div class="form-group row col-md-12">
+                    <div class="form-inline">
+                        <div class="col-md-6">
+                            <label for="txtStartTime">Start</label>
+                            <div class="input-group bootstrap-timepicker timepicker">
+                                <input id="timepickerStart_Hourly" runat="server" type="text" class="form-control input-small">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="txtEndTime">End</label>
+                            <div class="input-group bootstrap-timepicker timepicker">
+                                <input id="timepickerEnd_Hourly" runat="server" type="text" class="form-control input-small">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row col-md-12">
+                    <asp:Button ID="btnSaveSchedule" OnClientClick="CheckValidation();" OnClick="btnSaveSchedule_Click" runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
+                    <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnReset_Click" Text="Reset" />
                 </div>
             </div>
         </div>
-        <div class="form-group row col-md-12">
-            <hr />
-            <label>Download Time</label>
-        </div>
-        <div class="form-group row col-md-12">
-            <div class="form-inline">
-                <div class="col-md-6">
-                    <label for="txtStartTime">Start</label>
-                    <div class="input-group bootstrap-timepicker timepicker">
-                        <input id="timepickerStart_Hourly" runat="server" type="text" class="form-control input-small">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="txtEndTime">End</label>
-                    <div class="input-group bootstrap-timepicker timepicker">
-                        <input id="timepickerEnd_Hourly" runat="server" type="text" class="form-control input-small">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row col-md-12">
-             <asp:Button ID="btnSaveSchedule" OnClientClick="CheckValidation();" OnClick="btnSaveSchedule_Click" runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
-            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnReset_Click" Text="Reset" />
-        </div>
-    </div>
-</div>
+    </ContentTemplate>
+</asp:UpdatePanel>
 <script type="text/javascript">
     $('#MainContent_manageSupplier_supplierStaticDataHandling_timepickerStart_Hourly').timepicker();
     $('#MainContent_manageSupplier_supplierStaticDataHandling_timepickerEnd_Hourly').timepicker();
