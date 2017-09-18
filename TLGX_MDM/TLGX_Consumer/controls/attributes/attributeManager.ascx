@@ -369,42 +369,68 @@
                                 <div class="col-md-12 ">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <h4>Mapping Results (Total Count: <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
+                                            <h4>Mapping Results (Total Count:
+                                                <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
                                         </div>
                                         <div class="panel-body">
-                                            <%--<asp:UpdatePanel ID="up11" runat="server">
+                                              <div class="form-group pull-left col-sm-6">
+                                                <div class="input-group">
+                                                    <label class="input-group-addon" for="ddlmresultsupplierlist">Supplier</label>
+                                                    <asp:DropDownList ID="ddlmresultsupplierlist" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="true" OnSelectedIndexChanged="ddlmresultsupplierlist_SelectedIndexChanged" AutoPostBack="true">
+                                                        <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="form-group pull-right col-sm-6">
+                                                <div class="input-group">
+                                                    <label class="input-group-addon" for="ddlpagesize">Page Size</label>
+                                                    <asp:DropDownList ID="ddlpagesize" runat="server" OnSelectedIndexChanged="ddlpagesize_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
+                                                        <asp:ListItem Selected="True">10</asp:ListItem>
+                                                        <asp:ListItem>15</asp:ListItem>
+                                                        <asp:ListItem>20</asp:ListItem>
+                                                        <asp:ListItem>25</asp:ListItem>
+                                                        <asp:ListItem>30</asp:ListItem>
+                                                        <asp:ListItem>35</asp:ListItem>
+                                                        <asp:ListItem>40</asp:ListItem>
+                                                        <asp:ListItem>45</asp:ListItem>
+                                                        <asp:ListItem>50</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                       
+                                        <%--<asp:UpdatePanel ID="up11" runat="server">
                                                 <ContentTemplate>--%>
-                                                    <asp:GridView ID="grdSearchResults" runat="server" AutoGenerateColumns="False" DataKeyNames="MasterAttributeMapping_Id"
-                                                        CssClass="table table-responsive table-hover table-striped table-bordered" AllowPaging="true" AllowCustomPaging="true"
-                                                        PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnPageIndexChanging="grdSearchResults_PageIndexChanging" OnRowCommand="grdSearchResults_RowCommand" EnableSortingAndPagingCallbacks = "true" >
-                                                        <Columns>
-                                                            <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" SortExpression="Supplier_Name" />
-                                                            <asp:BoundField DataField="Supplier_Attribute_Type" HeaderText="Attribute Type" SortExpression="Supplier_Attribute_Type" />
-                                                            <%--  <asp:BoundField DataField="System_Attribute_Type" HeaderText="System Attribute" SortExpression="System_Attribute_Type" />--%>
-                                                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                                        <asp:GridView ID="grdSearchResults" runat="server" AutoGenerateColumns="False" DataKeyNames="MasterAttributeMapping_Id"
+                                            CssClass="table table-responsive table-hover table-striped table-bordered" AllowPaging="true" AllowCustomPaging="true"
+                                            PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnPageIndexChanging="grdSearchResults_PageIndexChanging" OnRowCommand="grdSearchResults_RowCommand" EnableSortingAndPagingCallbacks="true" OnRowDataBound="grdSearchResults_RowDataBound">
+                                            <Columns>
+                                                <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" SortExpression="Supplier_Name" />
+                                                <asp:BoundField DataField="Supplier_Attribute_Type" HeaderText="Attribute Type" SortExpression="Supplier_Attribute_Type" />
+                                                <%--  <asp:BoundField DataField="System_Attribute_Type" HeaderText="System Attribute" SortExpression="System_Attribute_Type" />--%>
+                                                <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
 
-                                                            <asp:TemplateField ShowHeader="false">
-                                                                <ItemTemplate>
-                                                                    <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
-                                                                        Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
+                                                <asp:TemplateField ShowHeader="false">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
+                                                            Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                                                                    </asp:LinkButton>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                            <asp:TemplateField ShowHeader="false">
-                                                                <ItemTemplate>
-                                                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"  %>' CssClass="btn btn-default" CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                                <asp:TemplateField ShowHeader="false">
+                                                    <ItemTemplate>
+                                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"  %>' CssClass="btn btn-default" CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove":"glyphicon glyphicon-repeat"  %>'></span>
                                         <%# Eval("IsActive").ToString() == "True" ?"Delete" : "UnDelete"    %>
-                                                                    </asp:LinkButton>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                        </Columns>
-                                                        <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
-                                                    </asp:GridView>
-                                               <%-- </ContentTemplate>
+                                                        </asp:LinkButton>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                            <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
+                                        </asp:GridView>
+                                        <%-- </ContentTemplate>
                                             </asp:UpdatePanel>--%>
-                                        </div>
+                                           </div>
                                     </div>
                                 </div>
 
@@ -469,7 +495,7 @@
                                     <div class="panel-heading">
                                         <h4>Supplier Attributes Values Mapping</h4>
                                     </div>
-                                    <div class="panel-body" style="overflow-y: scroll ;max-height:580px">
+                                    <div class="panel-body" style="overflow-y: scroll; max-height: 580px">
                                         <asp:UpdatePanel ID="uppanel3" runat="server">
                                             <ContentTemplate>
                                                 <asp:GridView ID="grdMappingAttrVal" runat="server" AutoGenerateColumns="False"
@@ -519,7 +545,7 @@
                                                         </asp:TemplateField>
 
                                                     </Columns>
-
+                                                     
                                                 </asp:GridView>
                                             </ContentTemplate>
                                         </asp:UpdatePanel>

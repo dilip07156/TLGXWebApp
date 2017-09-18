@@ -29,13 +29,11 @@ namespace TLGX_Consumer.controls.attributes
                 FillPageData();
                 BindSuppliers(ddlSuppliers);
                 BindSystemStatus(ddlMappingStatus);
-                
+                BindSuppliers(ddlmresultsupplierlist);
+                ddlmresultsupplierlist.Items.RemoveAt(0);
+                ddlmresultsupplierlist.Items.Insert(0, new ListItem("--ALL --", "0"));
+
             }
-            //if (grdMasterAttributeList.SelectedIndex == -1)
-            //{
-            //    //ShowHideAliasGrid(false);
-            //}
-          
         }
 
         public void FillPageData()
@@ -311,7 +309,7 @@ namespace TLGX_Consumer.controls.attributes
             GridView grdAttributeValues = (GridView)frmAttributedetail.FindControl("grdAttributeValues");
 
             DropDownList ddlParentAttrValue = (DropDownList)frmAttributedetail.FindControl("ddlParentAttrValue");
-
+           
 
             var resultAttributes = _objMst.GetAttributeValues(MasterAttribute_Id.ToString(), Convert.ToString(intPageSizeAttributeValue), Convert.ToString(intPageNoAttributeValue));
             grdAttributeValues.DataSource = resultAttributes;
@@ -843,14 +841,18 @@ namespace TLGX_Consumer.controls.attributes
             grdAttributeValues.DataBind();
 
         }
-        public void fillSearchGrid(int pageindex)
+        public void fillSearchGrid( int pageindex)
         {
             if (hiddenfield.Value != null)
             {
                 Guid attributeid = Guid.Parse(hiddenfield.Value);
                 MDMSVC.DC_MasterAttributeMapping_RQ RQ = new MDMSVC.DC_MasterAttributeMapping_RQ();
+                if (ddlmresultsupplierlist.SelectedIndex != 0)
+                {
+                    RQ.Supplier_Id = Guid.Parse(ddlmresultsupplierlist.SelectedValue);
+                }
                 RQ.MasterAttributeType_Id = attributeid;
-                RQ.PageSize = 5;
+                RQ.PageSize = int.Parse(ddlpagesize.SelectedItem.Text);
                 RQ.PageNo = pageindex;
                 var searchResult = MapSvc.Mapping_Attribute_Search(RQ);
                 if (searchResult != null && searchResult.Count > 0)
@@ -1018,6 +1020,17 @@ namespace TLGX_Consumer.controls.attributes
 
             }
         }
+        protected void grdSearchResults_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.DataItem != null)
+            {
+                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+                if (btnDelete.CommandName == "UnDelete")
+                {
+                    e.Row.Font.Strikeout = true;
+                }
+            }
+        }
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             addupdatemsg.Style.Add("display", "none");
@@ -1058,6 +1071,15 @@ namespace TLGX_Consumer.controls.attributes
             }
         }
 
-    
+        protected void ddlpagesize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillSearchGrid(0);
+        }
+
+        protected void ddlmresultsupplierlist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillSearchGrid(0);
+        }
+
     }
 }
