@@ -322,7 +322,6 @@
     <Content Include="controls\staticdata\bulkCityMapping.ascx" />
     <Content Include="controls\staticdata\allSupplierDataChart.ascx" />
     <Content Include="controls\staticdata\searchActivityMapping.ascx" />
-    <Content Include="controls\staticdata\searchAttributeMapping.ascx" />
     <Content Include="controls\staticdata\searchCityMap.ascx" />
     <Content Include="controls\staticdata\searchCountryMap.ascx" />
     <Content Include="Account\Web.config">
@@ -396,54 +395,54 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Consumer1.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer121.xsd">
+    <None Include="Service References\MDMSVC\Consumer2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1210.xsd">
+    <None Include="Service References\MDMSVC\Consumer20.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1211.xsd">
+    <None Include="Service References\MDMSVC\Consumer3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1212.xsd">
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1213.xsd">
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer122.xsd">
+    <None Include="Service References\MDMSVC\Consumer6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer123.xsd">
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer124.xsd">
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer125.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer126.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer127.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer128.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer129.xsd">
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.disco" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
@@ -755,7 +754,6 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
-    <Content Include="staticdata\valuemapping\search.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1334,13 +1332,6 @@
     </Compile>
     <Compile Include="controls\staticdata\searchActivityMapping.ascx.designer.cs">
       <DependentUpon>searchActivityMapping.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\staticdata\searchAttributeMapping.ascx.cs">
-      <DependentUpon>searchAttributeMapping.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="controls\staticdata\searchAttributeMapping.ascx.designer.cs">
-      <DependentUpon>searchAttributeMapping.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\staticdata\searchCityMap.ascx.cs">
       <DependentUpon>searchCityMap.ascx</DependentUpon>
@@ -2285,13 +2276,6 @@
     <Compile Include="staticdata\manageSupplierImports.aspx.designer.cs">
       <DependentUpon>manageSupplierImports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="staticdata\valuemapping\search.aspx.cs">
-      <DependentUpon>search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staticdata\valuemapping\search.aspx.designer.cs">
-      <DependentUpon>search.aspx</DependentUpon>
-    </Compile>
     <Compile Include="staticdata\velocityReport.aspx.cs">
       <DependentUpon>velocityReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2338,6 +2322,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="controls\holidays\" />
+    <Folder Include="staticdata\valuemapping\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

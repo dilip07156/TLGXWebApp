@@ -256,6 +256,15 @@ namespace TLGX_Consumer.controls.attributes {
         protected global::System.Web.UI.WebControls.DropDownList ddlpagesize;
         
         /// <summary>
+        /// up11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel up11;
+        
+        /// <summary>
         /// grdSearchResults control.
         /// </summary>
         /// <remarks>
@@ -319,13 +328,40 @@ namespace TLGX_Consumer.controls.attributes {
         protected global::System.Web.UI.WebControls.Button btnCancel;
         
         /// <summary>
-        /// uppanel3 control.
+        /// lblTotalCountMappAttrVal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uppanel3;
+        protected global::System.Web.UI.WebControls.Label lblTotalCountMappAttrVal;
+        
+        /// <summary>
+        /// btnUpdateAllValues control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdateAllValues;
+        
+        /// <summary>
+        /// ddlsystemAttrVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlsystemAttrVal;
+        
+        /// <summary>
+        /// ddlpagesizeforAttrVal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlpagesizeforAttrVal;
         
         /// <summary>
         /// grdMappingAttrVal control.

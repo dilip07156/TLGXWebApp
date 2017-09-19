@@ -188,31 +188,31 @@ namespace TLGX_Consumer.Controller
             return result as DC_MasterAttributeMapping;
         }
 
-        public List<DC_MasterAttributeValueMapping> Mapping_AttributeValue_Get(Guid MasterAttributeMapping_Id)
+        public List<DC_MasterAttributeValueMapping> Mapping_AttributeValue_Get(DC_MasterAttributeValueMapping_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_AttributeValue_Get"], MasterAttributeMapping_Id.ToString()), typeof(List<DC_MasterAttributeValueMapping>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Get"], RQ, RQ.GetType(), typeof(List<DC_MasterAttributeValueMapping>), out result);
             return result as List<DC_MasterAttributeValueMapping>;
         }
 
-        public DC_Message Mapping_Attribute_Add(DC_MasterAttributeMapping param)
+        public DC_MasterAttributeMappingAdd_RS Mapping_Attribute_Add(DC_MasterAttributeMapping param)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Attribute_Add"], param, typeof(DC_MasterAttributeMapping), typeof(DC_Message), out result);
-            return result as DC_Message;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Attribute_Add"], param, param.GetType(), typeof(DC_MasterAttributeMappingAdd_RS), out result);
+            return result as DC_MasterAttributeMappingAdd_RS;
         }
 
         public DC_Message Mapping_Attribute_Update(DC_MasterAttributeMapping param)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Attribute_Update"], param, typeof(DC_MasterAttributeMapping), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_Attribute_Update"], param, param.GetType(), typeof(DC_Message), out result);
             return result as DC_Message;
         }
 
-        public DC_Message Mapping_AttributeValue_Update(DC_MasterAttributeValueMapping param)
+        public DC_Message Mapping_AttributeValue_Update(List<DC_MasterAttributeValueMapping> param)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Update"], param, typeof(DC_MasterAttributeValueMapping), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Update"], param, param.GetType(), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion
@@ -442,13 +442,13 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_PentahoApiCallLogDetails>;
 
         }
-        public  DC_Message Pentaho_SupplierApi_Call(Guid ApiLocationId, string CalledBy)
+        public DC_Message Pentaho_SupplierApi_Call(Guid ApiLocationId, string CalledBy)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["supplier_newapi_add"], ApiLocationId, CalledBy), typeof(DC_Message), out result);
             return result as DC_Message;
         }
-        public  List<DC_Supplier_ApiLocation> Pentaho_SupplierApiLocationId_Get(Guid SupplierId, Guid EntityId)
+        public List<DC_Supplier_ApiLocation> Pentaho_SupplierApiLocationId_Get(Guid SupplierId, Guid EntityId)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["get_supplier_apiLocationid"], SupplierId, EntityId), typeof(List<DC_Supplier_ApiLocation>), out result);
