@@ -515,7 +515,7 @@
                                         <div class="col-md-12 form-group">
                                             <asp:GridView ID="grdMappingAttrVal" runat="server" AutoGenerateColumns="False"
                                                 DataKeyNames="MasterAttributeValueMapping_Id" CssClass="table table-responsive table-hover table-striped table-bordered"
-                                                PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging" OnPageIndexChanged="grdMappingAttrVal_PageIndexChanged">
+                                                PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging" >
                                                 <Columns>
                                                     <asp:BoundField DataField="SystemMasterAttributeValue" HeaderText="System Value" SortExpression="SystemMasterAttributeValue" />
                                                     <asp:TemplateField>

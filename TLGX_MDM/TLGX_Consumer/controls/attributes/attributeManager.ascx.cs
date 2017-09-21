@@ -933,7 +933,21 @@ namespace TLGX_Consumer.controls.attributes
                     if (result.AttributeMapping_Id != null)
                     {
                         hdn_MasterAttributeMapping_Id.Value = result.AttributeMapping_Id.ToString();
+                        GridViewRow loopRow;
+                        for (int i = 0; i < grdSearchResults.Rows.Count; i++)
+                        {
+                            loopRow = grdSearchResults.Rows[i];
+                            if (((LinkButton)loopRow.FindControl("btnEdit")).CommandArgument.ToString().ToLower() == result.AttributeMapping_Id.ToString().ToLower())
+                            {
+                                loopRow.BackColor = System.Drawing.Color.DarkTurquoise;
+                            }
+                            else
+                            {
+                                loopRow.BackColor = System.Drawing.Color.Transparent;
+                            }
+                        }
                         fillsupplierAttrvalues(0);
+                        btnSave.Text = "Update";
                     }
                 }
             }
@@ -1128,14 +1142,14 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void grdMappingAttrVal_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-            CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
-            TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
-            Label SystemMasterAttributeValueId = (Label)row.FindControl("lblSystemMasterAttributeValueId");
 
             if (e.CommandName.ToString() == "EditVal")
             {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
+                TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
+                Label SystemMasterAttributeValueId = (Label)row.FindControl("lblSystemMasterAttributeValueId");
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                 addupdatemsg.Style.Add("display", "none");
                 msgdelundel.Style.Add("display", "none");
                 msgupdateall.Style.Add("display", "none");
@@ -1175,6 +1189,7 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void grdMappingAttrVal_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            UpdateAllAttrValues();
             fillsupplierAttrvalues(e.NewPageIndex);
         }
 
@@ -1240,12 +1255,7 @@ namespace TLGX_Consumer.controls.attributes
         {
             fillsupplierAttrvalues(0);
         }
-
-        protected void grdMappingAttrVal_PageIndexChanged(object sender, EventArgs e)
-        {
-            UpdateAllAttrValues();
-        }
-
+        
         protected void btnUpdateAllValues_Click(object sender, EventArgs e)
         {
             UpdateAllAttrValues();
