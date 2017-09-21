@@ -956,8 +956,9 @@ namespace TLGX_Consumer.controls.attributes
 
         private void UpdateAllAttrValues()
         {
+            msgdelundel.Style.Add("display", "none");
+            msgupdateall.Style.Add("display", "none");
             var PARAM = new List<MDMSVC.DC_MasterAttributeValueMapping>();
-
             Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
             GridViewRow row;
             for (int i = 0; i < grdMappingAttrVal.Rows.Count; i++)
@@ -1258,6 +1259,9 @@ namespace TLGX_Consumer.controls.attributes
         
         protected void btnUpdateAllValues_Click(object sender, EventArgs e)
         {
+            addupdatemsg.Style.Add("display", "none");
+            msgdelundel.Style.Add("display", "none");
+            msgupdateall.Style.Add("display", "none");
             UpdateAllAttrValues();
         }
     }
