@@ -843,7 +843,7 @@ namespace TLGX_Consumer.controls.attributes
         }
         public void fillSearchGrid(int pageindex)
         {
-            if (hiddenfield.Value != null)
+            if (!string.IsNullOrWhiteSpace(hiddenfield.Value))
             {
                 Guid attributeid = Guid.Parse(hiddenfield.Value);
                 MDMSVC.DC_MasterAttributeMapping_RQ RQ = new MDMSVC.DC_MasterAttributeMapping_RQ();
@@ -873,52 +873,71 @@ namespace TLGX_Consumer.controls.attributes
         }
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            addupdatemsg.Style.Add("display", "none");
+            msgdelundel.Style.Add("display", "none");
+            msgupdateall.Style.Add("display", "none");
             var id = hiddenfield.Value;
             var a = ddlSuppliers.SelectedItem.Value;
-            var stat = ddlMappingStatus.SelectedItem.Text;
+            var san = txtSupplierAttributeName.Text;
+
             if (btnSave.Text == "Update")
             {
-                Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
-
-                MDMSVC.DC_MasterAttributeMapping newObj1 = new MDMSVC.DC_MasterAttributeMapping
+                if (a == "0" || san == "")
                 {
-                    MasterAttributeMapping_Id = MasterAttributeMappingId,
-                    SupplierMasterAttribute = txtSupplierAttributeName.Text,
-                    Supplier_Id = Guid.Parse(ddlSuppliers.SelectedValue),
-                    SystemMasterAttribute_Id = Guid.Parse(id),
-                    Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    Create_Date = DateTime.Now,
-                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    IsActive = true,
-                    Status = ddlMappingStatus.SelectedItem.Text
-                };
-                var result1 = MapSvc.Mapping_Attribute_Update(newObj1);
-                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result1.StatusMessage, (BootstrapAlertType)(result1.StatusCode));
-                fillSearchGrid(0);
+                    BootstrapAlert.BootstrapAlertMessage(addupdatemsg, "Please select both  Supplier Name and Supplier Attribute Type..!! ", BootstrapAlertType.Warning);
+                }
+                else
+                {
+                    Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
+
+                    MDMSVC.DC_MasterAttributeMapping newObj1 = new MDMSVC.DC_MasterAttributeMapping
+                    {
+                        MasterAttributeMapping_Id = MasterAttributeMappingId,
+                        SupplierMasterAttribute = txtSupplierAttributeName.Text,
+                        Supplier_Id = Guid.Parse(ddlSuppliers.SelectedValue),
+                        SystemMasterAttribute_Id = Guid.Parse(id),
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        Create_Date = DateTime.Now,
+                        Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        IsActive = true,
+                        Status = ddlMappingStatus.SelectedItem.Text
+                    };
+                    var result1 = MapSvc.Mapping_Attribute_Update(newObj1);
+                    BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result1.StatusMessage, (BootstrapAlertType)(result1.StatusCode));
+                    fillSearchGrid(0);
+                }
             }
             else
             {
-                MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
+                if (a == "0" || san == "")
                 {
-                    MasterAttributeMapping_Id = Guid.NewGuid(),
-                    SupplierMasterAttribute = txtSupplierAttributeName.Text,
-                    Supplier_Id = Guid.Parse(ddlSuppliers.SelectedValue),
-                    SystemMasterAttribute_Id = Guid.Parse(id),
-                    Create_Date = DateTime.Now,
-                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    IsActive = true,
-                    Status = "MAPPED"
-                };
-                var result = MapSvc.Mapping_Attribute_Add(newObj);
-                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.Message.StatusMessage, (BootstrapAlertType)(result.Message.StatusCode));
-                fillSearchGrid(0);
-                if (result.AttributeMapping_Id != null)
+                    BootstrapAlert.BootstrapAlertMessage(addupdatemsg, "Please select both  Supplier Name and Supplier Attribute Type..!! ", BootstrapAlertType.Warning);
+                }
+                else
                 {
-                    hdn_MasterAttributeMapping_Id.Value = result.AttributeMapping_Id.ToString();
-                    fillsupplierAttrvalues(0);
+                    MDMSVC.DC_MasterAttributeMapping newObj = new MDMSVC.DC_MasterAttributeMapping
+                    {
+                        MasterAttributeMapping_Id = Guid.NewGuid(),
+                        SupplierMasterAttribute = txtSupplierAttributeName.Text,
+                        Supplier_Id = Guid.Parse(ddlSuppliers.SelectedValue),
+                        SystemMasterAttribute_Id = Guid.Parse(id),
+                        Create_Date = DateTime.Now,
+                        Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        IsActive = true,
+                        Status = "MAPPED"
+                    };
+                    var result = MapSvc.Mapping_Attribute_Add(newObj);
+                    BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.Message.StatusMessage, (BootstrapAlertType)(result.Message.StatusCode));
+                    fillSearchGrid(0);
+                    if (result.AttributeMapping_Id != null)
+                    {
+                        hdn_MasterAttributeMapping_Id.Value = result.AttributeMapping_Id.ToString();
+                        fillsupplierAttrvalues(0);
+                    }
                 }
             }
+
         }
 
         private void UpdateAllAttrValues()
@@ -952,7 +971,7 @@ namespace TLGX_Consumer.controls.attributes
             }
 
             var result = MapSvc.Mapping_AttributeValue_Update(PARAM);
-            BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+            BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
         }
 
         private void BindSuppliers(DropDownList ddl)
@@ -1042,7 +1061,7 @@ namespace TLGX_Consumer.controls.attributes
                 };
 
                 var result = MapSvc.Mapping_Attribute_Update(newObj);
-                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                BootstrapAlert.BootstrapAlertMessage(msgdelundel, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
 
                 fillSearchGrid(grdSearchResults.PageIndex);
 
@@ -1063,7 +1082,7 @@ namespace TLGX_Consumer.controls.attributes
                 };
 
                 var result = MapSvc.Mapping_Attribute_Update(newObj);
-                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                BootstrapAlert.BootstrapAlertMessage(msgdelundel, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
 
                 fillSearchGrid(grdSearchResults.PageIndex);
 
@@ -1086,14 +1105,25 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
+            hdn_MasterAttributeMapping_Id.Value = string.Empty;
+            ddlsystemAttrVal.Items.Clear();
+            lblTotalCountMappAttrVal.Text = "";
             addupdatemsg.Style.Add("display", "none");
+            msgdelundel.Style.Add("display", "none");
+            msgupdateall.Style.Add("display", "none");
             ddlSuppliers.Enabled = true;
             ddlSuppliers.SelectedIndex = 0;
             ddlStatus.SelectedIndex = ddlMappingStatus.Items.IndexOf(ddlMappingStatus.Items.FindByText("MAPPED"));
-            txtSupplierAttributeName.Text = "";
+            txtSupplierAttributeName.Text = string.Empty;
             btnSave.Text = "Add";
             grdMappingAttrVal.DataSource = null;
             grdMappingAttrVal.DataBind();
+            GridViewRow loopRow;
+            for (int i = 0; i < grdSearchResults.Rows.Count; i++)
+            {
+                loopRow = grdSearchResults.Rows[i];
+                loopRow.BackColor = System.Drawing.Color.Transparent;
+            }
         }
 
         protected void grdMappingAttrVal_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -1107,8 +1137,11 @@ namespace TLGX_Consumer.controls.attributes
             if (e.CommandName.ToString() == "EditVal")
             {
                 addupdatemsg.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
                 Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
                 Guid MasterAttributeValueMappingId = Guid.Parse(e.CommandArgument.ToString());
+                var isssActive = chkAttrValIsActive.Checked;
                 MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
                 {
                     MasterAttributeMapping_Id = MasterAttributeMappingId,
@@ -1126,7 +1159,7 @@ namespace TLGX_Consumer.controls.attributes
                 RQ.Add(newObj);
 
                 var result = MapSvc.Mapping_AttributeValue_Update(RQ);
-                BootstrapAlert.BootstrapAlertMessage(addupdatemsg, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
             }
         }
 
@@ -1148,7 +1181,7 @@ namespace TLGX_Consumer.controls.attributes
         protected void fillsupplierAttrvalues(int pageno)
         {
 
-            if (hdn_MasterAttributeMapping_Id != null)
+            if (!string.IsNullOrWhiteSpace(hdn_MasterAttributeMapping_Id.Value))
             {
                 Guid masterattributemappingid = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
                 MDMSVC.DC_MasterAttributeValueMapping_RQ RQ = new MDMSVC.DC_MasterAttributeValueMapping_RQ();
@@ -1187,7 +1220,7 @@ namespace TLGX_Consumer.controls.attributes
         protected void fillSystemAttriDropdown()
         {
             ddlsystemAttrVal.Items.Clear();
-            if (hdn_MasterAttributeMapping_Id.Value != null)
+            if (!string.IsNullOrWhiteSpace(hdn_MasterAttributeMapping_Id.Value ))
             {
                 Guid masterattributemappingid = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
                 MDMSVC.DC_MasterAttributeValueMapping_RQ RQ = new MDMSVC.DC_MasterAttributeValueMapping_RQ();

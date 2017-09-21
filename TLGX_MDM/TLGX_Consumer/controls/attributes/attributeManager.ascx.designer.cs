@@ -175,13 +175,13 @@ namespace TLGX_Consumer.controls.attributes {
         protected global::System.Web.UI.WebControls.FormView frmAttributedetail;
         
         /// <summary>
-        /// up1 control.
+        /// updatemodalpopup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up1;
+        protected global::System.Web.UI.UpdatePanel updatemodalpopup;
         
         /// <summary>
         /// sysAttrName control.
@@ -191,24 +191,6 @@ namespace TLGX_Consumer.controls.attributes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl sysAttrName;
-        
-        /// <summary>
-        /// uppan2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel uppan2;
-        
-        /// <summary>
-        /// addupdatemsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl addupdatemsg;
         
         /// <summary>
         /// hiddenfield control.
@@ -238,6 +220,15 @@ namespace TLGX_Consumer.controls.attributes {
         protected global::System.Web.UI.WebControls.Label lblTotalCount;
         
         /// <summary>
+        /// msgdelundel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgdelundel;
+        
+        /// <summary>
         /// ddlmresultsupplierlist control.
         /// </summary>
         /// <remarks>
@@ -256,15 +247,6 @@ namespace TLGX_Consumer.controls.attributes {
         protected global::System.Web.UI.WebControls.DropDownList ddlpagesize;
         
         /// <summary>
-        /// up11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel up11;
-        
-        /// <summary>
         /// grdSearchResults control.
         /// </summary>
         /// <remarks>
@@ -272,6 +254,15 @@ namespace TLGX_Consumer.controls.attributes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdSearchResults;
+        
+        /// <summary>
+        /// addupdatemsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl addupdatemsg;
         
         /// <summary>
         /// ddlSuppliers control.
@@ -344,6 +335,15 @@ namespace TLGX_Consumer.controls.attributes {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpdateAllValues;
+        
+        /// <summary>
+        /// msgupdateall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgupdateall;
         
         /// <summary>
         /// ddlsystemAttrVal control.
