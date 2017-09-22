@@ -345,7 +345,6 @@
     <Content Include="controls\staticdata\bulkCityMapping.ascx" />
     <Content Include="controls\staticdata\allSupplierDataChart.ascx" />
     <Content Include="controls\staticdata\searchActivityMapping.ascx" />
-    <Content Include="controls\staticdata\searchAttributeMapping.ascx" />
     <Content Include="controls\staticdata\searchCityMap.ascx" />
     <Content Include="controls\staticdata\searchCountryMap.ascx" />
     <Content Include="Account\Web.config">
@@ -391,7 +390,6 @@
     <Content Include="fonts\GoogleFont\RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2" />
     <Content Include="fonts\GoogleFont\u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2" />
     <Content Include="fonts\GoogleFont\xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2" />
-    <None Include="Properties\PublishProfiles\TLGX MDM UI UAT.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX MDM UI DEV.pubxml" />
     <Content Include="Scripts\AjaxCallService\AjaxServiceCall.js" />
     <Content Include="Scripts\autosize.js" />
@@ -416,7 +414,6 @@
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
-    <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
@@ -435,6 +432,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer121.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer2.xsd">
@@ -780,7 +780,6 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
-    <Content Include="staticdata\valuemapping\search.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1520,13 +1519,6 @@
     </Compile>
     <Compile Include="controls\staticdata\searchActivityMapping.ascx.designer.cs">
       <DependentUpon>searchActivityMapping.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\staticdata\searchAttributeMapping.ascx.cs">
-      <DependentUpon>searchAttributeMapping.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="controls\staticdata\searchAttributeMapping.ascx.designer.cs">
-      <DependentUpon>searchAttributeMapping.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\staticdata\searchCityMap.ascx.cs">
       <DependentUpon>searchCityMap.ascx</DependentUpon>
@@ -2471,13 +2463,6 @@
     <Compile Include="staticdata\manageSupplierImports.aspx.designer.cs">
       <DependentUpon>manageSupplierImports.aspx</DependentUpon>
     </Compile>
-    <Compile Include="staticdata\valuemapping\search.aspx.cs">
-      <DependentUpon>search.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staticdata\valuemapping\search.aspx.designer.cs">
-      <DependentUpon>search.aspx</DependentUpon>
-    </Compile>
     <Compile Include="staticdata\velocityReport.aspx.cs">
       <DependentUpon>velocityReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2524,6 +2509,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="controls\holidays\" />
+    <Folder Include="staticdata\valuemapping\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
