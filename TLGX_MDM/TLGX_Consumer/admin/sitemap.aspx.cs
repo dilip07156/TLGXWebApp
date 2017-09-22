@@ -105,7 +105,9 @@ namespace TLGX_Consumer.admin
         {
             var result = AccSvc.GetSiteMapMaster(0, Convert.ToString(ddlApplilcation.SelectedValue));
             DropDownList ddlParent = (DropDownList)frmSiteNode.FindControl("ddlParent");
-            ddlParent.DataSource = (from r in result where r.IsActive == true && r.IsSiteMapNode == true select new { r.ID, r.Title }).ToList();
+            //ddlParent.DataSource = (from r in result where r.IsActive == true && r.IsSiteMapNode == true select new { r.ID, r.Title }).ToList();
+            ddlParent.DataSource = (from r in result where r.IsActive == true select new { r.ID, r.Title }).ToList();
+
             ddlParent.DataTextField = "Title";
             ddlParent.DataValueField = "ID";
             ddlParent.DataBind();

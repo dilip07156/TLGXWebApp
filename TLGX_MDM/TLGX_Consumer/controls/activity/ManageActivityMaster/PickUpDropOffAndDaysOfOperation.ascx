@@ -1,0 +1,1 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="PickUpDropOffAndDaysOfOperation.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityMaster.PickUpDropOffAndDaysOfOperation" %>

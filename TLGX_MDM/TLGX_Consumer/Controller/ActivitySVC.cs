@@ -26,8 +26,44 @@ namespace TLGX_Consumer.Controller
         public DC_Message AddUpdateActivity(MDMSVC.DC_Activity RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdate"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivity"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
             return result as DC_Message;
+        }
+        #endregion
+
+        public DC_Message AddUpdateProductInfo(MDMSVC.DC_Activity RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateProductInfo"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+
+        #region Activity Contacts
+        public List<DC_Activity_Contact> GetActivityContactDetails(Guid Activity_Id, Guid DataKey_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_ContactsURI"], Activity_Id, DataKey_Id), typeof(List<DC_Activity_Contact>), out result);
+            return result as List<DC_Activity_Contact>;
+        }
+        public bool AddActivityContactsDetails(MDMSVC.DC_Activity_Contact AC)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddContactsURI"], AC, typeof(DC_Activity_Contact), typeof(bool), out result);
+            return (bool)result;
+        }
+        public bool UpdateActivityContactDetails(MDMSVC.DC_Activity_Contact AC)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_UpdateContactsURI"], AC, typeof(DC_Activity_Contact), typeof(bool), out result);
+            return (bool)result;
+        }
+        
+        public string GetLegacyProductId(Guid Activity_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Id), typeof(string), out result);
+            return result as string;
         }
         #endregion
     }
