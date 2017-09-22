@@ -422,6 +422,9 @@
     <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Consumer20.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer8.xsd">
       <SubType>Designer</SubType>
     </None>
