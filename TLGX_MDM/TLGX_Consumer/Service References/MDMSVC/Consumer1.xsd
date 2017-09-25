@@ -2352,7 +2352,7 @@
   <xs:element name="GetMasterAttributeValueMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q225="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" minOccurs="0" name="GetMasterAttributeValueMappingResult" nillable="true" type="q225:ArrayOfDC_MasterAttributeValueMapping" />
+        <xs:element xmlns:q225="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" minOccurs="0" name="GetMasterAttributeValueMappingResult" nillable="true" type="q225:ArrayOfDC_MasterAttributeValueMappingRS" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3382,7 +3382,7 @@
   <xs:element name="ActivitySearch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q333="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Accomodation_Request" nillable="true" type="q333:DC_Activity_Search_RQ" />
+        <xs:element xmlns:q333="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Activity_Request" nillable="true" type="q333:DC_Activity_Search_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3404,6 +3404,120 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q336="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityResult" nillable="true" type="q336:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateProductInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q337="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q337:DC_Activity" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateProductInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q338="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateProductInfoResult" nillable="true" type="q338:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DataKey_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q339="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityContactsResult" nillable="true" type="q339:ArrayOfDC_Activity_Contact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q340="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AC" nillable="true" type="q340:DC_Activity_Contact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateActivityContactsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddActivityContacts">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q341="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AC" nillable="true" type="q341:DC_Activity_Contact" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddActivityContactsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddActivityContactsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLegacyProductId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLegacyProductIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetLegacyProductIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DataKey_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q342="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityStatusResult" nillable="true" type="q342:ArrayOfDC_Activity_Status" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q343="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AS" nillable="true" type="q343:DC_Activity_Status" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateActivityStatusResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddActivityStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q344="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AS" nillable="true" type="q344:DC_Activity_Status" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddActivityStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddActivityStatusResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

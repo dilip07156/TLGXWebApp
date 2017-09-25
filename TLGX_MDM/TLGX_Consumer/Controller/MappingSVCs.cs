@@ -188,11 +188,11 @@ namespace TLGX_Consumer.Controller
             return result as DC_MasterAttributeMapping;
         }
 
-        public List<DC_MasterAttributeValueMapping> Mapping_AttributeValue_Get(DC_MasterAttributeValueMapping_RQ RQ)
+        public List<DC_MasterAttributeValueMappingRS> Mapping_AttributeValue_Get(DC_MasterAttributeValueMapping_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Get"], RQ, RQ.GetType(), typeof(List<DC_MasterAttributeValueMapping>), out result);
-            return result as List<DC_MasterAttributeValueMapping>;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Get"], RQ, RQ.GetType(), typeof(List<DC_MasterAttributeValueMappingRS>), out result);
+            return result as List<DC_MasterAttributeValueMappingRS>;
         }
 
         public DC_MasterAttributeMappingAdd_RS Mapping_Attribute_Add(DC_MasterAttributeMapping param)

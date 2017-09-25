@@ -960,28 +960,30 @@ namespace TLGX_Consumer.controls.attributes
             msgupdateall.Style.Add("display", "none");
             var PARAM = new List<MDMSVC.DC_MasterAttributeValueMapping>();
             Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
-            GridViewRow row;
-            for (int i = 0; i < grdMappingAttrVal.Rows.Count; i++)
+            foreach(GridViewRow outerRow in grdMappingAttrVal.Rows)
             {
-                row = grdMappingAttrVal.Rows[i];
-                LinkButton btnSelect = (LinkButton)row.FindControl("btnSelect");
-                Guid myRow_Id = Guid.Parse(btnSelect.CommandArgument.ToString());
-                CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
-                TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
-                Label SystemMasterAttributeValueId = (Label)row.FindControl("lblSystemMasterAttributeValueId");
-
-                PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
+                GridView grdmulSuppAttrValus = outerRow.FindControl("grdmulSuppAttrValus") as GridView;
+                Label SystemMasterAttributeValueId = (Label)outerRow.FindControl("lblSystemMasterAttributeValueId");
+                foreach (GridViewRow innerRow in grdmulSuppAttrValus.Rows)
                 {
-                    MasterAttributeMapping_Id = MasterAttributeMappingId,
-                    MasterAttributeValueMapping_Id = myRow_Id,
-                    IsActive = chkAttrValIsActive.Checked,
-                    SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
-                    Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    Create_Date = DateTime.Now,
-                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
-                });
+                    LinkButton btnSelect = (LinkButton)innerRow.FindControl("btnEdit");
+                    Guid myRow_Id = Guid.Parse(btnSelect.CommandArgument.ToString());
+                    CheckBox chkAttrValIsActive = (CheckBox)innerRow.FindControl("chkAttrValIsActive");
+                    TextBox txtSupplierAttributeValue = (TextBox)innerRow.FindControl("txtSupplierAttributeValue");
+                    PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
+                    {
+                        MasterAttributeMapping_Id = MasterAttributeMappingId,
+                        MasterAttributeValueMapping_Id = myRow_Id,
+                        IsActive = chkAttrValIsActive.Checked,
+                        SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        Create_Date = DateTime.Now,
+                        Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
+                    });
+                }
+                
 
             }
 
@@ -1143,39 +1145,7 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void grdMappingAttrVal_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
-            if (e.CommandName.ToString() == "EditVal")
-            {
-                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-                CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
-                TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
-                Label SystemMasterAttributeValueId = (Label)row.FindControl("lblSystemMasterAttributeValueId");
-                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-                addupdatemsg.Style.Add("display", "none");
-                msgdelundel.Style.Add("display", "none");
-                msgupdateall.Style.Add("display", "none");
-                Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
-                Guid MasterAttributeValueMappingId = Guid.Parse(e.CommandArgument.ToString());
-                var isssActive = chkAttrValIsActive.Checked;
-                MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
-                {
-                    MasterAttributeMapping_Id = MasterAttributeMappingId,
-                    MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
-                    IsActive = chkAttrValIsActive.Checked,
-                    SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
-                    Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    Create_Date = DateTime.Now,
-                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
-                };
-
-                var RQ = new List<MDMSVC.DC_MasterAttributeValueMapping>();
-                RQ.Add(newObj);
-
-                var result = MapSvc.Mapping_AttributeValue_Update(RQ);
-                BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
-            }
+            
         }
 
         protected void ddlpagesize_SelectedIndexChanged(object sender, EventArgs e)
@@ -1219,6 +1189,8 @@ namespace TLGX_Consumer.controls.attributes
                     grdMappingAttrVal.PageSize = RQ.PageSize;
                     grdMappingAttrVal.PageIndex = RQ.PageNo;
                     grdMappingAttrVal.DataBind();
+
+
                 }
             }
             else
@@ -1264,5 +1236,89 @@ namespace TLGX_Consumer.controls.attributes
             msgupdateall.Style.Add("display", "none");
             UpdateAllAttrValues();
         }
+
+        protected void grdmulSuppAttrValus_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.ToString() == "AddNew")
+            {
+                addupdatemsg.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
+                Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
+                Guid MasterAttributeValueMappingId = Guid.Parse(e.CommandArgument.ToString());
+
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                GridView child = (GridView)row.Parent.Parent;//This returns the child gridview
+                GridViewRow parent = (GridViewRow)child.NamingContainer;
+
+                TextBox txtSupplierval = (TextBox)row.FindControl("txtSupplierAttributeValue");
+                Label SystemMasterAttributeValueId = (Label)parent.FindControl("lblSystemMasterAttributeValueId");
+                
+                if(!string.IsNullOrWhiteSpace(txtSupplierval.Text))
+                {
+                    MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
+                    {
+                        MasterAttributeMapping_Id = MasterAttributeMappingId,
+                        MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
+                        IsActive = true,
+                        SupplierMasterAttributeValue = txtSupplierval.Text,
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        Create_Date = DateTime.Now,
+                        Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
+                    };
+                    var RQ = new List<MDMSVC.DC_MasterAttributeValueMapping>();
+                    RQ.Add(newObj);
+                    var result = MapSvc.Mapping_AttributeValue_Update(RQ);
+                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                    fillsupplierAttrvalues(0);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, "Supplier Value cannot be empty.!! ", BootstrapAlertType.Danger);
+                }
+            }
+            if (e.CommandName.ToString() == "UpdateVal")
+            {
+                addupdatemsg.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                GridView child = (GridView)row.Parent.Parent;
+                GridViewRow parent = (GridViewRow)child.NamingContainer;
+
+                CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
+                TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
+
+                Label SystemMasterAttributeValueId = (Label)parent.FindControl("lblSystemMasterAttributeValueId");
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                addupdatemsg.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
+                Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
+                Guid MasterAttributeValueMappingId = Guid.Parse(e.CommandArgument.ToString());
+
+                MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
+                {
+                    MasterAttributeMapping_Id = MasterAttributeMappingId,
+                    MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
+                    IsActive = chkAttrValIsActive.Checked,
+                    SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Create_Date = DateTime.Now,
+                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
+                };
+
+                var RQ = new List<MDMSVC.DC_MasterAttributeValueMapping>();
+                RQ.Add(newObj);
+
+                var result = MapSvc.Mapping_AttributeValue_Update(RQ);
+                BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+            }
+        }
+
     }
 }
