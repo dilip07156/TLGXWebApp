@@ -221,10 +221,10 @@
         }
         $('#hdnViewDetailsFlag').val("false");
     }
-    function OnClientUploadComplete() {
+    <%--function OnClientUploadComplete() {
         var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
         var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
-    }
+    }--%>
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
@@ -536,7 +536,7 @@
                                     File Path
                                 </label>
                                 <div class="col-sm-8">
-                                    <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="true" OnClientUploadComplete="OnClientUploadComplete()"
+                                    <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="true"
                                         OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />
                                 </div>
                             </div>
