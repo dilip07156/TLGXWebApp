@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fe2e72a6-401e-4149-87cb-388faefc90b4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.24.2.104/Consumer.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Consumer.xsd" MetadataType="Schema" ID="8cd711b6-cbe0-4ade-bdc0-4ce39f14a199" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd1" />
+    <MetadataFile FileName="Consumer1.xsd" MetadataType="Schema" ID="8b770615-a0d0-45c2-8110-756d323bae1b" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd3" />
+    <MetadataFile FileName="Consumer2.xsd" MetadataType="Schema" ID="e67da592-37a4-4bf9-890d-6706826372f9" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd5" />
+    <MetadataFile FileName="Consumer3.xsd" MetadataType="Schema" ID="caf5f2fc-5203-4146-a66d-ef4c1877b481" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd7" />
+    <MetadataFile FileName="Consumer4.xsd" MetadataType="Schema" ID="e7db00f1-4109-4b50-aee2-f46d7a176f2e" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd9" />
+    <MetadataFile FileName="Consumer5.xsd" MetadataType="Schema" ID="dc2d6325-d8cb-42f2-a13a-a02b8b456435" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd12" />
+    <MetadataFile FileName="Consumer6.xsd" MetadataType="Schema" ID="adf1c41d-47c3-4448-998b-3f954ca1310d" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd10" />
+    <MetadataFile FileName="Consumer7.xsd" MetadataType="Schema" ID="7adb98d4-8a18-4cf0-a74f-84d6059184fb" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd11" />
+    <MetadataFile FileName="Consumer.wsdl" MetadataType="Wsdl" ID="d156702d-9215-4c28-9cc9-00d09d6327dd" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?wsdl" />
+    <MetadataFile FileName="Consumer8.xsd" MetadataType="Schema" ID="0dafce2d-4f3c-431a-93a8-faf9b2bcef71" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd0" />
+    <MetadataFile FileName="Consumer9.xsd" MetadataType="Schema" ID="de49fe10-5af8-4d2b-88d7-ac993e3148ad" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd2" />
+    <MetadataFile FileName="Consumer10.xsd" MetadataType="Schema" ID="a766db2a-5566-408e-b4ec-b1b75b7e28c3" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd4" />
+    <MetadataFile FileName="Consumer11.xsd" MetadataType="Schema" ID="635753de-57c0-46c8-833e-e8e5a328ab99" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd6" />
+    <MetadataFile FileName="Consumer12.xsd" MetadataType="Schema" ID="00d401c5-2a32-4186-9e63-f74abcb2eb74" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?xsd=xsd8" />
+    <MetadataFile FileName="Consumer.disco" MetadataType="Disco" ID="dd7daeba-3dde-4414-811c-e24b65c63c2d" SourceId="1" SourceUrl="http://10.24.2.104/Consumer.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
