@@ -317,7 +317,7 @@
                                         <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
                                         <asp:BoundField DataField="Country" HeaderText="Country" />
                                         <asp:BoundField DataField="City" HeaderText="City" />
-                                        <asp:HyperLinkField DataNavigateUrlFields="Activity_Id" Text="Select" HeaderText="Hotel" />
+                                        <asp:HyperLinkField DataNavigateUrlFields="Activity_Id" DataNavigateUrlFormatString="~/activity/ManageActivityMaster.aspx?Activity_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityMaster.aspx" />
                                     </Columns>
                                 </asp:GridView>
                             </div>
