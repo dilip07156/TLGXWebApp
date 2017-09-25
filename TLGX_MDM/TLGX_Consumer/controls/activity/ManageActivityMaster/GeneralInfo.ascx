@@ -67,7 +67,7 @@
 
 
         <asp:GridView ID="grdDynamicAttributeList" runat="server" AutoGenerateColumns="False" DataKeyNames="DynamicAttribute_Id"
-            CssClass="table table-hover table-striped" EmptyDataText="No Dynamic Attributes Set for this product" > <%--OnRowCommand="grdDynamicAttributeList_RowCommand" OnRowDataBound="grdDynamicAttributeList_RowDataBound"--%>
+            CssClass="table table-hover table-striped" EmptyDataText="No Dynamic Attributes Set for this product" > <%-- OnRowCommand="grdDynamicAttributeList_RowCommand" OnRowDataBound="grdDynamicAttributeList_RowDataBound" --%>
             <Columns>
                 <asp:BoundField DataField="AttributeName" HeaderText="Name" SortExpression="AttributeName" />
                 <asp:BoundField DataField="AttributeValue" HeaderText="Description" SortExpression="AttributeValue" />

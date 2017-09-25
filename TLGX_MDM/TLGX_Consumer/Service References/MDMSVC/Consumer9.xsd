@@ -796,4 +796,27 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Contact" nillable="true" type="tns:DC_Activity_Contact" />
+  <xs:complexType name="ArrayOfDC_Activity_Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Status" nillable="true" type="tns:DC_Activity_Status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Status" nillable="true" type="tns:ArrayOfDC_Activity_Status" />
+  <xs:complexType name="DC_Activity_Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Status_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="CompanyMarket" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeactivationReason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="From" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="To" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Status" nillable="true" type="tns:DC_Activity_Status" />
 </xs:schema>

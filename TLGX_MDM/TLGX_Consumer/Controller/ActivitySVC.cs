@@ -37,8 +37,7 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateProductInfo"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
             return result as DC_Message;
         }
-
-
+        
         #region Activity Contacts
         public List<DC_Activity_Contact> GetActivityContactDetails(Guid Activity_Id, Guid DataKey_Id)
         {
@@ -64,6 +63,29 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Id), typeof(string), out result);
             return result as string;
+        }
+        #endregion
+
+        #region "Activity Status"
+        public List<DC_Activity_Status> GetActivityStatusDetails(Guid Activity_Id, Guid Activity_Status_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_StatusURI"], Activity_Id, Activity_Status_Id), typeof(List<DC_Activity_Status>), out result);
+            return result as List<DC_Activity_Status>;
+        }
+
+        public bool AddActivityStatus(MDMSVC.DC_Activity_Status AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddStatusURI"], AF, typeof(DC_Activity_Status), typeof(bool), out result);
+            return (bool)result;
+        }
+
+        public bool UpdateActivityStatus(MDMSVC.DC_Activity_Status AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_UpdateStatusURI"], AF, typeof(DC_Activity_Status), typeof(bool), out result);
+            return (bool)result;
         }
         #endregion
     }
