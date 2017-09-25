@@ -2213,6 +2213,33 @@
   <wsdl:message name="IConsumer_GetLegacyProductId_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q244="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q244:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityStatus_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q245="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q245:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UpdateActivityStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActivityStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UpdateActivityStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActivityStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UpdateActivityStatus_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q246="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q246:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddActivityStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddActivityStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddActivityStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddActivityStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddActivityStatus_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q247="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q247:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="UpdateAccomodationClassificationAttributes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/UpdateAccomodationClassificationAttributes" message="tns:IConsumer_UpdateAccomodationClassificationAttributes_InputMessage" />
@@ -3433,6 +3460,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetLegacyProductId" message="tns:IConsumer_GetLegacyProductId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetLegacyProductIdResponse" message="tns:IConsumer_GetLegacyProductId_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetLegacyProductIdDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetLegacyProductId_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityStatus" message="tns:IConsumer_GetActivityStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityStatusResponse" message="tns:IConsumer_GetActivityStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityStatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityStatus_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActivityStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/UpdateActivityStatus" message="tns:IConsumer_UpdateActivityStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/UpdateActivityStatusResponse" message="tns:IConsumer_UpdateActivityStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/UpdateActivityStatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_UpdateActivityStatus_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddActivityStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddActivityStatus" message="tns:IConsumer_AddActivityStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddActivityStatusResponse" message="tns:IConsumer_AddActivityStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddActivityStatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddActivityStatus_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />
