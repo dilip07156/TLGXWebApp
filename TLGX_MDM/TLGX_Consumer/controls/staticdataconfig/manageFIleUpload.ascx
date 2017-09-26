@@ -536,7 +536,7 @@
                                     File Path
                                 </label>
                                 <div class="col-sm-8">
-                                    <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="true"
+                                    <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="false"
                                         OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />
                                 </div>
                             </div>
