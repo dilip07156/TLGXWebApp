@@ -244,11 +244,16 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         public void FileUpload(string filename)
         {
+            BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "Test Call" + filename, BootstrapAlertType.Success);
+
             string ServerPath = ConfigurationManager.AppSettings["STATIC_FILESAbsPath"];
             string fileName = filename;
             try
             {
                 var destinationDir = Server.MapPath(ServerPath) + Convert.ToString(Session["SupplierListSelected"]) + "\\" + Convert.ToString(Session["EntityListSelected"]);
+
+                BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "Test Call" + filename + destinationDir, BootstrapAlertType.Success);
+
                 if (!Directory.Exists(destinationDir))
                 {
                     Directory.CreateDirectory(destinationDir);

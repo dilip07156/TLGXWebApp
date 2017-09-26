@@ -220,6 +220,7 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="activity\ckis\manage.aspx" />
     <Content Include="activity\ckis\search.aspx" />
+    <Content Include="activity\ManageActivityMaster.aspx" />
     <Content Include="activity\SearchActivityMaster.aspx" />
     <Content Include="admin\manageApplication.aspx" />
     <Content Include="admin\manageDistributionLayer.aspx" />
@@ -247,6 +248,28 @@
     <Content Include="Content\Site.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\Ancilary.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\AttachedProductPolicy.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\contacts.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\CustomDefField_WeatherInfo.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\Facilities.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\GeneralInfo.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\Inclusion.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\Media.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\MiscellaneousInformation.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\OtherInformation.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\Overview.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\PickUpDropOffAndDaysOfOperation.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\PreArrivalTips.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\ProductInformation.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\ProductNameSubTypeInfo.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\ProductNameSubTypeStatus.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\ProductStatus.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\ShoppingInfo.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\SuggestedAcco.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\SupplierUpdate.ascx" />
+    <Content Include="controls\activity\ManageActivityMaster\TourIteneraryAndRouting.ascx" />
     <Content Include="controls\activity\manageActivityProductName.ascx" />
     <Content Include="controls\activity\SearchActivityMasterControl.ascx" />
     <Content Include="controls\activity\searchActivityProductName.ascx" />
@@ -409,54 +432,51 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Consumer.wsdl" />
-    <None Include="Service References\MDMSVC\Consumer.xsd">
+    <None Include="Service References\MDMSVC\Consumer1.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer13.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.xsd">
+    <None Include="Service References\MDMSVC\Consumer131.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer10.xsd">
+    <None Include="Service References\MDMSVC\Consumer1310.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer11.xsd">
+    <None Include="Service References\MDMSVC\Consumer1311.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer12.xsd">
+    <None Include="Service References\MDMSVC\Consumer1312.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer2.xsd">
+    <None Include="Service References\MDMSVC\Consumer132.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer20.xsd">
+    <None Include="Service References\MDMSVC\Consumer133.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer3.xsd">
+    <None Include="Service References\MDMSVC\Consumer134.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer4.xsd">
+    <None Include="Service References\MDMSVC\Consumer135.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer5.xsd">
+    <None Include="Service References\MDMSVC\Consumer136.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer6.xsd">
+    <None Include="Service References\MDMSVC\Consumer137.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer7.xsd">
+    <None Include="Service References\MDMSVC\Consumer138.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer8.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer9.xsd">
+    <None Include="Service References\MDMSVC\Consumer139.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\MDMSVC\Consumer.disco" />
+    <None Include="Service References\MDMSVC\Consumer1.disco" />
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
@@ -539,6 +559,12 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Contact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Content.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -608,10 +634,10 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping_RS.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMappingAdd_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_City.datasource">
@@ -639,6 +665,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_newHotelsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PortMaster.datasource">
@@ -740,19 +772,10 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails1.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMappingRS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
@@ -1005,6 +1028,13 @@
     <Compile Include="activity\ckis\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="activity\ManageActivityMaster.aspx.cs">
+      <DependentUpon>ManageActivityMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\ManageActivityMaster.aspx.designer.cs">
+      <DependentUpon>ManageActivityMaster.aspx</DependentUpon>
+    </Compile>
     <Compile Include="activity\SearchActivityMaster.aspx.cs">
       <DependentUpon>SearchActivityMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1115,6 +1145,160 @@
     </Compile>
     <Compile Include="controls\activity\ckis\searchCKISMasters.ascx.designer.cs">
       <DependentUpon>searchCKISMasters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx.cs">
+      <DependentUpon>AdditionalInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx.designer.cs">
+      <DependentUpon>AdditionalInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Ancilary.ascx.cs">
+      <DependentUpon>Ancilary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Ancilary.ascx.designer.cs">
+      <DependentUpon>Ancilary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\AttachedProductPolicy.ascx.cs">
+      <DependentUpon>AttachedProductPolicy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\AttachedProductPolicy.ascx.designer.cs">
+      <DependentUpon>AttachedProductPolicy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\contacts.ascx.cs">
+      <DependentUpon>contacts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\contacts.ascx.designer.cs">
+      <DependentUpon>contacts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\CustomDefField_WeatherInfo.ascx.cs">
+      <DependentUpon>CustomDefField_WeatherInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\CustomDefField_WeatherInfo.ascx.designer.cs">
+      <DependentUpon>CustomDefField_WeatherInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Facilities.ascx.cs">
+      <DependentUpon>Facilities.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Facilities.ascx.designer.cs">
+      <DependentUpon>Facilities.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\GeneralInfo.ascx.cs">
+      <DependentUpon>GeneralInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\GeneralInfo.ascx.designer.cs">
+      <DependentUpon>GeneralInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Inclusion.ascx.cs">
+      <DependentUpon>Inclusion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Inclusion.ascx.designer.cs">
+      <DependentUpon>Inclusion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Media.ascx.cs">
+      <DependentUpon>Media.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Media.ascx.designer.cs">
+      <DependentUpon>Media.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\MiscellaneousInformation.ascx.cs">
+      <DependentUpon>MiscellaneousInformation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\MiscellaneousInformation.ascx.designer.cs">
+      <DependentUpon>MiscellaneousInformation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\OtherInformation.ascx.cs">
+      <DependentUpon>OtherInformation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\OtherInformation.ascx.designer.cs">
+      <DependentUpon>OtherInformation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Overview.ascx.cs">
+      <DependentUpon>Overview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\Overview.ascx.designer.cs">
+      <DependentUpon>Overview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\PickUpDropOffAndDaysOfOperation.ascx.cs">
+      <DependentUpon>PickUpDropOffAndDaysOfOperation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\PickUpDropOffAndDaysOfOperation.ascx.designer.cs">
+      <DependentUpon>PickUpDropOffAndDaysOfOperation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\PreArrivalTips.ascx.cs">
+      <DependentUpon>PreArrivalTips.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\PreArrivalTips.ascx.designer.cs">
+      <DependentUpon>PreArrivalTips.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductInformation.ascx.cs">
+      <DependentUpon>ProductInformation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductInformation.ascx.designer.cs">
+      <DependentUpon>ProductInformation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductNameSubTypeInfo.ascx.cs">
+      <DependentUpon>ProductNameSubTypeInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductNameSubTypeInfo.ascx.designer.cs">
+      <DependentUpon>ProductNameSubTypeInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductNameSubTypeStatus.ascx.cs">
+      <DependentUpon>ProductNameSubTypeStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductNameSubTypeStatus.ascx.designer.cs">
+      <DependentUpon>ProductNameSubTypeStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductStatus.ascx.cs">
+      <DependentUpon>ProductStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ProductStatus.ascx.designer.cs">
+      <DependentUpon>ProductStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ShoppingInfo.ascx.cs">
+      <DependentUpon>ShoppingInfo.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\ShoppingInfo.ascx.designer.cs">
+      <DependentUpon>ShoppingInfo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\SuggestedAcco.ascx.cs">
+      <DependentUpon>SuggestedAcco.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\SuggestedAcco.ascx.designer.cs">
+      <DependentUpon>SuggestedAcco.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\SupplierUpdate.ascx.cs">
+      <DependentUpon>SupplierUpdate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\SupplierUpdate.ascx.designer.cs">
+      <DependentUpon>SupplierUpdate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\TourIteneraryAndRouting.ascx.cs">
+      <DependentUpon>TourIteneraryAndRouting.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityMaster\TourIteneraryAndRouting.ascx.designer.cs">
+      <DependentUpon>TourIteneraryAndRouting.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\manageActivityProductName.ascx.cs">
       <DependentUpon>manageActivityProductName.ascx</DependentUpon>

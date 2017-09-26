@@ -125,15 +125,11 @@
                         <div class="input-group">
                             <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                             <asp:DropDownList ID="ddlShowEntries" runat="server" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
+                                <asp:ListItem>5</asp:ListItem>
                                 <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>15</asp:ListItem>
-                                <asp:ListItem>20</asp:ListItem>
                                 <asp:ListItem>25</asp:ListItem>
-                                <asp:ListItem>30</asp:ListItem>
-                                <asp:ListItem>35</asp:ListItem>
-                                <asp:ListItem>40</asp:ListItem>
-                                <asp:ListItem>45</asp:ListItem>
                                 <asp:ListItem>50</asp:ListItem>
+                                <asp:ListItem>100</asp:ListItem>
                             </asp:DropDownList>
                         </div>
                     </div>
@@ -345,23 +341,13 @@
 <div class="modal fade" id="moMappingAttribteModal" role="dialog">
     <div class="modal-dialog  modal-xl">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">
-                    <asp:UpdatePanel ID="up1" runat="server">
-                        <ContentTemplate>
-                            Attributes Mapping &nbsp( System Attribute Name -&nbsp; <span id="sysAttrName" runat="server"></span>)
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                </h4>
-            </div>
-            <div class="modal-body">
-                <asp:UpdatePanel ID="uppan2" runat="server">
-                    <ContentTemplate>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <div id="addupdatemsg" runat="server" style="display: none"></div>
-                            </div>
-                        </div>
+            <asp:UpdatePanel ID="updatemodalpopup" runat="server">
+                <ContentTemplate>
+                    <div class="modal-header">
+                        <h4 class="modal-title"><strong>Attributes Mapping &nbsp( System Attribute Name -&nbsp; <span id="sysAttrName" runat="server"></span>&nbsp;) </strong></h4>
+                    </div>
+                    <div class="modal-body">
+
                         <asp:HiddenField ID="hiddenfield" runat="server" />
                         <asp:HiddenField ID="hdn_MasterAttributeMapping_Id" runat="server" />
                         <div class="row">
@@ -373,63 +359,60 @@
                                                 <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
                                         </div>
                                         <div class="panel-body">
-                                            <div class="form-group pull-left col-sm-6">
+                                            <div class="form-group col-md-12">
+                                                <div id="msgdelundel" runat="server" style="display: none"></div>
+                                            </div>
+                                            <div class="form-group col-md-8">
                                                 <div class="input-group">
-                                                    <label class="input-group-addon" for="ddlmresultsupplierlist">Supplier</label>
+                                                    <label class="input-group-addon" for="ddlmresultsupplierlist">Search Supplier</label>
                                                     <asp:DropDownList ID="ddlmresultsupplierlist" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="true" OnSelectedIndexChanged="ddlmresultsupplierlist_SelectedIndexChanged" AutoPostBack="true">
                                                         <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
-                                            <div class="form-group pull-right col-sm-6">
+                                            <div class="form-group col-md-4">
                                                 <div class="input-group">
                                                     <label class="input-group-addon" for="ddlpagesize">Page Size</label>
                                                     <asp:DropDownList ID="ddlpagesize" runat="server" OnSelectedIndexChanged="ddlpagesize_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
-                                                        <asp:ListItem Selected="True">10</asp:ListItem>
-                                                        <asp:ListItem>15</asp:ListItem>
-                                                        <asp:ListItem>20</asp:ListItem>
+                                                        <asp:ListItem Selected="True">5</asp:ListItem>
+                                                        <asp:ListItem>10</asp:ListItem>
                                                         <asp:ListItem>25</asp:ListItem>
-                                                        <asp:ListItem>30</asp:ListItem>
-                                                        <asp:ListItem>35</asp:ListItem>
-                                                        <asp:ListItem>40</asp:ListItem>
-                                                        <asp:ListItem>45</asp:ListItem>
                                                         <asp:ListItem>50</asp:ListItem>
+                                                        <asp:ListItem>100</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
 
-                                            <asp:UpdatePanel ID="up11" runat="server">
-                                                <ContentTemplate>
-                                                    <asp:GridView ID="grdSearchResults" runat="server" AutoGenerateColumns="False" DataKeyNames="MasterAttributeMapping_Id"
-                                                        CssClass="table table-responsive table-hover table-striped table-bordered" AllowPaging="true" AllowCustomPaging="true"
-                                                        PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnPageIndexChanging="grdSearchResults_PageIndexChanging" OnRowCommand="grdSearchResults_RowCommand" EnableSortingAndPagingCallbacks="true" OnRowDataBound="grdSearchResults_RowDataBound">
-                                                        <Columns>
-                                                            <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" SortExpression="Supplier_Name" />
-                                                            <asp:BoundField DataField="Supplier_Attribute_Type" HeaderText="Attribute Type" SortExpression="Supplier_Attribute_Type" />
-                                                            <%--  <asp:BoundField DataField="System_Attribute_Type" HeaderText="System Attribute" SortExpression="System_Attribute_Type" />--%>
-                                                            <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                                            <div class="col-md-12 form-group">
+                                                <asp:GridView ID="grdSearchResults" runat="server" AutoGenerateColumns="False" DataKeyNames="MasterAttributeMapping_Id"
+                                                    CssClass="table table-responsive table-hover table-striped table-bordered" AllowPaging="true" AllowCustomPaging="true"
+                                                    PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnPageIndexChanging="grdSearchResults_PageIndexChanging" OnRowCommand="grdSearchResults_RowCommand" EnableSortingAndPagingCallbacks="true" OnRowDataBound="grdSearchResults_RowDataBound">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" SortExpression="Supplier_Name" />
+                                                        <asp:BoundField DataField="Supplier_Attribute_Type" HeaderText="Attribute Type" SortExpression="Supplier_Attribute_Type" />
+                                                        <%--  <asp:BoundField DataField="System_Attribute_Type" HeaderText="System Attribute" SortExpression="System_Attribute_Type" />--%>
+                                                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
 
-                                                            <asp:TemplateField ShowHeader="false">
-                                                                <ItemTemplate>
-                                                                    <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
-                                                                        Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
+                                                        <asp:TemplateField ShowHeader="false">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
+                                                                    Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                                                                    </asp:LinkButton>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                            <asp:TemplateField ShowHeader="false">
-                                                                <ItemTemplate>
-                                                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"  %>' CssClass="btn btn-default" CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
+                                                                </asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField ShowHeader="false">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"  %>' CssClass="btn btn-default" CommandArgument='<%# Bind("MasterAttributeMapping_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove":"glyphicon glyphicon-repeat"  %>'></span>
                                         <%# Eval("IsActive").ToString() == "True" ?"Delete" : "UnDelete"    %>
-                                                                    </asp:LinkButton>
-                                                                </ItemTemplate>
-                                                            </asp:TemplateField>
-                                                        </Columns>
-                                                        <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
-                                                    </asp:GridView>
-                                                </ContentTemplate>
-                                            </asp:UpdatePanel>
+                                                                </asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                    <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
+                                                </asp:GridView>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -440,153 +423,194 @@
                                             <h4>Add/Update Supplier Attributes Mapping</h4>
                                         </div>
                                         <div class="panel-body">
-                                            <div class="form-group row">
-                                                <label class="col-md-4 col-form-label" for="ddlSuppliers">Supplier Name</label>
-                                                <div class="col-md-8">
-                                                    <asp:DropDownList ID="ddlSuppliers" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="true">
-                                                        <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
 
-                                            <div class="form-group row">
-                                                <label class="col-md-4 col-form-label" for="txtSupplierAttributeName">
-                                                    Supplier Attribute Type
+                                            <div class="col-md-12">
+
+                                                <div class="form-group row">
+                                                    <div class="col-md-12">
+                                                        <div id="addupdatemsg" runat="server" style="display: none"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 col-form-label" for="ddlSuppliers">Supplier Name</label>
+                                                    <div class="col-md-8">
+                                                        <asp:DropDownList ID="ddlSuppliers" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="true">
+                                                            <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 col-form-label" for="txtSupplierAttributeName">
+                                                        Supplier Attribute Type
                                                         <asp:RequiredFieldValidator ID="vldReqddlSupplier" runat="server" ControlToValidate="txtSupplierAttributeName"
                                                             InitialValue="0" ErrorMessage="Please enter Supplier Attribute Type" Text="*" ValidationGroup="grpAttrMap" CssClass="text-danger">
                                                         </asp:RequiredFieldValidator>
-                                                </label>
-                                                <div class="col-md-8">
-                                                    <asp:TextBox runat="server" ID="txtSupplierAttributeName" CssClass="form-control"></asp:TextBox>
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <asp:TextBox runat="server" ID="txtSupplierAttributeName" CssClass="form-control"></asp:TextBox>
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <%-- <div class="form-group row">
-                                                <label class="col-md-4 col-form-label" for="txtAttributeType">System Attribute</label>
-                                                <div class="col-md-8">
-                                                    <asp:TextBox runat="server" ID="txtAttributeType" CssClass="form-control"></asp:TextBox>
+                                                <div class="form-group row">
+                                                    <label class="col-md-4 col-form-label" for="ddlMappingStatus">Status</label>
+                                                    <div class="col-md-8">
+                                                        <asp:DropDownList ID="ddlMappingStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        </asp:DropDownList>
+                                                    </div>
                                                 </div>
-                                            </div>--%>
 
-                                            <div class="form-group row">
-                                                <label class="col-md-4 col-form-label" for="ddlMappingStatus">Status</label>
-                                                <div class="col-md-8">
-                                                    <asp:DropDownList ID="ddlMappingStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    </asp:DropDownList>
+                                                <div class="form-group row">
+                                                    <div class="col-md-8">
+                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="grpAttrMap" Text="Save" OnClick="btnSave_Click" />
+                                                        <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" OnClick="btnCancel_Click" />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="form-group row">
-                                                <div class="col-md-8">
-                                                    <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="grpAttrMap" Text="Save" OnClick="btnSave_Click" />
-                                                    <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" OnClick="btnCancel_Click" />
-                                                </div>
                                             </div>
 
                                         </div>
 
                                     </div>
                                 </div>
-
                             </div>
+
                             <div class="col-md-6">
 
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
-                                        <h4>Supplier Attributes Values Mapping(Total Count:
-                                                <asp:Label ID="lblTotalCountMappAttrVal" runat="server" ></asp:Label>)
+                                        <h4>Supplier Attributes Values Mapping (Total Count:
+                                                <asp:Label ID="lblTotalCountMappAttrVal" runat="server"></asp:Label>)
                                         <asp:Button ID="btnUpdateAllValues" runat="server" OnClick="btnUpdateAllValues_Click" CssClass="pull-right btn btn-primary btn-sm " Text="Update All" /></h4>
                                     </div>
                                     <div class="panel-body">
-                                       <%-- <asp:UpdatePanel ID="uppanel3" runat="server">
-                                            <ContentTemplate>--%>
-                                                <div class="form-group pull-left col-sm-6">
-                                                    <div class="input-group">
-                                                        <label class="input-group-addon" for="ddlsystemAttrVal">System Attribute Value</label>
-                                                        <asp:DropDownList ID="ddlsystemAttrVal" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="true" OnSelectedIndexChanged="ddlsystemAttrVal_SelectedIndexChanged" AutoPostBack="true">
-                                                            <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group pull-right col-sm-6">
-                                                    <div class="input-group">
-                                                        <label class="input-group-addon" for="ddlpagesize">Page Size</label>
-                                                        <asp:DropDownList ID="ddlpagesizeforAttrVal" runat="server" OnSelectedIndexChanged="ddlpagesizeforAttrVal_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
-                                                            <asp:ListItem Selected="True">10</asp:ListItem>
-                                                            <asp:ListItem>15</asp:ListItem>
-                                                            <asp:ListItem>20</asp:ListItem>
-                                                            <asp:ListItem>25</asp:ListItem>
-                                                            <asp:ListItem>30</asp:ListItem>
-                                                            <asp:ListItem>35</asp:ListItem>
-                                                            <asp:ListItem>40</asp:ListItem>
-                                                            <asp:ListItem>45</asp:ListItem>
-                                                            <asp:ListItem>50</asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </div>
-                                                </div>
 
-                                                <asp:GridView ID="grdMappingAttrVal" runat="server" AutoGenerateColumns="False"
-                                                    DataKeyNames="MasterAttributeValueMapping_Id" CssClass="table table-responsive table-hover table-striped table-bordered"
-                                                    PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging" OnPageIndexChanged="grdMappingAttrVal_PageIndexChanged">
-                                                    <Columns>
-                                                        <asp:BoundField DataField="SystemMasterAttributeValue" HeaderText="System Value" SortExpression="SystemMasterAttributeValue" />
-                                                        <asp:TemplateField>
-                                                            <HeaderTemplate>
-                                                                Supplier Value
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"
-                                                                    Text='<%# Bind("SupplierMasterAttributeValue") %>'>
-                                                                </asp:TextBox>
-                                                                <asp:RequiredFieldValidator ID="vldReqddlSupplierVal" runat="server" ControlToValidate="txtSupplierAttributeValue"
-                                                                    ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
-                                                                </asp:RequiredFieldValidator>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                        <div class="col-md-12 form-group">
+                                            <div id="msgupdateall" runat="server" style="display: none"></div>
+                                        </div>
 
-                                                        <asp:TemplateField>
-                                                            <HeaderTemplate>
-                                                                Active
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <asp:CheckBox ID="chkAttrValIsActive" runat="server" Checked='<%# Convert.ToBoolean(Eval("IsActive")) %>' />
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                        <div class="form-group pull-left col-md-8">
+                                            <div class="input-group">
+                                                <label class="input-group-addon" for="ddlsystemAttrVal">Search System Attribute Value</label>
+                                                <asp:DropDownList ID="ddlsystemAttrVal" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="true" OnSelectedIndexChanged="ddlsystemAttrVal_SelectedIndexChanged" AutoPostBack="true">
+                                                    <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
 
-                                                        <asp:TemplateField ShowHeader="false">
-                                                            <ItemTemplate>
-                                                                <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="true" CommandName="EditVal" CssClass="btn btn-default"
-                                                                    CommandArgument='<%# Bind("MasterAttributeValueMapping_Id") %>' ValidationGroup='<%# "Group_" + Container.DataItemIndex %>'>
-                                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Update
-                                                                </asp:LinkButton>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                        <div class="form-group pull-right col-md-4">
+                                            <div class="input-group">
+                                                <label class="input-group-addon" for="ddlpagesize">Page Size</label>
+                                                <asp:DropDownList ID="ddlpagesizeforAttrVal" runat="server" OnSelectedIndexChanged="ddlpagesizeforAttrVal_SelectedIndexChanged" AutoPostBack="true" CssClass="form-control">
+                                                    <asp:ListItem Selected="True">5</asp:ListItem>
+                                                    <asp:ListItem>10</asp:ListItem>
+                                                    <asp:ListItem>25</asp:ListItem>
+                                                    <asp:ListItem>50</asp:ListItem>
+                                                    <asp:ListItem>100</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
 
-                                                        <asp:TemplateField Visible="false">
-                                                            <HeaderTemplate>
-                                                                SystemMasterAttributeValue_Id
-                                                            </HeaderTemplate>
-                                                            <ItemTemplate>
-                                                                <asp:Label ID="lblSystemMasterAttributeValueId" runat="server" Text='<%# Bind("SystemMasterAttributeValue_Id") %>'></asp:Label>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
+                                        <div class="col-md-12 form-group">
+                                            <asp:GridView ID="grdMappingAttrVal" runat="server" AutoGenerateColumns="False"
+                                                DataKeyNames="SystemMasterAttributeValue_Id" CssClass="table table-responsive table-hover table-striped table-bordered"
+                                                PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging">
+                                                <Columns>
+                                                    <asp:BoundField DataField="SystemMasterAttributeValue" HeaderText="System Value" SortExpression="SystemMasterAttributeValue" />
+                                                    <asp:TemplateField>
+                                                        <ItemTemplate>
+                                                            <asp:GridView ID="grdmulSuppAttrValus" runat="server" DataSource='<%# Bind("SupplierAttributeValues") %>' DataKeyNames="MasterAttributeValueMapping_Id" AutoGenerateColumns="false"
+                                                                ShowHeaderWhenEmpty="true" CssClass="table table-responsive table-hover table-striped table-bordered" OnRowCommand="grdmulSuppAttrValus_RowCommand">
+                                                                <Columns>
+                                                                    <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            Supplier Value
+                                                                             <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="vldReqddlSupplierVal" runat="server" ControlToValidate="txtSupplierAttributeValue"
+                                                                                ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
+                                                                            </asp:RequiredFieldValidator>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"
+                                                                                Text='<%# Bind("SupplierMasterAttributeValue") %>'>
+                                                                            </asp:TextBox>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
 
-                                                    </Columns>
-                                                    <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
-                                                </asp:GridView>
-                                          <%--  </ContentTemplate>
-                                        </asp:UpdatePanel>--%>
+                                                                    <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            Supplier Code
+                                                                            <asp:TextBox ID="txtSupplierAttributeCode" runat="server" CssClass="form-control">
+                                                                            </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="vldReqddlSupplierCode" runat="server" ControlToValidate="txtSupplierAttributeCode"
+                                                                                ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
+                                                                            </asp:RequiredFieldValidator>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:TextBox ID="txtSupplierAttributeCode" runat="server" CssClass="form-control"
+                                                                                Text='<%# Bind("SupplierMasterAttributeCode") %>'>
+                                                                            </asp:TextBox>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+
+                                                                    <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            Active
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server"  checked='<%# Convert.ToBoolean(Eval("IsActive")) %>' />
+                                                                        </ItemTemplate>
+                                                                        <EditItemTemplate>
+                                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server" />
+                                                                        </EditItemTemplate>
+                                                                    </asp:TemplateField>
+
+                                                                    <asp:TemplateField ShowHeader="false">
+                                                                        <HeaderTemplate>
+                                                                            <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" CommandName="AddNew" ToolTip="Add New"
+                                                                                ValidationGroup="vldgrpAliasNew" CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
+                                                                        <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New
+                                                                            </asp:LinkButton>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="true" CommandName="UpdateVal" CssClass="btn btn-default"
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ValidationGroup='<%# "Group_" + Container.DataItemIndex %>'>
+                                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>Update
+                                                                            </asp:LinkButton>
+                                                                        </ItemTemplate>
+                                                                        
+                                                                    </asp:TemplateField>
+                                                                </Columns>
+
+                                                            </asp:GridView>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+                                                    <asp:TemplateField Visible="false">
+                                                        <HeaderTemplate>
+                                                            SystemMasterAttributeValue_Id
+                                                        </HeaderTemplate>
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lblSystemMasterAttributeValueId" runat="server" Text='<%# Bind("SystemMasterAttributeValue_Id") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+                                                </Columns>
+                                                <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
+                                            </asp:GridView>
+                                        </div>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeAttributeMappingModal()">Close</button>
-            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeAttributeMappingModal()">Close</button>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </div>
 </div>
