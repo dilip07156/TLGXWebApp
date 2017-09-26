@@ -423,6 +423,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\TRFSVC\TransferService.disco" />
+    <None Include="Service References\TRFSVC\configuration91.svcinfo" />
+    <None Include="Service References\TRFSVC\configuration.svcinfo" />
+    <None Include="Service References\TRFSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
@@ -764,6 +774,16 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\TRFSVC\TransferService.wsdl" />
+    <None Include="Service References\TRFSVC\TransferService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -1106,6 +1126,7 @@
     <Compile Include="Controller\AccomodationSVC.cs" />
     <Compile Include="Controller\ActivitySVC.cs" />
     <Compile Include="Controller\AdminSVCs.cs" />
+    <Compile Include="Controller\CustomStream.cs" />
     <Compile Include="Controller\MappingSVCs.cs" />
     <Compile Include="Controller\MasterDataSVCs.cs" />
     <Compile Include="Controller\MDMSvcProxy.cs" />
@@ -2303,6 +2324,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\TRFSVC\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service\ActivityNameAutoComplete.ashx.cs">
       <DependentUpon>ActivityNameAutoComplete.ashx</DependentUpon>
     </Compile>
@@ -2547,6 +2573,7 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
+    <WCFMetadataStorage Include="Service References\TRFSVC\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -2,7 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <script type="text/javascript">
-   
+
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
@@ -199,9 +199,9 @@
             document.getElementById("hdnFileId").value = fileid;
             var filestatus = $("#lblstatus").text();
             getChartData(fileid);
-                //strat timer
-                x = setInterval(function () { myTimer() }, 5000);
-            }
+            //strat timer
+            x = setInterval(function () { myTimer() }, 5000);
+        }
         );
         $('#moViewDetials').on('hidden.bs.modal', function () {
             //stop timer on close of modal 
@@ -434,7 +434,7 @@
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="File Name" DataField="OriginalFilePath" />
                                 <asp:BoundField HeaderText="Status" DataField="STATUS" />
-                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}"/>
+                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
 
                                 <%--<asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("Accommodation_Description_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
@@ -493,61 +493,66 @@
             </div>
 
             <div class="modal-body">
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>
-                        <div class="col-sm-12">
-                            <div class="form-group row">
-                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Upload" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                                <div id="dvmsgUploadCompleted" runat="server" enableviewstate="false" style="display: none;">
-                                </div>
-                            </div>
+                <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                    <ContentTemplate>--%>
+                <div class="col-sm-12">
+                    <div class="form-group row">
+                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Upload" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                        <div id="dvmsgUploadCompleted" runat="server" enableviewstate="false" style="display: none;">
                         </div>
-                        <div class="col-sm-12">
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlSupplierList">
-                                    Supplier
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4" for="ddlSupplierList">
+                            Supplier
                             <asp:RequiredFieldValidator ValidationGroup="Upload" Text="*" ID="rfvddlSupplierList" runat="server" ControlToValidate="ddlSupplierList"
                                 CssClass="text-danger" ErrorMessage="The Suppplier is required." InitialValue="0" />
-                                </label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlSupplierList" runat="server" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged"
-                                        AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control">
-                                        <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
+                        </label>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="ddlSupplierList" runat="server"
+                                AppendDataBoundItems="true" CssClass="form-control">
+                                <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
 
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlEntityList">
-                                    Entity
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4" for="ddlEntityList">
+                            Entity
                               <asp:RequiredFieldValidator ValidationGroup="Upload" Text="*" runat="server" ControlToValidate="ddlEntityList"
                                   CssClass="text-danger" ID="rfvddlEntityList" ErrorMessage="The Entity is required." InitialValue="0" />
-                                </label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlEntityList" runat="server" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged"
-                                        AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control">
-                                        <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="FileUpld">
-                                    File Path
-                                </label>
-                                <div class="col-sm-8">
-                                    <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="false"
-                                        OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />
-                                </div>
-                            </div>
+                        </label>
+                        <div class="col-sm-8">
+                            <asp:DropDownList ID="ddlEntityList" runat="server"
+                                AppendDataBoundItems="true" CssClass="form-control">
+                                <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
+                    </div>
 
-                        <div class="modal-footer">
-                            <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnNewReset_Click" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="form-group row">
+                        <label class="control-label col-sm-4" for="FileUpld">
+                            File Path
+                        </label>
+                        <div class="col-sm-6">
+                            <%--<cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="false"
+                                        OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />--%>
+                            <asp:FileUpload ID="FileUpload1" runat="server" />
+
                         </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                        <div class="col-sm-2">
+                            <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-default btn-sm" OnClick="btnUpload_Click" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnNewReset_Click" />
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+                <%--</ContentTemplate>
+                </asp:UpdatePanel>--%>
             </div>
         </div>
     </div>
@@ -711,7 +716,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

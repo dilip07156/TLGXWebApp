@@ -193,15 +193,6 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.WebControls.GridView gvFileUploadSearch;
         
         /// <summary>
-        /// UpdatePanel2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
-        
-        /// <summary>
         /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
@@ -256,13 +247,22 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.WebControls.DropDownList ddlEntityList;
         
         /// <summary>
-        /// FileUpld control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.AjaxFileUpload FileUpld;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpload;
         
         /// <summary>
         /// btnNewReset control.

@@ -13,6 +13,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Reflection;
 using System.Web.Script.Serialization;
+using System.Threading.Tasks;
 
 namespace TLGX_Consumer.controls.staticdataconfig
 {
@@ -262,7 +263,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 var newFileID = Guid.NewGuid();
                 string fileSavePath = destinationDir + "\\" + Path.GetFileNameWithoutExtension(fileName) + "-" + newFileID.ToString() + Path.GetExtension(fileName);
 
-                FileUpld.SaveAs(fileSavePath);
+                //FileUpld.SaveAs(fileSavePath);
 
                 MappingSVCs _objMappingSVCs = new MappingSVCs();
 
@@ -310,8 +311,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlSupplierList.SelectedIndex = 0;
             ddlEntityList.ClearSelection();
             ddlEntityList.SelectedIndex = 0;
-            FileUpld.Attributes.Add("OnClientUploadComplete", "Return  OnClientUploadComplete");
-            FileUpld.Enabled = false;
+            //FileUpld.Attributes.Add("OnClientUploadComplete", "Return  OnClientUploadComplete");
+            //FileUpld.Enabled = false;
             //ScriptManager.RegisterStartupScript(Page, GetType(), "disp_confirm", "<script>alert('From Code behind');</script>", false);
             ////Page.ClientScript.RegisterStartupScript(this.GetType(), DateTime.Now.ToString(), "FileUploadCompleted()", true);
         }
@@ -334,8 +335,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             Session.Remove("EntityListSelected");
             ddlSupplierList.SelectedIndex = 0;
             ddlEntityList.SelectedIndex = 0;
-            FileUpld.Dispose();
-            FileUpld.Enabled = false;
+            //FileUpld.Dispose();
+            //FileUpld.Enabled = false;
         }
 
         protected void gvFileUploadSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -369,8 +370,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
 
                     //frmViewDetailsConfig.Visible = true;
-                   // frmViewDetailsConfig.DataSource = res;
-                   // frmViewDetailsConfig.DataBind();
+                    // frmViewDetailsConfig.DataSource = res;
+                    // frmViewDetailsConfig.DataBind();
 
                     if (res != null && res.Count > 0)
                     {
@@ -482,89 +483,89 @@ namespace TLGX_Consumer.controls.staticdataconfig
         //    }
         //}
 
-        protected void FileUpld_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
-        {
-            FileUpload(e.FileName);
-        }
+        //protected void FileUpld_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
+        //{
+        //    FileUpload(e.FileName);
+        //}
 
-        protected void FileUpld_UploadStart(object sender, AjaxControlToolkit.AjaxFileUploadStartEventArgs e)
-        {
-            //hdnEntityListSelected.Value = ddlEntityList.SelectedItem.Text;
-            //hdnSupplierListSelected.Value = ddlSupplierList.SelectedItem.Text;
+        //protected void FileUpld_UploadStart(object sender, AjaxControlToolkit.AjaxFileUploadStartEventArgs e)
+        //{
+        //    //hdnEntityListSelected.Value = ddlEntityList.SelectedItem.Text;
+        //    //hdnSupplierListSelected.Value = ddlSupplierList.SelectedItem.Text;
 
-        }
+        //}
 
-        protected void ddlEntityList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Session["EntityListSelected"] = ddlEntityList.SelectedItem.Text;
-            //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
-            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-            {
-                string allowedFileType = StaticFileTypes();
-                if (!string.IsNullOrWhiteSpace(allowedFileType))
-                {
-                    FileUpld.Enabled = true;
-                    FileUpld.AllowedFileTypes = allowedFileType;
-                }
-                else
-                {
-                    FileUpld.Enabled = false;
-                }
-            }
-            if (ddlEntityList.SelectedValue == "0")
-            {
-                Session.Remove("EntityListSelected");
-                FileUpld.Enabled = false;
-            }
-        }
+        //protected void ddlEntityList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Session["EntityListSelected"] = ddlEntityList.SelectedItem.Text;
+        //    //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
+        //    if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+        //    {
+        //        string allowedFileType = StaticFileTypes();
+        //        if (!string.IsNullOrWhiteSpace(allowedFileType))
+        //        {
+        //            FileUpld.Enabled = true;
+        //            FileUpld.AllowedFileTypes = allowedFileType;
+        //        }
+        //        else
+        //        {
+        //            FileUpld.Enabled = false;
+        //        }
+        //    }
+        //    if (ddlEntityList.SelectedValue == "0")
+        //    {
+        //        Session.Remove("EntityListSelected");
+        //        FileUpld.Enabled = false;
+        //    }
+        //}
 
-        protected void ddlSupplierList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Session["SupplierListSelected"] = ddlSupplierList.SelectedItem.Text;
-            Session["SupplierListSelectedValue"] = ddlSupplierList.SelectedValue;
-            //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
-            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-            {
-                string allowedFileType = StaticFileTypes();
-                if (!string.IsNullOrWhiteSpace(allowedFileType))
-                {
-                    FileUpld.Enabled = true;
-                    FileUpld.AllowedFileTypes = allowedFileType;
-                }
-                else
-                {
-                    FileUpld.Enabled = false;
-                }
-            }
-            if (ddlSupplierList.SelectedValue == "0")
-            {
-                Session.Remove("SupplierListSelected");
-                Session.Remove("SupplierListSelectedValue");
-                FileUpld.Enabled = false;
-            }
-        }
+        //protected void ddlSupplierList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    Session["SupplierListSelected"] = ddlSupplierList.SelectedItem.Text;
+        //    Session["SupplierListSelectedValue"] = ddlSupplierList.SelectedValue;
+        //    //if (Session["EntityListSelected"] != null && Session["SupplierListSelected"] != null)
+        //    if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+        //    {
+        //        string allowedFileType = StaticFileTypes();
+        //        if (!string.IsNullOrWhiteSpace(allowedFileType))
+        //        {
+        //            FileUpld.Enabled = true;
+        //            FileUpld.AllowedFileTypes = allowedFileType;
+        //        }
+        //        else
+        //        {
+        //            FileUpld.Enabled = false;
+        //        }
+        //    }
+        //    if (ddlSupplierList.SelectedValue == "0")
+        //    {
+        //        Session.Remove("SupplierListSelected");
+        //        Session.Remove("SupplierListSelectedValue");
+        //        FileUpld.Enabled = false;
+        //    }
+        //}
 
         protected void btnNewUpload_Click(object sender, EventArgs e)
         {
-            ddlSupplierList.SelectedIndex = 0;
-            ddlEntityList.SelectedIndex = 0;
-            if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
-            {
-                string allowedFileType = StaticFileTypes();
-                if (!string.IsNullOrWhiteSpace(allowedFileType))
-                {
-                    FileUpld.Enabled = true;
-                    FileUpld.AllowedFileTypes = allowedFileType;
-                }
-                else
-                {
-                    FileUpld.Enabled = false;
-                }
-            }
-            else
-            {
-                FileUpld.Enabled = false;
-            }
+            //ddlSupplierList.SelectedIndex = 0;
+            //ddlEntityList.SelectedIndex = 0;
+            //if (ddlSupplierList.SelectedValue != "0" && ddlEntityList.SelectedValue != "0")
+            //{
+            //    string allowedFileType = StaticFileTypes();
+            //    if (!string.IsNullOrWhiteSpace(allowedFileType))
+            //    {
+            //        FileUpld.Enabled = true;
+            //        FileUpld.AllowedFileTypes = allowedFileType;
+            //    }
+            //    else
+            //    {
+            //        FileUpld.Enabled = false;
+            //    }
+            //}
+            //else
+            //{
+            //    FileUpld.Enabled = false;
+            //}
         }
 
         public string StaticFileTypes()
@@ -800,13 +801,68 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (btnViewDetail != null)
                 {
                     btnViewDetail.Attributes.Add("onclick", "showDetailsModal('" + SupplierImportFile_Id + "');");
-                  //  btnViewDetail.Attributes.Add("onclick", "test();");
+                    //  btnViewDetail.Attributes.Add("onclick", "test();");
                 }
                 LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
                 if (btnDelete.CommandName == "UnDelete")
                 {
                     e.Row.Font.Strikeout = true;
                 }
+            }
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            if (FileUpload1.HasFile)
+            {
+                TRFSVC.RemoteFileInfo uploadRequestInfo = new TRFSVC.RemoteFileInfo();
+
+                System.IO.FileInfo fileInfo = new System.IO.FileInfo(FileUpload1.PostedFile.FileName);
+                uploadRequestInfo.FileName = FileUpload1.FileName;
+                uploadRequestInfo.Length = FileUpload1.FileContent.Length;
+                uploadRequestInfo.FileByteStream = FileUpload1.FileContent;
+
+                UploadFile(uploadRequestInfo);
+
+                //new manageFIleUpload().UploadFile(uploadRequestInfo).Wait();
+            }
+
+        }
+
+        private void UploadFile(TRFSVC.RemoteFileInfo RFI)
+        {
+            TRFSVC.ITransferService serviceClient = new TRFSVC.TransferServiceClient();
+            TRFSVC.UploadResponse response = serviceClient.UploadFile(RFI);
+
+            if (response.UploadSucceeded)
+            {
+                MappingSVCs _objMappingSVCs = new MappingSVCs();
+
+                MDMSVC.DC_SupplierImportFileDetails _objFileDetails = new MDMSVC.DC_SupplierImportFileDetails();
+                _objFileDetails.SupplierImportFile_Id = Guid.NewGuid();
+                _objFileDetails.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedValue);
+                _objFileDetails.Entity = ddlEntityList.SelectedItem.Text;
+                _objFileDetails.OriginalFilePath = FileUpload1.FileName;
+                _objFileDetails.SavedFilePath = response.UploadedPath;
+                _objFileDetails.STATUS = "UPLOADED";
+                _objFileDetails.CREATE_DATE = DateTime.Now;
+                _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
+
+                MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
+
+                if (_objMsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                {
+                    btnReset_Click(null, EventArgs.Empty);
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, _objMsg.StatusMessage, BootstrapAlertType.Success);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, _objMsg.StatusMessage, BootstrapAlertType.Danger);
+                }
+
+                _objFileDetails = null;
+                fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+                clearControls();
             }
         }
 
