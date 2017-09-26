@@ -956,6 +956,7 @@ namespace TLGX_Consumer.controls.attributes
 
         private void UpdateAllAttrValues()
         {
+            addupdatemsg.Style.Add("display", "none");
             msgdelundel.Style.Add("display", "none");
             msgupdateall.Style.Add("display", "none");
             var PARAM = new List<MDMSVC.DC_MasterAttributeValueMapping>();
@@ -970,21 +971,23 @@ namespace TLGX_Consumer.controls.attributes
                     Guid myRow_Id = Guid.Parse(btnSelect.CommandArgument.ToString());
                     CheckBox chkAttrValIsActive = (CheckBox)innerRow.FindControl("chkAttrValIsActive");
                     TextBox txtSupplierAttributeValue = (TextBox)innerRow.FindControl("txtSupplierAttributeValue");
-                    PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
+                    if(!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text))
                     {
-                        MasterAttributeMapping_Id = MasterAttributeMappingId,
-                        MasterAttributeValueMapping_Id = myRow_Id,
-                        IsActive = chkAttrValIsActive.Checked,
-                        SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
-                        Edit_Date = DateTime.Now,
-                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                        Create_Date = DateTime.Now,
-                        Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                        SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
-                    });
+                        PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
+                        {
+                            MasterAttributeMapping_Id = MasterAttributeMappingId,
+                            MasterAttributeValueMapping_Id = myRow_Id,
+                            IsActive = chkAttrValIsActive.Checked,
+                            SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                            Edit_Date = DateTime.Now,
+                            Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                            Create_Date = DateTime.Now,
+                            Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                            SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
+                        });
+                    }
+                    
                 }
-                
-
             }
 
             var result = MapSvc.Mapping_AttributeValue_Update(PARAM);
@@ -1231,9 +1234,6 @@ namespace TLGX_Consumer.controls.attributes
         
         protected void btnUpdateAllValues_Click(object sender, EventArgs e)
         {
-            addupdatemsg.Style.Add("display", "none");
-            msgdelundel.Style.Add("display", "none");
-            msgupdateall.Style.Add("display", "none");
             UpdateAllAttrValues();
         }
 
@@ -1293,30 +1293,34 @@ namespace TLGX_Consumer.controls.attributes
 
                 Label SystemMasterAttributeValueId = (Label)parent.FindControl("lblSystemMasterAttributeValueId");
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-                addupdatemsg.Style.Add("display", "none");
-                msgdelundel.Style.Add("display", "none");
-                msgupdateall.Style.Add("display", "none");
                 Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
                 Guid MasterAttributeValueMappingId = Guid.Parse(e.CommandArgument.ToString());
-
-                MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
+                if (!string.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text))
                 {
-                    MasterAttributeMapping_Id = MasterAttributeMappingId,
-                    MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
-                    IsActive = chkAttrValIsActive.Checked,
-                    SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
-                    Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    Create_Date = DateTime.Now,
-                    Create_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
-                };
+                    MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
+                    {
+                        MasterAttributeMapping_Id = MasterAttributeMappingId,
+                        MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
+                        IsActive = chkAttrValIsActive.Checked,
+                        SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        Create_Date = DateTime.Now,
+                        Create_User = System.Web.HttpContext.Current.User.Identity.Name,
+                        SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
+                    };
 
-                var RQ = new List<MDMSVC.DC_MasterAttributeValueMapping>();
-                RQ.Add(newObj);
+                    var RQ = new List<MDMSVC.DC_MasterAttributeValueMapping>();
+                    RQ.Add(newObj);
 
-                var result = MapSvc.Mapping_AttributeValue_Update(RQ);
-                BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                    var result = MapSvc.Mapping_AttributeValue_Update(RQ);
+                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, "Supplier Value Can not be empty..!", BootstrapAlertType.Warning);
+                }
+               
             }
         }
 
