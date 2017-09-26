@@ -972,7 +972,7 @@ namespace TLGX_Consumer.controls.attributes
                     CheckBox chkAttrValIsActive = (CheckBox)innerRow.FindControl("chkAttrValIsActive");
                     TextBox txtSupplierAttributeValue = (TextBox)innerRow.FindControl("txtSupplierAttributeValue");
                     TextBox txtSupplierAttributeCode = (TextBox)innerRow.FindControl("txtSupplierAttributeCode");
-                    if (!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text) ))
+                    if (!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text) )
                     {
                         PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
                         {
