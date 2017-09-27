@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <script src="../../Scripts/jquery-3.1.1.js"></script>
     <link href="../../Scripts/Styles/bootstrap.css" rel="stylesheet" />
     <title></title>
     <style>
@@ -88,7 +89,7 @@
                         File Path
                     </label>
                     <div class="col-sm-6">
-                        <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" AllowMultiple="false" />
+                        <asp:FileUpload ID="FileUpload1" runat="server" CssClass="" AllowMultiple="false" />
                     </div>
                     <div class="col-sm-2">
                         <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-primary btn-sm" OnClick="btnUpload_Click" OnClientClick="SetBlur();" />

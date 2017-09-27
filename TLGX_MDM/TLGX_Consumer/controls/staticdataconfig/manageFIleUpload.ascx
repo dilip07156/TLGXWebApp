@@ -496,7 +496,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <iframe class="col-md-12" style=""  frameBorder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server" onchange="alert('Hi');" ></iframe>
+                <iframe class="col-md-12" style="min-height: 215px;"  frameBorder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
