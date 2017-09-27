@@ -9,7 +9,147 @@
 //------------------------------------------------------------------------------
 
 namespace TLGX_Consumer.TRFSVC {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FileData", Namespace="http://schemas.datacontract.org/2004/07/OperationContracts")]
+    [System.SerializableAttribute()]
+    public partial class FileData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] BufferDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long FilePostitionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] BufferData {
+            get {
+                return this.BufferDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BufferDataField, value) != true)) {
+                    this.BufferDataField = value;
+                    this.RaisePropertyChanged("BufferData");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long FilePostition {
+            get {
+                return this.FilePostitionField;
+            }
+            set {
+                if ((this.FilePostitionField.Equals(value) != true)) {
+                    this.FilePostitionField = value;
+                    this.RaisePropertyChanged("FilePostition");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/OperationContracts")]
+    [System.SerializableAttribute()]
+    public partial class Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool UploadSucceededField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UploadedPathField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool UploadSucceeded {
+            get {
+                return this.UploadSucceededField;
+            }
+            set {
+                if ((this.UploadSucceededField.Equals(value) != true)) {
+                    this.UploadSucceededField = value;
+                    this.RaisePropertyChanged("UploadSucceeded");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UploadedPath {
+            get {
+                return this.UploadedPathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UploadedPathField, value) != true)) {
+                    this.UploadedPathField = value;
+                    this.RaisePropertyChanged("UploadedPath");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TRFSVC.ITransferService")]
@@ -21,6 +161,18 @@ namespace TLGX_Consumer.TRFSVC {
         // CODEGEN: Generating message contract since the operation has multiple return values.
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/UploadFile", ReplyAction="http://tempuri.org/ITransferService/UploadFileResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.UploadResponse> UploadFileAsync(TLGX_Consumer.TRFSVC.RemoteFileInfo request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/UploadFileInChunks", ReplyAction="http://tempuri.org/ITransferService/UploadFileInChunksResponse")]
+        TLGX_Consumer.TRFSVC.Response UploadFileInChunks(TLGX_Consumer.TRFSVC.FileData request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/UploadFileInChunks", ReplyAction="http://tempuri.org/ITransferService/UploadFileInChunksResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.Response> UploadFileInChunksAsync(TLGX_Consumer.TRFSVC.FileData request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/DeleteFile", ReplyAction="http://tempuri.org/ITransferService/DeleteFileResponse")]
+        bool DeleteFile(string FilePath);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/DeleteFile", ReplyAction="http://tempuri.org/ITransferService/DeleteFileResponse")]
+        System.Threading.Tasks.Task<bool> DeleteFileAsync(string FilePath);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -111,6 +263,22 @@ namespace TLGX_Consumer.TRFSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.UploadResponse> UploadFileAsync(TLGX_Consumer.TRFSVC.RemoteFileInfo request) {
             return base.Channel.UploadFileAsync(request);
+        }
+        
+        public TLGX_Consumer.TRFSVC.Response UploadFileInChunks(TLGX_Consumer.TRFSVC.FileData request) {
+            return base.Channel.UploadFileInChunks(request);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.Response> UploadFileInChunksAsync(TLGX_Consumer.TRFSVC.FileData request) {
+            return base.Channel.UploadFileInChunksAsync(request);
+        }
+        
+        public bool DeleteFile(string FilePath) {
+            return base.Channel.DeleteFile(FilePath);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteFileAsync(string FilePath) {
+            return base.Channel.DeleteFileAsync(FilePath);
         }
     }
 }

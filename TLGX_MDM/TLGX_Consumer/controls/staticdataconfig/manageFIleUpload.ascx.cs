@@ -263,8 +263,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 var newFileID = Guid.NewGuid();
                 string fileSavePath = destinationDir + "\\" + Path.GetFileNameWithoutExtension(fileName) + "-" + newFileID.ToString() + Path.GetExtension(fileName);
 
-                //FileUpld.SaveAs(fileSavePath);
-
+                FileUpld.SaveAs(fileSavePath);
+               
                 MappingSVCs _objMappingSVCs = new MappingSVCs();
 
                 MDMSVC.DC_SupplierImportFileDetails _objFileDetails = new MDMSVC.DC_SupplierImportFileDetails();
@@ -483,10 +483,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
         //    }
         //}
 
-        //protected void FileUpld_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
-        //{
-        //    FileUpload(e.FileName);
-        //}
+        protected void FileUpld_UploadComplete(object sender, AjaxControlToolkit.AjaxFileUploadEventArgs e)
+        {
+            FileUpload(e.FileName);
+        }
 
         //protected void FileUpld_UploadStart(object sender, AjaxControlToolkit.AjaxFileUploadStartEventArgs e)
         //{
@@ -815,16 +815,53 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             if (FileUpload1.HasFile)
             {
-                TRFSVC.RemoteFileInfo uploadRequestInfo = new TRFSVC.RemoteFileInfo();
+                //TRFSVC.RemoteFileInfo uploadRequestInfo = new TRFSVC.RemoteFileInfo();
 
-                System.IO.FileInfo fileInfo = new System.IO.FileInfo(FileUpload1.PostedFile.FileName);
-                uploadRequestInfo.FileName = FileUpload1.FileName;
-                uploadRequestInfo.Length = FileUpload1.FileContent.Length;
-                uploadRequestInfo.FileByteStream = FileUpload1.FileContent;
+                //System.IO.FileInfo fileInfo = new System.IO.FileInfo(FileUpload1.PostedFile.FileName);
+                //uploadRequestInfo.FileName = FileUpload1.FileName;
+                //uploadRequestInfo.Length = FileUpload1.FileContent.Length;
+                //uploadRequestInfo.FileByteStream = FileUpload1.FileContent;
 
-                UploadFile(uploadRequestInfo);
-
+                //UploadFile(uploadRequestInfo);
                 //new manageFIleUpload().UploadFile(uploadRequestInfo).Wait();
+
+
+                Guid FileUploadId = Guid.NewGuid();
+                long ActualFileSize = FileUpload1.PostedFile.ContentLength;
+                var response = UploadFileInChunks(FileUpload1.PostedFile, ActualFileSize, FileUploadId);
+
+                if (response.UploadSucceeded)
+                {
+                    MappingSVCs _objMappingSVCs = new MappingSVCs();
+
+                    MDMSVC.DC_SupplierImportFileDetails _objFileDetails = new MDMSVC.DC_SupplierImportFileDetails();
+                    _objFileDetails.SupplierImportFile_Id = FileUploadId;
+                    _objFileDetails.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedValue);
+                    _objFileDetails.Entity = ddlEntityList.SelectedItem.Text;
+                    _objFileDetails.OriginalFilePath = FileUpload1.FileName;
+                    _objFileDetails.SavedFilePath = response.UploadedPath;
+                    _objFileDetails.STATUS = "UPLOADED";
+                    _objFileDetails.CREATE_DATE = DateTime.Now;
+                    _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
+
+                    MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
+
+                    if (_objMsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                    {
+                        btnReset_Click(null, EventArgs.Empty);
+                        BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, _objMsg.StatusMessage, BootstrapAlertType.Success);
+                    }
+                    else
+                    {
+                        BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, _objMsg.StatusMessage, BootstrapAlertType.Danger);
+                    }
+
+                    _objFileDetails = null;
+                    fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+                    clearControls();
+                }
+
+
             }
 
         }
@@ -864,6 +901,66 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
                 clearControls();
             }
+        }
+
+        private TRFSVC.Response UploadFileInChunks(HttpPostedFile file, long actualFileSize, Guid FileUploadId)
+        {
+            TRFSVC.Response returnResponse = new TRFSVC.Response();
+            string fileNameNew = System.IO.Path.GetFileNameWithoutExtension(file.FileName) + "_" + FileUploadId.ToString().Replace("-", "_") + "." + System.IO.Path.GetExtension(file.FileName).Replace(".", "");
+
+            long filePosition = 0;
+            int filePart = 16 * 1024; //Each hit 16 kb file to avoid any serialization issue when transfering  data across WCF
+
+            //Create buffer size to send to service based on filepart size
+            byte[] bufferData = new byte[filePart];
+
+            //Set the posted file data to file stream.
+            Stream fileStream = file.InputStream;
+
+            //Create the service client
+            TRFSVC.TransferServiceClient serviceClient = new TRFSVC.TransferServiceClient();
+
+            try
+            {
+                long actualFileSizeToUpload = actualFileSize;
+                //Start reading the file from the specified position.
+                fileStream.Position = filePosition;
+                int fileBytesRead = 0;
+
+                //Upload file data in parts until filePosition reaches the actual file end or size.
+                while (filePosition != actualFileSizeToUpload)
+                {
+                    // read the next file part i.e. another 100 kb of data 
+                    fileBytesRead = fileStream.Read(bufferData, 0, filePart);
+                    if (fileBytesRead != bufferData.Length)
+                    {
+                        filePart = fileBytesRead;
+                        byte[] bufferedDataToWrite = new byte[fileBytesRead];
+                        //Copy the buffered data into bufferedDataToWrite
+                        Array.Copy(bufferData, bufferedDataToWrite, fileBytesRead);
+                        bufferData = bufferedDataToWrite;
+                    }
+
+                    //Populate the data contract to send it to the service method
+                    returnResponse = serviceClient.UploadFileInChunks(new TRFSVC.FileData { FileName = fileNameNew, BufferData = bufferData, FilePostition = filePosition });
+                    if (!returnResponse.UploadSucceeded)
+                    {
+                        break;
+                    }
+
+                    //Update the filePosition position to continue reading data from that position back to server
+                    filePosition += fileBytesRead;
+                }
+            }
+            catch
+            {
+                return new TRFSVC.Response { UploadSucceeded = false, UploadedPath = string.Empty };
+            }
+            finally
+            {
+                fileStream.Close();
+            }
+            return returnResponse;
         }
 
         //public  void  getDataForChart( string fileid)

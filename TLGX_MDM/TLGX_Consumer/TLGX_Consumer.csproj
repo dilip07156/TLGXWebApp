@@ -439,13 +439,16 @@
     <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\TRFSVC\TransferService.disco" />
     <None Include="Service References\TRFSVC\configuration91.svcinfo" />
     <None Include="Service References\TRFSVC\configuration.svcinfo" />
     <None Include="Service References\TRFSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\TRFSVC\TransferService1.disco" />
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
@@ -793,19 +796,22 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\TRFSVC\TransferService.wsdl" />
-    <None Include="Service References\TRFSVC\TransferService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMappingRS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Service References\TRFSVC\TransferService1.wsdl" />
+    <None Include="Service References\TRFSVC\TransferService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService33.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />

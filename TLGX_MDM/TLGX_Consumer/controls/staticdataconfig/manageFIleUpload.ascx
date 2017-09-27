@@ -532,23 +532,23 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-4" for="FileUpld">
+                        <label class="control-label col-sm-4" for="FileUpload1">
                             File Path
                         </label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-5">
                             <%--<cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="false"
                                         OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />--%>
-                            <asp:FileUpload ID="FileUpload1" runat="server" />
+                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="" AllowMultiple="false"   />
 
                         </div>
                         <div class="col-sm-2">
-                            <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-default btn-sm" OnClick="btnUpload_Click" />
+                            <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-primary btn-sm" OnClick="btnUpload_Click" />
                         </div>
                     </div>
                 </div>
 
                 <div class="modal-footer">
-                    <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnNewReset_Click" />
+                    <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-default btn-sm" Text="Reset" OnClick="btnNewReset_Click" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
                 <%--</ContentTemplate>

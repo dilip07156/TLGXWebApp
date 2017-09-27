@@ -19,14 +19,15 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://10.24.2.104/TransferService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:57643/TransferService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TransferService.xsd" MetadataType="Schema" ID="b64bf20e-0811-4fcf-9c07-3297dced93c8" SourceId="1" SourceUrl="http://10.24.2.104/TransferService.svc?xsd=xsd0" />
-    <MetadataFile FileName="TransferService.disco" MetadataType="Disco" ID="3bf19213-d942-43ff-ab0f-015ddac95498" SourceId="1" SourceUrl="http://10.24.2.104/TransferService.svc?disco" />
-    <MetadataFile FileName="TransferService1.xsd" MetadataType="Schema" ID="406712e0-b051-405c-b889-f5a6adcd09eb" SourceId="1" SourceUrl="http://10.24.2.104/TransferService.svc?xsd=xsd2" />
-    <MetadataFile FileName="TransferService.wsdl" MetadataType="Wsdl" ID="50bb15c4-9d0a-4871-a4fb-186f785f1290" SourceId="1" SourceUrl="http://10.24.2.104/TransferService.svc?wsdl" />
-    <MetadataFile FileName="TransferService2.xsd" MetadataType="Schema" ID="22cfed4e-ec73-4c56-8c61-b1c718449cec" SourceId="1" SourceUrl="http://10.24.2.104/TransferService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TransferService3.xsd" MetadataType="Schema" ID="31c91cd1-24ab-46e5-9b3d-bb74e453d64f" SourceId="1" SourceUrl="http://localhost:57643/TransferService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TransferService31.xsd" MetadataType="Schema" ID="5c04f98f-afe5-4e52-8047-09aaf6959b3a" SourceId="1" SourceUrl="http://localhost:57643/TransferService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TransferService32.xsd" MetadataType="Schema" ID="f1983896-03c8-425a-9a53-ddbfb1b20d05" SourceId="1" SourceUrl="http://localhost:57643/TransferService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TransferService33.xsd" MetadataType="Schema" ID="e600100e-d6a6-4add-9c0b-0638ac5419d6" SourceId="1" SourceUrl="http://localhost:57643/TransferService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TransferService1.disco" MetadataType="Disco" ID="87fae1e5-7975-4bee-8525-3d595f5e34f9" SourceId="1" SourceUrl="http://localhost:57643/TransferService.svc?disco" />
+    <MetadataFile FileName="TransferService1.wsdl" MetadataType="Wsdl" ID="6459b712-81ff-455b-863c-8977053b7781" SourceId="1" SourceUrl="http://localhost:57643/TransferService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
