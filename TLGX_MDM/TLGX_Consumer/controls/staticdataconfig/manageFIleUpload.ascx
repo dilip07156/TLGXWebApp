@@ -1,6 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
+<style>
+        .h_iframe {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
 <script type="text/javascript">
 
     function getChartData(fileid) {
@@ -483,76 +488,18 @@
 
 
 <div class="modal fade" id="moFileUpload" role="dialog">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-
             <div class="modal-header">
                 <div class="panel-title">
                     <h4 class="modal-title">File Upload</h4>
                 </div>
             </div>
-
             <div class="modal-body">
-                <%--<asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>--%>
-                <div class="col-sm-12">
-                    <div class="form-group row">
-                        <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Upload" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                        <div id="dvmsgUploadCompleted" runat="server" enableviewstate="false" style="display: none;">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12">
-                    <div class="form-group row">
-                        <label class="control-label col-sm-4" for="ddlSupplierList">
-                            Supplier
-                            <asp:RequiredFieldValidator ValidationGroup="Upload" Text="*" ID="rfvddlSupplierList" runat="server" ControlToValidate="ddlSupplierList"
-                                CssClass="text-danger" ErrorMessage="The Suppplier is required." InitialValue="0" />
-                        </label>
-                        <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlSupplierList" runat="server"
-                                AppendDataBoundItems="true" CssClass="form-control">
-                                <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="control-label col-sm-4" for="ddlEntityList">
-                            Entity
-                              <asp:RequiredFieldValidator ValidationGroup="Upload" Text="*" runat="server" ControlToValidate="ddlEntityList"
-                                  CssClass="text-danger" ID="rfvddlEntityList" ErrorMessage="The Entity is required." InitialValue="0" />
-                        </label>
-                        <div class="col-sm-8">
-                            <asp:DropDownList ID="ddlEntityList" runat="server"
-                                AppendDataBoundItems="true" CssClass="form-control">
-                                <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="control-label col-sm-4" for="FileUpload1">
-                            File Path
-                        </label>
-                        <div class="col-sm-5">
-                            <%--<cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="false"
-                                        OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />--%>
-                            <asp:FileUpload ID="FileUpload1" runat="server" CssClass="" AllowMultiple="false"   />
-
-                        </div>
-                        <div class="col-sm-2">
-                            <asp:Button ID="btnUpload" runat="server" Text="Upload" class="btn btn-primary btn-sm" OnClick="btnUpload_Click" />
-                        </div>
-                    </div>
-                </div>
-
+                <iframe class="col-md-12" style=""  frameBorder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server" onchange="alert('Hi');" ></iframe>
                 <div class="modal-footer">
-                    <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-default btn-sm" Text="Reset" OnClick="btnNewReset_Click" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-                <%--</ContentTemplate>
-                </asp:UpdatePanel>--%>
             </div>
         </div>
     </div>

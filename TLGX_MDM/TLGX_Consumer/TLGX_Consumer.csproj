@@ -815,6 +815,7 @@
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
     <Content Include="staticdata\files\APIData.aspx" />
+    <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
     <Content Include="staticdata\hotels\newHotelReport.aspx" />
@@ -2460,6 +2461,13 @@
     </Compile>
     <Compile Include="staticdata\files\APIData.aspx.designer.cs">
       <DependentUpon>APIData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\files\StaticFileupload.aspx.cs">
+      <DependentUpon>StaticFileupload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\files\StaticFileupload.aspx.designer.cs">
+      <DependentUpon>StaticFileupload.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\files\upload.aspx.cs">
       <DependentUpon>upload.aspx</DependentUpon>
