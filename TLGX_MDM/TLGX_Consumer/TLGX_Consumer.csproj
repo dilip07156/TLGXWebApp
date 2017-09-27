@@ -430,75 +430,59 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Consumer1.wsdl" />
-    <None Include="Service References\MDMSVC\Consumer13.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\TRFSVC\configuration91.svcinfo" />
-    <None Include="Service References\TRFSVC\configuration.svcinfo" />
-    <None Include="Service References\TRFSVC\Reference.svcmap">
+    <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\TRFSVC\TransferService1.disco" />
-    <Content Include="Service\CityFillForDDL.ashx" />
-    <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1310.xsd">
+    <None Include="Service References\MDMSVC\Consumer1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1311.xsd">
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1312.xsd">
+    <None Include="Service References\MDMSVC\Consumer11.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer132.xsd">
+    <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer133.xsd">
+    <None Include="Service References\MDMSVC\Consumer2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer134.xsd">
+    <None Include="Service References\MDMSVC\Consumer3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer135.xsd">
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer136.xsd">
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer137.xsd">
+    <None Include="Service References\MDMSVC\Consumer6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer138.xsd">
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer139.xsd">
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.disco" />
-    <Content Include="Service\CityFillForDDL.ashx" />
-    <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -589,6 +573,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_DDL.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ApplicationMgmt.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -658,7 +645,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMappingRS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_City.datasource">
@@ -793,23 +780,32 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMappingRS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\TRFSVC\TransferService1.wsdl" />
+    <None Include="Service References\TRFSVC\TransferService.disco" />
+    <None Include="Service References\TRFSVC\configuration91.svcinfo" />
+    <None Include="Service References\TRFSVC\configuration.svcinfo" />
+    <None Include="Service References\TRFSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <None Include="Service References\TRFSVC\TransferService.wsdl" />
+    <None Include="Service References\TRFSVC\TransferService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TRFSVC\TransferService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\TRFSVC\TransferService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService31.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService32.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService33.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service\CountryAutoComplete.ashx" />
