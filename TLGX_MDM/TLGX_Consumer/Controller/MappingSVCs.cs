@@ -215,6 +215,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Update"], param, param.GetType(), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+        public DC_Message Mapping_AttributeValue_Delete(DC_SupplierAttributeValues_RQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_AttributeValue_Delete"], param, param.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
 
         #region "Upload Mapping Config"

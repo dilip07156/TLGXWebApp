@@ -568,15 +568,19 @@
 
                                                                     <asp:TemplateField ShowHeader="false">
                                                                         <HeaderTemplate>
-                                                                            <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" CommandName="AddNew" ToolTip="Add New"
-                                                                                ValidationGroup="vldgrpAliasNew" CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
+                                                                            <asp:LinkButton ID="btnAdd" runat="server" CommandName="AddNew" ToolTip="Add New"
+                                                                              CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
                                                                         <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New
                                                                             </asp:LinkButton>
                                                                         </HeaderTemplate>
                                                                         <ItemTemplate>
-                                                                            <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="true" CommandName="UpdateVal" CssClass="btn btn-default"
-                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ValidationGroup='<%# "Group_" + Container.DataItemIndex %>'>
-                                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>Update
+                                                                            <asp:LinkButton ID="btnEdit" runat="server"  CommandName="UpdateVal" CssClass="btn btn-default"
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Update Value" >
+                                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+                                                                            </asp:LinkButton>
+                                                                            <asp:LinkButton ID="btnDelete" runat="server" CommandName="DeleteVal" CssClass="btn btn-default"
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Delete Value" >
+                                                                            <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
                                                                             </asp:LinkButton>
                                                                         </ItemTemplate>
                                                                         

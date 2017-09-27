@@ -1039,6 +1039,8 @@ namespace TLGX_Consumer.controls.attributes
             {
                 Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
                 addupdatemsg.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");   
                 ddlSuppliers.Enabled = false;
                 btnSave.Text = "Update";
                 hdn_MasterAttributeMapping_Id.Value = e.CommandArgument.ToString();
@@ -1326,6 +1328,22 @@ namespace TLGX_Consumer.controls.attributes
                     BootstrapAlert.BootstrapAlertMessage(msgupdateall, "Supplier Value and  Supplier Code Can not be empty..!", BootstrapAlertType.Warning);
                 }
                
+            }
+
+            if (e.CommandName.ToString() == "DeleteVal")
+            {
+                addupdatemsg.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                if (myRow_Id!=null)
+                {
+                    MDMSVC.DC_SupplierAttributeValues_RQ newObj = new MDMSVC.DC_SupplierAttributeValues_RQ();
+                    newObj.MasterAttributeValueMapping_Id = myRow_Id;
+                    var result = MapSvc.Mapping_AttributeValue_Delete(newObj);
+                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, result.StatusMessage, (BootstrapAlertType)(result.StatusCode));
+                    fillsupplierAttrvalues(0);
+                }
             }
         }
 
