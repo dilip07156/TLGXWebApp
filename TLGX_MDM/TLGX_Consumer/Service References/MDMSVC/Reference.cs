@@ -7300,6 +7300,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MasterAttributeMappingAdd_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping_Search_RQ))]
@@ -7869,6 +7870,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MasterAttributeMappingAdd_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping_Search_RQ))]
@@ -19338,6 +19340,51 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.TotalRecordsField.Equals(value) != true)) {
                     this.TotalRecordsField = value;
                     this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SupplierAttributeValues_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_SupplierAttributeValues_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> MasterAttributeValueMapping_IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> MasterAttributeValueMapping_Id {
+            get {
+                return this.MasterAttributeValueMapping_IdField;
+            }
+            set {
+                if ((this.MasterAttributeValueMapping_IdField.Equals(value) != true)) {
+                    this.MasterAttributeValueMapping_IdField = value;
+                    this.RaisePropertyChanged("MasterAttributeValueMapping_Id");
                 }
             }
         }
@@ -34302,6 +34349,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/UpdateMasterAttributeValueMapping", ReplyAction="http://tempuri.org/IMapping/UpdateMasterAttributeValueMappingResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateMasterAttributeValueMappingAsync(TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping[] param);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/DeleteMasterAttributeValueMapping", ReplyAction="http://tempuri.org/IMapping/DeleteMasterAttributeValueMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/DeleteMasterAttributeValueMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message DeleteMasterAttributeValueMapping(TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues_RQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/DeleteMasterAttributeValueMapping", ReplyAction="http://tempuri.org/IMapping/DeleteMasterAttributeValueMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteMasterAttributeValueMappingAsync(TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues_RQ param);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetActivitySupplierProductMappingById", ReplyAction="http://tempuri.org/IMapping/GetActivitySupplierProductMappingByIdResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetActivitySupplierProductMappingByIdDC_ErrorStatusFa" +
             "ult", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -36273,6 +36327,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateMasterAttributeValueMappingAsync(TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping[] param) {
             return base.Channel.UpdateMasterAttributeValueMappingAsync(param);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message DeleteMasterAttributeValueMapping(TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues_RQ param) {
+            return base.Channel.DeleteMasterAttributeValueMapping(param);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteMasterAttributeValueMappingAsync(TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues_RQ param) {
+            return base.Channel.DeleteMasterAttributeValueMappingAsync(param);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping GetActivitySupplierProductMappingById(string ActivitySupplierProductMapping_Id) {

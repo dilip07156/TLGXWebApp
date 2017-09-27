@@ -647,7 +647,7 @@
             <div class="panel  panel-default">
                 <div class="panel-heading">
                     <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Room Mapped</b></h3>
+                    <h3><b>Room UnMapped</b></h3>
                 </div>
                 <div id="allHotelRoom" class="chartheight"></div>
                 <div class="panel-body">
