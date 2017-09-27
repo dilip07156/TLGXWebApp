@@ -461,6 +461,7 @@
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="MasterAttributeValueMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierMasterAttributeCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierMasterAttributeValue" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -487,6 +488,7 @@
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="MasterAttributeMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="MasterAttributeValueMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierMasterAttributeCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierMasterAttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemMasterAttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemMasterAttributeValue_Id" type="ser:guid" />

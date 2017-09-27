@@ -155,7 +155,7 @@
 
                                         <li><a runat="server" href="~/Account/Manage" title="Manage your account">Manage</a></li>
                                         <li>
-                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
                                         </li>
                                     </ul>
                                 </li>

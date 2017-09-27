@@ -971,7 +971,8 @@ namespace TLGX_Consumer.controls.attributes
                     Guid myRow_Id = Guid.Parse(btnSelect.CommandArgument.ToString());
                     CheckBox chkAttrValIsActive = (CheckBox)innerRow.FindControl("chkAttrValIsActive");
                     TextBox txtSupplierAttributeValue = (TextBox)innerRow.FindControl("txtSupplierAttributeValue");
-                    if(!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text))
+                    TextBox txtSupplierAttributeCode = (TextBox)innerRow.FindControl("txtSupplierAttributeCode");
+                    if (!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text) )
                     {
                         PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
                         {
@@ -979,6 +980,7 @@ namespace TLGX_Consumer.controls.attributes
                             MasterAttributeValueMapping_Id = myRow_Id,
                             IsActive = chkAttrValIsActive.Checked,
                             SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                            SupplierMasterAttributeCode = txtSupplierAttributeCode.Text,
                             Edit_Date = DateTime.Now,
                             Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                             Create_Date = DateTime.Now,
@@ -1252,6 +1254,7 @@ namespace TLGX_Consumer.controls.attributes
                 GridViewRow parent = (GridViewRow)child.NamingContainer;
 
                 TextBox txtSupplierval = (TextBox)row.FindControl("txtSupplierAttributeValue");
+                TextBox txtSuppliercode = (TextBox)row.FindControl("txtSupplierAttributeCode");
                 Label SystemMasterAttributeValueId = (Label)parent.FindControl("lblSystemMasterAttributeValueId");
                 
                 if(!string.IsNullOrWhiteSpace(txtSupplierval.Text))
@@ -1262,6 +1265,7 @@ namespace TLGX_Consumer.controls.attributes
                         MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
                         IsActive = true,
                         SupplierMasterAttributeValue = txtSupplierval.Text,
+                        SupplierMasterAttributeCode = txtSuppliercode.Text,
                         Edit_Date = DateTime.Now,
                         Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                         Create_Date = DateTime.Now,
@@ -1290,7 +1294,7 @@ namespace TLGX_Consumer.controls.attributes
 
                 CheckBox chkAttrValIsActive = (CheckBox)row.FindControl("chkAttrValIsActive");
                 TextBox txtSupplierAttributeValue = (TextBox)row.FindControl("txtSupplierAttributeValue");
-
+                TextBox txtSupplierAttributeCode = (TextBox)row.FindControl("txtSupplierAttributeCode");
                 Label SystemMasterAttributeValueId = (Label)parent.FindControl("lblSystemMasterAttributeValueId");
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                 Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
@@ -1303,6 +1307,7 @@ namespace TLGX_Consumer.controls.attributes
                         MasterAttributeValueMapping_Id = MasterAttributeValueMappingId,
                         IsActive = chkAttrValIsActive.Checked,
                         SupplierMasterAttributeValue = txtSupplierAttributeValue.Text,
+                        SupplierMasterAttributeCode = txtSupplierAttributeCode.Text,
                         Edit_Date = DateTime.Now,
                         Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                         Create_Date = DateTime.Now,
@@ -1318,7 +1323,7 @@ namespace TLGX_Consumer.controls.attributes
                 }
                 else
                 {
-                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, "Supplier Value Can not be empty..!", BootstrapAlertType.Warning);
+                    BootstrapAlert.BootstrapAlertMessage(msgupdateall, "Supplier Value and  Supplier Code Can not be empty..!", BootstrapAlertType.Warning);
                 }
                
             }

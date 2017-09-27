@@ -538,7 +538,7 @@
                                                                         </ItemTemplate>
                                                                     </asp:TemplateField>
 
-                                                                  <%--  <asp:TemplateField>
+                                                                    <asp:TemplateField>
                                                                         <HeaderTemplate>
                                                                             Supplier Code
                                                                             <asp:TextBox ID="txtSupplierAttributeCode" runat="server" CssClass="form-control">
@@ -548,19 +548,11 @@
                                                                             </asp:RequiredFieldValidator>
                                                                         </HeaderTemplate>
                                                                         <ItemTemplate>
-                                                                            <asp:Label ID="lblSupplierAttributeCode" runat="server" CssClass="form-control"
-                                                                                Text='eg :co123'>
-                                                                            </asp:Label>
-                                                                        </ItemTemplate>
-                                                                        <EditItemTemplate>
                                                                             <asp:TextBox ID="txtSupplierAttributeCode" runat="server" CssClass="form-control"
-                                                                                Text='eg :co123'>
+                                                                                Text='<%# Bind("SupplierMasterAttributeCode") %>'>
                                                                             </asp:TextBox>
-                                                                            <asp:RequiredFieldValidator ID="vldReqddlSupplierCode" runat="server" ControlToValidate="txtSupplierAttributeCode"
-                                                                                ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
-                                                                            </asp:RequiredFieldValidator>
-                                                                        </EditItemTemplate>
-                                                                    </asp:TemplateField>--%>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
 
                                                                     <asp:TemplateField>
                                                                         <HeaderTemplate>

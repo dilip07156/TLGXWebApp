@@ -18941,6 +18941,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> MasterAttributeValueMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierMasterAttributeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierMasterAttributeValueField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -19027,6 +19030,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.MasterAttributeValueMapping_IdField.Equals(value) != true)) {
                     this.MasterAttributeValueMapping_IdField = value;
                     this.RaisePropertyChanged("MasterAttributeValueMapping_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierMasterAttributeCode {
+            get {
+                return this.SupplierMasterAttributeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierMasterAttributeCodeField, value) != true)) {
+                    this.SupplierMasterAttributeCodeField = value;
+                    this.RaisePropertyChanged("SupplierMasterAttributeCode");
                 }
             }
         }
@@ -19146,6 +19162,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> MasterAttributeValueMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierMasterAttributeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierMasterAttributeValueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -19254,6 +19273,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.MasterAttributeValueMapping_IdField.Equals(value) != true)) {
                     this.MasterAttributeValueMapping_IdField = value;
                     this.RaisePropertyChanged("MasterAttributeValueMapping_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierMasterAttributeCode {
+            get {
+                return this.SupplierMasterAttributeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierMasterAttributeCodeField, value) != true)) {
+                    this.SupplierMasterAttributeCodeField = value;
+                    this.RaisePropertyChanged("SupplierMasterAttributeCode");
                 }
             }
         }

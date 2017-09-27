@@ -205,6 +205,7 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Lockout.aspx" />
+    <Content Include="Account\LoginOld.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\ManageLogins.aspx" />
@@ -364,6 +365,12 @@
     <Content Include="images\collapse.jpg" />
     <Content Include="images\expand.jpg" />
     <Content Include="images\loading.gif" />
+    <Content Include="images\login_bg.jpeg" />
+    <Content Include="images\login_logo.png" />
+    <Content Include="images\login_password.svg" />
+    <Content Include="images\login_password_red.svg" />
+    <Content Include="images\login_user.svg" />
+    <Content Include="images\login_user_red.svg" />
     <Content Include="images\logo-cnk.gif" />
     <Content Include="masters\managePlaces.aspx" />
     <Content Include="Models\TLGX_Mapper_Entity.Context.tt">
@@ -410,18 +417,24 @@
     <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
     <Content Include="Scripts\Styles\bootstrap.css" />
     <Content Include="Scripts\Styles\bootstrap.min.css" />
+    <Content Include="Scripts\Styles\Login\core.css" />
+    <Content Include="Scripts\Styles\Login\custom.css" />
+    <Content Include="Scripts\Styles\Login\googlefontapis.css" />
+    <Content Include="Scripts\Styles\Login\login.css" />
+    <Content Include="Scripts\Styles\Login\responsive.css" />
+    <Content Include="Scripts\Styles\Login\sample.css" />
+    <Content Include="Scripts\Styles\Login\style.css" />
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
-    <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\MDMSVC\Consumer1.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer13.xsd">
+      <SubType>Designer</SubType>
     </None>
     <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -441,42 +454,48 @@
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.xsd">
+    <None Include="Service References\MDMSVC\Consumer1310.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer10.xsd">
+    <None Include="Service References\MDMSVC\Consumer1311.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer11.xsd">
+    <None Include="Service References\MDMSVC\Consumer1312.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer12.xsd">
+    <None Include="Service References\MDMSVC\Consumer132.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer2.xsd">
+    <None Include="Service References\MDMSVC\Consumer133.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer3.xsd">
+    <None Include="Service References\MDMSVC\Consumer134.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer4.xsd">
+    <None Include="Service References\MDMSVC\Consumer135.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer5.xsd">
+    <None Include="Service References\MDMSVC\Consumer136.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer6.xsd">
+    <None Include="Service References\MDMSVC\Consumer137.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer7.xsd">
+    <None Include="Service References\MDMSVC\Consumer138.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer8.xsd">
+    <None Include="Service References\MDMSVC\Consumer139.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer9.xsd">
-      <SubType>Designer</SubType>
+    <None Include="Service References\MDMSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\MDMSVC\Consumer1.disco" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -784,6 +803,9 @@
     <None Include="Service References\TRFSVC\TransferService2.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMappingRS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -929,6 +951,13 @@
     </Compile>
     <Compile Include="Account\Lockout.aspx.designer.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\LoginOld.aspx.cs">
+      <DependentUpon>LoginOld.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LoginOld.aspx.designer.cs">
+      <DependentUpon>LoginOld.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -2532,6 +2561,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="controls\holidays\" />
+    <Folder Include="Scripts\LoginPageScript\" />
     <Folder Include="staticdata\valuemapping\" />
   </ItemGroup>
   <ItemGroup>
