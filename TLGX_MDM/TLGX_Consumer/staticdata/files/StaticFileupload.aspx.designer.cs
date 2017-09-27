@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.Account {
+namespace TLGX_Consumer.staticdata.files {
     
     
-    public partial class Login {
+    public partial class StaticFileupload {
         
         /// <summary>
         /// form1 control.
@@ -22,39 +22,57 @@ namespace TLGX_Consumer.Account {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ErrorMessage control.
+        /// dvmsgUploadCompleted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ErrorMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvmsgUploadCompleted;
         
         /// <summary>
-        /// FailureText control.
+        /// ddlSupplierList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal FailureText;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierList;
         
         /// <summary>
-        /// Email control.
+        /// ddlEntityList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl Email;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEntityList;
         
         /// <summary>
-        /// Password control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword Password;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpload;
+        
+        /// <summary>
+        /// btnReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReset;
     }
 }
