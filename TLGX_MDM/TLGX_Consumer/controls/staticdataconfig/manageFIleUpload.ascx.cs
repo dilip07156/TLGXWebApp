@@ -263,7 +263,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 var newFileID = Guid.NewGuid();
                 string fileSavePath = destinationDir + "\\" + Path.GetFileNameWithoutExtension(fileName) + "-" + newFileID.ToString() + Path.GetExtension(fileName);
 
-                FileUpld.SaveAs(fileSavePath);
+                //FileUpld.SaveAs(fileSavePath);
                
                 MappingSVCs _objMappingSVCs = new MappingSVCs();
 
