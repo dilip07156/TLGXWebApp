@@ -519,12 +519,14 @@ namespace TLGX_Consumer.controls.attributes
             }
             if (e.CommandName.ToString() == "Mapping")
             {
+                addupdatemsg.Style.Add("display", "none");
+                msgdelundel.Style.Add("display", "none");
+                msgupdateall.Style.Add("display", "none");
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
                 var attributeid = e.CommandArgument.ToString();
                 var systemattributename = grdMasterAttributeList.Rows[index].Cells[0].Text;
                 sysAttrName.InnerText = systemattributename;
-                addupdatemsg.Style.Add("display", "none");
                 btnSave.Text = "Add";
                 txtSupplierAttributeName.Text = "";
                 ddlSuppliers.Enabled = true;
