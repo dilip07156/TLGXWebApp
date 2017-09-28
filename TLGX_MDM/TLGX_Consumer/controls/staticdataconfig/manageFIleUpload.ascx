@@ -253,7 +253,7 @@
         height: 150px;
     }
 
-    @media(min-width: 992px) {
+    @media(min-width: 768px) {
         .col5 {
             width: 20%;
             float: left;
@@ -513,7 +513,7 @@
                 <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
             </div>
             <div class="modal-body">
-                <div class="container">
+                <%--<div class="container">--%>
                     <div class="row">
                         <div class="col-md-12">
                             <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
@@ -660,7 +660,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <%--</div>--%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
