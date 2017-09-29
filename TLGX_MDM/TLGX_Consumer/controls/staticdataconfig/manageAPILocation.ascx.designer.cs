@@ -22,15 +22,6 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.UpdatePanel updUserGrid;
         
         /// <summary>
-        /// vlSumm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vlSumm;
-        
-        /// <summary>
         /// ddlSupplierName control.
         /// </summary>
         /// <remarks>

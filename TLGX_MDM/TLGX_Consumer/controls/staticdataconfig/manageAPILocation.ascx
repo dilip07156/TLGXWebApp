@@ -292,7 +292,7 @@
             </div>
             <input type="hidden" id="hdnPentahoid" name="hdnPentahoid" value="" />
             <div class="modal-body">
-                <div class="container">
+               <%-- <div class="container">--%>
                     <div class="row">
                         <div class="col-sm-3">
                             <label class="col-form-label" for="txtSupplier">Supplier</label>
@@ -336,7 +336,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                <%--</div>--%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
