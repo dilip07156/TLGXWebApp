@@ -33,10 +33,10 @@
                     $("#tblstatastic").empty();
                     //file Details
                     for (var inode = 0; inode < result.FileDetails.length; inode++) {
-                        $("#lblSupplier").html(result.FileDetails[0].Supplier);
-                        $("#lblEntity").html(result.FileDetails[0].Entity);
-                        $("#lblPath").html(result.FileDetails[0].OriginalFilePath);
-                        $("#lblstatus").html(result.FileDetails[0].STATUS);
+                        $("#lblSupplier").val(result.FileDetails[0].Supplier);
+                        $("#lblEntity").val(result.FileDetails[0].Entity);
+                        $("#lblPath").val(result.FileDetails[0].OriginalFilePath);
+                        $("#lblstatus").val(result.FileDetails[0].STATUS);
                         var status = result.FileDetails[0].STATUS;
                         if (status == "ERROR" || status == "PROCESSED") {
                             myStopFunction();
@@ -147,7 +147,7 @@
                             var HH = Math.floor(diffSeconds / 3600);
                             var MM = (Math.floor(diffSeconds % 3600) / 60).toFixed(2);
                             var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                            $("#lbltimeDiff").text(formatted);
+                            $("#lbltimeDiff").val(formatted);
                         }
                     }
                     //error log
@@ -519,24 +519,24 @@
                             <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
                             <div class="col-sm-2 col5">
-                                <label class="col-form-label">Supplier</label>
-                                <label id="lblSupplier" class="form-control "></label>
+                                <label class="col-form-label" for="lblSupplier">Supplier</label>
+                                <input type="text" readonly id="lblSupplier" class="form-control "/>
                             </div>
                             <div class="col-sm-2 col5">
-                                <label class="col-form-label">Entity</label>
-                                <label id="lblEntity" class="form-control"></label>
+                                <label class="col-form-label" for="lblEntity">Entity</label>
+                                <input type="text" readonly id="lblEntity" class="form-control"/>
                             </div>
                             <div class="col-sm-2 col5">
-                                <label class="col-form-label">File</label>
-                                <label id="lblPath" class="form-control"></label>
+                                <label class="col-form-label" for="lblPath">File</label>
+                                <input type="text" readonly id="lblPath" class="form-control"/>
                             </div>
                             <div class="col-sm-2 col5">
-                                <label class="col-form-label">Status</label>
-                                <label id="lblstatus" class="form-control"></label>
+                                <label class="col-form-label" for="lblstatus">Status</label>
+                                <input type="text" readonly id="lblstatus" class="form-control"/>
                             </div>
                             <div class="col-sm-2 col5">
-                                <label class="col-form-label">Elapsed Time</label>
-                                <label id="lbltimeDiff" class="form-control"></label>
+                                <label class="col-form-label" for="lbltimeDiff">Elapsed Time</label>
+                                <input type="text" readonly id="lbltimeDiff" class="form-control"/>
                             </div>
 
                         </div>
