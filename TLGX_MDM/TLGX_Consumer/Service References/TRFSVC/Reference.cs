@@ -15,9 +15,9 @@ namespace TLGX_Consumer.TRFSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileData", Namespace="http://schemas.datacontract.org/2004/07/OperationContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_FileData", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer")]
     [System.SerializableAttribute()]
-    public partial class FileData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DC_FileData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -92,9 +92,9 @@ namespace TLGX_Consumer.TRFSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Response", Namespace="http://schemas.datacontract.org/2004/07/OperationContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_UploadResponse", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer")]
     [System.SerializableAttribute()]
-    public partial class Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DC_UploadResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -163,10 +163,10 @@ namespace TLGX_Consumer.TRFSVC {
         System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.UploadResponse> UploadFileAsync(TLGX_Consumer.TRFSVC.RemoteFileInfo request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/UploadFileInChunks", ReplyAction="http://tempuri.org/ITransferService/UploadFileInChunksResponse")]
-        TLGX_Consumer.TRFSVC.Response UploadFileInChunks(TLGX_Consumer.TRFSVC.FileData request);
+        TLGX_Consumer.TRFSVC.DC_UploadResponse UploadFileInChunks(TLGX_Consumer.TRFSVC.DC_FileData request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/UploadFileInChunks", ReplyAction="http://tempuri.org/ITransferService/UploadFileInChunksResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.Response> UploadFileInChunksAsync(TLGX_Consumer.TRFSVC.FileData request);
+        System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.DC_UploadResponse> UploadFileInChunksAsync(TLGX_Consumer.TRFSVC.DC_FileData request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITransferService/DeleteFile", ReplyAction="http://tempuri.org/ITransferService/DeleteFileResponse")]
         bool DeleteFile(string FilePath);
@@ -265,11 +265,11 @@ namespace TLGX_Consumer.TRFSVC {
             return base.Channel.UploadFileAsync(request);
         }
         
-        public TLGX_Consumer.TRFSVC.Response UploadFileInChunks(TLGX_Consumer.TRFSVC.FileData request) {
+        public TLGX_Consumer.TRFSVC.DC_UploadResponse UploadFileInChunks(TLGX_Consumer.TRFSVC.DC_FileData request) {
             return base.Channel.UploadFileInChunks(request);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.Response> UploadFileInChunksAsync(TLGX_Consumer.TRFSVC.FileData request) {
+        public System.Threading.Tasks.Task<TLGX_Consumer.TRFSVC.DC_UploadResponse> UploadFileInChunksAsync(TLGX_Consumer.TRFSVC.DC_FileData request) {
             return base.Channel.UploadFileInChunksAsync(request);
         }
         

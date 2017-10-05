@@ -190,9 +190,9 @@ namespace TLGX_Consumer.staticdata.files
             }
         }
 
-        private TRFSVC.Response UploadFileInChunks(HttpPostedFile file, long actualFileSize, Guid FileUploadId)
+        private TRFSVC.DC_UploadResponse UploadFileInChunks(HttpPostedFile file, long actualFileSize, Guid FileUploadId)
         {
-            TRFSVC.Response returnResponse = new TRFSVC.Response();
+            TRFSVC.DC_UploadResponse returnResponse = new TRFSVC.DC_UploadResponse();
             string fileNameNew = System.IO.Path.GetFileNameWithoutExtension(file.FileName) + "_" + FileUploadId.ToString().Replace("-", "_") + "." + System.IO.Path.GetExtension(file.FileName).Replace(".", "");
 
             long filePosition = 0;
@@ -229,7 +229,7 @@ namespace TLGX_Consumer.staticdata.files
                     }
 
                     //Populate the data contract to send it to the service method
-                    returnResponse = serviceClient.UploadFileInChunks(new TRFSVC.FileData { FileName = fileNameNew, BufferData = bufferData, FilePostition = filePosition });
+                    returnResponse = serviceClient.UploadFileInChunks(new TRFSVC.DC_FileData { FileName = fileNameNew, BufferData = bufferData, FilePostition = filePosition });
                     if (!returnResponse.UploadSucceeded)
                     {
                         break;
@@ -241,7 +241,7 @@ namespace TLGX_Consumer.staticdata.files
             }
             catch
             {
-                return new TRFSVC.Response { UploadSucceeded = false, UploadedPath = string.Empty };
+                return new TRFSVC.DC_UploadResponse { UploadSucceeded = false, UploadedPath = string.Empty };
             }
             finally
             {

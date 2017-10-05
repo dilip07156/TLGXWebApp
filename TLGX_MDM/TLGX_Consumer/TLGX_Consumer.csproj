@@ -774,10 +774,10 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.Response.datasource">
+    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
+    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.DC_UploadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\TRFSVC\TransferService.disco" />
