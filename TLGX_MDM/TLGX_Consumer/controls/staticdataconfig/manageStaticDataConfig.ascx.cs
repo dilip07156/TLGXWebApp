@@ -38,6 +38,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             if (!IsPostBack)
             {
+                PageIndex = 0;
                 Config_Id = new Guid(Request.QueryString["Config_Id"]);
                 fillsearchcontrolmasters();
                 if (Config_Id != Guid.Empty)
@@ -295,6 +296,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Warning);
+                   // PageIndex = 0;
+                    fillmappingattributes();
                 }
                 else
                 {
@@ -673,7 +676,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+            }
         }
 
         protected void grdMappingAttrValues_PageIndexChanging(object sender, GridViewPageEventArgs e)
