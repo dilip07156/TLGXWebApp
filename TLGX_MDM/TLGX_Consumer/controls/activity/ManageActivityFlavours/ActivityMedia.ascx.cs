@@ -23,7 +23,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            gvActMediaSearch.DataSource = null;
+            gvActMediaSearch.DataBind();
         }
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
