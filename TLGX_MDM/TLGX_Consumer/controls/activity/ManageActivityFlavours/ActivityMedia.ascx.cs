@@ -13,18 +13,18 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         public Guid Activity_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Activity_Id =  new Guid( Request.QueryString["Activity_Id"]);
+            if (!IsPostBack)
+            {
+                BindMedia();
+            }
         }
+        protected void BindMedia()
 
-        protected void btnReset_Click(object sender, EventArgs e)
         {
-
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
+            Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             gvActMediaSearch.DataSource = null;
             gvActMediaSearch.DataBind();
+
         }
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,6 +43,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         }
 
         protected void gvActMediaSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void gvActMediaSearch_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
         }

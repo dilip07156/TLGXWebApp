@@ -13,7 +13,19 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         public Guid Activity_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (!IsPostBack)
+            {
+                BindClassificationAttributes();
+            }
+        }
+        protected void BindClassificationAttributes()
+
+        {
             Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
+            gvActivityCASearch.DataSource = null;
+            gvActivityCASearch.DataBind();
+
         }
 
         protected void gvActivityCASearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -31,10 +43,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            gvActivityCASearch.DataSource = null;
-            gvActivityCASearch.DataBind();
-        }
+       
     }
 }

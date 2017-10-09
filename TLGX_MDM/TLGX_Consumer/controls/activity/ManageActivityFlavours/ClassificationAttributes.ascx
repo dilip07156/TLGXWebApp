@@ -1,8 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ClassificationAttributes.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.ClassificationAttributes" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:UpdatePanel ID="updCA" runat="server">
     <ContentTemplate>
-        <div class="panel-group" id="accordion">
+        <%--<div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -59,7 +60,7 @@
                 </div>
 
             </div>
-        </div>
+        </div>--%>
 
         <div class="row">
 
@@ -86,12 +87,12 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();"  /><%--OnClick="btnNewUpload_Click"--%>
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Add New" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
             </div>
         </div>
 
 
-        <div class="panel-group" id="CAsearchResult">
+        <div class="panel-group" id="searchResult">
             <div class="panel panel-default">
 
                 <div class="panel-heading clearfix">
@@ -112,7 +113,7 @@
                         <asp:GridView ID="gvActivityCASearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Classification Attributes Found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvActivityCASearch_PageIndexChanging"
-                            OnRowCommand="gvActivityCASearch_RowCommand" DataKeyNames="Activity_ClassificationAttribute_Id,Activity_Flavour_Id">
+                            OnRowCommand="gvActivityCASearch_RowCommand" DataKeyNames="Activity_ClassificationAttribute_Id">
                             <Columns>
                                 <asp:BoundField HeaderText="Attribute Type" DataField="AttributeType" />
                                 <asp:BoundField HeaderText="Attribute SubType" DataField="AttributeSubType" />
