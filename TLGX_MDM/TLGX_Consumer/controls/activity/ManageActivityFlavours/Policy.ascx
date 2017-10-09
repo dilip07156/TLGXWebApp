@@ -1,200 +1,173 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Policy.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.Policy" %>
 
-<asp:UpdatePanel ID="updPolicy" runat="server">
+
+<script type="text/javascript">
+    function showAddNewActivityModal() {
+        $("#moAddNewActivityModal").modal('show');
+    }
+    function closeAddNewActivityModal() {
+        $("#moAddNewActivityModal").modal('hide');
+    }
+    //function page_load(sender, args) {
+    //    closeAddNewActivityModal();
+    //}
+</script>
+<asp:UpdatePanel ID="updPanPolicy" runat="server">
     <ContentTemplate>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="panel-group" id="accordion">
-                    <div class="panel panel-default">
-                                                <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Search Activities</a>
-                            </h4>
-                        </div>
-
-                        <div id="collapseSearch" class="panel-collapse collapse in">
-
-                            <div class="panel-body">
-
-                                <div class="form-group">
-                                    <div class="col-sm-12">
-                                        <br />
-                                        <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="HotelSearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-6">
-
-                                    <asp:UpdatePanel ID="updSearchDDLChange" runat="server">
-                                        <ContentTemplate>
-                                            <div class="form-group col-sm-12">
-                                                <label class="control-label col-sm-6" for="ddlCountry">Country</label>
-                                                <div class="col-sm-6">
-                                                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" > <%--OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"--%>
-                                                        <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group col-sm-12">
-                                                <label class="control-label col-sm-6" for="ddlCity">City</label>
-                                                <div class="col-sm-6">
-                                                    <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
-                                                        <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-                                    <div class="form-group col-sm-12">
-                                        <label class="control-label col-sm-6" for="ddlProductCategorySubType">
-                                            Product Category
-                                        <%--<asp:RequiredFieldValidator ID="vddlProductCategoryType" runat="server" ErrorMessage="Please select product category."
-                                            ControlToValidate="ddlProductCategoryType" CssClass="text-danger" ValidationGroup="HotelSearch"
-                                            Text="*"></asp:RequiredFieldValidator>--%>
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductCategoryType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-12">
-                                        <label class="control-label col-sm-6" for="ddlProductCategorySubType">
-                                            Category Sub Type
-                                        <%--<asp:RequiredFieldValidator ID="vddlProductCategorySubType" runat="server" ErrorMessage="Please select product sub category."
-                                            ControlToValidate="ddlProductCategorySubType" InitialValue="" CssClass="text-danger" ValidationGroup="HotelSearch"
-                                            Text="*"></asp:RequiredFieldValidator>--%>
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductCategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group col-sm-6">
-
-                                    <div class="form-group col-sm-12 row">
-                                        <label class="control-label col-sm-6" for="txtProductName">Product Name</label>
-                                        <div class="col-sm-6">
-                                            <asp:TextBox ID="txtProductName" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-12 row">
-                                        <label class="control-label col-sm-6" for="ddlProductType">
-                                            Product Type
-                                        <%--<asp:RequiredFieldValidator ID="vddlProductType" runat="server" ErrorMessage="Please select status." ControlToValidate="ddlProductType"
-                                            InitialValue="" CssClass="text-danger" ValidationGroup="HotelSearch"
-                                            Text="*"></asp:RequiredFieldValidator>--%>
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control">
-                                                <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-12 row">
-                                        <label class="control-label col-sm-6" for="ddlProductSubType">
-                                            Product Sub Type
-                                        <%--<asp:RequiredFieldValidator ID="vddlProductSubType" runat="server" ErrorMessage="Please select status." ControlToValidate="ddlProductSubType"
-                                            InitialValue="" CssClass="text-danger" ValidationGroup="HotelSearch"
-                                            Text="*"></asp:RequiredFieldValidator>--%>
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductSubType" runat="server" CssClass="form-control">
-                                                <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-sm-12 row">
-                                        <label class="control-label col-sm-6" for="ddlStatus">
-                                            Status
-                                        <%--<asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="Please select status." ControlToValidate="ddlStatus"
-                                            InitialValue="" CssClass="text-danger" ValidationGroup="HotelSearch"
-                                            Text="*"></asp:RequiredFieldValidator>--%>
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
-                                                <asp:ListItem Text="-Select-" Value=""></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group col-sm-12 row">
-                                        <div class="form-group col-sm-6">
-                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search"  /><%--ValidationGroup="HotelSearch" OnClick="btnSearch_Click"--%>
-                                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                            <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnNewActivity_Click" OnClientClick="showAddNewActivityModal();" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div id="dvMsg" runat="server" style="display: none;"></div>
+        <headertemplate>
+            <div class="container">
+                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="vldGrpRules" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
             </div>
-            <div id="dvPageSize" runat="server" class="pull-right">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <label class="input-group-addon" for="ddlPageSize"><strong>Page Size</strong></label>
-                            <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="form-control" AutoPostBack="true" Width="100px" > <%--OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged"--%>
-                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                                <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                                <asp:ListItem Text="25" Value="25" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                <asp:ListItem Text="100" Value="100"></asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
+        </headertemplate>
+
+        <div class="form-group col-md-12">
+            <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewActivityModal();" /><%--OnClick="btnNewActivity_Click"--%>
+        </div>
+
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">Policy</div>
+                <div class="panel-body">
+                    <asp:GridView ID="grdPolicy" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Flavour_Id" EmptyDataText="No Hotel Rules for this hotel" CssClass="table table-hover table-striped">
+                        <%--OnRowCommand="grdPolicy_RowCommand" OnRowDataBound="grdPolicy_RowDataBound"--%>
+                        <Columns>
+                            <asp:BoundField DataField="RuleType" HeaderText="RuleType" SortExpression="RuleType" />
+                            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
+                            <asp:BoundField DataField="IsInternal" HeaderText="Is Internal" SortExpression="IsInternal" />
+                            <asp:TemplateField ShowHeader="false">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                                        Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
+                                        <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField ShowHeader="false">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                                        CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
+                                         <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
+                                        <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
                 </div>
+
             </div>
         </div>
-        <div class="panel-group" id="searchResult">
-            <div class="panel panel-default">
 
-                <div class="panel-heading clearfix">
-                    <h4 class="panel-title pull-left">
-                        <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
-                            <asp:Label ID="lblTotalRecords" runat="server"></asp:Label>)</a>
-                    </h4>
-                </div>
 
-                <div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body">
+        <div class="modal fade" id="moAddNewActivityModal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
 
-                        <%--<div class="row">
-                            <div id="dvMsg" runat="server" enableviewstate="false" style="display: none;">
-                            </div>
-                        </div>--%>
-
-                        <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
-                            AutoGenerateColumns="false" DataKeyNames="Activity_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
-                            <Columns>
-                                <asp:BoundField DataField="CommonProductID" HeaderText="Common Product ID" />
-                                <asp:BoundField DataField="Product_Name" HeaderText="Product Name" />
-                                <asp:BoundField DataField="ProductCategory" HeaderText="Product Category" />
-                                <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
-                                <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
-                                <asp:BoundField DataField="ProductNameSubType" HeaderText="Product Name Sub Type" />
-                                <asp:BoundField DataField="Country" HeaderText="Country" />
-                                <asp:BoundField DataField="City" HeaderText="City" />
-                                <asp:BoundField DataField="" HeaderText="Status" />
-                                <asp:HyperLinkField Text="Manage" ControlStyle-CssClass="btn btn-default" />
-                                <asp:HyperLinkField Text="Delete" ControlStyle-CssClass="btn btn-default" />
-                            </Columns>
-                            <PagerStyle CssClass="pagination-ys" />
-                        </asp:GridView>
+                    <div class="modal-header">
+                        <div class="input-group">
+                            <h4>Add New Activity</h4>
+                        </div>
                     </div>
-                </div>
 
+                    <div class="modal-body">
+                        <asp:UpdatePanel ID="updNewActivity" runat="server">
+                            <ContentTemplate>
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <asp:ValidationSummary ID="vldSumActivity" runat="server" ValidationGroup="NewActivity" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                                                <div id="divMsgAlertActivity" runat="server" style="display: none"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <asp:FormView ID="frmPolicy" runat="server" DataKeyNames="Activity_Policy_Id" DefaultMode="Insert" ><%--OnItemCommand="frmRule_ItemCommand"--%>
+
+                                    <InsertItemTemplate>
+                                        <div class="">
+                                            <div class="form-group">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">Add New Hotel Rule</div>
+                                                    <div class="panel-body">
+
+                                                        <div class="form-group">
+                                                            <label class="control-label-mand" for="ddlRuleName">
+                                                                Rule Name
+                                        <asp:RequiredFieldValidator ID="vldddlRuleName" runat="server" ControlToValidate="ddlRuleName" ErrorMessage="Please select rule name" Text="*" InitialValue="0" ValidationGroup="vldGrpRules" CssClass="text-danger"></asp:RequiredFieldValidator></label>
+                                                            <asp:DropDownList runat="server" ID="ddlRuleName" CssClass="form-control" AppendDataBoundItems="true">
+                                                                <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                            </asp:DropDownList>
+
+
+                                                            <label class="control-label-mand" for="txtRuleText">
+                                                                Description
+                                    <asp:RequiredFieldValidator ID="vldddlDescriptionType" runat="server" ControlToValidate="txtRuleText" ErrorMessage="Please enter rule description" Text="*" ValidationGroup="vldGrpRules" CssClass="text-danger"></asp:RequiredFieldValidator></label>
+
+                                                            <asp:TextBox ID="txtRuleText" runat="server" CssClass="form-control" />
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <label class="control-label" for="txtRuleText">Is Internal Rule</label>
+                                                            <asp:CheckBox ID="chkIsInternal" runat="server" />&nbsp;&nbsp;&nbsp;
+                                    <asp:LinkButton ID="btnAddRule" CommandName="Add" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldGrpRules" CausesValidation="true">AddNew Rule</asp:LinkButton>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </InsertItemTemplate>
+
+                                    <EditItemTemplate>
+                                        <div class="">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">Update Hotel Rule</div>
+                                                <div class="panel-body">
+
+                                                    <div class="form-group">
+                                                        <label class="control-label-mand" for="ddlRuleName">
+                                                            Rule Name
+                                    <asp:RequiredFieldValidator ID="vldddlRuleName" runat="server" ControlToValidate="ddlRuleName" ErrorMessage="Please select rule name" Text="*" InitialValue="0" ValidationGroup="vldGrpRules" CssClass="text-danger"></asp:RequiredFieldValidator></label>
+                                                        <asp:DropDownList runat="server" ID="ddlRuleName" CssClass="form-control">
+                                                            <asp:ListItem>-Select-</asp:ListItem>
+                                                        </asp:DropDownList>
+
+
+
+                                                        <label class="control-label-mand" for="txtRuleText">
+                                                            Description
+                                <asp:RequiredFieldValidator ID="vldddlDescriptionType" runat="server" ControlToValidate="txtRuleText" ErrorMessage="Please enter rule description" Text="*" ValidationGroup="vldGrpRules" CssClass="text-danger"></asp:RequiredFieldValidator></label>
+                                                        <asp:TextBox ID="txtRuleText" runat="server" CssClass="form-control" Text='<%# Bind("Description") %>' />
+
+                                                        &nbsp;&nbsp;&nbsp;
+                                <label class="control-label" for="txtRuleText">Is Internal Rule</label>
+                                                        <asp:CheckBox ID="chkIsInternal" runat="server" />
+                                                        &nbsp;&nbsp;&nbsp;
+                                <asp:LinkButton ID="btnAddRule" runat="server" CommandName="Modify" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldGrpRules">Update Rule</asp:LinkButton>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </EditItemTemplate>
+
+                                </asp:FormView>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </ContentTemplate>

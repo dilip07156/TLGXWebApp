@@ -46,8 +46,8 @@
 
                                      <div class="form-group row">
                                         <div class="col-sm-12">
-                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" ValidationGroup="vldgrpFileSearch" />
-                                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
+                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search"  ValidationGroup="vldgrpFileSearch" /><%--OnClick="btnSearch_Click"--%>
+                                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset"  /><%--OnClick="btnReset_Click"--%>
                                         </div>
                                         <div class="col-sm-12">&nbsp; </div>
                                     </div>
@@ -73,7 +73,7 @@
                 <div class="form-group pull-right">
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                        <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                        <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" ><%--OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged"--%>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>25</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
@@ -86,7 +86,7 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();"  /><%--OnClick="btnNewUpload_Click"--%>
             </div>
         </div>
 
