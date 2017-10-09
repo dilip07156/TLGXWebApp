@@ -805,8 +805,8 @@
                                                 <label class="input-group-addon" for="ckboxIsExactMatch">Match Entire Word</label>
                                             </div>
                                             <div class="form-group pull-right">
-                                                <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" CausesValidation="false" />
-                                                <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" CausesValidation="false" />
+                                                <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMatchedMapSelected_Click" CommandName="MapSelected" CausesValidation="false" />
+                                                <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" OnClick="btnMatchedMapAll_Click" CausesValidation="false" />
                                             </div>
                                         </div>
                                         <div class="form-group">

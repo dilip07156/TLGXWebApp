@@ -43,6 +43,9 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         }
 
-       
+        protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

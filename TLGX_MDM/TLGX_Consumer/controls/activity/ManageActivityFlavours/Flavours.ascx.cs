@@ -13,5 +13,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
 
         }
+
+        protected void frmHotelOverview_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+
+        }
     }
 }

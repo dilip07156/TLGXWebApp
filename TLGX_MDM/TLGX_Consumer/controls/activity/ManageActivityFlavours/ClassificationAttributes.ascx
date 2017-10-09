@@ -3,7 +3,7 @@
 
 <asp:UpdatePanel ID="updCA" runat="server">
     <ContentTemplate>
-      
+
 
         <div class="panel-group" id="searchResult">
             <div class="panel panel-default">
@@ -11,8 +11,21 @@
                 <div class="panel-heading clearfix">
                     <h4 class="panel-title pull-left">
                         <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
-                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a>
-                    </h4>
+                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a></h4>
+                    <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" />
+                    <div class="col-lg-3 pull-right">
+                        <div class="form-group pull-right">
+                            <div class="input-group" runat="server" id="divDropdownForEntries">
+                                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                                <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                                    <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>25</asp:ListItem>
+                                    <asp:ListItem>50</asp:ListItem>
+                                    <asp:ListItem>100</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="collapseSearchResult" class="panel-collapse collapse in">

@@ -3,29 +3,41 @@
 
 <asp:UpdatePanel ID="updMedia" runat="server">
     <ContentTemplate>
-       
+
         <div class="panel-group" id="searchResult">
             <div class="panel panel-default">
-
                 <div class="panel-heading clearfix">
                     <h4 class="panel-title pull-left">
                         <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Activity Media (Total Count:
-                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a>
-                    </h4>
+                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a></h4>
+                     <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" />
+                    <div class="col-lg-3 pull-right">
+                        <div class="form-group pull-right">
+                            <div class="input-group" runat="server" id="divDropdownForEntries">
+                                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                                <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                                    <asp:ListItem>10</asp:ListItem>
+                                    <asp:ListItem>25</asp:ListItem>
+                                    <asp:ListItem>50</asp:ListItem>
+                                    <asp:ListItem>100</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                   
                 </div>
-
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <asp:GridView ID="gvActMediaSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Media Found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvActMediaSearch_PageIndexChanging"
-                            OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id" >
+                            OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id">
                             <Columns>
                                 <asp:BoundField HeaderText="Media Name" DataField="MediaName" />
                                 <asp:BoundField HeaderText="Media_URL" DataField="Media_URL" />
                                 <asp:BoundField HeaderText="Category" DataField="Category" />
                                 <asp:BoundField HeaderText="Sub Category" DataField="SubCategory" />
-                                 <asp:BoundField HeaderText="Media Type" DataField="MediaType" />
+                                <asp:BoundField HeaderText="Media Type" DataField="MediaType" />
                                 <asp:BoundField HeaderText="Upload Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
 
                                 <asp:TemplateField ShowHeader="false">
