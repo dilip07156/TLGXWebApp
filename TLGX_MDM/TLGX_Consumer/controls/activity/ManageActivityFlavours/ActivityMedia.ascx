@@ -124,15 +124,11 @@
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                         <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                            <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>15</asp:ListItem>
-                            <asp:ListItem>20</asp:ListItem>
                             <asp:ListItem>25</asp:ListItem>
-                            <asp:ListItem>30</asp:ListItem>
-                            <asp:ListItem>35</asp:ListItem>
-                            <asp:ListItem>40</asp:ListItem>
-                            <asp:ListItem>45</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
+                            <asp:ListItem>100</asp:ListItem>
                         </asp:DropDownList>
                     </div>
 
@@ -146,7 +142,7 @@
         </div>
 
 
-        <div class="panel-group" id="mediasearchResult">
+        <div class="panel-group" id="searchResult">
             <div class="panel panel-default">
 
                 <div class="panel-heading clearfix">

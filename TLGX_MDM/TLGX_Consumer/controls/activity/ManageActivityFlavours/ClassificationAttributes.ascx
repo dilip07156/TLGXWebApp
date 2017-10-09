@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ClassificationAttributes.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.ClassificationAttributes" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <asp:UpdatePanel ID="updCA" runat="server">
     <ContentTemplate>
         <div class="panel-group" id="accordion">
@@ -74,6 +75,7 @@
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                         <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                            <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>25</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
@@ -91,7 +93,7 @@
         </div>
 
 
-        <div class="panel-group" id="CAsearchResult">
+        <div class="panel-group" id="searchResult">
             <div class="panel panel-default">
 
                 <div class="panel-heading clearfix">
