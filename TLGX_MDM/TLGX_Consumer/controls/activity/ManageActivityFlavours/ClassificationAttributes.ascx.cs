@@ -22,7 +22,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         protected void BindClassificationAttributes()
 
         {
-            Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
+            //Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             gvActivityCASearch.DataSource = null;
             gvActivityCASearch.DataBind();
 

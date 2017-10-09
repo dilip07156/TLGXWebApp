@@ -11,18 +11,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!IsPostBack)
+            {
+                grdPolicy.DataSource = null;
+                grdPolicy.DataBind();
+            }
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            grdPolicy.DataSource = null;
-            grdPolicy.DataBind();
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
