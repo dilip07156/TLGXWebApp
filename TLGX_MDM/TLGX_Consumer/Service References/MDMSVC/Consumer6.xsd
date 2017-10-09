@@ -50,7 +50,7 @@
       <xs:element minOccurs="0" name="For" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
-      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier" nillable="true" type="xs:string" />

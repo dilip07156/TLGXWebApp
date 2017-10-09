@@ -2249,6 +2249,240 @@
   <wsdl:message name="IConsumer_AddActivityStatus_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q248="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q248:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityMedia" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityMedia_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q249="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q249:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityMedia_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityMedia" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityMedia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityMediaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityMedia_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q250="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q250:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityInclusions_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityInclusions" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityInclusions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityInclusionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityInclusions_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q251="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q251:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityInclusions_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityInclusions" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityInclusions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityInclusionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityInclusions_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q252="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q252:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityInclusionDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityInclusionDetails" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityInclusionDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityInclusionDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityInclusionDetails_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q253="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q253:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateInclusionDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateInclusionDetails" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateInclusionDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateInclusionDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateInclusionDetails_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q254="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q254:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityClasificationAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityClasificationAttributes" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityClasificationAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityClasificationAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityClasificationAttributes_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q255="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q255:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityClassifiationAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityClassifiationAttributes" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityClassifiationAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityClassifiationAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityClassifiationAttributes_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q256="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q256:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPickUpDrop_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityPickUpDrop" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPickUpDrop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityPickUpDropResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPickUpDrop_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q257="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q257:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdatePickUpDrop_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdatePickUpDrop" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdatePickUpDrop_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdatePickUpDropResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdatePickUpDrop_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q258="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q258:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetPickUpDropDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPickUpDropDetails" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetPickUpDropDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPickUpDropDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetPickUpDropDetails_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q259="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q259:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdatePickUpDropDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdatePickUpDropDetails" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdatePickUpDropDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdatePickUpDropDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdatePickUpDropDetails_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q260="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q260:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityFlavour_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityFlavour" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityFlavour_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityFlavourResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityFlavour_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q261="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q261:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityFlavour_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityFlavour" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityFlavour_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityFlavourResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityFlavour_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q262="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q262:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityDeals_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityDeals" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityDeals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityDealsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityDeals_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q263="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q263:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityDeals_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityDeals" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityDeals_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityDealsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityDeals_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q264="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q264:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPrices_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityPrices" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPrices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityPricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPrices_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q265="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q265:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityPrices_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityPrices" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityPrices_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityPricesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityPrices_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q266="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q266:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActSupplierProdMapping_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActSupplierProdMapping" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActSupplierProdMapping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActSupplierProdMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActSupplierProdMapping_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q267="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q267:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMapping" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q268="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q268:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActReviewsAndScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActReviewsAndScores" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActReviewsAndScores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActReviewsAndScoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActReviewsAndScores_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q269="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q269:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActReviewsNScores_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActReviewsNScores" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActReviewsNScores_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActReviewsNScoresResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActReviewsNScores_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q270="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q270:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActSupplierProdMapping_CA_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActSupplierProdMapping_CA" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActSupplierProdMapping_CA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActSupplierProdMapping_CAResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActSupplierProdMapping_CA_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q271="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q271:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_CA_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMapping_CA" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_CA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMapping_CAResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_CA_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q272="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q272:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityPolicy_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q273="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q273:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityPolicy_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityPolicy" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityPolicy_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityPolicyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q274="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q274:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="GetAccomodationList">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/GetAccomodationList" message="tns:IConsumer_GetAccomodationList_InputMessage" />
@@ -3489,6 +3723,136 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddActivityStatus" message="tns:IConsumer_AddActivityStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddActivityStatusResponse" message="tns:IConsumer_AddActivityStatus_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddActivityStatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddActivityStatus_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityMedia" message="tns:IConsumer_GetActivityMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityMediaResponse" message="tns:IConsumer_GetActivityMedia_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityMediaDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityMedia_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityMedia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityMedia" message="tns:IConsumer_AddUpdateActivityMedia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityMediaResponse" message="tns:IConsumer_AddUpdateActivityMedia_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityMediaDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityMedia_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityInclusions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityInclusions" message="tns:IConsumer_GetActivityInclusions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityInclusionsResponse" message="tns:IConsumer_GetActivityInclusions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityInclusionsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityInclusions_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityInclusions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityInclusions" message="tns:IConsumer_AddUpdateActivityInclusions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityInclusionsResponse" message="tns:IConsumer_AddUpdateActivityInclusions_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityInclusionsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityInclusions_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityInclusionDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityInclusionDetails" message="tns:IConsumer_GetActivityInclusionDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityInclusionDetailsResponse" message="tns:IConsumer_GetActivityInclusionDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityInclusionDetailsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityInclusionDetails_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateInclusionDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateInclusionDetails" message="tns:IConsumer_AddUpdateInclusionDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateInclusionDetailsResponse" message="tns:IConsumer_AddUpdateInclusionDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateInclusionDetailsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateInclusionDetails_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityClasificationAttributes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityClasificationAttributes" message="tns:IConsumer_GetActivityClasificationAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityClasificationAttributesResponse" message="tns:IConsumer_GetActivityClasificationAttributes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityClasificationAttributesDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityClasificationAttributes_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityClassifiationAttributes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributes" message="tns:IConsumer_AddUpdateActivityClassifiationAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributesResponse" message="tns:IConsumer_AddUpdateActivityClassifiationAttributes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributesDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityClassifiationAttributes_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityPickUpDrop">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityPickUpDrop" message="tns:IConsumer_GetActivityPickUpDrop_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityPickUpDropResponse" message="tns:IConsumer_GetActivityPickUpDrop_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityPickUpDropDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityPickUpDrop_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdatePickUpDrop">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdatePickUpDrop" message="tns:IConsumer_AddUpdatePickUpDrop_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdatePickUpDropResponse" message="tns:IConsumer_AddUpdatePickUpDrop_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdatePickUpDropDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdatePickUpDrop_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPickUpDropDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetPickUpDropDetails" message="tns:IConsumer_GetPickUpDropDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetPickUpDropDetailsResponse" message="tns:IConsumer_GetPickUpDropDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetPickUpDropDetailsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetPickUpDropDetails_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdatePickUpDropDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdatePickUpDropDetails" message="tns:IConsumer_AddUpdatePickUpDropDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdatePickUpDropDetailsResponse" message="tns:IConsumer_AddUpdatePickUpDropDetails_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdatePickUpDropDetailsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdatePickUpDropDetails_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityFlavour">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityFlavour" message="tns:IConsumer_GetActivityFlavour_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityFlavourResponse" message="tns:IConsumer_GetActivityFlavour_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityFlavourDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityFlavour_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityFlavour">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityFlavour" message="tns:IConsumer_AddUpdateActivityFlavour_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourResponse" message="tns:IConsumer_AddUpdateActivityFlavour_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityFlavour_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityDeals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityDeals" message="tns:IConsumer_GetActivityDeals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityDealsResponse" message="tns:IConsumer_GetActivityDeals_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityDealsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityDeals_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityDeals">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDeals" message="tns:IConsumer_AddUpdateActivityDeals_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDealsResponse" message="tns:IConsumer_AddUpdateActivityDeals_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDealsDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityDeals_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityPrices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityPrices" message="tns:IConsumer_GetActivityPrices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityPricesResponse" message="tns:IConsumer_GetActivityPrices_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityPricesDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityPrices_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityPrices">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPrices" message="tns:IConsumer_AddUpdateActivityPrices_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPricesResponse" message="tns:IConsumer_AddUpdateActivityPrices_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPricesDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityPrices_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActSupplierProdMapping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActSupplierProdMapping" message="tns:IConsumer_GetActSupplierProdMapping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActSupplierProdMappingResponse" message="tns:IConsumer_GetActSupplierProdMapping_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActSupplierProdMappingDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActSupplierProdMapping_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActSupplierProdMapping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActSupplierProdMapping" message="tns:IConsumer_AddUpdateActSupplierProdMapping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActSupplierProdMappingResponse" message="tns:IConsumer_AddUpdateActSupplierProdMapping_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActSupplierProdMappingDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActSupplierProdMapping_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActReviewsAndScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActReviewsAndScores" message="tns:IConsumer_GetActReviewsAndScores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActReviewsAndScoresResponse" message="tns:IConsumer_GetActReviewsAndScores_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActReviewsAndScoresDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActReviewsAndScores_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActReviewsNScores">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActReviewsNScores" message="tns:IConsumer_AddUpdateActReviewsNScores_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActReviewsNScoresResponse" message="tns:IConsumer_AddUpdateActReviewsNScores_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActReviewsNScoresDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActReviewsNScores_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActSupplierProdMapping_CA">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActSupplierProdMapping_CA" message="tns:IConsumer_GetActSupplierProdMapping_CA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActSupplierProdMapping_CAResponse" message="tns:IConsumer_GetActSupplierProdMapping_CA_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActSupplierProdMapping_CADC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActSupplierProdMapping_CA_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActSupplierProdMapping_CA">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActSupplierProdMapping_CA" message="tns:IConsumer_AddUpdateActSupplierProdMapping_CA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActSupplierProdMapping_CAResponse" message="tns:IConsumer_AddUpdateActSupplierProdMapping_CA_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActSupplierProdMapping_CADC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActSupplierProdMapping_CA_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityPolicy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityPolicy" message="tns:IConsumer_GetActivityPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityPolicyResponse" message="tns:IConsumer_GetActivityPolicy_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityPolicyDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityPolicy_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityPolicy">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicy" message="tns:IConsumer_AddUpdateActivityPolicy_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyResponse" message="tns:IConsumer_AddUpdateActivityPolicy_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />

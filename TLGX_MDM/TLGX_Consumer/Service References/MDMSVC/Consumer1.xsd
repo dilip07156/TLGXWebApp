@@ -819,4 +819,632 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Status" nillable="true" type="tns:DC_Activity_Status" />
+  <xs:complexType name="DC_Activity_Media_Search_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Media_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SubCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValidFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ValidTo" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Media_Search_RQ" nillable="true" type="tns:DC_Activity_Media_Search_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Media">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Media" nillable="true" type="tns:DC_Activity_Media" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Media" nillable="true" type="tns:ArrayOfDC_Activity_Media" />
+  <xs:complexType name="DC_Activity_Media">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Media_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MediaFileMaster" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MediaType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media_Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media_Height" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Media_Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media_Position" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Media_URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media_Width" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ValidFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ValidTo" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Media" nillable="true" type="tns:DC_Activity_Media" />
+  <xs:complexType name="DC_Activity_Inclusions_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Inclusions_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="InclusionFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsInclusion" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Inclusions_RQ" nillable="true" type="tns:DC_Activity_Inclusions_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Inclusions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Inclusions" nillable="true" type="tns:DC_Activity_Inclusions" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Inclusions" nillable="true" type="tns:ArrayOfDC_Activity_Inclusions" />
+  <xs:complexType name="DC_Activity_Inclusions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Inclusions_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAudioCommentary" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDriver" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsInclusion" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RestaurantStyle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Inclusions" nillable="true" type="tns:DC_Activity_Inclusions" />
+  <xs:complexType name="DC_Activity_InclusionDetails_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Inclusion_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="GuideLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDetailFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionDetailName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDetailTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionDetailType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_InclusionDetails_RQ" nillable="true" type="tns:DC_Activity_InclusionDetails_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_InclusionsDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_InclusionsDetails" nillable="true" type="tns:DC_Activity_InclusionsDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_InclusionsDetails" nillable="true" type="tns:ArrayOfDC_Activity_InclusionsDetails" />
+  <xs:complexType name="DC_Activity_InclusionsDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_InclusionDetails_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Inclusion_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreateUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DaysOfWeek" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EditUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GuideLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GuideLanguageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDetailDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDetailFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDetailFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionDetailName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InclusionDetailTo" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InclusionDetailType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ToTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_InclusionsDetails" nillable="true" type="tns:DC_Activity_InclusionsDetails" />
+  <xs:complexType name="DC_Activity_ClassificationAttributes_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_ClassificationAttribute_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttributeSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_ClassificationAttributes_RQ" nillable="true" type="tns:DC_Activity_ClassificationAttributes_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_ClassificationAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_ClassificationAttributes" nillable="true" type="tns:DC_Activity_ClassificationAttributes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_ClassificationAttributes" nillable="true" type="tns:ArrayOfDC_Activity_ClassificationAttributes" />
+  <xs:complexType name="DC_Activity_ClassificationAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_ClassificationAttribute_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttributeSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreateUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EditUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalOnly" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_ClassificationAttributes" nillable="true" type="tns:DC_Activity_ClassificationAttributes" />
+  <xs:complexType name="DC_Activity_PickUpDrop_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_PickUpDrop_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_PickUpDrop_RQ" nillable="true" type="tns:DC_Activity_PickUpDrop_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_PickUpDrop">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_PickUpDrop" nillable="true" type="tns:DC_Activity_PickUpDrop" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_PickUpDrop" nillable="true" type="tns:ArrayOfDC_Activity_PickUpDrop" />
+  <xs:complexType name="DC_Activity_PickUpDrop">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_PickUpDrop_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ForSupplier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAC" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TransferType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VehicleType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_PickUpDrop" nillable="true" type="tns:DC_Activity_PickUpDrop" />
+  <xs:complexType name="DC_Activity_PickUpDropDetails_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Acco_City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_PickUpDropDetail_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_PickUpDrop_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="FromToType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PickUpDropType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_PickUpDropDetails_RQ" nillable="true" type="tns:DC_Activity_PickUpDropDetails_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_PickUpDropDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_PickUpDropDetails" nillable="true" type="tns:DC_Activity_PickUpDropDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_PickUpDropDetails" nillable="true" type="tns:ArrayOfDC_Activity_PickUpDropDetails" />
+  <xs:complexType name="DC_Activity_PickUpDropDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Acco_Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_ContactNotes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Telephone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Acco_Website" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_PickUpDropDetail_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_PickUpDrop_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AreaNameofPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreaSearchFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromToType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LocationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocationType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickUpDropType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_PickUpDropDetails" nillable="true" type="tns:DC_Activity_PickUpDropDetails" />
+  <xs:complexType name="DC_Activity_Flavour_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Flavour_RQ" nillable="true" type="tns:DC_Activity_Flavour_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Flavour">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Flavour" nillable="true" type="tns:DC_Activity_Flavour" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Flavour" nillable="true" type="tns:ArrayOfDC_Activity_Flavour" />
+  <xs:complexType name="DC_Activity_Flavour">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CommonProductNameSubType_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyProductNameSubType_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyReccom" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndingPoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FinanceControlId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPickUpDropDefined" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="MustSeeInCountry" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PlaceOfEvent" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategorySubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductNameSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartingPoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="USP" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Flavour" nillable="true" type="tns:DC_Activity_Flavour" />
+  <xs:complexType name="DC_Activity_Deals_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Deals_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DealCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Deals_RQ" nillable="true" type="tns:DC_Activity_Deals_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Deals">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Deals" nillable="true" type="tns:DC_Activity_Deals" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Deals" nillable="true" type="tns:ArrayOfDC_Activity_Deals" />
+  <xs:complexType name="DC_Activity_Deals">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Deals_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DealText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Deal_Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Deal_Price" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Deal_TnC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Deals" nillable="true" type="tns:DC_Activity_Deals" />
+  <xs:complexType name="DC_Activity_Prices_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Prices_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Prices_RQ" nillable="true" type="tns:DC_Activity_Prices_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Prices">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Prices" nillable="true" type="tns:DC_Activity_Prices" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Prices" nillable="true" type="tns:ArrayOfDC_Activity_Prices" />
+  <xs:complexType name="DC_Activity_Prices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Prices_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PriceBasis" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceCurrency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceNet" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Totalrecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Prices" nillable="true" type="tns:DC_Activity_Prices" />
+  <xs:complexType name="DC_Activity_SupplierProductMapping_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivitySupplierProductMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SuplierProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_ID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_SupplierProductMapping_RQ" nillable="true" type="tns:DC_Activity_SupplierProductMapping_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_SupplierProductMapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_SupplierProductMapping" nillable="true" type="tns:DC_Activity_SupplierProductMapping" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_SupplierProductMapping" nillable="true" type="tns:ArrayOfDC_Activity_SupplierProductMapping" />
+  <xs:complexType name="DC_Activity_SupplierProductMapping">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivitySupplierProductMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AdditionalInformation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockOutDateFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BlockOutDateTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Conditions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateTo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DayPattern" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeparturePoint" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartureTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DurationLength" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Exclusions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImgURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Inclusions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Introduction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MapID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MappingStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OptionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OptionDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OptionTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PassengerNumbers" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhysicalIntensity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProductDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductValidFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Recommonded" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Session" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Specials" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuplierProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCityIATACode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierDataLangaugeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierLocationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierLocationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierStateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierStateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierTourType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Theme" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TicketingDetails" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timing" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalActivities" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TourActivityLangauageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TourActivityLanguage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_SupplierProductMapping" nillable="true" type="tns:DC_Activity_SupplierProductMapping" />
+  <xs:complexType name="DC_Activity_ReviewsAndScores_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_ReviewsAndScores_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Review_Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_ReviewsAndScores_RQ" nillable="true" type="tns:DC_Activity_ReviewsAndScores_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_ReviewsAndScores">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_ReviewsAndScores" nillable="true" type="tns:DC_Activity_ReviewsAndScores" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_ReviewsAndScores" nillable="true" type="tns:ArrayOfDC_Activity_ReviewsAndScores" />
+  <xs:complexType name="DC_Activity_ReviewsAndScores">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_ReviewsAndScores_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCustomerReview" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Review_Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_PostedDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Review_Score" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Review_Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Totalrecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_ReviewsAndScores" nillable="true" type="tns:DC_Activity_ReviewsAndScores" />
+  <xs:complexType name="DC_Activity_SupplierProductMapping_CA_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_SupplierProductMapping_CA_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttributeSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_ID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_SupplierProductMapping_CA_RQ" nillable="true" type="tns:DC_Activity_SupplierProductMapping_CA_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_SupplierProductMapping_CA">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_SupplierProductMapping_CA" nillable="true" type="tns:DC_Activity_SupplierProductMapping_CA" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_SupplierProductMapping_CA" nillable="true" type="tns:ArrayOfDC_Activity_SupplierProductMapping_CA" />
+  <xs:complexType name="DC_Activity_SupplierProductMapping_CA">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_SupplierProductMapping_CA_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttributeSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SuplierProductCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Totalrecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_SupplierProductMapping_CA" nillable="true" type="tns:DC_Activity_SupplierProductMapping_CA" />
+  <xs:complexType name="DC_Activity_Policy_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Policy_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PolicyName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Policy_RQ" nillable="true" type="tns:DC_Activity_Policy_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Policy">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Policy" nillable="true" type="tns:DC_Activity_Policy" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Policy" nillable="true" type="tns:ArrayOfDC_Activity_Policy" />
+  <xs:complexType name="DC_Activity_Policy">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Policy_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AllowedYN" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PolicyDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PolicyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Policy_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Totalrecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Policy" nillable="true" type="tns:DC_Activity_Policy" />
 </xs:schema>

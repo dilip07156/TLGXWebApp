@@ -15,21 +15,22 @@
 <asp:UpdatePanel ID="updPanPolicy" runat="server">
     <ContentTemplate>
         <div id="dvMsg" runat="server" style="display: none;"></div>
+        <div class="container">
+            <div class="form-group col-md-12">
+                <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewActivityModal();" /><%--OnClick="btnNewActivity_Click"--%>
+            </div>
+        </div>
         <headertemplate>
             <div class="container">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="vldGrpRules" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
             </div>
         </headertemplate>
 
-        <div class="form-group col-md-12">
-            <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewActivityModal();" /><%--OnClick="btnNewActivity_Click"--%>
-        </div>
-
         <div class="container">
             <div class="panel panel-default">
                 <div class="panel-heading">Policy</div>
                 <div class="panel-body">
-                    <asp:GridView ID="grdPolicy" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Flavour_Id" EmptyDataText="No Hotel Rules for this hotel" CssClass="table table-hover table-striped">
+                    <asp:GridView ID="grdPolicy" runat="server" AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Activity_Flavour_Id" EmptyDataText="No Hotel Rules for this hotel" CssClass="table table-hover table-striped">
                         <%--OnRowCommand="grdPolicy_RowCommand" OnRowDataBound="grdPolicy_RowDataBound"--%>
                         <Columns>
                             <asp:BoundField DataField="RuleType" HeaderText="RuleType" SortExpression="RuleType" />
@@ -54,6 +55,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+                        <PagerStyle CssClass="pagination-ys" />
                     </asp:GridView>
                 </div>
 
@@ -86,7 +88,8 @@
                                     </div>
                                 </div>
 
-                                <asp:FormView ID="frmPolicy" runat="server" DataKeyNames="Activity_Policy_Id" DefaultMode="Insert" ><%--OnItemCommand="frmRule_ItemCommand"--%>
+                                <asp:FormView ID="frmPolicy" runat="server" DataKeyNames="Activity_Policy_Id" DefaultMode="Insert">
+                                    <%--OnItemCommand="frmRule_ItemCommand"--%>
 
                                     <InsertItemTemplate>
                                         <div class="">

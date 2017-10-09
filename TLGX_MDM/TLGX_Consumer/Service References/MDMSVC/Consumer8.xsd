@@ -3535,4 +3535,368 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetActivityMedia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q347="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q347:DC_Activity_Media_Search_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityMediaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q348="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityMediaResult" nillable="true" type="q348:ArrayOfDC_Activity_Media" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityMedia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q349="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q349:DC_Activity_Media" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityMediaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q350="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityMediaResult" nillable="true" type="q350:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityInclusions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q351="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q351:DC_Activity_Inclusions_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityInclusionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q352="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityInclusionsResult" nillable="true" type="q352:ArrayOfDC_Activity_Inclusions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityInclusions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q353="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q353:DC_Activity_Inclusions" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityInclusionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q354="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityInclusionsResult" nillable="true" type="q354:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityInclusionDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q355="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q355:DC_Activity_InclusionDetails_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityInclusionDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q356="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityInclusionDetailsResult" nillable="true" type="q356:ArrayOfDC_Activity_InclusionsDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateInclusionDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q357="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q357:DC_Activity_InclusionsDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateInclusionDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q358="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateInclusionDetailsResult" nillable="true" type="q358:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityClasificationAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q359="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q359:DC_Activity_ClassificationAttributes_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityClasificationAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q360="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityClasificationAttributesResult" nillable="true" type="q360:ArrayOfDC_Activity_ClassificationAttributes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityClassifiationAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q361="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q361:DC_Activity_ClassificationAttributes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityClassifiationAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q362="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityClassifiationAttributesResult" nillable="true" type="q362:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityPickUpDrop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q363="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q363:DC_Activity_PickUpDrop_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityPickUpDropResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q364="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPickUpDropResult" nillable="true" type="q364:ArrayOfDC_Activity_PickUpDrop" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdatePickUpDrop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q365="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q365:DC_Activity_PickUpDrop" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdatePickUpDropResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q366="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdatePickUpDropResult" nillable="true" type="q366:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPickUpDropDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q367="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q367:DC_Activity_PickUpDropDetails_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPickUpDropDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q368="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetPickUpDropDetailsResult" nillable="true" type="q368:ArrayOfDC_Activity_PickUpDropDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdatePickUpDropDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q369="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q369:DC_Activity_PickUpDropDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdatePickUpDropDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q370="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdatePickUpDropDetailsResult" nillable="true" type="q370:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityFlavour">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q371="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q371:DC_Activity_Flavour_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityFlavourResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q372="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityFlavourResult" nillable="true" type="q372:ArrayOfDC_Activity_Flavour" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityFlavour">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q373="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q373:DC_Activity_Flavour" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityFlavourResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q374="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavourResult" nillable="true" type="q374:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityDeals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q375="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q375:DC_Activity_Deals_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityDealsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q376="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityDealsResult" nillable="true" type="q376:ArrayOfDC_Activity_Deals" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityDeals">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q377="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q377:DC_Activity_Deals" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityDealsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q378="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityDealsResult" nillable="true" type="q378:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityPrices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q379="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q379:DC_Activity_Prices_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityPricesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q380="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPricesResult" nillable="true" type="q380:ArrayOfDC_Activity_Prices" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityPrices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q381="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q381:DC_Activity_Prices" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityPricesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q382="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPricesResult" nillable="true" type="q382:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActSupplierProdMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q383="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q383:DC_Activity_SupplierProductMapping_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActSupplierProdMappingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q384="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActSupplierProdMappingResult" nillable="true" type="q384:ArrayOfDC_Activity_SupplierProductMapping" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActSupplierProdMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q385="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q385:DC_Activity_SupplierProductMapping" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActSupplierProdMappingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q386="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActSupplierProdMappingResult" nillable="true" type="q386:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActReviewsAndScores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q387="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q387:DC_Activity_ReviewsAndScores_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActReviewsAndScoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q388="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActReviewsAndScoresResult" nillable="true" type="q388:ArrayOfDC_Activity_ReviewsAndScores" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActReviewsNScores">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q389="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q389:DC_Activity_ReviewsAndScores" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActReviewsNScoresResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q390="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActReviewsNScoresResult" nillable="true" type="q390:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActSupplierProdMapping_CA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q391="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q391:DC_Activity_SupplierProductMapping_CA_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActSupplierProdMapping_CAResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q392="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActSupplierProdMapping_CAResult" nillable="true" type="q392:ArrayOfDC_Activity_SupplierProductMapping_CA" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActSupplierProdMapping_CA">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q393="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q393:DC_Activity_SupplierProductMapping_CA" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActSupplierProdMapping_CAResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q394="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActSupplierProdMapping_CAResult" nillable="true" type="q394:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityPolicy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q395="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q395:DC_Activity_Policy_RQ" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivityPolicyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q396="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPolicyResult" nillable="true" type="q396:ArrayOfDC_Activity_Policy" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityPolicy">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q397="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q397:DC_Activity_Policy" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddUpdateActivityPolicyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q398="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPolicyResult" nillable="true" type="q398:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
