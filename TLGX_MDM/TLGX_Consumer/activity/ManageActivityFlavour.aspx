@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/Flavours.ascx" TagPrefix="uc1" TagName="Flavours"%>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusions.ascx" TagPrefix="uc1" TagName="Inclusions" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ClassificationAttributes.ascx" TagPrefix="uc1" TagName="ClassificationAttributes" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityMedia.ascx" TagPrefix="uc1" TagName="ActivityMedia" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy"%>
@@ -48,7 +48,7 @@
             </div>
 
             <div class="tab-pane" id="panInclusion">
-                <uc1:Inclusion runat="server" ID="Inclusion" />
+                <uc1:Inclusions runat="server" ID="Inclusions" />
             </div>
 
             <div class="tab-pane" id="panClassificationAttributes">
