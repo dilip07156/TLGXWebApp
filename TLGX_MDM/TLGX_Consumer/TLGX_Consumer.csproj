@@ -220,6 +220,7 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="activity\ckis\manage.aspx" />
     <Content Include="activity\ckis\search.aspx" />
+    <Content Include="activity\ManageActivityFlavour.aspx" />
     <Content Include="activity\ManageActivityMaster.aspx" />
     <Content Include="activity\SearchActivityMaster.aspx" />
     <Content Include="admin\manageApplication.aspx" />
@@ -1066,6 +1067,13 @@
     </Compile>
     <Compile Include="activity\ckis\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\ManageActivityFlavour.aspx.cs">
+      <DependentUpon>ManageActivityFlavour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\ManageActivityFlavour.aspx.designer.cs">
+      <DependentUpon>ManageActivityFlavour.aspx</DependentUpon>
     </Compile>
     <Compile Include="activity\ManageActivityMaster.aspx.cs">
       <DependentUpon>ManageActivityMaster.aspx</DependentUpon>
