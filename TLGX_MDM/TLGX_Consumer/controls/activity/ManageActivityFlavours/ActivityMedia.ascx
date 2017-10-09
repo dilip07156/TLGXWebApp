@@ -3,7 +3,7 @@
 
 <asp:UpdatePanel ID="updMedia" runat="server">
     <ContentTemplate>
-        <div class="panel-group" id="accordion">
+       <%-- <div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -22,7 +22,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label class="control-label col-sm-4" for="ddlSupplierName">Media Type </label>
+                                        <label class="control-label col-sm-4" for="ddlMediaType">Media Type </label>
                                         <div class="col-sm-8">
                                             <asp:DropDownList ID="ddlMediaType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
@@ -109,7 +109,7 @@
                 </div>
 
             </div>
-        </div>
+        </div>--%>
 
         <div class="row">
 
@@ -124,7 +124,6 @@
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                         <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                            <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>25</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
@@ -137,7 +136,7 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Add New" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
             </div>
         </div>
 
@@ -147,23 +146,17 @@
 
                 <div class="panel-heading clearfix">
                     <h4 class="panel-title pull-left">
-                        <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
+                        <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Activity Media (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a>
                     </h4>
                 </div>
 
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
-
-                        <div class="row">
-                            <div id="dvMsg" runat="server" enableviewstate="false" style="display: none;">
-                            </div>
-                        </div>
-
                         <asp:GridView ID="gvActMediaSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Media Found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvActMediaSearch_PageIndexChanging"
-                            OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id,Activity_Flavour_Id">
+                            OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id" >
                             <Columns>
                                 <asp:BoundField HeaderText="Media Name" DataField="MediaName" />
                                 <asp:BoundField HeaderText="Media_URL" DataField="Media_URL" />

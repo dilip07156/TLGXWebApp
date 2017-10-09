@@ -3,7 +3,7 @@
 
 <asp:UpdatePanel ID="updCA" runat="server">
     <ContentTemplate>
-        <div class="panel-group" id="accordion">
+        <%--<div class="panel-group" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
@@ -60,7 +60,7 @@
                 </div>
 
             </div>
-        </div>
+        </div>--%>
 
         <div class="row">
 
@@ -75,7 +75,6 @@
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                         <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                            <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
                             <asp:ListItem>25</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
@@ -88,7 +87,7 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Add New" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
             </div>
         </div>
 
@@ -114,7 +113,7 @@
                         <asp:GridView ID="gvActivityCASearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Classification Attributes Found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvActivityCASearch_PageIndexChanging"
-                            OnRowCommand="gvActivityCASearch_RowCommand" DataKeyNames="Activity_ClassificationAttribute_Id,Activity_Flavour_Id">
+                            OnRowCommand="gvActivityCASearch_RowCommand" DataKeyNames="Activity_ClassificationAttribute_Id">
                             <Columns>
                                 <asp:BoundField HeaderText="Attribute Type" DataField="AttributeType" />
                                 <asp:BoundField HeaderText="Attribute SubType" DataField="AttributeSubType" />
