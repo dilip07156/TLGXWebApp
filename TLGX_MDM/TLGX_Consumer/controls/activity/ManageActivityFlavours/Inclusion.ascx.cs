@@ -9,11 +9,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityMaster
 {
     public partial class Inclusion : System.Web.UI.UserControl
     {
-        Controller.ActivitySVC ActSVC = new Controller.ActivitySVC();
-        public Guid Activity_Id;
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
-        }
+        //Controller.ActivitySVC ActSVC = new Controller.ActivitySVC();
+        //public Guid Activity_Id;
+        //protected void Page_Load(object sender, EventArgs e)
+        //{
+        //    Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
+        //}
     }
 }
