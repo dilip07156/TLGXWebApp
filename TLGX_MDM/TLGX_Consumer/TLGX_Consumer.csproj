@@ -251,6 +251,7 @@
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Inclusions.ascx" />
@@ -1247,6 +1248,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx.designer.cs">
       <DependentUpon>ActivityMedia.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx.cs">
+      <DependentUpon>ActivityStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx.designer.cs">
+      <DependentUpon>ActivityStatus.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.cs">
       <DependentUpon>ClassificationAttributes.ascx</DependentUpon>

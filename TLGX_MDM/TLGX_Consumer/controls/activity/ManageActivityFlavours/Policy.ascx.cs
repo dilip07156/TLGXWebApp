@@ -26,7 +26,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         private void BindDataSource()
         {
-            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
             MDMSVC.DC_Activity_Policy_RQ _obj = new MDMSVC.DC_Activity_Policy_RQ();
             _obj.Activity_Id = Activity_Flavour_Id;
