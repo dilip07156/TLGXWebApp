@@ -22,33 +22,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.UpdatePanel updCA;
         
         /// <summary>
-        /// divDropdownForEntries control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
-        
-        /// <summary>
-        /// ddlShowEntries control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
-        
-        /// <summary>
-        /// btnNewUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewUpload;
-        
-        /// <summary>
         /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
