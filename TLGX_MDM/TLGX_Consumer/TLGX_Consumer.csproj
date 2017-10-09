@@ -248,6 +248,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Media.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Policy.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\Ancilary.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\AttachedProductPolicy.ascx" />
@@ -1177,6 +1185,62 @@
     </Compile>
     <Compile Include="controls\activity\ckis\searchCKISMasters.ascx.designer.cs">
       <DependentUpon>searchCKISMasters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.cs">
+      <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.designer.cs">
+      <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Flavours.ascx.cs">
+      <DependentUpon>Flavours.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Flavours.ascx.designer.cs">
+      <DependentUpon>Flavours.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.cs">
+      <DependentUpon>Inclusion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.designer.cs">
+      <DependentUpon>Inclusion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Media.ascx.cs">
+      <DependentUpon>Media.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Media.ascx.designer.cs">
+      <DependentUpon>Media.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.cs">
+      <DependentUpon>Policy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.designer.cs">
+      <DependentUpon>Policy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx.cs">
+      <DependentUpon>PricesNDeals.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx.designer.cs">
+      <DependentUpon>PricesNDeals.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx.cs">
+      <DependentUpon>ReviewsNScores.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx.designer.cs">
+      <DependentUpon>ReviewsNScores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx.cs">
+      <DependentUpon>SupplierProductMappings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx.designer.cs">
+      <DependentUpon>SupplierProductMappings.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx.cs">
       <DependentUpon>AdditionalInfo.ascx</DependentUpon>
