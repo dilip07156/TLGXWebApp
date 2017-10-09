@@ -10,10 +10,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
     public partial class ActivityMedia : System.Web.UI.UserControl
     {
         Controller.ActivitySVC ActSVC = new Controller.ActivitySVC();
-        public Guid Activity_Flavour_Id;
+        public Guid Activity_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Activity_Flavour_Id =  new Guid( Request.QueryString["Activity_Flavour_Id"]);
+            Activity_Id =  new Guid( Request.QueryString["Activity_Id"]);
         }
 
         protected void btnReset_Click(object sender, EventArgs e)

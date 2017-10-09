@@ -6,7 +6,8 @@
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/Flavours.ascx" TagPrefix="uc1" TagName="Flavours"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ClassificationAttributes.ascx" TagPrefix="uc1" TagName="ClassificationAttributes" %>
-    <%--<%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy"%>--%>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityMedia.ascx" TagPrefix="uc1" TagName="ActivityMedia" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/PricesNDeals.ascx" TagPrefix="uc1" TagName="PricesNDeals"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings"%>
@@ -31,12 +32,12 @@
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#panFlavours" data-toggle="tab">Flavours</a></li>
                 <li><a href="#panInclusion" data-toggle="tab">Inclusion</a></li>
-                <li><a href="#panClassificationAttributes" data-toggle="tab">ClassificationAttributes</a></li>
-                <%--<li><a href="#panMedia" data-toggle="tab">Media</a></li>--%>
+                <li><a href="#panClassificationAttributes" data-toggle="tab">Classification Attributes</a></li>
+                <li><a href="#panActivityMedia" data-toggle="tab">Media</a></li>
                 <li><a href="#panPolicy" data-toggle="tab">Policy</a></li>
-                <li><a href="#panPricesNDeals" data-toggle="tab">PricesNDeals</a></li>
-                <li><a href="#panReviewsNScores" data-toggle="tab">ReviewsNScores</a></li>
-                <li><a href="#panSupplierProductMappings" data-toggle="tab">SupplierProductMappings</a></li>
+                <li><a href="#panPricesNDeals" data-toggle="tab">Prices And Deals</a></li>
+                <li><a href="#panReviewsNScores" data-toggle="tab">Reviews And Scores</a></li>
+                <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Product Mappings</a></li>
             </ul>
             <%--</div>--%>
         </div>
@@ -54,9 +55,9 @@
                 <uc1:ClassificationAttributes runat="server" ID="ClassificationAttributes" />
             </div>
 
-            <%--<div class="tab-pane" id="panMedia">
-                <uc1:Media runat="server" ID="Media" />
-            </div>--%>
+            <div class="tab-pane" id="panActivityMedia">
+                <uc1:ActivityMedia runat="server" ID="ActivityMedia" />
+            </div>
 
             <div class="tab-pane" id="panPolicy">
                 <uc1:Policy runat="server" ID="Policy" />
