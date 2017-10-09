@@ -64,7 +64,7 @@
 
         <div class="row">
 
-            <div class="col-lg-8">
+           <%-- <div class="col-lg-8">
                 <h3>Classification Attributes Search Details</h3>
             </div>
 
@@ -84,7 +84,7 @@
 
                 </div>
 
-            </div>
+            </div>--%>
 
             <div class="col-lg-1">
                 <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Add New" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
