@@ -252,7 +252,6 @@
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
-    <Content Include="controls\activity\ManageActivityFlavours\Media.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Policy.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx" />
@@ -1214,13 +1213,6 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.designer.cs">
       <DependentUpon>Inclusion.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\activity\ManageActivityFlavours\Media.ascx.cs">
-      <DependentUpon>Media.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="controls\activity\ManageActivityFlavours\Media.ascx.designer.cs">
-      <DependentUpon>Media.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.cs">
       <DependentUpon>Policy.ascx</DependentUpon>
