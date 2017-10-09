@@ -7,64 +7,46 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.controls.activity.ManageActivityMaster {
+namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class Media {
+    public partial class ActivityMedia {
         
         /// <summary>
-        /// updNewActivity control.
+        /// updMedia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updNewActivity;
+        protected global::System.Web.UI.UpdatePanel updMedia;
         
         /// <summary>
-        /// dvMsg control.
+        /// vlSumm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        protected global::System.Web.UI.WebControls.ValidationSummary vlSumm;
         
         /// <summary>
-        /// ddlFileCategory control.
+        /// ddlMediaType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFileCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMediaType;
         
         /// <summary>
-        /// txtFileName control.
+        /// txtMediaName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFileName;
-        
-        /// <summary>
-        /// txtFilePath control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFilePath;
-        
-        /// <summary>
-        /// vldtxtFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldtxtFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtMediaName;
         
         /// <summary>
         /// txtFrom control.
@@ -94,13 +76,22 @@ namespace TLGX_Consumer.controls.activity.ManageActivityMaster {
         protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFrom;
         
         /// <summary>
-        /// vldtxtTo control.
+        /// TextBox1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator vldtxtTo;
+        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        
+        /// <summary>
+        /// txtSubCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSubCategory;
         
         /// <summary>
         /// txtTo control.
@@ -139,30 +130,75 @@ namespace TLGX_Consumer.controls.activity.ManageActivityMaster {
         protected global::System.Web.UI.WebControls.CompareValidator vldCmpDateFromTo;
         
         /// <summary>
-        /// btnSave control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSave;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// dvGrid control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvGrid;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// grdSearchResults control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdSearchResults;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
+        
+        /// <summary>
+        /// ddlShowEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        
+        /// <summary>
+        /// btnNewUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewUpload;
+        
+        /// <summary>
+        /// lblTotalRecords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
+        
+        /// <summary>
+        /// dvMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
+        /// gvActMediaSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvActMediaSearch;
     }
 }
