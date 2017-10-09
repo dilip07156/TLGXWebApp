@@ -249,6 +249,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
@@ -1193,6 +1194,13 @@
     </Compile>
     <Compile Include="controls\activity\ckis\searchCKISMasters.ascx.designer.cs">
       <DependentUpon>searchCKISMasters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx.cs">
+      <DependentUpon>ActivityContactDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx.designer.cs">
+      <DependentUpon>ActivityContactDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx.cs">
       <DependentUpon>ActivityMedia.ascx</DependentUpon>
