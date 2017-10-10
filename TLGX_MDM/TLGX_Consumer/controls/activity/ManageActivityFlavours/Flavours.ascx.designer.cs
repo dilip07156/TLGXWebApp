@@ -13,21 +13,21 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class Flavours {
         
         /// <summary>
-        /// ActivityContactDetails control.
+        /// dvMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityContactDetails ActivityContactDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// ActivityStatus control.
+        /// frmActivityFlavour control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityStatus ActivityStatus;
+        protected global::System.Web.UI.WebControls.FormView frmActivityFlavour;
     }
 }

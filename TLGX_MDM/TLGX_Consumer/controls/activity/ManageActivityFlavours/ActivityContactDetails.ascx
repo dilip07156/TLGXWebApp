@@ -99,7 +99,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <form id="uriForm" class="form-horizontal">
 
                             <div class="form-group row">
@@ -107,7 +107,7 @@
                                     Website
                                 </label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" ></asp:TextBox>
+                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -117,7 +117,7 @@
                                 </label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" ID="txtEmail" runat="server" onkeyup="TrimEmailText()" CssClass="form-control"/>
+                                    <input type="text" id="txtEmail" runat="server" onkeyup="TrimEmailText()" cssclass="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row" style="display: none;">
@@ -128,7 +128,9 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-2">
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-2 pull-right">
                         <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
 
                     </div>
@@ -216,14 +218,13 @@
                 </div>
 
                 <form id="uriForm" class="form-horizontal">
-
                     <br />
                     <div class="form-group row">
                         <label class="control-label col-sm-2" for="txtWebsite">
                             Website
                         </label>
                         <div class="col-sm-10">
-                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" ></asp:TextBox>
+                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -246,16 +247,15 @@
                         </div>
                     </div>
                 </form>
-                <br />
-                <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
-
+                 <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="HotelContacts" CausesValidation="true" />       
+             
             </EditItemTemplate>
 
         </asp:FormView>
 
         <br />
 
-        <asp:GridView ID="grdContactDetails" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Contact_Id" CssClass="table table-hover table-striped" EmptyDataText="No Contact details Found" OnRowCommand="grdContactDetails_RowCommand" OnRowDataBound="grdContactDetails_RowDataBound" >
+        <asp:GridView ID="grdContactDetails" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Contact_Id" CssClass="table table-hover table-striped" EmptyDataText="No Contact details Found" OnRowCommand="grdContactDetails_RowCommand" OnRowDataBound="grdContactDetails_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="Telephone" HeaderText="Telephone" SortExpression="Telephone" />
                 <asp:BoundField DataField="Fax" HeaderText="Fax" SortExpression="fax" />

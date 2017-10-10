@@ -522,6 +522,7 @@ namespace TLGX_Consumer.controls.attributes
                 addupdatemsg.Style.Add("display", "none");
                 msgdelundel.Style.Add("display", "none");
                 msgupdateall.Style.Add("display", "none");
+                ddlsystemAttrVal.Items.Clear();
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
                 var attributeid = e.CommandArgument.ToString();
@@ -1225,6 +1226,7 @@ namespace TLGX_Consumer.controls.attributes
                 RQ.PageSize = int.MaxValue;
                 RQ.PageNo = 0;
                 var searchResult = MapSvc.Mapping_AttributeValue_Get(RQ);
+              //  var search = from s in searchResult orderby s.SystemMasterAttributeValue select new{ s.SystemMasterAttributeValue,s.SystemMasterAttributeValue_Id};
                 ddlsystemAttrVal.DataSource = searchResult;
                 ddlsystemAttrVal.DataTextField = "SystemMasterAttributeValue";
                 ddlsystemAttrVal.DataValueField = "SystemMasterAttributeValue_Id";
@@ -1235,6 +1237,9 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void ddlsystemAttrVal_SelectedIndexChanged(object sender, EventArgs e)
         {
+            addupdatemsg.Style.Add("display", "none");
+            msgdelundel.Style.Add("display", "none");
+            msgupdateall.Style.Add("display", "none");
             fillsupplierAttrvalues(0);
         }
         

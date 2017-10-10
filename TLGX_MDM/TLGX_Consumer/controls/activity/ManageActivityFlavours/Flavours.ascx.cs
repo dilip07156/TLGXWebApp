@@ -18,5 +18,40 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
 
         }
+
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlArea_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlProdCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlProdcategorySubType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlProductType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
