@@ -107,7 +107,7 @@
                                     Website
                                 </label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
+                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" ></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -117,7 +117,7 @@
                                 </label>
 
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtEmail" runat="server" onkeyup="TrimEmailText()" CssClass="form-control"></asp:TextBox>
+                                    <input type="text" ID="txtEmail" runat="server" onkeyup="TrimEmailText()" CssClass="form-control"/>
                                 </div>
                             </div>
                             <div class="form-group row" style="display: none;">
@@ -223,7 +223,7 @@
                             Website
                         </label>
                         <div class="col-sm-10">
-                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
+                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" ></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group row">

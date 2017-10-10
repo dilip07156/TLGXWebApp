@@ -17,25 +17,67 @@
 
             <InsertItemTemplate>
                 <div class="form-group row">
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <form id="uriForm" class="form-horizontal">
 
                             <div class="form-group row">
-                                <label class="control-label col-sm-2" for="txtWebsite">
-                                    Website
-                                </label>
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-2" for="txtStatus">
+                                        Status
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <asp:TextBox ID="txtStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-2" for="txtMarket">
+                                        Company market
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <asp:TextBox ID="txtMarket" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-sm-2" for="txtEmail">
-                                    Email
-                            <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="HotelContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
-                                </label>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-4" for="txtFrom">From</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" id="iCalFrom">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </button>
+                                            </span>
+                                            <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
+                                            <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-4" for="txtTo">To</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" id="iCalTo">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </button>
+                                            </span>
 
+                                        </div>
+                                        <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
+                                        <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                        <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="txtReason">
+                                    Deactivation Reason
+                                </label>
                                 <div class="col-sm-10">
-                                    <asp:TextBox ID="txtEmail" runat="server" onkeyup="TrimEmailText()" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="txtReason" runat="server" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group row" style="display: none;">
@@ -46,7 +88,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 pull-right">
                         <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
 
                     </div>
@@ -55,125 +97,89 @@
             </InsertItemTemplate>
 
             <EditItemTemplate>
-
                 <div class="form-group row">
+                    <div class="col-md-12">
+                        <form id="uriForm" class="form-horizontal">
 
-                    <div class="col-xs-2">
-                        <br />
-                        <label id="lblTel">Telephone</label>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-2" for="txtStatus">
+                                        Status
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <asp:TextBox ID="txtStatus" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-2" for="txtMarket">
+                                        Company market
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <asp:TextBox ID="txtMarket" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-4" for="txtFrom">From</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" id="iCalFrom">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </button>
+                                            </span>
+                                            <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
+                                            <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-4" for="txtTo">To</label>
+                                    <div class="col-sm-7">
+                                        <div class="input-group">
+                                            <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" />
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" id="iCalTo">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </button>
+                                            </span>
+
+                                        </div>
+                                        <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
+                                        <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                        <asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-2" for="txtReason">
+                                    Deactivation Reason
+                                </label>
+                                <div class="col-sm-10">
+                                    <asp:TextBox ID="txtReason" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="display: none;">
+                                <label class="control-label col-sm-2" for="txtEmail">Legacy Product ID</label>
+                                <div class="col-sm-10">
+                                    <asp:TextBox ID="txtLegacyProductId" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                    <div class="col-xs-2">
-                        <label for="txtTelCountryCode">
-                            Country
-                            <asp:RequiredFieldValidator ID="vtxtTelCountryCode" runat="server" ErrorMessage="Please enter Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="rvtxtTelCountryCode" runat="server" ErrorMessage="Invalid Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
-                        </label>
-                        <asp:TextBox ID="txtTelCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
-                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtTelCountryCode" />
+                    <div class="col-md-2 pull-right">
+                        <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
                     </div>
-
-                    <div class="col-xs-2">
-                        <label for="txtTelCityCode">
-                            City
-                            <asp:RequiredFieldValidator ID="vtxtTelCityCode" runat="server" ErrorMessage="Please enter Tel City Code" Text="*" ControlToValidate="txtTelCityCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="rvtxtTelCityCode" runat="server" ErrorMessage="Invalid Tel City Code" Text="*" ControlToValidate="txtTelCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
-                        </label>
-                        <asp:TextBox ID="txtTelCityCode" runat="server" CssClass="form-control"></asp:TextBox>
-                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers" TargetControlID="txtTelCityCode" />
-                    </div>
-
-                    <div class="col-xs-6">
-                        <label for="txtTelLocalNUmber">
-                            Local
-                            <asp:RequiredFieldValidator ID="vtxtTelLocalNUmber" runat="server" ErrorMessage="Please enter Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="rvtxtTelLocalNUmber" runat="server" ErrorMessage="Invalid Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
-                        </label>
-                        <asp:TextBox ID="txtTelLocalNUmber" runat="server" CssClass="form-control"></asp:TextBox>
-                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers" TargetControlID="txtTelLocalNUmber" />
-                    </div>
-
                 </div>
-
-                <div class="form-group row">
-
-                    <div class="col-xs-2">
-                        <br />
-                        <label id="lblFax">Fax</label>
-                    </div>
-
-                    <div class="col-xs-2">
-                        <label for="txtFaxCountryCode">
-                            Country
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCountryCode" runat="server" ErrorMessage="Please enter Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxCountryCode" runat="server" ErrorMessage="Invalid Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
-                        </label>
-                        <asp:TextBox ID="txtFaxCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
-                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers" TargetControlID="txtFaxCountryCode" />
-                    </div>
-
-                    <div class="col-xs-2">
-                        <label for="txtFaxCityCode">
-                            City
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCityCode" runat="server" ErrorMessage="Please enter Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxCityCode" runat="server" ErrorMessage="Invalid Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
-                        </label>
-                        <asp:TextBox ID="txtFaxCityCode" runat="server" CssClass="form-control"></asp:TextBox>
-                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers" TargetControlID="txtFaxCityCode" />
-                    </div>
-
-                    <div class="col-xs-6">
-                        <label for="txtFaxLocalNUmber">
-                            Local
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxLocalNUmber" runat="server" ErrorMessage="Please enter Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxLocalNUmber" runat="server" ErrorMessage="Invalid Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
-                        </label>
-                        <asp:TextBox ID="txtFaxLocalNUmber" runat="server" CssClass="form-control"></asp:TextBox>
-                        <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterType="Numbers" TargetControlID="txtFaxLocalNUmber" />
-                    </div>
-                </div>
-
-                <form id="uriForm" class="form-horizontal">
-
-                    <br />
-                    <div class="form-group row">
-                        <label class="control-label col-sm-2" for="txtWebsite">
-                            Website
-                        </label>
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" name="website"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="control-label col-sm-2" for="txtEmail">
-                            Email
-                            <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="HotelContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
-
-                        </label>
-
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
-
-                        </div>
-                    </div>
-                    <div class="form-group row" style="visibility: hidden">
-                        <label class="control-label col-sm-2" for="txtEmail">Legacy Product ID</label>
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtLegacyProductId" runat="server" CssClass="form-control"></asp:TextBox>
-
-                        </div>
-                    </div>
-                </form>
-                <br />
-                <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
-
             </EditItemTemplate>
 
         </asp:FormView>
 
         <br />
 
-        <asp:GridView ID="grdStatusDetails" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Status_Id" CssClass="table table-hover table-striped" EmptyDataText="No Status details Found" OnRowCommand="grdStatusDetails_RowCommand" OnRowDataBound="grdStatusDetails_RowDataBound" >
+        <asp:GridView ID="grdStatusDetails" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Status_Id" CssClass="table table-hover table-striped" EmptyDataText="No Status details Found" OnRowCommand="grdStatusDetails_RowCommand" OnRowDataBound="grdStatusDetails_RowDataBound">
             <Columns>
                 <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Telephone" />
                 <asp:BoundField DataField="CompanyMarket" HeaderText="Company Market" SortExpression="CompanyMarket" />

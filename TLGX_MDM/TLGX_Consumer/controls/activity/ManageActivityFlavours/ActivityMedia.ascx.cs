@@ -10,7 +10,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
     public partial class ActivityMedia : System.Web.UI.UserControl
     {
         Controller.ActivitySVC ActSVC = new Controller.ActivitySVC();
-        public Guid Activity_Id;
+        public Guid Activity_Flavour_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -21,7 +21,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         protected void BindMedia()
 
         {
-            Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
+            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             gvActMediaSearch.DataSource = null;
             gvActMediaSearch.DataBind();
 

@@ -58,11 +58,11 @@ namespace TLGX_Consumer.Controller
             return (bool)result;
         }
         
-        public string GetLegacyProductId(Guid Activity_Id)
+        public int? GetLegacyProductId(Guid Activity_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Id), typeof(string), out result);
-            return result as string;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Id), typeof(int), out result);
+            return result as int?;
         }
         #endregion
 
