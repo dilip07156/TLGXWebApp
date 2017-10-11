@@ -97,5 +97,15 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_Activity_Policy>;
         }
         #endregion
+
+        #region Activity Flavour
+        public List<DC_Activity_Flavour> GetActivityFlavour(DC_Activity_Flavour_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Flavour"], RQ, typeof(DC_Activity_Flavour_RQ), typeof(DC_Activity_Flavour), out result);
+            return result as  List <DC_Activity_Flavour> ;
+
+        }
+        #endregion
     }
 }
