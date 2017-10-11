@@ -15,51 +15,63 @@
 <asp:UpdatePanel ID="updPanPolicy" runat="server">
     <ContentTemplate>
         <div id="dvMsg" runat="server" style="display: none;"></div>
+
         <div class="container">
             <div class="form-group col-md-12">
                 <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewActivityModal();" /><%--OnClick="btnNewActivity_Click"--%>
+                <div class="form-group pull-right">
+                    <div class="input-group" runat="server" id="divDropdownForEntries">
+                        <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                        <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control">
+                            <%--OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged"--%>
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>25</asp:ListItem>
+                            <asp:ListItem>50</asp:ListItem>
+                            <asp:ListItem>100</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
             </div>
         </div>
+
         <headertemplate>
             <div class="container">
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="vldGrpRules" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
             </div>
         </headertemplate>
 
-        <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-heading">Policy</div>
-                <div class="panel-body">
-                    <asp:GridView ID="grdPolicy" runat="server" AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Activity_Flavour_Id" EmptyDataText="No Hotel Rules for this hotel" CssClass="table table-hover table-striped">
-                        <%--OnRowCommand="grdPolicy_RowCommand" OnRowDataBound="grdPolicy_RowDataBound"--%>
-                        <Columns>
-                            <asp:BoundField DataField="RuleType" HeaderText="RuleType" SortExpression="RuleType" />
-                            <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
-                            <asp:BoundField DataField="IsInternal" HeaderText="Is Internal" SortExpression="IsInternal" />
-                            <asp:TemplateField ShowHeader="false">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                        Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
+        <div class="panel panel-default">
+            <div class="panel-heading">Policy</div>
+            <div class="panel-body">
+                <asp:GridView ID="grdPolicy" runat="server" AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Activity_Flavour_Id" EmptyDataText="No Hotel Rules for this hotel" CssClass="table table-hover table-striped">
+                    <%--OnRowCommand="grdPolicy_RowCommand" OnRowDataBound="grdPolicy_RowDataBound"--%>
+                    <Columns>
+                        <asp:BoundField DataField="RuleType" HeaderText="RuleType" SortExpression="RuleType" />
+                        <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
+                        <asp:BoundField DataField="IsInternal" HeaderText="Is Internal" SortExpression="IsInternal" />
+                        <asp:TemplateField ShowHeader="false">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                                    Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                                    </asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
-                            <asp:TemplateField ShowHeader="false">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                                        CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
+                        <asp:TemplateField ShowHeader="false">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                                    CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
                                         <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
-                                    </asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                        <PagerStyle CssClass="pagination-ys" />
-                    </asp:GridView>
-                </div>
-
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <PagerStyle CssClass="pagination-ys" />
+                </asp:GridView>
             </div>
+
         </div>
 
 
