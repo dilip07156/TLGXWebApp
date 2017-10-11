@@ -17,6 +17,18 @@
         <div class="container">
             <div class="form-group col-md-12">
                 <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewActivityModal();" /><%--OnClick="btnNewActivity_Click"--%>
+                <div class="form-group pull-right">
+                    <div class="input-group" runat="server" id="divDropdownForEntries">
+                        <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                        <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control">
+                            <%--OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged"--%>
+                            <asp:ListItem>10</asp:ListItem>
+                            <asp:ListItem>25</asp:ListItem>
+                            <asp:ListItem>50</asp:ListItem>
+                            <asp:ListItem>100</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                </div>
             </div>
         </div>
         <headertemplate>
