@@ -17,14 +17,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             if (!IsPostBack)
             {
-               // Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
                 //Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
                 fillstatusdetails();
             }
         }
         private void fillstatusdetails()
         {
-           // Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+           Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             //Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             grdStatusDetails.DataSource = AccSvc.GetActivityStatusDetails(Activity_Flavour_Id, Guid.Empty);
             grdStatusDetails.DataBind();
@@ -38,7 +38,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             TextBox txtTo = (TextBox)frmStatusDetails.FindControl("txtTo");
             TextBox txtReason = (TextBox)frmStatusDetails.FindControl("txtReason");
             TextBox txtLegacyProductId = (TextBox)frmStatusDetails.FindControl("txtLegacyProductId");
-           // Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+           Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             if (e.CommandName == "Add")
             {
@@ -66,7 +66,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
             else if (e.CommandName == "Edit")
             {
-               // Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
                 // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
                 Guid myRow_Id = Guid.Parse(grdStatusDetails.SelectedDataKey.Value.ToString());
 
@@ -110,7 +110,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             int index = row.RowIndex;
             if (e.CommandName == "Select")
             {
-                //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
                 List<MDMSVC.DC_Activity_Status> obj = new List<MDMSVC.DC_Activity_Status>();
                 obj.Add(new MDMSVC.DC_Activity_Status

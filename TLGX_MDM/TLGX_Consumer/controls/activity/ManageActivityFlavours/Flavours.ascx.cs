@@ -32,7 +32,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             ddlCountry.DataTextField = "Country_Name";
             ddlCountry.DataValueField = "Country_Id";
             ddlCountry.DataBind();
-            MDMSVC.DC_Accomodation rowView = (MDMSVC.DC_Accomodation)frmActivityFlavour.DataItem;
+            MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
             if (rowView != null)
             {
                 ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByText(rowView.Country.ToString()));

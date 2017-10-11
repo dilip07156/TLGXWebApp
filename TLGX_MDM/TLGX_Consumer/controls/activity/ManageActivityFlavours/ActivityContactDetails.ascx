@@ -2,7 +2,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script type="text/javascript">
     function TrimEmailText() {
-        $("#MainContent_overview_frmHotelOverview_contacts_frmContactDetaiil_txtEmail").val($.trim($("#MainContent_overview_frmHotelOverview_contacts_frmContactDetaiil_txtEmail").val()));
+        debugger;
+        $("#MainContent_Flavours_frmActivityFlavour_ActivityContactDetails_frmContactDetaiil_txtEmail").val($.trim($("#MainContent_Flavours_frmActivityFlavour_ActivityContactDetails_frmContactDetaiil_txtEmail").val()));
     }
 </script>
 <asp:UpdatePanel ID="updPanContacts" runat="server" UpdateMode="Conditional">
@@ -16,7 +17,7 @@
 
             <HeaderTemplate>
                 <div class="form-group">
-                    <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="HotelContacts" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                    <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ActivityContacts" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                 </div>
             </HeaderTemplate>
 
@@ -31,8 +32,8 @@
                     <div class="col-xs-2">
                         <label class="control-label-mand" for="txtTelCountryCode">
                             Country
-                            <%--<asp:RequiredFieldValidator ID="vtxtTelCountryCode" runat="server" ErrorMessage="Please enter Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtTelCountryCode" runat="server" ErrorMessage="Invalid Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtTelCountryCode" runat="server" ErrorMessage="Please enter Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtTelCountryCode" runat="server" ErrorMessage="Invalid Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtTelCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtTelCountryCode" />
@@ -41,8 +42,8 @@
                     <div class="col-xs-2">
                         <label class="control-label-mand" for="txtTelCityCode">
                             City
-                            <%--<asp:RequiredFieldValidator ID="vtxtTelCityCode" runat="server" ErrorMessage="Please enter Tel City Code" Text="*" ControlToValidate="txtTelCityCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtTelCityCode" runat="server" ErrorMessage="Invalid Tel City Code" Text="*" ControlToValidate="txtTelCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtTelCityCode" runat="server" ErrorMessage="Please enter Tel City Code" Text="*" ControlToValidate="txtTelCityCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtTelCityCode" runat="server" ErrorMessage="Invalid Tel City Code" Text="*" ControlToValidate="txtTelCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtTelCityCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers" TargetControlID="txtTelCityCode" />
@@ -51,8 +52,8 @@
                     <div class="col-xs-6">
                         <label class="control-label-mand" for="txtTelLocalNUmber">
                             Local
-                            <%--<asp:RequiredFieldValidator ID="vtxtTelLocalNUmber" runat="server" ErrorMessage="Please enter Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtTelLocalNUmber" runat="server" ErrorMessage="Invalid Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtTelLocalNUmber" runat="server" ErrorMessage="Please enter Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtTelLocalNUmber" runat="server" ErrorMessage="Invalid Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtTelLocalNUmber" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers" TargetControlID="txtTelLocalNUmber" />
@@ -70,8 +71,8 @@
                     <div class="col-xs-2">
                         <label for="txtFaxCountryCode">
                             Country
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCountryCode" runat="server" ErrorMessage="Please enter Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxCountryCode" runat="server" ErrorMessage="Invalid Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCountryCode" runat="server" ErrorMessage="Please enter Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtFaxCountryCode" runat="server" ErrorMessage="Invalid Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtFaxCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers" TargetControlID="txtFaxCountryCode" />
@@ -80,8 +81,8 @@
                     <div class="col-xs-2">
                         <label for="txtFaxCityCode">
                             City
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCityCode" runat="server" ErrorMessage="Please enter Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxCityCode" runat="server" ErrorMessage="Invalid Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCityCode" runat="server" ErrorMessage="Please enter Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtFaxCityCode" runat="server" ErrorMessage="Invalid Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtFaxCityCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers" TargetControlID="txtFaxCityCode" />
@@ -90,8 +91,8 @@
                     <div class="col-xs-6">
                         <label for="txtFaxLocalNUmber">
                             Local
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxLocalNUmber" runat="server" ErrorMessage="Please enter Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxLocalNUmber" runat="server" ErrorMessage="Invalid Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtFaxLocalNUmber" runat="server" ErrorMessage="Please enter Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtFaxLocalNUmber" runat="server" ErrorMessage="Invalid Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtFaxLocalNUmber" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterType="Numbers" TargetControlID="txtFaxLocalNUmber" />
@@ -113,11 +114,11 @@
                             <div class="form-group row">
                                 <label class="control-label col-sm-2" for="txtEmail">
                                     Email
-                            <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="HotelContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="ActivityContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
                                 </label>
 
                                 <div class="col-sm-10">
-                                    <input type="text" id="txtEmail" runat="server" onkeyup="TrimEmailText()" cssclass="form-control" />
+                                    <input type="text" id="txtEmail" runat="server" cssclass="form-control" />
                                 </div>
                             </div>
                             <div class="form-group row" style="display: none;">
@@ -131,7 +132,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-2 pull-right">
-                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
+                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="ActivityContacts" CausesValidation="true" />
 
                     </div>
                 </div>
@@ -150,8 +151,8 @@
                     <div class="col-xs-2">
                         <label for="txtTelCountryCode">
                             Country
-                            <asp:RequiredFieldValidator ID="vtxtTelCountryCode" runat="server" ErrorMessage="Please enter Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="rvtxtTelCountryCode" runat="server" ErrorMessage="Invalid Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtTelCountryCode" runat="server" ErrorMessage="Please enter Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtTelCountryCode" runat="server" ErrorMessage="Invalid Tel Country Code" Text="*" ControlToValidate="txtTelCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtTelCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" FilterType="Numbers" TargetControlID="txtTelCountryCode" />
@@ -160,8 +161,8 @@
                     <div class="col-xs-2">
                         <label for="txtTelCityCode">
                             City
-                            <asp:RequiredFieldValidator ID="vtxtTelCityCode" runat="server" ErrorMessage="Please enter Tel City Code" Text="*" ControlToValidate="txtTelCityCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="rvtxtTelCityCode" runat="server" ErrorMessage="Invalid Tel City Code" Text="*" ControlToValidate="txtTelCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtTelCityCode" runat="server" ErrorMessage="Please enter Tel City Code" Text="*" ControlToValidate="txtTelCityCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtTelCityCode" runat="server" ErrorMessage="Invalid Tel City Code" Text="*" ControlToValidate="txtTelCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtTelCityCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" FilterType="Numbers" TargetControlID="txtTelCityCode" />
@@ -170,8 +171,8 @@
                     <div class="col-xs-6">
                         <label for="txtTelLocalNUmber">
                             Local
-                            <asp:RequiredFieldValidator ID="vtxtTelLocalNUmber" runat="server" ErrorMessage="Please enter Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>
-                            <asp:RegularExpressionValidator ID="rvtxtTelLocalNUmber" runat="server" ErrorMessage="Invalid Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtTelLocalNUmber" runat="server" ErrorMessage="Please enter Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <%--<asp:RegularExpressionValidator ID="rvtxtTelLocalNUmber" runat="server" ErrorMessage="Invalid Tel Number" Text="*" ControlToValidate="txtTelLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>--%>
                         </label>
                         <asp:TextBox ID="txtTelLocalNUmber" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers" TargetControlID="txtTelLocalNUmber" />
@@ -189,8 +190,8 @@
                     <div class="col-xs-2">
                         <label for="txtFaxCountryCode">
                             Country
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCountryCode" runat="server" ErrorMessage="Please enter Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxCountryCode" runat="server" ErrorMessage="Invalid Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCountryCode" runat="server" ErrorMessage="Please enter Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtFaxCountryCode" runat="server" ErrorMessage="Invalid Fax Country Code" Text="*" ControlToValidate="txtFaxCountryCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtFaxCountryCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender4" runat="server" FilterType="Numbers" TargetControlID="txtFaxCountryCode" />
@@ -199,8 +200,8 @@
                     <div class="col-xs-2">
                         <label for="txtFaxCityCode">
                             City
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCityCode" runat="server" ErrorMessage="Please enter Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxCityCode" runat="server" ErrorMessage="Invalid Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtFaxCityCode" runat="server" ErrorMessage="Please enter Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtFaxCityCode" runat="server" ErrorMessage="Invalid Fax City Code" Text="*" ControlToValidate="txtFaxCityCode" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtFaxCityCode" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender5" runat="server" FilterType="Numbers" TargetControlID="txtFaxCityCode" />
@@ -209,8 +210,8 @@
                     <div class="col-xs-6">
                         <label for="txtFaxLocalNUmber">
                             Local
-                            <%--<asp:RequiredFieldValidator ID="vtxtFaxLocalNUmber" runat="server" ErrorMessage="Please enter Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RequiredFieldValidator>--%>
-                            <asp:RegularExpressionValidator ID="rvtxtFaxLocalNUmber" runat="server" ErrorMessage="Invalid Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelContacts"></asp:RegularExpressionValidator>
+                            <%--<asp:RequiredFieldValidator ID="vtxtFaxLocalNUmber" runat="server" ErrorMessage="Please enter Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RequiredFieldValidator>--%>
+                            <asp:RegularExpressionValidator ID="rvtxtFaxLocalNUmber" runat="server" ErrorMessage="Invalid Fax Number" Text="*" ControlToValidate="txtFaxLocalNUmber" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="ActivityContacts"></asp:RegularExpressionValidator>
                         </label>
                         <asp:TextBox ID="txtFaxLocalNUmber" runat="server" CssClass="form-control"></asp:TextBox>
                         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender6" runat="server" FilterType="Numbers" TargetControlID="txtFaxLocalNUmber" />
@@ -224,18 +225,18 @@
                             Website
                         </label>
                         <div class="col-sm-10">
-                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control"></asp:TextBox>
+                             <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" ></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="control-label col-sm-2" for="txtEmail">
                             Email
-                            <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="HotelContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="ActivityContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
 
                         </label>
 
                         <div class="col-sm-10">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ></asp:TextBox>
 
                         </div>
                     </div>
@@ -247,7 +248,7 @@
                         </div>
                     </div>
                 </form>
-                 <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="HotelContacts" CausesValidation="true" />       
+                 <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="ActivityContacts" CausesValidation="true" />       
              
             </EditItemTemplate>
 

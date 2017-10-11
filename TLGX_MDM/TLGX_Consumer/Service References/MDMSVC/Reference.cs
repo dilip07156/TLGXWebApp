@@ -35201,7 +35201,13 @@ namespace TLGX_Consumer.MDMSVC {
         private string ProductCategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductCategorySubTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductNameSubTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductTypeField;
@@ -35321,6 +35327,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductCategorySubType {
+            get {
+                return this.ProductCategorySubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductCategorySubTypeField, value) != true)) {
+                    this.ProductCategorySubTypeField = value;
+                    this.RaisePropertyChanged("ProductCategorySubType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ProductName {
             get {
                 return this.ProductNameField;
@@ -35329,6 +35348,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
                     this.ProductNameField = value;
                     this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductNameSubType {
+            get {
+                return this.ProductNameSubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductNameSubTypeField, value) != true)) {
+                    this.ProductNameSubTypeField = value;
+                    this.RaisePropertyChanged("ProductNameSubType");
                 }
             }
         }
