@@ -17,14 +17,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             if (!IsPostBack)
             {
-                //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-               // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
                 fillcontactdetails();
             }
         }
         private void fillcontactdetails()
         {
-            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             grdContactDetails.DataSource = AccSvc.GetActivityContactDetails(Activity_Flavour_Id, Guid.Empty);
             grdContactDetails.DataBind();
@@ -41,7 +41,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             TextBox txtWebsite = (TextBox)frmContactDetaiil.FindControl("txtWebsite");
             TextBox txtEmail = (TextBox)frmContactDetaiil.FindControl("txtEmail");
             TextBox txtLegacyProductId = (TextBox)frmContactDetaiil.FindControl("txtLegacyProductId");
-            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
            // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             if (e.CommandName == "Add")
             {
@@ -73,7 +73,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             else if (e.CommandName == "Edit")
             {
-               // Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
                 Guid myRow_Id = Guid.Parse(grdContactDetails.SelectedDataKey.Value.ToString());
                 // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
                 var result = AccSvc.GetActivityContactDetails(Activity_Flavour_Id, myRow_Id);
