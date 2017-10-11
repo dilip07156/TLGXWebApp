@@ -99,11 +99,11 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Activity Flavour
-        public List<DC_Activity_Flavour> GetActivityFlavour(MDMSVC.DC_Activity_Flavour_RQ RQ)
+        public List<MDMSVC.DC_Activity_Flavour> GetActivityFlavour(MDMSVC.DC_Activity_Flavour_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Flavour"], RQ, typeof(DC_Activity_Flavour_RQ), typeof(List<MDMSVC.DC_Activity_Flavour>), out result);
-            return result as  List <DC_Activity_Flavour> ;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Flavour"], RQ, typeof(DC_Activity_Flavour_RQ), typeof(List<DC_Activity_Flavour>), out result);
+            return result as  List <MDMSVC.DC_Activity_Flavour> ;
 
         }
         public DC_Message AddUpdateActivityFlavour(MDMSVC.DC_Activity_Flavour RQ)

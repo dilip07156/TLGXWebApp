@@ -1118,7 +1118,9 @@
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategorySubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductNameSubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -1418,6 +1420,7 @@
   <xs:element name="DC_Activity_SupplierProductMapping_CA" nillable="true" type="tns:DC_Activity_SupplierProductMapping_CA" />
   <xs:complexType name="DC_Activity_Policy_RQ">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Policy_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
@@ -1435,6 +1438,7 @@
   <xs:element name="ArrayOfDC_Activity_Policy" nillable="true" type="tns:ArrayOfDC_Activity_Policy" />
   <xs:complexType name="DC_Activity_Policy">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Policy_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="AllowedYN" nillable="true" type="xs:boolean" />
