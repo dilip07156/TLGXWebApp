@@ -10,34 +10,7 @@
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class Inclusions {
-        
-        /// <summary>
-        /// updMedia control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updMedia;
-        
-        /// <summary>
-        /// lblTotalRecords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
-        
-        /// <summary>
-        /// btnNewUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNewUpload;
+    public partial class Exclusion {
         
         /// <summary>
         /// divDropdownForEntries control.

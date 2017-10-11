@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/Flavours.ascx" TagPrefix="uc1" TagName="Flavours"%>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusions.ascx" TagPrefix="uc1" TagName="Inclusions" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/InclusionsAndExclusion.ascx" TagPrefix="uc1" TagName="Inclusions" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ClassificationAttributes.ascx" TagPrefix="uc1" TagName="ClassificationAttributes" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityMedia.ascx" TagPrefix="uc1" TagName="ActivityMedia" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy"%>

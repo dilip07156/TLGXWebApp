@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
-    public partial class Inclusions : System.Web.UI.UserControl
+    public partial class InclusionsAndExclusion : System.Web.UI.UserControl
     {
         Controller.ActivitySVC ActSVC = new Controller.ActivitySVC();
         public Guid Activity_Flavour_Id;
@@ -19,12 +19,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
         protected void BindInclusions()
-
         {
-            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-            gvActInclusionSearch.DataSource = null;
-            gvActInclusionSearch.DataBind();
-
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
         }
 
         protected void gvActInclusionSearch_RowCommand(object sender, GridViewCommandEventArgs e)
