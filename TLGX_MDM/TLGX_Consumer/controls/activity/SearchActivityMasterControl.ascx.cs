@@ -128,7 +128,7 @@ namespace TLGX_Consumer.controls.activity
         {
             try
             {
-                MDMSVC.DC_Activity_Search_RQ _objSearch = new MDMSVC.DC_Activity_Search_RQ();
+                MDMSVC.DC_Activity_Flavour_RQ _objSearch = new MDMSVC.DC_Activity_Flavour_RQ();
 
                 if (ddlCountry.SelectedIndex != 0)
                     _objSearch.Country = ddlCountry.SelectedItem.Text;
@@ -151,13 +151,13 @@ namespace TLGX_Consumer.controls.activity
                 //    _objSearch.ProductSubType = ddlProductSubType.SelectedItem.Text;
                 //var res = masterSVc.GetActivityMaster(_objSearch);
 
-                var res = activitySVC.ActivitySearch(_objSearch);
+                var res = activitySVC.GetActivityFlavour(_objSearch);
                 if (res != null && res.Count!=0)
                 {
                     if (res.Count > 0)
                     {
-                        gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecord);
-                        lblTotalRecords.Text = res[0].TotalRecord.ToString();
+                        gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecords);
+                        lblTotalRecords.Text = res[0].TotalRecords.ToString();
                         gvActivitySearch.DataSource = res;
                         gvActivitySearch.PageIndex = pageindex;
                         gvActivitySearch.PageSize = pagesize;
