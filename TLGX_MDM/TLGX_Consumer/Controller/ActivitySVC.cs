@@ -58,10 +58,10 @@ namespace TLGX_Consumer.Controller
             return (bool)result;
         }
         
-        public int? GetLegacyProductId(Guid Activity_Id)
+        public int? GetLegacyProductId(Guid Activity_Flavour_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Id), typeof(int), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Flavour_Id), typeof(int), out result);
             return result as int?;
         }
         #endregion
@@ -99,12 +99,18 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Activity Flavour
-        public List<DC_Activity_Flavour> GetActivityFlavour(DC_Activity_Flavour_RQ RQ)
+        public List<DC_Activity_Flavour> GetActivityFlavour(MDMSVC.DC_Activity_Flavour_RQ RQ)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Flavour"], RQ, typeof(DC_Activity_Flavour_RQ), typeof(DC_Activity_Flavour), out result);
             return result as  List <DC_Activity_Flavour> ;
 
+        }
+        public DC_Message AddUpdateActivityFlavour(MDMSVC.DC_Activity_Flavour RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Flavour"], RQ, typeof(MDMSVC.DC_Activity_Flavour), typeof(DC_Message), out result);
+            return (DC_Message)result;
         }
         #endregion
     }

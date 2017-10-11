@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<asp:FormView ID="frmActivityFlavour" runat="server" DataKeyNames="Accommodation_Id" DefaultMode="Edit" OnItemCommand="frmActivityFlavour_ItemCommand">
+<asp:FormView ID="frmActivityFlavour" runat="server" DataKeyNames="Activity_Flavour_Id" DefaultMode="Edit" OnItemCommand="frmActivityFlavour_ItemCommand">
     <HeaderTemplate>
         <div class="container">
             <div class="row">
@@ -114,7 +114,7 @@
                                         City
                                             <asp:RequiredFieldValidator ID="vddlCity" runat="server" ErrorMessage="Please select City" Text="*" ControlToValidate="ddlCity" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator></label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlCity_SelectedIndexChanged">
+                                        <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" >
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
