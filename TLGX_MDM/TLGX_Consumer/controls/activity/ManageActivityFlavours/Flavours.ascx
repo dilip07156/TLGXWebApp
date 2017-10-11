@@ -124,7 +124,7 @@
                                         Area
                                     </label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlArea" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlArea_SelectedIndexChanged">
+                                        <asp:DropDownList ID="ddlArea" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" >
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -135,7 +135,7 @@
                                         Location
                                     </label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlLocation" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlLocation_SelectedIndexChanged">
+                                        <asp:DropDownList ID="ddlLocation" runat="server" CssClass="form-control" AppendDataBoundItems="true" >
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
 
