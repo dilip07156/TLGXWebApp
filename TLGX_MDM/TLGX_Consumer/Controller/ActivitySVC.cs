@@ -98,6 +98,15 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region "Activity Inclusion"
+        public List<DC_Activity_Inclusions> GetActivityInclusions(DC_Activity_Inclusions_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityInclusion"], RQParams, typeof(DC_Activity_Inclusions_RQ), typeof(DC_Activity_Inclusions), out result);
+            return result as List<DC_Activity_Inclusions>;
+        }
+        #endregion
+
         #region Activity Flavour
         public List<MDMSVC.DC_Activity_Flavour> GetActivityFlavour(MDMSVC.DC_Activity_Flavour_RQ RQ)
         {
@@ -113,5 +122,7 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #endregion
+
+
     }
 }

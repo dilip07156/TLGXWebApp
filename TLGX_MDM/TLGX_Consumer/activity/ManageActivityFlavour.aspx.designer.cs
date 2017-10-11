@@ -22,13 +22,13 @@ namespace TLGX_Consumer.activity {
         protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Flavours Flavours;
         
         /// <summary>
-        /// Inclusion control.
+        /// Inclusions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityMaster.Inclusion Inclusion;
+        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.InclusionsAndExclusion Inclusions;
         
         /// <summary>
         /// ClassificationAttributes control.
