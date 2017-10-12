@@ -67,10 +67,10 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region "Activity Status"
-        public List<DC_Activity_Status> GetActivityStatusDetails(Guid Activity_Id, Guid Activity_Status_Id)
+        public List<DC_Activity_Status> GetActivityStatusDetails(Guid Activity_Flavour_Id, Guid DataKey_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_StatusURI"], Activity_Id, Activity_Status_Id), typeof(List<DC_Activity_Status>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_StatusURI"], Activity_Flavour_Id, DataKey_Id), typeof(List<DC_Activity_Status>), out result);
             return result as List<DC_Activity_Status>;
         }
 

@@ -195,7 +195,7 @@
                                     </label>
                                     <div class="col-sm-6">
                                         <asp:DropDownList ID="ddlProdNameSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>

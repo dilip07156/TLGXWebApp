@@ -913,6 +913,7 @@
       <xs:element minOccurs="0" name="InclusionName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InclusionTo" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="InclusionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsAudioCommentary" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsDriver" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsInclusion" nillable="true" type="xs:boolean" />
@@ -964,6 +965,7 @@
       <xs:element minOccurs="0" name="InclusionDetailName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InclusionDetailTo" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="InclusionDetailType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ToTime" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
