@@ -640,10 +640,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                     dc = mappingsvc.UpdateStaticDataMappingAttributeValue(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
-                    { }
+                    {
+                       
+                    }
                     else
                     {
                         fillconfigdata();
+                        fillmappingattributes();
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                     }
                 }
                 else if (e.CommandName.ToString() == "UnDelete")
@@ -669,10 +673,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                     dc = mappingsvc.UpdateStaticDataMappingAttributeValue(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
-                    { }
+                    {
+                    }
                     else
                     {
                         fillconfigdata();
+                        fillmappingattributes();
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                     }
                 }
             }
@@ -853,7 +860,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (ddlAttributeValue.Visible)
                 {
                     if (hdnddlAttributeTableValueName != null && !string.IsNullOrEmpty(hdnddlAttributeTableValueName.Value))
-                        strAttributeName = hdnddlAttributeTableValueName.Value + "." + ddlAttributeValue.SelectedItem.Text;
+                        strAttributeValue = hdnddlAttributeTableValueName.Value + "." + ddlAttributeValue.SelectedItem.Text;
                     else
                         strAttributeName = ddlAttributeValue.SelectedItem.Text;
                 }
