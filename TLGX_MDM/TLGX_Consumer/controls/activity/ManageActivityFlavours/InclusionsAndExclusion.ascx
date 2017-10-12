@@ -19,7 +19,7 @@
             <%--<div class="panel panel-default">--%>
 
             <div class="panel-heading clearfix row">
-                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" OnClientClick="showFileUpload();" />
+                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnAddNewInclusion" Text="Add New" OnClick="btnAddNewInclusion_Click" OnClientClick="showFileUpload();" />
             </div>
 
             <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
@@ -49,21 +49,6 @@
 
     </ContentTemplate>
 </asp:UpdatePanel>
-
-<script type='text/javascript'>
-    function pageLoad(sender, args) {
-        //alert('Hi');
-        $('.next').click(function () {
-            var nextId = $(this).parents('.tab-pane').next().attr("id");
-            $('[href=#' + nextId + ']').tab('show');
-        })
-
-        $('.first').click(function () {
-            $('#myWizard1 a:first').tab('show')
-        })
-    }
-
-</script>
 
 <div class="modal fade" id="moAddInclusions" role="dialog">
     <div class="modal-dialog modal-xl">
@@ -170,8 +155,8 @@
 
                                             <div class="form-group row">
                                                 <div class="col-sm-6 pull-right">
-                                                    <asp:Button ID="btnAdd" runat="server" Text="Add" CssClass="btn btn-primary" />
-                                                    <asp:Button ID="btnReset" runat="server" Text="Reset" CssClass="btn btn-primary" />
+                                                    <asp:Button ID="btnAdd" runat="server" Text="Add" OnClick="btnAdd_Click" CssClass="btn btn-primary" />
+                                                    <asp:Button ID="btnReset" runat="server" Text="Reset" OnClick="btnReset_Click" CssClass="btn btn-primary" />
                                                 </div>
                                             </div>
                                         </div>
@@ -194,3 +179,18 @@
     </div>
 
 </div>
+
+<script type='text/javascript'>
+    function pageLoad(sender, args) {
+        //alert('Hi');
+        $('.next').click(function () {
+            var nextId = $(this).parents('.tab-pane').next().attr("id");
+            $('[href=#' + nextId + ']').tab('show');
+        })
+
+        $('.first').click(function () {
+            $('#myWizard1 a:first').tab('show')
+        })
+    }
+
+</script>
