@@ -32699,6 +32699,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string InclusionTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsAudioCommentaryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -32891,6 +32894,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.InclusionTypeField, value) != true)) {
                     this.InclusionTypeField = value;
                     this.RaisePropertyChanged("InclusionType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
@@ -33252,6 +33268,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string InclusionDetailTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Legacy_Product_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -33500,6 +33519,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.InclusionDetailTypeField, value) != true)) {
                     this.InclusionDetailTypeField = value;
                     this.RaisePropertyChanged("InclusionDetailType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }

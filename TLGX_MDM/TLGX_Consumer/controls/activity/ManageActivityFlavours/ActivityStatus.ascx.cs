@@ -40,6 +40,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             TextBox txtLegacyProductId = (TextBox)frmStatusDetails.FindControl("txtLegacyProductId");
            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
+           
             if (e.CommandName == "Add")
             {
                 MDMSVC.DC_Activity_Status newObj = new MDMSVC.DC_Activity_Status
@@ -47,8 +48,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     Activity_Status_Id = Guid.NewGuid(),
                     Activity_Flavour_Id = Activity_Flavour_Id,
                     //Activity_Id=Activity_Id,
-                     Legacy_Product_ID = AccSvc.GetLegacyProductId(Activity_Flavour_Id),
-
+                    Legacy_Product_ID = AccSvc.GetLegacyProductId(Activity_Flavour_Id),
+                    Status = txtStatus.Text,
+                    CompanyMarket = txtMarket.Text,
+                    From = DateTime.Parse(txtFrom.Text.Trim()),
+                    To= DateTime.Parse(txtTo.Text.Trim()),
+                    DeactivationReason=txtReason.Text,
                     Create_Date = DateTime.Now,
                     Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                     IsActive = true
@@ -82,8 +87,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         Status = txtStatus.Text,
                         CompanyMarket = txtMarket.Text,
                         DeactivationReason = txtReason.Text,
-                        From = Convert.ToDateTime(txtFrom.Text),
-                        To = Convert.ToDateTime(txtTo.Text),
+                        From = DateTime.Parse(txtFrom.Text.Trim()),
+                        To = DateTime.Parse(txtTo.Text.Trim()),
                         Edit_Date = DateTime.Now,
                         Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                         IsActive = true

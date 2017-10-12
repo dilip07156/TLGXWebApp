@@ -91,11 +91,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
                 ddlProdcategorySubType.Items.Clear();
-                //var a= LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
                 ddlProdcategorySubType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
                 ddlProdcategorySubType.DataTextField = "AttributeValue";
                 ddlProdcategorySubType.DataValueField = "MasterAttributeValue_Id";
                 ddlProdcategorySubType.DataBind();
+                ddlProdcategorySubType.Items.Insert(0, new ListItem("-Select-", "0"));
                 MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
                 if (rowView != null)
                 {
@@ -130,12 +130,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(rowView.ProductType.ToString()));
                 }
             }
-            else {
-                ddlProductType.DataSource = dropdownvalues;
-                ddlProductType.DataTextField = "AttributeValue";
-                ddlProductType.DataValueField = "MasterAttributeValue_Id";
-                ddlProductType.DataBind();
-            }
+            //else {
+            //    ddlProductType.DataSource = dropdownvalues;
+            //    ddlProductType.DataTextField = "AttributeValue";
+            //    ddlProductType.DataValueField = "MasterAttributeValue_Id";
+            //    ddlProductType.DataBind();
+            //}
         }
 
         private void fillproductsubtype()
@@ -153,20 +153,20 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 ddlProdNameSubType.DataTextField = "AttributeValue";
                 ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
                 ddlProdNameSubType.DataBind();
-                ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
+                ddlProdNameSubType.Items.Insert(0, new ListItem("-Select-", "0"));
                 MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
                 if (rowView != null)
                 {
                     ddlProdNameSubType.SelectedIndex = ddlProdNameSubType.Items.IndexOf(ddlProdNameSubType.Items.FindByText(rowView.ProductNameSubType.ToString()));
                 }
             }
-            else
-            {
-                ddlProdNameSubType.DataSource = dropdownvalues;
-                ddlProdNameSubType.DataTextField = "AttributeValue";
-                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
-                ddlProdNameSubType.DataBind();
-            }
+            //else
+            //{
+            //    ddlProdNameSubType.DataSource = dropdownvalues;
+            //    ddlProdNameSubType.DataTextField = "AttributeValue";
+            //    ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
+            //    ddlProdNameSubType.DataBind();
+            //}
            
         }
 

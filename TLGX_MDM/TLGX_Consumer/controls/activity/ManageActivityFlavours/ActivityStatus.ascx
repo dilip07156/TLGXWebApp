@@ -196,8 +196,8 @@
                 <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Telephone" />
                 <asp:BoundField DataField="CompanyMarket" HeaderText="Company Market" SortExpression="CompanyMarket" />
                 <asp:BoundField DataField="DeactivationReason" HeaderText="Deactivation Reason" SortExpression="DeactivationReason" />
-                <asp:BoundField DataField="From" HeaderText="From " SortExpression="From" />
-                <asp:BoundField DataField="To" HeaderText="To " SortExpression="To" />
+                <asp:BoundField DataField="From" HeaderText="From " SortExpression="From" DataFormatString="{0:dd/MM/yyyy}" />
+                <asp:BoundField DataField="To" HeaderText="To " SortExpression="To" DataFormatString="{0:dd/MM/yyyy}" />
                 <asp:BoundField DataField="Legacy_Product_ID" HeaderText="Product ID" SortExpression="Legacy_Product_ID" Visible="false" />
                 <asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
