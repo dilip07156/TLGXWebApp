@@ -104,6 +104,7 @@
                         <form id="uriForm" class="form-horizontal">
 
                             <div class="form-group row">
+                                
                                 <label class="control-label col-sm-2" for="txtWebsite">
                                     Website
                                 </label>
@@ -112,14 +113,20 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="control-label col-sm-2" for="txtEmail">
-                                    Email
+                                <div class="col-md-10">
+                                    <label class="control-label col-sm-2" for="txtEmail">
+                                        Email
                             <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="ActivityContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
-                                </label>
+                                    </label>
 
-                                <div class="col-sm-10">
-                                    <input type="text" id="txtEmail" runat="server" cssclass="form-control" />
+                                    <div class="col-sm-10">
+                                        <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
                                 </div>
+                                 <div class="col-md-2 ">
+                                <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="ActivityContacts" CausesValidation="true" />
+
+                            </div>
                             </div>
                             <div class="form-group row" style="display: none;">
                                 <label class="control-label col-sm-2" for="txtEmail">Legacy Product ID</label>
@@ -131,10 +138,6 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-md-2 pull-right">
-                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="ActivityContacts" CausesValidation="true" />
-
-                    </div>
                 </div>
 
             </InsertItemTemplate>
@@ -225,19 +228,24 @@
                             Website
                         </label>
                         <div class="col-sm-10">
-                             <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control" ></asp:TextBox>
+                            <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="control-label col-sm-2" for="txtEmail">
-                            Email
+                        <div class="col-sm-10">
+                            <label class="control-label col-sm-2" for="txtEmail">
+                                Email
                             <asp:RegularExpressionValidator ID="vtxtEmail" runat="server" ErrorMessage="Invalid Email" Text="*" ControlToValidate="txtEmail" CssClass="text-danger" ValidationGroup="ActivityContacts" ValidationExpression="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"></asp:RegularExpressionValidator>
 
-                        </label>
+                            </label>
 
-                        <div class="col-sm-10">
-                            <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" ></asp:TextBox>
+                            <div class="col-sm-10">
+                                <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
 
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="ActivityContacts" CausesValidation="true" />
                         </div>
                     </div>
                     <div class="form-group row" style="visibility: hidden">
@@ -248,8 +256,7 @@
                         </div>
                     </div>
                 </form>
-                 <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="ActivityContacts" CausesValidation="true" />       
-             
+
             </EditItemTemplate>
 
         </asp:FormView>

@@ -161,8 +161,8 @@
                                     <asp:RequiredFieldValidator ID="vddlProdCategory" runat="server" ErrorMessage="Please select Product Category" Text="*" ControlToValidate="ddlProdCategory" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlProdCategory" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProdCategory_SelectedIndexChanged">
-                                            <asp:ListItem>-Select-</asp:ListItem>
+                                        <asp:DropDownList ID="ddlProdCategory" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="false">
+                                            <asp:ListItem>Activity</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -172,8 +172,8 @@
                                      <asp:RequiredFieldValidator ID="vddlProdcategorySubType" runat="server" ErrorMessage="Please select Product Sub Category" Text="*" ControlToValidate="ddlProdcategorySubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlProdcategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProdcategorySubType_SelectedIndexChanged">
-                                            <asp:ListItem>-Select-</asp:ListItem>
+                                        <asp:DropDownList ID="ddlProdcategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProdcategorySubType_SelectedIndexChanged" AutoPostBack="true">
+                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -183,8 +183,8 @@
                                     <asp:RequiredFieldValidator ID="vddlProductType" runat="server" ErrorMessage="Please select Product Type" Text="*" ControlToValidate="ddlProductType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged">
-                                            <asp:ListItem>-Select-</asp:ListItem>
+                                        <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged" AutoPostBack="true">
+                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -195,7 +195,7 @@
                                     </label>
                                     <div class="col-sm-6">
                                         <asp:DropDownList ID="ddlProdNameSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                            <asp:ListItem>-Select-</asp:ListItem>
+                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>

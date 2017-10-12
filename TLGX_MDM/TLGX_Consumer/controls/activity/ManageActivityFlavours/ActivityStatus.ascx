@@ -30,18 +30,18 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="control-label col-sm-2" for="txtMarket">
+                                    <label class="control-label col-sm-3" for="txtMarket">
                                         Company market
                                     </label>
-                                    <div class="col-sm-10">
+                                    <div class="col-sm-9">
                                         <asp:TextBox ID="txtMarket" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label class="control-label col-sm-4" for="txtFrom">From</label>
-                                    <div class="col-sm-7">
+                                    <label class="control-label col-sm-2" for="txtFrom">From</label>
+                                    <div class="col-sm-10">
                                         <div class="input-group">
                                             <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" />
                                             <span class="input-group-btn">
@@ -55,8 +55,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="control-label col-sm-4" for="txtTo">To</label>
-                                    <div class="col-sm-7">
+                                    <label class="control-label col-sm-3" for="txtTo">To</label>
+                                    <div class="col-sm-9">
                                         <div class="input-group">
                                             <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" />
                                             <span class="input-group-btn">
@@ -72,12 +72,20 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label class="control-label col-sm-2" for="txtReason">
-                                    Deactivation Reason
-                                </label>
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtReason" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-3" for="txtReason">
+                                        Deactivation Reason
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <asp:TextBox ID="txtReason" runat="server" CssClass="form-control" TextMode="multiline" Columns="50" Rows="5"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-2 ">
+                                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="ActivityStatus" CausesValidation="true" />
+                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row" style="display: none;">
@@ -88,10 +96,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-2 pull-right">
-                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="ActivityStatus" CausesValidation="true" />
 
-                    </div>
                 </div>
 
             </InsertItemTemplate>
@@ -119,10 +124,11 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <label class="control-label col-sm-4" for="txtFrom">From</label>
-                                    <div class="col-sm-7">
+                                    <label class="control-label col-sm-2" for="txtFrom">From</label>
+                                    <div class="col-sm-10">
                                         <div class="input-group">
                                             <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" />
                                             <span class="input-group-btn">
@@ -136,8 +142,8 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="control-label col-sm-4" for="txtTo">To</label>
-                                    <div class="col-sm-7">
+                                    <label class="control-label col-sm-3" for="txtTo">To</label>
+                                    <div class="col-sm-9">
                                         <div class="input-group">
                                             <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" />
                                             <span class="input-group-btn">
@@ -153,14 +159,23 @@
                                     </div>
                                 </div>
                             </div>
+                          
                             <div class="form-group row">
-                                <label class="control-label col-sm-2" for="txtReason">
-                                    Deactivation Reason
-                                </label>
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtReason" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-6">
+                                    <label class="control-label col-sm-3" for="txtReason">
+                                        Deactivation Reason
+                                    </label>
+                                    <div class="col-sm-9">
+                                        <asp:TextBox ID="txtReason" runat="server" CssClass="form-control" TextMode="multiline" Columns="50" Rows="5"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="col-md-2 ">
+                                        <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="ActivityStatus" CausesValidation="true" />
+                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group row" style="display: none;">
                                 <label class="control-label col-sm-2" for="txtEmail">Legacy Product ID</label>
                                 <div class="col-sm-10">
@@ -168,9 +183,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="col-md-2 pull-right">
-                        <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Edit" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="ActivityStatus" CausesValidation="true" />
                     </div>
                 </div>
             </EditItemTemplate>
