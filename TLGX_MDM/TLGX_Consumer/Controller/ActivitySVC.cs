@@ -102,7 +102,7 @@ namespace TLGX_Consumer.Controller
         public List<DC_Activity_Inclusions> GetActivityInclusions(DC_Activity_Inclusions_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityInclusion"], RQParams, typeof(DC_Activity_Inclusions_RQ), typeof(DC_Activity_Inclusions), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityInclusion"], RQParams, typeof(DC_Activity_Inclusions_RQ), typeof(List<DC_Activity_Inclusions>), out result);
             return result as List<DC_Activity_Inclusions>;
         }
         #endregion
