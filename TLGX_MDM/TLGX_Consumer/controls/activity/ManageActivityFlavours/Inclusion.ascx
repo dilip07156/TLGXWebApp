@@ -19,7 +19,7 @@
 <div id="collapseSearchResult" class="panel-collapse collapse in">
     <div class="panel-body">
         <asp:GridView ID="gvActInclusionSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-            EmptyDataText="No Activity Inclusions Found for search conditions" CssClass="table table-hover table-striped"
+            EmptyDataText="No Activity Inclusions Found" CssClass="table table-hover table-striped"
             AutoGenerateColumns="false" OnPageIndexChanging="gvActInclusionSearch_PageIndexChanging"
             OnRowCommand="gvActInclusionSearch_RowCommand" DataKeyNames="Activity_Inclusions_Id">
             <Columns>
@@ -37,16 +37,16 @@
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
                         </asp:LinkButton>
                     </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
+                </asp:TemplateField>--%>
+                <%--<asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
                                                     <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>--%>
             </Columns>
             <PagerStyle CssClass="pagination-ys" />
         </asp:GridView>
