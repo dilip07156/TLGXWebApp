@@ -42695,13 +42695,21 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityClasificationAttributes", ReplyAction="http://tempuri.org/IActivity/GetActivityClasificationAttributesResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes[]> GetActivityClasificationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributes", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributesDC_ErrorStat" +
-            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityClassifiationAttributes(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddActivityClassifiationAttributes", ReplyAction="http://tempuri.org/IActivity/AddActivityClassifiationAttributesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddActivityClassifiationAttributesDC_ErrorStatusFaul" +
+            "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddActivityClassifiationAttributes(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributes", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityClassifiationAttributesResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityClassifiationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddActivityClassifiationAttributes", ReplyAction="http://tempuri.org/IActivity/AddActivityClassifiationAttributesResponse")]
+        System.Threading.Tasks.Task<bool> AddActivityClassifiationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/UpdateActivityClassifiationAttributes", ReplyAction="http://tempuri.org/IActivity/UpdateActivityClassifiationAttributesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/UpdateActivityClassifiationAttributesDC_ErrorStatusF" +
+            "ault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool UpdateActivityClassifiationAttributes(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/UpdateActivityClassifiationAttributes", ReplyAction="http://tempuri.org/IActivity/UpdateActivityClassifiationAttributesResponse")]
+        System.Threading.Tasks.Task<bool> UpdateActivityClassifiationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityPickUpDrop", ReplyAction="http://tempuri.org/IActivity/GetActivityPickUpDropResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityPickUpDropDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -44898,12 +44906,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetActivityClasificationAttributesAsync(RQ);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityClassifiationAttributes(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ) {
-            return base.Channel.AddUpdateActivityClassifiationAttributes(RQ);
+        public bool AddActivityClassifiationAttributes(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ) {
+            return base.Channel.AddActivityClassifiationAttributes(RQ);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityClassifiationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ) {
-            return base.Channel.AddUpdateActivityClassifiationAttributesAsync(RQ);
+        public System.Threading.Tasks.Task<bool> AddActivityClassifiationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ) {
+            return base.Channel.AddActivityClassifiationAttributesAsync(RQ);
+        }
+        
+        public bool UpdateActivityClassifiationAttributes(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ) {
+            return base.Channel.UpdateActivityClassifiationAttributes(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateActivityClassifiationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes RQ) {
+            return base.Channel.UpdateActivityClassifiationAttributesAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Activity_PickUpDrop[] GetActivityPickUpDrop(TLGX_Consumer.MDMSVC.DC_Activity_PickUpDrop_RQ RQ) {

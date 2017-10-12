@@ -3633,17 +3633,31 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddUpdateActivityClassifiationAttributes">
+  <xs:element name="AddActivityClassifiationAttributes">
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q361="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q361:DC_Activity_ClassificationAttributes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="AddUpdateActivityClassifiationAttributesResponse">
+  <xs:element name="AddActivityClassifiationAttributesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q362="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityClassifiationAttributesResult" nillable="true" type="q362:DC_Message" />
+        <xs:element minOccurs="0" name="AddActivityClassifiationAttributesResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityClassifiationAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q362="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q362:DC_Activity_ClassificationAttributes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateActivityClassifiationAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateActivityClassifiationAttributesResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
