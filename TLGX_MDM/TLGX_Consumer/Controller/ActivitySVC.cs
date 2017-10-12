@@ -105,6 +105,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityInclusion"], RQParams, typeof(DC_Activity_Inclusions_RQ), typeof(List<DC_Activity_Inclusions>), out result);
             return result as List<DC_Activity_Inclusions>;
         }
+        public DC_Message AddUpdateActivityInclusions(MDMSVC.DC_Activity_Inclusions RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityInclusions"], RQParams, typeof(MDMSVC.DC_Activity_Inclusions), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
 
         #region Activity Flavour
