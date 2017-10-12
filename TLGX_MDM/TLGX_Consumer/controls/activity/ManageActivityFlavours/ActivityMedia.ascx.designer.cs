@@ -58,6 +58,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
+        /// dvMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
         /// gvActMediaSearch control.
         /// </summary>
         /// <remarks>

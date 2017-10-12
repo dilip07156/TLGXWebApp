@@ -222,6 +222,7 @@
         );
         $('#moViewDetials').on('hidden.bs.modal', function () {
             //stop timer on close of modal 
+            $('#moViewDetials a:first').tab('show');
             myStopFunction();
         });
     }
