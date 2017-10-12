@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.MDMSVC;
+using TLGX_Consumer.Models;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
@@ -15,6 +16,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         // public Guid Activity_Id;
         Controller.ActivitySVC AccSvc = new Controller.ActivitySVC();
         Controller.MasterDataSVCs masterSVc = new Controller.MasterDataSVCs();
+        lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         MDMSVC.DC_Activity_Flavour_RQ RQParams = new MDMSVC.DC_Activity_Flavour_RQ();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,9 +26,33 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                
             }
         }
+      
+        private void getFlavourInfo()
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            DC_Activity_Flavour_RQ RQ = new DC_Activity_Flavour_RQ();
+            RQ.Activity_Flavour_Id= Activity_Flavour_Id;
+            var result = AccSvc.GetActivityFlavour(RQ);
+            frmActivityFlavour.DataSource = result;
+            frmActivityFlavour.DataBind();
+            if (result != null)
+            {
+                fillMasterDropdowns();
+            }
+        }
+
+        private void fillMasterDropdowns()
+        {
+            fillcoutries();
+            fillcities();
+            fillproductcaterogysubtype();
+            fillProductType();
+            fillproductsubtype();
+        }
+
         private void fillcoutries()
         {
-           DropDownList ddlCountry = (DropDownList)frmActivityFlavour.FindControl("ddlCountry");
+            DropDownList ddlCountry = (DropDownList)frmActivityFlavour.FindControl("ddlCountry");
             var a = masterSVc.GetAllCountries();
             ddlCountry.DataSource = a;
             ddlCountry.DataTextField = "Country_Name";
@@ -58,44 +84,112 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
         }
-
-        private void getFlavourInfo()
+        
+        private void fillproductcaterogysubtype()
         {
-            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-            DC_Activity_Flavour_RQ RQ = new DC_Activity_Flavour_RQ();
-            RQ.Activity_Flavour_Id= Activity_Flavour_Id;
-            var result = AccSvc.GetActivityFlavour(RQ);
-            frmActivityFlavour.DataSource = result;
-            frmActivityFlavour.DataBind();
-            if (result != null)
+            try
             {
-                fillMasterDropdowns();
+                DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
+                ddlProdcategorySubType.Items.Clear();
+                //var a= LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
+                ddlProdcategorySubType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
+                ddlProdcategorySubType.DataTextField = "AttributeValue";
+                ddlProdcategorySubType.DataValueField = "MasterAttributeValue_Id";
+                ddlProdcategorySubType.DataBind();
+                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+                if (rowView != null)
+                {
+                    ddlProdcategorySubType.SelectedIndex = ddlProdcategorySubType.Items.IndexOf(ddlProdcategorySubType.Items.FindByText(rowView.ProductCategorySubType.ToString()));
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
-        private void fillMasterDropdowns()
+
+        private void fillProductType()
         {
-            fillcoutries();
-            fillcities();
+            DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
+            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+            ddlProductType.Items.Clear();
+            var dropdownvalues= LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
+            if (ddlProdcategorySubType.SelectedItem.Text != "-Select-")
+            {
+                var res = (from s in dropdownvalues
+                           where s.ParentAttributeValue_Id == new Guid(ddlProdcategorySubType.SelectedValue)
+                          select s);
+                ddlProductType.DataSource = res;
+                ddlProductType.DataTextField = "AttributeValue";
+                ddlProductType.DataValueField = "MasterAttributeValue_Id";
+                ddlProductType.DataBind();
+                ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
+                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+                if (rowView != null)
+                {
+                    ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(rowView.ProductType.ToString()));
+                }
+            }
+            else {
+                ddlProductType.DataSource = dropdownvalues;
+                ddlProductType.DataTextField = "AttributeValue";
+                ddlProductType.DataValueField = "MasterAttributeValue_Id";
+                ddlProductType.DataBind();
+            }
+        }
+
+        private void fillproductsubtype()
+        {
+            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
+            ddlProdNameSubType.Items.Clear();
+            var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductSubType").MasterAttributeValues;
+            if (ddlProductType.SelectedItem.Text != "-Select-")
+            {
+                var res = (from s in dropdownvalues
+                           where s.ParentAttributeValue_Id == new Guid(ddlProductType.SelectedValue)
+                           select s);
+                ddlProdNameSubType.DataSource = res;
+                ddlProdNameSubType.DataTextField = "AttributeValue";
+                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
+                ddlProdNameSubType.DataBind();
+                ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
+                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+                if (rowView != null)
+                {
+                    ddlProdNameSubType.SelectedIndex = ddlProdNameSubType.Items.IndexOf(ddlProdNameSubType.Items.FindByText(rowView.ProductNameSubType.ToString()));
+                }
+            }
+            else
+            {
+                ddlProdNameSubType.DataSource = dropdownvalues;
+                ddlProdNameSubType.DataTextField = "AttributeValue";
+                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
+                ddlProdNameSubType.DataBind();
+            }
+           
         }
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillcities();
         }
-
-        protected void ddlProdCategory_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         protected void ddlProdcategorySubType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+            ddlProductType.Items.Clear();
+            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
+            ddlProdNameSubType.Items.Clear();
+            fillProductType();
         }
 
         protected void ddlProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
+            ddlProdNameSubType.Items.Clear();
+            fillproductsubtype();
         }
 
         protected void frmActivityFlavour_ItemCommand(object sender, FormViewCommandEventArgs e)
