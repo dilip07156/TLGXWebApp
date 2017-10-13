@@ -63,13 +63,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
 
                 Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-                Guid myRow_Id = Guid.Parse(gvActInclusionSearch.SelectedDataKey.Value.ToString());
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                Guid myRow_Id = Guid.Parse(gvActInclusionSearch.DataKeys[index].Values[0].ToString());
 
                 MDMSVC.DC_Activity_InclusionDetails_RQ newObj = new MDMSVC.DC_Activity_InclusionDetails_RQ();
                 newObj.Activity_Inclusion_Id = myRow_Id;
 
                 var result = ActSVC.GetActivityInclusionDetails(newObj);
-                if (result.Count > 0)
+                if (result.Count>0)
                 {
 
                 }

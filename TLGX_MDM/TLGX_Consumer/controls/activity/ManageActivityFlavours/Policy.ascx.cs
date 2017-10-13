@@ -29,7 +29,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
             MDMSVC.DC_Activity_Policy_RQ _obj = new MDMSVC.DC_Activity_Policy_RQ();
-            _obj.Activity_Id = Activity_Flavour_Id;
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            _obj.Activity_Flavour_Id = Activity_Flavour_Id;
             
             var res = activitySVC.GetActivityPolicy(_obj);
             if(res!=null)
@@ -42,6 +43,16 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 grdPolicy.DataSource = null;
                 grdPolicy.DataBind();
             }
+        }
+
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

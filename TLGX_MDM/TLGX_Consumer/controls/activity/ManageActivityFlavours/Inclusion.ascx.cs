@@ -16,6 +16,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (!IsPostBack)
             {
                 BindInclusions();
+                gvActInclusionDetails.DataSource = null;
+                gvActInclusionDetails.DataBind();
             }
         }
         protected void BindInclusions()
@@ -50,6 +52,32 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         }
 
         protected void gvActInclusionSearch_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName.ToString() == "Editing")
+            {
+
+
+
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                Guid myRow_Id = Guid.Parse(gvActInclusionSearch.SelectedDataKey.Value.ToString());
+
+                MDMSVC.DC_Activity_InclusionDetails_RQ newObj = new MDMSVC.DC_Activity_InclusionDetails_RQ();
+                newObj.Activity_Inclusion_Id = myRow_Id;
+
+                var result = ActSVC.GetActivityInclusionDetails(newObj);
+                if (result.Count > 0)
+                {
+
+                }
+            }
+        }
+
+        protected void frmInclusionDetails_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+
+        }
+
+        protected void gvActInclusionSearch_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
         }

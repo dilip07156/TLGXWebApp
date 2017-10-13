@@ -93,7 +93,7 @@ namespace TLGX_Consumer.Controller
         public List<DC_Activity_Policy> GetActivityPolicy(DC_Activity_Policy_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetActivityPolicy"], RQParams), typeof(MDMSVC.DC_Activity_Policy_RQ), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityPolicy"], RQParams, typeof(MDMSVC.DC_Activity_Policy_RQ), typeof(List<DC_Activity_Policy>), out result);
             return result as List<DC_Activity_Policy>;
         }
         #endregion
