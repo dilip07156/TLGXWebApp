@@ -55,39 +55,33 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         }
         protected void btnAdd_Click(object sender, EventArgs e)
         {
-        //    Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
-        //    MDMSVC.DC_Activity_Policy newObj = new MDMSVC.DC_Activity_Policy();
-        //    {
-        //        newObj.Activity_Flavour_Id = Activity_Flavour_Id;
-        //        if (chkIsActive.Checked)
-        //            newObj = true;
-        //        else
-        //            newObj.IsInclusion = false;
-        //        if()
-        //        newObj.InclusionFor = ddlInclusionFor.SelectedItem.Text;
-        //        newObj.InclusionType = ddlInclusionType.SelectedItem.Text;
-        //        newObj.InclusionName = txtName.Text;
-        //        newObj.InclusionDescription = txtDescription.Text;
-        //        newObj.InclusionFrom = DateTime.Parse(txtFrom.Text);
-        //        newObj.InclusionTo = DateTime.Parse(txtTo.Text);
-        //        newObj.IsActive = true;
-        //    }
+            MDMSVC.DC_Activity_Policy newObj = new MDMSVC.DC_Activity_Policy();
+            {
+                newObj.Activity_Flavour_Id = Activity_Flavour_Id;
+                if (chkIsAllow.Checked)
+                    newObj.AllowedYN = true;
+                else
+                    newObj.AllowedYN = false;
+                newObj.IsActive = true;
+                newObj.PolicyName = txtName.Text;
+            }
 
-        //    MDMSVC.DC_Message _msg = ActSVC.AddUpdateActivityInclusions(newObj);
-        //    if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
-        //    {
-        //        divMsgAlertIncExc.Visible = true;
-        //        BootstrapAlert.BootstrapAlertMessage(divMsgAlertIncExc, _msg.StatusMessage, BootstrapAlertType.Success);
-        //    }
-        //    else
-        //    {
-        //        divMsgAlertIncExc.Visible = true;
-        //        BootstrapAlert.BootstrapAlertMessage(divMsgAlertIncExc, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
-        //    }
+            MDMSVC.DC_Message _msg = ActSVC.AddUpdateActivityPolicy(newObj);
+            if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+            {
+                divMsgAlertIncExc.Visible = true;
+                BootstrapAlert.BootstrapAlertMessage(divMsgAlertIncExc, _msg.StatusMessage, BootstrapAlertType.Success);
+            }
+            else
+            {
+                divMsgAlertIncExc.Visible = true;
+                BootstrapAlert.BootstrapAlertMessage(divMsgAlertIncExc, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+            }
 
 
-        //    ResetControls();
+            ResetControls();
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
