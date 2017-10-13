@@ -137,9 +137,9 @@
                                         <div class="col-sm-6">
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-6" for="chkIsInclusion">Active</label>
+                                                <label class="control-label col-sm-6" for="chkIsActive">Active</label>
                                                 <div class="col-sm-6">
-                                                    <asp:CheckBox ID="chkIsInclusion" runat="server" Checked='<%# Bind("IsActive") %>' />
+                                                    <asp:CheckBox ID="chkIsActive" runat="server" Checked='<%# Bind("IsActive") %>' />
                                                 </div>
                                             </div>
 
