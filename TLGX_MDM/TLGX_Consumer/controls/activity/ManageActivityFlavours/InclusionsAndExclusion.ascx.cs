@@ -93,6 +93,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 newObj.InclusionDescription = txtDescription.Text;
                 newObj.InclusionFrom = DateTime.Parse(txtFrom.Text);
                 newObj.InclusionTo = DateTime.Parse(txtTo.Text);
+                newObj.IsActive = true;
             }
 
             MDMSVC.DC_Message _msg = ActSVC.AddUpdateActivityInclusions(newObj);

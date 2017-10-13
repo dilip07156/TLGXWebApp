@@ -1,7 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InclusionsAndExclusion.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.InclusionsAndExclusion" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <script>
-    function showFileUpload() {
+    function showAddModal() {
         $("#moAddInclusions").modal('show');
     }
 </script>
@@ -13,13 +14,14 @@
         }
     }
 </style>
+
 <asp:UpdatePanel ID="updMedia" runat="server">
     <ContentTemplate>
         <div class="panel-group" id="searchResult">
             <%--<div class="panel panel-default">--%>
 
             <div class="panel-heading clearfix row">
-                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnAddNewInclusion" Text="Add New" OnClick="btnAddNewInclusion_Click" OnClientClick="showFileUpload();" />
+                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnAddNewInclusion" Text="Add New" OnClick="btnAddNewInclusion_Click" OnClientClick="showAddModal();" />
             </div>
 
             <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
@@ -28,17 +30,17 @@
             <div class="form-group row">
                 <div class="container" id="myWizard1">
                     <div class="navbar">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#panInclusion" data-toggle="tab">Inclusion</a></li>
-                            <li><a href="#panExclusion" data-toggle="tab">Exclusion</a></li>
+                        <ul id="myTab" class="nav nav-tabs" role="tablist">
+                            <li class="active"><a role="tab" data-toggle="tab" href="#panInclusion">Inclusion</a></li>
+                            <li><a role="tab" data-toggle="tab" href="#panExclusion">Exclusion</a></li>
                         </ul>
                     </div>
 
                     <div class="tab-content">
-                        <div class="tab-pane first" id="panInclusion">
+                        <div class="tab-pane fade in active" id="panInclusion">
                             <uc1:Inclusion runat="server" ID="Inclusion" />
                         </div>
-                        <div class="tab-pane next" id="panExclusion">
+                        <div class="tab-pane fade" id="panExclusion">
                             <uc1:Exclusion runat="server" ID="Exclusion" />
                         </div>
                     </div>
@@ -181,7 +183,7 @@
 </div>
 
 <script type='text/javascript'>
-    function pageLoad(sender, args) {
+    //function pageLoad(sender, args) {
         //alert('Hi');
         $('.next').click(function () {
             var nextId = $(this).parents('.tab-pane').next().attr("id");
@@ -191,6 +193,13 @@
         $('.first').click(function () {
             $('#myWizard1 a:first').tab('show')
         })
-    }
+    //}
+
+
+   //$('#myTab a').click(function (e) {
+   //  //e.preventDefault()
+   //  $(this).tab('show')
+   //})
+
 
 </script>

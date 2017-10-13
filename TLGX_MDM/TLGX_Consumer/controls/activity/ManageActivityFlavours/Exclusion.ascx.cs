@@ -16,6 +16,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (!IsPostBack)
             {
                 BindInclusions();
+                gvActInclusionDetails.DataSource = null;
+                gvActInclusionDetails.DataBind();
             }
         }
         protected void BindInclusions()
@@ -27,13 +29,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             List<MDMSVC.DC_Activity_Inclusions> res = new List<MDMSVC.DC_Activity_Inclusions>();
             if (res != null)
             {
-                foreach(MDMSVC.DC_Activity_Inclusions rs in result)
+                foreach (MDMSVC.DC_Activity_Inclusions rs in result)
                 {
-                    if(rs.IsInclusion!=true)
+                    if (rs.IsInclusion != true)
                     {
                         res.Add(rs);
                     }
-                    
+
                 }
                 gvActInclusionSearch.DataSource = res;
                 gvActInclusionSearch.DataBind();
@@ -51,11 +53,36 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void gvActInclusionSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            //int index = row.RowIndex;
+            //Guid myRowId = Guid.Parse(gvActInclusionSearch.DataKeys[index].Values[0].ToString());
+
+            if (e.CommandName.ToString() == "Editing")
+            {
+
+
+
+                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                Guid myRow_Id = Guid.Parse(gvActInclusionSearch.SelectedDataKey.Value.ToString());
+
+                MDMSVC.DC_Activity_InclusionDetails_RQ newObj = new MDMSVC.DC_Activity_InclusionDetails_RQ();
+                newObj.Activity_Inclusion_Id = myRow_Id;
+
+                var result = ActSVC.GetActivityInclusionDetails(newObj);
+                if (result.Count > 0)
+                {
+
+                }
+            }
+        }
+
+        protected void frmInclusionDetails_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
 
         }
 
-        //protected void gvActInclusionSearch_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
+        protected void gvActInclusionSearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
             //if (e.Row.DataItem != null)
             //{
             //    // Retrieve the key value for the current row. Here it is an int.
@@ -71,6 +98,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //    //    e.Row.Font.Strikeout = true;
             //    //}
             //}
-        //}
+
+        }
     }
 }
+
