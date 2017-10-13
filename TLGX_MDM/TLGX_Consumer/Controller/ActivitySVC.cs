@@ -145,6 +145,39 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Classification Descriptions
+        public List<MDMSVC.DC_Activity_ClassificationAttributes> GetActivityClasificationAttributes(MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_ClasificationAttributes"], RQ, typeof(DC_Activity_ClassificationAttributes_RQ), typeof(List<DC_Activity_ClassificationAttributes>), out result);
+            return result as List<MDMSVC.DC_Activity_ClassificationAttributes>;
+
+        }
+
+        public bool AddActivityClassifiationAttributes(MDMSVC.DC_Activity_ClassificationAttributes AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Add_Activity_ClasificationAttributes"], AF, typeof(DC_Activity_ClassificationAttributes), typeof(bool), out result);
+            return (bool)result;
+        }
+
+        public bool UpdateActivityClassifiationAttributes(MDMSVC.DC_Activity_ClassificationAttributes AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Update_Activity_ClasificationAttributes"], AF, typeof(DC_Activity_ClassificationAttributes), typeof(bool), out result);
+            return (bool)result;
+        }
+        #endregion
+
+        #region Activity Media
+        public List<MDMSVC.DC_Activity_Media> GetActivityClasificationAttributes(MDMSVC.DC_Activity_Media_Search_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Media"], RQ, typeof(DC_Activity_Media_Search_RQ), typeof(List<DC_Activity_Media>), out result);
+            return result as List<MDMSVC.DC_Activity_Media>;
+        }
+        #endregion
+
 
     }
 }

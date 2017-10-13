@@ -31,6 +31,15 @@
                     $('#tblveboselog').empty();
                     $('#tblerrorlog').empty();
                     $("#tblstatastic").empty();
+                    $("#currentbatch").empty();
+                    $("#totalbatch").empty();
+                    $("#Mcurrentbatch").empty();
+                    $("#Mtotalbatch").empty();
+                    $("#lblSupplier").empty();
+                    $("#lblEntity").empty();
+                    $("#lblPath").empty();
+                    $("#lblstatus").empty();
+                    $("#lbltimeDiff").empty();
                     //file Details
                     for (var inode = 0; inode < result.FileDetails.length; inode++) {
                         $("#lblSupplier").val(result.FileDetails[0].Supplier);
@@ -70,21 +79,7 @@
                                 maparray.push({ label: "Remaining", value: b });
                             }
                         }
-                        else if (result.ProgressLog[inode].Step == "MATCH") {
-                            var a = result.ProgressLog[inode].PercentageValue;
-                            matcharray.push({ label: "Completed", value: a });
-                            if (a != 100) {
-                                var b = (100 - a);
-                                matcharray.push({ label: "Remaining", value: b });
-                            }
-                            $("#Mcurrentbatch").html(result.ProgressLog[inode].CurrentBatch);
-                            $("#Mtotalbatch").html(result.ProgressLog[inode].TotalBatch);
-                            //stop timer on completion of remaining jobs 
-                            if (a = 100)
-                                myStopFunction(x);
-                            //end
-                        }
-                        else {
+                        else if (result.ProgressLog[inode].Step == "TTFU") {
                             var a = result.ProgressLog[inode].PercentageValue;
                             ttfuarray.push({ label: "Completed", value: a });
                             if (a != 100) {
@@ -92,6 +87,22 @@
                                 ttfuarray.push({ label: "Remaining", value: b });
                             }
                         }
+                        else if (result.ProgressLog[inode].Step == "MATCH") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            matcharray.push({ label: "Completed", value: a });
+                            if (a != 100)
+                            {
+                                var b = (100 - a);
+                                matcharray.push({ label: "Remaining", value: b });
+                            }
+                            $("#Mcurrentbatch").text(result.ProgressLog[inode].CurrentBatch);
+                            $("#Mtotalbatch").text(result.ProgressLog[inode].TotalBatch);
+                            //stop timer on completion of remaining jobs 
+                            if (a == 100)
+                                myStopFunction(x);
+                            //end
+                        }
+                        
                     }
                     Morris.Donut({
                         element: 'read',
@@ -173,6 +184,7 @@
                         tr.append("<td>" + result.FileStatistics[i].Unmapped + "</td>");
                         $("#dvstatastic table").append(tr);
                     }
+
                 },
                 error: function () {
                     //alert("Error fetching file processing data");
@@ -210,6 +222,7 @@
         );
         $('#moViewDetials').on('hidden.bs.modal', function () {
             //stop timer on close of modal 
+            $('#moViewDetials a:first').tab('show');
             myStopFunction();
         });
     }

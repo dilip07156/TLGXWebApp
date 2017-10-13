@@ -28,18 +28,20 @@
                 </div>
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
+                         <div id="dvMsg" runat="server" style="display: none;"></div>
                         <asp:GridView ID="gvActMediaSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Media Found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvActMediaSearch_PageIndexChanging"
-                            OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id">
-                            <Columns>
-                                <asp:BoundField HeaderText="Media Name" DataField="MediaName" />
-                                <asp:BoundField HeaderText="Media_URL" DataField="Media_URL" />
+                            OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id" OnRowDataBound="gvActMediaSearch_RowDataBound">
+                            <Columns> 
+                                <asp:BoundField HeaderText="ValidFrom" DataField="ValidFrom"  DataFormatString="{0:dd/MM/yyyy} "/>
+                                <asp:BoundField HeaderText="ValidTo" DataField="ValidTo"  DataFormatString="{0:dd/MM/yyyy}" />
                                 <asp:BoundField HeaderText="Category" DataField="Category" />
                                 <asp:BoundField HeaderText="Sub Category" DataField="SubCategory" />
                                 <asp:BoundField HeaderText="Media Type" DataField="MediaType" />
-                                <asp:BoundField HeaderText="Upload Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
-
+                                <asp:BoundField HeaderText="File Master" DataField="MediaFileMaster" />
+                                <asp:BoundField HeaderText="Media Name" DataField="MediaName" />
+                                <asp:BoundField HeaderText="Media_URL" DataField="Media_URL" />
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
