@@ -31,13 +31,15 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region "Activity Product Info"
         public DC_Message AddUpdateProductInfo(MDMSVC.DC_Activity RQParams)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateProductInfo"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
             return result as DC_Message;
         }
-        
+        #endregion
+
         #region Activity Contacts
         public List<DC_Activity_Contact> GetActivityContactDetails(Guid Activity_Id, Guid DataKey_Id)
         {
@@ -93,8 +95,14 @@ namespace TLGX_Consumer.Controller
         public List<DC_Activity_Policy> GetActivityPolicy(DC_Activity_Policy_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetActivityPolicy"], RQParams), typeof(MDMSVC.DC_Activity_Policy_RQ), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityPolicy"], RQParams, typeof(MDMSVC.DC_Activity_Policy_RQ), typeof(List<DC_Activity_Policy>), out result);
             return result as List<DC_Activity_Policy>;
+        }
+        public DC_Message AddUpdateActivityPolicy(MDMSVC.DC_Activity_Policy RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddActivityPolicy"], RQParams, typeof(MDMSVC.DC_Activity_Policy), typeof(DC_Message), out result);
+            return result as DC_Message;
         }
         #endregion
 

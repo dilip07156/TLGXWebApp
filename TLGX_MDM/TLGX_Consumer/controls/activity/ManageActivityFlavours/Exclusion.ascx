@@ -1,10 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Exclusion.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.Exclusion" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
-
 <script type="text/javascript">
     function showEditModal() {
-        $("#moEditInclusions").modal('show');
+        $("#moEditExclusion").modal('show');
     }
 </script>
 <div class="col-lg-3 pull-right row">
@@ -21,6 +20,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="panel-body">
         <asp:GridView ID="gvActInclusionSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
@@ -45,15 +45,6 @@
                     </ItemTemplate>
                 </asp:TemplateField>
 
-                <%--<asp:TemplateField ShowHeader="false">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
-                            Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
-                                        <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>--%>
-
                 <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
@@ -70,7 +61,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="moEditInclusions" role="dialog">
+<div class="modal fade" id="moEditExclusion" role="dialog">
     <div class="modal-dialog modal-xl">
 
         <div class="modal-content">
@@ -181,6 +172,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="col-sm-12 row">
                                 <div class="panel panel-default">
@@ -303,20 +295,11 @@
 
                                                         <asp:TemplateField ShowHeader="false">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing1" CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# Eval("IsActive") %>' OnClientClick="showEditModal();"> 
+                                                                <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing1" CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# Eval("IsActive") %>'> 
                                   <span aria-hidden="true">Edit</span>
                                                                 </asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
-
-                                                        <%--<asp:TemplateField ShowHeader="false">
-                    <ItemTemplate>
-                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
-                            Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
-                                        <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                </asp:TemplateField>--%>
 
                                                         <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                                                             <ItemTemplate>
@@ -337,6 +320,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="col-sm-12 row">
                                 <div class="pull-right">

@@ -14,7 +14,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
     public partial class Policy : System.Web.UI.UserControl
     {
-        Controller.ActivitySVC activitySVC = new ActivitySVC();
+        Controller.ActivitySVC ActSVC = new ActivitySVC();
         public Guid Activity_Flavour_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,9 +29,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
             MDMSVC.DC_Activity_Policy_RQ _obj = new MDMSVC.DC_Activity_Policy_RQ();
-            _obj.Activity_Id = Activity_Flavour_Id;
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            _obj.Activity_Flavour_Id = Activity_Flavour_Id;
             
-            var res = activitySVC.GetActivityPolicy(_obj);
+            var res = ActSVC.GetActivityPolicy(_obj);
             if(res!=null)
             {
                 grdPolicy.DataSource = res;
@@ -42,6 +43,50 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 grdPolicy.DataSource = null;
                 grdPolicy.DataBind();
             }
+        }
+
+        private void ResetControls()
+        {
+            chkIsActive.Checked = false;
+            chkIsAllow.Checked = false;
+            ddlInclusionType.SelectedIndex = 0;
+            txtName.Text = string.Empty;
+            txtDescription.Text = string.Empty;
+        }
+        protected void btnAdd_Click(object sender, EventArgs e)
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+
+            MDMSVC.DC_Activity_Policy newObj = new MDMSVC.DC_Activity_Policy();
+            {
+                newObj.Activity_Flavour_Id = Activity_Flavour_Id;
+                if (chkIsAllow.Checked)
+                    newObj.AllowedYN = true;
+                else
+                    newObj.AllowedYN = false;
+                newObj.IsActive = true;
+                newObj.PolicyName = txtName.Text;
+            }
+
+            MDMSVC.DC_Message _msg = ActSVC.AddUpdateActivityPolicy(newObj);
+            if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+            {
+                divMsgAlertIncExc.Visible = true;
+                BootstrapAlert.BootstrapAlertMessage(divMsgAlertIncExc, _msg.StatusMessage, BootstrapAlertType.Success);
+            }
+            else
+            {
+                divMsgAlertIncExc.Visible = true;
+                BootstrapAlert.BootstrapAlertMessage(divMsgAlertIncExc, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+            }
+
+
+            ResetControls();
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

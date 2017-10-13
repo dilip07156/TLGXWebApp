@@ -27,26 +27,25 @@
             <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
             <%@ Register Src="~/controls/activity/ManageActivityFlavours/Exclusion.ascx" TagPrefix="uc1" TagName="Exclusion" %>
 
-            <div class="form-group row">
-                <div class="container" id="myWizard1">
-                    <div class="navbar">
-                        <ul id="myTab" class="nav nav-tabs" role="tablist">
-                            <li class="active"><a role="tab" data-toggle="tab" href="#panInclusion">Inclusion</a></li>
-                            <li><a role="tab" data-toggle="tab" href="#panExclusion">Exclusion</a></li>
-                        </ul>
-                    </div>
+            <div id="Tabs" role="tabpanel">
+                <!-- Nav tabs -->
 
-                    <div class="tab-content">
-                        <div class="tab-pane fade in active" id="panInclusion">
-                            <uc1:Inclusion runat="server" ID="Inclusion" />
-                        </div>
-                        <div class="tab-pane fade" id="panExclusion">
-                            <uc1:Exclusion runat="server" ID="Exclusion" />
-                        </div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li><a role="tab" data-toggle="tab" href="#personal">Inclusion</a></li>
+                    <li><a role="tab" data-toggle="tab" href="#employment">Exclusion</a></li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="personal" >
+                        <uc1:Inclusion runat="server" ID="Inclusion" />
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="employment">
+                        <uc1:Exclusion runat="server" ID="Exclusion" />
                     </div>
                 </div>
+
             </div>
-            <%--</div>--%>
+            <asp:HiddenField ID="TabName" runat="server" />
         </div>
 
     </ContentTemplate>
@@ -183,23 +182,12 @@
 </div>
 
 <script type='text/javascript'>
-    //function pageLoad(sender, args) {
-        //alert('Hi');
-        $('.next').click(function () {
-            var nextId = $(this).parents('.tab-pane').next().attr("id");
-            $('[href=#' + nextId + ']').tab('show');
-        })
-
-        $('.first').click(function () {
-            $('#myWizard1 a:first').tab('show')
-        })
-    //}
-
-
-   //$('#myTab a').click(function (e) {
-   //  //e.preventDefault()
-   //  $(this).tab('show')
-   //})
-
-
+    //for changing the tab of Inclusion / Exclusion
+    $(function () {
+        var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "personal";
+        $('#Tabs a[href="#' + tabName + '"]').tab('show');
+        $("#Tabs a").click(function () {
+            $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
+        });
+    });
 </script>
