@@ -19,7 +19,7 @@
     }
 
 </script>
-<script src="../../Scripts/bootbox.min.js"></script>
+<script src="../../../Scripts/bootbox.min.js"></script>
 
 <asp:UpdatePanel ID="upClassificationAttributes" runat="server" >
     <ContentTemplate>

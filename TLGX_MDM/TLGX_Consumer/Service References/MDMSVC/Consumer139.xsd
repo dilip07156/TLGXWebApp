@@ -1295,6 +1295,7 @@
       <xs:element minOccurs="0" name="ImgURL" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Inclusions" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Introduction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
@@ -1368,6 +1369,7 @@
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsCustomerReview" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Review_Author" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Review_Description" nillable="true" type="xs:string" />
@@ -1448,6 +1450,7 @@
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PolicyDescription" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PolicyName" nillable="true" type="xs:string" />

@@ -145,7 +145,7 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
-        #region Activity Classification Descriptions
+        #region Activity Classification Attributes
         public List<MDMSVC.DC_Activity_ClassificationAttributes> GetActivityClasificationAttributes(MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ)
         {
             object result = null;
@@ -170,11 +170,18 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Activity Media
-        public List<MDMSVC.DC_Activity_Media> GetActivityClasificationAttributes(MDMSVC.DC_Activity_Media_Search_RQ RQ)
+        public List<MDMSVC.DC_Activity_Media> GetActivityMedia(MDMSVC.DC_Activity_Media_Search_RQ RQ)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Media"], RQ, typeof(DC_Activity_Media_Search_RQ), typeof(List<DC_Activity_Media>), out result);
             return result as List<MDMSVC.DC_Activity_Media>;
+        }
+        
+        public DC_Message AddUpdateActivityMedia(MDMSVC.DC_Activity_Media RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Media"], RQ, typeof(MDMSVC.DC_Activity_Media), typeof(DC_Message), out result);
+            return (DC_Message)result;
         }
         #endregion
 

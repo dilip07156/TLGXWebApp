@@ -37058,6 +37058,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string IntroductionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -37527,6 +37530,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.IntroductionField, value) != true)) {
                     this.IntroductionField = value;
                     this.RaisePropertyChanged("Introduction");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
@@ -38275,6 +38291,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsCustomerReviewField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -38401,6 +38420,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
@@ -39146,6 +39178,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Legacy_Product_IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -39270,6 +39305,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
