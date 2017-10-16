@@ -452,7 +452,7 @@
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="File Name" DataField="OriginalFilePath" />
-                                <asp:TemplateField ShowHeader="true" HeaderText="Status" ItemStyle-Width="150px">
+                                <asp:TemplateField ShowHeader="true" HeaderText="Status" ItemStyle-Width="175px">
                                     <ItemTemplate>
                                         <div class="form-inline">
                                             <div class="form-group">
