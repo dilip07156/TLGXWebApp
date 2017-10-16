@@ -70,7 +70,7 @@
         </div>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="panOverview">
+            <div class="tab-pane" id="panOverview">
                 <uc1:Overview runat="server" ID="Overview" />
             </div>
 
@@ -122,7 +122,7 @@
                 <uc1:PreArrivalTips runat="server" ID="PreArrivalTips" />
             </div>
 
-            <div class="tab-pane" id="panProductInformation">
+            <div class="tab-pane active" id="panProductInformation">
                 <uc1:ProductInformation runat="server" ID="ProductInformation" />
             </div>
 
@@ -158,14 +158,12 @@
 
     <script type='text/javascript'>
         $('.next').click(function () {
-
             var nextId = $(this).parents('.tab-pane').next().attr("id");
             $('[href=#' + nextId + ']').tab('show');
 
         })
 
         $('.first').click(function () {
-
             $('#myWizard a:first').tab('show')
 
         })

@@ -9,13 +9,12 @@ using System.Configuration;
 
 namespace TLGX_Consumer.Account
 {
-    public partial class Login : Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
         protected void LogIn(object sender, EventArgs e)
         {
             if (IsValid)
@@ -26,7 +25,7 @@ namespace TLGX_Consumer.Account
 
                 //To check user is authenticate for this application or not
                 Controller.AdminSVCs _objAdminSVCs = new Controller.AdminSVCs();
-                string userapplicationName = _objAdminSVCs.GetApplicationName(Email.Text);
+                string userapplicationName = _objAdminSVCs.GetApplicationName(Email.Value);
                 string applicationName = Convert.ToString(ConfigurationManager.AppSettings["ApplicationName"]);
                 if (applicationName.ToLower() != userapplicationName.ToLower())
                 {
@@ -37,7 +36,7 @@ namespace TLGX_Consumer.Account
 
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
+                var result = signinManager.PasswordSignIn(Email.Value, Password.Value, true, shouldLockout: false);
 
                 switch (result)
                 {
@@ -50,7 +49,7 @@ namespace TLGX_Consumer.Account
                     case SignInStatus.RequiresVerification:
                         Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
                                                         Request.QueryString["ReturnUrl"],
-                                                        RememberMe.Checked),
+                                                        true),
                                           true);
                         break;
                     case SignInStatus.Failure:

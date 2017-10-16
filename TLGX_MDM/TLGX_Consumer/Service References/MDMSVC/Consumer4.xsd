@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://10.24.2.104/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
   <xs:complexType name="DC_Mapping_ShiftMapping_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_From_Id" type="ser:guid" />
@@ -431,6 +431,49 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_MasterAttributeValueMapping_RQ" nillable="true" type="tns:DC_MasterAttributeValueMapping_RQ" />
+  <xs:complexType name="ArrayOfDC_MasterAttributeValueMappingRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_MasterAttributeValueMappingRS" nillable="true" type="tns:DC_MasterAttributeValueMappingRS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_MasterAttributeValueMappingRS" nillable="true" type="tns:ArrayOfDC_MasterAttributeValueMappingRS" />
+  <xs:complexType name="DC_MasterAttributeValueMappingRS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MasterAttributeMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ParentAttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierAttributeValues" nillable="true" type="tns:ArrayOfDC_SupplierAttributeValues" />
+      <xs:element minOccurs="0" name="SystemMasterAttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemMasterAttributeValue_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_MasterAttributeValueMappingRS" nillable="true" type="tns:DC_MasterAttributeValueMappingRS" />
+  <xs:complexType name="ArrayOfDC_SupplierAttributeValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierAttributeValues" nillable="true" type="tns:DC_SupplierAttributeValues" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierAttributeValues" nillable="true" type="tns:ArrayOfDC_SupplierAttributeValues" />
+  <xs:complexType name="DC_SupplierAttributeValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MasterAttributeValueMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierMasterAttributeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierMasterAttributeValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierAttributeValues" nillable="true" type="tns:DC_SupplierAttributeValues" />
+  <xs:complexType name="DC_MasterAttributeMappingAdd_RS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="Message" nillable="true" type="q1:DC_Message" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_MasterAttributeMappingAdd_RS" nillable="true" type="tns:DC_MasterAttributeMappingAdd_RS" />
   <xs:complexType name="ArrayOfDC_MasterAttributeValueMapping">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_MasterAttributeValueMapping" nillable="true" type="tns:DC_MasterAttributeValueMapping" />
@@ -446,6 +489,7 @@
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="MasterAttributeMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="MasterAttributeValueMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierMasterAttributeCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierMasterAttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemMasterAttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemMasterAttributeValue_Id" type="ser:guid" />
@@ -453,13 +497,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_MasterAttributeValueMapping" nillable="true" type="tns:DC_MasterAttributeValueMapping" />
-  <xs:complexType name="DC_MasterAttributeMappingAdd_RS">
+  <xs:complexType name="DC_SupplierAttributeValues_RQ">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AttributeMapping_Id" nillable="true" type="ser:guid" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="Message" nillable="true" type="q1:DC_Message" />
+      <xs:element minOccurs="0" name="MasterAttributeValueMapping_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="DC_MasterAttributeMappingAdd_RS" nillable="true" type="tns:DC_MasterAttributeMappingAdd_RS" />
+  <xs:element name="DC_SupplierAttributeValues_RQ" nillable="true" type="tns:DC_SupplierAttributeValues_RQ" />
   <xs:complexType name="DC_Acitivity_SupplierProductMapping">
     <xs:sequence>
       <xs:element minOccurs="0" name="ActivitySupplierProductMapping_Id" type="ser:guid" />

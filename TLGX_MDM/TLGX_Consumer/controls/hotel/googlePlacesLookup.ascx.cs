@@ -39,13 +39,21 @@ namespace TLGX_Consumer.controls.hotel
                             hdnG_PlaceID.Value = strG_PlaceID;
                         if (!string.IsNullOrWhiteSpace(strAddress))
                             hdnAddress.Value = strAddress;
-                        ddlNoOfItem.SelectedValue = "5";
-                        ddlRadius.SelectedValue = "2000";
+                        ddlNoOfItem.Items.FindByValue("5").Selected = true;
+                        ddlRadius.Items.FindByValue("2000").Selected = true;
+
                     }
                 }
+
                 btnAdd.Attributes.Add("onClick", "return false;");
                 lnkbtnMapSelected.Attributes.Add("onClick", "return false;");
                 lnkbtnMapAll.Attributes.Add("onClick", "return false;");
+                BindCategory();
+            }
+            else
+            {
+                ddlNoOfItem.Items.FindByValue("5").Selected = true;
+                ddlRadius.Items.FindByValue("2000").Selected = true;
                 BindCategory();
             }
         }

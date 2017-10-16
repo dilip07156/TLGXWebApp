@@ -205,6 +205,7 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Lockout.aspx" />
+    <Content Include="Account\LoginOld.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\ManageLogins.aspx" />
@@ -219,6 +220,7 @@
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="activity\ckis\manage.aspx" />
     <Content Include="activity\ckis\search.aspx" />
+    <Content Include="activity\ManageActivityFlavour.aspx" />
     <Content Include="activity\ManageActivityMaster.aspx" />
     <Content Include="activity\SearchActivityMaster.aspx" />
     <Content Include="admin\manageApplication.aspx" />
@@ -247,6 +249,19 @@
     <Content Include="Content\Site.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Exclusion.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Policy.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\Ancilary.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\AttachedProductPolicy.ascx" />
@@ -357,6 +372,10 @@
     <Content Include="hotels\addnew.aspx" />
     <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
+    <Content Include="images\148764.png" />
+    <Content Include="images\148766.png" />
+    <Content Include="images\148767.png" />
+    <Content Include="images\148853.png" />
     <Content Include="images\ajax-loader-blue.gif" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\ajax-loader_SMALL.gif" />
@@ -364,6 +383,12 @@
     <Content Include="images\collapse.jpg" />
     <Content Include="images\expand.jpg" />
     <Content Include="images\loading.gif" />
+    <Content Include="images\login_bg.jpeg" />
+    <Content Include="images\login_logo.png" />
+    <Content Include="images\login_password.svg" />
+    <Content Include="images\login_password_red.svg" />
+    <Content Include="images\login_user.svg" />
+    <Content Include="images\login_user_red.svg" />
     <Content Include="images\logo-cnk.gif" />
     <Content Include="masters\managePlaces.aspx" />
     <Content Include="Models\TLGX_Mapper_Entity.Context.tt">
@@ -410,34 +435,57 @@
     <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
     <Content Include="Scripts\Styles\bootstrap.css" />
     <Content Include="Scripts\Styles\bootstrap.min.css" />
+    <Content Include="Scripts\Styles\Login\core.css" />
+    <Content Include="Scripts\Styles\Login\custom.css" />
+    <Content Include="Scripts\Styles\Login\googlefontapis.css" />
+    <Content Include="Scripts\Styles\Login\login.css" />
+    <Content Include="Scripts\Styles\Login\responsive.css" />
+    <Content Include="Scripts\Styles\Login\sample.css" />
+    <Content Include="Scripts\Styles\Login\style.css" />
     <Content Include="Scripts\Styles\Pagging.css" />
     <Content Include="Scripts\Styles\ProgressBarStyles.css" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
+    <None Include="Service References\MDMSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
-    <None Include="Service References\MDMSVC\Consumer12.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer20.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer8.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer7.xsd">
+    <None Include="Service References\MDMSVC\Consumer1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer10.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer121.xsd">
+    <None Include="Service References\MDMSVC\Consumer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer15.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer2.xsd">
@@ -446,36 +494,24 @@
     <None Include="Service References\MDMSVC\Consumer3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer121.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer9.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer1.xsd">
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer5.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer11.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\MDMSVC\Consumer6.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer4.xsd">
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer.disco" />
-    <Content Include="Service\CityFillForDDL.ashx" />
-    <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -554,10 +590,61 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Contact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Content.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Deals.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Descriptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Flavour.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Inclusions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_InclusionsDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Media.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_PickUpDrop.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_PickUpDropDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Policy.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Prices.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ReviewsAndScores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping_CA.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ApplicationMgmt.datasource">
@@ -599,6 +686,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileProgressDashboard.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileUploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_GenericMasterDetails_ByIDOrName.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -623,10 +713,13 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMappingAdd_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeMapping_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMapping.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttributeValueMappingRS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_City.datasource">
@@ -654,6 +747,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_newHotelsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PortMaster.datasource">
@@ -743,6 +842,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedProductReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UserDetails.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -755,21 +857,6 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus1.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PentahoTransStatus_TransStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -777,6 +864,7 @@
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
     <Content Include="staticdata\files\APIData.aspx" />
+    <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
     <Content Include="staticdata\hotels\newHotelReport.aspx" />
@@ -916,6 +1004,13 @@
     <Compile Include="Account\Lockout.aspx.designer.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\LoginOld.aspx.cs">
+      <DependentUpon>LoginOld.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\LoginOld.aspx.designer.cs">
+      <DependentUpon>LoginOld.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1012,6 +1107,13 @@
     </Compile>
     <Compile Include="activity\ckis\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="activity\ManageActivityFlavour.aspx.cs">
+      <DependentUpon>ManageActivityFlavour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activity\ManageActivityFlavour.aspx.designer.cs">
+      <DependentUpon>ManageActivityFlavour.aspx</DependentUpon>
     </Compile>
     <Compile Include="activity\ManageActivityMaster.aspx.cs">
       <DependentUpon>ManageActivityMaster.aspx</DependentUpon>
@@ -1112,6 +1214,8 @@
     <Compile Include="Controller\AccomodationSVC.cs" />
     <Compile Include="Controller\ActivitySVC.cs" />
     <Compile Include="Controller\AdminSVCs.cs" />
+    <Compile Include="Controller\CustomStream.cs" />
+    <Compile Include="Controller\FileTransferSVC.cs" />
     <Compile Include="Controller\MappingSVCs.cs" />
     <Compile Include="Controller\MasterDataSVCs.cs" />
     <Compile Include="Controller\MDMSvcProxy.cs" />
@@ -1130,6 +1234,97 @@
     </Compile>
     <Compile Include="controls\activity\ckis\searchCKISMasters.ascx.designer.cs">
       <DependentUpon>searchCKISMasters.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx.cs">
+      <DependentUpon>ActivityContactDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx.designer.cs">
+      <DependentUpon>ActivityContactDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx.cs">
+      <DependentUpon>ActivityDescription.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx.designer.cs">
+      <DependentUpon>ActivityDescription.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx.cs">
+      <DependentUpon>ActivityMedia.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx.designer.cs">
+      <DependentUpon>ActivityMedia.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx.cs">
+      <DependentUpon>ActivityStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx.designer.cs">
+      <DependentUpon>ActivityStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.cs">
+      <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.designer.cs">
+      <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.cs">
+      <DependentUpon>Exclusion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.designer.cs">
+      <DependentUpon>Exclusion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Flavours.ascx.cs">
+      <DependentUpon>Flavours.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Flavours.ascx.designer.cs">
+      <DependentUpon>Flavours.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.cs">
+      <DependentUpon>Inclusion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.designer.cs">
+      <DependentUpon>Inclusion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx.cs">
+      <DependentUpon>InclusionsAndExclusion.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx.designer.cs">
+      <DependentUpon>InclusionsAndExclusion.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.cs">
+      <DependentUpon>Policy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.designer.cs">
+      <DependentUpon>Policy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx.cs">
+      <DependentUpon>PricesNDeals.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx.designer.cs">
+      <DependentUpon>PricesNDeals.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx.cs">
+      <DependentUpon>ReviewsNScores.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx.designer.cs">
+      <DependentUpon>ReviewsNScores.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx.cs">
+      <DependentUpon>SupplierProductMappings.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx.designer.cs">
+      <DependentUpon>SupplierProductMappings.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx.cs">
       <DependentUpon>AdditionalInfo.ascx</DependentUpon>
@@ -2410,6 +2605,13 @@
     <Compile Include="staticdata\files\APIData.aspx.designer.cs">
       <DependentUpon>APIData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\files\StaticFileupload.aspx.cs">
+      <DependentUpon>StaticFileupload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\files\StaticFileupload.aspx.designer.cs">
+      <DependentUpon>StaticFileupload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\files\upload.aspx.cs">
       <DependentUpon>upload.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2512,6 +2714,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="controls\holidays\" />
+    <Folder Include="Scripts\LoginPageScript\" />
     <Folder Include="staticdata\valuemapping\" />
   </ItemGroup>
   <ItemGroup>

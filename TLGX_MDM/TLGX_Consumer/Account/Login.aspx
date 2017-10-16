@@ -1,63 +1,73 @@
-﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TLGX_Consumer.Account.Login" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="TLGX_Consumer.Account.Login" Async="true" %>
 
-<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
+<!DOCTYPE html>
 
-<asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h1 class="page-header">Login</h1>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <%--<link href="../../Scripts/Styles/bootstrap.css" rel="stylesheet" />--%>
+    <link href="../../Scripts/Styles/Login/core.css" rel="stylesheet" />
+    <link href="../../Scripts/Styles/Login/login.css" rel="stylesheet" />
+    <link href="../../Scripts/Styles/Login/responsive.css" rel="stylesheet" />
+    <%-- <script src="js/custom.js" type="text/javascript"></script>--%>
+    <link href="../../Scripts/Styles/Login/googlefontapis.css" rel="stylesheet" />
+</head>
+<body>
 
-    <div class="row">
-        <div class="col-md-8">
-            <section id="loginForm">
-                <div class="form-horizontal">
-                    <h4>Use a Travelogix Account to log in</h4>
-                    <hr />
-
-                    <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
-                        <p class="text-danger">
-                            <asp:Literal runat="server" ID="FailureText" />
-                        </p>
-                    </asp:PlaceHolder>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Email</asp:Label>
-                        <div class="col-md-10">
-                            <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
-                                CssClass="text-danger" ErrorMessage="The email field is required." />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Password</asp:Label>
-                        <div class="col-md-10">
-                            <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
-                            <asp:RequiredFieldValidator runat="server" ControlToValidate="Password" CssClass="text-danger" ErrorMessage="The password field is required." />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
-                                <asp:CheckBox runat="server" ID="RememberMe" />
-                                <asp:Label runat="server" AssociatedControlID="RememberMe">Remember me?</asp:Label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
-                            <asp:Button runat="server" OnClick="LogIn" Text="Log in" CssClass="btn btn-default" />
-                        </div>
+    <main>
+        <div class="main_left">
+            <div class="login_overlay"></div>
+            <div class="main_left_container box_size">
+                <div class="login_date_block">
+                    <div class="date_block_left"><%= DateTime.Now.ToString("dd") %></div>
+                    <div class="date_block_right">
+                        <%= DateTime.Now.ToString("MMM") %><br>
+                        <%= DateTime.Now.ToString("yyyy") %>
                     </div>
                 </div>
-                <p>
-                    <%-- Enable this once you have account confirmation enabled for password reset functionality
-                    <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">Forgot your password?</asp:HyperLink>
-                    --%>
-                </p>
-            </section>
+                <div class="login_info_block">
+                    <h4>Lorem Ipsum!!!</h4>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                <uc:OpenAuthProviders runat="server" ID="OpenAuthLogin" />
-            </section>
+        <div class="main_right box_size">
+            <div class="main_right_container v_center relative">
+                <div class="login_logo">
+                    <img src="../images/login_logo.png" />
+                </div>
+                <h2>Welcome to Cox & Kings</h2>
+                <div class="login_container">
+                    <h3>Member Login</h3>
+                    <form id="form1" runat="server">
+                        <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
+                            <p class="text-danger">
+                                <asp:Literal runat="server" ID="FailureText" />
+                            </p>
+                        </asp:PlaceHolder>
+                        <div class="input_block">
+                            <i class="user"></i>
+                            <input type="Email" runat="server" id="Email" placeholder="User Name" class="box_size" />
+                        </div>
+
+                        <div class="input_block">
+                            <i class="password"></i>
+                            <input type="password" runat="server" id="Password" placeholder="Password" class="box_size" />
+                        </div>
+
+                        <div class="input_block">
+                            <%--<button>Login</button>--%>
+                            <asp:Button runat="server" Text="Login" OnClick="LogIn" CssClass="button" />
+                            <div class="forgot" style="display: none;"><a href="#">Forgot Password?</a></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-</asp:Content>
+    </main>
+
+</body>
+</html>

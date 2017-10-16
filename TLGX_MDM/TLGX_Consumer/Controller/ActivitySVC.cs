@@ -31,13 +31,14 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region "Activity Product Info"
         public DC_Message AddUpdateProductInfo(MDMSVC.DC_Activity RQParams)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateProductInfo"], RQParams, typeof(MDMSVC.DC_Activity), typeof(DC_Message), out result);
             return result as DC_Message;
         }
-
+        #endregion
 
         #region Activity Contacts
         public List<DC_Activity_Contact> GetActivityContactDetails(Guid Activity_Id, Guid DataKey_Id)
@@ -59,12 +60,170 @@ namespace TLGX_Consumer.Controller
             return (bool)result;
         }
         
-        public string GetLegacyProductId(Guid Activity_Id)
+        public int? GetLegacyProductId(Guid Activity_Flavour_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Id), typeof(string), out result);
-            return result as string;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetLegacyProductId"], Activity_Flavour_Id), typeof(int), out result);
+            return result as int?;
         }
         #endregion
+
+        #region "Activity Status"
+        public List<DC_Activity_Status> GetActivityStatusDetails(Guid Activity_Flavour_Id, Guid DataKey_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_StatusURI"], Activity_Flavour_Id, DataKey_Id), typeof(List<DC_Activity_Status>), out result);
+            return result as List<DC_Activity_Status>;
+        }
+
+        public bool AddActivityStatus(MDMSVC.DC_Activity_Status AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddStatusURI"], AF, typeof(DC_Activity_Status), typeof(bool), out result);
+            return (bool)result;
+        }
+
+        public bool UpdateActivityStatus(MDMSVC.DC_Activity_Status AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_UpdateStatusURI"], AF, typeof(DC_Activity_Status), typeof(bool), out result);
+            return (bool)result;
+        }
+        #endregion
+
+        #region "Activity Policy"
+        public List<DC_Activity_Policy> GetActivityPolicy(DC_Activity_Policy_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityPolicy"], RQParams, typeof(MDMSVC.DC_Activity_Policy_RQ), typeof(List<DC_Activity_Policy>), out result);
+            return result as List<DC_Activity_Policy>;
+        }
+        public DC_Message AddUpdateActivityPolicy(MDMSVC.DC_Activity_Policy RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddActivityPolicy"], RQParams, typeof(MDMSVC.DC_Activity_Policy), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
+        #region "Activity Inclusion"
+        public List<DC_Activity_Inclusions> GetActivityInclusions(DC_Activity_Inclusions_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityInclusion"], RQParams, typeof(DC_Activity_Inclusions_RQ), typeof(List<DC_Activity_Inclusions>), out result);
+            return result as List<DC_Activity_Inclusions>;
+        }
+        public DC_Message AddUpdateActivityInclusions(MDMSVC.DC_Activity_Inclusions RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityInclusions"], RQParams, typeof(MDMSVC.DC_Activity_Inclusions), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
+        #region "Activity Inclusion Details"
+        public List<DC_Activity_InclusionsDetails> GetActivityInclusionDetails(DC_Activity_InclusionDetails_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityInclusionDetails"], RQParams, typeof(DC_Activity_InclusionDetails_RQ), typeof(List<DC_Activity_Inclusions>), out result);
+            return result as List<DC_Activity_InclusionsDetails>;
+        }
+
+        public DC_Message AddUpdateInclusionDetails(MDMSVC.DC_Activity_InclusionsDetails RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityInclusionDetails"], RQParams, typeof(MDMSVC.DC_Activity_InclusionsDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
+        #region Activity Flavour
+        public List<MDMSVC.DC_Activity_Flavour> GetActivityFlavour(MDMSVC.DC_Activity_Flavour_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Flavour"], RQ, typeof(DC_Activity_Flavour_RQ), typeof(List<DC_Activity_Flavour>), out result);
+            return result as  List <MDMSVC.DC_Activity_Flavour> ;
+
+        }
+        public DC_Message AddUpdateActivityFlavour(MDMSVC.DC_Activity_Flavour RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Flavour"], RQ, typeof(MDMSVC.DC_Activity_Flavour), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
+        #region Activity Classification Attributes
+        public List<MDMSVC.DC_Activity_ClassificationAttributes> GetActivityClasificationAttributes(MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_ClasificationAttributes"], RQ, typeof(DC_Activity_ClassificationAttributes_RQ), typeof(List<DC_Activity_ClassificationAttributes>), out result);
+            return result as List<MDMSVC.DC_Activity_ClassificationAttributes>;
+
+        }
+
+        public bool AddActivityClassifiationAttributes(MDMSVC.DC_Activity_ClassificationAttributes AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Add_Activity_ClasificationAttributes"], AF, typeof(DC_Activity_ClassificationAttributes), typeof(bool), out result);
+            return (bool)result;
+        }
+
+        public bool UpdateActivityClassifiationAttributes(MDMSVC.DC_Activity_ClassificationAttributes AF)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Update_Activity_ClasificationAttributes"], AF, typeof(DC_Activity_ClassificationAttributes), typeof(bool), out result);
+            return (bool)result;
+        }
+        #endregion
+
+        #region Activity Media
+        public List<MDMSVC.DC_Activity_Media> GetActivityMedia(MDMSVC.DC_Activity_Media_Search_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Media"], RQ, typeof(DC_Activity_Media_Search_RQ), typeof(List<DC_Activity_Media>), out result);
+            return result as List<MDMSVC.DC_Activity_Media>;
+        }
+        
+        public DC_Message AddUpdateActivityMedia(MDMSVC.DC_Activity_Media RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Media"], RQ, typeof(MDMSVC.DC_Activity_Media), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
+        #region Activity Description
+        public List<MDMSVC.DC_Activity_Descriptions> GetActivityDescription(MDMSVC.DC_Activity_Descriptions_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Description"], RQ, typeof(DC_Activity_Descriptions_RQ), typeof(List<DC_Activity_Descriptions>), out result);
+            return result as List<MDMSVC.DC_Activity_Descriptions>;
+        }
+
+        public DC_Message AddUpdateActivityDescription(MDMSVC.DC_Activity_Descriptions RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Description"], RQ, typeof(MDMSVC.DC_Activity_Descriptions), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
+        #region Activity Review And Score
+        public List<MDMSVC.DC_Activity_ReviewsAndScores> GetActReviewsAndScores(MDMSVC.DC_Activity_ReviewsAndScores_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityReviewsAndScores"], RQ, typeof(DC_Activity_ReviewsAndScores_RQ), typeof(List<DC_Activity_ReviewsAndScores>), out result);
+            return result as List<MDMSVC.DC_Activity_ReviewsAndScores>;
+        }
+
+        public DC_Message AddUpdateActReviewsNScores(MDMSVC.DC_Activity_ReviewsAndScores RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityReviewsNScores"], RQ, typeof(DC_Activity_ReviewsAndScores), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
     }
 }

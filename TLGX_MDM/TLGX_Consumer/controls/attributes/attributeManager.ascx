@@ -347,7 +347,7 @@
                         <h4 class="modal-title"><strong>Attributes Mapping &nbsp( System Attribute Name -&nbsp; <span id="sysAttrName" runat="server"></span>&nbsp;) </strong></h4>
                     </div>
                     <div class="modal-body">
-                        
+
                         <asp:HiddenField ID="hiddenfield" runat="server" />
                         <asp:HiddenField ID="hdn_MasterAttributeMapping_Id" runat="server" />
                         <div class="row">
@@ -514,39 +514,81 @@
 
                                         <div class="col-md-12 form-group">
                                             <asp:GridView ID="grdMappingAttrVal" runat="server" AutoGenerateColumns="False"
-                                                DataKeyNames="MasterAttributeValueMapping_Id" CssClass="table table-responsive table-hover table-striped table-bordered"
-                                                PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging" >
+                                                DataKeyNames="SystemMasterAttributeValue_Id" CssClass="table table-responsive table-hover table-striped table-bordered"
+                                                PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging">
                                                 <Columns>
+                                                    <asp:BoundField DataField="ParentAttributeValue" HeaderText="Parent Value" SortExpression="ParentAttributeValue" />
                                                     <asp:BoundField DataField="SystemMasterAttributeValue" HeaderText="System Value" SortExpression="SystemMasterAttributeValue" />
                                                     <asp:TemplateField>
-                                                        <HeaderTemplate>
-                                                            Supplier Value
-                                                        </HeaderTemplate>
                                                         <ItemTemplate>
-                                                            <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"
-                                                                Text='<%# Bind("SupplierMasterAttributeValue") %>'>
-                                                            </asp:TextBox>
-                                                            <asp:RequiredFieldValidator ID="vldReqddlSupplierVal" runat="server" ControlToValidate="txtSupplierAttributeValue"
-                                                                ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
-                                                            </asp:RequiredFieldValidator>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                            <asp:GridView ID="grdmulSuppAttrValus" runat="server" DataSource='<%# Bind("SupplierAttributeValues") %>' DataKeyNames="MasterAttributeValueMapping_Id" AutoGenerateColumns="false"
+                                                                ShowHeaderWhenEmpty="true" CssClass="table table-responsive table-hover table-striped table-bordered" OnRowCommand="grdmulSuppAttrValus_RowCommand">
+                                                                <Columns>
+                                                                    <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            Supplier Value
+                                                                             <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="vldReqddlSupplierVal" runat="server" ControlToValidate="txtSupplierAttributeValue"
+                                                                                ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
+                                                                            </asp:RequiredFieldValidator>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"
+                                                                                Text='<%# Bind("SupplierMasterAttributeValue") %>'>
+                                                                            </asp:TextBox>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
 
-                                                    <asp:TemplateField>
-                                                        <HeaderTemplate>
-                                                            Active
-                                                        </HeaderTemplate>
-                                                        <ItemTemplate>
-                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server" Checked='<%# Convert.ToBoolean(Eval("IsActive")) %>' />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
+                                                                    <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            Supplier Code
+                                                                            <asp:TextBox ID="txtSupplierAttributeCode" runat="server" CssClass="form-control">
+                                                                            </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="vldReqddlSupplierCode" runat="server" ControlToValidate="txtSupplierAttributeCode"
+                                                                                ErrorMessage="* Required" ValidationGroup='<%# "Group_" + Container.DataItemIndex %>' CssClass="text-danger"> 
+                                                                            </asp:RequiredFieldValidator>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:TextBox ID="txtSupplierAttributeCode" runat="server" CssClass="form-control"
+                                                                                Text='<%# Bind("SupplierMasterAttributeCode") %>'>
+                                                                            </asp:TextBox>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
 
-                                                    <asp:TemplateField ShowHeader="false">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="true" CommandName="EditVal" CssClass="btn btn-default"
-                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id") %>' ValidationGroup='<%# "Group_" + Container.DataItemIndex %>'>
-                                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Update
-                                                            </asp:LinkButton>
+                                                                    <asp:TemplateField>
+                                                                        <HeaderTemplate>
+                                                                            Active
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server"  checked='<%# Convert.ToBoolean(Eval("IsActive")) %>' />
+                                                                        </ItemTemplate>
+                                                                        <EditItemTemplate>
+                                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server" />
+                                                                        </EditItemTemplate>
+                                                                    </asp:TemplateField>
+
+                                                                    <asp:TemplateField ShowHeader="false">
+                                                                        <HeaderTemplate>
+                                                                            <asp:LinkButton ID="btnAdd" runat="server" CommandName="AddNew" ToolTip="Add New"
+                                                                              CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
+                                                                        <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New
+                                                                            </asp:LinkButton>
+                                                                        </HeaderTemplate>
+                                                                        <ItemTemplate>
+                                                                            <asp:LinkButton ID="btnEdit" runat="server"  CommandName="UpdateVal" CssClass="btn btn-default"
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Update Value" >
+                                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
+                                                                            </asp:LinkButton>
+                                                                            <asp:LinkButton ID="btnDelete" runat="server" CommandName="DeleteVal" CssClass="btn btn-default"
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Delete Value" >
+                                                                            <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
+                                                                            </asp:LinkButton>
+                                                                        </ItemTemplate>
+                                                                        
+                                                                    </asp:TemplateField>
+                                                                </Columns>
+
+                                                            </asp:GridView>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 

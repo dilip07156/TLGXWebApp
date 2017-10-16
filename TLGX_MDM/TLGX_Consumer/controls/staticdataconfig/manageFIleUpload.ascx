@@ -1,8 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-
+<style>
+    .h_iframe {
+        height: 100%;
+        width: 100%;
+    }
+</style>
 <script type="text/javascript">
-   
+
     function getChartData(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
@@ -26,12 +31,23 @@
                     $('#tblveboselog').empty();
                     $('#tblerrorlog').empty();
                     $("#tblstatastic").empty();
+                    $("#currentbatch").empty();
+                    $("#totalbatch").empty();
+                    $("#Mcurrentbatch").empty();
+                    $("#Mtotalbatch").empty();
+                    $("#Rcurrentbatch").empty();
+                    $("#Rtotalbatch").empty();
+                    $("#lblSupplier").empty();
+                    $("#lblEntity").empty();
+                    $("#lblPath").empty();
+                    $("#lblstatus").empty();
+                    $("#lbltimeDiff").empty();
                     //file Details
                     for (var inode = 0; inode < result.FileDetails.length; inode++) {
-                        $("#lblSupplier").html(result.FileDetails[0].Supplier);
-                        $("#lblEntity").html(result.FileDetails[0].Entity);
-                        $("#lblPath").html(result.FileDetails[0].OriginalFilePath);
-                        $("#lblstatus").html(result.FileDetails[0].STATUS);
+                        $("#lblSupplier").val(result.FileDetails[0].Supplier);
+                        $("#lblEntity").val(result.FileDetails[0].Entity);
+                        $("#lblPath").val(result.FileDetails[0].OriginalFilePath);
+                        $("#lblstatus").val(result.FileDetails[0].STATUS);
                         var status = result.FileDetails[0].STATUS;
                         if (status == "ERROR" || status == "PROCESSED") {
                             myStopFunction();
@@ -46,6 +62,8 @@
                                 var b = (100 - a);
                                 readarray.push({ label: "Remaining", value: b });
                             }
+                            $("#Rcurrentbatch").text(result.ProgressLog[inode].CurrentBatch);
+                            $("#Rtotalbatch").text(result.ProgressLog[inode].TotalBatch);
                         }
                         else if (result.ProgressLog[inode].Step == "TRANSFORM") {
                             var a = result.ProgressLog[inode].PercentageValue;
@@ -65,21 +83,7 @@
                                 maparray.push({ label: "Remaining", value: b });
                             }
                         }
-                        else if (result.ProgressLog[inode].Step == "MATCH") {
-                            var a = result.ProgressLog[inode].PercentageValue;
-                            matcharray.push({ label: "Completed", value: a });
-                            if (a != 100) {
-                                var b = (100 - a);
-                                matcharray.push({ label: "Remaining", value: b });
-                            }
-                            $("#Mcurrentbatch").html(result.ProgressLog[inode].CurrentBatch);
-                            $("#Mtotalbatch").html(result.ProgressLog[inode].TotalBatch);
-                            //stop timer on completion of remaining jobs 
-                            if (a = 100)
-                                myStopFunction(x);
-                            //end
-                        }
-                        else {
+                        else if (result.ProgressLog[inode].Step == "TTFU") {
                             var a = result.ProgressLog[inode].PercentageValue;
                             ttfuarray.push({ label: "Completed", value: a });
                             if (a != 100) {
@@ -87,6 +91,21 @@
                                 ttfuarray.push({ label: "Remaining", value: b });
                             }
                         }
+                        else if (result.ProgressLog[inode].Step == "MATCH") {
+                            var a = result.ProgressLog[inode].PercentageValue;
+                            matcharray.push({ label: "Completed", value: a });
+                            if (a != 100) {
+                                var b = (100 - a);
+                                matcharray.push({ label: "Remaining", value: b });
+                            }
+                            $("#Mcurrentbatch").text(result.ProgressLog[inode].CurrentBatch);
+                            $("#Mtotalbatch").text(result.ProgressLog[inode].TotalBatch);
+                            //stop timer on completion of remaining jobs 
+                            if (a == 100)
+                                myStopFunction(x);
+                            //end
+                        }
+
                     }
                     Morris.Donut({
                         element: 'read',
@@ -142,7 +161,7 @@
                             var HH = Math.floor(diffSeconds / 3600);
                             var MM = (Math.floor(diffSeconds % 3600) / 60).toFixed(2);
                             var formatted = ((HH < 10) ? ("0" + HH) : HH) + ":" + ((MM < 10) ? ("0" + MM) : MM);
-                            $("#lbltimeDiff").text(formatted);
+                            $("#lbltimeDiff").val(formatted);
                         }
                     }
                     //error log
@@ -168,6 +187,7 @@
                         tr.append("<td>" + result.FileStatistics[i].Unmapped + "</td>");
                         $("#dvstatastic table").append(tr);
                     }
+
                 },
                 error: function () {
                     //alert("Error fetching file processing data");
@@ -199,12 +219,13 @@
             document.getElementById("hdnFileId").value = fileid;
             var filestatus = $("#lblstatus").text();
             getChartData(fileid);
-                //strat timer
-                x = setInterval(function () { myTimer() }, 5000);
-            }
+            //strat timer
+            x = setInterval(function () { myTimer() }, 5000);
+        }
         );
         $('#moViewDetials').on('hidden.bs.modal', function () {
             //stop timer on close of modal 
+            $('#moViewDetials a:first').tab('show');
             myStopFunction();
         });
     }
@@ -221,10 +242,7 @@
         }
         $('#hdnViewDetailsFlag').val("false");
     }
-    function OnClientUploadComplete() {
-        var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
-        var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
-    }
+
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
@@ -248,7 +266,7 @@
         height: 150px;
     }
 
-    @media(min-width: 992px) {
+    @media(min-width: 768px) {
         .col5 {
             width: 20%;
             float: left;
@@ -268,6 +286,7 @@
         font-size: 14px;
     }
 </style>
+
 <asp:UpdatePanel ID="updUserGrid" runat="server">
     <ContentTemplate>
         <div class="panel-group" id="accordion">
@@ -402,7 +421,7 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" />
             </div>
         </div>
 
@@ -433,29 +452,23 @@
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="File Name" DataField="OriginalFilePath" />
-                                <asp:BoundField HeaderText="Status" DataField="STATUS" />
-                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}"/>
-
-                                <%--<asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("Accommodation_Description_Id") %>'>
-                                         <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
-                                        <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
-                                    </asp:LinkButton>--%>
-
-                                <asp:TemplateField ShowHeader="false">
+                                <asp:TemplateField ShowHeader="true" HeaderText="Status" ItemStyle-Width="150px">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnProcess" runat="server" CausesValidation="false" CommandName="Process" CssClass='<%# Eval("STATUS").ToString() == "UPLOADED" ? "btn btn-default" : "btn btn-default disabled" %>'>
-                                            <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "PROCESSED   " %></span>
-                                        </asp:LinkButton>
+                                        <div class="form-inline">
+                                            <div class="form-group">
+                                                <img style="height: 25px; width: 25px" src='<%# Eval("STATUS").ToString() == "PROCESSED" ? "../../images/148767.png" : (Eval("STATUS").ToString() == "ERROR" ? "../../images/148766.png" : (Eval("STATUS").ToString() == "UPLOADED" ? "../../images/148764.png" : "../../images/148853.png")) %>' />
+                                                <label><%# Eval("STATUS").ToString() %></label>
+                                            </div>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
+                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
+
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true">
-                                            <%--OnClientClick='<%# "showDetailsModal('\''"+ Convert.ToString(Eval("SupplierImportFile_Id")) + "'\'');" %>'--%>
-      <%--OnClientClicking='<%#string.Format("showDetailsModal('{0}');",Eval("SupplierImportFile_Id ")) %>'                                            
-                                           <%-- showDetailsModal('<%# Eval("SupplierImportFile_Id")%>');--%>
-                                            
-                                                 <span aria-hidden="true">View Details</span>
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>' CssClass="btn btn-default" Enabled="true">
+                                                 <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "View Details" %></span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -481,73 +494,19 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 
-
 <div class="modal fade" id="moFileUpload" role="dialog">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
-
             <div class="modal-header">
                 <div class="panel-title">
                     <h4 class="modal-title">File Upload</h4>
                 </div>
             </div>
-
             <div class="modal-body">
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>
-                        <div class="col-sm-12">
-                            <div class="form-group row">
-                                <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="Upload" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                                <div id="dvmsgUploadCompleted" runat="server" enableviewstate="false" style="display: none;">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlSupplierList">
-                                    Supplier
-                            <asp:RequiredFieldValidator ValidationGroup="Upload" Text="*" ID="rfvddlSupplierList" runat="server" ControlToValidate="ddlSupplierList"
-                                CssClass="text-danger" ErrorMessage="The Suppplier is required." InitialValue="0" />
-                                </label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlSupplierList" runat="server" OnSelectedIndexChanged="ddlSupplierList_SelectedIndexChanged"
-                                        AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control">
-                                        <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlEntityList">
-                                    Entity
-                              <asp:RequiredFieldValidator ValidationGroup="Upload" Text="*" runat="server" ControlToValidate="ddlEntityList"
-                                  CssClass="text-danger" ID="rfvddlEntityList" ErrorMessage="The Entity is required." InitialValue="0" />
-                                </label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlEntityList" runat="server" OnSelectedIndexChanged="ddlEntityList_SelectedIndexChanged"
-                                        AppendDataBoundItems="true" AutoPostBack="true" CssClass="form-control">
-                                        <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="FileUpld">
-                                    File Path
-                                </label>
-                                <div class="col-sm-8">
-                                    <cc1:AjaxFileUpload Enabled="false" runat="server" ID="FileUpld" ClearFileListAfterUpload="true" OnClientUploadComplete="OnClientUploadComplete()"
-                                        OnUploadComplete="FileUpld_UploadComplete" MaximumNumberOfFiles="1" Width="279px" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <asp:Button ID="btnNewReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnNewReset_Click" />
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
+                <iframe class="col-md-12" style="min-height: 215px;" frameborder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
@@ -561,122 +520,120 @@
                 <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
             </div>
             <div class="modal-body">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label">Supplier</label>
-                                <label id="lblSupplier" class="form-control "></label>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label">Entity</label>
-                                <label id="lblEntity" class="form-control"></label>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label">File</label>
-                                <label id="lblPath" class="form-control"></label>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label">Status</label>
-                                <label id="lblstatus" class="form-control"></label>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label">Elapsed Time</label>
-                                <label id="lbltimeDiff" class="form-control"></label>
-                            </div>
-
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblSupplier">Supplier</label>
+                            <input type="text" readonly id="lblSupplier" class="form-control " />
                         </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblEntity">Entity</label>
+                            <input type="text" readonly id="lblEntity" class="form-control" />
+                        </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblPath">File</label>
+                            <input type="text" readonly id="lblPath" class="form-control" />
+                        </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblstatus">Status</label>
+                            <input type="text" readonly id="lblstatus" class="form-control" />
+                        </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lbltimeDiff">Elapsed Time</label>
+                            <input type="text" readonly id="lbltimeDiff" class="form-control" />
+                        </div>
+
                     </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-sm-2 " id="readdiv">
-                                <div class="panel  panel-default " style="text-align: center">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px"><b>READ</b></h4>
-                                    </div>
-                                    <div id="read" class="chartheight" style="height: 160px"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-sm-2 " id="readdiv">
+                            <div class="panel  panel-default " style="text-align: center">
+                                <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <h4 style="margin-top: 5px"><b>READ : </b><span id="Rcurrentbatch" style="font: bold"></span>/<span id="Rtotalbatch" style="font: bold"></span></h4>
                                 </div>
+                                <div id="read" class="chartheight" style="height: 160px"></div>
                             </div>
-                            <div class="col-sm-8">
-                                <div class=" panel panel-default ">
-                                    <div class="panel-heading" style="text-align: center; padding-top: 5px; padding-bottom: 5px">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px"><b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font: bold">0</span>/<span id="totalbatch" style="font: bold">0</span></h4>
-                                    </div>
-                                    <div class="panel-body" style="padding: 0px;">
-                                        <div class="col-sm-4" id="txdiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>TRANSFORM</b>
-                                            <div id="tx" class="chartheight"></div>
-                                        </div>
-                                        <div class="col-sm-4" id="mapdiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>MAP</b>
-                                            <div id="map" class="chartheight"></div>
-                                        </div>
-                                        <div class="col-sm-4" id="ttfudiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>TTFU</b>
-                                            <div id="ttfu" class="chartheight"></div>
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class=" panel panel-default ">
+                                <div class="panel-heading" style="text-align: center; padding-top: 5px; padding-bottom: 5px">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <h4 style="margin-top: 5px"><b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font: bold">0</span>/<span id="totalbatch" style="font: bold">0</span></h4>
                                 </div>
-                            </div>
-                            <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                <div class="panel-body" style="padding: 0px;">
+                                    <div class="col-sm-4" id="txdiv" style="text-align: center">
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></h4>
+                                        <b>TRANSFORM</b>
+                                        <div id="tx" class="chartheight"></div>
                                     </div>
-                                    <div id="match" class="chartheight" style="height: 160px"></div>
+                                    <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <b>MAP</b>
+                                        <div id="map" class="chartheight"></div>
+                                    </div>
+                                    <div class="col-sm-4" id="ttfudiv" style="text-align: center">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <b>TTFU</b>
+                                        <div id="ttfu" class="chartheight"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
+                            <div class="panel  panel-default">
+                                <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <h4 style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></h4>
+                                </div>
+                                <div id="match" class="chartheight" style="height: 160px"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="col-md-12">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div id="Tabs" class="panel-body" role="tabpanel">
-                                        <ul class="nav nav-tabs tabs" role="tablist">
-                                            <li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#ShowVerboselog">Verbose Log</a></li>
-                                            <li id="errorlogtab" role="presentation" style="display: none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red"></span></a></li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div role="tabpanel" id="ShowVerboselog" class="tab-pane fade in active">
-                                                <div id="verboselog" style="overflow: scroll; height: 200px">
-                                                    <table class="table table-fixed table-condensed">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Date</th>
-                                                                <th>Step</th>
-                                                                <th>Message</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tblveboselog">
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                            <div class="panel panel-default">
+                                <div id="Tabs" class="panel-body" role="tabpanel">
+                                    <ul class="nav nav-tabs tabs" role="tablist">
+                                        <li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#ShowVerboselog">Verbose Log</a></li>
+                                        <li id="errorlogtab" role="presentation" style="display: none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red"></span></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" id="ShowVerboselog" class="tab-pane fade in active">
+                                            <div id="verboselog" style="overflow: scroll; height: 200px">
+                                                <table class="table table-fixed table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Step</th>
+                                                            <th>Message</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tblveboselog">
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <div role="tabpanel" id="ShowErrorlog" class="tab-pane ">
-                                                <div id="errorlog" style="overflow: scroll; height: 200px">
-                                                    <table class="table table-fixed table-condensed">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Date</th>
-                                                                <th>Error Code</th>
-                                                                <th>Error Type</th>
-                                                                <th>Description</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tblerrorlog">
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                        </div>
+                                        <div role="tabpanel" id="ShowErrorlog" class="tab-pane ">
+                                            <div id="errorlog" style="overflow: scroll; height: 200px">
+                                                <table class="table table-fixed table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Error Code</th>
+                                                            <th>Error Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tblerrorlog">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -684,26 +641,26 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="col-md-12">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
-                                        <h4 style="margin-top: 5px"><b>File Statistic</b></h4>
-                                    </div>
-                                    <div id="dvstatastic" style="height: 50px">
-                                        <table class="table table-fixed table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>TotalRows</th>
-                                                    <th>Mapped</th>
-                                                    <th>Unmapped</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tblstatastic">
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                    <h4 style="margin-top: 5px"><b>File Statistic</b></h4>
+                                </div>
+                                <div id="dvstatastic" style="height: 50px">
+                                    <table class="table table-fixed table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>TotalRows</th>
+                                                <th>Mapped</th>
+                                                <th>Unmapped</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblstatastic">
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -711,7 +668,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
