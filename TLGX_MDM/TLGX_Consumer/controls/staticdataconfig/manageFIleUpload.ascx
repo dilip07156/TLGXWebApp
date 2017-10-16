@@ -35,6 +35,8 @@
                     $("#totalbatch").empty();
                     $("#Mcurrentbatch").empty();
                     $("#Mtotalbatch").empty();
+                    $("#Rcurrentbatch").empty();
+                    $("#Rtotalbatch").empty();
                     $("#lblSupplier").empty();
                     $("#lblEntity").empty();
                     $("#lblPath").empty();
@@ -60,6 +62,8 @@
                                 var b = (100 - a);
                                 readarray.push({ label: "Remaining", value: b });
                             }
+                            $("#Rcurrentbatch").text(result.ProgressLog[inode].CurrentBatch);
+                            $("#Rtotalbatch").text(result.ProgressLog[inode].TotalBatch);
                         }
                         else if (result.ProgressLog[inode].Step == "TRANSFORM") {
                             var a = result.ProgressLog[inode].PercentageValue;
@@ -561,7 +565,7 @@
                                 <div class="panel  panel-default " style="text-align: center">
                                     <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px"><b>READ</b></h4>
+                                        <h4 style="margin-top: 5px"><b>READ : </b><span id="Rcurrentbatch" style="font: bold"></span>/<span id="Rtotalbatch" style="font: bold"></span></h4>
                                     </div>
                                     <div id="read" class="chartheight" style="height: 160px"></div>
                                 </div>
