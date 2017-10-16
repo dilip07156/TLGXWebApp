@@ -105,7 +105,8 @@
                             </div>
                         </div>
 
-                        <asp:FormView ID="frmPolicy" runat="server" DataKeyNames="Activity_Policy_Id" DefaultMode="Insert" CssClass="col-md-12" OnItemCommand="frmPolicy_ItemCommand">
+                        <asp:FormView ID="frmPolicy" runat="server" DataKeyNames="Activity_Policy_Id" DefaultMode="Insert" CssClass="col-md-12" 
+                            OnItemCommand="frmPolicy_ItemCommand">
 
                             <InsertItemTemplate>
 
@@ -176,7 +177,7 @@
 
                                 <div class="col-sm-12 row">
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">Add New Policy</div>
+                                        <div class="panel-heading">Edit Policy</div>
                                         <div class="panel-body">
 
                                             <div class="form-group">
