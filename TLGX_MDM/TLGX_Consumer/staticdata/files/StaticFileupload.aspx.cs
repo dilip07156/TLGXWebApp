@@ -145,6 +145,7 @@ namespace TLGX_Consumer.staticdata.files
             }
             return strFileType;
         }
+
         protected void clearControls()
         {
             ddlSupplierList.ClearSelection();
@@ -154,45 +155,9 @@ namespace TLGX_Consumer.staticdata.files
             FileUpload1.Dispose();
         }
 
-        private void UploadFile(TRFSVC.RemoteFileInfo RFI)
+        private MDMSVC.DC_UploadResponse UploadFileInChunks(HttpPostedFile file, long actualFileSize, Guid FileUploadId)
         {
-            TRFSVC.ITransferService serviceClient = new TRFSVC.TransferServiceClient();
-            TRFSVC.UploadResponse response = serviceClient.UploadFile(RFI);
-
-            if (response.UploadSucceeded)
-            {
-                MappingSVCs _objMappingSVCs = new MappingSVCs();
-
-                MDMSVC.DC_SupplierImportFileDetails _objFileDetails = new MDMSVC.DC_SupplierImportFileDetails();
-                _objFileDetails.SupplierImportFile_Id = Guid.NewGuid();
-                _objFileDetails.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedValue);
-                _objFileDetails.Entity = ddlEntityList.SelectedItem.Text;
-                _objFileDetails.OriginalFilePath = FileUpload1.FileName;
-                _objFileDetails.SavedFilePath = response.UploadedPath;
-                _objFileDetails.STATUS = "UPLOADED";
-                _objFileDetails.CREATE_DATE = DateTime.Now;
-                _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
-
-                MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
-
-                if (_objMsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
-                {
-                    btnReset_Click(null, EventArgs.Empty);
-                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, _objMsg.StatusMessage, BootstrapAlertType.Success);
-                }
-                else
-                {
-                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, _objMsg.StatusMessage, BootstrapAlertType.Danger);
-                }
-
-                _objFileDetails = null;
-                clearControls();
-            }
-        }
-
-        private TRFSVC.DC_UploadResponse UploadFileInChunks(HttpPostedFile file, long actualFileSize, Guid FileUploadId)
-        {
-            TRFSVC.DC_UploadResponse returnResponse = new TRFSVC.DC_UploadResponse();
+            MDMSVC.DC_UploadResponse returnResponse = new MDMSVC.DC_UploadResponse();
             string fileNameNew = System.IO.Path.GetFileNameWithoutExtension(file.FileName) + "_" + FileUploadId.ToString().Replace("-", "_") + "." + System.IO.Path.GetExtension(file.FileName).Replace(".", "");
 
             long filePosition = 0;
@@ -204,9 +169,6 @@ namespace TLGX_Consumer.staticdata.files
             //Set the posted file data to file stream.
             Stream fileStream = file.InputStream;
 
-            //Create the service client
-            TRFSVC.TransferServiceClient serviceClient = new TRFSVC.TransferServiceClient();
-
             try
             {
                 long actualFileSizeToUpload = actualFileSize;
@@ -214,6 +176,7 @@ namespace TLGX_Consumer.staticdata.files
                 fileStream.Position = filePosition;
                 int fileBytesRead = 0;
 
+                FileTransferSVC trfSvc = new FileTransferSVC();
                 //Upload file data in parts until filePosition reaches the actual file end or size.
                 while (filePosition != actualFileSizeToUpload)
                 {
@@ -229,7 +192,7 @@ namespace TLGX_Consumer.staticdata.files
                     }
 
                     //Populate the data contract to send it to the service method
-                    returnResponse = serviceClient.UploadFileInChunks(new TRFSVC.DC_FileData { FileName = fileNameNew, BufferData = bufferData, FilePostition = filePosition });
+                    returnResponse = trfSvc.TransferFileInChunks(new MDMSVC.DC_FileData { FileName = fileNameNew, BufferData = bufferData, FilePostition = filePosition });
                     if (!returnResponse.UploadSucceeded)
                     {
                         break;
@@ -241,7 +204,7 @@ namespace TLGX_Consumer.staticdata.files
             }
             catch
             {
-                return new TRFSVC.DC_UploadResponse { UploadSucceeded = false, UploadedPath = string.Empty };
+                return new MDMSVC.DC_UploadResponse { UploadSucceeded = false, UploadedPath = string.Empty };
             }
             finally
             {
