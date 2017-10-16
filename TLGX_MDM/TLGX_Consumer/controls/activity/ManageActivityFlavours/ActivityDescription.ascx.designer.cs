@@ -7,102 +7,108 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.activity {
+namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class ManageActivityFlavour {
+    public partial class ActivityDescription {
         
         /// <summary>
-        /// Flavours control.
+        /// updMedia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Flavours Flavours;
+        protected global::System.Web.UI.UpdatePanel updMedia;
         
         /// <summary>
-        /// Inclusions control.
+        /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.InclusionsAndExclusion Inclusions;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
         
         /// <summary>
-        /// ClassificationAttributes control.
+        /// btnNewUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ClassificationAttributes ClassificationAttributes;
+        protected global::System.Web.UI.WebControls.Button btnNewUpload;
         
         /// <summary>
-        /// ActivityMedia control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityMedia ActivityMedia;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
         
         /// <summary>
-        /// Policy control.
+        /// ddlShowEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Policy Policy;
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// PricesNDeals control.
+        /// dvMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.PricesNDeals PricesNDeals;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// ReviewsNScores control.
+        /// gvDescriptionSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ReviewsNScores ReviewsNScores;
+        protected global::System.Web.UI.WebControls.GridView gvDescriptionSearch;
         
         /// <summary>
-        /// SupplierProductMappings control.
+        /// upDescriptionAddEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.SupplierProductMappings SupplierProductMappings;
+        protected global::System.Web.UI.UpdatePanel upDescriptionAddEdit;
         
         /// <summary>
-        /// ActivityDescription control.
+        /// hdnFlag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityDescription ActivityDescription;
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
         
         /// <summary>
-        /// PreviousPage property.
+        /// vlsSumm control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new TLGX_Consumer.activity.search PreviousPage {
-            get {
-                return ((TLGX_Consumer.activity.search)(base.PreviousPage));
-            }
-        }
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
+        
+        /// <summary>
+        /// frmDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView frmDescription;
     }
 }

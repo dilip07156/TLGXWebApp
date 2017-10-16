@@ -193,6 +193,22 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Description
+        public List<MDMSVC.DC_Activity_Descriptions> GetActivityDescription(MDMSVC.DC_Activity_Descriptions_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Description"], RQ, typeof(DC_Activity_Descriptions_RQ), typeof(List<DC_Activity_Descriptions>), out result);
+            return result as List<MDMSVC.DC_Activity_Descriptions>;
+        }
+
+        public DC_Message AddUpdateActivityDescription(MDMSVC.DC_Activity_Descriptions RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Description"], RQ, typeof(MDMSVC.DC_Activity_Descriptions), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
 
     }
 }
