@@ -22,12 +22,12 @@
     <MetadataSource Address="http://localhost:57643/Consumer.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Consumer.xsd" MetadataType="Schema" ID="793dfe4a-3c66-427d-8ee4-740e42c17c1c" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd14" />
-    <MetadataFile FileName="Consumer1.xsd" MetadataType="Schema" ID="1ea243b1-80f0-4bf5-8f9d-b4bf5984d70f" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd15" />
+    <MetadataFile FileName="Consumer.xsd" MetadataType="Schema" ID="ac1e747e-56da-456c-8142-02c6deb91bc1" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd14" />
+    <MetadataFile FileName="Consumer1.xsd" MetadataType="Schema" ID="d73c2f88-1068-423d-b502-f03a1715a498" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd15" />
     <MetadataFile FileName="Consumer13.xsd" MetadataType="Schema" ID="b083e927-492c-42d2-b2ac-bc4a64e9f033" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd10" />
     <MetadataFile FileName="Consumer131.xsd" MetadataType="Schema" ID="65917c54-b827-4f5e-8a58-007d3bb182b4" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd0" />
     <MetadataFile FileName="Consumer132.xsd" MetadataType="Schema" ID="9c147828-e478-4719-9f72-cb4607c9dbb8" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd12" />
-    <MetadataFile FileName="Consumer2.xsd" MetadataType="Schema" ID="a8422e0b-dc1e-4ba2-98fd-a2aad2c45705" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd13" />
+    <MetadataFile FileName="Consumer2.xsd" MetadataType="Schema" ID="58ee3eb8-29c2-46d2-a3f7-b69c6f8b06ea" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd13" />
     <MetadataFile FileName="Consumer133.xsd" MetadataType="Schema" ID="8781f55a-3389-4509-9344-c6109833b3a0" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd2" />
     <MetadataFile FileName="Consumer134.xsd" MetadataType="Schema" ID="a14f31ad-af75-49d9-b216-ef3344d5a3cd" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?xsd=xsd7" />
     <MetadataFile FileName="Consumer1.wsdl" MetadataType="Wsdl" ID="4804f0ad-821a-48a0-921a-21df0add1552" SourceId="1" SourceUrl="http://localhost:57643/Consumer.svc?wsdl" />

@@ -372,6 +372,10 @@
     <Content Include="hotels\addnew.aspx" />
     <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
+    <Content Include="images\148764.png" />
+    <Content Include="images\148766.png" />
+    <Content Include="images\148767.png" />
+    <Content Include="images\148853.png" />
     <Content Include="images\ajax-loader-blue.gif" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\ajax-loader_SMALL.gif" />
@@ -797,12 +801,6 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.DC_UploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -866,19 +864,12 @@
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
     <Content Include="Service\AddUpdateNearByPlaces.ashx" />
-    <None Include="Service References\TRFSVC\TransferService.wsdl" />
-    <None Include="Service References\TRFSVC\TransferService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileUploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -1237,6 +1228,7 @@
     <Compile Include="Controller\ActivitySVC.cs" />
     <Compile Include="Controller\AdminSVCs.cs" />
     <Compile Include="Controller\CustomStream.cs" />
+    <Compile Include="Controller\FileTransferSVC.cs" />
     <Compile Include="Controller\MappingSVCs.cs" />
     <Compile Include="Controller\MasterDataSVCs.cs" />
     <Compile Include="Controller\MDMSvcProxy.cs" />
@@ -2525,11 +2517,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\TRFSVC\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service\ActivityNameAutoComplete.ashx.cs">
       <DependentUpon>ActivityNameAutoComplete.ashx</DependentUpon>
     </Compile>
@@ -2782,7 +2769,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
-    <WCFMetadataStorage Include="Service References\TRFSVC\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

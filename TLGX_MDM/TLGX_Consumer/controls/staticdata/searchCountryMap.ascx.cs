@@ -329,7 +329,7 @@ namespace TLGX_Consumer.controls.staticdata
                 RQUpCountry.Add(newObj);
                 if (mapperSVc.UpdateCountryMappingDatat(RQUpCountry))
                 {
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
                     //frmEditCountryMap.Visible = false;
                     MatchedPageIndex = 0;
                     MappedCountry_ID = new Guid(ddlSystemCountryName.SelectedItem.Value);
@@ -601,7 +601,7 @@ namespace TLGX_Consumer.controls.staticdata
                     myCountry_Id = Guid.Empty;
                 }
             }
-            BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been mapped successfully", BootstrapAlertType.Success);
+            BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been updated successfully", BootstrapAlertType.Success);
             fillmappingdata();
         }
 
@@ -660,7 +660,7 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.Add(param);
                 res = mapperSVc.UpdateCountryMappingDatat(RQ);
             }
-            BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been mapped successfully", BootstrapAlertType.Success);
+            BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been updated successfully", BootstrapAlertType.Success);
             fillmappingdata();
         }
 

@@ -13,13 +13,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class ReviewsNScores {
         
         /// <summary>
-        /// updReviewNScores control.
+        /// updPanRevAndScore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updReviewNScores;
+        protected global::System.Web.UI.UpdatePanel updPanRevAndScore;
         
         /// <summary>
         /// dvMsg control.
@@ -49,13 +49,31 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
-        /// grdReviewNScores control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdReviewNScores;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
+        
+        /// <summary>
+        /// ddlShowEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        
+        /// <summary>
+        /// grdRevAndScore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdRevAndScore;
         
         /// <summary>
         /// updNewActivity control.
@@ -76,21 +94,21 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.ValidationSummary vldSumActivity;
         
         /// <summary>
-        /// divMsgAlertActivity control.
+        /// divMsgAlertRevAndScore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertActivity;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertRevAndScore;
         
         /// <summary>
-        /// frmPolicy control.
+        /// frmRevAndScore control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmPolicy;
+        protected global::System.Web.UI.WebControls.FormView frmRevAndScore;
     }
 }

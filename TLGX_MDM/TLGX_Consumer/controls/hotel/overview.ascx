@@ -786,26 +786,28 @@
                             <div class="form-group">
                                 <label class="control-label-mand col-sm-6" for="txtCheckinTime">
                                     Check In
-                                    <asp:RequiredFieldValidator ID="vtxtCheckinTime" runat="server" ErrorMessage="Please enter Check In Time" Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
+                                    <asp:RequiredFieldValidator ID="vtxtCheckinTime" runat="server" ErrorMessage="Please enter Check In Time" Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="revtxtCheckinTime" runat="server" ErrorMessage="Invalid Check In Time." Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView" ValidationExpression="^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
+                                </label>
                                 <div class="col-sm-6">
                                     <asp:TextBox ID="txtCheckinTime" runat="server" Text='<%# Bind("CheckInTime") %>' class="form-control" />
                                     <cc1:MaskedEditExtender ID="txtCheckinTime_MaskEditExtender" runat="server" AcceptAMPM="false"
                                         Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtCheckinTime"
-                                        UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight">
-                                    </cc1:MaskedEditExtender>
+                                        UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label-mand col-sm-6" for="txtCheckOut">
                                     Check Out
-                                    <asp:RequiredFieldValidator ID="vtxtCheckOut" runat="server" ErrorMessage="Please enter Check Out Time" Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label></label>
+                                    <asp:RequiredFieldValidator ID="vtxtCheckOut" runat="server" ErrorMessage="Please enter Check Out Time" Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
+                                <asp:RegularExpressionValidator ID="revtxtCheckOut" runat="server" ErrorMessage="Invalid Check Out Time." Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView" ValidationExpression="^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
+                                </label>
                                 <div class="col-sm-6">
                                     <asp:TextBox ID="txtCheckOut" runat="server" Text='<%# Bind("CheckOutTime") %>' class="form-control" />
                                     <cc1:MaskedEditExtender ID="txtCheckinTime_txtCheckOut" runat="server" AcceptAMPM="false"
                                         Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtCheckOut"
-                                        UserTimeFormat="TwentyFourHour">
-                                    </cc1:MaskedEditExtender>
+                                        UserTimeFormat="TwentyFourHour"></cc1:MaskedEditExtender>
                                 </div>
                             </div>
 
@@ -853,14 +855,14 @@
 
                                     <div class="input-group">
                                         <asp:TextBox ID="txtRatingDate" runat="server" Text='<%#Eval("RatingDate", "{0:dd/MM/yyyy}") %>' CssClass="form-control" ReadOnly="true" />
-                                       <%-- <span class="input-group-btn">
+                                        <%-- <span class="input-group-btn">
                                             <button class="btn btn-default" type="button" id="iCal">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                             </button>
                                         </span>--%>
                                     </div>
 
-                                   <%-- <cc1:CalendarExtender ID="txtRatingDate_CalendarExtender" runat="server" Format="dd/MM/yyyy"
+                                    <%-- <cc1:CalendarExtender ID="txtRatingDate_CalendarExtender" runat="server" Format="dd/MM/yyyy"
                                         TargetControlID="txtRatingDate" Animated="true" PopupButtonID="iCal">
                                     </cc1:CalendarExtender>--%>
                                     <cc1:FilteredTextBoxExtender ID="txtRatingDate_axfte" runat="server" FilterType="Numbers, Custom"

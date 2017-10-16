@@ -293,6 +293,8 @@ namespace TLGX_Consumer.controls.staticdata
             btnMapSelected.Visible = false;
             btnMapAll.Visible = false;
             lblTotalCount.Text = "0";
+            txtSuppCountry.Text = "";
+            txtSuppCity.Text = "";
         }
 
         protected void ddlMasterCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -619,7 +621,7 @@ namespace TLGX_Consumer.controls.staticdata
                     btnMatchedMapSelected.Visible = true;
                     btnMatchedMapAll.Visible = true;
                     dvMsg.Style.Add("display", "block");
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
                     hdnFlag.Value = "false";
                 }
             }
@@ -925,7 +927,7 @@ namespace TLGX_Consumer.controls.staticdata
                     mySupplier_Id = Guid.Empty;
                     myCountry_Id = Guid.Empty;
                     myCity_Id = Guid.Empty;
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been mapped successfully", BootstrapAlertType.Success);
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been updated successfully", BootstrapAlertType.Success);
                 }
             }
 

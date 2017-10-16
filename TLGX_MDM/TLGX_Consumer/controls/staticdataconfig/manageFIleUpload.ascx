@@ -1,11 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="manageFIleUpload.ascx.cs" Inherits="TLGX_Consumer.controls.staticdataconfig.manageFIleUpload" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <style>
-        .h_iframe {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
+    .h_iframe {
+        height: 100%;
+        width: 100%;
+    }
+</style>
 <script type="text/javascript">
 
     function getChartData(fileid) {
@@ -94,8 +94,7 @@
                         else if (result.ProgressLog[inode].Step == "MATCH") {
                             var a = result.ProgressLog[inode].PercentageValue;
                             matcharray.push({ label: "Completed", value: a });
-                            if (a != 100)
-                            {
+                            if (a != 100) {
                                 var b = (100 - a);
                                 matcharray.push({ label: "Remaining", value: b });
                             }
@@ -106,7 +105,7 @@
                                 myStopFunction(x);
                             //end
                         }
-                        
+
                     }
                     Morris.Donut({
                         element: 'read',
@@ -243,10 +242,7 @@
         }
         $('#hdnViewDetailsFlag').val("false");
     }
-    <%--function OnClientUploadComplete() {
-        var ddlSupplierList = document.getElementById("<%=ddlSupplierList.ClientID%>");
-        var ddlEntityList = document.getElementById("<%=ddlEntityList.ClientID%>");
-    }--%>
+
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
@@ -290,6 +286,7 @@
         font-size: 14px;
     }
 </style>
+
 <asp:UpdatePanel ID="updUserGrid" runat="server">
     <ContentTemplate>
         <div class="panel-group" id="accordion">
@@ -424,7 +421,7 @@
             </div>
 
             <div class="col-lg-1">
-                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" OnClick="btnNewUpload_Click" />
+                <asp:Button ID="btnNewUpload" runat="server" CssClass="btn btn-primary btn-sm" Text="Upload" OnClientClick="showFileUpload();" />
             </div>
         </div>
 
@@ -455,29 +452,23 @@
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="File Name" DataField="OriginalFilePath" />
-                                <asp:BoundField HeaderText="Status" DataField="STATUS" />
-                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
-
-                                <%--<asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("Accommodation_Description_Id") %>'>
-                                         <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
-                                        <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
-                                    </asp:LinkButton>--%>
-
-                                <asp:TemplateField ShowHeader="false">
+                                <asp:TemplateField ShowHeader="true" HeaderText="Status" ItemStyle-Width="150px">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnProcess" runat="server" CausesValidation="false" CommandName="Process" CssClass='<%# Eval("STATUS").ToString() == "UPLOADED" ? "btn btn-default" : "btn btn-default disabled" %>'>
-                                            <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "PROCESSED   " %></span>
-                                        </asp:LinkButton>
+                                        <div class="form-inline">
+                                            <div class="form-group">
+                                                <img style="height: 25px; width: 25px" src='<%# Eval("STATUS").ToString() == "PROCESSED" ? "../../images/148767.png" : (Eval("STATUS").ToString() == "ERROR" ? "../../images/148766.png" : (Eval("STATUS").ToString() == "UPLOADED" ? "../../images/148764.png" : "../../images/148853.png")) %>' />
+                                                <label><%# Eval("STATUS").ToString() %></label>
+                                            </div>
+                                        </div>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+
+                                <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
+
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName="ViewDetails" CssClass="btn btn-default" Enabled="true">
-                                            <%--OnClientClick='<%# "showDetailsModal('\''"+ Convert.ToString(Eval("SupplierImportFile_Id")) + "'\'');" %>'--%>
-      <%--OnClientClicking='<%#string.Format("showDetailsModal('{0}');",Eval("SupplierImportFile_Id ")) %>'                                            
-                                           <%-- showDetailsModal('<%# Eval("SupplierImportFile_Id")%>');--%>
-                                            
-                                                 <span aria-hidden="true">View Details</span>
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>' CssClass="btn btn-default" Enabled="true">
+                                                 <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "View Details" %></span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
@@ -503,7 +494,6 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 
-
 <div class="modal fade" id="moFileUpload" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -513,7 +503,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <iframe class="col-md-12" style="min-height: 215px;"  frameBorder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
+                <iframe class="col-md-12" style="min-height: 215px;" frameborder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -530,122 +520,120 @@
                 <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
             </div>
             <div class="modal-body">
-                <%--<div class="container">--%>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                <div class="row">
+                    <div class="col-md-12">
+                        <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label" for="lblSupplier">Supplier</label>
-                                <input type="text" readonly id="lblSupplier" class="form-control "/>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label" for="lblEntity">Entity</label>
-                                <input type="text" readonly id="lblEntity" class="form-control"/>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label" for="lblPath">File</label>
-                                <input type="text" readonly id="lblPath" class="form-control"/>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label" for="lblstatus">Status</label>
-                                <input type="text" readonly id="lblstatus" class="form-control"/>
-                            </div>
-                            <div class="col-sm-2 col5">
-                                <label class="col-form-label" for="lbltimeDiff">Elapsed Time</label>
-                                <input type="text" readonly id="lbltimeDiff" class="form-control"/>
-                            </div>
-
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblSupplier">Supplier</label>
+                            <input type="text" readonly id="lblSupplier" class="form-control " />
                         </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblEntity">Entity</label>
+                            <input type="text" readonly id="lblEntity" class="form-control" />
+                        </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblPath">File</label>
+                            <input type="text" readonly id="lblPath" class="form-control" />
+                        </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lblstatus">Status</label>
+                            <input type="text" readonly id="lblstatus" class="form-control" />
+                        </div>
+                        <div class="col-sm-2 col5">
+                            <label class="col-form-label" for="lbltimeDiff">Elapsed Time</label>
+                            <input type="text" readonly id="lbltimeDiff" class="form-control" />
+                        </div>
+
                     </div>
-                    <br />
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="col-sm-2 " id="readdiv">
-                                <div class="panel  panel-default " style="text-align: center">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px"><b>READ : </b><span id="Rcurrentbatch" style="font: bold"></span>/<span id="Rtotalbatch" style="font: bold"></span></h4>
-                                    </div>
-                                    <div id="read" class="chartheight" style="height: 160px"></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-sm-2 " id="readdiv">
+                            <div class="panel  panel-default " style="text-align: center">
+                                <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <h4 style="margin-top: 5px"><b>READ : </b><span id="Rcurrentbatch" style="font: bold"></span>/<span id="Rtotalbatch" style="font: bold"></span></h4>
                                 </div>
+                                <div id="read" class="chartheight" style="height: 160px"></div>
                             </div>
-                            <div class="col-sm-8">
-                                <div class=" panel panel-default ">
-                                    <div class="panel-heading" style="text-align: center; padding-top: 5px; padding-bottom: 5px">
-                                        <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px"><b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font: bold">0</span>/<span id="totalbatch" style="font: bold">0</span></h4>
-                                    </div>
-                                    <div class="panel-body" style="padding: 0px;">
-                                        <div class="col-sm-4" id="txdiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>TRANSFORM</b>
-                                            <div id="tx" class="chartheight"></div>
-                                        </div>
-                                        <div class="col-sm-4" id="mapdiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>MAP</b>
-                                            <div id="map" class="chartheight"></div>
-                                        </div>
-                                        <div class="col-sm-4" id="ttfudiv" style="text-align: center">
-                                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                                            <b>TTFU</b>
-                                            <div id="ttfu" class="chartheight"></div>
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class=" panel panel-default ">
+                                <div class="panel-heading" style="text-align: center; padding-top: 5px; padding-bottom: 5px">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <h4 style="margin-top: 5px"><b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font: bold">0</span>/<span id="totalbatch" style="font: bold">0</span></h4>
                                 </div>
-                            </div>
-                            <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
-                                <div class="panel  panel-default">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                <div class="panel-body" style="padding: 0px;">
+                                    <div class="col-sm-4" id="txdiv" style="text-align: center">
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
-                                        <h4 style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></h4>
+                                        <b>TRANSFORM</b>
+                                        <div id="tx" class="chartheight"></div>
                                     </div>
-                                    <div id="match" class="chartheight" style="height: 160px"></div>
+                                    <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <b>MAP</b>
+                                        <div id="map" class="chartheight"></div>
+                                    </div>
+                                    <div class="col-sm-4" id="ttfudiv" style="text-align: center">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <b>TTFU</b>
+                                        <div id="ttfu" class="chartheight"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
+                            <div class="panel  panel-default">
+                                <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                    <i class="fa fa-bar-chart-o fa-fw"></i>
+                                    <h4 style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></h4>
+                                </div>
+                                <div id="match" class="chartheight" style="height: 160px"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="col-md-12">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div id="Tabs" class="panel-body" role="tabpanel">
-                                        <ul class="nav nav-tabs tabs" role="tablist">
-                                            <li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#ShowVerboselog">Verbose Log</a></li>
-                                            <li id="errorlogtab" role="presentation" style="display: none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red"></span></a></li>
-                                        </ul>
-                                        <div class="tab-content">
-                                            <div role="tabpanel" id="ShowVerboselog" class="tab-pane fade in active">
-                                                <div id="verboselog" style="overflow: scroll; height: 200px">
-                                                    <table class="table table-fixed table-condensed">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Date</th>
-                                                                <th>Step</th>
-                                                                <th>Message</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tblveboselog">
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                            <div class="panel panel-default">
+                                <div id="Tabs" class="panel-body" role="tabpanel">
+                                    <ul class="nav nav-tabs tabs" role="tablist">
+                                        <li class="active" role="presentation"><a role="tab" data-toggle="tab" href="#ShowVerboselog">Verbose Log</a></li>
+                                        <li id="errorlogtab" role="presentation" style="display: none"><a role="tab" data-toggle="tab" href="#ShowErrorlog">Error Log &nbsp;&nbsp <span id="erroralert" class="glyphicon glyphicon-alert" style="color: red"></span></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div role="tabpanel" id="ShowVerboselog" class="tab-pane fade in active">
+                                            <div id="verboselog" style="overflow: scroll; height: 200px">
+                                                <table class="table table-fixed table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Step</th>
+                                                            <th>Message</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tblveboselog">
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <div role="tabpanel" id="ShowErrorlog" class="tab-pane ">
-                                                <div id="errorlog" style="overflow: scroll; height: 200px">
-                                                    <table class="table table-fixed table-condensed">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Date</th>
-                                                                <th>Error Code</th>
-                                                                <th>Error Type</th>
-                                                                <th>Description</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tblerrorlog">
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                        </div>
+                                        <div role="tabpanel" id="ShowErrorlog" class="tab-pane ">
+                                            <div id="errorlog" style="overflow: scroll; height: 200px">
+                                                <table class="table table-fixed table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Date</th>
+                                                            <th>Error Code</th>
+                                                            <th>Error Type</th>
+                                                            <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tblerrorlog">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -653,31 +641,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="col-md-12">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
-                                        <h4 style="margin-top: 5px"><b>File Statistic</b></h4>
-                                    </div>
-                                    <div id="dvstatastic" style="height: 50px">
-                                        <table class="table table-fixed table-condensed">
-                                            <thead>
-                                                <tr>
-                                                    <th>TotalRows</th>
-                                                    <th>Mapped</th>
-                                                    <th>Unmapped</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="tblstatastic">
-                                            </tbody>
-                                        </table>
-                                    </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
+                                    <h4 style="margin-top: 5px"><b>File Statistic</b></h4>
+                                </div>
+                                <div id="dvstatastic" style="height: 50px">
+                                    <table class="table table-fixed table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>TotalRows</th>
+                                                <th>Mapped</th>
+                                                <th>Unmapped</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tblstatastic">
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                <%--</div>--%>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>

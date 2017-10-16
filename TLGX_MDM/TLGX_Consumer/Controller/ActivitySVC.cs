@@ -209,6 +209,21 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Review And Score
+        public List<MDMSVC.DC_Activity_ReviewsAndScores> GetActReviewsAndScores(MDMSVC.DC_Activity_ReviewsAndScores_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityReviewsAndScores"], RQ, typeof(DC_Activity_ReviewsAndScores_RQ), typeof(List<DC_Activity_ReviewsAndScores>), out result);
+            return result as List<MDMSVC.DC_Activity_ReviewsAndScores>;
+        }
+
+        public DC_Message AddUpdateActReviewsNScores(MDMSVC.DC_Activity_ReviewsAndScores RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityReviewsNScores"], RQ, typeof(DC_Activity_ReviewsAndScores), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
 
     }
 }
