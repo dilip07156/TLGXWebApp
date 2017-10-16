@@ -396,7 +396,14 @@ namespace TLGX_Consumer.controls.hotel
                     OverviewData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     OverviewData.IsActive = true;
                     OverviewData.IsMysteryProduct = blnMysteryProduct.Checked;
+                    System.Web.UI.HtmlControls.HtmlGenericControl alert_GeoCode = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("alert_GeoCode");
+                    System.Web.UI.HtmlControls.HtmlGenericControl dvMsgContact = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("contacts").FindControl("dvMsgContact");
+                    System.Web.UI.HtmlControls.HtmlGenericControl dvMsgDynamicAttributesForHotel = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("DynamicAttributesForHotel").FindControl("dvMsgDynamicAttributesForHotel");
 
+                    
+                    alert_GeoCode.Style.Add(HtmlTextWriterStyle.Display, "none");
+                    dvMsgContact.Style.Add(HtmlTextWriterStyle.Display, "none");
+                    dvMsgDynamicAttributesForHotel.Style.Add(HtmlTextWriterStyle.Display, "none");
                     if (AccSvc.UpdateHotelDetail(OverviewData))
                     {
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel has been updated successfully", BootstrapAlertType.Success);

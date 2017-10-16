@@ -41,8 +41,8 @@
                         <asp:BoundField DataField="category" HeaderText="Category" SortExpression="category" />
                         <asp:BoundField DataField="RoomType" HeaderText="RoomType" SortExpression="RoomType" />
                         <asp:BoundField DataField="MaxAdults" HeaderText="MaxAdults" SortExpression="MaxAdults" />
+                         <asp:BoundField DataField="FromAgeForExtraBed" HeaderText="From Age" SortExpression="FromAgeForExtraBed" />
                         <asp:BoundField DataField="ToAgeForExtraBed" HeaderText="To Age" SortExpression="ToAgeForExtraBed" />
-                        <asp:BoundField DataField="FromAgeForExtraBed" HeaderText="From Age" SortExpression="FromAgeForExtraBed" />
                         <asp:BoundField DataField="MaxPaxWithExtraBed" HeaderText="Max Pax" SortExpression="MaxPaxWithExtraBed" />
                         <asp:BoundField DataField="MaxCNB" HeaderText="Max Pax" SortExpression="MaxCNB" />
                         <asp:BoundField DataField="FromAgeForCNB" HeaderText="From Age" SortExpression="FromAgeForCNB" />

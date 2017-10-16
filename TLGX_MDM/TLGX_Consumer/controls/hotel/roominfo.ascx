@@ -276,7 +276,7 @@
                                                     <%--<asp:RequiredFieldValidator ID="vldtxtNumberOfRooms" runat="server" ControlToValidate="txtNumberOfRooms" ErrorMessage="Please enter number of rooms" Text="*" ValidationGroup="vldRoomInfo" CssClass="text-danger"></asp:RequiredFieldValidator>--%>
                                                 </label>
                                                 <div class="col-sm-6">
-                                                    <asp:TextBox ID="txtNumberOfRooms" runat="server" CssClass="form-control" TextMode="Number" Text='<%# Bind("NoOfRooms") %>' />
+                                                    <asp:TextBox ID="txtNumberOfRooms" runat="server" CssClass="form-control" Text='<%# Bind("NoOfRooms") %>' />
                                                     <cc1:FilteredTextBoxExtender ID="axfte_txtNumberOfRooms" runat="server" FilterType="Numbers" TargetControlID="txtNumberOfRooms" />
                                                 </div>
                                             </div>
