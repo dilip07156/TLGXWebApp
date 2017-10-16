@@ -15,6 +15,9 @@
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd11" />
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
+      <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" />
+      <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
+      <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/System" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IConsumer_UpdateAccomodationClassificationAttributes_InputMessage">
@@ -2510,6 +2513,39 @@
   <wsdl:message name="IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q277="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q277:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_UploadFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFile" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UploadFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UploadFile_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q278="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q278:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_TransferFileInChunks_InputMessage">
+    <wsdl:part name="parameters" element="tns:TransferFileInChunks" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_TransferFileInChunks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TransferFileInChunksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_TransferFileInChunks_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q279="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q279:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UploadFileInChunks_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileInChunks" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UploadFileInChunks_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFileInChunksResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UploadFileInChunks_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q280="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q280:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_DeleteFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_DeleteFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="UpdateAccomodationClassificationAttributes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/UpdateAccomodationClassificationAttributes" message="tns:IConsumer_UpdateAccomodationClassificationAttributes_InputMessage" />
@@ -3895,6 +3931,25 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicy" message="tns:IConsumer_AddUpdateActivityPolicy_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyResponse" message="tns:IConsumer_AddUpdateActivityPolicy_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/UploadFile" message="tns:IConsumer_UploadFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransfer/UploadFileResponse" message="tns:IConsumer_UploadFile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_UploadFile_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TransferFileInChunks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/TransferFileInChunks" message="tns:IConsumer_TransferFileInChunks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransfer/TransferFileInChunksResponse" message="tns:IConsumer_TransferFileInChunks_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFileTransfer/TransferFileInChunksDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_TransferFileInChunks_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFileInChunks">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/UploadFileInChunks" message="tns:IConsumer_UploadFileInChunks_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransfer/UploadFileInChunksResponse" message="tns:IConsumer_UploadFileInChunks_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IFileTransfer/UploadFileInChunksDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_UploadFileInChunks_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/DeleteFile" message="tns:IConsumer_DeleteFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFileTransfer/DeleteFileResponse" message="tns:IConsumer_DeleteFile_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />
