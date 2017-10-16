@@ -292,6 +292,15 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vtxtCheckinTime;
         
         /// <summary>
+        /// revtxtCheckinTime control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtCheckinTime;
+        
+        /// <summary>
         /// txtCheckinTime control.
         /// </summary>
         /// <remarks>
@@ -317,6 +326,15 @@ namespace TLGX_Consumer.controls.hotel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator vtxtCheckOut;
+        
+        /// <summary>
+        /// revtxtCheckOut control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator revtxtCheckOut;
         
         /// <summary>
         /// txtCheckOut control.

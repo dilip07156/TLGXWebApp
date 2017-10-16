@@ -371,6 +371,10 @@
     <Content Include="hotels\addnew.aspx" />
     <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
+    <Content Include="images\148764.png" />
+    <Content Include="images\148766.png" />
+    <Content Include="images\148767.png" />
+    <Content Include="images\148853.png" />
     <Content Include="images\ajax-loader-blue.gif" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\ajax-loader_SMALL.gif" />

@@ -441,7 +441,9 @@
                     <div class="form-group">
                         <label class="control-label-mand col-sm-6" for="txtCheckinTime">
                             Check In
-                            <asp:RequiredFieldValidator ID="vtxtCheckinTime" runat="server" ErrorMessage="Please enter CheckIn Time" Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
+                            <asp:RequiredFieldValidator ID="vtxtCheckinTime" runat="server" ErrorMessage="Please enter CheckIn Time" Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revtxtCheckinTime" runat="server" ErrorMessage="Invalid Check In Time." Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView" ValidationExpression="^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
+                        </label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txtCheckinTime" runat="server" class="form-control" />
                             <cc1:MaskedEditExtender ID="txtCheckinTime_MaskEditExtender" runat="server" AcceptAMPM="false"
@@ -453,7 +455,9 @@
                     <div class="form-group">
                         <label class="control-label-mand col-sm-6" for="txtCheckOut">
                             Check Out
-                            <asp:RequiredFieldValidator ID="vtxtCheckOut" runat="server" ErrorMessage="Please enter CheckOut Time" Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
+                            <asp:RequiredFieldValidator ID="vtxtCheckOut" runat="server" ErrorMessage="Please enter CheckOut Time" Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="revtxtCheckOut" runat="server" ErrorMessage="Invalid Check Out Time." Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView" ValidationExpression="^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
+                        </label>
                         <div class="col-sm-6">
                             <asp:TextBox ID="txtCheckOut" runat="server" class="form-control" />
                             <cc1:MaskedEditExtender ID="txtCheckOut_MaskEditExtender" runat="server" AcceptAMPM="false"
