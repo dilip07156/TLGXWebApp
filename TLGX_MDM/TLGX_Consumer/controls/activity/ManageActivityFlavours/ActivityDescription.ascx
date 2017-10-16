@@ -9,7 +9,7 @@
     }
     function pageLoad(sender, args) {
         var hv = $('#MainContent_ActivityDescription_hdnFlag').val();
-        alert(hv + " : : HiddenFlag")
+        //alert(hv + " : : HiddenFlag")
         if (hv == "true") {
             closeDescriptionModal();
             $('#MainContent_ActivityDescription_hdnFlag').val("false");
