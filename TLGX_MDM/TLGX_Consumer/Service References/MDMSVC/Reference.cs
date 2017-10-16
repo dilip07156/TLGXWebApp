@@ -7163,6 +7163,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_GooglePlaceNearBy", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.IO.Stream))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.MarshalByRefObject))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes))]
@@ -7195,6 +7197,10 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileUploadResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_UploadResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
@@ -7775,6 +7781,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="OpeningHoursGooglePlaceNearBy", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.IO.Stream))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.MarshalByRefObject))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes))]
@@ -7807,6 +7815,10 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_PentahoApiCallLogDetails))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileUploadResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_UploadResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
@@ -12242,6 +12254,266 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Supplier_IdField.Equals(value) != true)) {
                     this.Supplier_IdField = value;
                     this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_RemoteFileInfo", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer")]
+    [System.SerializableAttribute()]
+    public partial class DC_RemoteFileInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.IO.Stream FileByteStreamField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long LengthField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.IO.Stream FileByteStream {
+            get {
+                return this.FileByteStreamField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileByteStreamField, value) != true)) {
+                    this.FileByteStreamField = value;
+                    this.RaisePropertyChanged("FileByteStream");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long Length {
+            get {
+                return this.LengthField;
+            }
+            set {
+                if ((this.LengthField.Equals(value) != true)) {
+                    this.LengthField = value;
+                    this.RaisePropertyChanged("Length");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_FileUploadResponse", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer")]
+    [System.SerializableAttribute()]
+    public partial class DC_FileUploadResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UploadedPathField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UploadedPath {
+            get {
+                return this.UploadedPathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UploadedPathField, value) != true)) {
+                    this.UploadedPathField = value;
+                    this.RaisePropertyChanged("UploadedPath");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_FileData", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer")]
+    [System.SerializableAttribute()]
+    public partial class DC_FileData : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] BufferDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long FilePostitionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] BufferData {
+            get {
+                return this.BufferDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BufferDataField, value) != true)) {
+                    this.BufferDataField = value;
+                    this.RaisePropertyChanged("BufferData");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public long FilePostition {
+            get {
+                return this.FilePostitionField;
+            }
+            set {
+                if ((this.FilePostitionField.Equals(value) != true)) {
+                    this.FilePostitionField = value;
+                    this.RaisePropertyChanged("FilePostition");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_UploadResponse", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer")]
+    [System.SerializableAttribute()]
+    public partial class DC_UploadResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool UploadSucceededField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UploadedPathField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool UploadSucceeded {
+            get {
+                return this.UploadSucceededField;
+            }
+            set {
+                if ((this.UploadSucceededField.Equals(value) != true)) {
+                    this.UploadSucceededField = value;
+                    this.RaisePropertyChanged("UploadSucceeded");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UploadedPath {
+            get {
+                return this.UploadedPathField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UploadedPathField, value) != true)) {
+                    this.UploadedPathField = value;
+                    this.RaisePropertyChanged("UploadedPath");
                 }
             }
         }
@@ -18903,6 +19175,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid MasterAttributeMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentAttributeValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TLGX_Consumer.MDMSVC.DC_SupplierAttributeValues[] SupplierAttributeValuesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18933,6 +19208,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.MasterAttributeMapping_IdField.Equals(value) != true)) {
                     this.MasterAttributeMapping_IdField = value;
                     this.RaisePropertyChanged("MasterAttributeMapping_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentAttributeValue {
+            get {
+                return this.ParentAttributeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentAttributeValueField, value) != true)) {
+                    this.ParentAttributeValueField = value;
+                    this.RaisePropertyChanged("ParentAttributeValue");
                 }
             }
         }
@@ -43395,6 +43683,33 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityPolicy", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityPolicyResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityPolicyAsync(TLGX_Consumer.MDMSVC.DC_Activity_Policy RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileUploadResponse> UploadFileAsync(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/TransferFileInChunks", ReplyAction="http://tempuri.org/IFileTransfer/TransferFileInChunksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/TransferFileInChunksDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_UploadResponse TransferFileInChunks(TLGX_Consumer.MDMSVC.DC_FileData request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/TransferFileInChunks", ReplyAction="http://tempuri.org/IFileTransfer/TransferFileInChunksResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_UploadResponse> TransferFileInChunksAsync(TLGX_Consumer.MDMSVC.DC_FileData request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFileInChunks", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileInChunksResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileInChunksDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_UploadResponse UploadFileInChunks(TLGX_Consumer.MDMSVC.DC_FileData request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFileInChunks", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileInChunksResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_UploadResponse> UploadFileInChunksAsync(TLGX_Consumer.MDMSVC.DC_FileData request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/DeleteFile", ReplyAction="http://tempuri.org/IFileTransfer/DeleteFileResponse")]
+        bool DeleteFile(string FilePath);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/DeleteFile", ReplyAction="http://tempuri.org/IFileTransfer/DeleteFileResponse")]
+        System.Threading.Tasks.Task<bool> DeleteFileAsync(string FilePath);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -45638,6 +45953,38 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityPolicyAsync(TLGX_Consumer.MDMSVC.DC_Activity_Policy RQ) {
             return base.Channel.AddUpdateActivityPolicyAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request) {
+            return base.Channel.UploadFile(request);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileUploadResponse> UploadFileAsync(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request) {
+            return base.Channel.UploadFileAsync(request);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_UploadResponse TransferFileInChunks(TLGX_Consumer.MDMSVC.DC_FileData request) {
+            return base.Channel.TransferFileInChunks(request);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_UploadResponse> TransferFileInChunksAsync(TLGX_Consumer.MDMSVC.DC_FileData request) {
+            return base.Channel.TransferFileInChunksAsync(request);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_UploadResponse UploadFileInChunks(TLGX_Consumer.MDMSVC.DC_FileData request) {
+            return base.Channel.UploadFileInChunks(request);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_UploadResponse> UploadFileInChunksAsync(TLGX_Consumer.MDMSVC.DC_FileData request) {
+            return base.Channel.UploadFileInChunksAsync(request);
+        }
+        
+        public bool DeleteFile(string FilePath) {
+            return base.Channel.DeleteFile(FilePath);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteFileAsync(string FilePath) {
+            return base.Channel.DeleteFileAsync(FilePath);
         }
     }
 }
