@@ -2,9 +2,25 @@
 <%@ Register Src="~/controls/hotel/googlePlacesLookup.ascx" TagPrefix="uc1" TagName="googlePlacesLookup" %>
 <script type="text/javascript">
     function closeAddNewLookUPModal() {
-        $("#moAddnearbyplace").modal('hide');
+        $("#moAddnearbyplace").modal('destroy');
     }
     function showAddNewLookUPModal() {
+        debugger;
+        var elementsddlPlaceCategory = document.getElementById("MainContent_inandaround_googlePlacesLookup_ddlPlaceCategory").options;
+        for (var i = 0; i < elementsddlPlaceCategory.length; i++) {
+            elementsddlPlaceCategory[i].selected = false;
+        }
+        var elementsddlNoOfItem = document.getElementById("MainContent_inandaround_googlePlacesLookup_ddlNoOfItem").options;
+        for (var i = 0; i < elementsddlNoOfItem.length; i++) {
+            elementsddlNoOfItem[i].selected = false;
+        }
+        elementsddlNoOfItem[3].selected = true;
+        var elementsddlRadius = document.getElementById("MainContent_inandaround_googlePlacesLookup_ddlRadius").options;
+        for (var i = 0; i < elementsddlRadius.length; i++) {
+            elementsddlRadius[i].selected = false;
+        }
+        elementsddlRadius[3].selected = true;
+        $('#divResult').hide();
         $("#moAddnearbyplace").modal('show');
     }
     function pageLoad(sender, args) {
@@ -234,7 +250,6 @@
                 <h4 class="modal-title">Near By Places Lookup</h4>
             </div>
             <div class="modal-body">
-
                 <asp:HiddenField ID="hdnFlagFornearbyPlace" runat="server" ClientIDMode="Static" />
                 <uc1:googlePlacesLookup runat="server" ID="googlePlacesLookup" />
             </div>

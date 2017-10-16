@@ -1226,7 +1226,8 @@ namespace TLGX_Consumer.controls.attributes
                 RQ.PageSize = int.MaxValue;
                 RQ.PageNo = 0;
                 var searchResult = MapSvc.Mapping_AttributeValue_Get(RQ);
-                var search = from s in searchResult orderby s.SystemMasterAttributeValue.Trim().TrimStart() select new{ s.SystemMasterAttributeValue,s.SystemMasterAttributeValue_Id};
+                var search = (from s in searchResult select new { s.SystemMasterAttributeValue, s.SystemMasterAttributeValue_Id }).Distinct().OrderBy(x => x.SystemMasterAttributeValue.Trim().TrimStart());
+                //var search = from s in searchResult orderby s.SystemMasterAttributeValue.Trim().TrimStart() select new { s.SystemMasterAttributeValue, s.SystemMasterAttributeValue_Id } ;
                 ddlsystemAttrVal.DataSource = search;
                 ddlsystemAttrVal.DataTextField = "SystemMasterAttributeValue";
                 ddlsystemAttrVal.DataValueField = "SystemMasterAttributeValue_Id";
