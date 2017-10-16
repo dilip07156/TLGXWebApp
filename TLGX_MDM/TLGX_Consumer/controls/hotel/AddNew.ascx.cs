@@ -712,6 +712,7 @@ namespace TLGX_Consumer.controls.hotel
             ddlStarRating.SelectedIndex = 0;
             grdSearchResults.DataSource = null;
             grdSearchResults.DataBind();
+            ddlAddState.SelectedIndex = 0;
         }
 
         protected void gvGridExist_DataBound(object sender, EventArgs e)
