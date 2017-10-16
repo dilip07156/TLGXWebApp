@@ -58,7 +58,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         
         protected void gvActMediaSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            BindMedia(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
         protected void gvActMediaSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {

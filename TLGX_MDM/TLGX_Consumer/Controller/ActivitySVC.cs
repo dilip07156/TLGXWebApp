@@ -193,6 +193,37 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Description
+        public List<MDMSVC.DC_Activity_Descriptions> GetActivityDescription(MDMSVC.DC_Activity_Descriptions_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Description"], RQ, typeof(DC_Activity_Descriptions_RQ), typeof(List<DC_Activity_Descriptions>), out result);
+            return result as List<MDMSVC.DC_Activity_Descriptions>;
+        }
+
+        public DC_Message AddUpdateActivityDescription(MDMSVC.DC_Activity_Descriptions RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Description"], RQ, typeof(MDMSVC.DC_Activity_Descriptions), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
+        #region Activity Review And Score
+        public List<MDMSVC.DC_Activity_ReviewsAndScores> GetActReviewsAndScores(MDMSVC.DC_Activity_ReviewsAndScores_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityReviewsAndScores"], RQ, typeof(DC_Activity_ReviewsAndScores_RQ), typeof(List<DC_Activity_ReviewsAndScores>), out result);
+            return result as List<MDMSVC.DC_Activity_ReviewsAndScores>;
+        }
+
+        public DC_Message AddUpdateActReviewsNScores(MDMSVC.DC_Activity_ReviewsAndScores RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityReviewsNScores"], RQ, typeof(DC_Activity_ReviewsAndScores), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
 
     }
 }

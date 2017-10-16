@@ -187,7 +187,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes newObj = new MDMSVC.DC_Activity_ClassificationAttributes
                 {
                     Activity_ClassificationAttribute_Id = myRow_Id,
-                    Activity_Flavour_Id = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]),
+                    Activity_Flavour_Id = Activity_Flavour_Id,
                     EditDate = DateTime.Now,
                     EditUser = System.Web.HttpContext.Current.User.Identity.Name,
                     IsActive = true,
