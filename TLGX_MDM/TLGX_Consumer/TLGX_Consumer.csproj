@@ -250,6 +250,7 @@
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
@@ -832,6 +833,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping_CA.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Descriptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\TRFSVC\TransferService.disco" />
     <None Include="Service References\TRFSVC\configuration91.svcinfo" />
     <None Include="Service References\TRFSVC\configuration.svcinfo" />
@@ -1243,6 +1247,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx.designer.cs">
       <DependentUpon>ActivityContactDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx.cs">
+      <DependentUpon>ActivityDescription.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx.designer.cs">
+      <DependentUpon>ActivityDescription.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx.cs">
       <DependentUpon>ActivityMedia.ascx</DependentUpon>

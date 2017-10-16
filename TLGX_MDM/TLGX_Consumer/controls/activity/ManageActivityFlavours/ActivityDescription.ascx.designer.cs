@@ -10,43 +10,34 @@
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class Policy {
+    public partial class ActivityDescription {
         
         /// <summary>
-        /// updPanPolicy control.
+        /// updMedia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanPolicy;
+        protected global::System.Web.UI.UpdatePanel updMedia;
         
         /// <summary>
-        /// dvMsg control.
+        /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
         
         /// <summary>
-        /// btnNewActivity control.
+        /// btnNewUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnNewActivity;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Button btnNewUpload;
         
         /// <summary>
         /// divDropdownForEntries control.
@@ -67,48 +58,57 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// grdPolicy control.
+        /// dvMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdPolicy;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// updNewActivity control.
+        /// gvDescriptionSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updNewActivity;
+        protected global::System.Web.UI.WebControls.GridView gvDescriptionSearch;
         
         /// <summary>
-        /// vldSumActivity control.
+        /// upDescriptionAddEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vldSumActivity;
+        protected global::System.Web.UI.UpdatePanel upDescriptionAddEdit;
         
         /// <summary>
-        /// divMsgAlertPolicy control.
+        /// hdnFlag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertPolicy;
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
         
         /// <summary>
-        /// frmPolicy control.
+        /// vlsSumm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmPolicy;
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
+        
+        /// <summary>
+        /// frmDescription control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FormView frmDescription;
     }
 }

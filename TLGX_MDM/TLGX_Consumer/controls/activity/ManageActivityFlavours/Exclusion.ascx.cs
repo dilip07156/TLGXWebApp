@@ -44,6 +44,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 gvActInclusionSearch.DataSource = null;
                 gvActInclusionSearch.DataBind();
+                divDropdownForEntries.Visible = false;
             }
         }
         protected void gvActInclusionSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)

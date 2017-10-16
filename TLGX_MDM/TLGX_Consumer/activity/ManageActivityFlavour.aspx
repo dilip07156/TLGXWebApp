@@ -11,6 +11,8 @@
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/PricesNDeals.ascx" TagPrefix="uc1" TagName="PricesNDeals"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings"%>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityDescription.ascx" TagPrefix="uc1" TagName="ActivityDescription" %>
+
 
     <div class="container" id="myWizard">
         <div class="row">
@@ -38,12 +40,13 @@
                 <li><a href="#panPricesNDeals" data-toggle="tab">Prices And Deals</a></li>
                 <li><a href="#panReviewsNScores" data-toggle="tab">Reviews And Scores</a></li>
                 <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Product Mappings</a></li>
+                 <li><a href="#panDescription" data-toggle="tab">Descriptions</a></li>
             </ul>
             <%--</div>--%>
         </div>
 
         <div class="tab-content">
-            <div class="tab-pane" id="panFlavours">
+            <div class="tab-pane active" id="panFlavours">
                 <uc1:Flavours runat="server" ID="Flavours" />
             </div>
 
@@ -74,6 +77,10 @@
             <div class="tab-pane" id="panSupplierProductMappings">
                 <uc1:SupplierProductMappings runat="server" ID="SupplierProductMappings" />
             </div>
+             <div class="tab-pane" id="panDescription">
+                <uc1:ActivityDescription runat="server" id="ActivityDescription" />
+            </div>
+                
         </div>
 
     </div>

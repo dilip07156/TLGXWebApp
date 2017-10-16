@@ -30,9 +30,9 @@
             <%--OnRowDataBound="gvActInclusionSearch_RowDataBound"--%>
             <Columns>
 
-                <asp:BoundField HeaderText="Exclusion Type" DataField="InclusionType" />
-                <asp:BoundField HeaderText="Exclusion Name" DataField="InclusionName" />
-                <asp:BoundField HeaderText="Exclusion For" DataField="InclusionFor" />
+                <asp:BoundField HeaderText="Inclusion Type" DataField="InclusionType" />
+                <asp:BoundField HeaderText="Inclusion Name" DataField="InclusionName" />
+                <asp:BoundField HeaderText="Inclusion For" DataField="InclusionFor" />
                 <asp:BoundField HeaderText="Description" DataField="InclusionDescription" />
                 <asp:BoundField HeaderText="Is Inclusion" DataField="IsInclusion" />
                 <asp:BoundField HeaderText="Upload Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
