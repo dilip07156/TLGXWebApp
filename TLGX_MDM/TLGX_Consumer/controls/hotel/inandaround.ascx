@@ -55,7 +55,7 @@
             <InsertItemTemplate>
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Add Nearby Place</div>
+                        <div class="panel-heading">Add In And Around</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Add" Text="Add Nearby Place" CssClass="btn btn-primary btn-sm" />
+                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Add" Text="Add In And Around" CssClass="btn btn-primary btn-sm" />
                                 </div>
 
                             </div>
@@ -113,7 +113,7 @@
             <EditItemTemplate>
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Update Nearby Place</div>
+                        <div class="panel-heading">Update In And Around</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -184,7 +184,7 @@
                             <strong>In and Around</strong>
                         </div>
                         <div class="col-sm-6">
-                            <asp:Button runat="server" ID="btnAddNewLookUP" OnClick="btnAddNewLookUP_Click" OnClientClick="showAddNewLookUPModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Add In and Around" />
+                            <asp:Button runat="server" ID="btnAddNewLookUP" OnClick="btnAddNewLookUP_Click" OnClientClick="showAddNewLookUPModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Add Near By Places" />
                         </div>
                     </div>
                 </div>
