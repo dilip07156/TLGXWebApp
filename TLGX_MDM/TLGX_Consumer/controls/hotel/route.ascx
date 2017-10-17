@@ -148,7 +148,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-6">
-                                            <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="True" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHowToReach" />
+                                            <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="True" CommandName="Add" Text="Add New Route" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHowToReach" />
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +294,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-6">
-                                            <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="True" CommandName="Save" Text="Save" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHowToReach" />
+                                            <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="True" CommandName="Save" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHowToReach" />
                                         </div>
                                     </div>
                                 </div>

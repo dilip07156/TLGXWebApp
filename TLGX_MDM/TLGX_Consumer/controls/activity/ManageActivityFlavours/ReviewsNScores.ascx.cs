@@ -14,6 +14,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
     {
         Controller.ActivitySVC ActSVC = new ActivitySVC();
         public Guid Activity_Flavour_Id;
+        lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -23,8 +24,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         }
         private void BindDataSource()
         {
-            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-
             MDMSVC.DC_Activity_ReviewsAndScores_RQ _obj = new MDMSVC.DC_Activity_ReviewsAndScores_RQ();
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             _obj.Activity_Flavour_Id = Activity_Flavour_Id;
@@ -32,8 +31,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             var res = ActSVC.GetActReviewsAndScores(_obj);
             if (res != null)
             {
+                DropDownList ddlReviewType = (DropDownList)frmRevAndScore.FindControl("ddlReviewType");
+                DropDownList ddlReviewSource = (DropDownList)frmRevAndScore.FindControl("ddlReviewSource");
+                DropDownList ddlReviewScore = (DropDownList)frmRevAndScore.FindControl("ddlReviewScore");
+
                 grdRevAndScore.DataSource = res;
                 grdRevAndScore.DataBind();
+                fillReviewType(ddlReviewType);
+                fillReviewSource(ddlReviewSource);
+                fillReviewScore(ddlReviewScore);
             }
             else
             {
@@ -42,7 +48,54 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 divDropdownForEntries.Visible = false;
             }
         }
-
+        protected void fillReviewType(DropDownList ddl)
+        {
+            try
+            {
+                ddl.Items.Clear();
+                ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityReviewType").MasterAttributeValues;
+                ddl.DataTextField = "AttributeValue";
+                ddl.DataValueField = "MasterAttributeValue_Id";
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("---Select---", "0"));
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+        protected void fillReviewSource(DropDownList ddl)
+        {
+            try
+            {
+                ddl.Items.Clear();
+                ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityReviewSource").MasterAttributeValues;
+                ddl.DataTextField = "AttributeValue";
+                ddl.DataValueField = "MasterAttributeValue_Id";
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("---Select---", "0"));
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+        protected void fillReviewScore(DropDownList ddl)
+        {
+            try
+            {
+                ddl.Items.Clear();
+                ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "Activity_Review_Score").MasterAttributeValues;
+                ddl.DataTextField = "AttributeValue";
+                ddl.DataValueField = "MasterAttributeValue_Id";
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("---Select---", "0"));
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
         private void ResetControls()
         {
             CheckBox chkIsActive = (CheckBox)frmRevAndScore.FindControl("chkIsActive");
@@ -69,6 +122,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             TextBox txtReviewDescription = (TextBox)frmRevAndScore.FindControl("txtReviewDescription");
             DropDownList ddlReviewType = (DropDownList)frmRevAndScore.FindControl("ddlReviewType");
             DropDownList ddlReviewSource = (DropDownList)frmRevAndScore.FindControl("ddlReviewSource");
+            DropDownList ddlReviewScore = (DropDownList)frmRevAndScore.FindControl("ddlReviewScore");
 
             if (e.CommandName.ToString() == "Add")
             {
@@ -76,25 +130,19 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 {
                     Activity_Flavour_Id = Activity_Flavour_Id,
                     Activity_ReviewsAndScores_Id = Guid.NewGuid(),
-                    IsCustomerReview = true,
-                    IsActive = true,
+                    IsCustomerReview = chkIsCustomerReview.Checked,
+                    IsActive = chkIsActive.Checked,
                     Review_Title = txtReviewName.Text,
                     Review_Description = txtReviewDescription.Text,
                     Review_Type = ddlReviewType.SelectedItem.Text,
-                    Review_Source = ddlReviewSource.SelectedItem.Text
+                    Review_Source = ddlReviewSource.SelectedItem.Text,
+                    Review_Score = Convert.ToDecimal(ddlReviewScore.SelectedItem.Text)
                 };
+                var result = ActSVC.AddUpdateActReviewsNScores(newObj);
+                BootstrapAlert.BootstrapAlertMessage(divMsgAlertRevAndScore, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
 
-                MDMSVC.DC_Message _msg = ActSVC.AddUpdateActReviewsNScores(newObj);
-                if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
-                {
-                    divMsgAlertRevAndScore.Visible = true;
-                    BootstrapAlert.BootstrapAlertMessage(divMsgAlertRevAndScore, _msg.StatusMessage, BootstrapAlertType.Success);
-                }
-                else
-                {
-                    divMsgAlertRevAndScore.Visible = true;
-                    BootstrapAlert.BootstrapAlertMessage(divMsgAlertRevAndScore, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
-                }
+                frmRevAndScore.ChangeMode(FormViewMode.Insert);
+                frmRevAndScore.DataBind();
 
                 ResetControls();
             }
@@ -140,16 +188,29 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         protected void grdRevAndScore_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+            DropDownList ddlReviewType = (DropDownList)frmRevAndScore.FindControl("ddlReviewType");
+            DropDownList ddlReviewSource = (DropDownList)frmRevAndScore.FindControl("ddlReviewSource");
+            DropDownList ddlReviewScore = (DropDownList)frmRevAndScore.FindControl("ddlReviewScore");
 
             if (e.CommandName.ToString() == "Select")
             {
+                frmRevAndScore.ChangeMode(FormViewMode.Edit);
                 dvMsg.Style.Add("display", "none");
                 MDMSVC.DC_Activity_ReviewsAndScores_RQ RQ = new MDMSVC.DC_Activity_ReviewsAndScores_RQ();
                 RQ.Activity_Flavour_Id = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
                 RQ.Activity_ReviewsAndScores_Id = myRow_Id;
-                frmRevAndScore.ChangeMode(FormViewMode.Edit);
-                frmRevAndScore.DataSource = ActSVC.GetActReviewsAndScores(RQ);
+                var res = ActSVC.GetActReviewsAndScores(RQ);
+                frmRevAndScore.DataSource = res; 
                 frmRevAndScore.DataBind();
+                
+                fillReviewType(ddlReviewType);
+                fillReviewSource(ddlReviewSource);
+                fillReviewScore(ddlReviewScore);
+
+                if (ddlReviewType.Items.Count > 1) // needs to be 1 to handle the "Select" value
+                {
+                    ddlReviewType.SelectedIndex = ddlReviewType.Items.IndexOf(ddlReviewType.Items.FindByText(res[0].Review_Type.ToString()));
+                }
             }
             else if (e.CommandName.ToString() == "SoftDelete")
             {

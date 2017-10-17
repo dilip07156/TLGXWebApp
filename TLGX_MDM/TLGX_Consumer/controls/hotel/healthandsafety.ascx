@@ -84,7 +84,7 @@
 
 
                                 <br />
-                                <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Modify" Text="Modify Health and Safety" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHealthAndSafety" />
+                                <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Modify" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHealthAndSafety" />
 
 
 

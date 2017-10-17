@@ -150,7 +150,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-6">
-                                            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Modify" Text="Modify" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHotelUpdates" />
+                                            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Modify" Text="Update" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHotelUpdates" />
                                         </div>
                                     </div>
                                 </div>

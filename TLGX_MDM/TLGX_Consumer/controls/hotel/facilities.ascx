@@ -36,7 +36,7 @@
                             <label for="txtFacilityDescription">Description</label>
                             <asp:TextBox ID="txtFacilityDescription" runat="server" CssClass="form-control" />
 
-                            <asp:LinkButton ID="lnkButton" CommandName="Add" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpFacility" CausesValidation="true">Add</asp:LinkButton>
+                            <asp:LinkButton ID="lnkButton" CommandName="Add" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpFacility" CausesValidation="true">Add New Facility</asp:LinkButton>
                         </div>
 
 
@@ -61,7 +61,7 @@
 
                             <label for="txtFacilityDescription">Description</label>
                             <asp:TextBox ID="txtFacilityDescription" runat="server" CssClass="form-control" />
-                            <asp:LinkButton ID="lnkButton" CommandName="Save" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpFacility" CausesValidation="true">Save</asp:LinkButton>
+                            <asp:LinkButton ID="lnkButton" CommandName="Save" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpFacility" CausesValidation="true">Update</asp:LinkButton>
                         </div>
                     </EditItemTemplate>
 

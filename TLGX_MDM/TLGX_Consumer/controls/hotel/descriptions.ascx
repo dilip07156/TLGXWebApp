@@ -37,7 +37,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-6">
-                                            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Add" Text="Add Description" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpDescriptions" />
+                                            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Add" Text="Add New Description" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpDescriptions" />
                                         </div>
                                     </div>
 
@@ -122,7 +122,7 @@
 
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Modify Description</div>
+                        <div class="panel-heading">Update Description</div>
                         <div class="panel-body">
 
                             <div class="row">
@@ -141,7 +141,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-6">
-                                            <asp:LinkButton ID="btn" runat="server" CausesValidation="True" CommandName="Modify" Text="Modify Description" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpDescriptions" />
+                                            <asp:LinkButton ID="btn" runat="server" CausesValidation="True" CommandName="Modify" Text="Update Description" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpDescriptions" />
                                         </div>
                                     </div>
 

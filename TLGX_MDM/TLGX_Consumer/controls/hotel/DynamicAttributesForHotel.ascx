@@ -31,7 +31,7 @@
                         ValidationGroup="vldAttributes" CssClass="text-danger"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txtAttributeDescription" runat="server" CssClass="form-control" ValidationGroup="vldAttributes" />
 
-                    <asp:LinkButton ID="lnkbutton" runat="server" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vldAttributes" CausesValidation="true">Add New</asp:LinkButton>
+                    <asp:LinkButton ID="lnkbutton" runat="server" CommandName="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vldAttributes" CausesValidation="true">Add New Dynamic Attribute</asp:LinkButton>
                 </div>
 
 
