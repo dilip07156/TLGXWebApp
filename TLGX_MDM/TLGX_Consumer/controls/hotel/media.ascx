@@ -5,9 +5,23 @@
     .is-breakable {
         word-break: break-all;
     }
+
+    @media (min-width: 700px) {
+        .modal-xl {
+            width: 70%;
+            max-width: 1200px;
+        }
+    }
 </style>
 
 <script lang="javascript" type="text/javascript">
+
+    $(document).ready(ajustamodal);
+    $(window).resize(ajustamodal);
+    function ajustamodal() {
+        var altura = $(window).height() - 170; //value corresponding to the modal heading + footer
+        $(".modal-scroll").css({ "height": altura, "overflow-y": "auto" });
+    }
 
     function axuploadComplete(sender, args) {
         $('#<%=txtMediaPath.ClientID%>').val('<%= MediaAbsPath %>' + args.get_fileName());
@@ -121,8 +135,8 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                Media Details
-            <asp:Button ID="btnAddMedia" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm" OnClick="btnAddMedia_Click" OnClientClick="showMediaModal();" />
+                Media Details&nbsp;
+            <asp:Button ID="btnAddMedia" runat="server" Text="Add New Media" CssClass="btn btn-primary btn-sm" OnClick="btnAddMedia_Click" OnClientClick="showMediaModal();" />
             </div>
             <div class="panel-body">
                 <div id="dvMsg" runat="server" style="display: none;"></div>
@@ -162,15 +176,14 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-
             </div>
         </div>
 
     </ContentTemplate>
 </asp:UpdatePanel>
 
-<div class="modal fade" id="moMedia" role="dialog">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="moMedia" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <form class="form-inline">
@@ -183,7 +196,8 @@
                 </form>
                 <%--<button type="button" class="close" data-dismiss="modal">&times;</button>--%>
             </div>
-            <div class="modal-body">
+
+            <div class="modal-body modal-scroll">
 
                 <asp:UpdatePanel ID="UpMediaModal" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
@@ -194,31 +208,34 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-8">
+                            <div class="col-lg-6">
+
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         Fields
-                                       <img id="imgLoader" runat="server" src="../../images/ajax-loader-blue.gif" />
                                     </div>
                                     <div class="panel-body">
 
-                                        <div class="form-group row">
-                                            <label class="control-label col-sm-5" for="axFileUpload">Browse Media</label>
-                                            <div class="col-sm-7">
+                                        <div class="form-group row" id="dvBrowseMedia" runat="server">
+                                            <label class="control-label col-sm-4" for="axFileUpload">
+                                                Browse Media
+                                                <img id="imgLoader" runat="server" src="../../images/ajax-loader-blue.gif" />
+                                            </label>
+                                            <div class="col-sm-8">
                                                 <asp:HiddenField ID="hdnMediaName" runat="server" Value="" />
                                                 <cc1:AsyncFileUpload ID="axAsyncFileUpload" runat="server" OnUploadedComplete="axAsyncFileUpload_UploadedComplete"
-                                                    OnClientUploadComplete="axuploadComplete" UploaderStyle="Traditional" ThrobberID="imgLoader" Width="300px" />
+                                                    OnClientUploadComplete="axuploadComplete" UploaderStyle="Traditional" ThrobberID="imgLoader" Width="300px" Enabled="true" />
 
                                                 <%-- <asp:FileUpload ID="fuMedia" runat="server" onchange="ShowImagePreview(this);" ClientIDMode="Static" EnableViewState="true" />--%>
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label-mand col-sm-5" for="txtValidFrom">
+                                            <label class="control-label-mand col-sm-4" for="txtValidFrom">
                                                 Valid From
                                                 <asp:RequiredFieldValidator ID="vldtxtValidFrom" runat="server" ControlToValidate="txtValidFrom" ErrorMessage="Please select valid from date" Text="*" ValidationGroup="vldgrpMedia" CssClass="text-danger"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <div class="input-group">
                                                     <asp:TextBox ID="txtValidFrom" runat="server" class="form-control" />
                                                     <span class="input-group-btn">
@@ -236,11 +253,11 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label-mand col-sm-5" for="txtValidTo">
+                                            <label class="control-label-mand col-sm-4" for="txtValidTo">
                                                 Valid To
                                                 <asp:RequiredFieldValidator ID="vldtxtValidTo" runat="server" ControlToValidate="txtValidTo" ErrorMessage="Please select valid to date" Text="*" ValidationGroup="vldgrpMedia" CssClass="text-danger"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <div class="input-group">
                                                     <asp:TextBox ID="txtValidTo" runat="server" class="form-control" />
                                                     <span class="input-group-btn">
@@ -257,11 +274,11 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label-mand col-sm-5" for="ddlFileCategory">
+                                            <label class="control-label-mand col-sm-4" for="ddlFileCategory">
                                                 File Category
                                                 <asp:RequiredFieldValidator ID="vldddlFileCategory" runat="server" ControlToValidate="ddlFileCategory" InitialValue="0" ErrorMessage="Please select file category" Text="*" ValidationGroup="vldgrpMedia" CssClass="text-danger"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlFileCategory" runat="server" class="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0" Text="-Select-"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -269,11 +286,11 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label-mand col-sm-5" for="ddlSubCategory">
+                                            <label class="control-label-mand col-sm-4" for="ddlSubCategory">
                                                 Sub Category
                                                 <asp:RequiredFieldValidator ID="vldddlSubCategory" runat="server" ControlToValidate="ddlSubCategory" InitialValue="0" ErrorMessage="Please select file sub category" Text="*" ValidationGroup="vldgrpMedia" CssClass="text-danger"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlSubCategory" runat="server" class="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0" Text="-Select-"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -282,11 +299,11 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label-mand col-sm-5" for="ddlMediaType">
+                                            <label class="control-label-mand col-sm-4" for="ddlMediaType">
                                                 Media Type
                                                 <asp:RequiredFieldValidator ID="vldddlMediaType" runat="server" ControlToValidate="ddlMediaType" InitialValue="0" ErrorMessage="Please select media type" Text="*" ValidationGroup="vldgrpMedia" CssClass="text-danger"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlMediaType" runat="server" class="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0" Text="-Select-"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -294,12 +311,13 @@
 
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
-                                            <label class="control-label-mand col-sm-5" for="ddlFileMaster">
+                                            <label class="control-label-mand col-sm-4" for="ddlFileMaster">
                                                 File Master
                                                 <asp:RequiredFieldValidator ID="vldddlFileMaster" runat="server" ControlToValidate="ddlFileMaster" InitialValue="0" EErrorMessage="Please select file master" Text="*" ValidationGroup="vldgrpMedia" CssClass="text-danger"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlFileMaster" runat="server" class="form-control" AppendDataBoundItems="true" onchange="ddlFileMasterChanged(this);">
                                                     <asp:ListItem Value="0" Text="-Select-"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -307,13 +325,13 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-5" for="ddlRoomCategory">
+                                            <label class="control-label col-sm-4" for="ddlRoomCategory">
                                                 Room Category
                                                 <asp:RequiredFieldValidator ID="vldddlRoomCategory" runat="server" ControlToValidate="ddlRoomCategory"
                                                     InitialValue="0" ErrorMessage="Please select room category" Text="*" ValidationGroup="vldgrpMedia"
                                                     CssClass="text-danger" Enabled="false"></asp:RequiredFieldValidator>
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlRoomCategory" runat="server" class="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0" Text="-Select-"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -321,7 +339,7 @@
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-5" for="txtMediaPosition">
+                                            <label class="control-label col-sm-4" for="txtMediaPosition">
                                                 Media Position
                                                 <asp:RequiredFieldValidator ID="rfvtxtMediaPosition" runat="server" ControlToValidate="txtMediaPosition"
                                                     ErrorMessage="Please entry a valid media position" Text="*" ValidationGroup="vldgrpMedia"
@@ -333,7 +351,7 @@
                                                     ClientValidationFunction="Custvalidate" ValidationGroup="vldgrpMedia"
                                                     CssClass="text-danger" />
                                             </label>
-                                            <div class="col-sm-7">
+                                            <div class="col-sm-8">
                                                 <asp:TextBox ID="txtMediaPosition" runat="server" class="form-control" MaxLength="3" />
                                                 <cc1:FilteredTextBoxExtender ID="axfte_txtMediaPosition" runat="server" FilterType="Numbers" TargetControlID="txtMediaPosition" />
                                                 <label runat="server" id="mediapositioinError" style="display: none;" class="text-danger"></label>
@@ -341,42 +359,46 @@
                                                 <asp:HiddenField ID="hdnEditMediaId" runat="server" ClientIDMode="Static" />
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-5" for="txtMediaPath">Media Path</label>
-                                            <div class="col-sm-7">
+                                            <label class="control-label col-sm-4" for="txtMediaPath">Media Path</label>
+                                            <div class="col-sm-8">
                                                 <asp:TextBox ID="txtMediaPath" runat="server" class="form-control" ReadOnly="true" />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-5" for="txtMediaURL">Media URL</label>
-                                            <div class="col-sm-7">
+                                            <label class="control-label col-sm-4" for="txtMediaURL">Media URL</label>
+                                            <div class="col-sm-8">
                                                 <asp:TextBox ID="txtMediaURL" runat="server" class="form-control" ReadOnly="true" />
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label class="control-label col-sm-5" for="txtDescription">Description</label>
-                                            <div class="col-sm-7">
+                                            <label class="control-label col-sm-4" for="txtDescription">Description</label>
+                                            <div class="col-sm-8">
                                                 <asp:TextBox ID="txtDescription" runat="server" class="form-control" />
                                             </div>
                                         </div>
 
-                                        <div class="btn-group pull-right row">
-                                            <div class="col-sm-5">
-                                                <asp:LinkButton ID="btnSaveMedia" runat="server" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnSaveMedia_Click" OnClientClick="return CheckMediaPositionDuplicate();" CommandName="AddMedia" ValidationGroup="vldgrpMedia" CausesValidation="true">Save</asp:LinkButton>
+                                        <div class="form-group pull-right row">
+                                            <div class="col-sm-4"></div>
+                                            <div class="col-sm-4">
+                                                <asp:LinkButton ID="btnSaveMedia" runat="server" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnSaveMedia_Click" OnClientClick="return CheckMediaPositionDuplicate();" CommandName="AddMedia" ValidationGroup="vldgrpMedia" CausesValidation="true">Add New Media</asp:LinkButton>
                                             </div>
 
-                                            <div class="col-sm-5">
+                                            <div class="col-sm-4">
                                                 <asp:LinkButton ID="btnMediaReset" runat="server" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnMediaReset_Click" CommandName="ResetMedia">Reset</asp:LinkButton>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
+
                             </div>
 
-                            <div class="col-lg-4">
+                            <div class="col-lg-6">
+
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Media Preview</div>
                                     <div class="panel-body">
@@ -386,23 +408,30 @@
 
                                 <div id="divMediaAttributes" runat="server">
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">Media Attributes</div>
+                                        <div class="panel-heading">Media Attributes (File System Attributes will not be editable)</div>
                                         <div class="panel-body">
-                                            <div class="form-group">
+
+                                            <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <div id="dvMsgMediaAttribute" runat="server" style="display: none;"></div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <div class="col-sm-12">
                                                     <asp:ValidationSummary ID="vlsSummAttr" runat="server" ValidationGroup="vldgrpMediaAttribute" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label-mand col-sm-4" for="txtAttributeType">Type</label>
-                                                <div class="col-sm-8">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
+                                                    <div id="dvMsgAttribute" runat="server" style="display: none;"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="control-label-mand col-sm-6" for="txtAttributeType">Type</label>
+                                                <div class="col-sm-6">
                                                     <asp:DropDownList ID="ddlAttributeType" runat="server" class="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Value="0" Text="-Select-"></asp:ListItem>
                                                     </asp:DropDownList>
@@ -411,67 +440,63 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label-mand col-sm-4" for="txtAttributeValue">Value</label>
-                                                <div class="col-sm-8">
+                                            <div class="form-group row">
+                                                <label class="control-label-mand col-sm-6" for="txtAttributeValue">Value</label>
+                                                <div class="col-sm-6">
                                                     <asp:TextBox ID="txtAttributeValue" runat="server" class="form-control" />
                                                     <asp:RequiredFieldValidator ID="vldtxtAttributeValue" runat="server" ControlToValidate="txtAttributeValue"
                                                         ErrorMessage="Please enter attribute value" Text="*" ValidationGroup="vldgrpMediaAttribute" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
 
-                                            <div class="btn-group pull-right row">
-                                                <%--<label class="control-label col-sm-4" for="btnAddMediaAttributes"></label>--%>
-                                                <div class="col-sm-5">
-                                                    <asp:LinkButton ID="btnSaveMediaAttributes" runat="server" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnSaveMediaAttributes_Click" CommandName="AddAttributes" ValidationGroup="vldgrpMediaAttribute" CausesValidation="true">Save</asp:LinkButton>
+                                            <div class="form-group pull-right row">
+                                                <div class="col-sm-6"></div>
+                                                <div class="col-sm-3">
+                                                    <asp:LinkButton ID="btnSaveMediaAttributes" runat="server" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnSaveMediaAttributes_Click" CommandName="AddAttributes" ValidationGroup="vldgrpMediaAttribute" CausesValidation="true">Add New Media Attribute</asp:LinkButton>
                                                 </div>
-                                                <div class="col-sm-5">
+                                                <div class="col-sm-3">
                                                     <asp:LinkButton ID="btnResetMediaAttributes" runat="server" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnResetMediaAttributes_Click" CommandName="ResetAttributes">Reset</asp:LinkButton>
                                                 </div>
                                             </div>
-                                            <div class="clear">&nbsp;</div>
-                                            <div class="clear">&nbsp;</div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <div id="dvMsgAttribute" runat="server" style="display: none;"></div>
-                                                </div>
+
+                                            <div class="form-group row">
+                                                <asp:GridView ID="gvMediaAttributes" runat="server" AllowCustomPaging="true" AllowPaging="true" AutoGenerateColumns="False"
+                                                    DataKeyNames="Accomodation_Media_Attributes_Id" CssClass="table table-hover table-bordered" EmptyDataText="No Media Attributes defined for this media"
+                                                    OnRowCommand="gvMediaAttributes_RowCommand" OnRowDataBound="gvMediaAttributes_RowDataBound" OnPageIndexChanging="gvMediaAttributes_PageIndexChanging">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="AttributeType" HeaderText="MediaType" SortExpression="MediaType">
+                                                            <ItemStyle CssClass="is-breakable"></ItemStyle>
+                                                        </asp:BoundField>
+                                                        <asp:BoundField DataField="AttributeValue" HeaderText="MediaName" SortExpression="MediaName">
+                                                            <ItemStyle CssClass="is-breakable"></ItemStyle>
+                                                        </asp:BoundField>
+
+                                                        <asp:TemplateField ShowHeader="false">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                                                                    Enabled='<%# Convert.ToBoolean(Eval("IsActive")) && !Convert.ToBoolean(Eval("IsSystemAttribute")) %>' CommandArgument='<%# Bind("Accomodation_Media_Attributes_Id") %>'>
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp; Edit
+                                                                </asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+
+                                                        <asp:TemplateField ShowHeader="false">
+                                                            <ItemTemplate>
+                                                                <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                                                                    CssClass="btn btn-default" CommandArgument='<%# Bind("Accomodation_Media_Attributes_Id") %>'>
+                                                             <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'></span>
+                                                             <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete" %>
+                                                                </asp:LinkButton>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                    </Columns>
+                                                    <PagerStyle CssClass="pagination-ys" />
+                                                </asp:GridView>
                                             </div>
-                                            <asp:GridView ID="gvMediaAttributes" runat="server" AllowCustomPaging="true" AllowPaging="true" AutoGenerateColumns="False"
-                                                DataKeyNames="Accomodation_Media_Attributes_Id" CssClass="table table-hover table-striped" EmptyDataText="No Media Attributes defined for this media"
-                                                OnRowCommand="gvMediaAttributes_RowCommand" OnRowDataBound="gvMediaAttributes_RowDataBound" OnPageIndexChanging="gvMediaAttributes_PageIndexChanging">
-                                                <Columns>
-                                                    <asp:BoundField DataField="AttributeType" HeaderText="MediaType" SortExpression="MediaType">
-                                                        <ItemStyle CssClass="is-breakable"></ItemStyle>
-                                                    </asp:BoundField>
-                                                    <asp:BoundField DataField="AttributeValue" HeaderText="MediaName" SortExpression="MediaName">
-                                                        <ItemStyle CssClass="is-breakable"></ItemStyle>
-                                                    </asp:BoundField>
-
-                                                    <asp:TemplateField ShowHeader="false">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                                                Enabled='<%# Convert.ToBoolean(Eval("IsActive")) && !Convert.ToBoolean(Eval("IsSystemAttribute")) %>' CommandArgument='<%# Bind("Accomodation_Media_Attributes_Id") %>'>
-                                                            <span aria-hidden="true" class="glyphicon glyphicon-edit"></span><%--&nbsp Edit--%>
-                                                            </asp:LinkButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField ShowHeader="false">
-                                                        <ItemTemplate>
-                                                            <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                                                                CssClass="btn btn-default" CommandArgument='<%# Bind("Accomodation_Media_Attributes_Id") %>'>
-                                                             <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
-                                                            <%--<%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>--%>
-                                                            </asp:LinkButton>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                </Columns>
-                                                <PagerStyle CssClass="pagination-ys" />
-                                            </asp:GridView>
-
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                         </div>

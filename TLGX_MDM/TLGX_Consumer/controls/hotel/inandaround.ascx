@@ -55,7 +55,7 @@
             <InsertItemTemplate>
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Add Nearby Place</div>
+                        <div class="panel-heading">Add In And Around</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" />
+                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Add" Text="Add In And Around" CssClass="btn btn-primary btn-sm" />
                                 </div>
 
                             </div>
@@ -113,7 +113,7 @@
             <EditItemTemplate>
                 <div class="container">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Update Nearby Place</div>
+                        <div class="panel-heading">Update In And Around</div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
 
-                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Modify" Text="Modify" CssClass="btn btn-primary btn-sm" />
+                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Modify" Text="Update" CssClass="btn btn-primary btn-sm" />
                                 </div>
 
                             </div>

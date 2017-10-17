@@ -172,6 +172,8 @@ namespace TLGX_Consumer.controls.hotel
             ddlFileMaster.SelectedIndex = 0;
 
             btnSaveMedia.CommandName = "AddMedia";
+            btnSaveMedia.Text = "Add New Media";
+
             gvMediaAttributes.SelectedIndex = 0;
 
             imgMedia.ImageUrl = string.Empty;
@@ -189,9 +191,7 @@ namespace TLGX_Consumer.controls.hotel
             gvMediaAttributes.DataBind();
 
             divMediaAttributes.Visible = false;
-
-            axAsyncFileUpload.Enabled = true;
-
+            
             dvMsg.Style.Add("display", "none");
             dvMsgMediaAttribute.Style.Add("display", "none");
 
@@ -233,6 +233,8 @@ namespace TLGX_Consumer.controls.hotel
             ddlAttributeType.SelectedIndex = 0;
             txtAttributeValue.Text = string.Empty;
             btnSaveMediaAttributes.CommandName = "AddAttributes";
+            btnSaveMediaAttributes.Text = "Add New Media Attribute";
+
             gvMediaAttributes.SelectedIndex = 0;
             dvMsgMediaAttribute.Style.Add("display", "none");
         }
@@ -268,9 +270,9 @@ namespace TLGX_Consumer.controls.hotel
                 {
                     if (record.Count > 0)
                     {
-                        UpMediaModal.Update();
+                        //UpMediaModal.Update();
+
                         ClearMediaControls();
-                        axAsyncFileUpload.Enabled = false;
 
                         txtDescription.Text = System.Web.HttpUtility.HtmlDecode(record[0].Description);
                         // txtMediaID.Text = System.Web.HttpUtility.HtmlDecode(record[0].MediaID);
@@ -329,18 +331,16 @@ namespace TLGX_Consumer.controls.hotel
                             ddlFileMaster.Items.FindByText(System.Web.HttpUtility.HtmlDecode(record[0].MediaFileMaster)).Selected = true;
                         }
 
-
-
                         btnSaveMedia.CommandName = "UpdateMedia";
+                        btnSaveMedia.Text = "Update";
 
                         divMediaAttributes.Visible = true;
 
                         BindMediaAttributes(record[0].Accommodation_Media_Id);
 
-
-
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop1", "javascript:showMediaModal();", true);
-
+                        dvBrowseMedia.Visible = false;
+                        UpMediaModal.Update();
                     }
                 }
             }
@@ -397,6 +397,7 @@ namespace TLGX_Consumer.controls.hotel
             var resultAcco = AccSvc.GetHotelDetails(Accomodation_ID);
             MediaAbsPath = System.Configuration.ConfigurationManager.AppSettings["MediaAbsPath"] + resultAcco[0].ProductCategorySubType + "/" + resultAcco[0].CompanyHotelID.ToString() + "/";
             MediaAbsUrl = System.Configuration.ConfigurationManager.AppSettings["MediaAbsURL"] + resultAcco[0].ProductCategorySubType + "/" + resultAcco[0].CompanyHotelID.ToString() + "/";
+
             if (Page.IsValid)
             {
                 if (btnSaveMedia.CommandName == "AddMedia")
@@ -520,19 +521,15 @@ namespace TLGX_Consumer.controls.hotel
 
                         }
 
-
                         BindMedia();
                         ClearMediaControls();
-                        axAsyncFileUpload.Enabled = true;
                         hdnFlag.Value = "true";
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Media has been added successfully", BootstrapAlertType.Success);
-
                     }
                     else
                     {
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Error Occurred", BootstrapAlertType.Warning);
                     }
-
                 }
                 else if (btnSaveMedia.CommandName == "UpdateMedia")
                 {
@@ -565,7 +562,6 @@ namespace TLGX_Consumer.controls.hotel
                     {
                         BindMedia();
                         ClearMediaControls();
-                        axAsyncFileUpload.Enabled = true;
                         hdnFlag.Value = "true";
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Media has been updated successfully", BootstrapAlertType.Success);
                     }
@@ -573,20 +569,21 @@ namespace TLGX_Consumer.controls.hotel
                     {
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Error Occurred", BootstrapAlertType.Warning);
                     }
-
-                    // btnSaveMedia.CommandName = "AddMedia";
-
                 }
+
+                dvBrowseMedia.Visible = true;
+                UpMediaModal.Update();
             }
             //hdnFlag.Value = "true";
             //ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop2" + DateTime.Today.Ticks.ToString(), "javascript:closeMediaModal();", true);
             // ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop2", "javascript:closeMediaModal();", true);
-
         }
 
         protected void btnMediaReset_Click(object sender, EventArgs e)
         {
             ClearMediaControls();
+            dvBrowseMedia.Visible = true;
+            UpMediaModal.Update();
         }
 
         protected void btnResetMediaAttributes_Click(object sender, EventArgs e)
@@ -654,6 +651,7 @@ namespace TLGX_Consumer.controls.hotel
                 }
 
                 btnSaveMediaAttributes.CommandName = "AddAttributes";
+                btnSaveMediaAttributes.Text = "Add New Media Attribute";
             }
         }
 
@@ -690,6 +688,7 @@ namespace TLGX_Consumer.controls.hotel
                         txtAttributeValue.Text = System.Web.HttpUtility.HtmlDecode(record[0].AttributeValue);
 
                         btnSaveMediaAttributes.CommandName = "UpdateAttributes";
+                        btnSaveMediaAttributes.Text = "Update";
                     }
                 }
 
@@ -748,6 +747,11 @@ namespace TLGX_Consumer.controls.hotel
         protected string UploadFolderPath = System.Configuration.ConfigurationManager.AppSettings["MediaAbsPath"];
         protected void axAsyncFileUpload_UploadedComplete(object sender, AjaxControlToolkit.AsyncFileUploadEventArgs e)
         {
+            if (btnSaveMedia.Text != "Add New Media")
+            {
+                return;
+            }
+
             Accomodation_ID = new Guid(Request.QueryString["Hotel_Id"]);
             var resultAcco = AccSvc.GetHotelDetails(Accomodation_ID);
 
@@ -797,10 +801,10 @@ namespace TLGX_Consumer.controls.hotel
         protected void btnAddMedia_Click(object sender, EventArgs e)
         {
             ClearMediaControls();
-            UpMediaModal.Update();
             hdnEditMediaId.Value = "0";
             ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop1", "javascript:showMediaModal();", true);
-            axAsyncFileUpload.Enabled = true;
+            dvBrowseMedia.Visible = true;
+            UpMediaModal.Update();
         }
 
         protected void gvMediaAttributes_PageIndexChanging(object sender, GridViewPageEventArgs e)

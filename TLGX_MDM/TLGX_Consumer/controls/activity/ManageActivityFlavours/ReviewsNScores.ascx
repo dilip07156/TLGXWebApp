@@ -55,6 +55,8 @@
                         <asp:BoundField DataField="Review_Type" HeaderText="Review Type" SortExpression="Review_Type" />
                         <asp:BoundField DataField="Review_Title" HeaderText="Review Title" SortExpression="Review_Title" />
                         <asp:BoundField DataField="Review_Description" HeaderText="Review Description" SortExpression="Review_Description" />
+                        <asp:BoundField DataField="Review_Score" HeaderText="Review Score" SortExpression="Review_Score" />
+                        <asp:BoundField DataField="Review_Author" HeaderText="Review Author" SortExpression="Review_Author" />
                         <asp:TemplateField ShowHeader="false">
 
                             <ItemTemplate>
@@ -89,7 +91,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Add New</h4>
+                <h4 class="modal-title">Add/Edit</h4>
             </div>
 
             <div class="modal-body">
@@ -122,7 +124,9 @@
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="ddlReviewType">Review Type</label>
                                                         <div class="col-sm-6">
-                                                            <asp:DropDownList runat="server" ID="ddlReviewType" CssClass="form-control"></asp:DropDownList>
+                                                            <asp:DropDownList runat="server" ID="ddlReviewType" CssClass="form-control">
+                                                                <asp:ListItem Text="-select-" Value=""></asp:ListItem>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
 
@@ -141,15 +145,33 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="control-label col-sm-6" for="ddlReviewSource">Review Source</label>
+                                                        <label class="control-label col-sm-6" for="txtReviewAuthorName">Review Author</label>
                                                         <div class="col-sm-6">
-                                                            <asp:DropDownList runat="server" ID="ddlReviewSource" CssClass="form-control"></asp:DropDownList>
+                                                            <asp:TextBox runat="server" ID="txtReviewAuthorName" CssClass="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="col-sm-6">
+
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-6" for="ddlReviewScore">Review Score</label>
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList runat="server" ID="ddlReviewScore" CssClass="form-control">
+                                                                <asp:ListItem Text="-select-" Value=""></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-6" for="ddlReviewSource">Review Source</label>
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList runat="server" ID="ddlReviewSource" CssClass="form-control">
+                                                                <asp:ListItem Text="-select-" Value=""></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="chkIsActive">Active</label>
@@ -194,7 +216,9 @@
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="ddlReviewType">Review Type</label>
                                                         <div class="col-sm-6">
-                                                            <asp:DropDownList runat="server" ID="ddlReviewType" CssClass="form-control"></asp:DropDownList>
+                                                            <asp:DropDownList runat="server" ID="ddlReviewType" CssClass="form-control">
+                                                                <asp:ListItem Text="-select-" Value=""></asp:ListItem>
+                                                            </asp:DropDownList>
                                                         </div>
                                                     </div>
 
@@ -213,15 +237,33 @@
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="control-label col-sm-6" for="txtReviewSource">Review Source</label>
+                                                        <label class="control-label col-sm-6" for="txtReviewAuthorName">Review Author</label>
                                                         <div class="col-sm-6">
-                                                            <asp:TextBox runat="server" ID="txtReviewSource" CssClass="form-control"></asp:TextBox>
+                                                            <asp:TextBox runat="server" ID="txtReviewAuthorName" CssClass="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="col-sm-6">
+
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-6" for="ddlReviewScore">Review Score</label>
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList runat="server" ID="ddlReviewScore" CssClass="form-control">
+                                                                <asp:ListItem Text="-select-" Value=""></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-6" for="ddlReviewSource">Review Source</label>
+                                                        <div class="col-sm-6">
+                                                            <asp:DropDownList runat="server" ID="ddlReviewSource" CssClass="form-control">
+                                                                <asp:ListItem Text="-select-" Value=""></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="chkIsActive">Active</label>

@@ -39,8 +39,9 @@
 
                 <asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
-                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# Eval("IsActive") %>' OnClientClick="showEditModal();"> 
-                                  <span aria-hidden="true">Edit</span>
+                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CommandName="Editing" CssClass="btn btn-default"
+                            CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# (bool)Eval("IsActive") %>' OnClientClick="showEditModal();"> 
+                                  <span aria-hidden="true" class="glyphicon glyphicon-edit"> Edit</span>
                         </asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -224,10 +225,6 @@
                                                             </div>
                                                         </div>
 
-
-                                                        <%--<div class="form-group row">
-                                                                
-                                                            </div>--%>
                                                     </div>
 
                                                 </div>
@@ -239,35 +236,36 @@
                                                     <div class="col-md-12">
 
 
-                                                        <div class="form-group row">
-                                                            <div class="col-md-6">
-                                                                <label class="control-label col-sm-2" for="ddlType">
-                                                                    Type
-                                                                </label>
-                                                                <div class="col-sm-10">
-                                                                    <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control"></asp:DropDownList>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label class="control-label col-sm-3" for="txtName">
-                                                                    Name
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                    <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
-                                                                </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label class="control-label col-sm-4" for="ddlType">
+                                                                Type
+                                                            </label>
+                                                            <div class="col-sm-8">
+                                                                <asp:DropDownList ID="ddlType" runat="server" CssClass="form-control"></asp:DropDownList>
                                                             </div>
                                                         </div>
 
-
-                                                        <div class="form-group row">
-                                                            <div class="col-md-6">
-                                                                <label class="control-label col-sm-3" for="txtDescription">
-                                                                    Description
-                                                                </label>
-                                                                <div class="col-sm-9">
-                                                                    <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" TextMode="multiline" Columns="50" Rows="5"></asp:TextBox>
-                                                                </div>
+                                                        <div class="form-group col-md-3">
+                                                            <label class="control-label col-sm-4" for="txtName">
+                                                                Name
+                                                            </label>
+                                                            <div class="col-sm-8">
+                                                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
                                                             </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-3">
+                                                            <label class="control-label col-sm-4" for="txtDescription">
+                                                                Description
+                                                            </label>
+                                                            <div class="col-sm-8">
+                                                                <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" TextMode="multiline" Rows="3" Columns="50"></asp:TextBox>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-3">
+                                                            <asp:Button runat="server" ID="btnUpdateDetails" Text="Update" CssClass="btn btn-primary" />
+                                                            <asp:Button runat="server" ID="btnResetDetails" Text="Reset" CssClass="btn btn-primary" />
                                                         </div>
                                                     </div>
 

@@ -20,7 +20,7 @@
             </asp:DropDownList>
             <label for="ddlFacilityCategory">Name</label>
             <asp:TextBox ID="txtAmenityName" runat="server" CssClass="form-control"></asp:TextBox>
-            <asp:LinkButton ID="lnkAddNewAmenity" runat="server" CssClass="btn btn-primary btn-sm" CommandName="AddAmenity" CausesValidation="true" ValidationGroup="vldRoomAmenities">Add New</asp:LinkButton>
+            <asp:LinkButton ID="lnkAddNewAmenity" runat="server" CssClass="btn btn-primary btn-sm" CommandName="AddAmenity" CausesValidation="true" ValidationGroup="vldRoomAmenities">Add Room Amenity</asp:LinkButton>
         </div>
     </InsertItemTemplate>
     <EditItemTemplate>

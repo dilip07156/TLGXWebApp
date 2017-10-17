@@ -34,7 +34,7 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <label class="control-label" for="txtRuleText">Is Internal Rule</label>
                                     <asp:CheckBox ID="chkIsInternal" runat="server" />&nbsp;&nbsp;&nbsp;
-                                    <asp:LinkButton ID="btnAddRule" CommandName="Add" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldGrpRules" CausesValidation="true">AddNew Rule</asp:LinkButton>
+                                    <asp:LinkButton ID="btnAddRule" CommandName="Add" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="vldGrpRules" CausesValidation="true">Add New Rule</asp:LinkButton>
                                 </div>
                             </div>
 
@@ -67,7 +67,7 @@
                                 <label class="control-label" for="txtRuleText">Is Internal Rule</label>
                                 <asp:CheckBox ID="chkIsInternal" runat="server" />
                                     &nbsp;&nbsp;&nbsp;
-                                <asp:LinkButton ID="btnAddRule" runat="server" CommandName="Modify" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldGrpRules">Update Rule</asp:LinkButton>
+                                <asp:LinkButton ID="btnAddRule" runat="server" CommandName="Modify" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldGrpRules">Update</asp:LinkButton>
                             </div>
 
                         </div>

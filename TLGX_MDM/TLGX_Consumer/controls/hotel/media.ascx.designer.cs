@@ -85,6 +85,15 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
+        /// dvBrowseMedia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvBrowseMedia;
+        
+        /// <summary>
         /// imgLoader control.
         /// </summary>
         /// <remarks>
@@ -427,6 +436,15 @@ namespace TLGX_Consumer.controls.hotel {
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSummAttr;
         
         /// <summary>
+        /// dvMsgAttribute control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgAttribute;
+        
+        /// <summary>
         /// ddlAttributeType control.
         /// </summary>
         /// <remarks>
@@ -479,15 +497,6 @@ namespace TLGX_Consumer.controls.hotel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnResetMediaAttributes;
-        
-        /// <summary>
-        /// dvMsgAttribute control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgAttribute;
         
         /// <summary>
         /// gvMediaAttributes control.

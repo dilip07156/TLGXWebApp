@@ -56,20 +56,35 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             if (e.CommandName.ToString() == "Editing")
             {
-
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
 
 
                 Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-                Guid myRow_Id = Guid.Parse(gvActInclusionSearch.SelectedDataKey.Value.ToString());
+                //Guid myRow_Id = Guid.Parse(gvActInclusionSearch.SelectedDataKey.Value.ToString());
 
-                MDMSVC.DC_Activity_InclusionDetails_RQ newObj = new MDMSVC.DC_Activity_InclusionDetails_RQ();
-                newObj.Activity_Inclusion_Id = myRow_Id;
+                //bool isinclusion = false;
 
-                var result = ActSVC.GetActivityInclusionDetails(newObj);
-                if (result.Count > 0)
-                {
+                //if (gvActInclusionSearch.Rows[index].Cells[4].Text == "true")
+                //    isinclusion = true;
 
-                }
+                //List<MDMSVC.DC_Activity_Inclusions> newObj = new List<MDMSVC.DC_Activity_Inclusions>();
+                //newObj.Add(new MDMSVC.DC_Activity_Inclusions
+                //{
+                //    Activity_Inclusions_Id = myRow_Id,
+                //    Activity_Flavour_Id = Activity_Flavour_Id,
+                //    InclusionType = gvActInclusionSearch.Rows[index].Cells[0].Text,
+                //    InclusionName = gvActInclusionSearch.Rows[index].Cells[1].Text,
+                //    InclusionDescription = gvActInclusionSearch.Rows[index].Cells[3].Text,
+                //    IsInclusion = isinclusion
+                //});
+
+                //if (!string.IsNullOrEmpty(gvActInclusionSearch.Rows[index].Cells[0].Text))
+                //    newObj[0].InclusionType = gvActInclusionSearch.Rows[index].Cells[0].Text;
+
+
+
             }
         }
 
