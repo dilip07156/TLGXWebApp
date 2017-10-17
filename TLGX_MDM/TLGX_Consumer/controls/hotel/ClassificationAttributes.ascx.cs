@@ -69,7 +69,7 @@ namespace TLGX_Consumer.controls.hotel
                 ddlAttributeSubType.DataTextField = "AttributeValue";
                 ddlAttributeSubType.DataValueField = "MasterAttributeValue_Id";
                 ddlAttributeSubType.DataBind();
-
+                
             }
 
         }
@@ -259,6 +259,12 @@ namespace TLGX_Consumer.controls.hotel
 
                 DropDownList ddlAttributeSubType = (DropDownList)frmClassificationAttribute.FindControl("ddlAttributeSubType");
                 DropDownList ddlAttributeType = (DropDownList)frmClassificationAttribute.FindControl("ddlAttributeType");
+                CheckBox chkInternalOnly = (CheckBox)frmClassificationAttribute.FindControl("chkInternalOnly");
+
+                if ((rowView.InternalOnly??false))
+                {
+                    chkInternalOnly.Checked = true;
+                }
 
                 if (ddlAttributeSubType.Items.Count > 1) // needs to be 1 to handle the "Select" value
                 {
