@@ -35,7 +35,7 @@
                 <asp:BoundField HeaderText="Exclusion For" DataField="InclusionFor" />
                 <asp:BoundField HeaderText="Description" DataField="InclusionDescription" />
                 <asp:BoundField HeaderText="Is Inclusion" DataField="IsInclusion" />
-                <asp:BoundField HeaderText="Upload Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
+                <asp:BoundField HeaderText="Upload Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy}" />
 
                 <asp:TemplateField ShowHeader="false">
                     <ItemTemplate>

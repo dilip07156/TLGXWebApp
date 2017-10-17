@@ -151,7 +151,7 @@
 
             <div class="col-lg-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Classification Attributes</div>
+                    <div class="panel-heading"> TLGX Classification Mapping</div>
                     <div class="panel-body">
                         <asp:UpdatePanel ID="up2" runat="server">
                             <ContentTemplate>
@@ -168,8 +168,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-6" for="ddlProdcategorySubType">
-                                        Product Category SubType
-                                     <asp:RequiredFieldValidator ID="vddlProdcategorySubType" runat="server" ErrorMessage="Please select Product Sub Category" Text="*" ControlToValidate="ddlProdcategorySubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
+                                        Activity Category 
+                                     <asp:RequiredFieldValidator ID="vddlProdcategorySubType" runat="server" ErrorMessage="Please select Activity Category" Text="*" ControlToValidate="ddlProdcategorySubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-6">
                                         <asp:DropDownList ID="ddlProdcategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProdcategorySubType_SelectedIndexChanged" AutoPostBack="true">
@@ -190,8 +190,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-6" for="ddlProdNameSubType">
-                                        ProductName SubType
-                                    <asp:RequiredFieldValidator ID="vddlProdNameSubType" runat="server" ErrorMessage="Please select Product Name Sub Type" Text="*" ControlToValidate="ddlProdNameSubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
+                                        Product  SubType
+                                    <asp:RequiredFieldValidator ID="vddlProdNameSubType" runat="server" ErrorMessage="Please select Product  Sub Type" Text="*" ControlToValidate="ddlProdNameSubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-6">
                                         <asp:DropDownList ID="ddlProdNameSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -208,13 +208,13 @@
                     <div class="panel-heading">Key Facts</div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="control-label col-sm-6" for="blnCompanyReccom">Company Reccom</label>
+                            <label class="control-label col-sm-6" for="blnCompanyReccom">Reccommended</label>
                             <div class="col-sm-6">
                                 <asp:CheckBox ID="blnCompanyReccom" runat="server" Checked='<%# Bind("CompanyReccom") %>' />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-6" for="blnMustSeeInCountry">MustSeeInCountry</label>
+                            <label class="control-label col-sm-6" for="blnMustSeeInCountry">Must See in Country</label>
                             <div class="col-sm-6">
                                 <asp:CheckBox ID="blnMustSeeInCountry" runat="server" Checked='<%# Bind("MustSeeInCountry") %>' />
                             </div>
@@ -226,29 +226,29 @@
                     <div class="panel-heading">General Information</div>
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="control-label-mand col-sm-4" for="txtEventPlace">Place of Event</label>
+                            <label class="control-label col-sm-4" for="txtEventPlace">Place of Event</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtEventPlace" runat="server" Text='<%# Bind("PlaceOfEvent") %>' class="form-control" />
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label-mand col-sm-4" for="txtStartingPoint">Starting Point</label>
+                     <%--   <div class="form-group">
+                            <label class="control-label col-sm-4" for="txtStartingPoint" >Starting Point</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtStartingPoint" runat="server" Text='<%# Bind("StartingPoint") %>' class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label-mand col-sm-4" for="txtEndingPoint">Ending Point</label>
+                            <label class="control-label col-sm-4" for="txtEndingPoint">Ending Point</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtEndingPoint" runat="server" Text='<%# Bind("EndingPoint") %>' class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label-mand col-sm-4" for="txtDuration">Duration</label>
+                            <label class="control-label col-sm-4" for="txtDuration">Duration</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtDuration" runat="server" Text='<%# Bind("Duration") %>' class="form-control" />
                             </div>
-                        </div>
+                        </div>--%>
                     </div>
                 </div>
                 <div class="pull-left">
