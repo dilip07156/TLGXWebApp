@@ -302,7 +302,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <asp:LinkButton ID="btnAdd" runat="server" ValidationGroup="HotelOcc" CausesValidation="True" CommandName="AddOccupancy" Text="Add" CssClass="btn btn-primary btn-sm" />
+                                        <asp:LinkButton ID="btnAdd" runat="server" ValidationGroup="HotelOcc" CausesValidation="True" CommandName="AddOccupancy" Text="Add Occupancy" CssClass="btn btn-primary btn-sm" />
                                     </div>
                                 </div>
                             </InsertItemTemplate>

@@ -129,7 +129,7 @@
                         </form>
                     </div>
                     <div class="col-md-2">
-                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
+                        <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add New Contact" CssClass="btn btn-primary btn-sm" ValidationGroup="HotelContacts" CausesValidation="true" />
 
                     </div>
                 </div>

@@ -440,6 +440,7 @@
   <xs:complexType name="DC_MasterAttributeValueMappingRS">
     <xs:sequence>
       <xs:element minOccurs="0" name="MasterAttributeMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ParentAttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierAttributeValues" nillable="true" type="tns:ArrayOfDC_SupplierAttributeValues" />
       <xs:element minOccurs="0" name="SystemMasterAttributeValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemMasterAttributeValue_Id" type="ser:guid" />

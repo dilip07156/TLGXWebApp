@@ -446,7 +446,13 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
+    <None Include="Service References\MDMSVC\Consumer.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer1.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer13.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -484,6 +490,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer139.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
@@ -834,6 +843,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Descriptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileUploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UploadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\TRFSVC\TransferService.disco" />

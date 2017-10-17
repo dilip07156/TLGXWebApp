@@ -25,7 +25,7 @@
         
         <div id="dvMsg" runat="server" style="display: none;"></div>
         <div class="container">
-            <asp:Button ID="btnAddNewAttribute" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm" OnClientClick="showClassificationAttributesModal();" OnClick="btnAddNewAttribute_Click" />
+            <asp:Button ID="btnAddNewAttribute" runat="server" Text="Add New Attribute" CssClass="btn btn-primary btn-sm" OnClientClick="showClassificationAttributesModal();" OnClick="btnAddNewAttribute_Click" />
         </div>
 
         <br>
@@ -255,7 +255,7 @@
 
                                             </div>
                                             <div class="form-group">
-                                                <asp:Button ID="btnAddClassificationAttribute" runat="server" Text="Modify" CommandName="Modify" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldGrpCAModify" />
+                                                <asp:Button ID="btnAddClassificationAttribute" runat="server" Text="Update" CommandName="Modify" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldGrpCAModify" />
                                             </div>
                                         </div>
 

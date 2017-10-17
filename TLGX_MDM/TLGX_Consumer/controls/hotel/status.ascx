@@ -51,7 +51,7 @@
 
                                     <div class="form-group">
                                         <div class="col-sm-8">
-                                            <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpStatus" CausesValidation="true" />
+                                            <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add Status" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpStatus" CausesValidation="true" />
                                         </div>
                                     </div>
 

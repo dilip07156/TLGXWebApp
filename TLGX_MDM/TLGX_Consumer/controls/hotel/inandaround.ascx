@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
 
-                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm" />
+                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Add" Text="Add Nearby Place" CssClass="btn btn-primary btn-sm" />
                                 </div>
 
                             </div>
@@ -164,7 +164,7 @@
                                         </div>
                                     </div>
 
-                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Modify" Text="Modify" CssClass="btn btn-primary btn-sm" />
+                                    <asp:LinkButton ID="btnAdd" runat="server" CausesValidation="true" ValidationGroup="vldInAndAround" CommandName="Modify" Text="Update" CssClass="btn btn-primary btn-sm" />
                                 </div>
 
                             </div>
@@ -184,7 +184,7 @@
                             <strong>In and Around</strong>
                         </div>
                         <div class="col-sm-6">
-                            <asp:Button runat="server" ID="btnAddNewLookUP" OnClick="btnAddNewLookUP_Click" OnClientClick="showAddNewLookUPModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Add Near By Places" />
+                            <asp:Button runat="server" ID="btnAddNewLookUP" OnClick="btnAddNewLookUP_Click" OnClientClick="showAddNewLookUPModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Add In and Around" />
                         </div>
                     </div>
                 </div>

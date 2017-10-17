@@ -316,7 +316,7 @@
 
                                     </div>
                                     <br />
-                                    <asp:LinkButton ID="lnkAddRoom" CommandName="Save" runat="server" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldRoomInfo">Save Room Definition</asp:LinkButton>
+                                    <asp:LinkButton ID="lnkAddRoom" CommandName="Save" runat="server" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldRoomInfo">Update Room Definition</asp:LinkButton>
 
                                 </div>
 

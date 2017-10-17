@@ -9,6 +9,7 @@
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
+  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" />
   <xs:element name="UpdateAccomodationClassificationAttributes">
     <xs:complexType>
       <xs:sequence>
@@ -3938,6 +3939,62 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q402="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPolicyResult" nillable="true" type="q402:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q403="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q403:DC_RemoteFileInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q404="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileResult" nillable="true" type="q404:DC_FileUploadResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferFileInChunks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q405="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q405:DC_FileData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TransferFileInChunksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q406="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="TransferFileInChunksResult" nillable="true" type="q406:DC_UploadResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFileInChunks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q407="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q407:DC_FileData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFileInChunksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q408="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileInChunksResult" nillable="true" type="q408:DC_UploadResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteFileResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
