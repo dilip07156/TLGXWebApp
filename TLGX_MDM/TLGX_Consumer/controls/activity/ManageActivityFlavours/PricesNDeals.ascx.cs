@@ -11,11 +11,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-                grdPricesNDeals.DataSource = null;
-                grdPricesNDeals.DataBind();
-            }
+            
         }
     }
 }

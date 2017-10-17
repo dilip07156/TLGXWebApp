@@ -26,9 +26,12 @@
                     </div>
                 </div>
                 <div class="login_info_block">
-                    <h4>Lorem Ipsum!!!</h4>
+                    <h4>nakshatra</h4>
                     <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                       <ul>
+                           <li>a group of stars forming a recognizable pattern that is traditionally named after its apparent form or identified with a mythological figure</li>
+                           <li>a group of associated or similar people or things.</li>
+                       </ul> 
                     </p>
                 </div>
             </div>
@@ -39,9 +42,9 @@
                 <div class="login_logo">
                     <img src="../images/login_logo.png" />
                 </div>
-                <h2>Welcome to Cox & Kings</h2>
+                <h2>welcome to nakshatra</h2>
                 <div class="login_container">
-                    <h3>Member Login</h3>
+                   <%-- <h3>Member Login</h3>--%>
                     <form id="form1" runat="server">
                         <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                             <p class="text-danger">

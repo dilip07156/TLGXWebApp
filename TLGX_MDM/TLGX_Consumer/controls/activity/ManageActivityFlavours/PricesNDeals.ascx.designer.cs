@@ -13,102 +13,30 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class PricesNDeals {
         
         /// <summary>
-        /// updPanPricesNDeals control.
+        /// updMedia control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanPricesNDeals;
+        protected global::System.Web.UI.UpdatePanel updMedia;
         
         /// <summary>
-        /// dvMsg control.
+        /// Prices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Prices Prices;
         
         /// <summary>
-        /// btnNewActivity control.
+        /// HiddenField1PnD control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnNewActivity;
-        
-        /// <summary>
-        /// divDropdownForEntries control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
-        
-        /// <summary>
-        /// ddlShowEntries control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// grdPricesNDeals control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdPricesNDeals;
-        
-        /// <summary>
-        /// updNewActivity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updNewActivity;
-        
-        /// <summary>
-        /// vldSumActivity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vldSumActivity;
-        
-        /// <summary>
-        /// divMsgAlertActivity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertActivity;
-        
-        /// <summary>
-        /// frmPolicy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmPolicy;
+        protected global::System.Web.UI.WebControls.HiddenField HiddenField1PnD;
     }
 }

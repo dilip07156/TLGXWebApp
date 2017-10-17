@@ -259,6 +259,7 @@
     <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Policy.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Prices.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx" />
@@ -1304,6 +1305,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.designer.cs">
       <DependentUpon>Policy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Prices.ascx.cs">
+      <DependentUpon>Prices.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Prices.ascx.designer.cs">
+      <DependentUpon>Prices.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx.cs">
       <DependentUpon>PricesNDeals.ascx</DependentUpon>
