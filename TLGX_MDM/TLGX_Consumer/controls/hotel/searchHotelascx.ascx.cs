@@ -225,6 +225,7 @@ namespace TLGX_Consumer.controls.hotel
             //dvGrid.Visible = false;
             grdSearchResults.Visible = false;
             lblTotalRecords.Text = String.Empty;
+            ddlStarRating.SelectedIndex = 0;
         }
 
         protected void grdSearchResults_RowCommand(object sender, GridViewCommandEventArgs e)

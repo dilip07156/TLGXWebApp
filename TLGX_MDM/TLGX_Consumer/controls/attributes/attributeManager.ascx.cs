@@ -964,7 +964,7 @@ namespace TLGX_Consumer.controls.attributes
             msgupdateall.Style.Add("display", "none");
             var PARAM = new List<MDMSVC.DC_MasterAttributeValueMapping>();
             Guid MasterAttributeMappingId = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
-            foreach(GridViewRow outerRow in grdMappingAttrVal.Rows)
+            foreach (GridViewRow outerRow in grdMappingAttrVal.Rows)
             {
                 GridView grdmulSuppAttrValus = outerRow.FindControl("grdmulSuppAttrValus") as GridView;
                 Label SystemMasterAttributeValueId = (Label)outerRow.FindControl("lblSystemMasterAttributeValueId");
@@ -975,7 +975,7 @@ namespace TLGX_Consumer.controls.attributes
                     CheckBox chkAttrValIsActive = (CheckBox)innerRow.FindControl("chkAttrValIsActive");
                     TextBox txtSupplierAttributeValue = (TextBox)innerRow.FindControl("txtSupplierAttributeValue");
                     TextBox txtSupplierAttributeCode = (TextBox)innerRow.FindControl("txtSupplierAttributeCode");
-                    if (!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text) )
+                    if (!String.IsNullOrWhiteSpace(txtSupplierAttributeValue.Text))
                     {
                         PARAM.Add(new MDMSVC.DC_MasterAttributeValueMapping
                         {
@@ -991,7 +991,7 @@ namespace TLGX_Consumer.controls.attributes
                             SystemMasterAttributeValue_Id = Guid.Parse(SystemMasterAttributeValueId.Text)
                         });
                     }
-                    
+
                 }
             }
 
@@ -1043,7 +1043,7 @@ namespace TLGX_Consumer.controls.attributes
                 Guid masterattributemappingid = Guid.Parse(e.CommandArgument.ToString());
                 addupdatemsg.Style.Add("display", "none");
                 msgupdateall.Style.Add("display", "none");
-                msgdelundel.Style.Add("display", "none");   
+                msgdelundel.Style.Add("display", "none");
                 ddlSuppliers.Enabled = false;
                 btnSave.Text = "Update";
                 hdn_MasterAttributeMapping_Id.Value = e.CommandArgument.ToString();
@@ -1155,7 +1155,7 @@ namespace TLGX_Consumer.controls.attributes
 
         protected void grdMappingAttrVal_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
+
         }
 
         protected void ddlpagesize_SelectedIndexChanged(object sender, EventArgs e)
@@ -1218,7 +1218,7 @@ namespace TLGX_Consumer.controls.attributes
         protected void fillSystemAttriDropdown()
         {
             ddlsystemAttrVal.Items.Clear();
-            if (!string.IsNullOrWhiteSpace(hdn_MasterAttributeMapping_Id.Value ))
+            if (!string.IsNullOrWhiteSpace(hdn_MasterAttributeMapping_Id.Value))
             {
                 Guid masterattributemappingid = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
                 MDMSVC.DC_MasterAttributeValueMapping_RQ RQ = new MDMSVC.DC_MasterAttributeValueMapping_RQ();
@@ -1226,8 +1226,9 @@ namespace TLGX_Consumer.controls.attributes
                 RQ.PageSize = int.MaxValue;
                 RQ.PageNo = 0;
                 var searchResult = MapSvc.Mapping_AttributeValue_Get(RQ);
-                var search = (from s in searchResult select new { s.SystemMasterAttributeValue, s.SystemMasterAttributeValue_Id }).Distinct().OrderBy(x => x.SystemMasterAttributeValue.Trim().TrimStart());
+                var search = (from s in searchResult orderby s.ParentAttributeValue.Trim(), s.SystemMasterAttributeValue.Trim() select new { SystemMasterAttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.SystemMasterAttributeValue : "[" + s.ParentAttributeValue + "] " + s.SystemMasterAttributeValue, SystemMasterAttributeValue_Id = s.SystemMasterAttributeValue_Id }).ToList();
                 //var search = from s in searchResult orderby s.SystemMasterAttributeValue.Trim().TrimStart() select new { s.SystemMasterAttributeValue, s.SystemMasterAttributeValue_Id } ;
+                //var a = (from s in search select s).Distinct();
                 ddlsystemAttrVal.DataSource = search;
                 ddlsystemAttrVal.DataTextField = "SystemMasterAttributeValue";
                 ddlsystemAttrVal.DataValueField = "SystemMasterAttributeValue_Id";
@@ -1243,7 +1244,7 @@ namespace TLGX_Consumer.controls.attributes
             msgupdateall.Style.Add("display", "none");
             fillsupplierAttrvalues(0);
         }
-        
+
         protected void btnUpdateAllValues_Click(object sender, EventArgs e)
         {
             UpdateAllAttrValues();
@@ -1266,8 +1267,8 @@ namespace TLGX_Consumer.controls.attributes
                 TextBox txtSupplierval = (TextBox)row.FindControl("txtSupplierAttributeValue");
                 TextBox txtSuppliercode = (TextBox)row.FindControl("txtSupplierAttributeCode");
                 Label SystemMasterAttributeValueId = (Label)parent.FindControl("lblSystemMasterAttributeValueId");
-                
-                if(!string.IsNullOrWhiteSpace(txtSupplierval.Text))
+
+                if (!string.IsNullOrWhiteSpace(txtSupplierval.Text))
                 {
                     MDMSVC.DC_MasterAttributeValueMapping newObj = new MDMSVC.DC_MasterAttributeValueMapping
                     {
@@ -1335,7 +1336,7 @@ namespace TLGX_Consumer.controls.attributes
                 {
                     BootstrapAlert.BootstrapAlertMessage(msgupdateall, "Supplier Value and  Supplier Code Can not be empty..!", BootstrapAlertType.Warning);
                 }
-               
+
             }
 
             if (e.CommandName.ToString() == "DeleteVal")
@@ -1344,7 +1345,7 @@ namespace TLGX_Consumer.controls.attributes
                 msgdelundel.Style.Add("display", "none");
                 msgupdateall.Style.Add("display", "none");
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-                if (myRow_Id!=null)
+                if (myRow_Id != null)
                 {
                     MDMSVC.DC_SupplierAttributeValues_RQ newObj = new MDMSVC.DC_SupplierAttributeValues_RQ();
                     newObj.MasterAttributeValueMapping_Id = myRow_Id;

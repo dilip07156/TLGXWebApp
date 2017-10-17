@@ -517,6 +517,7 @@
                                                 DataKeyNames="SystemMasterAttributeValue_Id" CssClass="table table-responsive table-hover table-striped table-bordered"
                                                 PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined." OnRowCommand="grdMappingAttrVal_RowCommand" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrVal_PageIndexChanging">
                                                 <Columns>
+                                                    <asp:BoundField DataField="ParentAttributeValue" HeaderText="Parent Value" SortExpression="ParentAttributeValue" />
                                                     <asp:BoundField DataField="SystemMasterAttributeValue" HeaderText="System Value" SortExpression="SystemMasterAttributeValue" />
                                                     <asp:TemplateField>
                                                         <ItemTemplate>

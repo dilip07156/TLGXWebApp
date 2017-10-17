@@ -372,6 +372,10 @@
     <Content Include="hotels\addnew.aspx" />
     <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
+    <Content Include="images\148764.png" />
+    <Content Include="images\148766.png" />
+    <Content Include="images\148767.png" />
+    <Content Include="images\148853.png" />
     <Content Include="images\ajax-loader-blue.gif" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\ajax-loader_SMALL.gif" />
@@ -444,62 +448,70 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_DEV_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_PREPROD_CI.pubxml" />
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
+    <None Include="Service References\MDMSVC\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <Content Include="Service\CityFillForDDL.ashx" />
+    <Content Include="Service\ActivityNameAutoComplete.ashx" />
+    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
+    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
+    <None Include="Service References\MDMSVC\Consumer.wsdl" />
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.wsdl" />
     <None Include="Service References\MDMSVC\Consumer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer12.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer13.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer131.xsd">
+    <None Include="Service References\MDMSVC\Consumer14.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1310.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer1311.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer1312.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer132.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer133.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer134.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer135.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer136.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer137.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer138.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer139.xsd">
+    <None Include="Service References\MDMSVC\Consumer15.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Service References\MDMSVC\Consumer3.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.disco" />
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.City_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -581,6 +593,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Contact.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -590,7 +605,46 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_DDL.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Deals.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Descriptions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Flavour.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Inclusions.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_InclusionsDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Media.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_PickUpDrop.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_PickUpDropDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Policy.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Prices.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ReviewsAndScores.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Status.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping_CA.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ApplicationMgmt.datasource">
@@ -630,6 +684,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileProgressDashboard.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileUploadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_GenericMasterDetails_ByIDOrName.datasource">
@@ -785,6 +842,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_unmappedProductReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UploadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UserDetails.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -797,88 +857,6 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.UploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\TRFSVC\TLGX_Consumer.TRFSVC.DC_UploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ClassificationAttributes.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Deals.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Flavour.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Inclusions.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_InclusionsDetails.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Media.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_PickUpDrop.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_PickUpDropDetails.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Policy.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Prices.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ReviewsAndScores.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_SupplierProductMapping_CA.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Descriptions.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileUploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_UploadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\TRFSVC\TransferService.disco" />
-    <None Include="Service References\TRFSVC\configuration91.svcinfo" />
-    <None Include="Service References\TRFSVC\configuration.svcinfo" />
-    <None Include="Service References\TRFSVC\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Service\CityFillForDDL.ashx" />
-    <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
-    <Content Include="Service\CityFillForDDL.ashx" />
-    <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\RoomCategoryAutoComplete.ashx" />
-    <Content Include="Service\AddUpdateNearByPlaces.ashx" />
-    <None Include="Service References\TRFSVC\TransferService.wsdl" />
-    <None Include="Service References\TRFSVC\TransferService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\TRFSVC\TransferService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -1237,6 +1215,7 @@
     <Compile Include="Controller\ActivitySVC.cs" />
     <Compile Include="Controller\AdminSVCs.cs" />
     <Compile Include="Controller\CustomStream.cs" />
+    <Compile Include="Controller\FileTransferSVC.cs" />
     <Compile Include="Controller\MappingSVCs.cs" />
     <Compile Include="Controller\MasterDataSVCs.cs" />
     <Compile Include="Controller\MDMSvcProxy.cs" />
@@ -2525,11 +2504,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\TRFSVC\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service\ActivityNameAutoComplete.ashx.cs">
       <DependentUpon>ActivityNameAutoComplete.ashx</DependentUpon>
     </Compile>
@@ -2782,7 +2756,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
-    <WCFMetadataStorage Include="Service References\TRFSVC\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
