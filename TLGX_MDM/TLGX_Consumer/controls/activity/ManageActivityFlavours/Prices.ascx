@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Prices.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.Prices" %>
-<%@ Register Src="~/controls/activity/ManageActivityFlavours/Prices.ascx" TagPrefix="uc1" TagName="Prices" %>
 <script>
     function showPricesModal() {
         $("#moPrices").modal('show');
