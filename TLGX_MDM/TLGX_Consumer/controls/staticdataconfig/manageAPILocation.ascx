@@ -78,6 +78,13 @@
         });
     }
 
+    $(document).ready(ajustamodal);
+    $(window).resize(ajustamodal);
+    function ajustamodal() {
+        var altura = $(window).height() - 240; //value corresponding to the modal heading + footer
+        $(".modal-scroll").css({ "height": altura, "overflow-y": "auto" });
+    }
+
 </script>
 <style>
     @media (min-width: 768px) {
@@ -99,46 +106,46 @@
 
                 <div id="collapseSearch" class="panel-collapse collapse in">
                     <div class="panel-body">
-                       <%-- <div class="container">--%>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="form-group row">
-                                        <label class="control-label col-sm-4" for="ddlSupplierName">Supplier </label>
-                                        <div class="col-sm-8">
-                                            <asp:DropDownList ID="ddlSupplierName" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group row">
-                                        <label class="control-label col-sm-4" for="ddlMasterCountry">Entity</label>
-                                        <div class="col-sm-8">
-                                            <asp:DropDownList ID="ddlMasterCountry" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group row">
-                                        <label class="control-label col-sm-4" for="ddlStatus">Status</label>
-                                        <div class="col-sm-8">
-                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
+                        <%-- <div class="container">--%>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlSupplierName">Supplier </label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlSupplierName" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                    <div class="col-sm-12">
-                                        <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" ValidationGroup="vldgrpFileSearch" />
-                                        <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlMasterCountry">Entity</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlMasterCountry" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
                                     </div>
+                                </div>
                             </div>
-                       <%-- </div>--%>
+                            <div class="col-sm-4">
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlStatus">Status</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" ValidationGroup="vldgrpFileSearch" />
+                                <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
+                            </div>
+                        </div>
+                        <%-- </div>--%>
                     </div>
                 </div>
 
@@ -197,7 +204,7 @@
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
                                 <asp:BoundField HeaderText="Status" DataField="Status" />
                                 <asp:BoundField HeaderText="API Job Name" DataField="ApiPath" />
-                                <asp:BoundField HeaderText="Create  Date" DataField="Create_Date"  DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}"/>
+                                <asp:BoundField HeaderText="Create  Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
                                         <%--<asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false"
@@ -233,12 +240,12 @@
 </asp:UpdatePanel>
 
 
-<div class="modal fade" id="moAddApi" role="dialog">
-    <div class="modal-dialog modal-md">
+<div class="modal fade" id="moAddApi" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="panel-title">
-                    <h4 class="modal-title">Add new Supplier API</h4>
+                    <h4 class="modal-title">Fetch Supplier API Data</h4>
                 </div>
             </div>
             <div class="modal-body">
@@ -272,13 +279,17 @@
                                     <asp:TextBox ID="txtApiLocation" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <asp:Button ID="btnadddetails" runat="server" Text="Add Details" OnClick="btnadddetails_Click" CssClass="btn btn-primary btn-sm" />
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <asp:Button ID="btnadddetails" runat="server" Text="Call API" OnClick="btnadddetails_Click" CssClass="btn btn-primary btn-sm pull-right" />
+                                </div>
                             </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -288,55 +299,53 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title"><b>View Details </b></h4>
+                <h4 class="modal-title"><b>View Supplier API Progress Details </b></h4>
+                <br />
+                <div class="row">
+                    <div class="col-sm-3">
+                        <label class="col-form-label" for="txtSupplier">Supplier</label>
+                        <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="col-form-label " for="txtEntity">Entity</label>
+                        <%--<label id="lblEntity" class="form-control"></label>--%>
+                        <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="col-form-label">API Job Name</label>
+                        <asp:TextBox ID="txtPath" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-3">
+                        <label class="col-form-label">Status</label>
+                        <asp:TextBox ID="txtStatus" CssClass="form-control" runat="server" value="" ReadOnly="true"></asp:TextBox>
+                    </div>
+                </div>
             </div>
             <input type="hidden" id="hdnPentahoid" name="hdnPentahoid" value="" />
-            <div class="modal-body">
-               <%-- <div class="container">--%>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <label class="col-form-label" for="txtSupplier">Supplier</label>
-                            <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                        <div class="col-sm-3">
-                            <label class="col-form-label " for="txtEntity">Entity</label>
-                            <%--<label id="lblEntity" class="form-control"></label>--%>
-                            <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                        <div class="col-sm-3">
-                            <label class="col-form-label">API Job Name</label>
-                            <asp:TextBox ID="txtPath" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                        </div>
-                        <div class="col-sm-3">
-                            <label class="col-form-label">Status</label>
-                            <asp:TextBox ID="txtStatus" CssClass="form-control" runat="server" value="" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                    <br />
-                    <div id="steps" >
-                        <table class="table  table-bordered border-collapse table-striped  table-fixed" style="overflow-y: scroll; height: 400px;">
-                            <thead>
-                                <tr>
-                                    <th>Stepname</th>
-                                    <th>Copy</th>
-                                    <th>Read</th>
-                                    <th>Written</th>
-                                    <th>Input</th>
-                                    <th>Output</th>
-                                    <th>Updated</th>
-                                    <th>Rejected</th>
-                                    <th>Errors</th>
-                                    <th>Active</th>
-                                    <th>Time</th>
-                                    <th>Speed</th>
-                                    <th>pr/in/out</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tblsteps" >
-                            </tbody>
-                        </table>
-                    </div>
-                <%--</div>--%>
+            <div class="modal-body modal-scroll">
+                <div id="steps">
+                    <table class="table  table-bordered border-collapse table-striped  table-fixed">
+                        <thead>
+                            <tr>
+                                <th>Stepname</th>
+                                <th>Copy</th>
+                                <th>Read</th>
+                                <th>Written</th>
+                                <th>Input</th>
+                                <th>Output</th>
+                                <th>Updated</th>
+                                <th>Rejected</th>
+                                <th>Errors</th>
+                                <th>Active</th>
+                                <th>Time</th>
+                                <th>Speed</th>
+                                <th>pr/in/out</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblsteps">
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
