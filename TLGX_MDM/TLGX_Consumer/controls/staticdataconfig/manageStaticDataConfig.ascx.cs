@@ -459,6 +459,41 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                         ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()).Selected = true;
                                 }
                             }
+                            else if (IsMapping && ddlAttributeType.SelectedItem.Text.ToLower() == "keyword")
+                            {
+                                ddlAttributeName.Visible = true;
+                                var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
+                                hdnddlAttributeTableValueName.Value = _mappingTable;
+                                hdnddlAttributeTableName.Value = _mappingTable;
+                                if (lstAttributeValue != null)
+                                {
+                                    ddlAttributeName.Visible = true;
+                                    ddlAttributeName.Items.Clear();
+                                    ddlAttributeName.DataSource = lstAttributeValue;
+                                    ddlAttributeName.DataBind();
+                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    ddlAttributeValue.Visible = true;
+                                    ddlAttributeValue.Items.Clear();
+                                    ddlAttributeValue.DataSource = lstAttributeValue;
+                                    ddlAttributeValue.DataBind();
+                                    ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+
+                                    string strAttributeName = string.Empty;
+                                    string strAttributeVal = string.Empty;
+                                    if (res[0].AttributeName.ToString().Split('.').Length > 1)
+                                        strAttributeName = res[0].AttributeName.ToString().Split('.')[1];
+                                    else
+                                        strAttributeName = res[0].AttributeName.ToString();
+                                    if (res[0].AttributeValue.ToString().Split('.').Length > 1)
+                                        strAttributeVal = res[0].AttributeValue.ToString().Split('.')[1];
+                                    else
+                                        strAttributeVal = res[0].AttributeValue.ToString();
+
+                                    ddlAttributeName.SelectedIndex = ddlAttributeName.Items.IndexOf(ddlAttributeName.Items.FindByText(strAttributeName));
+                                    ddlAttributeValue.SelectedIndex = ddlAttributeValue.Items.IndexOf(ddlAttributeValue.Items.FindByText(strAttributeVal));
+                                }
+
+                            }
                             #endregion
                             else
                             {
@@ -567,6 +602,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                         txtReplaceTo.Text = data[1].TrimEnd('"');
                                     }
                                 }
+                            }
+                            else if (ddlAttributeType.SelectedItem.Text.ToLower() == "keyword")
+                            {
+                                divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+                                txtAttributeValue.Visible = false;
+                                ddlAttributeValue.Visible = true;
                             }
                             else
                             {
@@ -1025,8 +1066,26 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.DataBind();
                         ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
                     }
-
-
+                }
+                else if (IsMapping && strAttributeType == "keyword")
+                {
+                    ddlAttributeName.Visible = true;
+                    var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
+                    hdnddlAttributeTableValueName.Value = _mappingTable;
+                    hdnddlAttributeTableName.Value = _mappingTable;
+                    if (lstAttributeValue != null)
+                    {
+                        ddlAttributeName.Visible = true;
+                        ddlAttributeName.Items.Clear();
+                        ddlAttributeName.DataSource = lstAttributeValue;
+                        ddlAttributeName.DataBind();
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        ddlAttributeValue.Visible = true;
+                        ddlAttributeValue.Items.Clear();
+                        ddlAttributeValue.DataSource = lstAttributeValue;
+                        ddlAttributeValue.DataBind();
+                        ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+                    }
 
                 }
                 else if (!IsMapping) //Match & Map
@@ -1204,7 +1263,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
 
 
-            if (ddlAttributeType.SelectedItem.Text.ToLower() != "map" && ddlAttributeType.SelectedItem.Text.ToLower() != "match")
+            if (ddlAttributeType.SelectedItem.Text.ToLower() != "map" && ddlAttributeType.SelectedItem.Text.ToLower() != "match" && ddlAttributeType.SelectedItem.Text.ToLower() != "keyword")
             {
                 Guid ParentAttributeValue_Id = Guid.Empty;
                 ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
