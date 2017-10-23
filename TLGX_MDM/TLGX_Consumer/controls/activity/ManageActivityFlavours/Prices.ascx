@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Prices.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.Prices" %>
-
 <script>
     function showPricesModal() {
         $("#moPrices").modal('show');
