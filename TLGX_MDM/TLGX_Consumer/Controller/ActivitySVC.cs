@@ -225,6 +225,22 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Prices
+        public List<MDMSVC.DC_Activity_Prices> GetActivityPrices(MDMSVC.DC_Activity_Prices_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Prices"], RQ, typeof(DC_Activity_Prices_RQ), typeof(List<DC_Activity_Prices>), out result);
+            return result as List<MDMSVC.DC_Activity_Prices>;
+        }
+
+        public DC_Message AddUpdateActivityPrices(MDMSVC.DC_Activity_Prices RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Prices"], RQ, typeof(DC_Activity_Prices), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
         #region
         public List<DC_Activity_SupplierProductMapping> GetActivitySupplierProductMapping(DC_Activity_SupplierProductMapping_RQ RQParams)
         {
