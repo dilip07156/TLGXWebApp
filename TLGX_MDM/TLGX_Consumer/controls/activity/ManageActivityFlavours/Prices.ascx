@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Prices.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.Prices" %>
-<%@ Register Src="~/controls/activity/ManageActivityFlavours/Prices.ascx" TagPrefix="uc1" TagName="Prices" %>
+
 <script>
     function showPricesModal() {
         $("#moPrices").modal('show');
@@ -40,15 +40,17 @@
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div id="dvMsg" runat="server" style="display: none;"></div>
-                        <asp:GridView ID="gvPricesSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
+                        <asp:GridView ID="gvPricesSearch"  runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No data Found" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvPricesSearch_PageIndexChanging"
-                            OnRowCommand="gvPricesSearch_RowCommand" DataKeyNames="Activity_Description_Id" OnRowDataBound="gvPricesSearch_RowDataBound">
+                            OnRowCommand="gvPricesSearch_RowCommand" DataKeyNames="Activity_Prices_Id" OnRowDataBound="gvPricesSearch_RowDataBound">
                             <Columns>
+                                 <asp:BoundField HeaderText="Price Net" DataField="PriceNet" />
+                                <asp:BoundField HeaderText="Price Currency" DataField="PriceCurrency" />
                                 <asp:BoundField HeaderText="Price Code" DataField="PriceCode"  />
                                 <asp:BoundField HeaderText="Price Basis" DataField="PriceBasis" />
-                                <asp:BoundField HeaderText="Price Net" DataField="PriceNet" />
-                                <asp:BoundField HeaderText="Price Currency" DataField="PriceCurrency" />
+                               
+                                
                                 <asp:BoundField HeaderText="Created Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy} " />
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
@@ -61,7 +63,7 @@
                                 <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Description_Id") %>'>
+                                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Prices_Id") %>'>
                                                     <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                                         </asp:LinkButton>
