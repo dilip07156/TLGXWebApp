@@ -14,19 +14,26 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
     public partial class Policy : System.Web.UI.UserControl
     {
+        Models.lookupAttributeDAL LookupAtrributes = new Models.lookupAttributeDAL();
         Controller.ActivitySVC ActSVC = new ActivitySVC();
         public Guid Activity_Flavour_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-                BindDataSource();
+                BindData();
             }
         }
 
+        private void BindData()
+        {
+            DropDownList ddlPolicyType = (DropDownList)frmPolicy.FindControl("ddlPolicyType");
+            BindDataSource();
+            fillPolicyType(ddlPolicyType);
+        }
         private void BindDataSource()
         {
-            //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            DropDownList ddlPolicyType = (DropDownList)frmPolicy.FindControl("ddlPolicyType");
 
             MDMSVC.DC_Activity_Policy_RQ _obj = new MDMSVC.DC_Activity_Policy_RQ();
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
@@ -44,6 +51,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 grdPolicy.DataBind();
                 divDropdownForEntries.Visible = false;
             }
+            
+        }
+        private void fillPolicyType(DropDownList ddl)
+        {
+            ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "Activity_Policy_Type").MasterAttributeValues;
+            ddl.DataTextField = "AttributeValue";
+            ddl.DataValueField = "MasterAttributeValue_Id";
+            ddl.DataBind();
         }
 
         private void ResetControls()
@@ -108,6 +123,17 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 frmPolicy.ChangeMode(FormViewMode.Edit);
                 frmPolicy.DataSource = ActSVC.GetActivityPolicy(RQ);
                 frmPolicy.DataBind();
+
+                MDMSVC.DC_Activity_Policy rowView = (MDMSVC.DC_Activity_Policy)frmPolicy.DataItem;
+                
+                DropDownList ddlPolicyType = (DropDownList)frmPolicy.FindControl("ddlPolicyType");
+
+                fillPolicyType(ddlPolicyType);
+
+                if (ddlPolicyType.Items.Count > 1) // needs to be 1 to handle the "Select" value
+                {
+                    ddlPolicyType.SelectedIndex = ddlPolicyType.Items.IndexOf(ddlPolicyType.Items.FindByText(rowView.Policy_Type.ToString()));
+                }
             }
             else if (e.CommandName.ToString() == "SoftDelete")
             {
@@ -199,11 +225,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
                 
                 ResetControls();
+                BindDataSource();
             }
             if (e.CommandName.ToString()== "Update")
             {
+                Guid myRowId = Guid.Parse(frmPolicy.DataKey.Value.ToString());
                 MDMSVC.DC_Activity_Policy newObj = new MDMSVC.DC_Activity_Policy();
                 {
+                    newObj.Activity_Policy_Id = myRowId;
                     newObj.Activity_Flavour_Id = Activity_Flavour_Id;
                     if (chkIsAllow.Checked)
                         newObj.AllowedYN = true;
@@ -231,6 +260,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
 
                 ResetControls();
+                BindDataSource();
             }
             if (e.CommandName.ToString()== "Reset")
             {

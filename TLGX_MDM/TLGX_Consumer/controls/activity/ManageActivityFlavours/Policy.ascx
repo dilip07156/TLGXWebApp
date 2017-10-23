@@ -83,7 +83,7 @@
 </asp:UpdatePanel>
 
 <div class="modal fade" id="moAddPolicy" role="dialog">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog">
 
         <div class="modal-content">
 
@@ -116,7 +116,7 @@
                                         <div class="panel-body">
 
                                             <div class="form-group">
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-8">
 
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="ddlPolicyType">Policy Type</label>
@@ -141,24 +141,24 @@
 
                                                 </div>
 
-                                                <div class="col-sm-6">
+                                                <div class="col-sm-4">
 
                                                     <div class="form-group row">
-                                                        <label class="control-label col-sm-6" for="chkIsActive">Active</label>
-                                                        <div class="col-sm-6">
+                                                        <label class="control-label col-sm-4" for="chkIsActive">Active</label>
+                                                        <div class="col-sm-8">
                                                             <asp:CheckBox ID="chkIsActive" runat="server" Checked='<%# Bind("IsActive") %>' />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <label class="control-label col-sm-6" for="chkIsAllow">Allow</label>
-                                                        <div class="col-sm-6">
+                                                        <label class="control-label col-sm-4" for="chkIsAllow">Allow</label>
+                                                        <div class="col-sm-8">
                                                             <asp:CheckBox ID="chkIsAllow" runat="server" Checked='<%# Bind("AllowedYN") %>' />
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
-                                                        <div class="col-sm-6 pull-right">
+                                                        <div class="col-sm-8 pull-right">
                                                             <asp:Button ID="btnAdd" runat="server" Text="Add" CommandName="Add" CssClass="btn btn-primary" />
                                                             <asp:Button ID="btnReset" runat="server" Text="Reset" CommandName="Reset" CssClass="btn btn-primary" />
                                                         </div>
@@ -193,14 +193,14 @@
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="txtName">Policy Name</label>
                                                         <div class="col-sm-6">
-                                                            <asp:TextBox runat="server" ID="txtName" CssClass="form-control"></asp:TextBox>
+                                                            <asp:TextBox runat="server" ID="txtName" CssClass="form-control" Text='<%# Bind("PolicyName") %>'></asp:TextBox>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="txtDescription">Policy Description</label>
                                                         <div class="col-sm-6">
-                                                            <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
+                                                            <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control" TextMode="MultiLine" Text='<%# Bind("PolicyDescription") %>'></asp:TextBox>
                                                         </div>
                                                     </div>
 

@@ -2,21 +2,44 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <script type="text/javascript">
+    
+    //(function pageLoad() {
+    //    //debugger;
+    //    showEditModal()
+    //})();
+
     function showEditModal() {
+        //debugger;
+        //var x = $("#MainContent_Inclusions_Inclusion_hdnFlag").val("hello");
+        //if (x.val() == "hello")
+        //{
+        //    alert(x.val());
         $("#moEditExclusion").modal('show');
+        //    $('#moEditExclusion').modal({
+        //        backdrop: 'static',
+        //        keyboard: false
+        //    });
+        //}
+
     }
+    function closeEditModal() {
+        $("#moEditExclusion").modal('destroy');
+    }
+    
 </script>
-<div class="col-lg-3 pull-right row">
-    <div class="form-group pull-right">
-        <div class="input-group" runat="server" id="divDropdownForEntries">
-            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-            <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control">
-                <%--OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged"--%>
-                <asp:ListItem>10</asp:ListItem>
-                <asp:ListItem>25</asp:ListItem>
-                <asp:ListItem>50</asp:ListItem>
-                <asp:ListItem>100</asp:ListItem>
-            </asp:DropDownList>
+<div class="form-group">
+    <div class="col-lg-3 pull-right row">
+        <div class="form-group pull-right">
+            <div class="input-group" runat="server" id="divDropdownForEntries">
+                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control">
+                    <%--OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged"--%>
+                    <asp:ListItem>10</asp:ListItem>
+                    <asp:ListItem>25</asp:ListItem>
+                    <asp:ListItem>50</asp:ListItem>
+                    <asp:ListItem>100</asp:ListItem>
+                </asp:DropDownList>
+            </div>
         </div>
     </div>
 </div>
@@ -73,7 +96,7 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="updEditActivity" runat="server">
                     <ContentTemplate>
-
+                        <asp:HiddenField ID="hdnFlag" runat="server" Value="" EnableViewState="false" />
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-12">
@@ -225,10 +248,6 @@
                                                             </div>
                                                         </div>
 
-
-                                                        <%--<div class="form-group row">
-                                                                
-                                                            </div>--%>
                                                     </div>
 
                                                 </div>

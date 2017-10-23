@@ -225,5 +225,19 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region
+        public List<DC_Activity_SupplierProductMapping> GetActivitySupplierProductMapping(DC_Activity_SupplierProductMapping_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivitySupplierProductMapping"], RQParams, typeof(MDMSVC.DC_Activity_SupplierProductMapping_RQ), typeof(List<DC_Activity_SupplierProductMapping>), out result);
+            return result as List<DC_Activity_SupplierProductMapping>;
+        }
+        public DC_Message AddUpdateActivitySupplierProductMapping(MDMSVC.DC_Activity_Policy RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivitySupplierProductMapping"], RQParams, typeof(MDMSVC.DC_Activity_SupplierProductMapping), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }

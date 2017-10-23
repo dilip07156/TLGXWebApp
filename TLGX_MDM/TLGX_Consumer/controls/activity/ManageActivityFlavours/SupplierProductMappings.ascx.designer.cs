@@ -13,13 +13,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class SupplierProductMappings {
         
         /// <summary>
-        /// updPanSupplierProductMapping control.
+        /// updPanPolicy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanSupplierProductMapping;
+        protected global::System.Web.UI.UpdatePanel updPanPolicy;
         
         /// <summary>
         /// dvMsg control.
@@ -31,13 +31,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// btnNewActivity control.
+        /// vlsum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnNewActivity;
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsum;
         
         /// <summary>
         /// divDropdownForEntries control.
@@ -58,15 +58,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
         /// grdSupplierProductMapping control.
         /// </summary>
         /// <remarks>
@@ -76,13 +67,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.GridView grdSupplierProductMapping;
         
         /// <summary>
-        /// updNewActivity control.
+        /// updSupplierProductMapping control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updNewActivity;
+        protected global::System.Web.UI.UpdatePanel updSupplierProductMapping;
         
         /// <summary>
         /// vldSumActivity control.
@@ -94,21 +85,21 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.ValidationSummary vldSumActivity;
         
         /// <summary>
-        /// divMsgAlertActivity control.
+        /// divMsgAlertPolicy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertActivity;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertPolicy;
         
         /// <summary>
-        /// frmPolicy control.
+        /// frmSupplierProductMapping control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmPolicy;
+        protected global::System.Web.UI.WebControls.FormView frmSupplierProductMapping;
     }
 }

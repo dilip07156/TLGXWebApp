@@ -13,6 +13,33 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class Inclusion {
         
         /// <summary>
+        /// updPanInclusion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updPanInclusion;
+        
+        /// <summary>
+        /// dvMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        
+        /// <summary>
         /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
@@ -49,13 +76,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.UpdatePanel updEditActivity;
         
         /// <summary>
-        /// vldSumActivity control.
+        /// hdnFlag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary vldSumActivity;
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
         
         /// <summary>
         /// divMsgAlertExc control.
@@ -67,138 +94,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertExc;
         
         /// <summary>
-        /// chkIsInclusion control.
+        /// frmInclusion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsInclusion;
-        
-        /// <summary>
-        /// ddlInclusionFor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInclusionFor;
-        
-        /// <summary>
-        /// ddlInclusionType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlInclusionType;
-        
-        /// <summary>
-        /// txtFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFrom;
-        
-        /// <summary>
-        /// CalFromDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalFromDate;
-        
-        /// <summary>
-        /// axfte_txtFrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFrom;
-        
-        /// <summary>
-        /// txtTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTo;
-        
-        /// <summary>
-        /// calToDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calToDate;
-        
-        /// <summary>
-        /// axfte_txtTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtTo;
-        
-        /// <summary>
-        /// txtName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
-        
-        /// <summary>
-        /// txtDescription control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDescription;
-        
-        /// <summary>
-        /// frmInclusionDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmInclusionDetails;
-        
-        /// <summary>
-        /// gvActInclusionDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvActInclusionDetails;
-        
-        /// <summary>
-        /// btnUpdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
-        
-        /// <summary>
-        /// btnReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
+        protected global::System.Web.UI.WebControls.FormView frmInclusion;
     }
 }

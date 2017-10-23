@@ -33,7 +33,7 @@
             <%--<div class="navbar-inner">--%>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#panFlavours" data-toggle="tab">Flavours</a></li>
-                <li><a href="#panInclusion" data-toggle="tab">Inclusion</a></li>
+                <li><a href="#panInclusion" data-toggle="tab">Inclusion/Exclusion</a></li>
                 <li><a href="#panClassificationAttributes" data-toggle="tab">Classification Attributes</a></li>
                 <li><a href="#panActivityMedia" data-toggle="tab">Media</a></li>
                 <li><a href="#panPolicy" data-toggle="tab">Policy</a></li>
