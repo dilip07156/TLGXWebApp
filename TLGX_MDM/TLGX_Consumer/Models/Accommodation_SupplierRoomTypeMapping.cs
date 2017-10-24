@@ -40,5 +40,24 @@ namespace TLGX_Consumer.Models
         public Nullable<int> Quantity { get; set; }
         public string RoomLocationCode { get; set; }
         public Nullable<System.Guid> Accommodation_RoomInfo_Id { get; set; }
+        public string SupplierRoomName { get; set; }
+        public string TX_RoomName { get; set; }
+        public string SupplierRoomCategoryId { get; set; }
+        public Nullable<System.DateTime> Create_Date { get; set; }
+        public string Create_User { get; set; }
+        public Nullable<System.DateTime> Edit_Date { get; set; }
+        public string Edit_User { get; set; }
+        public Nullable<int> MaxInfants { get; set; }
+        public Nullable<int> MaxGuestOccupancy { get; set; }
+        public string RatePlan { get; set; }
+        public string RatePlanCode { get; set; }
+        public string SupplierProductName { get; set; }
+        public string SupplierProductId { get; set; }
+        public string Tx_StrippedName { get; set; }
+        public string Tx_ReorderedName { get; set; }
+        public string MappingStatus { get; set; }
+        public Nullable<int> MapId { get; set; }
+        public Nullable<System.Guid> stg_SupplierHotelRoomMapping_Id { get; set; }
+        public string RoomDescription { get; set; }
     }
 }
