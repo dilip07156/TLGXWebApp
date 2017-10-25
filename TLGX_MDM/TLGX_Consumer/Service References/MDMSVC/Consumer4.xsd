@@ -66,6 +66,7 @@
       <xs:element minOccurs="0" name="SystemProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemStateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TLGXProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber_tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />

@@ -17,5 +17,12 @@ namespace TLGX_Consumer.Models
         public System.Guid KeywordAlias_Id { get; set; }
         public Nullable<System.Guid> Keyword_Id { get; set; }
         public string Value { get; set; }
+        public Nullable<System.DateTime> Create_Date { get; set; }
+        public string Create_User { get; set; }
+        public Nullable<System.DateTime> Edit_Date { get; set; }
+        public string Edit_User { get; set; }
+        public string Status { get; set; }
+        public Nullable<int> Sequence { get; set; }
+        public Nullable<int> NoOfHits { get; set; }
     }
 }
