@@ -3,6 +3,15 @@
 <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityContactDetails.ascx" TagPrefix="uc1" TagName="ActivityContactDetails" %>
 <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityStatus.ascx" TagPrefix="uc1" TagName="ActivityStatus" %>
 
+<script type="text/javascript">
+    $(function () {
+        $('[id*=lst]').multiselect({
+            includeSelectAllOption: true
+        });
+    });
+</script>
+
+
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -114,7 +123,7 @@
                                         City
                                             <asp:RequiredFieldValidator ID="vddlCity" runat="server" ErrorMessage="Please select City" Text="*" ControlToValidate="ddlCity" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator></label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" >
+                                        <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -124,7 +133,7 @@
                                         Area
                                     </label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlArea" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" >
+                                        <asp:DropDownList ID="ddlArea" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
@@ -135,7 +144,7 @@
                                         Location
                                     </label>
                                     <div class="col-sm-8">
-                                        <asp:DropDownList ID="ddlLocation" runat="server" CssClass="form-control" AppendDataBoundItems="true" >
+                                        <asp:DropDownList ID="ddlLocation" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
 
@@ -151,7 +160,7 @@
 
             <div class="col-lg-4">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> TLGX Classification Mapping</div>
+                    <div class="panel-heading">TLGX Classification Mapping</div>
                     <div class="panel-body">
                         <asp:UpdatePanel ID="up2" runat="server">
                             <ContentTemplate>
@@ -173,19 +182,24 @@
                                     </label>
                                     <div class="col-sm-6">
                                         <asp:DropDownList ID="ddlProdcategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProdcategorySubType_SelectedIndexChanged" AutoPostBack="true">
-                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-sm-6" for="ddlProductType">
                                         Product Type
-                                    <asp:RequiredFieldValidator ID="vddlProductType" runat="server" ErrorMessage="Please select Product Type" Text="*" ControlToValidate="ddlProductType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
+                                    <%--<asp:RequiredFieldValidator ID="vddlProductType" runat="server" ErrorMessage="Please select Product Type" Text="*" ControlToValidate="ddlProductType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>--%>
                                     </label>
                                     <div class="col-sm-6">
-                                        <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged" AutoPostBack="true">
+                                        <%--<asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged" AutoPostBack="true">
                                             <asp:ListItem Value="0">-Select-</asp:ListItem>
-                                        </asp:DropDownList>
+                                        </asp:DropDownList>--%>
+                                        <asp:ListBox ID="lstboxProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>
+                                        <asp:Button ID="btnAddToListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="FillListBox2" Text="v" />
+                                        <asp:Button ID="btnRemoveFromListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="EmptyListBox2" Text="^"/>
+                                        <asp:Literal ID="lblmsg2" runat="server"/>
+                                        <asp:ListBox ID="lstboxSelectedProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -231,7 +245,7 @@
                                 <asp:TextBox ID="txtEventPlace" runat="server" Text='<%# Bind("PlaceOfEvent") %>' class="form-control" />
                             </div>
                         </div>
-                     <%--   <div class="form-group">
+                        <%--   <div class="form-group">
                             <label class="control-label col-sm-4" for="txtStartingPoint" >Starting Point</label>
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtStartingPoint" runat="server" Text='<%# Bind("StartingPoint") %>' class="form-control" />

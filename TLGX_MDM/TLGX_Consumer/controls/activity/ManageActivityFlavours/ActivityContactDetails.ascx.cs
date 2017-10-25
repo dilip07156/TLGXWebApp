@@ -28,8 +28,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             // Activity_Id = new Guid(Request.QueryString["Activity_Id"]);
             grdContactDetails.DataSource = AccSvc.GetActivityContactDetails(Activity_Flavour_Id, Guid.Empty);
             grdContactDetails.DataBind();
+            frmContactDetaiil.Visible = false;
         }
-
         protected void frmContactDetaiil_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
             TextBox txtTelCountryCode = (TextBox)frmContactDetaiil.FindControl("txtTelCountryCode");
@@ -69,9 +69,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsgContact, "Error Occurred", BootstrapAlertType.Warning);
                 }
+                btnAddFormView.Visible = true;
+                frmContactDetaiil.Visible = false;
             }
 
-            else if (e.CommandName == "Edit")
+            else if (e.CommandName == "Select")
             {
                 Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
                 Guid myRow_Id = Guid.Parse(grdContactDetails.SelectedDataKey.Value.ToString());
@@ -103,7 +105,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     {
                         BootstrapAlert.BootstrapAlertMessage(dvMsgContact, "Error Occurred", BootstrapAlertType.Warning);
                     }
-
+                    btnAddFormView.Visible = true;
+                    frmContactDetaiil.Visible = false;
                 }
             }
 
@@ -227,6 +230,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     e.Row.Font.Strikeout = true;
                 }
             }
+        }
+        protected void btnAddFormView_Click(object sender, EventArgs e)
+        {
+            frmContactDetaiil.ChangeMode(FormViewMode.Insert);
+            frmContactDetaiil.Visible = true;
+            btnAddFormView.Visible = false;
         }
     }
 }

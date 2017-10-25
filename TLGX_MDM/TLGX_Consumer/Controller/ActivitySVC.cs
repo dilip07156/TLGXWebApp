@@ -232,7 +232,6 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_Prices"], RQ, typeof(DC_Activity_Prices_RQ), typeof(List<DC_Activity_Prices>), out result);
             return result as List<MDMSVC.DC_Activity_Prices>;
         }
-
         public DC_Message AddUpdateActivityPrices(MDMSVC.DC_Activity_Prices RQ)
         {
             object result = null;
@@ -241,7 +240,22 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
-        #region
+        #region Activity Deals
+        public List<MDMSVC.DC_Activity_Deals> GetActivityDeals(MDMSVC.DC_Activity_Deals_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityDeals"], RQ, typeof(DC_Activity_Deals_RQ), typeof(List<DC_Activity_Deals>), out result);
+            return result as List<MDMSVC.DC_Activity_Deals>;
+        }
+        public DC_Message AddUpdateActivityDeals(MDMSVC.DC_Activity_Deals RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityDeals"], RQ, typeof(DC_Activity_Deals), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
+        #region "Activity Supplier Product Mapping"
         public List<DC_Activity_SupplierProductMapping> GetActivitySupplierProductMapping(DC_Activity_SupplierProductMapping_RQ RQParams)
         {
             object result = null;

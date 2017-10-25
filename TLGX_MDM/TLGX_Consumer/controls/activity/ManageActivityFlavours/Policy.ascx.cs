@@ -44,12 +44,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 grdPolicy.DataSource = res;
                 grdPolicy.DataBind();
+                lblTotalRecords.Text = Convert.ToString(res[0].Totalrecords);
             }
             else
             {
                 grdPolicy.DataSource = null;
                 grdPolicy.DataBind();
-                divDropdownForEntries.Visible = false;
+                //divDropdownForEntries.Visible = false;
             }
             
         }

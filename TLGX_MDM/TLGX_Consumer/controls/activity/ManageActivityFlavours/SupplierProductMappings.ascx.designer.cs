@@ -13,13 +13,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class SupplierProductMappings {
         
         /// <summary>
-        /// updPanPolicy control.
+        /// updSupplierProductMappings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanPolicy;
+        protected global::System.Web.UI.UpdatePanel updSupplierProductMappings;
         
         /// <summary>
         /// dvMsg control.
@@ -38,6 +38,24 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vlsum;
+        
+        /// <summary>
+        /// lblTotalRecords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
+        
+        /// <summary>
+        /// btnNewUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNewUpload;
         
         /// <summary>
         /// divDropdownForEntries control.

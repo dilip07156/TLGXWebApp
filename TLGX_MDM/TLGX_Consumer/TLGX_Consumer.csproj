@@ -254,6 +254,7 @@
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Deals.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Exclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
@@ -1308,6 +1309,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.designer.cs">
       <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Deals.ascx.cs">
+      <DependentUpon>Deals.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Deals.ascx.designer.cs">
+      <DependentUpon>Deals.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.cs">
       <DependentUpon>Exclusion.ascx</DependentUpon>

@@ -22,21 +22,21 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.UpdatePanel updMedia;
         
         /// <summary>
-        /// Prices control.
+        /// Prices1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Prices Prices;
+        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Prices Prices1;
         
         /// <summary>
-        /// HiddenField1PnD control.
+        /// Deals1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1PnD;
+        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Deals Deals1;
     }
 }

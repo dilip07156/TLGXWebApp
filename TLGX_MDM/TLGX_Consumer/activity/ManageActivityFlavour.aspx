@@ -32,7 +32,8 @@
         <div class="navbar">
             <%--<div class="navbar-inner">--%>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#panFlavours" data-toggle="tab">Flavours</a></li>
+                <li class="active"><a href="#panFlavours" data-toggle="tab">Product Details</a></li>
+                 <li><a href="#panDescription" data-toggle="tab">Descriptions</a></li>
                 <li><a href="#panInclusion" data-toggle="tab">Inclusion/Exclusion</a></li>
                 <li><a href="#panClassificationAttributes" data-toggle="tab">Classification Attributes</a></li>
                 <li><a href="#panActivityMedia" data-toggle="tab">Media</a></li>
@@ -40,7 +41,6 @@
                 <li><a href="#panPricesNDeals" data-toggle="tab">Prices And Deals</a></li>
                 <li><a href="#panReviewsNScores" data-toggle="tab">Reviews And Scores</a></li>
                 <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Product Mappings</a></li>
-                 <li><a href="#panDescription" data-toggle="tab">Descriptions</a></li>
             </ul>
             <%--</div>--%>
         </div>
@@ -48,6 +48,10 @@
         <div class="tab-content">
             <div class="tab-pane active" id="panFlavours">
                 <uc1:Flavours runat="server" ID="Flavours" />
+            </div>
+
+            <div class="tab-pane" id="panDescription">
+                <uc1:ActivityDescription runat="server" id="ActivityDescription" />
             </div>
 
             <div class="tab-pane" id="panInclusion">
@@ -76,9 +80,6 @@
 
             <div class="tab-pane" id="panSupplierProductMappings">
                 <uc1:SupplierProductMappings runat="server" ID="SupplierProductMappings" />
-            </div>
-             <div class="tab-pane" id="panDescription">
-                <uc1:ActivityDescription runat="server" id="ActivityDescription" />
             </div>
                 
         </div>

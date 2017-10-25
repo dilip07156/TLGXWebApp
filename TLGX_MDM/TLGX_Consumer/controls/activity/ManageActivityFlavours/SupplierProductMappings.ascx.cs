@@ -30,16 +30,16 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             MDMSVC.DC_Activity_SupplierProductMapping_RQ _obj = new MDMSVC.DC_Activity_SupplierProductMapping_RQ();
             _obj.Activity_ID = Activity_Flavour_Id;
             var res = ActSVC.GetActivitySupplierProductMapping(_obj);
-            if (res.Count > 0 || res != null)
-            {
-                grdSupplierProductMapping.DataSource = res;
-                grdSupplierProductMapping.DataBind();
-            }
-            else
-            {
-                grdSupplierProductMapping.DataSource = null;
-                grdSupplierProductMapping.DataBind();
-            }
+            //if (res.Count > 0 || res != null)
+            //{
+            //    grdSupplierProductMapping.DataSource = res;
+            //    grdSupplierProductMapping.DataBind();
+            //}
+            //else
+            //{
+            grdSupplierProductMapping.DataSource = null;
+            grdSupplierProductMapping.DataBind();
+            //}
         }
         protected void grdSupplierProductMapping_RowCommand(object sender, GridViewCommandEventArgs e)
         {

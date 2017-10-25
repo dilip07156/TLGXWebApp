@@ -11,14 +11,14 @@
     //    closeAddNewActivityModal();
     //}
 </script>
-<asp:UpdatePanel ID="updPanPolicy" runat="server">
+<asp:UpdatePanel ID="updSupplierProductMappings" runat="server">
     <ContentTemplate>
         <div id="dvMsg" runat="server" style="display: none;"></div>
 
         <%--<div class="container">
             <div class="form-group col-md-12">
                 <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewPolicyModal();" /><%--OnClick="btnNewActivity_Click"--%>
-            <%--</div>
+        <%--</div>
         </div>--%>
 
         <headertemplate>
@@ -27,16 +27,15 @@
             </div>
         </headertemplate>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">Policy</div>
-            <div class="panel-body">
-
-                <div class="row col-lg-3 pull-right">
+                <h4 class="panel-title pull-left">
+                    Supplier Product Mapping (Total Count:
+                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
+                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" Text="Add New" OnClientClick="showAddNewPolicyModal()" />
+                <div class="col-lg-3 pull-right">
                     <div class="form-group pull-right">
                         <div class="input-group" runat="server" id="divDropdownForEntries">
                             <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                            <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control"
-                                OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                            <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
                                 <asp:ListItem>10</asp:ListItem>
                                 <asp:ListItem>25</asp:ListItem>
                                 <asp:ListItem>50</asp:ListItem>
@@ -46,9 +45,10 @@
                     </div>
                 </div>
 
+
                 <asp:GridView ID="grdSupplierProductMapping" runat="server" AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Activity_ID"
-                    EmptyDataText="No Data For This Activity" CssClass="table table-hover table-striped" OnRowCommand="grdSupplierProductMapping_RowCommand" OnRowDataBound="grdSupplierProductMapping_RowDataBound">
-                    
+                    EmptyDataText="No Data Found" CssClass="table table-hover table-striped" OnRowCommand="grdSupplierProductMapping_RowCommand" OnRowDataBound="grdSupplierProductMapping_RowDataBound">
+
                     <Columns>
                         <asp:BoundField DataField="SupplierCode" HeaderText="SupplierCode" SortExpression="SupplierCode" />
                         <asp:BoundField DataField="SupplierName" HeaderText="SupplierName" SortExpression="SupplierName" />
@@ -78,9 +78,7 @@
                     </Columns>
                     <PagerStyle CssClass="pagination-ys" />
                 </asp:GridView>
-            </div>
-
-        </div>
+            
     </ContentTemplate>
 </asp:UpdatePanel>
 
@@ -107,7 +105,7 @@
                             </div>
                         </div>
 
-                        <asp:FormView ID="frmSupplierProductMapping" runat="server" DataKeyNames="ActivitySupplierProductMapping_Id" DefaultMode="Insert" CssClass="col-md-12" 
+                        <asp:FormView ID="frmSupplierProductMapping" runat="server" DataKeyNames="ActivitySupplierProductMapping_Id" DefaultMode="Insert" CssClass="col-md-12"
                             OnItemCommand="frmSupplierProductMapping_ItemCommand">
 
                             <InsertItemTemplate>
@@ -195,14 +193,14 @@
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="txtName">Policy Name</label>
                                                         <div class="col-sm-6">
-                                                            <asp:TextBox runat="server" ID="txtName" CssClass="form-control" ></asp:TextBox>
+                                                            <asp:TextBox runat="server" ID="txtName" CssClass="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group row">
                                                         <label class="control-label col-sm-6" for="txtDescription">Policy Description</label>
                                                         <div class="col-sm-6">
-                                                            <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control" TextMode="MultiLine" ></asp:TextBox>
+                                                            <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                                                         </div>
                                                     </div>
 

@@ -23,9 +23,9 @@
 <asp:UpdatePanel ID="updMedia" runat="server">
     <ContentTemplate>
 
-        <div class="panel-group" id="searchResult">
+        <%--<div class="panel-group" id="searchResult">
             <div class="panel panel-default">
-                <div class="panel-heading clearfix">
+                <div class="panel-heading clearfix">--%>
                     <h4 class="panel-title pull-left">
                         <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Activity Media Details (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a></h4>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
 
-                </div>
+                <%--</div>--%>
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div id="dvMsg" runat="server" style="display: none;"></div>
@@ -89,8 +89,8 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+            <%--</div>
+        </div>--%>
 
     </ContentTemplate>
 </asp:UpdatePanel>
