@@ -2401,9 +2401,6 @@
     <Compile Include="Models\Project_WorkflowStepsActivity.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Roles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SiteMap.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
@@ -2458,16 +2455,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserInRoles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Users_Contract.cs" />
-    <Compile Include="Models\UsersInRoles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\vwMappingStat.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>

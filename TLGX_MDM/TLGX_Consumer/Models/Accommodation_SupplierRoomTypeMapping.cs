@@ -18,37 +18,21 @@ namespace TLGX_Consumer.Models
         public Nullable<System.Guid> Accommodation_Id { get; set; }
         public Nullable<System.Guid> Supplier_Id { get; set; }
         public string SupplierName { get; set; }
-        public string SupplierRoomCategory { get; set; }
-        public string SupplierRoomTypeCode { get; set; }
-        public string BathRoomType { get; set; }
-        public string BedTypeCode { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> MaxAdults { get; set; }
-        public Nullable<int> MaxChild { get; set; }
-        public Nullable<int> MaxInfant { get; set; }
-        public Nullable<int> MaxGuest { get; set; }
         public string SupplierRoomId { get; set; }
-        public string RoomViewCode { get; set; }
-        public string RoomTypeCode { get; set; }
-        public string SizeMeasurement { get; set; }
-        public string FloorName { get; set; }
-        public string FloorNumber { get; set; }
-        public string SupplierHotelCode { get; set; }
-        public string SupplierHotelName { get; set; }
-        public string SupplierProvider { get; set; }
-        public string Amenities { get; set; }
-        public Nullable<int> Quantity { get; set; }
-        public string RoomLocationCode { get; set; }
-        public Nullable<System.Guid> Accommodation_RoomInfo_Id { get; set; }
+        public string SupplierRoomTypeCode { get; set; }
         public string SupplierRoomName { get; set; }
         public string TX_RoomName { get; set; }
+        public string SupplierRoomCategory { get; set; }
         public string SupplierRoomCategoryId { get; set; }
         public Nullable<System.DateTime> Create_Date { get; set; }
         public string Create_User { get; set; }
         public Nullable<System.DateTime> Edit_Date { get; set; }
         public string Edit_User { get; set; }
+        public Nullable<int> MaxAdults { get; set; }
+        public Nullable<int> MaxChild { get; set; }
         public Nullable<int> MaxInfants { get; set; }
         public Nullable<int> MaxGuestOccupancy { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public string RatePlan { get; set; }
         public string RatePlanCode { get; set; }
         public string SupplierProductName { get; set; }
@@ -57,6 +41,7 @@ namespace TLGX_Consumer.Models
         public string Tx_ReorderedName { get; set; }
         public string MappingStatus { get; set; }
         public Nullable<int> MapId { get; set; }
+        public Nullable<System.Guid> Accommodation_RoomInfo_Id { get; set; }
         public Nullable<System.Guid> stg_SupplierHotelRoomMapping_Id { get; set; }
         public string RoomDescription { get; set; }
     }
