@@ -26,19 +26,28 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             MDMSVC.DC_Activity_Inclusions_RQ _obj = new MDMSVC.DC_Activity_Inclusions_RQ();
             _obj.Activity_Flavour_Id = Activity_Flavour_Id;
             var result = ActSVC.GetActivityInclusions(_obj);
-            List<MDMSVC.DC_Activity_Inclusions> res = new List<MDMSVC.DC_Activity_Inclusions>();
-            if (res != null)
+            if (result != null)
             {
-                foreach (MDMSVC.DC_Activity_Inclusions rs in result)
+                List<MDMSVC.DC_Activity_Inclusions> res = new List<MDMSVC.DC_Activity_Inclusions>();
+                if (res != null)
                 {
-                    if (rs.IsInclusion != true)
+                    foreach (MDMSVC.DC_Activity_Inclusions rs in result)
                     {
-                        res.Add(rs);
-                    }
+                        if (rs.IsInclusion != true)
+                        {
+                            res.Add(rs);
+                        }
 
+                    }
+                    gvActInclusionSearch.DataSource = res;
+                    gvActInclusionSearch.DataBind();
                 }
-                gvActInclusionSearch.DataSource = res;
-                gvActInclusionSearch.DataBind();
+                else
+                {
+                    gvActInclusionSearch.DataSource = null;
+                    gvActInclusionSearch.DataBind();
+                    divDropdownForEntries.Visible = false;
+                }
             }
             else
             {

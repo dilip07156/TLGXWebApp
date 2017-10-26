@@ -278,7 +278,7 @@
 
             <div class="modal-header ">
                 <div class="panel-title">
-                    <h4 class="modal-title">Update Mapping </h4>
+                    <h4 class="modal-title">Add/Update Mapping </h4>
                 </div>
             </div>
             <div class="modal-body">
@@ -378,7 +378,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group row">
                                                     <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CommandName="Add" OnClientClick="computeValue(); return true;" CausesValidation="true" ValidationGroup="AddConfigValues" />
-                                                    <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="Reset" CausesValidation="false" />
+                                                    <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetAdd" CausesValidation="false" />
                                                 </div>
                                             </div>
                                         </div>
@@ -475,7 +475,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group row">
                                                 <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" CommandName="Save" OnClientClick="computeValue(); return true;" ValidationGroup="UpdateConfigValues" CausesValidation="true" />
-                                                <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="Reset" CausesValidation="false" />
+                                                <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetUpdate" CausesValidation="false" />
                                             </div>
                                         </div>
                                     </div>

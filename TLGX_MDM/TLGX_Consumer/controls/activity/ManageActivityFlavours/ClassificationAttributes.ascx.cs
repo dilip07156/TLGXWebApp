@@ -79,31 +79,32 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
             RQ.Activity_Flavour_Id  = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             var result = AccSvc.GetActivityClasificationAttributes(RQ);
-
-            List<DC_ClassificationAttributes_Type> _newObj = new List<DC_ClassificationAttributes_Type>();
-            foreach (string at in (from r in result select r.AttributeType).Distinct())
+            if (result != null)
             {
-                DC_ClassificationAttributes_Type type = new DC_ClassificationAttributes_Type();
-                type.AttributeType = at;
-                List<DC_ClassificationAttributes_SubType> lstSubType = new List<DC_ClassificationAttributes_SubType>();
-
-                foreach (string st in (from r in result where r.AttributeType == at select r.AttributeSubType).Distinct())
+                List<DC_ClassificationAttributes_Type> _newObj = new List<DC_ClassificationAttributes_Type>();
+                foreach (string at in (from r in result select r.AttributeType).Distinct())
                 {
-                    DC_ClassificationAttributes_SubType subtype = new DC_ClassificationAttributes_SubType();
-                    subtype.SubAttributeType = st;
-                    subtype.ListCA = (from r in result where r.AttributeType == at && r.AttributeSubType == st select r).ToList();
+                    DC_ClassificationAttributes_Type type = new DC_ClassificationAttributes_Type();
+                    type.AttributeType = at;
+                    List<DC_ClassificationAttributes_SubType> lstSubType = new List<DC_ClassificationAttributes_SubType>();
 
-                    lstSubType.Add(subtype);
+                    foreach (string st in (from r in result where r.AttributeType == at select r.AttributeSubType).Distinct())
+                    {
+                        DC_ClassificationAttributes_SubType subtype = new DC_ClassificationAttributes_SubType();
+                        subtype.SubAttributeType = st;
+                        subtype.ListCA = (from r in result where r.AttributeType == at && r.AttributeSubType == st select r).ToList();
+
+                        lstSubType.Add(subtype);
+                    }
+
+                    type.SubType = lstSubType;
+
+                    _newObj.Add(type);
                 }
 
-                type.SubType = lstSubType;
-
-                _newObj.Add(type);
+                repCAType.DataSource = _newObj;
+                repCAType.DataBind();
             }
-
-            repCAType.DataSource = _newObj;
-            repCAType.DataBind();
-
         }
 
         protected void Page_Load(object sender, EventArgs e)

@@ -123,8 +123,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             grdMappingConfig.PageIndex = PageIndex;
             grdMappingConfig.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
             grdMappingConfig.DataBind();
-            dvMsg.Style.Add("display", "block");
-            BootstrapAlert.BootstrapAlertMessage(dvMsg, "Search Completed", BootstrapAlertType.Success);
+            //dvMsg.Style.Add("display", "block");
+            //BootstrapAlert.BootstrapAlertMessage(dvMsg, "Search Completed", BootstrapAlertType.Success);
         }
 
         protected void btnReset_Click(object sender, EventArgs e)

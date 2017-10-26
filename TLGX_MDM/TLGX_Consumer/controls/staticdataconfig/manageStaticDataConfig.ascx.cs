@@ -296,7 +296,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Warning);
-                   // PageIndex = 0;
+                    // PageIndex = 0;
                     fillmappingattributes();
                 }
                 else
@@ -682,7 +682,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dc = mappingsvc.UpdateStaticDataMappingAttributeValue(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                     {
-                       
+
                     }
                     else
                     {
@@ -724,7 +724,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
             }
         }
 
@@ -956,17 +957,34 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 }
             }
-            else if (e.CommandName == "Reset")
+            else if (e.CommandName == "ResetAdd")
             {
                 ddlAttributeType.SelectedIndex = 0;
+                ddlAttributeName.Items.Clear();
+                ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
                 txtAttributeName.Text = "";
-                ddlAttributeValue.SelectedIndex = 0;
+                ddlAttributeValue.Items.Clear();
+                ddlAttributeValue.Items.Insert(0,new ListItem("---ALL---", ""));
                 txtAttributeValue.Text = "";
                 txtPriority.Text = "";
                 txtDescription.InnerText = "";
+                //dvtxtAttributeValue.Visible = true;
+                //dvddlAttributeValue.Visible = false;
+                hdnFlag.Value = "false";
+            }
+            else if (e.CommandName == "ResetUpdate")
+            {
                 ddlAddStatus.SelectedIndex = 0;
-                dvtxtAttributeValue.Visible = true;
-                dvddlAttributeValue.Visible = false;
+                ddlAttributeType.SelectedIndex = 0;
+                ddlAttributeName.Items.Clear();
+                ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                ddlAttributeValue.Items.Clear();
+                ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", ""));
+                txtAttributeValue.Text = "";
+                txtPriority.Text = "";
+                txtDescription.InnerText = "";
+                //dvtxtAttributeValue.Visible = true;
+                //dvddlAttributeValue.Visible = false;
                 hdnFlag.Value = "false";
             }
         }
