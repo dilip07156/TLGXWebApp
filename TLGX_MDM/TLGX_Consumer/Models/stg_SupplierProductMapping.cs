@@ -41,13 +41,12 @@ namespace TLGX_Consumer.Models
         public string StateName { get; set; }
         public string StateCode { get; set; }
         public string Latitude { get; set; }
-        public string Longtitude { get; set; }
+        public string Longitude { get; set; }
         public string Fax { get; set; }
         public string Email { get; set; }
         public string Website { get; set; }
         public string StreetNo { get; set; }
         public string TX_COUNTRYNAME { get; set; }
-        public string Longitude { get; set; }
         public string StarRating { get; set; }
         public string Google_Place_Id { get; set; }
         public Nullable<System.Guid> Country_Id { get; set; }

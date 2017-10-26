@@ -14,6 +14,7 @@ namespace TLGX_Consumer.Models
     
     public partial class SiteMap
     {
+        public System.Guid SiteMap_ID { get; set; }
         public int ID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
@@ -24,9 +25,8 @@ namespace TLGX_Consumer.Models
         public string Create_User { get; set; }
         public Nullable<System.DateTime> Edit_Date { get; set; }
         public string Edit_User { get; set; }
-        public Nullable<bool> IsActive { get; set; }
         public Nullable<bool> IsSiteMapNode { get; set; }
-        public System.Guid SiteMap_ID { get; set; }
+        public Nullable<bool> IsActive { get; set; }
         public System.Guid applicationId { get; set; }
     }
 }
