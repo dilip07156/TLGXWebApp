@@ -1802,9 +1802,6 @@
     <Compile Include="Models\Accommodation_Status.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Accommodation_SupplierRoomTypeMapping.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccomodationContract.cs" />
     <Compile Include="Models\Address.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
@@ -2401,9 +2398,6 @@
     <Compile Include="Models\Project_WorkflowStepsActivity.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Roles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SiteMap.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
@@ -2457,12 +2451,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserInRoles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Users_Contract.cs" />
     <Compile Include="Models\UsersInRoles_NIU.cs">

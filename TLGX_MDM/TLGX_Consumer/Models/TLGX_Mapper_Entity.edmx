@@ -405,41 +405,6 @@
           <Property Name="Edit_User" Type="varchar" MaxLength="50" />
           <Property Name="Edit_Date" Type="datetime" />
         </EntityType>
-        <EntityType Name="Accommodation_SupplierRoomTypeMapping">
-          <Key>
-            <PropertyRef Name="Accommodation_SupplierRoomTypeMapping_Id" />
-          </Key>
-          <Property Name="Accommodation_SupplierRoomTypeMapping_Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Accommodation_Id" Type="uniqueidentifier" />
-          <Property Name="Supplier_Id" Type="uniqueidentifier" />
-          <Property Name="SupplierName" Type="nvarchar" MaxLength="100" />
-          <Property Name="SupplierRoomId" Type="nvarchar" MaxLength="255" />
-          <Property Name="SupplierRoomTypeCode" Type="nvarchar" MaxLength="255" />
-          <Property Name="SupplierRoomName" Type="nvarchar" MaxLength="255" />
-          <Property Name="TX_RoomName" Type="nvarchar" MaxLength="255" />
-          <Property Name="SupplierRoomCategory" Type="nvarchar" MaxLength="255" />
-          <Property Name="SupplierRoomCategoryId" Type="nvarchar" MaxLength="255" />
-          <Property Name="Create_Date" Type="date" />
-          <Property Name="Create_User" Type="nvarchar" MaxLength="255" />
-          <Property Name="Edit_Date" Type="date" />
-          <Property Name="Edit_User" Type="nvarchar" MaxLength="255" />
-          <Property Name="MaxAdults" Type="int" />
-          <Property Name="MaxChild" Type="int" />
-          <Property Name="MaxInfants" Type="int" />
-          <Property Name="MaxGuestOccupancy" Type="int" />
-          <Property Name="Quantity" Type="int" />
-          <Property Name="RatePlan" Type="nvarchar" MaxLength="50" />
-          <Property Name="RatePlanCode" Type="nvarchar" MaxLength="50" />
-          <Property Name="SupplierProductName" Type="nvarchar" MaxLength="255" />
-          <Property Name="SupplierProductId" Type="nvarchar" MaxLength="255" />
-          <Property Name="Tx_StrippedName" Type="nvarchar" MaxLength="255" />
-          <Property Name="Tx_ReorderedName" Type="nvarchar" MaxLength="255" />
-          <Property Name="MappingStatus" Type="nvarchar" MaxLength="10" />
-          <Property Name="MapId" Type="int" />
-          <Property Name="Accommodation_RoomInfo_Id" Type="uniqueidentifier" />
-          <Property Name="stg_SupplierHotelRoomMapping_Id" Type="uniqueidentifier" />
-          <Property Name="RoomDescription" Type="nvarchar(max)" />
-        </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Address_Id" />
@@ -1561,17 +1526,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.sysdiagrams' does not have a 
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
-          <Property Name="LastLoginDate" Type="datetime" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwMappingStats">
@@ -2031,7 +1985,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <EntitySet Name="Accommodation_RouteInfo" EntityType="Self.Accommodation_RouteInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Accommodation_RuleInfo" EntityType="Self.Accommodation_RuleInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Accommodation_Status" EntityType="Self.Accommodation_Status" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Accommodation_SupplierRoomTypeMapping" EntityType="Self.Accommodation_SupplierRoomTypeMapping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" Schema="dbo" store:Type="Tables" />
@@ -2097,7 +2050,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier_Market" EntityType="Self.Supplier_Market" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier_ProductCategory" EntityType="Self.Supplier_ProductCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [sysdiagrams].[name] AS [name], 
@@ -2470,56 +2422,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <Property Name="Edit_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Edit_Date" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="Accommodation_SupplierRoomTypeMapping">
-          <Key>
-            <PropertyRef Name="Accommodation_SupplierRoomTypeMapping_Id" />
-          </Key>
-          <Property Name="Accommodation_SupplierRoomTypeMapping_Id" Type="Guid" Nullable="false" />
-          <Property Name="Accommodation_Id" Type="Guid" />
-          <Property Name="Supplier_Id" Type="Guid" />
-          <Property Name="SupplierName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierRoomCategory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierRoomTypeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="BathRoomType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="BedTypeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="MaxAdults" Type="Int32" />
-          <Property Name="MaxChild" Type="Int32" />
-          <Property Name="MaxInfant" Type="Int32" />
-          <Property Name="MaxGuest" Type="Int32" />
-          <Property Name="SupplierRoomId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="RoomViewCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="RoomTypeCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SizeMeasurement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FloorName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="FloorNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierHotelCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierHotelName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierProvider" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Amenities" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="RoomLocationCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Accommodation_RoomInfo_Id" Type="Guid" />
-          <Property Name="SupplierRoomName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="TX_RoomName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierRoomCategoryId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Create_Date" Type="DateTime" Precision="0" />
-          <Property Name="Create_User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Edit_Date" Type="DateTime" Precision="0" />
-          <Property Name="Edit_User" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaxInfants" Type="Int32" />
-          <Property Name="MaxGuestOccupancy" Type="Int32" />
-          <Property Name="RatePlan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RatePlanCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierProductName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="SupplierProductId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Tx_StrippedName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Tx_ReorderedName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MappingStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="MapId" Type="Int32" />
-          <Property Name="stg_SupplierHotelRoomMapping_Id" Type="Guid" />
-          <Property Name="RoomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="Address_Id" />
@@ -2562,7 +2464,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <Property Name="ApplicationId" Type="Guid" Nullable="false" />
           <Property Name="ApplicationName" Type="String" MaxLength="235" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Roles_NIU" Relationship="Self.RoleEntity_Application" FromRole="Applications" ToRole="Roles_NIU" />
         </EntityType>
         <EntityType Name="aspnet_SchemaVersions">
           <Key>
@@ -3298,16 +3199,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <Property Name="UPDATE_USER" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Short_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Roles_NIU">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Application" Relationship="Self.RoleEntity_Application" FromRole="Roles_NIU" ToRole="Applications" />
-        </EntityType>
         <EntityType Name="SiteMap">
           <Key>
             <PropertyRef Name="ID" />
@@ -3546,25 +3437,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="UserInRoles_NIU">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="UsersInRoles_NIU">
           <Key>
             <PropertyRef Name="UserId" />
@@ -3573,18 +3445,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
-        <Association Name="RoleEntity_Application">
-          <End Role="Applications" Type="Self.Application" Multiplicity="1" />
-          <End Role="Roles_NIU" Type="Self.Roles_NIU" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Applications">
-              <PropertyRef Name="ApplicationId" />
-            </Principal>
-            <Dependent Role="Roles_NIU">
-              <PropertyRef Name="ApplicationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -3633,7 +3493,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <EntitySet Name="Accommodation_RouteInfo" EntityType="Self.Accommodation_RouteInfo" />
           <EntitySet Name="Accommodation_RuleInfo" EntityType="Self.Accommodation_RuleInfo" />
           <EntitySet Name="Accommodation_Status" EntityType="Self.Accommodation_Status" />
-          <EntitySet Name="Accommodation_SupplierRoomTypeMapping" EntityType="Self.Accommodation_SupplierRoomTypeMapping" />
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Applications" EntityType="Self.Application" />
           <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" />
@@ -3683,7 +3542,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <EntitySet Name="Project_WorkflowSteps" EntityType="Self.Project_WorkflowSteps" />
           <EntitySet Name="Project_WorkflowStepsActivity" EntityType="Self.Project_WorkflowStepsActivity" />
           <EntitySet Name="Projects" EntityType="Self.Project" />
-          <EntitySet Name="Roles_NIU" EntityType="Self.Roles_NIU" />
           <EntitySet Name="SiteMaps" EntityType="Self.SiteMap" />
           <EntitySet Name="stg_ezhtlf_hotel_mapping" EntityType="Self.stg_ezhtlf_hotel_mapping" />
           <EntitySet Name="stg_ezhtlfs_hotel_format" EntityType="Self.stg_ezhtlfs_hotel_format" />
@@ -3694,13 +3552,7 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
           <EntitySet Name="Supplier_Market" EntityType="Self.Supplier_Market" />
           <EntitySet Name="Supplier_ProductCategory" EntityType="Self.Supplier_ProductCategory" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="UserInRoles_NIU" EntityType="Self.UserInRoles_NIU" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UsersInRoles_NIU" EntityType="Self.UsersInRoles_NIU" />
-          <AssociationSet Name="RoleEntity_Application" Association="Self.RoleEntity_Application">
-            <End Role="Applications" EntitySet="Applications" />
-            <End Role="Roles_NIU" EntitySet="Roles_NIU" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -4657,42 +4509,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
                 <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
                 <ScalarProperty Name="Edit_User" ColumnName="Edit_User" />
                 <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Accommodation_SupplierRoomTypeMapping">
-            <EntityTypeMapping TypeName="TLGX_MAPPERModel.Accommodation_SupplierRoomTypeMapping">
-              <MappingFragment StoreEntitySet="Accommodation_SupplierRoomTypeMapping">
-                <ScalarProperty Name="RoomDescription" ColumnName="RoomDescription" />
-                <ScalarProperty Name="stg_SupplierHotelRoomMapping_Id" ColumnName="stg_SupplierHotelRoomMapping_Id" />
-                <ScalarProperty Name="MapId" ColumnName="MapId" />
-                <ScalarProperty Name="MappingStatus" ColumnName="MappingStatus" />
-                <ScalarProperty Name="Tx_ReorderedName" ColumnName="Tx_ReorderedName" />
-                <ScalarProperty Name="Tx_StrippedName" ColumnName="Tx_StrippedName" />
-                <ScalarProperty Name="SupplierProductId" ColumnName="SupplierProductId" />
-                <ScalarProperty Name="SupplierProductName" ColumnName="SupplierProductName" />
-                <ScalarProperty Name="RatePlanCode" ColumnName="RatePlanCode" />
-                <ScalarProperty Name="RatePlan" ColumnName="RatePlan" />
-                <ScalarProperty Name="MaxGuestOccupancy" ColumnName="MaxGuestOccupancy" />
-                <ScalarProperty Name="MaxInfants" ColumnName="MaxInfants" />
-                <ScalarProperty Name="Edit_User" ColumnName="Edit_User" />
-                <ScalarProperty Name="Edit_Date" ColumnName="Edit_Date" />
-                <ScalarProperty Name="Create_User" ColumnName="Create_User" />
-                <ScalarProperty Name="Create_Date" ColumnName="Create_Date" />
-                <ScalarProperty Name="SupplierRoomCategoryId" ColumnName="SupplierRoomCategoryId" />
-                <ScalarProperty Name="TX_RoomName" ColumnName="TX_RoomName" />
-                <ScalarProperty Name="SupplierRoomName" ColumnName="SupplierRoomName" />
-                <ScalarProperty Name="Accommodation_SupplierRoomTypeMapping_Id" ColumnName="Accommodation_SupplierRoomTypeMapping_Id" />
-                <ScalarProperty Name="Accommodation_Id" ColumnName="Accommodation_Id" />
-                <ScalarProperty Name="Supplier_Id" ColumnName="Supplier_Id" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierRoomCategory" ColumnName="SupplierRoomCategory" />
-                <ScalarProperty Name="SupplierRoomTypeCode" ColumnName="SupplierRoomTypeCode" />
-                <ScalarProperty Name="MaxAdults" ColumnName="MaxAdults" />
-                <ScalarProperty Name="MaxChild" ColumnName="MaxChild" />
-                <ScalarProperty Name="SupplierRoomId" ColumnName="SupplierRoomId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Accommodation_RoomInfo_Id" ColumnName="Accommodation_RoomInfo_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -5757,18 +5573,6 @@ warning 6002: The table/view 'TLGX_MAPPING_DEV.dbo.vwMappingStats' does not have
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="TLGX_MAPPERModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
