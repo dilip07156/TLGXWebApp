@@ -193,7 +193,7 @@
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
                             <Columns>
-                                <asp:BoundField DataField="" HeaderText="Common Product ID" />
+                                <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
                                 <asp:BoundField DataField="ProductCategory" HeaderText="Product Category" />
                                 <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
