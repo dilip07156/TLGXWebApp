@@ -7256,6 +7256,9 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Deals_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Deals[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Deals))]
@@ -7874,6 +7877,9 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Deals_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Deals[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Deals))]
@@ -20899,6 +20905,432 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_Flavour_Options_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_Flavour_Options_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_DealTextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_FlavourNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_FlavourOptions_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_Flavour_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_OptionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_OptionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_DealText {
+            get {
+                return this.Activity_DealTextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_DealTextField, value) != true)) {
+                    this.Activity_DealTextField = value;
+                    this.RaisePropertyChanged("Activity_DealText");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_FlavourName {
+            get {
+                return this.Activity_FlavourNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_FlavourNameField, value) != true)) {
+                    this.Activity_FlavourNameField = value;
+                    this.RaisePropertyChanged("Activity_FlavourName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_FlavourOptions_Id {
+            get {
+                return this.Activity_FlavourOptions_IdField;
+            }
+            set {
+                if ((this.Activity_FlavourOptions_IdField.Equals(value) != true)) {
+                    this.Activity_FlavourOptions_IdField = value;
+                    this.RaisePropertyChanged("Activity_FlavourOptions_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_Flavour_Id {
+            get {
+                return this.Activity_Flavour_IdField;
+            }
+            set {
+                if ((this.Activity_Flavour_IdField.Equals(value) != true)) {
+                    this.Activity_Flavour_IdField = value;
+                    this.RaisePropertyChanged("Activity_Flavour_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_OptionCode {
+            get {
+                return this.Activity_OptionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_OptionCodeField, value) != true)) {
+                    this.Activity_OptionCodeField = value;
+                    this.RaisePropertyChanged("Activity_OptionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_OptionName {
+            get {
+                return this.Activity_OptionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_OptionNameField, value) != true)) {
+                    this.Activity_OptionNameField = value;
+                    this.RaisePropertyChanged("Activity_OptionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Type {
+            get {
+                return this.Activity_TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_TypeField, value) != true)) {
+                    this.Activity_TypeField = value;
+                    this.RaisePropertyChanged("Activity_Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageNo {
+            get {
+                return this.PageNoField;
+            }
+            set {
+                if ((this.PageNoField.Equals(value) != true)) {
+                    this.PageNoField = value;
+                    this.RaisePropertyChanged("PageNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_Flavour_Options", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_Flavour_Options : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_DealTextField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_FlavourNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_FlavourOptions_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_Flavour_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_OptionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_OptionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalRecordsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_DealText {
+            get {
+                return this.Activity_DealTextField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_DealTextField, value) != true)) {
+                    this.Activity_DealTextField = value;
+                    this.RaisePropertyChanged("Activity_DealText");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_FlavourName {
+            get {
+                return this.Activity_FlavourNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_FlavourNameField, value) != true)) {
+                    this.Activity_FlavourNameField = value;
+                    this.RaisePropertyChanged("Activity_FlavourName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_FlavourOptions_Id {
+            get {
+                return this.Activity_FlavourOptions_IdField;
+            }
+            set {
+                if ((this.Activity_FlavourOptions_IdField.Equals(value) != true)) {
+                    this.Activity_FlavourOptions_IdField = value;
+                    this.RaisePropertyChanged("Activity_FlavourOptions_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_Flavour_Id {
+            get {
+                return this.Activity_Flavour_IdField;
+            }
+            set {
+                if ((this.Activity_Flavour_IdField.Equals(value) != true)) {
+                    this.Activity_Flavour_IdField = value;
+                    this.RaisePropertyChanged("Activity_Flavour_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_OptionCode {
+            get {
+                return this.Activity_OptionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_OptionCodeField, value) != true)) {
+                    this.Activity_OptionCodeField = value;
+                    this.RaisePropertyChanged("Activity_OptionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_OptionName {
+            get {
+                return this.Activity_OptionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_OptionNameField, value) != true)) {
+                    this.Activity_OptionNameField = value;
+                    this.RaisePropertyChanged("Activity_OptionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Type {
+            get {
+                return this.Activity_TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_TypeField, value) != true)) {
+                    this.Activity_TypeField = value;
+                    this.RaisePropertyChanged("Activity_Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_Deals_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
     [System.SerializableAttribute()]
     public partial class DC_Activity_Deals_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -21434,6 +21866,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<bool> IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PriceBasisField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -21443,7 +21878,13 @@ namespace TLGX_Consumer.MDMSVC {
         private string PriceCurrencyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> PriceNetField;
+        private string Price_ForField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Price_OptionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Price_TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalrecordsField;
@@ -21563,6 +22004,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((this.PriceField.Equals(value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PriceBasis {
             get {
                 return this.PriceBasisField;
@@ -21602,14 +22056,40 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> PriceNet {
+        public string Price_For {
             get {
-                return this.PriceNetField;
+                return this.Price_ForField;
             }
             set {
-                if ((this.PriceNetField.Equals(value) != true)) {
-                    this.PriceNetField = value;
-                    this.RaisePropertyChanged("PriceNet");
+                if ((object.ReferenceEquals(this.Price_ForField, value) != true)) {
+                    this.Price_ForField = value;
+                    this.RaisePropertyChanged("Price_For");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Price_OptionCode {
+            get {
+                return this.Price_OptionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Price_OptionCodeField, value) != true)) {
+                    this.Price_OptionCodeField = value;
+                    this.RaisePropertyChanged("Price_OptionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Price_Type {
+            get {
+                return this.Price_TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Price_TypeField, value) != true)) {
+                    this.Price_TypeField = value;
+                    this.RaisePropertyChanged("Price_Type");
                 }
             }
         }
@@ -43695,6 +44175,20 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityFlavour", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityFlavourResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityFlavourAsync(TLGX_Consumer.MDMSVC.DC_Activity_Flavour RQ);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityFlavourOptions", ReplyAction="http://tempuri.org/IActivity/GetActivityFlavourOptionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityFlavourOptionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options[] GetActivityFlavourOptions(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityFlavourOptions", ReplyAction="http://tempuri.org/IActivity/GetActivityFlavourOptionsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options[]> GetActivityFlavourOptionsAsync(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourOptions", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityFlavourOptionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourOptionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityFlavourOptions(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourOptions", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityFlavourOptionsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityFlavourOptionsAsync(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options RQ);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityDeals", ReplyAction="http://tempuri.org/IActivity/GetActivityDealsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityDealsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Activity_Deals[] GetActivityDeals(TLGX_Consumer.MDMSVC.DC_Activity_Deals_RQ RQ);
@@ -45953,6 +46447,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityFlavourAsync(TLGX_Consumer.MDMSVC.DC_Activity_Flavour RQ) {
             return base.Channel.AddUpdateActivityFlavourAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options[] GetActivityFlavourOptions(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ RQ) {
+            return base.Channel.GetActivityFlavourOptions(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options[]> GetActivityFlavourOptionsAsync(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ RQ) {
+            return base.Channel.GetActivityFlavourOptionsAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityFlavourOptions(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options RQ) {
+            return base.Channel.AddUpdateActivityFlavourOptions(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityFlavourOptionsAsync(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options RQ) {
+            return base.Channel.AddUpdateActivityFlavourOptionsAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Activity_Deals[] GetActivityDeals(TLGX_Consumer.MDMSVC.DC_Activity_Deals_RQ RQ) {
