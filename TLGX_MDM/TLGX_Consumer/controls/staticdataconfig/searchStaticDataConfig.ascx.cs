@@ -159,6 +159,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     MDMSVC.DC_SupplierImportAttributes newObj = new MDMSVC.DC_SupplierImportAttributes
                     {
                         SupplierImportAttribute_Id = myRow_Id,
+                        For=grdMappingConfig.Rows[index].Cells[0].Text,
                         Entity = grdMappingConfig.Rows[index].Cells[1].Text,
                         Status = "INACTIVE",
                         EDIT_DATE = DateTime.Now,
@@ -172,9 +173,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                     dc = mappingsvc.UpdateStaticDataMappingAttribute(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
-                    { }
+                    {
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
+                        fillconfigdata();
+                    }
                     else
                     {
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been deleted Successfully", BootstrapAlertType.Success);
                         fillconfigdata();
                     }
                 }
@@ -186,6 +191,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     MDMSVC.DC_SupplierImportAttributes newObj = new MDMSVC.DC_SupplierImportAttributes
                     {
                         SupplierImportAttribute_Id = myRow_Id,
+                        For=grdMappingConfig.Rows[index].Cells[0].Text,
                         Entity = grdMappingConfig.Rows[index].Cells[1].Text,
                         Status = "ACTIVE",
                         EDIT_DATE = DateTime.Now,
@@ -199,9 +205,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                     dc = mappingsvc.UpdateStaticDataMappingAttribute(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
-                    { }
+                    {
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
+                        fillconfigdata();
+                    }
                     else
                     {
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been un deleted Successfully", BootstrapAlertType.Success);
                         fillconfigdata();
                     }
                 }
