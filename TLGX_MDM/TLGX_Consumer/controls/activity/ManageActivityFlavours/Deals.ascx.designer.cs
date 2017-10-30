@@ -10,51 +10,42 @@
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class ActivityContactDetails {
+    public partial class Deals {
         
         /// <summary>
-        /// updPanContacts control.
+        /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanContacts;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
         
         /// <summary>
-        /// dvMsgContact control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgContact;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
         
         /// <summary>
-        /// frmContactDetaiil control.
+        /// ddlShowEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmContactDetaiil;
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// grdContactDetails control.
+        /// gvDealsSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdContactDetails;
-        
-        /// <summary>
-        /// btnAddFormView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddFormView;
+        protected global::System.Web.UI.WebControls.GridView gvDealsSearch;
     }
 }

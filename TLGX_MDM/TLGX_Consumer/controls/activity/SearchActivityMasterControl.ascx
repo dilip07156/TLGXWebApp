@@ -193,7 +193,7 @@
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
                             <Columns>
-                                <asp:BoundField DataField="" HeaderText="Common Product ID" />
+                                <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
                                 <asp:BoundField DataField="ProductCategory" HeaderText="Product Category" />
                                 <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
@@ -202,7 +202,7 @@
                                 <asp:BoundField DataField="Country" HeaderText="Country" />
                                 <asp:BoundField DataField="City" HeaderText="City" />
                                 <asp:BoundField DataField="" HeaderText="Status" />
-                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
+                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
                                     
                             </Columns>
                             <PagerStyle CssClass="pagination-ys" />

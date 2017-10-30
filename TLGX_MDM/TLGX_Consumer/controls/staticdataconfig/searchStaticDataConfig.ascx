@@ -169,10 +169,12 @@
                                                 <asp:BoundField DataField="EDIT_DATE" HeaderText="Last Edited" />
                                                 <asp:BoundField DataField="Status" HeaderText="Status" />
                                                 <asp:HyperLinkField DataNavigateUrlFields="SupplierImportAttribute_Id" DataNavigateUrlFormatString="~/staticdata/config/manage.aspx?Config_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/staticdata/config/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
-                                                <asp:TemplateField ShowHeader="false">
+
+                                                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportAttribute_Id") %>'>
-                                         <span aria-hidden="true" class='<%# Eval("Status").ToString() == "ACTIVE" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
+                                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>'
+                                                            CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportAttribute_Id") %>'>
+                                         <span aria-hidden="true" class='<%# Eval("Status").ToString() == "ACTIVE" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                         <%# Eval("Status").ToString() == "ACTIVE" ? "Delete" : "UnDelete"   %>
                                                         </asp:LinkButton>
                                                     </ItemTemplate>

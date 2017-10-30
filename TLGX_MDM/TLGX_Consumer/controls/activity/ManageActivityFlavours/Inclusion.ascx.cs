@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TLGX_Consumer.App_Code;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
@@ -16,8 +17,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (!IsPostBack)
             {
                 BindInclusions();
-                gvActInclusionDetails.DataSource = null;
-                gvActInclusionDetails.DataBind();
             }
         }
         protected void BindInclusions()
@@ -26,19 +25,28 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             MDMSVC.DC_Activity_Inclusions_RQ _obj = new MDMSVC.DC_Activity_Inclusions_RQ();
             _obj.Activity_Flavour_Id = Activity_Flavour_Id;
             var result = ActSVC.GetActivityInclusions(_obj);
-            List<MDMSVC.DC_Activity_Inclusions> res = new List<MDMSVC.DC_Activity_Inclusions>();
-            if (res != null)
+            if (result != null)
             {
-                foreach (MDMSVC.DC_Activity_Inclusions rs in result)
+                List<MDMSVC.DC_Activity_Inclusions> res = new List<MDMSVC.DC_Activity_Inclusions>();
+                if (res != null || res.Count != 0)
                 {
-                    if (rs.IsInclusion == true)
+                    foreach (MDMSVC.DC_Activity_Inclusions rs in result)
                     {
-                        res.Add(rs);
-                    }
+                        if (rs.IsInclusion == true)
+                        {
+                            res.Add(rs);
+                        }
 
+                    }
+                    gvActInclusionSearch.DataSource = res;
+                    gvActInclusionSearch.DataBind();
                 }
-                gvActInclusionSearch.DataSource = res;
-                gvActInclusionSearch.DataBind();
+                else
+                {
+                    gvActInclusionSearch.DataSource = null;
+                    gvActInclusionSearch.DataBind();
+                    divDropdownForEntries.Visible = false;
+                }
             }
             else
             {
@@ -54,22 +62,72 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void gvActInclusionSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+
             if (e.CommandName.ToString() == "Editing")
             {
+                //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                //int index = row.RowIndex;
 
+                //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
+                //bool isinclusion = false;
 
-                Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-                Guid myRow_Id = Guid.Parse(gvActInclusionSearch.SelectedDataKey.Value.ToString());
+                //if (gvActInclusionSearch.Rows[index].Cells[4].Text == "true")
+                //    isinclusion = true;
 
-                MDMSVC.DC_Activity_InclusionDetails_RQ newObj = new MDMSVC.DC_Activity_InclusionDetails_RQ();
-                newObj.Activity_Inclusion_Id = myRow_Id;
+                //List<MDMSVC.DC_Activity_Inclusions> newObj = new List<MDMSVC.DC_Activity_Inclusions>();
+                //newObj.Add(new MDMSVC.DC_Activity_Inclusions
+                //{
+                //    Activity_Inclusions_Id = myRow_Id,
+                //    Activity_Flavour_Id = Activity_Flavour_Id,
+                //    InclusionType = gvActInclusionSearch.Rows[index].Cells[0].Text,
+                //    InclusionName = gvActInclusionSearch.Rows[index].Cells[1].Text,
+                //    InclusionDescription = gvActInclusionSearch.Rows[index].Cells[3].Text,
+                //    IsInclusion = isinclusion
+                //});
 
-                var result = ActSVC.GetActivityInclusionDetails(newObj);
-                if (result.Count > 0)
+                //if (!string.IsNullOrEmpty(gvActInclusionSearch.Rows[index].Cells[0].Text))
+                //    newObj[0].InclusionType = gvActInclusionSearch.Rows[index].Cells[0].Text;
+
+                //frmInclusion.ChangeMode(FormViewMode.Edit);
+                //frmInclusion.DataSource = newObj;
+                //frmInclusion.DataBind();
+
+                //TextBox txtName = (TextBox)frmInclusion.FindControl("txtMAxAdults");
+                //TextBox txtDescription = (TextBox)frmInclusion.FindControl("txtPassengers");
+
+                //DropDownList ddlInclusionFor = (DropDownList)frmInclusion.FindControl("ddlInclusionFor");
+                //DropDownList ddlInclusionType = (DropDownList)frmInclusion.FindControl("ddlInclusionType");
+                
+            }
+            else if (e.CommandName.ToString() == "SoftDelete")
+            {
+                TLGX_Consumer.MDMSVC.DC_Activity_Inclusions newObj = new MDMSVC.DC_Activity_Inclusions
                 {
+                    Activity_Inclusions_Id = myRow_Id,
+                    IsActive = false,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                };
+                var result = ActSVC.AddUpdateActivityInclusions(newObj);
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+                BindInclusions();
+            }
 
-                }
+            else if (e.CommandName.ToString() == "UnDelete")
+            {
+                TLGX_Consumer.MDMSVC.DC_Activity_Inclusions newObj = new MDMSVC.DC_Activity_Inclusions
+                {
+                    Activity_Inclusions_Id = myRow_Id,
+                    IsActive = true,
+                    Edit_Date = DateTime.Now,
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                };
+                var result = ActSVC.AddUpdateActivityInclusions(newObj);
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+                BindInclusions();
+
             }
         }
 
@@ -80,7 +138,48 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void gvActInclusionSearch_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.DataItem != null)
+            {
+                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+                LinkButton btnEdit = (LinkButton)e.Row.FindControl("btnEdit");
+                if (btnDelete.CommandName == "UnDelete")
+                {
+                    e.Row.Font.Strikeout = true;
+                    btnEdit.Enabled = false;
+                    btnEdit.Attributes.Remove("OnClientClick");
+                }
+                else
+                {
+                    e.Row.Font.Strikeout = false;
+                    btnEdit.Enabled = true;
+                    btnEdit.Attributes.Add("OnClientClick", "showAddEditModal();");
+                }
+                ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
+                scriptMan.RegisterAsyncPostBackControl(btnDelete);
 
+            }
         }
+
+        protected void frmInclusion_ItemCommand(object sender, FormViewCommandEventArgs e)
+        {
+            if(e.CommandName.ToString() == "Add")
+            {
+                hdnFlag.Value = "true";
+            }
+            if (e.CommandName.ToString() == "Update")
+            {
+                hdnFlag.Value = "true";
+            }
+            if (e.CommandName.ToString() == "Reset")
+            {
+                //hdnFlag.Value = "true";
+            }
+        }
+
+        //protected void btnNewActivity_Click(object sender, EventArgs e)
+        //{
+        //    frmInclusion.ChangeMode(FormViewMode.Insert);
+        //    frmInclusion.DataBind();
+        //}
     }
 }

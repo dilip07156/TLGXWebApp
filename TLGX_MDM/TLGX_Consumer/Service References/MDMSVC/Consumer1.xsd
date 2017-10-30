@@ -1221,6 +1221,45 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Flavour" nillable="true" type="tns:DC_Activity_Flavour" />
+  <xs:complexType name="DC_Activity_Flavour_Options_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_DealText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_FlavourName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_FlavourOptions_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_OptionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_OptionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Flavour_Options_RQ" nillable="true" type="tns:DC_Activity_Flavour_Options_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_Flavour_Options">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Flavour_Options" nillable="true" type="tns:DC_Activity_Flavour_Options" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_Flavour_Options" nillable="true" type="tns:ArrayOfDC_Activity_Flavour_Options" />
+  <xs:complexType name="DC_Activity_Flavour_Options">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_DealText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_FlavourName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_FlavourOptions_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_OptionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_OptionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_Flavour_Options" nillable="true" type="tns:DC_Activity_Flavour_Options" />
   <xs:complexType name="DC_Activity_Deals_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Activity_Deals_Id" nillable="true" type="ser:guid" />
@@ -1279,10 +1318,18 @@
       <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Prices_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="PriceBasis" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PriceCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PriceCurrency" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PriceNet" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Price_For" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price_OptionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price_Type" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Totalrecords" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>

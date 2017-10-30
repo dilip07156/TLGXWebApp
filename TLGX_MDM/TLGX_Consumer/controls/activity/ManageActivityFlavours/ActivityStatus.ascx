@@ -219,7 +219,9 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-
+        <div>
+            <asp:Button ID="btnAddFormView" runat="server" OnClick="btnAddFormView_Click" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" />
+        </div>
     </ContentTemplate>
 
 </asp:UpdatePanel>

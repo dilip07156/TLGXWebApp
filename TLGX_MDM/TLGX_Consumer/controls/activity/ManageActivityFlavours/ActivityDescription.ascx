@@ -20,12 +20,12 @@
 <script src="../../../Scripts/bootbox.min.js"></script>
 <asp:UpdatePanel ID="updMedia" runat="server">
     <ContentTemplate>
-        <div class="panel-group" id="searchResult">
+        <%--<div class="panel-group" id="searchResult">
             <div class="panel panel-default">
-                <div class="panel-heading clearfix">
+                <div class="panel-heading clearfix">--%>
                     <h4 class="panel-title pull-left">
-                        <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Description Details (Total Count:
-                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a></h4>
+                        Description Details (Total Count:
+                            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
                     <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" OnClientClick="showDescriptionModal()" />
                     <div class="col-lg-3 pull-right">
                         <div class="form-group pull-right">
@@ -41,12 +41,12 @@
                         </div>
                     </div>
 
-                </div>
-                <div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body">
+                <%--</div>--%>
+                <%--<div id="collapseSearchResult" class="panel-collapse collapse in">
+                    <div class="panel-body">--%>
                         <div id="dvMsg" runat="server" style="display: none;"></div>
                         <asp:GridView ID="gvDescriptionSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No Media Found for search conditions" CssClass="table table-hover table-striped"
+                            EmptyDataText="No Data Found" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvDescriptionSearch_PageIndexChanging"
                             OnRowCommand="gvDescriptionSearch_RowCommand" DataKeyNames="Activity_Description_Id" OnRowDataBound="gvDescriptionSearch_RowDataBound">
                             <Columns>
@@ -79,11 +79,11 @@
                             </Columns>
                             <PagerStyle CssClass="pagination-ys" />
                         </asp:GridView>
-                    </div>
-                </div>
+                    <%--</div>
+                </div>--%>
 
-            </div>
-        </div>
+            <%--</div>
+        </div>--%>
 
     </ContentTemplate>
 </asp:UpdatePanel>

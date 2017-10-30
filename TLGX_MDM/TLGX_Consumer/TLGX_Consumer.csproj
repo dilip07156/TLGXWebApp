@@ -254,11 +254,13 @@
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Deals.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Exclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Policy.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\Prices.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx" />
@@ -857,6 +859,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
     <None Include="Service\CityAutoComplete.ashx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
@@ -1270,6 +1275,13 @@
     <Compile Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx.designer.cs">
       <DependentUpon>ClassificationAttributes.ascx</DependentUpon>
     </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Deals.ascx.cs">
+      <DependentUpon>Deals.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Deals.ascx.designer.cs">
+      <DependentUpon>Deals.ascx</DependentUpon>
+    </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.cs">
       <DependentUpon>Exclusion.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1304,6 +1316,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Policy.ascx.designer.cs">
       <DependentUpon>Policy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Prices.ascx.cs">
+      <DependentUpon>Prices.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\Prices.ascx.designer.cs">
+      <DependentUpon>Prices.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx.cs">
       <DependentUpon>PricesNDeals.ascx</DependentUpon>
@@ -2385,9 +2404,6 @@
     <Compile Include="Models\Project_WorkflowStepsActivity.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Roles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\SiteMap.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>
@@ -2442,16 +2458,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TLGX_Mapper_Entity.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserInRoles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Users_Contract.cs" />
-    <Compile Include="Models\UsersInRoles_NIU.cs">
-      <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\vwMappingStat.cs">
       <DependentUpon>TLGX_Mapper_Entity.tt</DependentUpon>
     </Compile>

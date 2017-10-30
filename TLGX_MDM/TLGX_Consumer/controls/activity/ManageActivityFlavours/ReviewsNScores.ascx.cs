@@ -37,6 +37,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                 grdRevAndScore.DataSource = res;
                 grdRevAndScore.DataBind();
+                lblTotalRecords.Text = Convert.ToString(res[0].Totalrecords);
                 fillReviewType(ddlReviewType);
                 fillReviewSource(ddlReviewSource);
                 fillReviewScore(ddlReviewScore);
@@ -45,7 +46,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 grdRevAndScore.DataSource = null;
                 grdRevAndScore.DataBind();
-                divDropdownForEntries.Visible = false;
+                //divDropdownForEntries.Visible = false;
             }
         }
         protected void fillReviewType(DropDownList ddl)

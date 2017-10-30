@@ -35,6 +35,12 @@ namespace TLGX_Consumer.Models
         public int AccessFailedCount { get; set; }
         public string UserName { get; set; }
         public string ManagerId { get; set; }
+        public Nullable<System.Guid> applicationid { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<System.DateTime> Create_Date { get; set; }
+        public Nullable<System.DateTime> Edit_Date { get; set; }
+        public string Create_User { get; set; }
+        public string Edit_User { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AspNetUserClaim> AspNetUserClaims { get; set; }

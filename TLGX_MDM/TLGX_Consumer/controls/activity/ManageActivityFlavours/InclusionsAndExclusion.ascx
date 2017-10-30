@@ -27,7 +27,7 @@
             <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
             <%@ Register Src="~/controls/activity/ManageActivityFlavours/Exclusion.ascx" TagPrefix="uc1" TagName="Exclusion" %>
 
-            <div id="Tabs" role="tabpanel">
+            <%--<div id="Tabs" role="tabpanel">
                 <!-- Nav tabs -->
 
                 <ul class="nav nav-tabs" role="tablist">
@@ -43,7 +43,20 @@
                         <uc1:Exclusion runat="server" ID="Exclusion" />
                     </div>
                 </div>
+            </div>--%>
 
+            <div id="Inclusion">
+                <h4>Inclusion</h4>
+                <div>
+                    <uc1:Inclusion runat="server" ID="Inclusion1" />
+                </div>
+            </div>
+
+            <div id="Exclusion">
+                <h4>Exclusion</h4>
+            </div>
+            <div>
+                <uc1:Exclusion runat="server" ID="Exclusion1" />
             </div>
             <asp:HiddenField ID="TabName" runat="server" />
         </div>
@@ -181,7 +194,7 @@
 
 </div>
 
-<script type='text/javascript'>
+<%--<script type='text/javascript'>
     //for changing the tab of Inclusion / Exclusion
     $(function () {
         var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "personal";
@@ -190,4 +203,4 @@
             $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
         });
     });
-</script>
+</script>--%>

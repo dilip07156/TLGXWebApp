@@ -14,17 +14,8 @@ namespace TLGX_Consumer.Models
     
     public partial class Application
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Application()
-        {
-            this.Roles_NIU = new HashSet<Roles_NIU>();
-        }
-    
         public System.Guid ApplicationId { get; set; }
         public string ApplicationName { get; set; }
         public string Description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Roles_NIU> Roles_NIU { get; set; }
     }
 }

@@ -46,5 +46,15 @@ namespace TLGX_Consumer.Models
         public string Website { get; set; }
         public Nullable<int> MapId { get; set; }
         public string Remarks { get; set; }
+        public Nullable<int> Legacy_Htl_ID { get; set; }
+        public string address { get; set; }
+        public string address_tx { get; set; }
+        public string TelephoneNumber_tx { get; set; }
+        public string StarRating { get; set; }
+        public string Google_Place_Id { get; set; }
+        public Nullable<System.Guid> Country_Id { get; set; }
+        public Nullable<System.Guid> City_Id { get; set; }
+        public Nullable<System.Guid> stg_AccoMapping_Id { get; set; }
+        public string TLGXProductCode { get; set; }
     }
 }

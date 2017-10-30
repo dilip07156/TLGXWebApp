@@ -42,7 +42,6 @@ namespace TLGX_Consumer.Models
         public virtual DbSet<Accommodation_RouteInfo> Accommodation_RouteInfo { get; set; }
         public virtual DbSet<Accommodation_RuleInfo> Accommodation_RuleInfo { get; set; }
         public virtual DbSet<Accommodation_Status> Accommodation_Status { get; set; }
-        public virtual DbSet<Accommodation_SupplierRoomTypeMapping> Accommodation_SupplierRoomTypeMapping { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Application> Applications { get; set; }
         public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
@@ -92,8 +91,6 @@ namespace TLGX_Consumer.Models
         public virtual DbSet<Project_WorkflowSteps> Project_WorkflowSteps { get; set; }
         public virtual DbSet<Project_WorkflowStepsActivity> Project_WorkflowStepsActivity { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
-        public virtual DbSet<Roles_NIU> Roles_NIU { get; set; }
-        public virtual DbSet<SiteMap> SiteMaps { get; set; }
         public virtual DbSet<stg_ezhtlf_hotel_mapping> stg_ezhtlf_hotel_mapping { get; set; }
         public virtual DbSet<stg_ezhtlfs_hotel_format> stg_ezhtlfs_hotel_format { get; set; }
         public virtual DbSet<stg_ezhtlfs_htl_images> stg_ezhtlfs_htl_images { get; set; }
@@ -103,10 +100,6 @@ namespace TLGX_Consumer.Models
         public virtual DbSet<Supplier_Market> Supplier_Market { get; set; }
         public virtual DbSet<Supplier_ProductCategory> Supplier_ProductCategory { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<UserInRoles_NIU> UserInRoles_NIU { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UsersInRoles_NIU> UsersInRoles_NIU { get; set; }
-        public virtual DbSet<stg_SupplierProductMapping> stg_SupplierProductMapping { get; set; }
         public virtual DbSet<Accommodation> Accommodations { get; set; }
         public virtual DbSet<vwMappingStat> vwMappingStats { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
@@ -114,6 +107,9 @@ namespace TLGX_Consumer.Models
         public virtual DbSet<Organisation_Company> Organisation_Company { get; set; }
         public virtual DbSet<m_Currency> m_Currency { get; set; }
         public virtual DbSet<Organisation_Market> Organisation_Market { get; set; }
+        public virtual DbSet<Accommodation_SupplierRoomTypeMapping> Accommodation_SupplierRoomTypeMapping { get; set; }
+        public virtual DbSet<stg_SupplierProductMapping> stg_SupplierProductMapping { get; set; }
+        public virtual DbSet<SiteMap> SiteMaps { get; set; }
     
         public virtual int aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {

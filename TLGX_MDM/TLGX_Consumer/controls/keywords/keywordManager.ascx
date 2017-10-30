@@ -263,7 +263,7 @@
 </asp:UpdatePanel>
 
 <!-- Add MODAL -->
-<div class="modal fade" id="moKeywordMapping" role="dialog" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="moKeywordMapping" role="dialog">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
 

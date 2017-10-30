@@ -104,12 +104,13 @@
                         <form id="uriForm" class="form-horizontal">
 
                             <div class="form-group row">
-                                
-                                <label class="control-label col-sm-2" for="txtWebsite">
-                                    Website
-                                </label>
-                                <div class="col-sm-10">
-                                    <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control"></asp:TextBox>
+                                <div class="col-md-10">
+                                    <label class="control-label col-sm-2" for="txtWebsite">
+                                        Website
+                                    </label>
+                                    <div class="col-sm-10">
+                                        <asp:TextBox ID="txtWebsite" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -123,10 +124,10 @@
                                         <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
-                                 <div class="col-md-2 ">
-                                <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="ActivityContacts" CausesValidation="true" />
+                                <div class="col-md-2 ">
+                                    <asp:LinkButton ID="btnAdd" runat="server" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="ActivityContacts" CausesValidation="true" />
 
-                            </div>
+                                </div>
                             </div>
                             <div class="form-group row" style="display: none;">
                                 <label class="control-label col-sm-2" for="txtEmail">Legacy Product ID</label>
@@ -290,7 +291,9 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-
+        <div>
+            <asp:Button ID="btnAddFormView" runat="server" OnClick="btnAddFormView_Click" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" />
+        </div>
     </ContentTemplate>
 
 </asp:UpdatePanel>

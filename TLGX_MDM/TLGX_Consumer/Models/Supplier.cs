@@ -23,5 +23,6 @@ namespace TLGX_Consumer.Models
         public string Edit_User { get; set; }
         public string SupplierType { get; set; }
         public string SupplierOwner { get; set; }
+        public string StatusCode { get; set; }
     }
 }

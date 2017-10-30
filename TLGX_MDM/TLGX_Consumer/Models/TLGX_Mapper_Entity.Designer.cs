@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Work\RoomTypeMapping\TLGX_MAPPER\.net Code Base\MDM\TLGX_Consumer\TLGX_Consumer\Models\TLGX_Mapper_Entity.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\TLGX_MAPPING_GIT\mdm-ui-website\TLGX_MDM\TLGX_Consumer\Models\TLGX_Mapper_Entity.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
