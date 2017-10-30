@@ -52,20 +52,19 @@
                 <asp:HiddenField ID="HiddenField1PnD" runat="server" />
             </div>
         </div>--%>
-        
-        <div id="Prices">
-                <h4>Prices</h4>
-                <div>
-                    <uc1:Prices runat="server" id="Prices1" />
-                </div>
-            </div>
 
-            <div id="Deals">
-                <h4>Deals</h4>
-            </div>
+        <div id="Prices">
+
             <div>
-                <uc1:Deals runat="server" ID="Deals1" />
+                <uc1:Prices runat="server" ID="Prices1" />
             </div>
+        </div>
+
+        <div id="Deals">
+        </div>
+        <div>
+            <uc1:Deals runat="server" ID="Deals1" />
+        </div>
     </ContentTemplate>
 </asp:UpdatePanel>
 

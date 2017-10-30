@@ -46,14 +46,12 @@
             </div>--%>
 
             <div id="Inclusion">
-                <h4>Inclusion</h4>
-                <div>
-                    <uc1:Inclusion runat="server" ID="Inclusion1" />
-                </div>
+            </div>
+            <div>
+                <uc1:Inclusion runat="server" ID="Inclusion1" />
             </div>
 
             <div id="Exclusion">
-                <h4>Exclusion</h4>
             </div>
             <div>
                 <uc1:Exclusion runat="server" ID="Exclusion1" />

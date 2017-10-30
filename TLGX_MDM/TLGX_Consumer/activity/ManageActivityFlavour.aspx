@@ -12,6 +12,7 @@
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings"%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityDescription.ascx" TagPrefix="uc1" TagName="ActivityDescription" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/FlavourOptions.ascx" TagPrefix="uc1" TagName="FlavourOptions" %>
 
 
     <div class="container" id="myWizard">
@@ -41,6 +42,7 @@
                 <li><a href="#panPricesNDeals" data-toggle="tab">Prices And Deals</a></li>
                 <li><a href="#panReviewsNScores" data-toggle="tab">Reviews And Scores</a></li>
                 <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Product Mappings</a></li>
+                <li><a href="#panFlavourOptions" data-toggle="tab">Options</a></li>
             </ul>
             <%--</div>--%>
         </div>
@@ -80,6 +82,10 @@
 
             <div class="tab-pane" id="panSupplierProductMappings">
                 <uc1:SupplierProductMappings runat="server" ID="SupplierProductMappings" />
+            </div>
+
+            <div class="tab-pane" id="panFlavourOptions">
+                <uc1:FlavourOptions runat="server" ID="FlavourOptions" />
             </div>
                 
         </div>
