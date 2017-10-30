@@ -143,6 +143,11 @@
             });
         }
     }
+    function closeDvMsg2() {
+        setTimeout(function () {
+            document.getElementById("<%=frmEditCityMap.FindControl("dvMsg2").ClientID %>").style.display = "none";
+        }, 3000);
+    }
 </script>
 <script type="text/javascript">
 
@@ -353,10 +358,6 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">&nbsp;</div>
                                     </div>
-                                    <%--<div class="form-group row">
-                                        <div class="col-sm-12">
-                                        </div>
-                                    </div>--%>
                                 </div>
                             </div>
                         </div>
@@ -710,7 +711,7 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
                                                             <input type="button" class="btn btn-primary btn-sm" value="Locate On Map" onclick="callmap();" />
-                                                            <asp:Button ID="btnAddCityForm" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" CommandName="AddCity" CausesValidation="true" ValidationGroup="AddCityForm" />
+                                                            <asp:Button ID="btnAddCityForm" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" CommandName="AddCity" CausesValidation="true" ValidationGroup="AddCityForm" OnClientClick="closeDvMsg2();"/>
                                                         </div>
                                                     </div>
                                                 </div>

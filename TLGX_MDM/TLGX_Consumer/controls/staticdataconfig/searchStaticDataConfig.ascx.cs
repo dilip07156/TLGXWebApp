@@ -48,11 +48,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         }
         private void fillsuppliers(DropDownList ddl)
         {
-            MDMSVC.DC_Supplier_Search_RQ RQ = new MDMSVC.DC_Supplier_Search_RQ();
-
-            RQ.PageNo = 0;
-            RQ.PageSize = int.MaxValue;
-            var supres = mastersvc.GetSupplier(RQ);
+            var supres = mastersvc.GetSupplierMasterData();
 
             if (supres != null && supres.Count > 0)
             {
