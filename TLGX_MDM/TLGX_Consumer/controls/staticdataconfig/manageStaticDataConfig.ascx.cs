@@ -455,6 +455,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     for (int i = --intNoOfColumn; i >= 0; i--)
                                         ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
 
+                                    ddlAttributeName.Items.Insert(0, new ListItem("SchemaLocation", "SchemaLocation"));
+
                                     if (ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()) != null)
                                         ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()).Selected = true;
                                 }
@@ -964,7 +966,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
                 txtAttributeName.Text = "";
                 ddlAttributeValue.Items.Clear();
-                ddlAttributeValue.Items.Insert(0,new ListItem("---ALL---", ""));
+                ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", ""));
                 txtAttributeValue.Text = "";
                 txtPriority.Text = "";
                 txtDescription.InnerText = "";
@@ -1106,6 +1108,22 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
 
                 }
+                else if (IsMapping && (strAttributeType == "jpath" || strAttributeType == "xpath"))
+                {
+                    ddlAttributeName.Visible = true;
+                    if (intNumberOfColumnHasBeenAdded > 0)
+                    {
+                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
+                        ddlAttributeName.Items.Clear();
+                        
+                        for (int i = --intNoOfColumn; i >= 0; i--)
+                            ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
+
+                        ddlAttributeName.Items.Insert(0, new ListItem("SchemaLocation", "SchemaLocation"));
+
+                    }
+                    txtAttributeValue.Visible = true;
+                }
                 else if (!IsMapping) //Match & Map
                 {
                     List<string> lstAttributeName = null;
@@ -1157,19 +1175,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
                     }
                 }
-                else if (IsMapping && (strAttributeType == "jpath" || strAttributeType == "xpath"))
-                {
-                    ddlAttributeName.Visible = true;
-                    if (intNumberOfColumnHasBeenAdded > 0)
-                    {
-                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
-                        ddlAttributeName.Items.Clear();
-                        for (int i = --intNoOfColumn; i >= 0; i--)
-                            ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
-
-                    }
-                    txtAttributeValue.Visible = true;
-                }
                 else
                 {
                     MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
@@ -1202,6 +1207,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         txtAttributeName.Visible = true;
                     }
                 }
+            }
+            else
+            {
+                ddlAttributeName.Items.Clear();
             }
             #endregion
         }
