@@ -10,16 +10,16 @@
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class Inclusion {
+    public partial class FlavourOptions {
         
         /// <summary>
-        /// updPanInclusion control.
+        /// updPanFlavourOptions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanInclusion;
+        protected global::System.Web.UI.UpdatePanel updPanFlavourOptions;
         
         /// <summary>
         /// dvMsg control.
@@ -29,15 +29,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
-        
-        /// <summary>
-        /// ValidationSummary1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
         
         /// <summary>
         /// lblTotalRecords control.
@@ -67,48 +58,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// gvActInclusionSearch control.
+        /// gvActFlavourOptins control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvActInclusionSearch;
-        
-        /// <summary>
-        /// updEditActivity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updEditActivity;
-        
-        /// <summary>
-        /// hdnFlag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
-        
-        /// <summary>
-        /// divMsgAlertExc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertExc;
-        
-        /// <summary>
-        /// frmInclusion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmInclusion;
+        protected global::System.Web.UI.WebControls.GridView gvActFlavourOptins;
     }
 }

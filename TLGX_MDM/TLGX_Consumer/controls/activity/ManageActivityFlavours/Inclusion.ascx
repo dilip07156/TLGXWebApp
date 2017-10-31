@@ -38,7 +38,10 @@
             </div>
         </headertemplate>
 
-
+        <div class="form-group">
+            <h4 class="panel-title pull-left">Inclusion Details (Total Count:
+            <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
+        </div>
 
         <div class="row col-lg-3 pull-right">
             <div class="form-group pull-right">
@@ -56,7 +59,7 @@
         </div>
 
         <asp:GridView ID="gvActInclusionSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-            EmptyDataText="No Activity Exclusion Found" CssClass="table table-hover table-striped"
+            EmptyDataText="No Activity Inclusion Found" CssClass="table table-hover table-striped"
             AutoGenerateColumns="false" OnPageIndexChanging="gvActInclusionSearch_PageIndexChanging"
             OnRowCommand="gvActInclusionSearch_RowCommand" DataKeyNames="Activity_Inclusions_Id"
             OnRowDataBound="gvActInclusionSearch_RowDataBound">
