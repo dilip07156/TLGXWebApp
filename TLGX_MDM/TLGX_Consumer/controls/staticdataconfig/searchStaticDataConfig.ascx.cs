@@ -75,6 +75,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnAddConfig_Click(object sender, EventArgs e)
         {
+            dvMsg.Visible = false;
             fillfor(ddlAddFor);
             fillsuppliers(ddlAddSupplier);
             fillentity(ddlAddEntity);
@@ -126,6 +127,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void btnReset_Click(object sender, EventArgs e)
         {
             dvMsg.Style.Add("display", "none");
+            ddlFor.SelectedIndex = 0;
             ddlSupplierName.SelectedIndex = 0;
             ddlEntity.SelectedIndex = 0;
             ddlStatus.SelectedIndex = 0;
@@ -170,11 +172,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dc = mappingsvc.UpdateStaticDataMappingAttribute(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                     {
+                        dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                         fillconfigdata();
                     }
                     else
                     {
+                        dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been deleted Successfully", BootstrapAlertType.Success);
                         fillconfigdata();
                     }
@@ -202,11 +206,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dc = mappingsvc.UpdateStaticDataMappingAttribute(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                     {
+                        dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                         fillconfigdata();
                     }
                     else
                     {
+                        dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been un deleted Successfully", BootstrapAlertType.Success);
                         fillconfigdata();
                     }
@@ -249,7 +255,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 CREATE_DATE = DateTime.Now,
                 CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name,
                 For = ddlAddFor.SelectedItem.Text
-
             };
 
             MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
@@ -257,25 +262,32 @@ namespace TLGX_Consumer.controls.staticdataconfig
             if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
             {
                 BootstrapAlert.BootstrapAlertMessage(dvModalMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
+                resetModalControls();
                 hdnFlag.Value = "false";
             }
             else
             {
-                hdnFlag.Value = "true";
                 //Added code to fill filter and show added data.
                 ddlSupplierName.SelectedIndex = ddlAddSupplier.Items.IndexOf(ddlSupplierName.Items.FindByValue(Convert.ToString(newObj.Supplier_Id)));
                 ddlFor.SelectedIndex = ddlAddFor.Items.IndexOf(ddlAddFor.Items.FindByText(Convert.ToString(newObj.For)));
                 ddlEntity.SelectedIndex = ddlAddEntity.Items.IndexOf(ddlAddEntity.Items.FindByText(Convert.ToString(newObj.Entity)));
                 fillconfigdata();
+                dvMsg.Visible = true;
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
+                resetModalControls();
+                hdnFlag.Value = "true";
             }
         }
 
-        protected void btnResetAdd_Click(object sender, EventArgs e)
+        private void resetModalControls()
         {
             ddlAddFor.SelectedIndex = 0;
             ddlAddSupplier.SelectedIndex = 0;
             ddlAddEntity.SelectedIndex = 0;
+        }
+        protected void btnResetAdd_Click(object sender, EventArgs e)
+        {
+            resetModalControls();
             hdnFlag.Value = "false";
         }
     }

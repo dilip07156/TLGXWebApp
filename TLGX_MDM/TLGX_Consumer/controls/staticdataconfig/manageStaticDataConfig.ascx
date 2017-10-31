@@ -289,7 +289,7 @@
                             <InsertItemTemplate>
                                 <div class="modal-header">
                                     <div class="panel-title">
-                                        <h4 class="modal-title">Add</h4>
+                                        <h4 class="modal-title">Add Mapping</h4>
                                     </div>
                                 </div>
                                 <div class="panel-body">
@@ -395,7 +395,7 @@
                             <EditItemTemplate>
                                 <div class="modal-header">
                                     <div class="panel-title">
-                                        <h4 class="modal-title">Update</h4>
+                                        <h4 class="modal-title">Update Mapping</h4>
                                     </div>
                                 </div>
                                 <div class="panel-body">
