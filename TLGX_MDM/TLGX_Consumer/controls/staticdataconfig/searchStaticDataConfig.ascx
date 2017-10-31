@@ -200,14 +200,16 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="panel panel-default">
-                    <h4 class="modal-title">Add Mapping </h4>
-                </div>
+                <h4 class="modal-title">Add Mapping </h4>
             </div>
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+
+                        <div class="form-group">
+                            <div id="dvModalMsg" runat="server" style="display: none;"></div>
+                        </div>
 
                         <div class="row">
                             <div class="col-lg-3">

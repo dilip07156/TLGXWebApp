@@ -256,6 +256,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             dc = mappingsvc.AddStaticDataMappingAttribute(newObj);
             if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
             {
+                BootstrapAlert.BootstrapAlertMessage(dvModalMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                 hdnFlag.Value = "false";
             }
             else

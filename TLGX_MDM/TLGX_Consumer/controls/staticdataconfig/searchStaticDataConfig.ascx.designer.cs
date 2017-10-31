@@ -148,6 +148,15 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
         
         /// <summary>
+        /// dvModalMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvModalMsg;
+        
+        /// <summary>
         /// vddlAddFor control.
         /// </summary>
         /// <remarks>

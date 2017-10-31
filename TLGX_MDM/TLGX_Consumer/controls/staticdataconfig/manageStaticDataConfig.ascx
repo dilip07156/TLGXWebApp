@@ -72,7 +72,7 @@
     }
 
     function computeValue() {
-       // debugger;
+        // debugger;
         var Contain = "";
         $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter input[type=text]").each(function () {
             Contain += $(this).val() + ",";
@@ -176,7 +176,7 @@
                             <div class="panel-group" id="accordionSearchResult">
                                 <div class="col-md-3">
                                     <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">
-                                        <h4 class="panel-title" style="padding-left:10px;">Search Results (Total Count:
+                                        <h4 class="panel-title" style="padding-left: 10px;">Search Results (Total Count:
                                             <asp:Label ID="lblTotalUploadConfig" runat="server" Text="0"></asp:Label>)</h4>
                                     </a>
 
@@ -187,7 +187,7 @@
                                             <div class="input-group" runat="server" id="div1">
                                                 <label class="input-group-addon" for="ddlShowEntries">Attribute Type</label>
                                                 <asp:DropDownList ID="ddlFilterAttributeType" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlFilterAttributeType_SelectedIndexChanged">
-                                                     <asp:ListItem Value="-1">All</asp:ListItem>
+                                                    <asp:ListItem Value="-1">All</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -276,109 +276,116 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content">
 
-            <div class="modal-header ">
+            <%--<div class="modal-header ">
                 <div class="panel-title">
                     <h4 class="modal-title">Add/Update Mapping </h4>
                 </div>
-            </div>
+            </div>--%>
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                         <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id" OnItemCommand="frmAddConfig_ItemCommand">
                             <InsertItemTemplate>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="ddlSupplierName">Type </label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="dvddlAttributeName" runat="server">
-                                                <label class="control-label col-sm-4" for="ddlAttributeValue">Name</label>
-                                                <div class="col-sm-8">
-                                                    <%--For Dropdown Values--%>
-                                                    <asp:DropDownList ID="ddlAttributeName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                    <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
-
-                                                    <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeName" />
-
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
-                                                <div class="col-sm-8">
-                                                    <%--For Dropdown Values--%>
-                                                    <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                    <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
-
-
-                                                    <%--For TextBox Values--%>
-                                                    <asp:TextBox ID="txtAttributeValue" runat="server" Visible="false" CssClass="form-control"></asp:TextBox>
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeValue" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
-
-                                                    <%--For For Multi TextBox Values--%>
-                                                    <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
-                                                    <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
-                                                        <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
-                                                        <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
-                                                            <button class="btn btn-default" id="btnAddValue" type="button">
-                                                                <i class="glyphicon glyphicon-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    <%--For For Multi TextBox Values--%>
-                                                    <asp:HiddenField runat="server" ID="hdnIsReplaceWith" ClientIDMode="Static" />
-                                                    <div runat="server" id="divReplaceValue" style="display: none;">
-                                                        <div class="form-group col-md-12">
-                                                            <div class="col-md-6">
-                                                                <label>From</label><br />
-                                                                <asp:TextBox ID="txtReplaceFrom" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>To</label><br />
-                                                                <asp:TextBox ID="txtReplaceTo" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row" id="dvtxtPriority" runat="server" style="display: none;">
-                                                <label class="control-label col-sm-4" for="txtPriority">
-                                                    Priority
-                                                    <asp:RequiredFieldValidator ID="vtxtPriority" runat="server" ErrorMessage="*" ControlToValidate="txtPriority" CssClass="text-danger" ValidationGroup="AddConfigValues"></asp:RequiredFieldValidator>
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <asp:TextBox ID="txtPriority" runat="server" class="form-control" MaxLength="3" />
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtPriority" runat="server" FilterType="Numbers" TargetControlID="txtPriority" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="txtDescription">Description</label>
-                                                <div class="col-sm-8">
-                                                    <textarea maxlength="255" id="txtDescription" runat="server" class="form-control"></textarea>
-                                                    <%--<asp:TextBox ID="txtDescription" runat="server" class="form-control" MaxLength="255" />--%>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="modal-header">
+                                    <div class="panel-title">
+                                        <h4 class="modal-title">Add</h4>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
                                         <div class="col-md-12">
-                                            <div class="col-sm-6">
+                                            <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CommandName="Add" OnClientClick="computeValue(); return true;" CausesValidation="true" ValidationGroup="AddConfigValues" />
-                                                    <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetAdd" CausesValidation="false" />
+                                                    <label class="control-label col-sm-4" for="ddlSupplierName">Type </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" id="dvddlAttributeName" runat="server">
+                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <%--For Dropdown Values--%>
+                                                        <asp:DropDownList ID="ddlAttributeName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
+
+                                                        <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeName" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
+                                                    <div class="col-sm-8">
+                                                        <%--For Dropdown Values--%>
+                                                        <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
+
+
+                                                        <%--For TextBox Values--%>
+                                                        <asp:TextBox ID="txtAttributeValue" runat="server" Visible="false" CssClass="form-control"></asp:TextBox>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeValue" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
+
+                                                        <%--For For Multi TextBox Values--%>
+                                                        <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
+                                                        <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
+                                                            <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
+                                                            <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
+                                                                <button class="btn btn-default" id="btnAddValue" type="button">
+                                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <%--For For Multi TextBox Values--%>
+                                                        <asp:HiddenField runat="server" ID="hdnIsReplaceWith" ClientIDMode="Static" />
+                                                        <div runat="server" id="divReplaceValue" style="display: none;">
+                                                            <div class="form-group col-md-12">
+                                                                <div class="col-md-6">
+                                                                    <label>From</label><br />
+                                                                    <asp:TextBox ID="txtReplaceFrom" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>To</label><br />
+                                                                    <asp:TextBox ID="txtReplaceTo" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row" id="dvtxtPriority" runat="server" style="display: none;">
+                                                    <label class="control-label col-sm-4" for="txtPriority">
+                                                        Priority
+                                                    <asp:RequiredFieldValidator ID="vtxtPriority" runat="server" ErrorMessage="*" ControlToValidate="txtPriority" CssClass="text-danger" ValidationGroup="AddConfigValues"></asp:RequiredFieldValidator>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:TextBox ID="txtPriority" runat="server" class="form-control" MaxLength="3" />
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtPriority" runat="server" FilterType="Numbers" TargetControlID="txtPriority" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="txtDescription">Description</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea maxlength="255" id="txtDescription" runat="server" class="form-control"></textarea>
+                                                        <%--<asp:TextBox ID="txtDescription" runat="server" class="form-control" MaxLength="255" />--%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group row">
+                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CommandName="Add" OnClientClick="computeValue(); return true;" CausesValidation="true" ValidationGroup="AddConfigValues" />
+                                                        <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetAdd" CausesValidation="false" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -386,96 +393,103 @@
                                 </div>
                             </InsertItemTemplate>
                             <EditItemTemplate>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="ddlSupplierName">Type </label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row" id="dvAttributeName" runat="server">
-                                                <label class="control-label col-sm-4" for="txtAttributeName">Name</label>
-                                                <div class="col-sm-8">
-                                                    <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control"></asp:TextBox>
-
-                                                    <asp:DropDownList ID="ddlAttributeName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                    <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="txtAttributeName">Value</label>
-                                                <div class="col-sm-8">
-                                                    <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
-                                                    <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                    <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
-                                                    <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
-                                                    <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
-                                                        <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
-                                                        <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
-                                                            <button class="btn btn-default" id="btnAddValue" type="button">
-                                                                <i class="glyphicon glyphicon-plus"></i>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    <asp:HiddenField runat="server" ID="hdnIsReplaceWith" ClientIDMode="Static" />
-                                                    <div runat="server" id="divReplaceValue" style="display: none;">
-                                                        <div class="form-group col-md-12">
-                                                            <div class="col-md-6">
-                                                                <label>From</label><br />
-                                                                <asp:TextBox ID="txtReplaceFrom" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label>To</label><br />
-                                                                <asp:TextBox ID="txtReplaceTo" runat="server" CssClass="form-control"></asp:TextBox>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="txtAttributeName">Status</label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group row" id="dvtxtPriority" runat="server">
-                                                <label class="control-label col-sm-4" for="txtPriority">
-                                                    Priority
-                                                    <asp:RequiredFieldValidator ID="vtxtPriority" runat="server" ErrorMessage="*" ControlToValidate="txtPriority" CssClass="text-danger" ValidationGroup="UpdateConfigValues"></asp:RequiredFieldValidator>
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <asp:TextBox ID="txtPriority" runat="server" class="form-control" MaxLength="3" />
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtPriority" runat="server" FilterType="Numbers" TargetControlID="txtPriority" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="txtDescription">Description</label>
-                                                <div class="col-sm-8">
-                                                    <textarea maxlength="10" id="txtDescription" runat="server" class="form-control"></textarea>
-                                                    <%--<asp:TextBox ID="txtDescription" runat="server" class="form-control" MaxLength="255" />--%>
-                                                </div>
-                                            </div>
-                                        </div>
+                                <div class="modal-header">
+                                    <div class="panel-title">
+                                        <h4 class="modal-title">Update</h4>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="col-sm-6">
-                                            <div class="form-group row">
-                                                <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" CommandName="Save" OnClientClick="computeValue(); return true;" ValidationGroup="UpdateConfigValues" CausesValidation="true" />
-                                                <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetUpdate" CausesValidation="false" />
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlSupplierName">Type </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row" id="dvAttributeName" runat="server">
+                                                    <label class="control-label col-sm-4" for="txtAttributeName">Name</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:TextBox ID="txtAttributeName" runat="server" CssClass="form-control"></asp:TextBox>
+
+                                                        <asp:DropDownList ID="ddlAttributeName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="txtAttributeName">Value</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
+                                                        <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
+                                                        <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
+                                                        <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
+                                                            <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
+                                                            <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
+                                                                <button class="btn btn-default" id="btnAddValue" type="button">
+                                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <asp:HiddenField runat="server" ID="hdnIsReplaceWith" ClientIDMode="Static" />
+                                                        <div runat="server" id="divReplaceValue" style="display: none;">
+                                                            <div class="form-group col-md-12">
+                                                                <div class="col-md-6">
+                                                                    <label>From</label><br />
+                                                                    <asp:TextBox ID="txtReplaceFrom" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label>To</label><br />
+                                                                    <asp:TextBox ID="txtReplaceTo" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="txtAttributeName">Status</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group row" id="dvtxtPriority" runat="server">
+                                                    <label class="control-label col-sm-4" for="txtPriority">
+                                                        Priority
+                                                    <asp:RequiredFieldValidator ID="vtxtPriority" runat="server" ErrorMessage="*" ControlToValidate="txtPriority" CssClass="text-danger" ValidationGroup="UpdateConfigValues"></asp:RequiredFieldValidator>
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <asp:TextBox ID="txtPriority" runat="server" class="form-control" MaxLength="3" />
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtPriority" runat="server" FilterType="Numbers" TargetControlID="txtPriority" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="txtDescription">Description</label>
+                                                    <div class="col-sm-8">
+                                                        <textarea maxlength="10" id="txtDescription" runat="server" class="form-control"></textarea>
+                                                        <%--<asp:TextBox ID="txtDescription" runat="server" class="form-control" MaxLength="255" />--%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="col-sm-6">
+                                                <div class="form-group row">
+                                                    <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" CommandName="Save" OnClientClick="computeValue(); return true;" ValidationGroup="UpdateConfigValues" CausesValidation="true" />
+                                                    <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetUpdate" CausesValidation="false" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
