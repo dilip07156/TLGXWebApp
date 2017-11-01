@@ -295,12 +295,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 dc = mappingsvc.UpdateStaticDataMappingAttribute(_lst);
                 if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                 {
+                    dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Warning);
                     // PageIndex = 0;
                     fillmappingattributes();
                 }
                 else
                 {
+                    dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                 }
             }
@@ -361,8 +363,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
                         TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom");
                         TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo");
-
-
+                        
                         #endregion //Get All Controls
 
                         #region Priority 
@@ -380,7 +381,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeType.SelectedIndex = ddlAttributeType.Items.IndexOf(ddlAttributeType.Items.FindByText(res[0].AttributeType));
 
                         #endregion //End Attribute Type
-
                         //Fill and Set Attribute Name 
                         #region Attribute Name
                         txtAttributeName.Visible = ddlAttributeName.Visible = false;
@@ -659,6 +659,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
 
                     }
+                    dvMsg.Visible = false;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showManageModal();", true);
                 }
                 else if (e.CommandName.ToString() == "SoftDelete")
@@ -690,6 +691,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         fillconfigdata();
                         fillmappingattributes();
+                        dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                     }
                 }
@@ -722,6 +724,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         fillconfigdata();
                         fillmappingattributes();
+                        dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                     }
                 }
@@ -771,14 +774,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
             HiddenField hdnddlAttributeTableName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableName");
             HiddenField hdnddlAttributeTableValueName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableValueName");
             HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
-
-
+            
             TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom"); //New Field added for priority
             TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo"); //New Field added for priority
-
-
-
-
+            
             if (e.CommandName == "Add")
             {
                 string strAttributeValue = string.Empty;
@@ -850,9 +849,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     CREATE_DATE = DateTime.Now,
                     CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name
                 };
-
-
-
+                
 
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                 dc = mappingsvc.AddStaticDataMappingAttributeValue(newObj);
@@ -866,6 +863,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     //PageIndex = 0;
                     fillmappingattributes();
                     fillattributeFilters();
+                    dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
 
                 }
@@ -955,6 +953,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     hdnFlag.Value = "true";
                     fillmappingattributes();
                     fillattributeFilters();
+                    dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
 
                 }
@@ -993,6 +992,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            dvMsg.Visible = false;
             List<MDMSVC.DC_SupplierImportAttributeValues> lstobj = new List<MDMSVC.DC_SupplierImportAttributeValues>();
             MDMSVC.DC_SupplierImportAttributeValues obj = new MDMSVC.DC_SupplierImportAttributeValues();
             lstobj.Add(obj);
