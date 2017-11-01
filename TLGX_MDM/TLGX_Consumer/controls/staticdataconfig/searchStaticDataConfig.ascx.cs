@@ -75,6 +75,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnAddConfig_Click(object sender, EventArgs e)
         {
+            dvModalMsg.Visible = false;
             dvMsg.Visible = false;
             fillfor(ddlAddFor);
             fillsuppliers(ddlAddSupplier);
@@ -261,6 +262,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             dc = mappingsvc.AddStaticDataMappingAttribute(newObj);
             if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
             {
+                dvModalMsg.Visible = true;
                 BootstrapAlert.BootstrapAlertMessage(dvModalMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                 resetModalControls();
                 hdnFlag.Value = "false";
@@ -272,6 +274,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 ddlFor.SelectedIndex = ddlAddFor.Items.IndexOf(ddlAddFor.Items.FindByText(Convert.ToString(newObj.For)));
                 ddlEntity.SelectedIndex = ddlAddEntity.Items.IndexOf(ddlAddEntity.Items.FindByText(Convert.ToString(newObj.Entity)));
                 fillconfigdata();
+                dvModalMsg.Visible = false;
                 dvMsg.Visible = true;
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                 resetModalControls();
