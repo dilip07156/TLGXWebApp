@@ -48,11 +48,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         }
         private void fillsuppliers(DropDownList ddl)
         {
-            MDMSVC.DC_Supplier_Search_RQ RQ = new MDMSVC.DC_Supplier_Search_RQ();
-
-            RQ.PageNo = 0;
-            RQ.PageSize = int.MaxValue;
-            var supres = mastersvc.GetSupplier(RQ);
+            var supres = mastersvc.GetSupplierMasterData();
 
             if (supres != null && supres.Count > 0)
             {
@@ -260,6 +256,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             dc = mappingsvc.AddStaticDataMappingAttribute(newObj);
             if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
             {
+                BootstrapAlert.BootstrapAlertMessage(dvModalMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                 hdnFlag.Value = "false";
             }
             else

@@ -153,6 +153,22 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Flavour Options
+        public List<MDMSVC.DC_Activity_Flavour_Options> GetActivityFlavourOptions(MDMSVC.DC_Activity_Flavour_Options_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityFlavourOptions"], RQ, typeof(DC_Activity_Flavour_Options_RQ), typeof(List<DC_Activity_Flavour_Options>), out result);
+            return result as List<MDMSVC.DC_Activity_Flavour_Options>;
+
+        }
+        public DC_Message AddUpdateActivityFlavourOptions(MDMSVC.DC_Activity_Flavour_Options RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityFlavourOptions"], RQ, typeof(MDMSVC.DC_Activity_Flavour_Options), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
         #region Activity Classification Attributes
         public List<MDMSVC.DC_Activity_ClassificationAttributes> GetActivityClasificationAttributes(MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ)
         {

@@ -353,7 +353,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             else if (e.CommandName == "FillListBox2")
             {
                 ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-                ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lst3");
+                ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
                 Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
 
                 lblmsg2.Visible = false;
@@ -389,7 +389,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             else if (e.CommandName == "EmptyListBox2")
             {
                 ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-                ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lst3");
+                ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
                 Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
 
                 lblmsg2.Visible = false;
