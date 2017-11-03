@@ -92,8 +92,8 @@
                     </div>
                     <div id="collapseSearch" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <form class="form-horizontal">
-                                <div class="row col-lg-6">
+                            <form class="row form-horizontal">
+                                <div class="col-lg-3">
 
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="txtKeyword">Keyword</label>
@@ -109,10 +109,25 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <%--<div class="form-group row">
                                         <label class="control-label col-sm-4" for="chkAttribute">Attribute</label>
                                         <div class="col-sm-8">
                                             <asp:CheckBox ID="chkAttribute" runat="server"></asp:CheckBox>
+
+                                        </div>
+                                    </div>--%>
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4" for="rdoBtnAttribute">Attribute</label>
+                                        <div class="col-sm-8">
+                                            
+                                            <label class="radio-inline">
+                                                <input type="radio" id="rdoIsAttributeAll" runat="server" name="IsAttribute"><b>All</b></label>
+                                            <label class="radio-inline">
+                                                <input type="radio" id="rdoIsAttributeYes" runat="server" name="IsAttribute"><b>Yes</b></label>
+                                            <label class="radio-inline">
+                                                <input type="radio" id="rdoIsAttributeNo" runat="server" name="IsAttribute"><b>No</b></label>
+
                                         </div>
                                     </div>
 
@@ -127,20 +142,38 @@
 
                                 </div>
 
-                                <div class="row col-lg-6">
-                                    <div class="col-sm-10">
-                                        <div class="form-group row">
-                                            <div class="col-sm-2">
-                                                <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary btn-sm pull-right" Text="Search" OnClick="btnSearch_Click" />
+                                <div class="col-lg-3">
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4" for="chkListEntityForSearch">
+                                            Entity For
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <div class="form-horizontal">
+                                                <fieldset class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <asp:CheckBoxList ID="chkListEntityForSearch" runat="server"></asp:CheckBoxList>
+                                                    </div>
+                                                </fieldset>
                                             </div>
-                                            <div class="col-sm-2">
-                                                <asp:Button runat="server" ID="btnReset" CssClass="btn btn-primary btn-sm pull-right" Text="Reset" OnClick="btnReset_Click" />
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <asp:Button runat="server" ID="btnAddNew" CssClass="btn btn-primary btn-sm pull-right" Text="Add New" OnClick="btnAddNew_Click" OnClientClick="showModal();" />
-                                            </div>
+
                                         </div>
                                     </div>
+                                </div>
+
+                                <div class="col-lg-3">
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary btn-sm pull-right" Text="Search" OnClick="btnSearch_Click" />
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <asp:Button runat="server" ID="btnReset" CssClass="btn btn-primary btn-sm pull-right" Text="Reset" OnClick="btnReset_Click" />
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <asp:Button runat="server" ID="btnAddNew" CssClass="btn btn-primary btn-sm pull-right" Text="Add New" OnClick="btnAddNew_Click" OnClientClick="showModal();" />
+                                        </div>
+                                    </div>
+
                                 </div>
 
                             </form>
