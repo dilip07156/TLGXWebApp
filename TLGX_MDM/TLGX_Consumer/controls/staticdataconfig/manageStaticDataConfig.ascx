@@ -421,7 +421,7 @@
                                                         <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
+                                                <div class="form-group row" id="dvAttributeValue" runat="server">
                                                     <label class="control-label col-sm-4" for="txtAttributeName">Value</label>
                                                     <div class="col-sm-8">
                                                         <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>

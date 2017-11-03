@@ -353,6 +353,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         DropDownList ddlAddStatus = (DropDownList)frmAddConfig.FindControl("ddlAddStatus");
                         System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
                         System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
+                        System.Web.UI.HtmlControls.HtmlGenericControl dvAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvAttributeValue");
                         FilteredTextBoxExtender axfte_txtAttributeName = (FilteredTextBoxExtender)frmAddConfig.FindControl("axfte_txtAttributeName");
                         HtmlGenericControl dvtxtPriority = (HtmlGenericControl)frmAddConfig.FindControl("dvtxtPriority");
                         HtmlGenericControl dvValueForFilter = (HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
@@ -363,7 +364,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
                         TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom");
                         TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo");
-                        
+
                         #endregion //Get All Controls
 
                         #region Priority 
@@ -657,6 +658,24 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             txtDescription.InnerText = res[0].Description.ToString();
                         #endregion // End Description 
 
+                        #region Hide 'Value' Section
+                        string valAttributeType = ddlAttributeType.SelectedItem.Text.ToLower();
+                        if (valAttributeType == "decode" || valAttributeType == "encode" || valAttributeType == "distinct" || valAttributeType == "filter")
+                        {
+                            if (dvAttributeValue.Visible)
+                                dvAttributeValue.Visible = false;
+                        }
+                        else
+                        {
+                            if (!dvAttributeValue.Visible)
+                            {
+                                dvAttributeValue.Visible = true;
+                                dvAttributeValue.Style.Add(HtmlTextWriterStyle.Display, "block");
+                            }
+
+                        }
+                        #endregion
+
 
                     }
                     dvMsg.Visible = false;
@@ -774,10 +793,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
             HiddenField hdnddlAttributeTableName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableName");
             HiddenField hdnddlAttributeTableValueName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableValueName");
             HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
-            
+
             TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom"); //New Field added for priority
             TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo"); //New Field added for priority
-            
+
             if (e.CommandName == "Add")
             {
                 string strAttributeValue = string.Empty;
@@ -849,7 +868,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     CREATE_DATE = DateTime.Now,
                     CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name
                 };
-                
+
 
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                 dc = mappingsvc.AddStaticDataMappingAttributeValue(newObj);
@@ -1039,8 +1058,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
             #endregion //End All Controls
             bool isFound = false;
-            dvAttributeValue.Visible = true;
-
+            
             #region Set Attribute Name 
             if (ddlAttributeType.SelectedItem.Value != "0")
             {
@@ -1116,7 +1134,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
-                        
+
                         for (int i = --intNoOfColumn; i >= 0; i--)
                             ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
 
@@ -1183,13 +1201,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     RQ.Name = "AttributeValues";
                     RQ.ParentAttributeValue_Id = Guid.Parse(ddlAttributeType.SelectedItem.Value);
                     var resvalues = mastersvc.GetAllAttributeAndValues(RQ);
-                    string attributeType = ddlAttributeType.SelectedItem.Text.ToLower();
                     if (resvalues != null && resvalues.Count > 0)
                     {
-                        if (attributeType == "decode" || attributeType=="encode")
-                        {
-                            dvAttributeValue.Visible = false;
-                        }
                         ddlAttributeName.Visible = true;
                         // Delimiter option only available when format has been added and Selected as csc / txt
                         if (IsFileDetailsFileFormatCsvTxt)
@@ -1217,6 +1230,24 @@ namespace TLGX_Consumer.controls.staticdataconfig
             else
             {
                 ddlAttributeName.Items.Clear();
+            }
+            #endregion
+
+            #region Hide 'Value' Section
+            string valAttributeType = ddlAttributeType.SelectedItem.Text.ToLower();
+            if (valAttributeType == "decode" || valAttributeType == "encode" || valAttributeType == "distinct" || valAttributeType == "filter" )
+            {
+                if (dvAttributeValue.Visible)
+                    dvAttributeValue.Visible = false;
+            }
+            else
+            {
+                if (!dvAttributeValue.Visible)
+                {
+                    dvAttributeValue.Visible = true;
+                    dvAttributeValue.Style.Add(HtmlTextWriterStyle.Display, "block");
+                }
+
             }
             #endregion
         }
