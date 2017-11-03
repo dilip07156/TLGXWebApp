@@ -1047,7 +1047,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
             HiddenField hdnddlAttributeTableName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableName");
             HiddenField hdnddlAttributeTableValueName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableValueName");
-
+            HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
 
             TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
             TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
@@ -1055,6 +1055,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
             System.Web.UI.HtmlControls.HtmlGenericControl dvAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvAttributeValue");
+            System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
 
             #endregion //End All Controls
             bool isFound = false;
@@ -1249,6 +1250,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
 
             }
+            //to hide the From and To textboxes.
+            if (!(ddlAttributeType.SelectedItem.Text.ToLower() == "format"))
+            {
+                hdnIsReplaceWith.Value = Convert.ToString(false);
+                divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+            }
             #endregion
         }
 
@@ -1386,14 +1393,16 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         txtAttributeValue.Visible = true;
                     }
+                    else if(ddlAttributeName.SelectedIndex==0)
+                    {
+                        txtAttributeValue.Visible = true;
+                    }
                     else
                     {
                         dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
                     }
                 }
             }
-
-
         }
 
         protected void ddlFilterPriority_SelectedIndexChanged(object sender, EventArgs e)
