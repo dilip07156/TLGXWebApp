@@ -318,7 +318,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
+                                                <div class="form-group row" id="dvAttributeValue" runat="server">
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>

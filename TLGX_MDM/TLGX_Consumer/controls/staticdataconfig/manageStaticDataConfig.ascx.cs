@@ -1035,10 +1035,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
+            System.Web.UI.HtmlControls.HtmlGenericControl dvAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvAttributeValue");
 
             #endregion //End All Controls
             bool isFound = false;
-
+            dvAttributeValue.Visible = true;
 
             #region Set Attribute Name 
             if (ddlAttributeType.SelectedItem.Value != "0")
@@ -1182,8 +1183,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     RQ.Name = "AttributeValues";
                     RQ.ParentAttributeValue_Id = Guid.Parse(ddlAttributeType.SelectedItem.Value);
                     var resvalues = mastersvc.GetAllAttributeAndValues(RQ);
+                    string attributeType = ddlAttributeType.SelectedItem.Text.ToLower();
                     if (resvalues != null && resvalues.Count > 0)
                     {
+                        if (attributeType == "decode" || attributeType=="encode")
+                        {
+                            dvAttributeValue.Visible = false;
+                        }
                         ddlAttributeName.Visible = true;
                         // Delimiter option only available when format has been added and Selected as csc / txt
                         if (IsFileDetailsFileFormatCsvTxt)
