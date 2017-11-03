@@ -58,13 +58,31 @@ namespace TLGX_Consumer.controls.keywords {
         protected global::System.Web.UI.WebControls.TextBox txtAlias;
         
         /// <summary>
-        /// chkAttribute control.
+        /// rdoIsAttributeAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkAttribute;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdoIsAttributeAll;
+        
+        /// <summary>
+        /// rdoIsAttributeYes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdoIsAttributeYes;
+        
+        /// <summary>
+        /// rdoIsAttributeNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdoIsAttributeNo;
         
         /// <summary>
         /// ddlStatus control.
@@ -74,6 +92,15 @@ namespace TLGX_Consumer.controls.keywords {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
+        
+        /// <summary>
+        /// chkListEntityForSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chkListEntityForSearch;
         
         /// <summary>
         /// btnSearch control.

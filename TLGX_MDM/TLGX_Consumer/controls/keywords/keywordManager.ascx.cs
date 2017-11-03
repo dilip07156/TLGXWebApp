@@ -52,10 +52,17 @@ namespace TLGX_Consumer.controls.keywords
             RQ.MasterFor = "MappingFileConfig";
             RQ.Name = "MappingEntity";
             var res = masterscv.GetAllAttributeAndValues(RQ);
+
             chklistEntityFor.DataSource = res;
             chklistEntityFor.DataTextField = "AttributeValue";
             chklistEntityFor.DataValueField = "AttributeValue";
             chklistEntityFor.DataBind();
+
+            chkListEntityForSearch.DataSource = res;
+            chkListEntityForSearch.DataTextField = "AttributeValue";
+            chkListEntityForSearch.DataValueField = "AttributeValue";
+            chkListEntityForSearch.DataBind();
+
             RQ = null;
         }
 
@@ -80,7 +87,17 @@ namespace TLGX_Consumer.controls.keywords
 
             RQParam.systemWord = txtKeyword.Text;
             RQParam.Alias = txtAlias.Text;
-            RQParam.Attribute = chkAttribute.Checked;
+
+            if (rdoIsAttributeYes.Checked)
+                RQParam.Attribute = true;
+            else if (rdoIsAttributeNo.Checked)
+                RQParam.Attribute = false;
+
+            if (chkListEntityForSearch.Items.Cast<ListItem>().Where(x => x.Selected).Count() > 0)
+            {
+                string EntityFor = string.Join(",", chkListEntityForSearch.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Text).ToArray());
+                RQParam.EntityFor = EntityFor;
+            }
 
             if (ddlStatus.SelectedItem.Value != "0")
                 RQParam.Status = ddlStatus.SelectedItem.Text;
@@ -494,7 +511,10 @@ namespace TLGX_Consumer.controls.keywords
 
             txtKeyword.Text = String.Empty;
             txtAlias.Text = String.Empty;
-            chkAttribute.Checked = false;
+
+            rdoIsAttributeAll.Checked = true;
+            chkListEntityForSearch.ClearSelection();
+
             ddlStatus.SelectedIndex = 0;
             lblTotalCount.Text = "0";
             PageNo = 0;
