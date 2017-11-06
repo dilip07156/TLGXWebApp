@@ -711,7 +711,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         fillconfigdata();
                         fillmappingattributes();
                         dvMsg.Visible = true;
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been deleted successfully", BootstrapAlertType.Success);
                     }
                 }
                 else if (e.CommandName.ToString() == "UnDelete")
@@ -744,7 +744,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         fillconfigdata();
                         fillmappingattributes();
                         dvMsg.Visible = true;
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been deleted successfully", BootstrapAlertType.Success);
                     }
                 }
             }
