@@ -465,10 +465,20 @@
 
                                 <asp:BoundField HeaderText="Upload Date" DataField="CREATE_DATE" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
 
+                                <%--<asp:TemplateField ShowHeader="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>' 
+                                            CssClass="btn btn-default" Enabled="true">
+                                                 <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "View Details" %></span>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>' CssClass="btn btn-default" Enabled="true">
-                                                 <span aria-hidden="true"><%# Eval("STATUS").ToString() == "UPLOADED" ? "PROCESS" : "View Details" %></span>
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>' 
+                                            CssClass="btn btn-default" Enabled="true">
+                                                 <span aria-hidden="true"><%# ((Eval("STATUS").ToString() == "UPLOADED" && Eval("IsActive").ToString()=="True")  ? "PROCESS" : "ViewDetails") %></span>
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>

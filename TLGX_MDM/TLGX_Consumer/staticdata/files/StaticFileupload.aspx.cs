@@ -24,10 +24,17 @@ namespace TLGX_Consumer.staticdata.files
         {
             try
             {
-                ddlSupplierList.DataSource = _objMasterSVC.GetSupplierMasterData();
+                MDMSVC.DC_Supplier_Search_RQ RQParam = new MDMSVC.DC_Supplier_Search_RQ();
+                RQParam.SupplierType = "File Static Data";
+                RQParam.PageNo = 0;
+                RQParam.PageSize = int.MaxValue;
+                ddlSupplierList.DataSource = _objMasterSVC.GetSupplier(RQParam);
+                //ddlSupplierList.DataSource = _objMasterSVC.GetSupplierMasterData();
                 ddlSupplierList.DataValueField = "Supplier_Id";
                 ddlSupplierList.DataTextField = "Name";
                 ddlSupplierList.DataBind();
+                ddlSupplierList.Items.RemoveAt(0);
+                ddlSupplierList.Items.Insert(0, new ListItem("--Select --", "0"));
                 fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
             }
             catch (Exception)
