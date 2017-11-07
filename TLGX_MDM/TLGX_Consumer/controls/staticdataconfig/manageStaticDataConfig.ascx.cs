@@ -77,6 +77,48 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
+        private void setNoOfColumnsForMapType()
+        {
+            if (Config_Id != Guid.Empty)
+            {
+                MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
+                RQ.SupplierImportAttribute_Id = Config_Id;
+                RQ.PageNo = PageIndex;
+
+                if (ddlFilterPriority.SelectedItem.Value != "-1")
+                    RQ.Priority = Convert.ToInt32(ddlFilterPriority.SelectedItem.Text); //intFilterPriority;
+                else
+                    RQ.Priority = -1;
+                RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
+
+                var res = mappingsvc.GetStaticDataMappingAttributeValues(RQ);
+                if (res != null)
+                {
+                    if (res.Count > 0)
+                    {
+                       
+                        //Set Value for IsNumberOfColumnHasBeenAdded
+                        var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
+                        if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
+                            intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        else
+                            intNumberOfColumnHasBeenAdded = 0;
+                    }
+                    else
+                    {
+                        lblTotalUploadConfig.Text = "0";
+                        configresultCount = 0;
+                    }
+                }
+                else
+                {
+                    lblTotalUploadConfig.Text = "0";
+                    configresultCount = 0;
+                }
+                
+            }
+        }
+        
         private void fillmappingattributes()
         {
             if (Config_Id != Guid.Empty)
@@ -123,9 +165,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
                         else
                             intNumberOfColumnHasBeenAdded = 0;
-
-
-
                     }
                     else
                     {
@@ -139,7 +178,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     configresultCount = 0;
                 }
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
-                //grdMappingAttrValues.DataSource = (from a in res orderby a.EDIT_DATE select a).ToList();
                 grdMappingAttrValues.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
                 grdMappingAttrValues.PageIndex = PageIndex;
                 grdMappingAttrValues.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
@@ -704,7 +742,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dc = mappingsvc.UpdateStaticDataMappingAttributeValue(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                     {
-
+                        dvMsg.Visible = true;
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                     }
                     else
                     {
@@ -738,13 +777,15 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dc = mappingsvc.UpdateStaticDataMappingAttributeValue(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                     {
+                        dvMsg.Visible = true;
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                     }
                     else
                     {
                         fillconfigdata();
                         fillmappingattributes();
                         dvMsg.Visible = true;
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been deleted successfully", BootstrapAlertType.Success);
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been retrived successfully", BootstrapAlertType.Success);
                     }
                 }
             }
@@ -1307,6 +1348,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
+            setNoOfColumnsForMapType();
         }
 
         protected void ddlAttributeName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1400,11 +1442,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlFilterPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
+            setNoOfColumnsForMapType();
         }
 
         protected void ddlFilterAttributeType_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
+            setNoOfColumnsForMapType();
         }
     }
 }
