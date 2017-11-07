@@ -72,7 +72,6 @@
     }
 
     function computeValue() {
-        // debugger;
         var Contain = "";
         $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter input[type=text]").each(function () {
             Contain += $(this).val() + ",";
@@ -154,7 +153,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnUpdate_Click" CausesValidation="true" ValidationGroup="UpdateConfig" />
-                                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
+                                            <%--<asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />--%>
                                         </div>
                                         <div class="col-sm-12">&nbsp; </div>
                                     </div>
@@ -276,28 +275,41 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content">
 
-            <%--<div class="modal-header ">
+            <div class="modal-header ">
                 <div class="panel-title">
                     <h4 class="modal-title">Add/Update Mapping </h4>
                 </div>
-            </div>--%>
+            </div>
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id" OnItemCommand="frmAddConfig_ItemCommand">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                                    <div id="dvModalMsg" runat="server" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
+                            OnItemCommand="frmAddConfig_ItemCommand">
                             <InsertItemTemplate>
-                                <div class="modal-header">
+                                <%--<div class="modal-header">
                                     <div class="panel-title">
                                         <h4 class="modal-title">Add Mapping</h4>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="ddlSupplierName">Type </label>
+                                                    <label class="control-label col-sm-4" for="ddlSupplierName">
+                                                        Type 
+                                                        <asp:RequiredFieldValidator ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeType"
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Type field is required." Text="*" />
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
@@ -305,7 +317,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvddlAttributeName" runat="server">
-                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Name</label>
+                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">
+                                                        Name
+                                                        <asp:RequiredFieldValidator ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Name field is required." Text="*" />
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>
                                                         <asp:DropDownList ID="ddlAttributeName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged" CssClass="form-control" AppendDataBoundItems="true">
@@ -383,7 +399,7 @@
                                             <div class="col-md-12">
                                                 <div class="col-sm-6">
                                                     <div class="form-group row">
-                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CommandName="Add" OnClientClick="computeValue(); return true;" CausesValidation="true" ValidationGroup="AddConfigValues" />
+                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CommandName="Add" OnClientClick="computeValue(); return true;" CausesValidation="true" ValidationGroup="AddConfig" />
                                                         <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetAdd" CausesValidation="false" />
                                                     </div>
                                                 </div>
@@ -393,11 +409,11 @@
                                 </div>
                             </InsertItemTemplate>
                             <EditItemTemplate>
-                                <div class="modal-header">
+                                <%--<div class="modal-header">
                                     <div class="panel-title">
                                         <h4 class="modal-title">Update Mapping</h4>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">

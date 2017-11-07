@@ -27,7 +27,7 @@
 <style>
     @media (min-width: 768px) {
         .modal-xl {
-            width: 80%;
+            width: 90%;
             max-width: 1200px;
         }
     }
@@ -351,7 +351,7 @@
                         <asp:HiddenField ID="hiddenfield" runat="server" />
                         <asp:HiddenField ID="hdn_MasterAttributeMapping_Id" runat="server" />
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="col-md-12 ">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
@@ -476,7 +476,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-7">
 
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -560,7 +560,7 @@
                                                                             Active
                                                                         </HeaderTemplate>
                                                                         <ItemTemplate>
-                                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server"  checked='<%# Convert.ToBoolean(Eval("IsActive")) %>' />
+                                                                            <asp:CheckBox ID="chkAttrValIsActive" runat="server" Checked='<%# Convert.ToBoolean(Eval("IsActive")) %>' />
                                                                         </ItemTemplate>
                                                                         <EditItemTemplate>
                                                                             <asp:CheckBox ID="chkAttrValIsActive" runat="server" />
@@ -570,21 +570,21 @@
                                                                     <asp:TemplateField ShowHeader="false">
                                                                         <HeaderTemplate>
                                                                             <asp:LinkButton ID="btnAdd" runat="server" CommandName="AddNew" ToolTip="Add New"
-                                                                              CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
-                                                                        <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New
+                                                                                CssClass="btn btn-default" CommandArgument='<%# Guid.NewGuid() %>'>
+                                                                        <span aria-hidden="true" class="glyphicon glyphicon-plus"></span>&nbsp;Add
                                                                             </asp:LinkButton>
                                                                         </HeaderTemplate>
                                                                         <ItemTemplate>
-                                                                            <asp:LinkButton ID="btnEdit" runat="server"  CommandName="UpdateVal" CssClass="btn btn-default"
-                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Update Value" >
+                                                                            <asp:LinkButton ID="btnEdit" runat="server" CommandName="UpdateVal" CssClass="btn btn-default"
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Update Value">
                                                                             <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>
                                                                             </asp:LinkButton>
                                                                             <asp:LinkButton ID="btnDelete" runat="server" CommandName="DeleteVal" CssClass="btn btn-default"
-                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Delete Value" >
+                                                                                CommandArgument='<%# Bind("MasterAttributeValueMapping_Id")%>' ToolTip="Delete Value">
                                                                             <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
                                                                             </asp:LinkButton>
                                                                         </ItemTemplate>
-                                                                        
+
                                                                     </asp:TemplateField>
                                                                 </Columns>
 

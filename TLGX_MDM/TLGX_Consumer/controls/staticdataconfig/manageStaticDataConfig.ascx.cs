@@ -711,7 +711,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         fillconfigdata();
                         fillmappingattributes();
                         dvMsg.Visible = true;
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been deleted successfully", BootstrapAlertType.Success);
                     }
                 }
                 else if (e.CommandName.ToString() == "UnDelete")
@@ -744,7 +744,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         fillconfigdata();
                         fillmappingattributes();
                         dvMsg.Visible = true;
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been deleted successfully", BootstrapAlertType.Success);
                     }
                 }
             }
@@ -875,6 +875,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                 {
                     hdnFlag.Value = "false";
+                    dvModalMsg.Visible = true;
+                    BootstrapAlert.BootstrapAlertMessage(dvModalMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                 }
                 else //if (dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
@@ -1011,6 +1013,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
+            dvModalMsg.Visible = false;
             dvMsg.Visible = false;
             List<MDMSVC.DC_SupplierImportAttributeValues> lstobj = new List<MDMSVC.DC_SupplierImportAttributeValues>();
             MDMSVC.DC_SupplierImportAttributeValues obj = new MDMSVC.DC_SupplierImportAttributeValues();
@@ -1304,17 +1307,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
-        }
-
-        protected void btnReset_Click(object sender, EventArgs e)
-        {
-            ddlFor.SelectedIndex = 0;
-            ddlSupplierName.SelectedIndex = 0;
-            ddlEntity.SelectedIndex = 0;
-            ddlStatus.SelectedIndex = 0;
-            ddlShowEntries.SelectedIndex = 0;
-            grdMappingAttrValues.DataSource = null;
-            grdMappingAttrValues.DataBind();
         }
 
         protected void ddlAttributeName_SelectedIndexChanged(object sender, EventArgs e)
