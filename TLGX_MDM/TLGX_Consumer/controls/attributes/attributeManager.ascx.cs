@@ -880,12 +880,12 @@ namespace TLGX_Consumer.controls.attributes
             msgdelundel.Style.Add("display", "none");
             msgupdateall.Style.Add("display", "none");
             var id = hiddenfield.Value;
-            var a = ddlSuppliers.SelectedItem.Value;
-            var san = txtSupplierAttributeName.Text;
+            var sSupplierId = ddlSuppliers.SelectedItem.Value;
+            var sSupplierAttrName = txtSupplierAttributeName.Text;
 
             if (btnSave.Text == "Update")
             {
-                if (a == "0" || san == "")
+                if (sSupplierId == "0" || sSupplierAttrName == "")
                 {
                     BootstrapAlert.BootstrapAlertMessage(addupdatemsg, "Please select both  Supplier Name and Supplier Attribute Type..!! ", BootstrapAlertType.Warning);
                 }
@@ -913,7 +913,7 @@ namespace TLGX_Consumer.controls.attributes
             }
             else
             {
-                if (a == "0" || san == "")
+                if (sSupplierId == "0" || sSupplierAttrName == "")
                 {
                     BootstrapAlert.BootstrapAlertMessage(addupdatemsg, "Please select both  Supplier Name and Supplier Attribute Type..!! ", BootstrapAlertType.Warning);
                 }
@@ -949,6 +949,7 @@ namespace TLGX_Consumer.controls.attributes
                                 loopRow.BackColor = System.Drawing.Color.Transparent;
                             }
                         }
+                        fillSystemAttriDropdown();
                         fillsupplierAttrvalues(0);
                         btnSave.Text = "Update";
                     }
@@ -1182,7 +1183,7 @@ namespace TLGX_Consumer.controls.attributes
                 Guid masterattributemappingid = Guid.Parse(hdn_MasterAttributeMapping_Id.Value);
                 MDMSVC.DC_MasterAttributeValueMapping_RQ RQ = new MDMSVC.DC_MasterAttributeValueMapping_RQ();
 
-                if (ddlsystemAttrVal.SelectedIndex != 0)
+                if (ddlsystemAttrVal.SelectedIndex > 0)
                 {
                     RQ.SystemMasterAttributeValue_Id = Guid.Parse(ddlsystemAttrVal.SelectedItem.Value);
                 }
