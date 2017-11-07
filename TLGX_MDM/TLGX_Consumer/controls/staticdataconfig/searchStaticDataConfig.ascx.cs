@@ -121,6 +121,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             grdMappingConfig.PageIndex = PageIndex;
             grdMappingConfig.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
             grdMappingConfig.DataBind();
+            dvMsg.Visible = false;
             //dvMsg.Style.Add("display", "block");
             //BootstrapAlert.BootstrapAlertMessage(dvMsg, "Search Completed", BootstrapAlertType.Success);
         }
@@ -243,6 +244,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillconfigdata();
+            dvMsg.Visible = false;
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)

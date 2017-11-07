@@ -103,15 +103,6 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.WebControls.Button btnUpdate;
         
         /// <summary>
-        /// btnReset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnReset;
-        
-        /// <summary>
         /// dvMsg control.
         /// </summary>
         /// <remarks>
@@ -227,6 +218,15 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
+        
+        /// <summary>
+        /// dvModalMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvModalMsg;
         
         /// <summary>
         /// frmAddConfig control.

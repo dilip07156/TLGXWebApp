@@ -72,7 +72,6 @@
     }
 
     function computeValue() {
-         debugger;
         var Contain = "";
         $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter input[type=text]").each(function () {
             Contain += $(this).val() + ",";
@@ -154,7 +153,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <asp:Button ID="btnUpdate" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnUpdate_Click" CausesValidation="true" ValidationGroup="UpdateConfig" />
-                                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
+                                            <%--<asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />--%>
                                         </div>
                                         <div class="col-sm-12">&nbsp; </div>
                                     </div>
@@ -285,12 +284,11 @@
                 <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
                     <ContentTemplate>
                         <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <div class="container">
-                            <div class="row">
-                                <div class="form-group">
-                                    <div class="col-sm-9">
-                                        <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                                    </div>
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                                    <div id="dvModalMsg" runat="server" style="display: none;"></div>
                                 </div>
                             </div>
                         </div>
@@ -307,9 +305,10 @@
                                         <div class="col-md-12">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="ddlSupplierName">Type 
+                                                    <label class="control-label col-sm-4" for="ddlSupplierName">
+                                                        Type 
                                                         <asp:RequiredFieldValidator ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeType"
-                                                                                CssClass="text-danger" InitialValue="0" ErrorMessage="The Type field is required." Text="*" />
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Type field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
@@ -318,9 +317,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvddlAttributeName" runat="server">
-                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Name
+                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">
+                                                        Name
                                                         <asp:RequiredFieldValidator ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
-                                                                                CssClass="text-danger" InitialValue="0" ErrorMessage="The Name field is required."  Text="*"/>
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Name field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>
