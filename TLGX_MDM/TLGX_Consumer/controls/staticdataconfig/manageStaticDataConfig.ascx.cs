@@ -434,9 +434,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 if (intNumberOfColumnHasBeenAdded > 0)
                                 {
                                     ddlAttributeName.Items.Clear();
-                                    for (int i = --intNoOfColumn; i >= 0; i--)
-                                        ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
-
+                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    for (int i = --intNoOfColumn; i >= 1; i--)
+                                        ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
+                                    
                                     if (ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()) != null)
                                         ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()).Selected = true;
                                 }
@@ -1127,9 +1128,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
-                        for (int i = --intNoOfColumn; i >= 0; i--)
-                            ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
-
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        for (int i = --intNoOfColumn; i >= 1; i--)
+                            ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
                     }
                     if (strAttributeType == "distinct")
                         txtAttributeValue.Visible = true;
@@ -1143,9 +1144,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
-                        for (int i = --intNoOfColumn; i >= 0; i--)
-                            ddlAttributeName.Items.Insert(0, new ListItem(Convert.ToString(i), Convert.ToString(i)));
-
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        for (int i = --intNoOfColumn; i >= 1; i--)
+                            ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
                     }
                     hdnddlAttributeTableName.Value = "0";
                     //set Attribute Value STG Table 
@@ -1366,6 +1367,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
+            dvMsg.Visible = false;
             setNoOfColumnsForMapType();
         }
 
