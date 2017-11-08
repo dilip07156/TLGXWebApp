@@ -161,7 +161,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         SupplierImportAttribute_Id = myRow_Id,
                         For=grdMappingConfig.Rows[index].Cells[0].Text,
-                        Entity = grdMappingConfig.Rows[index].Cells[1].Text,
+                        Entity = grdMappingConfig.Rows[index].Cells[2].Text,
                         Status = "INACTIVE",
                         EDIT_DATE = DateTime.Now,
                         EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
@@ -197,7 +197,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         SupplierImportAttribute_Id = myRow_Id,
                         For=grdMappingConfig.Rows[index].Cells[0].Text,
-                        Entity = grdMappingConfig.Rows[index].Cells[1].Text,
+                        Entity = grdMappingConfig.Rows[index].Cells[2].Text,
                         Status = "ACTIVE",
                         EDIT_DATE = DateTime.Now,
                         EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
