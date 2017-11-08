@@ -96,7 +96,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     if (res.Count > 0)
                     {
-                       
+
                         //Set Value for IsNumberOfColumnHasBeenAdded
                         var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
                         if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
@@ -115,10 +115,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     lblTotalUploadConfig.Text = "0";
                     configresultCount = 0;
                 }
-                
+
             }
         }
-        
+
         private void fillmappingattributes()
         {
             if (Config_Id != Guid.Empty)
@@ -361,6 +361,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 if (e.CommandName.ToString() == "Select")
                 {
+                    dvModalMsg.Visible = false;
                     List<MDMSVC.DC_SupplierImportAttributeValues> lstobj = new List<MDMSVC.DC_SupplierImportAttributeValues>();
                     MDMSVC.DC_SupplierImportAttributeValues obj = new MDMSVC.DC_SupplierImportAttributeValues();
                     MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
@@ -700,8 +701,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         string valAttributeType = ddlAttributeType.SelectedItem.Text.ToLower();
                         if (valAttributeType == "decode" || valAttributeType == "encode" || valAttributeType == "distinct" || valAttributeType == "filter")
                         {
-                            if (dvAttributeValue.Visible)
-                                dvAttributeValue.Visible = false;
+                            if (valAttributeType == "filter")
+                            {
+                                if(divReplaceValue.Visible)
+                                    divReplaceValue.Visible = false;
+                            }
+                            else
+                            {
+                                if (dvAttributeValue.Visible)
+                                    dvAttributeValue.Visible = false;
+                            }
+                            
                         }
                         else
                         {
@@ -710,7 +720,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 dvAttributeValue.Visible = true;
                                 dvAttributeValue.Style.Add(HtmlTextWriterStyle.Display, "block");
                             }
-
                         }
                         #endregion
 
@@ -853,7 +862,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 if (ddlAttributeName.Visible)
                 {
-                    if (hdnddlAttributeTableName != null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
+                    if (hdnddlAttributeTableName!=null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
                     {
                         if (!string.IsNullOrEmpty(hdnddlAttributeTableName.Value) && hdnddlAttributeTableName.Value != "0")
                             strAttributeName = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
@@ -927,8 +936,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     fillattributeFilters();
                     dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
-
                 }
+
             }
             else if (e.CommandName == "Save")
             {
@@ -1103,7 +1112,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
             #endregion //End All Controls
             bool isFound = false;
-            
+
             #region Set Attribute Name 
             if (ddlAttributeType.SelectedItem.Value != "0")
             {
@@ -1278,12 +1287,22 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
             #endregion
 
+           
             #region Hide 'Value' Section
             string valAttributeType = ddlAttributeType.SelectedItem.Text.ToLower();
-            if (valAttributeType == "decode" || valAttributeType == "encode" || valAttributeType == "distinct" || valAttributeType == "filter" )
+            if (valAttributeType == "decode" || valAttributeType == "encode" || valAttributeType == "distinct" || valAttributeType == "filter")
             {
-                if (dvAttributeValue.Visible)
-                    dvAttributeValue.Visible = false;
+                if (valAttributeType == "filter")
+                {
+                    if (divReplaceValue.Visible)
+                        divReplaceValue.Visible = false;
+                }
+                else
+                {
+                    if (dvAttributeValue.Visible)
+                        dvAttributeValue.Visible = false;
+                }
+
             }
             else
             {
@@ -1292,7 +1311,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dvAttributeValue.Visible = true;
                     dvAttributeValue.Style.Add(HtmlTextWriterStyle.Display, "block");
                 }
-
             }
             //to hide the From and To textboxes.
             if (!(ddlAttributeType.SelectedItem.Text.ToLower() == "format"))
@@ -1413,6 +1431,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
                         }
                         else
+                            if (!(frmAddConfig.CurrentMode.ToString() == "Edit"))
                             axfte_txtAttributeValue.Enabled = false;
                     }
 
@@ -1423,7 +1442,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         txtAttributeValue.Visible = true;
                     }
-                    else if (ddlAttributeType.SelectedItem.Text.ToLower() == "distinct")
+                    else if(ddlAttributeType.SelectedItem.Text.ToLower() == "distinct")
                     {
                         txtAttributeValue.Visible = true;
                     }

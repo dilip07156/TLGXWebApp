@@ -307,7 +307,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-4" for="ddlSupplierName">
                                                         Type 
-                                                        <asp:RequiredFieldValidator ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeType"
+                                                        <asp:RequiredFieldValidator ID="vddlSupplierName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeType"
                                                             CssClass="text-danger" InitialValue="0" ErrorMessage="The Type field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
@@ -319,7 +319,7 @@
                                                 <div class="form-group row" id="dvddlAttributeName" runat="server">
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">
                                                         Name
-                                                        <asp:RequiredFieldValidator ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
+                                                        <asp:RequiredFieldValidator  ID="vddlAttributeName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
                                                             CssClass="text-danger" InitialValue="0" ErrorMessage="The Name field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
@@ -399,7 +399,7 @@
                                             <div class="col-md-12">
                                                 <div class="col-sm-6">
                                                     <div class="form-group row">
-                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CommandName="Add" OnClientClick="computeValue(); return true;" CausesValidation="true" ValidationGroup="AddConfig" />
+                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" OnClientClick="computeValue();" Text="Add" CommandName="Add" CausesValidation="true" ValidationGroup="AddConfig" /><%-- --%>
                                                         <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetAdd" CausesValidation="false" />
                                                     </div>
                                                 </div>
