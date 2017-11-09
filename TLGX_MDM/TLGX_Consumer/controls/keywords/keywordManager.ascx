@@ -120,7 +120,7 @@
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="rdoBtnAttribute">Attribute</label>
                                         <div class="col-sm-8">
-                                            
+
                                             <label class="radio-inline">
                                                 <input type="radio" id="rdoIsAttributeAll" runat="server" name="IsAttribute"><b>All</b></label>
                                             <label class="radio-inline">
@@ -441,7 +441,8 @@
                                                         <asp:DropDownList runat="server" ID="ddlAttrType" CssClass="form-control">
                                                             <asp:ListItem Value="0">--Select--</asp:ListItem>
                                                             <asp:ListItem Value="1">Extract & Strip</asp:ListItem>
-                                                            <asp:ListItem Value="2">Extract Only</asp:ListItem>
+                                                            <asp:ListItem Value="2">Extract & Replace</asp:ListItem>
+                                                            <asp:ListItem Value="3">Extract Only</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
