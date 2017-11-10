@@ -332,13 +332,14 @@ namespace TLGX_Consumer.controls.staticdata
                         SupplierName = grdCityMaps.Rows[index].Cells[1].Text,
                         CountryCode = grdCityMaps.Rows[index].Cells[2].Text,
                         CountryName = grdCityMaps.Rows[index].Cells[3].Text,
-                        CityCode = grdCityMaps.Rows[index].Cells[4].Text,
-                        CityName = grdCityMaps.Rows[index].Cells[5].Text,
-                        MasterCountryCode = grdCityMaps.Rows[index].Cells[6].Text,
-                        MasterCountryName = grdCityMaps.Rows[index].Cells[7].Text,
-                        MasterCityCode = grdCityMaps.Rows[index].Cells[10].Text,
-                        Master_CityName = grdCityMaps.Rows[index].Cells[11].Text,
-                        Status = grdCityMaps.Rows[index].Cells[12].Text
+                        StateName = grdCityMaps.Rows[index].Cells[4].Text,
+                        CityCode = grdCityMaps.Rows[index].Cells[5].Text,
+                        CityName = grdCityMaps.Rows[index].Cells[6].Text,
+                        MasterCountryCode = grdCityMaps.Rows[index].Cells[7].Text,
+                        MasterCountryName = grdCityMaps.Rows[index].Cells[8].Text,
+                        MasterCityCode = grdCityMaps.Rows[index].Cells[9].Text,
+                        Master_CityName = grdCityMaps.Rows[index].Cells[11].Text ?? grdCityMaps.Rows[index].Cells[11].Text,
+                        Status = grdCityMaps.Rows[index].Cells[13].Text
                     });
 
                     //SupplierMasters sData = new SupplierMasters();
@@ -377,11 +378,11 @@ namespace TLGX_Consumer.controls.staticdata
                     fillmappingstatus(ddlStatus);
                     lblSupplierName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[1].Text);
                     lblSupplierCode.Text = "(" + supCode + ")"; ;
-                    lblSupCountryName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[3].Text);
                     lblSupCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[2].Text);
-                    lblStateName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
-                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
-                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[4].Text);
+                    lblSupCountryName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[3].Text);
+                    lblStateName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[4].Text);
+                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
+                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
 
                     txtSystemCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[7].Text);
                     txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[10].Text);
@@ -398,8 +399,8 @@ namespace TLGX_Consumer.controls.staticdata
                     {
                         //var res = objMasterDataDAL.GetMasterCityDatawithCode(new Guid(ddlSystemCountryName.SelectedItem.Value));
                         var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
-                        string ccode = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[4].Text);
-                        string cname = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
+                        string ccode = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
+                        string cname = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
 
                         if (cname != null)
                         {

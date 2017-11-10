@@ -399,14 +399,14 @@
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
-                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%" />
-                                        <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%" />
                                         <%--<asp:BoundField DataField="StateNameWithCode" HeaderText="State" />--%>
                                         <asp:TemplateField ShowHeader="true" HeaderText="State">
                                             <ItemTemplate>
                                                 <span aria-hidden="true"><%# Eval("StateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("StateCode"))) ? "(" + Eval("StateCode") + ")" : string.Empty) %></span>
                                             </ItemTemplate>
                                         </asp:TemplateField>
+                                        <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%" />
+                                        <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%" />
                                         <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
