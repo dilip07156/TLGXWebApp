@@ -56,8 +56,8 @@
                         <asp:BoundField DataField="SuplierProductCode" HeaderText="SuplierProductCode" SortExpression="SuplierProductCode" />
                         <asp:BoundField DataField="SupplierProductName" HeaderText="SupplierProductName" SortExpression="SupplierProductName" />
                         <asp:BoundField DataField="SupplierProductType" HeaderText="SupplierProductType" SortExpression="SupplierProductType" />
-                        <asp:TemplateField ShowHeader="false">
 
+                        <%--<asp:TemplateField ShowHeader="false">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CssClass="btn btn-default"
                                     Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("ActivitySupplierProductMapping_Id") %>' OnClientClick="showAddNewPolicyModal();">
@@ -74,7 +74,7 @@
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                                 </asp:LinkButton>
                             </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
                     </Columns>
                     <PagerStyle CssClass="pagination-ys" />
                 </asp:GridView>

@@ -401,7 +401,7 @@
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
                                         <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%" />
                                         <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%" />
-                                        <asp:BoundField DataField="StateName" HeaderText="State" />
+                                        <asp:BoundField DataField="StateNameWithCode" HeaderText="State" />
                                         <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>

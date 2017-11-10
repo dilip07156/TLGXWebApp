@@ -26,17 +26,17 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             _obj.Activity_Flavour_Id = Activity_Flavour_Id;
 
             var res = ActSvc.GetActivityDeals(_obj);
-            //if (res.Count > 0 || res.Count!=null)
-            //{
-            //    gvDealsSearch.DataSource = res;
-            //    gvDealsSearch.DataBind();
-            //    lblTotalRecords.Text = Convert.ToString(res[0].TotalRecords);
-            //}
-            //else
-            //{
-            gvDealsSearch.DataSource = null;
-            gvDealsSearch.DataBind();
-            //}
+            if ( res != null || res.Count > 0)
+            {
+                gvDealsSearch.DataSource = res;
+                gvDealsSearch.DataBind();
+                lblTotalRecords.Text = Convert.ToString(res[0].TotalRecords);
+            }
+            else
+            {
+                gvDealsSearch.DataSource = null;
+                gvDealsSearch.DataBind();
+            }
         }
         protected void gvDealsSearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {

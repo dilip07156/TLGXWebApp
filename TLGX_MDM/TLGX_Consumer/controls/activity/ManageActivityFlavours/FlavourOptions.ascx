@@ -53,16 +53,16 @@
                 <%--<asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CssClass="btn btn-default"
-                            CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# (bool)Eval("IsActive") %>' OnClientClick="showAddEditModal();"> 
+                            CommandArgument='<%# Bind("Activity_FlavourOptions_Id") %>' Enabled='<%# (bool)Eval("IsActive") %>' OnClientClick="showAddEditModal();"> 
                                   <span aria-hidden="true" class="glyphicon glyphicon-edit"> Edit</span>
                         </asp:LinkButton>
                     </ItemTemplate>
-                </asp:TemplateField>--%>
+                </asp:TemplateField>
 
-                <%--<asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
+                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_FlavourOptions_Id") %>'>
                                                     <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                         </asp:LinkButton>

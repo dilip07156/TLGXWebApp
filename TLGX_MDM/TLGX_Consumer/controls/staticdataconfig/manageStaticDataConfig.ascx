@@ -295,11 +295,6 @@
                         <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
                             OnItemCommand="frmAddConfig_ItemCommand">
                             <InsertItemTemplate>
-                                <%--<div class="modal-header">
-                                    <div class="panel-title">
-                                        <h4 class="modal-title">Add Mapping</h4>
-                                    </div>
-                                </div>--%>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -308,7 +303,7 @@
                                                     <label class="control-label col-sm-4" for="ddlSupplierName">
                                                         Type 
                                                         <asp:RequiredFieldValidator ID="vddlSupplierName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeType"
-                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Type field is required." Text="*" />
+                                                            CssClass="text-warning" InitialValue="0" ErrorMessage="The Type field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <asp:DropDownList ID="ddlAttributeType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAttributeType_SelectedIndexChanged" AutoPostBack="true">
@@ -335,7 +330,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
-                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Value</label>
+                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Value
+                                                        <asp:RequiredFieldValidator  ID="rqfvddlAttributeValue" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtAttributeValue"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" />
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>
                                                         <asp:DropDownList ID="ddlAttributeValue" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="true">
@@ -399,7 +397,7 @@
                                             <div class="col-md-12">
                                                 <div class="col-sm-6">
                                                     <div class="form-group row">
-                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" OnClientClick="computeValue();" Text="Add" CommandName="Add" CausesValidation="true" ValidationGroup="AddConfig" /><%-- --%>
+                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" OnClientClick="computeValue();" Text="Add" CommandName="Add" CausesValidation="true" ValidationGroup="AddConfig" />
                                                         <asp:Button ID="btnAddReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CommandName="ResetAdd" CausesValidation="false" />
                                                     </div>
                                                 </div>
@@ -409,11 +407,6 @@
                                 </div>
                             </InsertItemTemplate>
                             <EditItemTemplate>
-                                <%--<div class="modal-header">
-                                    <div class="panel-title">
-                                        <h4 class="modal-title">Update Mapping</h4>
-                                    </div>
-                                </div>--%>
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-12">

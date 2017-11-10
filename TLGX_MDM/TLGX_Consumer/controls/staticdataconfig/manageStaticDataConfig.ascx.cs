@@ -100,7 +100,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         //Set Value for IsNumberOfColumnHasBeenAdded
                         var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
                         if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
-                            intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        {
+                            if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
+                                intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        }
                         else
                             intNumberOfColumnHasBeenAdded = 0;
                     }
@@ -162,7 +165,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         //Set Value for IsNumberOfColumnHasBeenAdded
                         var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
                         if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
-                            intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        {
+                            if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
+                                intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        }
                         else
                             intNumberOfColumnHasBeenAdded = 0;
                     }
@@ -437,7 +443,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
                                     for (int i = --intNoOfColumn; i >= 1; i--)
                                         ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
-                                    
+
                                     if (ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()) != null)
                                         ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()).Selected = true;
                                 }
@@ -704,7 +710,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         {
                             if (valAttributeType == "filter")
                             {
-                                if(divReplaceValue.Visible)
+                                if (divReplaceValue.Visible)
                                     divReplaceValue.Visible = false;
                             }
                             else
@@ -712,7 +718,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 if (dvAttributeValue.Visible)
                                     dvAttributeValue.Visible = false;
                             }
-                            
+
                         }
                         else
                         {
@@ -863,7 +869,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 if (ddlAttributeName.Visible)
                 {
-                    if (hdnddlAttributeTableName!=null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
+                    if (hdnddlAttributeTableName != null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
                     {
                         if (!string.IsNullOrEmpty(hdnddlAttributeTableName.Value) && hdnddlAttributeTableName.Value != "0")
                             strAttributeName = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
@@ -1288,7 +1294,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
             #endregion
 
-           
+
             #region Hide 'Value' Section
             string valAttributeType = ddlAttributeType.SelectedItem.Text.ToLower();
             if (valAttributeType == "decode" || valAttributeType == "encode" || valAttributeType == "distinct" || valAttributeType == "filter")
@@ -1380,6 +1386,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
+            RequiredFieldValidator rqfvddlAttributeValue = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValue");
             FilteredTextBoxExtender axfte_txtAttributeValue = (FilteredTextBoxExtender)frmAddConfig.FindControl("axfte_txtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
             System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
@@ -1417,6 +1424,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             ddlAttributeValue.Visible = false;
                             txtAttributeValue.Visible = true;
                             axfte_txtAttributeValue.Enabled = true;
+                            rqfvddlAttributeValue.Enabled = true;
                         }
 
                         else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace")
@@ -1434,7 +1442,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         }
                         else
                             if (!(frmAddConfig.CurrentMode.ToString() == "Edit"))
-                            axfte_txtAttributeValue.Enabled = false;
+                            {
+                                axfte_txtAttributeValue.Enabled = false;
+                                rqfvddlAttributeValue.Enabled = false;
+                            }
                     }
 
                 }
@@ -1444,11 +1455,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         txtAttributeValue.Visible = true;
                     }
-                    else if(ddlAttributeType.SelectedItem.Text.ToLower() == "distinct")
+                    else if (ddlAttributeType.SelectedItem.Text.ToLower() == "distinct")
                     {
                         txtAttributeValue.Visible = true;
                     }
-                    else if(ddlAttributeName.SelectedIndex==0)
+                    else if (ddlAttributeName.SelectedIndex == 0)
                     {
                         txtAttributeValue.Visible = true;
                     }
@@ -1463,12 +1474,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlFilterPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
+            dvMsg.Visible = false;
             setNoOfColumnsForMapType();
         }
 
         protected void ddlFilterAttributeType_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillmappingattributes();
+            dvMsg.Visible = false;
             setNoOfColumnsForMapType();
         }
     }

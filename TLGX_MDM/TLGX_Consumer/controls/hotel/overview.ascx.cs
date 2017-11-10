@@ -798,12 +798,14 @@ namespace TLGX_Consumer.controls.hotel
                             txtHotelLat.Text = result.results[0].geometry.location.lat.ToString();
                             txtHotelLon.Text = result.results[0].geometry.location.lng.ToString();
 
+                            alert_GeoCode.Visible = true;
                             BootstrapAlert.BootstrapAlertMessage(alert_GeoCode, result.status, BootstrapAlertType.Success);
                             //ShowMessage(result.status, MessageType.Success, "#alert_GeoCode");
                         }
                     }
                     else
                     {
+                        alert_GeoCode.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(alert_GeoCode, result.status, BootstrapAlertType.Information);
 
                         //  ShowMessage(result.status, MessageType.Info, "#alert_GeoCode");
@@ -811,6 +813,7 @@ namespace TLGX_Consumer.controls.hotel
                 }
                 else
                 {
+                    alert_GeoCode.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(alert_GeoCode, "Lookup failed.Please try again", BootstrapAlertType.Warning);
 
                     //ShowMessage("Lookup failed. Please try again.", MessageType.Error, "#alert_GeoCode");

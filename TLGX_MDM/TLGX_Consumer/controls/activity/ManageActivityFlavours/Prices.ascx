@@ -51,7 +51,7 @@
         <asp:BoundField HeaderText="Price Currency" DataField="PriceCurrency" />
 
         <asp:BoundField HeaderText="Created Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy} " />
-        <asp:TemplateField ShowHeader="false">
+        <%--<asp:TemplateField ShowHeader="false">
             <ItemTemplate>
                 <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
                     Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Prices_Id") %>' OnClientClick="showPricesModal()">
@@ -67,7 +67,7 @@
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                 </asp:LinkButton>
             </ItemTemplate>
-        </asp:TemplateField>
+        </asp:TemplateField>--%>
     </Columns>
     <PagerStyle CssClass="pagination-ys" />
 </asp:GridView>

@@ -47,7 +47,7 @@
                     <asp:BoundField HeaderText="Deals " DataField="DealText" />
                     <asp:BoundField HeaderText="Deals " DataField="DealCode" />
                     <asp:BoundField HeaderText="Deals " DataField="DealName" />
-                    <asp:BoundField HeaderText="Deals " DataField="Deal_Praice" />
+                    <asp:BoundField HeaderText="Deals " DataField="Deal_Price" />
 
                     <asp:BoundField HeaderText="Created Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy} " />
                     <%--<asp:TemplateField ShowHeader="false">
