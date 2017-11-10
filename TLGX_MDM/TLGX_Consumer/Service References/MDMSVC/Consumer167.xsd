@@ -694,6 +694,7 @@
   <xs:complexType name="DC_MappingData">
     <xs:sequence>
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuppliersCount" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
