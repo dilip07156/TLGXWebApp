@@ -401,7 +401,12 @@
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
                                         <asp:BoundField DataField="CityCode" HeaderText="City Code" ItemStyle-Width="5%" />
                                         <asp:BoundField DataField="CityName" HeaderText="City Name" ItemStyle-Width="5%" />
-                                        <asp:BoundField DataField="StateNameWithCode" HeaderText="State" />
+                                        <%--<asp:BoundField DataField="StateNameWithCode" HeaderText="State" />--%>
+                                        <asp:TemplateField ShowHeader="true" HeaderText="State">
+                                            <ItemTemplate>
+                                                <span aria-hidden="true"><%# Eval("StateName") + (!string.IsNullOrWhiteSpace(Convert.ToString(Eval("StateCode"))) ? "(" + Eval("StateCode") + ")" : string.Empty) %></span>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                             <HeaderStyle BackColor="Turquoise" />
                                         </asp:BoundField>
@@ -711,7 +716,7 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-12">
                                                             <input type="button" class="btn btn-primary btn-sm" value="Locate On Map" onclick="callmap();" />
-                                                            <asp:Button ID="btnAddCityForm" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" CommandName="AddCity" CausesValidation="true" ValidationGroup="AddCityForm" OnClientClick="closeDvMsg2();"/>
+                                                            <asp:Button ID="btnAddCityForm" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" CommandName="AddCity" CausesValidation="true" ValidationGroup="AddCityForm" OnClientClick="closeDvMsg2();" />
                                                         </div>
                                                     </div>
                                                 </div>
