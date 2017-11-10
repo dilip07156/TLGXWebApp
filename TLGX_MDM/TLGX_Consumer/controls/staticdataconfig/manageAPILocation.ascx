@@ -202,7 +202,19 @@
                             <Columns>
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />
-                                <asp:BoundField HeaderText="Status" DataField="Status" />
+
+                                <asp:TemplateField ShowHeader="true" HeaderText="Status" ItemStyle-Width="175px">
+                                    <ItemTemplate>
+                                        <div class="form-inline">
+                                            <div class="form-group">
+                                                <img style="height: 25px; width: 25px" src='<%# Eval("Status").ToString() == "SENT TO CARTE" ? "../../images/148764.png" : (Eval("Status").ToString() == "RUNNING" ? "../../images/148853.png" : (Eval("Status").ToString() == "FINISHED" ? "../../images/148767.png" : "../../images/148766.png")) %>' />
+                                                <label><%# Eval("Status").ToString() %></label>
+                                            </div>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <%--<asp:BoundField HeaderText="Status" DataField="Status" />--%>
                                 <asp:BoundField HeaderText="API Job Name" DataField="ApiPath" />
                                 <asp:BoundField HeaderText="Create  Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy hh:mm:ss tt}" />
                                 <asp:TemplateField ShowHeader="false">

@@ -42,10 +42,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             fillattributes("SystemStatus", "Status", ddlStatus);
         }
+
         private void fillentity(DropDownList ddl)
         {
             fillattributes(AttributeOptionFor, "MappingEntity", ddl);
         }
+
         private void fillsuppliers(DropDownList ddl)
         {
             var supres = mastersvc.GetSupplierMasterData();
@@ -121,7 +123,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
             grdMappingConfig.PageIndex = PageIndex;
             grdMappingConfig.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
             grdMappingConfig.DataBind();
-            dvMsg.Visible = false;
             //dvMsg.Style.Add("display", "block");
             //BootstrapAlert.BootstrapAlertMessage(dvMsg, "Search Completed", BootstrapAlertType.Success);
         }
@@ -160,7 +161,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         SupplierImportAttribute_Id = myRow_Id,
                         For=grdMappingConfig.Rows[index].Cells[0].Text,
-                        Entity = grdMappingConfig.Rows[index].Cells[1].Text,
+                        Entity = grdMappingConfig.Rows[index].Cells[2].Text,
                         Status = "INACTIVE",
                         EDIT_DATE = DateTime.Now,
                         EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
@@ -174,12 +175,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dc = mappingsvc.UpdateStaticDataMappingAttribute(RQ);
                     if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                     {
+                        dvMsg.Style.Add("display", "block");
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
                         fillconfigdata();
                     }
                     else
                     {
+                        dvMsg.Style.Add("display", "block");
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been deleted Successfully", BootstrapAlertType.Success);
                         fillconfigdata();
@@ -194,7 +197,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         SupplierImportAttribute_Id = myRow_Id,
                         For=grdMappingConfig.Rows[index].Cells[0].Text,
-                        Entity = grdMappingConfig.Rows[index].Cells[1].Text,
+                        Entity = grdMappingConfig.Rows[index].Cells[2].Text,
                         Status = "ACTIVE",
                         EDIT_DATE = DateTime.Now,
                         EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
@@ -290,6 +293,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             ddlAddSupplier.SelectedIndex = 0;
             ddlAddEntity.SelectedIndex = 0;
         }
+
         protected void btnResetAdd_Click(object sender, EventArgs e)
         {
             resetModalControls();

@@ -22065,6 +22065,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> SuppliersCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalCountField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -22086,6 +22089,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> SuppliersCount {
+            get {
+                return this.SuppliersCountField;
+            }
+            set {
+                if ((this.SuppliersCountField.Equals(value) != true)) {
+                    this.SuppliersCountField = value;
+                    this.RaisePropertyChanged("SuppliersCount");
                 }
             }
         }

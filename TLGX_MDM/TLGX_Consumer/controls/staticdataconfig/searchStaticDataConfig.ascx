@@ -206,6 +206,7 @@
                         <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
                         <div class="form-group">
+                            <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                             <div id="dvModalMsg" runat="server" style="display: none;"></div>
                         </div>
 
@@ -215,7 +216,7 @@
                                     <div class="col-sm-4">
                                         <label class="control-label col-sm-4" for="ddlAddFor">
                                             For
-                                                    <asp:RequiredFieldValidator ID="vddlAddFor" runat="server" ErrorMessage="*" ControlToValidate="ddlAddFor" InitialValue="0" CssClass="text-danger" ValidationGroup="AddConfig"></asp:RequiredFieldValidator>
+                                                    <asp:RequiredFieldValidator ID="vddlAddFor" runat="server" ErrorMessage="Please select FOR value" ControlToValidate="ddlAddFor" InitialValue="0" CssClass="text-danger" ValidationGroup="AddConfig" Text="*"></asp:RequiredFieldValidator>
                                         </label>
                                     </div>
                                     <div class="col-sm-8">
@@ -229,7 +230,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-4" for="ddlAddSupplier">
                                         Supplier 
-                                                <asp:RequiredFieldValidator ID="vddlAddSupplier" runat="server" ErrorMessage="*" ControlToValidate="ddlAddSupplier" InitialValue="0" CssClass="text-danger" ValidationGroup="AddConfig"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="vddlAddSupplier" runat="server" ErrorMessage="Please select Supplier value" ControlToValidate="ddlAddSupplier" InitialValue="0" CssClass="text-danger" ValidationGroup="AddConfig" Text="*"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="ddlAddSupplier" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -243,7 +244,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-4" for="ddlAddEntity">
                                         Entity
-                                                <asp:RequiredFieldValidator ID="vddlAddEntity" runat="server" ErrorMessage="*" ControlToValidate="ddlAddEntity" InitialValue="0" CssClass="text-danger" ValidationGroup="AddConfig"></asp:RequiredFieldValidator>
+                                                <asp:RequiredFieldValidator ID="vddlAddEntity" runat="server" ErrorMessage="Please select Entity value" ControlToValidate="ddlAddEntity" InitialValue="0" CssClass="text-danger" ValidationGroup="AddConfig" Text="*"></asp:RequiredFieldValidator>
                                     </label>
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="ddlAddEntity" runat="server" CssClass="form-control" AppendDataBoundItems="true">
@@ -257,8 +258,8 @@
                             <div class="col-lg-3">
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CausesValidation="true" ValidationGroup="AddConfig" CommandName="Add" OnClick="btnAdd_Click" />
-                                        <asp:Button ID="btnResetAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" CommandName="Reset" OnClick="btnResetAdd_Click" />
+                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" CausesValidation="true" ValidationGroup="AddConfig" OnClick="btnAdd_Click" />
+                                        <asp:Button ID="btnResetAdd" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnResetAdd_Click" />
                                     </div>
                                     <div class="col-sm-12">&nbsp; </div>
                                 </div>

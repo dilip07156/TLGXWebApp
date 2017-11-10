@@ -27,12 +27,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             var result = ActSVC.GetActivityFlavourOptions(_obj);
             if (result != null)
             {
-                List<MDMSVC.DC_Activity_Flavour_Options> res = new List<MDMSVC.DC_Activity_Flavour_Options>();
-                if (res != null || res.Count != 0)
+                //List<MDMSVC.DC_Activity_Flavour_Options> res = new List<MDMSVC.DC_Activity_Flavour_Options>();
+                //if (res != null || res.Count != 0)
+                if (result != null || result.Count != 0)
                 {
-                    gvActFlavourOptins.DataSource = res;
+                    gvActFlavourOptins.DataSource = result;
                     gvActFlavourOptins.DataBind();
-                    lblTotalRecords.Text = Convert.ToString(res.Count);
+                    lblTotalRecords.Text = Convert.ToString(result.Count);
                 }
                 else
                 {

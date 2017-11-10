@@ -52,8 +52,8 @@
                 <asp:BoundField DataField="Policy_Type" HeaderText="Policy Type" SortExpression="Policy_Type" />
                 <asp:BoundField DataField="PolicyName" HeaderText="Policy Name" SortExpression="PolicyName" />
                 <asp:BoundField DataField="PolicyDescription" HeaderText="Policy Description" SortExpression="PolicyDescription" />
-                <asp:TemplateField ShowHeader="false">
 
+                <%--<asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
                             Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Policy_Id") %>' OnClientClick="showAddNewPolicyModal();">
@@ -70,7 +70,7 @@
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
                         </asp:LinkButton>
                     </ItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField>--%>
             </Columns>
             <PagerStyle CssClass="pagination-ys" />
         </asp:GridView>
