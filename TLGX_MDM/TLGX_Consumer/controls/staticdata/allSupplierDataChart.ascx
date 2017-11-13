@@ -49,22 +49,27 @@
                     $("#country").empty();
                     $("#detailcountry").empty();
                     $("#countryTotal").empty();
+                    $("#countrySuppliersCount").empty();
 
                     $("#city").empty();
                     $("#detailcity").empty();
                     $("#cityTotal").empty();
+                    $("#citySuppliersCount").empty();
 
                     $("#product").empty();
                     $("#detailproduct").empty();
                     $("#productTotal").empty();
+                    $("#productSuppliersCount").empty();
 
                     $("#activity").empty();
                     $("#detailactivity").empty();
                     $("#activityTotal").empty();
+                    $("#activitySuppliersCount").empty();
 
                     $("#HotelRoom").empty();
                     $("#detailHotelRoom").empty();
                     $("#HotelRoomTotal").empty();
+                    $("#HotelRoomSuppliersCount").empty();
 
                     $(".countryper").empty();
                     $(".cityper").empty();
@@ -103,9 +108,8 @@
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-
-
-
+                                    $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount);
+                                    
                                 }
                             }
                         }
@@ -121,7 +125,7 @@
                                 }
                                 else {
                                     $("#cityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
-
+                                    $("#citySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCity[iCityMappingData].SuppliersCount);
                                 }
                             }
 
@@ -138,6 +142,7 @@
                                 }
                                 else {
                                     $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
+                                    $("#productSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForProduct[iProductMappingData].SuppliersCount);
                                 }
                             }
                         }
@@ -153,6 +158,7 @@
                                 }
                                 else {
                                     $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
+                                    $("#activitySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForActivity[iActivityMappingData].SuppliersCount);
                                 }
                             }
                         }
@@ -167,6 +173,7 @@
                                 }
                                 else {
                                     $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
+                                    $("#HotelRoomSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount);
                                 }
                             }
                         }
@@ -507,6 +514,7 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="countryTotal"></b></h4>
+                     <h4><b id="countrySuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -523,6 +531,7 @@
                 </div>
                 <div class="panel-footer ">
                     <h4><b id="cityTotal"></b></h4>
+                    <h4><b id="citySuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -539,6 +548,7 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="productTotal"></b></h4>
+                     <h4><b id="productSuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -555,6 +565,7 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="HotelRoomTotal"></b></h4>
+                     <h4><b id="HotelRoomSuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -571,6 +582,7 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="activityTotal"></b></h4>
+                    <h4><b id="activitySuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
