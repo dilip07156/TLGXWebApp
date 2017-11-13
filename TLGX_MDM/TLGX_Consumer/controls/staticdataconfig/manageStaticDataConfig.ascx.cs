@@ -814,6 +814,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             PageIndex = e.NewPageIndex;
             fillmappingattributes();
+            dvMsg.Visible = false;
         }
 
         protected void grdMappingAttrValues_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1044,9 +1045,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 txtAttributeName.Text = "";
                 ddlAttributeValue.Items.Clear();
                 ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", ""));
+                ddlAttributeValue.Visible = true;
                 txtAttributeValue.Text = "";
+                txtAttributeValue.Visible = false;
                 txtPriority.Text = "";
+                txtPriority.Visible = false;
                 txtDescription.InnerText = "";
+                dvValueForFilter.Visible = false;
+                divReplaceValue.Visible = false;
                 //dvtxtAttributeValue.Visible = true;
                 //dvddlAttributeValue.Visible = false;
                 hdnFlag.Value = "false";
