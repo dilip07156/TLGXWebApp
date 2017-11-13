@@ -394,7 +394,7 @@
         <div class="row">
 
             <div class="col-lg-8">
-                <h3>Mapping Details</h3>
+                <h3>File Details</h3>
             </div>
 
 
@@ -445,7 +445,7 @@
                         </div>
 
                         <asp:GridView ID="gvFileUploadSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
+                            EmptyDataText="No Files found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging"
                             OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id" OnRowDataBound="gvFileUploadSearch_RowDataBound">
                             <Columns>

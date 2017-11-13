@@ -84,6 +84,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void fillmatchingdata(int PageSize, int PageNo)
         {
+            lblTotalRecords.Text = string.Empty;
             MDMSVC.DC_SupplierImportFileDetails_RQ RQParam = new MDMSVC.DC_SupplierImportFileDetails_RQ();
 
             if (ddlSupplierName.SelectedItem.Value != "0")
