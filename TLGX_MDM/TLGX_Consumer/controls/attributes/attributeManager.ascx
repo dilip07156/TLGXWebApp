@@ -533,7 +533,7 @@
                                                                             </asp:RequiredFieldValidator>
                                                                         </HeaderTemplate>
                                                                         <ItemTemplate>
-                                                                            <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control"
+                                                                            <asp:TextBox ID="txtSupplierAttributeValue" runat="server" CssClass="form-control" TextMode="MultiLine"
                                                                                 Text='<%# Bind("SupplierMasterAttributeValue") %>'>
                                                                             </asp:TextBox>
                                                                         </ItemTemplate>
