@@ -39120,6 +39120,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string FinalStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -39194,6 +39197,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.FinalStatusField, value) != true)) {
                     this.FinalStatusField = value;
                     this.RaisePropertyChanged("FinalStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string From {
+            get {
+                return this.FromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromField, value) != true)) {
+                    this.FromField = value;
+                    this.RaisePropertyChanged("From");
                 }
             }
         }
@@ -39354,6 +39370,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string EntityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int No_Of_Records_ToProcessField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -39403,6 +39422,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.EntityField, value) != true)) {
                     this.EntityField = value;
                     this.RaisePropertyChanged("Entity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mode {
+            get {
+                return this.ModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModeField, value) != true)) {
+                    this.ModeField = value;
+                    this.RaisePropertyChanged("Mode");
                 }
             }
         }

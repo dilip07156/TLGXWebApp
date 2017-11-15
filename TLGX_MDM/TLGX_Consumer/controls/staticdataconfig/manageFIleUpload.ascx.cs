@@ -231,6 +231,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
                     obj.Entity = res[0].Entity;
                     obj.STATUS = res[0].STATUS;
+                    obj.Mode = res[0].Mode;
                     var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
 
                     fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), gvFileUploadSearch.PageIndex);

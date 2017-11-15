@@ -92,6 +92,7 @@ namespace TLGX_Consumer.staticdata.files
                         _objFileDetails.OriginalFilePath = FileUpload1.FileName;
                         _objFileDetails.SavedFilePath = response.UploadedPath;
                         _objFileDetails.STATUS = "UPLOADED";
+                        _objFileDetails.Mode = "ALL";
                         _objFileDetails.CREATE_DATE = DateTime.Now;
                         _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
 
