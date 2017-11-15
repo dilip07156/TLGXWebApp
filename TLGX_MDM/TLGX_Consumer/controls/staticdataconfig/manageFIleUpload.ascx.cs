@@ -44,25 +44,25 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 fillEntity();
                 fillStatus();
 
-                var a = this.Parent;
-                string vPath = "";
-                Type typo = this.BindingContainer.GetType();
-                if (typo.FullName == "System.Web.UI.WebControls.FormView")
-                {
-                    vPath = ((System.Web.UI.WebControls.FormView)this.BindingContainer).Page.AppRelativeVirtualPath;
-                }
-                else
-                {
-                    //((TLGX_Consumer.staticdata.searchAccommodationProductMapping)this.BindingContainer).searchAccoMapping.dtCountrMappingDetail
-                    vPath = ((System.Web.UI.TemplateControl)this.BindingContainer).AppRelativeVirtualPath;
-                }
+                //var a = this.Parent;
+                //string vPath = "";
+                //Type typo = this.BindingContainer.GetType();
+                //if (typo.FullName == "System.Web.UI.WebControls.FormView")
+                //{
+                //    vPath = ((System.Web.UI.WebControls.FormView)this.BindingContainer).Page.AppRelativeVirtualPath;
+                //}
+                //else
+                //{
+                //    //((TLGX_Consumer.staticdata.searchAccommodationProductMapping)this.BindingContainer).searchAccoMapping.dtCountrMappingDetail
+                //    vPath = ((System.Web.UI.TemplateControl)this.BindingContainer).AppRelativeVirtualPath;
+                //}
 
-                string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
+                //string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
 
-                ParentPageName = vPath.Replace(dir, "");
+                //ParentPageName = vPath.Replace(dir, "");
 
-                Page parent = this.Parent.Page;
-                int controls = parent.Controls.Count;
+                //Page parent = this.Parent.Page;
+                //int controls = parent.Controls.Count;
             }
             else
             {
