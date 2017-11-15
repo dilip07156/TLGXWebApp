@@ -105,6 +105,8 @@ namespace TLGX_Consumer.staticdata
             _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
 
             MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
+
+            Response.Redirect("~/staticdata/files/upload.aspx");
         }
 
         protected void btnCityReRun_Click(object sender, EventArgs e)
