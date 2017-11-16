@@ -89,5 +89,63 @@ namespace TLGX_Consumer.staticdata
 
 
         }
+
+        public void InsertFileRecord(string Entity)
+        {
+            MappingSVCs _objMappingSVCs = new MappingSVCs();
+            MDMSVC.DC_SupplierImportFileDetails _objFileDetails = new MDMSVC.DC_SupplierImportFileDetails();
+            _objFileDetails.SupplierImportFile_Id = Guid.NewGuid();
+            _objFileDetails.Supplier_Id = Guid.Parse(ddlSupplierName.SelectedValue);
+            _objFileDetails.Entity = Entity;
+            _objFileDetails.OriginalFilePath = "";
+            _objFileDetails.SavedFilePath = "";
+            _objFileDetails.STATUS = "UPLOADED";
+            _objFileDetails.Mode = "RE_RUN";
+            _objFileDetails.CREATE_DATE = DateTime.Now;
+            _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
+
+            MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
+
+            Response.Redirect("~/staticdata/files/upload.aspx");
+        }
+
+        protected void btnCityReRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                InsertFileRecord("City");
+            }
+        }
+        protected void btnCountryReRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                InsertFileRecord("Country");
+            }
+        }
+
+        protected void btnHotelReRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                InsertFileRecord("Hotel");
+            }
+        }
+
+        protected void btnRoomTypeReRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                InsertFileRecord("RoomType");
+            }
+        }
+
+        protected void btnActivityReRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                InsertFileRecord("Activity");
+            }
+        }
     }
 }

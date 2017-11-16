@@ -170,13 +170,15 @@ namespace TLGX_Consumer.controls.staticdata
 
         private void fillmatchingdata(string from)
         {
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
             //dvMsg.Style.Add("display", "none");
             //dvMsg1.Style.Add("display", "none");
             MDMSVC.DC_CityMapping_RQ RQParam = new MDMSVC.DC_CityMapping_RQ();
             if (ddlMatchingStatus.SelectedItem.Value != "0")
                 RQParam.Status = ddlMatchingStatus.SelectedItem.Text;
             RQParam.StatusExcept = MatchedStatus;
-            RQParam.SupplierCountryName = MatchedCountryName;
+            //RQParam.SupplierCountryName = MatchedCountryName;
+            RQParam.Country_Id = Guid.Parse(ddlSystemCountryName.SelectedValue);
             RQParam.SupplierCityName = MatchedCityName;
             RQParam.PageNo = MatchedPageIndex;
             RQParam.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
@@ -346,7 +348,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //sData = masters.GetSupplierDataByMapping_Id("city", myRow_Id);
                     //string supCode = sData.Code;
 
-                    var result = masterSVc.GetSupplierDataByMapping_Id("CITY",Convert.ToString(myRow_Id));
+                    var result = masterSVc.GetSupplierDataByMapping_Id("CITY", Convert.ToString(myRow_Id));
                     string supCode = string.Empty;
                     if (result != null)
                         supCode = result.Code;
@@ -660,7 +662,7 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     HtmlInputCheckBox chk = row.Cells[13].Controls[1] as HtmlInputCheckBox;
 
-                   // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
+                    // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
                     if (chk != null && chk.Checked)
                     {
                         myRow_Id = Guid.Empty;
@@ -1217,66 +1219,66 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnMatchedMapSelected_Click(object sender, EventArgs e)
         {
-                //dvMsg2.Style.Add("display", "none");
-                ////dvAddCity.Visible = false;
-                //dvAddCity.Style.Add("display", "none");
-                dvMsg1.Style.Add("display", "none");
-                List<MDMSVC.DC_CityMapping> RQ = new List<MDMSVC.DC_CityMapping>();
+            //dvMsg2.Style.Add("display", "none");
+            ////dvAddCity.Visible = false;
+            //dvAddCity.Style.Add("display", "none");
+            dvMsg1.Style.Add("display", "none");
+            List<MDMSVC.DC_CityMapping> RQ = new List<MDMSVC.DC_CityMapping>();
 
-                Guid myRow_Id = Guid.Empty;
-                Guid mySupplier_Id = Guid.Empty;
-                Guid myCountry_Id = Guid.Empty;
-                Guid myCity_Id = Guid.Empty;
-                //string mystateName = txtSystemStateName.Text;
-                //string mystateCode = txtSystemStateCode.Text;
-                bool res = false;
-                foreach (GridViewRow row in grdMatchingCity.Rows)
-                {
-                    HtmlInputCheckBox chk = row.Cells[13].Controls[1] as HtmlInputCheckBox;
+            Guid myRow_Id = Guid.Empty;
+            Guid mySupplier_Id = Guid.Empty;
+            Guid myCountry_Id = Guid.Empty;
+            Guid myCity_Id = Guid.Empty;
+            //string mystateName = txtSystemStateName.Text;
+            //string mystateCode = txtSystemStateCode.Text;
+            bool res = false;
+            foreach (GridViewRow row in grdMatchingCity.Rows)
+            {
+                HtmlInputCheckBox chk = row.Cells[13].Controls[1] as HtmlInputCheckBox;
 
-                    // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
-                    if (chk != null && chk.Checked)
-                    {
-                        myRow_Id = Guid.Empty;
-                        mySupplier_Id = Guid.Empty;
-                        myCountry_Id = Guid.Empty;
-                        int index = row.RowIndex;
-                        myRow_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[0].ToString());
-                        mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
-                        myCountry_Id = MappedCountry_ID;
-                        myCity_Id = MappedCity_ID;
-                    }
-                    if (myRow_Id != Guid.Empty)
-                    {
-                        MDMSVC.DC_CityMapping param = new MDMSVC.DC_CityMapping();
-                        param.CityMapping_Id = myRow_Id;
-                        if (mySupplier_Id != null)
-                            param.Supplier_Id = mySupplier_Id;
-                        if (myCountry_Id != null)
-                            param.Country_Id = myCountry_Id;
-                        if (myCity_Id != null)
-                            param.City_Id = myCity_Id;
-                        //if (mystateName != null)
-                        //    param.StateName = mystateName;
-                        //if (mystateCode != null)
-                        //    param.StateCode = mystateCode;
-                        param.Status = MatchedStatus;
-                        param.Edit_Date = DateTime.Now;
-                        param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-                        RQ.Add(param);
-                        myRow_Id = Guid.Empty;
-                        mySupplier_Id = Guid.Empty;
-                        myCountry_Id = Guid.Empty;
-                        myCity_Id = Guid.Empty;
-                    }
-                }
-                if (mapperSVc.UpdateCityMappingDatat(RQ))
+                // Htmlc chk = row.Cells[12].Controls[1] as CheckBox;
+                if (chk != null && chk.Checked)
                 {
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                    fillmappingdata();
-                    fillmatchingdata("");
-                    hdnFlag.Value = "false";
+                    myRow_Id = Guid.Empty;
+                    mySupplier_Id = Guid.Empty;
+                    myCountry_Id = Guid.Empty;
+                    int index = row.RowIndex;
+                    myRow_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[0].ToString());
+                    mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
+                    myCountry_Id = MappedCountry_ID;
+                    myCity_Id = MappedCity_ID;
                 }
+                if (myRow_Id != Guid.Empty)
+                {
+                    MDMSVC.DC_CityMapping param = new MDMSVC.DC_CityMapping();
+                    param.CityMapping_Id = myRow_Id;
+                    if (mySupplier_Id != null)
+                        param.Supplier_Id = mySupplier_Id;
+                    if (myCountry_Id != null)
+                        param.Country_Id = myCountry_Id;
+                    if (myCity_Id != null)
+                        param.City_Id = myCity_Id;
+                    //if (mystateName != null)
+                    //    param.StateName = mystateName;
+                    //if (mystateCode != null)
+                    //    param.StateCode = mystateCode;
+                    param.Status = MatchedStatus;
+                    param.Edit_Date = DateTime.Now;
+                    param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
+                    RQ.Add(param);
+                    myRow_Id = Guid.Empty;
+                    mySupplier_Id = Guid.Empty;
+                    myCountry_Id = Guid.Empty;
+                    myCity_Id = Guid.Empty;
+                }
+            }
+            if (mapperSVc.UpdateCityMappingDatat(RQ))
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
+                fillmappingdata();
+                fillmatchingdata("");
+                hdnFlag.Value = "false";
+            }
         }
 
         protected void btnMatchedMapAll_Click(object sender, EventArgs e)

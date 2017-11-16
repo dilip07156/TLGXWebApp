@@ -39,7 +39,7 @@ namespace TLGX_Consumer.controls.attributes
         public void FillPageData()
         {
             FillMasterFor(ddlMasterForSearch);
-            PopulateAttibuteMaster();
+            PopulateAttibuteMaster(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
         }
 
         private void FillMasterFor(DropDownList DDL)
@@ -58,7 +58,7 @@ namespace TLGX_Consumer.controls.attributes
 
         }
 
-        private void PopulateAttibuteMaster()
+        private void PopulateAttibuteMaster(int PageNo, int PageSize)
         {
             MDMSVC.DC_M_masterattribute _objSearch = new MDMSVC.DC_M_masterattribute();
 
@@ -79,13 +79,13 @@ namespace TLGX_Consumer.controls.attributes
 
             _objSearch.IsActive = ddlStatus.SelectedValue;
 
-            _objSearch.PageNo = intPageIndex;
-            _objSearch.PageSize = intPageSize;
+            _objSearch.PageNo = PageNo;
+            _objSearch.PageSize = PageSize;
 
             var result = _objMst.GetMasterAttributes(_objSearch);
             grdMasterAttributeList.DataSource = result;
-            grdMasterAttributeList.PageIndex = intPageIndex;
-            grdMasterAttributeList.PageSize = intPageSize;
+            grdMasterAttributeList.PageIndex = PageNo;
+            grdMasterAttributeList.PageSize = PageSize;
             if (result != null)
             {
                 if (result.Count > 0)
@@ -609,19 +609,20 @@ namespace TLGX_Consumer.controls.attributes
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
-            PopulateAttibuteMaster();
+            PopulateAttibuteMaster(0, intPageSize);
         }
 
         protected void grdMasterAttributeList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             intPageIndex = Convert.ToInt32(e.NewPageIndex);
             intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
-            PopulateAttibuteMaster();
+            PopulateAttibuteMaster(intPageIndex, intPageSize);
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            PopulateAttibuteMaster();
+            intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            PopulateAttibuteMaster(0, intPageSize);
         }
         protected void btnReset_Click(object sender, EventArgs e)
         {
@@ -705,7 +706,7 @@ namespace TLGX_Consumer.controls.attributes
                     txtOTATableName.Text = "";
 
                     // rebinds the grid above within update panel
-                    PopulateAttibuteMaster();
+                    PopulateAttibuteMaster(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
                     hdnFlag.Value = "add";
                     BootstrapAlert.BootstrapAlertMessage(msgAlertStatus, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
                 }
@@ -735,7 +736,7 @@ namespace TLGX_Consumer.controls.attributes
                     txtOTATableCode.Text = "";
                     ddlMasterFor.SelectedIndex = 0;
                     ddlParent.SelectedIndex = 0;
-                    PopulateAttibuteMaster();
+                    PopulateAttibuteMaster(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
                     hdnFlag.Value = "edit";
                     BootstrapAlert.BootstrapAlertMessage(msgAlertStatus, _msg.StatusMessage, BootstrapAlertType.Success);
                 }

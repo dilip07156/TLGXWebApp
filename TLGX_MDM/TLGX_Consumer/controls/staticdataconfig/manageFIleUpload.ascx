@@ -101,8 +101,8 @@
                             $("#Mcurrentbatch").text(result.ProgressLog[inode].CurrentBatch);
                             $("#Mtotalbatch").text(result.ProgressLog[inode].TotalBatch);
                             //stop timer on completion of remaining jobs 
-                            if (a == 100)
-                                myStopFunction(x);
+                            //if (a == 100)
+                            //    myStopFunction(x);
                             //end
                         }
 
@@ -394,7 +394,7 @@
         <div class="row">
 
             <div class="col-lg-8">
-                <h3>Mapping Details</h3>
+                <h3>File Details</h3>
             </div>
 
 
@@ -445,7 +445,7 @@
                         </div>
 
                         <asp:GridView ID="gvFileUploadSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
+                            EmptyDataText="No Files found for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging"
                             OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id" OnRowDataBound="gvFileUploadSearch_RowDataBound">
                             <Columns>
@@ -476,7 +476,7 @@
 
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>' 
+                                        <asp:LinkButton ID="btnViewDetail" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "UPLOADED" ? "Process" : "ViewDetails" %>'
                                             CssClass="btn btn-default" Enabled="true">
                                                  <span aria-hidden="true"><%# ((Eval("STATUS").ToString() == "UPLOADED" && Eval("IsActive").ToString()=="True")  ? "PROCESS" : "ViewDetails") %></span>
                                         </asp:LinkButton>
@@ -569,32 +569,38 @@
                                 <div id="read" class="chartheight" style="height: 160px"></div>
                             </div>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-10">
                             <div class=" panel panel-default ">
                                 <div class="panel-heading" style="text-align: center; padding-top: 5px; padding-bottom: 5px">
                                     <i class="fa fa-bar-chart-o fa-fw"></i>
                                     <h4 style="margin-top: 5px"><b>BATCH &nbsp;:&nbsp;</b><span id="currentbatch" style="font: bold">0</span>/<span id="totalbatch" style="font: bold">0</span></h4>
                                 </div>
                                 <div class="panel-body" style="padding: 0px;">
-                                    <div class="col-sm-4" id="txdiv" style="text-align: center">
+                                    <div class="col-sm-3" id="txdiv" style="text-align: center">
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
                                         <b>TRANSFORM</b>
                                         <div id="tx" class="chartheight"></div>
                                     </div>
-                                    <div class="col-sm-4" id="mapdiv" style="text-align: center">
+                                    <div class="col-sm-3" id="mapdiv" style="text-align: center">
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
                                         <b>MAP</b>
                                         <div id="map" class="chartheight"></div>
                                     </div>
-                                    <div class="col-sm-4" id="ttfudiv" style="text-align: center">
+                                    <div class="col-sm-3" id="ttfudiv" style="text-align: center">
                                         <i class="fa fa-bar-chart-o fa-fw"></i>
                                         <b>TTFU</b>
                                         <div id="ttfu" class="chartheight"></div>
                                     </div>
+                                    <div class="col-sm-3" id="matchdiv" style="text-align: center">
+                                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                                        <b style="margin-top: 5px; text-align: left"><b>MATCH&nbsp;:&nbsp;</b><span id="Mcurrentbatch" style="font: bold"></span>/<span id="Mtotalbatch" style="font: bold"></span></b>
+                                        <div id="match" class="chartheight" style="height: 160px"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
+                    </div>
+                    <%-- <div class="col-sm-2 offset1" id="matchdiv" style="text-align: center">
                             <div class="panel  panel-default">
                                 <div class="panel-heading" style="padding-top: 5px; padding-bottom: 5px">
                                     <i class="fa fa-bar-chart-o fa-fw"></i>
@@ -602,9 +608,9 @@
                                 </div>
                                 <div id="match" class="chartheight" style="height: 160px"></div>
                             </div>
-                        </div>
-                    </div>
+                        </div>--%>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-12">
@@ -677,9 +683,9 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-            </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+        </div>
         </div>
     </div>
 </div>
