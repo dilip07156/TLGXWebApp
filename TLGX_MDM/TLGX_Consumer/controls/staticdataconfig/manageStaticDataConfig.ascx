@@ -12,9 +12,9 @@
         margin: 15px;
     }
 
-    .alert {
+    /*.alert {
         display: none;
-    }
+    }*/
 
     .hide {
         display: none;
@@ -283,15 +283,13 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
                     <ContentTemplate>
-                        <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                        <div class="row">
-                            <div class="form-group">
-                                <div class="col-sm-12">
-                                    <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
-                                    <div id="dvModalMsg" runat="server" style="display: none;"></div>
-                                </div>
-                            </div>
+
+                        <div class="row col-lg-12">
+                            <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                            <div id="dvModalMsg" runat="server" style="display: none;"></div>
+                            <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                         </div>
+
                         <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
                             OnItemCommand="frmAddConfig_ItemCommand">
                             <InsertItemTemplate>
@@ -314,7 +312,7 @@
                                                 <div class="form-group row" id="dvddlAttributeName" runat="server">
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">
                                                         Name
-                                                        <asp:RequiredFieldValidator  ID="vddlAttributeName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
+                                                        <asp:RequiredFieldValidator ID="vddlAttributeName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
                                                             CssClass="text-danger" InitialValue="-1" ErrorMessage="The Name field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
@@ -330,8 +328,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
-                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">Value
-                                                        <asp:RequiredFieldValidator  ID="rqfvddlAttributeValue" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtAttributeValue"
+                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">
+                                                        Value
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValue" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtAttributeValue"
                                                             CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
