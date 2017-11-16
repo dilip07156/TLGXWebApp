@@ -476,13 +476,45 @@
          });
         $(window).on('load', function () {
             //debugger;
+            var sid = $('#MainContent_ddlSupplierName').val();
+            if (sid == '0') {
+                $("#dvCityReRun").hide();
+                $("#dvCountryReRun").hide();
+                $("#dvHotelReRun").hide();
+                $("#dvRoomTypeReRun").hide();
+                $("#dvActivityReRun").hide();
+            }
+            else {
+                $("#dvCityReRun").show();
+                $("#dvCountryReRun").show();
+                $("#dvHotelReRun").show();
+                $("#dvRoomTypeReRun").show();
+                $("#dvActivityReRun").show();
+            }
+
             $("#MainContent_btnExportCsv").click(function () {
                // alert('Export');
                 $('#ReportViewersupplierwise').show();
             });
-
+            
             $("#btnUpdateSupplier").click(function () {
                 $("#ReportViewersupplierwise").hide();
+                var sid = $('#MainContent_ddlSupplierName').val();
+                if (sid == '0') {
+                    $("#dvCityReRun").hide();
+                    $("#dvCountryReRun").hide();
+                    $("#dvHotelReRun").hide();
+                    $("#dvRoomTypeReRun").hide();
+                    $("#dvActivityReRun").hide();
+                }
+                else {
+                    $("#dvCityReRun").show();
+                    $("#dvCountryReRun").show();
+                    $("#dvHotelReRun").show();
+                    $("#dvRoomTypeReRun").show();
+                    $("#dvActivityReRun").show();
+                }
+
             });
                 getChartData();
         });
@@ -526,6 +558,9 @@
                 <div class="panel-body">
                     <b><span id="detailcountry" style="font-size: small"></span></b>
                 </div>
+                <div class="panel-body" id="dvCountryReRun">
+                    <asp:Button ID="btnCountryReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCountryReRun_Click" />
+                </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
                 </div>
@@ -546,6 +581,9 @@
                 <div class="panel-body">
                     <b><span id="detailcity" style="font-size: small"></span></b>
                 </div>
+                <div class="panel-body" id="dvCityReRun">
+                    <asp:Button ID="btnCityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCityReRun_Click" />
+                </div>
                 <div class="panel-body" style="text-align: center">
                     <b><span class="nxtrundate"></span></b>
                 </div>
@@ -565,6 +603,9 @@
                 <div id="product" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailproduct" style="font-size: small"></span></b>
+                </div>                
+                <div class="panel-body" id="dvHotelReRun">
+                    <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -585,6 +626,9 @@
                 <div id="HotelRoom" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailHotelRoom" style="font-size: small"></span></b>
+                </div>             
+                <div class="panel-body" id="dvRoomTypeReRun">
+                    <asp:Button ID="btnRoomTypeReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRun_Click" />
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -605,6 +649,9 @@
                 <div id="activity" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailactivity" style="font-size: small"></span></b>
+                </div>           
+                <div class="panel-body" id="dvActivityReRun">
+                    <asp:Button ID="btnActivityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnActivityReRun_Click" />
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>

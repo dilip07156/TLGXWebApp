@@ -32,6 +32,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         public static int intActivityPageIndex = 0;
         public static int TotalCountActivity = 0;
         public static int intTotalPage = 1;
+        public static string ParentPageName = "";
 
         public static Guid? SupplierImportFile_Id { get; private set; }
 
@@ -42,6 +43,29 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 fillSuppliers();
                 fillEntity();
                 fillStatus();
+
+                //var a = this.Parent;
+                //string vPath = "";
+                //Type typo = this.BindingContainer.GetType();
+                //if (typo.FullName == "System.Web.UI.WebControls.FormView")
+                //{
+                //    vPath = ((System.Web.UI.WebControls.FormView)this.BindingContainer).Page.AppRelativeVirtualPath;
+                //}
+                //else
+                //{
+                //    //((TLGX_Consumer.staticdata.searchAccommodationProductMapping)this.BindingContainer).searchAccoMapping.dtCountrMappingDetail
+                //    vPath = ((System.Web.UI.TemplateControl)this.BindingContainer).AppRelativeVirtualPath;
+                //}
+
+                //string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
+
+                //ParentPageName = vPath.Replace(dir, "");
+
+                //Page parent = this.Parent.Page;
+                //int controls = parent.Controls.Count;
+            }
+            else
+            {
             }
         }
 
@@ -231,6 +255,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
                     obj.Entity = res[0].Entity;
                     obj.STATUS = res[0].STATUS;
+                    obj.Mode = res[0].Mode;
                     var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
 
                     fillmatchingdata(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), gvFileUploadSearch.PageIndex);

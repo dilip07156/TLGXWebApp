@@ -40,6 +40,51 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl supplierwisedata;
         
         /// <summary>
+        /// btnCountryReRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCountryReRun;
+        
+        /// <summary>
+        /// btnCityReRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCityReRun;
+        
+        /// <summary>
+        /// btnHotelReRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHotelReRun;
+        
+        /// <summary>
+        /// btnRoomTypeReRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRoomTypeReRun;
+        
+        /// <summary>
+        /// btnActivityReRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnActivityReRun;
+        
+        /// <summary>
         /// allsupplierdata control.
         /// </summary>
         /// <remarks>
