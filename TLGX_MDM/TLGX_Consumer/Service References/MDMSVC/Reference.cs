@@ -9130,6 +9130,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.DateTime> From_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -9185,6 +9188,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.From_DateField.Equals(value) != true)) {
                     this.From_DateField = value;
                     this.RaisePropertyChanged("From_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mode {
+            get {
+                return this.ModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModeField, value) != true)) {
+                    this.ModeField = value;
+                    this.RaisePropertyChanged("Mode");
                 }
             }
         }
@@ -9328,6 +9344,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<bool> IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ModeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string OriginalFilePathField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -9425,6 +9444,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mode {
+            get {
+                return this.ModeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModeField, value) != true)) {
+                    this.ModeField = value;
+                    this.RaisePropertyChanged("Mode");
                 }
             }
         }

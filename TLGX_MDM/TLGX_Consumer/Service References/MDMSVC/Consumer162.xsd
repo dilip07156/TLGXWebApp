@@ -89,6 +89,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="From_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
       <xs:element minOccurs="0" name="STATUS" nillable="true" type="xs:string" />
@@ -113,6 +114,7 @@
       <xs:element minOccurs="0" name="CREATE_USER" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OriginalFilePath" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PROCESS_DATE" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="PROCESS_USER" nillable="true" type="xs:string" />
