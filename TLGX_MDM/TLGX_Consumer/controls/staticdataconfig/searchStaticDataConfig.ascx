@@ -10,11 +10,7 @@
     .progress, .alert {
         margin: 15px;
     }
-
-    .alert {
-        display: none;
-    }
-</style>
+   </style>
 <script type="text/javascript">
     var prm = Sys.WebForms.PageRequestManager.getInstance();
     prm.add_beginRequest(BeginRequestHandler);
@@ -203,11 +199,10 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
                     <ContentTemplate>
-                        <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-
-                        <div class="form-group">
+                        <div class="row col-lg-12">
                             <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                             <div id="dvModalMsg" runat="server" style="display: none;"></div>
+                            <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                         </div>
 
                         <div class="row">

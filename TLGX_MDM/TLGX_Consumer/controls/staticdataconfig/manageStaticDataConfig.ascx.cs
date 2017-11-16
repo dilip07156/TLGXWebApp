@@ -440,8 +440,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 if (intNumberOfColumnHasBeenAdded > 0)
                                 {
                                     ddlAttributeName.Items.Clear();
-                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
-                                    for (int i = --intNoOfColumn; i >= 1; i--)
+                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
+                                    for (int i = --intNoOfColumn; i >= 0; i--)
                                         ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
 
                                     if (ddlAttributeName.Items.FindByText(res[0].AttributeName.ToString()) != null)
@@ -481,7 +481,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeName.Items.Clear();
                                     ddlAttributeName.DataSource = lstAttributeName;
                                     ddlAttributeName.DataBind();
-                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                                     string strAttribute = string.Empty;
                                     if (res[0].AttributeName.ToString().Split('.').Length > 1)
                                         strAttribute = res[0].AttributeName.ToString().Split('.')[1];
@@ -520,7 +520,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeName.Items.Clear();
                                     ddlAttributeName.DataSource = lstAttributeValue;
                                     ddlAttributeName.DataBind();
-                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                                     ddlAttributeValue.Visible = true;
                                     ddlAttributeValue.Items.Clear();
                                     ddlAttributeValue.DataSource = lstAttributeValue;
@@ -560,7 +560,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeName.DataTextField = "AttributeValue";
                                     ddlAttributeName.DataValueField = "MasterAttributeValue_Id";
                                     ddlAttributeName.DataBind();
-                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                                     ddlAttributeName.SelectedIndex = ddlAttributeName.Items.IndexOf(ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()));
                                 }
                                 else
@@ -1041,7 +1041,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             {
                 ddlAttributeType.SelectedIndex = 0;
                 ddlAttributeName.Items.Clear();
-                ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                 txtAttributeName.Text = "";
                 ddlAttributeValue.Items.Clear();
                 ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", ""));
@@ -1062,7 +1062,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 ddlAddStatus.SelectedIndex = 0;
                 ddlAttributeType.SelectedIndex = 0;
                 ddlAttributeName.Items.Clear();
-                ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                 ddlAttributeValue.Items.Clear();
                 ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", ""));
                 txtAttributeValue.Text = "";
@@ -1140,8 +1140,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
-                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
-                        for (int i = --intNoOfColumn; i >= 1; i--)
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
+                        for (int i = --intNoOfColumn; i >= 0; i--)
                             ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
                     }
                     if (strAttributeType == "distinct")
@@ -1156,8 +1156,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
-                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
-                        for (int i = --intNoOfColumn; i >= 1; i--)
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
+                        for (int i = --intNoOfColumn; i >= 0; i--)
                             ddlAttributeName.Items.Insert(1, new ListItem(Convert.ToString(i), Convert.ToString(i)));
                     }
                     hdnddlAttributeTableName.Value = "0";
@@ -1185,7 +1185,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeName.Items.Clear();
                         ddlAttributeName.DataSource = lstAttributeValue;
                         ddlAttributeName.DataBind();
-                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                         ddlAttributeValue.Visible = true;
                         ddlAttributeValue.Items.Clear();
                         ddlAttributeValue.DataSource = lstAttributeValue;
@@ -1249,7 +1249,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeName.Items.Clear();
                         ddlAttributeName.DataSource = lstAttributeName;
                         ddlAttributeName.DataBind();
-                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                     }
                     //Setting Attribute value dropdown also
                     if (lstAttributeValue != null)
@@ -1285,7 +1285,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeName.DataTextField = "AttributeValue";
                         ddlAttributeName.DataValueField = "MasterAttributeValue_Id";
                         ddlAttributeName.DataBind();
-                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                         txtAttributeValue.Visible = true;
                     }
                     else
@@ -1355,7 +1355,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     ddlAttributeName.DataTextField = "AttributeValue";
                     ddlAttributeName.DataValueField = "MasterAttributeValue_Id";
                     ddlAttributeName.DataBind();
-                    ddlAttributeName.Items.Insert(0, new ListItem("---Select---", "0"));
+                    ddlAttributeName.Items.Insert(0, new ListItem("---Select---", "-1"));
                 }
                 else
                 {

@@ -202,15 +202,6 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         protected global::System.Web.UI.UpdatePanel UpnlAddConfig;
         
         /// <summary>
-        /// hdnFlag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
-        
-        /// <summary>
         /// vlsSumm control.
         /// </summary>
         /// <remarks>
@@ -227,6 +218,15 @@ namespace TLGX_Consumer.controls.staticdataconfig {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvModalMsg;
+        
+        /// <summary>
+        /// hdnFlag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
         
         /// <summary>
         /// frmAddConfig control.
