@@ -170,13 +170,15 @@ namespace TLGX_Consumer.controls.staticdata
 
         private void fillmatchingdata(string from)
         {
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
             //dvMsg.Style.Add("display", "none");
             //dvMsg1.Style.Add("display", "none");
             MDMSVC.DC_CityMapping_RQ RQParam = new MDMSVC.DC_CityMapping_RQ();
             if (ddlMatchingStatus.SelectedItem.Value != "0")
                 RQParam.Status = ddlMatchingStatus.SelectedItem.Text;
             RQParam.StatusExcept = MatchedStatus;
-            RQParam.SupplierCountryName = MatchedCountryName;
+            //RQParam.SupplierCountryName = MatchedCountryName;
+            RQParam.Country_Id = Guid.Parse(ddlSystemCountryName.SelectedValue);
             RQParam.SupplierCityName = MatchedCityName;
             RQParam.PageNo = MatchedPageIndex;
             RQParam.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);

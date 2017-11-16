@@ -655,57 +655,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Acitivity_SupplierProductMappingForDDL" nillable="true" type="tns:DC_Acitivity_SupplierProductMappingForDDL" />
-  <xs:complexType name="DC_VelocityReport">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Fromdate" nillable="true" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="SupplierID" type="ser:guid" />
-      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_VelocityReport" nillable="true" type="tns:DC_VelocityReport" />
-  <xs:complexType name="ArrayOfDC_VelocityMappingStats">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingStats" nillable="true" type="tns:DC_VelocityMappingStats" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_VelocityMappingStats" nillable="true" type="tns:ArrayOfDC_VelocityMappingStats" />
-  <xs:complexType name="DC_VelocityMappingStats">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="MappingStatsFor" nillable="true" type="tns:ArrayOfDC_VelocityMappingStatsFor" />
-      <xs:element minOccurs="0" name="SupplierId" type="ser:guid" />
-      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_VelocityMappingStats" nillable="true" type="tns:DC_VelocityMappingStats" />
-  <xs:complexType name="ArrayOfDC_VelocityMappingStatsFor">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_VelocityMappingStatsFor" nillable="true" type="tns:ArrayOfDC_VelocityMappingStatsFor" />
-  <xs:complexType name="DC_VelocityMappingStatsFor">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Estimate" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="MappingData" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
-      <xs:element minOccurs="0" name="MappingFor" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Unmappeddata" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
-  <xs:complexType name="ArrayOfDC_VelocityMappingdata">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_VelocityMappingdata" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
-  <xs:complexType name="DC_VelocityMappingdata">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
-      <xs:element minOccurs="0" name="Totalcount" type="xs:int" />
-      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
   <xs:complexType name="ArrayOfDC_MappingStats">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_MappingStats" nillable="true" type="tns:DC_MappingStats" />
@@ -957,4 +906,47 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_newHotelsReport" nillable="true" type="tns:DC_newHotelsReport" />
+  <xs:complexType name="ArrayOfDC_VelocityMappingStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingStats" nillable="true" type="tns:DC_VelocityMappingStats" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityMappingStats" nillable="true" type="tns:ArrayOfDC_VelocityMappingStats" />
+  <xs:complexType name="DC_VelocityMappingStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MappingStatsFor" nillable="true" type="tns:ArrayOfDC_VelocityMappingStatsFor" />
+      <xs:element minOccurs="0" name="SupplierId" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityMappingStats" nillable="true" type="tns:DC_VelocityMappingStats" />
+  <xs:complexType name="ArrayOfDC_VelocityMappingStatsFor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityMappingStatsFor" nillable="true" type="tns:ArrayOfDC_VelocityMappingStatsFor" />
+  <xs:complexType name="DC_VelocityMappingStatsFor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Estimate" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MappingData" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
+      <xs:element minOccurs="0" name="MappingFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unmappeddata" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityMappingStatsFor" nillable="true" type="tns:DC_VelocityMappingStatsFor" />
+  <xs:complexType name="ArrayOfDC_VelocityMappingdata">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_VelocityMappingdata" nillable="true" type="tns:ArrayOfDC_VelocityMappingdata" />
+  <xs:complexType name="DC_VelocityMappingdata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Sequence" type="xs:int" />
+      <xs:element minOccurs="0" name="Totalcount" type="xs:int" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
 </xs:schema>
