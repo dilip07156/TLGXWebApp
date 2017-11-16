@@ -419,10 +419,10 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
         #region velocity dashboard
-        public List<DC_VelocityMappingStats> GetVelocityDashboard(MDMSVC.DC_RollOFParams parm)
+        public List<DC_VelocityMappingStats> GetVelocityDashboard(MDMSVC.DC_VelocityReport parm)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_velocityDashboard"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<DC_VelocityMappingStats>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_velocityDashboard"], parm, typeof(MDMSVC.DC_VelocityReport), typeof(List<DC_VelocityMappingStats>), out result);
             return result as List<DC_VelocityMappingStats>;
         }
         #endregion

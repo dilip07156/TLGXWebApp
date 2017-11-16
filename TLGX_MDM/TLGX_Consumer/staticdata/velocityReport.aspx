@@ -8,20 +8,7 @@
             margin-top: 18px;
         }
     </style>
-    <script>
-        $("document").on("pageload", function () {
-          //  debugger;
-            var a = $("#MainContent_txtFrom").val();
-            var b = $("#MainContent_txtTo").val();
-            if (a == null && b == null) {
-                var now = new Date();
-                var past = now.setMonth(now.getMonth() - 1, 1);
-                $("#MainContent_txtFrom").val(past.format('dd/MM/yyyy'));
-                $("#MainContent_txtTo").val(now.format('dd/MM/yyyy'));
-            }
-        });
-        var a = $("ctl00$MainContent$txtFrom")
-    </script>
+    
     <asp:UpdatePanel runat="server" ID="updatevelocityDash">
         <ContentTemplate>
             <div class="row">
@@ -39,6 +26,7 @@
                         </div>
                         <div id="collapseSearch" class="panel-collapse collapse in" aria-expanded="true">
                             <div class="panel-body">
+                                <div id="dvMsg" runat="server" style="display: none;"></div>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -52,7 +40,7 @@
                                         <div class="form-group">
                                             <label for="txtFrom" class="control-label-mand ">Date From </label>
                                             <div class="input-group">
-                                                <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" Text='<%# Eval(DateTime.Now.AddMonths(-2).ToString("dd/MM/yyyy")) %>' Width="240px" />
+                                                <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control"  Width="240px" />
                                                 <span class="input-group-btn" style="display: block">
                                                     <button class="btn btn-default" type="button" id="iCalFrom">
                                                         <span class="glyphicon glyphicon-calendar"></span>
@@ -68,7 +56,7 @@
                                         <div class="form-group">
                                             <label for="txtTo" class="control-label-mand">Date To   </label>
                                             <div class="input-group">
-                                                <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" Text='<%# Eval(DateTime.Now.ToString("dd/MM/yyyy")) %>' Width="240px" />
+                                                <asp:TextBox ID="txtTo" runat="server" CssClass="form-control"  Width="240px" />
                                                 <span class="input-group-btn" style="display: block">
                                                     <button class="btn btn-default" type="button" id="iCalTo">
                                                         <span class="glyphicon glyphicon-calendar"></span>

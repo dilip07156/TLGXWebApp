@@ -14,7 +14,7 @@ namespace TLGX_Consumer.staticdata
     {
         Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
-        MDMSVC.DC_RollOFParams parm = new MDMSVC.DC_RollOFParams();
+        MDMSVC.DC_VelocityReport parm = new MDMSVC.DC_VelocityReport();
         Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
 
         protected void Page_Init(object sender, EventArgs e)
@@ -46,6 +46,7 @@ namespace TLGX_Consumer.staticdata
         }
         private void getData(bool IsPageLoad)
         {
+            dvMsg.Style.Add("display", "none");
             string SupplierID = ddlSupplierName.SelectedValue;
             if (SupplierID == "0")
             {
@@ -58,13 +59,15 @@ namespace TLGX_Consumer.staticdata
             {
                 DateTime d = DateTime.Today;
                 d = d.AddMonths(-1);
-                parm.Fromdate = d.ToString("dd-MMM-yyyy");
-                parm.ToDate = DateTime.Today.ToString("dd-MMM-yyyy");
+                parm.Fromdate = d; //.ToString("dd-MMM-yyyy");
+                parm.ToDate = DateTime.Today;
+                txtFrom.Text = String.Format("{0}/{1}/{2}", d.Day, d.Month, d.Year) ;
+                txtTo.Text = String.Format("{0}/{1}/{2}", DateTime.Today.Day, DateTime.Today.Month, DateTime.Today.Year);
             }
             else
             {
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             }
 
             var res = MapSvc.GetVelocityDashboard(parm);
@@ -177,7 +180,17 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnViewStatus_Click(object sender, EventArgs e)
         {
-            getData(false);
+            dvMsg.Style.Add("display", "none");
+            String Fmdate = txtFrom.Text;
+            String tdate = txtTo.Text;
+            if (string.IsNullOrWhiteSpace(Fmdate) || string.IsNullOrWhiteSpace(tdate))
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please select From Date and To Date..!!", BootstrapAlertType.Danger);
+            }
+            else {
+                dvMsg.Style.Add("display", "none");
+                getData(false);
+            } 
         }
         private int getEstimatedate(DateTime fromdate,DateTime todate,int total,int unmapped)
         {
