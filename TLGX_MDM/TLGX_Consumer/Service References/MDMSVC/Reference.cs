@@ -7312,6 +7312,13 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMappingForDDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMappingForDDL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStatsFor[]))]
@@ -7343,12 +7350,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
@@ -7934,6 +7935,13 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMappingForDDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMappingForDDL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStatsFor[]))]
@@ -7965,12 +7973,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStats))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_VelocityMappingdata))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
@@ -21932,6 +21934,330 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityReport", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_VelocityReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FromdateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> ToDateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Fromdate {
+            get {
+                return this.FromdateField;
+            }
+            set {
+                if ((this.FromdateField.Equals(value) != true)) {
+                    this.FromdateField = value;
+                    this.RaisePropertyChanged("Fromdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierID {
+            get {
+                return this.SupplierIDField;
+            }
+            set {
+                if ((this.SupplierIDField.Equals(value) != true)) {
+                    this.SupplierIDField = value;
+                    this.RaisePropertyChanged("SupplierID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> ToDate {
+            get {
+                return this.ToDateField;
+            }
+            set {
+                if ((this.ToDateField.Equals(value) != true)) {
+                    this.ToDateField = value;
+                    this.RaisePropertyChanged("ToDate");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityMappingStats", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_VelocityMappingStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[] MappingStatsForField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[] MappingStatsFor {
+            get {
+                return this.MappingStatsForField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MappingStatsForField, value) != true)) {
+                    this.MappingStatsForField = value;
+                    this.RaisePropertyChanged("MappingStatsFor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierId {
+            get {
+                return this.SupplierIdField;
+            }
+            set {
+                if ((this.SupplierIdField.Equals(value) != true)) {
+                    this.SupplierIdField = value;
+                    this.RaisePropertyChanged("SupplierId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityMappingStatsFor", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_VelocityMappingStatsFor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> EstimateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[] MappingDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MappingForField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int UnmappeddataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Estimate {
+            get {
+                return this.EstimateField;
+            }
+            set {
+                if ((this.EstimateField.Equals(value) != true)) {
+                    this.EstimateField = value;
+                    this.RaisePropertyChanged("Estimate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[] MappingData {
+            get {
+                return this.MappingDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MappingDataField, value) != true)) {
+                    this.MappingDataField = value;
+                    this.RaisePropertyChanged("MappingData");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MappingFor {
+            get {
+                return this.MappingForField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MappingForField, value) != true)) {
+                    this.MappingForField = value;
+                    this.RaisePropertyChanged("MappingFor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmappeddata {
+            get {
+                return this.UnmappeddataField;
+            }
+            set {
+                if ((this.UnmappeddataField.Equals(value) != true)) {
+                    this.UnmappeddataField = value;
+                    this.RaisePropertyChanged("Unmappeddata");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityMappingdata", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_VelocityMappingdata : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SequenceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalcountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Sequence {
+            get {
+                return this.SequenceField;
+            }
+            set {
+                if ((this.SequenceField.Equals(value) != true)) {
+                    this.SequenceField = value;
+                    this.RaisePropertyChanged("Sequence");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Totalcount {
+            get {
+                return this.TotalcountField;
+            }
+            set {
+                if ((this.TotalcountField.Equals(value) != true)) {
+                    this.TotalcountField = value;
+                    this.RaisePropertyChanged("Totalcount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_MappingStats", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
     [System.SerializableAttribute()]
     public partial class DC_MappingStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -23676,253 +24002,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.HotelnameField, value) != true)) {
                     this.HotelnameField = value;
                     this.RaisePropertyChanged("Hotelname");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityMappingStats", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
-    [System.SerializableAttribute()]
-    public partial class DC_VelocityMappingStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[] MappingStatsForField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid SupplierIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SupplierNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_VelocityMappingStatsFor[] MappingStatsFor {
-            get {
-                return this.MappingStatsForField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MappingStatsForField, value) != true)) {
-                    this.MappingStatsForField = value;
-                    this.RaisePropertyChanged("MappingStatsFor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid SupplierId {
-            get {
-                return this.SupplierIdField;
-            }
-            set {
-                if ((this.SupplierIdField.Equals(value) != true)) {
-                    this.SupplierIdField = value;
-                    this.RaisePropertyChanged("SupplierId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SupplierName {
-            get {
-                return this.SupplierNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
-                    this.SupplierNameField = value;
-                    this.RaisePropertyChanged("SupplierName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityMappingStatsFor", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
-    [System.SerializableAttribute()]
-    public partial class DC_VelocityMappingStatsFor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> EstimateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[] MappingDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MappingForField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int UnmappeddataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Estimate {
-            get {
-                return this.EstimateField;
-            }
-            set {
-                if ((this.EstimateField.Equals(value) != true)) {
-                    this.EstimateField = value;
-                    this.RaisePropertyChanged("Estimate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_VelocityMappingdata[] MappingData {
-            get {
-                return this.MappingDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MappingDataField, value) != true)) {
-                    this.MappingDataField = value;
-                    this.RaisePropertyChanged("MappingData");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MappingFor {
-            get {
-                return this.MappingForField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MappingForField, value) != true)) {
-                    this.MappingForField = value;
-                    this.RaisePropertyChanged("MappingFor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Unmappeddata {
-            get {
-                return this.UnmappeddataField;
-            }
-            set {
-                if ((this.UnmappeddataField.Equals(value) != true)) {
-                    this.UnmappeddataField = value;
-                    this.RaisePropertyChanged("Unmappeddata");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_VelocityMappingdata", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
-    [System.SerializableAttribute()]
-    public partial class DC_VelocityMappingdata : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int SequenceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalcountField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UsernameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Sequence {
-            get {
-                return this.SequenceField;
-            }
-            set {
-                if ((this.SequenceField.Equals(value) != true)) {
-                    this.SequenceField = value;
-                    this.RaisePropertyChanged("Sequence");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Totalcount {
-            get {
-                return this.TotalcountField;
-            }
-            set {
-                if ((this.TotalcountField.Equals(value) != true)) {
-                    this.TotalcountField = value;
-                    this.RaisePropertyChanged("Totalcount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Username {
-            get {
-                return this.UsernameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
-                    this.UsernameField = value;
-                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -43796,6 +43875,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/UpdateActivitySupplierProductMapping", ReplyAction="http://tempuri.org/IMapping/UpdateActivitySupplierProductMappingResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateActivitySupplierProductMappingAsync(TLGX_Consumer.MDMSVC.DC_Acitivity_SupplierProductMapping[] PM);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetVelocityDashboard", ReplyAction="http://tempuri.org/IMapping/GetVelocityDashboardResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetVelocityDashboardDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(TLGX_Consumer.MDMSVC.DC_VelocityReport parm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetVelocityDashboard", ReplyAction="http://tempuri.org/IMapping/GetVelocityDashboardResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(TLGX_Consumer.MDMSVC.DC_VelocityReport parm);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdmin/GetSiteMapMaster", ReplyAction="http://tempuri.org/IAdmin/GetSiteMapMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAdmin/GetSiteMapMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid);
@@ -44012,13 +44098,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getNewHotelsAddedReport", ReplyAction="http://tempuri.org/IStaticData/getNewHotelsAddedReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetVelocityDashboard", ReplyAction="http://tempuri.org/IStaticData/GetVelocityDashboardResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetVelocityDashboardDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetVelocityDashboard", ReplyAction="http://tempuri.org/IStaticData/GetVelocityDashboardResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -46031,6 +46110,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.UpdateActivitySupplierProductMappingAsync(PM);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(TLGX_Consumer.MDMSVC.DC_VelocityReport parm) {
+            return base.Channel.GetVelocityDashboard(parm);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(TLGX_Consumer.MDMSVC.DC_VelocityReport parm) {
+            return base.Channel.GetVelocityDashboardAsync(parm);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid) {
             return base.Channel.GetSiteMapMaster(ID, applicationid);
         }
@@ -46269,14 +46356,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
             return base.Channel.getNewHotelsAddedReportAsync(parm);
-        }
-        
-        public TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[] GetVelocityDashboard(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
-            return base.Channel.GetVelocityDashboard(parm);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_VelocityMappingStats[]> GetVelocityDashboardAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
-            return base.Channel.GetVelocityDashboardAsync(parm);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {
