@@ -315,12 +315,12 @@
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">
                                                         Name
                                                         <asp:RequiredFieldValidator  ID="vddlAttributeName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
-                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Name field is required." Text="*" />
+                                                            CssClass="text-danger" InitialValue="-1" ErrorMessage="The Name field is required." Text="*" />
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>
                                                         <asp:DropDownList ID="ddlAttributeName" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAttributeName_SelectedIndexChanged" CssClass="form-control" AppendDataBoundItems="true">
-                                                            <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                            <asp:ListItem Text="---ALL---" Value="-1"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
 
