@@ -233,6 +233,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
             fillstatus(ddlStatus);
         }
 
+        private void EnableDisableValidation(RequiredFieldValidator rqfv)
+        {
+            rqfv.Enabled = true;
+        }
         private void fillfor(DropDownList ddl)
         {
             fillattributes(AttributeOptionFor, "AttributeFor", ddl);
@@ -391,6 +395,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
                         TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
                         DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
+                        RequiredFieldValidator rqfvddlAttributeValuedll = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValuedll");
+                        RequiredFieldValidator rqfvddlAttributeValue = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValue");
+                        RequiredFieldValidator rqfvddlAttributeValueFrom = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFrom");
+                        RequiredFieldValidator rqfvddlAttributeValueTo = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueTo");
+                        RequiredFieldValidator rqfvddlAttributeValueFilter = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFilter");
 
                         TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
                         TextBox txtPriority = (TextBox)frmAddConfig.FindControl("txtPriority"); //New Field added for Priority in Modal
@@ -526,6 +535,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeValue.DataSource = lstAttributeValue;
                                     ddlAttributeValue.DataBind();
                                     ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    EnableDisableValidation(rqfvddlAttributeValuedll);
 
                                     string strAttributeName = string.Empty;
                                     string strAttributeVal = string.Empty;
@@ -581,6 +591,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             if (res[0].AttributeType.ToLower() == "filter")
                             {
                                 dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
+                                rqfvddlAttributeValueFilter.Enabled = true;
+                                rqfvddlAttributeValue.Enabled = false;
+
                                 StringBuilder sbinnerhtml = new StringBuilder();
                                 string[] strArrayAttributeValue = strAttributeValue.Split(',');
                                 sbinnerhtml.Append(dvValueForFilter.InnerHtml);
@@ -629,6 +642,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     ddlAttributeValue.DataBind();
                                     ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
                                     ddlAttributeValue.SelectedIndex = ddlAttributeValue.Items.IndexOf(ddlAttributeValue.Items.FindByText(res[0].AttributeValue.ToString().Split('.')[1]));
+                                    
+                                    EnableDisableValidation(rqfvddlAttributeValuedll);
                                 }
                             }
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format")
@@ -672,6 +687,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                         ddlAttributeValue.DataValueField = "MasterAttributeValue_Id";
                                         ddlAttributeValue.DataBind();
                                         ddlAttributeValue.Items.Insert(0, new ListItem("---Select---", "0"));
+                                        EnableDisableValidation(rqfvddlAttributeValuedll);
 
                                         if (ddlAttributeValue.Items.FindByText(res[0].AttributeName.ToString()) != null)
                                             ddlAttributeValue.Items.FindByText(res[0].AttributeName.ToString()).Selected = true;
@@ -1039,6 +1055,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
             else if (e.CommandName == "ResetAdd")
             {
+                dvModalMsg.Visible = false;
                 ddlAttributeType.SelectedIndex = 0;
                 ddlAttributeName.Items.Clear();
                 ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
@@ -1059,6 +1076,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
             else if (e.CommandName == "ResetUpdate")
             {
+                dvModalMsg.Visible = false;
                 ddlAddStatus.SelectedIndex = 0;
                 ddlAttributeType.SelectedIndex = 0;
                 ddlAttributeName.Items.Clear();
@@ -1114,7 +1132,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
             HiddenField hdnddlAttributeTableName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableName");
             HiddenField hdnddlAttributeTableValueName = (HiddenField)frmAddConfig.FindControl("hdnddlAttributeTableValueName");
             HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
-
+            RequiredFieldValidator rqfvddlAttributeValuedll = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValuedll");
+            RequiredFieldValidator rqfvddlAttributeValue = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValue");
+            RequiredFieldValidator rqfvddlAttributeValueFrom = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFrom");
+            RequiredFieldValidator rqfvddlAttributeValueTo = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueTo");
+            RequiredFieldValidator rqfvddlAttributeValueFilter = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFilter");
             TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
             TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
@@ -1147,7 +1169,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     if (strAttributeType == "distinct")
                         txtAttributeValue.Visible = true;
                     else
+                    {
                         dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
+
+                        EnableDisableValidation(rqfvddlAttributeValueFilter);
+                    }
                 }
                 else if (IsMapping && strAttributeType == "map")
                 {
@@ -1171,6 +1197,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.DataSource = lstAttributeValue;
                         ddlAttributeValue.DataBind();
                         ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+                        rqfvddlAttributeValuedll.Enabled = true;
+                        rqfvddlAttributeValue.Enabled = false;
+                        rqfvddlAttributeValueFrom.Enabled = false;
+                        rqfvddlAttributeValueTo.Enabled = false;
+                        rqfvddlAttributeValueFilter.Enabled = false;
                     }
                 }
                 else if (IsMapping && strAttributeType == "keyword")
@@ -1191,6 +1222,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.DataSource = lstAttributeValue;
                         ddlAttributeValue.DataBind();
                         ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+
+                        EnableDisableValidation(rqfvddlAttributeValuedll);
                     }
 
                 }
@@ -1209,6 +1242,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                     }
                     txtAttributeValue.Visible = true;
+
+                    EnableDisableValidation(rqfvddlAttributeValue);
+
                 }
                 else if (!IsMapping) //Match & Map
                 {
@@ -1259,6 +1295,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.DataSource = lstAttributeValue;
                         ddlAttributeValue.DataBind();
                         ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+
+                        EnableDisableValidation(rqfvddlAttributeValuedll);
                     }
                 }
                 else
@@ -1390,9 +1428,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
             DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
             TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
             TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
+            TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
+            RequiredFieldValidator rqfvddlAttributeValuedll = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValuedll");
             RequiredFieldValidator rqfvddlAttributeValue = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValue");
+            RequiredFieldValidator rqfvddlAttributeValueFrom = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFrom");
+            RequiredFieldValidator rqfvddlAttributeValueTo = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueTo");
+            RequiredFieldValidator rqfvddlAttributeValueFilter = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFilter");
             FilteredTextBoxExtender axfte_txtAttributeValue = (FilteredTextBoxExtender)frmAddConfig.FindControl("axfte_txtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
             System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
@@ -1421,6 +1464,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         ddlAttributeValue.DataValueField = "MasterAttributeValue_Id";
                         ddlAttributeValue.DataBind();
                         ddlAttributeValue.Items.Insert(0, new ListItem("---Select---", "0"));
+
+                        //Since textbox for value is not visible the validatin control should be disable
+
+                        EnableDisableValidation(rqfvddlAttributeValuedll);
                     }
                     else
                     {
@@ -1430,7 +1477,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             ddlAttributeValue.Visible = false;
                             txtAttributeValue.Visible = true;
                             axfte_txtAttributeValue.Enabled = true;
-                            rqfvddlAttributeValue.Enabled = true;
+
+                            EnableDisableValidation(rqfvddlAttributeValue);
                         }
 
                         else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace")
@@ -1438,6 +1486,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             hdnIsReplaceWith.Value = Convert.ToString(true);
                             ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "block");
+
+                            EnableDisableValidation(rqfvddlAttributeValueFrom);
                         }
                         else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace all spcl chrs")
                         {
@@ -1445,13 +1495,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             ddlAttributeValue.Visible = false;
                             txtAttributeValue.Visible = true;
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+
+                            EnableDisableValidation(rqfvddlAttributeValue);
                         }
                         else
                             if (!(frmAddConfig.CurrentMode.ToString() == "Edit"))
                             {
                                 axfte_txtAttributeValue.Enabled = false;
                                 rqfvddlAttributeValue.Enabled = false;
-                            }
+                                rqfvddlAttributeValueFilter.Enabled = false;
+                               //rqfvddlAttributeValueFrom.Enabled = true;
+                        }
                     }
 
                 }
@@ -1472,6 +1526,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     else
                     {
                         dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
+
+                        EnableDisableValidation(rqfvddlAttributeValueFilter);
                     }
                 }
             }

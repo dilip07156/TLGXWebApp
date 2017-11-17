@@ -42,7 +42,7 @@
                 Contain += $(this).val() + ",";
             });
             $('#hdnValueWithCommaSeprated').val(Contain);
-            $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter").append('<div class="con"><input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" /><div class="input-group-btn  col-md-4" style="padding-left: 0px !important;"><button class="btn btn-default btnRemove" id="btnAddValue" type="button"><i class="glyphicon glyphicon-minus"></i></button></div></div>');
+            $("#MainContent_manageStaticDataConfig_frmAddConfig_dvValueForFilter").append('<div class="con"><input id="MainContent_manageStaticDataConfig_frmAddConfig_txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" /><div class="input-group-btn  col-md-4" style="padding-left: 0px !important;"><button class="btn btn-default btnRemove" id="btnAddValue" type="button"><i class="glyphicon glyphicon-minus"></i></button></div></div>');
         });
         $('body').on('click', '.btnRemove', function () {
             //debugger;
@@ -330,8 +330,16 @@
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">
                                                         Value
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValuedll" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeValue"
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Value field is required." Text="*" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValue" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtAttributeValue"
-                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" />
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*"  Enabled="false"/>
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFrom" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtReplaceFrom"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValueTo" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtReplaceTo"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFilter" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtValueForFilter"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>
@@ -348,7 +356,7 @@
                                                         <%--For For Multi TextBox Values--%>
                                                         <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
                                                         <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
-                                                            <input id="txtValueForFilter" type="text" class="form-control col-md-8 inputTypeForFilter" />
+                                                            <input id="txtValueForFilter" runat="server" type="text" class="form-control col-md-8 inputTypeForFilter" />
                                                             <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
                                                                 <button class="btn btn-default" id="btnAddValue" type="button">
                                                                     <i class="glyphicon glyphicon-plus"></i>
