@@ -351,6 +351,7 @@
     <Content Include="controls\projects\workflowinproject.ascx" />
     <Content Include="controls\roomtype\manageRoomTypeMapping.ascx" />
     <Content Include="controls\roomtype\searchRoomTypes.ascx" />
+    <Content Include="controls\staticdataconfig\FileMappingcharts.ascx" />
     <Content Include="controls\staticdataconfig\manageAPILocation.ascx" />
     <Content Include="controls\staticdataconfig\manageFIleUpload.ascx" />
     <Content Include="controls\staticdataconfig\manageStaticDataConfig.ascx" />
@@ -1674,6 +1675,13 @@
     </Compile>
     <Compile Include="controls\roomtype\searchRoomTypes.ascx.designer.cs">
       <DependentUpon>searchRoomTypes.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\FileMappingcharts.ascx.cs">
+      <DependentUpon>FileMappingcharts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdataconfig\FileMappingcharts.ascx.designer.cs">
+      <DependentUpon>FileMappingcharts.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\staticdataconfig\manageAPILocation.ascx.cs">
       <DependentUpon>manageAPILocation.ascx</DependentUpon>
