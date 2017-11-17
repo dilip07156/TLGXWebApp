@@ -605,8 +605,8 @@ namespace TLGX_Consumer.controls.staticdata
                     Remarks = txtSystemRemark.Text,
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                    StateCode = txtSystemStateCode.Text,
-                    StateName = txtSystemStateName.Text
+                    //StateCode = txtSystemStateCode.Text,
+                    //StateName = txtSystemStateName.Text
                 };
                 RQ.Add(newObj);
                 if (mapperSVc.UpdateCityMappingDatat(RQ))
