@@ -92,9 +92,10 @@ namespace TLGX_Consumer.staticdata
 
         public void InsertFileRecord(string Entity)
         {
+            Guid SupplierImportFile_Id = Guid.NewGuid();
             MappingSVCs _objMappingSVCs = new MappingSVCs();
             MDMSVC.DC_SupplierImportFileDetails _objFileDetails = new MDMSVC.DC_SupplierImportFileDetails();
-            _objFileDetails.SupplierImportFile_Id = Guid.NewGuid();
+            _objFileDetails.SupplierImportFile_Id = SupplierImportFile_Id;
             _objFileDetails.Supplier_Id = Guid.Parse(ddlSupplierName.SelectedValue);
             _objFileDetails.Entity = Entity;
             _objFileDetails.OriginalFilePath = "";
@@ -103,10 +104,27 @@ namespace TLGX_Consumer.staticdata
             _objFileDetails.Mode = "RE_RUN";
             _objFileDetails.CREATE_DATE = DateTime.Now;
             _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
-
             MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
-
-            Response.Redirect("~/staticdata/files/upload.aspx");
+            //file Process logic
+            MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
+            MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+            RQ.SupplierImportFile_Id = SupplierImportFile_Id;
+            RQ.PageNo = 0;
+            RQ.PageSize = int.MaxValue;
+            var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+            obj.SupplierImportFile_Id = res[0].SupplierImportFile_Id;
+            obj.Supplier_Id = res[0].Supplier_Id;
+            obj.Supplier = res[0].Supplier;
+            obj.SavedFilePath = res[0].SavedFilePath;
+            obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
+            obj.Entity = res[0].Entity;
+            obj.STATUS = res[0].STATUS;
+            obj.Mode = res[0].Mode;
+            var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
+            //end
+            //view File  details
+            ClientScript.RegisterStartupScript(this.GetType(), "showDetailsModal", "showDetailsModal('" + SupplierImportFile_Id + "');", true);
+            // Response.Redirect("~/staticdata/files/upload.aspx");
         }
 
         protected void btnCityReRun_Click(object sender, EventArgs e)

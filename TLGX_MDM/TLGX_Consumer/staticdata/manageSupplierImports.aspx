@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="manageSupplierImports.aspx.cs" Inherits="TLGX_Consumer.staticdata.manageSupplierImports" EnableEventValidation="false" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+<%@ Register Src="~/controls/staticdataconfig/FileMappingcharts.ascx" TagPrefix="uc1" TagName="FileMappingcharts" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
@@ -23,20 +26,78 @@
         .nodata {
             font-weight: bold;
             font-size: small;
-            height:100px;
+            height: 100px;
             text-align: center;
         }
 
-        table{
-                 width:100%;
+        table {
+            width: 100%;
         }
-        .chartheight{
-            height:200px;
+
+        .chartheight {
+            height: 200px;
         }
     </style>
+    <script>
+        var x;
+        //timer
+        function myTimer() {
+            var hdnval = document.getElementById("hdnFileId").value;
+            getChartDataFileMapping(hdnval);
+        }
+        function myStopFunction() {
+            clearInterval(x);
+        }
+        //end
+        function showDetailsModal(fileid) {
+            $("#moViewDetials").modal('show');
+            $('#moViewDetials').on('show.bs.modal', function () {
+                document.getElementById("hdnFileId").value = fileid;
+                getChartDataFileMapping(fileid);
+                //strat timer
+                x = setInterval(function () { myTimer() }, 5000);
+            }).modal('show');;
+            $('#moViewDetials').on('hidden.bs.modal', function () {
+                //stop timer on close of modal 
+                $('#moViewDetials a:first').tab('show');
+                myStopFunction();
+            });
+        }
+        function closeDetailsModal() {
+            $("#moViewDetials").modal('hide');
+        }
+    </script>
     <script type="text/javascript">
+      //script for RUN MAPPING 
+            var x;
+            function myTimer() {
+                var hdnval = document.getElementById("hdnFileId").value;
+                getChartDataFileMapping(hdnval);
+            }
+            function myStopFunction() {
+                clearInterval(x);
+            }
+            function showDetailsModal(fileid) {
+                $("#moViewDetials").modal('show');
+                $('#moViewDetials').on('show.bs.modal', function () {
+                    document.getElementById("hdnFileId").value = fileid;
+                    getChartDataFileMapping(fileid);
+                    //strat timer
+                    x = setInterval(function () { myTimer() }, 5000);
+                }).modal('show');;
+                $('#moViewDetials').on('hidden.bs.modal', function () {
+                    //stop timer on close of modal 
+                    $('#moViewDetials a:first').tab('show');
+                    myStopFunction();
+                });
+            }
+            function closeDetailsModal() {
+                $("#moViewDetials").modal('hide');
+            }
+      //End RUN MAPPING
+       
+     //  Script for Country city hotel charts
         var colorsArray = [];
-       // var isPageLoad = false;
         while (colorsArray.length < 200) {
             do {
                 var color = Math.floor((Math.random() * 1000000) + 2);
@@ -48,16 +109,11 @@
         function getChartData() {
             var sid = $('#MainContent_ddlSupplierName').val();
             if (sid == '0') {
-                //For all supplier Show both Div
-                //$('#supplierwisedata').show();
-               // $('#allsupplierdata').show();
                 $('#ReportViewersupplierwise').hide();
                 getAllSupplierData();
                 sid = '00000000-0000-0000-0000-000000000000'
             }
             else {
-                //$('#supplierwisedata').show();
-               // $('#allsupplierdata').hide();
                 $('#ReportViewersupplierwise').hide();
             }
             $.ajax({
@@ -95,12 +151,12 @@
                                 if (resultDataForCountry[iCountryMappingData].Status != "ALL") {
                                     contryArray.push(resultDataForCountry[iCountryMappingData]);
                                     $("#detailcountry").append(resultDataForCountry[iCountryMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount + "<br>");
-                                   
+
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-                                    if(resultDataForCountry[iCountryMappingData].SuppliersCount!= null)
-                                    { $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount);}
+                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount != null)
+                                    { $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount); }
                                 }
                             }
                         }
@@ -112,7 +168,7 @@
                                 if (resultDataForCity[iCityMappingData].Status != "ALL") {
                                     cityArray.push(resultDataForCity[iCityMappingData]);
                                     $("#detailcity").append(resultDataForCity[iCityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount + "<br>");
-                                    
+
                                 }
                                 else {
                                     $("#cityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
@@ -130,7 +186,7 @@
                                 if (resultDataForProduct[iProductMappingData].Status != "ALL") {
                                     productArray.push(resultDataForProduct[iProductMappingData]);
                                     $("#detailproduct").append(resultDataForProduct[iProductMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount + "<br>");
-                                    
+
                                 }
                                 else {
                                     $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
@@ -147,7 +203,7 @@
                                 if (resultDataForActivity[iActivityMappingData].Status != "ALL") {
                                     activityArray.push(resultDataForActivity[iActivityMappingData]);
                                     $("#detailactivity").append(resultDataForActivity[iActivityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount + "<br>");
-                                   
+
                                 }
                                 else {
                                     $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
@@ -284,11 +340,11 @@
 
                 },
                 error: function (xhr, status, error) {
-                   // alert("failed to load file");
+                    // alert("failed to load file");
                 }
             });
         }
-         function getAllSupplierData() {
+        function getAllSupplierData() {
             $.ajax({
                 url: '../../../Service/AllSupplierDataForChart.ashx',
                 contentType: "application/json; charset=utf-8",
@@ -464,16 +520,16 @@
                     }
                 },
                 error: function (xhr, status, error) {
-                   // alert("failed to load  all supplier data file");
+                    // alert("failed to load  all supplier data file");
                 }
             });
         }
-         $(document).ready(function () {
-             $("a[title=PDF]").remove();
-             $("a[title=Word]").remove();
-             $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(1).remove();
-             $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
-         });
+        $(document).ready(function () {
+            $("a[title=PDF]").remove();
+            $("a[title=Word]").remove();
+            $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(1).remove();
+            $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
+        });
         $(window).on('load', function () {
             //debugger;
             var sid = $('#MainContent_ddlSupplierName').val();
@@ -493,10 +549,10 @@
             }
 
             $("#MainContent_btnExportCsv").click(function () {
-               // alert('Export');
+                // alert('Export');
                 $('#ReportViewersupplierwise').show();
             });
-            
+
             $("#btnUpdateSupplier").click(function () {
                 $("#ReportViewersupplierwise").hide();
                 var sid = $('#MainContent_ddlSupplierName').val();
@@ -516,17 +572,15 @@
                 }
 
             });
-                getChartData();
+            getChartData();
         });
     </script>
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
-
-
     <div class="row">
         <div class="col-md-6">
-            <h1 class="page-header" style=" border-bottom:none">Suppliers Status</h1>
+            <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
         </div>
 
         <div class="col-md-6 ">
@@ -538,13 +592,13 @@
                         <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                     </asp:DropDownList>
                     <%--<asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />--%>
-                    <button id="btnUpdateSupplier" class="btn btn-primary btn-sm" >View Status</button>
+                    <button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>
                     <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
             </div>
         </div>
     </div>
-    <hr />  
+    <hr />
     <%--for first three charts--%>
     <div class="row" id="supplierwisedata" runat="server">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
@@ -588,8 +642,8 @@
                     <b><span class="nxtrundate"></span></b>
                 </div>
                 <div class="panel-footer ">
-                     <h4><b id="cityTotal"></b></h4>
-                      <h4><b id="citySuppliersCount"></b></h4>
+                    <h4><b id="cityTotal"></b></h4>
+                    <h4><b id="citySuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -603,7 +657,7 @@
                 <div id="product" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailproduct" style="font-size: small"></span></b>
-                </div>                
+                </div>
                 <div class="panel-body" id="dvHotelReRun">
                     <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
                 </div>
@@ -612,7 +666,7 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="productTotal"></b></h4>
-                      <h4><b id="productSuppliersCount"></b></h4>
+                    <h4><b id="productSuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -626,7 +680,7 @@
                 <div id="HotelRoom" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailHotelRoom" style="font-size: small"></span></b>
-                </div>             
+                </div>
                 <div class="panel-body" id="dvRoomTypeReRun">
                     <asp:Button ID="btnRoomTypeReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRun_Click" />
                 </div>
@@ -635,7 +689,7 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="HotelRoomTotal"></b></h4>
-                     <h4><b id="HotelRoomSuppliersCount"></b></h4>
+                    <h4><b id="HotelRoomSuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
@@ -649,7 +703,7 @@
                 <div id="activity" class="chartheight"></div>
                 <div class="panel-body">
                     <b><span id="detailactivity" style="font-size: small"></span></b>
-                </div>           
+                </div>
                 <div class="panel-body" id="dvActivityReRun">
                     <asp:Button ID="btnActivityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnActivityReRun_Click" />
                 </div>
@@ -658,13 +712,13 @@
                 </div>
                 <div class="panel-footer">
                     <h4><b id="activityTotal"></b></h4>
-                      <h4><b id="activitySuppliersCount"></b></h4>
+                    <h4><b id="activitySuppliersCount"></b></h4>
                 </div>
             </div>
         </div>
     </div>
     <%-- for last three pie charts--%>
-    <div class="row" id="allsupplierdata"  runat="server">
+    <div class="row" id="allsupplierdata" runat="server">
         <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -738,4 +792,27 @@
             </rsweb:ReportViewer>
         </div>
     </div>
+
+
+
+    <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header" style="padding: 5px 5px 5px 15px;">
+                    <h4 class="modal-title"><b>File Status </b></h4>
+                    <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
+                </div>
+                <div class="modal-body">
+
+                    <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                    <uc1:FileMappingcharts runat="server" ID="FileMappingcharts" />
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>
