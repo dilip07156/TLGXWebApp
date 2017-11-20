@@ -504,7 +504,9 @@ namespace TLGX_Consumer.controls.staticdata
         {
             try
             {
-                var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ() { CityMapping_Id = Convert.ToString("E0D8995D-B036-4300-88FF-0000C64B8714"), PageNo = hotelListPageIndex, PageSize = hotelListPageSize });
+                //var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ() { CityMapping_Id = Convert.ToString("E0D8995D-B036-4300-88FF-0000C64B8714"), PageNo = hotelListPageIndex, PageSize = hotelListPageSize });
+
+                var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ() { CityMapping_Id = Convert.ToString(_cityMappingid), PageNo = hotelListPageIndex, PageSize = hotelListPageSize });
                 grdv.DataSource = result;
                 if (result != null)
                 {

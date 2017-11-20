@@ -33207,7 +33207,28 @@ namespace TLGX_Consumer.MDMSVC {
         private string AddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string HotelNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StreetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Street2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Street3Field;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalRecordsField;
@@ -33236,6 +33257,58 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityCode {
+            get {
+                return this.CityCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityCodeField, value) != true)) {
+                    this.CityCodeField = value;
+                    this.RaisePropertyChanged("CityCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryCode {
+            get {
+                return this.CountryCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryCodeField, value) != true)) {
+                    this.CountryCodeField = value;
+                    this.RaisePropertyChanged("CountryCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string HotelName {
             get {
                 return this.HotelNameField;
@@ -33244,6 +33317,45 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.HotelNameField, value) != true)) {
                     this.HotelNameField = value;
                     this.RaisePropertyChanged("HotelName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Street {
+            get {
+                return this.StreetField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StreetField, value) != true)) {
+                    this.StreetField = value;
+                    this.RaisePropertyChanged("Street");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Street2 {
+            get {
+                return this.Street2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Street2Field, value) != true)) {
+                    this.Street2Field = value;
+                    this.RaisePropertyChanged("Street2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Street3 {
+            get {
+                return this.Street3Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Street3Field, value) != true)) {
+                    this.Street3Field = value;
+                    this.RaisePropertyChanged("Street3");
                 }
             }
         }

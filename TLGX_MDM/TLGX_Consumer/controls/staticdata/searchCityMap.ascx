@@ -19,6 +19,10 @@
     .HotelListrowPadding {
         padding: 5px;
     }
+    .HotelInfo{
+        height: 200px;
+        overflow-y: scroll;
+    }
 
     .controls {
         background-color: #fff;
@@ -728,7 +732,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">Hotel List for Selected City</div>
                                                 <div class="panel-body">
-                                                    <div class="form-group">
+                                                    <div class="form-group HotelInfo">
                                                         <asp:GridView runat="server" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
                                                             CssClass="fullWidth HotelList table table-hover table-striped">
                                                             <Columns>
