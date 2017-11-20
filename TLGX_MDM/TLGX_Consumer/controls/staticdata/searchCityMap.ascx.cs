@@ -34,8 +34,8 @@ namespace TLGX_Consumer.controls.staticdata
         public static int SimilarPageIndex = 0;
         public static string SimilarCountryName = "";
         public static string SimilarCityName = "";
-        public static Guid MappedCountry_ID = Guid.Empty;
-        public static Guid MappedCity_ID = Guid.Empty;
+        //public static Guid MappedCountry_ID = Guid.Empty;
+        //public static Guid MappedCity_ID = Guid.Empty;
         public static int HotelListPageSize = 5;
         public static Guid SelectedMappedID = Guid.Empty;
         public static Guid? MappedCountry_ID = Guid.Empty;  
