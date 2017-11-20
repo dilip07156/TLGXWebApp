@@ -706,6 +706,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_VelocityMappingdata" nillable="true" type="tns:DC_VelocityMappingdata" />
+  <xs:complexType name="DC_HotelListByCityCode_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityMapping_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_HotelListByCityCode_RQ" nillable="true" type="tns:DC_HotelListByCityCode_RQ" />
+  <xs:complexType name="ArrayOfDC_HotelListByCityCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_HotelListByCityCode" nillable="true" type="tns:DC_HotelListByCityCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_HotelListByCityCode" nillable="true" type="tns:ArrayOfDC_HotelListByCityCode" />
+  <xs:complexType name="DC_HotelListByCityCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_HotelListByCityCode" nillable="true" type="tns:DC_HotelListByCityCode" />
   <xs:complexType name="ArrayOfDC_MappingStats">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_MappingStats" nillable="true" type="tns:DC_MappingStats" />
