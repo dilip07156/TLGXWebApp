@@ -468,5 +468,14 @@ namespace TLGX_Consumer.Controller
         }
 
         #endregion
+
+        #region CIty Mapping
+        public List<DC_HotelListByCityCode> GetHotelListByCityCode(MDMSVC.DC_HotelListByCityCode_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Mapping_GetHotelListByCityCode"], RQParams, typeof(MDMSVC.DC_HotelListByCityCode_RQ), typeof(List<MDMSVC.DC_HotelListByCityCode>), out result);
+            return result as List<DC_HotelListByCityCode>;
+        }
+        #endregion
     }
 }

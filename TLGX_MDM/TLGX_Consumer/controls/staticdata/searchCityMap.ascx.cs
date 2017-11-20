@@ -30,11 +30,14 @@ namespace TLGX_Consumer.controls.staticdata
         public static string MatchedCountryName = "";
         public static string MatchedCityName = "";
         public static int MatchedPageIndex = 0;
+        public static int HotelListPageIndex = 0;
         public static int SimilarPageIndex = 0;
         public static string SimilarCountryName = "";
         public static string SimilarCityName = "";
         public static Guid MappedCountry_ID = Guid.Empty;
         public static Guid MappedCity_ID = Guid.Empty;
+        public static int HotelListPageSize = 5;
+        public static Guid SelectedMappedID = Guid.Empty;
         public List<MDMSVC.DC_City_Master_DDL> _lstCityMaster = new List<DC_City_Master_DDL>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -319,6 +322,8 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
+                string strCityCode = string.Empty;
+                string strSupplierCode = string.Empty;
                 if (e.CommandName == "Select")
                 {
                     dvMsg.Style.Add("display", "none");
@@ -375,6 +380,7 @@ namespace TLGX_Consumer.controls.staticdata
                     TextBox txtSystemStateCode = (TextBox)frmEditCityMap.FindControl("txtSystemStateCode");
                     TextBox txtSystemStateName = (TextBox)frmEditCityMap.FindControl("txtSystemStateName");
                     Button btnAddCity = (Button)frmEditCityMap.FindControl("btnAddCity");
+                    GridView grdvListOfHotelÖnSelection = (GridView)frmEditCityMap.FindControl("grdvListOfHotelOnSelection");
 
                     fillcountries(ddlSystemCountryName);
                     fillmappingstatus(ddlStatus);
@@ -477,12 +483,53 @@ namespace TLGX_Consumer.controls.staticdata
                         else
                             btnAddCity.Visible = false;
                     }
+                    BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize, grdvListOfHotelÖnSelection);
+                    hdnFlag.Value = "false";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
                 }
-                hdnFlag.Value = "false";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
+                if(e.CommandName == "SelectCityCode")
+                {
+                    SelectedMappedID = myRow_Id;
+                    BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize,grdvListOfHotel);
+                }
+
             }
             catch
             { }
+        }
+
+        private void BindHotelList(Guid _cityMappingid, int hotelListPageIndex, int hotelListPageSize,GridView grdv)
+        {
+            try
+            {
+                var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ() { CityMapping_Id = Convert.ToString("E0D8995D-B036-4300-88FF-0000C64B8714"), PageNo = hotelListPageIndex, PageSize = hotelListPageSize });
+                grdv.DataSource = result;
+                if (result != null)
+                {
+                    if (result.Count > 0)
+                    {
+                        grdv.VirtualItemCount = result[0].TotalRecords;
+                    }
+                }
+                grdv.PageIndex = SimilarPageIndex;
+                grdv.PageSize = hotelListPageSize;
+                grdv.DataBind();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        protected void grdvListOfHotel_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            HotelListPageIndex = e.NewPageIndex;
+            BindHotelList(SelectedMappedID, HotelListPageIndex, HotelListPageSize, grdvListOfHotel);
+        }
+        protected void grdvListOfHotelOnSelection_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            HotelListPageIndex = e.NewPageIndex;
+           // BindHotelList(SelectedMappedID, HotelListPageIndex, HotelListPageSize,this.g);
         }
 
         protected void ddlSystemCountryName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1340,5 +1387,7 @@ namespace TLGX_Consumer.controls.staticdata
             }
 
         }
+
+        
     }
 }
