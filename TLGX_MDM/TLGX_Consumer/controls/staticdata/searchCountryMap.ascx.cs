@@ -28,7 +28,7 @@ namespace TLGX_Consumer.controls.staticdata
         public static string SortEx = "";
         public static int PageIndex = 0;
         public static int MatchedPageIndex = 0;
-        public static Guid MappedCountry_ID = Guid.Empty;
+        public static Guid? MappedCountry_ID = Guid.Empty;
         public static string MatchedSupplierName = "";
         public static string MatchedStatus = "";
 
@@ -217,6 +217,7 @@ namespace TLGX_Consumer.controls.staticdata
                 int index = row.RowIndex;
                 if (e.CommandName == "Select")
                 {
+                    dvMsgForDelete.Visible = false;
                     grdMatchingCountry.DataSource = null;
                     grdMatchingCountry.DataBind();
                     dvMatchingRecords.Visible = false;
@@ -305,6 +306,9 @@ namespace TLGX_Consumer.controls.staticdata
 
             if (e.CommandName == "Add")
             {
+                Guid? countryid = null;
+                string code = string.Empty;
+                string name = string.Empty;
                 Guid myRow_Id = Guid.Parse(grdCountryMaps.SelectedDataKey.Value.ToString());
                 //SupplierMasters sData = new SupplierMasters();
                 //sData = masters.GetSupplierDataByMapping_Id("country", myRow_Id);
@@ -312,15 +316,22 @@ namespace TLGX_Consumer.controls.staticdata
                 MDMSVC.DC_Supplier_DDL sData = new MDMSVC.DC_Supplier_DDL();
                 sData = _objMasterSVC.GetSupplierDataByMapping_Id("COUNTRY", Convert.ToString(myRow_Id));
 
+                if (!(ddlSystemCountryName.SelectedIndex == 0))
+                {
+                    countryid = new Guid(ddlSystemCountryName.SelectedItem.Value);
+                    code = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
+                    name = ddlSystemCountryName.SelectedItem.Text;
+                }
+
                 MDMSVC.DC_CountryMapping newObj = new MDMSVC.DC_CountryMapping
                 {
                     CountryMapping_Id = myRow_Id,
-                    Country_Id = new Guid(ddlSystemCountryName.SelectedItem.Value),
+                    Country_Id = countryid,
                     Supplier_Id = sData.Supplier_Id,
                     SupplierName = sData.Name,
-                    Code = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value)),
+                    Code = code,
                     Status = ddlStatus.SelectedItem.Text,
-                    Name = ddlSystemCountryName.SelectedItem.Text,
+                    Name = name,
                     Remarks = txtSystemRemark.Text,
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
@@ -332,15 +343,23 @@ namespace TLGX_Consumer.controls.staticdata
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
                     //frmEditCountryMap.Visible = false;
                     MatchedPageIndex = 0;
-                    MappedCountry_ID = new Guid(ddlSystemCountryName.SelectedItem.Value);
+                    MappedCountry_ID = countryid;
                     MatchedSupplierName = lblSupCountryName.Text;
                     MatchedStatus = ddlStatus.SelectedItem.Text;
                     //if (ddlStatus.SelectedItem.Text == "MAPPED")
-                    fillmatchingdata();
-                    fillmappingdata();
-                    dvMatchingRecords.Visible = true;
-                    btnMatchedMapSelected.Visible = true;
-                    btnMatchedMapAll.Visible = true;
+                    if (!(ddlStatus.SelectedItem.Text == "DELETE"))
+                    {
+                        fillmatchingdata();
+                        fillmappingdata();
+                        dvMatchingRecords.Visible = true;
+                        btnMatchedMapSelected.Visible = true;
+                        btnMatchedMapAll.Visible = true;
+                    }
+                    else if (ddlStatus.SelectedItem.Text == "DELETE")
+                    {
+                        //dvMsgForDelete.Visible = true;
+                        BootstrapAlert.BootstrapAlertMessage(dvMsgForDelete, "Record has been updated successfully", BootstrapAlertType.Success);
+                    }
                 }
                 hdnFlag.Value = "false";
             }
@@ -363,7 +382,7 @@ namespace TLGX_Consumer.controls.staticdata
 
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
-                Guid myCountry_Id = Guid.Empty;
+                Guid? myCountry_Id = Guid.Empty;
                 bool res = false;
                 foreach (GridViewRow row in grdMatchingCountry.Rows)
                 {
@@ -412,7 +431,7 @@ namespace TLGX_Consumer.controls.staticdata
 
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
-                Guid myCountry_Id = Guid.Empty;
+                Guid? myCountry_Id = Guid.Empty;
                 bool res = false;
                 foreach (GridViewRow row in grdMatchingCountry.Rows)
                 {
@@ -472,6 +491,12 @@ namespace TLGX_Consumer.controls.staticdata
                 txtSystemCountryCode.Text = result[0].Code;
                 txtISO2CHAR.Text = result[0].ISO3166_1_Alpha_2;
                 txtISO3CHAR.Text = result[0].ISO3166_1_Alpha_3;
+            }
+            else
+            {
+                txtSystemCountryCode.Text = string.Empty;
+                txtISO2CHAR.Text = string.Empty;
+                txtISO3CHAR.Text = string.Empty;
             }
             //txtSystemCountryCode.Text = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
         }

@@ -148,6 +148,24 @@
             document.getElementById("<%=frmEditCityMap.FindControl("dvMsg2").ClientID %>").style.display = "none";
         }, 3000);
     }
+
+    function ddlStatusChanged(ddl) {
+        debugger;
+        var ddlStatus = $('#MainContent_CityMap_frmEditCityMap_ddlStatus option:selected').html();
+        var mySystemCountryName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCountryName");
+        var mySystemCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCityName");
+        var mySystemAddCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCountryNameAddCity");
+        if (ddlStatus == 'DELETE') {
+            ValidatorEnable(mySystemCountryName, false);
+            ValidatorEnable(mySystemCityName, false);
+            ValidatorEnable(mySystemAddCityName, false);
+        }
+        else {
+            ValidatorEnable(mySystemCountryName, true);
+            ValidatorEnable(mySystemCityName, true);
+            ValidatorEnable(mySystemAddCityName, true);
+        }
+    }
 </script>
 <script type="text/javascript">
 
@@ -623,7 +641,7 @@
                                                             Status
                                                             <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
                                                         </label>
-                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);"> 
                                                             <asp:ListItem Value="0">Select</asp:ListItem>
                                                         </asp:DropDownList>
 
@@ -645,7 +663,7 @@
                                                 <div class="panel-heading">Actions</div>
                                                 <div class="panel-body">
                                                     <div class="form-group">
-                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" />
+                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);"/>
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
                                                     </div>
                                                 </div>
@@ -773,12 +791,12 @@
                         </asp:FormView>
                         <div class="row" runat="server" id="Div1">
                         </div>
-                        <div class="row" runat="server" id="dvMatchingRecords">
+                        <div class="row" >
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <div id="dvMsg" runat="server" style="display: none;"></div>
                                 </div>
-                                <div class="panel panel-default">
+                                <div class="panel-default" runat="server" id="dvMatchingRecords"> 
                                     <div class="panel-heading">
                                         <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                                     </div>

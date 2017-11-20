@@ -364,15 +364,6 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::TLGX_Consumer.controls.hotel.AddNew ucAddNew;
         
         /// <summary>
-        /// dvMatchingRecords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMatchingRecords;
-        
-        /// <summary>
         /// dvMsg control.
         /// </summary>
         /// <remarks>
@@ -380,6 +371,15 @@ namespace TLGX_Consumer.controls.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
+        /// dvMatchingRecords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMatchingRecords;
         
         /// <summary>
         /// lblMsg control.
