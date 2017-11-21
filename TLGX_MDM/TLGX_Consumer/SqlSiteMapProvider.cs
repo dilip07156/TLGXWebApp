@@ -114,14 +114,14 @@ namespace TLGX_Consumer
             //{
             // Return immediately if this method has been called before
             
-            if (HttpContext.Current.Session["_root"] != null)
-            {
-               _root = (SiteMapNode)(HttpContext.Current.Session["_root"]);
-            }
-            if ((_root != null))
-            {
-                return _root;
-            }
+            //if (HttpContext.Current.Session["_root"] != null)
+            //{
+            //   _root = (SiteMapNode)(HttpContext.Current.Session["_root"]);
+            //}
+            //if ((_root != null))
+            //{
+            //    return _root;
+            //}
             try
             {
                 this.Clear();
@@ -240,22 +240,23 @@ namespace TLGX_Consumer
             {
                 description = SM.Description.Trim();
             }
-            string roles = null;
-            if (SM.Roles == null)
-            {
-                roles = null;
-            }
-            else
-            {
-                roles = SM.Roles.Trim();
-            }
+
+            //string roles = null;
+            //if (SM.Roles == null)
+            //{
+            //    roles = null;
+            //}
+            //else
+            //{
+            //    roles = SM.Roles.Trim();
+            //}
 
             // If roles were specified, turn the list into a string array
             string[] rolelist = null;
-            if ((!string.IsNullOrEmpty(roles)))
-            {
-                rolelist = roles.Split(new char[] { ',', ';' }, 512);
-            }
+            //if ((!string.IsNullOrEmpty(roles)))
+            //{
+            //    rolelist = roles.Split(new char[] { ',', ';' }, 512);
+            //}
 
             // Create a SiteMapNode
             SiteMapNode node = new SiteMapNode(this, id.ToString(), url, title, description, rolelist, null, null, null);
