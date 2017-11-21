@@ -166,6 +166,24 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.GridView grdCityMaps;
         
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
+        /// grdvListOfHotel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdvListOfHotel;
+        
+        /// <summary>
         /// UpdCityMapModal control.
         /// </summary>
         /// <remarks>
@@ -202,15 +220,6 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
         
         /// <summary>
-        /// dvMatchingRecords control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMatchingRecords;
-        
-        /// <summary>
         /// dvMsg control.
         /// </summary>
         /// <remarks>
@@ -218,6 +227,15 @@ namespace TLGX_Consumer.controls.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
+        /// dvMatchingRecords control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMatchingRecords;
         
         /// <summary>
         /// lblMsg control.

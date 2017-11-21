@@ -14,7 +14,8 @@
     .alert {
         display: none;
     }
-     .hideColumn {
+
+    .hideColumn {
         display: none;
     }
 </style>
@@ -101,6 +102,19 @@
             CityDDL.append(listItems);
             var country_id = record.parentNode.parentNode.childNodes[10].firstElementChild;
             country_id.value = selectedVal;
+        }
+    }
+
+    function ddlStatusChanged(ddl) {
+        debugger;
+        var ddlStatus = $('#MainContent_searchCountryMap_frmEditCountryMap_ddlStatus option:selected').html();
+        var myVal = document.getElementById("MainContent_searchCountryMap_frmEditCountryMap_vddlSystemCountryName");
+        //var myVal = $('#vddlSystemCountryName').val();
+        if (ddlStatus == 'DELETE') {
+            ValidatorEnable(myVal, false);
+        }
+        else {
+            ValidatorEnable(myVal, true);
         }
     }
 </script>
@@ -277,7 +291,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="panel panel-default">
+                <div class="panel-default">
                     <h4 class="modal-title">Update Supplier Mapping</h4>
                 </div>
             </div>
@@ -332,7 +346,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-4" for="ddlSystemCountryName">
                                                         Country
-                                                        <asp:RequiredFieldValidator ID="vddlSystemCountryName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCountryName" InitialValue="0" CssClass="text-danger" ValidationGroup="MappingPop"></asp:RequiredFieldValidator>
+                                                        <asp:RequiredFieldValidator ID="vddlSystemCountryName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCountryName" InitialValue="0" CssClass="text-danger" ValidationGroup="MappingPop" Enabled="false"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <asp:DropDownList ID="ddlSystemCountryName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemCountryName_SelectedIndexChanged">
@@ -378,7 +392,7 @@
                                                         <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="MappingPop"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <div class="col-sm-8">
-                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);">
                                                             <asp:ListItem Value="0">Select</asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
@@ -408,6 +422,11 @@
                                     </div>
                             </EditItemTemplate>
                         </asp:FormView>
+                        <div class="row form-group">
+                            <div class="col-lg-12">
+                                <div id="dvMsgForDelete" runat="server" style="display: none;"></div>
+                            </div>
+                        </div>
                         <div class="row" runat="server" id="dvMatchingRecords">
                             <div class="col-lg-12">
                                 <div class="form-group">

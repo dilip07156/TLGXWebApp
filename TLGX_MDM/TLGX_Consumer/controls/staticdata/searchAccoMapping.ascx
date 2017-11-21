@@ -230,6 +230,25 @@
             acco_id.value = selectedVal;
         }
     }
+
+    function ddlStatusChanged(ddl) {
+        debugger;
+        var ddlStatus = $('#MainContent_searchAccoMapping_frmEditProductMap_ddlStatus option:selected').html();
+        var mySystemCountryName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCountryName");
+        var mySystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCityName");
+        var myProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemProductName");
+        //var myVal = $('#vddlSystemCountryName').val();
+        if (ddlStatus == 'DELETE') {
+            ValidatorEnable(mySystemCountryName, false);
+            ValidatorEnable(mySystemCityName, false);
+            ValidatorEnable(myProductName, false);
+        }
+        else {
+            ValidatorEnable(mySystemCountryName, true);
+            ValidatorEnable(mySystemCityName, true);
+            ValidatorEnable(myProductName, true);
+        }
+    }
 </script>
 <div class="container" id="myWizard">
 
@@ -831,7 +850,7 @@
                                                                 Status
                                                                         <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
                                                             </label>
-                                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control col-lg-3" AppendDataBoundItems="true">
+                                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control col-lg-3" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);">
                                                                 <asp:ListItem Value="0">Select</asp:ListItem>
                                                             </asp:DropDownList>
                                                             <div class="form-group">&nbsp;</div>
@@ -859,12 +878,12 @@
 
                                 </div>
                             </div>
-                            <div class="row" runat="server" id="dvMatchingRecords">
+                            <div class="row" >
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div id="dvMsg" runat="server" style="display: none;"></div>
                                     </div>
-                                    <div class="panel panel-default">
+                                    <div runat="server" id="dvMatchingRecords" class="panel panel-default">
                                         <div class="panel-heading">
                                             <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                                         </div>
