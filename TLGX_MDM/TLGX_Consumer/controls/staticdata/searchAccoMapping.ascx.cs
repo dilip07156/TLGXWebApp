@@ -818,8 +818,15 @@ namespace TLGX_Consumer.controls.staticdata
                         dvMatchingRecords.Visible = true;
                         btnMatchedMapSelected.Visible = true;
                         btnMatchedMapAll.Visible = true;
+                        hdnFlag.Value = "false";
                     }
-                    hdnFlag.Value = "false";
+                    else
+                    {
+                        dvMatchingRecords.Visible = false;
+                        btnMatchedMapSelected.Visible = false;
+                        btnMatchedMapAll.Visible = false;
+                        hdnFlag.Value = "false";
+                    }
                 }
             }
             else if (e.CommandName == "Cancel")
