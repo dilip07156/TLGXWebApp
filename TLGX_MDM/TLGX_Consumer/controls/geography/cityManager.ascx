@@ -88,10 +88,13 @@
                                             </div>
                                         </div>
 
-                                        <asp:GridView ID="grdCityList" EmptyDataText="No Data Found." runat="server" AllowPaging="True" AllowCustomPaging="true" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="City_Id, Country_Id" CssClass="table table-hover table-striped" OnPageIndexChanging="grdCityList_PageIndexChanging">
+                                        <asp:GridView ID="grdCityList" EmptyDataText="No Data Found." runat="server" AllowPaging="True" AllowCustomPaging="true" AllowSorting="True" AutoGenerateColumns="False" 
+                                            DataKeyNames="City_Id, Country_Id" CssClass="table table-hover table-striped" OnPageIndexChanging="grdCityList_PageIndexChanging">
                                             <Columns>
-                                                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                                                 <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
+                                                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                                                <asp:BoundField DataField="StateCode" HeaderText="State Code" SortExpression="StateCode" />
+                                                <asp:BoundField DataField="StateName" HeaderText="State Name" SortExpression="StateName" />
                                                 <asp:BoundField DataField="CountryName" HeaderText="CountryName" SortExpression="CountryName" />
                                                 <asp:BoundField DataField="Edit_Date" HeaderText="Edit_Date" SortExpression="Edit_Date" />
                                                 <asp:BoundField DataField="Edit_User" HeaderText="Edit_User" SortExpression="Edit_User" />

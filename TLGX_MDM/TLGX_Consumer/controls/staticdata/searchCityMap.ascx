@@ -19,7 +19,8 @@
     .HotelListrowPadding {
         padding: 5px;
     }
-    .HotelInfo{
+
+    .HotelInfo {
         height: 200px;
         overflow-y: scroll;
     }
@@ -526,13 +527,12 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
-                        <asp:GridView runat="server" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotel" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotel_PageIndexChanging"
+                        <asp:GridView runat="server" EmptyDataText="No Data Found" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotel" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotel_PageIndexChanging"
                             CssClass="fullWidth HotelList table table-hover table-striped">
                             <Columns>
                                 <asp:TemplateField ItemStyle-CssClass="HotelListrowPadding">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblHotelName" runat="server" CssClass="lead" Text='<%# Bind("HotelName") %>'></asp:Label>
-                                        <br />
+                                        <strong><%# Eval("HotelName")%></strong> &nbsp;&nbsp;
                                         <%# Eval("Address")%>
                                     </ItemTemplate>
 
@@ -702,7 +702,7 @@
                                                             Status
                                                             <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
                                                         </label>
-                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);"> 
+                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);">
                                                             <asp:ListItem Value="0">Select</asp:ListItem>
                                                         </asp:DropDownList>
 
@@ -724,7 +724,7 @@
                                                 <div class="panel-heading">Actions</div>
                                                 <div class="panel-body">
                                                     <div class="form-group">
-                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);"/>
+                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);" />
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
                                                     </div>
                                                 </div>
@@ -733,14 +733,13 @@
                                                 <div class="panel-heading">Hotel List for Selected City</div>
                                                 <div class="panel-body">
                                                     <div class="form-group HotelInfo">
-                                                        <asp:GridView runat="server" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
+                                                        <asp:GridView runat="server" EmptyDataText="No Data Found" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
                                                             CssClass="fullWidth HotelList table table-hover table-striped">
                                                             <Columns>
                                                                 <asp:TemplateField ItemStyle-CssClass="HotelListrowPadding">
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="lblHotelName" runat="server" CssClass="lead" Text='<%# Bind("HotelName") %>'></asp:Label>
-                                                                        <br />
-                                                                        <%# Eval("Address")%>
+                                                                        <strong><%# Eval("HotelName")%></strong> &nbsp;&nbsp;
+                                                                           <%# Eval("Address")%>
                                                                     </ItemTemplate>
 
                                                                 </asp:TemplateField>
@@ -873,12 +872,12 @@
                         </asp:FormView>
                         <div class="row" runat="server" id="Div1">
                         </div>
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <div id="dvMsg" runat="server" style="display: none;"></div>
                                 </div>
-                                <div class="panel-default" runat="server" id="dvMatchingRecords"> 
+                                <div class="panel-default" runat="server" id="dvMatchingRecords">
                                     <div class="panel-heading">
                                         <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                                     </div>

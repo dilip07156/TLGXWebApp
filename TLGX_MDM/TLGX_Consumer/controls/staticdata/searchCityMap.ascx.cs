@@ -38,8 +38,8 @@ namespace TLGX_Consumer.controls.staticdata
         //public static Guid MappedCity_ID = Guid.Empty;
         public static int HotelListPageSize = 5;
         public static Guid SelectedMappedID = Guid.Empty;
-        public static Guid? MappedCountry_ID = Guid.Empty;  
-        public static Guid? MappedCity_ID = Guid.Empty;  
+        public static Guid? MappedCountry_ID = Guid.Empty;
+        public static Guid? MappedCity_ID = Guid.Empty;
         public List<MDMSVC.DC_City_Master_DDL> _lstCityMaster = new List<DC_City_Master_DDL>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -342,8 +342,8 @@ namespace TLGX_Consumer.controls.staticdata
                         CountryCode = grdCityMaps.Rows[index].Cells[2].Text,
                         CountryName = grdCityMaps.Rows[index].Cells[3].Text,
                         StateName = ((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[4].Controls[0])).Text.ToString().Trim(), //grdCityMaps.Rows[index].Cells[4].Text,
-                        CityCode = grdCityMaps.Rows[index].Cells[5].Text,
-                        CityName = grdCityMaps.Rows[index].Cells[6].Text,
+                        CityCode = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text,
+                        CityName = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text,
                         MasterCountryCode = grdCityMaps.Rows[index].Cells[7].Text,
                         MasterCountryName = grdCityMaps.Rows[index].Cells[8].Text,
                         MasterCityCode = grdCityMaps.Rows[index].Cells[9].Text,
@@ -391,8 +391,8 @@ namespace TLGX_Consumer.controls.staticdata
                     lblSupCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[2].Text);
                     lblSupCountryName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[3].Text);
                     lblStateName.Text = System.Web.HttpUtility.HtmlDecode(((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[4].Controls[0])).Text.ToString().Trim());
-                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
-                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
+                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text);
+                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
 
                     txtSystemCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[7].Text);
                     txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[10].Text);
@@ -409,8 +409,8 @@ namespace TLGX_Consumer.controls.staticdata
                     {
                         //var res = objMasterDataDAL.GetMasterCityDatawithCode(new Guid(ddlSystemCountryName.SelectedItem.Value));
                         var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
-                        string ccode = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
-                        string cname = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
+                        string ccode = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text);
+                        string cname = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
 
                         if (cname != null)
                         {
@@ -486,13 +486,13 @@ namespace TLGX_Consumer.controls.staticdata
                             btnAddCity.Visible = false;
                     }
                     BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize, grdvListOfHotelÖnSelection);
-                hdnFlag.Value = "false";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
-            }
-                if(e.CommandName == "SelectCityCode")
+                    hdnFlag.Value = "false";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
+                }
+                if (e.CommandName == "SelectCityCode")
                 {
                     SelectedMappedID = myRow_Id;
-                    BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize,grdvListOfHotel);
+                    BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize, grdvListOfHotel);
                 }
 
             }
@@ -500,7 +500,7 @@ namespace TLGX_Consumer.controls.staticdata
             { }
         }
 
-        private void BindHotelList(Guid _cityMappingid, int hotelListPageIndex, int hotelListPageSize,GridView grdv)
+        private void BindHotelList(Guid _cityMappingid, int hotelListPageIndex, int hotelListPageSize, GridView grdv)
         {
             try
             {
@@ -533,7 +533,7 @@ namespace TLGX_Consumer.controls.staticdata
         protected void grdvListOfHotelOnSelection_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             HotelListPageIndex = e.NewPageIndex;
-           // BindHotelList(SelectedMappedID, HotelListPageIndex, HotelListPageSize,this.g);
+            // BindHotelList(SelectedMappedID, HotelListPageIndex, HotelListPageSize,this.g);
         }
 
         protected void ddlSystemCountryName_SelectedIndexChanged(object sender, EventArgs e)
@@ -545,12 +545,12 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSystemCountryCode = (TextBox)frmEditCityMap.FindControl("txtSystemCountryCode");
             TextBox txtSystemCityCode = (TextBox)frmEditCityMap.FindControl("txtSystemCityCode");
             System.Web.UI.HtmlControls.HtmlGenericControl dvAddCity = (System.Web.UI.HtmlControls.HtmlGenericControl)frmEditCityMap.FindControl("dvAddCity");
-            if (!(ddlSystemCountryName.SelectedIndex == 0)) 
+            if (!(ddlSystemCountryName.SelectedIndex == 0))
             {
-            txtSystemCountryCode.Text = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
-            fillcities(ddlSystemCityName, ddlSystemCountryName);
+                txtSystemCountryCode.Text = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
+                fillcities(ddlSystemCityName, ddlSystemCountryName);
             }
-            else 
+            else
             {
                 ddlSystemCityName.DataSource = null;
                 ddlSystemCityName.DataBind();
@@ -657,7 +657,7 @@ namespace TLGX_Consumer.controls.staticdata
                     cityCode = masters.GetCodeById("city", new Guid(ddlSystemCountryName.SelectedItem.Value));
                     masterCountryName = ddlSystemCountryName.SelectedItem.Text;
                 }
-                
+
                 MDMSVC.DC_Supplier_DDL sData = new MDMSVC.DC_Supplier_DDL();
                 sData = masterSVc.GetSupplierDataByMapping_Id("CITY", Convert.ToString(myRow_Id));
                 MDMSVC.DC_CityMapping newObj = new MDMSVC.DC_CityMapping
@@ -689,11 +689,11 @@ namespace TLGX_Consumer.controls.staticdata
                     //frmEditCityMap.Visible = false;
                     if (!(ddlSystemCountryName.SelectedIndex == 0))
                     {
-                    fillmatchingdata("");
-                    fillmappingdata();
-                    dvMatchingRecords.Visible = true;
-                    btnMatchedMapSelected.Visible = true;
-                    btnMatchedMapAll.Visible = true;
+                        fillmatchingdata("");
+                        fillmappingdata();
+                        dvMatchingRecords.Visible = true;
+                        btnMatchedMapSelected.Visible = true;
+                        btnMatchedMapAll.Visible = true;
                     }
                     dvMsg.Style.Add("display", "block");
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
@@ -725,8 +725,8 @@ namespace TLGX_Consumer.controls.staticdata
 
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
-                Guid? myCountry_Id = Guid.Empty; 
-                Guid? myCity_Id = Guid.Empty; 
+                Guid? myCountry_Id = Guid.Empty;
+                Guid? myCity_Id = Guid.Empty;
 
                 //string mystateName = txtSystemStateName.Text;
                 //string mystateCode = txtSystemStateCode.Text;
@@ -790,8 +790,8 @@ namespace TLGX_Consumer.controls.staticdata
 
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
-                Guid? myCountry_Id = Guid.Empty; 
-                Guid? myCity_Id = Guid.Empty; 
+                Guid? myCountry_Id = Guid.Empty;
+                Guid? myCity_Id = Guid.Empty;
 
                 //string mystateName = txtSystemStateName.Text;
                 //string mystateCode = txtSystemStateCode.Text;
@@ -1303,8 +1303,8 @@ namespace TLGX_Consumer.controls.staticdata
 
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
-            Guid? myCountry_Id = Guid.Empty; 
-            Guid? myCity_Id = Guid.Empty; 
+            Guid? myCountry_Id = Guid.Empty;
+            Guid? myCity_Id = Guid.Empty;
 
             //string mystateName = txtSystemStateName.Text;
             //string mystateCode = txtSystemStateCode.Text;
@@ -1366,8 +1366,8 @@ namespace TLGX_Consumer.controls.staticdata
 
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
-            Guid? myCountry_Id = Guid.Empty; 
-            Guid? myCity_Id = Guid.Empty; 
+            Guid? myCountry_Id = Guid.Empty;
+            Guid? myCity_Id = Guid.Empty;
 
             //string mystateName = txtSystemStateName.Text;
             //string mystateCode = txtSystemStateCode.Text;
@@ -1418,6 +1418,6 @@ namespace TLGX_Consumer.controls.staticdata
 
         }
 
-        
+
     }
 }
