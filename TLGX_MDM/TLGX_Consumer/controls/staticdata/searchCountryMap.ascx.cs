@@ -357,8 +357,11 @@ namespace TLGX_Consumer.controls.staticdata
                     }
                     else if (ddlStatus.SelectedItem.Text == "DELETE")
                     {
-                        //dvMsgForDelete.Visible = true;
+                        dvMsgForDelete.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsgForDelete, "Record has been updated successfully", BootstrapAlertType.Success);
+                        dvMatchingRecords.Visible = false;
+                        btnMatchedMapSelected.Visible = false;
+                        btnMatchedMapAll.Visible = false;
                     }
                 }
                 hdnFlag.Value = "false";
