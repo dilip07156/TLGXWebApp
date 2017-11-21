@@ -114,14 +114,14 @@ namespace TLGX_Consumer
             //{
             // Return immediately if this method has been called before
             
-            if (HttpContext.Current.Session["_root"] != null)
-            {
-               _root = (SiteMapNode)(HttpContext.Current.Session["_root"]);
-            }
-            if ((_root != null))
-            {
-                return _root;
-            }
+            //if (HttpContext.Current.Session["_root"] != null)
+            //{
+            //   _root = (SiteMapNode)(HttpContext.Current.Session["_root"]);
+            //}
+            //if ((_root != null))
+            //{
+            //    return _root;
+            //}
             try
             {
                 this.Clear();
