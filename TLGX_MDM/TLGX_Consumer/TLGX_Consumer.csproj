@@ -437,7 +437,6 @@
     <Content Include="Scripts\autosize.js" />
     <Content Include="Scripts\autosize.min.js" />
     <Content Include="Scripts\bootbox.min.js" />
-    <Content Include="Scripts\bootstrap-popover.js" />
     <Content Include="Scripts\bootStrap-TimePicker\bootstrap-timepicker.js" />
     <Content Include="Scripts\bootStrap-TimePicker\bootstrap-datetimepicker.css" />
     <Content Include="Scripts\ChartJS\morris.css" />
