@@ -28,24 +28,24 @@ namespace TLGX_Consumer.controls.staticdata
         public static List<MDMSVC.DC_Accomodation_Search_RS> accoSuggRes = new List<MDMSVC.DC_Accomodation_Search_RS>();
 
         // MasterDataDAL masters = new MasterDataDAL();
-        public static string AttributeOptionFor = "ProductSupplierMapping";
-        public static string AttributeOptionFor1 = "HotelInfo";
-        public static string SortBy = "";
-        public static string SortEx = "";
-        public static string via = "";
-        public static int PageIndex = 0;
+        //public static string AttributeOptionFor = "ProductSupplierMapping";
+        //public static string AttributeOptionFor1 = "HotelInfo";
+       // public static string SortBy = "";
+        //public static string SortEx = "";
+        //public static string via = "";
+        //public static int PageIndex = 0;
         protected string contex = "<country>~<city>~<brand>~<chain>~<name>";
         public const string controlpath = "~/controls/staticdata/bulkHotelMapping.ascx";
         public const string controlID = "MyUserControl";
-        public static bool createAgain = false;
-        public static string MatchedStatus = "";
-        public static string MatchedCountryName = "";
-        public static string MatchedCityName = "";
-        public static string MatchedProdName = "";
-        public static int MatchedPageIndex = 0;
-        public static Guid? MappedCountry_ID = Guid.Empty;
-        public static Guid? MappedCity_ID = Guid.Empty;
-        public static Guid? MappedProduct_ID = Guid.Empty;
+        //public static bool createAgain = false;
+        //public static string MatchedStatus = "";
+        //public static string MatchedCountryName = "";
+        //public static string MatchedCityName = "";
+        //public static string MatchedProdName = "";
+        //public static int MatchedPageIndex = 0;
+        //public static Guid? MappedCountry_ID = Guid.Empty;
+        //public static Guid? MappedCity_ID = Guid.Empty;
+        //public static Guid? MappedProduct_ID = Guid.Empty;
         public bool isDataExist = false;
 
         MasterDataSVCs _objMasterData = new MasterDataSVCs();
@@ -82,16 +82,16 @@ namespace TLGX_Consumer.controls.staticdata
 
         private void fillbrands(DropDownList ddl)
         {
-            fillAttributeValues(ddl, "Brand", AttributeOptionFor1);
+            fillAttributeValues(ddl, "Brand", "HotelInfo");
         }
 
         private void fillchain(DropDownList ddl)
         {
-            fillAttributeValues(ddl, "Chain", AttributeOptionFor1);
+            fillAttributeValues(ddl, "Chain", "HotelInfo");
         }
         private void fillmappingstatus(DropDownList ddl)
         {
-            fillAttributeValues(ddl, "MappingStatus", AttributeOptionFor);
+            fillAttributeValues(ddl, "MappingStatus", "ProductSupplierMapping");
         }
 
         private void fillAttributeValues(DropDownList ddl, string Attribute_Name, string OptionFor)
@@ -217,13 +217,13 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            PageIndex = 0;
-            SortBy = "HotelName";
-            SortEx = "";
-            via = "supplier";
+            //PageIndex = 0;
+            //SortBy = "HotelName";
+            //SortEx = "";
+            //via = "supplier";
             bool _isDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            fillproductdata(ref _isDataExist);
+            fillproductdata(ref _isDataExist, "supplier", 0);
             if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
             {
                 btnMapSelected.Visible = _isDataExist;
@@ -249,20 +249,32 @@ namespace TLGX_Consumer.controls.staticdata
             }
         }
 
-        private void fillmatchingdata(string from)
+        private void fillmatchingdata(string from, int pPageIndex)
         {
+            Label lblSupCountryName = (Label)frmEditProductMap.FindControl("lblSupCountryName");
+            Label lblCityName = (Label)frmEditProductMap.FindControl("lblCityName");
+            Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
+            DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
+            DropDownList ddlStatus = (DropDownList)frmEditProductMap.FindControl("ddlStatus");
             dvMsg.Style.Add("display", "none");
             MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQ = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
             if (ddlMatchingStatus.SelectedItem.Value != "0")
                 RQ.Status = ddlMatchingStatus.SelectedItem.Text;
-            if (MatchedCountryName.Trim() != "")
-                RQ.CountryName = MatchedCountryName.Trim();
-            if (MatchedCityName.Trim() != "")
-                RQ.CityName = MatchedCityName.Trim();
-            if (MatchedProdName.Trim() != "")
-                RQ.ProductName = MatchedProdName.Trim();
-            RQ.StatusExcept = MatchedStatus.Trim().ToUpper();
-            RQ.PageNo = MatchedPageIndex;
+            //if (MatchedCountryName.Trim() != "")
+            //    RQ.CountryName = MatchedCountryName.Trim();
+            //if (MatchedCityName.Trim() != "")
+            //    RQ.CityName = MatchedCityName.Trim();
+            //if (MatchedProdName.Trim() != "")
+            //    RQ.ProductName = MatchedProdName.Trim();
+            if (!string.IsNullOrWhiteSpace(lblSupCountryName.Text))
+                RQ.CountryName = lblSupCountryName.Text;
+            if (!string.IsNullOrWhiteSpace(lblSupCountryName.Text))
+                RQ.CityName = lblCityName.Text;
+            if (!string.IsNullOrWhiteSpace(lblProductName.Text))
+                RQ.ProductName = lblProductName.Text;
+            RQ.StatusExcept = ddlStatus.SelectedItem.Text.Trim().ToUpper();
+            RQ.PageNo = pPageIndex;
             RQ.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
             var res = mapperSVc.GetProductMappingData(RQ);
             grdMatchingProducts.DataSource = res;
@@ -297,15 +309,15 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 lblMsg.Text = "No similar records found matching with updated combination";
             }
-            grdMatchingProducts.PageIndex = MatchedPageIndex;
+            grdMatchingProducts.PageIndex = pPageIndex;
             grdMatchingProducts.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
             grdMatchingProducts.DataBind();
         }
-        private void fillproductdata(ref bool isDataExist)
+        private void fillproductdata(ref bool isDataExist, string pVia, int pPageIndex)
         {
             MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQ = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
 
-            if (via == "supplier")
+            if (pVia == "supplier")
             {
                 if (ddlSupplierName.SelectedItem.Value != "0")
                 {
@@ -349,7 +361,7 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.Brand = ddlBrand.SelectedItem.Text;
                 RQ.PageSize = Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Text);
             }
-            RQ.PageNo = PageIndex;
+            RQ.PageNo = pPageIndex;
             //RQ.SortBy = (SortBy + " " + SortEx).Trim();
 
             var res = mapperSVc.GetProductMappingData(RQ);
@@ -374,8 +386,8 @@ namespace TLGX_Consumer.controls.staticdata
                 isDataExist = false;
             }
             grdAccoMaps.DataSource = res;
-            grdAccoMaps.PageIndex = PageIndex;
-            if (via == "supplier")
+            grdAccoMaps.PageIndex = pPageIndex;
+            if (pVia == "supplier")
                 grdAccoMaps.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.Text);
             else
                 grdAccoMaps.PageSize = Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Text);
@@ -663,8 +675,8 @@ namespace TLGX_Consumer.controls.staticdata
         protected void grdAccoMaps_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            PageIndex = e.NewPageIndex;
-            fillproductdata(ref isDataExist);
+            //PageIndex = e.NewPageIndex;
+            fillproductdata(ref isDataExist, "supplier", e.NewPageIndex);
         }
 
         protected void ddlCountryName_SelectedIndexChanged(object sender, EventArgs e)
@@ -679,7 +691,7 @@ namespace TLGX_Consumer.controls.staticdata
             ddlChain.Focus();
         }
 
-        public void CallHotelSearch(int pageSize, out MDMSVC.DC_Accomodation_Search_RQ RQ)
+        public void CallHotelSearch(int pageSize, out MDMSVC.DC_Accomodation_Search_RQ RQ, int pPageIndex)
         {
             RQ = new MDMSVC.DC_Accomodation_Search_RQ();
             RQ.ProductCategory = "Accommodation";
@@ -703,13 +715,13 @@ namespace TLGX_Consumer.controls.staticdata
             if (ddlBrand.SelectedItem.Value != "0")
                 RQ.Brand = ddlBrand.SelectedItem.Text;
 
-            RQ.PageNo = PageIndex;
+            RQ.PageNo = pPageIndex;
             RQ.PageSize = pageSize;
         }
 
-        public void fillHotelSearchGrid(int pageSize)
+        public void fillHotelSearchGrid(int pageSize, int pPageIndex)
         {
-            CallHotelSearch(pageSize, out RQParams);
+            CallHotelSearch(pageSize, out RQParams, pPageIndex);
             var res = AccSvc.SearchHotels(RQParams);
             grdTLGXProdData.Visible = true;
             grdTLGXProdData.DataSource = res;
@@ -720,7 +732,7 @@ namespace TLGX_Consumer.controls.staticdata
             }
             else
                 lblTLGXProdData.Text = "0";
-            grdTLGXProdData.PageIndex = PageIndex;
+            grdTLGXProdData.PageIndex = pPageIndex;
             grdTLGXProdData.PageSize = pageSize;
             grdTLGXProdData.DataBind();
         }
@@ -731,8 +743,8 @@ namespace TLGX_Consumer.controls.staticdata
             //SortEx = "";
             //via = "product";
             //fillproductdata();
-            PageIndex = 0;
-            fillHotelSearchGrid(Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Value));
+            //PageIndex = 0;
+            fillHotelSearchGrid(Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Value), 0);
             pnlLoadControl.Visible = false;
         }
 
@@ -746,8 +758,8 @@ namespace TLGX_Consumer.controls.staticdata
             Label lblCityName = (Label)frmEditProductMap.FindControl("lblCityName");
             Label lblCityCode = (Label)frmEditProductMap.FindControl("lblCityCode");
             Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
-            Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
-            DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
+                Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
+                DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
             TextBox txtSystemCountryCode = (TextBox)frmEditProductMap.FindControl("txtSystemCountryCode");
             Label lblSystemCountryCode = (Label)frmEditProductMap.FindControl("lblSystemCountryCode");
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
@@ -800,21 +812,21 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     dvMsg.Style.Add("display", "block");
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
-                    MatchedPageIndex = 0;
+                    //MatchedPageIndex = 0;
                     //MappedCountry_ID = new Guid(ddlSystemCountryName.SelectedItem.Value);
                     //MappedCity_ID = new Guid(ddlSystemCityName.SelectedItem.Value);
                     //MappedProduct_ID = new Guid(ddlSystemProductName.SelectedItem.Value);
-                    MappedCountry_ID = countryId;
-                    MappedCity_ID = cityId;
-                    MappedProduct_ID = productId;
-                    MatchedProdName = lblProductName.Text;
-                    MatchedCountryName = lblSupCountryName.Text;
-                    MatchedCityName = lblCityName.Text;
-                    MatchedStatus = ddlStatus.SelectedItem.Text;
+                    //MappedCountry_ID = countryId;
+                    //MappedCity_ID = cityId;
+                    //MappedProduct_ID = productId;
+                    //MatchedProdName = lblProductName.Text;
+                    //MatchedCountryName = lblSupCountryName.Text;
+                    //MatchedCityName = lblCityName.Text;
+                    //MatchedStatus = ddlStatus.SelectedItem.Text;
                     if (!(ddlSystemCountryName.SelectedIndex==0))
                     {
-                        fillproductdata(ref isDataExist);
-                        fillmatchingdata("");
+                        fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                        fillmatchingdata("", 0);
                         dvMatchingRecords.Visible = true;
                         btnMatchedMapSelected.Visible = true;
                         btnMatchedMapAll.Visible = true;
@@ -838,7 +850,7 @@ namespace TLGX_Consumer.controls.staticdata
                 dvMatchingRecords.Visible = false;
                 btnMatchedMapSelected.Visible = false;
                 btnMatchedMapAll.Visible = false;
-                fillproductdata(ref isDataExist);
+                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
             }
             else if (e.CommandName == "OpenAddProduct")
             {
@@ -980,8 +992,8 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void grdTLGXProdData_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            PageIndex = e.NewPageIndex;
-            fillHotelSearchGrid(Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Value));
+            //PageIndex = e.NewPageIndex;
+            fillHotelSearchGrid(Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Value), e.NewPageIndex);
         }
 
 
@@ -990,7 +1002,7 @@ namespace TLGX_Consumer.controls.staticdata
         public List<string> GetProductListAutoComplete(string prefixText)
         {
             MDMSVC.DC_Accomodation_Search_RQ RQNames = new MDMSVC.DC_Accomodation_Search_RQ();
-            CallHotelSearch(500, out RQNames);
+            CallHotelSearch(500, out RQNames, 0);
             var res = AccSvc.GetAccomodationNames(RQNames);
 
             return res;
@@ -1161,7 +1173,7 @@ namespace TLGX_Consumer.controls.staticdata
                 }
 
             }
-            fillproductdata(ref isDataExist);
+            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void btnMapAll_Click(object sender, EventArgs e)
@@ -1230,7 +1242,7 @@ namespace TLGX_Consumer.controls.staticdata
                     mySupplier_Id = Guid.Empty;
                 }
             }
-            fillproductdata(ref isDataExist);
+            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void chkSelect_CheckedChanged(object sender, EventArgs e)
@@ -1362,8 +1374,8 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void grdMatchingProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            MatchedPageIndex = e.NewPageIndex;
-            fillmatchingdata("");
+            //MatchedPageIndex = e.NewPageIndex;
+            fillmatchingdata("", e.NewPageIndex);
         }
 
         protected void grdMatchingProducts_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -1383,13 +1395,13 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void ddlMatchingPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmatchingdata("");
+            fillmatchingdata("", 0);
             ddlMatchingStatus.Focus();
         }
 
         protected void ddlMatchingStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmatchingdata("status");
+            fillmatchingdata("status", 0);
         }
 
         protected void ddlAddCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -1411,6 +1423,8 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnMatchedMapSelected_Click(object sender, EventArgs e)
         {
+            DropDownList ddlStatus = (DropDownList)frmEditProductMap.FindControl("ddlStatus");
+            DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             List<MDMSVC.DC_Accomodation_ProductMapping> newObj = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
@@ -1428,7 +1442,7 @@ namespace TLGX_Consumer.controls.staticdata
                     int index = row.RowIndex;
                     myRow_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[0].ToString());
                     mySupplier_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[1].ToString());
-                    myAcco_Id = MappedProduct_ID;
+                    myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
                 }
                 if (myRow_Id != Guid.Empty)
                 {
@@ -1438,7 +1452,7 @@ namespace TLGX_Consumer.controls.staticdata
                         param.Supplier_Id = mySupplier_Id;
                     if (myAcco_Id != null)
                         param.Accommodation_Id = myAcco_Id;
-                    param.Status = MatchedStatus;
+                    param.Status = ddlStatus.SelectedItem.Text;
                     param.Edit_Date = DateTime.Now;
                     param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     newObj.Add(param);
@@ -1449,8 +1463,8 @@ namespace TLGX_Consumer.controls.staticdata
             }
             if (mapperSVc.UpdateProductMappingData(newObj))
             {
-                fillmatchingdata("");
-                fillproductdata(ref isDataExist);
+                fillmatchingdata("", grdMatchingProducts.PageIndex);
+                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                 hdnFlag.Value = "false";
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
             }
@@ -1458,6 +1472,8 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnMatchedMapAll_Click(object sender, EventArgs e)
         {
+            DropDownList ddlStatus = (DropDownList)frmEditProductMap.FindControl("ddlStatus");
+            DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             List<MDMSVC.DC_Accomodation_ProductMapping> newObj = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
@@ -1471,7 +1487,7 @@ namespace TLGX_Consumer.controls.staticdata
                 int index = row.RowIndex;
                 myRow_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[0].ToString());
                 mySupplier_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[1].ToString());
-                myAcco_Id = MappedProduct_ID;
+                myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
                 if (myRow_Id != Guid.Empty)
                 {
                     MDMSVC.DC_Accomodation_ProductMapping param = new MDMSVC.DC_Accomodation_ProductMapping();
@@ -1480,7 +1496,7 @@ namespace TLGX_Consumer.controls.staticdata
                         param.Supplier_Id = mySupplier_Id;
                     if (myAcco_Id != null)
                         param.Accommodation_Id = myAcco_Id;
-                    param.Status = MatchedStatus;
+                    param.Status = ddlStatus.SelectedItem.Text;
                     param.Edit_Date = DateTime.Now;
                     param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     newObj.Add(param);
@@ -1491,8 +1507,8 @@ namespace TLGX_Consumer.controls.staticdata
             }
             if (mapperSVc.UpdateProductMappingData(newObj))
             {
-                fillmatchingdata("");
-                fillproductdata(ref isDataExist);
+                fillmatchingdata("", grdMatchingProducts.PageIndex);
+                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                 hdnFlag.Value = "false";
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
             }
