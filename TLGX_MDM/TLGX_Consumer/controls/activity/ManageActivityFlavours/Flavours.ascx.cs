@@ -32,7 +32,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             }
         }
-
         private void getFlavourInfo()
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
@@ -46,7 +45,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 fillMasterDropdowns();
             }
         }
-
         private void fillMasterDropdowns()
         {
             fillcoutries();
@@ -54,13 +52,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             fillproductcaterogysubtype();
             fillProductType();
             fillproductsubtype();
+            //fillDescriptions();
+            fillSuitableFor();
+            fillPhysicalIntensity();
         }
-
         private void fillcoutries()
         {
             DropDownList ddlCountry = (DropDownList)frmActivityFlavour.FindControl("ddlCountry");
-            var a = masterSVc.GetAllCountries();
-            ddlCountry.DataSource = a;
+            var countryList = masterSVc.GetAllCountries();
+            ddlCountry.DataSource = countryList;
             ddlCountry.DataTextField = "Country_Name";
             ddlCountry.DataValueField = "Country_Id";
             ddlCountry.DataBind();
@@ -71,7 +71,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByText(rowView.Country.ToString()));
             }
         }
-
         private void fillcities()
         {
             DropDownList ddlCity = (DropDownList)frmActivityFlavour.FindControl("ddlCity");
@@ -92,7 +91,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
         }
-
         private void fillproductcaterogysubtype()
         {
             try
@@ -118,108 +116,162 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 throw;
             }
         }
-
         private void fillProductType()
         {
             DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
 
-            //DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
-            //ddlProductType.Items.Clear();
-            //var dropdownvalues= LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
-            //if (ddlProdcategorySubType.SelectedItem.Text != "-Select-")
-            //{
-            //    var res = (from s in dropdownvalues
-            //               where s.ParentAttributeValue_Id == new Guid(ddlProdcategorySubType.SelectedValue)
-            //              select s);
-            //    ddlProductType.DataSource = res;
-            //    ddlProductType.DataTextField = "AttributeValue";
-            //    ddlProductType.DataValueField = "MasterAttributeValue_Id";
-            //    ddlProductType.DataBind();
-            //    ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
-            //    MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-            //    if (rowView != null)
-            //    {
-            //        if (rowView.ProductType != null)
-            //        {
-            //            ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(rowView.ProductType.ToString()));
-            //        }
-            //    }
-            //}
-            //else {
-            //    ddlProductType.DataSource = dropdownvalues;
-            //    ddlProductType.DataTextField = "AttributeValue";
-            //    ddlProductType.DataValueField = "MasterAttributeValue_Id";
-            //    ddlProductType.DataBind();
-            //}
-
-            ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-
-            lstboxProductType.Items.Clear();
-            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
-            lstboxProductType.DataSource = res;
-            lstboxProductType.DataTextField = "AttributeValue";
-            lstboxProductType.DataValueField = "MasterAttributeValue_Id";
-            lstboxProductType.DataBind();
-            //lst.Items.Insert(0, new ListItem("-Select-", "0"));
-            MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-            if (rowView != null)
+            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+            ddlProductType.Items.Clear();
+            var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
+            if (ddlProdcategorySubType.SelectedItem.Text != "-Select-")
             {
-                if (rowView.ProductType != null)
+                var result = (from s in dropdownvalues
+                           where s.ParentAttributeValue_Id == new Guid(ddlProdcategorySubType.SelectedValue)
+                           select s);
+                ddlProductType.DataSource = result;
+                ddlProductType.DataTextField = "AttributeValue";
+                ddlProductType.DataValueField = "MasterAttributeValue_Id";
+                ddlProductType.DataBind();
+                ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
+                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+                if (rowView != null)
                 {
-                    //lstboxProductType.SelectedIndex = lstboxProductType.Items.IndexOf(lstboxProductType.Items.FindByText(rowView.ProductType.ToString()));
+                    if (rowView.ProductType != null)
+                    {
+                        ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(rowView.ProductType.ToString()));
+                    }
                 }
             }
-
             else
             {
-                lstboxProductType.DataSource = res;
-                lstboxProductType.DataTextField = "AttributeValue";
-                lstboxProductType.DataValueField = "MasterAttributeValue_Id";
-                lstboxProductType.DataBind();
+                ddlProductType.DataSource = dropdownvalues;
+                ddlProductType.DataTextField = "AttributeValue";
+                ddlProductType.DataValueField = "MasterAttributeValue_Id";
+                ddlProductType.DataBind();
             }
-        }
 
-        private void fillproductsubtype()
-        {
-            //DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
-            //DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
-            //ddlProdNameSubType.Items.Clear();
-            //var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductSubType").MasterAttributeValues;
-            //if (ddlProductType.SelectedItem.Text != "-Select-")
+            //ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
+
+            //lstboxProductType.Items.Clear();
+            //var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
+            //lstboxProductType.DataSource = res;
+            //lstboxProductType.DataTextField = "AttributeValue";
+            //lstboxProductType.DataValueField = "MasterAttributeValue_Id";
+            //lstboxProductType.DataBind();
+            ////lst.Items.Insert(0, new ListItem("-Select-", "0"));
+            //MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+            //if (rowView != null)
             //{
-            //    var res = (from s in dropdownvalues
-            //               where s.ParentAttributeValue_Id == new Guid(ddlProductType.SelectedValue)
-            //               select s);
-            //    ddlProdNameSubType.DataSource = res;
-            //    ddlProdNameSubType.DataTextField = "AttributeValue";
-            //    ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
-            //    ddlProdNameSubType.DataBind();
-            //    ddlProdNameSubType.Items.Insert(0, new ListItem("-Select-", "0"));
-            //    MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-            //    if (rowView != null)
+            //    if (rowView.ProductType != null)
             //    {
-            //        if (rowView.ProductNameSubType != null)
-            //        {
-            //            ddlProdNameSubType.SelectedIndex = ddlProdNameSubType.Items.IndexOf(ddlProdNameSubType.Items.FindByText(rowView.ProductNameSubType.ToString()));
-            //        }
+            //        //lstboxProductType.SelectedIndex = lstboxProductType.Items.IndexOf(lstboxProductType.Items.FindByText(rowView.ProductType.ToString()));
             //    }
             //}
+
             //else
             //{
-            //    ddlProdNameSubType.DataSource = dropdownvalues;
-            //    ddlProdNameSubType.DataTextField = "AttributeValue";
-            //    ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
-            //    ddlProdNameSubType.DataBind();
+            //    lstboxProductType.DataSource = res;
+            //    lstboxProductType.DataTextField = "AttributeValue";
+            //    lstboxProductType.DataValueField = "MasterAttributeValue_Id";
+            //    lstboxProductType.DataBind();
             //}
+        }
+        private void fillproductsubtype()
+        {
+            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
+            ddlProdNameSubType.Items.Clear();
+            var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductSubType").MasterAttributeValues;
+            if (ddlProductType.SelectedItem.Text != "-Select-")
+            {
+                var res = (from s in dropdownvalues
+                           where s.ParentAttributeValue_Id == new Guid(ddlProductType.SelectedValue)
+                           select s);
+                ddlProdNameSubType.DataSource = res;
+                ddlProdNameSubType.DataTextField = "AttributeValue";
+                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
+                ddlProdNameSubType.DataBind();
+                ddlProdNameSubType.Items.Insert(0, new ListItem("-Select-", "0"));
+                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+                if (rowView != null)
+                {
+                    if (rowView.ProductNameSubType != null)
+                    {
+                        ddlProdNameSubType.SelectedIndex = ddlProdNameSubType.Items.IndexOf(ddlProdNameSubType.Items.FindByText(rowView.ProductNameSubType.ToString()));
+                    }
+                }
+            }
+            else
+            {
+                ddlProdNameSubType.DataSource = dropdownvalues;
+                ddlProdNameSubType.DataTextField = "AttributeValue";
+                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
+                ddlProdNameSubType.DataBind();
+            }
 
         }
-
+        private void fillDescriptions()
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            TextBox txtShortDescription = (TextBox)frmActivityFlavour.FindControl("txtShortDescription");
+            TextBox txtLongDescription = (TextBox)frmActivityFlavour.FindControl("txtLongDescription");
+            MDMSVC.DC_Activity_Descriptions_RQ RQ = new MDMSVC.DC_Activity_Descriptions_RQ();
+            RQ.Activity_Flavour_Id = Activity_Flavour_Id;
+            var result = AccSvc.GetActivityDescription(RQ);
+            if (result != null)
+            {
+                foreach (TLGX_Consumer.MDMSVC.DC_Activity_Descriptions desc in result)
+                {
+                    if (desc.DescriptionType.ToLower().ToString() == "short")
+                        txtShortDescription.Text = this.Page.Server.HtmlEncode(desc.Description);
+                    else
+                        txtLongDescription.Text = this.Page.Server.HtmlEncode(desc.Description);
+                }
+            }
+            else
+            {
+                txtShortDescription.Text = string.Empty;
+                txtShortDescription.Text = string.Empty;
+            }
+        }
+        private void fillSuitableFor()
+        {
+            CheckBoxList chklstSuitableFor = (CheckBoxList)frmActivityFlavour.FindControl("chklstSuitableFor");
+            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "SuitableFor").MasterAttributeValues;
+            if(res!=null)
+            {
+                chklstSuitableFor.DataSource = res;
+                chklstSuitableFor.DataTextField = "AttributeValue";
+                chklstSuitableFor.DataValueField = "AttributeValue";
+                chklstSuitableFor.DataBind();
+            }
+            else
+            {
+                chklstSuitableFor.DataSource = null;
+                chklstSuitableFor.DataBind();
+            }
+        }
+        private void fillPhysicalIntensity()
+        {
+            CheckBoxList chklstPhysicalIntensity = (CheckBoxList)frmActivityFlavour.FindControl("chklstPhysicalIntensity");
+            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "PhysicalIntensity").MasterAttributeValues;
+            if (res != null)
+            {
+                chklstPhysicalIntensity.DataSource = res;
+                chklstPhysicalIntensity.DataTextField = "AttributeValue";
+                chklstPhysicalIntensity.DataValueField = "AttributeValue";
+                chklstPhysicalIntensity.DataBind();
+            }
+            else
+            {
+                chklstPhysicalIntensity.DataSource = null;
+                chklstPhysicalIntensity.DataBind();
+            }
+        }
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillcities();
         }
-
-
         protected void ddlProdcategorySubType_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
@@ -228,14 +280,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             ddlProdNameSubType.Items.Clear();
             fillProductType();
         }
-
         protected void ddlProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
             ddlProdNameSubType.Items.Clear();
             fillproductsubtype();
         }
-
         protected void frmActivityFlavour_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
             if (e.CommandName == "SaveProduct")
@@ -244,54 +294,34 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 TextBox txtActivity_Flavour_Id = (TextBox)frmActivityFlavour.FindControl("txtActivity_Flavour_Id");
                 TextBox txtProductName = (TextBox)frmActivityFlavour.FindControl("txtProductName");
                 //address info
-                TextBox txtStreet = (TextBox)frmActivityFlavour.FindControl("txtStreet");
-                TextBox txtStreet2 = (TextBox)frmActivityFlavour.FindControl("txtStreet2");
-                TextBox txtStreet3 = (TextBox)frmActivityFlavour.FindControl("txtStreet3");
-                TextBox txtStreet4 = (TextBox)frmActivityFlavour.FindControl("txtStreet4");
-                TextBox txtStreet5 = (TextBox)frmActivityFlavour.FindControl("txtStreet5");
-                DropDownList ddlCountry = (DropDownList)frmActivityFlavour.FindControl("ddlCountry");
+
+                DropDownList ddlCountryTLGX = (DropDownList)frmActivityFlavour.FindControl("ddlCountryTLGX");
                 DropDownList ddlCity = (DropDownList)frmActivityFlavour.FindControl("ddlCity");
-                DropDownList ddlArea = (DropDownList)frmActivityFlavour.FindControl("ddlArea");
-                DropDownList ddlLocation = (DropDownList)frmActivityFlavour.FindControl("ddlLocation");
-                TextBox txtPostalCode = (TextBox)frmActivityFlavour.FindControl("txtPostalCode");
                 //Classification Attributes
                 DropDownList ddlProdCategory = (DropDownList)frmActivityFlavour.FindControl("ddlProdCategory");
                 DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
-                DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlArea");
-                DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlLocation");
+                DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+                DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
                 //key facts
-                CheckBox blnCompanyReccom = (CheckBox)frmActivityFlavour.FindControl("blnCompanyReccom");
-                CheckBox blnMustSeeInCountry = (CheckBox)frmActivityFlavour.FindControl("blnMustSeeInCountry");
+                
                 //General info
                 TextBox txtEventPlace = (TextBox)frmActivityFlavour.FindControl("txtEventPlace");
-                TextBox txtStartingPoint = (TextBox)frmActivityFlavour.FindControl("txtStartingPoint");
-                TextBox txtEndingPoint = (TextBox)frmActivityFlavour.FindControl("txtEndingPoint");
-                TextBox txtDuration = (TextBox)frmActivityFlavour.FindControl("txtDuration");
 
                 MDMSVC.DC_Activity_Flavour FlavData = new MDMSVC.DC_Activity_Flavour();
 
                 FlavData.Activity_Flavour_Id = new Guid(txtActivity_Flavour_Id.Text);
                 FlavData.Legacy_Product_ID = AccSvc.GetLegacyProductId(Activity_Flavour_Id);
-                if (ddlCountry.SelectedIndex != 0)
+                if (ddlCountryTLGX.SelectedIndex != 0)
                 {
-                    FlavData.Country = ddlCountry.SelectedItem.Text;
-                    FlavData.Country = ddlCountry.SelectedItem.Value;
+                    FlavData.Country = ddlCountryTLGX.SelectedItem.Text;
+                    FlavData.Country = ddlCountryTLGX.SelectedItem.Value;
                 }
                 if (ddlCity.SelectedIndex != 0)
                 {
                     FlavData.City = ddlCity.SelectedItem.Text;
                     FlavData.City = ddlCity.SelectedItem.Value;
                 }
-                //if (ddlArea.SelectedIndex != 0)
-                //{
-                //    FlavData.Area = ddlArea.SelectedItem.Text;
-                //    FlavData.Area = ddlArea.SelectedItem.Value;
-                //}
-                //if (ddlLocation.SelectedIndex != 0)
-                //{
-                //    FlavData.Location = ddlLocation.SelectedItem.Text;
-                //    FlavData.Location = ddlLocation.SelectedItem.Value;
-                //}
+
                 if (ddlProdCategory.SelectedIndex != 0)
                     FlavData.ProductCategory = ddlProdCategory.SelectedItem.Text;
 
@@ -307,38 +337,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 if (!string.IsNullOrEmpty(txtProductName.Text))
                     FlavData.ProductName = txtProductName.Text.ToString();
 
-                if (!string.IsNullOrEmpty(txtStreet.Text))
-                    FlavData.Street = txtStreet.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtStreet2.Text))
-                    FlavData.Street2 = txtStreet2.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtStreet3.Text))
-                    FlavData.Street3 = txtStreet3.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtStreet4.Text))
-                    FlavData.Street4 = txtStreet4.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtStreet5.Text))
-                    FlavData.Street5 = txtStreet5.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtPostalCode.Text))
-                    FlavData.PostalCode = txtPostalCode.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtEventPlace.Text))
-                    FlavData.PlaceOfEvent = txtEventPlace.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtStartingPoint.Text))
-                    FlavData.StartingPoint = txtStartingPoint.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtEndingPoint.Text))
-                    FlavData.EndingPoint = txtEndingPoint.Text.ToString();
-
-                if (!string.IsNullOrEmpty(txtDuration.Text))
-                    FlavData.Duration = txtDuration.Text.ToString();
-
-                FlavData.CompanyReccom = blnCompanyReccom.Checked;
-                FlavData.MustSeeInCountry = blnMustSeeInCountry.Checked;
                 FlavData.Edit_Date = DateTime.Now;
                 FlavData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                 var result = AccSvc.AddUpdateActivityFlavour(FlavData);
@@ -348,79 +346,80 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             else if (e.CommandName == "CancelProduct")
             {
                 TextBox txtProductName = (TextBox)this.Parent.Page.FindControl("txtProductName");
-                DropDownList ddlCountry = (DropDownList)this.Parent.Page.FindControl("ddlCountry");
+                DropDownList ddlCountryTLGX = (DropDownList)this.Parent.Page.FindControl("ddlCountryTLGX");
             }
-            else if (e.CommandName == "FillListBox2")
-            {
-                ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-                ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
-                Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
+            //else if (e.CommandName == "FillListBox2")
+            //{
+            //    ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
+            //    ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
+            //    Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
 
-                lblmsg2.Visible = false;
-                if (lstboxProductType.SelectedIndex >= 0)
-                {
-                    for (int i = 0; i < lstboxProductType.Items.Count; i++)
-                    {
-                        if (lstboxProductType.Items[i].Selected)
-                        {
-                            if (!arraylist1.Contains(lstboxProductType.Items[i]))
-                            {
-                                arraylist1.Add(lstboxProductType.Items[i]);
-                            }
-                        }
-                    }
-                    for (int i = 0; i < arraylist1.Count; i++)
-                    {
-                        if (!lstboxSelectedProductType.Items.Contains(((ListItem)arraylist1[i])))
-                        {
-                            lstboxSelectedProductType.Items.Add(((ListItem)arraylist1[i]));
-                        }
-                        lstboxProductType.Items.Remove(((ListItem)arraylist1[i]));
-                    }
-                    lstboxProductType.SelectedIndex = -1;
-                }
-                else
-                {
-                    lblmsg2.Visible = true;
-                    lblmsg2.Text = "Please select atleast Product Type to move";
-                }
+            //    lblmsg2.Visible = false;
+            //    if (lstboxProductType.SelectedIndex >= 0)
+            //    {
+            //        for (int i = 0; i < lstboxProductType.Items.Count; i++)
+            //        {
+            //            if (lstboxProductType.Items[i].Selected)
+            //            {
+            //                if (!arraylist1.Contains(lstboxProductType.Items[i]))
+            //                {
+            //                    arraylist1.Add(lstboxProductType.Items[i]);
+            //                }
+            //            }
+            //        }
+            //        for (int i = 0; i < arraylist1.Count; i++)
+            //        {
+            //            if (!lstboxSelectedProductType.Items.Contains(((ListItem)arraylist1[i])))
+            //            {
+            //                lstboxSelectedProductType.Items.Add(((ListItem)arraylist1[i]));
+            //            }
+            //            lstboxProductType.Items.Remove(((ListItem)arraylist1[i]));
+            //        }
+            //        lstboxProductType.SelectedIndex = -1;
+            //    }
+            //    else
+            //    {
+            //        lblmsg2.Visible = true;
+            //        lblmsg2.Text = "Please select atleast Product Type to move";
+            //    }
 
-            }
-            else if (e.CommandName == "EmptyListBox2")
-            {
-                ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-                ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
-                Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
+            //}
+            //else if (e.CommandName == "EmptyListBox2")
+            //{
+            //    ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
+            //    ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
+            //    Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
 
-                lblmsg2.Visible = false;
-                if (lstboxSelectedProductType.SelectedIndex >= 0)
-                {
-                    for (int i = 0; i < lstboxSelectedProductType.Items.Count; i++)
-                    {
-                        if (lstboxSelectedProductType.Items[i].Selected)
-                        {
-                            if (!arraylist2.Contains(lstboxSelectedProductType.Items[i]))
-                            {
-                                arraylist2.Add(lstboxSelectedProductType.Items[i]);
-                            }
-                        }
-                    }
-                    for (int i = 0; i < arraylist2.Count; i++)
-                    {
-                        if (!lstboxProductType.Items.Contains(((ListItem)arraylist2[i])))
-                        {
-                            lstboxProductType.Items.Add(((ListItem)arraylist2[i]));
-                        }
-                        lstboxSelectedProductType.Items.Remove(((ListItem)arraylist2[i]));
-                    }
-                    lstboxProductType.SelectedIndex = -1;
-                }
-                else
-                {
-                    lblmsg2.Visible = true;
-                    lblmsg2.Text = "Please select atleast Product Type remove";
-                }
-            }
+            //    lblmsg2.Visible = false;
+            //    if (lstboxSelectedProductType.SelectedIndex >= 0)
+            //    {
+            //        for (int i = 0; i < lstboxSelectedProductType.Items.Count; i++)
+            //        {
+            //            if (lstboxSelectedProductType.Items[i].Selected)
+            //            {
+            //                if (!arraylist2.Contains(lstboxSelectedProductType.Items[i]))
+            //                {
+            //                    arraylist2.Add(lstboxSelectedProductType.Items[i]);
+            //                }
+            //            }
+            //        }
+            //        for (int i = 0; i < arraylist2.Count; i++)
+            //        {
+            //            if (!lstboxProductType.Items.Contains(((ListItem)arraylist2[i])))
+            //            {
+            //                lstboxProductType.Items.Add(((ListItem)arraylist2[i]));
+            //            }
+            //            lstboxSelectedProductType.Items.Remove(((ListItem)arraylist2[i]));
+            //        }
+            //        lstboxProductType.SelectedIndex = -1;
+            //    }
+            //    else
+            //    {
+            //        lblmsg2.Visible = true;
+            //        lblmsg2.Text = "Please select atleast Product Type remove";
+            //    }
+            //}
         }
+        
     }
 }

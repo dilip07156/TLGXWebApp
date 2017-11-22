@@ -2,17 +2,19 @@
 
 <%@ PreviousPageType VirtualPath="SearchActivityMaster.aspx" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Flavours.ascx" TagPrefix="uc1" TagName="Flavours"%>
+
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Flavours.ascx" TagPrefix="uc1" TagName="Flavours" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/InclusionsAndExclusion.ascx" TagPrefix="uc1" TagName="Inclusions" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ClassificationAttributes.ascx" TagPrefix="uc1" TagName="ClassificationAttributes" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityMedia.ascx" TagPrefix="uc1" TagName="ActivityMedia" %>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy"%>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/PricesNDeals.ascx" TagPrefix="uc1" TagName="PricesNDeals"%>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores"%>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings"%>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/PricesNDeals.ascx" TagPrefix="uc1" TagName="PricesNDeals" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityDescription.ascx" TagPrefix="uc1" TagName="ActivityDescription" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/FlavourOptions.ascx" TagPrefix="uc1" TagName="FlavourOptions" %>
+    <%--<%@ Register Src="~/controls/activity/ManageActivityFlavours/ContactDetails.ascx" TagPrefix="uc1" TagName="ContactDetails" %>--%>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityContactDetails.ascx" TagPrefix="uc1" TagName="ActivityContactDetails" %>
 
 
     <div class="container" id="myWizard">
@@ -34,15 +36,16 @@
             <%--<div class="navbar-inner">--%>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#panFlavours" data-toggle="tab">Product Details</a></li>
-                 <li><a href="#panDescription" data-toggle="tab">Descriptions</a></li>
+                <li><a href="#panDescription" data-toggle="tab">Descriptions</a></li>
                 <li><a href="#panInclusion" data-toggle="tab">Inclusion/Exclusion</a></li>
-                <li><a href="#panClassificationAttributes" data-toggle="tab">Classification Attributes</a></li>
+                <li><a href="#panClassificationAttributes" data-toggle="tab">Classification</a></li>
                 <li><a href="#panActivityMedia" data-toggle="tab">Media</a></li>
                 <li><a href="#panPolicy" data-toggle="tab">Policy</a></li>
                 <li><a href="#panPricesNDeals" data-toggle="tab">Prices And Deals</a></li>
                 <li><a href="#panReviewsNScores" data-toggle="tab">Reviews And Scores</a></li>
-                <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Product Mappings</a></li>
+                <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Mappings</a></li>
                 <li><a href="#panFlavourOptions" data-toggle="tab">Options</a></li>
+                <li><a href="#panContactDetails" data-toggle="tab">Contact Details</a></li>
             </ul>
             <%--</div>--%>
         </div>
@@ -53,7 +56,7 @@
             </div>
 
             <div class="tab-pane" id="panDescription">
-                <uc1:ActivityDescription runat="server" id="ActivityDescription" />
+                <uc1:ActivityDescription runat="server" ID="ActivityDescription" />
             </div>
 
             <div class="tab-pane" id="panInclusion">
@@ -87,7 +90,11 @@
             <div class="tab-pane" id="panFlavourOptions">
                 <uc1:FlavourOptions runat="server" ID="FlavourOptions" />
             </div>
-                
+
+            <div class="tab-pane" id="panContactDetails">
+                <uc1:ActivityContactDetails runat="server" ID="ActivityContactDetails" />
+            </div>
+
         </div>
 
     </div>

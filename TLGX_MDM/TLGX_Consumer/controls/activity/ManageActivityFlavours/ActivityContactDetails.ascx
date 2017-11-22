@@ -10,6 +10,11 @@
     <ContentTemplate>
 
         <div class="form-group">
+            <h4 class="panel-title pull-left">Contact Details (Total Count:)</h4>
+            <%--<asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>--%>
+        </div>
+
+        <div class="form-group">
             <div id="dvMsgContact" runat="server" style="display: none;"></div>
         </div>
 
@@ -20,6 +25,8 @@
                     <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ActivityContacts" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                 </div>
             </HeaderTemplate>
+
+
 
             <InsertItemTemplate>
 
@@ -262,6 +269,9 @@
 
         </asp:FormView>
 
+        <div class="col-md-12 form-group">
+            <asp:Button ID="btnAddFormView" runat="server" OnClick="btnAddFormView_Click" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" />
+        </div>
         <br />
 
         <asp:GridView ID="grdContactDetails" runat="server" AutoGenerateColumns="False" DataKeyNames="Activity_Contact_Id" CssClass="table table-hover table-striped" EmptyDataText="No Contact details Found" OnRowCommand="grdContactDetails_RowCommand" OnRowDataBound="grdContactDetails_RowDataBound">
@@ -291,9 +301,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <div>
-            <asp:Button ID="btnAddFormView" runat="server" OnClick="btnAddFormView_Click" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" />
-        </div>
+
     </ContentTemplate>
 
 </asp:UpdatePanel>
