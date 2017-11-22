@@ -452,7 +452,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="City Name" ItemStyle-Width="5%">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="btnSelectCityName" Text='<%# Bind("CityName") %>' runat="server" CausesValidation="false" CommandName="SelectCityCode" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
+                                                <asp:LinkButton ID="btnSelectCityName" Text='<%# Bind("CityName") %>' runat="server" CausesValidation="false" CommandName="SelectCityName" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
                                                 </asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
