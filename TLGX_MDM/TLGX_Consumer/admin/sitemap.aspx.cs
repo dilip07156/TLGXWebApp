@@ -33,6 +33,7 @@ namespace TLGX_Consumer.admin
             if (!IsPostBack)
             {
                 BindApplication();
+
             }
         }
 
@@ -88,6 +89,7 @@ namespace TLGX_Consumer.admin
 
         protected void BindRoles()
         {
+
             Controller.AdminSVCs _objAdminSVCs = new Controller.AdminSVCs();
             string strApplication = ddlApplilcation.SelectedValue.ToString();
             var result = _objAdminSVCs.GetAllRole(0, 0, strApplication);
@@ -97,7 +99,6 @@ namespace TLGX_Consumer.admin
             chkListRoles.DataTextField = "RoleName";
             chkListRoles.DataValueField = "RoleID";
             chkListRoles.DataBind();
-            _objAdminSVCs = null;
         }
 
         protected void BindParent()
@@ -105,7 +106,7 @@ namespace TLGX_Consumer.admin
             var result = AccSvc.GetSiteMapMaster(0, Convert.ToString(ddlApplilcation.SelectedValue));
             DropDownList ddlParent = (DropDownList)frmSiteNode.FindControl("ddlParent");
             //ddlParent.DataSource = (from r in result where r.IsActive == true && r.IsSiteMapNode == true select new { r.ID, r.Title }).ToList();
-            ddlParent.DataSource = (from r in result where r.IsActive == true orderby r.Title select new { r.ID, r.Title }).ToList();
+            ddlParent.DataSource = (from r in result where r.IsActive == true select new { r.ID, r.Title }).ToList();
 
             ddlParent.DataTextField = "Title";
             ddlParent.DataValueField = "ID";
@@ -246,16 +247,19 @@ namespace TLGX_Consumer.admin
                     newObj.ParentID = 1;
                 }
 
-                List<MDMSVC.DC_SiteMap_Roles> roles = new List<MDMSVC.DC_SiteMap_Roles>();
-
+                string Roles = string.Empty;
                 foreach (ListItem item in chkListRoles.Items)
                 {
                     if (item.Selected)
                     {
-                        roles.Add(new MDMSVC.DC_SiteMap_Roles { RoleId = Guid.Parse(item.Value), RoleName = item.Text });
+                        Roles = Roles + item.Text + ",";
                     }
                 }
-                newObj.Roles = roles.ToArray();
+                Roles = Roles.Trim(',').Trim();
+                if (!string.IsNullOrWhiteSpace(Roles))
+                {
+                    newObj.Roles = Roles;
+                }
                 newObj.Title = txtTitle.Text;
                 newObj.Url = txtUrl.Text;
                 AccSvc.AddSiteMapNode(newObj);
@@ -282,14 +286,20 @@ namespace TLGX_Consumer.admin
                     newObj.ParentID = int.Parse(ddlParent.SelectedValue.ToString());
                 }
 
-                List<MDMSVC.DC_SiteMap_Roles> roles = new List<MDMSVC.DC_SiteMap_Roles>();
-
+                string Roles = string.Empty;
                 foreach (ListItem item in chkListRoles.Items)
                 {
                     if (item.Selected)
                     {
-                        roles.Add(new MDMSVC.DC_SiteMap_Roles { RoleId = Guid.Parse(item.Value), RoleName = item.Text });
+                        Roles = Roles + item.Text + ",";
                     }
+                }
+                Roles = Roles.Trim(',').Trim();
+
+
+                if (!string.IsNullOrWhiteSpace(Roles))
+                {
+                    newObj.Roles = Roles;
                 }
 
                 newObj.Title = txtTitle.Text;
@@ -306,6 +316,7 @@ namespace TLGX_Consumer.admin
             GetSiteMapMaster();
             //BindParent();
             //BindRoles();
+
         }
 
         protected void grdSiteMap_RowDataBound(object sender, GridViewRowEventArgs e)
