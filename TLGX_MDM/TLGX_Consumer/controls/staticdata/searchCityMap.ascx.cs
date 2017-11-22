@@ -425,6 +425,10 @@ namespace TLGX_Consumer.controls.staticdata
                                     foreach (MDMSVC.DC_City_Master_DDL resc in querynamed)
                                     {
                                         ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                                        if (ddlSystemCityName.SelectedIndex > 0)
+                                        {
+                                            txtSystemCityCode.Text = resc.Code;
+                                        }
                                     }
                                 }
                                 if (ddlSystemCityName.SelectedIndex == 0)
@@ -435,6 +439,11 @@ namespace TLGX_Consumer.controls.staticdata
                                         foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
                                         {
                                             ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                                            if(ddlSystemCityName.SelectedIndex > 0)
+                                            {
+                                                txtSystemCityCode.Text = resc.Code;
+                                            }
+                                            
                                         }
                                     }
                                 }
@@ -449,6 +458,10 @@ namespace TLGX_Consumer.controls.staticdata
                                         foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
                                         {
                                             ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                                            if (ddlSystemCityName.SelectedIndex > 0)
+                                            {
+                                                txtSystemCityCode.Text = resc.Code;
+                                            }
                                         }
                                     }
                                 }
@@ -460,6 +473,10 @@ namespace TLGX_Consumer.controls.staticdata
                                         foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
                                         {
                                             ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                                            if (ddlSystemCityName.SelectedIndex > 0)
+                                            {
+                                                txtSystemCityCode.Text = resc.Code;
+                                            }
                                         }
                                     }
                                 }
