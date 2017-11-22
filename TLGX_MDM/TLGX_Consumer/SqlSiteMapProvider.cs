@@ -113,7 +113,7 @@ namespace TLGX_Consumer
             //lock (this)
             //{
             // Return immediately if this method has been called before
-            
+
             //if (HttpContext.Current.Session["_root"] != null)
             //{
             //   _root = (SiteMapNode)(HttpContext.Current.Session["_root"]);
@@ -130,7 +130,6 @@ namespace TLGX_Consumer
                 objSiteMap = (from s in objSiteMap orderby s.ID select s).ToList();
                 if (objSiteMap != null)
                 {
-                   
                     if (objSiteMap.Count > 0)
                     {
                         int iCounter = 1;
@@ -166,7 +165,7 @@ namespace TLGX_Consumer
             }
 
             // Return the root SiteMapNode
-            HttpContext.Current.Session["_root"] = _root;
+            //HttpContext.Current.Session["_root"] = _root;
             return _root;
             //}
         }
@@ -176,7 +175,7 @@ namespace TLGX_Consumer
             if (HttpContext.Current.Session["IsLogedIn"] != null)
             {
                 IsLogedIn = (bool)HttpContext.Current.Session["IsLogedIn"];
-                if(HttpContext.Current.Session["_root"] == null)
+                if (HttpContext.Current.Session["_root"] == null)
                 {
                     _root = null;
                 }

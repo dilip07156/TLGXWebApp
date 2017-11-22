@@ -21,8 +21,12 @@
     }
 
     .HotelInfo {
-        height: 200px;
+        height: 80px;
         overflow-y: scroll;
+    }
+
+    #modalHotelList {
+        z-index: 2000;
     }
 
     .controls {
@@ -448,7 +452,7 @@
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="City Name" ItemStyle-Width="5%">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="btnSelectCityName" Text='<%# Bind("CityName") %>' runat="server" CausesValidation="false" CommandName="SelectCityCode" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
+                                                <asp:LinkButton ID="btnSelectCityName" Text='<%# Bind("CityName") %>' runat="server" CausesValidation="false" CommandName="SelectCityName" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
                                                 </asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
@@ -527,7 +531,7 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
-                        <asp:GridView runat="server" EmptyDataText="No Data Found" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotel" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotel_PageIndexChanging"
+                        <asp:GridView ID="grdvListOfHotel" runat="server" EmptyDataText="No Data Found" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" AllowPaging="true" DataKeyNames="CityMapping_Id,GoFor" AllowCustomPaging="true" OnPageIndexChanging="grdvListOfHotel_PageIndexChanging"
                             CssClass="fullWidth HotelList table table-hover table-striped">
                             <Columns>
                                 <asp:TemplateField ItemStyle-CssClass="HotelListrowPadding">
@@ -535,10 +539,9 @@
                                         <strong><%# Eval("HotelName")%></strong> &nbsp;&nbsp;
                                         <%# Eval("Address")%>
                                     </ItemTemplate>
-
                                 </asp:TemplateField>
                             </Columns>
-                            <%--<PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />--%>
+                            <PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -722,8 +725,8 @@
                                         <div class="col-lg-3">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">Actions</div>
-                                                <div class="panel-body">
-                                                    <div class="form-group">
+                                                <div class="panel-body" style="padding-bottom: 0px;">
+                                                    <div class="form-group" style="padding-bottom: 5px;">
                                                         <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);" />
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
                                                     </div>
@@ -733,7 +736,7 @@
                                                 <div class="panel-heading">Hotel List for Selected City</div>
                                                 <div class="panel-body">
                                                     <div class="form-group HotelInfo">
-                                                        <asp:GridView runat="server" EmptyDataText="No Data Found" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
+                                                        <asp:GridView runat="server" EmptyDataText="No Data Found" DataKeyNames="CityMapping_Id,GoFor" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
                                                             CssClass="fullWidth HotelList table table-hover table-striped">
                                                             <Columns>
                                                                 <asp:TemplateField ItemStyle-CssClass="HotelListrowPadding">
@@ -744,7 +747,7 @@
 
                                                                 </asp:TemplateField>
                                                             </Columns>
-                                                            <%--<PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />--%>
+                                                            <PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />
                                                         </asp:GridView>
                                                     </div>
                                                 </div>
@@ -931,8 +934,20 @@
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
-                                                    <asp:BoundField DataField="CityCode" HeaderText="City Code" />
-                                                    <asp:BoundField DataField="CityName" HeaderText="City Name" />
+                                                    <asp:TemplateField HeaderText="City Code" ItemStyle-Width="5%">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnSelectCityCode" Text='<%# Bind("CityCode") %>' runat="server" CausesValidation="false" CommandName="SelectCityCode" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="City Name" ItemStyle-Width="5%">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnSelectCityName" Text='<%# Bind("CityName") %>' runat="server" CausesValidation="false" CommandName="SelectCityName" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <%--<asp:BoundField DataField="CityCode" HeaderText="City Code" />
+                                                    <asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
