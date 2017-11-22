@@ -22,24 +22,22 @@ namespace TLGX_Consumer.controls.staticdata
         Controller.MappingSVCs mapperSVc = new Controller.MappingSVCs();
         Controller.MasterDataSVCs masterSVc = new Controller.MasterDataSVCs();
         MasterDataDAL masters = new MasterDataDAL();
-        public static string AttributeOptionFor = "ProductSupplierMapping";
-        public static string SortBy = "";
-        public static string SortEx = "";
-        public static int PageIndex = 0;
-        public static string MatchedStatus = "";
-        public static string MatchedCountryName = "";
-        public static string MatchedCityName = "";
-        public static int MatchedPageIndex = 0;
-        public static int HotelListPageIndex = 0;
-        public static int SimilarPageIndex = 0;
-        public static string SimilarCountryName = "";
-        public static string SimilarCityName = "";
-        //public static Guid MappedCountry_ID = Guid.Empty;
-        //public static Guid MappedCity_ID = Guid.Empty;
-        public static int HotelListPageSize = 5;
-        public static Guid SelectedMappedID = Guid.Empty;
-        public static Guid? MappedCountry_ID = Guid.Empty;  
-        public static Guid? MappedCity_ID = Guid.Empty;  
+        //public static string AttributeOptionFor = "ProductSupplierMapping";
+        //public static string SortBy = "";
+        //public static string SortEx = "";
+        //public static int PageIndex = 0;
+        //public static string MatchedStatus = "";
+        //public static string MatchedCountryName = "";
+        //public static string MatchedCityName = "";
+        //public static int MatchedPageIndex = 0;
+        //public static int HotelListPageIndex = 0;
+        //public static int SimilarPageIndex = 0;
+        //public static string SimilarCountryName = "";
+        //public static string SimilarCityName = "";
+        //public int HotelListPageSize = 5;
+        //public static Guid SelectedMappedID = Guid.Empty;
+        //public static Guid? MappedCountry_ID = Guid.Empty;
+        //public static Guid? MappedCity_ID = Guid.Empty;
         public List<MDMSVC.DC_City_Master_DDL> _lstCityMaster = new List<DC_City_Master_DDL>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,7 +58,7 @@ namespace TLGX_Consumer.controls.staticdata
 
         private void fillAttributeValues(DropDownList ddl, string Attribute_Name)
         {
-            ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionFor, Attribute_Name).MasterAttributeValues;
+            ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("ProductSupplierMapping", Attribute_Name).MasterAttributeValues;
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
             ddl.DataBind();
@@ -127,10 +125,10 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            SortBy = "CountryName";
-            SortEx = "";
-            PageIndex = 0;
-            fillmappingdata();
+            //SortBy = "CountryName";
+            //SortEx = "";
+            //PageIndex = 0;
+            fillmappingdata(0);
 
             if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW" || ddlStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
             {
@@ -144,7 +142,7 @@ namespace TLGX_Consumer.controls.staticdata
             }
         }
 
-        private void fillsimilarcities()
+        private void fillsimilarcities(int pPageIndex, Guid pCountry_Id, string pSimilarCityName)
         {
             DropDownList ddlSimilarProducts = (DropDownList)frmEditCityMap.FindControl("ddlSimilarProducts");
             GridView grdSimilarProducts = (GridView)frmEditCityMap.FindControl("grdSimilarProducts");
@@ -153,9 +151,10 @@ namespace TLGX_Consumer.controls.staticdata
             MDMSVC.DC_CityMapping_RQ RQParam = new MDMSVC.DC_CityMapping_RQ();
             if (ddlMatchingStatus.SelectedItem.Value != "0")
                 RQParam.Status = ddlMatchingStatus.SelectedItem.Text;
-            RQParam.SupplierCountryName = SimilarCountryName;
-            RQParam.SupplierCityName = SimilarCityName;
-            RQParam.PageNo = SimilarPageIndex;
+            //RQParam.SupplierCountryName = pSimilarCountryName;
+            RQParam.Country_Id = pCountry_Id;
+            RQParam.SupplierCityName = pSimilarCityName;
+            RQParam.PageNo = pPageIndex;
             RQParam.PageSize = Convert.ToInt32(ddlSimilarProducts.SelectedItem.Text);
             RQParam.SortBy = "CityName";
             RQParam.ResultSet = "onlycity";
@@ -168,26 +167,30 @@ namespace TLGX_Consumer.controls.staticdata
                     grdSimilarProducts.VirtualItemCount = res[0].TotalRecords;
                 }
             }
-            grdSimilarProducts.PageIndex = SimilarPageIndex;
+            grdSimilarProducts.PageIndex = pPageIndex;
             grdSimilarProducts.PageSize = Convert.ToInt32(ddlSimilarProducts.SelectedItem.Text);
             grdSimilarProducts.DataBind();
         }
 
-        private void fillmatchingdata(string from)
+        private void fillmatchingdata(string from, int pPageIndex)
         {
             DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
+            DropDownList ddlSystemCityName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCityName");
+            DropDownList ddlStatus = (DropDownList)frmEditCityMap.FindControl("ddlStatus");
+            Label lblCityName = (Label)frmEditCityMap.FindControl("lblCityName");
+
             //dvMsg.Style.Add("display", "none");
             //dvMsg1.Style.Add("display", "none");
             MDMSVC.DC_CityMapping_RQ RQParam = new MDMSVC.DC_CityMapping_RQ();
             if (ddlMatchingStatus.SelectedItem.Value != "0")
                 RQParam.Status = ddlMatchingStatus.SelectedItem.Text;
-            RQParam.StatusExcept = MatchedStatus;
+            RQParam.StatusExcept = ddlStatus.SelectedItem.Text;
             //RQParam.SupplierCountryName = MatchedCountryName;
             RQParam.Country_Id = Guid.Parse(ddlSystemCountryName.SelectedValue);
-            RQParam.SupplierCityName = MatchedCityName;
-            RQParam.PageNo = MatchedPageIndex;
+            RQParam.SupplierCityName = lblCityName.Text;
+            RQParam.PageNo = pPageIndex;
             RQParam.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
-            RQParam.SortBy = (SortBy + " " + SortEx).Trim();
+            RQParam.SortBy = ("CityName").Trim();
             RQParam.IsExact = ckboxIsExactMatch.Checked;
             var res = mapperSVc.GetCityMappingData(RQParam);
             grdMatchingCity.DataSource = res;
@@ -225,12 +228,12 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 lblMsg.Text = "No similar records found matching with updated combination";
             }
-            grdMatchingCity.PageIndex = MatchedPageIndex;
+            grdMatchingCity.PageIndex = pPageIndex;
             grdMatchingCity.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
             grdMatchingCity.DataBind();
         }
 
-        private void fillmappingdata()
+        private void fillmappingdata(int pPageIndex)
         {
             MDMSVC.DC_CityMapping_RQ RQ = new MDMSVC.DC_CityMapping_RQ();
             Guid selSupplier_ID = Guid.Empty;
@@ -255,8 +258,8 @@ namespace TLGX_Consumer.controls.staticdata
             RQ.SupplierCountryName = txtSuppCountry.Text;
             RQ.SupplierCityName = txtSuppCity.Text;
 
-            RQ.PageNo = PageIndex;
-            RQ.SortBy = (SortBy + " " + SortEx).Trim();
+            RQ.PageNo = pPageIndex;
+            RQ.SortBy = ("CountryName").Trim();
             RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
 
             var res = mapperSVc.GetCityMappingData(RQ);
@@ -278,7 +281,7 @@ namespace TLGX_Consumer.controls.staticdata
             }
             else
                 lblTotalCount.Text = "0";
-            grdCityMaps.PageIndex = PageIndex;
+            grdCityMaps.PageIndex = pPageIndex;
             grdCityMaps.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text); ;
             //grdCityMaps.DataKeyNames = new string[] {"CityMapping_Id"};
             grdCityMaps.DataBind();
@@ -313,8 +316,8 @@ namespace TLGX_Consumer.controls.staticdata
         protected void grdCityMaps_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dvMsg1.Style.Add("display", "none");
-            PageIndex = e.NewPageIndex;
-            fillmappingdata();
+            //PageIndex = e.NewPageIndex;
+            fillmappingdata(e.NewPageIndex);
         }
 
         protected void grdCityMaps_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -342,8 +345,8 @@ namespace TLGX_Consumer.controls.staticdata
                         CountryCode = grdCityMaps.Rows[index].Cells[2].Text,
                         CountryName = grdCityMaps.Rows[index].Cells[3].Text,
                         StateName = ((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[4].Controls[0])).Text.ToString().Trim(), //grdCityMaps.Rows[index].Cells[4].Text,
-                        CityCode = grdCityMaps.Rows[index].Cells[5].Text,
-                        CityName = grdCityMaps.Rows[index].Cells[6].Text,
+                        CityCode = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text,
+                        CityName = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text,
                         MasterCountryCode = grdCityMaps.Rows[index].Cells[7].Text,
                         MasterCountryName = grdCityMaps.Rows[index].Cells[8].Text,
                         MasterCityCode = grdCityMaps.Rows[index].Cells[9].Text,
@@ -391,8 +394,8 @@ namespace TLGX_Consumer.controls.staticdata
                     lblSupCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[2].Text);
                     lblSupCountryName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[3].Text);
                     lblStateName.Text = System.Web.HttpUtility.HtmlDecode(((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[4].Controls[0])).Text.ToString().Trim());
-                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
-                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
+                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text);
+                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
 
                     txtSystemCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[7].Text);
                     txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[10].Text);
@@ -409,8 +412,8 @@ namespace TLGX_Consumer.controls.staticdata
                     {
                         //var res = objMasterDataDAL.GetMasterCityDatawithCode(new Guid(ddlSystemCountryName.SelectedItem.Value));
                         var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
-                        string ccode = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[5].Text);
-                        string cname = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[6].Text);
+                        string ccode = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text);
+                        string cname = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
 
                         if (cname != null)
                         {
@@ -485,14 +488,17 @@ namespace TLGX_Consumer.controls.staticdata
                         else
                             btnAddCity.Visible = false;
                     }
-                    BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize, grdvListOfHotelÖnSelection);
-                hdnFlag.Value = "false";
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
-            }
-                if(e.CommandName == "SelectCityCode")
+                    BindHotelList(myRow_Id, 0, 5, grdvListOfHotelÖnSelection, string.Empty);
+                    hdnFlag.Value = "false";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
+                }
+                if (e.CommandName == "SelectCityCode")
                 {
-                    SelectedMappedID = myRow_Id;
-                    BindHotelList(myRow_Id, HotelListPageIndex, HotelListPageSize,grdvListOfHotel);
+                    BindHotelList(myRow_Id, 0, 5, grdvListOfHotel, "CITYCODE");
+                }
+                if (e.CommandName == "SelectCityName")
+                {
+                    BindHotelList(myRow_Id, 0, 5, grdvListOfHotel, "CITYNAME");
                 }
 
             }
@@ -500,13 +506,17 @@ namespace TLGX_Consumer.controls.staticdata
             { }
         }
 
-        private void BindHotelList(Guid _cityMappingid, int hotelListPageIndex, int hotelListPageSize,GridView grdv)
+        private void BindHotelList(Guid _cityMappingid, int hotelListPageIndex, int hotelListPageSize, GridView grdv, string StrDataFor)
         {
             try
             {
-                //var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ() { CityMapping_Id = Convert.ToString("E0D8995D-B036-4300-88FF-0000C64B8714"), PageNo = hotelListPageIndex, PageSize = hotelListPageSize });
-
-                var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ() { CityMapping_Id = Convert.ToString(_cityMappingid), PageNo = hotelListPageIndex, PageSize = hotelListPageSize });
+                var result = mapperSVc.GetHotelListByCityCode(new DC_HotelListByCityCode_RQ()
+                {
+                    CityMapping_Id = Convert.ToString(_cityMappingid),
+                    GoFor = StrDataFor,
+                    PageNo = hotelListPageIndex,
+                    PageSize = hotelListPageSize
+                });
                 grdv.DataSource = result;
                 if (result != null)
                 {
@@ -515,7 +525,7 @@ namespace TLGX_Consumer.controls.staticdata
                         grdv.VirtualItemCount = result[0].TotalRecords;
                     }
                 }
-                grdv.PageIndex = SimilarPageIndex;
+                grdv.PageIndex = hotelListPageIndex;
                 grdv.PageSize = hotelListPageSize;
                 grdv.DataBind();
             }
@@ -527,13 +537,15 @@ namespace TLGX_Consumer.controls.staticdata
         }
         protected void grdvListOfHotel_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            HotelListPageIndex = e.NewPageIndex;
-            BindHotelList(SelectedMappedID, HotelListPageIndex, HotelListPageSize, grdvListOfHotel);
+            Guid gcitymapid = Guid.Parse(Convert.ToString(grdvListOfHotel.DataKeys[0].Values[0]));
+            string GoFor = Convert.ToString(grdvListOfHotel.DataKeys[0].Values[1]);
+            BindHotelList(gcitymapid, e.NewPageIndex, 5, grdvListOfHotel, GoFor);
         }
         protected void grdvListOfHotelOnSelection_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            HotelListPageIndex = e.NewPageIndex;
-           // BindHotelList(SelectedMappedID, HotelListPageIndex, HotelListPageSize,this.g);
+            GridView grdvListOfHotelOnSelection = (GridView)frmEditCityMap.FindControl("grdvListOfHotelOnSelection");
+            Guid gcitymapid = Guid.Parse(Convert.ToString(grdvListOfHotelOnSelection.DataKeys[0].Values[0]));
+            BindHotelList(gcitymapid, e.NewPageIndex, 5, grdvListOfHotelOnSelection, string.Empty);
         }
 
         protected void ddlSystemCountryName_SelectedIndexChanged(object sender, EventArgs e)
@@ -545,12 +557,12 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSystemCountryCode = (TextBox)frmEditCityMap.FindControl("txtSystemCountryCode");
             TextBox txtSystemCityCode = (TextBox)frmEditCityMap.FindControl("txtSystemCityCode");
             System.Web.UI.HtmlControls.HtmlGenericControl dvAddCity = (System.Web.UI.HtmlControls.HtmlGenericControl)frmEditCityMap.FindControl("dvAddCity");
-            if (!(ddlSystemCountryName.SelectedIndex == 0)) 
+            if (!(ddlSystemCountryName.SelectedIndex == 0))
             {
-            txtSystemCountryCode.Text = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
-            fillcities(ddlSystemCityName, ddlSystemCountryName);
+                txtSystemCountryCode.Text = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
+                fillcities(ddlSystemCityName, ddlSystemCountryName);
             }
-            else 
+            else
             {
                 ddlSystemCityName.DataSource = null;
                 ddlSystemCityName.DataBind();
@@ -657,7 +669,7 @@ namespace TLGX_Consumer.controls.staticdata
                     cityCode = masters.GetCodeById("city", new Guid(ddlSystemCountryName.SelectedItem.Value));
                     masterCountryName = ddlSystemCountryName.SelectedItem.Text;
                 }
-                
+
                 MDMSVC.DC_Supplier_DDL sData = new MDMSVC.DC_Supplier_DDL();
                 sData = masterSVc.GetSupplierDataByMapping_Id("CITY", Convert.ToString(myRow_Id));
                 MDMSVC.DC_CityMapping newObj = new MDMSVC.DC_CityMapping
@@ -678,22 +690,22 @@ namespace TLGX_Consumer.controls.staticdata
                 RQ.Add(newObj);
                 if (mapperSVc.UpdateCityMappingDatat(RQ))
                 {
-                    MatchedPageIndex = 0;
+                    //MatchedPageIndex = 0;
                     //MappedCountry_ID = new Guid(ddlSystemCountryName.SelectedItem.Value);
                     //MappedCity_ID = new Guid(ddlSystemCityName.SelectedItem.Value);
-                    MappedCountry_ID = countryId;
-                    MappedCity_ID = cityId;
-                    MatchedCountryName = lblSupCountryName.Text;
-                    MatchedCityName = lblCityName.Text;
-                    MatchedStatus = ddlStatus.SelectedItem.Text;
+                    //MappedCountry_ID = countryId;
+                    //MappedCity_ID = cityId;
+                    //MatchedCountryName = lblSupCountryName.Text;
+                    //MatchedCityName = lblCityName.Text;
+                    //MatchedStatus = ddlStatus.SelectedItem.Text;
                     //frmEditCityMap.Visible = false;
                     if (!(ddlSystemCountryName.SelectedIndex == 0))
                     {
-                    fillmatchingdata("");
-                    fillmappingdata();
-                    dvMatchingRecords.Visible = true;
-                    btnMatchedMapSelected.Visible = true;
-                    btnMatchedMapAll.Visible = true;
+                        fillmatchingdata("", 0);
+                        fillmappingdata(grdCityMaps.PageIndex);
+                        dvMatchingRecords.Visible = true;
+                        btnMatchedMapSelected.Visible = true;
+                        btnMatchedMapAll.Visible = true;
                     }
                     dvMsg.Style.Add("display", "block");
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
@@ -713,7 +725,7 @@ namespace TLGX_Consumer.controls.staticdata
                 dvMatchingRecords.Visible = false;
                 btnMatchedMapSelected.Visible = false;
                 btnMatchedMapAll.Visible = false;
-                fillmappingdata();
+                fillmappingdata(grdCityMaps.PageIndex);
             }
             else if (e.CommandName == "MapSelected")
             {
@@ -725,8 +737,8 @@ namespace TLGX_Consumer.controls.staticdata
 
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
-                Guid? myCountry_Id = Guid.Empty; 
-                Guid? myCity_Id = Guid.Empty; 
+                Guid? myCountry_Id = Guid.Empty;
+                Guid? myCity_Id = Guid.Empty;
 
                 //string mystateName = txtSystemStateName.Text;
                 //string mystateCode = txtSystemStateCode.Text;
@@ -745,8 +757,8 @@ namespace TLGX_Consumer.controls.staticdata
                         int index = row.RowIndex;
                         myRow_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[0].ToString());
                         mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
-                        myCountry_Id = MappedCountry_ID;
-                        myCity_Id = MappedCity_ID;
+                        myCountry_Id = Guid.Parse(ddlSystemCountryName.SelectedItem.Value);
+                        myCity_Id = Guid.Parse(ddlSystemCityName.SelectedItem.Value);
                     }
                     if (myRow_Id != Guid.Empty)
                     {
@@ -762,7 +774,7 @@ namespace TLGX_Consumer.controls.staticdata
                         //    param.StateName = mystateName;
                         //if (mystateCode != null)
                         //    param.StateCode = mystateCode;
-                        param.Status = MatchedStatus;
+                        param.Status = ddlStatus.SelectedItem.Text;
                         param.Edit_Date = DateTime.Now;
                         param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                         RQ.Add(param);
@@ -775,8 +787,8 @@ namespace TLGX_Consumer.controls.staticdata
                 if (mapperSVc.UpdateCityMappingDatat(RQ))
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                    fillmappingdata();
-                    fillmatchingdata("");
+                    fillmappingdata(grdCityMaps.PageIndex);
+                    fillmatchingdata("", grdMatchingCity.PageIndex);
                     hdnFlag.Value = "false";
                 }
             }
@@ -790,8 +802,8 @@ namespace TLGX_Consumer.controls.staticdata
 
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
-                Guid? myCountry_Id = Guid.Empty; 
-                Guid? myCity_Id = Guid.Empty; 
+                Guid? myCountry_Id = Guid.Empty;
+                Guid? myCity_Id = Guid.Empty;
 
                 //string mystateName = txtSystemStateName.Text;
                 //string mystateCode = txtSystemStateCode.Text;
@@ -805,8 +817,8 @@ namespace TLGX_Consumer.controls.staticdata
                     int index = row.RowIndex;
                     myRow_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[0].ToString());
                     mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
-                    myCountry_Id = MappedCountry_ID;
-                    myCity_Id = MappedCity_ID;
+                    myCountry_Id = Guid.Parse(ddlSystemCountryName.SelectedItem.Value); ;
+                    myCity_Id = Guid.Parse(ddlSystemCityName.SelectedItem.Value); ;
 
                     if (myRow_Id != Guid.Empty)
                     {
@@ -822,7 +834,7 @@ namespace TLGX_Consumer.controls.staticdata
                         //    param.StateName = mystateName;
                         //if (mystateCode != null)
                         //    param.StateCode = mystateCode;
-                        param.Status = MatchedStatus;
+                        param.Status = ddlStatus.SelectedItem.Text;
                         param.Edit_Date = DateTime.Now;
                         param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                         RQ.Add(param);
@@ -835,8 +847,8 @@ namespace TLGX_Consumer.controls.staticdata
                 if (mapperSVc.UpdateCityMappingDatat(RQ))
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                    fillmappingdata();
-                    fillmatchingdata("");
+                    fillmappingdata(grdCityMaps.PageIndex);
+                    fillmatchingdata("", grdMatchingCity.PageIndex);
                     hdnFlag.Value = "false";
                 }
             }
@@ -851,10 +863,10 @@ namespace TLGX_Consumer.controls.staticdata
                 //txtAddCode.Text = txtCityCode.Text;
                 txtAddCityCName.Text = ddlSystemCountryName.SelectedItem.Text;
                 txtAddCityCCode.Text = txtSystemCountryCode.Text;
-                SimilarCountryName = ddlSystemCountryName.SelectedItem.Text;
-                SimilarCityName = lblCityName.Text;
-                SimilarPageIndex = 0;
-                fillsimilarcities();
+                //SimilarCountryName = ddlSystemCountryName.SelectedItem.Text;
+                //SimilarCityName = lblCityName.Text;
+                //SimilarPageIndex = 0;
+                fillsimilarcities(0, Guid.Parse(ddlSystemCountryName.SelectedValue), lblCityName.Text);
                 List<MDMSVC.DC_Master_State> statemaster = fillstatedata();
                 if (statemaster != null)
                 {
@@ -1010,7 +1022,7 @@ namespace TLGX_Consumer.controls.staticdata
                 }
             }
 
-            fillmappingdata();
+            fillmappingdata(grdCityMaps.PageIndex);
         }
 
         protected void btnMapAll_Click(object sender, EventArgs e)
@@ -1089,7 +1101,7 @@ namespace TLGX_Consumer.controls.staticdata
                     BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Records has been mapped successfully", BootstrapAlertType.Success);
                 }
             }
-            fillmappingdata();
+            fillmappingdata(grdCityMaps.PageIndex);
         }
 
         protected void grdCityMaps_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1237,13 +1249,23 @@ namespace TLGX_Consumer.controls.staticdata
         protected void grdMatchingCity_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             dvMsg.Style.Add(HtmlTextWriterStyle.Display, "none");
-            MatchedPageIndex = e.NewPageIndex;
-            fillmatchingdata("");
+            //MatchedPageIndex = e.NewPageIndex;
+            fillmatchingdata("", e.NewPageIndex);
         }
 
         protected void grdMatchingCity_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            dvMsg.Style.Add(HtmlTextWriterStyle.Display, "none");
+            if (e.CommandName == "SelectCityCode")
+            {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                BindHotelList(myRow_Id, 0, 5, grdvListOfHotel, "CITYCODE");
+            }
+            else if (e.CommandName == "SelectCityName")
+            {
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                BindHotelList(myRow_Id, 0, 5, grdvListOfHotel, "CITYNAME");
+            }
         }
 
         protected void grdMatchingCity_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -1258,12 +1280,12 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void ddlMatchingPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmatchingdata("");
+            fillmatchingdata("", grdMatchingCity.PageIndex);
         }
 
         protected void ddlMatchingStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmatchingdata("status");
+            fillmatchingdata("status", grdMatchingCity.PageIndex);
         }
 
         protected void ddlAddCityState_SelectedIndexChanged(object sender, EventArgs e)
@@ -1278,18 +1300,23 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void ddlSimilarProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillsimilarcities();
+            GridView grdSimilarProducts = (GridView)frmEditCityMap.FindControl("grdSimilarProducts");
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
+            Label lblCityName = (Label)frmEditCityMap.FindControl("lblCityName");
+            fillsimilarcities(grdSimilarProducts.PageIndex, Guid.Parse(ddlSystemCountryName.SelectedValue), lblCityName.Text);
         }
 
         protected void grdSimilarProducts_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            SimilarPageIndex = e.NewPageIndex;
-            fillsimilarcities();
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
+            Label lblCityName = (Label)frmEditCityMap.FindControl("lblCityName");
+            //SimilarPageIndex = e.NewPageIndex;
+            fillsimilarcities(e.NewPageIndex, Guid.Parse(ddlSystemCountryName.SelectedValue), lblCityName.Text);
         }
 
         protected void ckboxIsExactMatch_CheckedChanged(object sender, EventArgs e)
         {
-            fillmatchingdata("");
+            fillmatchingdata("", grdMatchingCity.PageIndex);
             dvMsg.Visible = false;
         }
 
@@ -1303,9 +1330,11 @@ namespace TLGX_Consumer.controls.staticdata
 
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
-            Guid? myCountry_Id = Guid.Empty; 
-            Guid? myCity_Id = Guid.Empty; 
+            Guid? myCountry_Id = Guid.Empty;
+            Guid? myCity_Id = Guid.Empty;
 
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
+            DropDownList ddlSystemCityName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCityName");
             //string mystateName = txtSystemStateName.Text;
             //string mystateCode = txtSystemStateCode.Text;
 
@@ -1323,8 +1352,8 @@ namespace TLGX_Consumer.controls.staticdata
                     int index = row.RowIndex;
                     myRow_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[0].ToString());
                     mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
-                    myCountry_Id = MappedCountry_ID;
-                    myCity_Id = MappedCity_ID;
+                    myCountry_Id = Guid.Parse(ddlSystemCountryName.SelectedItem.Value); ;
+                    myCity_Id = Guid.Parse(ddlSystemCityName.SelectedItem.Value); ;
                 }
                 if (myRow_Id != Guid.Empty)
                 {
@@ -1340,7 +1369,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //    param.StateName = mystateName;
                     //if (mystateCode != null)
                     //    param.StateCode = mystateCode;
-                    param.Status = MatchedStatus;
+                    param.Status = ddlStatus.SelectedItem.Text;
                     param.Edit_Date = DateTime.Now;
                     param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     RQ.Add(param);
@@ -1353,8 +1382,8 @@ namespace TLGX_Consumer.controls.staticdata
             if (mapperSVc.UpdateCityMappingDatat(RQ))
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                fillmappingdata();
-                fillmatchingdata("");
+                fillmappingdata(grdCityMaps.PageIndex);
+                fillmatchingdata("", grdMatchingCity.PageIndex);
                 hdnFlag.Value = "false";
             }
         }
@@ -1366,9 +1395,11 @@ namespace TLGX_Consumer.controls.staticdata
 
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
-            Guid? myCountry_Id = Guid.Empty; 
-            Guid? myCity_Id = Guid.Empty; 
+            Guid? myCountry_Id = Guid.Empty;
+            Guid? myCity_Id = Guid.Empty;
 
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCountryName");
+            DropDownList ddlSystemCityName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCityName");
             //string mystateName = txtSystemStateName.Text;
             //string mystateCode = txtSystemStateCode.Text;
 
@@ -1381,8 +1412,8 @@ namespace TLGX_Consumer.controls.staticdata
                 int index = row.RowIndex;
                 myRow_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[0].ToString());
                 mySupplier_Id = Guid.Parse(grdMatchingCity.DataKeys[index].Values[1].ToString());
-                myCountry_Id = MappedCountry_ID;
-                myCity_Id = MappedCity_ID;
+                myCountry_Id = Guid.Parse(ddlSystemCountryName.SelectedItem.Value); ;
+                myCity_Id = Guid.Parse(ddlSystemCityName.SelectedItem.Value); ;
 
                 if (myRow_Id != Guid.Empty)
                 {
@@ -1398,7 +1429,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //    param.StateName = mystateName;
                     //if (mystateCode != null)
                     //    param.StateCode = mystateCode;
-                    param.Status = MatchedStatus;
+                    param.Status = ddlStatus.SelectedItem.Text;
                     param.Edit_Date = DateTime.Now;
                     param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     RQ.Add(param);
@@ -1411,13 +1442,13 @@ namespace TLGX_Consumer.controls.staticdata
             if (mapperSVc.UpdateCityMappingDatat(RQ))
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                fillmappingdata();
-                fillmatchingdata("");
+                fillmappingdata(grdCityMaps.PageIndex);
+                fillmatchingdata("", grdMatchingCity.PageIndex);
                 hdnFlag.Value = "false";
             }
 
         }
 
-        
+
     }
 }

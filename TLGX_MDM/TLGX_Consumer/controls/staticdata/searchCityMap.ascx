@@ -19,9 +19,14 @@
     .HotelListrowPadding {
         padding: 5px;
     }
-    .HotelInfo{
-        height: 200px;
+
+    .HotelInfo {
+        height: 80px;
         overflow-y: scroll;
+    }
+
+    #modalHotelList {
+        z-index: 2000;
     }
 
     .controls {
@@ -526,19 +531,17 @@
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                     <ContentTemplate>
-                        <asp:GridView runat="server" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotel" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotel_PageIndexChanging"
+                        <asp:GridView ID="grdvListOfHotel" runat="server" EmptyDataText="No Data Found" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" AllowPaging="true" DataKeyNames="CityMapping_Id,GoFor" AllowCustomPaging="true" OnPageIndexChanging="grdvListOfHotel_PageIndexChanging"
                             CssClass="fullWidth HotelList table table-hover table-striped">
                             <Columns>
                                 <asp:TemplateField ItemStyle-CssClass="HotelListrowPadding">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblHotelName" runat="server" CssClass="lead" Text='<%# Bind("HotelName") %>'></asp:Label>
-                                        <br />
+                                        <strong><%# Eval("HotelName")%></strong> &nbsp;&nbsp;
                                         <%# Eval("Address")%>
                                     </ItemTemplate>
-
                                 </asp:TemplateField>
                             </Columns>
-                            <%--<PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />--%>
+                            <PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -702,7 +705,7 @@
                                                             Status
                                                             <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
                                                         </label>
-                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);"> 
+                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);">
                                                             <asp:ListItem Value="0">Select</asp:ListItem>
                                                         </asp:DropDownList>
 
@@ -722,9 +725,9 @@
                                         <div class="col-lg-3">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">Actions</div>
-                                                <div class="panel-body">
-                                                    <div class="form-group">
-                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);"/>
+                                                <div class="panel-body" style="padding-bottom: 0px;">
+                                                    <div class="form-group" style="padding-bottom: 5px;">
+                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);" />
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
                                                     </div>
                                                 </div>
@@ -733,19 +736,18 @@
                                                 <div class="panel-heading">Hotel List for Selected City</div>
                                                 <div class="panel-body">
                                                     <div class="form-group HotelInfo">
-                                                        <asp:GridView runat="server" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="false" AllowCustomPaging="false" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
+                                                        <asp:GridView runat="server" EmptyDataText="No Data Found" DataKeyNames="CityMapping_Id,GoFor" GridLines="None" ShowHeader="false" AutoGenerateColumns="false" ID="grdvListOfHotelOnSelection" AllowPaging="true" AllowCustomPaging="true" OnPageIndexChanging="grdvListOfHotelOnSelection_PageIndexChanging"
                                                             CssClass="fullWidth HotelList table table-hover table-striped">
                                                             <Columns>
                                                                 <asp:TemplateField ItemStyle-CssClass="HotelListrowPadding">
                                                                     <ItemTemplate>
-                                                                        <asp:Label ID="lblHotelName" runat="server" CssClass="lead" Text='<%# Bind("HotelName") %>'></asp:Label>
-                                                                        <br />
-                                                                        <%# Eval("Address")%>
+                                                                        <strong><%# Eval("HotelName")%></strong> &nbsp;&nbsp;
+                                                                           <%# Eval("Address")%>
                                                                     </ItemTemplate>
 
                                                                 </asp:TemplateField>
                                                             </Columns>
-                                                            <%--<PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />--%>
+                                                            <PagerStyle CssClass="pagination-ys" HorizontalAlign="right" />
                                                         </asp:GridView>
                                                     </div>
                                                 </div>
@@ -873,12 +875,12 @@
                         </asp:FormView>
                         <div class="row" runat="server" id="Div1">
                         </div>
-                        <div class="row" >
+                        <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <div id="dvMsg" runat="server" style="display: none;"></div>
                                 </div>
-                                <div class="panel-default" runat="server" id="dvMatchingRecords"> 
+                                <div class="panel-default" runat="server" id="dvMatchingRecords">
                                     <div class="panel-heading">
                                         <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                                     </div>
@@ -932,8 +934,20 @@
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <%-- <asp:BoundField DataField="StateNameWithCode" HeaderText="State Name (State Code)" />--%>
-                                                    <asp:BoundField DataField="CityCode" HeaderText="City Code" />
-                                                    <asp:BoundField DataField="CityName" HeaderText="City Name" />
+                                                    <asp:TemplateField HeaderText="City Code" ItemStyle-Width="5%">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnSelectCityCode" Text='<%# Bind("CityCode") %>' runat="server" CausesValidation="false" CommandName="SelectCityCode" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="City Name" ItemStyle-Width="5%">
+                                                        <ItemTemplate>
+                                                            <asp:LinkButton ID="btnSelectCityName" Text='<%# Bind("CityName") %>' runat="server" CausesValidation="false" CommandName="SelectCityName" CommandArgument='<%# Bind("CityMapping_Id") %>' OnClientClick="showSelectCityCodeModal();">
+                                                            </asp:LinkButton>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <%--<asp:BoundField DataField="CityCode" HeaderText="City Code" />
+                                                    <asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
                                                     <asp:BoundField DataField="MasterCountryCode" HeaderText="Country Code">
                                                         <HeaderStyle BackColor="Turquoise" />
                                                     </asp:BoundField>
