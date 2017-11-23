@@ -45,6 +45,34 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 fillMasterDropdowns();
             }
         }
+
+        private void BindDataSource()
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            
+            Label lblSuppCountry = (Label)frmActivityFlavour.FindControl("lblSuppCountry");
+            Label lblSuppCity = (Label)frmActivityFlavour.FindControl("lblSuppCity");
+            Label lblSuppProductType = (Label)frmActivityFlavour.FindControl("lblSuppProductType");
+            Label lblSuppProdNameSubType = (Label)frmActivityFlavour.FindControl("lblSuppProdNameSubType");
+            Label lblSuppSuitableFor = (Label)frmActivityFlavour.FindControl("lblSuppSuitableFor");
+            Label lblSuppPhysicalIntensity = (Label)frmActivityFlavour.FindControl("lblSuppPhysicalIntensity");
+            MDMSVC.DC_Activity_SupplierProductMapping_RQ _obj = new MDMSVC.DC_Activity_SupplierProductMapping_RQ();
+            _obj.Activity_ID = Activity_Flavour_Id;
+            var result = AccSvc.GetActivitySupplierProductMapping(_obj);
+            if (result.Count > 0 || result != null)
+            {
+                foreach(DC_Activity_SupplierProductMapping res in result)
+                {
+                    lblSuppCountry.Text = res.SupplierCountryName.ToString();
+                    lblSuppCity.Text = res.SupplierCityName.ToString();
+                    lblSuppProductType.Text = res.SupplierProductType.ToString();
+                    lblSuppProdNameSubType.Text = res.SupplierProductName.ToString();
+                    lblSuppSuitableFor.Text = res.SupplierType.ToString();
+                    lblSuppPhysicalIntensity.Text = res.SupplierType.ToString();
+                }
+            }
+            
+        }
         private void fillMasterDropdowns()
         {
             fillcoutries();
@@ -55,6 +83,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //fillDescriptions();
             fillSuitableFor();
             fillPhysicalIntensity();
+            BindDataSource();
         }
         private void fillcoutries()
         {
@@ -126,8 +155,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (ddlProdcategorySubType.SelectedItem.Text != "-Select-")
             {
                 var result = (from s in dropdownvalues
-                           where s.ParentAttributeValue_Id == new Guid(ddlProdcategorySubType.SelectedValue)
-                           select s);
+                              where s.ParentAttributeValue_Id == new Guid(ddlProdcategorySubType.SelectedValue)
+                              select s);
                 ddlProductType.DataSource = result;
                 ddlProductType.DataTextField = "AttributeValue";
                 ddlProductType.DataValueField = "MasterAttributeValue_Id";
@@ -238,18 +267,54 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             CheckBoxList chklstSuitableFor = (CheckBoxList)frmActivityFlavour.FindControl("chklstSuitableFor");
             var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "SuitableFor").MasterAttributeValues;
-            if(res!=null)
+            if (res != null)
             {
                 chklstSuitableFor.DataSource = res;
                 chklstSuitableFor.DataTextField = "AttributeValue";
                 chklstSuitableFor.DataValueField = "AttributeValue";
                 chklstSuitableFor.DataBind();
+
+                if (chkCheckboxSelection())
+                {
+                    MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
+                    RQ.Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                    var result = AccSvc.GetActivityClasificationAttributes(RQ);
+                    if (result != null)
+                    {
+                        var resCount = result.Count();
+                        for (int i = 0; i < resCount; i++)
+                        {
+                            if (!string.IsNullOrWhiteSpace(result[i].AttributeValue))
+                            {
+                                var SuitableFor = result[i].AttributeValue;
+                                for (int count = 0; count < chklstSuitableFor.Items.Count; count++)
+                                {
+                                    if (SuitableFor.ToLower().Contains(chklstSuitableFor.Items[count].ToString().ToLower()))
+                                    {
+                                        chklstSuitableFor.Items[count].Selected = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
             else
             {
                 chklstSuitableFor.DataSource = null;
                 chklstSuitableFor.DataBind();
             }
+        }
+        protected bool chkCheckboxSelection()
+        {
+            MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
+            RQ.Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            var result = AccSvc.GetActivityClasificationAttributes(RQ);
+            if (result != null)
+                return true;
+            else
+                return false;
         }
         private void fillPhysicalIntensity()
         {
@@ -261,6 +326,31 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 chklstPhysicalIntensity.DataTextField = "AttributeValue";
                 chklstPhysicalIntensity.DataValueField = "AttributeValue";
                 chklstPhysicalIntensity.DataBind();
+
+                if (chkCheckboxSelection())
+                {
+                    MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
+                    RQ.Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                    var result = AccSvc.GetActivityClasificationAttributes(RQ);
+                    if (result != null)
+                    {
+                        var resCount = result.Count();
+                        for (int i = 0; i < resCount; i++)
+                        {
+                            if (!string.IsNullOrWhiteSpace(result[i].AttributeValue))
+                            {
+                                var SuitableFor = result[i].AttributeValue;
+                                for (int count = 0; count < chklstPhysicalIntensity.Items.Count; count++)
+                                {
+                                    if (SuitableFor.ToLower().Contains(chklstPhysicalIntensity.Items[count].ToString().ToLower()))
+                                    {
+                                        chklstPhysicalIntensity.Items[count].Selected = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             else
             {
@@ -303,7 +393,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
                 DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
                 //key facts
-                
+
                 //General info
                 TextBox txtEventPlace = (TextBox)frmActivityFlavour.FindControl("txtEventPlace");
 
@@ -420,6 +510,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //    }
             //}
         }
-        
+
     }
 }

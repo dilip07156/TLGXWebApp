@@ -235,7 +235,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void EnableDisableValidation(RequiredFieldValidator rqfv)
         {
-            rqfv.Enabled = true;
+            if(rqfv!=null)
+                rqfv.Enabled = true;
         }
         private void fillfor(DropDownList ddl)
         {
@@ -385,6 +386,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     frmAddConfig.ChangeMode(FormViewMode.Edit);
                     frmAddConfig.DataSource = res;
                     frmAddConfig.DataBind();
+                    hdnFlag.Value = "false";
                     bool isFound = false;
                     if (res != null && res.Count > 0)
                     {
@@ -591,8 +593,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             if (res[0].AttributeType.ToLower() == "filter")
                             {
                                 dvValueForFilter.Style.Add(HtmlTextWriterStyle.Display, "block");
-                                rqfvddlAttributeValueFilter.Enabled = true;
-                                rqfvddlAttributeValue.Enabled = false;
+                                //rqfvddlAttributeValueFilter.Enabled = true;
+                                //rqfvddlAttributeValue.Enabled = false;
+                                //EnableDisableValidation(rqfvddlAttributeValueFilter);
 
                                 StringBuilder sbinnerhtml = new StringBuilder();
                                 string[] strArrayAttributeValue = strAttributeValue.Split(',');
