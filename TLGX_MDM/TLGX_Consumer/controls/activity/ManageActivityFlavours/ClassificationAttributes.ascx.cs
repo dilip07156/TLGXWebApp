@@ -254,7 +254,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
                 RQ.Activity_Flavour_Id = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
                 frmClassificationAttribute.ChangeMode(FormViewMode.Edit);
-                frmClassificationAttribute.DataSource = AccSvc.GetActivityClasificationAttributes(RQ);
+                var res = AccSvc.GetActivityClasificationAttributes(RQ);
+                frmClassificationAttribute.DataSource = res;
                 frmClassificationAttribute.DataBind();
 
                 MDMSVC.DC_Activity_ClassificationAttributes rowView = (MDMSVC.DC_Activity_ClassificationAttributes)frmClassificationAttribute.DataItem;
