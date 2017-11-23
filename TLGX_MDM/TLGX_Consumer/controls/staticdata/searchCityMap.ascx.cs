@@ -446,7 +446,7 @@ namespace TLGX_Consumer.controls.staticdata
                                             txtSystemCityCode.Text = resc.Code;
                                             break;
                                         }
-                                        
+
                                     }
                                 }
 
@@ -1056,15 +1056,19 @@ namespace TLGX_Consumer.controls.staticdata
                     param.Edit_Date = DateTime.Now;
                     param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     RQ.Add(param);
-                    res = mapperSVc.UpdateCityMappingDatat(RQ);
+                    //res = mapperSVc.UpdateCityMappingDatat(RQ);
                     myRow_Id = Guid.Empty;
                     mySupplier_Id = Guid.Empty;
                     myCountry_Id = Guid.Empty;
                     myCity_Id = Guid.Empty;
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been updated successfully", BootstrapAlertType.Success);
+                    //BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been updated successfully", BootstrapAlertType.Success);
                 }
             }
-
+            if (RQ.Count > 0)
+            {
+                res = mapperSVc.UpdateCityMappingDatat(RQ);
+                BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Record has been updated successfully", BootstrapAlertType.Success);
+            }
             fillmappingdata(grdCityMaps.PageIndex);
         }
 
@@ -1097,8 +1101,10 @@ namespace TLGX_Consumer.controls.staticdata
                 }
                 if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
-                    DropDownList ddl = row.Cells[11].Controls[1] as DropDownList;
-                    HiddenField hdnCityId = row.Cells[15].Controls[1] as HiddenField; //Set value from ajax changes
+                    //DropDownList ddl = row.Cells[11].Controls[1] as DropDownList;
+                    DropDownList ddl = row.Cells[12].Controls[1] as DropDownList;
+                    //HiddenField hdnCityId = row.Cells[15].Controls[1] as HiddenField; //Set value from ajax changes
+                    HiddenField hdnCityId = row.Cells[16].Controls[1] as HiddenField; //Set value from ajax changes
                     if (ddl.SelectedItem.Value != "0" || !string.IsNullOrWhiteSpace(hdnCityId.Value))
                     {
                         if (!string.IsNullOrWhiteSpace(hdnCityId.Value))
@@ -1136,13 +1142,18 @@ namespace TLGX_Consumer.controls.staticdata
                     param.Edit_Date = DateTime.Now;
                     param.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     RQ.Add(param);
-                    res = mapperSVc.UpdateCityMappingDatat(RQ);
+                    //res = mapperSVc.UpdateCityMappingDatat(RQ);
                     myRow_Id = Guid.Empty;
                     mySupplier_Id = Guid.Empty;
                     myCountry_Id = Guid.Empty;
                     myCity_Id = Guid.Empty;
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Records has been mapped successfully", BootstrapAlertType.Success);
+                    //BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Records has been mapped successfully", BootstrapAlertType.Success);
                 }
+            }
+            if (RQ.Count > 0)
+            {
+                res = mapperSVc.UpdateCityMappingDatat(RQ);
+                BootstrapAlert.BootstrapAlertMessage(dvMsg1, "Records has been mapped successfully", BootstrapAlertType.Success);
             }
             fillmappingdata(grdCityMaps.PageIndex);
         }
@@ -1423,12 +1434,15 @@ namespace TLGX_Consumer.controls.staticdata
                     myCity_Id = Guid.Empty;
                 }
             }
-            if (mapperSVc.UpdateCityMappingDatat(RQ))
+            if (RQ.Count > 0)
             {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                fillmappingdata(grdCityMaps.PageIndex);
-                fillmatchingdata("", grdMatchingCity.PageIndex);
-                hdnFlag.Value = "false";
+                if (mapperSVc.UpdateCityMappingDatat(RQ))
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
+                    fillmappingdata(grdCityMaps.PageIndex);
+                    fillmatchingdata("", grdMatchingCity.PageIndex);
+                    hdnFlag.Value = "false";
+                }
             }
         }
 
@@ -1484,12 +1498,15 @@ namespace TLGX_Consumer.controls.staticdata
                     myCity_Id = Guid.Empty;
                 }
             }
-            if (mapperSVc.UpdateCityMappingDatat(RQ))
+            if (RQ.Count > 0)
             {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
-                fillmappingdata(grdCityMaps.PageIndex);
-                fillmatchingdata("", grdMatchingCity.PageIndex);
-                hdnFlag.Value = "false";
+                if (mapperSVc.UpdateCityMappingDatat(RQ))
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
+                    fillmappingdata(grdCityMaps.PageIndex);
+                    fillmatchingdata("", grdMatchingCity.PageIndex);
+                    hdnFlag.Value = "false";
+                }
             }
 
         }
