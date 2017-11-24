@@ -435,7 +435,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
             else if (e.CommandName == "CancelProduct")
             {
-                TextBox txtProductName = (TextBox)this.Parent.Page.FindControl("txtProductName");
+                //TextBox txtProductName = (TextBox)this.Parent.Page.FindControl("txtProductName");
+                System.Web.UI.HtmlControls.HtmlTextArea txtProductName = (System.Web.UI.HtmlControls.HtmlTextArea)frmActivityFlavour.FindControl("txtProductName");
                 DropDownList ddlCountryTLGX = (DropDownList)this.Parent.Page.FindControl("ddlCountryTLGX");
             }
             //else if (e.CommandName == "FillListBox2")
