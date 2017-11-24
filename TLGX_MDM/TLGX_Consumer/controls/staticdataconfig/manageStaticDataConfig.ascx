@@ -438,7 +438,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
-                                                    <label class="control-label col-sm-4" for="txtAttributeName">Value</label>
+                                                    <label class="control-label col-sm-4" for="txtAttributeName">Value
+                                                        <%--<asp:RequiredFieldValidator ID="rqfvddlAttributeValuedll" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="ddlAttributeValue"
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Value field is required." Text="*" />
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValue" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="txtAttributeValue"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*"  Enabled="false"/>
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFrom" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="txtReplaceFrom"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValueTo" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="txtReplaceTo"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                        <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFilter" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="txtValueForFilter"
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />--%>
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                                                         <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />

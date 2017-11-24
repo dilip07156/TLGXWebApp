@@ -3,6 +3,13 @@
 <%--<%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityContactDetails.ascx" TagPrefix="uc1" TagName="ActivityContactDetails" %>--%>
 <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityStatus.ascx" TagPrefix="uc1" TagName="ActivityStatus" %>
 
+<style type="text/css">
+    .TextWidth
+    {
+        width:281px;
+        resize:none;
+    }
+</style>
 <script type="text/javascript">
     $(function () {
         $('[id*=lst]').multiselect({
@@ -15,7 +22,7 @@
         var countForProductType = 0;
         var countForProductSubType = 0;
     };
-    
+
     //For Multiple dropdown of Product Type
     function GetDdlProductType(value) {
         countForProductType = countForProductType + 1;
@@ -112,12 +119,12 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Product Name</div>
                         <div class="panel-body">
-                            <div class="form-group" style="display: none">
+                            <div class="form-group row" style="display: none">
                                 <div class="col-sm-8">
                                     <asp:TextBox ID="txtActivity_Flavour_Id" runat="server" Text='<%# Bind("Activity_Flavour_Id") %>' class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label-mand col-sm-4" for="txtProductName">
                                     Product Name
                                     <asp:RequiredFieldValidator ID="vtxtProductName" runat="server" ErrorMessage="Please enter Hotel Name" Text="*" ControlToValidate="txtProductName" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
@@ -126,20 +133,20 @@
                                     <asp:TextBox ID="txtProductName" runat="server" Text='<%# Bind("ProductName") %>' class="form-control" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-sm-4" for="txtShortDescription">
                                     Short Description
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtShortDescription" runat="server" Text="" CssClass="form-control" />
+                                    <asp:TextBox ID="txtShortDescription" runat="server" TextMode="MultiLine" CssClass="form-control TextWidth" />
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group row">
                                 <label class="control-label col-sm-4" for="txtLongDescription">
                                     Long Description
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtLongDescription" runat="server" TextMode="MultiLine" Text="" CssClass="form-control" />
+                                    <asp:TextBox ID="txtLongDescription" runat="server" TextMode="MultiLine" CssClass="form-control TextWidth" />
                                 </div>
                             </div>
                         </div>
@@ -148,58 +155,68 @@
             </div>
 
             <div class="col-lg-12 row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="panel panel-default">
                         <div class="panel-heading">TLGX Classification Mapping</div>
                         <div class="panel-body">
                             <asp:UpdatePanel ID="up2" runat="server">
                                 <ContentTemplate>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ddlCountry">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-2" for="ddlCountry">
                                             Country
                                         </label>
+                                        <asp:Label ID="lblSuppCountry" runat="server" class="control-label col-sm-2"></asp:Label>
                                         <div class="col-sm-8">
                                             <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ddlCity">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-2" for="ddlCity">
                                             City
                                         </label>
+                                        <asp:Label ID="lblSuppCity" runat="server" class="control-label col-sm-2"></asp:Label>
                                         <div class="col-sm-8">
                                             <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ddlProdCategory">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-2" for="ddlProdCategory">
                                             Category
                                     <asp:RequiredFieldValidator ID="vddlProdCategory" runat="server" ErrorMessage="Please select Product Category" Text="*" ControlToValidate="ddlProdCategory" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                         </label>
+                                        <div class="col-sm-2"></div>
                                         <div class="col-sm-8">
                                             <asp:DropDownList ID="ddlProdCategory" runat="server" CssClass="form-control" AppendDataBoundItems="true" Enabled="false">
                                                 <asp:ListItem>Activity</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ddlProdcategorySubType">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-2" for="ddlProdcategorySubType">
                                             Activity Category 
                                      <asp:RequiredFieldValidator ID="vddlProdcategorySubType" runat="server" ErrorMessage="Please select Activity Category" Text="*" ControlToValidate="ddlProdcategorySubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                         </label>
+                                        <div class="col-sm-2"></div>
                                         <div class="col-sm-8">
                                             <asp:DropDownList ID="ddlProdcategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProdcategorySubType_SelectedIndexChanged" AutoPostBack="true">
                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ddlProductType">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-2" for="ddlProductType">
                                             Product Type
                                         </label>
+                                        <asp:Label ID="lblSuppProductType" runat="server" class="control-label col-sm-2"></asp:Label>
                                         <div class="col-sm-8">
 
                                             <asp:DropDownList ID="ddlProductType" runat="server" CssClass="col-sm-8 form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged" AutoPostBack="true">
@@ -213,20 +230,15 @@
                                             <div id="DynamicControls">
                                                 <!--Dropdowns will be added here -->
                                             </div>
-
-
-                                            <%--<asp:ListBox ID="lstboxProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>
-                                        <asp:Button ID="btnAddToListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="FillListBox2" Text="v" />
-                                        <asp:Button ID="btnRemoveFromListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="EmptyListBox2" Text="^" />
-                                        <asp:Literal ID="lblmsg2" runat="server" />
-                                        <asp:ListBox ID="lstboxSelectedProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>--%>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-4" for="ddlProdNameSubType">
+
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-2" for="ddlProdNameSubType">
                                             Product SubType
                                     <asp:RequiredFieldValidator ID="vddlProdNameSubType" runat="server" ErrorMessage="Please select Product  Sub Type" Text="*" ControlToValidate="ddlProdNameSubType" InitialValue="0" CssClass="text-danger" ValidationGroup="ProductOverView"></asp:RequiredFieldValidator>
                                         </label>
+                                        <asp:Label ID="lblSuppProdNameSubType" runat="server" class="control-label col-sm-2"></asp:Label>
                                         <div class="col-sm-8">
                                             <asp:DropDownList ID="ddlProdNameSubType" runat="server" CssClass="col-sm-8 form-control" AppendDataBoundItems="true">
                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
@@ -240,26 +252,33 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <%-- Key Facts --%>
+                <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">Key Facts</div>
                         <div class="panel-body">
                             <div class="form-group row">
-                                <label class="control-label col-sm-6" for="chklstSuitableFor">Suitable For</label>
+                                <div class="col-sm-6">
+                                    <label class="control-label col-sm-4" for="chklstSuitableFor">Suitable For</label>
+                                    <asp:Label ID="lblSuppSuitableFor" runat="server" class="control-label col-sm-2"></asp:Label>
+                                </div>
                                 <div class="col-sm-6" style="padding: 0px 10px 0px 5px;">
                                     <asp:CheckBoxList ID="chklstSuitableFor" runat="server" RepeatLayout="Table" RepeatColumns="2" CssClass="row"></asp:CheckBoxList>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label class="control-label col-sm-6" for="chklstPhysicalIntensity">Physical Intensity</label>
-                                <div class="col-sm-6" style="padding: 0px 10px 0px 5px;">
+                                <div class="col-sm-6 row">
+                                    <label class="control-label col-sm-4" for="chklstPhysicalIntensity">Physical Intensity</label>
+                                    <asp:Label ID="lblSuppPhysicalIntensity" runat="server" class="control-label col-sm-2"></asp:Label>
+                                </div>
+                                <div class="col-sm-6 row" style="padding: 0px 10px 0px 5px;">
                                     <asp:CheckBoxList ID="chklstPhysicalIntensity" runat="server" RepeatLayout="Table" RepeatColumns="2" CssClass="row"></asp:CheckBoxList>
                                 </div>
                             </div>
@@ -276,5 +295,10 @@
     </EditItemTemplate>
 </asp:FormView>
 
+<%--<asp:ListBox ID="lstboxProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>
+    <asp:Button ID="btnAddToListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="FillListBox2" Text="v" />
+    <asp:Button ID="btnRemoveFromListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="EmptyListBox2" Text="^" />
+    <asp:Literal ID="lblmsg2" runat="server" />
+   <asp:ListBox ID="lstboxSelectedProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>--%>
 
 
