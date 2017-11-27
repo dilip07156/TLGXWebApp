@@ -10,34 +10,18 @@ using System.Data;
 using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.App_Code;
 using System.Web.UI.HtmlControls;
+using System.Diagnostics;
 
 namespace TLGX_Consumer.controls.staticdata
 {
     public partial class CityMap : System.Web.UI.UserControl
     {
         Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
-        public DataTable dtCountryMappingSearchResults = new DataTable();
-        public DataTable dtCountrMappingDetail = new DataTable();
+       
         lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         Controller.MappingSVCs mapperSVc = new Controller.MappingSVCs();
         Controller.MasterDataSVCs masterSVc = new Controller.MasterDataSVCs();
         MasterDataDAL masters = new MasterDataDAL();
-        //public static string AttributeOptionFor = "ProductSupplierMapping";
-        //public static string SortBy = "";
-        //public static string SortEx = "";
-        //public static int PageIndex = 0;
-        //public static string MatchedStatus = "";
-        //public static string MatchedCountryName = "";
-        //public static string MatchedCityName = "";
-        //public static int MatchedPageIndex = 0;
-        //public static int HotelListPageIndex = 0;
-        //public static int SimilarPageIndex = 0;
-        //public static string SimilarCountryName = "";
-        //public static string SimilarCityName = "";
-        //public int HotelListPageSize = 5;
-        //public static Guid SelectedMappedID = Guid.Empty;
-        //public static Guid? MappedCountry_ID = Guid.Empty;
-        //public static Guid? MappedCity_ID = Guid.Empty;
         public List<MDMSVC.DC_City_Master_DDL> _lstCityMaster = new List<DC_City_Master_DDL>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -96,31 +80,6 @@ namespace TLGX_Consumer.controls.staticdata
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
             ddlSupplierName.DataBind();
-        }
-
-
-        protected void grdCityMaps_DataBound(object sender, EventArgs e)
-        {
-            var myGridView = (GridView)sender;
-            if (myGridView.Controls.Count > 0)
-                AddSuperHeader(myGridView);
-        }
-
-
-        private static void AddSuperHeader(GridView gridView)
-        {
-            var myTable = (Table)gridView.Controls[0];
-            var myNewRow = new GridViewRow(0, -1, DataControlRowType.Header, DataControlRowState.Normal);
-            myNewRow.Cells.Add(MakeCell("Supplier", 5));
-            myNewRow.Cells.Add(MakeCell("System", 5));
-            myNewRow.Cells.Add(MakeCell("", 2));
-
-            myTable.Rows.AddAt(0, myNewRow);
-        }
-
-        private static TableHeaderCell MakeCell(string text = null, int span = 1)
-        {
-            return new TableHeaderCell() { ColumnSpan = span, Text = text ?? string.Empty, CssClass = "table-header" };
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -241,15 +200,11 @@ namespace TLGX_Consumer.controls.staticdata
             Guid selCity_ID = Guid.Empty;
             string selCity = "";
             if (ddlSupplierName.SelectedItem.Value != "0")
-                //selSupplier_ID = 
                 RQ.Supplier_Id = new Guid(ddlSupplierName.SelectedItem.Value);
             if (ddlMasterCountry.SelectedItem.Value != "0")
-                //selCountry_ID = 
                 RQ.Country_Id = new Guid(ddlMasterCountry.SelectedItem.Value);
             if (ddlCity.SelectedItem.Value != "0")
             {
-                //selCity_ID = 
-                //selCity = 
                 RQ.City_Id = new Guid(ddlCity.SelectedItem.Value);
                 RQ.CityName = ddlCity.SelectedItem.Text;
             }
@@ -261,9 +216,11 @@ namespace TLGX_Consumer.controls.staticdata
             RQ.PageNo = pPageIndex;
             RQ.SortBy = ("CountryName").Trim();
             RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
-
+       
             var res = mapperSVc.GetCityMappingData(RQ);
             grdCityMaps.DataSource = res;
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
             if (res != null)
             {
                 if (res.Count > 0)
@@ -285,6 +242,8 @@ namespace TLGX_Consumer.controls.staticdata
             grdCityMaps.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text); ;
             //grdCityMaps.DataKeyNames = new string[] {"CityMapping_Id"};
             grdCityMaps.DataBind();
+            timer.Stop();
+            var ElapsedTicks = timer.ElapsedMilliseconds;
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
@@ -407,12 +366,16 @@ namespace TLGX_Consumer.controls.staticdata
                     ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[8].Text)));
 
                     #region Fill City As per Selected Country
-                    var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
-                    ddlSystemCityName.Items.Clear();
-                    ddlSystemCityName.DataSource = res;
-                    ddlSystemCityName.DataValueField = "City_ID";
-                    ddlSystemCityName.DataTextField = "Name";
-                    ddlSystemCityName.DataBind();
+                    List<MDMSVC.DC_City_Master_DDL> res = new List<DC_City_Master_DDL>();
+                    if (ddlSystemCountryName.SelectedItem.Value != "0")
+                    {
+                        res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
+                        ddlSystemCityName.Items.Clear();
+                        ddlSystemCityName.DataSource = res;
+                        ddlSystemCityName.DataValueField = "City_ID";
+                        ddlSystemCityName.DataTextField = "Name";
+                        ddlSystemCityName.DataBind();
+                    }
                     ddlSystemCityName.Items.Insert(0, new ListItem("---ALL---", "0"));
                     //fillcities(ddlSystemCityName, ddlSystemCountryName);
                     #endregion
@@ -1239,7 +1202,7 @@ namespace TLGX_Consumer.controls.staticdata
 
         }
 
-        protected void grdCityMaps_DataBound1(object sender, EventArgs e)
+        protected void grdCityMaps_DataBound(object sender, EventArgs e)
         {
             var myGridView = (GridView)sender;
             //foreach (GridViewRow row in myGridView.Rows)

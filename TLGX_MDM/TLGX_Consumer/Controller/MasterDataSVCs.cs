@@ -139,6 +139,13 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_StatesGetByCountry"], countryid), typeof(List<DC_Master_State>), out result);
             return result as List<DC_Master_State>;
         }
+        public MDMSVC.DC_State_Master_DDL GetStateNameAndCode(MDMSVC.DC_State_Master_DDL_RQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_GetStateNameAndCode"], param, typeof(MDMSVC.DC_State_Master_DDL_RQ), typeof(MDMSVC.DC_State_Master_DDL), out result);
+            return (MDMSVC.DC_State_Master_DDL)result;
+
+        }
         #endregion
 
         #region Port

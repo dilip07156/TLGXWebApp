@@ -136,8 +136,8 @@ namespace TLGX_Consumer.controls.geography
             ddlState.DataTextField = "State_Name";
             ddlState.DataValueField = "State_Id";
             ddlState.DataBind();
-            if (CityState_id!=null)
-                ddlState.Items.FindByValue(Convert.ToString(CityState_id)).Selected = true; 
+            if (CityState_id != null)
+                ddlState.Items.FindByValue(Convert.ToString(CityState_id)).Selected = true;
             fillStateCode();
         }
         private void fillStateList()
@@ -164,11 +164,15 @@ namespace TLGX_Consumer.controls.geography
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
 
-            var result = _objMasterData.GetStatesByCountry(Convert.ToString(refCountryId));
-            int statecode = (ddlState.SelectedIndex) - 1;
-            if (statecode >= 0)
+            //var result = _objMasterData.GetStatesByCountry(Convert.ToString(refCountryId));
+            //int statecode = (ddlState.SelectedIndex) - 1;
+            var result = _objMasterData.GetStateNameAndCode(new MDMSVC.DC_State_Master_DDL_RQ
             {
-                txtStateCode.Text = result[statecode].State_Code.ToString();
+                State_ID = Convert.ToString(ddlState.SelectedValue)
+            });
+            if (result != null)
+            {
+                txtStateCode.Text = result.StateCode.ToString();
             }
         }
         protected void Page_Load(object sender, EventArgs e)

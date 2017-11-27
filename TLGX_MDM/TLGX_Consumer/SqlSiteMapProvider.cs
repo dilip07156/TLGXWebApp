@@ -114,14 +114,14 @@ namespace TLGX_Consumer
             //{
             // Return immediately if this method has been called before
 
-            //if (HttpContext.Current.Session["_root"] != null)
-            //{
-            //   _root = (SiteMapNode)(HttpContext.Current.Session["_root"]);
-            //}
-            //if ((_root != null))
-            //{
-            //    return _root;
-            //}
+            if (HttpContext.Current.Session["_root_" + System.Web.HttpContext.Current.User.Identity.Name] != null)
+            {
+                _root = (SiteMapNode)(HttpContext.Current.Session["_root_" + System.Web.HttpContext.Current.User.Identity.Name]);
+            }
+            if ((_root != null))
+            {
+                return _root;
+            }
             try
             {
                 this.Clear();
@@ -165,7 +165,7 @@ namespace TLGX_Consumer
             }
 
             // Return the root SiteMapNode
-            //HttpContext.Current.Session["_root"] = _root;
+            HttpContext.Current.Session["_root_" + System.Web.HttpContext.Current.User.Identity.Name] = _root;
             return _root;
             //}
         }
@@ -175,7 +175,7 @@ namespace TLGX_Consumer
             if (HttpContext.Current.Session["IsLogedIn"] != null)
             {
                 IsLogedIn = (bool)HttpContext.Current.Session["IsLogedIn"];
-                if (HttpContext.Current.Session["_root"] == null)
+                if (HttpContext.Current.Session["_root_" + System.Web.HttpContext.Current.User.Identity.Name] == null)
                 {
                     _root = null;
                 }
