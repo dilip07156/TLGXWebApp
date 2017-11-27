@@ -366,12 +366,16 @@ namespace TLGX_Consumer.controls.staticdata
                     ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[8].Text)));
 
                     #region Fill City As per Selected Country
-                    var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
-                    ddlSystemCityName.Items.Clear();
-                    ddlSystemCityName.DataSource = res;
-                    ddlSystemCityName.DataValueField = "City_ID";
-                    ddlSystemCityName.DataTextField = "Name";
-                    ddlSystemCityName.DataBind();
+                    List<MDMSVC.DC_City_Master_DDL> res = new List<DC_City_Master_DDL>();
+                    if (ddlSystemCountryName.SelectedItem.Value != "0")
+                    {
+                        res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
+                        ddlSystemCityName.Items.Clear();
+                        ddlSystemCityName.DataSource = res;
+                        ddlSystemCityName.DataValueField = "City_ID";
+                        ddlSystemCityName.DataTextField = "Name";
+                        ddlSystemCityName.DataBind();
+                    }
                     ddlSystemCityName.Items.Insert(0, new ListItem("---ALL---", "0"));
                     //fillcities(ddlSystemCityName, ddlSystemCountryName);
                     #endregion

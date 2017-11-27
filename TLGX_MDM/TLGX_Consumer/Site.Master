@@ -125,7 +125,7 @@
                                     <img src="/images/logo-cnk.gif" class="img-responsive" style="width: 50px; float: none" /></a></li>
                             </ul>
 
-                            <asp:SiteMapDataSource ID="AspNetSqlSiteMapProvider" runat="server" ShowStartingNode="false" />
+                            <asp:SiteMapDataSource ID="AspNetSqlSiteMapProvider" runat="server" ViewStateMode="Enabled" ShowStartingNode="false" />
                             <bootmenu:BootstrapMenu runat="server"
                                 DataSourceID="AspNetSqlSiteMapProvider"
                                 Orientation="Horizontal" />
