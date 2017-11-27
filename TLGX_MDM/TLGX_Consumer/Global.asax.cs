@@ -34,7 +34,7 @@ namespace TLGX_Consumer
         {
             //Global.IsLogedIn = false;
             //Global._root = null;
-            Session.Abandon();
+            //Session.Abandon();
              //Session["_root"] = null; 
              Session["IsLogedIn"] = true;
 
