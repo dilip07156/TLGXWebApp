@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Text;
 using System.Web.UI.WebControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.MDMSVC;
@@ -21,8 +22,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         MDMSVC.DC_Activity_Flavour_RQ RQParams = new MDMSVC.DC_Activity_Flavour_RQ();
         //List<string> listContents = new List<string>();
 
-        ArrayList arraylist1 = new ArrayList();
-        ArrayList arraylist2 = new ArrayList();
+        //ArrayList arraylist1 = new ArrayList();
+        //ArrayList arraylist2 = new ArrayList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -45,7 +46,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 fillMasterDropdowns();
             }
         }
-
         private void BindDataSource()
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
@@ -84,6 +84,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             fillSuitableFor();
             fillPhysicalIntensity();
             BindDataSource();
+            fillSession();
         }
         private void fillcoutries()
         {
@@ -205,6 +206,28 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //    lstboxProductType.DataBind();
             //}
         }
+
+        //private void fillProductTypeDynamic()
+        //{
+        //    StringBuilder sbinnerhtml = new StringBuilder();
+        //    string[] strArrayAttributeValue = strAttributeValue.Split(',');
+        //    sbinnerhtml.Append(dvValueForFilter.InnerHtml);
+        //    for (int i = 0; i < strArrayAttributeValue.Count(); i++)
+        //    {
+
+        //        //sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
+        //        //string strID = "txt" + i.ToString();
+        //        //sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control' value=" + strArrayAttributeValue[i] + " /></div>");
+        //        sbinnerhtml.Append("<div class='con'>");
+        //        string strID = "txt" + i.ToString();
+        //        // sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
+        //        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strArrayAttributeValue[i] + " />");
+        //        sbinnerhtml.Append("<div class='input-group-btn col-md-4' style='padding-left: 0px !important;'><button class='btn btn-default btnRemove' id='btnAddValue' type='button'>");
+        //        sbinnerhtml.Append("<i class='glyphicon glyphicon-minus'></i></button>");
+        //        sbinnerhtml.Append("</div>");
+        //        sbinnerhtml.Append("</div>");
+        //    }
+        //}
         private void fillproductsubtype()
         {
             DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
@@ -216,7 +239,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 var res = (from s in dropdownvalues
                            where s.ParentAttributeValue_Id == new Guid(ddlProductType.SelectedValue)
                            select s);
-                ddlProdNameSubType.DataSource = res;
+                var search = (from s in res
+                              orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                              select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.AttributeValue }).ToList();
+                ddlProdNameSubType.DataSource = search;
                 ddlProdNameSubType.DataTextField = "AttributeValue";
                 ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
                 ddlProdNameSubType.DataBind();
@@ -232,7 +258,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
             else
             {
-                ddlProdNameSubType.DataSource = dropdownvalues;
+
+                var search = (from s in dropdownvalues
+                              orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.AttributeValue }).ToList();
+                ddlProdNameSubType.DataSource = search;
                 ddlProdNameSubType.DataTextField = "AttributeValue";
                 ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
                 ddlProdNameSubType.DataBind();
@@ -356,6 +386,32 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 chklstPhysicalIntensity.DataSource = null;
                 chklstPhysicalIntensity.DataBind();
+            }
+        }
+        private void fillSession()
+        {
+            
+            try
+            {
+                DropDownList ddlSession = (DropDownList)frmActivityFlavour.FindControl("ddlSession");
+                ddlSession.Items.Clear();
+                ddlSession.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivitySession").MasterAttributeValues;
+                ddlSession.DataTextField = "AttributeValue";
+                ddlSession.DataValueField = "MasterAttributeValue_Id";
+                ddlSession.DataBind();
+                ddlSession.Items.Insert(0, new ListItem("-Select-", "0"));
+                //MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
+                //if (rowView != null)
+                //{
+                //    if (rowView.ProductCategorySubType != null)
+                //    {
+                //        ddlProdcategorySubType.SelectedIndex = ddlProdcategorySubType.Items.IndexOf(ddlProdcategorySubType.Items.FindByText(rowView.ProductCategorySubType.ToString()));
+                //    }
+                //}
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
