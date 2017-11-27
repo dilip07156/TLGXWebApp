@@ -166,8 +166,7 @@
         }, 3000);
     }
 
-    function ddlStatusChanged(ddl) {
-        debugger;
+    function ddlStatusChanged() {
         var ddlStatus = $('#MainContent_CityMap_frmEditCityMap_ddlStatus option:selected').html();
         var mySystemCountryName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCountryName");
         var mySystemCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCityName");
@@ -386,7 +385,7 @@
                                             <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <asp:Button ID="btnBulkMap" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Bulk Add City Mapping" OnClick="btnBulkMap_Click" />
+                                            <%--<asp:Button ID="btnBulkMap" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Bulk Add City Mapping" OnClick="btnBulkMap_Click" />--%>
 
                                         </div>
                                     </div>
@@ -430,7 +429,7 @@
                                 <asp:GridView ID="grdCityMaps" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                     EmptyDataText="No Static Updates" CssClass="table table-hover table-striped" DataKeyNames="CityMapping_Id,Supplier_Id,Country_Id,City_Id,Master_CityName"
                                     OnSelectedIndexChanged="grdCityMaps_SelectedIndexChanged" OnPageIndexChanging="grdCityMaps_PageIndexChanging" OnRowCommand="grdCityMaps_RowCommand"
-                                    OnRowDataBound="grdCityMaps_RowDataBound" OnDataBound="grdCityMaps_DataBound1">
+                                    OnRowDataBound="grdCityMaps_RowDataBound" OnDataBound="grdCityMaps_DataBound">
 
                                     <Columns>
                                         <asp:BoundField DataField="MapId" HeaderText="Map Id" />
@@ -705,7 +704,7 @@
                                                             Status
                                                             <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
                                                         </label>
-                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged(this);">
+                                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true" onchange="ddlStatusChanged();">
                                                             <asp:ListItem Value="0">Select</asp:ListItem>
                                                         </asp:DropDownList>
 
@@ -727,7 +726,7 @@
                                                 <div class="panel-heading">Actions</div>
                                                 <div class="panel-body" style="padding-bottom: 0px;">
                                                     <div class="form-group" style="padding-bottom: 5px;">
-                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged(ddlSystemCountryName);" />
+                                                        <asp:Button ID="btnSave" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" CommandName="Add" ValidationGroup="CityMappingPop" CausesValidation="true" OnClientClick="ddlStatusChanged();" />
                                                         <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" CommandName="Cancel" data-dismiss="modal" CausesValidation="false" />
                                                     </div>
                                                 </div>
