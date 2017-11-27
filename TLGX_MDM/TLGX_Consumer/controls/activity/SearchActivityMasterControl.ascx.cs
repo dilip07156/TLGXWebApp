@@ -145,8 +145,8 @@ namespace TLGX_Consumer.controls.activity
                     _objSearch.ProductType = ddlProductType.SelectedItem.Text;
                 if (ddlProductSubType.SelectedIndex != 0)
                     _objSearch.ProductNameSubType = ddlProductSubType.SelectedItem.Text;
-                //if(ddlProductCategoryType.SelectedValue!="0")
-                //    _objSearch.ProductCategory = ddlProductCategoryType.SelectedItem.Text;
+                if (!string.IsNullOrEmpty(txtProductName.Text))
+                    _objSearch.ProductName = txtProductName.Text;
                 //if(ddlProductSubType.SelectedValue!="0")
                 //    _objSearch.ProductSubType = ddlProductSubType.SelectedItem.Text;
                 //var res = masterSVc.GetActivityMaster(_objSearch);
