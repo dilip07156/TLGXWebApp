@@ -82,7 +82,7 @@ namespace TLGX_Consumer
             if (!IsPostBack)
             {
                 List<MDMSVC.DC_SiteMap> objSiteMap = GetData();
-                PopulateMenu(objSiteMap, 0, null);
+                PopulateMenu(objSiteMap);
             }
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);
             //if (!IsPostBack)
@@ -111,7 +111,7 @@ namespace TLGX_Consumer
                 throw;
             }
         }
-        private void PopulateMenu(List<MDMSVC.DC_SiteMap> objSiteMap, int parentMenuId, MenuItem parentMenuItem)
+        private void PopulateMenu(List<MDMSVC.DC_SiteMap> objSiteMap)
         {
             try
             {
@@ -164,7 +164,10 @@ namespace TLGX_Consumer
             }
             else
             {
-                title = SM.Title.Trim();
+                if (SM.ParentID != 1)
+                    title = SM.Title.Trim();
+                else
+                    title = SM.Title.Trim() + "<b class='caret'></b>";
             }
             string url = null;
             if (SM.Url == null)

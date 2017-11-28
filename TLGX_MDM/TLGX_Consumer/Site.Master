@@ -73,6 +73,18 @@
     <%--<link href="Content/cnk.css" rel="stylesheet" />--%>
 
     <style type="text/css">
+        /*.caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 2px;
+            vertical-align: middle;
+            border-top: 4px dashed;
+            border-top: 4px solid \9;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }*/
+
         #LoginViewForSiteMap_SiteMenu + div {
             clear: none !important;
         }
@@ -97,6 +109,11 @@
             border-top: 4px solid \9;
             border-right: 4px solid transparent;
             border-left: 4px solid transparent;*/
+        }
+
+        .selected, .selected:hover {
+            background-color: #A6A6A6 !important;
+            color: #fff;
         }
     </style>
 
@@ -157,6 +174,7 @@
 
                             <asp:Menu ID="SiteMenu" runat="server" Orientation="Horizontal">
                                 <StaticMenuStyle CssClass="nav navbar-nav" />
+                                <StaticSelectedStyle CssClass="selected" />
                             </asp:Menu>
 
 
@@ -229,7 +247,9 @@
         //}
         //var prm = Sys.WebForms.PageRequestManager.getInstance().add_endRequest(GetClosedAlert_dismissable);
 
-
+        $(document).ready(function () {
+            $(".level1").removeAttr("onclick");
+        });
     </script>
 </body>
 </html>
