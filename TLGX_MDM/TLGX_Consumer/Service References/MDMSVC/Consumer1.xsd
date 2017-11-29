@@ -1574,4 +1574,88 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Policy" nillable="true" type="tns:DC_Activity_Policy" />
+  <xs:complexType name="DC_Activity_DaysOfWeek_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_DaysOfOperation_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_DaysOfWeek_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavor_ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Session" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierDuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierEndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierSession" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierStartTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_DaysOfWeek_RQ" nillable="true" type="tns:DC_Activity_DaysOfWeek_RQ" />
+  <xs:complexType name="ArrayOfDC_Activity_DaysOfWeek_RS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_DaysOfWeek_RS" nillable="true" type="tns:DC_Activity_DaysOfWeek_RS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_DaysOfWeek_RS" nillable="true" type="tns:ArrayOfDC_Activity_DaysOfWeek_RS" />
+  <xs:complexType name="DC_Activity_DaysOfWeek_RS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_DaysOfOperation_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_DaysOfWeek_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavor_ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreateUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EditUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fri" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsOperatingDays" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mon" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sat" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Session" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sun" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupplierDuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierEndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierFrequency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierSession" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierStartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Thur" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Tues" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Wed" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_DaysOfWeek_RS" nillable="true" type="tns:DC_Activity_DaysOfWeek_RS" />
+  <xs:complexType name="DC_Activity_DaysOfWeek">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_DaysOfOperation_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_DaysOfWeek_ID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavor_ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreateUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EditUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fri" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mon" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Sat" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Session" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sun" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SupplierDuration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierEndTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierFrequency" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierSession" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierStartTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Thur" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Tues" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Wed" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_DaysOfWeek" nillable="true" type="tns:DC_Activity_DaysOfWeek" />
 </xs:schema>

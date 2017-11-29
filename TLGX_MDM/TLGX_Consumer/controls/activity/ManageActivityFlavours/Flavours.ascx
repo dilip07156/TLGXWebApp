@@ -49,15 +49,16 @@
         var countForStartTime = 0;
         var countForDuration = 0;
         var countForddlSession = 0;
+        var drpname;
     };
 
     //For Multiple dropdown of Product Type
     function GetDdlProductType(value) {
-        debugger;
+
         countForProductType = countForProductType + 1;
         var div = $("<div />");
 
-        var dropdown = $("<select />").attr("id", "DynamicDdlProductType" + countForProductType).attr("class", "col-sm-8 form-control");
+        var dropdown = $("<select />").attr("id", "DynamicDdlProductType_" + countForProductType).attr("runat", "server").attr("AutoPostBack", "true").attr("value", "0").attr("class", "col-sm-8 form-control").attr("OnselectedChange", "ddlProductType_SelectedIndexChanged");
         dropdown.val(value);
         div.append(dropdown);
 
@@ -68,17 +69,20 @@
         return div;
     }
     function AddDdlProductType() {
-        debugger;
+
         var div = GetDdlProductType("");
         var div2 = GetDdlProductSubType("");
         $("#DynamicDdlProductTypeControls").append(div);
-        //$("#DynamicDdlProdNameSubTypeControls").append(div2);
+        $("#DynamicDdlProdNameSubTypeControls").append(div2);
 
-        $('#DynamicDdlProductType' + countForProductType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProductType').html());
-        //$('#DynamicDdlProductSubType' + countForProductSubType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProdNameSubType').html());
+        $('#DynamicDdlProductType_' + countForProductType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProductType').html());
+        $('#DynamicDdlProductSubType_' + countForProductSubType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProdNameSubType').html());
     }
     function RemoveDdlProductType(button) {
+        debugger;
+        var val = $(button).val;
         $(button).parent().remove();
+        $("#RemoveProdSubtype_" + val).parent().remove();
     }
     $(function () {
         var values = eval('@Html.Raw(ViewBag.Values)');
@@ -89,6 +93,12 @@
             });
         }
     });
+
+    function GetSelectedTextValue(ddlFruits) {
+        var selectedText = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
+        var selectedValue = ddlFruits.value;
+        alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+    }
 
     function computeValueForProductType() {
         debugger;
@@ -111,11 +121,11 @@
         countForProductSubType = countForProductSubType + 1;
         var div = $("<div />");
 
-        var dropdown = $("<select />").attr("id", "DynamicDdlProductSubType" + countForProductSubType).attr("class", "col-sm-8 form-control");
+        var dropdown = $("<select />").attr("id", "DynamicDdlProductSubType_" + countForProductSubType).attr("class", "col-sm-8 form-control");
         dropdown.val(value);
         div.append(dropdown);
 
-        var button = $("<input />").attr("type", "button").attr("value", "-").attr("style", "font-weight:bold;").attr("class", "btn btn-default");
+        var button = $("<input />").attr("type", "button").attr("id", "RemoveProdSubtype_" + countForProductSubType).attr("value", "-").attr("style", "font-weight:bold;").attr("class", "btn btn-default").attr("style", "display:none");
         button.attr("onclick", "RemoveDdlProductSubType(this)");
         div.append(button);
 
@@ -125,10 +135,13 @@
         var div = GetDdlProductSubType("");
         $("#DynamicDdlProdNameSubTypeControls").append(div);
 
-        $('#DynamicDdlProductSubType' + countForProductSubType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProdNameSubType').html());
+        $('#DynamicDdlProductSubType_' + countForProductSubType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProdNameSubType').html());
     }
     function RemoveDdlProductSubType(button) {
+        debugger;
+        var val= $(button).val;
         $(button).parent().remove();
+        $("#RemoveProdSubtype_" + val).parent().remove();
     }
     $(function () {
         var values = eval('@Html.Raw(ViewBag.Values)');
@@ -141,7 +154,7 @@
     });
 
     function computeValueForProductSubType() {
-        debugger;
+
         //var Contain = "";
         //$("#DynamicDdlProdNameSubTypeControls select").each(function () {
         //    Contain += $(this).val() + ",";
@@ -154,7 +167,7 @@
     }
 
     function computeAll() {
-        debugger;
+
         computeValueForProductType()
         computeValueForProductSubType();
     }
@@ -164,7 +177,7 @@
 
     //For Adding Multiple DaysOfWeek
     function GetDaysOfWeekCount(value) {
-        debugger;
+
         countForDaysOfWeek = countForDaysOfWeek + 1;
         var div = $("<div />").attr("class", "form-group row");
         var div2 = $("<div />").attr("class", "col-xs-2");
@@ -181,7 +194,7 @@
 
         var sessionDDL = $("<select />").attr("id", "DemoddlSession" + countForddlSession).attr("class", "form-control");
         sessionDDL.val(value);
-        
+
 
         //var applicableOnChk = $("<input />").attr("type", "check").attr("class", "form-control");
 
@@ -204,7 +217,7 @@
         return div;
     }
     function AddDaysOfWeek() {
-        debugger;
+
         var div = GetDaysOfWeekCount("");
         //$('#txtStartTime' + countForStartTime).html($('#MainContent_Flavours_frmActivityFlavour_txtStartTime').html());
         //$('#txtDuration' + countForDuration).html($('#MainContent_Flavours_frmActivityFlavour_txtDuration').html());
@@ -212,7 +225,7 @@
 
     }
     function RemovedDaysOfWeek(removeButton) {
-        debugger;
+
         $(removeButton).parent().parent().remove();
     }
     $(function () {
@@ -379,9 +392,9 @@
                                                 <asp:DropDownList ID="ddlProdNameSubType" runat="server" CssClass="col-sm-8 form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0">-Select-</asp:ListItem>
                                                 </asp:DropDownList>
-                                                <button class="btn btn-default" id="btnAddProdSubType" type="button" onclick="AddDdlProductSubType()">
+                                                <%--<button class="btn btn-default" id="btnAddProdSubType" type="button" onclick="AddDdlProductSubType()">
                                                     <i class="glyphicon glyphicon-plus"></i>
-                                                </button>
+                                                </button>--%>
                                                 <br />
                                                 <!--Dropdowns will be added here -->
                                             </div>
@@ -482,7 +495,11 @@
                                         </div>
                                         <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
                                         <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+                                        <div id="dvFrm" runat="server">
+                                            <!--From Date Textboxes Added here-->
+                                        </div>
                                     </div>
+
                                 </div>
 
                                 <div class="col-sm-4">
@@ -501,6 +518,9 @@
                                         </div>
                                         <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
                                         <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                        <div id="dvTo" runat="server">
+                                            <!--To Date Textboxes Added here-->
+                                        </div>
                                     </div>
                                 </div>
 
@@ -610,7 +630,7 @@
                                                         <label class="control-label">
                                                             M
                                                             <div>
-                                                                <input type="checkbox" id="chkMonday" runat="server" name="Monday">
+                                                                <input type="checkbox" id="chkMon" runat="server" name="Monday">
                                                             </div>
                                                         </label>
                                                         <label class="control-label">

@@ -2558,6 +2558,24 @@
   <wsdl:message name="IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q282="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q282:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityDaysOfWeek_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityDaysOfWeek" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityDaysOfWeek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityDaysOfWeekResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q283="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q283:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityDaysOfWeek_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityDaysOfWeek" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityDaysOfWeek_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityDaysOfWeekResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q284="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q284:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:message name="IConsumer_UploadFile_InputMessage">
     <wsdl:part name="parameters" element="tns:UploadFile" />
   </wsdl:message>
@@ -2565,7 +2583,7 @@
     <wsdl:part name="parameters" element="tns:UploadFileResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFile_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q283="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q283:DC_ErrorStatus" />
+    <wsdl:part xmlns:q285="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q285:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_TransferFileInChunks_InputMessage">
     <wsdl:part name="parameters" element="tns:TransferFileInChunks" />
@@ -2574,7 +2592,7 @@
     <wsdl:part name="parameters" element="tns:TransferFileInChunksResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_TransferFileInChunks_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q284="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q284:DC_ErrorStatus" />
+    <wsdl:part xmlns:q286="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q286:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFileInChunks_InputMessage">
     <wsdl:part name="parameters" element="tns:UploadFileInChunks" />
@@ -2583,7 +2601,7 @@
     <wsdl:part name="parameters" element="tns:UploadFileInChunksResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFileInChunks_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q285="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q285:DC_ErrorStatus" />
+    <wsdl:part xmlns:q287="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q287:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_DeleteFile_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFile" />
@@ -4001,6 +4019,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicy" message="tns:IConsumer_AddUpdateActivityPolicy_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyResponse" message="tns:IConsumer_AddUpdateActivityPolicy_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActivityDaysOfWeek">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityDaysOfWeek" message="tns:IConsumer_GetActivityDaysOfWeek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityDaysOfWeekResponse" message="tns:IConsumer_GetActivityDaysOfWeek_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityDaysOfWeekDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityDaysOfWeek">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDaysOfWeek" message="tns:IConsumer_AddUpdateActivityDaysOfWeek_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDaysOfWeekResponse" message="tns:IConsumer_AddUpdateActivityDaysOfWeek_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDaysOfWeekDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UploadFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/UploadFile" message="tns:IConsumer_UploadFile_InputMessage" />

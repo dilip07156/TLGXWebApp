@@ -285,5 +285,20 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+
+        #region "Activity Policy"
+        public List<DC_Activity_DaysOfWeek_RS> GetActivityDaysOfWeek(DC_Activity_DaysOfWeek_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityDaysOfWeek"], RQParams, typeof(MDMSVC.DC_Activity_DaysOfWeek_RQ), typeof(List<DC_Activity_DaysOfWeek_RS>), out result);
+            return result as List<DC_Activity_DaysOfWeek_RS>;
+        }
+        public DC_Message AddUpdateActivityDaysOfWeek(MDMSVC.DC_Activity_DaysOfWeek RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityDaysOfWeek"], RQParams, typeof(MDMSVC.DC_Activity_DaysOfWeek), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }
