@@ -101,11 +101,13 @@ namespace TLGX_Consumer
             try
             {
                 Controller.AccomodationSVC AccSvc = new Controller.AccomodationSVC();
+                if (String.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+                    Response.Redirect("/Account/Login",true);
                 List<MDMSVC.DC_SiteMap> objSiteMap = AccSvc.GetSiteMapByUserRole(System.Web.HttpContext.Current.User.Identity.Name);
                 objSiteMap = (from s in objSiteMap where s.ID != 1 orderby s.ID select s).ToList();
                 return objSiteMap;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;

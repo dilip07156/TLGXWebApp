@@ -73,17 +73,15 @@
     <%--<link href="Content/cnk.css" rel="stylesheet" />--%>
 
     <style type="text/css">
-        /*.caret {
-            display: inline-block;
-            width: 0;
-            height: 0;
-            margin-left: 2px;
-            vertical-align: middle;
-            border-top: 4px dashed;
-            border-top: 4px solid \9;
-            border-right: 4px solid transparent;
-            border-left: 4px solid transparent;
-        }*/
+        .main_menu, .main_menu:hover {
+            width: 100px;
+            background-color: #fff;
+            color: #333;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            margin-right: 5px;
+        }
 
         #LoginViewForSiteMap_SiteMenu + div {
             clear: none !important;
@@ -91,11 +89,17 @@
 
         #LoginViewForSiteMap_SiteMenu ul li ul li a {
             display: block;
-            padding: 3px 10px;
+            padding: 5px 15px;
+            top: 100%;
+            margin: 2px 0 0;
             clear: both;
             font-weight: normal;
+            font-size: 10px;
             line-height: 1.42857143;
+            background-clip: padding-box;
             white-space: nowrap;
+            color: #000;
+            min-width: 160px
         }
 
         #LoginViewForSiteMap_SiteMenu ul li ul {
@@ -105,10 +109,7 @@
 
         #LoginViewForSiteMap_SiteMenu ul li a.popout {
             background: transparent !important;
-            /*border-top: 4px dashed;
-            border-top: 4px solid \9;
-            border-right: 4px solid transparent;
-            border-left: 4px solid transparent;*/
+            padding: 15px;
         }
 
         .selected, .selected:hover {
@@ -174,7 +175,6 @@
 
                             <asp:Menu ID="SiteMenu" runat="server" Orientation="Horizontal">
                                 <StaticMenuStyle CssClass="nav navbar-nav" />
-                                <StaticSelectedStyle CssClass="selected" />
                             </asp:Menu>
 
 
