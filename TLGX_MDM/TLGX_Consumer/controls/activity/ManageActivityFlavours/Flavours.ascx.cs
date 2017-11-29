@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Text;
 using System.Web.UI.WebControls;
+using System.Web.UI.HtmlControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
@@ -49,7 +50,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         private void BindDataSource()
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-            
+
             Label lblSuppCountry = (Label)frmActivityFlavour.FindControl("lblSuppCountry");
             Label lblSuppCity = (Label)frmActivityFlavour.FindControl("lblSuppCity");
             Label lblSuppProductType = (Label)frmActivityFlavour.FindControl("lblSuppProductType");
@@ -61,7 +62,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             var result = AccSvc.GetActivitySupplierProductMapping(_obj);
             if (result.Count > 0 || result != null)
             {
-                foreach(DC_Activity_SupplierProductMapping res in result)
+                foreach (DC_Activity_SupplierProductMapping res in result)
                 {
                     lblSuppCountry.Text = res.SupplierCountryName.ToString();
                     lblSuppCity.Text = res.SupplierCityName.ToString();
@@ -71,7 +72,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     lblSuppPhysicalIntensity.Text = res.SupplierType.ToString();
                 }
             }
-            
+
         }
         private void fillMasterDropdowns()
         {
@@ -84,7 +85,113 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             fillSuitableFor();
             fillPhysicalIntensity();
             BindDataSource();
-            fillSession();
+            fillDDLSession();
+            fillDurationSession();
+            fillDaysOfWeek();
+        }
+        private void fillDurationSession()
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+
+            Label lblSuppStartTime = (Label)frmActivityFlavour.FindControl("lblSuppStartTime");
+            Label lblSuppDuration = (Label)frmActivityFlavour.FindControl("lblSuppDuration");
+            Label lblSuppOperatingDays = (Label)frmActivityFlavour.FindControl("lblSuppOperatingDays");
+            CheckBox chkSpecificOperatingDays = (CheckBox)frmActivityFlavour.FindControl("chkSpecificOperatingDays");
+            //Control dvFrm = (Control)frmActivityFlavour.FindControl("dvFrm");
+            HtmlGenericControl dvFrm = (HtmlGenericControl)frmActivityFlavour.FindControl("dvFrm");
+            HtmlGenericControl dvTo = (HtmlGenericControl)frmActivityFlavour.FindControl("dvTo");
+            TextBox txtFrom = (TextBox)frmActivityFlavour.FindControl("txtFrom");
+            TextBox txtTo = (TextBox)frmActivityFlavour.FindControl("txtTo");
+
+            MDMSVC.DC_Activity_DaysOfWeek_RQ obj = new DC_Activity_DaysOfWeek_RQ();
+            obj.Activity_Flavor_ID = Activity_Flavour_Id;
+            var result = AccSvc.GetActivityDaysOfWeek(obj);
+
+            if (result.Count > 0 || result != null)
+            {
+                int currentval = 0;
+                foreach (DC_Activity_DaysOfWeek_RS res in result)
+                {
+                    currentval = currentval + 1;
+                    lblSuppStartTime.Text = res.SupplierStartTime.ToString();
+                    lblSuppDuration.Text = res.SupplierDuration.ToString();
+                    if (res.IsOperatingDays != null && res.IsOperatingDays == true)
+                    {
+                        lblSuppOperatingDays.Text = Convert.ToString(res.IsOperatingDays);
+                        chkSpecificOperatingDays.Checked = true;
+                    }
+                    else
+                    {
+                        lblSuppOperatingDays.Text = Convert.ToString(res.IsOperatingDays);
+                        chkSpecificOperatingDays.Checked = false;
+                    }
+                    if (res.FromDate != null)
+                    {
+                        string strFrmDate = Convert.ToString(res.FromDate);
+                        StringBuilder sbinnerhtml = new StringBuilder();
+                        string strID = "txtFrm" + currentval.ToString();
+                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strFrmDate + " />");
+                        sbinnerhtml.Append(dvFrm.InnerHtml);
+                        dvFrm.InnerHtml = Convert.ToString(sbinnerhtml);
+                    }
+                    if (res.ToDate != null)
+                    {
+                        string strToDate = Convert.ToString(res.ToDate);
+                        StringBuilder sbinnerhtml = new StringBuilder();
+                        string strID = "txtTo" + currentval.ToString();
+                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strToDate + " />");
+                        sbinnerhtml.Append(dvTo.InnerHtml);
+                        dvTo.InnerHtml = Convert.ToString(sbinnerhtml);
+                    }
+                }
+            }
+        }
+        private void fillDaysOfWeek()
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+
+            TextBox txtStartTime = (TextBox)frmActivityFlavour.FindControl("txtStartTime");
+            TextBox txtDuration = (TextBox)frmActivityFlavour.FindControl("txtDuration");
+            DropDownList ddlSession = (DropDownList)frmActivityFlavour.FindControl("ddlSession");
+            HtmlInputCheckBox chkMon = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkMon");
+            HtmlInputCheckBox chkTues = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkTues");
+            HtmlInputCheckBox chkWed = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkWed");
+            HtmlInputCheckBox chkThurs = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkThurs");
+            HtmlInputCheckBox chkFri = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkFri");
+            HtmlInputCheckBox chkSat = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkSat");
+            HtmlInputCheckBox chkSun = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkSun");
+            HtmlInputRadioButton rdoDaysOfWeek = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
+            HtmlInputRadioButton rdoMonthly = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
+            HtmlInputRadioButton rdoSpecificDates = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
+
+            MDMSVC.DC_Activity_DaysOfWeek_RQ obj = new DC_Activity_DaysOfWeek_RQ();
+            obj.Activity_Flavor_ID = Activity_Flavour_Id;
+            var result = AccSvc.GetActivityDaysOfWeek(obj);
+
+            if (result != null || result.Count > 0)
+            {
+                foreach (DC_Activity_DaysOfWeek_RS res in result)
+                {
+                    txtStartTime.Text = res.StartTime;
+                    txtDuration.Text = res.Duration;
+                    chkSun.Checked = res.Sun != null ? Convert.ToBoolean(res.Sun) : false;
+                    chkMon.Checked = res.Sun != null ? Convert.ToBoolean(res.Mon) : false;
+                    chkTues.Checked = res.Sun != null ? Convert.ToBoolean(res.Tues) : false;
+                    chkWed.Checked = res.Sun != null ? Convert.ToBoolean(res.Wed) : false;
+                    chkThurs.Checked = res.Sun != null ? Convert.ToBoolean(res.Thur) : false;
+                    chkFri.Checked = res.Sun != null ? Convert.ToBoolean(res.Fri) : false;
+                    chkSat.Checked = res.Sun != null ? Convert.ToBoolean(res.Sat) : false;
+                    
+                    ddlSession.SelectedIndex = ddlSession.Items.IndexOf(ddlSession.Items.FindByText(res.Session.ToString()));
+                    if (res.SupplierFrequency != null)
+                    {
+                        if (res.SupplierFrequency.ToLower().ToString() == "daily")
+                        {
+                            rdoDaysOfWeek.Checked = true;
+                        }
+                    }
+                }
+            }
         }
         private void fillcoutries()
         {
@@ -261,7 +368,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                 var search = (from s in dropdownvalues
                               orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
-                select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.AttributeValue }).ToList();
+                              select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.AttributeValue }).ToList();
                 ddlProdNameSubType.DataSource = search;
                 ddlProdNameSubType.DataTextField = "AttributeValue";
                 ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
@@ -388,9 +495,9 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 chklstPhysicalIntensity.DataBind();
             }
         }
-        private void fillSession()
+        private void fillDDLSession()
         {
-            
+
             try
             {
                 DropDownList ddlSession = (DropDownList)frmActivityFlavour.FindControl("ddlSession");
