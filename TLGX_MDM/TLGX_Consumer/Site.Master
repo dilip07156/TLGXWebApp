@@ -71,6 +71,52 @@
     <link href="Scripts/Styles/Pagging.css" rel="stylesheet" />
     <link href="Scripts/Styles/ProgressBarStyles.css" rel="stylesheet" />
     <%--<link href="Content/cnk.css" rel="stylesheet" />--%>
+
+    <style type="text/css">
+        /*.caret {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 2px;
+            vertical-align: middle;
+            border-top: 4px dashed;
+            border-top: 4px solid \9;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;
+        }*/
+
+        #LoginViewForSiteMap_SiteMenu + div {
+            clear: none !important;
+        }
+
+        #LoginViewForSiteMap_SiteMenu ul li ul li a {
+            display: block;
+            padding: 3px 10px;
+            clear: both;
+            font-weight: normal;
+            line-height: 1.42857143;
+            white-space: nowrap;
+        }
+
+        #LoginViewForSiteMap_SiteMenu ul li ul {
+            z-index: 1000;
+            background-color: #ffffff;
+        }
+
+        #LoginViewForSiteMap_SiteMenu ul li a.popout {
+            background: transparent !important;
+            /*border-top: 4px dashed;
+            border-top: 4px solid \9;
+            border-right: 4px solid transparent;
+            border-left: 4px solid transparent;*/
+        }
+
+        .selected, .selected:hover {
+            background-color: #A6A6A6 !important;
+            color: #fff;
+        }
+    </style>
+
 </head>
 <body>
     <form runat="server">
@@ -112,7 +158,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
 
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <asp:LoginView runat="server" ID="LoginViewForSiteMap" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Login">Log in</a></li>
@@ -120,34 +166,27 @@
                         </AnonymousTemplate>
 
                         <LoggedInTemplate>
+
                             <ul class="nav nav-nav navbar-left">
                                 <li><a href="/" class="navbar-brand">
                                     <img src="/images/logo-cnk.gif" class="img-responsive" style="width: 50px; float: none" /></a></li>
                             </ul>
 
-                            <asp:SiteMapDataSource ID="AspNetSqlSiteMapProvider" runat="server" ViewStateMode="Enabled" ShowStartingNode="false" />
+                            <asp:Menu ID="SiteMenu" runat="server" Orientation="Horizontal">
+                                <StaticMenuStyle CssClass="nav navbar-nav" />
+                                <StaticSelectedStyle CssClass="selected" />
+                            </asp:Menu>
+
+
+                            <%--   <asp:SiteMapDataSource ID="AspNetSqlSiteMapProvider" runat="server" ViewStateMode ="Enabled" ShowStartingNode="false" />
                             <bootmenu:BootstrapMenu runat="server"
                                 DataSourceID="AspNetSqlSiteMapProvider"
-                                Orientation="Horizontal" />
+                                Orientation="Horizontal" />--%>
+
+
 
                             <!-- this is the right hand side for everyone currently hard coded for demo-->
                             <ul class="nav navbar-nav navbar-right">
-
-                                <%--<li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-flag"></span><span class="label label-danger">2</span>
-                                        <span class="caret"></span>
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Item 1</a></li>
-                                        <li><a href="#">Item 2</a></li>
-                                    </ul>
-
-                                </li>--%>
-
-
-
-
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>
                                         <span class="caret"></span></a>
@@ -159,8 +198,9 @@
                                         </li>
                                     </ul>
                                 </li>
-
                             </ul>
+
+
                         </LoggedInTemplate>
                     </asp:LoginView>
                 </div>
@@ -206,6 +246,10 @@
         //    }
         //}
         //var prm = Sys.WebForms.PageRequestManager.getInstance().add_endRequest(GetClosedAlert_dismissable);
+
+        $(document).ready(function () {
+            $(".level1").removeAttr("onclick");
+        });
     </script>
 </body>
 </html>
