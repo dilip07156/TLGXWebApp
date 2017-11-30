@@ -79,10 +79,7 @@
         $('#DynamicDdlProductSubType_' + countForProductSubType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProdNameSubType').html());
     }
     function RemoveDdlProductType(button) {
-        debugger;
-        var val = $(button).val;
         $(button).parent().remove();
-        $("#RemoveProdSubtype_" + val).parent().remove();
     }
     $(function () {
         var values = eval('@Html.Raw(ViewBag.Values)');
@@ -93,28 +90,6 @@
             });
         }
     });
-
-    function GetSelectedTextValue(ddlFruits) {
-        var selectedText = ddlFruits.options[ddlFruits.selectedIndex].innerHTML;
-        var selectedValue = ddlFruits.value;
-        alert("Selected Text: " + selectedText + " Value: " + selectedValue);
-    }
-
-    function computeValueForProductType() {
-        debugger;
-        //var Contain = "";
-        //$("#DynamicDdlProductTypeControls select").each(function () {
-        //    Contain += $(this).val() + ",";
-        //});
-        var selects = [];
-        $("#DynamicDdlProductTypeControls select").each(function () {
-            selects.push($(this).val());
-        });
-        //$('#hdnValueWithCommaSepratedForProductType').val(Contain);
-    }
-
-
-
 
     //For Multiple dropdown of Product Sub Type
     function GetDdlProductSubType(value) {
@@ -138,10 +113,10 @@
         $('#DynamicDdlProductSubType_' + countForProductSubType).html($('#MainContent_Flavours_frmActivityFlavour_ddlProdNameSubType').html());
     }
     function RemoveDdlProductSubType(button) {
-        debugger;
-        var val= $(button).val;
+        //debugger;
+        //var val= $(button).val;
         $(button).parent().remove();
-        $("#RemoveProdSubtype_" + val).parent().remove();
+        //$("#RemoveProdSubtype_" + val).parent().remove();
     }
     $(function () {
         var values = eval('@Html.Raw(ViewBag.Values)');
@@ -152,27 +127,6 @@
             });
         }
     });
-
-    function computeValueForProductSubType() {
-
-        //var Contain = "";
-        //$("#DynamicDdlProdNameSubTypeControls select").each(function () {
-        //    Contain += $(this).val() + ",";
-        //});
-        var selects = [];
-        $("#DynamicDdlProdNameSubTypeControls select").each(function () {
-            selects.push($(this).val());
-        });
-        //$('#hdnValueWithCommaSepratedForProductSubType').val(Contain);
-    }
-
-    function computeAll() {
-
-        computeValueForProductType()
-        computeValueForProductSubType();
-    }
-
-
 
 
     //For Adding Multiple DaysOfWeek
@@ -401,8 +355,6 @@
                                         </div>
                                     </div>
 
-                                    <button id="btndemo" runat="server" onclick="computeAll();" class="btn btn-default">Click</button>
-
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>
@@ -550,24 +502,6 @@
                                 </div>
                             </div>
 
-                            <%--<div class="form-group">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Days Of Week</div>
-                                    <div class="panel-body">
-                                        <div class="form-group row">
-                                            <div class="col-xs-2 row">
-                                                <br />
-                                                <label class="control-label col-sm-12" for="lblStartTime"></label>
-                                                <div>
-                                                    <asp:TextBox ID="txtHrs" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>
-                                                    <asp:TextBox ID="txtMin" runat="server" CssClass="form-control col-sm-6"></asp:TextBox>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>--%>
-
                             <div class="form-group">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Days Of Week</div>
@@ -597,6 +531,7 @@
                                                     <cc1:MaskedEditExtender ID="txtStartTime_MaskEditExtender" runat="server" AcceptAMPM="false"
                                                         Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtStartTime"
                                                         UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                                    <div id="dvStartTime" runat="server"></div>
                                                 </div>
 
                                                 <div class="col-xs-3">
@@ -609,6 +544,7 @@
                                                     <cc1:MaskedEditExtender ID="txtDuration_MaskEditExtender" runat="server" AcceptAMPM="false"
                                                         Mask="99:99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtDuration"
                                                         UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                                    <div id="dvDuration" runat="server"></div>
                                                 </div>
 
                                                 <div class="col-xs-3">
@@ -618,6 +554,7 @@
                                                     <%--<asp:TextBox ID="txtSession" runat="server" CssClass="form-control"></asp:TextBox>
                                                 <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers" TargetControlID="txtSession" />--%>
                                                     <asp:DropDownList ID="ddlSession" runat="server" CssClass="form-control"></asp:DropDownList>
+                                                    <div id="dvddlSession" runat="server"></div>
                                                 </div>
 
                                                 <div class="col-xs-3">
@@ -682,14 +619,8 @@
                                                 </div>
 
                                                 <div class="col-xs-1">
-                                                    <%--<asp:TextBox ID="txtSession" runat="server" CssClass="form-control"></asp:TextBox>
-                                                <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender3" runat="server" FilterType="Numbers" TargetControlID="txtSession" />--%>
-                                                    <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="form-control"></asp:TextBox>--%>
-                                                    <%--<asp:Button ID="btnAddSession" runat="server" CssClass="btn btn-default form-control button5" Text="+" />--%>
                                                     </br>
                                                     <button type="button" class="btn btn-default btn-circle" onclick="AddDaysOfWeek();"><i class="glyphicon glyphicon-plus"></i></button>
-                                                    <%--<div></br></div>--%>
-                                                    <%--<button type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-minus"></i></button>--%>
                                                 </div>
 
                                             </div>
@@ -697,6 +628,102 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <div class="form-group row">
+                                <asp:Repeater ID="rptDaysOfWeek" runat="server" OnItemCommand="rptDaysOfWeek_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table>
+                                            <tr class="form-group row">
+                                                <td>
+                                                    <asp:Label ID="lblStartTime" runat="server" Text="Start Time" CssClass="control-label-mand"></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblDuration" runat="server" Text="Duration" CssClass="control-label-mand"></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblSession" runat="server" Text="Session" CssClass="control-label-mand"></asp:Label></td>
+                                                <td>
+                                                    <asp:Label ID="lblApplicableOn" runat="server" Text="Applicable On" CssClass="control-label-mand"></asp:Label></td>
+                                            </tr>
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr class="form-group row">
+                                            <td class="col-xs-2">
+                                                <asp:TextBox ID="txtStartTime" runat="server" CssClass="form-control" Text='<%#Bind("StartTime") %>'></asp:TextBox>
+                                                <cc1:MaskedEditExtender ID="txtStartTime_MaskEditExtender" runat="server" AcceptAMPM="false"
+                                                    Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtStartTime"
+                                                    UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                            </td>
+                                            <td class="col-xs-3">
+                                                <asp:TextBox ID="txtDuration" runat="server" CssClass="form-control" Text='<%#Bind("Duration") %>'></asp:TextBox>
+                                                <cc1:MaskedEditExtender ID="txtDuration_MaskEditExtender" runat="server" AcceptAMPM="false"
+                                                    Mask="99:99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtDuration"
+                                                    UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                            </td>
+                                            <td class="col-xs-3">
+                                                <asp:TextBox ID="txtSession" runat="server" CssClass="form-control" Text='<%#Bind("Session") %>'></asp:TextBox>
+                                                <asp:DropDownList ID="ddlSession_" runat="server"></asp:DropDownList>
+                                            </td>
+                                            <td class="col-xs-3">
+                                                <div>
+                                                    <label class="control-label">
+                                                        M
+                                                            <div>
+                                                                <input type="checkbox" id="chkMon" runat="server" name="Monday" checked='<%# Eval("Mon") %>'>
+                                                            </div>
+                                                    </label>
+                                                    <label class="control-label">
+                                                        T
+                                                            <div>
+                                                                <input type="checkbox" id="chkTues" runat="server" name="Tuesday" checked='<%# Eval("Tues") %>'>
+                                                            </div>
+                                                    </label>
+                                                    <label class="control-label">
+                                                        W
+                                                            <div>
+                                                                <input type="checkbox" id="chkWed" runat="server" name="Wednesday" checked='<%# Eval("Wed") %>'>
+                                                            </div>
+                                                    </label>
+                                                    <label class="control-label">
+                                                        TH
+                                                            <div>
+                                                                <input type="checkbox" id="chkThurs" runat="server" name="Thursday" checked='<%# Eval("Thur") %>'>
+                                                            </div>
+                                                    </label>
+                                                    <label class="control-label">
+                                                        F
+                                                            <div>
+                                                                <input type="checkbox" id="chkFri" runat="server" name="Friday" checked='<%# Eval("Fri") %>'>
+                                                            </div>
+                                                    </label>
+                                                    <label class="control-label">
+                                                        S
+                                                            <div>
+                                                                <input type="checkbox" id="chkSat" runat="server" name="Saturday" checked='<%# Eval("Sat") %>'>
+                                                            </div>
+                                                    </label>
+                                                    <label class="control-label">
+                                                        SU
+                                                            <div>
+                                                                <input type="checkbox" id="chkSun" runat="server" name="Sunday" checked='<%# Eval("Sun") %>'>
+                                                            </div>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                            <td class="col-xs-1"></br>
+                                                    <button type="button" class="btn btn-default btn-circle" onclick="AddDaysOfWeek();"><i class="glyphicon glyphicon-plus"></i></button>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        <tr>
+                                            <td></td>
+                                        </tr>
+                                        </table>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </div>
+
 
                         </div>
                     </div>
@@ -706,11 +733,5 @@
         </div>
     </EditItemTemplate>
 </asp:FormView>
-
-<%--<asp:ListBox ID="lstboxProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>
-    <asp:Button ID="btnAddToListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="FillListBox2" Text="v" />
-    <asp:Button ID="btnRemoveFromListBox" runat="server" CssClass="btn btn-primary btn-sm" CommandName="EmptyListBox2" Text="^" />
-    <asp:Literal ID="lblmsg2" runat="server" />
-   <asp:ListBox ID="lstboxSelectedProductType" runat="server" CssClass="form-control" SelectionMode="Multiple"></asp:ListBox>--%>
 
 

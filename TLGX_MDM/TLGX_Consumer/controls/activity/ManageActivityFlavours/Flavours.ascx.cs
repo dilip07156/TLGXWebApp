@@ -57,6 +57,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             Label lblSuppProdNameSubType = (Label)frmActivityFlavour.FindControl("lblSuppProdNameSubType");
             Label lblSuppSuitableFor = (Label)frmActivityFlavour.FindControl("lblSuppSuitableFor");
             Label lblSuppPhysicalIntensity = (Label)frmActivityFlavour.FindControl("lblSuppPhysicalIntensity");
+            
             MDMSVC.DC_Activity_SupplierProductMapping_RQ _obj = new MDMSVC.DC_Activity_SupplierProductMapping_RQ();
             _obj.Activity_ID = Activity_Flavour_Id;
             var result = AccSvc.GetActivitySupplierProductMapping(_obj);
@@ -129,8 +130,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     {
                         string strFrmDate = Convert.ToString(res.FromDate);
                         StringBuilder sbinnerhtml = new StringBuilder();
-                        string strID = "txtFrm" + currentval.ToString();
-                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strFrmDate + " />");
+                        string strID = "txtFrm_" + currentval.ToString();
+                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8' value=" + strFrmDate + " />");
                         sbinnerhtml.Append(dvFrm.InnerHtml);
                         dvFrm.InnerHtml = Convert.ToString(sbinnerhtml);
                     }
@@ -138,8 +139,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     {
                         string strToDate = Convert.ToString(res.ToDate);
                         StringBuilder sbinnerhtml = new StringBuilder();
-                        string strID = "txtTo" + currentval.ToString();
-                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strToDate + " />");
+                        string strID = "txtTo_" + currentval.ToString();
+                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8' value=" + strToDate + " />");
                         sbinnerhtml.Append(dvTo.InnerHtml);
                         dvTo.InnerHtml = Convert.ToString(sbinnerhtml);
                     }
@@ -163,17 +164,29 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             HtmlInputRadioButton rdoDaysOfWeek = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
             HtmlInputRadioButton rdoMonthly = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
             HtmlInputRadioButton rdoSpecificDates = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
+            HtmlGenericControl dvStartTime = (HtmlGenericControl)frmActivityFlavour.FindControl("dvStartTime");
+            HtmlGenericControl dvDuration = (HtmlGenericControl)frmActivityFlavour.FindControl("dvDuration");
+            HtmlGenericControl dvddlSession = (HtmlGenericControl)frmActivityFlavour.FindControl("dvddlSession");
+            Repeater rptDaysOfWeek = (Repeater)frmActivityFlavour.FindControl("rptDaysOfWeek");
 
             MDMSVC.DC_Activity_DaysOfWeek_RQ obj = new DC_Activity_DaysOfWeek_RQ();
             obj.Activity_Flavor_ID = Activity_Flavour_Id;
             var result = AccSvc.GetActivityDaysOfWeek(obj);
 
+            var resultdataforsession = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivitySession").MasterAttributeValues;
+
             if (result != null || result.Count > 0)
             {
+                rptDaysOfWeek.DataSource = result;
+                rptDaysOfWeek.DataBind();
+                
+                int currentval = 0;
                 foreach (DC_Activity_DaysOfWeek_RS res in result)
                 {
-                    txtStartTime.Text = res.StartTime;
-                    txtDuration.Text = res.Duration;
+                    
+
+                    //txtStartTime.Text = res.StartTime;
+                    //txtDuration.Text = res.Duration;
                     chkSun.Checked = res.Sun != null ? Convert.ToBoolean(res.Sun) : false;
                     chkMon.Checked = res.Sun != null ? Convert.ToBoolean(res.Mon) : false;
                     chkTues.Checked = res.Sun != null ? Convert.ToBoolean(res.Tues) : false;
@@ -181,7 +194,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     chkThurs.Checked = res.Sun != null ? Convert.ToBoolean(res.Thur) : false;
                     chkFri.Checked = res.Sun != null ? Convert.ToBoolean(res.Fri) : false;
                     chkSat.Checked = res.Sun != null ? Convert.ToBoolean(res.Sat) : false;
-                    
+
                     ddlSession.SelectedIndex = ddlSession.Items.IndexOf(ddlSession.Items.FindByText(res.Session.ToString()));
                     if (res.SupplierFrequency != null)
                     {
@@ -189,6 +202,43 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         {
                             rdoDaysOfWeek.Checked = true;
                         }
+                    }
+
+                    for (int i = 1; i < result.Count; i++)
+                    {
+                        currentval = currentval + 1;
+
+                        string strStartTime = Convert.ToString(res.StartTime);
+                        StringBuilder sbinnerhtmlForStartTime = new StringBuilder();
+                        string strIDForStartTime = "txtStartTime_" + currentval.ToString();
+                        sbinnerhtmlForStartTime.Append("<input type='text' id=" + strIDForStartTime + " class='form-control col-md-8' value=" + strStartTime + " />");
+                        sbinnerhtmlForStartTime.Append(dvStartTime.InnerHtml);
+                        dvStartTime.InnerHtml = Convert.ToString(sbinnerhtmlForStartTime);
+
+                        string strDuration = Convert.ToString(res.Duration);
+                        StringBuilder sbinnerhtmlForDuration = new StringBuilder();
+                        string strIDForDuration = "txtDuration_" + currentval.ToString();
+                        sbinnerhtmlForDuration.Append("<input type='text' id=" + strIDForDuration + " class='form-control col-md-8' value=" + strDuration + " />");
+                        sbinnerhtmlForDuration.Append(dvDuration.InnerHtml);
+                        dvDuration.InnerHtml = Convert.ToString(sbinnerhtmlForDuration);
+
+                        string strDDLSession = Convert.ToString(res.Session);
+                        StringBuilder sbinnerhtmlForDDLSession = new StringBuilder();
+                        string strIDForDDLSession = "ddlSession_" + currentval.ToString();
+                        sbinnerhtmlForDDLSession.Append("<select id=" + strIDForDDLSession + " class='form-control col-md-8' value=" + strDDLSession + " />");
+                        sbinnerhtmlForDDLSession.Append(dvddlSession.InnerHtml);
+
+                        //dvddlSession.InnerHtml = Convert.ToString(sbinnerhtmlForDDLSession);
+
+                        //DropDownList ddlstrIDForDDLSession = (DropDownList)dvddlSession.FindControl(strIDForDDLSession);
+                        //if (ddlstrIDForDDLSession != null)
+                        //{
+                        //    ddlstrIDForDDLSession.DataSource = resultdataforsession;
+                        //    ddlstrIDForDDLSession.DataTextField = "AttributeValue";
+                        //    ddlstrIDForDDLSession.DataValueField = "MasterAttributeValue_Id";
+                        //    ddlSession.DataBind();
+                        //    ddlSession.Items.Insert(0, new ListItem("-Select-", "0"));
+                        //}
                     }
                 }
             }
@@ -602,78 +652,16 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 System.Web.UI.HtmlControls.HtmlTextArea txtProductName = (System.Web.UI.HtmlControls.HtmlTextArea)frmActivityFlavour.FindControl("txtProductName");
                 DropDownList ddlCountryTLGX = (DropDownList)this.Parent.Page.FindControl("ddlCountryTLGX");
             }
-            //else if (e.CommandName == "FillListBox2")
-            //{
-            //    ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-            //    ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
-            //    Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
-
-            //    lblmsg2.Visible = false;
-            //    if (lstboxProductType.SelectedIndex >= 0)
-            //    {
-            //        for (int i = 0; i < lstboxProductType.Items.Count; i++)
-            //        {
-            //            if (lstboxProductType.Items[i].Selected)
-            //            {
-            //                if (!arraylist1.Contains(lstboxProductType.Items[i]))
-            //                {
-            //                    arraylist1.Add(lstboxProductType.Items[i]);
-            //                }
-            //            }
-            //        }
-            //        for (int i = 0; i < arraylist1.Count; i++)
-            //        {
-            //            if (!lstboxSelectedProductType.Items.Contains(((ListItem)arraylist1[i])))
-            //            {
-            //                lstboxSelectedProductType.Items.Add(((ListItem)arraylist1[i]));
-            //            }
-            //            lstboxProductType.Items.Remove(((ListItem)arraylist1[i]));
-            //        }
-            //        lstboxProductType.SelectedIndex = -1;
-            //    }
-            //    else
-            //    {
-            //        lblmsg2.Visible = true;
-            //        lblmsg2.Text = "Please select atleast Product Type to move";
-            //    }
-
-            //}
-            //else if (e.CommandName == "EmptyListBox2")
-            //{
-            //    ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
-            //    ListBox lstboxSelectedProductType = (ListBox)frmActivityFlavour.FindControl("lstboxSelectedProductType");
-            //    Literal lblmsg2 = (Literal)frmActivityFlavour.FindControl("lblmsg2");
-
-            //    lblmsg2.Visible = false;
-            //    if (lstboxSelectedProductType.SelectedIndex >= 0)
-            //    {
-            //        for (int i = 0; i < lstboxSelectedProductType.Items.Count; i++)
-            //        {
-            //            if (lstboxSelectedProductType.Items[i].Selected)
-            //            {
-            //                if (!arraylist2.Contains(lstboxSelectedProductType.Items[i]))
-            //                {
-            //                    arraylist2.Add(lstboxSelectedProductType.Items[i]);
-            //                }
-            //            }
-            //        }
-            //        for (int i = 0; i < arraylist2.Count; i++)
-            //        {
-            //            if (!lstboxProductType.Items.Contains(((ListItem)arraylist2[i])))
-            //            {
-            //                lstboxProductType.Items.Add(((ListItem)arraylist2[i]));
-            //            }
-            //            lstboxSelectedProductType.Items.Remove(((ListItem)arraylist2[i]));
-            //        }
-            //        lstboxProductType.SelectedIndex = -1;
-            //    }
-            //    else
-            //    {
-            //        lblmsg2.Visible = true;
-            //        lblmsg2.Text = "Please select atleast Product Type remove";
-            //    }
-            //}
         }
+        protected void rptDaysOfWeek_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            var resultdataforsession = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivitySession").MasterAttributeValues;
+            DropDownList ddlSession_ = (DropDownList)e.Item.FindControl("ddlSession_");
+            ddlSession_.DataSource = resultdataforsession;
+            ddlSession_.DataTextField = "AttributeValue";
+            ddlSession_.DataValueField = "MasterAttributeValue_Id";
+            ddlSession_.DataBind();
 
+        }
     }
 }
