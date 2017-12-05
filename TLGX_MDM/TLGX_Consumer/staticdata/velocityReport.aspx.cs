@@ -58,12 +58,12 @@ namespace TLGX_Consumer.staticdata
             if (IsPageLoad)
             {
                 DateTime d = DateTime.Today;
-                d = d.AddDays(-7);
+                d = d.AddDays(-1);
                 parm.Fromdate = d; //.ToString("dd-MMM-yyyy");
-                parm.ToDate = DateTime.Today;
-                DateTime todayy = DateTime.Today;
-                txtFrom.Text = ((d.Day.ToString().PadLeft(2,'0'))+"/"+ (d.Month.ToString().PadLeft(2, '0'))+"/"+d.Year) ;
-                txtTo.Text = ((todayy.Day.ToString().PadLeft(2, '0')) + "/" + (todayy.Month.ToString().PadLeft(2, '0')) + "/" + todayy.Year);
+                parm.ToDate = d;
+                var formateddate= ((d.Day.ToString().PadLeft(2, '0')) + "/" + (d.Month.ToString().PadLeft(2, '0')) + "/" + d.Year);
+                txtFrom.Text = formateddate;
+                txtTo.Text = formateddate;
             }
             else
             {
