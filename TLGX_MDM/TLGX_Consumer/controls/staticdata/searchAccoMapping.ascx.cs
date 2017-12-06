@@ -338,6 +338,7 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.SupplierCityName = txtSuppCity.Text;
                 if (!string.IsNullOrWhiteSpace(txtSuppProduct.Text))
                     RQ.SupplierProductName = txtSuppProduct.Text;
+                RQ.Source = "SYSTEMDATA";
             }
             else
             {
