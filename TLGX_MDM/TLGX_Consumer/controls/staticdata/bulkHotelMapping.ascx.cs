@@ -116,6 +116,7 @@ namespace TLGX_Consumer.controls.staticdata
                                 RQAPM.TelephoneNumber = telephones[0].Telephone;
                         }
                     }
+                    RQAPM.StatusExcept = "MAPPED";
                 }
             }
             else if (searchSource == "manual")
@@ -134,9 +135,9 @@ namespace TLGX_Consumer.controls.staticdata
                 //    RQAPM.CityName = ddlSupCity.SelectedItem.Text;
                 if (!string.IsNullOrEmpty(txtSupTelephone.Text))
                     RQAPM.TelephoneNumber = txtSupTelephone.Text;
+                RQAPM.Status = "UNMAPPED";
             }
             RQAPM.Source = "SYSTEMDATA";
-            RQAPM.StatusExcept = "MAPPED";
             RQAPM.PageNo = pageIndex;
             RQAPM.PageSize = Convert.ToInt32(ddlPageSizeSupDump.SelectedItem.Text);
             var mappingresult = MapSvc.GetProductMappingData(RQAPM);
