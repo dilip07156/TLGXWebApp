@@ -15,10 +15,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
     {
         Controller.MasterDataSVCs mastersvc = new Controller.MasterDataSVCs();
         Controller.MappingSVCs mappingsvc = new Controller.MappingSVCs();
-        public static string AttributeOptionFor = "MappingFileConfig";
-        public static string AttributeOptionForType = "MappingConfigAttributeTypes";
-        public static int PageIndex = 0;
-        public static Guid Config_Id = Guid.Empty;
+        //public static string AttributeOptionFor = "MappingFileConfig";
+        //public static string AttributeOptionForType = "MappingConfigAttributeTypes";
+        //public static int PageIndex = 0;
+        //public static Guid Config_Id = Guid.Empty;
         public static Guid SelectedSupplierImportAttributeValue_Id = Guid.Empty;
 
         public static bool IsMapping = false;
@@ -38,19 +38,19 @@ namespace TLGX_Consumer.controls.staticdataconfig
         {
             if (!IsPostBack)
             {
-                PageIndex = 0;
-                Config_Id = new Guid(Request.QueryString["Config_Id"]);
+                //PageIndex = 0;
+                Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
                 fillsearchcontrolmasters();
                 if (Config_Id != Guid.Empty)
                 {
-                    fillconfigdata();
-                    fillmappingattributes();
-                    fillattributeFilters();
+                    fillconfigdata(Config_Id);
+                    fillmappingattributes(0, Config_Id);
+                    fillattributeFilters(Config_Id);
                 }
             }
         }
 
-        private void fillattributeFilters()
+        private void fillattributeFilters(Guid Config_Id)
         {
             if (Config_Id != Guid.Empty)
             {
@@ -77,7 +77,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
-        private void setNoOfColumnsForMapType()
+        private void setNoOfColumnsForMapType(int PageIndex,Guid Config_Id)
         {
             if (Config_Id != Guid.Empty)
             {
@@ -122,7 +122,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
-        private void fillmappingattributes()
+        private void fillmappingattributes(int PageIndex, Guid Config_Id)
         {
             if (Config_Id != Guid.Empty)
             {
@@ -193,7 +193,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
-        private void fillconfigdata()
+        private void fillconfigdata(Guid Config_Id)
         {
             if (Config_Id != Guid.Empty)
             {
@@ -240,7 +240,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
         }
         private void fillfor(DropDownList ddl)
         {
-            fillattributes(AttributeOptionFor, "AttributeFor", ddl);
+            fillattributes("MappingFileConfig", "AttributeFor", ddl);
         }
 
         private void fillstatus(DropDownList ddl)
@@ -250,7 +250,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void fillentity(DropDownList ddl)
         {
-            fillattributes(AttributeOptionFor, "MappingEntity", ddl);
+            fillattributes("MappingFileConfig", "MappingEntity", ddl);
         }
 
         private void fillsuppliers(DropDownList ddl)
@@ -324,6 +324,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
             if (Config_Id != Guid.Empty)
             {
                 List<MDMSVC.DC_SupplierImportAttributes> _lst = new List<MDMSVC.DC_SupplierImportAttributes>();
@@ -347,7 +348,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Warning);
                     // PageIndex = 0;
-                    fillmappingattributes();
+                    fillmappingattributes(0, Config_Id);
                 }
                 else
                 {
@@ -364,6 +365,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void grdMappingAttrValues_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
             try
             {
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
@@ -434,7 +436,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         #endregion //END Priority
                         //Fill & Set attribute Type
                         #region Attribute Type
-                        fillattributes(AttributeOptionForType, "AttributeType", ddlAttributeType);
+                        fillattributes("MappingConfigAttributeTypes", "AttributeType", ddlAttributeType);
                         ddlAttributeType.SelectedIndex = ddlAttributeType.Items.IndexOf(ddlAttributeType.Items.FindByText(res[0].AttributeType));
 
                         #endregion //End Attribute Type
@@ -559,7 +561,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             else
                             {
                                 MDMSVC.DC_MasterAttribute RQAttr = new MDMSVC.DC_MasterAttribute();
-                                RQAttr.MasterFor = AttributeOptionForType;
+                                RQAttr.MasterFor = "MappingConfigAttributeTypes";
                                 RQAttr.Name = "AttributeValues";
                                 RQAttr.ParentAttributeValue_Id = Guid.Parse(ddlAttributeType.SelectedItem.Value);
                                 var resvalues = mastersvc.GetAllAttributeAndValues(RQAttr);
@@ -782,8 +784,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                     else
                     {
-                        fillconfigdata();
-                        fillmappingattributes();
+                        fillconfigdata(Config_Id);
+                        fillmappingattributes(0, Config_Id);
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been deleted successfully", BootstrapAlertType.Success);
                     }
@@ -817,8 +819,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                     else
                     {
-                        fillconfigdata();
-                        fillmappingattributes();
+                        fillconfigdata(Config_Id);
+                        fillmappingattributes(0, Config_Id);
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Mapping Attribute Value has been retrived successfully", BootstrapAlertType.Success);
                     }
@@ -831,8 +833,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void grdMappingAttrValues_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            PageIndex = e.NewPageIndex;
-            fillmappingattributes();
+            //PageIndex = e.NewPageIndex;
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+            fillmappingattributes(e.NewPageIndex, Config_Id);
             dvMsg.Visible = false;
         }
 
@@ -850,6 +853,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void frmAddConfig_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+
             DropDownList ddlAttributeType = (DropDownList)frmAddConfig.FindControl("ddlAttributeType");
             DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
 
@@ -959,8 +964,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     hdnFlag.Value = "true";
                     //PageIndex = 0;
-                    fillmappingattributes();
-                    fillattributeFilters();
+                    fillmappingattributes(0,Config_Id);
+                    fillattributeFilters(Config_Id);
                     dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
                 }
@@ -1049,8 +1054,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 else //if (dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
                     hdnFlag.Value = "true";
-                    fillmappingattributes();
-                    fillattributeFilters();
+                    fillmappingattributes(0, Config_Id);
+                    fillattributeFilters(Config_Id);
                     dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
 
@@ -1115,7 +1120,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtPriority = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtPriority");
 
-            fillattributes(AttributeOptionForType, "AttributeType", ddlAttributeType);
+            fillattributes("MappingConfigAttributeTypes", "AttributeType", ddlAttributeType);
             //dvddlAttributeValue.Visible = false;
             //dvtxtAttributeValue.Visible = true;
             if (IsMapping)
@@ -1305,7 +1310,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 else
                 {
                     MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
-                    RQ.MasterFor = AttributeOptionForType;
+                    RQ.MasterFor = "MappingConfigAttributeTypes";
                     RQ.Name = "AttributeValues";
                     RQ.ParentAttributeValue_Id = Guid.Parse(ddlAttributeType.SelectedItem.Value);
                     var resvalues = mastersvc.GetAllAttributeAndValues(RQ);
@@ -1419,9 +1424,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
         }
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmappingattributes();
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+            fillmappingattributes(0, Config_Id);
             dvMsg.Visible = false;
-            setNoOfColumnsForMapType();
+            setNoOfColumnsForMapType(0, Config_Id);
         }
 
         protected void ddlAttributeName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1538,16 +1544,18 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void ddlFilterPriority_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmappingattributes();
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+            fillmappingattributes(0, Config_Id);
             dvMsg.Visible = false;
-            setNoOfColumnsForMapType();
+            setNoOfColumnsForMapType(0, Config_Id);
         }
 
         protected void ddlFilterAttributeType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillmappingattributes();
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+            fillmappingattributes(0, Config_Id);
             dvMsg.Visible = false;
-            setNoOfColumnsForMapType();
+            setNoOfColumnsForMapType(0, Config_Id);
         }
     }
 }
