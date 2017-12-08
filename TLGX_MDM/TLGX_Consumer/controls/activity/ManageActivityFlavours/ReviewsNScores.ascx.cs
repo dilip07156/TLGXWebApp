@@ -37,7 +37,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                 grdRevAndScore.DataSource = res;
                 grdRevAndScore.DataBind();
-                lblTotalRecords.Text = Convert.ToString(res[0].Totalrecords);
+                if (res.Count() > 0)
+                {
+                    lblTotalRecords.Text = Convert.ToString(res[0].Totalrecords);
+                }
                 fillReviewType(ddlReviewType);
                 fillReviewSource(ddlReviewSource);
                 fillReviewScore(ddlReviewScore);
