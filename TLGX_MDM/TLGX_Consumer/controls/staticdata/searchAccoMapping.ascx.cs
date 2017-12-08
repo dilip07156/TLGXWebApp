@@ -30,7 +30,7 @@ namespace TLGX_Consumer.controls.staticdata
         // MasterDataDAL masters = new MasterDataDAL();
         //public static string AttributeOptionFor = "ProductSupplierMapping";
         //public static string AttributeOptionFor1 = "HotelInfo";
-       // public static string SortBy = "";
+        // public static string SortBy = "";
         //public static string SortEx = "";
         //public static string via = "";
         //public static int PageIndex = 0;
@@ -351,7 +351,7 @@ namespace TLGX_Consumer.controls.staticdata
                     string str = txtSearch.Text;
                     int ix1 = str.LastIndexOf(',');
                     int ix2 = ix1 > 0 ? str.LastIndexOf(',', ix1 - 1) : -1;
-                    RQ.ProductName = str.Substring(0,ix2);
+                    RQ.ProductName = str.Substring(0, ix2);
                 }
                 if (ddlProductMappingStatus.SelectedItem.Value != "0")
                     RQ.Status = ddlProductMappingStatus.SelectedItem.Text;
@@ -516,6 +516,7 @@ namespace TLGX_Consumer.controls.staticdata
 
                     if (masterRoduct != null)
                     {
+                        
                         lblProductAddress.Text = masterRoduct[0].FullAddress;
                         txtHotelName.Text = masterRoduct[0].ProductName;
                         if (!string.IsNullOrWhiteSpace(masterRoduct[0].Street))
@@ -620,7 +621,7 @@ namespace TLGX_Consumer.controls.staticdata
                             }
                         }
 
-                       
+
                         fillcities(ddlSystemCityName, ddlSystemCountryName);
                         ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(System.Web.HttpUtility.HtmlDecode(masterRoduct[0].Status)));
                         if (selSysCity_ID != null && Guid.Parse(Convert.ToString(selSysCity_ID.ID)) != Guid.Empty)
@@ -759,8 +760,8 @@ namespace TLGX_Consumer.controls.staticdata
             Label lblCityName = (Label)frmEditProductMap.FindControl("lblCityName");
             Label lblCityCode = (Label)frmEditProductMap.FindControl("lblCityCode");
             Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
-                Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
-                DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
+            Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
             TextBox txtSystemCountryCode = (TextBox)frmEditProductMap.FindControl("txtSystemCountryCode");
             Label lblSystemCountryCode = (Label)frmEditProductMap.FindControl("lblSystemCountryCode");
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
@@ -786,9 +787,9 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     AccoId = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
                     countryname = ddlSystemCountryName.SelectedItem.Value;
-                    countryId= new Guid(countryname);
+                    countryId = new Guid(countryname);
                     cityname = ddlSystemCityName.SelectedItem.Value;
-                    cityId= new Guid(cityname);
+                    cityId = new Guid(cityname);
                     productId = new Guid(ddlSystemProductName.SelectedItem.Value);
                 }
                 MDMSVC.DC_Accomodation_ProductMapping newObj = new MDMSVC.DC_Accomodation_ProductMapping
@@ -824,7 +825,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //MatchedCountryName = lblSupCountryName.Text;
                     //MatchedCityName = lblCityName.Text;
                     //MatchedStatus = ddlStatus.SelectedItem.Text;
-                    if (!(ddlSystemCountryName.SelectedIndex==0))
+                    if (!(ddlSystemCountryName.SelectedIndex == 0))
                     {
                         fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                         fillmatchingdata("", 0);
@@ -890,7 +891,7 @@ namespace TLGX_Consumer.controls.staticdata
                 if (lblSystemCountryCode.Text.Replace(" ", "") != "")
                     lblSystemCountryCode.Text = "(" + lblSystemCountryCode.Text + ")";
                 fillStates(ddlSystemCountryName, ddlSystemStateName);
-                
+
                 fillcities(ddlSystemCityName, ddlSystemCountryName);
 
                 //txtSystemCityCode.Text = "";
@@ -977,10 +978,16 @@ namespace TLGX_Consumer.controls.staticdata
                 //Guid myRow_Id = Guid.Parse(grdTLGXProdData.DataKeys[index].Value.ToString());
                 pnlLoadControl.Visible = true;
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                //dataGridView.Rows[4].Cells["Name"].Value.ToString();
+
                 if (myRow_Id != null)
                 {
+                    string supCountry = grdTLGXProdData.Rows[0].Cells[1].Text.ToString();
+                    string supCity = grdTLGXProdData.Rows[0].Cells[2].Text.ToString();
+                    string supHotel = grdTLGXProdData.Rows[0].Cells[3].Text.ToString();
                     bulkHotelMapping.Visible = true;
-                    bulkHotelMapping.fillproductmappingdata(myRow_Id,grdTLGXProdData.PageIndex);
+                    bulkHotelMapping.fillproductmappingdata(myRow_Id, grdTLGXProdData.PageIndex, supCountry, supCity, supHotel);
+
                     //bulkHotelMapping ucbulkHotelMapping = LoadControl(controlpath) as bulkHotelMapping;
                     //ucbulkHotelMapping.Accomodation_ID = myRow_Id;
 
@@ -1519,7 +1526,7 @@ namespace TLGX_Consumer.controls.staticdata
         protected void ddlSystemStateName_SelectedIndexChanged(object sender, EventArgs e)
         {
             DropDownList ddlSystemStateName = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
-            DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState"); 
+            DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
 
             ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(ddlSystemStateName.SelectedItem.Value));
         }
