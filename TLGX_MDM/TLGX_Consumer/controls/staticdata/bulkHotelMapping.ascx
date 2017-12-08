@@ -262,7 +262,7 @@
                             <div class="panel-body">
                                 <div class="row" id="dvProdSupDump" runat="server">
                                     <div class="col-lg-12">
-                                        <div class="col-lg-9">
+                                        <div class="col-lg-9 row">
                                             <table class="table table-hover table-bordered ">
                                                 <tr>
                                                     <th>System Country</th>
@@ -292,7 +292,7 @@
                                                 </tr>
                                             </table>
                                         </div>
-                                        <div class="col-lg-3">
+                                        <div class="col-lg-3 row">
                                             <div style="text-align: right">
                                                 <asp:Button ID="btnMap" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMap_Click" />
                                                 <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CausesValidation="false" OnClick="btnMapAll_Click" />
@@ -340,7 +340,7 @@
                                                                                 <asp:TextBox ID="txtSupAddress" runat="server" CssClass="form-control col-lg-3"></asp:TextBox>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="form-group">
+                                                                        <div class="form-group row">
                                                                             <label class="control-label col-sm-4" for="txtSupTelephone">Telephone</label>
                                                                             <div class="col-sm-8">
                                                                                 <asp:TextBox ID="txtSupTelephone" runat="server" CssClass="form-control col-lg-3"></asp:TextBox>
@@ -383,11 +383,13 @@
                                                     DataKeyNames="Accommodation_ProductMapping_Id,Accommodation_Id" AllowCustomPaging="true" AllowPaging="true" EmptyDataText="No Data Found"
                                                     OnPageIndexChanging="grdSupplierDump_PageIndexChanging">
                                                     <Columns>
+                                                        <asp:BoundField DataField="MapId" HeaderText="Map Id" />
                                                         <asp:BoundField DataField="SupplierName" HeaderText="Supplier Name" />
                                                         <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
                                                         <asp:BoundField DataField="SupplierProductReference" HeaderText="Supplier ID" />
                                                         <asp:BoundField DataField="TelephoneNumber" HeaderText="Phone" />
                                                         <asp:BoundField DataField="FullAddress" HeaderText="Address" />
+                                                        <asp:BoundField DataField="Status" HeaderText="Status" />
                                                         <%--<asp:BoundField DataField="CountryName" HeaderText="Country" />
                                     <asp:BoundField DataField="CityName" HeaderText="City" />
                                     <asp:BoundField DataField="PostCode" HeaderText="Postal Code" />--%>
@@ -423,8 +425,10 @@
                 <div id="collapseMappedData" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div style="text-align: right">
-                            <asp:Button ID="btnUnmapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="UnMap Selected" OnClick="btnUnmapSelected_Click" />
-                            <asp:Button ID="btnUnmapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="UnMap All" CausesValidation="false" OnClick="btnUnmapAll_Click" />
+                            <asp:Button ID="btnMapSelectedForgrdAccoMaps" runat="server" CssClass="btn btn-primary btn-sm btn-success" Text="Map Selected" OnClick="btnMapSelectedForgrdAccoMaps_Click"/>
+                            <asp:Button ID="btnMapAllForgrdAccoMaps" runat="server" CssClass="btn btn-primary btn-sm btn-success" Text="Map All" OnClick="btnMapAllForgrdAccoMaps_Click"/>
+                            <asp:Button ID="btnUnmapSelected" runat="server" CssClass="btn btn-primary btn-sm btn-danger" Text="UnMap Selected" OnClick="btnUnmapSelected_Click" />
+                            <asp:Button ID="btnUnmapAll" runat="server" CssClass="btn btn-primary btn-sm btn-danger" Text="UnMap All" CausesValidation="false" OnClick="btnUnmapAll_Click" />
                         </div>
                         <br />
                         <div id="divMsgForUnMapping" runat="server" style="display: none;"></div>

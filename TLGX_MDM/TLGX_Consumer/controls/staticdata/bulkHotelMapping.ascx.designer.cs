@@ -436,6 +436,24 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.Label lblMappedData;
         
         /// <summary>
+        /// btnMapSelectedForgrdAccoMaps control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMapSelectedForgrdAccoMaps;
+        
+        /// <summary>
+        /// btnMapAllForgrdAccoMaps control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMapAllForgrdAccoMaps;
+        
+        /// <summary>
         /// btnUnmapSelected control.
         /// </summary>
         /// <remarks>

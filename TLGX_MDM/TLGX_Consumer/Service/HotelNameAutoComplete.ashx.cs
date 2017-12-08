@@ -72,14 +72,21 @@ namespace TLGX_Consumer.Service
             RQParams.PageNo = PageIndex;
             RQParams.PageSize = 500;
             var res = AccSvc.GetAccomodationNames(RQParams);
-
-            //var ret = new List<string>();
-            //ret.Add("one");
-            //ret.Add("two");
-
-            //context.Response.ContentType = "text/plain";
-            //context.Response.Write("one,two");
-            context.Response.Write(new JavaScriptSerializer().Serialize(res));
+            
+            if(res!=null)
+            {
+                if(res.Count==0)
+                {
+                    string msg = "No Hotel Found";
+                    res.Add(msg);
+                    var a=res.Count();
+                    context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                }
+                else
+                {
+                    context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                }
+            }
         }
 
         
