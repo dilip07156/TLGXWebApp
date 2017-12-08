@@ -19,22 +19,20 @@ namespace TLGX_Consumer.controls.hotel
         Controller.MappingSVCs mapperSvc = new Controller.MappingSVCs();
         lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         List<MDMSVC.DC_Accomodation_Search_RS> res = new List<MDMSVC.DC_Accomodation_Search_RS>();
-        public static string AttributeOptionFor = "HotelInfo";
-        public static string ParentPageName = "";
+        //public static string AttributeOptionFor = "HotelInfo";
+        //public static string ParentPageName = "";
         MasterDataSVCs _objMasterData = new MasterDataSVCs();
         public static bool InsertFrom = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                setParentPage();
-                fillcountrydropdown();
-                fillproductcaterogy();
-                fillstarrating();
+                string page = setParentPage();
+                initializeSetParentPage(page);
             }
         }
 
-        private void setParentPage()
+        private string setParentPage()
         {
             var a = this.Parent;
             string vPath = "";
@@ -51,8 +49,14 @@ namespace TLGX_Consumer.controls.hotel
 
             string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
 
-            ParentPageName = vPath.Replace(dir, "");
+            string ParentPageName = vPath.Replace(dir, "");
 
+            
+            return ParentPageName;
+        }
+
+        private void initializeSetParentPage(string ParentPageName)
+        {
             if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
             {
                 InsertFrom = true;
@@ -79,6 +83,10 @@ namespace TLGX_Consumer.controls.hotel
                 dvExistingRecords.Attributes.Add("class", "col-lg-12");
                 map.Style.Add("height", "360px");
             }
+
+            fillcountrydropdown();
+            fillproductcaterogy();
+            fillstarrating();
         }
         private void fillcountrydropdown()
         {
@@ -136,7 +144,7 @@ namespace TLGX_Consumer.controls.hotel
         private void fillproductcaterogy()
         {
             //fillAttributeValues("ddlAddProductCategorySubType", "ProductCategorySubType");
-            ddlAddProductCategorySubType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionFor, "ProductCategorySubType").MasterAttributeValues;
+            ddlAddProductCategorySubType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("HotelInfo", "ProductCategorySubType").MasterAttributeValues;
             ddlAddProductCategorySubType.DataTextField = "AttributeValue";
             ddlAddProductCategorySubType.DataValueField = "MasterAttributeValue_Id";
             ddlAddProductCategorySubType.DataBind();
@@ -146,7 +154,7 @@ namespace TLGX_Consumer.controls.hotel
         private void fillstarrating()
         {
             //fillAttributeValues("ddlAddProductCategorySubType", "ProductCategorySubType");
-            ddlStarRating.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionFor, "Stars").MasterAttributeValues;
+            ddlStarRating.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("HotelInfo", "Stars").MasterAttributeValues;
             ddlStarRating.DataTextField = "AttributeValue";
             ddlStarRating.DataValueField = "MasterAttributeValue_Id";
             ddlStarRating.DataBind();
@@ -518,6 +526,7 @@ namespace TLGX_Consumer.controls.hotel
             if (AccSvc.AddHotelDetail(OverviewData))
             {
                 ret = true;
+                string ParentPageName = setParentPage();
                 if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
                 {
                     DropDownList ddlSystemCountryName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCountryName");
@@ -549,6 +558,7 @@ namespace TLGX_Consumer.controls.hotel
             if (ret != "")
             {
                 dvGridExist.Visible = false;
+                string ParentPageName = setParentPage();
                 if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
                 {
                     if (ret == "placeid")
@@ -596,6 +606,7 @@ namespace TLGX_Consumer.controls.hotel
             if (ret != "")
             {
                 dvGridExist.Visible = false;
+                string ParentPageName = setParentPage();
                 if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
                 {
                     //if (ret == "placeid" || ((res != null) && (res.Count == 1)))

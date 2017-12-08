@@ -55,7 +55,7 @@
                 <uc1:Flavours runat="server" ID="Flavours" />
             </div>
 
-            <div class="tab-pane" id="panDescription">
+           <%-- <div class="tab-pane" id="panDescription">
                 <uc1:ActivityDescription runat="server" ID="ActivityDescription" />
             </div>
 
@@ -93,7 +93,7 @@
 
             <div class="tab-pane" id="panContactDetails">
                 <uc1:ActivityContactDetails runat="server" ID="ActivityContactDetails" />
-            </div>
+            </div>--%>
 
         </div>
 

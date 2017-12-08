@@ -38,35 +38,7 @@
             height: 200px;
         }
     </style>
-    <script>
-        var x;
-        //timer
-        function myTimer() {
-            var hdnval = document.getElementById("hdnFileId").value;
-            getChartDataFileMapping(hdnval);
-        }
-        function myStopFunction() {
-            clearInterval(x);
-        }
-        //end
-        function showDetailsModal(fileid) {
-            $("#moViewDetials").modal('show');
-            $('#moViewDetials').on('show.bs.modal', function () {
-                document.getElementById("hdnFileId").value = fileid;
-                getChartDataFileMapping(fileid);
-                //strat timer
-                x = setInterval(function () { myTimer() }, 5000);
-            }).modal('show');;
-            $('#moViewDetials').on('hidden.bs.modal', function () {
-                //stop timer on close of modal 
-                $('#moViewDetials a:first').tab('show');
-                myStopFunction();
-            });
-        }
-        function closeDetailsModal() {
-            $("#moViewDetials").modal('hide');
-        }
-    </script>
+   
     <script type="text/javascript">
       //script for RUN MAPPING 
             var x;

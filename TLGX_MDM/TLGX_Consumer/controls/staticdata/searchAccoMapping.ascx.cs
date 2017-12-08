@@ -153,21 +153,21 @@ namespace TLGX_Consumer.controls.staticdata
 
 
 
-        private static void AddSuperHeader(GridView gridView)
-        {
-            var myTable = (Table)gridView.Controls[0];
-            var myNewRow = new GridViewRow(0, -1, DataControlRowType.Header, DataControlRowState.Normal);
-            myNewRow.Cells.Add(MakeCell("Supplier", 10));
-            myNewRow.Cells.Add(MakeCell("System", 6));
-            myNewRow.Cells.Add(MakeCell("", 1));
+        //private static void AddSuperHeader(GridView gridView)
+        //{
+        //    var myTable = (Table)gridView.Controls[0];
+        //    var myNewRow = new GridViewRow(0, -1, DataControlRowType.Header, DataControlRowState.Normal);
+        //    myNewRow.Cells.Add(MakeCell("Supplier", 10));
+        //    myNewRow.Cells.Add(MakeCell("System", 6));
+        //    myNewRow.Cells.Add(MakeCell("", 1));
 
-            myTable.Rows.AddAt(0, myNewRow);
-        }
+        //    myTable.Rows.AddAt(0, myNewRow);
+        //}
 
-        private static TableHeaderCell MakeCell(string text = null, int span = 1)
-        {
-            return new TableHeaderCell() { ColumnSpan = span, Text = text ?? string.Empty, CssClass = "table-header" };
-        }
+        //private static TableHeaderCell MakeCell(string text = null, int span = 1)
+        //{
+        //    return new TableHeaderCell() { ColumnSpan = span, Text = text ?? string.Empty, CssClass = "table-header" };
+        //}
 
         protected void grdAccoMaps_DataBound(object sender, EventArgs e)
         {
@@ -338,6 +338,7 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.SupplierCityName = txtSuppCity.Text;
                 if (!string.IsNullOrWhiteSpace(txtSuppProduct.Text))
                     RQ.SupplierProductName = txtSuppProduct.Text;
+                RQ.Source = "SYSTEMDATA";
             }
             else
             {
@@ -979,7 +980,7 @@ namespace TLGX_Consumer.controls.staticdata
                 if (myRow_Id != null)
                 {
                     bulkHotelMapping.Visible = true;
-                    bulkHotelMapping.fillproductmappingdata(myRow_Id);
+                    bulkHotelMapping.fillproductmappingdata(myRow_Id,grdTLGXProdData.PageIndex);
                     //bulkHotelMapping ucbulkHotelMapping = LoadControl(controlpath) as bulkHotelMapping;
                     //ucbulkHotelMapping.Accomodation_ID = myRow_Id;
 
@@ -1296,7 +1297,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //        }
                     //        RQParams.PageNo = 0;
                     //        RQParams.PageSize = int.MaxValue;
-                    accoSuggRes = accoSVc.SearchHotels(RQParams);
+                    //accoSuggRes = accoSVc.SearchHotels(RQParams);
                     //    }
 
                     //    if (accoSuggRes.Count > 0)
