@@ -10,332 +10,379 @@ using System.Web.UI.HtmlControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
+using System.Text.RegularExpressions;
+using AjaxControlToolkit;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
     public partial class Flavours : System.Web.UI.UserControl
     {
         public Guid Activity_Flavour_Id;
-        // public Guid Activity_Id;
+
         Controller.ActivitySVC AccSvc = new Controller.ActivitySVC();
         Controller.MasterDataSVCs masterSVc = new Controller.MasterDataSVCs();
         lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         MDMSVC.DC_Activity_Flavour_RQ RQParams = new MDMSVC.DC_Activity_Flavour_RQ();
-        //List<string> listContents = new List<string>();
-
-        //ArrayList arraylist1 = new ArrayList();
-        //ArrayList arraylist2 = new ArrayList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 getFlavourInfo();
-
             }
         }
+
         private void getFlavourInfo()
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-            DC_Activity_Flavour_RQ RQ = new DC_Activity_Flavour_RQ();
-            RQ.Activity_Flavour_Id = Activity_Flavour_Id;
-            var result = AccSvc.GetActivityFlavour(RQ);
-            frmActivityFlavour.DataSource = result;
-            frmActivityFlavour.DataBind();
+
+            var result = AccSvc.GetActivityFlavour(new DC_Activity_Flavour_RQ { Activity_Flavour_Id = Activity_Flavour_Id });
+
             if (result != null)
             {
-                fillMasterDropdowns();
-            }
-        }
-        private void BindDataSource()
-        {
-            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-
-            Label lblSuppCountry = (Label)frmActivityFlavour.FindControl("lblSuppCountry");
-            Label lblSuppCity = (Label)frmActivityFlavour.FindControl("lblSuppCity");
-            Label lblSuppProductType = (Label)frmActivityFlavour.FindControl("lblSuppProductType");
-            Label lblSuppProdNameSubType = (Label)frmActivityFlavour.FindControl("lblSuppProdNameSubType");
-            Label lblSuppSuitableFor = (Label)frmActivityFlavour.FindControl("lblSuppSuitableFor");
-            Label lblSuppPhysicalIntensity = (Label)frmActivityFlavour.FindControl("lblSuppPhysicalIntensity");
-            
-            MDMSVC.DC_Activity_SupplierProductMapping_RQ _obj = new MDMSVC.DC_Activity_SupplierProductMapping_RQ();
-            _obj.Activity_ID = Activity_Flavour_Id;
-            var result = AccSvc.GetActivitySupplierProductMapping(_obj);
-            if (result.Count > 0 || result != null)
-            {
-                foreach (DC_Activity_SupplierProductMapping res in result)
+                if (result.Count() > 0)
                 {
-                    lblSuppCountry.Text = res.SupplierCountryName.ToString();
-                    lblSuppCity.Text = res.SupplierCityName.ToString();
-                    lblSuppProductType.Text = res.SupplierProductType.ToString();
-                    lblSuppProdNameSubType.Text = res.SupplierProductName.ToString();
-                    lblSuppSuitableFor.Text = res.SupplierType.ToString();
-                    lblSuppPhysicalIntensity.Text = res.SupplierType.ToString();
-                }
-            }
+                    lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName);
+                    lblSuppCity.Text = result[0].SupplierCity;
+                    lblSuppCountry.Text = result[0].SupplierCountry;
+                    lblSuppProductType.Text = result[0].SupplierProductType;
+                    lblSuppProdNameSubType.Text = result[0].SupplierProductNameSubType;
 
-        }
-        private void fillMasterDropdowns()
-        {
-            fillcoutries();
-            fillcities();
-            fillproductcaterogysubtype();
-            fillProductType();
-            fillproductsubtype();
-            //fillDescriptions();
-            fillSuitableFor();
-            fillPhysicalIntensity();
-            BindDataSource();
-            fillDDLSession();
-            fillDurationSession();
-            fillDaysOfWeek();
-        }
-        private void fillDurationSession()
-        {
-            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                    //GetActivityDescriptions(Activity_Flavour_Id);
 
-            Label lblSuppStartTime = (Label)frmActivityFlavour.FindControl("lblSuppStartTime");
-            Label lblSuppDuration = (Label)frmActivityFlavour.FindControl("lblSuppDuration");
-            Label lblSuppOperatingDays = (Label)frmActivityFlavour.FindControl("lblSuppOperatingDays");
-            CheckBox chkSpecificOperatingDays = (CheckBox)frmActivityFlavour.FindControl("chkSpecificOperatingDays");
-            //Control dvFrm = (Control)frmActivityFlavour.FindControl("dvFrm");
-            HtmlGenericControl dvFrm = (HtmlGenericControl)frmActivityFlavour.FindControl("dvFrm");
-            HtmlGenericControl dvTo = (HtmlGenericControl)frmActivityFlavour.FindControl("dvTo");
-            TextBox txtFrom = (TextBox)frmActivityFlavour.FindControl("txtFrom");
-            TextBox txtTo = (TextBox)frmActivityFlavour.FindControl("txtTo");
+                    fillcoutries();
 
-            MDMSVC.DC_Activity_DaysOfWeek_RQ obj = new DC_Activity_DaysOfWeek_RQ();
-            obj.Activity_Flavor_ID = Activity_Flavour_Id;
-            var result = AccSvc.GetActivityDaysOfWeek(obj);
-
-            if (result.Count > 0 || result != null)
-            {
-                int currentval = 0;
-                foreach (DC_Activity_DaysOfWeek_RS res in result)
-                {
-                    currentval = currentval + 1;
-                    lblSuppStartTime.Text = res.SupplierStartTime.ToString();
-                    lblSuppDuration.Text = res.SupplierDuration.ToString();
-                    if (res.IsOperatingDays != null && res.IsOperatingDays == true)
+                    if (result[0].Country_Id != null)
                     {
-                        lblSuppOperatingDays.Text = Convert.ToString(res.IsOperatingDays);
-                        chkSpecificOperatingDays.Checked = true;
-                    }
-                    else
-                    {
-                        lblSuppOperatingDays.Text = Convert.ToString(res.IsOperatingDays);
-                        chkSpecificOperatingDays.Checked = false;
-                    }
-                    if (res.FromDate != null)
-                    {
-                        string strFrmDate = Convert.ToString(res.FromDate);
-                        StringBuilder sbinnerhtml = new StringBuilder();
-                        string strID = "txtFrm_" + currentval.ToString();
-                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8' value=" + strFrmDate + " />");
-                        sbinnerhtml.Append(dvFrm.InnerHtml);
-                        dvFrm.InnerHtml = Convert.ToString(sbinnerhtml);
-                    }
-                    if (res.ToDate != null)
-                    {
-                        string strToDate = Convert.ToString(res.ToDate);
-                        StringBuilder sbinnerhtml = new StringBuilder();
-                        string strID = "txtTo_" + currentval.ToString();
-                        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8' value=" + strToDate + " />");
-                        sbinnerhtml.Append(dvTo.InnerHtml);
-                        dvTo.InnerHtml = Convert.ToString(sbinnerhtml);
-                    }
-                }
-            }
-        }
-        private void fillDaysOfWeek()
-        {
-            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                        ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByValue(result[0].Country_Id.ToString()));
 
-            TextBox txtStartTime = (TextBox)frmActivityFlavour.FindControl("txtStartTime");
-            TextBox txtDuration = (TextBox)frmActivityFlavour.FindControl("txtDuration");
-            DropDownList ddlSession = (DropDownList)frmActivityFlavour.FindControl("ddlSession");
-            HtmlInputCheckBox chkMon = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkMon");
-            HtmlInputCheckBox chkTues = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkTues");
-            HtmlInputCheckBox chkWed = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkWed");
-            HtmlInputCheckBox chkThurs = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkThurs");
-            HtmlInputCheckBox chkFri = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkFri");
-            HtmlInputCheckBox chkSat = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkSat");
-            HtmlInputCheckBox chkSun = (HtmlInputCheckBox)frmActivityFlavour.FindControl("chkSun");
-            HtmlInputRadioButton rdoDaysOfWeek = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
-            HtmlInputRadioButton rdoMonthly = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
-            HtmlInputRadioButton rdoSpecificDates = (HtmlInputRadioButton)frmActivityFlavour.FindControl("rdoDaysOfWeek");
-            HtmlGenericControl dvStartTime = (HtmlGenericControl)frmActivityFlavour.FindControl("dvStartTime");
-            HtmlGenericControl dvDuration = (HtmlGenericControl)frmActivityFlavour.FindControl("dvDuration");
-            HtmlGenericControl dvddlSession = (HtmlGenericControl)frmActivityFlavour.FindControl("dvddlSession");
-            Repeater rptDaysOfWeek = (Repeater)frmActivityFlavour.FindControl("rptDaysOfWeek");
+                        fillcities(result[0].Country_Id ?? Guid.Empty);
 
-            MDMSVC.DC_Activity_DaysOfWeek_RQ obj = new DC_Activity_DaysOfWeek_RQ();
-            obj.Activity_Flavor_ID = Activity_Flavour_Id;
-            var result = AccSvc.GetActivityDaysOfWeek(obj);
-
-            var resultdataforsession = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivitySession").MasterAttributeValues;
-
-            if (result != null || result.Count > 0)
-            {
-                rptDaysOfWeek.DataSource = result;
-                rptDaysOfWeek.DataBind();
-                
-                int currentval = 0;
-                foreach (DC_Activity_DaysOfWeek_RS res in result)
-                {
-                    
-
-                    //txtStartTime.Text = res.StartTime;
-                    //txtDuration.Text = res.Duration;
-                    chkSun.Checked = res.Sun != null ? Convert.ToBoolean(res.Sun) : false;
-                    chkMon.Checked = res.Sun != null ? Convert.ToBoolean(res.Mon) : false;
-                    chkTues.Checked = res.Sun != null ? Convert.ToBoolean(res.Tues) : false;
-                    chkWed.Checked = res.Sun != null ? Convert.ToBoolean(res.Wed) : false;
-                    chkThurs.Checked = res.Sun != null ? Convert.ToBoolean(res.Thur) : false;
-                    chkFri.Checked = res.Sun != null ? Convert.ToBoolean(res.Fri) : false;
-                    chkSat.Checked = res.Sun != null ? Convert.ToBoolean(res.Sat) : false;
-
-                    ddlSession.SelectedIndex = ddlSession.Items.IndexOf(ddlSession.Items.FindByText(res.Session.ToString()));
-                    if (res.SupplierFrequency != null)
-                    {
-                        if (res.SupplierFrequency.ToLower().ToString() == "daily")
+                        if (result[0].City_Id != null)
                         {
-                            rdoDaysOfWeek.Checked = true;
+                            ddlCity.SelectedIndex = ddlCity.Items.IndexOf(ddlCity.Items.FindByValue(result[0].City_Id.ToString()));
                         }
                     }
 
-                    for (int i = 1; i < result.Count; i++)
-                    {
-                        currentval = currentval + 1;
+                    fillSuitableFor();
 
-                        string strStartTime = Convert.ToString(res.StartTime);
-                        StringBuilder sbinnerhtmlForStartTime = new StringBuilder();
-                        string strIDForStartTime = "txtStartTime_" + currentval.ToString();
-                        sbinnerhtmlForStartTime.Append("<input type='text' id=" + strIDForStartTime + " class='form-control col-md-8' value=" + strStartTime + " />");
-                        sbinnerhtmlForStartTime.Append(dvStartTime.InnerHtml);
-                        dvStartTime.InnerHtml = Convert.ToString(sbinnerhtmlForStartTime);
+                    fillPhysicalIntensity();
 
-                        string strDuration = Convert.ToString(res.Duration);
-                        StringBuilder sbinnerhtmlForDuration = new StringBuilder();
-                        string strIDForDuration = "txtDuration_" + currentval.ToString();
-                        sbinnerhtmlForDuration.Append("<input type='text' id=" + strIDForDuration + " class='form-control col-md-8' value=" + strDuration + " />");
-                        sbinnerhtmlForDuration.Append(dvDuration.InnerHtml);
-                        dvDuration.InnerHtml = Convert.ToString(sbinnerhtmlForDuration);
+                    BindClassiFicationAttributes(Activity_Flavour_Id);
 
-                        string strDDLSession = Convert.ToString(res.Session);
-                        StringBuilder sbinnerhtmlForDDLSession = new StringBuilder();
-                        string strIDForDDLSession = "ddlSession_" + currentval.ToString();
-                        sbinnerhtmlForDDLSession.Append("<select id=" + strIDForDDLSession + " class='form-control col-md-8' value=" + strDDLSession + " />");
-                        sbinnerhtmlForDDLSession.Append(dvddlSession.InnerHtml);
+                    fillproductcaterogysubtype();
 
-                        //dvddlSession.InnerHtml = Convert.ToString(sbinnerhtmlForDDLSession);
+                    var selectedSubCat = BindProductSubCat(result[0].ProductCategorySubType);
 
-                        //DropDownList ddlstrIDForDDLSession = (DropDownList)dvddlSession.FindControl(strIDForDDLSession);
-                        //if (ddlstrIDForDDLSession != null)
-                        //{
-                        //    ddlstrIDForDDLSession.DataSource = resultdataforsession;
-                        //    ddlstrIDForDDLSession.DataTextField = "AttributeValue";
-                        //    ddlstrIDForDDLSession.DataValueField = "MasterAttributeValue_Id";
-                        //    ddlSession.DataBind();
-                        //    ddlSession.Items.Insert(0, new ListItem("-Select-", "0"));
-                        //}
-                    }
+                    var selectedProdType = BindProductNameType(result[0].ProductType, selectedSubCat);
+
+                    BindProductNameSubType(result[0].ProductNameSubType, selectedProdType);
+
+                    fillOperatingDaysWithWeekdays(Activity_Flavour_Id);
+
+                    BindSupplierClassifications(Activity_Flavour_Id);
                 }
             }
         }
+
+        private List<string> BindProductSubCat(string ProductSubCategory)
+        {
+            var ProductSubCategoryList = ProductSubCategory.Split(',');
+
+            List<SubCategoryData> ptl = new List<SubCategoryData>();
+
+            foreach (var subcat in ProductSubCategoryList)
+            {
+                if (ptl.Where(w => w.SubCategory == subcat.Trim()).Count() == 0)
+                {
+                    if (ddlProdcategorySubType.Items.FindByText(subcat.Trim()) != null)
+                    {
+                        ptl.Add(new SubCategoryData
+                        {
+                            SubCategory = subcat.Trim(),
+                            SubCategory_Id = ddlProdcategorySubType.Items.FindByText(subcat.Trim()).Value
+                        });
+                    }
+                }
+            }
+
+            repSubCategory.DataSource = ptl;
+            repSubCategory.DataBind();
+
+            fillProductType(ptl.Select(s => s.SubCategory_Id).ToList());
+
+            return ptl.Select(s => s.SubCategory_Id).ToList();
+        }
+
+        private List<string> BindProductNameType(string ProductNameType, List<string> selectedSubCat)
+        {
+            var ProductNameTypeList = ProductNameType.Split(',');
+            List<ProductTypeData> ptl = new List<ProductTypeData>();
+
+            var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
+            var result = (from s in dropdownvalues
+                          where selectedSubCat.Contains((s.ParentAttributeValue_Id ?? Guid.Empty).ToString())
+                          orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                          select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id });
+
+            foreach (var prodtype in ProductNameTypeList)
+            {
+                var searchRes = result.Where(w => w.AttributeValueOri.Trim().ToLower() == prodtype.Trim().ToLower()).Select(s => s).FirstOrDefault();
+                if (searchRes != null)
+                {
+                    if (ptl.Where(w => w.ProductType_Id == searchRes.MasterAttributeValue_Id.ToString()).Count() == 0)
+                    {
+                        ptl.Add(new ProductTypeData
+                        {
+                            ProductType = searchRes.AttributeValue,
+                            ProductType_Id = searchRes.MasterAttributeValue_Id.ToString()
+                        });
+                    }
+                }
+
+
+            }
+
+            repProductType.DataSource = ptl;
+            repProductType.DataBind();
+
+            fillproductsubtype(ptl.Select(s => s.ProductType_Id).ToList());
+
+            return ptl.Select(s => s.ProductType_Id).ToList();
+        }
+
+        private void BindProductNameSubType(string ProductNameSubType, List<string> selectedProdName)
+        {
+            var ProductNameSubTypeList = ProductNameSubType.Split(',');
+            List<ProductSubTypeData> ptl = new List<ProductSubTypeData>();
+
+            var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductSubType").MasterAttributeValues;
+            var result = (from s in dropdownvalues
+                          where selectedProdName.Contains((s.ParentAttributeValue_Id ?? Guid.Empty).ToString())
+                          orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                          select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id }).ToList();
+
+            foreach (var prodsubtype in ProductNameSubTypeList)
+            {
+                var searchRes = result.Where(w => w.AttributeValueOri.Trim().ToLower() == prodsubtype.Trim().ToLower()).Select(s => s).FirstOrDefault();
+                if (searchRes != null)
+                {
+                    if (ptl.Where(w => w.ProductSubType_Id == searchRes.MasterAttributeValue_Id.ToString()).Count() == 0)
+                    {
+                        ptl.Add(new ProductSubTypeData
+                        {
+                            ProductSubType = searchRes.AttributeValue,
+                            ProductSubType_Id = searchRes.MasterAttributeValue_Id.ToString()
+                        });
+                    }
+                }
+            }
+
+            repProductSubType.DataSource = ptl;
+            repProductSubType.DataBind();
+        }
+
+        //Done
+        //private void GetActivityDescriptions(Guid Activity_Flavour_Id)
+        //{
+        //    var result = AccSvc.GetActivityDescription(new DC_Activity_Descriptions_RQ
+        //    {
+        //        Activity_Flavour_Id = Activity_Flavour_Id,
+        //        PageNo = 0,
+        //        PageSize = int.MaxValue
+        //    });
+
+        //    if (result != null)
+        //    {
+        //        if (result.Count() > 0)
+        //        {
+        //            var ShortDesc = result.Where(w => w.DescriptionType == "Short").Select(s => s.Description).FirstOrDefault();
+        //            ShortDesc = Regex.Replace(ShortDesc, "<.*?>", string.Empty);
+        //            txtShortDescription.Text = ShortDesc;
+
+        //            var LongDesc = result.Where(w => w.DescriptionType == "Long").Select(s => s.Description).FirstOrDefault();
+        //            LongDesc = Regex.Replace(LongDesc, "<.*?>", string.Empty);
+        //            txtLongDescription.Text = LongDesc;
+        //        }
+        //    }
+        //}
+
+        //Done
         private void fillcoutries()
         {
-            DropDownList ddlCountry = (DropDownList)frmActivityFlavour.FindControl("ddlCountry");
             var countryList = masterSVc.GetAllCountries();
             ddlCountry.DataSource = countryList;
             ddlCountry.DataTextField = "Country_Name";
             ddlCountry.DataValueField = "Country_Id";
             ddlCountry.DataBind();
-            MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-            if (rowView != null)
+
+        }
+
+        //Done
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlCountry.SelectedIndex > 0)
             {
-                if (rowView.Country != null)
-                    ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByText(rowView.Country.ToString()));
+                Guid Country_Id;
+                if (Guid.TryParse(ddlCountry.SelectedValue, out Country_Id))
+                {
+                    fillcities(Country_Id);
+                }
+                else
+                {
+                    ddlCity.Items.Clear();
+                    ddlCity.Items.Insert(0, new ListItem("-Select-", "0"));
+                }
+
+            }
+
+        }
+
+        //Done
+        private void fillcities(Guid Country_Id)
+        {
+            ddlCity.Items.Clear();
+            var CityList = masterSVc.GetMasterCityData(Country_Id.ToString());
+            if (CityList != null)
+            {
+                if (CityList.Count() > 0)
+                {
+                    ddlCity.DataSource = CityList;
+                    ddlCity.DataTextField = "Name";
+                    ddlCity.DataValueField = "City_Id";
+                    ddlCity.DataBind();
+                }
+            }
+            ddlCity.Items.Insert(0, new ListItem("-Select-", "0"));
+        }
+
+        //Done
+        private void fillSuitableFor()
+        {
+            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "SuitableFor").MasterAttributeValues;
+
+            if (res != null)
+            {
+                chklstSuitableFor.DataSource = res;
+                chklstSuitableFor.DataTextField = "AttributeValue";
+                chklstSuitableFor.DataValueField = "MasterAttributeValue_Id";
+                chklstSuitableFor.DataBind();
+            }
+            else
+            {
+                chklstSuitableFor.DataSource = null;
+                chklstSuitableFor.DataBind();
             }
         }
-        private void fillcities()
+
+        //Done
+        private void fillPhysicalIntensity()
         {
-            DropDownList ddlCity = (DropDownList)frmActivityFlavour.FindControl("ddlCity");
-            DropDownList ddlCountry = (DropDownList)frmActivityFlavour.FindControl("ddlCountry");
-            if (ddlCountry.SelectedItem.Text != "-Select-")
+            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "PhysicalIntensity").MasterAttributeValues;
+            if (res != null)
             {
-                ddlCity.Items.Clear();
-                ddlCity.DataSource = masterSVc.GetMasterCityData(ddlCountry.SelectedValue);
-                ddlCity.DataTextField = "Name";
-                ddlCity.DataValueField = "City_Id";
-                ddlCity.DataBind();
-                ddlCity.Items.Insert(0, new ListItem("-Select-", "0"));
-                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-                if (rowView != null)
+                ddlPhysicalIntensity.DataSource = res;
+                ddlPhysicalIntensity.DataTextField = "AttributeValue";
+                ddlPhysicalIntensity.DataValueField = "MasterAttributeValue_Id";
+                ddlPhysicalIntensity.DataBind();
+            }
+            else
+            {
+                ddlPhysicalIntensity.DataSource = null;
+                ddlPhysicalIntensity.DataBind();
+            }
+        }
+
+        //Done
+        private void BindClassiFicationAttributes(Guid Activity_Flavour_Id)
+        {
+            var result = AccSvc.GetActivityClasificationAttributes(new DC_Activity_ClassificationAttributes_RQ { Activity_Flavour_Id = Activity_Flavour_Id });
+            if (result != null)
+            {
+                if (result.Count() > 0)
                 {
-                    if (rowView.City != null)
-                        ddlCity.SelectedIndex = ddlCity.Items.IndexOf(ddlCity.Items.FindByText(rowView.City.ToString()));
+                    var SuitableForList = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "SuitableFor").Select(s => s.AttributeValue).ToList();
+                    chklstSuitableFor.ClearSelection();
+                    foreach (var SuitableFor in SuitableForList)
+                    {
+                        if (!string.IsNullOrWhiteSpace(SuitableFor))
+                        {
+                            if (chklstSuitableFor.Items.FindByText(SuitableFor) != null)
+                            {
+                                chklstSuitableFor.Items.FindByText(SuitableFor).Selected = true;
+                            }
+                        }
+                    }
+
+
+                    var Physicalntensity = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "Physicalntensity").Select(s => s.AttributeValue).FirstOrDefault();
+                    ddlPhysicalIntensity.ClearSelection();
+
+                    if (!string.IsNullOrWhiteSpace(Physicalntensity))
+                    {
+                        if (ddlPhysicalIntensity.Items.FindByText(Physicalntensity) != null)
+                        {
+                            ddlPhysicalIntensity.Items.FindByText(Physicalntensity).Selected = true;
+                        }
+                    }
                 }
             }
         }
+
+        //Done
         private void fillproductcaterogysubtype()
         {
             try
             {
-                DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
                 ddlProdcategorySubType.Items.Clear();
                 ddlProdcategorySubType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
                 ddlProdcategorySubType.DataTextField = "AttributeValue";
                 ddlProdcategorySubType.DataValueField = "MasterAttributeValue_Id";
                 ddlProdcategorySubType.DataBind();
                 ddlProdcategorySubType.Items.Insert(0, new ListItem("-Select-", "0"));
-                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-                if (rowView != null)
-                {
-                    if (rowView.ProductCategorySubType != null)
-                    {
-                        ddlProdcategorySubType.SelectedIndex = ddlProdcategorySubType.Items.IndexOf(ddlProdcategorySubType.Items.FindByText(rowView.ProductCategorySubType.ToString()));
-                    }
-                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
-        private void fillProductType()
-        {
-            DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
 
-            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
+        //Done
+        private void fillProductType(List<string> SubCategoryIds)
+        {
             ddlProductType.Items.Clear();
             var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
-            if (ddlProdcategorySubType.SelectedItem.Text != "-Select-")
+            var result = (from s in dropdownvalues
+                          where SubCategoryIds.Contains((s.ParentAttributeValue_Id ?? Guid.Empty).ToString())
+                          orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                          select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id });
+            ddlProductType.DataSource = result;
+            ddlProductType.DataTextField = "AttributeValue";
+            ddlProductType.DataValueField = "MasterAttributeValue_Id";
+            ddlProductType.DataBind();
+            ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
+
+            List<ProductTypeData> ptl = new List<ProductTypeData>();
+            foreach (RepeaterItem item in repProductType.Items)
             {
-                var result = (from s in dropdownvalues
-                              where s.ParentAttributeValue_Id == new Guid(ddlProdcategorySubType.SelectedValue)
-                              select s);
-                ddlProductType.DataSource = result;
-                ddlProductType.DataTextField = "AttributeValue";
-                ddlProductType.DataValueField = "MasterAttributeValue_Id";
-                ddlProductType.DataBind();
-                ddlProductType.Items.Insert(0, new ListItem("-Select-", "0"));
-                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-                if (rowView != null)
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    if (rowView.ProductType != null)
+                    LinkButton btnRemoveProductType = (LinkButton)item.FindControl("btnRemoveProductType");
+                    if (result.Where(w => w.MasterAttributeValue_Id == Guid.Parse(btnRemoveProductType.CommandArgument)).Count() > 0)
                     {
-                        ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(rowView.ProductType.ToString()));
+                        Label lblProductType = (Label)item.FindControl("lblProductType");
+                        ptl.Add(new ProductTypeData
+                        {
+                            ProductType = lblProductType.Text,
+                            ProductType_Id = btnRemoveProductType.CommandArgument
+                        });
                     }
                 }
             }
-            else
-            {
-                ddlProductType.DataSource = dropdownvalues;
-                ddlProductType.DataTextField = "AttributeValue";
-                ddlProductType.DataValueField = "MasterAttributeValue_Id";
-                ddlProductType.DataBind();
-            }
+            repProductType.DataSource = ptl;
+            repProductType.DataBind();
+
+            fillproductsubtype(ptl.Select(s => s.ProductType_Id).ToList());
 
             //ListBox lstboxProductType = (ListBox)frmActivityFlavour.FindControl("lstboxProductType");
 
@@ -364,304 +411,725 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //}
         }
 
-        //private void fillProductTypeDynamic()
-        //{
-        //    StringBuilder sbinnerhtml = new StringBuilder();
-        //    string[] strArrayAttributeValue = strAttributeValue.Split(',');
-        //    sbinnerhtml.Append(dvValueForFilter.InnerHtml);
-        //    for (int i = 0; i < strArrayAttributeValue.Count(); i++)
-        //    {
-
-        //        //sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
-        //        //string strID = "txt" + i.ToString();
-        //        //sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control' value=" + strArrayAttributeValue[i] + " /></div>");
-        //        sbinnerhtml.Append("<div class='con'>");
-        //        string strID = "txt" + i.ToString();
-        //        // sbinnerhtml.Append("<div class='con inner-addon right-addon'><i id='btnAddValue' style='cursor: pointer' class='btnRemove glyphicon glyphicon-minus'></i>");
-        //        sbinnerhtml.Append("<input type='text' id=" + strID + " class='form-control col-md-8 inputTypeForFilter' value=" + strArrayAttributeValue[i] + " />");
-        //        sbinnerhtml.Append("<div class='input-group-btn col-md-4' style='padding-left: 0px !important;'><button class='btn btn-default btnRemove' id='btnAddValue' type='button'>");
-        //        sbinnerhtml.Append("<i class='glyphicon glyphicon-minus'></i></button>");
-        //        sbinnerhtml.Append("</div>");
-        //        sbinnerhtml.Append("</div>");
-        //    }
-        //}
-        private void fillproductsubtype()
+        //Done
+        private void fillproductsubtype(List<string> ProductType_Ids)
         {
-            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
-            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
             ddlProdNameSubType.Items.Clear();
             var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductSubType").MasterAttributeValues;
-            if (ddlProductType.SelectedItem.Text != "-Select-")
+            var result = (from s in dropdownvalues
+                          where ProductType_Ids.Contains((s.ParentAttributeValue_Id ?? Guid.Empty).ToString())
+                          orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                          select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id }).ToList();
+            ddlProdNameSubType.DataSource = result;
+            ddlProdNameSubType.DataTextField = "AttributeValue";
+            ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
+            ddlProdNameSubType.DataBind();
+            ddlProdNameSubType.Items.Insert(0, new ListItem("-Select-", "0"));
+
+            List<ProductSubTypeData> pstl = new List<ProductSubTypeData>();
+            foreach (RepeaterItem item in repProductSubType.Items)
             {
-                var res = (from s in dropdownvalues
-                           where s.ParentAttributeValue_Id == new Guid(ddlProductType.SelectedValue)
-                           select s);
-                var search = (from s in res
-                              orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
-                              select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.AttributeValue }).ToList();
-                ddlProdNameSubType.DataSource = search;
-                ddlProdNameSubType.DataTextField = "AttributeValue";
-                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
-                ddlProdNameSubType.DataBind();
-                ddlProdNameSubType.Items.Insert(0, new ListItem("-Select-", "0"));
-                MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-                if (rowView != null)
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    if (rowView.ProductNameSubType != null)
+                    LinkButton btnRemoveProductSubType = (LinkButton)item.FindControl("btnRemoveProductSubType");
+                    if (result.Where(w => w.MasterAttributeValue_Id == Guid.Parse(btnRemoveProductSubType.CommandArgument)).Count() > 0)
                     {
-                        ddlProdNameSubType.SelectedIndex = ddlProdNameSubType.Items.IndexOf(ddlProdNameSubType.Items.FindByText(rowView.ProductNameSubType.ToString()));
+                        Label lblProductSubType = (Label)item.FindControl("lblProductSubType");
+                        pstl.Add(new ProductSubTypeData
+                        {
+                            ProductSubType = lblProductSubType.Text,
+                            ProductSubType_Id = btnRemoveProductSubType.CommandArgument
+                        });
                     }
                 }
             }
-            else
-            {
 
-                var search = (from s in dropdownvalues
-                              orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
-                              select new { AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.AttributeValue }).ToList();
-                ddlProdNameSubType.DataSource = search;
-                ddlProdNameSubType.DataTextField = "AttributeValue";
-                ddlProdNameSubType.DataValueField = "MasterAttributeValue_Id";
-                ddlProdNameSubType.DataBind();
-            }
-
+            repProductSubType.DataSource = pstl;
+            repProductSubType.DataBind();
         }
-        private void fillDescriptions()
+
+        private void fillOperatingDaysWithWeekdays(Guid Activity_Flavour_Id)
         {
-            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-            TextBox txtShortDescription = (TextBox)frmActivityFlavour.FindControl("txtShortDescription");
-            TextBox txtLongDescription = (TextBox)frmActivityFlavour.FindControl("txtLongDescription");
-            MDMSVC.DC_Activity_Descriptions_RQ RQ = new MDMSVC.DC_Activity_Descriptions_RQ();
-            RQ.Activity_Flavour_Id = Activity_Flavour_Id;
-            var result = AccSvc.GetActivityDescription(RQ);
+            var result = AccSvc.GetActivityDaysOfWeek(Activity_Flavour_Id);
             if (result != null)
             {
-                foreach (TLGX_Consumer.MDMSVC.DC_Activity_Descriptions desc in result)
-                {
-                    if (desc.DescriptionType.ToLower().ToString() == "short")
-                        txtShortDescription.Text = this.Page.Server.HtmlEncode(desc.Description);
-                    else
-                        txtLongDescription.Text = this.Page.Server.HtmlEncode(desc.Description);
-                }
-            }
-            else
-            {
-                txtShortDescription.Text = string.Empty;
-                txtShortDescription.Text = string.Empty;
+                repOperatingDays.DataSource = result;
+                repOperatingDays.DataBind();
             }
         }
-        private void fillSuitableFor()
-        {
-            CheckBoxList chklstSuitableFor = (CheckBoxList)frmActivityFlavour.FindControl("chklstSuitableFor");
-            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "SuitableFor").MasterAttributeValues;
-            if (res != null)
-            {
-                chklstSuitableFor.DataSource = res;
-                chklstSuitableFor.DataTextField = "AttributeValue";
-                chklstSuitableFor.DataValueField = "AttributeValue";
-                chklstSuitableFor.DataBind();
 
-                if (chkCheckboxSelection())
-                {
-                    MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
-                    RQ.Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-                    var result = AccSvc.GetActivityClasificationAttributes(RQ);
-                    if (result != null)
-                    {
-                        var resCount = result.Count();
-                        for (int i = 0; i < resCount; i++)
-                        {
-                            if (!string.IsNullOrWhiteSpace(result[i].AttributeValue))
-                            {
-                                var SuitableFor = result[i].AttributeValue;
-                                for (int count = 0; count < chklstSuitableFor.Items.Count; count++)
-                                {
-                                    if (SuitableFor.ToLower().Contains(chklstSuitableFor.Items[count].ToString().ToLower()))
-                                    {
-                                        chklstSuitableFor.Items[count].Selected = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            else
-            {
-                chklstSuitableFor.DataSource = null;
-                chklstSuitableFor.DataBind();
-            }
-        }
-        protected bool chkCheckboxSelection()
+        private void BindSupplierClassifications(Guid Activity_Flavour_Id)
         {
             MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
-            RQ.Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            RQ.Activity_Flavour_Id = Activity_Flavour_Id;
             var result = AccSvc.GetActivityClasificationAttributes(RQ);
-            if (result != null)
-                return true;
-            else
-                return false;
+            repSupplierInformation.DataSource = result;
+            repSupplierInformation.DataBind();
         }
-        private void fillPhysicalIntensity()
-        {
-            CheckBoxList chklstPhysicalIntensity = (CheckBoxList)frmActivityFlavour.FindControl("chklstPhysicalIntensity");
-            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "PhysicalIntensity").MasterAttributeValues;
-            if (res != null)
-            {
-                chklstPhysicalIntensity.DataSource = res;
-                chklstPhysicalIntensity.DataTextField = "AttributeValue";
-                chklstPhysicalIntensity.DataValueField = "AttributeValue";
-                chklstPhysicalIntensity.DataBind();
 
-                if (chkCheckboxSelection())
-                {
-                    MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
-                    RQ.Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-                    var result = AccSvc.GetActivityClasificationAttributes(RQ);
-                    if (result != null)
-                    {
-                        var resCount = result.Count();
-                        for (int i = 0; i < resCount; i++)
-                        {
-                            if (!string.IsNullOrWhiteSpace(result[i].AttributeValue))
-                            {
-                                var SuitableFor = result[i].AttributeValue;
-                                for (int count = 0; count < chklstPhysicalIntensity.Items.Count; count++)
-                                {
-                                    if (SuitableFor.ToLower().Contains(chklstPhysicalIntensity.Items[count].ToString().ToLower()))
-                                    {
-                                        chklstPhysicalIntensity.Items[count].Selected = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                chklstPhysicalIntensity.DataSource = null;
-                chklstPhysicalIntensity.DataBind();
-            }
-        }
-        private void fillDDLSession()
-        {
+        //private void BindDataSource()
+        //{
+        //    Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
+        //    MDMSVC.DC_Activity_SupplierProductMapping_RQ _obj = new MDMSVC.DC_Activity_SupplierProductMapping_RQ();
+        //    _obj.Activity_ID = Activity_Flavour_Id;
+        //    var result = AccSvc.GetActivitySupplierProductMapping(_obj);
+        //    if (result.Count > 0 || result != null)
+        //    {
+        //        foreach (DC_Activity_SupplierProductMapping res in result)
+        //        {
+        //            lblSuppCountry.Text = res.SupplierCountryName.ToString();
+        //            lblSuppCity.Text = res.SupplierCityName.ToString();
+        //            lblSuppProductType.Text = res.SupplierProductType.ToString();
+        //            lblSuppProdNameSubType.Text = res.SupplierProductName.ToString();
+        //            lblSuppSuitableFor.Text = res.SupplierType.ToString();
+        //            lblSuppPhysicalIntensity.Text = res.SupplierType.ToString();
+        //        }
+        //    }
+
+        //}
+
+        private void fillDDLSession(DropDownList ddlSession)
+        {
             try
             {
-                DropDownList ddlSession = (DropDownList)frmActivityFlavour.FindControl("ddlSession");
                 ddlSession.Items.Clear();
                 ddlSession.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivitySession").MasterAttributeValues;
                 ddlSession.DataTextField = "AttributeValue";
                 ddlSession.DataValueField = "MasterAttributeValue_Id";
                 ddlSession.DataBind();
                 ddlSession.Items.Insert(0, new ListItem("-Select-", "0"));
-                //MDMSVC.DC_Activity_Flavour rowView = (MDMSVC.DC_Activity_Flavour)frmActivityFlavour.DataItem;
-                //if (rowView != null)
-                //{
-                //    if (rowView.ProductCategorySubType != null)
-                //    {
-                //        ddlProdcategorySubType.SelectedIndex = ddlProdcategorySubType.Items.IndexOf(ddlProdcategorySubType.Items.FindByText(rowView.ProductCategorySubType.ToString()));
-                //    }
-                //}
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void UpdateFlavour(Guid Activity_Flavour_Id)
         {
-            fillcities();
-        }
-        protected void ddlProdcategorySubType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
-            ddlProductType.Items.Clear();
-            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
-            ddlProdNameSubType.Items.Clear();
-            fillProductType();
-        }
-        protected void ddlProductType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
-            ddlProdNameSubType.Items.Clear();
-            fillproductsubtype();
-        }
-        protected void frmActivityFlavour_ItemCommand(object sender, FormViewCommandEventArgs e)
-        {
-            if (e.CommandName == "SaveProduct")
+
+            #region Update Flavour Table
+
+            MDMSVC.DC_Activity_Flavour FlavData = new MDMSVC.DC_Activity_Flavour();
+
+            FlavData.Activity_Flavour_Id = Activity_Flavour_Id;
+            FlavData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
+
+            if (ddlCountry.SelectedIndex > 0)
             {
-                //name
-                TextBox txtActivity_Flavour_Id = (TextBox)frmActivityFlavour.FindControl("txtActivity_Flavour_Id");
-                TextBox txtProductName = (TextBox)frmActivityFlavour.FindControl("txtProductName");
-                //address info
+                FlavData.Country = ddlCountry.SelectedItem.Text;
+                FlavData.Country_Id = Guid.Parse(ddlCountry.SelectedValue);
+            }
 
-                DropDownList ddlCountryTLGX = (DropDownList)frmActivityFlavour.FindControl("ddlCountryTLGX");
-                DropDownList ddlCity = (DropDownList)frmActivityFlavour.FindControl("ddlCity");
-                //Classification Attributes
-                DropDownList ddlProdCategory = (DropDownList)frmActivityFlavour.FindControl("ddlProdCategory");
-                DropDownList ddlProdcategorySubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdcategorySubType");
-                DropDownList ddlProductType = (DropDownList)frmActivityFlavour.FindControl("ddlProductType");
-                DropDownList ddlProdNameSubType = (DropDownList)frmActivityFlavour.FindControl("ddlProdNameSubType");
-                //key facts
+            if (ddlCity.SelectedIndex > 0)
+            {
+                FlavData.City = ddlCity.SelectedItem.Text;
+                FlavData.City_Id = Guid.Parse(ddlCity.SelectedValue);
+            }
 
-                //General info
-                TextBox txtEventPlace = (TextBox)frmActivityFlavour.FindControl("txtEventPlace");
+            FlavData.ProductCategory = txtProdCategory.Text;
 
-                MDMSVC.DC_Activity_Flavour FlavData = new MDMSVC.DC_Activity_Flavour();
-
-                FlavData.Activity_Flavour_Id = new Guid(txtActivity_Flavour_Id.Text);
-                FlavData.Legacy_Product_ID = AccSvc.GetLegacyProductId(Activity_Flavour_Id);
-                if (ddlCountryTLGX.SelectedIndex != 0)
+            //SubCat
+            List<SubCategoryData> ptl = new List<SubCategoryData>();
+            foreach (RepeaterItem item in repSubCategory.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    FlavData.Country = ddlCountryTLGX.SelectedItem.Text;
-                    FlavData.Country = ddlCountryTLGX.SelectedItem.Value;
+                    LinkButton btnRemoveSubCategory = (LinkButton)item.FindControl("btnRemoveSubCategory");
+                    Label lblSubCategory = (Label)item.FindControl("lblSubCategory");
+                    ptl.Add(new SubCategoryData
+                    {
+                        SubCategory = lblSubCategory.Text,
+                        SubCategory_Id = btnRemoveSubCategory.CommandArgument
+                    });
                 }
-                if (ddlCity.SelectedIndex != 0)
+            }
+            FlavData.ProductCategorySubType = string.Join(",", ptl.Select(s => s.SubCategory_Id).ToList());
+
+            //ProdType
+            List<ProductTypeData> ptyl = new List<ProductTypeData>();
+            foreach (RepeaterItem item in repProductType.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
-                    FlavData.City = ddlCity.SelectedItem.Text;
-                    FlavData.City = ddlCity.SelectedItem.Value;
+                    LinkButton btnRemoveProductType = (LinkButton)item.FindControl("btnRemoveProductType");
+                    Label lblProductType = (Label)item.FindControl("lblProductType");
+                    ptyl.Add(new ProductTypeData
+                    {
+                        ProductType = lblProductType.Text,
+                        ProductType_Id = btnRemoveProductType.CommandArgument
+                    });
+                }
+            }
+            FlavData.ProductType = string.Join(",", ptyl.Select(s => s.ProductType_Id).ToList());
+
+            //ProdSubType
+            List<ProductSubTypeData> pstl = new List<ProductSubTypeData>();
+            foreach (RepeaterItem item in repProductSubType.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                {
+                    LinkButton btnRemoveProductSubType = (LinkButton)item.FindControl("btnRemoveProductSubType");
+                    Label lblProductSubType = (Label)item.FindControl("lblProductSubType");
+                    pstl.Add(new ProductSubTypeData
+                    {
+                        ProductSubType = lblProductSubType.Text,
+                        ProductSubType_Id = btnRemoveProductSubType.CommandArgument
+                    });
+                }
+            }
+            FlavData.ProductNameSubType = string.Join(",", pstl.Select(s => s.ProductSubType_Id).ToList());
+
+            var result = AccSvc.AddUpdateActivityFlavour(FlavData);
+
+            #endregion
+
+            #region Update SuitableFor & PhysicalIntensity
+            List<DC_Activity_CA_CRUD> updateCA = new List<DC_Activity_CA_CRUD>();
+
+            //SuitableFor
+            List<string> AttributeValues = new List<string>();
+            foreach (ListItem checkedSuitable in chklstSuitableFor.Items)
+            {
+                if (checkedSuitable.Selected)
+                {
+                    AttributeValues.Add(checkedSuitable.Text);
+                }
+            }
+            updateCA.Add(new DC_Activity_CA_CRUD
+            {
+                Activity_Flavour_Id = Activity_Flavour_Id,
+                AttributeType = "Product",
+                AttributeSubType = "SuitableFor",
+                AttributeValues = AttributeValues.ToArray(),
+                User = System.Web.HttpContext.Current.User.Identity.Name
+            });
+
+            //PhysicalIntensity
+            AttributeValues = new List<string>();
+            if(ddlPhysicalIntensity.SelectedIndex > 0)
+            {
+                AttributeValues.Add(ddlPhysicalIntensity.SelectedItem.Text);
+            }
+            updateCA.Add(new DC_Activity_CA_CRUD
+            {
+                Activity_Flavour_Id = Activity_Flavour_Id,
+                AttributeType = "Product",
+                AttributeSubType = "Physicalntensity",
+                AttributeValues = AttributeValues.ToArray(),
+                User = System.Web.HttpContext.Current.User.Identity.Name
+            });
+
+            var resultUpdateCA = AccSvc.AddUpdateActivityFlavourCA(updateCA);
+
+            #endregion
+
+            #region Update DaysOfOperation
+            var OperatingDaysToUpdate = CollectAllOperatingDaysInfoOnPage();
+            var resultUpdateDOO = AccSvc.AddUpdateActivityDaysOfWeek(OperatingDaysToUpdate);
+            #endregion
+
+            BootstrapAlert.BootstrapAlertMessage(dvMsg, "Flavour updated successfully", BootstrapAlertType.Success);
+        }
+
+        protected void repProductType_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "RemoveProductType")
+            {
+                List<ProductTypeData> ptl = new List<ProductTypeData>();
+                foreach (RepeaterItem item in repProductType.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveProductType = (LinkButton)item.FindControl("btnRemoveProductType");
+                        if (btnRemoveProductType.CommandArgument.ToLower() == e.CommandArgument.ToString().ToLower())
+                        {
+                            continue;
+                        }
+
+                        Label lblProductType = (Label)item.FindControl("lblProductType");
+                        ptl.Add(new ProductTypeData
+                        {
+                            ProductType = lblProductType.Text,
+                            ProductType_Id = btnRemoveProductType.CommandArgument
+                        });
+                    }
                 }
 
-                if (ddlProdCategory.SelectedIndex != 0)
-                    FlavData.ProductCategory = ddlProdCategory.SelectedItem.Text;
+                repProductType.DataSource = ptl;
+                repProductType.DataBind();
 
-                if (ddlProdcategorySubType.SelectedIndex != 0)
-                    FlavData.ProductCategorySubType = ddlProdcategorySubType.SelectedItem.Text;
-
-                if (ddlProductType.SelectedIndex != 0)
-                    FlavData.ProductType = ddlProductType.SelectedItem.Text;
-
-                if (ddlProdNameSubType.SelectedIndex != 0)
-                    FlavData.ProductNameSubType = ddlProdNameSubType.SelectedItem.Text;
-
-                if (!string.IsNullOrEmpty(txtProductName.Text))
-                    FlavData.ProductName = txtProductName.Text.ToString();
-
-                FlavData.Edit_Date = DateTime.Now;
-                FlavData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-                var result = AccSvc.AddUpdateActivityFlavour(FlavData);
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+                fillproductsubtype(ptl.Select(s => s.ProductType_Id).ToList());
 
             }
-            else if (e.CommandName == "CancelProduct")
+        }
+
+        protected void btnAddProductType_Click(object sender, EventArgs e)
+        {
+            if (ddlProductType.SelectedIndex > 0)
             {
-                //TextBox txtProductName = (TextBox)this.Parent.Page.FindControl("txtProductName");
-                System.Web.UI.HtmlControls.HtmlTextArea txtProductName = (System.Web.UI.HtmlControls.HtmlTextArea)frmActivityFlavour.FindControl("txtProductName");
-                DropDownList ddlCountryTLGX = (DropDownList)this.Parent.Page.FindControl("ddlCountryTLGX");
+                bool bDuplicate = false;
+
+                List<ProductTypeData> ptl = new List<ProductTypeData>();
+                foreach (RepeaterItem item in repProductType.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveProductType = (LinkButton)item.FindControl("btnRemoveProductType");
+                        Label lblProductType = (Label)item.FindControl("lblProductType");
+                        ptl.Add(new ProductTypeData
+                        {
+                            ProductType = lblProductType.Text,
+                            ProductType_Id = btnRemoveProductType.CommandArgument
+                        });
+
+                        if (ddlProductType.SelectedValue.ToLower() == btnRemoveProductType.CommandArgument.ToLower())
+                        {
+                            bDuplicate = true;
+                        }
+                    }
+                }
+
+                if (!bDuplicate)
+                {
+                    ptl.Add(new ProductTypeData
+                    {
+                        ProductType = ddlProductType.SelectedItem.Text,
+                        ProductType_Id = ddlProductType.SelectedValue
+                    });
+                }
+
+                repProductType.DataSource = ptl;
+                repProductType.DataBind();
+
+                fillproductsubtype(ptl.Select(s => s.ProductType_Id).ToList());
             }
         }
-        protected void rptDaysOfWeek_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            var resultdataforsession = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivitySession").MasterAttributeValues;
-            DropDownList ddlSession_ = (DropDownList)e.Item.FindControl("ddlSession_");
-            ddlSession_.DataSource = resultdataforsession;
-            ddlSession_.DataTextField = "AttributeValue";
-            ddlSession_.DataValueField = "MasterAttributeValue_Id";
-            ddlSession_.DataBind();
 
+        protected void btnAddSubCategory_Click(object sender, EventArgs e)
+        {
+            if (ddlProdcategorySubType.SelectedIndex > 0)
+            {
+                bool bDuplicate = false;
+
+                List<SubCategoryData> ptl = new List<SubCategoryData>();
+                foreach (RepeaterItem item in repSubCategory.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveSubCategory = (LinkButton)item.FindControl("btnRemoveSubCategory");
+                        Label lblSubCategory = (Label)item.FindControl("lblSubCategory");
+                        ptl.Add(new SubCategoryData
+                        {
+                            SubCategory = lblSubCategory.Text,
+                            SubCategory_Id = btnRemoveSubCategory.CommandArgument
+                        });
+
+                        if (ddlProdcategorySubType.SelectedValue.ToLower() == btnRemoveSubCategory.CommandArgument.ToLower())
+                        {
+                            bDuplicate = true;
+                        }
+                    }
+                }
+
+                if (!bDuplicate)
+                {
+                    ptl.Add(new SubCategoryData
+                    {
+                        SubCategory = ddlProdcategorySubType.SelectedItem.Text,
+                        SubCategory_Id = ddlProdcategorySubType.SelectedValue
+                    });
+                }
+
+                repSubCategory.DataSource = ptl;
+                repSubCategory.DataBind();
+
+                fillProductType(ptl.Select(s => s.SubCategory_Id).ToList());
+            }
+        }
+
+        protected void repSubCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "RemoveSubCategory")
+            {
+                List<SubCategoryData> ptl = new List<SubCategoryData>();
+                foreach (RepeaterItem item in repSubCategory.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveSubCategory = (LinkButton)item.FindControl("btnRemoveSubCategory");
+                        if (btnRemoveSubCategory.CommandArgument.ToLower() == e.CommandArgument.ToString().ToLower())
+                        {
+                            continue;
+                        }
+
+                        Label lblSubCategory = (Label)item.FindControl("lblSubCategory");
+                        ptl.Add(new SubCategoryData
+                        {
+                            SubCategory = lblSubCategory.Text,
+                            SubCategory_Id = btnRemoveSubCategory.CommandArgument
+                        });
+                    }
+                }
+
+                repSubCategory.DataSource = ptl;
+                repSubCategory.DataBind();
+
+                fillProductType(ptl.Select(s => s.SubCategory_Id).ToList());
+            }
+        }
+
+        protected void btnAddProductSubType_Click(object sender, EventArgs e)
+        {
+            if (ddlProdNameSubType.SelectedIndex > 0)
+            {
+                bool bDuplicate = false;
+
+                List<ProductSubTypeData> ptl = new List<ProductSubTypeData>();
+                foreach (RepeaterItem item in repProductSubType.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveProductSubType = (LinkButton)item.FindControl("btnRemoveProductSubType");
+                        Label lblProductSubType = (Label)item.FindControl("lblProductSubType");
+                        ptl.Add(new ProductSubTypeData
+                        {
+                            ProductSubType = lblProductSubType.Text,
+                            ProductSubType_Id = btnRemoveProductSubType.CommandArgument
+                        });
+
+                        if (ddlProdNameSubType.SelectedValue.ToLower() == btnRemoveProductSubType.CommandArgument.ToLower())
+                        {
+                            bDuplicate = true;
+                        }
+                    }
+                }
+
+                if (!bDuplicate)
+                {
+                    ptl.Add(new ProductSubTypeData
+                    {
+                        ProductSubType = ddlProdNameSubType.SelectedItem.Text,
+                        ProductSubType_Id = ddlProdNameSubType.SelectedValue
+                    });
+                }
+
+                repProductSubType.DataSource = ptl;
+                repProductSubType.DataBind();
+            }
+        }
+
+        protected void repProductSubType_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "RemoveProductSubType")
+            {
+                List<ProductSubTypeData> ptl = new List<ProductSubTypeData>();
+                foreach (RepeaterItem item in repProductSubType.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveProductSubType = (LinkButton)item.FindControl("btnRemoveProductSubType");
+                        if (btnRemoveProductSubType.CommandArgument.ToLower() == e.CommandArgument.ToString().ToLower())
+                        {
+                            continue;
+                        }
+
+                        Label lblProductSubType = (Label)item.FindControl("lblProductSubType");
+                        ptl.Add(new ProductSubTypeData
+                        {
+                            ProductSubType = lblProductSubType.Text,
+                            ProductSubType_Id = btnRemoveProductSubType.CommandArgument
+                        });
+                    }
+                }
+
+                repProductSubType.DataSource = ptl;
+                repProductSubType.DataBind();
+            }
+        }
+
+        protected void repOperatingDays_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            List<MDMSVC.DC_Activity_OperatingDays> OpDaysList = new List<DC_Activity_OperatingDays>();
+            OpDaysList = CollectAllOperatingDaysInfoOnPage();
+
+            if (e.CommandName == "AddOperatingDays")
+            {
+                LinkButton btnAddOperatingDays = (LinkButton)e.CommandSource;
+                RepeaterItem itemOP = (RepeaterItem)btnAddOperatingDays.Parent;
+
+                CheckBox chkSpecificOperatingDays = (CheckBox)itemOP.FindControl("chkSpecificOperatingDays");
+                TextBox txtFrom = (TextBox)itemOP.FindControl("txtFromAdd");
+                TextBox txtTo = (TextBox)itemOP.FindControl("txtToAdd");
+
+                DC_Activity_OperatingDays NewOD = new DC_Activity_OperatingDays();
+                NewOD.Activity_DaysOfOperation_Id = Guid.NewGuid();
+                NewOD.Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
+                NewOD.CreateUser = System.Web.HttpContext.Current.User.Identity.Name;
+                NewOD.DaysOfWeek = new List<DC_Activity_DaysOfWeek>().ToArray();
+                NewOD.EditUser = System.Web.HttpContext.Current.User.Identity.Name;
+                if (!string.IsNullOrWhiteSpace(txtFrom.Text))
+                {
+                    NewOD.FromDate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                if (!string.IsNullOrWhiteSpace(txtTo.Text))
+                {
+                    NewOD.EndDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                }
+                NewOD.IsActive = true;
+                NewOD.IsOperatingDays = true;
+
+                OpDaysList.Add(NewOD);
+                repOperatingDays.DataSource = OpDaysList;
+                repOperatingDays.DataBind();
+            }
+            else if (e.CommandName == "RemoveOperatingDays")
+            {
+                Guid DaysOfOperation_Id = Guid.Parse(e.CommandArgument.ToString());
+                OpDaysList.Remove(OpDaysList.Where(w => w.Activity_DaysOfOperation_Id == DaysOfOperation_Id).Select(s => s).First());
+                repOperatingDays.DataSource = OpDaysList;
+                repOperatingDays.DataBind();
+            }
+        }
+
+        protected void repDaysOfWeek_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            List<MDMSVC.DC_Activity_OperatingDays> OpDaysList = new List<DC_Activity_OperatingDays>();
+            OpDaysList = CollectAllOperatingDaysInfoOnPage();
+
+            if (e.CommandName == "AddDaysOfWeek")
+            {
+                LinkButton btnAddDaysOfWeek = (LinkButton)e.CommandSource;
+                RepeaterItem repOpsDay = (RepeaterItem)btnAddDaysOfWeek.Parent.Parent.Parent;
+                RepeaterItem itemDOW = (RepeaterItem)btnAddDaysOfWeek.Parent;
+                LinkButton btnRemoveOperatingDays = (LinkButton)repOpsDay.FindControl("btnRemoveOperatingDays");
+
+                TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
+                TextBox txtDuration = (TextBox)itemDOW.FindControl("txtDuration");
+                DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
+                HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
+                HtmlInputCheckBox chkTues = (HtmlInputCheckBox)itemDOW.FindControl("chkTues");
+                HtmlInputCheckBox chkWed = (HtmlInputCheckBox)itemDOW.FindControl("chkWed");
+                HtmlInputCheckBox chkThurs = (HtmlInputCheckBox)itemDOW.FindControl("chkThurs");
+                HtmlInputCheckBox chkFri = (HtmlInputCheckBox)itemDOW.FindControl("chkFri");
+                HtmlInputCheckBox chkSat = (HtmlInputCheckBox)itemDOW.FindControl("chkSat");
+                HtmlInputCheckBox chkSun = (HtmlInputCheckBox)itemDOW.FindControl("chkSun");
+
+                foreach (var od in OpDaysList)
+                {
+                    if (od.Activity_DaysOfOperation_Id == Guid.Parse(btnRemoveOperatingDays.CommandArgument))
+                    {
+                        var DaysOfWeek = od.DaysOfWeek.ToList();
+                        DaysOfWeek.Add(new DC_Activity_DaysOfWeek
+                        {
+                            Activity_DaysOfOperation_Id = Guid.Parse(btnRemoveOperatingDays.CommandArgument),
+                            Activity_DaysOfWeek_ID = Guid.NewGuid(),
+                            Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]),
+                            IsActive = true,
+                            Fri = chkFri.Checked,
+                            Mon = chkMon.Checked,
+                            Sat = chkSat.Checked,
+                            Sun = chkSun.Checked,
+                            Thur = chkThurs.Checked,
+                            Tues = chkTues.Checked,
+                            Wed = chkWed.Checked,
+                            Session = ddlSession.SelectedItem.Text,
+                            Duration = txtDuration.Text,
+                            EndTime = string.Empty,
+                            StartTime = txtStartTime.Text,
+                        });
+                        od.DaysOfWeek = DaysOfWeek.ToArray();
+                    }
+                }
+
+                repOperatingDays.DataSource = OpDaysList;
+                repOperatingDays.DataBind();
+
+            }
+            else if (e.CommandName == "RemoveDaysOfWeek")
+            {
+                LinkButton btnRemoveDaysOfWeek = (LinkButton)e.CommandSource;
+                RepeaterItem repOpsDay = (RepeaterItem)btnRemoveDaysOfWeek.Parent.Parent.Parent;
+                LinkButton btnRemoveOperatingDays = (LinkButton)repOpsDay.FindControl("btnRemoveOperatingDays");
+
+                foreach (var od in OpDaysList)
+                {
+                    if (od.Activity_DaysOfOperation_Id == Guid.Parse(btnRemoveOperatingDays.CommandArgument))
+                    {
+                        var DaysOfWeek = od.DaysOfWeek.ToList();
+                        DaysOfWeek.Remove(DaysOfWeek.Where(w => w.Activity_DaysOfWeek_ID == Guid.Parse(btnRemoveDaysOfWeek.CommandArgument)).Select(s => s).First());
+                        od.DaysOfWeek = DaysOfWeek.ToArray();
+                    }
+                }
+
+                repOperatingDays.DataSource = OpDaysList;
+                repOperatingDays.DataBind();
+            }
+        }
+
+        protected void repDaysOfWeek_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Header)
+            {
+                DropDownList ddlSession = (DropDownList)e.Item.FindControl("ddlSession");
+                if (ddlSession != null)
+                {
+                    fillDDLSession(ddlSession);
+
+                    if (e.Item.ItemType != ListItemType.Header)
+                    {
+                        HiddenField hdnSession = (HiddenField)e.Item.FindControl("hdnSession");
+                        if (hdnSession != null)
+                        {
+                            if (ddlSession.Items.FindByText(hdnSession.Value) != null)
+                            {
+                                ddlSession.ClearSelection();
+                                ddlSession.Items.FindByText(hdnSession.Value).Selected = true;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        private List<MDMSVC.DC_Activity_OperatingDays> CollectAllOperatingDaysInfoOnPage()
+        {
+            List<MDMSVC.DC_Activity_OperatingDays> OpDaysList = new List<DC_Activity_OperatingDays>();
+
+            foreach (RepeaterItem item in repOperatingDays.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                {
+                    MDMSVC.DC_Activity_OperatingDays OpDay = new DC_Activity_OperatingDays();
+
+                    CheckBox chkSpecificOperatingDays = (CheckBox)item.FindControl("chkSpecificOperatingDays");
+                    TextBox txtFrom = (TextBox)item.FindControl("txtFrom");
+                    TextBox txtTo = (TextBox)item.FindControl("txtTo");
+                    Repeater repDaysOfWeek = (Repeater)item.FindControl("repDaysOfWeek");
+                    LinkButton btnRemoveOperatingDays = (LinkButton)item.FindControl("btnRemoveOperatingDays");
+
+
+
+                    OpDay.Activity_DaysOfOperation_Id = Guid.Parse(btnRemoveOperatingDays.CommandArgument);
+                    OpDay.Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
+                    OpDay.IsOperatingDays = true;
+                    if (!string.IsNullOrWhiteSpace(txtFrom.Text))
+                    {
+                        OpDay.FromDate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    }
+                    if (!string.IsNullOrWhiteSpace(txtTo.Text))
+                    {
+                        OpDay.EndDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    }
+                    OpDay.EditUser = System.Web.HttpContext.Current.User.Identity.Name;
+                    OpDay.IsActive = true;
+
+                    List<MDMSVC.DC_Activity_DaysOfWeek> WeekDayList = new List<MDMSVC.DC_Activity_DaysOfWeek>();
+
+                    foreach (RepeaterItem itemDOW in repDaysOfWeek.Items)
+                    {
+                        if (itemDOW.ItemType == ListItemType.Item || itemDOW.ItemType == ListItemType.AlternatingItem)
+                        {
+                            TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
+                            TextBox txtDuration = (TextBox)itemDOW.FindControl("txtDuration");
+                            DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
+                            HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
+                            HtmlInputCheckBox chkTues = (HtmlInputCheckBox)itemDOW.FindControl("chkTues");
+                            HtmlInputCheckBox chkWed = (HtmlInputCheckBox)itemDOW.FindControl("chkWed");
+                            HtmlInputCheckBox chkThurs = (HtmlInputCheckBox)itemDOW.FindControl("chkThurs");
+                            HtmlInputCheckBox chkFri = (HtmlInputCheckBox)itemDOW.FindControl("chkFri");
+                            HtmlInputCheckBox chkSat = (HtmlInputCheckBox)itemDOW.FindControl("chkSat");
+                            HtmlInputCheckBox chkSun = (HtmlInputCheckBox)itemDOW.FindControl("chkSun");
+                            LinkButton btnRemoveDaysOfWeek = (LinkButton)itemDOW.FindControl("btnRemoveDaysOfWeek");
+
+                            Label lblSupplierStartTime = (Label)itemDOW.FindControl("lblSupplierStartTime");
+                            Label lblSupplierDuration = (Label)itemDOW.FindControl("lblSupplierDuration");
+                            Label lblSupplierSession = (Label)itemDOW.FindControl("lblSupplierSession");
+                            Label lblSupplierFrequency = (Label)itemDOW.FindControl("lblSupplierFrequency");
+
+
+                            WeekDayList.Add(new DC_Activity_DaysOfWeek
+                            {
+                                Activity_DaysOfOperation_Id = OpDay.Activity_DaysOfOperation_Id,
+                                IsActive = true,
+                                Activity_Flavor_ID = OpDay.Activity_Flavor_ID,
+                                Activity_DaysOfWeek_ID = Guid.Parse(btnRemoveDaysOfWeek.CommandArgument),
+                                Duration = txtDuration.Text,
+                                Fri = chkFri.Checked,
+                                Mon = chkMon.Checked,
+                                Sat = chkSat.Checked,
+                                Session = ddlSession.SelectedItem.Text,
+                                Sun = chkSun.Checked,
+                                StartTime = txtStartTime.Text,
+                                Thur = chkThurs.Checked,
+                                Tues = chkTues.Checked,
+                                Wed = chkWed.Checked,
+                                SupplierDuration = lblSupplierDuration.Text,
+                                SupplierFrequency = lblSupplierFrequency.Text,
+                                SupplierSession = lblSupplierSession.Text,
+                                SupplierStartTime = lblSupplierStartTime.Text
+                            });
+                        }
+                    }
+
+                    OpDay.DaysOfWeek = WeekDayList.ToArray();
+
+                    OpDaysList.Add(OpDay);
+                }
+            }
+
+            return OpDaysList;
+        }
+
+        //ToDO
+        protected void repOperatingDays_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            //if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            //{
+            //    HtmlButton iCalFrom = (HtmlButton)e.Item.FindControl("iCalFrom");
+            //    TextBox txtFrom = (TextBox)e.Item.FindControl("txtFrom");
+            //    CalendarExtender calFromDate = (CalendarExtender)e.Item.FindControl("calFromDate");
+            //    FilteredTextBoxExtender axfte_txtFrom = (FilteredTextBoxExtender)e.Item.FindControl("axfte_txtFrom");
+            //    calFromDate.TargetControlID = txtFrom.ClientID;
+            //    calFromDate.PopupButtonID = iCalFrom.ClientID;
+            //    axfte_txtFrom.TargetControlID = txtFrom.ClientID;
+
+            //    HtmlButton iCalTo = (HtmlButton)e.Item.FindControl("iCalTo");
+            //    TextBox txtTo = (TextBox)e.Item.FindControl("txtTo");
+            //    CalendarExtender calToDate = (CalendarExtender)e.Item.FindControl("calToDate");
+            //    FilteredTextBoxExtender axfte_txtTo = (FilteredTextBoxExtender)e.Item.FindControl("axfte_txtTo");
+            //    calToDate.TargetControlID = txtFrom.ClientID;
+            //    calToDate.PopupButtonID = iCalFrom.ClientID;
+            //    axfte_txtTo.TargetControlID = txtFrom.ClientID;
+            //}
+        }
+
+        protected void btnSave_Click(object sender, EventArgs e)
+        {
+            Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+            UpdateFlavour(Activity_Flavour_Id);
         }
     }
+
+    public class ProductTypeData
+    {
+        public string ProductType_Id { get; set; }
+        public string ProductType { get; set; }
+    }
+
+    public class ProductSubTypeData
+    {
+        public string ProductSubType_Id { get; set; }
+        public string ProductSubType { get; set; }
+    }
+
+    public class SubCategoryData
+    {
+        public string SubCategory_Id { get; set; }
+        public string SubCategory { get; set; }
+    }
+
 }

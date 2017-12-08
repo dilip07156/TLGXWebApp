@@ -41,7 +41,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     }
                     gvActInclusionSearch.DataSource = res;
                     gvActInclusionSearch.DataBind();
-                    lblTotalRecords.Text = Convert.ToString(res.Count);
+                    if (res.Count() > 0)
+                    {
+                        lblTotalRecords.Text = Convert.ToString(res[0].TotalRecords);
+                    }
                 }
                 else
                 {

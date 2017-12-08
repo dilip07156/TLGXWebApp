@@ -53,7 +53,7 @@ namespace TLGX_Consumer.controls.staticdata
             if (Accomodation_ID != null)
             {
                 //PageIndexMapped = intMappedgrvwPageNo;
-                
+
                 MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQParams = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
                 RQParams.Accommodation_Id = Accomodation_ID;
                 RQParams.PageNo = pageIndexMapped;
@@ -137,7 +137,6 @@ namespace TLGX_Consumer.controls.staticdata
             }
             else if (searchSource == "manual")
             {
-                //RQAPM.Accommodation_Id = Accomodation_ID;
                 if (!string.IsNullOrEmpty(txtSupProductName.Text))
                     RQAPM.ProductName = txtSupProductName.Text;
                 if (!string.IsNullOrEmpty(txtSupAddress.Text))
@@ -148,7 +147,6 @@ namespace TLGX_Consumer.controls.staticdata
                     RQAPM.CityName = txtSupCity.Text;
                 if (!string.IsNullOrEmpty(txtSupTelephone.Text))
                     RQAPM.TelephoneNumber = txtSupTelephone.Text;
-                
             }
             RQAPM.Source = "SYSTEMDATA";
             //RQAPM.StatusExcept = "MAPPED";

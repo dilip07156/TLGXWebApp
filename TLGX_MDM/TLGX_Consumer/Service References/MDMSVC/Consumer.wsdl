@@ -2432,6 +2432,15 @@
   <wsdl:message name="IConsumer_AddUpdateActivityFlavour_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q268="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q268:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityCA_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityCA" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityCA_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityCAResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityCA_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q269="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q269:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityFlavourOptions_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityFlavourOptions" />
   </wsdl:message>
@@ -2439,7 +2448,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityFlavourOptionsResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityFlavourOptions_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q269="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q269:DC_ErrorStatus" />
+    <wsdl:part xmlns:q270="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q270:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityFlavourOptions_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActivityFlavourOptions" />
@@ -2448,7 +2457,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActivityFlavourOptionsResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityFlavourOptions_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q270="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q270:DC_ErrorStatus" />
+    <wsdl:part xmlns:q271="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q271:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityDeals_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityDeals" />
@@ -2457,7 +2466,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityDealsResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityDeals_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q271="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q271:DC_ErrorStatus" />
+    <wsdl:part xmlns:q272="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q272:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityDeals_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActivityDeals" />
@@ -2466,7 +2475,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActivityDealsResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityDeals_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q272="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q272:DC_ErrorStatus" />
+    <wsdl:part xmlns:q273="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q273:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityPrices_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityPrices" />
@@ -2475,7 +2484,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityPricesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityPrices_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q273="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q273:DC_ErrorStatus" />
+    <wsdl:part xmlns:q274="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q274:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityPrices_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActivityPrices" />
@@ -2484,7 +2493,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActivityPricesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityPrices_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q274="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q274:DC_ErrorStatus" />
+    <wsdl:part xmlns:q275="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q275:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActSupplierProdMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActSupplierProdMapping" />
@@ -2493,7 +2502,7 @@
     <wsdl:part name="parameters" element="tns:GetActSupplierProdMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActSupplierProdMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q275="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q275:DC_ErrorStatus" />
+    <wsdl:part xmlns:q276="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q276:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMapping" />
@@ -2502,7 +2511,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q276="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q276:DC_ErrorStatus" />
+    <wsdl:part xmlns:q277="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q277:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActReviewsAndScores_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActReviewsAndScores" />
@@ -2511,7 +2520,7 @@
     <wsdl:part name="parameters" element="tns:GetActReviewsAndScoresResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActReviewsAndScores_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q277="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q277:DC_ErrorStatus" />
+    <wsdl:part xmlns:q278="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q278:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActReviewsNScores_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActReviewsNScores" />
@@ -2520,7 +2529,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActReviewsNScoresResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActReviewsNScores_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q278="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q278:DC_ErrorStatus" />
+    <wsdl:part xmlns:q279="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q279:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActSupplierProdMapping_CA_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActSupplierProdMapping_CA" />
@@ -2529,7 +2538,7 @@
     <wsdl:part name="parameters" element="tns:GetActSupplierProdMapping_CAResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActSupplierProdMapping_CA_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q279="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q279:DC_ErrorStatus" />
+    <wsdl:part xmlns:q280="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q280:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_CA_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMapping_CA" />
@@ -2538,7 +2547,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActSupplierProdMapping_CAResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActSupplierProdMapping_CA_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q280="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q280:DC_ErrorStatus" />
+    <wsdl:part xmlns:q281="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q281:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityPolicy_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityPolicy" />
@@ -2547,7 +2556,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityPolicyResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityPolicy_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q281="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q281:DC_ErrorStatus" />
+    <wsdl:part xmlns:q282="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q282:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityPolicy_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateActivityPolicy" />
@@ -2556,25 +2565,25 @@
     <wsdl:part name="parameters" element="tns:AddUpdateActivityPolicyResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q282="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q282:DC_ErrorStatus" />
-  </wsdl:message>
-  <wsdl:message name="IConsumer_GetActivityDaysOfWeek_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetActivityDaysOfWeek" />
-  </wsdl:message>
-  <wsdl:message name="IConsumer_GetActivityDaysOfWeek_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetActivityDaysOfWeekResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConsumer_GetActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q283="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q283:DC_ErrorStatus" />
   </wsdl:message>
-  <wsdl:message name="IConsumer_AddUpdateActivityDaysOfWeek_InputMessage">
-    <wsdl:part name="parameters" element="tns:AddUpdateActivityDaysOfWeek" />
+  <wsdl:message name="IConsumer_GetActivityOperatingDays_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityOperatingDays" />
   </wsdl:message>
-  <wsdl:message name="IConsumer_AddUpdateActivityDaysOfWeek_OutputMessage">
-    <wsdl:part name="parameters" element="tns:AddUpdateActivityDaysOfWeekResponse" />
+  <wsdl:message name="IConsumer_GetActivityOperatingDays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetActivityOperatingDaysResponse" />
   </wsdl:message>
-  <wsdl:message name="IConsumer_AddUpdateActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage">
+  <wsdl:message name="IConsumer_GetActivityOperatingDays_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q284="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q284:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityOperatingDays_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityOperatingDays" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityOperatingDays_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddUpdateActivityOperatingDaysResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_AddUpdateActivityOperatingDays_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q285="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q285:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFile_InputMessage">
     <wsdl:part name="parameters" element="tns:UploadFile" />
@@ -2583,7 +2592,7 @@
     <wsdl:part name="parameters" element="tns:UploadFileResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFile_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q285="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q285:DC_ErrorStatus" />
+    <wsdl:part xmlns:q286="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q286:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_TransferFileInChunks_InputMessage">
     <wsdl:part name="parameters" element="tns:TransferFileInChunks" />
@@ -2592,7 +2601,7 @@
     <wsdl:part name="parameters" element="tns:TransferFileInChunksResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_TransferFileInChunks_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q286="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q286:DC_ErrorStatus" />
+    <wsdl:part xmlns:q287="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q287:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFileInChunks_InputMessage">
     <wsdl:part name="parameters" element="tns:UploadFileInChunks" />
@@ -2601,7 +2610,7 @@
     <wsdl:part name="parameters" element="tns:UploadFileInChunksResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UploadFileInChunks_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q287="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q287:DC_ErrorStatus" />
+    <wsdl:part xmlns:q288="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q288:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_DeleteFile_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFile" />
@@ -3950,6 +3959,11 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourResponse" message="tns:IConsumer_AddUpdateActivityFlavour_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityFlavourDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityFlavour_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddUpdateActivityCA">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityCA" message="tns:IConsumer_AddUpdateActivityCA_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityCAResponse" message="tns:IConsumer_AddUpdateActivityCA_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityCADC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityCA_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetActivityFlavourOptions">
       <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityFlavourOptions" message="tns:IConsumer_GetActivityFlavourOptions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityFlavourOptionsResponse" message="tns:IConsumer_GetActivityFlavourOptions_OutputMessage" />
@@ -4020,15 +4034,15 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyResponse" message="tns:IConsumer_AddUpdateActivityPolicy_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityPolicyDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityPolicy_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetActivityDaysOfWeek">
-      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityDaysOfWeek" message="tns:IConsumer_GetActivityDaysOfWeek_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityDaysOfWeekResponse" message="tns:IConsumer_GetActivityDaysOfWeek_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityDaysOfWeekDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage" />
+    <wsdl:operation name="GetActivityOperatingDays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/GetActivityOperatingDays" message="tns:IConsumer_GetActivityOperatingDays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/GetActivityOperatingDaysResponse" message="tns:IConsumer_GetActivityOperatingDays_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/GetActivityOperatingDaysDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityOperatingDays_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
-    <wsdl:operation name="AddUpdateActivityDaysOfWeek">
-      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDaysOfWeek" message="tns:IConsumer_AddUpdateActivityDaysOfWeek_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDaysOfWeekResponse" message="tns:IConsumer_AddUpdateActivityDaysOfWeek_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityDaysOfWeekDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityDaysOfWeek_DC_ErrorStatusFault_FaultMessage" />
+    <wsdl:operation name="AddUpdateActivityOperatingDays">
+      <wsdl:input wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityOperatingDays" message="tns:IConsumer_AddUpdateActivityOperatingDays_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityOperatingDaysResponse" message="tns:IConsumer_AddUpdateActivityOperatingDays_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IActivity/AddUpdateActivityOperatingDaysDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_AddUpdateActivityOperatingDays_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="UploadFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/UploadFile" message="tns:IConsumer_UploadFile_InputMessage" />
