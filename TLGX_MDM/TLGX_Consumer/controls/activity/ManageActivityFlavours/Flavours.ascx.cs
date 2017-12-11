@@ -42,7 +42,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 if (result.Count() > 0)
                 {
-                    lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName);
+                    lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
                     lblSuppCity.Text = result[0].SupplierCity;
                     lblSuppCountry.Text = result[0].SupplierCountry;
                     lblSuppProductType.Text = result[0].SupplierProductType;
@@ -215,7 +215,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             ddlCountry.DataTextField = "Country_Name";
             ddlCountry.DataValueField = "Country_Id";
             ddlCountry.DataBind();
-
         }
 
         //Done
@@ -462,6 +461,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
             RQ.Activity_Flavour_Id = Activity_Flavour_Id;
+            RQ.AttributeType = "Duration";
             var result = AccSvc.GetActivityClasificationAttributes(RQ);
             repSupplierInformation.DataSource = result;
             repSupplierInformation.DataBind();
@@ -608,7 +608,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             //PhysicalIntensity
             AttributeValues = new List<string>();
-            if(ddlPhysicalIntensity.SelectedIndex > 0)
+            if (ddlPhysicalIntensity.SelectedIndex > 0)
             {
                 AttributeValues.Add(ddlPhysicalIntensity.SelectedItem.Text);
             }
