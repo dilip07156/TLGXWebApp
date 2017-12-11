@@ -11,20 +11,20 @@
     //    closeAddNewActivityModal();
     //}
 </script>
+<asp:UpdatePanel ID="updSearchDDLChange" runat="server">
+    <ContentTemplate>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Search Activities</a>
+                            </h4>
+                        </div>
 
-<div class="row">
-    <div class="col-sm-12">
-        <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Search Activities</a>
-                    </h4>
-                </div>
+                        <div id="collapseSearch" class="panel-collapse collapse in">
 
-                <div id="collapseSearch" class="panel-collapse collapse in">
-                    <asp:UpdatePanel ID="updSearchDDLChange" runat="server">
-                        <ContentTemplate>
                             <div class="panel-body">
 
                                 <div class="form-group">
@@ -67,7 +67,7 @@
                                         </div>
                                     </div>
 
-                                   <%-- <div class="form-group col-sm-12">
+                                    <%-- <div class="form-group col-sm-12">
                                         <label class="control-label col-sm-6" for="ddlStatus">
                                             Status
                                         </label>
@@ -113,7 +113,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-sm-12 row">
-                                        <label class="control-label col-sm-6" for="ddlProductSubType" >
+                                        <label class="control-label col-sm-6" for="ddlProductSubType">
                                             Product Sub Type
                                         </label>
                                         <div class="col-sm-6">
@@ -137,67 +137,69 @@
                                 </div>
 
                             </div>
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
 
 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="dvPageSize" runat="server" class="pull-right">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="input-group-addon" for="ddlPageSize"><strong>Page Size</strong></label>
+                            <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="form-control" AutoPostBack="true" Width="100px" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged">
+                                <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                                <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                                <asp:ListItem Text="25" Value="25" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="50" Value="50"></asp:ListItem>
+                                <asp:ListItem Text="100" Value="100"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="dvPageSize" runat="server" class="pull-right">
-        <div class="col-sm-12">
-            <div class="form-group">
-                <div class="input-group">
-                    <label class="input-group-addon" for="ddlPageSize"><strong>Page Size</strong></label>
-                    <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="form-control" AutoPostBack="true" Width="100px" OnSelectedIndexChanged="ddlPageSize_SelectedIndexChanged">
-                        <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                        <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                        <asp:ListItem Text="25" Value="25" Selected="True"></asp:ListItem>
-                        <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                        <asp:ListItem Text="100" Value="100"></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <div class="panel-group" id="searchResult">
+            <div class="panel panel-default">
 
-<div class="panel-group" id="searchResult">
-    <div class="panel panel-default">
-
-        <div class="panel-heading clearfix">
-            <h4 class="panel-title pull-left">
-                <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
+                <div class="panel-heading clearfix">
+                    <h4 class="panel-title pull-left">
+                        <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server"></asp:Label>)</a>
-            </h4>
-        </div>
+                    </h4>
+                </div>
 
-        <div id="collapseSearchResult" class="panel-collapse collapse in">
-            <div class="panel-body">
+                <div id="collapseSearchResult" class="panel-collapse collapse in">
+                    <div class="panel-body">
 
-                <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                    EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
-                    AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
-                    <Columns>
-                        <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
-                        <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
-                        <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
-                        <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
-                        <asp:BoundField DataField="ProductNameSubType" HeaderText="Product Name Sub Type" />
-                        <asp:BoundField DataField="Country" HeaderText="Country" />
-                        <asp:BoundField DataField="City" HeaderText="City" />
-                        <asp:BoundField DataField="SupplierCode" HeaderText="Supplier" />
-                        <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
-                    </Columns>
-                    <PagerStyle CssClass="pagination-ys" />
-                </asp:GridView>
+                        <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
+                            EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
+                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
+                            <Columns>
+                                <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
+                                <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
+                                <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
+                                <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
+                                <asp:BoundField DataField="ProductNameSubType" HeaderText="Product Name Sub Type" />
+                                <asp:BoundField DataField="Country" HeaderText="Country" />
+                                <asp:BoundField DataField="City" HeaderText="City" />
+                                <asp:BoundField DataField="SupplierCode" HeaderText="Supplier" />
+                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
+                            </Columns>
+                            <PagerStyle CssClass="pagination-ys" />
+                        </asp:GridView>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-    </div>
-</div>
+    </ContentTemplate>
+</asp:UpdatePanel>
 
 <div class="modal fade" id="moAddNewActivityModal" role="dialog">
     <div class="modal-dialog modal-md">
