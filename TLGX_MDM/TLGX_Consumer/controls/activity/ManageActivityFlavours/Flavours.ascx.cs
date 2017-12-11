@@ -72,11 +72,20 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                     fillproductcaterogysubtype();
 
-                    var selectedSubCat = BindProductSubCat(result[0].ProductCategorySubType);
+                    if (!string.IsNullOrWhiteSpace(result[0].ProductCategorySubType))
+                    {
+                        var selectedSubCat = BindProductSubCat(result[0].ProductCategorySubType);
 
-                    var selectedProdType = BindProductNameType(result[0].ProductType, selectedSubCat);
+                        if (!string.IsNullOrWhiteSpace(result[0].ProductType))
+                        {
+                            var selectedProdType = BindProductNameType(result[0].ProductType, selectedSubCat);
 
-                    BindProductNameSubType(result[0].ProductNameSubType, selectedProdType);
+                            if (!string.IsNullOrWhiteSpace(result[0].ProductNameSubType))
+                            {
+                                BindProductNameSubType(result[0].ProductNameSubType, selectedProdType);
+                            }
+                        }
+                    }
 
                     fillOperatingDaysWithWeekdays(Activity_Flavour_Id);
 
