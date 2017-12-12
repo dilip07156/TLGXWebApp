@@ -118,7 +118,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 gvDescriptionSearch.DataSource = result;
                 gvDescriptionSearch.DataBind();
-                lblTotalRecords.Text = Convert.ToString(result[0].TotalRecords);
+                if (result.Count() > 0)
+                {
+                    lblTotalRecords.Text = Convert.ToString(result[0].TotalRecords);
+                }
             }
             else
             {

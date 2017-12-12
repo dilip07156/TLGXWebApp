@@ -12,8 +12,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
     {
         Controller.MasterDataSVCs mastersvc = new Controller.MasterDataSVCs();
         Controller.MappingSVCs mappingsvc = new Controller.MappingSVCs();
-        public static string AttributeOptionFor = "MappingFileConfig";
-        public static int PageIndex = 0;
+        //public static string AttributeOptionFor = "MappingFileConfig";
+        //public static int PageIndex = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,7 +32,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void fillfor(DropDownList ddl)
         {
-            fillattributes(AttributeOptionFor, "AttributeFor", ddl);
+            fillattributes("MappingFileConfig", "AttributeFor", ddl);
             //Setting default Mapping while adding config
             if (ddl.ID.ToLower() == "ddladdfor")
                 ddl.SelectedIndex = ddl.Items.IndexOf(ddl.Items.FindByText(Convert.ToString("MAPPING")));
@@ -45,7 +45,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void fillentity(DropDownList ddl)
         {
-            fillattributes(AttributeOptionFor, "MappingEntity", ddl);
+            fillattributes("MappingFileConfig", "MappingEntity", ddl);
         }
 
         private void fillsuppliers(DropDownList ddl)
@@ -87,11 +87,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            PageIndex = 0;
-            fillconfigdata();
+            //PageIndex = 0;
+            fillconfigdata(0);
         }
 
-        private void fillconfigdata()
+        private void fillconfigdata(int PageIndex)
         {
             MDMSVC.DC_SupplierImportAttributes_RQ RQ = new MDMSVC.DC_SupplierImportAttributes_RQ();
 
@@ -178,14 +178,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         dvMsg.Style.Add("display", "block");
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
-                        fillconfigdata();
+                        fillconfigdata(0);
                     }
                     else
                     {
                         dvMsg.Style.Add("display", "block");
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been deleted Successfully", BootstrapAlertType.Success);
-                        fillconfigdata();
+                        fillconfigdata(0);
                     }
                 }
                 else if (e.CommandName.ToString() == "UnDelete")
@@ -213,13 +213,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Duplicate);
-                        fillconfigdata();
+                        fillconfigdata(0);
                     }
                     else
                     {
                         dvMsg.Visible = true;
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been un deleted Successfully", BootstrapAlertType.Success);
-                        fillconfigdata();
+                        fillconfigdata(0);
                     }
                 }
             }
@@ -228,8 +228,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void grdMappingConfig_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            PageIndex = e.NewPageIndex;
-            fillconfigdata();
+            //PageIndex = e.NewPageIndex;
+            fillconfigdata(e.NewPageIndex);
         }
 
         protected void grdMappingConfig_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -246,7 +246,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillconfigdata();
+            fillconfigdata(0);
             dvMsg.Visible = false;
         }
 
@@ -278,7 +278,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 ddlSupplierName.SelectedIndex = ddlAddSupplier.Items.IndexOf(ddlSupplierName.Items.FindByValue(Convert.ToString(newObj.Supplier_Id)));
                 ddlFor.SelectedIndex = ddlAddFor.Items.IndexOf(ddlAddFor.Items.FindByText(Convert.ToString(newObj.For)));
                 ddlEntity.SelectedIndex = ddlAddEntity.Items.IndexOf(ddlAddEntity.Items.FindByText(Convert.ToString(newObj.Entity)));
-                fillconfigdata();
+                fillconfigdata(0);
                 dvModalMsg.Visible = false;
                 dvMsg.Visible = true;
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);

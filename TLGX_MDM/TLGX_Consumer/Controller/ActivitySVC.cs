@@ -151,6 +151,13 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Flavour"], RQ, typeof(MDMSVC.DC_Activity_Flavour), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
+
+        public DC_Message AddUpdateActivityFlavourCA(List<DC_Activity_CA_CRUD> RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_FlavourCA"], RQ, typeof(List<DC_Activity_CA_CRUD>), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
         #endregion
 
         #region Activity Flavour Options
@@ -286,17 +293,17 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
-        #region "Activity Policy"
-        public List<DC_Activity_DaysOfWeek_RS> GetActivityDaysOfWeek(DC_Activity_DaysOfWeek_RQ RQParams)
+        #region Activity Operating Days with Weekdays
+        public List<DC_Activity_OperatingDays> GetActivityDaysOfWeek(Guid Activity_Flavour_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivityDaysOfWeek"], RQParams, typeof(MDMSVC.DC_Activity_DaysOfWeek_RQ), typeof(List<DC_Activity_DaysOfWeek_RS>), out result);
-            return result as List<DC_Activity_DaysOfWeek_RS>;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetActivityDaysOfWeek"], Activity_Flavour_Id), typeof(List<MDMSVC.DC_Activity_OperatingDays>), out result);
+            return result as List<DC_Activity_OperatingDays>;
         }
-        public DC_Message AddUpdateActivityDaysOfWeek(MDMSVC.DC_Activity_DaysOfWeek RQParams)
+        public DC_Message AddUpdateActivityDaysOfWeek(List<MDMSVC.DC_Activity_OperatingDays> RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityDaysOfWeek"], RQParams, typeof(MDMSVC.DC_Activity_DaysOfWeek), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityDaysOfWeek"], RQParams, typeof(List<MDMSVC.DC_Activity_OperatingDays>), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion

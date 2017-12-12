@@ -27,28 +27,16 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             var result = ActSVC.GetActivityInclusions(_obj);
             if (result != null)
             {
-                List<MDMSVC.DC_Activity_Inclusions> res = new List<MDMSVC.DC_Activity_Inclusions>();
-                if (res != null || res.Count != 0)
-                {
-                    foreach (MDMSVC.DC_Activity_Inclusions rs in result)
-                    {
-                        if (rs.IsInclusion == true)
-                        {
-                            res.Add(rs);
-                        }
+                List<MDMSVC.DC_Activity_Inclusions> res = result.Where(w => w.IsInclusion == true).Select(s => s).ToList();
 
-                    }
-                    gvActInclusionSearch.DataSource = res;
-                    gvActInclusionSearch.DataBind();
-                    lblTotalRecords.Text = Convert.ToString(res.Count);
-                }
-                else
+                gvActInclusionSearch.DataSource = res;
+                gvActInclusionSearch.DataBind();
+
+                if (res.Count() > 0)
                 {
-                    gvActInclusionSearch.DataSource = null;
-                    gvActInclusionSearch.DataBind();
-                    divDropdownForEntries.Visible = false;
-                    lblTotalRecords.Text = null;
+                    lblTotalRecords.Text = Convert.ToString(res[0].TotalRecords);
                 }
+
             }
             else
             {
@@ -101,7 +89,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                 //DropDownList ddlInclusionFor = (DropDownList)frmInclusion.FindControl("ddlInclusionFor");
                 //DropDownList ddlInclusionType = (DropDownList)frmInclusion.FindControl("ddlInclusionType");
-                
+
             }
             else if (e.CommandName.ToString() == "SoftDelete")
             {
@@ -164,7 +152,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void frmInclusion_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
-            if(e.CommandName.ToString() == "Add")
+            if (e.CommandName.ToString() == "Add")
             {
                 hdnFlag.Value = "true";
             }

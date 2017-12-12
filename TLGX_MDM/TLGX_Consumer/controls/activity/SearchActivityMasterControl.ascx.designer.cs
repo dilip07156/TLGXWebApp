@@ -13,13 +13,13 @@ namespace TLGX_Consumer.controls.activity {
     public partial class SearchActivityMasterControl {
         
         /// <summary>
-        /// panSearchCondition control.
+        /// updSearchDDLChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel panSearchCondition;
+        protected global::System.Web.UI.UpdatePanel updSearchDDLChange;
         
         /// <summary>
         /// vlsSumm control.
@@ -29,15 +29,6 @@ namespace TLGX_Consumer.controls.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
-        
-        /// <summary>
-        /// updSearchDDLChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updSearchDDLChange;
         
         /// <summary>
         /// ddlCountry control.
@@ -58,22 +49,13 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.DropDownList ddlCity;
         
         /// <summary>
-        /// ddlProductCategoryType control.
+        /// ddlSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategoryType;
-        
-        /// <summary>
-        /// ddlProductCategorySubType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategorySubType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplier;
         
         /// <summary>
         /// txtProductName control.
@@ -83,6 +65,15 @@ namespace TLGX_Consumer.controls.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtProductName;
+        
+        /// <summary>
+        /// ddlProductCategorySubType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategorySubType;
         
         /// <summary>
         /// ddlProductType control.
@@ -101,15 +92,6 @@ namespace TLGX_Consumer.controls.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlProductSubType;
-        
-        /// <summary>
-        /// ddlStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
         /// btnSearch control.
@@ -202,13 +184,67 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertActivity;
         
         /// <summary>
-        /// frmVwNewActivity control.
+        /// txtProductNameAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmVwNewActivity;
+        protected global::System.Web.UI.WebControls.TextBox txtProductNameAdd;
+        
+        /// <summary>
+        /// frmddlCategorySubType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList frmddlCategorySubType;
+        
+        /// <summary>
+        /// frmddlProductType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList frmddlProductType;
+        
+        /// <summary>
+        /// frmddlCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList frmddlCountry;
+        
+        /// <summary>
+        /// frmddlCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList frmddlCity;
+        
+        /// <summary>
+        /// btnSaveActivity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnSaveActivity;
+        
+        /// <summary>
+        /// btnAddReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnAddReset;
         
         /// <summary>
         /// dvGrid control.
