@@ -42,7 +42,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 if (result.Count() > 0)
                 {
-                    lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
+                    //lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
+                    Label ParentProdName = (Label)this.Parent.FindControl("lblProductName");
+                    ParentProdName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
+
                     lblSuppCity.Text = result[0].SupplierCity;
                     lblSuppCountry.Text = result[0].SupplierCountry;
                     lblSuppProductType.Text = result[0].SupplierProductType;
@@ -65,6 +68,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     }
 
                     fillSuitableFor();
+
+                    fillSpecials();
 
                     fillPhysicalIntensity();
 
@@ -283,6 +288,24 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
+        private void fillSpecials()
+        {
+            var res = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "Specials").MasterAttributeValues;
+
+            if (res != null)
+            {
+                chklstSpecials.DataSource = res;
+                chklstSpecials.DataTextField = "AttributeValue";
+                chklstSpecials.DataValueField = "MasterAttributeValue_Id";
+                chklstSpecials.DataBind();
+            }
+            else
+            {
+                chklstSpecials.DataSource = null;
+                chklstSpecials.DataBind();
+            }
+        }
+
         //Done
         private void fillPhysicalIntensity()
         {
@@ -322,6 +345,18 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         }
                     }
 
+                    var SpecialsForList = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "Specials").Select(s => s.AttributeValue).ToList();
+                    chklstSpecials.ClearSelection();
+                    foreach (var Special in SpecialsForList)
+                    {
+                        if (!string.IsNullOrWhiteSpace(Special))
+                        {
+                            if (chklstSpecials.Items.FindByText(Special) != null)
+                            {
+                                chklstSpecials.Items.FindByText(Special).Selected = true;
+                            }
+                        }
+                    }
 
                     var Physicalntensity = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "Physicalntensity").Select(s => s.AttributeValue).FirstOrDefault();
                     ddlPhysicalIntensity.ClearSelection();
@@ -515,6 +550,25 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
+        private void fillActivityDuration(DropDownList ddlDuration)
+        {
+            try
+            {
+                ddlDuration.Items.Clear();
+                ddlDuration.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityDuration").MasterAttributeValues;
+                ddlDuration.DataTextField = "AttributeValue";
+                ddlDuration.DataValueField = "MasterAttributeValue_Id";
+                ddlDuration.DataBind();
+                ddlDuration.Items.Insert(0, new ListItem("-Select-", "0"));
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+
         protected void UpdateFlavour(Guid Activity_Flavour_Id)
         {
 
@@ -597,8 +651,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             #region Update SuitableFor & PhysicalIntensity
             List<DC_Activity_CA_CRUD> updateCA = new List<DC_Activity_CA_CRUD>();
 
-            //SuitableFor
             List<string> AttributeValues = new List<string>();
+            //SuitableFor
             foreach (ListItem checkedSuitable in chklstSuitableFor.Items)
             {
                 if (checkedSuitable.Selected)
@@ -611,6 +665,24 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 Activity_Flavour_Id = Activity_Flavour_Id,
                 AttributeType = "Product",
                 AttributeSubType = "SuitableFor",
+                AttributeValues = AttributeValues.ToArray(),
+                User = System.Web.HttpContext.Current.User.Identity.Name
+            });
+
+            //Specials
+            AttributeValues = new List<string>();
+            foreach (ListItem checkedSpecial in chklstSpecials.Items)
+            {
+                if (checkedSpecial.Selected)
+                {
+                    AttributeValues.Add(checkedSpecial.Text);
+                }
+            }
+            updateCA.Add(new DC_Activity_CA_CRUD
+            {
+                Activity_Flavour_Id = Activity_Flavour_Id,
+                AttributeType = "Product",
+                AttributeSubType = "Specials",
                 AttributeValues = AttributeValues.ToArray(),
                 User = System.Web.HttpContext.Current.User.Identity.Name
             });
@@ -917,6 +989,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
                 TextBox txtDuration = (TextBox)itemDOW.FindControl("txtDuration");
                 DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
+                DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
                 HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
                 HtmlInputCheckBox chkTues = (HtmlInputCheckBox)itemDOW.FindControl("chkTues");
                 HtmlInputCheckBox chkWed = (HtmlInputCheckBox)itemDOW.FindControl("chkWed");
@@ -947,6 +1020,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                             Duration = txtDuration.Text,
                             EndTime = string.Empty,
                             StartTime = txtStartTime.Text,
+                            DurationType = ddlDurationType.SelectedItem.Text
                         });
                         od.DaysOfWeek = DaysOfWeek.ToArray();
                     }
@@ -979,13 +1053,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void repDaysOfWeek_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Header)
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Footer)
             {
                 DropDownList ddlSession = (DropDownList)e.Item.FindControl("ddlSession");
                 if (ddlSession != null)
                 {
                     fillDDLSession(ddlSession);
-
                     if (e.Item.ItemType != ListItemType.Header)
                     {
                         HiddenField hdnSession = (HiddenField)e.Item.FindControl("hdnSession");
@@ -999,7 +1072,25 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         }
 
                     }
+                }
 
+                DropDownList ddlDuration = (DropDownList)e.Item.FindControl("ddlDurationType");
+                if (ddlDuration != null)
+                {
+                    fillActivityDuration(ddlDuration);
+                    if (e.Item.ItemType != ListItemType.Header)
+                    {
+                        HiddenField hdnDuration = (HiddenField)e.Item.FindControl("hdnDurationType");
+                        if (hdnDuration != null)
+                        {
+                            if (ddlDuration.Items.FindByText(hdnDuration.Value) != null)
+                            {
+                                ddlDuration.ClearSelection();
+                                ddlDuration.Items.FindByText(hdnDuration.Value).Selected = true;
+                            }
+                        }
+
+                    }
                 }
             }
         }
@@ -1019,8 +1110,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     TextBox txtTo = (TextBox)item.FindControl("txtTo");
                     Repeater repDaysOfWeek = (Repeater)item.FindControl("repDaysOfWeek");
                     LinkButton btnRemoveOperatingDays = (LinkButton)item.FindControl("btnRemoveOperatingDays");
-
-
 
                     OpDay.Activity_DaysOfOperation_Id = Guid.Parse(btnRemoveOperatingDays.CommandArgument);
                     OpDay.Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
@@ -1045,6 +1134,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                             TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
                             TextBox txtDuration = (TextBox)itemDOW.FindControl("txtDuration");
                             DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
+                            DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
                             HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
                             HtmlInputCheckBox chkTues = (HtmlInputCheckBox)itemDOW.FindControl("chkTues");
                             HtmlInputCheckBox chkWed = (HtmlInputCheckBox)itemDOW.FindControl("chkWed");
@@ -1079,7 +1169,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                 SupplierDuration = lblSupplierDuration.Text,
                                 SupplierFrequency = lblSupplierFrequency.Text,
                                 SupplierSession = lblSupplierSession.Text,
-                                SupplierStartTime = lblSupplierStartTime.Text
+                                SupplierStartTime = lblSupplierStartTime.Text,
+                                DurationType = ddlDurationType.SelectedItem.Text
                             });
                         }
                     }

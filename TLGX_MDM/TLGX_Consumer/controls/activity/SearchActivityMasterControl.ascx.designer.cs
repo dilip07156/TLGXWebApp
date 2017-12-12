@@ -67,6 +67,42 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.TextBox txtProductName;
         
         /// <summary>
+        /// chkNoSuitableFor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNoSuitableFor;
+        
+        /// <summary>
+        /// chkNoPhysicalIntensity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNoPhysicalIntensity;
+        
+        /// <summary>
+        /// chkNoOperatingSchedule control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNoOperatingSchedule;
+        
+        /// <summary>
+        /// chkNoSession control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkNoSession;
+        
+        /// <summary>
         /// ddlProductCategorySubType control.
         /// </summary>
         /// <remarks>

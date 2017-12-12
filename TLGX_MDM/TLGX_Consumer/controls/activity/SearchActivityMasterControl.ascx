@@ -85,6 +85,34 @@
                                         </div>
                                     </div>
 
+                                    <div class="form-group col-sm-12">
+                                        <label class="control-label col-sm-6" for="chkNoSuitableFor">Suitable For is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoSuitableFor" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-12">
+                                        <label class="control-label col-sm-6" for="chkNoPhysicalIntensity">Physical Intensity is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoPhysicalIntensity" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-12">
+                                        <label class="control-label col-sm-6" for="chkNoOperatingSchedule">Operating Schedule is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoOperatingSchedule" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-12">
+                                        <label class="control-label col-sm-6" for="chkNoSession">Session is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoSession" runat="server" />
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="form-group col-sm-6">

@@ -13,6 +13,15 @@ namespace TLGX_Consumer.activity {
     public partial class ManageActivityFlavour {
         
         /// <summary>
+        /// lblProductName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProductName;
+        
+        /// <summary>
         /// Flavours control.
         /// </summary>
         /// <remarks>
@@ -67,6 +76,15 @@ namespace TLGX_Consumer.activity {
         protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Policy Policy;
         
         /// <summary>
+        /// FlavourOptions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.FlavourOptions FlavourOptions;
+        
+        /// <summary>
         /// PricesNDeals control.
         /// </summary>
         /// <remarks>
@@ -92,15 +110,6 @@ namespace TLGX_Consumer.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.SupplierProductMappings SupplierProductMappings;
-        
-        /// <summary>
-        /// FlavourOptions control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.FlavourOptions FlavourOptions;
         
         /// <summary>
         /// ActivityContactDetails control.

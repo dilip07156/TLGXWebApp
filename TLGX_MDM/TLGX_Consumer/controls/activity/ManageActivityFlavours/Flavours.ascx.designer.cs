@@ -40,15 +40,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
-        /// lblProductName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProductName;
-        
-        /// <summary>
         /// btnSave control.
         /// </summary>
         /// <remarks>
@@ -56,6 +47,42 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnSave;
+        
+        /// <summary>
+        /// lblSuppCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuppCountry;
+        
+        /// <summary>
+        /// ddlCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
+        
+        /// <summary>
+        /// lblSuppCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuppCity;
+        
+        /// <summary>
+        /// ddlCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCity;
         
         /// <summary>
         /// lblSuppProductCategory control.
@@ -184,42 +211,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.Repeater repProductSubType;
         
         /// <summary>
-        /// lblSuppCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuppCountry;
-        
-        /// <summary>
-        /// ddlCountry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
-        
-        /// <summary>
-        /// lblSuppCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuppCity;
-        
-        /// <summary>
-        /// ddlCity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCity;
-        
-        /// <summary>
         /// lblSuppSuitableFor control.
         /// </summary>
         /// <remarks>
@@ -236,6 +227,24 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBoxList chklstSuitableFor;
+        
+        /// <summary>
+        /// lblSuppSpecials control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuppSpecials;
+        
+        /// <summary>
+        /// chklstSpecials control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList chklstSpecials;
         
         /// <summary>
         /// lblSuppPhysicalIntensity control.
@@ -256,15 +265,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.DropDownList ddlPhysicalIntensity;
         
         /// <summary>
-        /// repSupplierInformation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repSupplierInformation;
-        
-        /// <summary>
         /// repOperatingDays control.
         /// </summary>
         /// <remarks>
@@ -272,5 +272,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repOperatingDays;
+        
+        /// <summary>
+        /// repSupplierInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repSupplierInformation;
     }
 }

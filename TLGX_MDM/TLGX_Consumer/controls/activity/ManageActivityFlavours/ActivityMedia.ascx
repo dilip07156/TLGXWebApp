@@ -53,16 +53,12 @@
                             AutoGenerateColumns="false" OnPageIndexChanging="gvActMediaSearch_PageIndexChanging"
                             OnRowCommand="gvActMediaSearch_RowCommand" DataKeyNames="Activity_Media_Id" OnRowDataBound="gvActMediaSearch_RowDataBound">
                             <Columns>
-                                <asp:BoundField HeaderText="ValidFrom" DataField="ValidFrom" DataFormatString="{0:dd/MM/yyyy} " />
-                                <asp:BoundField HeaderText="ValidTo" DataField="ValidTo" DataFormatString="{0:dd/MM/yyyy}" />
                                 <asp:BoundField HeaderText="Category" DataField="Category" />
                                 <asp:BoundField HeaderText="Sub Category" DataField="SubCategory" />
                                 <asp:BoundField HeaderText="Media Type" DataField="MediaType" />
-                                <asp:BoundField HeaderText="File Master" DataField="MediaFileMaster" />
                                 <asp:BoundField HeaderText="Media Name" DataField="MediaName" />
                                 <asp:BoundField HeaderText="Media_URL" DataField="Media_URL" />
-                                <asp:BoundField HeaderText="Media Position" DataField="Media_Position" />
-                                <asp:BoundField HeaderText="MediaID" DataField="MediaID" />
+                                <asp:ImageField DataImageUrlField="Media_URL" HeaderText="Thumbnail" ControlStyle-Width="70" ControlStyle-Height="70"></asp:ImageField>
                                 <asp:TemplateField ShowHeader="false">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"

@@ -23,67 +23,53 @@
         <%--<div class="panel-group" id="searchResult">
             <div class="panel panel-default">
                 <div class="panel-heading clearfix">--%>
-                    <h4 class="panel-title pull-left">
-                        Description Details (Total Count:
+        <h4 class="panel-title pull-left">Description Details (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
-                    <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" OnClientClick="showDescriptionModal()" />
-                    <div class="col-lg-3 pull-right">
-                        <div class="form-group pull-right">
-                            <div class="input-group" runat="server" id="divDropdownForEntries">
-                                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                                <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                                    <asp:ListItem>10</asp:ListItem>
-                                    <asp:ListItem>25</asp:ListItem>
-                                    <asp:ListItem>50</asp:ListItem>
-                                    <asp:ListItem>100</asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-                    </div>
+        <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" OnClientClick="showDescriptionModal()" />
+        <div class="col-lg-3 pull-right">
+            <div class="form-group pull-right">
+                <div class="input-group" runat="server" id="divDropdownForEntries">
+                    <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                    <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>25</asp:ListItem>
+                        <asp:ListItem>50</asp:ListItem>
+                        <asp:ListItem>100</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+            </div>
+        </div>
 
-                <%--</div>--%>
-                <%--<div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body">--%>
-                        <div id="dvMsg" runat="server" style="display: none;"></div>
-                        <asp:GridView ID="gvDescriptionSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No Data Found" CssClass="table table-hover table-striped"
-                            AutoGenerateColumns="false" OnPageIndexChanging="gvDescriptionSearch_PageIndexChanging"
-                            OnRowCommand="gvDescriptionSearch_RowCommand" DataKeyNames="Activity_Description_Id" OnRowDataBound="gvDescriptionSearch_RowDataBound">
-                            <Columns>
-                                <asp:BoundField HeaderText="FromDate" DataField="FromDate" DataFormatString="{0:dd/MM/yyyy} " />
-                                <asp:BoundField HeaderText="ToDate" DataField="ToDate" DataFormatString="{0:dd/MM/yyyy}" />
-                                <asp:BoundField HeaderText="Name" DataField="Description_Name" />
-                                <asp:BoundField HeaderText="Description" DataField="Description" />
-                                <asp:BoundField HeaderText="Type" DataField="DescriptionType" />
-                                <asp:BoundField HeaderText="SubType" DataField="DescriptionSubType" />
-                                <asp:BoundField HeaderText="Description For" DataField="DescriptionFor" />
-                                <asp:BoundField HeaderText="Source" DataField="Source" />
-                                <asp:BoundField HeaderText="Language Code" DataField="Language_Code" />
-                                <asp:TemplateField ShowHeader="false">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                            Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Description_Id") %>' OnClientClick="showDescriptionModal()">
+        <div id="dvMsg" runat="server" style="display: none;"></div>
+        <asp:GridView ID="gvDescriptionSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
+            EmptyDataText="No Data Found" CssClass="table table-hover table-striped"
+            AutoGenerateColumns="false" OnPageIndexChanging="gvDescriptionSearch_PageIndexChanging"
+            OnRowCommand="gvDescriptionSearch_RowCommand" DataKeyNames="Activity_Description_Id" OnRowDataBound="gvDescriptionSearch_RowDataBound">
+            <Columns>
+                <asp:BoundField HeaderText="Description" DataField="Description" />
+                <asp:BoundField HeaderText="Type" DataField="DescriptionType" />
+                <asp:TemplateField ShowHeader="false">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                            Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Description_Id") %>' OnClientClick="showDescriptionModal()">
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Description_Id") %>'>
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Description_Id") %>'>
                                                     <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                            <PagerStyle CssClass="pagination-ys" />
-                        </asp:GridView>
-                    <%--</div>
-                </div>--%>
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+            <PagerStyle CssClass="pagination-ys" />
+        </asp:GridView>
 
-            <%--</div>
-        </div>--%>
 
     </ContentTemplate>
 </asp:UpdatePanel>
@@ -176,11 +162,11 @@
                                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                             </button>
                                                         </span>
-                                                         <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
-                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
-                                                
+                                                        <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
+                                                        <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+
                                                     </div>
-                                                   </div>
+                                                </div>
                                             </div>
 
                                             <div class="col-md-6">
@@ -228,9 +214,9 @@
                                                 </div>
                                                 <div class="col-sm-12 ">
                                                     <div class="col-sm-3">
-                                                         <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="vldgrpDescriptions" />
-                                                     </div>
-                                               </div>
+                                                        <asp:LinkButton ID="btnSave" runat="server" CausesValidation="True" CommandName="Add" Text="Add" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="vldgrpDescriptions" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +244,7 @@
                                                     <asp:RequiredFieldValidator ID="rtxtDescriptionFor" runat="server" ControlToValidate="txtDescriptionFor" ErrorMessage="Please enter description Name" Text="*" ValidationGroup="vldgrpDescriptions" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-sm-6">
-                                                    <asp:TextBox ID="txtDescriptionFor" runat="server" Rows="5" CssClass="form-control"  Text='<%# Bind("DescriptionFor") %>'/>
+                                                    <asp:TextBox ID="txtDescriptionFor" runat="server" Rows="5" CssClass="form-control" Text='<%# Bind("DescriptionFor") %>' />
                                                 </div>
 
                                             </div>
@@ -335,7 +321,7 @@
                                                     <asp:RequiredFieldValidator ID="vldtxtDescription" runat="server" ControlToValidate="txtDescription" ErrorMessage="Please enter description" Text="*" ValidationGroup="vldgrpDescriptions" CssClass="text-danger"></asp:RequiredFieldValidator>
                                                 </label>
                                                 <div class="col-sm-6">
-                                                    <asp:TextBox ID="txtDescription" runat="server" Rows="5" TextMode="MultiLine" CssClass="form-control"  Text='<%# Bind("Source") %>' />
+                                                    <asp:TextBox ID="txtDescription" runat="server" Rows="5" TextMode="MultiLine" CssClass="form-control" Text='<%# Bind("Source") %>' />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -348,12 +334,12 @@
                                                         <asp:TextBox ID="txtSource" runat="server" CssClass="form-control" Text='<%# Bind("Source") %>' />
                                                     </div>
                                                 </div>
-                                                 
+
                                                 <div class="col-sm-12 ">
                                                     <div class="col-sm-3">
-                                                      <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Modify" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="vldgrpDescriptions" />
-                                                     </div>
-                                               </div>
+                                                        <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="True" CommandName="Modify" Text="Update" CssClass="btn btn-primary btn-sm pull-right" ValidationGroup="vldgrpDescriptions" />
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

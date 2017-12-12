@@ -18,8 +18,8 @@
 
 
     <div class="container" id="myWizard">
+        <br />
         <div class="row">
-            <br />
             <div class="col-lg-12">
                 <div style="text-align: right;">
                     * Mandatory fields are marked as underlined
@@ -32,20 +32,30 @@
             </div>
         </div>--%>
         <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>
+                    <strong>
+                        <asp:Label ID="lblProductName" runat="server"></asp:Label>
+                    </strong>
+                </h3>
+            </div>
+        </div>
+        <br />
         <div class="navbar">
             <%--<div class="navbar-inner">--%>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#panFlavours" data-toggle="tab">Product Details</a></li>
-                <li><a href="#panDescription" data-toggle="tab">Descriptions</a></li>
-                <li><a href="#panInclusion" data-toggle="tab">Inclusion/Exclusion</a></li>
-                <li><a href="#panClassificationAttributes" data-toggle="tab">Classification</a></li>
-                <li><a href="#panActivityMedia" data-toggle="tab">Media</a></li>
-                <li><a href="#panPolicy" data-toggle="tab">Policy</a></li>
-                <li><a href="#panPricesNDeals" data-toggle="tab">Prices And Deals</a></li>
-                <li><a href="#panReviewsNScores" data-toggle="tab">Reviews And Scores</a></li>
-                <li><a href="#panSupplierProductMappings" data-toggle="tab">Supplier Mappings</a></li>
-                <li><a href="#panFlavourOptions" data-toggle="tab">Options</a></li>
-                <li><a href="#panContactDetails" data-toggle="tab">Contact Details</a></li>
+                <li class="active"><a href="#panFlavours" data-toggle="tab"><h5>Product Details</h5></a></li>
+                <li><a href="#panDescription" data-toggle="tab"><h5>Descriptions</h5></a></li>
+                <li><a href="#panInclusion" data-toggle="tab"><h5>Inclusion/Exclusion</h5></a></li>
+                <li><a href="#panClassificationAttributes" data-toggle="tab"><h5>Classification</h5></a></li>
+                <li><a href="#panActivityMedia" data-toggle="tab"><h5>Media</h5></a></li>
+                <li><a href="#panPolicy" data-toggle="tab"><h5>Policy</h5></a></li>
+                <li><a href="#panFlavourOptions" data-toggle="tab"><h5>Options</h5></a></li>
+                <li><a href="#panPricesNDeals" data-toggle="tab"><h5>Prices And Deals</h5></a></li>
+                <li><a href="#panReviewsNScores" data-toggle="tab"><h5>Reviews And Scores</h5></a></li>
+                <li><a href="#panSupplierProductMappings" data-toggle="tab"><h5>Supplier Mappings</h5></a></li>
+                <li><a href="#panContactDetails" data-toggle="tab"><h5>Contact Details</h5></a></li>
             </ul>
             <%--</div>--%>
         </div>
@@ -75,6 +85,10 @@
                 <uc1:Policy runat="server" ID="Policy" />
             </div>
 
+            <div class="tab-pane" id="panFlavourOptions">
+                <uc1:FlavourOptions runat="server" ID="FlavourOptions" />
+            </div>
+
             <div class="tab-pane" id="panPricesNDeals">
                 <uc1:PricesNDeals runat="server" ID="PricesNDeals" />
             </div>
@@ -85,10 +99,6 @@
 
             <div class="tab-pane" id="panSupplierProductMappings">
                 <uc1:SupplierProductMappings runat="server" ID="SupplierProductMappings" />
-            </div>
-
-            <div class="tab-pane" id="panFlavourOptions">
-                <uc1:FlavourOptions runat="server" ID="FlavourOptions" />
             </div>
 
             <div class="tab-pane" id="panContactDetails">
