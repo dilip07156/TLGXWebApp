@@ -7451,6 +7451,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CA_CRUD[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CA_CRUD))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ))]
@@ -8084,6 +8086,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CA_CRUD[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CA_CRUD))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Flavour_Options_RQ))]
@@ -36711,6 +36715,21 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Country_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool NoOpsScheduleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool NoPhysicalIntensityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool NoSessionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool NoSpecialsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool NoSuitableForField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -36720,13 +36739,22 @@ namespace TLGX_Consumer.MDMSVC {
         private string ProductCategorySubTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ProductCategorySubTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameSubTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ProductNameSubTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ProductTypeIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Supplier_IdField;
@@ -36807,6 +36835,71 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool NoOpsSchedule {
+            get {
+                return this.NoOpsScheduleField;
+            }
+            set {
+                if ((this.NoOpsScheduleField.Equals(value) != true)) {
+                    this.NoOpsScheduleField = value;
+                    this.RaisePropertyChanged("NoOpsSchedule");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool NoPhysicalIntensity {
+            get {
+                return this.NoPhysicalIntensityField;
+            }
+            set {
+                if ((this.NoPhysicalIntensityField.Equals(value) != true)) {
+                    this.NoPhysicalIntensityField = value;
+                    this.RaisePropertyChanged("NoPhysicalIntensity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool NoSession {
+            get {
+                return this.NoSessionField;
+            }
+            set {
+                if ((this.NoSessionField.Equals(value) != true)) {
+                    this.NoSessionField = value;
+                    this.RaisePropertyChanged("NoSession");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool NoSpecials {
+            get {
+                return this.NoSpecialsField;
+            }
+            set {
+                if ((this.NoSpecialsField.Equals(value) != true)) {
+                    this.NoSpecialsField = value;
+                    this.RaisePropertyChanged("NoSpecials");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool NoSuitableFor {
+            get {
+                return this.NoSuitableForField;
+            }
+            set {
+                if ((this.NoSuitableForField.Equals(value) != true)) {
+                    this.NoSuitableForField = value;
+                    this.RaisePropertyChanged("NoSuitableFor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> PageNo {
             get {
                 return this.PageNoField;
@@ -36846,6 +36939,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ProductCategorySubTypeId {
+            get {
+                return this.ProductCategorySubTypeIdField;
+            }
+            set {
+                if ((this.ProductCategorySubTypeIdField.Equals(value) != true)) {
+                    this.ProductCategorySubTypeIdField = value;
+                    this.RaisePropertyChanged("ProductCategorySubTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ProductName {
             get {
                 return this.ProductNameField;
@@ -36872,6 +36978,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ProductNameSubTypeId {
+            get {
+                return this.ProductNameSubTypeIdField;
+            }
+            set {
+                if ((this.ProductNameSubTypeIdField.Equals(value) != true)) {
+                    this.ProductNameSubTypeIdField = value;
+                    this.RaisePropertyChanged("ProductNameSubTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ProductType {
             get {
                 return this.ProductTypeField;
@@ -36880,6 +36999,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductTypeField, value) != true)) {
                     this.ProductTypeField = value;
                     this.RaisePropertyChanged("ProductType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ProductTypeId {
+            get {
+                return this.ProductTypeIdField;
+            }
+            set {
+                if ((this.ProductTypeIdField.Equals(value) != true)) {
+                    this.ProductTypeIdField = value;
+                    this.RaisePropertyChanged("ProductTypeId");
                 }
             }
         }
@@ -36924,6 +37056,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AreaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes[] CategoriesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
@@ -37111,6 +37246,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.AreaField, value) != true)) {
                     this.AreaField = value;
                     this.RaisePropertyChanged("Area");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes[] Categories {
+            get {
+                return this.CategoriesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoriesField, value) != true)) {
+                    this.CategoriesField = value;
+                    this.RaisePropertyChanged("Categories");
                 }
             }
         }
@@ -37722,6 +37870,291 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.USPField, value) != true)) {
                     this.USPField = value;
                     this.RaisePropertyChanged("USP");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_CategoryTypes", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_CategoryTypes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Activity_CategoriesType_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_FlavourOptions_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Activity_Flavour_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupProdCatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupProdSubCatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupProdSubTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupProdTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SysProdCatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SysProdCatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SysProdSubCatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SysProdSubCatIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SysProdSubTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SysProdSubTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SysProdTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SysProdTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Activity_CategoriesType_ID {
+            get {
+                return this.Activity_CategoriesType_IDField;
+            }
+            set {
+                if ((this.Activity_CategoriesType_IDField.Equals(value) != true)) {
+                    this.Activity_CategoriesType_IDField = value;
+                    this.RaisePropertyChanged("Activity_CategoriesType_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_FlavourOptions_Id {
+            get {
+                return this.Activity_FlavourOptions_IdField;
+            }
+            set {
+                if ((this.Activity_FlavourOptions_IdField.Equals(value) != true)) {
+                    this.Activity_FlavourOptions_IdField = value;
+                    this.RaisePropertyChanged("Activity_FlavourOptions_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Activity_Flavour_Id {
+            get {
+                return this.Activity_Flavour_IdField;
+            }
+            set {
+                if ((this.Activity_Flavour_IdField.Equals(value) != true)) {
+                    this.Activity_Flavour_IdField = value;
+                    this.RaisePropertyChanged("Activity_Flavour_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupProdCat {
+            get {
+                return this.SupProdCatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupProdCatField, value) != true)) {
+                    this.SupProdCatField = value;
+                    this.RaisePropertyChanged("SupProdCat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupProdSubCat {
+            get {
+                return this.SupProdSubCatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupProdSubCatField, value) != true)) {
+                    this.SupProdSubCatField = value;
+                    this.RaisePropertyChanged("SupProdSubCat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupProdSubType {
+            get {
+                return this.SupProdSubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupProdSubTypeField, value) != true)) {
+                    this.SupProdSubTypeField = value;
+                    this.RaisePropertyChanged("SupProdSubType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupProdType {
+            get {
+                return this.SupProdTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupProdTypeField, value) != true)) {
+                    this.SupProdTypeField = value;
+                    this.RaisePropertyChanged("SupProdType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SysProdCat {
+            get {
+                return this.SysProdCatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SysProdCatField, value) != true)) {
+                    this.SysProdCatField = value;
+                    this.RaisePropertyChanged("SysProdCat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SysProdCatId {
+            get {
+                return this.SysProdCatIdField;
+            }
+            set {
+                if ((this.SysProdCatIdField.Equals(value) != true)) {
+                    this.SysProdCatIdField = value;
+                    this.RaisePropertyChanged("SysProdCatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SysProdSubCat {
+            get {
+                return this.SysProdSubCatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SysProdSubCatField, value) != true)) {
+                    this.SysProdSubCatField = value;
+                    this.RaisePropertyChanged("SysProdSubCat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SysProdSubCatId {
+            get {
+                return this.SysProdSubCatIdField;
+            }
+            set {
+                if ((this.SysProdSubCatIdField.Equals(value) != true)) {
+                    this.SysProdSubCatIdField = value;
+                    this.RaisePropertyChanged("SysProdSubCatId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SysProdSubType {
+            get {
+                return this.SysProdSubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SysProdSubTypeField, value) != true)) {
+                    this.SysProdSubTypeField = value;
+                    this.RaisePropertyChanged("SysProdSubType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SysProdSubTypeId {
+            get {
+                return this.SysProdSubTypeIdField;
+            }
+            set {
+                if ((this.SysProdSubTypeIdField.Equals(value) != true)) {
+                    this.SysProdSubTypeIdField = value;
+                    this.RaisePropertyChanged("SysProdSubTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SysProdType {
+            get {
+                return this.SysProdTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SysProdTypeField, value) != true)) {
+                    this.SysProdTypeField = value;
+                    this.RaisePropertyChanged("SysProdType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SysProdTypeId {
+            get {
+                return this.SysProdTypeIdField;
+            }
+            set {
+                if ((this.SysProdTypeIdField.Equals(value) != true)) {
+                    this.SysProdTypeIdField = value;
+                    this.RaisePropertyChanged("SysProdTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string User {
+            get {
+                return this.UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserField, value) != true)) {
+                    this.UserField = value;
+                    this.RaisePropertyChanged("User");
                 }
             }
         }

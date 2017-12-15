@@ -77,18 +77,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                     fillproductcaterogysubtype();
 
-                    if (!string.IsNullOrWhiteSpace(result[0].ProductCategorySubType))
+                    if (result[0].Categories != null)
                     {
-                        var selectedSubCat = BindProductSubCat(result[0].ProductCategorySubType);
-
-                        if (!string.IsNullOrWhiteSpace(result[0].ProductType))
+                        if (result[0].Categories.Count() > 0)
                         {
-                            var selectedProdType = BindProductNameType(result[0].ProductType, selectedSubCat);
-
-                            if (!string.IsNullOrWhiteSpace(result[0].ProductNameSubType))
-                            {
-                                BindProductNameSubType(result[0].ProductNameSubType, selectedProdType);
-                            }
+                            BindActivityTypes(result[0].Categories);
                         }
                     }
 
@@ -99,22 +92,27 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
-        private List<string> BindProductSubCat(string ProductSubCategory)
+        private void BindActivityTypes(DC_Activity_CategoryTypes[] Categories)
         {
-            var ProductSubCategoryList = ProductSubCategory.Split(',');
+            var selectedSubCat = BindProductSubCat(Categories.Where(w => w.SysProdSubCatId != null).Select(s => (s.SysProdSubCatId ?? Guid.Empty).ToString()).ToList());
+            var selectedProdType = BindProductNameType(Categories.Where(w => w.SysProdTypeId != null).Select(s => (s.SysProdTypeId ?? Guid.Empty).ToString()).ToList(), selectedSubCat);
+            BindProductNameSubType(Categories.Where(w => w.SysProdSubTypeId != null).Select(s => (s.SysProdSubTypeId ?? Guid.Empty).ToString()).ToList(), selectedProdType);
+        }
 
+        private List<string> BindProductSubCat(List<string> ProductSubCategoryList)
+        {
             List<SubCategoryData> ptl = new List<SubCategoryData>();
 
-            foreach (var subcat in ProductSubCategoryList)
+            foreach (var subcatid in ProductSubCategoryList)
             {
-                if (ptl.Where(w => w.SubCategory == subcat.Trim()).Count() == 0)
+                if (ptl.Where(w => w.SubCategory_Id.ToLower() == subcatid.ToLower()).Count() == 0)
                 {
-                    if (ddlProdcategorySubType.Items.FindByText(subcat.Trim()) != null)
+                    if (ddlProdcategorySubType.Items.FindByValue(subcatid) != null)
                     {
                         ptl.Add(new SubCategoryData
                         {
-                            SubCategory = subcat.Trim(),
-                            SubCategory_Id = ddlProdcategorySubType.Items.FindByText(subcat.Trim()).Value
+                            SubCategory = ddlProdcategorySubType.Items.FindByValue(subcatid).Text,
+                            SubCategory_Id = subcatid
                         });
                     }
                 }
@@ -128,9 +126,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             return ptl.Select(s => s.SubCategory_Id).ToList();
         }
 
-        private List<string> BindProductNameType(string ProductNameType, List<string> selectedSubCat)
+        private List<string> BindProductNameType(List<string> ProductNameTypeList, List<string> selectedSubCat)
         {
-            var ProductNameTypeList = ProductNameType.Split(',');
             List<ProductTypeData> ptl = new List<ProductTypeData>();
 
             var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductType").MasterAttributeValues;
@@ -139,9 +136,9 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                           orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
                           select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id });
 
-            foreach (var prodtype in ProductNameTypeList)
+            foreach (var prodtypeid in ProductNameTypeList)
             {
-                var searchRes = result.Where(w => w.AttributeValueOri.Trim().ToLower() == prodtype.Trim().ToLower()).Select(s => s).FirstOrDefault();
+                var searchRes = result.Where(w => w.MasterAttributeValue_Id.ToString() == prodtypeid).Select(s => s).FirstOrDefault();
                 if (searchRes != null)
                 {
                     if (ptl.Where(w => w.ProductType_Id == searchRes.MasterAttributeValue_Id.ToString()).Count() == 0)
@@ -165,9 +162,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             return ptl.Select(s => s.ProductType_Id).ToList();
         }
 
-        private void BindProductNameSubType(string ProductNameSubType, List<string> selectedProdName)
+        private void BindProductNameSubType(List<string> ProductNameSubTypeList, List<string> selectedProdName)
         {
-            var ProductNameSubTypeList = ProductNameSubType.Split(',');
             List<ProductSubTypeData> ptl = new List<ProductSubTypeData>();
 
             var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductSubType").MasterAttributeValues;
@@ -176,9 +172,9 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                           orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
                           select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id }).ToList();
 
-            foreach (var prodsubtype in ProductNameSubTypeList)
+            foreach (var prodsubtypeid in ProductNameSubTypeList)
             {
-                var searchRes = result.Where(w => w.AttributeValueOri.Trim().ToLower() == prodsubtype.Trim().ToLower()).Select(s => s).FirstOrDefault();
+                var searchRes = result.Where(w => w.MasterAttributeValue_Id.ToString() == prodsubtypeid).Select(s => s).FirstOrDefault();
                 if (searchRes != null)
                 {
                     if (ptl.Where(w => w.ProductSubType_Id == searchRes.MasterAttributeValue_Id.ToString()).Count() == 0)
@@ -567,8 +563,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
-
-
         protected void UpdateFlavour(Guid Activity_Flavour_Id)
         {
 
@@ -592,6 +586,23 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
 
             FlavData.ProductCategory = txtProdCategory.Text;
+
+            List<DC_Activity_CategoryTypes> CategoryTypes = new List<DC_Activity_CategoryTypes>();
+            foreach (RepeaterItem item in repProductSubType.Items)
+            {
+                if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                {
+                    LinkButton btnRemoveProductSubType = (LinkButton)item.FindControl("btnRemoveProductSubType");
+                    Label lblProductSubType = (Label)item.FindControl("lblProductSubType");
+                    CategoryTypes.Add(new DC_Activity_CategoryTypes
+                    {
+                        SysProdSubTypeId = Guid.Parse(btnRemoveProductSubType.CommandArgument),
+                        Activity_Flavour_Id = Activity_Flavour_Id,
+                        User = System.Web.HttpContext.Current.User.Identity.Name
+                    });
+                }
+            }
+            FlavData.Categories  = CategoryTypes.ToArray();
 
             //SubCat
             List<SubCategoryData> ptl = new List<SubCategoryData>();
@@ -987,7 +998,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 LinkButton btnRemoveOperatingDays = (LinkButton)repOpsDay.FindControl("btnRemoveOperatingDays");
 
                 TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
-                TextBox txtDuration = (TextBox)itemDOW.FindControl("txtDuration");
                 DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
                 DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
                 HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
@@ -997,6 +1007,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 HtmlInputCheckBox chkFri = (HtmlInputCheckBox)itemDOW.FindControl("chkFri");
                 HtmlInputCheckBox chkSat = (HtmlInputCheckBox)itemDOW.FindControl("chkSat");
                 HtmlInputCheckBox chkSun = (HtmlInputCheckBox)itemDOW.FindControl("chkSun");
+
+                DropDownList ddlDurationDay = (DropDownList)itemDOW.FindControl("ddlDurationDay");
+                DropDownList ddlDurationHour = (DropDownList)itemDOW.FindControl("ddlDurationHour");
+                DropDownList ddlDurationMinute = (DropDownList)itemDOW.FindControl("ddlDurationMinute");
 
                 foreach (var od in OpDaysList)
                 {
@@ -1017,7 +1031,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                             Tues = chkTues.Checked,
                             Wed = chkWed.Checked,
                             Session = ddlSession.SelectedItem.Text,
-                            Duration = txtDuration.Text,
+                            Duration = (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text),
                             EndTime = string.Empty,
                             StartTime = txtStartTime.Text,
                             DurationType = ddlDurationType.SelectedItem.Text
@@ -1059,7 +1073,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 if (ddlSession != null)
                 {
                     fillDDLSession(ddlSession);
-                    if (e.Item.ItemType != ListItemType.Header)
+                    if (e.Item.ItemType != ListItemType.Footer)
                     {
                         HiddenField hdnSession = (HiddenField)e.Item.FindControl("hdnSession");
                         if (hdnSession != null)
@@ -1074,24 +1088,83 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     }
                 }
 
-                DropDownList ddlDuration = (DropDownList)e.Item.FindControl("ddlDurationType");
-                if (ddlDuration != null)
+                DropDownList ddlDurationType = (DropDownList)e.Item.FindControl("ddlDurationType");
+                if (ddlDurationType != null)
                 {
-                    fillActivityDuration(ddlDuration);
-                    if (e.Item.ItemType != ListItemType.Header)
+                    fillActivityDuration(ddlDurationType);
+                    if (e.Item.ItemType != ListItemType.Footer)
                     {
-                        HiddenField hdnDuration = (HiddenField)e.Item.FindControl("hdnDurationType");
-                        if (hdnDuration != null)
+                        HiddenField hdnDurationType = (HiddenField)e.Item.FindControl("hdnDurationType");
+                        if (hdnDurationType != null)
                         {
-                            if (ddlDuration.Items.FindByText(hdnDuration.Value) != null)
+                            if (ddlDurationType.Items.FindByText(hdnDurationType.Value) != null)
                             {
-                                ddlDuration.ClearSelection();
-                                ddlDuration.Items.FindByText(hdnDuration.Value).Selected = true;
+                                ddlDurationType.ClearSelection();
+                                ddlDurationType.Items.FindByText(hdnDurationType.Value).Selected = true;
                             }
                         }
 
                     }
                 }
+
+                if (e.Item.ItemType != ListItemType.Footer)
+                {
+                    HiddenField hdnDuration = (HiddenField)e.Item.FindControl("hdnDuration");
+                    if (hdnDuration.Value != null)
+                    {
+                        DropDownList ddlDurationDay = (DropDownList)e.Item.FindControl("ddlDurationDay");
+                        DropDownList ddlDurationHour = (DropDownList)e.Item.FindControl("ddlDurationHour");
+                        DropDownList ddlDurationMinute = (DropDownList)e.Item.FindControl("ddlDurationMinute");
+
+                        string Day = string.Empty, Hour = string.Empty, Minute = string.Empty;
+                        string[] dur = hdnDuration.Value.Split('.');
+                        if (dur.Length == 2)
+                        {
+                            Day = dur[0];
+
+                            string[] durTime = dur[1].Split(':');
+                            if (dur.Length == 2)
+                            {
+                                Hour = durTime[0];
+                                Minute = durTime[1];
+                            }
+                        }
+                        else if (dur.Length == 1)
+                        {
+                            if (hdnDuration.Value.Length == 5)
+                            {
+                                hdnDuration.Value = "0" + hdnDuration.Value;
+                                Day = hdnDuration.Value.Substring(0, 2);
+                                Hour = hdnDuration.Value.Substring(2, 2);
+                                Minute = hdnDuration.Value.Substring(4, 2);
+                            }
+                        }
+
+                        if (Day.Length == 1)
+                        {
+                            Day = "0" + Day;
+                        }
+
+                        if (ddlDurationDay.Items.FindByText(Day) != null)
+                        {
+                            ddlDurationDay.ClearSelection();
+                            ddlDurationDay.Items.FindByText(Day).Selected = true;
+                        }
+
+                        if (ddlDurationHour.Items.FindByText(Hour) != null)
+                        {
+                            ddlDurationHour.ClearSelection();
+                            ddlDurationHour.Items.FindByText(Hour).Selected = true;
+                        }
+
+                        if (ddlDurationMinute.Items.FindByText(Minute) != null)
+                        {
+                            ddlDurationMinute.ClearSelection();
+                            ddlDurationMinute.Items.FindByText(Minute).Selected = true;
+                        }
+                    }
+                }
+
             }
         }
 
@@ -1132,7 +1205,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         if (itemDOW.ItemType == ListItemType.Item || itemDOW.ItemType == ListItemType.AlternatingItem)
                         {
                             TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
-                            TextBox txtDuration = (TextBox)itemDOW.FindControl("txtDuration");
+                            HiddenField hdnDuration = (HiddenField)itemDOW.FindControl("hdnDuration");
                             DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
                             DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
                             HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
@@ -1149,6 +1222,9 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                             Label lblSupplierSession = (Label)itemDOW.FindControl("lblSupplierSession");
                             Label lblSupplierFrequency = (Label)itemDOW.FindControl("lblSupplierFrequency");
 
+                            DropDownList ddlDurationDay = (DropDownList)itemDOW.FindControl("ddlDurationDay");
+                            DropDownList ddlDurationHour = (DropDownList)itemDOW.FindControl("ddlDurationHour");
+                            DropDownList ddlDurationMinute = (DropDownList)itemDOW.FindControl("ddlDurationMinute");
 
                             WeekDayList.Add(new DC_Activity_DaysOfWeek
                             {
@@ -1156,11 +1232,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                 IsActive = true,
                                 Activity_Flavor_ID = OpDay.Activity_Flavor_ID,
                                 Activity_DaysOfWeek_ID = Guid.Parse(btnRemoveDaysOfWeek.CommandArgument),
-                                Duration = txtDuration.Text,
+                                Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
                                 Fri = chkFri.Checked,
                                 Mon = chkMon.Checked,
                                 Sat = chkSat.Checked,
-                                Session = ddlSession.SelectedItem.Text,
+                                Session = (ddlSession.SelectedIndex == 0 ? string.Empty : ddlSession.SelectedItem.Text),
                                 Sun = chkSun.Checked,
                                 StartTime = txtStartTime.Text,
                                 Thur = chkThurs.Checked,
@@ -1170,7 +1246,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                 SupplierFrequency = lblSupplierFrequency.Text,
                                 SupplierSession = lblSupplierSession.Text,
                                 SupplierStartTime = lblSupplierStartTime.Text,
-                                DurationType = ddlDurationType.SelectedItem.Text
+                                DurationType = (ddlDurationType.SelectedIndex == 0 ? string.Empty : ddlDurationType.SelectedItem.Text)
                             });
                         }
                     }

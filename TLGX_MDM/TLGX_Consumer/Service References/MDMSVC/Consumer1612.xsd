@@ -1185,12 +1185,20 @@
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="NoOpsSchedule" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoPhysicalIntensity" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoSession" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoSpecials" type="xs:boolean" />
+      <xs:element minOccurs="0" name="NoSuitableFor" type="xs:boolean" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ProductCategorySubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductCategorySubTypeId" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductNameSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductNameSubTypeId" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductTypeId" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
@@ -1206,6 +1214,7 @@
       <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfDC_Activity_CategoryTypes" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
@@ -1256,6 +1265,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Flavour" nillable="true" type="tns:DC_Activity_Flavour" />
+  <xs:complexType name="ArrayOfDC_Activity_CategoryTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_CategoryTypes" nillable="true" type="tns:DC_Activity_CategoryTypes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_CategoryTypes" nillable="true" type="tns:ArrayOfDC_Activity_CategoryTypes" />
+  <xs:complexType name="DC_Activity_CategoryTypes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_CategoriesType_ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_FlavourOptions_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupProdCat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupProdSubCat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupProdSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupProdType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SysProdCat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SysProdCatId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SysProdSubCat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SysProdSubCatId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SysProdSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SysProdSubTypeId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SysProdType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SysProdTypeId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_CategoryTypes" nillable="true" type="tns:DC_Activity_CategoryTypes" />
   <xs:complexType name="ArrayOfDC_Activity_CA_CRUD">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_CA_CRUD" nillable="true" type="tns:DC_Activity_CA_CRUD" />

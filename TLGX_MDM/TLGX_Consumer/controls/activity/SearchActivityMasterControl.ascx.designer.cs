@@ -31,6 +31,15 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
+        /// txtProductName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtProductName;
+        
+        /// <summary>
         /// ddlCountry control.
         /// </summary>
         /// <remarks>
@@ -58,13 +67,31 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.DropDownList ddlSupplier;
         
         /// <summary>
-        /// txtProductName control.
+        /// ddlProductCategorySubType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProductName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategorySubType;
+        
+        /// <summary>
+        /// ddlProductType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductType;
+        
+        /// <summary>
+        /// ddlProductSubType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductSubType;
         
         /// <summary>
         /// chkNoSuitableFor control.
@@ -103,31 +130,13 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.CheckBox chkNoSession;
         
         /// <summary>
-        /// ddlProductCategorySubType control.
+        /// chkNoSpecial control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategorySubType;
-        
-        /// <summary>
-        /// ddlProductType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductType;
-        
-        /// <summary>
-        /// ddlProductSubType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductSubType;
+        protected global::System.Web.UI.WebControls.CheckBox chkNoSpecial;
         
         /// <summary>
         /// btnSearch control.
@@ -146,15 +155,6 @@ namespace TLGX_Consumer.controls.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReset;
-        
-        /// <summary>
-        /// btnNewActivity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnNewActivity;
         
         /// <summary>
         /// dvPageSize control.

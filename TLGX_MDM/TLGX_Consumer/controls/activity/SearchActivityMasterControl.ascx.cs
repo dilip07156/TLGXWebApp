@@ -192,10 +192,28 @@ namespace TLGX_Consumer.controls.activity
                     _objSearch.ProductName = txtProductName.Text;
 
                 _objSearch.ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text;
+                if(ddlProductCategorySubType.SelectedIndex > 1)
+                {
+                    _objSearch.ProductCategorySubTypeId = Guid.Parse(ddlProductCategorySubType.SelectedValue);
+                }
 
                 _objSearch.ProductType = ddlProductType.SelectedItem.Text;
+                if (ddlProductType.SelectedIndex > 1)
+                {
+                    _objSearch.ProductTypeId = Guid.Parse(ddlProductType.SelectedValue);
+                }
 
                 _objSearch.ProductNameSubType = ddlProductSubType.SelectedItem.Text;
+                if (ddlProductSubType.SelectedIndex > 1)
+                {
+                    _objSearch.ProductNameSubTypeId = Guid.Parse(ddlProductSubType.SelectedValue);
+                }
+
+                _objSearch.NoOpsSchedule = chkNoOperatingSchedule.Checked;
+                _objSearch.NoPhysicalIntensity = chkNoPhysicalIntensity.Checked;
+                _objSearch.NoSession = chkNoSession.Checked;
+                _objSearch.NoSpecials = chkNoSpecial.Checked;
+                _objSearch.NoSuitableFor = chkNoSuitableFor.Checked;
 
                 var res = activitySVC.GetActivityFlavour(_objSearch);
                 if (res != null && res.Count != 0)
