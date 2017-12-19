@@ -628,7 +628,7 @@ namespace TLGX_Consumer.controls.staticdata
                             ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(selSysCity_ID.ID.ToString()));
                         fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
                         ddlSystemProductName.SelectedIndex = ddlSystemProductName.Items.IndexOf(ddlSystemProductName.Items.FindByText(masterRoduct[0].SystemProductName.ToString()));
-                        lblSystemProductAddress.Text = masterRoduct[0].FullAddress;
+                        lblSystemProductAddress.Text = masterRoduct[0].SystemFullAddress;
                         lblSystemCountryCode.Text = masterdata.GetCodeById("country", Guid.Parse(ddlSystemCountryName.SelectedItem.Value));
                         if (lblSystemCountryCode.Text.Replace(" ", "") != "")
                             lblSystemCountryCode.Text = "(" + lblSystemCountryCode.Text + ")";
