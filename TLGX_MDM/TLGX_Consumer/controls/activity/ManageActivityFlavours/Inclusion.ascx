@@ -64,14 +64,9 @@
             OnRowCommand="gvActInclusionSearch_RowCommand" DataKeyNames="Activity_Inclusions_Id"
             OnRowDataBound="gvActInclusionSearch_RowDataBound">
             <Columns>
-
-                <asp:BoundField HeaderText="Inclusion Type" DataField="InclusionType" />
-                <asp:BoundField HeaderText="Inclusion Name" DataField="InclusionName" />
                 <asp:BoundField HeaderText="Inclusion For" DataField="InclusionFor" />
                 <asp:BoundField HeaderText="Description" DataField="InclusionDescription" />
-                <asp:BoundField HeaderText="Is Inclusion" DataField="IsInclusion" />
-                <asp:BoundField HeaderText="Upload Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy}" />
-
+                
                 <asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CssClass="btn btn-default"

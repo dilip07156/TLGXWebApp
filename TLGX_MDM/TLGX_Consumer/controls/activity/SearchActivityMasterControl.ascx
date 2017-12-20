@@ -34,9 +34,16 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group col-sm-6">
+                                <div class="col-sm-6">
 
-                                    <div class="form-group col-sm-12">
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="txtProductName">Product Name</label>
+                                        <div class="col-sm-6">
+                                            <asp:TextBox ID="txtProductName" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <label class="control-label col-sm-6" for="ddlCountry">Country</label>
                                         <div class="col-sm-6">
                                             <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
@@ -46,7 +53,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-sm-12">
+                                    <div class="row">
                                         <label class="control-label col-sm-6" for="ddlCity">City</label>
                                         <div class="col-sm-6">
                                             <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
@@ -56,7 +63,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-sm-12">
+                                    <div class="row">
                                         <label class="control-label col-sm-6" for="ddlSupplier">
                                             Supplier
                                         </label>
@@ -78,18 +85,7 @@
                                         </div>
                                     </div>--%>
 
-                                    <div class="form-group col-sm-12">
-                                        <label class="control-label col-sm-6" for="txtProductName">Product Name</label>
-                                        <div class="col-sm-6">
-                                            <asp:TextBox ID="txtProductName" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group col-sm-6">
-
-                                    <div class="form-group col-sm-12 row">
+                                    <div class="row">
                                         <label class="control-label col-sm-6" for="ddlProductCategorySubType">
                                             Category SubType
                                         </label>
@@ -101,7 +97,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-sm-12 row">
+                                    <div class="row">
                                         <label class="control-label col-sm-6" for="ddlProductType">
                                             Product Type
                                         </label>
@@ -112,7 +108,8 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="form-group col-sm-12 row">
+
+                                    <div class="row">
                                         <label class="control-label col-sm-6" for="ddlProductSubType">
                                             Product Sub Type
                                         </label>
@@ -124,15 +121,53 @@
                                         </div>
                                     </div>
 
+                                </div>
 
-                                    <div class="form-group col-sm-12 row">
+                                <div class="col-sm-6">
+
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="chkNoSuitableFor">Suitable For is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoSuitableFor" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="chkNoPhysicalIntensity">Physical Intensity is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoPhysicalIntensity" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="chkNoOperatingSchedule">Operating Schedule is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoOperatingSchedule" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="chkNoSession">Session is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoSession" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="chkNoSpecials">Special is not defined</label>
+                                        <div class="col-sm-6">
+                                            <asp:CheckBox ID="chkNoSpecial" runat="server" />
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
                                         <div class="form-group col-sm-6">
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
                                             <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
                                         </div>
-                                        <div class="form-group col-sm-6">
-                                            <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm pull-right" OnClientClick="showAddNewActivityModal();" />
-                                        </div>
+                                        <%--<div class="form-group col-sm-6">
+                                            <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm" OnClientClick="showAddNewActivityModal();" />
+                                        </div>--%>
                                     </div>
                                 </div>
 
