@@ -14,6 +14,15 @@
                             var a = result.Stepstatuslist.Stepstatus[i];
                             var tr;
                             tr = $('<tr/>');
+                            if (a.StatusDescription == "Running")
+                                tr.addClass("active");
+                            else if (a.StatusDescription == "Finished")
+                                tr.addClass("success");
+                            else if (a.StatusDescription == "Stopped")
+                                tr.addClass("danger");
+                            else
+                                tr.removeClass();
+
                             tr.append("<td>" + a.Stepname + "</td>");
                             tr.append("<td>" + a.Copy + "</td>");
                             tr.append("<td>" + a.LinesRead + "</td>");
