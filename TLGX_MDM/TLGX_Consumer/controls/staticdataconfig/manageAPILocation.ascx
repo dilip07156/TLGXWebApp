@@ -15,7 +15,7 @@
                             var tr;
                             tr = $('<tr/>');
                             if (a.StatusDescription == "Running")
-                                tr.addClass("active");
+                                tr.addClass("warning");
                             else if (a.StatusDescription == "Finished")
                                 tr.addClass("success");
                             else if (a.StatusDescription == "Stopped")
