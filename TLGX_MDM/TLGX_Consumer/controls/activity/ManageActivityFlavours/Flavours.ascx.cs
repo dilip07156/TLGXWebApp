@@ -354,14 +354,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         }
                     }
 
-                    var Physicalntensity = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "Physicalntensity").Select(s => s.AttributeValue).FirstOrDefault();
+                    var PhysicalIntensity = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "PhysicalIntensity").Select(s => s.AttributeValue).FirstOrDefault();
                     ddlPhysicalIntensity.ClearSelection();
 
-                    if (!string.IsNullOrWhiteSpace(Physicalntensity))
+                    if (!string.IsNullOrWhiteSpace(PhysicalIntensity))
                     {
-                        if (ddlPhysicalIntensity.Items.FindByText(Physicalntensity) != null)
+                        if (ddlPhysicalIntensity.Items.FindByText(PhysicalIntensity) != null)
                         {
-                            ddlPhysicalIntensity.Items.FindByText(Physicalntensity).Selected = true;
+                            ddlPhysicalIntensity.Items.FindByText(PhysicalIntensity).Selected = true;
                         }
                     }
                 }
@@ -708,7 +708,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 Activity_Flavour_Id = Activity_Flavour_Id,
                 AttributeType = "Product",
-                AttributeSubType = "Physicalntensity",
+                AttributeSubType = "PhysicalIntensity",
                 AttributeValues = AttributeValues.ToArray(),
                 User = System.Web.HttpContext.Current.User.Identity.Name
             });
