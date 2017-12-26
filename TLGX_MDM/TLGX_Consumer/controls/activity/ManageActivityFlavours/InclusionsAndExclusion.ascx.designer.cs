@@ -13,13 +13,22 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     public partial class InclusionsAndExclusion {
         
         /// <summary>
-        /// updMedia control.
+        /// updPanInclusionExclusion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updMedia;
+        protected global::System.Web.UI.UpdatePanel updPanInclusionExclusion;
+        
+        /// <summary>
+        /// dvMsg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
         /// btnAddNewInclusion control.
@@ -31,40 +40,49 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.Button btnAddNewInclusion;
         
         /// <summary>
-        /// Inclusion1 control.
+        /// lblTotalRecordsInclusions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Inclusion Inclusion1;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecordsInclusions;
         
         /// <summary>
-        /// Exclusion1 control.
+        /// gvActInclusionSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Exclusion Exclusion1;
+        protected global::System.Web.UI.WebControls.GridView gvActInclusionSearch;
         
         /// <summary>
-        /// TabName control.
+        /// lblTotalRecordsExclusions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField TabName;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecordsExclusions;
         
         /// <summary>
-        /// updNewActivity control.
+        /// gvActExclusionSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updNewActivity;
+        protected global::System.Web.UI.WebControls.GridView gvActExclusionSearch;
+        
+        /// <summary>
+        /// updIncExc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updIncExc;
         
         /// <summary>
         /// vldSumActivity control.
@@ -83,6 +101,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divMsgAlertIncExc;
+        
+        /// <summary>
+        /// hdnId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnId;
         
         /// <summary>
         /// chkIsInclusion control.

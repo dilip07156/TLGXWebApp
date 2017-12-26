@@ -56,39 +56,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             if (e.CommandName.ToString() == "Editing")
             {
-                //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-                //int index = row.RowIndex;
-
-                //Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
-
-                //bool isinclusion = false;
-
-                //if (gvActInclusionSearch.Rows[index].Cells[4].Text == "true")
-                //    isinclusion = true;
-
-                //List<MDMSVC.DC_Activity_Inclusions> newObj = new List<MDMSVC.DC_Activity_Inclusions>();
-                //newObj.Add(new MDMSVC.DC_Activity_Inclusions
-                //{
-                //    Activity_Inclusions_Id = myRow_Id,
-                //    Activity_Flavour_Id = Activity_Flavour_Id,
-                //    InclusionType = gvActInclusionSearch.Rows[index].Cells[0].Text,
-                //    InclusionName = gvActInclusionSearch.Rows[index].Cells[1].Text,
-                //    InclusionDescription = gvActInclusionSearch.Rows[index].Cells[3].Text,
-                //    IsInclusion = isinclusion
-                //});
-
-                //if (!string.IsNullOrEmpty(gvActInclusionSearch.Rows[index].Cells[0].Text))
-                //    newObj[0].InclusionType = gvActInclusionSearch.Rows[index].Cells[0].Text;
-
-                //frmInclusion.ChangeMode(FormViewMode.Edit);
-                //frmInclusion.DataSource = newObj;
-                //frmInclusion.DataBind();
-
-                //TextBox txtName = (TextBox)frmInclusion.FindControl("txtMAxAdults");
-                //TextBox txtDescription = (TextBox)frmInclusion.FindControl("txtPassengers");
-
-                //DropDownList ddlInclusionFor = (DropDownList)frmInclusion.FindControl("ddlInclusionFor");
-                //DropDownList ddlInclusionType = (DropDownList)frmInclusion.FindControl("ddlInclusionType");
 
             }
             else if (e.CommandName.ToString() == "SoftDelete")
@@ -121,11 +88,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
-        protected void frmInclusionDetails_ItemCommand(object sender, FormViewCommandEventArgs e)
-        {
-
-        }
-
         protected void gvActInclusionSearch_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.DataItem != null)
@@ -142,7 +104,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 {
                     e.Row.Font.Strikeout = false;
                     btnEdit.Enabled = true;
-                    btnEdit.Attributes.Add("OnClientClick", "showAddEditModal();");
+                    btnEdit.Attributes.Add("OnClientClick", "showAddEditModalI();");
                 }
                 ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
                 scriptMan.RegisterAsyncPostBackControl(btnDelete);
@@ -165,11 +127,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 //hdnFlag.Value = "true";
             }
         }
-
-        //protected void btnNewActivity_Click(object sender, EventArgs e)
-        //{
-        //    frmInclusion.ChangeMode(FormViewMode.Insert);
-        //    frmInclusion.DataBind();
-        //}
+        
     }
 }
