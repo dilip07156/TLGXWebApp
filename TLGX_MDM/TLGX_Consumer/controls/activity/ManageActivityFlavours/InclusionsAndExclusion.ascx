@@ -2,8 +2,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <script>
-    function showAddModal() {
-        $("#moAddInclusions").modal('show');
+    function showAddEditModal() {
+        $("#moAddEditInclusionsExclusions").modal('show');
     }
 </script>
 <style>
@@ -15,64 +15,105 @@
     }
 </style>
 
-<asp:UpdatePanel ID="updMedia" runat="server">
+<asp:UpdatePanel ID="updPanInclusionExclusion" runat="server">
     <ContentTemplate>
-        <div class="panel-group" id="searchResult">
-            <%--<div class="panel panel-default">--%>
+
+        <div class="panel-group">
+
+            <div id="dvMsg" runat="server" style="display: none;"></div>
 
             <div class="panel-heading clearfix row">
-                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnAddNewInclusion" Text="Add New" OnClick="btnAddNewInclusion_Click" OnClientClick="showAddModal();" />
+                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnAddNewInclusion" Text="Add New" OnClick="btnAddNewInclusion_Click" OnClientClick="showAddEditModal();" />
             </div>
 
-            <%@ Register Src="~/controls/activity/ManageActivityFlavours/Inclusion.ascx" TagPrefix="uc1" TagName="Inclusion" %>
-            <%@ Register Src="~/controls/activity/ManageActivityFlavours/Exclusion.ascx" TagPrefix="uc1" TagName="Exclusion" %>
-
-            <%--<div id="Tabs" role="tabpanel">
-                <!-- Nav tabs -->
-
-                <ul class="nav nav-tabs" role="tablist">
-                    <li><a role="tab" data-toggle="tab" href="#personal">Inclusion</a></li>
-                    <li><a role="tab" data-toggle="tab" href="#employment">Exclusion</a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="personal" >
-                        <uc1:Inclusion runat="server" ID="Inclusion" />
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="employment">
-                        <uc1:Exclusion runat="server" ID="Exclusion" />
-                    </div>
-                </div>
-            </div>--%>
-
-            <div id="Inclusion">
+            <div class="form-group">
+                <h3 class="panel-title pull-left">Inclusion Details (Total Count:
+            <asp:Label ID="lblTotalRecordsInclusions" runat="server" Text="0"></asp:Label>)</h3>
             </div>
-            <div>
-                <uc1:Inclusion runat="server" ID="Inclusion1" />
+            <asp:GridView ID="gvActInclusionSearch" runat="server"
+                EmptyDataText="No Activity Inclusion Found" CssClass="table table-hover table-striped"
+                AutoGenerateColumns="false" OnRowCommand="gvActInclusionSearch_RowCommand" DataKeyNames="Activity_Inclusions_Id"
+                OnRowDataBound="gvActInclusionSearch_RowDataBound">
+                <Columns>
+                    <asp:BoundField HeaderText="Inclusion For" DataField="InclusionFor" />
+                    <asp:BoundField HeaderText="Description" DataField="InclusionDescription" />
+
+                    <asp:TemplateField ShowHeader="false">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CssClass="btn btn-default" CommandName="Editing"
+                                CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# (bool)Eval("IsActive") %>' OnClientClick="showAddEditModal();"> 
+                                  <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp;Edit
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                                CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                </Columns>
+                <PagerStyle CssClass="pagination-ys" />
+            </asp:GridView>
+
+            <div class="form-group">
+                <h3 class="panel-title pull-left">Exclusion Details (Total Count:
+            <asp:Label ID="lblTotalRecordsExclusions" runat="server" Text="0"></asp:Label>)</h3>
             </div>
 
-            <div id="Exclusion">
-            </div>
-            <div>
-                <uc1:Exclusion runat="server" ID="Exclusion1" />
-            </div>
-            <asp:HiddenField ID="TabName" runat="server" />
+            <asp:GridView ID="gvActExclusionSearch" runat="server"
+                EmptyDataText="No Activity Exclusion Found" CssClass="table table-hover table-striped"
+                AutoGenerateColumns="false" DataKeyNames="Activity_Inclusions_Id"
+                OnRowCommand="gvActExclusionSearch_RowCommand" OnRowDataBound="gvActExclusionSearch_RowDataBound">
+
+                <Columns>
+                    <asp:BoundField HeaderText="Exclusion For" DataField="InclusionFor" />
+                    <asp:BoundField HeaderText="Description" DataField="InclusionDescription" />
+
+                    <asp:TemplateField ShowHeader="false">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CssClass="btn btn-default" CommandName="Editing"
+                                CommandArgument='<%# Bind("Activity_Inclusions_Id") %>' Enabled='<%# (bool)Eval("IsActive") %>' OnClientClick="showAddEditModal();"> 
+                                  <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp;Edit
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                    <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                                CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Inclusions_Id") %>'>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
+                            </asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                </Columns>
+                <PagerStyle CssClass="pagination-ys" />
+            </asp:GridView>
+
         </div>
 
     </ContentTemplate>
 </asp:UpdatePanel>
 
-<div class="modal fade" id="moAddInclusions" role="dialog">
+<div class="modal fade" id="moAddEditInclusionsExclusions" role="dialog">
     <div class="modal-dialog modal-xl">
 
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Add New</h4>
+                <h4 class="modal-title">Add/Edit</h4>
             </div>
 
             <div class="modal-body">
-                <asp:UpdatePanel ID="updNewActivity" runat="server">
+                <asp:UpdatePanel ID="updIncExc" runat="server">
                     <ContentTemplate>
 
                         <div class="row">
@@ -86,27 +127,29 @@
 
                         <div class="col-sm-12 row">
                             <div class="panel panel-default">
-                                <div class="panel-heading">Add New</div>
+                                <div class="panel-heading">Add/Edit Inclusions & Exclusions</div>
                                 <div class="panel-body">
+
+                                    <asp:HiddenField ID="hdnId" runat ="server" />
 
                                     <div class="form-group">
                                         <div class="col-sm-6">
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-6" for="chkIsInclusion">Is Inclusion</label>
                                                 <div class="col-sm-6">
-                                                    <asp:CheckBox ID="chkIsInclusion" runat="server" Checked='<%# Bind("IsInclusion") %>' />
+                                                    <asp:CheckBox ID="chkIsInclusion" runat="server" />
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-6" for="ddlInclusionFor">Inclusion For</label>
+                                                <label class="control-label col-sm-6" for="ddlInclusionFor">For</label>
                                                 <div class="col-sm-6">
                                                     <asp:DropDownList runat="server" ID="ddlInclusionFor" CssClass="form-control"></asp:DropDownList>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-6" for="ddlInclusionType">Inclusion Type</label>
+                                                <label class="control-label col-sm-6" for="ddlInclusionType">Type</label>
                                                 <div class="col-sm-6">
                                                     <asp:DropDownList runat="server" ID="ddlInclusionType" CssClass="form-control"></asp:DropDownList>
                                                 </div>
@@ -126,7 +169,6 @@
                                                     </div>
                                                     <cc1:CalendarExtender ID="CalFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
                                                     <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
-                                                    <%--<asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>--%>
                                                 </div>
                                             </div>
 
@@ -144,7 +186,6 @@
                                                     </div>
                                                     <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
                                                     <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
-                                                    <%--<asp:CompareValidator ID="vldCmpDateFromTo" runat="server" ErrorMessage="To date can't be less than from date." ControlToCompare="txtFrom" CultureInvariantValues="true" ControlToValidate="txtTo" ValidationGroup="vldgrpFileSearch" Text="*" CssClass="text-danger" Type="Date" Operator="GreaterThanEqual"></asp:CompareValidator>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,14 +193,14 @@
                                         <div class="col-sm-6">
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-6" for="txtName">Inclusion Name</label>
+                                                <label class="control-label col-sm-6" for="txtName">Name</label>
                                                 <div class="col-sm-6">
                                                     <asp:TextBox runat="server" ID="txtName" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-6" for="txtDescription">Inclusion Description</label>
+                                                <label class="control-label col-sm-6" for="txtDescription">Description</label>
                                                 <div class="col-sm-6">
                                                     <asp:TextBox runat="server" ID="txtDescription" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                                                 </div>
@@ -192,13 +233,4 @@
 
 </div>
 
-<%--<script type='text/javascript'>
-    //for changing the tab of Inclusion / Exclusion
-    $(function () {
-        var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "personal";
-        $('#Tabs a[href="#' + tabName + '"]').tab('show');
-        $("#Tabs a").click(function () {
-            $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
-        });
-    });
-</script>--%>
+

@@ -95,30 +95,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 MDMSVC.DC_Activity_Inclusions_RQ RQ = new MDMSVC.DC_Activity_Inclusions_RQ();
                 RQ.Activity_Flavour_Id = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
                 RQ.Activity_Inclusions_Id = myRow_Id;
-                frmInclusionDetails.ChangeMode(FormViewMode.Edit);
-                frmInclusionDetails.DataSource = ActSVC.GetActivityInclusions(RQ);
-                frmInclusionDetails.DataBind();
 
-                MDMSVC.DC_Activity_Inclusions rowView = (MDMSVC.DC_Activity_Inclusions)frmInclusionDetails.DataItem;
-
-                //GetLookUpValues("Form", rowView.DescriptionType.ToString());
-
-                //DropDownList ddlType = (DropDownList)frmInclusionDetails.FindControl("ddlType");
-                //DropDownList ddlDescriptionType = (DropDownList)frmInclusionDetails.FindControl("ddlDescriptionType");
-                
-                //if (ddlDescriptionSubType.Items.Count > 1) // needs to be 1 to handle the "Select" value
-                //{
-                //    ddlDescriptionSubType.SelectedIndex = ddlDescriptionSubType.Items.IndexOf(ddlDescriptionSubType.Items.FindByText(rowView.DescriptionSubType.ToString()));
-                //}
-
-                //if (ddlDescriptionType.Items.Count > 1) // needs to be 1 to handle the "Select" value
-                //{
-                //    ddlDescriptionType.SelectedIndex = ddlDescriptionType.Items.IndexOf(ddlDescriptionType.Items.FindByText(rowView.DescriptionType.ToString()));
-                //}
-                //TextBox txtFrom = (TextBox)frmDescription.FindControl("txtFrom");
-                //TextBox txtTo = (TextBox)frmDescription.FindControl("txtTo");
-                //txtFrom.Text = System.Web.HttpUtility.HtmlDecode(gvDescriptionSearch.Rows[index].Cells[0].Text);
-                //txtTo.Text = System.Web.HttpUtility.HtmlDecode(gvDescriptionSearch.Rows[index].Cells[1].Text);
             }
             else if (e.CommandName.ToString() == "SoftDelete")
             {
@@ -198,7 +175,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 {
                     e.Row.Font.Strikeout = false;
                     btnEdit.Enabled = true;
-                    btnEdit.Attributes.Add("OnClientClick", "showEditModal();");
+                    btnEdit.Attributes.Add("OnClientClick", "showEditModalE();");
                 }
                 ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
                 scriptMan.RegisterAsyncPostBackControl(btnDelete);

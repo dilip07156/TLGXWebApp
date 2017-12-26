@@ -112,58 +112,58 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         protected global::System.Web.UI.WebControls.DropDownList ddlInclusionType;
         
         /// <summary>
-        /// txtFrom control.
+        /// txtFromE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtFromE;
         
         /// <summary>
-        /// CalFromDate control.
+        /// CalFromDateE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender CalFromDate;
+        protected global::AjaxControlToolkit.CalendarExtender CalFromDateE;
         
         /// <summary>
-        /// axfte_txtFrom control.
+        /// axfte_txtFromE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFrom;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFromE;
         
         /// <summary>
-        /// txtTo control.
+        /// txtToE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTo;
+        protected global::System.Web.UI.WebControls.TextBox txtToE;
         
         /// <summary>
-        /// calToDate control.
+        /// calToDateE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calToDate;
+        protected global::AjaxControlToolkit.CalendarExtender calToDateE;
         
         /// <summary>
-        /// axfte_txtTo control.
+        /// axfte_txtToE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtTo;
+        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtToE;
         
         /// <summary>
         /// txtName control.
@@ -182,24 +182,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
-        
-        /// <summary>
-        /// frmInclusionDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmInclusionDetails;
-        
-        /// <summary>
-        /// gvActInclusionDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvActInclusionDetails;
         
         /// <summary>
         /// btnUpdate control.
