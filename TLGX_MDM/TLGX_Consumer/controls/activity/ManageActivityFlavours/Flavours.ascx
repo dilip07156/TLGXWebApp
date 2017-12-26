@@ -70,8 +70,6 @@
 
     function setDurationType(dropdown, type) {
 
-        debugger;
-
         var value = dropdown.options[dropdown.selectedIndex].text;
 
         var row = dropdown.parentNode.parentNode;
@@ -88,28 +86,20 @@
         var textToFind = "";
 
         if (!isNaN(hour) && !isNaN(day) && !isNaN(minute)) {
-            if (day === 1 && hour === 0 && minute === 0) {
-                textToFind = "Full Day";
-            } else if (day === 1 && hour === 0 && minute > 0) {
-                textToFind = "Overnight";
-            } else if (day === 1 && hour > 0 && minute === 0) {
-                textToFind = "Overnight";
-            } else if (day > 1) {
-                textToFind = "Overnight";
-            } else if (day === 0 && hour >= 8) {
-                textToFind = "Full Day";
-            } else if (day === 0 && hour === 4 && minute != 0) {
-                textToFind = "Half Day";
-            } else if (day === 0 && hour > 4 && hour < 8) {
-                textToFind = "Half Day";
-            } else if (day === 0 && hour <= 4 && minute === 0) {
-                textToFind = "Shortbreaks";
+            if (day === 0 && hour === 0 && minute === 0) {
+                textToFind = "-Select-";
             }
-            else if (day === 0 && hour === 0 && minute != 0) {
-                textToFind = "Shortbreaks";
+            else if ((day === 0 && hour === 4 && minute > 0) || (day === 0 && hour > 4) || (day === 1 && hour === 0 && minute === 0)) {
+                textToFind = "Full Day";
             }
-            else if (day === 0 && hour > 0 && hour <= 4 && minute != 0) {
-                textToFind = "Shortbreaks";
+            else if (day > 1 || (day === 1 && (hour > 0 || minute > 0))) {
+                textToFind = "Overnight";
+            }
+            else if ((day === 0 && hour < 4) || (day === 0 && hour === 4 && minute === 0)) {
+                textToFind = "Half Day";
+            }
+            else {
+                textToFind = "-Select-";
             }
         }
 
