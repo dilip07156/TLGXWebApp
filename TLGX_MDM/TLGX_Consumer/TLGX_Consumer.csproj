@@ -269,9 +269,7 @@
     <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ClassificationAttributes.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Deals.ascx" />
-    <Content Include="controls\activity\ManageActivityFlavours\Exclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Flavours.ascx" />
-    <Content Include="controls\activity\ManageActivityFlavours\Inclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Policy.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\Prices.ascx" />
@@ -471,6 +469,46 @@
     <None Include="Service References\MDMSVC\Consumer10.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Consumer17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer18.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer19.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer2.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer20.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer21.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer22.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer23.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer24.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer25.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer26.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer27.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer28.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer29.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Consumer3.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -490,6 +528,15 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer32.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer8.xsd">
@@ -521,6 +568,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\MDMSVC\Consumer.disco" />
+    <None Include="Service References\MDMSVC\Consumer2.disco" />
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
@@ -878,6 +926,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
@@ -1307,24 +1358,12 @@
     <Compile Include="controls\activity\ManageActivityFlavours\Deals.ascx.designer.cs">
       <DependentUpon>Deals.ascx</DependentUpon>
     </Compile>
-    <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.cs">
-      <DependentUpon>Exclusion.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.designer.cs">
-      <DependentUpon>Exclusion.ascx</DependentUpon>
-    </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Flavours.ascx.cs">
       <DependentUpon>Flavours.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Flavours.ascx.designer.cs">
       <DependentUpon>Flavours.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.cs">
-      <DependentUpon>Inclusion.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.designer.cs">
-      <DependentUpon>Inclusion.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\InclusionsAndExclusion.ascx.cs">
       <DependentUpon>InclusionsAndExclusion.ascx</DependentUpon>
