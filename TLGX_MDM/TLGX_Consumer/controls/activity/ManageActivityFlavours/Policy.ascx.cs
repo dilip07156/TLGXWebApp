@@ -19,7 +19,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         public Guid Activity_Flavour_Id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 BindData();
             }
@@ -38,13 +38,19 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             MDMSVC.DC_Activity_Policy_RQ _obj = new MDMSVC.DC_Activity_Policy_RQ();
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             _obj.Activity_Flavour_Id = Activity_Flavour_Id;
-            
+
             var res = ActSVC.GetActivityPolicy(_obj);
-            if(res!=null)
+            if (res != null)
             {
+
                 grdPolicy.DataSource = res;
                 grdPolicy.DataBind();
-                lblTotalRecords.Text = Convert.ToString(res[0].Totalrecords);
+
+                if (res.Count() > 0)
+                {
+                    lblTotalRecords.Text = Convert.ToString(res[0].Totalrecords);
+                }
+
             }
             else
             {
@@ -52,7 +58,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 grdPolicy.DataBind();
                 //divDropdownForEntries.Visible = false;
             }
-            
+
         }
         private void fillPolicyType(DropDownList ddl)
         {
@@ -126,7 +132,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 frmPolicy.DataBind();
 
                 MDMSVC.DC_Activity_Policy rowView = (MDMSVC.DC_Activity_Policy)frmPolicy.DataItem;
-                
+
                 DropDownList ddlPolicyType = (DropDownList)frmPolicy.FindControl("ddlPolicyType");
 
                 fillPolicyType(ddlPolicyType);
@@ -168,26 +174,26 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void grdPolicy_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.DataItem != null)
-            {
-                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
-                LinkButton btnSelect = (LinkButton)e.Row.FindControl("btnSelect");
-                if (btnDelete.CommandName == "UnDelete")
-                {
-                    e.Row.Font.Strikeout = true;
-                    btnSelect.Enabled = false;
-                    btnSelect.Attributes.Remove("OnClientClick");
-                }
-                else
-                {
-                    e.Row.Font.Strikeout = false;
-                    btnSelect.Enabled = true;
-                    btnSelect.Attributes.Add("OnClientClick", "showAddNewPolicyModal();");
-                }
-                ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
-                scriptMan.RegisterAsyncPostBackControl(btnDelete);
+            //if (e.Row.DataItem != null)
+            //{
+            //    LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+            //    LinkButton btnSelect = (LinkButton)e.Row.FindControl("btnSelect");
+            //    if (btnDelete.CommandName == "UnDelete")
+            //    {
+            //        e.Row.Font.Strikeout = true;
+            //        btnSelect.Enabled = false;
+            //        btnSelect.Attributes.Remove("OnClientClick");
+            //    }
+            //    else
+            //    {
+            //        e.Row.Font.Strikeout = false;
+            //        btnSelect.Enabled = true;
+            //        btnSelect.Attributes.Add("OnClientClick", "showAddNewPolicyModal();");
+            //    }
+            //    ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
+            //    scriptMan.RegisterAsyncPostBackControl(btnDelete);
 
-            }
+            //}
         }
 
         protected void frmPolicy_ItemCommand(object sender, FormViewCommandEventArgs e)
@@ -200,7 +206,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             CheckBox chkIsAllow = (CheckBox)frmPolicy.FindControl("chkIsAllow");
             CheckBox chkIsActive = (CheckBox)frmPolicy.FindControl("chkIsActive");
 
-            if (e.CommandName.ToString()== "Add")
+            if (e.CommandName.ToString() == "Add")
             {
                 MDMSVC.DC_Activity_Policy newObj = new MDMSVC.DC_Activity_Policy
                 {
@@ -212,7 +218,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     PolicyDescription = txtDescription.Text,
                     Policy_Type = ddlPolicyType.SelectedItem.Text
                 };
-                
+
                 MDMSVC.DC_Message _msg = ActSVC.AddUpdateActivityPolicy(newObj);
                 if (_msg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
@@ -224,11 +230,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     divMsgAlertPolicy.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(divMsgAlertPolicy, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
                 }
-                
+
                 ResetControls();
                 BindDataSource();
             }
-            if (e.CommandName.ToString()== "Update")
+            if (e.CommandName.ToString() == "Update")
             {
                 Guid myRowId = Guid.Parse(frmPolicy.DataKey.Value.ToString());
                 MDMSVC.DC_Activity_Policy newObj = new MDMSVC.DC_Activity_Policy();
@@ -263,7 +269,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 ResetControls();
                 BindDataSource();
             }
-            if (e.CommandName.ToString()== "Reset")
+            if (e.CommandName.ToString() == "Reset")
             {
                 ResetControls();
             }
@@ -273,6 +279,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             BindDataSource();
         }
-        
+
     }
 }

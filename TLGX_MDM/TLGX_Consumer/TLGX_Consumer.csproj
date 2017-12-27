@@ -1309,7 +1309,6 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.cs">
       <DependentUpon>Exclusion.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Exclusion.ascx.designer.cs">
       <DependentUpon>Exclusion.ascx</DependentUpon>
@@ -1323,7 +1322,6 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.cs">
       <DependentUpon>Inclusion.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\Inclusion.ascx.designer.cs">
       <DependentUpon>Inclusion.ascx</DependentUpon>

@@ -34,44 +34,19 @@
     </div>
 </div>
 
-<%--</div>--%>
-<%--<div id="collapseSearchResult" class="panel-collapse collapse in">
-        <div class="panel-body">--%>
 <asp:GridView ID="gvPricesSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
     EmptyDataText="No data Found" CssClass="table table-hover table-striped"
     AutoGenerateColumns="false" OnPageIndexChanging="gvPricesSearch_PageIndexChanging"
     OnRowCommand="gvPricesSearch_RowCommand" DataKeyNames="Activity_Prices_Id" OnRowDataBound="gvPricesSearch_RowDataBound">
     <Columns>
+        <asp:BoundField HeaderText="Price Currency" DataField="PriceCurrency" />
         <asp:BoundField HeaderText="Price" DataField="Price" />
         <asp:BoundField HeaderText="Price For" DataField="Price_For" />
         <asp:BoundField HeaderText="Price Code" DataField="PriceCode" />
         <asp:BoundField HeaderText="Price Basis" DataField="PriceBasis" />
         <asp:BoundField HeaderText="Price Type" DataField="Price_Type" />
         <asp:BoundField HeaderText="Price OptionCode" DataField="Price_OptionCode" />
-        <asp:BoundField HeaderText="Price Currency" DataField="PriceCurrency" />
-
-        <asp:BoundField HeaderText="Created Date" DataField="Create_Date" DataFormatString="{0:dd/MM/yyyy} " />
-        <%--<asp:TemplateField ShowHeader="false">
-            <ItemTemplate>
-                <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                    Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Activity_Prices_Id") %>' OnClientClick="showPricesModal()">
-                                        <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Edit
-                </asp:LinkButton>
-            </ItemTemplate>
-        </asp:TemplateField>
-        <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
-            <ItemTemplate>
-                <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
-                    CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Prices_Id") %>'>
-                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
-                                                    <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
-                </asp:LinkButton>
-            </ItemTemplate>
-        </asp:TemplateField>--%>
+        <asp:BoundField HeaderText="Price InternalOptionCode" DataField="Price_InternalOptionCode" />
     </Columns>
     <PagerStyle CssClass="pagination-ys" />
 </asp:GridView>
-<%--</div>
-    </div>--%>
-
-<%--</div>--%>

@@ -12,8 +12,6 @@ namespace TLGX_Consumer.controls.staticdata
 {
     public partial class bulkHotelMapping : System.Web.UI.UserControl
     {
-
-        public static Guid Accomodation_ID;
         MasterDataDAL masterdata = new MasterDataDAL();
         businessEntityDAL bsuinessEntities = new businessEntityDAL();
 
@@ -23,55 +21,55 @@ namespace TLGX_Consumer.controls.staticdata
         Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
         lookupAttributeDAL LookupAtrributes = new lookupAttributeDAL();
         Controller.MasterDataSVCs masterSVc = new Controller.MasterDataSVCs();
-        public static string ParentPageName = "";
-        public static int PageIndex = 0;
-        public static int PageIndexMapped = 0;
-        public static string SearchSource = "";
 
-        public int intMappedgrvwPageNo = 0;
+        //public static Guid Accomodation_ID;
+        //public static int PageIndex = 0;
+        //public static int PageIndexMapped = 0;
+        //public static string SearchSource = "";
+        //public int intMappedgrvwPageNo = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 setvisibility();
                 SetManualSearchVisibility();
-                if (ParentPageName == "addProductMapping.aspx")
-                {
-                    fillcountrydropdown("search");
-                    fillstatusdropdown();
-                    fillSupplierDropDown();
-                }
-                else
-                {
-                    //fillproductmappingdata();
-                }
-
-
             }
         }
 
-        public void fillproductmappingdata(Guid selectedKey)
+        public void fillproductmappingdata(Guid selectedKey, int pageIndex, string supCountryName, string supCityName, string supHotelName)
         {
-            PageIndex = 0;
-            PageIndexMapped = 0;
-            Accomodation_ID = selectedKey;
-            SearchSource = "id";
-            fillAPMrequestobject();
-            fillmappeddata();
+            //int PageIndex = pageIndex;
+            //PageIndexMapped = 0;
+            //Accomodation_ID = selectedKey;
+            //SearchSource = "id";
+            fillAPMrequestobject(selectedKey, pageIndex, "id");
+            fillmappeddata(selectedKey, 0);
+            setdvProdSupDump(supCountryName, supCityName, supHotelName);
         }
 
-        public void fillmappeddata()
+        public void fillmappeddata(Guid Accomodation_ID, int pageIndexMapped)
         {
             //RQAPM = null;
             if (Accomodation_ID != null)
             {
-                PageIndexMapped = intMappedgrvwPageNo;
+                //PageIndexMapped = intMappedgrvwPageNo;
 
                 MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQParams = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
-                RQParams.Accommodation_Id = Accomodation_ID;    
-                RQParams.PageNo = PageIndexMapped;
+                RQParams.Accommodation_Id = Accomodation_ID;
+                RQParams.PageNo = pageIndexMapped;
                 RQParams.PageSize = 10;
                 RQParams.StatusExcept = "UNMAPPED";
+
+                if (!string.IsNullOrEmpty(txtSupProductName.Text))
+                    RQParams.ProductName = txtSupProductName.Text;
+                if (!string.IsNullOrEmpty(txtSupAddress.Text))
+                    RQParams.Street = txtSupAddress.Text;
+                if (!string.IsNullOrEmpty(txtSupCountry.Text))
+                    RQParams.CountryName = txtSupCountry.Text;
+                if (!string.IsNullOrEmpty(txtSupCity.Text))
+                    RQParams.CityName = txtSupCity.Text;
+                if (!string.IsNullOrEmpty(txtSupTelephone.Text))
+                    RQParams.TelephoneNumber = txtSupTelephone.Text;
 
                 //var resmapped = MapSvc.GetProductMappingMasterData(PageIndexMapped, 10, Accomodation_ID, "MAPPED,REVIEW");
                 var resmapped = MapSvc.GetProductMappingMasterData(RQParams);
@@ -88,21 +86,30 @@ namespace TLGX_Consumer.controls.staticdata
                 }
                 else
                     lblMappedData.Text = "0";
-                grdAccoMaps.PageIndex = PageIndexMapped;
+                grdAccoMaps.PageIndex = pageIndexMapped;
                 grdAccoMaps.PageSize = 10;
                 grdAccoMaps.DataBind();
             }
         }
         protected void grdAccoMaps_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            intMappedgrvwPageNo = e.NewPageIndex;
-            fillmappeddata();
+            Guid Accomodation_ID = Guid.Parse(btnSupManualSearch.CommandArgument.ToString());
+            //intMappedgrvwPageNo = e.NewPageIndex;
+            fillmappeddata(Accomodation_ID, e.NewPageIndex);
         }
-        public void fillAPMrequestobject()
+        public void fillAPMrequestobject(Guid Accomodation_ID, int pageIndex, string searchSource)
         {
+            btnMap.CommandArgument = Accomodation_ID.ToString();
+            btnMapAll.CommandArgument = Accomodation_ID.ToString();
+            btnSupManualSearch.CommandArgument = Accomodation_ID.ToString();
+            btnUnmapSelected.CommandArgument = Accomodation_ID.ToString();
+            btnUnmapAll.CommandArgument = Accomodation_ID.ToString();
+            btnMapSelectedForgrdAccoMaps.CommandArgument= Accomodation_ID.ToString();
+            btnMapAllForgrdAccoMaps.CommandArgument= Accomodation_ID.ToString();
+
             //GridView grdTLGXProdData = (GridView)this.Parent.FindControl("grdTLGXProdData");
             //RQAPM = null;
-            if (SearchSource == "id")
+            if (searchSource == "id")
             {
                 var hoteldetails = AccSvc.GetHotelDetails(Accomodation_ID);
                 if (hoteldetails != null)
@@ -124,9 +131,11 @@ namespace TLGX_Consumer.controls.staticdata
                                 RQAPM.TelephoneNumber = telephones[0].Telephone;
                         }
                     }
+                    //RQAPM.Status = "";
+                    //RQAPM.StatusExcept = "MAPPED";
                 }
             }
-            else if (SearchSource == "manual")
+            else if (searchSource == "manual")
             {
                 if (!string.IsNullOrEmpty(txtSupProductName.Text))
                     RQAPM.ProductName = txtSupProductName.Text;
@@ -136,16 +145,14 @@ namespace TLGX_Consumer.controls.staticdata
                     RQAPM.CountryName = txtSupCountry.Text;
                 if (!string.IsNullOrEmpty(txtSupCity.Text))
                     RQAPM.CityName = txtSupCity.Text;
-                //if (ddlSupCountry.SelectedItem.Value != "0")
-                //    RQAPM.CountryName = ddlSupCountry.SelectedItem.Text;
-                //if (ddlSupCity.SelectedItem.Value != "0")
-                //    RQAPM.CityName = ddlSupCity.SelectedItem.Text;
                 if (!string.IsNullOrEmpty(txtSupTelephone.Text))
                     RQAPM.TelephoneNumber = txtSupTelephone.Text;
             }
             RQAPM.Source = "SYSTEMDATA";
-            RQAPM.StatusExcept = "MAPPED";
-            RQAPM.PageNo = PageIndex;
+            RQAPM.CalledFromTLGX = "TLGX";
+            //RQAPM.StatusExcept = "MAPPED";
+            RQAPM.Status = "UNMAPPED";
+            RQAPM.PageNo = pageIndex;
             RQAPM.PageSize = Convert.ToInt32(ddlPageSizeSupDump.SelectedItem.Text);
             var mappingresult = MapSvc.GetProductMappingData(RQAPM);
 
@@ -162,12 +169,19 @@ namespace TLGX_Consumer.controls.staticdata
             }
             else
                 lblSupDump.Text = "0";
-            grdSupplierDump.PageIndex = PageIndex;
+            grdSupplierDump.PageIndex = pageIndex;
             grdSupplierDump.PageSize = Convert.ToInt32(ddlPageSizeSupDump.SelectedItem.Text);
             //grdCityMaps.DataKeyNames = new string[] {"CityMapping_Id"};
             grdSupplierDump.DataBind();
             setupmanualsearchfileds();
 
+        }
+
+        public void setdvProdSupDump(string supCountryName, string supCityName, string supHotelName)
+        {
+            lblSupCountry.Text=supCountryName;
+            lblSupCity.Text=supCityName;
+            lblSupProductName.Text=supHotelName;
         }
 
         private void setupmanualsearchfileds()
@@ -191,46 +205,50 @@ namespace TLGX_Consumer.controls.staticdata
             if (RQAPM.CountryName != null)
             {
                 txtSupCountry.Text = RQAPM.CountryName.ToString();
-                lblSupCountry.Text = RQAPM.CountryName.ToString(); 
+               // lblSupCountry.Text = RQAPM.CountryName.ToString();
             }
             if (RQAPM.CityName != null)
             {
                 txtSupCity.Text = RQAPM.CityName.ToString();
-                lblSupCity.Text = RQAPM.CityName.ToString();
+               // lblSupCity.Text = RQAPM.CityName.ToString();
             }
             if (RQAPM.ProductName != null)
             {
                 txtSupProductName.Text = RQAPM.ProductName.ToString();
-                lblSupProductName.Text = RQAPM.ProductName.ToString();
+                //lblSupProductName.Text = RQAPM.ProductName.ToString();
 
             }
             if (RQAPM.Street != null)
             {
                 txtSupAddress.Text = RQAPM.Street.ToString();
-                lblSupAddress.Text = RQAPM.Street.ToString();
+               // lblSupAddress.Text = RQAPM.Street.ToString();
 
             }
             if (RQAPM.TelephoneNumber != null)
             {
                 txtSupTelephone.Text = RQAPM.TelephoneNumber.ToString();
-                lblSupTelephone.Text = RQAPM.TelephoneNumber.ToString();
+               // lblSupTelephone.Text = RQAPM.TelephoneNumber.ToString();
 
             }
         }
 
-        private void setvisibility()
+        private string setvisibility()
         {
             var a = this.Parent;
             string vPath = ((System.Web.UI.TemplateControl)this.BindingContainer).AppRelativeVirtualPath;
             string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
 
-            ParentPageName = vPath.Replace(dir, "");
+            string ParentPageName = vPath.Replace(dir, "");
             if (ParentPageName == "addProductMapping.aspx")
             {
                 dvLinks.Visible = true;
                 dvProdSearch.Visible = true;
                 dvProdResult.Visible = true;
                 dvProdSupDump.Visible = true;
+
+                fillcountrydropdown("search");
+                fillstatusdropdown();
+                fillSupplierDropDown();
             }
             else
             {
@@ -242,6 +260,7 @@ namespace TLGX_Consumer.controls.staticdata
                 dvProdSupDump.Visible = true;
             }
 
+            return ParentPageName;
         }
 
         private void fillstatusdropdown()
@@ -392,21 +411,21 @@ namespace TLGX_Consumer.controls.staticdata
             fillHotelSearchGrid(e.NewPageIndex, Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Value));
         }
 
-        private static void AddSuperHeader(GridView gridView)
-        {
-            var myTable = (Table)gridView.Controls[0];
-            var myNewRow = new GridViewRow(0, -1, DataControlRowType.Header, DataControlRowState.Normal);
-            myNewRow.Cells.Add(MakeCell("Supplier", 10));
-            myNewRow.Cells.Add(MakeCell("System", 6));
-            myNewRow.Cells.Add(MakeCell("", 1));
+        //private static void AddSuperHeader(GridView gridView)
+        //{
+        //    var myTable = (Table)gridView.Controls[0];
+        //    var myNewRow = new GridViewRow(0, -1, DataControlRowType.Header, DataControlRowState.Normal);
+        //    myNewRow.Cells.Add(MakeCell("Supplier", 10));
+        //    myNewRow.Cells.Add(MakeCell("System", 6));
+        //    myNewRow.Cells.Add(MakeCell("", 1));
 
-            myTable.Rows.AddAt(0, myNewRow);
-        }
+        //    myTable.Rows.AddAt(0, myNewRow);
+        //}
 
-        private static TableHeaderCell MakeCell(string text = null, int span = 1)
-        {
-            return new TableHeaderCell() { ColumnSpan = span, Text = text ?? string.Empty, CssClass = "table-header" };
-        }
+        //private static TableHeaderCell MakeCell(string text = null, int span = 1)
+        //{
+        //    return new TableHeaderCell() { ColumnSpan = span, Text = text ?? string.Empty, CssClass = "table-header" };
+        //}
 
         protected void grdAccoMaps_DataBound(object sender, EventArgs e)
         {
@@ -428,8 +447,8 @@ namespace TLGX_Consumer.controls.staticdata
 
                 if (myRow_Id != null && myRow_Id != Guid.Empty)
                 {
-                    Accomodation_ID = myRow_Id;
-                    fillmappeddata();
+                    //Accomodation_ID = myRow_Id;
+                    fillmappeddata(myRow_Id, grdProductSearch.PageIndex);
                 }
                 //grdAccoMaps.DataSource = AccSvc.GetAccomodation_ProductMapping(myRow_Id, 0, 10);
                 //grdAccoMaps.DataBind();
@@ -442,8 +461,8 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            PageIndex = 0;
-            PageIndexMapped = 0;
+            //PageIndex = 0;
+            //PageIndexMapped = 0;
             // there is an issue with the search at the moment, so this is returning stub data for UI building
             grdSupplierPending.DataSource = AccSvc.GetAccomodation_ProductMapping(Guid.Empty, 0, 1);
             grdSupplierPending.DataBind();
@@ -466,35 +485,26 @@ namespace TLGX_Consumer.controls.staticdata
                 grdHotelToMap.DataBind();
 
             }
-
-
-
+            
         }
 
         protected void grdSupplierDump_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             divMsgForUnMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            PageIndex = e.NewPageIndex;
-            fillAPMrequestobject();
+            Guid Accomodation_ID = Guid.Parse(btnSupManualSearch.CommandArgument.ToString());
+            fillAPMrequestobject(Accomodation_ID, e.NewPageIndex, "manual");
         }
-
-        //protected void ddlSupCountry_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    fillcitydropdown("manual", ddlSupCountry.SelectedItem.Value);
-        //}
-
+        
         private void SetManualSearchVisibility()
         {
             if (pnlManualSearch.Visible)
             {
                 pnlManualSearch.Visible = false;
-                //pnlSupDumpGrid.Visible = true;
             }
             else
             {
                 pnlManualSearch.Visible = true;
-                //pnlSupDumpGrid.Visible = false;
             }
         }
 
@@ -506,26 +516,28 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnSupManualSearch_Click(object sender, EventArgs e)
         {
-            SearchSource = "manual";
-            fillAPMrequestobject();
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
+            //SearchSource = "manual";
+            fillAPMrequestobject(Accomodation_ID, 0, "manual");
+            divMsgForMapping.Style.Add("display", "none");
+            divMsgForUnMapping.Style.Add("display","none");
         }
 
         protected void btnMap_Click(object sender, EventArgs e)
         {
             divMsgForUnMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             List<MDMSVC.DC_Accomodation_ProductMapping> RQ = new List<MDMSVC.DC_Accomodation_ProductMapping>();
-
+            
             Guid myRow_Id;
-            Guid myAcco_Id;
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
             foreach (GridViewRow row in grdSupplierDump.Rows)
             {
-                CheckBox chk = row.Cells[5].Controls[1] as CheckBox;
+                CheckBox chk = row.Cells[7].Controls[1] as CheckBox;
                 if (chk != null && chk.Checked)
                 {
                     int index = row.RowIndex;
                     MDMSVC.DC_Accomodation_ProductMapping RQParam = new MDMSVC.DC_Accomodation_ProductMapping();
                     myRow_Id = Guid.Parse(grdSupplierDump.DataKeys[index].Values[0].ToString());
-                    //myAcco_Id = Guid.Parse(grdSupplierDump.DataKeys[index].Values[1].ToString());
                     RQParam.Accommodation_ProductMapping_Id = myRow_Id;
                     if (Accomodation_ID != null)
                         RQParam.Accommodation_Id = Accomodation_ID;
@@ -542,26 +554,26 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 if (MapSvc.UpdateProductMappingData(RQ))
                 {
+                    divMsgForUnMapping.Style.Add("display", "none");
+                    divMsgForMapping.Style.Add("display", "block");
                     BootstrapAlert.BootstrapAlertMessage(divMsgForMapping, "Records mapped successfully", BootstrapAlertType.Success);
-                    fillAPMrequestobject();
-                    fillmappeddata();
+                    fillAPMrequestobject(Accomodation_ID, 0, "manual");
+                    fillmappeddata(Accomodation_ID, 0);
                 }
             }
         }
 
         protected void btnMapAll_Click(object sender, EventArgs e)
         {
-
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
             divMsgForUnMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
 
             List<MDMSVC.DC_Accomodation_ProductMapping> RQ = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id;
-            Guid myAcco_Id;
             foreach (GridViewRow row in grdSupplierDump.Rows)
             {
                 int index = row.RowIndex;
                 myRow_Id = Guid.Parse(grdSupplierDump.DataKeys[index].Values[0].ToString());
-                //myAcco_Id = Guid.Parse(grdSupplierDump.DataKeys[index].Values[1].ToString());
                 MDMSVC.DC_Accomodation_ProductMapping RQParam = new MDMSVC.DC_Accomodation_ProductMapping();
                 RQParam.Accommodation_ProductMapping_Id = myRow_Id;
                 if (Accomodation_ID != null)
@@ -576,9 +588,11 @@ namespace TLGX_Consumer.controls.staticdata
             }
             if (MapSvc.UpdateProductMappingData(RQ))
             {
+                divMsgForUnMapping.Style.Add("display","none");
+                divMsgForMapping.Style.Add("display","block");
                 BootstrapAlert.BootstrapAlertMessage(divMsgForMapping, "Records mapped successfully", BootstrapAlertType.Success);
-                fillAPMrequestobject();
-                fillmappeddata();
+                fillAPMrequestobject(Accomodation_ID, 0, "manual");
+                fillmappeddata(Accomodation_ID, 0);
             }
         }
 
@@ -589,10 +603,12 @@ namespace TLGX_Consumer.controls.staticdata
             if (e.CommandName == "UnMap")
             {
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                 int index = row.RowIndex;
                 if (myRow_Id != null)
                 {
+                    Guid Accommodation_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[1].ToString());
                     MDMSVC.DC_Accomodation_ProductMapping newObj = new MDMSVC.DC_Accomodation_ProductMapping
                     {
                         Accommodation_ProductMapping_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString()),
@@ -605,9 +621,11 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.Add(newObj);
                     if (MapSvc.UpdateProductMappingData(RQ))
                     {
+                        divMsgForMapping.Style.Add("display", "none");
+                        divMsgForUnMapping.Style.Add("display", "block");
                         BootstrapAlert.BootstrapAlertMessage(divMsgForUnMapping, "Record unmapped successfully", BootstrapAlertType.Success);
-                        fillAPMrequestobject();
-                        fillmappeddata();
+                        fillAPMrequestobject(Accommodation_Id, 0, "manual");
+                        fillmappeddata(Accommodation_Id, 0);
                     }
                 }
             }
@@ -615,11 +633,10 @@ namespace TLGX_Consumer.controls.staticdata
 
         protected void btnUnmapSelected_Click(object sender, EventArgs e)
         {
-
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             List<MDMSVC.DC_Accomodation_ProductMapping> RQ = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id;
-            Guid myAcco_Id;
             foreach (GridViewRow row in grdAccoMaps.Rows)
             {
                 CheckBox chk = row.Cells[15].Controls[1] as CheckBox;
@@ -645,19 +662,19 @@ namespace TLGX_Consumer.controls.staticdata
             if (MapSvc.UpdateProductMappingData(RQ))
             {
                 divMsgForMapping.Style.Add("display", "none");
+                divMsgForUnMapping.Style.Add("display", "block");
                 BootstrapAlert.BootstrapAlertMessage(divMsgForUnMapping, "Record unmapped successfully", BootstrapAlertType.Success);
-                fillAPMrequestobject();
-                fillmappeddata();
+                fillAPMrequestobject(Accomodation_ID, 0, "manual");
+                fillmappeddata(Accomodation_ID, 0);
             }
         }
 
         protected void btnUnmapAll_Click(object sender, EventArgs e)
         {
-
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             List<MDMSVC.DC_Accomodation_ProductMapping> RQ = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id;
-            Guid myAcco_Id;
             foreach (GridViewRow row in grdAccoMaps.Rows)
             {
                 int index = row.RowIndex;
@@ -679,12 +696,83 @@ namespace TLGX_Consumer.controls.staticdata
             if (MapSvc.UpdateProductMappingData(RQ))
             {
                 divMsgForMapping.Style.Add("display", "none");
+                divMsgForUnMapping.Style.Add("display","block");
                 BootstrapAlert.BootstrapAlertMessage(divMsgForUnMapping, "Record unmapped successfully", BootstrapAlertType.Success);
-                fillAPMrequestobject();
-                fillmappeddata();
+                fillAPMrequestobject(Accomodation_ID, 0, "manual");
+                fillmappeddata(Accomodation_ID, 0);
             }
         }
 
+        protected void btnMapAllForgrdAccoMaps_Click(object sender, EventArgs e)
+        {
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
+            divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
+            List<MDMSVC.DC_Accomodation_ProductMapping> RQ = new List<MDMSVC.DC_Accomodation_ProductMapping>();
+            Guid myRow_Id;
+            foreach (GridViewRow row in grdAccoMaps.Rows)
+            {
+                int index = row.RowIndex;
+                myRow_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString());
+                if (myRow_Id != null)
+                {
+                    MDMSVC.DC_Accomodation_ProductMapping newObj = new MDMSVC.DC_Accomodation_ProductMapping
+                    {
+                        Accommodation_ProductMapping_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString()),
+                        Accommodation_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[1].ToString()),
+                        Status = "MAPPED",
+                        IsActive = true,
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                    };
+                    RQ.Add(newObj);
+                }
+            }
+            if (MapSvc.UpdateProductMappingData(RQ))
+            {
+                divMsgForMapping.Style.Add("display", "none");
+                divMsgForUnMapping.Style.Add("display","block");
+                BootstrapAlert.BootstrapAlertMessage(divMsgForUnMapping, "Record Mapped successfully", BootstrapAlertType.Success);
+                fillAPMrequestobject(Accomodation_ID, 0, "manual");
+                fillmappeddata(Accomodation_ID, 0);
+            }
+        }
 
+        protected void btnMapSelectedForgrdAccoMaps_Click(object sender, EventArgs e)
+        {
+            Guid Accomodation_ID = Guid.Parse(((Button)sender).CommandArgument);
+            divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
+            List<MDMSVC.DC_Accomodation_ProductMapping> RQ = new List<MDMSVC.DC_Accomodation_ProductMapping>();
+            Guid myRow_Id;
+            foreach (GridViewRow row in grdAccoMaps.Rows)
+            {
+                CheckBox chk = row.Cells[15].Controls[1] as CheckBox;
+                if (chk != null && chk.Checked)
+                {
+                    int index = row.RowIndex;
+                    myRow_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString());
+                    if (myRow_Id != null)
+                    {
+                        MDMSVC.DC_Accomodation_ProductMapping newObj = new MDMSVC.DC_Accomodation_ProductMapping
+                        {
+                            Accommodation_ProductMapping_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString()),
+                            Accommodation_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[1].ToString()),
+                            Status = "MAPPED",
+                            IsActive = true,
+                            Edit_Date = DateTime.Now,
+                            Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                        };
+                        RQ.Add(newObj);
+                    }
+                }
+            }
+            if (MapSvc.UpdateProductMappingData(RQ))
+            {
+                divMsgForMapping.Style.Add("display", "none");
+                divMsgForUnMapping.Style.Add("display","block");
+                BootstrapAlert.BootstrapAlertMessage(divMsgForUnMapping, "Record Mapped successfully", BootstrapAlertType.Success);
+                fillAPMrequestobject(Accomodation_ID, 0, "manual");
+                fillmappeddata(Accomodation_ID, 0);
+            }
+        }
     }
 }

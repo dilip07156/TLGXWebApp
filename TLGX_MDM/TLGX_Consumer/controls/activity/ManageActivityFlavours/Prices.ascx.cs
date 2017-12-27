@@ -31,7 +31,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 gvPricesSearch.DataSource = result;
                 gvPricesSearch.DataBind();
-                lblTotalRecords.Text = Convert.ToString(result[0].Totalrecords);
+                if (result.Count() > 0)
+                {
+                    lblTotalRecords.Text = Convert.ToString(result[0].Totalrecords);
+                }
             }
             else
             {

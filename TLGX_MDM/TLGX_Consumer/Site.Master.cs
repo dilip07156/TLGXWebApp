@@ -109,8 +109,7 @@ namespace TLGX_Consumer
             }
             catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
         private void PopulateMenu(List<MDMSVC.DC_SiteMap> objSiteMap)
