@@ -174,26 +174,26 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void grdPolicy_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.DataItem != null)
-            {
-                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
-                LinkButton btnSelect = (LinkButton)e.Row.FindControl("btnSelect");
-                if (btnDelete.CommandName == "UnDelete")
-                {
-                    e.Row.Font.Strikeout = true;
-                    btnSelect.Enabled = false;
-                    btnSelect.Attributes.Remove("OnClientClick");
-                }
-                else
-                {
-                    e.Row.Font.Strikeout = false;
-                    btnSelect.Enabled = true;
-                    btnSelect.Attributes.Add("OnClientClick", "showAddNewPolicyModal();");
-                }
-                ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
-                scriptMan.RegisterAsyncPostBackControl(btnDelete);
+            //if (e.Row.DataItem != null)
+            //{
+            //    LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+            //    LinkButton btnSelect = (LinkButton)e.Row.FindControl("btnSelect");
+            //    if (btnDelete.CommandName == "UnDelete")
+            //    {
+            //        e.Row.Font.Strikeout = true;
+            //        btnSelect.Enabled = false;
+            //        btnSelect.Attributes.Remove("OnClientClick");
+            //    }
+            //    else
+            //    {
+            //        e.Row.Font.Strikeout = false;
+            //        btnSelect.Enabled = true;
+            //        btnSelect.Attributes.Add("OnClientClick", "showAddNewPolicyModal();");
+            //    }
+            //    ScriptManager scriptMan = ScriptManager.GetCurrent(this.Page);
+            //    scriptMan.RegisterAsyncPostBackControl(btnDelete);
 
-            }
+            //}
         }
 
         protected void frmPolicy_ItemCommand(object sender, FormViewCommandEventArgs e)

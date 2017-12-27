@@ -1,16 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Policy.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.Policy" %>
 
-
 <script type="text/javascript">
     function showAddNewPolicyModal() {
         $("#moAddPolicy").modal('show');
     }
-    //function closeAddNewActivityModal() {
-    //    $("#moAddNewActivityModal").modal('hide');
-    //}
-    //function page_load(sender, args) {
-    //    closeAddNewActivityModal();
-    //}
 </script>
 <asp:UpdatePanel ID="updPanPolicy" runat="server">
     <ContentTemplate>
@@ -28,8 +21,7 @@
             </div>
         </headertemplate>
 
-        <h4 class="panel-title pull-left">
-            Policy (Total Count:
+        <h4 class="panel-title pull-left">Policy (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
         <%--<asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" Text="Add New" OnClientClick="showAddNewRevAndScoreModal()" />--%>
         <div class="col-lg-3 pull-right">
@@ -53,6 +45,25 @@
                 <asp:BoundField DataField="PolicyName" HeaderText="Policy Name" SortExpression="PolicyName" />
                 <asp:BoundField DataField="PolicyDescription" HeaderText="Policy Description" SortExpression="PolicyDescription" />
 
+               <%-- <asp:TemplateField ShowHeader="false">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="false" CssClass="btn btn-default" CommandName="Editing"
+                            CommandArgument='<%# Bind("Activity_Policy_Id") %>' Enabled='<%# (bool)Eval("IsActive") %>' OnClientClick="showAddEditModal();"> 
+                                  <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp;Edit
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"   %>'
+                            CssClass="btn btn-default" CommandArgument='<%# Bind("Activity_Policy_Id") %>'>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"   %>
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>--%>
+
                 <%--<asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
@@ -74,7 +85,7 @@
             </Columns>
             <PagerStyle CssClass="pagination-ys" />
         </asp:GridView>
-        
+
     </ContentTemplate>
 </asp:UpdatePanel>
 

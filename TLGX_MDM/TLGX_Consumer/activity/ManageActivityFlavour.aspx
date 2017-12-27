@@ -7,7 +7,7 @@
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/InclusionsAndExclusion.ascx" TagPrefix="uc1" TagName="Inclusions" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ClassificationAttributes.ascx" TagPrefix="uc1" TagName="ClassificationAttributes" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityMedia.ascx" TagPrefix="uc1" TagName="ActivityMedia" %>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy" %>
+    <%--<%@ Register Src="~/controls/activity/ManageActivityFlavours/Policy.ascx" TagPrefix="uc1" TagName="Policy" %>--%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/PricesNDeals.ascx" TagPrefix="uc1" TagName="PricesNDeals" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings" %>
@@ -50,7 +50,7 @@
                 <li><a href="#panInclusion" data-toggle="tab"><h5>Inclusion/Exclusion</h5></a></li>
                 <li><a href="#panClassificationAttributes" data-toggle="tab"><h5>Classification</h5></a></li>
                 <li><a href="#panActivityMedia" data-toggle="tab"><h5>Media</h5></a></li>
-                <li><a href="#panPolicy" data-toggle="tab"><h5>Policy</h5></a></li>
+                <%--<li><a href="#panPolicy" data-toggle="tab"><h5>Policy</h5></a></li>--%>
                 <li><a href="#panFlavourOptions" data-toggle="tab"><h5>Options</h5></a></li>
                 <li><a href="#panPricesNDeals" data-toggle="tab"><h5>Prices And Deals</h5></a></li>
                 <li><a href="#panReviewsNScores" data-toggle="tab"><h5>Reviews And Scores</h5></a></li>
@@ -81,9 +81,9 @@
                 <uc1:ActivityMedia runat="server" ID="ActivityMedia" />
             </div>
 
-            <div class="tab-pane" id="panPolicy">
+            <%--<div class="tab-pane" id="panPolicy">
                 <uc1:Policy runat="server" ID="Policy" />
-            </div>
+            </div>--%>
 
             <div class="tab-pane" id="panFlavourOptions">
                 <uc1:FlavourOptions runat="server" ID="FlavourOptions" />

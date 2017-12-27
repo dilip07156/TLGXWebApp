@@ -253,8 +253,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 dvMsg.Style.Add("display", "none"); 
                 MDMSVC.DC_Activity_ClassificationAttributes_RQ RQ = new DC_Activity_ClassificationAttributes_RQ();
                 RQ.Activity_Flavour_Id = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
-                frmClassificationAttribute.ChangeMode(FormViewMode.Edit);
+                RQ.Activity_ClassificationAttribute_Id = myRow_Id;
                 var res = AccSvc.GetActivityClasificationAttributes(RQ);
+
+                frmClassificationAttribute.ChangeMode(FormViewMode.Edit);
                 frmClassificationAttribute.DataSource = res;
                 frmClassificationAttribute.DataBind();
 

@@ -67,15 +67,6 @@ namespace TLGX_Consumer.activity {
         protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityMedia ActivityMedia;
         
         /// <summary>
-        /// Policy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.Policy Policy;
-        
-        /// <summary>
         /// FlavourOptions control.
         /// </summary>
         /// <remarks>
