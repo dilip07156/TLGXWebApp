@@ -132,8 +132,15 @@
         padding: 0px !important;
         width: 30px !important;
     }
-</style>
 
+    .floatingButton {
+        text-align: right;
+        width: 80%;
+        position: fixed;
+        bottom: 15px;
+        z-index: 1000;
+    }
+</style>
 <asp:UpdatePanel ID="upActivityFlavour" runat="server">
     <ContentTemplate>
 
@@ -149,14 +156,12 @@
             </div>
         </div>
 
-        <div class="row sticky-top">
-            <div class="col-lg-12">
-                <div class="form-group pull-right">
-                    <asp:LinkButton ID="btnSave" runat="server" CausesValidation="false" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click" />
-                    <br />
-                </div>
-            </div>
+        <div class="floatingButton">
+            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="false" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click" />
+            <br />
+
         </div>
+
 
         <div class="row">
             <div class="col-lg-7">

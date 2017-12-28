@@ -183,7 +183,7 @@
                                                     <asp:TextBox ID="txtAttributeValue" runat="server" Rows="5" TextMode="MultiLine" CssClass="form-control" />
                                                     <asp:RequiredFieldValidator ID="vldReqtxtAttributeValueAdd" runat="server" ControlToValidate="txtAttributeValue"
                                                         ValidationGroup="vldGrpCAAdd" ErrorMessage="Please enter Attribute Value." Text="*" CssClass="text-danger"></asp:RequiredFieldValidator>
-                                                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtAttributeValue" Text="*" ID="rfvtxtAttributeValueAdd" ValidationExpression="^[\s\S]{0,255}$" runat="server" CssClass="text-danger" ValidationGroup="vldGrpCAAdd" ErrorMessage="Maximum 255 Characters allowed in Description / Value."></asp:RegularExpressionValidator>
+                                                   
                                                 </div>
 
                                                 <div class="form-group">
@@ -250,8 +250,6 @@
                                                     <asp:TextBox ID="txtAttributeValue" runat="server" Rows="5" TextMode="MultiLine" CssClass="form-control" Text='<%# Bind("AttributeValue") %>' />
                                                     <asp:RequiredFieldValidator ID="vldReqtxtAttributeValueModify" runat="server" ControlToValidate="txtAttributeValue"
                                                         ValidationGroup="vldGrpCAModify" ErrorMessage="Please enter Attribute Value." CssClass="text-danger" Text="*"></asp:RequiredFieldValidator>
-                                                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtAttributeValue" Text="*" ID="rfvtxtAttributeValueAdd" ValidationExpression="^[\s\S]{0,255}$" runat="server" CssClass="text-danger" ValidationGroup="vldGrpCAModify" ErrorMessage="Maximum 255 Characters allowed in Description / Value."></asp:RegularExpressionValidator>
-
                                                 </div>
                                                 <div class="form-group">
                                                     <asp:Button ID="btnAddClassificationAttribute" runat="server" Text="Modify" CommandName="Modify" CssClass="btn btn-primary btn-sm" CausesValidation="true" ValidationGroup="vldGrpCAModify" />
