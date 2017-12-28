@@ -465,60 +465,110 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Consumer1.wsdl" />
-    <None Include="Service References\MDMSVC\Consumer16.xsd">
+    <None Include="Service References\MDMSVC\Consumer.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer10.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer161.xsd">
+    <None Include="Service References\MDMSVC\Consumer17.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1610.xsd">
+    <None Include="Service References\MDMSVC\Consumer18.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1611.xsd">
+    <None Include="Service References\MDMSVC\Consumer19.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1612.xsd">
+    <None Include="Service References\MDMSVC\Consumer2.wsdl" />
+    <None Include="Service References\MDMSVC\Consumer20.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1613.xsd">
+    <None Include="Service References\MDMSVC\Consumer21.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1614.xsd">
+    <None Include="Service References\MDMSVC\Consumer22.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1615.xsd">
+    <None Include="Service References\MDMSVC\Consumer23.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer162.xsd">
+    <None Include="Service References\MDMSVC\Consumer24.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer163.xsd">
+    <None Include="Service References\MDMSVC\Consumer25.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer164.xsd">
+    <None Include="Service References\MDMSVC\Consumer26.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer165.xsd">
+    <None Include="Service References\MDMSVC\Consumer27.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer166.xsd">
+    <None Include="Service References\MDMSVC\Consumer28.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer167.xsd">
+    <None Include="Service References\MDMSVC\Consumer29.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer168.xsd">
+    <None Include="Service References\MDMSVC\Consumer3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\Consumer169.xsd">
+    <None Include="Service References\MDMSVC\Consumer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer30.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer31.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer9.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\MDMSVC\Consumer1.disco" />
+    <None Include="Service References\MDMSVC\Consumer.disco" />
+    <None Include="Service References\MDMSVC\Consumer2.disco" />
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
@@ -878,7 +928,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service\CountryAutoComplete.ashx" />

@@ -1232,7 +1232,9 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                 IsActive = true,
                                 Activity_Flavor_ID = OpDay.Activity_Flavor_ID,
                                 Activity_DaysOfWeek_ID = Guid.Parse(btnRemoveDaysOfWeek.CommandArgument),
-                                Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
+                              //  Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
+                                Duration = (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text),
+
                                 Fri = chkFri.Checked,
                                 Mon = chkMon.Checked,
                                 Sat = chkSat.Checked,
