@@ -602,7 +602,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     });
                 }
             }
-            FlavData.Categories  = CategoryTypes.ToArray();
+            FlavData.Categories = CategoryTypes.ToArray();
 
             //SubCat
             List<SubCategoryData> ptl = new List<SubCategoryData>();
@@ -719,6 +719,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             #region Update DaysOfOperation
             var OperatingDaysToUpdate = CollectAllOperatingDaysInfoOnPage();
+            if (OperatingDaysToUpdate.Count == 0)
+            {
+                OperatingDaysToUpdate.Add(new DC_Activity_OperatingDays
+                {
+                    Activity_DaysOfOperation_Id = Guid.Empty,
+                    Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]),
+                    DaysOfWeek = new List<DC_Activity_DaysOfWeek>().ToArray()
+                });
+            }
             var resultUpdateDOO = AccSvc.AddUpdateActivityDaysOfWeek(OperatingDaysToUpdate);
             #endregion
 
@@ -1232,7 +1241,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                 IsActive = true,
                                 Activity_Flavor_ID = OpDay.Activity_Flavor_ID,
                                 Activity_DaysOfWeek_ID = Guid.Parse(btnRemoveDaysOfWeek.CommandArgument),
-                              //  Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
+                                //  Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
                                 Duration = (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text),
 
                                 Fri = chkFri.Checked,
