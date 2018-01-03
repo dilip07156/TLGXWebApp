@@ -121,6 +121,8 @@
 
 
     }
+
+    
 </script>
 
 <style>
@@ -147,6 +149,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div id="dvMsg" runat="server" style="display: none;"></div>
+                <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
             </div>
         </div>
 
@@ -1074,49 +1077,49 @@
                                                                             <label class="control-label">
                                                                                 ALL
                                                                                     <div>
-                                                                                        <input type="checkbox" id="chkAll" name="All" aria-label="Checkbox for daily" onchange="MutExChkList(this)"/>
+                                                                                        <input type="checkbox" id="chkAll" name="All" aria-label="Checkbox for daily" onchange="MutExChkList(this)" />
                                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 M
                                                                     <div>
-                                                                        <input type="checkbox" id="chkMon" runat="server" name="Monday"/>
+                                                                        <input type="checkbox" id="chkMon" runat="server" name="Monday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 T
                                                                     <div>
-                                                                        <input type="checkbox" id="chkTues" runat="server" name="Tuesday"/>
+                                                                        <input type="checkbox" id="chkTues" runat="server" name="Tuesday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 W
                                                                     <div>
-                                                                        <input type="checkbox" id="chkWed" runat="server" name="Wednesday"/>
+                                                                        <input type="checkbox" id="chkWed" runat="server" name="Wednesday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 TH
                                                                     <div>
-                                                                        <input type="checkbox" id="chkThurs" runat="server" name="Thursday"/>
+                                                                        <input type="checkbox" id="chkThurs" runat="server" name="Thursday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 F
                                                                     <div>
-                                                                        <input type="checkbox" id="chkFri" runat="server" name="Friday"/>
+                                                                        <input type="checkbox" id="chkFri" runat="server" name="Friday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 S
                                                                     <div>
-                                                                        <input type="checkbox" id="chkSat" runat="server" name="Saturday"/>
+                                                                        <input type="checkbox" id="chkSat" runat="server" name="Saturday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 SU
                                                                     <div>
-                                                                        <input type="checkbox" id="chkSun" runat="server" name="Sunday"/>
+                                                                        <input type="checkbox" id="chkSun" runat="server" name="Sunday" />
                                                                     </div>
                                                                             </label>
                                                                         </div>
@@ -1246,3 +1249,5 @@
 
     </ContentTemplate>
 </asp:UpdatePanel>
+
+

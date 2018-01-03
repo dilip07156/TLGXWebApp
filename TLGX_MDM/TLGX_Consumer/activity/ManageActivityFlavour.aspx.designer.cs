@@ -13,6 +13,24 @@ namespace TLGX_Consumer.activity {
     public partial class ManageActivityFlavour {
         
         /// <summary>
+        /// UpdActivity_Flavour_StatusModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdActivity_Flavour_StatusModal;
+        
+        /// <summary>
+        /// dvproductheader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvproductheader;
+        
+        /// <summary>
         /// lblProductName control.
         /// </summary>
         /// <remarks>
@@ -20,6 +38,24 @@ namespace TLGX_Consumer.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProductName;
+        
+        /// <summary>
+        /// lblActivityStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActivityStatus;
+        
+        /// <summary>
+        /// dvMsgStatusUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgStatusUpdate;
         
         /// <summary>
         /// Flavours control.
@@ -110,6 +146,42 @@ namespace TLGX_Consumer.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityContactDetails ActivityContactDetails;
+        
+        /// <summary>
+        /// UpdActivity_Flavour_StatusModalpopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdActivity_Flavour_StatusModalpopup;
+        
+        /// <summary>
+        /// ddlActivity_Flavour_Status control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlActivity_Flavour_Status;
+        
+        /// <summary>
+        /// txtActivity_Flavour_StatusNotes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtActivity_Flavour_StatusNotes;
+        
+        /// <summary>
+        /// btnChangeActivityStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnChangeActivityStatus;
         
         /// <summary>
         /// PreviousPage property.

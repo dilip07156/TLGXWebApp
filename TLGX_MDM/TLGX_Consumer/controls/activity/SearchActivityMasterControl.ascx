@@ -121,6 +121,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="ddlActivityFlavourStatus">
+                                            Activity Status
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <asp:DropDownList ID="ddlActivityFlavourStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                                 <div class="col-sm-6">
@@ -212,8 +224,8 @@
                     <div class="panel-body">
 
                         <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
-                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
+                            EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
+                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging" OnRowDataBound="gvActivitySearch_RowDataBound">
                             <Columns>
                                 <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
@@ -223,6 +235,7 @@
                                 <asp:BoundField DataField="Country" HeaderText="Country" />
                                 <asp:BoundField DataField="City" HeaderText="City" />
                                 <asp:BoundField DataField="SupplierCode" HeaderText="Supplier" />
+                                <asp:BoundField DataField="Activity_Status" HeaderText="Review Status" />
                                 <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
                             </Columns>
                             <PagerStyle CssClass="pagination-ys" />
