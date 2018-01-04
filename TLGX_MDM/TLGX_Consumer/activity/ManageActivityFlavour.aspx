@@ -17,23 +17,24 @@
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityContactDetails.ascx" TagPrefix="uc1" TagName="ActivityContactDetails" %>
 
 
-    <asp:UpdatePanel ID="UpdActivity_Flavour_StatusModal" runat="server">
-        <ContentTemplate>
-            <div class="container" id="myWizard">
-                <br />
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div style="text-align: right;">
-                            * Mandatory fields are marked as underlined
-                        </div>
-                    </div>
+
+    <div class="container" id="myWizard">
+        <br />
+        <div class="row">
+            <div class="col-lg-12">
+                <div style="text-align: right;">
+                    * Mandatory fields are marked as underlined
                 </div>
-                <%--<div class="row">
+            </div>
+        </div>
+        <%--<div class="row">
             <div class="col-lg-12">
                 <uc1:head runat="server" ID="head" />
             </div>
         </div>--%>
-                <br />
+        <br />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
                 <div class="row" id="dvproductheader" runat="server">
                     <div class="col-lg-9">
 
@@ -43,109 +44,113 @@
                             </strong>
                         </h3>
                     </div>
+
+
                     <div class="col-lg-3 ">
                         <div class="pull-right" style="margin-top: 25px !important;">
                             <strong>
                                 <asp:Label ID="lblActivityStatus" runat="server"></asp:Label>
                                 (
-                        <button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>
+
+                         <button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>
 
                                 )
                             </strong>
                         </div>
                     </div>
+
                 </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <br />
+        <div class="navbar">
+            <%--<div class="navbar-inner">--%>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#panFlavours" data-toggle="tab">
+                    <h5>Product Details</h5>
+                </a></li>
+                <li><a href="#panDescription" data-toggle="tab">
+                    <h5>Descriptions</h5>
+                </a></li>
+                <li><a href="#panInclusion" data-toggle="tab">
+                    <h5>Inclusion/Exclusion</h5>
+                </a></li>
+                <li><a href="#panClassificationAttributes" data-toggle="tab">
+                    <h5>Classification</h5>
+                </a></li>
+                <li><a href="#panActivityMedia" data-toggle="tab">
+                    <h5>Media</h5>
+                </a></li>
+                <%--<li><a href="#panPolicy" data-toggle="tab"><h5>Policy</h5></a></li>--%>
+                <li><a href="#panFlavourOptions" data-toggle="tab">
+                    <h5>Options</h5>
+                </a></li>
+                <li><a href="#panPricesNDeals" data-toggle="tab">
+                    <h5>Prices And Deals</h5>
+                </a></li>
+                <li><a href="#panReviewsNScores" data-toggle="tab">
+                    <h5>Reviews And Scores</h5>
+                </a></li>
+                <li><a href="#panSupplierProductMappings" data-toggle="tab">
+                    <h5>Supplier Mappings</h5>
+                </a></li>
+                <li><a href="#panContactDetails" data-toggle="tab">
+                    <h5>Contact Details</h5>
+                </a></li>
+            </ul>
+            <%--</div>--%>
+        </div>
 
-                <br />
-                <div class="navbar">
-                    <%--<div class="navbar-inner">--%>
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#panFlavours" data-toggle="tab">
-                            <h5>Product Details</h5>
-                        </a></li>
-                        <li><a href="#panDescription" data-toggle="tab">
-                            <h5>Descriptions</h5>
-                        </a></li>
-                        <li><a href="#panInclusion" data-toggle="tab">
-                            <h5>Inclusion/Exclusion</h5>
-                        </a></li>
-                        <li><a href="#panClassificationAttributes" data-toggle="tab">
-                            <h5>Classification</h5>
-                        </a></li>
-                        <li><a href="#panActivityMedia" data-toggle="tab">
-                            <h5>Media</h5>
-                        </a></li>
-                        <%--<li><a href="#panPolicy" data-toggle="tab"><h5>Policy</h5></a></li>--%>
-                        <li><a href="#panFlavourOptions" data-toggle="tab">
-                            <h5>Options</h5>
-                        </a></li>
-                        <li><a href="#panPricesNDeals" data-toggle="tab">
-                            <h5>Prices And Deals</h5>
-                        </a></li>
-                        <li><a href="#panReviewsNScores" data-toggle="tab">
-                            <h5>Reviews And Scores</h5>
-                        </a></li>
-                        <li><a href="#panSupplierProductMappings" data-toggle="tab">
-                            <h5>Supplier Mappings</h5>
-                        </a></li>
-                        <li><a href="#panContactDetails" data-toggle="tab">
-                            <h5>Contact Details</h5>
-                        </a></li>
-                    </ul>
-                    <%--</div>--%>
-                </div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="panFlavours">
+                <uc1:Flavours runat="server" ID="Flavours" />
+            </div>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="panFlavours">
-                        <uc1:Flavours runat="server" ID="Flavours" />
-                    </div>
+            <div class="tab-pane" id="panDescription">
+                <uc1:ActivityDescription runat="server" ID="ActivityDescription" />
+            </div>
 
-                    <div class="tab-pane" id="panDescription">
-                        <uc1:ActivityDescription runat="server" ID="ActivityDescription" />
-                    </div>
+            <div class="tab-pane" id="panInclusion">
+                <uc1:Inclusions runat="server" ID="Inclusions" />
+            </div>
 
-                    <div class="tab-pane" id="panInclusion">
-                        <uc1:Inclusions runat="server" ID="Inclusions" />
-                    </div>
+            <div class="tab-pane" id="panClassificationAttributes">
+                <uc1:ClassificationAttributes runat="server" ID="ClassificationAttributes" />
+            </div>
 
-                    <div class="tab-pane" id="panClassificationAttributes">
-                        <uc1:ClassificationAttributes runat="server" ID="ClassificationAttributes" />
-                    </div>
+            <div class="tab-pane" id="panActivityMedia">
+                <uc1:ActivityMedia runat="server" ID="ActivityMedia" />
+            </div>
 
-                    <div class="tab-pane" id="panActivityMedia">
-                        <uc1:ActivityMedia runat="server" ID="ActivityMedia" />
-                    </div>
-
-                    <%--<div class="tab-pane" id="panPolicy">
+            <%--<div class="tab-pane" id="panPolicy">
                 <uc1:Policy runat="server" ID="Policy" />
             </div>--%>
 
-                    <div class="tab-pane" id="panFlavourOptions">
-                        <uc1:FlavourOptions runat="server" ID="FlavourOptions" />
-                    </div>
-
-                    <div class="tab-pane" id="panPricesNDeals">
-                        <uc1:PricesNDeals runat="server" ID="PricesNDeals" />
-                    </div>
-
-                    <div class="tab-pane" id="panReviewsNScores">
-                        <uc1:ReviewsNScores runat="server" ID="ReviewsNScores" />
-                    </div>
-
-                    <div class="tab-pane" id="panSupplierProductMappings">
-                        <uc1:SupplierProductMappings runat="server" ID="SupplierProductMappings" />
-                    </div>
-
-                    <div class="tab-pane" id="panContactDetails">
-                        <uc1:ActivityContactDetails runat="server" ID="ActivityContactDetails" />
-                    </div>
-
-                </div>
-
+            <div class="tab-pane" id="panFlavourOptions">
+                <uc1:FlavourOptions runat="server" ID="FlavourOptions" />
             </div>
 
-        </ContentTemplate>
-    </asp:UpdatePanel>
+            <div class="tab-pane" id="panPricesNDeals">
+                <uc1:PricesNDeals runat="server" ID="PricesNDeals" />
+            </div>
+
+            <div class="tab-pane" id="panReviewsNScores">
+                <uc1:ReviewsNScores runat="server" ID="ReviewsNScores" />
+            </div>
+
+            <div class="tab-pane" id="panSupplierProductMappings">
+                <uc1:SupplierProductMappings runat="server" ID="SupplierProductMappings" />
+            </div>
+
+            <div class="tab-pane" id="panContactDetails">
+                <uc1:ActivityContactDetails runat="server" ID="ActivityContactDetails" />
+            </div>
+
+        </div>
+
+    </div>
+
+
 
     <div class="modal fade" id="moActivity_Flavour_Status" role="dialog">
         <div class="modal-dialog">
@@ -194,6 +199,7 @@
             </div>
         </div>
     </div>
+
 
     <script type='text/javascript'>
         $('.next').click(function () {

@@ -29,11 +29,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             if (!IsPostBack)
             {
-                getFlavourInfo();
+                getFlavourInfo(string.Empty);
             }
         }
 
-        public void getFlavourInfo()
+        public void getFlavourInfo(string calledfrom)
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
@@ -66,7 +66,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Red.Name);
                     }
 
-
+                    if (calledfrom == "header")
+                        return;
 
                     DropDownList parentddlActivity_Flavour_Status = (DropDownList)this.Parent.FindControl("ddlActivity_Flavour_Status");
                     parentddlActivity_Flavour_Status.SelectedIndex = parentddlActivity_Flavour_Status.Items.IndexOf(parentddlActivity_Flavour_Status.Items.FindByText(result[0].Activity_Status.ToString()));
