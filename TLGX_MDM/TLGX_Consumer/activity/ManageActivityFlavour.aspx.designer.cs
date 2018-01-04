@@ -49,15 +49,6 @@ namespace TLGX_Consumer.activity {
         protected global::System.Web.UI.WebControls.Label lblActivityStatus;
         
         /// <summary>
-        /// dvMsgStatusUpdate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgStatusUpdate;
-        
-        /// <summary>
         /// Flavours control.
         /// </summary>
         /// <remarks>
@@ -146,6 +137,15 @@ namespace TLGX_Consumer.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityContactDetails ActivityContactDetails;
+        
+        /// <summary>
+        /// dvMsgStatusUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgStatusUpdate;
         
         /// <summary>
         /// UpdActivity_Flavour_StatusModalpopup control.

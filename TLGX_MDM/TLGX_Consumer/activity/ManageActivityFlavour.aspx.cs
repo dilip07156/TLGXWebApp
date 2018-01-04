@@ -53,9 +53,10 @@ namespace TLGX_Consumer.activity
                     Activity_Status_Edit_Date = DateTime.Now,
                     Activity_Status_Edit_User = System.Web.HttpContext.Current.User.Identity.Name
                 });
-               // Response.Redirect("/activity/ManageActivityFlavour?Activity_Flavour_Id=" + Activity_Flavour_Id, true);
+                // Response.Redirect("/activity/ManageActivityFlavour?Activity_Flavour_Id=" + Activity_Flavour_Id, true);
+                BootstrapAlert.BootstrapAlertMessage(dvMsgStatusUpdate, "Activity Status updated successfully", BootstrapAlertType.Success);
                 Flavours.getFlavourInfo();
-                //BootstrapAlert.BootstrapAlertMessage(dvMsgStatusUpdate, "Activity Status updated successfully", BootstrapAlertType.Success);
+                
             }
             catch (Exception ex)
             {

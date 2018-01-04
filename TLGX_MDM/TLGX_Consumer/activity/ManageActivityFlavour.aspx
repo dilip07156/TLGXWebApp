@@ -55,11 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
-                    </div>
-                </div>
+
                 <br />
                 <div class="navbar">
                     <%--<div class="navbar-inner">--%>
@@ -155,31 +151,43 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="panel-title">
-                        <h4 class="modal-title">Update Activity Status</h4>
-                    </div>
+                    <h4 class="modal-title">Update Activity Status</h4>
                 </div>
                 <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
+                        </div>
+                    </div>
                     <asp:UpdatePanel ID="UpdActivity_Flavour_StatusModalpopup" runat="server">
                         <ContentTemplate>
 
-                            <div class="form-group row col-md-12">
-                                <label for="ddlStatus">Status</label>
-                                <asp:DropDownList ID="ddlActivity_Flavour_Status" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                    <asp:ListItem Value="0">Select</asp:ListItem>
-                                </asp:DropDownList>
+
+                            <div class="row">
+                                <label class="control-label col-md-4" for="ddlStatus">Status</label>
+                                <div class="col-md-6">
+                                    <asp:DropDownList ID="ddlActivity_Flavour_Status" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Value="0">Select</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
                             </div>
-                            <div class="form-group row col-md-12">
-                                <label for="txtActivity_Flavour_StatusNotes">Notes/Comments:</label>
-                                <asp:TextBox ID="txtActivity_Flavour_StatusNotes" runat="server" TextMode="MultiLine" Rows="2" CssClass="form-control"></asp:TextBox>
+                            <div class="row">
+                                <label class="control-label col-md-4" for="txtActivity_Flavour_StatusNotes">Notes/Comments:</label>
+                                <div class="col-md-6">
+                                    <asp:TextBox ID="txtActivity_Flavour_StatusNotes" runat="server" TextMode="MultiLine" Rows="2" CssClass="form-control"></asp:TextBox>
+                                </div>
                             </div>
-                            <div class="form-group row col-md-12" style="padding-bottom: 5px;">
-                                <asp:Button ID="btnChangeActivityStatus" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnChangeActivityStatus_Click" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <asp:Button ID="btnChangeActivityStatus" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnChangeActivityStatus_Click" OnClientClick="closemoActivityStatusModal();" />
+                                </div>
                             </div>
 
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -201,17 +209,13 @@
 
 
         function showmoActivity_Flavour_Status() {
+            document.getElementById('MainContent_dvMsgStatusUpdate').style.display = 'none';
             $("#moActivity_Flavour_Status").modal('show');
         }
         function closemoActivityStatusModal() {
             $("#moActivity_Flavour_Status").modal('hide');
         }
         function pageLoad(sender, args) {
-            //var hv = $('#MainContent_CityMap_hdnFlag').val();
-            //if (hv == "true") {
-            //    closeCityMappingModal();
-            //    $('#MainContent_CityMap_hdnFlag').val("false");
-            //}
         }
 
     </script>
