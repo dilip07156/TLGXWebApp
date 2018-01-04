@@ -12,6 +12,7 @@ using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
 using System.Text.RegularExpressions;
 using AjaxControlToolkit;
+using System.Drawing;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
@@ -32,7 +33,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
-        private void getFlavourInfo()
+        public void getFlavourInfo()
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
@@ -45,6 +46,33 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     //lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
                     Label ParentProdName = (Label)this.Parent.FindControl("lblProductName");
                     ParentProdName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
+
+                    Label ParentProdStatus = (Label)this.Parent.FindControl("lblActivityStatus");
+                    ParentProdStatus.Text = HttpUtility.HtmlEncode(result[0].Activity_Status);
+
+                    HtmlGenericControl dvproductheader = (HtmlGenericControl)this.Parent.FindControl("dvproductheader");
+                    //Text Colour coding
+
+                    if (ParentProdStatus.Text.ToUpper() == "REVIEW COMPLETED")
+                    {
+                        dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Green.Name);
+                    }
+                    else if (ParentProdStatus.Text.ToUpper() == "UNDER REVIEW")
+                    {
+                        dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Orange.Name);
+                    }
+                    else if (ParentProdStatus.Text.ToUpper() == "NOT YET REVIEWED")
+                    {
+                        dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Red.Name);
+                    }
+
+
+
+                    DropDownList parentddlActivity_Flavour_Status = (DropDownList)this.Parent.FindControl("ddlActivity_Flavour_Status");
+                    parentddlActivity_Flavour_Status.SelectedIndex = parentddlActivity_Flavour_Status.Items.IndexOf(parentddlActivity_Flavour_Status.Items.FindByText(result[0].Activity_Status.ToString()));
+
+                    TextBox txtActivity_Flavour_StatusNotes = (TextBox)this.Parent.FindControl("txtActivity_Flavour_StatusNotes");
+                    txtActivity_Flavour_StatusNotes.Text = HttpUtility.HtmlEncode(result[0].Activity_StatusNotes);
 
                     lblSuppCity.Text = result[0].SupplierCity;
                     lblSuppCountry.Text = result[0].SupplierCountry;
@@ -91,6 +119,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
         }
+
+
 
         private void BindActivityTypes(DC_Activity_CategoryTypes[] Categories)
         {
@@ -1298,6 +1328,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             UpdateFlavour(Activity_Flavour_Id);
+        }
+
+        protected void btnChangeActivityStatus_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

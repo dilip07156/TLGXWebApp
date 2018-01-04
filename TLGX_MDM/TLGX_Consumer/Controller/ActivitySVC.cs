@@ -321,5 +321,14 @@ namespace TLGX_Consumer.Controller
         }
 
         #endregion
+
+        #region Activity Flavour Status
+        public DC_Message AddUpdateActivityFlavoursStatus(MDMSVC.DC_ActivityFlavoursStatus RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Flavour_Status"], RQParams, typeof(List<MDMSVC.DC_ActivityFlavoursStatus>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }

@@ -29,6 +29,7 @@ namespace TLGX_Consumer.controls.activity
             fillcoutries();
             fillproductcategorysubtype(ddlProductCategorySubType);
             fillSupplierList(ddlSupplier);
+            fillActivityFlavourStatusMaster(ddlActivityFlavourStatus);
             //fillstatusdropdown(ddlStatus);
         }
         private void fillcoutries()
@@ -76,6 +77,23 @@ namespace TLGX_Consumer.controls.activity
                 ddl.DataValueField = "MasterAttributeValue_Id";
                 ddl.DataBind();
                 InsertDefaultValuesInDDL(ddl);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        private void fillActivityFlavourStatusMaster(DropDownList ddl)
+        {
+            try
+            {
+                ddl.Items.Clear();
+                ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "Activity_Status").MasterAttributeValues;
+                ddl.DataTextField = "AttributeValue";
+                ddl.DataValueField = "MasterAttributeValue_Id";
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("-ALL-", "0"));
             }
             catch
             {
@@ -188,11 +206,14 @@ namespace TLGX_Consumer.controls.activity
                 if (ddlSupplier.SelectedIndex != 0)
                     _objSearch.Supplier_Id = Guid.Parse(ddlSupplier.SelectedValue);
 
+                if (ddlActivityFlavourStatus.SelectedValue != "0")
+                    _objSearch.Activity_Status = ddlActivityFlavourStatus.SelectedItem.Text;
+
                 if (!string.IsNullOrWhiteSpace(txtProductName.Text))
                     _objSearch.ProductName = txtProductName.Text;
 
                 _objSearch.ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text;
-                if(ddlProductCategorySubType.SelectedIndex > 1)
+                if (ddlProductCategorySubType.SelectedIndex > 1)
                 {
                     _objSearch.ProductCategorySubTypeId = Guid.Parse(ddlProductCategorySubType.SelectedValue);
                 }
@@ -208,6 +229,8 @@ namespace TLGX_Consumer.controls.activity
                 {
                     _objSearch.ProductNameSubTypeId = Guid.Parse(ddlProductSubType.SelectedValue);
                 }
+
+
 
                 _objSearch.NoOpsSchedule = chkNoOperatingSchedule.Checked;
                 _objSearch.NoPhysicalIntensity = chkNoPhysicalIntensity.Checked;
@@ -256,13 +279,14 @@ namespace TLGX_Consumer.controls.activity
             InsertDefaultValuesInDDL(ddlProductSubType);
 
             //ddlStatus.SelectedIndex = 0;
+            ddlActivityFlavourStatus.SelectedIndex = 0;
 
             ddlSupplier.SelectedIndex = 0;
 
             ddlPageSize.SelectedIndex = 0;
 
             txtProductName.Text = string.Empty;
-            
+
             lblTotalRecords.Text = string.Empty;
         }
         protected void btnSearch_Click(object sender, EventArgs e)
@@ -286,6 +310,27 @@ namespace TLGX_Consumer.controls.activity
             ddl.Items.Insert(0, new ListItem("-ALL UNMAPPED-", "1"));
             ddl.Items.Insert(0, new ListItem("-ALL-", "0"));
         }
+
+        protected void gvActivitySearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                if (e.Row.Cells[8].Text.ToUpper() == "REVIEW COMPLETED")
+                {
+                    e.Row.CssClass = "alert alert-success";
+                }
+                else if (e.Row.Cells[8].Text.ToUpper() == "UNDER REVIEW")
+                {
+                    e.Row.CssClass = "alert alert-warning";
+                }
+                else if (e.Row.Cells[8].Text.ToUpper() == "NOT YET REVIEWED")
+                {
+                    e.Row.CssClass = "alert alert-danger";
+                }
+            }
+
+        }
+
 
         //protected void frmVwNewActivity_ItemCommand(object sender, FormViewCommandEventArgs e)
         //{
