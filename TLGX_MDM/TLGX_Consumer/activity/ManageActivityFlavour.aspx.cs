@@ -55,7 +55,7 @@ namespace TLGX_Consumer.activity
                 });
                 // Response.Redirect("/activity/ManageActivityFlavour?Activity_Flavour_Id=" + Activity_Flavour_Id, true);
                 BootstrapAlert.BootstrapAlertMessage(dvMsgStatusUpdate, "Activity Status updated successfully", BootstrapAlertType.Success);
-                Flavours.getFlavourInfo();
+                Flavours.getFlavourInfo("header");
                 
             }
             catch (Exception ex)
