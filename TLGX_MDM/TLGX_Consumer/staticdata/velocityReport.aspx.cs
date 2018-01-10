@@ -179,29 +179,51 @@ namespace TLGX_Consumer.staticdata
             }
         }
 
+        protected Boolean validatedate()
+        {
+            DateTime Fromdate = new DateTime();
+            DateTime ToDate = new DateTime();
+            try
+            {
+                string fd = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                Fromdate = Convert.ToDateTime(fd);
+                string td = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
+                ToDate = Convert.ToDateTime(td);
+
+                TimeSpan diff = ToDate - Fromdate;
+                int days = diff.Days;
+               if (days > 30)
+                {
+                   return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         protected void btnViewStatus_Click(object sender, EventArgs e)
         {
             dvMsg.Style.Add("display", "none");
             String Fmdate = txtFrom.Text;
             String tdate = txtTo.Text;
-            if (string.IsNullOrWhiteSpace(Fmdate) || string.IsNullOrWhiteSpace(tdate))
+            var res = validatedate();
+            if (res == false)
             {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please select From Date and To Date..!!", BootstrapAlertType.Danger);
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please select again...Date Range between FROM date and TO date should not be more than 30 days!!", BootstrapAlertType.Danger);
             }
+
             else {
                 dvMsg.Style.Add("display", "none");
                 getData(false);
             } 
         }
-        private int getEstimatedate(DateTime fromdate,DateTime todate,int total,int unmapped)
-        {
-            int ans = 0;
-            var days = (todate - fromdate).TotalDays;
-            var perday = (total / days);
-             ans = Convert.ToInt32(unmapped / perday);
-            return ans;
-
-        }
+       
     }
 
 
