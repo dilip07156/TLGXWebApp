@@ -122,7 +122,17 @@
 
     }
 
-    
+    function SelectAllToDelete(flag) {
+        var chckboxtoDetleteOperation = document.getElementsByClassName("chkToDeleteOperation");
+        for (var i = 0; i < chckboxtoDetleteOperation.length; i++) {
+            chckboxtoDetleteOperation[i].children[0].checked = flag;
+        }
+        var chckboxtoDetleteDays = document.getElementsByClassName("chkToDeleteDays");
+        for (var i = 0; i < chckboxtoDetleteDays.length; i++) {
+            chckboxtoDetleteDays[i].children[0].checked = flag;
+        }
+
+    }
 </script>
 
 <style>
@@ -402,7 +412,29 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>Operating Dates & Days of Week</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Operating Dates & Days of Week</h4>
+                            </div>
+                            <div class="col-md-3 ">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <label class="control-label">Select</label></td>
+                                        <td>
+                                            <button class="btn btn-link" style="padding: 0px !important;" onclick="SelectAllToDelete(true);">All</button></td>
+                                        <td>
+                                            <button class="btn btn-link" style="padding: 0px !important;" onclick="SelectAllToDelete(false);">None</button></td>
+                                        <td>
+                                            <asp:Button runat="server" Style="padding: 0px !important;" CssClass="btn btn-link" Text="Remove Selected" OnClick="btnRemoveSelectedOperationDays_Click" ID="btnRemoveSelectedOperationDays" /></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-md-3 ">
+                                &nbsp;
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
 
@@ -463,10 +495,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-1">
-                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfOperation_Id") %>'>
+                                        <div class="col-sm-1" style="padding-left: 0px;">
+                                            <div class="input-group">
+                                                <asp:CheckBox ID="chkToDeleteOperation" runat="server" CssClass="chkToDeleteOperation input-group-addon" />
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfOperation_Id") %>'>
                                                     <i class="glyphicon glyphicon-trash"></i>
-                                            </asp:LinkButton>
+                                                </asp:LinkButton>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -794,10 +829,13 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-xs-1">
-                                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveDaysOfWeek" CommandName="RemoveDaysOfWeek" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfWeek_ID") %>'>
+                                                        <div class="col-xs-1" style="padding-left: 0px;">
+                                                            <div class="input-group">
+                                                                <asp:CheckBox ID="chkToDeleteDays" runat="server" CssClass="chkToDeleteDays input-group-addon" />
+                                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveDaysOfWeek" CommandName="RemoveDaysOfWeek" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfWeek_ID") %>'>
                                                             <i class="glyphicon glyphicon-trash"></i>
-                                                            </asp:LinkButton>
+                                                                </asp:LinkButton>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -1225,13 +1263,13 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <tr>
-                                        <td>
+                                        <td style="word-wrap: break-word;">
                                             <em><strong><%# DataBinder.Eval(Container.DataItem, "AttributeType") %></strong></em>
                                         </td>
-                                        <td>
+                                        <td style="word-wrap: break-word;">
                                             <em><%# DataBinder.Eval(Container.DataItem, "AttributeSubType") %></em>
                                         </td>
-                                        <td>
+                                        <td style="word-break: break-all;">
                                             <em><%# DataBinder.Eval(Container.DataItem, "AttributeValue") %></em>
                                         </td>
                                     </tr>
