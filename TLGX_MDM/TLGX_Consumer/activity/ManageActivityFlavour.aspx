@@ -55,6 +55,8 @@
                          <button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>
 
                                 )
+                           <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Back" />
+
                             </strong>
                         </div>
                     </div>

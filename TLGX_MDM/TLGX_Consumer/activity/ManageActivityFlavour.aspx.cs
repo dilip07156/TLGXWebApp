@@ -63,5 +63,13 @@ namespace TLGX_Consumer.activity
                 
             }
         }
+
+        protected void btnRedirectToSearch_Click(object sender, EventArgs e)
+        {
+            //btnRedirectToSearch.PostBackUrl = "~/activity/SearchActivityMaster.aspx";
+            Response.Redirect("~/activity/SearchActivityMaster.aspx");
+        }
+
+      
     }
 }

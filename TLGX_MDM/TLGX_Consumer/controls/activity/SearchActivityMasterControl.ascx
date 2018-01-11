@@ -225,7 +225,8 @@
 
                         <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
-                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging" OnRowDataBound="gvActivitySearch_RowDataBound">
+                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging"
+                            OnRowDataBound="gvActivitySearch_RowDataBound" OnRowCommand="gvActivitySearch_RowCommand">
                             <Columns>
                                 <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
@@ -236,7 +237,15 @@
                                 <asp:BoundField DataField="City" HeaderText="City" />
                                 <asp:BoundField DataField="SupplierCode" HeaderText="Supplier" />
                                 <asp:BoundField DataField="Activity_Status" HeaderText="Review Status" />
-                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
+                                <asp:TemplateField ShowHeader="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default btn-sm"
+                                            Enabled="true" CommandArgument='<%# Bind("Activity_Flavour_Id") %>'>
+                                                            Select
+                                        </asp:LinkButton>
+                                        <%-- <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />--%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                             <PagerStyle CssClass="pagination-ys" />
                         </asp:GridView>
