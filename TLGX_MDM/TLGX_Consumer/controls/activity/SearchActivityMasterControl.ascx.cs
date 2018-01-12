@@ -31,13 +31,13 @@ namespace TLGX_Consumer.controls.activity
 
             }
         }
-
         private void SetControls()
         {
             try
             {
                 if (!string.IsNullOrWhiteSpace(Convert.ToString(Request.UrlReferrer.AbsoluteUri.Contains("ManageActivityFlavour"))))
                 {
+                    #region Get Value from query string
                     string ProductName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["ProdN"]);
                     string CountryName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoN"]);
                     string CountryID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoID"]);
@@ -59,7 +59,7 @@ namespace TLGX_Consumer.controls.activity
                     string PageNo = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PN"]);
                     string PageSize = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PS"]);
 
-
+                    #endregion
                     int pageno = 0;
                     int pagesize = 5;
 
@@ -69,7 +69,7 @@ namespace TLGX_Consumer.controls.activity
                     {
                         ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByText(CountryName));
                         if (!string.IsNullOrWhiteSpace(CountryID))
-                            fillcities(Guid.Parse(CountryID));
+                            ClearAndFillCity(CountryID);
                     }
                     if (!string.IsNullOrWhiteSpace(CityName))
                         ddlCity.SelectedIndex = ddlCity.Items.IndexOf(ddlCity.Items.FindByText(CityName));
@@ -82,11 +82,22 @@ namespace TLGX_Consumer.controls.activity
                         ddlActivityFlavourStatus.SelectedIndex = ddlActivityFlavourStatus.Items.IndexOf(ddlActivityFlavourStatus.Items.FindByText(ActivityFlavourStatus));
 
                     if (!string.IsNullOrWhiteSpace(ProductCategorySubType))
+                    {
                         ddlProductCategorySubType.SelectedIndex = ddlProductCategorySubType.Items.IndexOf(ddlProductCategorySubType.Items.FindByText(ProductCategorySubType));
+                        if (!string.IsNullOrWhiteSpace(ProductCategorySubTypeID))
+                            ClearFillProductType(ProductCategorySubTypeID);
+
+                    }
                     if (!string.IsNullOrWhiteSpace(ProductType))
+                    {
                         ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(ProductType));
+                        if (!string.IsNullOrWhiteSpace(ProductTypeID))
+                            ClearFillProductSubType(ddlProductType.SelectedValue);
+                    }
                     if (!string.IsNullOrWhiteSpace(ProductSubType))
+                    {
                         ddlProductSubType.SelectedIndex = ddlProductSubType.Items.IndexOf(ddlProductSubType.Items.FindByText(ProductSubType));
+                    }
 
 
                     if (!string.IsNullOrWhiteSpace(NoOperatingSchedule))
@@ -116,7 +127,6 @@ namespace TLGX_Consumer.controls.activity
                 throw;
             }
         }
-
         private void LoadMasters()
         {
             fillcoutries();
@@ -151,9 +161,13 @@ namespace TLGX_Consumer.controls.activity
         }
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClearAndFillCity(ddlCountry.SelectedValue);
+        }
+        public void ClearAndFillCity(string SelectedValue)
+        {
             Guid CountryId;
             ddlCity.Items.Clear();
-            if (Guid.TryParse(ddlCountry.SelectedValue, out CountryId))
+            if (Guid.TryParse(SelectedValue, out CountryId))
             {
                 fillcities(CountryId);
             }
@@ -176,7 +190,6 @@ namespace TLGX_Consumer.controls.activity
                 throw;
             }
         }
-
         private void fillActivityFlavourStatusMaster(DropDownList ddl)
         {
             try
@@ -195,11 +208,15 @@ namespace TLGX_Consumer.controls.activity
         }
         protected void ddlProductCategorySubType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClearFillProductType(ddlProductCategorySubType.SelectedValue);
+        }
+        public void ClearFillProductType(string SelectedValue)
+        {
             Guid gSubCategory;
             ddlProductType.Items.Clear();
             ddlProductSubType.Items.Clear();
 
-            if (Guid.TryParse(ddlProductCategorySubType.SelectedValue, out gSubCategory))
+            if (Guid.TryParse(SelectedValue, out gSubCategory))
             {
                 fillProductType(ddlProductType, gSubCategory);
 
@@ -234,10 +251,14 @@ namespace TLGX_Consumer.controls.activity
         }
         protected void ddlProductType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ClearFillProductSubType(ddlProductType.SelectedValue);
+        }
+        public void ClearFillProductSubType(string selectedValue)
+        {
             Guid gProductType;
             ddlProductSubType.Items.Clear();
 
-            if (Guid.TryParse(ddlProductType.SelectedValue, out gProductType))
+            if (Guid.TryParse(selectedValue, out gProductType))
             {
                 fillproductsubtype(ddlProductSubType, gProductType);
             }
@@ -338,8 +359,18 @@ namespace TLGX_Consumer.controls.activity
                     {
                         gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecords);
                         lblTotalRecords.Text = res[0].TotalRecords.ToString();
+
+                        //int pagecount = 0;
+                        //if (Convert.ToInt32(res[0].TotalRecords) <= pagesize)
+                        //{
+                        //    pagecount = 1;
+                        //}
+                        //else
+                        //{
+                        //    pagecount = (Convert.ToInt32(res[0].TotalRecords) % pagesize) > 0 ? (Convert.ToInt32(res[0].TotalRecords) % pagesize) + 1 : (Convert.ToInt32(res[0].TotalRecords) % pagesize);
+                        //}
                         gvActivitySearch.DataSource = res;
-                        gvActivitySearch.PageIndex = pageindex;
+                        gvActivitySearch.PageIndex = pageindex;   //(pageindex > pagecount ? pagecount : pageindex);
                         gvActivitySearch.PageSize = pagesize;
                         gvActivitySearch.DataBind();
                     }
@@ -381,6 +412,8 @@ namespace TLGX_Consumer.controls.activity
             txtProductName.Text = string.Empty;
 
             lblTotalRecords.Text = string.Empty;
+            gvActivitySearch.DataSource = null;
+            gvActivitySearch.DataBind();
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
@@ -403,7 +436,6 @@ namespace TLGX_Consumer.controls.activity
             ddl.Items.Insert(0, new ListItem("-ALL UNMAPPED-", "1"));
             ddl.Items.Insert(0, new ListItem("-ALL-", "0"));
         }
-
         protected void gvActivitySearch_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -423,7 +455,6 @@ namespace TLGX_Consumer.controls.activity
             }
 
         }
-
         protected void gvActivitySearch_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try

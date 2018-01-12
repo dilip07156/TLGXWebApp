@@ -36,7 +36,7 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <div class="row" id="dvproductheader" runat="server">
-                    <div class="col-lg-9">
+                    <div class="col-lg-8">
 
                         <h3>
                             <strong>
@@ -46,7 +46,7 @@
                     </div>
 
 
-                    <div class="col-lg-3 ">
+                    <div class="col-lg-4 ">
                         <div class="pull-right" style="margin-top: 25px !important;">
                             <strong>
                                 <asp:Label ID="lblActivityStatus" runat="server"></asp:Label>
@@ -55,7 +55,7 @@
                          <button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>
 
                                 )
-                           <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Back" />
+                           <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Go Back to Search Page" />
 
                             </strong>
                         </div>
