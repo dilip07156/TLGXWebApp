@@ -49,6 +49,15 @@ namespace TLGX_Consumer.activity {
         protected global::System.Web.UI.WebControls.Label lblActivityStatus;
         
         /// <summary>
+        /// btnRedirectToSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRedirectToSearch;
+        
+        /// <summary>
         /// Flavours control.
         /// </summary>
         /// <remarks>

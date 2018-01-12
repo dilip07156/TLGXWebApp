@@ -9,6 +9,7 @@ using System.Runtime.Serialization.Json;
 using System.IO;
 using TLGX_Consumer.Controller;
 using TLGX_Consumer.App_Code;
+using System.Text;
 
 namespace TLGX_Consumer.controls.activity
 {
@@ -22,8 +23,100 @@ namespace TLGX_Consumer.controls.activity
             if (!IsPostBack)
             {
                 LoadMasters();
+                //Bind Page Controls
+                if (Request.UrlReferrer != null && Request.UrlReferrer.AbsoluteUri.Contains("ManageActivityFlavour"))
+                {
+                    SetControls();
+                }
+
             }
         }
+
+        private void SetControls()
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(Convert.ToString(Request.UrlReferrer.AbsoluteUri.Contains("ManageActivityFlavour"))))
+                {
+                    string ProductName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["ProdN"]);
+                    string CountryName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoN"]);
+                    string CountryID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoID"]);
+                    string CityName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CiN"]);
+                    string CityID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CiID"]);
+                    string SupplierID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["SuID"]);
+                    string ActivityFlavourStatus = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["AFS"]);
+                    string ProductCategorySubType = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PCST"]);
+                    string ProductCategorySubTypeID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PCSTID"]);
+                    string ProductType = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PT"]);
+                    string ProductTypeID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PTID"]);
+                    string ProductSubType = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PST"]);
+                    string ProductSubTypeID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PSTID"]);
+                    string NoOperatingSchedule = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NOS"]);
+                    string NoPhysicalIntensity = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NPI"]);
+                    string NoSession = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NSe"]);
+                    string NoSpecial = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NSp"]);
+                    string NoSuitableFor = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NSF"]);
+                    string PageNo = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PN"]);
+                    string PageSize = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PS"]);
+
+
+                    int pageno = 0;
+                    int pagesize = 5;
+
+                    if (!string.IsNullOrWhiteSpace(ProductName))
+                        txtProductName.Text = ProductName;
+                    if (!string.IsNullOrWhiteSpace(CountryName))
+                    {
+                        ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(ddlCountry.Items.FindByText(CountryName));
+                        if (!string.IsNullOrWhiteSpace(CountryID))
+                            fillcities(Guid.Parse(CountryID));
+                    }
+                    if (!string.IsNullOrWhiteSpace(CityName))
+                        ddlCity.SelectedIndex = ddlCity.Items.IndexOf(ddlCity.Items.FindByText(CityName));
+
+
+                    if (!string.IsNullOrWhiteSpace(SupplierID))
+                        ddlSupplier.SelectedIndex = ddlSupplier.Items.IndexOf(ddlSupplier.Items.FindByValue(SupplierID));
+
+                    if (!string.IsNullOrWhiteSpace(ActivityFlavourStatus))
+                        ddlActivityFlavourStatus.SelectedIndex = ddlActivityFlavourStatus.Items.IndexOf(ddlActivityFlavourStatus.Items.FindByText(ActivityFlavourStatus));
+
+                    if (!string.IsNullOrWhiteSpace(ProductCategorySubType))
+                        ddlProductCategorySubType.SelectedIndex = ddlProductCategorySubType.Items.IndexOf(ddlProductCategorySubType.Items.FindByText(ProductCategorySubType));
+                    if (!string.IsNullOrWhiteSpace(ProductType))
+                        ddlProductType.SelectedIndex = ddlProductType.Items.IndexOf(ddlProductType.Items.FindByText(ProductType));
+                    if (!string.IsNullOrWhiteSpace(ProductSubType))
+                        ddlProductSubType.SelectedIndex = ddlProductSubType.Items.IndexOf(ddlProductSubType.Items.FindByText(ProductSubType));
+
+
+                    if (!string.IsNullOrWhiteSpace(NoOperatingSchedule))
+                        chkNoOperatingSchedule.Checked = Convert.ToBoolean(NoOperatingSchedule);
+                    if (!string.IsNullOrWhiteSpace(NoPhysicalIntensity))
+                        chkNoPhysicalIntensity.Checked = Convert.ToBoolean(NoPhysicalIntensity);
+                    if (!string.IsNullOrWhiteSpace(NoSession))
+                        chkNoSession.Checked = Convert.ToBoolean(NoSession);
+                    if (!string.IsNullOrWhiteSpace(NoSpecial))
+                        chkNoSpecial.Checked = Convert.ToBoolean(NoSpecial);
+                    if (!string.IsNullOrWhiteSpace(NoSuitableFor))
+                        chkNoSuitableFor.Checked = Convert.ToBoolean(NoSuitableFor);
+
+                    if (!string.IsNullOrWhiteSpace(PageNo))
+                        pageno = Convert.ToInt32(PageNo);
+                    if (!string.IsNullOrWhiteSpace(PageSize))
+                        pagesize = Convert.ToInt32(PageSize);
+
+                    searchActivityMaster(pageno, pagesize);
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
         private void LoadMasters()
         {
             fillcoutries();
@@ -329,6 +422,87 @@ namespace TLGX_Consumer.controls.activity
                 }
             }
 
+        }
+
+        protected void gvActivitySearch_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    //Create Query string
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id=" + myRow_Id);
+                    if (!string.IsNullOrWhiteSpace(txtProductName.Text))
+                        sb.Append("&ProdN=" + HttpUtility.UrlEncode(txtProductName.Text));
+                    if (ddlCountry.SelectedIndex > 1)
+                    {
+                        sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlCountry.SelectedValue));
+                        sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+                    }
+                    else
+                    {
+                        if (ddlCountry.SelectedItem.Text.Contains("UNMAPPED"))
+                            sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+                    }
+
+                    if (ddlCity.SelectedIndex > 1)
+                    {
+                        sb.Append("&CiID=" + HttpUtility.UrlEncode(ddlCity.SelectedValue));
+                        sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlCity.SelectedItem.Text));
+                    }
+                    else
+                    {
+                        if (ddlCity.SelectedItem.Text.Contains("UNMAPPED"))
+                            sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlCity.SelectedItem.Text));
+                    }
+
+                    if (ddlSupplier.SelectedIndex != 0)
+                        sb.Append("&SuID=" + HttpUtility.UrlEncode(ddlSupplier.SelectedValue));
+
+                    if (ddlActivityFlavourStatus.SelectedValue != "0")
+                        sb.Append("&AFS=" + HttpUtility.UrlEncode(ddlActivityFlavourStatus.SelectedItem.Text));
+
+                    sb.Append("&PCST=" + HttpUtility.UrlEncode(ddlProductCategorySubType.SelectedItem.Text));
+                    if (ddlProductCategorySubType.SelectedIndex > 1)
+                    {
+                        sb.Append("&PCSTID=" + HttpUtility.UrlEncode(ddlProductCategorySubType.SelectedValue));
+                    }
+
+                    sb.Append("&PT=" + HttpUtility.UrlEncode(ddlProductType.SelectedItem.Text));
+                    if (ddlProductType.SelectedIndex > 1)
+                    {
+                        sb.Append("&PTID=" + HttpUtility.UrlEncode(ddlProductType.SelectedValue));
+                    }
+                    sb.Append("&PST=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedItem.Text));
+                    if (ddlProductSubType.SelectedIndex > 1)
+                    {
+                        sb.Append("&PSTID=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedValue));
+                    }
+                    sb.Append("&NOS=" + HttpUtility.UrlEncode(Convert.ToString(chkNoOperatingSchedule.Checked)));
+                    sb.Append("&NPI=" + HttpUtility.UrlEncode(Convert.ToString(chkNoPhysicalIntensity.Checked)));
+                    sb.Append("&NSe=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSession.Checked)));
+                    sb.Append("&NSp=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSpecial.Checked)));
+                    sb.Append("&NSF=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSuitableFor.Checked)));
+
+                    string pageindex = ((GridView)sender).PageIndex.ToString();
+                    sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
+                    sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlPageSize.SelectedValue)));
+
+                    Response.Redirect(sb.ToString(), true);
+                    //End Here
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+
+                throw;
+            }
         }
 
 
