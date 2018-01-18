@@ -368,6 +368,15 @@
                                                     <asp:ListItem Value="0">-Select-</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="ddlPriorityEdit">Priority</label>
+                                                <asp:DropDownList runat="server" ID="ddlPriorityEdit" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                    <asp:ListItem Value="1">1</asp:ListItem>
+                                                    <asp:ListItem Value="2">2</asp:ListItem>
+                                                    <asp:ListItem Value="3">3</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

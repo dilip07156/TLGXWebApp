@@ -29464,6 +29464,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductCategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -29623,6 +29626,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }
