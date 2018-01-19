@@ -80,22 +80,26 @@ namespace TLGX_Consumer.controls.businessentities
                         DropDownList ddlStatusEdit = (DropDownList)frmSupplierDetail.FindControl("ddlStatusEdit");
                         DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
                         DropDownList ddlPriorityEdit = (DropDownList)frmSupplierDetail.FindControl("ddlPriorityEdit");
-                        if (result[0].StatusCode==string.Empty)
-                            ddlStatusEdit.Items.FindByText("--Select--").Selected = true;
+                        if (result[0].StatusCode == string.Empty)
+                            ddlStatusEdit.SelectedIndex = ddlStatusEdit.Items.IndexOf(ddlStatusEdit.Items.FindByText("-Select-"));
                         else
-                            ddlStatusEdit.Items.FindByText(result[0].StatusCode).Selected = true;
+                            ddlStatusEdit.SelectedIndex = ddlStatusEdit.Items.IndexOf(ddlStatusEdit.Items.FindByText(result[0].StatusCode));
+
                         if (result[0].SupplierType == string.Empty)
-                            ddlSupplierType.Items.FindByText("--Select--").Selected = true;
+                            ddlSupplierType.SelectedIndex = ddlSupplierType.Items.IndexOf(ddlSupplierType.Items.FindByText("-Select-"));
                         else
-                            ddlSupplierType.Items.FindByText(result[0].SupplierType).Selected = true;
+                            ddlSupplierType.SelectedIndex = ddlSupplierType.Items.IndexOf(ddlSupplierType.Items.FindByText(result[0].SupplierType));
 
                         if (result[0].Priority == null)
-                            ddlPriorityEdit.Items.FindByText("--Select--").Selected = true;
+                            ddlPriorityEdit.SelectedIndex = ddlPriorityEdit.Items.IndexOf(ddlPriorityEdit.Items.FindByText("-Select-"));
                         else
-                            ddlPriorityEdit.SelectedValue = Convert.ToString( result[0].Priority);
-                        //ddlStatusEdit.Items.FindByText(result[0].StatusCode ?? "--Select--").Selected = true;
-                        //ddlSupplierType.Items.FindByText(result[0].SupplierType ?? "--Select--").Selected = true;
-                        
+                            ddlPriorityEdit.SelectedIndex = ddlPriorityEdit.Items.IndexOf(ddlPriorityEdit.Items.FindByValue(Convert.ToString(result[0].Priority)));
+
+
+                        //ddlSupplierType.Items.FindByText(result[0].SupplierType).Selected = true;
+                        //ddlStatusEdit.Items.FindByText(result[0].StatusCode).Selected = true;
+                        //ddlPriorityEdit.SelectedValue = Convert.ToString(result[0].Priority);
+
                     }
                 }
             }
