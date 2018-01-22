@@ -359,7 +359,7 @@ namespace TLGX_Consumer.controls.activity
                     {
                         gvActivitySearch.VirtualItemCount = Convert.ToInt32(res[0].TotalRecords);
                         lblTotalRecords.Text = res[0].TotalRecords.ToString();
-
+                        txtGoToPageNo.Text = Convert.ToString(pageindex + 1);
                         //int pagecount = 0;
                         //if (Convert.ToInt32(res[0].TotalRecords) <= pagesize)
                         //{
@@ -373,6 +373,7 @@ namespace TLGX_Consumer.controls.activity
                         gvActivitySearch.PageIndex = pageindex;   //(pageindex > pagecount ? pagecount : pageindex);
                         gvActivitySearch.PageSize = pagesize;
                         gvActivitySearch.DataBind();
+                        lblTotalPageCount.Text = Convert.ToString(gvActivitySearch.PageCount);
                     }
                 }
                 else
@@ -440,6 +441,9 @@ namespace TLGX_Consumer.controls.activity
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                //Get Hyperlink 
+                System.Web.UI.Control hlf = e.Row.Cells[10];
+
                 if (e.Row.Cells[8].Text.ToUpper() == "REVIEW COMPLETED")
                 {
                     e.Row.CssClass = "alert alert-success";
@@ -464,65 +468,9 @@ namespace TLGX_Consumer.controls.activity
                     Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
                     GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                     //Create Query string
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id=" + myRow_Id);
-                    if (!string.IsNullOrWhiteSpace(txtProductName.Text))
-                        sb.Append("&ProdN=" + HttpUtility.UrlEncode(txtProductName.Text));
-                    if (ddlCountry.SelectedIndex > 1)
-                    {
-                        sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlCountry.SelectedValue));
-                        sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
-                    }
-                    else
-                    {
-                        if (ddlCountry.SelectedItem.Text.Contains("UNMAPPED"))
-                            sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
-                    }
 
-                    if (ddlCity.SelectedIndex > 1)
-                    {
-                        sb.Append("&CiID=" + HttpUtility.UrlEncode(ddlCity.SelectedValue));
-                        sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlCity.SelectedItem.Text));
-                    }
-                    else
-                    {
-                        if (ddlCity.SelectedItem.Text.Contains("UNMAPPED"))
-                            sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlCity.SelectedItem.Text));
-                    }
-
-                    if (ddlSupplier.SelectedIndex != 0)
-                        sb.Append("&SuID=" + HttpUtility.UrlEncode(ddlSupplier.SelectedValue));
-
-                    if (ddlActivityFlavourStatus.SelectedValue != "0")
-                        sb.Append("&AFS=" + HttpUtility.UrlEncode(ddlActivityFlavourStatus.SelectedItem.Text));
-
-                    sb.Append("&PCST=" + HttpUtility.UrlEncode(ddlProductCategorySubType.SelectedItem.Text));
-                    if (ddlProductCategorySubType.SelectedIndex > 1)
-                    {
-                        sb.Append("&PCSTID=" + HttpUtility.UrlEncode(ddlProductCategorySubType.SelectedValue));
-                    }
-
-                    sb.Append("&PT=" + HttpUtility.UrlEncode(ddlProductType.SelectedItem.Text));
-                    if (ddlProductType.SelectedIndex > 1)
-                    {
-                        sb.Append("&PTID=" + HttpUtility.UrlEncode(ddlProductType.SelectedValue));
-                    }
-                    sb.Append("&PST=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedItem.Text));
-                    if (ddlProductSubType.SelectedIndex > 1)
-                    {
-                        sb.Append("&PSTID=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedValue));
-                    }
-                    sb.Append("&NOS=" + HttpUtility.UrlEncode(Convert.ToString(chkNoOperatingSchedule.Checked)));
-                    sb.Append("&NPI=" + HttpUtility.UrlEncode(Convert.ToString(chkNoPhysicalIntensity.Checked)));
-                    sb.Append("&NSe=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSession.Checked)));
-                    sb.Append("&NSp=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSpecial.Checked)));
-                    sb.Append("&NSF=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSuitableFor.Checked)));
-
-                    string pageindex = ((GridView)sender).PageIndex.ToString();
-                    sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
-                    sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlPageSize.SelectedValue)));
-
-                    Response.Redirect(sb.ToString(), true);
+                    string strQueryString = GetQueryString(myRow_Id.ToString(), ((GridView)sender).PageIndex.ToString());
+                    Response.Redirect(strQueryString, true);
                     //End Here
 
 
@@ -535,6 +483,80 @@ namespace TLGX_Consumer.controls.activity
                 throw;
             }
         }
+
+        public string GetQueryString(string myRow_Id, string strpageindex)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id=" + myRow_Id);
+            if (!string.IsNullOrWhiteSpace(txtProductName.Text))
+                sb.Append("&ProdN=" + HttpUtility.UrlEncode(txtProductName.Text));
+            if (ddlCountry.SelectedIndex > 1)
+            {
+                sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlCountry.SelectedValue));
+                sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+            }
+            else
+            {
+                if (ddlCountry.SelectedItem.Text.Contains("UNMAPPED"))
+                    sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+            }
+
+            if (ddlCity.SelectedIndex > 1)
+            {
+                sb.Append("&CiID=" + HttpUtility.UrlEncode(ddlCity.SelectedValue));
+                sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlCity.SelectedItem.Text));
+            }
+            else
+            {
+                if (ddlCity.SelectedItem.Text.Contains("UNMAPPED"))
+                    sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlCity.SelectedItem.Text));
+            }
+
+            if (ddlSupplier.SelectedIndex != 0)
+                sb.Append("&SuID=" + HttpUtility.UrlEncode(ddlSupplier.SelectedValue));
+
+            if (ddlActivityFlavourStatus.SelectedValue != "0")
+                sb.Append("&AFS=" + HttpUtility.UrlEncode(ddlActivityFlavourStatus.SelectedItem.Text));
+
+            sb.Append("&PCST=" + HttpUtility.UrlEncode(ddlProductCategorySubType.SelectedItem.Text));
+            if (ddlProductCategorySubType.SelectedIndex > 1)
+            {
+                sb.Append("&PCSTID=" + HttpUtility.UrlEncode(ddlProductCategorySubType.SelectedValue));
+            }
+
+            sb.Append("&PT=" + HttpUtility.UrlEncode(ddlProductType.SelectedItem.Text));
+            if (ddlProductType.SelectedIndex > 1)
+            {
+                sb.Append("&PTID=" + HttpUtility.UrlEncode(ddlProductType.SelectedValue));
+            }
+            sb.Append("&PST=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedItem.Text));
+            if (ddlProductSubType.SelectedIndex > 1)
+            {
+                sb.Append("&PSTID=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedValue));
+            }
+            sb.Append("&NOS=" + HttpUtility.UrlEncode(Convert.ToString(chkNoOperatingSchedule.Checked)));
+            sb.Append("&NPI=" + HttpUtility.UrlEncode(Convert.ToString(chkNoPhysicalIntensity.Checked)));
+            sb.Append("&NSe=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSession.Checked)));
+            sb.Append("&NSp=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSpecial.Checked)));
+            sb.Append("&NSF=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSuitableFor.Checked)));
+
+            string pageindex = strpageindex;
+            sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
+            sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlPageSize.SelectedValue)));
+
+
+            return sb.ToString();
+        }
+
+        protected void btnGoToPagNo_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                int pageindex = Convert.ToInt32(txtGoToPageNo.Text) - 1 ;
+                searchActivityMaster(pageindex, Convert.ToInt32(ddlPageSize.SelectedValue));
+            }
+        }
+        
 
 
         //protected void frmVwNewActivity_ItemCommand(object sender, FormViewCommandEventArgs e)
