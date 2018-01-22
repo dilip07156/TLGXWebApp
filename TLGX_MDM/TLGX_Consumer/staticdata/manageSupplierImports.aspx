@@ -80,9 +80,10 @@
 
         function getChartData() {
             var sid = $('#MainContent_ddlSupplierName').val();
+            var PriorityId = $('#MainContent_ddlPriority').val();
             if (sid == '0') {
                 $('#ReportViewersupplierwise').hide();
-                getAllSupplierData();
+                getAllSupplierData(PriorityId);
                 sid = '00000000-0000-0000-0000-000000000000'
             }
             else {
@@ -90,11 +91,10 @@
             }
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
-                data: { 'Supplier_Id': sid },
+                data: { 'Supplier_Id': sid, 'PriorityId': PriorityId },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    //debugger;
                     var contryArray = [];
                     var cityArray = [];
                     var productArray = [];
@@ -127,7 +127,7 @@
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount != null)
+                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount > 0  )
                                     { $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount); }
                                 }
                             }
@@ -144,7 +144,7 @@
                                 }
                                 else {
                                     $("#cityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
-                                    if (resultDataForCity[iCityMappingData].SuppliersCount != null)
+                                    if (resultDataForCity[iCityMappingData].SuppliersCount > 0)
                                     { $("#citySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCity[iCityMappingData].SuppliersCount); }
                                 }
                             }
@@ -162,7 +162,7 @@
                                 }
                                 else {
                                     $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
-                                    if (resultDataForProduct[iProductMappingData].SuppliersCount != null)
+                                    if (resultDataForProduct[iProductMappingData].SuppliersCount > 0 )
                                     { $("#productSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForProduct[iProductMappingData].SuppliersCount); }
                                 }
                             }
@@ -179,7 +179,7 @@
                                 }
                                 else {
                                     $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
-                                    if (resultDataForActivity[iActivityMappingData].SuppliersCount != null)
+                                    if (resultDataForActivity[iActivityMappingData].SuppliersCount >0)
                                     { $("#activitySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForActivity[iActivityMappingData].SuppliersCount); }
                                 }
                             }
@@ -195,7 +195,7 @@
                                 }
                                 else {
                                     $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
-                                    if (resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount != null)
+                                    if (resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount > 0)
                                     { $("#HotelRoomSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount); }
                                 }
                             }
@@ -316,9 +316,10 @@
                 }
             });
         }
-        function getAllSupplierData() {
+        function getAllSupplierData(PriorityId) {
             $.ajax({
                 url: '../../../Service/AllSupplierDataForChart.ashx',
+                data: { 'PriorityId': PriorityId },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 type: 'GET',
@@ -503,7 +504,6 @@
             $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
         });
         $(window).on('load', function () {
-            //debugger;
             var sid = $('#MainContent_ddlSupplierName').val();
             if (sid == '0') {
                 $("#dvCityReRun").hide();
@@ -562,6 +562,12 @@
                 <div class="form-group pull-right ">
                     <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
                         <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true" >
+                        <asp:ListItem Value="0">--All Priority--</asp:ListItem>
+                        <asp:ListItem Value="1">1</asp:ListItem>
+                        <asp:ListItem Value="2">2</asp:ListItem>
+                        <asp:ListItem Value="3">3</asp:ListItem>
                     </asp:DropDownList>
                     <%--<asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />--%>
                     <button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>

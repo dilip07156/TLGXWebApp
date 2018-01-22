@@ -38,11 +38,11 @@
         colorsArray.push("#" + ("ffffff" + color.toString(16)).slice(-6));
     }
     //end
-    function getChartData() {
-            sid = '00000000-0000-0000-0000-000000000000'
+    function getChartData(PriorityId) {
+        sid = '00000000-0000-0000-0000-000000000000';
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
-                data: { 'Supplier_Id': sid },
+                data: { 'Supplier_Id': sid, 'PriorityId': PriorityId },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
@@ -296,9 +296,10 @@
     }
 
 
-    function getAllSupplierData() {
+    function getAllSupplierData(PriorityId) {
         $.ajax({
             url: '../../../Service/AllSupplierDataForChart.ashx',
+            data: { 'PriorityId': PriorityId },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             type: 'GET',
@@ -493,14 +494,45 @@
     }
 
     $(document).ready(function () {
+        var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
+        getChartData(PriorityId);
+        getAllSupplierData(PriorityId);
+    });
+</script>
+    
+<script>
+    $("#btnViewStatus").click(function () {
+        var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         getChartData();
-        getAllSupplierData();
+        getAllSupplierData(PriorityId);
     });
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
 
-  <div class="row">
+ <div class="row">
+        <div class="col-md-6">
+            <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
+        </div>
+
+        <div class="col-md-6 ">
+            <div class="form-inline">
+                <br />
+                <br />
+                <div class="form-group pull-right ">
+                    <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true" >
+                        <asp:ListItem Value="0">--All Priority--</asp:ListItem>
+                        <asp:ListItem Value="1">1</asp:ListItem>
+                        <asp:ListItem Value="2">2</asp:ListItem>
+                        <asp:ListItem Value="3">3</asp:ListItem>
+                    </asp:DropDownList>
+                    <button id="btnViewStatus" class="btn btn-primary btn-sm">View Status</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%-- for first three pie charts--%>
+    <div class="row">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">

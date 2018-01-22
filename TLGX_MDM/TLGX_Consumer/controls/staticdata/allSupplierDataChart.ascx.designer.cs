@@ -11,5 +11,14 @@ namespace TLGX_Consumer.controls.staticdata {
     
     
     public partial class allSupplierDataChart {
+        
+        /// <summary>
+        /// ddlPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
     }
 }

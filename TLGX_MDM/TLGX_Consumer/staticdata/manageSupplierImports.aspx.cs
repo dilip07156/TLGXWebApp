@@ -164,6 +164,6 @@ namespace TLGX_Consumer.staticdata
             {
                 InsertFileRecord("Activity");
             }
-        }
+        } 
     }
 }

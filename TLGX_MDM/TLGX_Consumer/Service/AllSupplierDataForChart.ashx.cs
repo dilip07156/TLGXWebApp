@@ -20,8 +20,8 @@ namespace TLGX_Consumer.Service
         Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
         public void ProcessRequest(HttpContext context)
         {
-           
-            var res = MapSvc.GetMappingStatisticsForSuppliers();
+            var PriorityId = context.Request.QueryString["PriorityId"];
+            var res = MapSvc.GetMappingStatisticsForSuppliers(PriorityId);
             context.Response.Write(new JavaScriptSerializer().Serialize(res));
         }
         public bool IsReusable
