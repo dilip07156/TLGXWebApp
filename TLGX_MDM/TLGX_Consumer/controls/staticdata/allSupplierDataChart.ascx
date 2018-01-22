@@ -502,184 +502,197 @@
 </script>
     
 <script>
-    $("#btnViewStatus").click(function () {
-        var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
-        getChartData(PriorityId);
-        getAllSupplierData(PriorityId);
-    });
+    //$("#btnViewStatus").click(function () {
+    //    var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
+    //    getChartData(PriorityId);
+    //    getAllSupplierData(PriorityId);
+    //});
+    function getPriotityWiseData() {
+            var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
+            getChartData(PriorityId);
+            getAllSupplierData(PriorityId);
+    }
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
+<asp:UpdatePanel runat="server" ID="drpdwnupdatepnl">
+    <ContentTemplate>
+         <div class="row">
+            <div class="col-md-6">
+                <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
+            </div>
 
- <div class="row">
-        <div class="col-md-6">
-            <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
-        </div>
-
-        <div class="col-md-6 ">
-            <div class="form-inline">
-                <br />
-                <br />
-                <div class="form-group pull-right ">
-                    <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true" >
-                        <asp:ListItem Value="0">--All Priority--</asp:ListItem>
-                        <asp:ListItem Value="1">1</asp:ListItem>
-                        <asp:ListItem Value="2">2</asp:ListItem>
-                        <asp:ListItem Value="3">3</asp:ListItem>
-                    </asp:DropDownList>
-                    <button id="btnViewStatus" class="btn btn-primary btn-sm">View Status</button>
+            <div class="col-md-6 ">
+                <div class="form-inline">
+                    <br />
+                    <br />
+                    <div class="form-group pull-right ">
+                        <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true" >
+                            <asp:ListItem Value="0">--All Priority--</asp:ListItem>
+                            <asp:ListItem Value="1">1</asp:ListItem>
+                            <asp:ListItem Value="2">2</asp:ListItem>
+                            <asp:ListItem Value="3">3</asp:ListItem>
+                        </asp:DropDownList>
+                        <%--<button id="btnViewStatus" class="btn btn-primary btn-sm">View Status</button>--%>
+                        <asp:Button ID="btnViewStatus" CssClass="btn btn-primary btn-sm" Text="View Status" OnClientClick="getPriotityWiseData()"  runat="server"/>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <%-- for first three pie charts--%>
-    <div class="row">
-        <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Country Mapped</b><br />
-                        <b class="countryper"></b></h3>
+     </ContentTemplate>
+</asp:UpdatePanel>
+<asp:UpdatePanel runat="server" ID="divupdatepnl">
+    <ContentTemplate>
+        <%-- for first three pie charts--%>
+        <div class="row">
+            <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Country Mapped</b><br />
+                            <b class="countryper"></b></h3>
+                    </div>
+                    <div id="country" class="chartheight"></div>
+                    <div class="panel-body">
+                        <b><span id="detailcountry" style="font-size: small"></span></b>
+                    </div>
+                    <div class="panel-footer">
+                        <h4><b id="countryTotal"></b></h4>
+                         <h4><b id="countrySuppliersCount"></b></h4>
+                    </div>
                 </div>
-                <div id="country" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailcountry" style="font-size: small"></span></b>
+            </div>
+            <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>City Mapped</b><br />
+                            <b class="cityper"></b></h3>
+                    </div>
+                    <div id="city" class="chartheight"></div>
+                    <div class="panel-body">
+                        <b><span id="detailcity" style="font-size: small"></span></b>
+                    </div>
+                    <div class="panel-footer ">
+                        <h4><b id="cityTotal"></b></h4>
+                        <h4><b id="citySuppliersCount"></b></h4>
+                    </div>
                 </div>
-                <div class="panel-footer">
-                    <h4><b id="countryTotal"></b></h4>
-                     <h4><b id="countrySuppliersCount"></b></h4>
+            </div>
+            <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Hotel Mapped</b><br />
+                            <b class="productper"></b></h3>
+                    </div>
+                    <div id="product" class="chartheight"></div>
+                    <div class="panel-body">
+                        <b><span id="detailproduct" style="font-size: small"></span></b>
+                    </div>
+                    <div class="panel-footer">
+                        <h4><b id="productTotal"></b></h4>
+                         <h4><b id="productSuppliersCount"></b></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Room Mapped</b><br />
+                            <b class="HotelRoomper"></b></h3>
+                    </div>
+                    <div id="HotelRoom" class="chartheight"></div>
+                    <div class="panel-body">
+                        <b><span id="detailHotelRoom" style="font-size: small"></span></b>
+                    </div>
+                    <div class="panel-footer">
+                        <h4><b id="HotelRoomTotal"></b></h4>
+                         <h4><b id="HotelRoomSuppliersCount"></b></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Activity Mapped</b><br />
+                            <b class="activityper"></b></h3>
+                    </div>
+                    <div id="activity" class="chartheight"></div>
+                    <div class="panel-body">
+                        <b><span id="detailactivity" style="font-size: small"></span></b>
+                    </div>
+                    <div class="panel-footer">
+                        <h4><b id="activityTotal"></b></h4>
+                        <h4><b id="activitySuppliersCount"></b></h4>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>City Mapped</b><br />
-                        <b class="cityper"></b></h3>
+        <%-- for last three pie charts--%>
+        <div class="row" id="dvUnmappedData" >
+            <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Country UnMapped</b></h3>
+                    </div>
+                    <div id="allcountry" class="chartheight"></div>
+                    <div class="panel-body">
+                        <div id="legendco" class="donut-legend"></div>
+                    </div>
                 </div>
-                <div id="city" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailcity" style="font-size: small"></span></b>
+            </div>
+            <div class="col5 col-sm-6" id="allcitydiv" style="text-align: left">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>City UnMapped</b></h3>
+                    </div>
+                    <div id="allcity" class="chartheight"></div>
+                    <div class="panel-body">
+                        <div id="legendci" class="donut-legend"></div>
+                    </div>
                 </div>
-                <div class="panel-footer ">
-                    <h4><b id="cityTotal"></b></h4>
-                    <h4><b id="citySuppliersCount"></b></h4>
+            </div>
+            <div class="col5 col-sm-6" id="allproductdiv" style="text-align: left">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Hotel UnMapped</b></h3>
+                    </div>
+                    <div id="allproduct" class="chartheight"></div>
+                    <div class="panel-body">
+                        <div id="legendpr" class="donut-legend"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col5 col-sm-6" id="allHotelRoomdiv" style="text-align: left">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Room UnMapped</b></h3>
+                    </div>
+                    <div id="allHotelRoom" class="chartheight"></div>
+                    <div class="panel-body">
+                        <div id="legendhr" class="donut-legend"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col5 col-sm-6" id="allactivitydiv" style="text-align: left">
+                <div class="panel  panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i>
+                        <h3><b>Activity UnMapped</b></h3>
+                    </div>
+                    <div id="allactivity" class="chartheight"></div>
+                    <div class="panel-body">
+                        <div id="legendac" class="donut-legend"></div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Hotel Mapped</b><br />
-                        <b class="productper"></b></h3>
-                </div>
-                <div id="product" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailproduct" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="productTotal"></b></h4>
-                     <h4><b id="productSuppliersCount"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Room Mapped</b><br />
-                        <b class="HotelRoomper"></b></h3>
-                </div>
-                <div id="HotelRoom" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailHotelRoom" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="HotelRoomTotal"></b></h4>
-                     <h4><b id="HotelRoomSuppliersCount"></b></h4>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Activity Mapped</b><br />
-                        <b class="activityper"></b></h3>
-                </div>
-                <div id="activity" class="chartheight"></div>
-                <div class="panel-body">
-                    <b><span id="detailactivity" style="font-size: small"></span></b>
-                </div>
-                <div class="panel-footer">
-                    <h4><b id="activityTotal"></b></h4>
-                    <h4><b id="activitySuppliersCount"></b></h4>
-                </div>
-            </div>
-        </div>
-    </div>
-    <%-- for last three pie charts--%>
-    <div class="row" id="dvUnmappedData" >
-        <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Country UnMapped</b></h3>
-                </div>
-                <div id="allcountry" class="chartheight"></div>
-                <div class="panel-body">
-                    <div id="legendco" class="donut-legend"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="allcitydiv" style="text-align: left">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>City UnMapped</b></h3>
-                </div>
-                <div id="allcity" class="chartheight"></div>
-                <div class="panel-body">
-                    <div id="legendci" class="donut-legend"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="allproductdiv" style="text-align: left">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Hotel UnMapped</b></h3>
-                </div>
-                <div id="allproduct" class="chartheight"></div>
-                <div class="panel-body">
-                    <div id="legendpr" class="donut-legend"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="allHotelRoomdiv" style="text-align: left">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Room UnMapped</b></h3>
-                </div>
-                <div id="allHotelRoom" class="chartheight"></div>
-                <div class="panel-body">
-                    <div id="legendhr" class="donut-legend"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col5 col-sm-6" id="allactivitydiv" style="text-align: left">
-            <div class="panel  panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>
-                    <h3><b>Activity UnMapped</b></h3>
-                </div>
-                <div id="allactivity" class="chartheight"></div>
-                <div class="panel-body">
-                    <div id="legendac" class="donut-legend"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </ContentTemplate>
+</asp:UpdatePanel>
