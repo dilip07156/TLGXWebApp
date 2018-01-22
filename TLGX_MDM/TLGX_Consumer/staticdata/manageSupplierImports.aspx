@@ -80,9 +80,10 @@
 
         function getChartData() {
             var sid = $('#MainContent_ddlSupplierName').val();
-            var PriorityId = $('#MainContent_ddlPriority').val();
+            var PriorityId = "0";
             if (sid == '0') {
                 $('#ReportViewersupplierwise').hide();
+                var PriorityId = $('#MainContent_ddlPriority').val();
                 getAllSupplierData(PriorityId);
                 sid = '00000000-0000-0000-0000-000000000000'
             }
@@ -103,14 +104,15 @@
                     var iNodes = 0;
                     var iMappingData = 0;
                     var nxtrun = result[0].NextRun;
-                    var date = new Date(nxtrun);
                     if (nxtrun == "Not Scheduled") {
                         $(".nxtrundate").hide();
                     }
-                    else if (nxtrun == "1/1/0001 12:00:00 AM") {
+                    else if (nxtrun == null) {
                         $(".nxtrundate").append("Next Run is Not scheduled for this supplier");
                     }
                     else {
+                        var t = nxtrun.split(/[- :]/);
+                        var date = new Date(Date.UTC(t[2], t[1] - 1, t[0], t[3], t[4], t[5]));
                         $(".nxtrundate").append("Next Run is scheduled on :&nbsp <br/>" + date);
                     }
                     //Need to get  Data
