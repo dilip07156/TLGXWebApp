@@ -13,6 +13,15 @@ namespace TLGX_Consumer.controls.staticdata {
     public partial class allSupplierDataChart {
         
         /// <summary>
+        /// drpdwnupdatepnl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel drpdwnupdatepnl;
+        
+        /// <summary>
         /// ddlPriority control.
         /// </summary>
         /// <remarks>
@@ -20,5 +29,14 @@ namespace TLGX_Consumer.controls.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        
+        /// <summary>
+        /// btnViewStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnViewStatus;
     }
 }
