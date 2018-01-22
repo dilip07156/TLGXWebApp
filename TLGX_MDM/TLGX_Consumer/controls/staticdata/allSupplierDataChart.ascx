@@ -315,6 +315,11 @@
                 $("#allproduct").empty();
                 $("#allactivity").empty();
                 $("#allHotelRoom").empty();
+                $("#legendac").empty();
+                $("#legendhr").empty();
+                $("#legendpr").empty();
+                $("#legendco").empty();
+                $("#legendci").empty();
                 var allcontryArray = [];
                 var allcityArray = [];
                 var allproductArray = [];
@@ -508,6 +513,7 @@
     //    getAllSupplierData(PriorityId);
     //});
     function getPriotityWiseData() {
+        debugger;
             var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
             getChartData(PriorityId);
             getAllSupplierData(PriorityId);
@@ -541,8 +547,8 @@
         </div>
      </ContentTemplate>
 </asp:UpdatePanel>
-<asp:UpdatePanel runat="server" ID="divupdatepnl">
-    <ContentTemplate>
+<%--<asp:UpdatePanel runat="server" ID="divupdatepnl">
+    <ContentTemplate>--%>
         <%-- for first three pie charts--%>
         <div class="row">
             <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
@@ -694,5 +700,5 @@
                 </div>
             </div>
         </div>
-    </ContentTemplate>
-</asp:UpdatePanel>
+  <%--  </ContentTemplate>
+</asp:UpdatePanel>--%>
