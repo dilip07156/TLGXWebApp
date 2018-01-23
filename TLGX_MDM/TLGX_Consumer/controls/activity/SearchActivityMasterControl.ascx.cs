@@ -442,7 +442,7 @@ namespace TLGX_Consumer.controls.activity
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Get Hyperlink 
-                System.Web.UI.Control hlf = e.Row.Cells[10];
+                //System.Web.UI.Control hlf = e.Row.Cells[10];
 
                 if (e.Row.Cells[8].Text.ToUpper() == "REVIEW COMPLETED")
                 {
