@@ -29464,6 +29464,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductCategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -29623,6 +29626,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }
@@ -45827,18 +45843,18 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID);
+        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliers", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersDC_ErrorStatusFaul" +
             "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers();
+        TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliers", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync();
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -48137,20 +48153,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddUpdateApplicationAsync(apmgmt);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID) {
-            return base.Channel.GetMappingStatistics(SupplierID);
+        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId) {
+            return base.Channel.GetMappingStatistics(SupplierID, PriorityId);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID) {
-            return base.Channel.GetMappingStatisticsAsync(SupplierID);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId) {
+            return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers() {
-            return base.Channel.GetMappingStatisticsForSuppliers();
+        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId) {
+            return base.Channel.GetMappingStatisticsForSuppliers(PriorityId);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync() {
-            return base.Channel.GetMappingStatisticsForSuppliersAsync();
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId) {
+            return base.Channel.GetMappingStatisticsForSuppliersAsync(PriorityId);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {

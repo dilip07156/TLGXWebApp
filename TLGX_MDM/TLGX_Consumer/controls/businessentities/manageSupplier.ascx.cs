@@ -79,17 +79,27 @@ namespace TLGX_Consumer.controls.businessentities
                         BindStatus();
                         DropDownList ddlStatusEdit = (DropDownList)frmSupplierDetail.FindControl("ddlStatusEdit");
                         DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
+                        DropDownList ddlPriorityEdit = (DropDownList)frmSupplierDetail.FindControl("ddlPriorityEdit");
+                        if (result[0].StatusCode == string.Empty)
+                            ddlStatusEdit.SelectedIndex = ddlStatusEdit.Items.IndexOf(ddlStatusEdit.Items.FindByText("-Select-"));
+                        else
+                            ddlStatusEdit.SelectedIndex = ddlStatusEdit.Items.IndexOf(ddlStatusEdit.Items.FindByText(result[0].StatusCode));
 
-                        if(result[0].StatusCode==string.Empty)
-                            ddlStatusEdit.Items.FindByText("--Select--").Selected = true;
-                        else
-                            ddlStatusEdit.Items.FindByText(result[0].StatusCode).Selected = true;
                         if (result[0].SupplierType == string.Empty)
-                            ddlSupplierType.Items.FindByText("--Select--").Selected = true;
+                            ddlSupplierType.SelectedIndex = ddlSupplierType.Items.IndexOf(ddlSupplierType.Items.FindByText("-Select-"));
                         else
-                            ddlSupplierType.Items.FindByText(result[0].SupplierType).Selected = true;
-                        //ddlStatusEdit.Items.FindByText(result[0].StatusCode ?? "--Select--").Selected = true;
-                        //ddlSupplierType.Items.FindByText(result[0].SupplierType ?? "--Select--").Selected = true;
+                            ddlSupplierType.SelectedIndex = ddlSupplierType.Items.IndexOf(ddlSupplierType.Items.FindByText(result[0].SupplierType));
+
+                        if (result[0].Priority == null)
+                            ddlPriorityEdit.SelectedIndex = ddlPriorityEdit.Items.IndexOf(ddlPriorityEdit.Items.FindByText("-Select-"));
+                        else
+                            ddlPriorityEdit.SelectedIndex = ddlPriorityEdit.Items.IndexOf(ddlPriorityEdit.Items.FindByValue(Convert.ToString(result[0].Priority)));
+
+
+                        //ddlSupplierType.Items.FindByText(result[0].SupplierType).Selected = true;
+                        //ddlStatusEdit.Items.FindByText(result[0].StatusCode).Selected = true;
+                        //ddlPriorityEdit.SelectedValue = Convert.ToString(result[0].Priority);
+
                     }
                 }
             }
@@ -102,19 +112,25 @@ namespace TLGX_Consumer.controls.businessentities
         protected void frmSupplierDetail_ItemCommand(object sender, FormViewCommandEventArgs e)
         {
             string supplierType;
+            int? priority;
             DropDownList ddlStatusEdit = (DropDownList)frmSupplierDetail.FindControl("ddlStatusEdit");
             DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
+            DropDownList ddlPriorityEdit = (DropDownList)frmSupplierDetail.FindControl("ddlPriorityEdit");
             TextBox txtNameSupplierEdit = (TextBox)frmSupplierDetail.FindControl("txtNameSupplierEdit");
             TextBox txtCodeSupplierEdit = (TextBox)frmSupplierDetail.FindControl("txtCodeSupplierEdit");
             MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
 
             if (e.CommandName == "EditCommand")
             {
-
                 if (ddlSupplierType.SelectedIndex == 0)
                     supplierType = string.Empty;
                 else
                     supplierType = ddlSupplierType.SelectedItem.Text;
+
+                if (ddlPriorityEdit.SelectedIndex == 0)
+                    priority = null;
+                else
+                    priority = Convert.ToInt32(ddlPriorityEdit.SelectedItem.Value);
 
                 _msg = _objMaster.AddUpdateSupplier(new MDMSVC.DC_Supplier()
                 {
@@ -124,7 +140,8 @@ namespace TLGX_Consumer.controls.businessentities
                     SupplierType = supplierType,
                     StatusCode = ddlStatusEdit.SelectedItem.Text,
                     Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    Priority = priority,
 
                 });
                 if (Convert.ToInt32(_msg.StatusCode) == Convert.ToInt32(BootstrapAlertType.Success))

@@ -42,9 +42,10 @@
 
     function getChartData() {
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
+        var PriorityId = '0';
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid },
+            data: { 'Supplier_Id': sid ,'PriorityId': PriorityId},
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -82,14 +83,15 @@
                 var iNodes = 0;
                 var iMappingData = 0;
                 var nxtrun = result[0].NextRun;
-                var date = new Date(nxtrun);
                 if (nxtrun == "Not Scheduled") {
                     $(".nxtrundate").hide();
                 }
-                else if (nxtrun == "1/1/0001 12:00:00 AM") {
+                else if (nxtrun == null) {
                     $(".nxtrundate").append("Next Run is Not scheduled for this supplier");
                 }
                 else {
+                    var t = nxtrun.split(/[- :]/);
+                    var date = new Date(Date.UTC(t[2], t[1] - 1, t[0], t[3], t[4], t[5]));
                     $(".nxtrundate").append("Next Run is scheduled on :&nbsp <br/>" + date);
                 }
                 //Need to get  Data
@@ -297,20 +299,6 @@
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
 <script type="text/javascript">
-    //function pageLoad(sender, args) {
-    //    getChartData();
-    //    //var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "SupplierMarkets";
-    //    var tabName = $("[id*=TabName]").val() != "" ? $("[id*=TabName]").val() : "SupplierStatusChart";
-    //    $('#Tabs a[href="#' + tabName + '"]').tab('show');
-    //    $("#Tabs a").click(function () {
-    //        $("[id*=TabName]").val($(this).attr("href").replace("#", ""));
-    //    });
-    //};
-    //$(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function (e) {
-    //    if (e.target.id == "ShowSupplier") {
-    //        getChartData();
-    //    }
-    //})
     $(document).ready(function () {
         getChartData();
     });
@@ -366,6 +354,15 @@
                                                 <label for="ddlSupplierType">Status</label>
                                                 <asp:DropDownList runat="server" ID="ddlStatusEdit" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="ddlPriorityEdit">Priority</label>
+                                                <asp:DropDownList runat="server" ID="ddlPriorityEdit" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                    <asp:ListItem Value="1">1</asp:ListItem>
+                                                    <asp:ListItem Value="2">2</asp:ListItem>
+                                                    <asp:ListItem Value="3">3</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
