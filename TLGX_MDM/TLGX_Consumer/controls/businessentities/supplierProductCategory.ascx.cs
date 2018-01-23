@@ -124,6 +124,7 @@ namespace TLGX_Consumer.controls.businessentities
                 {
                     frmSupplierProductCategory.ChangeMode(FormViewMode.Insert);
                     frmSupplierProductCategory.DataBind();
+                    BindPageData();
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, _msg.StatusMessage, BootstrapAlertType.Success);
                 }
                 else

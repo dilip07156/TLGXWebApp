@@ -29,7 +29,7 @@
                     <h4 class="panel-title pull-left">
                         <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Activity Media Details (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</a></h4>
-                    <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" OnClientClick="showMediaModal()" />
+                    <%--<asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New" OnClientClick="showMediaModal()" />--%>
                     <div class="col-lg-3 pull-right">
                         <div class="form-group pull-right">
                             <div class="input-group" runat="server" id="divDropdownForEntries">

@@ -7480,6 +7480,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_DaysOfWeek[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_DaysOfWeek))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
@@ -8115,6 +8116,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_DaysOfWeek[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_DaysOfWeek))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
@@ -29462,6 +29464,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductCategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -29621,6 +29626,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }
@@ -30604,6 +30622,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -30658,6 +30679,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_IdField.Equals(value) != true)) {
                     this.Activity_IdField = value;
                     this.RaisePropertyChanged("Activity_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status {
+            get {
+                return this.Activity_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusField, value) != true)) {
+                    this.Activity_StatusField = value;
+                    this.RaisePropertyChanged("Activity_Status");
                 }
             }
         }
@@ -30841,6 +30875,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AffiliationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -30946,6 +30983,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_IdField.Equals(value) != true)) {
                     this.Activity_IdField = value;
                     this.RaisePropertyChanged("Activity_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status {
+            get {
+                return this.Activity_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusField, value) != true)) {
+                    this.Activity_StatusField = value;
+                    this.RaisePropertyChanged("Activity_Status");
                 }
             }
         }
@@ -31765,6 +31815,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Activity_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AffiliationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -31886,6 +31939,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_IdField.Equals(value) != true)) {
                     this.Activity_IdField = value;
                     this.RaisePropertyChanged("Activity_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status {
+            get {
+                return this.Activity_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusField, value) != true)) {
+                    this.Activity_StatusField = value;
+                    this.RaisePropertyChanged("Activity_Status");
                 }
             }
         }
@@ -36703,6 +36769,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_Flavour_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -36778,6 +36847,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_Flavour_IdField.Equals(value) != true)) {
                     this.Activity_Flavour_IdField = value;
                     this.RaisePropertyChanged("Activity_Flavour_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status {
+            get {
+                return this.Activity_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusField, value) != true)) {
+                    this.Activity_StatusField = value;
+                    this.RaisePropertyChanged("Activity_Status");
                 }
             }
         }
@@ -37055,6 +37137,18 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusNotesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Activity_Status_Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_Status_Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AreaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -37233,6 +37327,58 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_IdField.Equals(value) != true)) {
                     this.Activity_IdField = value;
                     this.RaisePropertyChanged("Activity_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status {
+            get {
+                return this.Activity_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusField, value) != true)) {
+                    this.Activity_StatusField = value;
+                    this.RaisePropertyChanged("Activity_Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_StatusNotes {
+            get {
+                return this.Activity_StatusNotesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusNotesField, value) != true)) {
+                    this.Activity_StatusNotesField = value;
+                    this.RaisePropertyChanged("Activity_StatusNotes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Activity_Status_Edit_Date {
+            get {
+                return this.Activity_Status_Edit_DateField;
+            }
+            set {
+                if ((this.Activity_Status_Edit_DateField.Equals(value) != true)) {
+                    this.Activity_Status_Edit_DateField = value;
+                    this.RaisePropertyChanged("Activity_Status_Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status_Edit_User {
+            get {
+                return this.Activity_Status_Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_Status_Edit_UserField, value) != true)) {
+                    this.Activity_Status_Edit_UserField = value;
+                    this.RaisePropertyChanged("Activity_Status_Edit_User");
                 }
             }
         }
@@ -37900,7 +38046,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_FlavourOptions_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Activity_Flavour_IdField;
+        private System.Nullable<System.Guid> Activity_Flavour_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupProdCatField;
@@ -37978,7 +38124,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Activity_Flavour_Id {
+        public System.Nullable<System.Guid> Activity_Flavour_Id {
             get {
                 return this.Activity_Flavour_IdField;
             }
@@ -42680,6 +42826,115 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_ActivityFlavoursStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_ActivityFlavoursStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_Flavour_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_StatusNotesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Activity_Status_Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Activity_Status_Edit_UserField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_Flavour_Id {
+            get {
+                return this.Activity_Flavour_IdField;
+            }
+            set {
+                if ((this.Activity_Flavour_IdField.Equals(value) != true)) {
+                    this.Activity_Flavour_IdField = value;
+                    this.RaisePropertyChanged("Activity_Flavour_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status {
+            get {
+                return this.Activity_StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusField, value) != true)) {
+                    this.Activity_StatusField = value;
+                    this.RaisePropertyChanged("Activity_Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_StatusNotes {
+            get {
+                return this.Activity_StatusNotesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_StatusNotesField, value) != true)) {
+                    this.Activity_StatusNotesField = value;
+                    this.RaisePropertyChanged("Activity_StatusNotes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Activity_Status_Edit_Date {
+            get {
+                return this.Activity_Status_Edit_DateField;
+            }
+            set {
+                if ((this.Activity_Status_Edit_DateField.Equals(value) != true)) {
+                    this.Activity_Status_Edit_DateField = value;
+                    this.RaisePropertyChanged("Activity_Status_Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Activity_Status_Edit_User {
+            get {
+                return this.Activity_Status_Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Activity_Status_Edit_UserField, value) != true)) {
+                    this.Activity_Status_Edit_UserField = value;
+                    this.RaisePropertyChanged("Activity_Status_Edit_User");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_State_City_Area_Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
     [System.SerializableAttribute()]
     public partial class DC_Country_State_City_Area_Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -45588,18 +45843,18 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID);
+        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliers", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersDC_ErrorStatusFaul" +
             "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers();
+        TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliers", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync();
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -46236,6 +46491,28 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityOperatingDays", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityOperatingDaysResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityOperatingDaysAsync(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/GetActivityNonOperatingDaysResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityNonOperatingDaysDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] GetActivityNonOperatingDays(string Activity_Flavour_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/GetActivityNonOperatingDaysResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[]> GetActivityNonOperatingDaysAsync(string Activity_Flavour_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDaysResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDaysDC_ErrorStatusFault" +
+            "", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityNonOperatingDays(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDaysResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityNonOperatingDaysAsync(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatus", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatusResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityFlavoursStatus(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus _obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatus", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatusResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityFlavoursStatusAsync(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus _obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -47876,20 +48153,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddUpdateApplicationAsync(apmgmt);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID) {
-            return base.Channel.GetMappingStatistics(SupplierID);
+        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId) {
+            return base.Channel.GetMappingStatistics(SupplierID, PriorityId);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID) {
-            return base.Channel.GetMappingStatisticsAsync(SupplierID);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId) {
+            return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers() {
-            return base.Channel.GetMappingStatisticsForSuppliers();
+        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId) {
+            return base.Channel.GetMappingStatisticsForSuppliers(PriorityId);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync() {
-            return base.Channel.GetMappingStatisticsForSuppliersAsync();
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId) {
+            return base.Channel.GetMappingStatisticsForSuppliersAsync(PriorityId);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
@@ -48570,6 +48847,30 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityOperatingDaysAsync(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ) {
             return base.Channel.AddUpdateActivityOperatingDaysAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] GetActivityNonOperatingDays(string Activity_Flavour_Id) {
+            return base.Channel.GetActivityNonOperatingDays(Activity_Flavour_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[]> GetActivityNonOperatingDaysAsync(string Activity_Flavour_Id) {
+            return base.Channel.GetActivityNonOperatingDaysAsync(Activity_Flavour_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityNonOperatingDays(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ) {
+            return base.Channel.AddUpdateActivityNonOperatingDays(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityNonOperatingDaysAsync(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ) {
+            return base.Channel.AddUpdateActivityNonOperatingDaysAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityFlavoursStatus(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus _obj) {
+            return base.Channel.AddUpdateActivityFlavoursStatus(_obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityFlavoursStatusAsync(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus _obj) {
+            return base.Channel.AddUpdateActivityFlavoursStatusAsync(_obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request) {

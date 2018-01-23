@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SearchActivityMasterControl.ascx.cs" Inherits="TLGX_Consumer.controls.activity.SearchActivityMasterControl" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script type="text/javascript">
     function showAddNewActivityModal() {
         $("#moAddNewActivityModal").modal('show');
@@ -7,9 +7,28 @@
     function closeAddNewActivityModal() {
         $("#moAddNewActivityModal").modal('hide');
     }
-    //function page_load(sender, args) {
-    //    closeAddNewActivityModal();
-    //}
+
+    function preventNumberInput(e) {
+        debugger;
+        var totalpagecount = document.getElementById("lblTotalPageCount");
+        var totalpagecountval = parseInt(totalpagecount.innerHTML, 10);
+        var inputpage = document.getElementById("txtGoToPageNo");
+        var inputpageval = parseInt(inputpage.value, 10);
+        
+        var finalVal = parseInt((inputpageval + e.key), 10);
+        if (finalVal <= 0) {
+            e.preventDefault();
+        }
+        else if (e.keyCode == 8) {
+
+        }
+        else if (finalVal > totalpagecountval) {
+            e.preventDefault();
+        }
+
+
+    }
+
 </script>
 <asp:UpdatePanel ID="updSearchDDLChange" runat="server">
     <ContentTemplate>
@@ -30,7 +49,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <br />
-                                        <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="HotelSearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                                        <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ActivitySearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                                     </div>
                                 </div>
 
@@ -121,6 +140,18 @@
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <label class="control-label col-sm-6" for="ddlActivityFlavourStatus">
+                                            Activity Status
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <asp:DropDownList ID="ddlActivityFlavourStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
                                 <div class="col-sm-6">
@@ -206,14 +237,36 @@
                         <a data-toggle="collapse" data-parent="#searchResult" href="#collapseSearchResult">Search Results (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server"></asp:Label>)</a>
                     </h4>
+                    <div id="Div1" runat="server" class="pull-right">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <label class="input-group-addon" for="ddlPageSize"><strong>Page </strong></label>
+                                    <asp:TextBox ID="txtGoToPageNo" ClientIDMode="Static" runat="server" CssClass="form-control" Style="width: 70px;"
+                                        onKeyPress="preventNumberInput(event);"></asp:TextBox>
+                                    <%--onkeyup="preventNumberInput(event);"--%>
+                                    <cc1:FilteredTextBoxExtender ID="axfte_txtGoToPageNo" runat="server" FilterType="Numbers" TargetControlID="txtGoToPageNo" />
+                                    <label class="input-group-addon" for="ddlPageSize">
+                                        <strong>Out Of
+                                        <asp:Label ID="lblTotalPageCount" ClientIDMode="Static" runat="server"></asp:Label>
+                                        </strong>
+                                    </label>
+                                    <span class="input-group-btn">
+                                        <asp:Button CssClass="btn btn-primary" runat="server" ID="btnGoToPagNo" Text="Go" OnClick="btnGoToPagNo_Click" /></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body">
+                    <div class="panel-body" > <%--style="padding:0;border:0px;height:450px;overflow-y:auto"--%>
 
                         <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
-                            EmptyDataText="No data for search conditions" CssClass="table table-hover table-striped"
-                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging">
+                            EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
+                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging"
+                            OnRowDataBound="gvActivitySearch_RowDataBound" OnRowCommand="gvActivitySearch_RowCommand" PagerSettings-Position="TopAndBottom">
+                            <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
@@ -223,9 +276,19 @@
                                 <asp:BoundField DataField="Country" HeaderText="Country" />
                                 <asp:BoundField DataField="City" HeaderText="City" />
                                 <asp:BoundField DataField="SupplierCode" HeaderText="Supplier" />
-                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
+                                <asp:BoundField DataField="Activity_Status" HeaderText="Review Status" />
+                                <asp:TemplateField ShowHeader="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default btn-sm"
+                                            Enabled="true" CommandArgument='<%# Bind("Activity_Flavour_Id") %>'>
+                                                            Select
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select"
+                                    ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
                             </Columns>
-                            <PagerStyle CssClass="pagination-ys" />
+
                         </asp:GridView>
                     </div>
                 </div>

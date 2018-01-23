@@ -306,6 +306,29 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityDaysOfWeek"], RQParams, typeof(List<MDMSVC.DC_Activity_OperatingDays>), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+
+        public List<DC_Activity_OperatingDays> GetActivityNonOperatingDays(Guid Activity_Flavour_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetActivityNonOperatingDays"], Activity_Flavour_Id), typeof(List<MDMSVC.DC_Activity_OperatingDays>), out result);
+            return result as List<DC_Activity_OperatingDays>;
+        }
+        public DC_Message AddUpdateActivityNonOperatingDays(List<MDMSVC.DC_Activity_OperatingDays> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_AddUpdateActivityNonOperatingDays"], RQParams, typeof(List<MDMSVC.DC_Activity_OperatingDays>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+        #endregion
+
+        #region Activity Flavour Status
+        public DC_Message AddUpdateActivityFlavoursStatus(MDMSVC.DC_ActivityFlavoursStatus RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Flavour_Status"], RQParams, typeof(List<MDMSVC.DC_ActivityFlavoursStatus>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
     }
 }

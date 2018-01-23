@@ -70,8 +70,6 @@
 
     function setDurationType(dropdown, type) {
 
-        debugger;
-
         var value = dropdown.options[dropdown.selectedIndex].text;
 
         var row = dropdown.parentNode.parentNode;
@@ -88,28 +86,20 @@
         var textToFind = "";
 
         if (!isNaN(hour) && !isNaN(day) && !isNaN(minute)) {
-            if (day === 1 && hour === 0 && minute === 0) {
-                textToFind = "Full Day";
-            } else if (day === 1 && hour === 0 && minute > 0) {
-                textToFind = "Overnight";
-            } else if (day === 1 && hour > 0 && minute === 0) {
-                textToFind = "Overnight";
-            } else if (day > 1) {
-                textToFind = "Overnight";
-            } else if (day === 0 && hour >= 8) {
-                textToFind = "Full Day";
-            } else if (day === 0 && hour === 4 && minute != 0) {
-                textToFind = "Half Day";
-            } else if (day === 0 && hour > 4 && hour < 8) {
-                textToFind = "Half Day";
-            } else if (day === 0 && hour <= 4 && minute === 0) {
-                textToFind = "Shortbreaks";
+            if (day === 0 && hour === 0 && minute === 0) {
+                textToFind = "-Select-";
             }
-            else if (day === 0 && hour === 0 && minute != 0) {
-                textToFind = "Shortbreaks";
+            else if ((day === 0 && hour === 4 && minute > 0) || (day === 0 && hour > 4) || (day === 1 && hour === 0 && minute === 0)) {
+                textToFind = "Full Day";
             }
-            else if (day === 0 && hour > 0 && hour <= 4 && minute != 0) {
-                textToFind = "Shortbreaks";
+            else if (day > 1 || (day === 1 && (hour > 0 || minute > 0))) {
+                textToFind = "Overnight";
+            }
+            else if ((day === 0 && hour < 4) || (day === 0 && hour === 4 && minute === 0)) {
+                textToFind = "Half Day";
+            }
+            else {
+                textToFind = "-Select-";
             }
         }
 
@@ -131,6 +121,18 @@
 
 
     }
+
+    function SelectAllToDelete(flag) {
+        var chckboxtoDetleteOperation = document.getElementsByClassName("chkToDeleteOperation");
+        for (var i = 0; i < chckboxtoDetleteOperation.length; i++) {
+            chckboxtoDetleteOperation[i].children[0].checked = flag;
+        }
+        var chckboxtoDetleteDays = document.getElementsByClassName("chkToDeleteDays");
+        for (var i = 0; i < chckboxtoDetleteDays.length; i++) {
+            chckboxtoDetleteDays[i].children[0].checked = flag;
+        }
+
+    }
 </script>
 
 <style>
@@ -142,14 +144,22 @@
         padding: 0px !important;
         width: 30px !important;
     }
-</style>
 
+    .floatingButton {
+        text-align: right;
+        width: 80%;
+        position: fixed;
+        bottom: 15px;
+        z-index: 1000;
+    }
+</style>
 <asp:UpdatePanel ID="upActivityFlavour" runat="server">
     <ContentTemplate>
 
         <div class="row">
             <div class="col-lg-12">
                 <div id="dvMsg" runat="server" style="display: none;"></div>
+                <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
             </div>
         </div>
 
@@ -159,14 +169,12 @@
             </div>
         </div>
 
-        <div class="row sticky-top">
-            <div class="col-lg-12">
-                <div class="form-group pull-right">
-                    <asp:LinkButton ID="btnSave" runat="server" CausesValidation="false" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click" />
-                    <br />
-                </div>
-            </div>
+        <div class="floatingButton">
+            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="false" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click" />
+            <br />
+
         </div>
+
 
         <div class="row">
             <div class="col-lg-7">
@@ -404,7 +412,29 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>Operating Dates & Days of Week</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Operating Dates & Days of Week</h4>
+                            </div>
+                            <div class="col-md-3 ">
+                                <table class="table">
+                                    <tr>
+                                        <td>
+                                            <label class="control-label">Select</label></td>
+                                        <td>
+                                            <button class="btn btn-link" style="padding: 0px !important;" onclick="SelectAllToDelete(true);">All</button></td>
+                                        <td>
+                                            <button class="btn btn-link" style="padding: 0px !important;" onclick="SelectAllToDelete(false);">None</button></td>
+                                        <td>
+                                            <asp:Button runat="server" Style="padding: 0px !important;" CssClass="btn btn-link" Text="Remove Selected" OnClick="btnRemoveSelectedOperationDays_Click" ID="btnRemoveSelectedOperationDays" /></td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <div class="col-md-3 ">
+                                &nbsp;
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
 
@@ -465,10 +495,13 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-1">
-                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfOperation_Id") %>'>
+                                        <div class="col-sm-1" style="padding-left: 0px;">
+                                            <div class="input-group">
+                                                <asp:CheckBox ID="chkToDeleteOperation" runat="server" CssClass="chkToDeleteOperation input-group-addon" />
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfOperation_Id") %>'>
                                                     <i class="glyphicon glyphicon-trash"></i>
-                                            </asp:LinkButton>
+                                                </asp:LinkButton>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -796,10 +829,13 @@
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-xs-1">
-                                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveDaysOfWeek" CommandName="RemoveDaysOfWeek" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfWeek_ID") %>'>
+                                                        <div class="col-xs-1" style="padding-left: 0px;">
+                                                            <div class="input-group">
+                                                                <asp:CheckBox ID="chkToDeleteDays" runat="server" CssClass="chkToDeleteDays input-group-addon" />
+                                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveDaysOfWeek" CommandName="RemoveDaysOfWeek" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfWeek_ID") %>'>
                                                             <i class="glyphicon glyphicon-trash"></i>
-                                                            </asp:LinkButton>
+                                                                </asp:LinkButton>
+                                                            </div>
                                                         </div>
 
                                                     </div>
@@ -1079,49 +1115,49 @@
                                                                             <label class="control-label">
                                                                                 ALL
                                                                                     <div>
-                                                                                        <input type="checkbox" id="chkAll" name="All" aria-label="Checkbox for daily" onchange="MutExChkList(this)">
+                                                                                        <input type="checkbox" id="chkAll" name="All" aria-label="Checkbox for daily" onchange="MutExChkList(this)" />
                                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 M
                                                                     <div>
-                                                                        <input type="checkbox" id="chkMon" runat="server" name="Monday">
+                                                                        <input type="checkbox" id="chkMon" runat="server" name="Monday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 T
                                                                     <div>
-                                                                        <input type="checkbox" id="chkTues" runat="server" name="Tuesday">
+                                                                        <input type="checkbox" id="chkTues" runat="server" name="Tuesday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 W
                                                                     <div>
-                                                                        <input type="checkbox" id="chkWed" runat="server" name="Wednesday">
+                                                                        <input type="checkbox" id="chkWed" runat="server" name="Wednesday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 TH
                                                                     <div>
-                                                                        <input type="checkbox" id="chkThurs" runat="server" name="Thursday">
+                                                                        <input type="checkbox" id="chkThurs" runat="server" name="Thursday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 F
                                                                     <div>
-                                                                        <input type="checkbox" id="chkFri" runat="server" name="Friday">
+                                                                        <input type="checkbox" id="chkFri" runat="server" name="Friday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 S
                                                                     <div>
-                                                                        <input type="checkbox" id="chkSat" runat="server" name="Saturday">
+                                                                        <input type="checkbox" id="chkSat" runat="server" name="Saturday" />
                                                                     </div>
                                                                             </label>
                                                                             <label class="control-label">
                                                                                 SU
                                                                     <div>
-                                                                        <input type="checkbox" id="chkSun" runat="server" name="Sunday">
+                                                                        <input type="checkbox" id="chkSun" runat="server" name="Sunday" />
                                                                     </div>
                                                                             </label>
                                                                         </div>
@@ -1227,13 +1263,13 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <tr>
-                                        <td>
+                                        <td style="word-wrap: break-word;">
                                             <em><strong><%# DataBinder.Eval(Container.DataItem, "AttributeType") %></strong></em>
                                         </td>
-                                        <td>
+                                        <td style="word-wrap: break-word;">
                                             <em><%# DataBinder.Eval(Container.DataItem, "AttributeSubType") %></em>
                                         </td>
-                                        <td>
+                                        <td style="word-break: break-all;">
                                             <em><%# DataBinder.Eval(Container.DataItem, "AttributeValue") %></em>
                                         </td>
                                     </tr>
@@ -1251,3 +1287,5 @@
 
     </ContentTemplate>
 </asp:UpdatePanel>
+
+

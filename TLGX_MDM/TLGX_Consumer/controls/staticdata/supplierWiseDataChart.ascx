@@ -31,9 +31,10 @@
     function getChartData() {
         //get supplierid from page;
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
+        var PriorityId = '0';
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid },
+            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -46,14 +47,15 @@
                 var iNodes = 0;
                 var iMappingData = 0;
                 var nxtrun = result[0].NextRun;
-                var date = new Date(nxtrun);
                 if (nxtrun == "Not Scheduled") {
                     $(".nxtrundate").hide();
                 }
-                else if (nxtrun == "1/1/0001 12:00:00 AM") {
+                else if (nxtrun == null) {
                     $(".nxtrundate").append("Next Run is Not scheduled for this supplier");
                 }
                 else {
+                    var t = nxtrun.split(/[- :]/);
+                    var date = new Date(Date.UTC(t[2], t[1] - 1, t[0], t[3], t[4], t[5]));
                     $(".nxtrundate").append("Next Run is scheduled on :&nbsp <br/>" + date);
                 }
                 //Need to get  Data

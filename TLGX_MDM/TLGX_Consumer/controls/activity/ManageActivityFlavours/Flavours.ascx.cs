@@ -12,6 +12,7 @@ using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
 using System.Text.RegularExpressions;
 using AjaxControlToolkit;
+using System.Drawing;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
@@ -28,11 +29,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             if (!IsPostBack)
             {
-                getFlavourInfo();
+                getFlavourInfo(string.Empty);
             }
         }
 
-        private void getFlavourInfo()
+        public void getFlavourInfo(string calledfrom)
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
 
@@ -45,6 +46,34 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     //lblProductName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
                     Label ParentProdName = (Label)this.Parent.FindControl("lblProductName");
                     ParentProdName.Text = HttpUtility.HtmlEncode(result[0].ProductName) + "<em> (By: " + result[0].SupplierName + ")</em>";
+
+                    Label ParentProdStatus = (Label)this.Parent.FindControl("lblActivityStatus");
+                    ParentProdStatus.Text = HttpUtility.HtmlEncode(result[0].Activity_Status);
+
+                    HtmlGenericControl dvproductheader = (HtmlGenericControl)this.Parent.FindControl("dvproductheader");
+                    //Text Colour coding
+
+                    if (ParentProdStatus.Text.ToUpper() == "REVIEW COMPLETED")
+                    {
+                        dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Green.Name);
+                    }
+                    else if (ParentProdStatus.Text.ToUpper() == "UNDER REVIEW")
+                    {
+                        dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Orange.Name);
+                    }
+                    else if (ParentProdStatus.Text.ToUpper() == "NOT YET REVIEWED")
+                    {
+                        dvproductheader.Style.Add(HtmlTextWriterStyle.Color, Color.Red.Name);
+                    }
+
+                    if (calledfrom == "header")
+                        return;
+
+                    DropDownList parentddlActivity_Flavour_Status = (DropDownList)this.Parent.FindControl("ddlActivity_Flavour_Status");
+                    parentddlActivity_Flavour_Status.SelectedIndex = parentddlActivity_Flavour_Status.Items.IndexOf(parentddlActivity_Flavour_Status.Items.FindByText(result[0].Activity_Status.ToString()));
+
+                    TextBox txtActivity_Flavour_StatusNotes = (TextBox)this.Parent.FindControl("txtActivity_Flavour_StatusNotes");
+                    txtActivity_Flavour_StatusNotes.Text = HttpUtility.HtmlEncode(result[0].Activity_StatusNotes);
 
                     lblSuppCity.Text = result[0].SupplierCity;
                     lblSuppCountry.Text = result[0].SupplierCountry;
@@ -91,6 +120,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
         }
+
+
 
         private void BindActivityTypes(DC_Activity_CategoryTypes[] Categories)
         {
@@ -354,14 +385,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                         }
                     }
 
-                    var Physicalntensity = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "Physicalntensity").Select(s => s.AttributeValue).FirstOrDefault();
+                    var PhysicalIntensity = result.Where(w => w.AttributeType == "Product" && w.AttributeSubType == "PhysicalIntensity").Select(s => s.AttributeValue).FirstOrDefault();
                     ddlPhysicalIntensity.ClearSelection();
 
-                    if (!string.IsNullOrWhiteSpace(Physicalntensity))
+                    if (!string.IsNullOrWhiteSpace(PhysicalIntensity))
                     {
-                        if (ddlPhysicalIntensity.Items.FindByText(Physicalntensity) != null)
+                        if (ddlPhysicalIntensity.Items.FindByText(PhysicalIntensity) != null)
                         {
-                            ddlPhysicalIntensity.Items.FindByText(Physicalntensity).Selected = true;
+                            ddlPhysicalIntensity.Items.FindByText(PhysicalIntensity).Selected = true;
                         }
                     }
                 }
@@ -602,7 +633,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     });
                 }
             }
-            FlavData.Categories  = CategoryTypes.ToArray();
+            FlavData.Categories = CategoryTypes.ToArray();
 
             //SubCat
             List<SubCategoryData> ptl = new List<SubCategoryData>();
@@ -708,7 +739,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 Activity_Flavour_Id = Activity_Flavour_Id,
                 AttributeType = "Product",
-                AttributeSubType = "Physicalntensity",
+                AttributeSubType = "PhysicalIntensity",
                 AttributeValues = AttributeValues.ToArray(),
                 User = System.Web.HttpContext.Current.User.Identity.Name
             });
@@ -719,7 +750,20 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             #region Update DaysOfOperation
             var OperatingDaysToUpdate = CollectAllOperatingDaysInfoOnPage();
+            repOperatingDays.DataSource = OperatingDaysToUpdate;
+            repOperatingDays.DataBind();
+            if (OperatingDaysToUpdate.Count == 0)
+            {
+                OperatingDaysToUpdate.Add(new DC_Activity_OperatingDays
+                {
+                    Activity_DaysOfOperation_Id = Guid.Empty,
+                    Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]),
+                    DaysOfWeek = new List<DC_Activity_DaysOfWeek>().ToArray()
+                });
+            }
             var resultUpdateDOO = AccSvc.AddUpdateActivityDaysOfWeek(OperatingDaysToUpdate);
+
+           
             #endregion
 
             BootstrapAlert.BootstrapAlertMessage(dvMsg, "Flavour updated successfully", BootstrapAlertType.Success);
@@ -1176,84 +1220,99 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
                 {
+
+
                     MDMSVC.DC_Activity_OperatingDays OpDay = new DC_Activity_OperatingDays();
-
-                    CheckBox chkSpecificOperatingDays = (CheckBox)item.FindControl("chkSpecificOperatingDays");
-                    TextBox txtFrom = (TextBox)item.FindControl("txtFrom");
-                    TextBox txtTo = (TextBox)item.FindControl("txtTo");
-                    Repeater repDaysOfWeek = (Repeater)item.FindControl("repDaysOfWeek");
-                    LinkButton btnRemoveOperatingDays = (LinkButton)item.FindControl("btnRemoveOperatingDays");
-
-                    OpDay.Activity_DaysOfOperation_Id = Guid.Parse(btnRemoveOperatingDays.CommandArgument);
-                    OpDay.Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
-                    OpDay.IsOperatingDays = true;
-                    if (!string.IsNullOrWhiteSpace(txtFrom.Text))
+                    CheckBox chkToDeleteOperation = (CheckBox)item.FindControl("chkToDeleteOperation");
+                    //Check Checkbox to delete operation
+                    if (chkToDeleteOperation != null && !chkToDeleteOperation.Checked)
                     {
-                        OpDay.FromDate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    }
-                    if (!string.IsNullOrWhiteSpace(txtTo.Text))
-                    {
-                        OpDay.EndDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    }
-                    OpDay.EditUser = System.Web.HttpContext.Current.User.Identity.Name;
-                    OpDay.IsActive = true;
 
-                    List<MDMSVC.DC_Activity_DaysOfWeek> WeekDayList = new List<MDMSVC.DC_Activity_DaysOfWeek>();
+                        CheckBox chkSpecificOperatingDays = (CheckBox)item.FindControl("chkSpecificOperatingDays");
 
-                    foreach (RepeaterItem itemDOW in repDaysOfWeek.Items)
-                    {
-                        if (itemDOW.ItemType == ListItemType.Item || itemDOW.ItemType == ListItemType.AlternatingItem)
+                        TextBox txtFrom = (TextBox)item.FindControl("txtFrom");
+                        TextBox txtTo = (TextBox)item.FindControl("txtTo");
+                        Repeater repDaysOfWeek = (Repeater)item.FindControl("repDaysOfWeek");
+                        LinkButton btnRemoveOperatingDays = (LinkButton)item.FindControl("btnRemoveOperatingDays");
+
+                        OpDay.Activity_DaysOfOperation_Id = Guid.Parse(btnRemoveOperatingDays.CommandArgument);
+                        OpDay.Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
+                        OpDay.IsOperatingDays = true;
+                        if (!string.IsNullOrWhiteSpace(txtFrom.Text))
                         {
-                            TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
-                            HiddenField hdnDuration = (HiddenField)itemDOW.FindControl("hdnDuration");
-                            DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
-                            DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
-                            HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
-                            HtmlInputCheckBox chkTues = (HtmlInputCheckBox)itemDOW.FindControl("chkTues");
-                            HtmlInputCheckBox chkWed = (HtmlInputCheckBox)itemDOW.FindControl("chkWed");
-                            HtmlInputCheckBox chkThurs = (HtmlInputCheckBox)itemDOW.FindControl("chkThurs");
-                            HtmlInputCheckBox chkFri = (HtmlInputCheckBox)itemDOW.FindControl("chkFri");
-                            HtmlInputCheckBox chkSat = (HtmlInputCheckBox)itemDOW.FindControl("chkSat");
-                            HtmlInputCheckBox chkSun = (HtmlInputCheckBox)itemDOW.FindControl("chkSun");
-                            LinkButton btnRemoveDaysOfWeek = (LinkButton)itemDOW.FindControl("btnRemoveDaysOfWeek");
-
-                            Label lblSupplierStartTime = (Label)itemDOW.FindControl("lblSupplierStartTime");
-                            Label lblSupplierDuration = (Label)itemDOW.FindControl("lblSupplierDuration");
-                            Label lblSupplierSession = (Label)itemDOW.FindControl("lblSupplierSession");
-                            Label lblSupplierFrequency = (Label)itemDOW.FindControl("lblSupplierFrequency");
-
-                            DropDownList ddlDurationDay = (DropDownList)itemDOW.FindControl("ddlDurationDay");
-                            DropDownList ddlDurationHour = (DropDownList)itemDOW.FindControl("ddlDurationHour");
-                            DropDownList ddlDurationMinute = (DropDownList)itemDOW.FindControl("ddlDurationMinute");
-
-                            WeekDayList.Add(new DC_Activity_DaysOfWeek
-                            {
-                                Activity_DaysOfOperation_Id = OpDay.Activity_DaysOfOperation_Id,
-                                IsActive = true,
-                                Activity_Flavor_ID = OpDay.Activity_Flavor_ID,
-                                Activity_DaysOfWeek_ID = Guid.Parse(btnRemoveDaysOfWeek.CommandArgument),
-                                Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
-                                Fri = chkFri.Checked,
-                                Mon = chkMon.Checked,
-                                Sat = chkSat.Checked,
-                                Session = (ddlSession.SelectedIndex == 0 ? string.Empty : ddlSession.SelectedItem.Text),
-                                Sun = chkSun.Checked,
-                                StartTime = txtStartTime.Text,
-                                Thur = chkThurs.Checked,
-                                Tues = chkTues.Checked,
-                                Wed = chkWed.Checked,
-                                SupplierDuration = lblSupplierDuration.Text,
-                                SupplierFrequency = lblSupplierFrequency.Text,
-                                SupplierSession = lblSupplierSession.Text,
-                                SupplierStartTime = lblSupplierStartTime.Text,
-                                DurationType = (ddlDurationType.SelectedIndex == 0 ? string.Empty : ddlDurationType.SelectedItem.Text)
-                            });
+                            OpDay.FromDate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                         }
+                        if (!string.IsNullOrWhiteSpace(txtTo.Text))
+                        {
+                            OpDay.EndDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                        }
+                        OpDay.EditUser = System.Web.HttpContext.Current.User.Identity.Name;
+                        OpDay.IsActive = true;
+
+                        List<MDMSVC.DC_Activity_DaysOfWeek> WeekDayList = new List<MDMSVC.DC_Activity_DaysOfWeek>();
+
+                        foreach (RepeaterItem itemDOW in repDaysOfWeek.Items)
+                        {
+                            if (itemDOW.ItemType == ListItemType.Item || itemDOW.ItemType == ListItemType.AlternatingItem)
+                            {
+                                CheckBox chkToDeleteDays = (CheckBox)itemDOW.FindControl("chkToDeleteDays");
+                                //Check Checkbox to delete operation
+                                if (chkToDeleteDays != null && !chkToDeleteDays.Checked)
+                                {
+                                    TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
+                                    HiddenField hdnDuration = (HiddenField)itemDOW.FindControl("hdnDuration");
+                                    DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
+                                    DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
+                                    HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
+                                    HtmlInputCheckBox chkTues = (HtmlInputCheckBox)itemDOW.FindControl("chkTues");
+                                    HtmlInputCheckBox chkWed = (HtmlInputCheckBox)itemDOW.FindControl("chkWed");
+                                    HtmlInputCheckBox chkThurs = (HtmlInputCheckBox)itemDOW.FindControl("chkThurs");
+                                    HtmlInputCheckBox chkFri = (HtmlInputCheckBox)itemDOW.FindControl("chkFri");
+                                    HtmlInputCheckBox chkSat = (HtmlInputCheckBox)itemDOW.FindControl("chkSat");
+                                    HtmlInputCheckBox chkSun = (HtmlInputCheckBox)itemDOW.FindControl("chkSun");
+                                    LinkButton btnRemoveDaysOfWeek = (LinkButton)itemDOW.FindControl("btnRemoveDaysOfWeek");
+
+                                    Label lblSupplierStartTime = (Label)itemDOW.FindControl("lblSupplierStartTime");
+                                    Label lblSupplierDuration = (Label)itemDOW.FindControl("lblSupplierDuration");
+                                    Label lblSupplierSession = (Label)itemDOW.FindControl("lblSupplierSession");
+                                    Label lblSupplierFrequency = (Label)itemDOW.FindControl("lblSupplierFrequency");
+
+                                    DropDownList ddlDurationDay = (DropDownList)itemDOW.FindControl("ddlDurationDay");
+                                    DropDownList ddlDurationHour = (DropDownList)itemDOW.FindControl("ddlDurationHour");
+                                    DropDownList ddlDurationMinute = (DropDownList)itemDOW.FindControl("ddlDurationMinute");
+
+                                    WeekDayList.Add(new DC_Activity_DaysOfWeek
+                                    {
+                                        Activity_DaysOfOperation_Id = OpDay.Activity_DaysOfOperation_Id,
+                                        IsActive = true,
+                                        Activity_Flavor_ID = OpDay.Activity_Flavor_ID,
+                                        Activity_DaysOfWeek_ID = Guid.Parse(btnRemoveDaysOfWeek.CommandArgument),
+                                        //  Duration = (hdnDuration.Value == string.Empty ? (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text) : hdnDuration.Value),
+                                        Duration = (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text),
+
+                                        Fri = chkFri.Checked,
+                                        Mon = chkMon.Checked,
+                                        Sat = chkSat.Checked,
+                                        Session = (ddlSession.SelectedIndex == 0 ? string.Empty : ddlSession.SelectedItem.Text),
+                                        Sun = chkSun.Checked,
+                                        StartTime = txtStartTime.Text,
+                                        Thur = chkThurs.Checked,
+                                        Tues = chkTues.Checked,
+                                        Wed = chkWed.Checked,
+                                        SupplierDuration = lblSupplierDuration.Text,
+                                        SupplierFrequency = lblSupplierFrequency.Text,
+                                        SupplierSession = lblSupplierSession.Text,
+                                        SupplierStartTime = lblSupplierStartTime.Text,
+                                        DurationType = (ddlDurationType.SelectedIndex == 0 ? string.Empty : ddlDurationType.SelectedItem.Text)
+                                    });
+                                }
+                            }
+                        }
+
+                        OpDay.DaysOfWeek = WeekDayList.ToArray();
+
+                        OpDaysList.Add(OpDay);
                     }
-
-                    OpDay.DaysOfWeek = WeekDayList.ToArray();
-
-                    OpDaysList.Add(OpDay);
                 }
             }
 
@@ -1287,6 +1346,18 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
             UpdateFlavour(Activity_Flavour_Id);
+
+        }
+
+        protected void btnChangeActivityStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnRemoveSelectedOperationDays_Click(object sender, EventArgs e)
+        {
+            repOperatingDays.DataSource = CollectAllOperatingDaysInfoOnPage();
+            repOperatingDays.DataBind();
         }
     }
 

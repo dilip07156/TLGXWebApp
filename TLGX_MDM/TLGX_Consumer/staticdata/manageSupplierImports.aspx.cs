@@ -39,10 +39,12 @@ namespace TLGX_Consumer.staticdata
             if (ddlSupplierName.SelectedValue == "0")
             {
                 allsupplierdata.Visible = true;
+                ddlPriority.Visible = true;
             }
             else
             {
                 allsupplierdata.Visible = false;
+                ddlPriority.Visible = false;
             }
         }
 
@@ -164,6 +166,6 @@ namespace TLGX_Consumer.staticdata
             {
                 InsertFileRecord("Activity");
             }
-        }
+        } 
     }
 }
