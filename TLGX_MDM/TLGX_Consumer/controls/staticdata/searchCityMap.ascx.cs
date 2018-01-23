@@ -672,7 +672,7 @@ namespace TLGX_Consumer.controls.staticdata
                     countryId = new Guid(ddlSystemCountryName.SelectedItem.Value);
                     cityId = new Guid(ddlSystemCityName.SelectedItem.Value);
                     countryCode = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
-                    cityCode = masters.GetCodeById("city", new Guid(ddlSystemCountryName.SelectedItem.Value));
+                    cityCode = masters.GetCodeById("city", new Guid(ddlSystemCityName.SelectedItem.Value));
                     masterCountryName = ddlSystemCountryName.SelectedItem.Text;
                 }
 
