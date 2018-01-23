@@ -260,7 +260,7 @@
                 </div>
 
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body">
+                    <div class="panel-body" > <%--style="padding:0;border:0px;height:450px;overflow-y:auto"--%>
 
                         <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
