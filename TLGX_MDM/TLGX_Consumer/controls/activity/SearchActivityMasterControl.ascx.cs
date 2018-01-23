@@ -442,7 +442,7 @@ namespace TLGX_Consumer.controls.activity
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //Get Hyperlink 
-                System.Web.UI.Control hlf = e.Row.Cells[10];
+                //System.Web.UI.Control hlf = e.Row.Cells[10];
 
                 if (e.Row.Cells[8].Text.ToUpper() == "REVIEW COMPLETED")
                 {
@@ -552,11 +552,21 @@ namespace TLGX_Consumer.controls.activity
         {
             if (Page.IsValid)
             {
-                int pageindex = Convert.ToInt32(txtGoToPageNo.Text) - 1 ;
-                searchActivityMaster(pageindex, Convert.ToInt32(ddlPageSize.SelectedValue));
+                if (!string.IsNullOrWhiteSpace(lblTotalPageCount.Text))
+                {
+                    int intGoToPageNo = Convert.ToInt32(txtGoToPageNo.Text);
+                    if (intGoToPageNo > 0)
+                    {
+                        if (intGoToPageNo <= Convert.ToInt32(lblTotalPageCount.Text))
+                        {
+                            int pageindex = Convert.ToInt32(txtGoToPageNo.Text) - 1;
+                            searchActivityMaster(pageindex, Convert.ToInt32(ddlPageSize.SelectedValue));
+                        }
+                    }
+                }
             }
         }
-        
+
 
 
         //protected void frmVwNewActivity_ItemCommand(object sender, FormViewCommandEventArgs e)

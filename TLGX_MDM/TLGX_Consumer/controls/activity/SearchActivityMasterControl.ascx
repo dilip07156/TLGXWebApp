@@ -260,7 +260,7 @@
                 </div>
 
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body">
+                    <div class="panel-body" > <%--style="padding:0;border:0px;height:450px;overflow-y:auto"--%>
 
                         <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
@@ -285,8 +285,8 @@
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select"
-                                    ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />
+                               <%-- <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select"
+                                    ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />--%>
                             </Columns>
 
                         </asp:GridView>
