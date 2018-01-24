@@ -102,7 +102,7 @@ namespace TLGX_Consumer.controls.businessentities
             Guid mySupplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]);
             DropDownList ddlProductCategory = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategory");
             DropDownList ddlProductCategorySubType = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategorySubType");
-            HtmlInputCheckBox chckbIsDefaultSupplier = (HtmlInputCheckBox)frmSupplierProductCategory.FindControl("chckbIsDefaultSupplier");
+           // HtmlInputCheckBox chckbIsDefaultSupplier = (HtmlInputCheckBox)frmSupplierProductCategory.FindControl("chckbIsDefaultSupplier");
             MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
             dvMsg.Visible = true;
             if (e.CommandName.ToString() == "Add")
@@ -113,7 +113,7 @@ namespace TLGX_Consumer.controls.businessentities
                     ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text,
                     Create_Date = DateTime.Now,
                     Supplier_Id = mySupplier_Id,
-                    IsDefaultSupplier = chckbIsDefaultSupplier.Checked,
+                    //IsDefaultSupplier = chckbIsDefaultSupplier.Checked,
                     Create_User = System.Web.HttpContext.Current.User.Identity.Name,
                     IsActive = true,
                     Status = "ACT"
@@ -145,7 +145,7 @@ namespace TLGX_Consumer.controls.businessentities
                     Supplier_Id = mySupplier_Id,
                     ProductCategory = ddlProductCategory.SelectedItem.Text,
                     ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text,
-                    IsDefaultSupplier = chckbIsDefaultSupplier.Checked,
+                    //IsDefaultSupplier = chckbIsDefaultSupplier.Checked,
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     IsActive = true,
@@ -192,7 +192,7 @@ namespace TLGX_Consumer.controls.businessentities
                 frmSupplierProductCategory.DataBind();
                 DropDownList ddlProductCategory = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategory");
                 DropDownList ddlProductCategorySubType = (DropDownList)frmSupplierProductCategory.FindControl("ddlProductCategorySubType");
-                HtmlInputCheckBox chckbIsDefaultSupplier = (HtmlInputCheckBox)frmSupplierProductCategory.FindControl("chckbIsDefaultSupplier");
+                //HtmlInputCheckBox chckbIsDefaultSupplier = (HtmlInputCheckBox)frmSupplierProductCategory.FindControl("chckbIsDefaultSupplier");
                 BindProductCategory(ddlProductCategory);
 
                 if (result != null)
@@ -203,8 +203,8 @@ namespace TLGX_Consumer.controls.businessentities
                         BindProductCategorySubType(ddlProductCategorySubType, ddlProductCategory.SelectedValue.ToString());
                         if (ddlProductCategorySubType != null)
                             ddlProductCategorySubType.Items.FindByText(result[0].ProductCategorySubType).Selected = true;
-                        if (chckbIsDefaultSupplier != null)
-                            chckbIsDefaultSupplier.Checked = Convert.ToBoolean(result[0].IsDefaultSupplier);
+                        //if (chckbIsDefaultSupplier != null)
+                           // chckbIsDefaultSupplier.Checked = Convert.ToBoolean(result[0].IsDefaultSupplier);
                     }
             }
             else if (e.CommandName.ToString() == "SoftDelete")

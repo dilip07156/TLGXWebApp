@@ -29,11 +29,11 @@
                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="checkbox">
+                       <%-- <div class="checkbox">
                             <label>
                                 <input type="checkbox" runat="server" id="chckbIsDefaultSupplier">
                                 Is Default Supplier</label>
-                        </div>
+                        </div>--%>
                         <div class="form-group"></div>
                         <asp:LinkButton ID="lnkButton" CommandName="Add" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="supplierProductCategory" CausesValidation="true">Add</asp:LinkButton>
                     </div>
@@ -60,11 +60,11 @@
                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                             </asp:DropDownList>
                         </div>
-                        <div class="checkbox">
+                        <%--<div class="checkbox">
                             <label>
                                 <input type="checkbox" runat="server" id="chckbIsDefaultSupplier">
                                 Is Default Supplier</label>
-                        </div>
+                        </div>--%>
                         <div class="form-group"></div>
                         <asp:LinkButton ID="lnkButton" CommandName="Modify" runat="server" CssClass="btn btn-primary btn-sm" ValidationGroup="supplierProductCategory" CausesValidation="true">Update</asp:LinkButton>
                     </div>
@@ -77,7 +77,7 @@
             <Columns>
                 <asp:BoundField DataField="ProductCategory" HeaderText="ProductCategory" />
                 <asp:BoundField DataField="ProductCategorySubType" HeaderText="ProductCategorySubType" />
-                <asp:BoundField DataField="IsDefaultSupplier" HeaderText="Is Default Supplier" />
+                <%--<asp:BoundField DataField="IsDefaultSupplier" HeaderText="Is Default Supplier" />--%>
                 <asp:TemplateField ShowHeader="false">
                     <ItemTemplate>
                         <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default" Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("Supplier_ProductCategory_Id") %>'>
