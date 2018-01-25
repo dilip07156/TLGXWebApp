@@ -40,6 +40,24 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
+        /// ddlDateOptions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlDateOptions;
+        
+        /// <summary>
+        /// dvSpecificDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvSpecificDate;
+        
+        /// <summary>
         /// txtFrom control.
         /// </summary>
         /// <remarks>
