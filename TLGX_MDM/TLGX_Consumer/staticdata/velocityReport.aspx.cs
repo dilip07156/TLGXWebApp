@@ -28,14 +28,15 @@ namespace TLGX_Consumer.staticdata
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ddlDateOptions.SelectedValue == "6")
+                dvSpecificDate.Style.Add("display", "block");
+            else
+                dvSpecificDate.Style.Add("display", "none");
             if (!IsPostBack)
             {
                 fillsuppliers();
                 getData(true);
-
             }
-
-
         }
         private void fillsuppliers()
         {
@@ -44,9 +45,9 @@ namespace TLGX_Consumer.staticdata
             ddlSupplierName.DataTextField = "Name";
             ddlSupplierName.DataBind();
         }
+
         private void getData(bool IsPageLoad)
         {
-            dvMsg.Style.Add("display", "none");
             string SupplierID = ddlSupplierName.SelectedValue;
             if (SupplierID == "0")
             {
@@ -57,23 +58,15 @@ namespace TLGX_Consumer.staticdata
 
             if (IsPageLoad)
             {
-                DateTime d = DateTime.Today;
-                d = d.AddDays(-1);
-                parm.Fromdate = d; //.ToString("dd-MMM-yyyy");
-                parm.ToDate = d;
-                var formateddate= ((d.Day.ToString().PadLeft(2, '0')) + "/" + (d.Month.ToString().PadLeft(2, '0')) + "/" + d.Year);
-                txtFrom.Text = formateddate;
-                txtTo.Text = formateddate;
+                calculateDateRange(0);
             }
             else
             {
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                calculateDateRange(Convert.ToInt32(ddlDateOptions.SelectedValue));
             }
 
             var res = MapSvc.GetVelocityDashboard(parm);
-
-
+            
             //lstusers.DataSource = res;
             //lstusers.DataBind();
             var iNodes = 0;
@@ -171,59 +164,113 @@ namespace TLGX_Consumer.staticdata
                 gvcountry.DataSource = null;
                 gvcountry.DataBind();
             }
-            
-             if (!blnProductDataExist)
+            if (!blnProductDataExist)
             {
                 gvproduct.DataSource = null;
                 gvproduct.DataBind();
             }
         }
-
-        protected Boolean validatedate()
-        {
-            DateTime Fromdate = new DateTime();
-            DateTime ToDate = new DateTime();
-            try
-            {
-                string fd = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
-                Fromdate = Convert.ToDateTime(fd);
-                string td = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
-                ToDate = Convert.ToDateTime(td);
-
-                TimeSpan diff = ToDate - Fromdate;
-                int days = diff.Days;
-               if (days > 30)
-                {
-                   return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
+        
         protected void btnViewStatus_Click(object sender, EventArgs e)
         {
-            dvMsg.Style.Add("display", "none");
-            String Fmdate = txtFrom.Text;
-            String tdate = txtTo.Text;
-            var res = validatedate();
-            if (res == false)
+                getData(false);
+        }
+
+        protected void calculateDateRange(int rangeValue)
+        {
+            DateTime presentDate = DateTime.Today;
+            //yesterday
+            if (rangeValue == 0)
             {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please select again...Date Range between FROM date and TO date should not be more than 30 days!!", BootstrapAlertType.Danger);
+                var Dateyesterday = presentDate.AddDays(-1);
+                parm.Fromdate = Dateyesterday;
+                parm.ToDate = Dateyesterday;
+            }
+            //today
+            else if(rangeValue == 1)
+            {
+                parm.Fromdate = presentDate;
+                parm.ToDate = presentDate;
+            }
+            //thisweek
+            else if (rangeValue == 2)
+            {
+                parm.Fromdate= DateTime.Now.FirstDayOfWeek();
+                parm.ToDate = DateTime.Now.LastDayOfWeek();
+            }
+            //lastWeek
+            else if (rangeValue == 3)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfPreviousWeek();
+                parm.ToDate = DateTime.Now.LastDayOfPreviousWeek();
+            }
+            //thisMonth
+            else if(rangeValue == 4)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfMonth();
+                parm.ToDate = presentDate;
+            }
+            //LastMonth
+            else if (rangeValue == 5)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfPreviousMonth();
+                parm.ToDate = DateTime.Now.LastDayOfPreviousMonth();
+            }
+            else
+            {
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             }
 
-            else {
-                dvMsg.Style.Add("display", "none");
-                getData(false);
-            } 
         }
-       
+        
+    }
+
+
+
+    //Days
+    public static partial class DateTimeExtensions
+    {
+        //CurrentWeek
+        public static DateTime FirstDayOfWeek(this DateTime dt)
+        {
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+            if (diff < 0)
+                diff += 7;
+            return dt.AddDays(-diff).Date;
+        }
+        public static DateTime LastDayOfWeek(this DateTime dt)
+        {
+            return dt.FirstDayOfWeek().AddDays(6);
+        }
+        //previousWeek
+        public static DateTime FirstDayOfPreviousWeek(this DateTime dt)
+        {
+            return dt.FirstDayOfWeek().AddDays(-7);
+        }
+        public static DateTime LastDayOfPreviousWeek(this DateTime dt)
+        {
+            return dt.FirstDayOfWeek().AddDays(-7).AddDays(6);
+        }
+        //CurrentMonth
+        public static DateTime FirstDayOfMonth(this DateTime dt)
+        {
+            return new DateTime(dt.Year, dt.Month, 1);
+        }
+        public static DateTime LastDayOfMonth(this DateTime dt)
+        {
+            return dt.FirstDayOfMonth().AddMonths(1).AddDays(-1);
+        }
+        //PreviousMonth
+        public static DateTime FirstDayOfPreviousMonth(this DateTime dt)
+        {
+            return dt.FirstDayOfMonth().AddMonths(-1);
+        }
+        public static DateTime LastDayOfPreviousMonth(this DateTime dt)
+        {
+            return dt.FirstDayOfPreviousMonth().AddMonths(1).AddDays(-1);
+        }
     }
 
 

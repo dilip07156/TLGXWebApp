@@ -8,7 +8,16 @@
             margin-top: 18px;
         }
     </style>
-    
+    <script>
+        function showhideDiv() {
+            debugger;
+            var range = $("#MainContent_ddlDateOptions").val();
+            if (range =="6") {
+                $("#MainContent_dvSpecificDate").show();
+            }
+            else $("#MainContent_dvSpecificDate").hide();
+        }
+    </script>
     <asp:UpdatePanel runat="server" ID="updatevelocityDash">
         <ContentTemplate>
             <div class="row">
@@ -38,21 +47,37 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="txtFrom" class="control-label-mand ">Date From </label>
-                                            <div class="input-group">
-                                                <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control"  Width="240px" />
-                                                <span class="input-group-btn" style="display: block">
-                                                    <button class="btn btn-default" type="button" id="iCalFrom">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                    </button>
-                                                </span>
-
-                                            </div>
-                                            <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
-                                            <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+                                            <label for="ddlSupplierName" class="control-label-mand "> Select Date </label>
+                                            <asp:DropDownList runat="server" ID="ddlDateOptions" CssClass="form-control" AppendDataBoundItems="true" onchange="showhideDiv()" >
+                                                <%--OnSelectedIndexChanged="ddlDateOptions_SelectedIndexChanged" AutoPostBack="True" --%>
+                                                <asp:ListItem Value="0">Yesterday</asp:ListItem>
+                                                <asp:ListItem Value="1">Today</asp:ListItem>
+                                                <asp:ListItem Value="2">This week</asp:ListItem>
+                                                <asp:ListItem Value="3">Last week</asp:ListItem>
+                                                <asp:ListItem Value="4">This month</asp:ListItem>
+                                                <asp:ListItem Value="5">Last Month</asp:ListItem>
+                                                <asp:ListItem Value="6">Specific Date</asp:ListItem>
+                                            </asp:DropDownList>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4" id="dvSpecificDate" style="display:none;" runat="server">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="txtFrom" class="control-label-mand ">Date From </label>
+                                                <div class="input-group">
+                                                    <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control"  Width="240px" />
+                                                    <span class="input-group-btn" style="display: block">
+                                                        <button class="btn btn-default" type="button" id="iCalFrom">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </button>
+                                                    </span>
+
+                                                </div>
+                                                <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
+                                                <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="txtTo" class="control-label-mand">Date To   </label>
                                             <div class="input-group">
@@ -68,8 +93,9 @@
                                             <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <asp:Button ID="btnViewStatus" runat="server" Text="View Status" CssClass="btn btn-primary btnwidth btnwidth" OnClick="btnViewStatus_Click" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <asp:Button ID="btnViewStatus" runat="server" Text="View Status" CssClass="btn btn-primary btnwidth btnwidth" OnClick="btnViewStatus_Click"  />
                                     </div>
                                 </div>
                             </div>
