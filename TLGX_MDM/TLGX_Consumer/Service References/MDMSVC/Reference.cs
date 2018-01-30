@@ -14333,6 +14333,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> MapIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> MatchedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PostCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14730,6 +14733,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.MapIdField.Equals(value) != true)) {
                     this.MapIdField = value;
                     this.RaisePropertyChanged("MapId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> MatchedBy {
+            get {
+                return this.MatchedByField;
+            }
+            set {
+                if ((this.MatchedByField.Equals(value) != true)) {
+                    this.MatchedByField = value;
+                    this.RaisePropertyChanged("MatchedBy");
                 }
             }
         }
@@ -17514,6 +17530,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string MasterNameWithCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> MatchedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -17743,6 +17762,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> MatchedBy {
+            get {
+                return this.MatchedByField;
+            }
+            set {
+                if ((this.MatchedByField.Equals(value) != true)) {
+                    this.MatchedByField = value;
+                    this.RaisePropertyChanged("MatchedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Name {
             get {
                 return this.NameField;
@@ -17887,6 +17919,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ListedServiceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18016,6 +18051,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
                     this.LatitudeField = value;
                     this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ListedService {
+            get {
+                return this.ListedServiceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListedServiceField, value) != true)) {
+                    this.ListedServiceField = value;
+                    this.RaisePropertyChanged("ListedService");
                 }
             }
         }
@@ -18222,6 +18270,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ListedServiceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18244,6 +18295,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Master_CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> MatchedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RemarksField;
@@ -18455,6 +18509,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ListedService {
+            get {
+                return this.ListedServiceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListedServiceField, value) != true)) {
+                    this.ListedServiceField = value;
+                    this.RaisePropertyChanged("ListedService");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Longitude {
             get {
                 return this.LongitudeField;
@@ -18554,6 +18621,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Master_CityNameField, value) != true)) {
                     this.Master_CityNameField = value;
                     this.RaisePropertyChanged("Master_CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> MatchedBy {
+            get {
+                return this.MatchedByField;
+            }
+            set {
+                if ((this.MatchedByField.Equals(value) != true)) {
+                    this.MatchedByField = value;
+                    this.RaisePropertyChanged("MatchedBy");
                 }
             }
         }
@@ -21987,6 +22067,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.DateTime> FromdateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid SupplierIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -22011,6 +22094,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.FromdateField.Equals(value) != true)) {
                     this.FromdateField = value;
                     this.RaisePropertyChanged("Fromdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }
