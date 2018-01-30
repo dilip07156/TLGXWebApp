@@ -13,13 +13,13 @@ namespace TLGX_Consumer.staticdata {
     public partial class velocityReport {
         
         /// <summary>
-        /// updatevelocityDash control.
+        /// Pnlupdatesearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatevelocityDash;
+        protected global::System.Web.UI.UpdatePanel Pnlupdatesearch;
         
         /// <summary>
         /// dvMsg control.
@@ -40,6 +40,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
+        /// ddlPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        
+        /// <summary>
         /// ddlDateOptions control.
         /// </summary>
         /// <remarks>
@@ -49,15 +58,6 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlDateOptions;
         
         /// <summary>
-        /// dvSpecificDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvSpecificDate;
-        
-        /// <summary>
         /// txtFrom control.
         /// </summary>
         /// <remarks>
@@ -65,6 +65,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFrom;
+        
+        /// <summary>
+        /// iCalFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton iCalFrom;
         
         /// <summary>
         /// calFromDate control.
@@ -94,6 +103,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.TextBox txtTo;
         
         /// <summary>
+        /// iCalTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton iCalTo;
+        
+        /// <summary>
         /// calToDate control.
         /// </summary>
         /// <remarks>
@@ -119,6 +137,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnViewStatus;
+        
+        /// <summary>
+        /// PnlUpdateDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel PnlUpdateDiv;
         
         /// <summary>
         /// gvcountry control.
