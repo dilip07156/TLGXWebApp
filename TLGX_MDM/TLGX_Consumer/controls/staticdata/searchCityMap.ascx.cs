@@ -210,8 +210,19 @@ namespace TLGX_Consumer.controls.staticdata
             }
             if (ddlStatus.SelectedItem.Value != "0")
                 RQ.Status = ddlStatus.SelectedItem.Text;
+            if (chkListEntityForSearch.Items.Cast<ListItem>().Where(x => x.Selected).Count() > 0)
+            {
+                string EntityTypes = string.Join(",", chkListEntityForSearch.Items.Cast<ListItem>().Where(x => x.Selected).Select(s => s.Value).ToArray());
+                RQ.EntityType = EntityTypes;
+            }
             RQ.SupplierCountryName = txtSuppCountry.Text;
             RQ.SupplierCityName = txtSuppCity.Text;
+            //EntitySearch
+            //RQ.isHotel = chkIsHotel.Checked;
+            //RQ.isActivity = chkIsActivity.Checked;
+            // RQ.IsPackage = chkIsPackages.Checked;
+            // RQ.IsCruise = chkIsCruises.Checked;
+
 
             RQ.PageNo = pPageIndex;
             RQ.SortBy = ("CountryName").Trim();
@@ -264,6 +275,10 @@ namespace TLGX_Consumer.controls.staticdata
             lblTotalCount.Text = "0";
             txtSuppCountry.Text = "";
             txtSuppCity.Text = "";
+            chkListEntityForSearch.ClearSelection();
+           // chkIsHotel.Checked = false;
+            //chkIsActivity.Checked = false;
+
         }
 
         protected void ddlMasterCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,16 +316,16 @@ namespace TLGX_Consumer.controls.staticdata
                         CityMapping_Id = myRow_Id,
                         //MapID = Convert.ToInt32(grdCityMaps.Rows[index].Cells[0].Text),
                         SupplierName = grdCityMaps.Rows[index].Cells[1].Text,
-                        CountryCode = grdCityMaps.Rows[index].Cells[2].Text,
-                        CountryName = grdCityMaps.Rows[index].Cells[3].Text,
-                        StateName = ((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[4].Controls[0])).Text.ToString().Trim(), //grdCityMaps.Rows[index].Cells[4].Text,
-                        CityCode = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text,
-                        CityName = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text,
-                        MasterCountryCode = grdCityMaps.Rows[index].Cells[7].Text,
-                        MasterCountryName = grdCityMaps.Rows[index].Cells[8].Text,
-                        MasterCityCode = grdCityMaps.Rows[index].Cells[9].Text,
-                        Master_CityName = grdCityMaps.Rows[index].Cells[11].Text ?? grdCityMaps.Rows[index].Cells[11].Text,
-                        Status = grdCityMaps.Rows[index].Cells[13].Text
+                        CountryCode = grdCityMaps.Rows[index].Cells[3].Text,
+                        CountryName = grdCityMaps.Rows[index].Cells[4].Text,
+                        StateName = ((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[5].Controls[0])).Text.ToString().Trim(), //grdCityMaps.Rows[index].Cells[4].Text,
+                        CityCode = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text,
+                        CityName = ((System.Web.UI.WebControls.LinkButton)(grdCityMaps.Rows[index].Cells[7].Controls[1])).Text,
+                        MasterCountryCode = grdCityMaps.Rows[index].Cells[8].Text,
+                        MasterCountryName = grdCityMaps.Rows[index].Cells[9].Text,
+                        MasterCityCode = grdCityMaps.Rows[index].Cells[10].Text,
+                        Master_CityName = grdCityMaps.Rows[index].Cells[12].Text ?? grdCityMaps.Rows[index].Cells[12].Text,
+                        Status = grdCityMaps.Rows[index].Cells[14].Text
                     });
 
                     //SupplierMasters sData = new SupplierMasters();
@@ -350,20 +365,20 @@ namespace TLGX_Consumer.controls.staticdata
                     fillmappingstatus(ddlStatus);
                     lblSupplierName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[1].Text);
                     lblSupplierCode.Text = "(" + supCode + ")"; ;
-                    lblSupCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[2].Text);
-                    lblSupCountryName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[3].Text);
-                    lblStateName.Text = System.Web.HttpUtility.HtmlDecode(((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[4].Controls[0])).Text.ToString().Trim());
-                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text);
-                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
+                    lblSupCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[3].Text);
+                    lblSupCountryName.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[4].Text);
+                    lblStateName.Text = System.Web.HttpUtility.HtmlDecode(((System.Web.UI.DataBoundLiteralControl)(grdCityMaps.Rows[index].Cells[5].Controls[0])).Text.ToString().Trim());
+                    lblCityCode.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
+                    lblCityName.Text = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[7].Controls[1])).Text);
 
-                    txtSystemCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[7].Text);
-                    txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[10].Text);
+                    txtSystemCountryCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[8].Text);
+                    txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[11].Text);
                     txtSystemRemark.Text = masters.GetRemarksForMapping("city", myRow_Id);
-                    //if (grdCityMaps.Rows[index].Cells[12].Text.ToString() == "REVIEW" || grdCityMaps.Rows[index].Cells[12].Text.ToString() == "MAPPED")
+                    //if (grdCityMaps.Rows[index].Cells[13].Text.ToString() == "REVIEW" || grdCityMaps.Rows[index].Cells[13].Text.ToString() == "MAPPED")
                     //{
 
 
-                    ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[8].Text)));
+                    ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[9].Text)));
 
                     #region Fill City As per Selected Country
                     List<MDMSVC.DC_City_Master_DDL> res = new List<DC_City_Master_DDL>();
@@ -380,9 +395,9 @@ namespace TLGX_Consumer.controls.staticdata
                     //fillcities(ddlSystemCityName, ddlSystemCountryName);
                     #endregion
 
-                    ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[13].Text)));
-                    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[11].Text)));
-                    txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[10].Text);
+                    ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[14].Text)));
+                    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[12].Text)));
+                    txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[11].Text);
                     //}
 
                     if (ddlSystemCityName.SelectedIndex == 0)
@@ -390,8 +405,8 @@ namespace TLGX_Consumer.controls.staticdata
                         //var res = objMasterDataDAL.GetMasterCityDatawithCode(new Guid(ddlSystemCountryName.SelectedItem.Value));
                         //var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
 
-                        string ccode = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[5].Controls[1])).Text);
-                        string cname = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
+                        string ccode = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
+                        string cname = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[7].Controls[1])).Text);
 
                         if (cname != null)
                         {
@@ -965,7 +980,7 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
                 {
-                    HtmlInputCheckBox chk = row.Cells[15].Controls[1] as HtmlInputCheckBox;
+                   HtmlInputCheckBox chk = row.Cells[16].Controls[1] as HtmlInputCheckBox;
                     if (chk != null && chk.Checked)
                     {
                         myRow_Id = Guid.Empty;
@@ -981,9 +996,10 @@ namespace TLGX_Consumer.controls.staticdata
                 }
                 if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
-                    HtmlInputCheckBox chk = row.Cells[15].Controls[1] as HtmlInputCheckBox;
-                    DropDownList ddl = row.Cells[12].Controls[1] as DropDownList;
-                    HiddenField hdnCityId = row.Cells[16].Controls[1] as HiddenField; //Set value from ajax changes
+                    //15->16,12->13,16->17
+                    HtmlInputCheckBox chk = row.Cells[16].Controls[1] as HtmlInputCheckBox;
+                    DropDownList ddl = row.Cells[13].Controls[1] as DropDownList;
+                    HiddenField hdnCityId = row.Cells[17].Controls[1] as HiddenField; //Set value from ajax changes
                     if (chk != null && chk.Checked)
                     {
                         if (!string.IsNullOrWhiteSpace(hdnCityId.Value) && hdnCityId.Value != "0")
@@ -1065,9 +1081,9 @@ namespace TLGX_Consumer.controls.staticdata
                 if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
                     //DropDownList ddl = row.Cells[11].Controls[1] as DropDownList;
-                    DropDownList ddl = row.Cells[12].Controls[1] as DropDownList;
+                    DropDownList ddl = row.Cells[13].Controls[1] as DropDownList;
                     //HiddenField hdnCityId = row.Cells[15].Controls[1] as HiddenField; //Set value from ajax changes
-                    HiddenField hdnCityId = row.Cells[16].Controls[1] as HiddenField; //Set value from ajax changes
+                    HiddenField hdnCityId = row.Cells[17].Controls[1] as HiddenField; //Set value from ajax changes
                     if (ddl.SelectedItem.Value != "0" || !string.IsNullOrWhiteSpace(hdnCityId.Value))
                     {
                         if (!string.IsNullOrWhiteSpace(hdnCityId.Value))
@@ -1130,7 +1146,7 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid myCountryId = Guid.Empty;
                 if (myGridView.DataKeys[index].Values[2] != null)
                     myCountryId = Guid.Parse(myGridView.DataKeys[index].Values[2].ToString());
-                DropDownList ddl = e.Row.Cells[12].Controls[1] as DropDownList;
+                DropDownList ddl = e.Row.Cells[13].Controls[1] as DropDownList;
                 if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
                     if (ddl != null)
@@ -1210,21 +1226,21 @@ namespace TLGX_Consumer.controls.staticdata
 
             if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
             {
-                myGridView.Columns[11].Visible = true;
-                myGridView.Columns[12].Visible = false;
-                myGridView.Columns[15].Visible = true;
+                myGridView.Columns[12].Visible = true;
+                myGridView.Columns[13].Visible = false;
+                myGridView.Columns[16].Visible = true;
             }
             else if (ddlStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
             {
-                myGridView.Columns[11].Visible = false;
-                myGridView.Columns[12].Visible = true;
-                myGridView.Columns[15].Visible = true;
+                myGridView.Columns[12].Visible = false;
+                myGridView.Columns[13].Visible = true;
+                myGridView.Columns[16].Visible = true;
             }
             else
             {
-                myGridView.Columns[11].Visible = true;
-                myGridView.Columns[12].Visible = false;
-                myGridView.Columns[15].Visible = false;
+                myGridView.Columns[12].Visible = true;
+                myGridView.Columns[13].Visible = false;
+                myGridView.Columns[16].Visible = false;
             }
         }
 
