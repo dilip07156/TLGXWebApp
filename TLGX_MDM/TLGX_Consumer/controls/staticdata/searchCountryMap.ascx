@@ -106,7 +106,7 @@
     }
 
     function ddlStatusChanged(ddl) {
-        debugger;
+        //debugger;
         var ddlStatus = $('#MainContent_searchCountryMap_frmEditCountryMap_ddlStatus option:selected').html();
         var myVal = document.getElementById("MainContent_searchCountryMap_frmEditCountryMap_vddlSystemCountryName");
         //var myVal = $('#vddlSystemCountryName').val();

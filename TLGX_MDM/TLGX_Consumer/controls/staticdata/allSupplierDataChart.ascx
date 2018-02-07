@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="allSupplierDataChart.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.allSupplierDataChart" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <link href="../../Scripts/ChartJS/morris.css" rel="stylesheet" />
-
 <style type="text/css">
     @media(min-width: 992px) {
         .col5 {
@@ -513,7 +513,6 @@
     //    getAllSupplierData(PriorityId);
     //});
     function getPriotityWiseData() {
-        debugger;
             var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
             getChartData(PriorityId);
             getAllSupplierData(PriorityId);
@@ -701,5 +700,5 @@
                 </div>
             </div>
         </div>
-  <%--  </ContentTemplate>
+<%--  </ContentTemplate>
 </asp:UpdatePanel>--%>

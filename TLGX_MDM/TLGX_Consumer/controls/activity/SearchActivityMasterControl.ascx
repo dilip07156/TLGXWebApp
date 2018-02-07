@@ -9,7 +9,7 @@
     }
 
     function preventNumberInput(e) {
-        debugger;
+        //debugger
         var totalpagecount = document.getElementById("lblTotalPageCount");
         var totalpagecountval = parseInt(totalpagecount.innerHTML, 10);
         var inputpage = document.getElementById("txtGoToPageNo");
