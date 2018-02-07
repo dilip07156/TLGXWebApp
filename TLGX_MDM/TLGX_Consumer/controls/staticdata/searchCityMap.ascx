@@ -462,7 +462,7 @@
                                     <Columns>
                                         <asp:BoundField DataField="MapId" HeaderText="Map Id" />
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
-                                       <asp:TemplateField HeaderText="EntityType" >
+                                       <asp:TemplateField HeaderText="Entity" >
                                                 <ItemTemplate>
                                                     <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("EntityTypeFlag") %>'
                                                         RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
