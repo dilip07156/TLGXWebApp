@@ -133,6 +133,80 @@
         }
 
     }
+
+    var atLeast = 1
+    function Validate() {
+        var ValidationSummary = document.getElementById("ValidationSummary");
+        var flag = true;
+        var message = "<ul>";
+
+        //Country
+        var country = document.getElementById("MainContent_Flavours_ddlCountry");
+        var vldCountry = document.getElementById("vldCountry");
+        if (country.value == "0") {
+            message = message + "<li>" + "Please select Country" + "</li>";
+            flag = false;
+            vldCountry.style.display = "block";
+        } else { vldCountry.style.display = "none"; }
+
+        //City
+        var city = document.getElementById("MainContent_Flavours_ddlCity");
+        var vldCity = document.getElementById("vldCity");
+        if (city.value == "0") {
+            message = message + "<li>" + "Please select City" + "</li>"; flag = false;
+            vldCity.style.display = "block";
+        } else { vldCity.style.display = "none"; }
+
+        //Product Name SubType 
+        var tblProdNameSubType = document.getElementById("tblProdNameSubType");
+        var vldProductNameSubType = document.getElementById("vldProductNameSubType");
+
+        if (tblProdNameSubType.getElementsByTagName("tr").length == 0) {
+            message = message + "<li>" + "Please select at least one Product Name SubType" + "</li>";
+            flag = false;
+            vldProductNameSubType.style.display = "block";
+        }
+        else { vldProductNameSubType.style.display = "none"; }
+
+        //Suitable For
+        var CHK = document.getElementById("MainContent_Flavours_chklstSuitableFor");
+        var vldSuitableFor = document.getElementById("vldSuitableFor");
+        var checkbox = CHK.getElementsByTagName("input");
+        var counter = 0;
+        for (var i = 0; i < checkbox.length; i++) {
+            if (checkbox[i].checked) {
+                counter++;
+            }
+        }
+        if (atLeast > counter) {
+            message = message + "<li>" + "Please select at least one suitable for" + "</li>"; flag = false;
+            vldSuitableFor.style.display = "block";
+        } else { vldSuitableFor.style.display = "none"; }
+
+        //Physical Intensity
+        var physicalintensity = document.getElementById("MainContent_Flavours_ddlPhysicalIntensity");
+        var vldPhysicalIntensity = document.getElementById("vldPhysicalIntensity");
+        if (physicalintensity.value == "0") {
+            message = message + "<li>" + "Please select physical intensity" + "</li>"; flag = false;
+            vldPhysicalIntensity.style.display = "block";
+        }
+        else { vldPhysicalIntensity.style.display = "none"; }
+        message = message + "</ul>";
+
+        if (!flag) {
+            if (ValidationSummary != null) {
+                ValidationSummary.style.display = "block";
+                ValidationSummary.innerHTML = message;
+            }
+        }
+        else if (flag) {
+            if (ValidationSummary != null) {
+                ValidationSummary.innerHTML = "";
+                ValidationSummary.style.display = "none";
+            }
+        }
+        return flag;
+    }
 </script>
 
 <style>
@@ -165,12 +239,15 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ProductOverView" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
+                <div class="alert alert-danger" id="ValidationSummary" style="display: none;">
+                </div>
+                <%--<asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ProductOverView" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />--%>
             </div>
         </div>
 
         <div class="floatingButton">
-            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="false" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click" />
+            <asp:LinkButton ID="btnSave" runat="server" CausesValidation="true" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click"
+                OnClientClick="return Validate();" />
             <br />
 
         </div>
@@ -186,7 +263,8 @@
                     <div class="panel-body">
                         <div class="form-group row">
                             <label class="control-label col-sm-2" for="ddlCountry">
-                                Country
+                                <u>Country</u>
+                                <span class="validation text-danger" style="display: none;" id="vldCountry">*</span>
                             </label>
                             <em>
                                 <asp:Label ID="lblSuppCountry" runat="server" class="control-label col-sm-2"></asp:Label></em>
@@ -199,7 +277,8 @@
 
                         <div class="form-group row">
                             <label class="control-label col-sm-2" for="ddlCity">
-                                City
+                                <u>City</u>
+                                <span class="validation text-danger" style="display: none;" id="vldCity">*</span>
                             </label>
                             <em>
                                 <asp:Label ID="lblSuppCity" runat="server" class="control-label col-sm-2"></asp:Label></em>
@@ -319,12 +398,12 @@
 
                         <div class="form-group row">
                             <label class="control-label col-sm-2" for="ddlProdNameSubType">
-                                Product Name SubType
+                                <u>Product Name SubType</u>
+                                <span class="validation text-danger" style="display: none;" id="vldProductNameSubType">*</span>
                             </label>
                             <em>
                                 <asp:Label ID="lblSuppProdNameSubType" runat="server" class="control-label col-sm-2"></asp:Label></em>
                             <div class="col-sm-8">
-
                                 <div class="row">
                                     <div class="col-md-10">
                                         <asp:DropDownList ID="ddlProdNameSubType" runat="server" CssClass="col-sm-8 form-control" AppendDataBoundItems="true">
@@ -337,7 +416,7 @@
                                 </div>
                                 <asp:Repeater ID="repProductSubType" runat="server" OnItemCommand="repProductSubType_ItemCommand">
                                     <HeaderTemplate>
-                                        <table class="table table-stripped table-hover">
+                                        <table class="table table-stripped table-hover" id="tblProdNameSubType">
                                     </HeaderTemplate>
                                     <ItemTemplate>
                                         <tr class="row">
@@ -370,7 +449,8 @@
                     <div class="panel-body">
                         <div class="form-group row">
                             <div class="col-md-6 row">
-                                <label class="control-label col-sm-4" for="chklstSuitableFor">Suitable For</label>
+                                <label class="control-label col-sm-4" for="chklstSuitableFor"><u>Suitable For</u></label>
+                                <span class="validation text-danger" style="display: none;" id="vldSuitableFor">*</span>
                                 <em>
                                     <asp:Label ID="lblSuppSuitableFor" runat="server" class="control-label col-sm-2"></asp:Label></em>
                             </div>
@@ -392,7 +472,10 @@
 
                         <div class="form-group row">
                             <div class="col-sm-6 row">
-                                <label class="control-label col-sm-4" for="chklstPhysicalIntensity">Physical Intensity</label>
+                                <label class="control-label col-sm-4" for="chklstPhysicalIntensity">
+                                    <u>Physical Intensity</u>
+                                    <span class="validation text-danger" style="display: none;" id="vldPhysicalIntensity">*</span>
+                                </label>
                                 <em>
                                     <asp:Label ID="lblSuppPhysicalIntensity" runat="server" class="control-label col-sm-2"></asp:Label></em>
                             </div>
