@@ -138,6 +138,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             var resultSet2 = _objMasterSVC.GetSupplier(RQParam);
             resultSet.AddRange(resultSet2);
 
+            resultSet = resultSet.OrderBy(o => o.Name).ToList();
+
             ddlSupplierList.DataSource = resultSet;
             ddlSupplierList.DataValueField = "Supplier_Id";
             ddlSupplierList.DataTextField = "Name";
