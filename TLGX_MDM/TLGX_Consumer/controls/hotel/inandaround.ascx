@@ -5,7 +5,7 @@
         $("#moAddnearbyplace").modal('destroy');
     }
     function showAddNewLookUPModal() {
-        debugger;
+        //debugger;
         var elementsddlPlaceCategory = document.getElementById("MainContent_inandaround_googlePlacesLookup_ddlPlaceCategory").options;
         for (var i = 0; i < elementsddlPlaceCategory.length; i++) {
             elementsddlPlaceCategory[i].selected = false;

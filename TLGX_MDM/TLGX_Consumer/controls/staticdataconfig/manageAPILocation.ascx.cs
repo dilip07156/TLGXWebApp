@@ -131,7 +131,16 @@ namespace TLGX_Consumer.controls.staticdataconfig
             RQParam.SupplierType = "API Static Data";
             RQParam.PageNo = 0;
             RQParam.PageSize = int.MaxValue;
-            ddlSupplierList.DataSource = _objMasterSVC.GetSupplier(RQParam);
+
+            var resultSet = _objMasterSVC.GetSupplier(RQParam);
+
+            RQParam.SupplierType = "File & API Static Data";
+            var resultSet2 = _objMasterSVC.GetSupplier(RQParam);
+            resultSet.AddRange(resultSet2);
+
+            resultSet = resultSet.OrderBy(o => o.Name).ToList();
+
+            ddlSupplierList.DataSource = resultSet;
             ddlSupplierList.DataValueField = "Supplier_Id";
             ddlSupplierList.DataTextField = "Name";
             ddlSupplierList.DataBind();

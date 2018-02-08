@@ -292,7 +292,7 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
-                                            <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomId" />
+                                            <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomTypeCode" />
                                             <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
                                             <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
                                                 <ItemTemplate>
