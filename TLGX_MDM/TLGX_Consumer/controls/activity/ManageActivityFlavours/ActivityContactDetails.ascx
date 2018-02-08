@@ -2,7 +2,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script type="text/javascript">
     function TrimEmailText() {
-        debugger;
+        //debugger;
         $("#MainContent_Flavours_frmActivityFlavour_ActivityContactDetails_frmContactDetaiil_txtEmail").val($.trim($("#MainContent_Flavours_frmActivityFlavour_ActivityContactDetails_frmContactDetaiil_txtEmail").val()));
     }
 </script>

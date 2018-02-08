@@ -28,14 +28,26 @@ namespace TLGX_Consumer.staticdata
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (ddlDateOptions.SelectedValue == "6")
+            {
+                txtFrom.ReadOnly = false;
+                txtTo.ReadOnly = false;
+                iCalFrom.Disabled = false;
+                iCalTo.Disabled = false;
+            }
+            else
+            {
+                txtFrom.ReadOnly = true;
+                txtTo.ReadOnly = true;
+                iCalFrom.Disabled = true;
+                iCalTo.Disabled = true;
+            }
+
             if (!IsPostBack)
             {
                 fillsuppliers();
                 getData(true);
-
             }
-
-
         }
         private void fillsuppliers()
         {
@@ -44,38 +56,26 @@ namespace TLGX_Consumer.staticdata
             ddlSupplierName.DataTextField = "Name";
             ddlSupplierName.DataBind();
         }
+
         private void getData(bool IsPageLoad)
         {
-            dvMsg.Style.Add("display", "none");
             string SupplierID = ddlSupplierName.SelectedValue;
             if (SupplierID == "0")
             {
                 SupplierID = "00000000-0000-0000-0000-000000000000";
             }
-
             parm.SupplierID = Guid.Parse(SupplierID);
 
             if (IsPageLoad)
             {
-                DateTime d = DateTime.Today;
-                d = d.AddDays(-1);
-                parm.Fromdate = d; //.ToString("dd-MMM-yyyy");
-                parm.ToDate = d;
-                var formateddate= ((d.Day.ToString().PadLeft(2, '0')) + "/" + (d.Month.ToString().PadLeft(2, '0')) + "/" + d.Year);
-                txtFrom.Text = formateddate;
-                txtTo.Text = formateddate;
+                calculateDateRange(0);
             }
-            else
-            {
-                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-            }
+            parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            parm.Priority = Convert.ToInt32(ddlPriority.SelectedValue);
 
             var res = MapSvc.GetVelocityDashboard(parm);
-
-
-            //lstusers.DataSource = res;
-            //lstusers.DataBind();
+            
             var iNodes = 0;
             bool blnIsCityDataExist = false;
             bool blnIsCountryDataExist = false;
@@ -96,7 +96,8 @@ namespace TLGX_Consumer.staticdata
                         gvcountry.DataBind();
                         lblcountry.Text = Convert.ToString(UnmappedCountry);
                         lblcountryestimate.Text = Convert.ToString(estimate);
-                        blnIsCountryDataExist = true;
+                        if (resultDataForCountry != null)
+                            blnIsCountryDataExist = true;
 
 
                     }
@@ -110,7 +111,8 @@ namespace TLGX_Consumer.staticdata
                         lblcity.Text = Convert.ToString(UnmappedCity);
                         var estimate = res[0].MappingStatsFor[iNodes].Estimate;
                         lblcityestimate.Text = Convert.ToString(estimate);
-                        blnIsCityDataExist = true;
+                        if (resultDataForCity != null)
+                            blnIsCityDataExist = true;
                     }
                     else if (res[0].MappingStatsFor[iNodes].MappingFor == "Product")
                     {
@@ -122,7 +124,8 @@ namespace TLGX_Consumer.staticdata
                         lblproduct.Text = Convert.ToString(UnmappedProduct);
                         var estimate = res[0].MappingStatsFor[iNodes].Estimate;
                         lblproductestimate.Text = Convert.ToString(estimate);
-                        blnProductDataExist = true;
+                        if (resultDataForProduct != null)
+                            blnProductDataExist = true;
                     }
                     else if (res[0].MappingStatsFor[iNodes].MappingFor == "Activity")
                     {
@@ -134,7 +137,8 @@ namespace TLGX_Consumer.staticdata
                         lblactivity.Text = Convert.ToString(UnmappedActivity);
                         var estimate = res[0].MappingStatsFor[iNodes].Estimate;
                         lblactivityestimate.Text = Convert.ToString(estimate);
-                        blnActivityDataExist = true;
+                        if (resultDataForActivity != null)
+                            blnActivityDataExist = true;
                     }
                     else if (res[0].MappingStatsFor[iNodes].MappingFor == "HotelRoom")
                     {
@@ -146,7 +150,8 @@ namespace TLGX_Consumer.staticdata
                         lblhotelroom.Text = Convert.ToString(UnmappedHotelroom);
                         var estimate = res[0].MappingStatsFor[iNodes].Estimate;
                         lblhotelroomestimate.Text = Convert.ToString(estimate);
-                        blnHotelroomDataExist = true;
+                        if (resultDataForhotelRoom != null)
+                            blnHotelroomDataExist = true;
                     }
                 }
             }
@@ -171,59 +176,135 @@ namespace TLGX_Consumer.staticdata
                 gvcountry.DataSource = null;
                 gvcountry.DataBind();
             }
-            
-             if (!blnProductDataExist)
+            if (!blnProductDataExist)
             {
                 gvproduct.DataSource = null;
                 gvproduct.DataBind();
             }
         }
 
-        protected Boolean validatedate()
-        {
-            DateTime Fromdate = new DateTime();
-            DateTime ToDate = new DateTime();
-            try
-            {
-                string fd = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
-                Fromdate = Convert.ToDateTime(fd);
-                string td = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture).ToString("dd-MMM-yyyy");
-                ToDate = Convert.ToDateTime(td);
-
-                TimeSpan diff = ToDate - Fromdate;
-                int days = diff.Days;
-               if (days > 30)
-                {
-                   return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         protected void btnViewStatus_Click(object sender, EventArgs e)
         {
-            dvMsg.Style.Add("display", "none");
-            String Fmdate = txtFrom.Text;
-            String tdate = txtTo.Text;
-            var res = validatedate();
-            if (res == false)
+            getData(false);
+        }
+
+        protected void setDate(DateTime from, DateTime to)
+        {
+            var formatedFromDate = ((from.Day.ToString().PadLeft(2, '0')) + "/" + (from.Month.ToString().PadLeft(2, '0')) + "/" + from.Year);
+            var formatedToDate = ((to.Day.ToString().PadLeft(2, '0')) + "/" + (to.Month.ToString().PadLeft(2, '0')) + "/" + to.Year);
+            txtFrom.Text = formatedFromDate;
+            txtTo.Text = formatedToDate;
+        }
+
+        protected void calculateDateRange(int rangeValue)
+        {
+            DateTime presentDate = DateTime.Today;
+            //yesterday 
+            if (rangeValue == 0)
             {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please select again...Date Range between FROM date and TO date should not be more than 30 days!!", BootstrapAlertType.Danger);
+                var Dateyesterday = presentDate.AddDays(-1);
+                parm.Fromdate = Dateyesterday;
+                parm.ToDate = Dateyesterday;
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
+            }
+            //today
+            else if (rangeValue == 1)
+            {
+                parm.Fromdate = presentDate;
+                parm.ToDate = presentDate;
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
+            }
+            //thisweek
+            else if (rangeValue == 2)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfWeek();
+                parm.ToDate = presentDate;
+                //var TDate = DateTime.Now.LastDayOfWeek();
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
+            }
+            //lastWeek
+            else if (rangeValue == 3)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfPreviousWeek();
+                parm.ToDate = DateTime.Now.LastDayOfPreviousWeek();
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
+            }
+            //thisMonth
+            else if (rangeValue == 4)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfMonth();
+                parm.ToDate = presentDate;
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
+            }
+            //LastMonth
+            else if (rangeValue == 5)
+            {
+                parm.Fromdate = DateTime.Now.FirstDayOfPreviousMonth();
+                parm.ToDate = DateTime.Now.LastDayOfPreviousMonth();
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
+            }
+            else
+            {
+                parm.Fromdate = DateTime.ParseExact(txtFrom.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                parm.ToDate = DateTime.ParseExact(txtTo.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                setDate(parm.Fromdate ?? DateTime.Now, parm.ToDate ?? DateTime.Now);
             }
 
-            else {
-                dvMsg.Style.Add("display", "none");
-                getData(false);
-            } 
         }
-       
+
+        protected void ddlDateOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var range = Convert.ToInt32(ddlDateOptions.SelectedValue);
+            calculateDateRange(range);
+            Pnlupdatesearch.Update();
+        }
+    }
+
+
+
+    //Days
+    public static partial class DateTimeExtensions
+    {
+        //CurrentWeek
+        public static DateTime FirstDayOfWeek(this DateTime dt)
+        {
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            var diff = dt.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+            if (diff < 0)
+                diff += 7;
+            return dt.AddDays(-diff).Date;
+        }
+        public static DateTime LastDayOfWeek(this DateTime dt)
+        {
+            return dt.FirstDayOfWeek().AddDays(6);
+        }
+        //previousWeek
+        public static DateTime FirstDayOfPreviousWeek(this DateTime dt)
+        {
+            return dt.FirstDayOfWeek().AddDays(-7);
+        }
+        public static DateTime LastDayOfPreviousWeek(this DateTime dt)
+        {
+            return dt.FirstDayOfWeek().AddDays(-7).AddDays(6);
+        }
+        //CurrentMonth
+        public static DateTime FirstDayOfMonth(this DateTime dt)
+        {
+            return new DateTime(dt.Year, dt.Month, 1);
+        }
+        public static DateTime LastDayOfMonth(this DateTime dt)
+        {
+            return dt.FirstDayOfMonth().AddMonths(1).AddDays(-1);
+        }
+        //PreviousMonth
+        public static DateTime FirstDayOfPreviousMonth(this DateTime dt)
+        {
+            return dt.FirstDayOfMonth().AddMonths(-1);
+        }
+        public static DateTime LastDayOfPreviousMonth(this DateTime dt)
+        {
+            return dt.FirstDayOfPreviousMonth().AddMonths(1).AddDays(-1);
+        }
     }
 
 

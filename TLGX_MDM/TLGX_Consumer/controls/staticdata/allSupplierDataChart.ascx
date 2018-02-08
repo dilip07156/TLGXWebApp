@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="allSupplierDataChart.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.allSupplierDataChart" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <link href="../../Scripts/ChartJS/morris.css" rel="stylesheet" />
-
 <style type="text/css">
     @media(min-width: 992px) {
         .col5 {
@@ -513,7 +513,6 @@
     //    getAllSupplierData(PriorityId);
     //});
     function getPriotityWiseData() {
-        debugger;
             var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
             getChartData(PriorityId);
             getAllSupplierData(PriorityId);
@@ -538,6 +537,7 @@
                             <asp:ListItem Value="1">1</asp:ListItem>
                             <asp:ListItem Value="2">2</asp:ListItem>
                             <asp:ListItem Value="3">3</asp:ListItem>
+                            <asp:ListItem Value="4">4</asp:ListItem>
                         </asp:DropDownList>
                         <%--<button id="btnViewStatus" class="btn btn-primary btn-sm">View Status</button>--%>
                         <asp:Button ID="btnViewStatus" CssClass="btn btn-primary btn-sm" Text="View Status" OnClientClick="getPriotityWiseData()"  runat="server"/>
@@ -700,5 +700,5 @@
                 </div>
             </div>
         </div>
-  <%--  </ContentTemplate>
+<%--  </ContentTemplate>
 </asp:UpdatePanel>--%>

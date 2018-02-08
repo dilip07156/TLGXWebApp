@@ -218,26 +218,26 @@
     function SelectedRow(element) {
         var ddlStatus = $('#MainContent_CityMap_ddlStatus option:selected').html();
         if (ddlStatus == "REVIEW") {
-            element.parentNode.parentNode.nextSibling.childNodes[15].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[16].lastElementChild.focus();
         }
         else if (ddlStatus == "UNMAPPED") {
-            element.parentNode.parentNode.nextSibling.childNodes[12].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[13].lastElementChild.focus();
 
         }
     }
     function MatchedSelect(elem) {
-        elem.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild.focus();
+        elem.parentNode.parentNode.nextSibling.childNodes[15].lastElementChild.focus();
     }
     //var onClick = true;
     //Fill City dropdown in Grid
     function fillDropDown(record, onClick) {
         //alert(onClick);
         if (onClick) {
-            var country_id = record.parentNode.parentNode.childNodes[16].lastElementChild.value;
+            var country_id = record.parentNode.parentNode.childNodes[17].lastElementChild.value;
             if (country_id != null) {
                 //Getting Dropdown
                 var currentRow = $(record).parent().parent();
-                var CityDDL = currentRow.find("td:eq(11)").find('select');
+                var CityDDL = currentRow.find("td:eq(12)").find('select');
                 var selectedText = CityDDL.find("option:selected").text();
                 var selectedOption = CityDDL.find("option");
                 var selectedVal = CityDDL.val();
@@ -274,13 +274,13 @@
     function RemoveExtra(record, onClick) {
         if (!onClick) {
             var currentRow = $(record).parent().parent();
-            var CityDDL = currentRow.find("td:eq(11)").find('select');
+            var CityDDL = currentRow.find("td:eq(12)").find('select');
             var selectedText = CityDDL.find("option:selected").text();
             var selectedVal = CityDDL.val();
             CityDDL.find("option:not(:first)").remove();
             var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
             CityDDL.append(listItems);
-            var city_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
+            var city_id = record.parentNode.parentNode.childNodes[17].firstElementChild;
             city_id.value = selectedVal;
         }
     }
@@ -296,7 +296,6 @@
                     </h4>
                 </div>
 
-
                 <div id="collapseSearch" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <div class="container">
@@ -311,7 +310,6 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="ddlMasterCountry">System Country</label>
                                         <div class="col-sm-8">
@@ -320,7 +318,6 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="ddlCity">System City</label>
                                         <div class="col-sm-8">
@@ -329,7 +326,6 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="ddlStatus">Mapping Status</label>
                                         <div class="col-sm-8">
@@ -338,16 +334,12 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="txtSuppName">Supplier Country Name</label>
                                         <div class="col-sm-8">
                                             <asp:TextBox ID="txtSuppCountry" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
-
-
                                     <div class="form-group row ">
                                         <label class="control-label col-sm-4" for="txtSuppName">Supplier City Name</label>
                                         <div class="col-sm-8">
@@ -376,8 +368,49 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
+                                   <%-- <div class="form-group row">
+                                        <label class="control-label col-sm-3" for="chkIsHotel">Hotels</label>
+                                        <div class="col-sm-9">
+                                            <asp:CheckBox ID="chkIsHotel" runat="server" />
+                                        </div>
+                                    </div>
                                     <div class="form-group row">
-                                        <div class="col-sm-12">&nbsp;</div>
+                                        <label class="control-label col-sm-3" for="chkIsActivity">Activities</label>
+                                        <div class="col-sm-9">
+                                            <asp:CheckBox ID="chkIsActivity" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="display:none">
+                                        <label class="control-label col-sm-3" for="chkIsPackages">Packages</label>
+                                        <div class="col-sm-9">
+                                            <asp:CheckBox ID="chkIsPackages" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row" style="display:none">
+                                        <label class="control-label col-sm-3" for="chkIsCruises">Cruises</label>
+                                        <div class="col-sm-9">
+                                            <asp:CheckBox ID="chkIsCruises" runat="server" />
+                                        </div>
+                                    </div>--%>
+                                    <div class="form-group row">
+                                        <label class="control-label col-sm-4" for="chkListEntityForSearch">
+                                            Search For
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <div class="form-horizontal">
+                                                <fieldset class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <asp:CheckBoxList ID="chkListEntityForSearch" runat="server">
+                                                            <asp:ListItem  Text="Hotel" Value="H"></asp:ListItem>
+                                                            <asp:ListItem  Text="Activity" Value="A"></asp:ListItem>
+                                                            <asp:ListItem  Text="Packages" Value="P" Enabled="false"></asp:ListItem>
+                                                            <asp:ListItem  Text="Cruise" Value="C"  Enabled="false"></asp:ListItem>
+                                                        </asp:CheckBoxList>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+
+                                        </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6">
@@ -389,12 +422,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12"></div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-12">&nbsp;</div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -434,6 +462,16 @@
                                     <Columns>
                                         <asp:BoundField DataField="MapId" HeaderText="Map Id" />
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
+                                       <asp:TemplateField HeaderText="Entity" >
+                                                <ItemTemplate>
+                                                    <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("EntityTypeFlag") %>'
+                                                        RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
+                                                        <ItemTemplate>
+                                                              <asp:Label ID="entityNameBind" runat="server" Text='<%# Bind("EntityType") %>'></asp:Label> 
+                                                        </ItemTemplate>
+                                                    </asp:DataList>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
                                         <%--<asp:BoundField DataField="StateNameWithCode" HeaderText="State" />--%>
