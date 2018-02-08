@@ -28,8 +28,15 @@ namespace TLGX_Consumer.staticdata.files
                 RQParam.SupplierType = "File Static Data";
                 RQParam.PageNo = 0;
                 RQParam.PageSize = int.MaxValue;
-                ddlSupplierList.DataSource = _objMasterSVC.GetSupplier(RQParam);
-                //ddlSupplierList.DataSource = _objMasterSVC.GetSupplierMasterData();
+
+                var resultSet = _objMasterSVC.GetSupplier(RQParam);
+
+                RQParam.SupplierType = "File & API Static Data";
+                var resultSet2 = _objMasterSVC.GetSupplier(RQParam);
+                resultSet.AddRange(resultSet2);
+
+
+                ddlSupplierList.DataSource = resultSet;
                 ddlSupplierList.DataValueField = "Supplier_Id";
                 ddlSupplierList.DataTextField = "Name";
                 ddlSupplierList.DataBind();
