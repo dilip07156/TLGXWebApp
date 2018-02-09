@@ -135,7 +135,8 @@
     }
 
     var atLeast = 1
-    function Validate() {
+    function Validate(from) {
+        debugger;
         var ValidationSummary = document.getElementById("ValidationSummary");
         var flag = true;
         var message = "<ul>";
@@ -192,9 +193,13 @@
         }
         else { vldPhysicalIntensity.style.display = "none"; }
         message = message + "</ul>";
-
         if (!flag) {
-            if (ValidationSummary != null) {
+            var ValidationSummaryPopup = document.getElementById("ValidationSummaryPopup");
+            if (from == "frommodel" && ValidationSummaryPopup != null) {
+                ValidationSummaryPopup.style.display = "block";
+                ValidationSummaryPopup.innerHTML = message;
+            }
+            else if (from != "frommodel" && ValidationSummary != null) {
                 ValidationSummary.style.display = "block";
                 ValidationSummary.innerHTML = message;
             }
@@ -203,10 +208,14 @@
             if (ValidationSummary != null) {
                 ValidationSummary.innerHTML = "";
                 ValidationSummary.style.display = "none";
+                ValidationSummaryPopup.innerHTML = "";
+                ValidationSummaryPopup.style.display = "none";
+
             }
         }
         return flag;
     }
+    
 </script>
 
 <style>
@@ -233,13 +242,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div id="dvMsg" runat="server" style="display: none;"></div>
-                <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
+                <div id="dvMsgStatusUpdate"  runat="server" style="display: none;"></div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="alert alert-danger" id="ValidationSummary" style="display: none;">
+                <div     id="ValidationSummary" class="alert alert-danger" style="display: none;">
                 </div>
                 <%--<asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ProductOverView" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />--%>
             </div>
@@ -247,7 +256,7 @@
 
         <div class="floatingButton">
             <asp:LinkButton ID="btnSave" runat="server" CausesValidation="true" Text="Update Flavour Info" CssClass="btn btn-primary btn-sm" ValidationGroup="ProductOverView" OnClick="btnSave_Click"
-                OnClientClick="return Validate();" />
+                OnClientClick="return Validate(this);" />
             <br />
 
         </div>
