@@ -50,7 +50,8 @@
                                 <asp:Label ID="lblActivityStatus" runat="server"></asp:Label>
                                 (
 
-                                  <button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>
+                                  <input type="button" onclick="showmoActivity_Flavour_Status();" class="btn btn-link" style="padding: 0px;"  value="Change"/>
+                                  <%--<button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>--%>
 
                                 )
                            <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Go Back to Search Page" />
@@ -214,23 +215,17 @@
 
         })
 
-        $(".moActivity_Flavour_Status").on("hidden.bs.modal", function () {
-            alert('Hi');
-            $(".modal-body1").html("");
-        });
-
         function showmoActivity_Flavour_Status() {
-            debugger;
             document.getElementById('MainContent_dvMsgStatusUpdate').style.display = 'none';
             $("#moActivity_Flavour_Status").modal('show');
         }
         function closemoActivityStatusModal() {
-            debugger;
             var flag = true;
             var status = document.getElementById('MainContent_ddlActivity_Flavour_Status');
             if (status.options[status.selectedIndex].text == 'Review Completed')
             {
-                if (Validate("frommodel")) {
+                var validated = Validate("frommodel");
+                if (validated) {
                     $("#moActivity_Flavour_Status").modal('hide');
                 }
                 else {

@@ -31,7 +31,7 @@
 
 </script>
 <style>
-    a {
+    .urlLink {
         color:inherit !important;
         text-decoration : none !important;
         font: inherit !important;
@@ -277,7 +277,7 @@
                             <Columns>
                                 <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" DataTextField="ProductName"
-                                    ControlStyle-Font-Bold="true" HeaderText="Product Name" ControlStyle-CssClass="label" NavigateUrl="~/activity/ManageActivityFlavour.aspx" />
+                                    ControlStyle-Font-Bold="true" HeaderText="Product Name" ControlStyle-CssClass="label urlLink" NavigateUrl="~/activity/ManageActivityFlavour.aspx" />
                                 <%--<asp:BoundField DataField="ProductName" HeaderText="Product Name" />--%>
                                 <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
                                 <asp:BoundField DataField="ProductType" HeaderText="Product Type" />

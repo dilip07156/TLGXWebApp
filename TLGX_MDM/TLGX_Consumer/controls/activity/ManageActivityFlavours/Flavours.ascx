@@ -136,7 +136,6 @@
 
     var atLeast = 1
     function Validate(from) {
-        debugger;
         var ValidationSummary = document.getElementById("ValidationSummary");
         var flag = true;
         var message = "<ul>";
@@ -193,8 +192,8 @@
         }
         else { vldPhysicalIntensity.style.display = "none"; }
         message = message + "</ul>";
+        var ValidationSummaryPopup = document.getElementById("ValidationSummaryPopup");
         if (!flag) {
-            var ValidationSummaryPopup = document.getElementById("ValidationSummaryPopup");
             if (from == "frommodel" && ValidationSummaryPopup != null) {
                 ValidationSummaryPopup.style.display = "block";
                 ValidationSummaryPopup.innerHTML = message;
