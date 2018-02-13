@@ -417,7 +417,7 @@
                                                 <asp:BoundField DataField="SupplierName" HeaderText="Supplier Name" />
                                                 <asp:BoundField DataField="ProductId" HeaderText="ProductId" />
                                                 <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
-                                                <asp:BoundField DataField="Street" HeaderText="Address" />
+                                                <asp:BoundField DataField="FullAddress" HeaderText="Address" />
                                                 <asp:BoundField DataField="TelephoneNUmber" HeaderText="Tel" />
                                                 <%--   <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />--%>
                                                 <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
