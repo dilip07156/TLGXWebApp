@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="search.aspx.cs" Inherits="TLGX_Consumer.activity.search" %>
+﻿<%@ Page Title="Activity Search" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="search.aspx.cs" Inherits="TLGX_Consumer.activity.search" %>
 
 
 <%@ Register Src="~/controls/activity/SearchActivityMasterControl.ascx" TagPrefix="uc1" TagName="SearchActivityMasterControl" %>

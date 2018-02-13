@@ -13,12 +13,12 @@ namespace TLGX_Consumer.activity {
     public partial class search {
         
         /// <summary>
-        /// searchActivityProductName control.
+        /// SearchActivityMasterControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.searchActivityProductName searchActivityProductName;
+        protected global::TLGX_Consumer.controls.activity.SearchActivityMasterControl SearchActivityMasterControl;
     }
 }
