@@ -695,6 +695,15 @@
   <wsdl:message name="IConsumer_GetActivityByCountryCity_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q75="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q75:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_GetSuppliersByProductCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuppliersByProductCategory" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetSuppliersByProductCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSuppliersByProductCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetSuppliersByProductCategory_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q76="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q76:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:message name="IConsumer_SaveCityAreaLocation_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveCityAreaLocation" />
   </wsdl:message>
@@ -702,7 +711,7 @@
     <wsdl:part name="parameters" element="tns:SaveCityAreaLocationResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveCityAreaLocation_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q76="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q76:DC_ErrorStatus" />
+    <wsdl:part xmlns:q77="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q77:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterCityAreaLocationData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterCityAreaLocationData" />
@@ -711,7 +720,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterCityAreaLocationDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterCityAreaLocationData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q77="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q77:DC_ErrorStatus" />
+    <wsdl:part xmlns:q78="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q78:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveCityArea_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveCityArea" />
@@ -720,7 +729,7 @@
     <wsdl:part name="parameters" element="tns:SaveCityAreaResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveCityArea_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q78="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q78:DC_ErrorStatus" />
+    <wsdl:part xmlns:q79="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q79:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterCityAreaData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterCityAreaData" />
@@ -729,7 +738,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterCityAreaDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterCityAreaData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q79="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q79:DC_ErrorStatus" />
+    <wsdl:part xmlns:q80="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q80:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateKeyword_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateKeyword" />
@@ -738,7 +747,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateKeywordResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateKeyword_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q80="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q80:DC_ErrorStatus" />
+    <wsdl:part xmlns:q81="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q81:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SearchKeyword_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchKeyword" />
@@ -747,7 +756,7 @@
     <wsdl:part name="parameters" element="tns:SearchKeywordResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SearchKeyword_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q81="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q81:DC_ErrorStatus" />
+    <wsdl:part xmlns:q82="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q82:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SearchKeywordAlias_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchKeywordAlias" />
@@ -756,7 +765,7 @@
     <wsdl:part name="parameters" element="tns:SearchKeywordAliasResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SearchKeywordAlias_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q82="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q82:DC_ErrorStatus" />
+    <wsdl:part xmlns:q83="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q83:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ApplyKeyword_InputMessage">
     <wsdl:part name="parameters" element="tns:ApplyKeyword" />
@@ -765,7 +774,7 @@
     <wsdl:part name="parameters" element="tns:ApplyKeywordResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ApplyKeyword_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q83="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q83:DC_ErrorStatus" />
+    <wsdl:part xmlns:q84="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q84:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetListOfColumnNamesByTable_InputMessage">
     <wsdl:part name="parameters" element="tns:GetListOfColumnNamesByTable" />
@@ -774,7 +783,7 @@
     <wsdl:part name="parameters" element="tns:GetListOfColumnNamesByTableResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetListOfColumnNamesByTable_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q84="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q84:DC_ErrorStatus" />
+    <wsdl:part xmlns:q85="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q85:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCountryNameList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCountryNameList" />
@@ -783,7 +792,7 @@
     <wsdl:part name="parameters" element="tns:GetCountryNameListResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCountryNameList_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q85="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q85:DC_ErrorStatus" />
+    <wsdl:part xmlns:q86="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q86:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllCountries_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCountries" />
@@ -792,7 +801,7 @@
     <wsdl:part name="parameters" element="tns:GetAllCountriesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllCountries_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q86="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q86:DC_ErrorStatus" />
+    <wsdl:part xmlns:q87="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q87:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCountryMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCountryMaster" />
@@ -801,7 +810,7 @@
     <wsdl:part name="parameters" element="tns:GetCountryMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCountryMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q87="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q87:DC_ErrorStatus" />
+    <wsdl:part xmlns:q88="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q88:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateCountryMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateCountryMaster" />
@@ -810,7 +819,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateCountryMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateCountryMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q88="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q88:DC_ErrorStatus" />
+    <wsdl:part xmlns:q89="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q89:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddCountryMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:AddCountryMaster" />
@@ -819,7 +828,7 @@
     <wsdl:part name="parameters" element="tns:AddCountryMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddCountryMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q89="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q89:DC_ErrorStatus" />
+    <wsdl:part xmlns:q90="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q90:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCountryMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCountryMaster" />
@@ -828,7 +837,7 @@
     <wsdl:part name="parameters" element="tns:UpdateCountryMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCountryMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q90="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q90:DC_ErrorStatus" />
+    <wsdl:part xmlns:q91="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q91:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllStates_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllStates" />
@@ -837,7 +846,7 @@
     <wsdl:part name="parameters" element="tns:GetAllStatesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllStates_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q91="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q91:DC_ErrorStatus" />
+    <wsdl:part xmlns:q92="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q92:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStatesByCountry_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStatesByCountry" />
@@ -846,7 +855,7 @@
     <wsdl:part name="parameters" element="tns:GetStatesByCountryResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStatesByCountry_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q92="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q92:DC_ErrorStatus" />
+    <wsdl:part xmlns:q93="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q93:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStatesMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStatesMaster" />
@@ -855,7 +864,7 @@
     <wsdl:part name="parameters" element="tns:GetStatesMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStatesMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q93="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q93:DC_ErrorStatus" />
+    <wsdl:part xmlns:q94="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q94:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddStatesMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:AddStatesMaster" />
@@ -864,7 +873,7 @@
     <wsdl:part name="parameters" element="tns:AddStatesMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddStatesMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q94="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q94:DC_ErrorStatus" />
+    <wsdl:part xmlns:q95="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q95:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateStatesMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateStatesMaster" />
@@ -873,7 +882,7 @@
     <wsdl:part name="parameters" element="tns:UpdateStatesMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateStatesMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q95="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q95:DC_ErrorStatus" />
+    <wsdl:part xmlns:q96="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q96:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStatesAlphaPaging_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStatesAlphaPaging" />
@@ -882,7 +891,7 @@
     <wsdl:part name="parameters" element="tns:GetStatesAlphaPagingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStatesAlphaPaging_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q96="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q96:DC_ErrorStatus" />
+    <wsdl:part xmlns:q97="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q97:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStateNameAndCode_InputMessage">
     <wsdl:part name="parameters" element="tns:GetStateNameAndCode" />
@@ -891,7 +900,7 @@
     <wsdl:part name="parameters" element="tns:GetStateNameAndCodeResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetStateNameAndCode_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q97="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q97:DC_ErrorStatus" />
+    <wsdl:part xmlns:q98="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q98:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityNameList_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCityNameList" />
@@ -900,7 +909,7 @@
     <wsdl:part name="parameters" element="tns:GetCityNameListResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityNameList_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q98="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q98:DC_ErrorStatus" />
+    <wsdl:part xmlns:q99="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q99:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllCities_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCities" />
@@ -909,7 +918,7 @@
     <wsdl:part name="parameters" element="tns:GetAllCitiesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllCities_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q99="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q99:DC_ErrorStatus" />
+    <wsdl:part xmlns:q100="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q100:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCitiesByCountry_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCitiesByCountry" />
@@ -918,7 +927,7 @@
     <wsdl:part name="parameters" element="tns:GetCitiesByCountryResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCitiesByCountry_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q100="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q100:DC_ErrorStatus" />
+    <wsdl:part xmlns:q101="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q101:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCityMaster" />
@@ -927,7 +936,7 @@
     <wsdl:part name="parameters" element="tns:GetCityMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q101="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q101:DC_ErrorStatus" />
+    <wsdl:part xmlns:q102="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q102:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddCityMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:AddCityMaster" />
@@ -936,7 +945,7 @@
     <wsdl:part name="parameters" element="tns:AddCityMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddCityMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q102="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q102:DC_ErrorStatus" />
+    <wsdl:part xmlns:q103="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q103:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCityMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCityMaster" />
@@ -945,7 +954,7 @@
     <wsdl:part name="parameters" element="tns:UpdateCityMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCityMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q103="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q103:DC_ErrorStatus" />
+    <wsdl:part xmlns:q104="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q104:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityAlphaPaging_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCityAlphaPaging" />
@@ -954,7 +963,7 @@
     <wsdl:part name="parameters" element="tns:GetCityAlphaPagingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityAlphaPaging_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q104="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q104:DC_ErrorStatus" />
+    <wsdl:part xmlns:q105="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q105:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetDynamicAttributes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDynamicAttributes" />
@@ -963,7 +972,7 @@
     <wsdl:part name="parameters" element="tns:GetDynamicAttributesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetDynamicAttributes_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q105="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q105:DC_ErrorStatus" />
+    <wsdl:part xmlns:q106="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q106:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateDynamicAttributes_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateDynamicAttributes" />
@@ -972,7 +981,7 @@
     <wsdl:part name="parameters" element="tns:UpdateDynamicAttributesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateDynamicAttributes_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q106="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q106:DC_ErrorStatus" />
+    <wsdl:part xmlns:q107="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q107:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddDynamicAttributes_InputMessage">
     <wsdl:part name="parameters" element="tns:AddDynamicAttributes" />
@@ -981,7 +990,7 @@
     <wsdl:part name="parameters" element="tns:AddDynamicAttributesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddDynamicAttributes_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q107="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q107:DC_ErrorStatus" />
+    <wsdl:part xmlns:q108="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q108:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetTeamMasterData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTeamMasterData" />
@@ -990,7 +999,7 @@
     <wsdl:part name="parameters" element="tns:GetTeamMasterDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetTeamMasterData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q108="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q108:DC_ErrorStatus" />
+    <wsdl:part xmlns:q109="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q109:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateTeamMasterData_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateTeamMasterData" />
@@ -999,7 +1008,7 @@
     <wsdl:part name="parameters" element="tns:UpdateTeamMasterDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateTeamMasterData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q109="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q109:DC_ErrorStatus" />
+    <wsdl:part xmlns:q110="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q110:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddTeamMasterData_InputMessage">
     <wsdl:part name="parameters" element="tns:AddTeamMasterData" />
@@ -1008,7 +1017,7 @@
     <wsdl:part name="parameters" element="tns:AddTeamMasterDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddTeamMasterData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q110="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q110:DC_ErrorStatus" />
+    <wsdl:part xmlns:q111="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q111:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateAddressMasterHierarchy_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateAddressMasterHierarchy" />
@@ -1017,7 +1026,7 @@
     <wsdl:part name="parameters" element="tns:UpdateAddressMasterHierarchyResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateAddressMasterHierarchy_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q111="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q111:DC_ErrorStatus" />
+    <wsdl:part xmlns:q112="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q112:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetPort_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPort" />
@@ -1026,7 +1035,7 @@
     <wsdl:part name="parameters" element="tns:GetPortResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetPort_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q112="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q112:DC_ErrorStatus" />
+    <wsdl:part xmlns:q113="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q113:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_PortMasterSeach_InputMessage">
     <wsdl:part name="parameters" element="tns:PortMasterSeach" />
@@ -1035,7 +1044,7 @@
     <wsdl:part name="parameters" element="tns:PortMasterSeachResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_PortMasterSeach_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q113="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q113:DC_ErrorStatus" />
+    <wsdl:part xmlns:q114="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q114:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdatePortMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePortMaster" />
@@ -1044,7 +1053,7 @@
     <wsdl:part name="parameters" element="tns:UpdatePortMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdatePortMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q114="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q114:DC_ErrorStatus" />
+    <wsdl:part xmlns:q115="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q115:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddPortMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:AddPortMaster" />
@@ -1053,7 +1062,7 @@
     <wsdl:part name="parameters" element="tns:AddPortMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddPortMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q115="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q115:DC_ErrorStatus" />
+    <wsdl:part xmlns:q116="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q116:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllAttributeAndValuesByFOR_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllAttributeAndValuesByFOR" />
@@ -1062,7 +1071,7 @@
     <wsdl:part name="parameters" element="tns:GetAllAttributeAndValuesByFORResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllAttributeAndValuesByFOR_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q116="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q116:DC_ErrorStatus" />
+    <wsdl:part xmlns:q117="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q117:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllAttributeAndValuesByParentAttributeValue_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllAttributeAndValuesByParentAttributeValue" />
@@ -1071,7 +1080,7 @@
     <wsdl:part name="parameters" element="tns:GetAllAttributeAndValuesByParentAttributeValueResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllAttributeAndValuesByParentAttributeValue_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q117="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q117:DC_ErrorStatus" />
+    <wsdl:part xmlns:q118="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q118:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllAttributeAndValues_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllAttributeAndValues" />
@@ -1080,7 +1089,7 @@
     <wsdl:part name="parameters" element="tns:GetAllAttributeAndValuesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllAttributeAndValues_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q118="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q118:DC_ErrorStatus" />
+    <wsdl:part xmlns:q119="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q119:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterAttributes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterAttributes" />
@@ -1089,7 +1098,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterAttributesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterAttributes_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q119="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q119:DC_ErrorStatus" />
+    <wsdl:part xmlns:q120="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q120:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetParentAttributes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetParentAttributes" />
@@ -1098,7 +1107,7 @@
     <wsdl:part name="parameters" element="tns:GetParentAttributesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetParentAttributes_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q120="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q120:DC_ErrorStatus" />
+    <wsdl:part xmlns:q121="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q121:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributesMasterForValues_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAttributesMasterForValues" />
@@ -1107,7 +1116,7 @@
     <wsdl:part name="parameters" element="tns:GetAttributesMasterForValuesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributesMasterForValues_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q121="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q121:DC_ErrorStatus" />
+    <wsdl:part xmlns:q122="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q122:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributesForValues_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAttributesForValues" />
@@ -1116,7 +1125,7 @@
     <wsdl:part name="parameters" element="tns:GetAttributesForValuesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributesForValues_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q122="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q122:DC_ErrorStatus" />
+    <wsdl:part xmlns:q123="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q123:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveMasterAttribute_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveMasterAttribute" />
@@ -1125,7 +1134,7 @@
     <wsdl:part name="parameters" element="tns:SaveMasterAttributeResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveMasterAttribute_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q123="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q123:DC_ErrorStatus" />
+    <wsdl:part xmlns:q124="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q124:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributeValues_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAttributeValues" />
@@ -1134,7 +1143,7 @@
     <wsdl:part name="parameters" element="tns:GetAttributeValuesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributeValues_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q124="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q124:DC_ErrorStatus" />
+    <wsdl:part xmlns:q125="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q125:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributeDetails_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAttributeDetails" />
@@ -1143,7 +1152,7 @@
     <wsdl:part name="parameters" element="tns:GetAttributeDetailsResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAttributeDetails_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q125="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q125:DC_ErrorStatus" />
+    <wsdl:part xmlns:q126="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q126:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveAttributeValue_InputMessage">
     <wsdl:part name="parameters" element="tns:SaveAttributeValue" />
@@ -1152,7 +1161,7 @@
     <wsdl:part name="parameters" element="tns:SaveAttributeValueResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SaveAttributeValue_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q126="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q126:DC_ErrorStatus" />
+    <wsdl:part xmlns:q127="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q127:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetListAttributeAndValuesByFOR_InputMessage">
     <wsdl:part name="parameters" element="tns:GetListAttributeAndValuesByFOR" />
@@ -1161,7 +1170,7 @@
     <wsdl:part name="parameters" element="tns:GetListAttributeAndValuesByFORResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetListAttributeAndValuesByFOR_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q127="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q127:DC_ErrorStatus" />
+    <wsdl:part xmlns:q128="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q128:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetSupplier_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSupplier" />
@@ -1170,7 +1179,7 @@
     <wsdl:part name="parameters" element="tns:GetSupplierResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetSupplier_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q128="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q128:DC_ErrorStatus" />
+    <wsdl:part xmlns:q129="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q129:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetSupplierMarket_InputMessage">
     <wsdl:part name="parameters" element="tns:GetSupplierMarket" />
@@ -1179,7 +1188,7 @@
     <wsdl:part name="parameters" element="tns:GetSupplierMarketResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetSupplierMarket_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q129="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q129:DC_ErrorStatus" />
+    <wsdl:part xmlns:q130="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q130:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetProductCategoryBySupplier_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductCategoryBySupplier" />
@@ -1188,7 +1197,7 @@
     <wsdl:part name="parameters" element="tns:GetProductCategoryBySupplierResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetProductCategoryBySupplier_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q130="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q130:DC_ErrorStatus" />
+    <wsdl:part xmlns:q131="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q131:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateSupplier_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateSupplier" />
@@ -1197,7 +1206,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateSupplierResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateSupplier_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q131="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q131:DC_ErrorStatus" />
+    <wsdl:part xmlns:q132="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q132:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateSupplierMarket_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateSupplierMarket" />
@@ -1206,7 +1215,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateSupplierMarketResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateSupplierMarket_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q132="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q132:DC_ErrorStatus" />
+    <wsdl:part xmlns:q133="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q133:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierMarketSoftDelete_InputMessage">
     <wsdl:part name="parameters" element="tns:SupplierMarketSoftDelete" />
@@ -1215,7 +1224,7 @@
     <wsdl:part name="parameters" element="tns:SupplierMarketSoftDeleteResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierMarketSoftDelete_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q133="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q133:DC_ErrorStatus" />
+    <wsdl:part xmlns:q134="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q134:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateSupplier_ProductCategory_InputMessage">
     <wsdl:part name="parameters" element="tns:AddUpdateSupplier_ProductCategory" />
@@ -1224,7 +1233,7 @@
     <wsdl:part name="parameters" element="tns:AddUpdateSupplier_ProductCategoryResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddUpdateSupplier_ProductCategory_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q134="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q134:DC_ErrorStatus" />
+    <wsdl:part xmlns:q135="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q135:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_Supplier_ProductCategorySoftDelete_InputMessage">
     <wsdl:part name="parameters" element="tns:Supplier_ProductCategorySoftDelete" />
@@ -1233,7 +1242,7 @@
     <wsdl:part name="parameters" element="tns:Supplier_ProductCategorySoftDeleteResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_Supplier_ProductCategorySoftDelete_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q135="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q135:DC_ErrorStatus" />
+    <wsdl:part xmlns:q136="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q136:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierApiLocation_Search_InputMessage">
     <wsdl:part name="parameters" element="tns:SupplierApiLocation_Search" />
@@ -1242,7 +1251,7 @@
     <wsdl:part name="parameters" element="tns:SupplierApiLocation_SearchResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierApiLocation_Search_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q136="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q136:DC_ErrorStatus" />
+    <wsdl:part xmlns:q137="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q137:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierApiLocation_Update_InputMessage">
     <wsdl:part name="parameters" element="tns:SupplierApiLocation_Update" />
@@ -1251,7 +1260,7 @@
     <wsdl:part name="parameters" element="tns:SupplierApiLocation_UpdateResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierApiLocation_Update_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q137="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q137:DC_ErrorStatus" />
+    <wsdl:part xmlns:q138="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q138:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierApiLocation_Add_InputMessage">
     <wsdl:part name="parameters" element="tns:SupplierApiLocation_Add" />
@@ -1260,7 +1269,7 @@
     <wsdl:part name="parameters" element="tns:SupplierApiLocation_AddResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SupplierApiLocation_Add_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q138="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q138:DC_ErrorStatus" />
+    <wsdl:part xmlns:q139="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q139:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllStatuses_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAllStatuses" />
@@ -1269,7 +1278,7 @@
     <wsdl:part name="parameters" element="tns:GetAllStatusesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAllStatuses_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q139="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q139:DC_ErrorStatus" />
+    <wsdl:part xmlns:q140="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q140:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityMaster" />
@@ -1278,7 +1287,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q140="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q140:DC_ErrorStatus" />
+    <wsdl:part xmlns:q141="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q141:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityMasterBySupplier_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityMasterBySupplier" />
@@ -1287,7 +1296,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityMasterBySupplierResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityMasterBySupplier_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q141="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q141:DC_ErrorStatus" />
+    <wsdl:part xmlns:q142="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q142:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityContentMaster_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityContentMaster" />
@@ -1296,7 +1305,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityContentMasterResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityContentMaster_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q142="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q142:DC_ErrorStatus" />
+    <wsdl:part xmlns:q143="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q143:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityNames_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivityNames" />
@@ -1305,7 +1314,7 @@
     <wsdl:part name="parameters" element="tns:GetActivityNamesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivityNames_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q143="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q143:DC_ErrorStatus" />
+    <wsdl:part xmlns:q144="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q144:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCodeById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCodeById" />
@@ -1314,7 +1323,7 @@
     <wsdl:part name="parameters" element="tns:GetCodeByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCodeById_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q144="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q144:DC_ErrorStatus" />
+    <wsdl:part xmlns:q145="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q145:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetRemarksForMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetRemarksForMapping" />
@@ -1323,7 +1332,7 @@
     <wsdl:part name="parameters" element="tns:GetRemarksForMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetRemarksForMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q145="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q145:DC_ErrorStatus" />
+    <wsdl:part xmlns:q146="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q146:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetDetailsByIdOrName_InputMessage">
     <wsdl:part name="parameters" element="tns:GetDetailsByIdOrName" />
@@ -1332,7 +1341,7 @@
     <wsdl:part name="parameters" element="tns:GetDetailsByIdOrNameResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetDetailsByIdOrName_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q146="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q146:DC_ErrorStatus" />
+    <wsdl:part xmlns:q147="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q147:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetProductByCity_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductByCity" />
@@ -1341,7 +1350,7 @@
     <wsdl:part name="parameters" element="tns:GetProductByCityResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetProductByCity_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q147="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q147:DC_ErrorStatus" />
+    <wsdl:part xmlns:q148="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q148:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterStateData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterStateData" />
@@ -1350,7 +1359,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterStateDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterStateData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q148="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q148:DC_ErrorStatus" />
+    <wsdl:part xmlns:q149="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q149:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetGeoLocationByAddress_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGeoLocationByAddress" />
@@ -1359,7 +1368,7 @@
     <wsdl:part name="parameters" element="tns:GetGeoLocationByAddressResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetGeoLocationByAddress_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q149="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q149:DC_ErrorStatus" />
+    <wsdl:part xmlns:q150="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q150:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetGeoLocationByLatLng_InputMessage">
     <wsdl:part name="parameters" element="tns:GetGeoLocationByLatLng" />
@@ -1368,7 +1377,7 @@
     <wsdl:part name="parameters" element="tns:GetGeoLocationByLatLngResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetGeoLocationByLatLng_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q150="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q150:DC_ErrorStatus" />
+    <wsdl:part xmlns:q151="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q151:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetNearByPlacesByLatLng_InputMessage">
     <wsdl:part name="parameters" element="tns:GetNearByPlacesByLatLng" />
@@ -1377,7 +1386,7 @@
     <wsdl:part name="parameters" element="tns:GetNearByPlacesByLatLngResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetNearByPlacesByLatLng_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q151="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q151:DC_ErrorStatus" />
+    <wsdl:part xmlns:q152="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q152:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ShiftAccommodationMappings_InputMessage">
     <wsdl:part name="parameters" element="tns:ShiftAccommodationMappings" />
@@ -1386,7 +1395,7 @@
     <wsdl:part name="parameters" element="tns:ShiftAccommodationMappingsResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ShiftAccommodationMappings_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q152="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q152:DC_ErrorStatus" />
+    <wsdl:part xmlns:q153="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q153:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAccomodationProductMappingById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAccomodationProductMappingById" />
@@ -1395,7 +1404,7 @@
     <wsdl:part name="parameters" element="tns:GetAccomodationProductMappingByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAccomodationProductMappingById_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q153="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q153:DC_ErrorStatus" />
+    <wsdl:part xmlns:q154="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q154:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAccomodationProductMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAccomodationProductMapping" />
@@ -1404,7 +1413,7 @@
     <wsdl:part name="parameters" element="tns:GetAccomodationProductMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAccomodationProductMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q154="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q154:DC_ErrorStatus" />
+    <wsdl:part xmlns:q155="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q155:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetProductSupplierMappingSearch_InputMessage">
     <wsdl:part name="parameters" element="tns:GetProductSupplierMappingSearch" />
@@ -1413,7 +1422,7 @@
     <wsdl:part name="parameters" element="tns:GetProductSupplierMappingSearchResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetProductSupplierMappingSearch_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q155="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q155:DC_ErrorStatus" />
+    <wsdl:part xmlns:q156="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q156:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateAccomodationProductMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateAccomodationProductMapping" />
@@ -1422,7 +1431,7 @@
     <wsdl:part name="parameters" element="tns:UpdateAccomodationProductMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateAccomodationProductMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q156="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q156:DC_ErrorStatus" />
+    <wsdl:part xmlns:q157="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q157:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAccomodationSupplierRoomTypeMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetAccomodationSupplierRoomTypeMapping" />
@@ -1431,7 +1440,7 @@
     <wsdl:part name="parameters" element="tns:GetAccomodationSupplierRoomTypeMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetAccomodationSupplierRoomTypeMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q157="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q157:DC_ErrorStatus" />
+    <wsdl:part xmlns:q158="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q158:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateAccomodationSupplierRoomTypeMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateAccomodationSupplierRoomTypeMapping" />
@@ -1440,7 +1449,7 @@
     <wsdl:part name="parameters" element="tns:UpdateAccomodationSupplierRoomTypeMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateAccomodationSupplierRoomTypeMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q158="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q158:DC_ErrorStatus" />
+    <wsdl:part xmlns:q159="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q159:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AccomodationSupplierRoomTypeMapping_Search_InputMessage">
     <wsdl:part name="parameters" element="tns:AccomodationSupplierRoomTypeMapping_Search" />
@@ -1449,7 +1458,7 @@
     <wsdl:part name="parameters" element="tns:AccomodationSupplierRoomTypeMapping_SearchResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AccomodationSupplierRoomTypeMapping_Search_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q159="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q159:DC_ErrorStatus" />
+    <wsdl:part xmlns:q160="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q160:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AccomodationSupplierRoomTypeMapping_UpdateMap_InputMessage">
     <wsdl:part name="parameters" element="tns:AccomodationSupplierRoomTypeMapping_UpdateMap" />
@@ -1458,7 +1467,7 @@
     <wsdl:part name="parameters" element="tns:AccomodationSupplierRoomTypeMapping_UpdateMapResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AccomodationSupplierRoomTypeMapping_UpdateMap_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q160="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q160:DC_ErrorStatus" />
+    <wsdl:part xmlns:q161="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q161:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AccomodationSupplierRoomTypeMapping_TTFUALL_InputMessage">
     <wsdl:part name="parameters" element="tns:AccomodationSupplierRoomTypeMapping_TTFUALL" />
@@ -1467,7 +1476,7 @@
     <wsdl:part name="parameters" element="tns:AccomodationSupplierRoomTypeMapping_TTFUALLResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AccomodationSupplierRoomTypeMapping_TTFUALL_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q161="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q161:DC_ErrorStatus" />
+    <wsdl:part xmlns:q162="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q162:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCountryMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCountryMapping" />
@@ -1476,7 +1485,7 @@
     <wsdl:part name="parameters" element="tns:GetCountryMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCountryMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q162="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q162:DC_ErrorStatus" />
+    <wsdl:part xmlns:q163="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q163:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCountryMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCountryMapping" />
@@ -1485,7 +1494,7 @@
     <wsdl:part name="parameters" element="tns:UpdateCountryMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCountryMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q163="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q163:DC_ErrorStatus" />
+    <wsdl:part xmlns:q164="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q164:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCityMapping" />
@@ -1494,7 +1503,7 @@
     <wsdl:part name="parameters" element="tns:GetCityMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetCityMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q164="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q164:DC_ErrorStatus" />
+    <wsdl:part xmlns:q165="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q165:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCityMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateCityMapping" />
@@ -1503,7 +1512,7 @@
     <wsdl:part name="parameters" element="tns:UpdateCityMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateCityMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q165="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q165:DC_ErrorStatus" />
+    <wsdl:part xmlns:q166="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q166:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SearchMasterAttributeMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:SearchMasterAttributeMapping" />
@@ -1512,7 +1521,7 @@
     <wsdl:part name="parameters" element="tns:SearchMasterAttributeMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SearchMasterAttributeMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q166="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q166:DC_ErrorStatus" />
+    <wsdl:part xmlns:q167="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q167:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterAttributeMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterAttributeMapping" />
@@ -1521,7 +1530,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterAttributeMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterAttributeMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q167="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q167:DC_ErrorStatus" />
+    <wsdl:part xmlns:q168="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q168:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterAttributeValueMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMasterAttributeValueMapping" />
@@ -1530,7 +1539,7 @@
     <wsdl:part name="parameters" element="tns:GetMasterAttributeValueMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMasterAttributeValueMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q168="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q168:DC_ErrorStatus" />
+    <wsdl:part xmlns:q169="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q169:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddMasterAttributeMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:AddMasterAttributeMapping" />
@@ -1539,7 +1548,7 @@
     <wsdl:part name="parameters" element="tns:AddMasterAttributeMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_AddMasterAttributeMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q169="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q169:DC_ErrorStatus" />
+    <wsdl:part xmlns:q170="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q170:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateMasterAttributeMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMasterAttributeMapping" />
@@ -1548,7 +1557,7 @@
     <wsdl:part name="parameters" element="tns:UpdateMasterAttributeMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateMasterAttributeMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q170="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q170:DC_ErrorStatus" />
+    <wsdl:part xmlns:q171="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q171:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateMasterAttributeValueMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMasterAttributeValueMapping" />
@@ -1557,7 +1566,7 @@
     <wsdl:part name="parameters" element="tns:UpdateMasterAttributeValueMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateMasterAttributeValueMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q171="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q171:DC_ErrorStatus" />
+    <wsdl:part xmlns:q172="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q172:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_DeleteMasterAttributeValueMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:DeleteMasterAttributeValueMapping" />
@@ -1566,7 +1575,7 @@
     <wsdl:part name="parameters" element="tns:DeleteMasterAttributeValueMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_DeleteMasterAttributeValueMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q172="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q172:DC_ErrorStatus" />
+    <wsdl:part xmlns:q173="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q173:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingById_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingById" />
@@ -1575,7 +1584,7 @@
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingByIdResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingById_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q173="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q173:DC_ErrorStatus" />
+    <wsdl:part xmlns:q174="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q174:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMapping" />
@@ -1584,7 +1593,7 @@
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q174="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q174:DC_ErrorStatus" />
+    <wsdl:part xmlns:q175="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q175:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingSearch_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingSearch" />
@@ -1593,7 +1602,7 @@
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingSearchResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingSearch_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q175="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q175:DC_ErrorStatus" />
+    <wsdl:part xmlns:q176="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q176:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingSearchForMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingSearchForMapping" />
@@ -1602,7 +1611,7 @@
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingSearchForMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingSearchForMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q176="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q176:DC_ErrorStatus" />
+    <wsdl:part xmlns:q177="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q177:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_IsMappedWithSupplier_InputMessage">
     <wsdl:part name="parameters" element="tns:IsMappedWithSupplier" />
@@ -1611,7 +1620,7 @@
     <wsdl:part name="parameters" element="tns:IsMappedWithSupplierResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_IsMappedWithSupplier_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q177="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q177:DC_ErrorStatus" />
+    <wsdl:part xmlns:q178="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q178:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingSearchForDDL_InputMessage">
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingSearchForDDL" />
@@ -1620,7 +1629,7 @@
     <wsdl:part name="parameters" element="tns:GetActivitySupplierProductMappingSearchForDDLResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetActivitySupplierProductMappingSearchForDDL_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q178="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q178:DC_ErrorStatus" />
+    <wsdl:part xmlns:q179="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q179:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateActivitySupplierProductMapping_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateActivitySupplierProductMapping" />
@@ -1629,7 +1638,7 @@
     <wsdl:part name="parameters" element="tns:UpdateActivitySupplierProductMappingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateActivitySupplierProductMapping_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q179="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q179:DC_ErrorStatus" />
+    <wsdl:part xmlns:q180="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q180:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetVelocityDashboard_InputMessage">
     <wsdl:part name="parameters" element="tns:GetVelocityDashboard" />
@@ -1638,7 +1647,7 @@
     <wsdl:part name="parameters" element="tns:GetVelocityDashboardResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetVelocityDashboard_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q180="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q180:DC_ErrorStatus" />
+    <wsdl:part xmlns:q181="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q181:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetHotelListByCityCode_InputMessage">
     <wsdl:part name="parameters" element="tns:GetHotelListByCityCode" />
@@ -1647,15 +1656,6 @@
     <wsdl:part name="parameters" element="tns:GetHotelListByCityCodeResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetHotelListByCityCode_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q181="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q181:DC_ErrorStatus" />
-  </wsdl:message>
-  <wsdl:message name="IConsumer_GetTest_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetTest" />
-  </wsdl:message>
-  <wsdl:message name="IConsumer_GetTest_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetTestResponse" />
-  </wsdl:message>
-  <wsdl:message name="IConsumer_GetTest_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q182="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q182:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetSiteMapMaster_InputMessage">
@@ -3030,6 +3030,11 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IMasters/GetActivityByCountryCityResponse" message="tns:IConsumer_GetActivityByCountryCity_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IMasters/GetActivityByCountryCityDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetActivityByCountryCity_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetSuppliersByProductCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMasters/GetSuppliersByProductCategory" message="tns:IConsumer_GetSuppliersByProductCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMasters/GetSuppliersByProductCategoryResponse" message="tns:IConsumer_GetSuppliersByProductCategory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMasters/GetSuppliersByProductCategoryDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetSuppliersByProductCategory_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
     <wsdl:operation name="SaveCityAreaLocation">
       <wsdl:input wsaw:Action="http://tempuri.org/IMasters/SaveCityAreaLocation" message="tns:IConsumer_SaveCityAreaLocation_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMasters/SaveCityAreaLocationResponse" message="tns:IConsumer_SaveCityAreaLocation_OutputMessage" />
@@ -3559,11 +3564,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMapping/GetHotelListByCityCode" message="tns:IConsumer_GetHotelListByCityCode_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMapping/GetHotelListByCityCodeResponse" message="tns:IConsumer_GetHotelListByCityCode_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IMapping/GetHotelListByCityCodeDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetHotelListByCityCode_DC_ErrorStatusFault_FaultMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetTest">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMapping/GetTest" message="tns:IConsumer_GetTest_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMapping/GetTestResponse" message="tns:IConsumer_GetTest_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IMapping/GetTestDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetTest_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetSiteMapMaster">
       <wsdl:input wsaw:Action="http://tempuri.org/IAdmin/GetSiteMapMaster" message="tns:IConsumer_GetSiteMapMaster_InputMessage" />

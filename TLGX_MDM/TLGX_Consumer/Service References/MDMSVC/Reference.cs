@@ -17495,6 +17495,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string CodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContinentCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContinentNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CountryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -17592,6 +17598,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CodeField, value) != true)) {
                     this.CodeField = value;
                     this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContinentCode {
+            get {
+                return this.ContinentCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContinentCodeField, value) != true)) {
+                    this.ContinentCodeField = value;
+                    this.RaisePropertyChanged("ContinentCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ContinentName {
+            get {
+                return this.ContinentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContinentNameField, value) != true)) {
+                    this.ContinentNameField = value;
+                    this.RaisePropertyChanged("ContinentName");
                 }
             }
         }
@@ -22746,6 +22778,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierNameField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] SupplierNamesField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -22804,6 +22839,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
                     this.SupplierNameField = value;
                     this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] SupplierNames {
+            get {
+                return this.SupplierNamesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNamesField, value) != true)) {
+                    this.SupplierNamesField = value;
+                    this.RaisePropertyChanged("SupplierNames");
                 }
             }
         }
@@ -25318,6 +25366,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Supplier_IdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -25352,6 +25403,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.NameField, value) != true)) {
                     this.NameField = value;
                     this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }
@@ -45185,6 +45249,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetActivityByCountryCity", ReplyAction="http://tempuri.org/IMasters/GetActivityByCountryCityResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_DDL[]> GetActivityByCountryCityAsync(string CountryName, string CityName);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetSuppliersByProductCategory", ReplyAction="http://tempuri.org/IMasters/GetSuppliersByProductCategoryResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetSuppliersByProductCategoryDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Supplier_DDL[] GetSuppliersByProductCategory(string ProductCategory);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetSuppliersByProductCategory", ReplyAction="http://tempuri.org/IMasters/GetSuppliersByProductCategoryResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_DDL[]> GetSuppliersByProductCategoryAsync(string ProductCategory);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SaveCityAreaLocation", ReplyAction="http://tempuri.org/IMasters/SaveCityAreaLocationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/SaveCityAreaLocationDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         bool SaveCityAreaLocation(TLGX_Consumer.MDMSVC.DC_CityAreaLocation _obj);
@@ -45947,13 +46018,6 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetHotelListByCityCode", ReplyAction="http://tempuri.org/IMapping/GetHotelListByCityCodeResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]> GetHotelListByCityCodeAsync(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ param);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetTest", ReplyAction="http://tempuri.org/IMapping/GetTestResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetTestDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        bool GetTest();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetTest", ReplyAction="http://tempuri.org/IMapping/GetTestResponse")]
-        System.Threading.Tasks.Task<bool> GetTestAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdmin/GetSiteMapMaster", ReplyAction="http://tempuri.org/IAdmin/GetSiteMapMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAdmin/GetSiteMapMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid);
@@ -46075,18 +46139,18 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId);
+        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId, string ProductCategory);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId, string ProductCategory);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliers", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersDC_ErrorStatusFaul" +
             "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId);
+        TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId, string ProductCategory);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliers", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsForSuppliersResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId, string ProductCategory);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -47401,6 +47465,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetActivityByCountryCityAsync(CountryName, CityName);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Supplier_DDL[] GetSuppliersByProductCategory(string ProductCategory) {
+            return base.Channel.GetSuppliersByProductCategory(ProductCategory);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_DDL[]> GetSuppliersByProductCategoryAsync(string ProductCategory) {
+            return base.Channel.GetSuppliersByProductCategoryAsync(ProductCategory);
+        }
+        
         public bool SaveCityAreaLocation(TLGX_Consumer.MDMSVC.DC_CityAreaLocation _obj) {
             return base.Channel.SaveCityAreaLocation(_obj);
         }
@@ -48249,14 +48321,6 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetHotelListByCityCodeAsync(param);
         }
         
-        public bool GetTest() {
-            return base.Channel.GetTest();
-        }
-        
-        public System.Threading.Tasks.Task<bool> GetTestAsync() {
-            return base.Channel.GetTestAsync();
-        }
-        
         public TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid) {
             return base.Channel.GetSiteMapMaster(ID, applicationid);
         }
@@ -48393,20 +48457,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddUpdateApplicationAsync(apmgmt);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId) {
-            return base.Channel.GetMappingStatistics(SupplierID, PriorityId);
+        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId, string ProductCategory) {
+            return base.Channel.GetMappingStatistics(SupplierID, PriorityId, ProductCategory);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId) {
-            return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId, string ProductCategory) {
+            return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId, ProductCategory);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId) {
-            return base.Channel.GetMappingStatisticsForSuppliers(PriorityId);
+        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] GetMappingStatisticsForSuppliers(string PriorityId, string ProductCategory) {
+            return base.Channel.GetMappingStatisticsForSuppliers(PriorityId, ProductCategory);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId) {
-            return base.Channel.GetMappingStatisticsForSuppliersAsync(PriorityId);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[]> GetMappingStatisticsForSuppliersAsync(string PriorityId, string ProductCategory) {
+            return base.Channel.GetMappingStatisticsForSuppliersAsync(PriorityId, ProductCategory);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {

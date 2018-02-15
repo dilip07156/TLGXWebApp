@@ -458,6 +458,12 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_Activity_DDL>;
 
         }
+        public List<DC_Supplier_DDL> GetSuppliersByProductCategory(string ProductCategory)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Supplier_MasterData_ByProductCategory"], ProductCategory), typeof(List<DC_Supplier_DDL>), out result);
+            return result as List<MDMSVC.DC_Supplier_DDL>;
+        }
         #endregion
 
         #region City Area and Location

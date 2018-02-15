@@ -21,7 +21,8 @@ namespace TLGX_Consumer.Service
         public void ProcessRequest(HttpContext context)
         {
             var PriorityId = context.Request.QueryString["PriorityId"];
-            var res = MapSvc.GetMappingStatisticsForSuppliers(PriorityId);
+            var ProductCategory = context.Request.QueryString["ProductCategory"];
+            var res = MapSvc.GetMappingStatisticsForSuppliers(PriorityId, ProductCategory);
             context.Response.Write(new JavaScriptSerializer().Serialize(res));
         }
         public bool IsReusable
