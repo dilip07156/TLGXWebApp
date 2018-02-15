@@ -9,12 +9,12 @@ using System.Text;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Reporting.WebForms;
+using System.Web.UI.WebControls;
 
 namespace TLGX_Consumer.staticdata
 {
     public partial class manageSupplierImports : System.Web.UI.Page
     {
-
         Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
         Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
@@ -32,30 +32,62 @@ namespace TLGX_Consumer.staticdata
         {
             if (!IsPostBack)
             {
-                fillsuppliers();   
+                fillsuppliers("0");
+                BindProductCategory(ddlProductCategory);
             }
+            //if (ddlProductCategory.SelectedValue == "0")
+            //    fillsuppliers("0");
+            //else fillsuppliers(ddlProductCategory.SelectedValue);
+
             supplierwisedata.Visible = true;
             report.Visible = false;
             if (ddlSupplierName.SelectedValue == "0")
             {
                 allsupplierdata.Visible = true;
-                ddlPriority.Visible = true;
+                //ddlPriority.Visible = true;
             }
             else
             {
                 allsupplierdata.Visible = false;
-                ddlPriority.Visible = false;
+                //ddlPriority.Visible = false;
             }
+
         }
 
-
-
-        private void fillsuppliers()
+        private void BindProductCategory(DropDownList ddlProductCategoryBind)
         {
-            ddlSupplierName.DataSource = _objMasterSVC.GetSupplierMasterData();
+            var result = _objMasterSVC.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "SupplierInfo", Name = "ProductCategory" });
+            if (result != null)
+                if (result.Count > 0)
+                {
+                    ddlProductCategoryBind.Items.Clear();
+                    ddlProductCategoryBind.DataSource = result;
+                    ddlProductCategoryBind.DataTextField = "AttributeValue";
+                    ddlProductCategoryBind.DataValueField = "AttributeValue";
+                    ddlProductCategoryBind.DataBind();
+                    ddlProductCategoryBind.Items.Insert(0, new ListItem { Text = "--All Category--", Value = "0" });
+                }
+        }
+
+        private void fillsuppliers(string productCategory)
+        {
+            ddlSupplierName.Items.Clear();
+            ddlPriority.Items.Clear();
+            var res = _objMasterSVC.GetSuppliersByProductCategory(productCategory);
+            //for allsupplier
+                 // var res = _objMasterSVC.GetSupplierMasterData();
+            ddlSupplierName.DataSource = res;
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
             ddlSupplierName.DataBind();
+            ddlSupplierName.Items.Insert(0, new ListItem { Text = "--All Suppliers--", Value = "0" });
+            //for Priority
+            ddlPriority.DataSource = (from r in res orderby r.Priority select new { Priority = r.Priority }).Distinct().ToList();
+            ddlPriority.DataValueField = "Priority";
+            ddlPriority.DataTextField = "Priority";
+            ddlPriority.DataBind();
+            ddlPriority.Items.Remove(ddlPriority.Items.FindByValue("0"));
+            ddlPriority.Items.Insert(0, new ListItem { Text = "--All Priority--", Value = "0" });
         }
 
         protected void btnExportCsv_Click(object sender, EventArgs e)
@@ -166,6 +198,13 @@ namespace TLGX_Consumer.staticdata
             {
                 InsertFileRecord("Activity");
             }
-        } 
+        }
+
+        protected void ddlProductCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillsuppliers(ddlProductCategory.SelectedValue);
+        }
+
+      
     }
 }

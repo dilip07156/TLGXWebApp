@@ -37,38 +37,51 @@
         .chartheight {
             height: 200px;
         }
+
+        .list-inline {
+            display: block;
+            padding-left: 20px;
+        }
+
+            .list-inline li {
+                display: inline-block;
+            }
+
+                .list-inline li::after {
+                    content: '|';
+                }
     </style>
-   
+
     <script type="text/javascript">
-      //script for RUN MAPPING 
-            var x;
-            function myTimer() {
-                var hdnval = document.getElementById("hdnFileId").value;
-                getChartDataFileMapping(hdnval);
-            }
-            function myStopFunction() {
-                clearInterval(x);
-            }
-            function showDetailsModal(fileid) {
-                $("#moViewDetials").modal('show');
-                $('#moViewDetials').on('show.bs.modal', function () {
-                    document.getElementById("hdnFileId").value = fileid;
-                    getChartDataFileMapping(fileid);
-                    //strat timer
-                    x = setInterval(function () { myTimer() }, 5000);
-                }).modal('show');;
-                $('#moViewDetials').on('hidden.bs.modal', function () {
-                    //stop timer on close of modal 
-                    $('#moViewDetials a:first').tab('show');
-                    myStopFunction();
-                });
-            }
-            function closeDetailsModal() {
-                $("#moViewDetials").modal('hide');
-            }
-      //End RUN MAPPING
-       
-     //  Script for Country city hotel charts
+        //script for RUN MAPPING 
+        var x;
+        function myTimer() {
+            var hdnval = document.getElementById("hdnFileId").value;
+            getChartDataFileMapping(hdnval);
+        }
+        function myStopFunction() {
+            clearInterval(x);
+        }
+        function showDetailsModal(fileid) {
+            $("#moViewDetials").modal('show');
+            $('#moViewDetials').on('show.bs.modal', function () {
+                document.getElementById("hdnFileId").value = fileid;
+                getChartDataFileMapping(fileid);
+                //strat timer
+                x = setInterval(function () { myTimer() }, 5000);
+            }).modal('show');;
+            $('#moViewDetials').on('hidden.bs.modal', function () {
+                //stop timer on close of modal 
+                $('#moViewDetials a:first').tab('show');
+                myStopFunction();
+            });
+        }
+        function closeDetailsModal() {
+            $("#moViewDetials").modal('hide');
+        }
+        //End RUN MAPPING
+
+        //  Script for Country city hotel charts
         var colorsArray = [];
         while (colorsArray.length < 200) {
             do {
@@ -80,11 +93,12 @@
 
         function getChartData() {
             var sid = $('#MainContent_ddlSupplierName').val();
+            var ProductCategory = $('#MainContent_ddlProductCategory').val();
             var PriorityId = "0";
             if (sid == '0') {
                 $('#ReportViewersupplierwise').hide();
                 var PriorityId = $('#MainContent_ddlPriority').val();
-                getAllSupplierData(PriorityId);
+                getAllSupplierData(PriorityId, ProductCategory);
                 sid = '00000000-0000-0000-0000-000000000000'
             }
             else {
@@ -92,10 +106,11 @@
             }
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
-                data: { 'Supplier_Id': sid, 'PriorityId': PriorityId },
+                data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
+                    $("#SupplierNames").empty();
                     var contryArray = [];
                     var cityArray = [];
                     var productArray = [];
@@ -115,6 +130,15 @@
                         var date = new Date(Date.UTC(t[2], t[1] - 1, t[0], t[3], t[4], t[5]));
                         $(".nxtrundate").append("Next Run is scheduled on :&nbsp <br/>" + date);
                     }
+                    //Get SupplierNames
+                    if (result[0].SupplierNames != null) {
+                        var ul = $('<ul/>').addClass("list-inline");
+                        for (var p = 0; p < result[0].SupplierNames.length; p++) {
+                            //$("#SupplierNames").append("" + result[0].SupplierNames[p]+",");
+                            ul.append("<li>" + result[0].SupplierNames[p] + "</li>");
+                            $("#SupplierNames").append(ul);
+                        }
+                    }
                     //Need to get  Data
                     for (; iNodes < result[0].MappingStatsFor.length; iNodes++) {
                         if (result[0].MappingStatsFor[iNodes].MappingFor == "Country") {
@@ -129,7 +153,7 @@
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount > 0  )
+                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount > 0)
                                     { $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount); }
                                 }
                             }
@@ -164,7 +188,7 @@
                                 }
                                 else {
                                     $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
-                                    if (resultDataForProduct[iProductMappingData].SuppliersCount > 0 )
+                                    if (resultDataForProduct[iProductMappingData].SuppliersCount > 0)
                                     { $("#productSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForProduct[iProductMappingData].SuppliersCount); }
                                 }
                             }
@@ -181,7 +205,7 @@
                                 }
                                 else {
                                     $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
-                                    if (resultDataForActivity[iActivityMappingData].SuppliersCount >0)
+                                    if (resultDataForActivity[iActivityMappingData].SuppliersCount > 0)
                                     { $("#activitySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForActivity[iActivityMappingData].SuppliersCount); }
                                 }
                             }
@@ -318,10 +342,10 @@
                 }
             });
         }
-        function getAllSupplierData(PriorityId) {
+        function getAllSupplierData(PriorityId, ProductCategory) {
             $.ajax({
                 url: '../../../Service/AllSupplierDataForChart.ashx',
-                data: { 'PriorityId': PriorityId },
+                data: { 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 type: 'GET',
@@ -552,32 +576,45 @@
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
+
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
         </div>
 
-        <div class="col-md-6 ">
+        <div class="col-md-8 ">
             <div class="form-inline">
                 <br />
                 <br />
-                <div class="form-group pull-right ">
-                    <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
-                        <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true" >
-                        <asp:ListItem Value="0">--All Priority--</asp:ListItem>
-                        <asp:ListItem Value="1">1</asp:ListItem>
-                        <asp:ListItem Value="2">2</asp:ListItem>
-                        <asp:ListItem Value="3">3</asp:ListItem>
-                        <asp:ListItem Value="4">4</asp:ListItem>
-                    </asp:DropDownList>
+                <div class="form-group  ">
+                    <asp:UpdatePanel runat="server" ID="upPnlSearchFilters">
+                        <ContentTemplate>
+                            <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged">
+                                <asp:ListItem Value="0">--All Category--</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true">
+                                <asp:ListItem Value="0">--All Priority--</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
+                                <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
+                            </asp:DropDownList>
+                        </ContentTemplate>
+                        <Triggers>
+                            <asp:AsyncPostBackTrigger ControlID="ddlProductCategory" EventName="SelectedIndexChanged" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="form-group  ">
                     <%--<asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />--%>
                     <button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>
                     <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="row">
+        <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
     </div>
     <hr />
     <%--for first three charts--%>

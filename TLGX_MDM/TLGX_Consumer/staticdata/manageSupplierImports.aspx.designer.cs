@@ -13,13 +13,22 @@ namespace TLGX_Consumer.staticdata {
     public partial class manageSupplierImports {
         
         /// <summary>
-        /// ddlSupplierName control.
+        /// upPnlSearchFilters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
+        protected global::System.Web.UI.UpdatePanel upPnlSearchFilters;
+        
+        /// <summary>
+        /// ddlProductCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategory;
         
         /// <summary>
         /// ddlPriority control.
@@ -29,6 +38,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        
+        /// <summary>
+        /// ddlSupplierName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
         /// btnExportCsv control.
