@@ -592,15 +592,11 @@
                             <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged">
                                 <asp:ListItem Value="0">--All Category--</asp:ListItem>
                             </asp:DropDownList>
-                            <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
-                                <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
-                            </asp:DropDownList>
                             <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true">
                                 <asp:ListItem Value="0">--All Priority--</asp:ListItem>
-                                <%--<asp:ListItem Value="1">1</asp:ListItem>
-                                <asp:ListItem Value="2">2</asp:ListItem>
-                                <asp:ListItem Value="3">3</asp:ListItem>
-                                <asp:ListItem Value="4">4</asp:ListItem>--%>
+                            </asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
+                                <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                             </asp:DropDownList>
                         </ContentTemplate>
                         <Triggers>
