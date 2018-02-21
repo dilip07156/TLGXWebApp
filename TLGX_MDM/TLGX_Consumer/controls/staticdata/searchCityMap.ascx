@@ -465,7 +465,7 @@
                                        <asp:TemplateField HeaderText="Entity" >
                                                 <ItemTemplate>
                                                     <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("EntityTypeFlag") %>'
-                                                        RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
+                                                        RepeatLayout="Flow" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
                                                         <ItemTemplate>
                                                               <asp:Label ID="entityNameBind" runat="server" Text='<%# Bind("EntityType") %>'></asp:Label> 
                                                         </ItemTemplate>
