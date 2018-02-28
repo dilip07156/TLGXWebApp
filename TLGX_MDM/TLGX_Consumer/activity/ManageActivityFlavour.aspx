@@ -44,15 +44,14 @@
                             </strong>
                         </h3>
                     </div>
-
-
                     <div class="col-lg-4 ">
                         <div class="pull-right" style="margin-top: 25px !important;">
                             <strong>
                                 <asp:Label ID="lblActivityStatus" runat="server"></asp:Label>
                                 (
 
-                         <button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>
+                                  <input type="button" onclick="showmoActivity_Flavour_Status();" class="btn btn-link" style="padding: 0px;"  value="Change"/>
+                                  <%--<button class="btn btn-link" style="padding: 0px;" onclick="showmoActivity_Flavour_Status();">Change</button>--%>
 
                                 )
                            <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Go Back to Search Page" />
@@ -165,6 +164,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
+                            <div id="ValidationSummaryPopup" class="alert alert-danger" style="display:none";></div>
                         </div>
                     </div>
                     <asp:UpdatePanel ID="UpdActivity_Flavour_StatusModalpopup" runat="server">
@@ -187,7 +187,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <asp:Button ID="btnChangeActivityStatus" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnChangeActivityStatus_Click" OnClientClick="closemoActivityStatusModal();" />
+                                    <asp:Button ID="btnChangeActivityStatus" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnChangeActivityStatus_Click" OnClientClick="return closemoActivityStatusModal();" />
                                 </div>
                             </div>
 
@@ -215,13 +215,33 @@
 
         })
 
-
         function showmoActivity_Flavour_Status() {
             document.getElementById('MainContent_dvMsgStatusUpdate').style.display = 'none';
             $("#moActivity_Flavour_Status").modal('show');
         }
         function closemoActivityStatusModal() {
-            $("#moActivity_Flavour_Status").modal('hide');
+            var flag = true;
+            var status = document.getElementById('MainContent_ddlActivity_Flavour_Status');
+            if (status.options[status.selectedIndex].text == 'Review Completed')
+            {
+                var validated = Validate("frommodel");
+                if (validated) {
+                    $("#moActivity_Flavour_Status").modal('hide');
+                }
+                else {
+                    flag = false;
+                }
+            }
+            else {
+                var ValidationSummaryPopup = document.getElementById("ValidationSummaryPopup");
+                ValidationSummaryPopup.innerHTML = "";
+                ValidationSummaryPopup.style.display = "none";
+                $("#moActivity_Flavour_Status").modal('hide');
+            }
+
+            return flag;
+            
+
         }
         function pageLoad(sender, args) {
         }

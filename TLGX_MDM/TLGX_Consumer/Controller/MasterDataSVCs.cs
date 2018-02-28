@@ -262,6 +262,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_Get"], RQParams, typeof(MDMSVC.DC_Supplier_Search_RQ), typeof(List<MDMSVC.DC_Supplier>), out result);
             return result as List<DC_Supplier>;
         }
+        public List<MDMSVC.DC_Supplier_DDL> GetSupplierByEntity(MDMSVC.DC_Supplier_Search_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SupplierByEntity_Get"], RQParams, typeof(MDMSVC.DC_Supplier_Search_RQ), typeof(List<MDMSVC.DC_Supplier_DDL>), out result);
+            return result as List<DC_Supplier_DDL>;
+        }
         public List<MDMSVC.DC_SupplierMarket> GetSupplierMarket(MDMSVC.DC_SupplierMarket RQParams)
         {
             object result = null;
@@ -457,6 +463,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_ForDropDown_GetActivityForDDL"], countryname, cityname), typeof(List<DC_Activity_DDL>), out result);
             return result as List<DC_Activity_DDL>;
 
+        }
+        public List<DC_Supplier_DDL> GetSuppliersByProductCategory(string ProductCategory)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Supplier_MasterData_ByProductCategory"], ProductCategory), typeof(List<DC_Supplier_DDL>), out result);
+            return result as List<MDMSVC.DC_Supplier_DDL>;
         }
         #endregion
 

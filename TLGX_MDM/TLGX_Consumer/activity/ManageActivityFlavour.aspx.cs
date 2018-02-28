@@ -18,11 +18,11 @@ namespace TLGX_Consumer.activity
             if (!IsPostBack)
             {
                 fillActivityStatusMaster(ddlActivity_Flavour_Status);
-               // fillActivityStatusData();
+                // fillActivityStatusData();
             }
         }
 
-       
+
         private void fillActivityStatusMaster(DropDownList ddlActivityStatus)
         {
             try
@@ -32,7 +32,7 @@ namespace TLGX_Consumer.activity
                 ddlActivityStatus.DataTextField = "AttributeValue";
                 ddlActivityStatus.DataValueField = "MasterAttributeValue_Id";
                 ddlActivityStatus.DataBind();
-                
+
             }
             catch
             {
@@ -40,11 +40,59 @@ namespace TLGX_Consumer.activity
             }
         }
 
+        public bool ValidateControl()
+        {
+            bool flag = true;
+            //Check validation 
+            //Country
+            DropDownList ddlCountry = (DropDownList)Flavours.FindControl("ddlCountry");
+            if (ddlCountry != null && ddlCountry.SelectedValue == "0")
+            {
+                flag = false;
+            }
+            //City
+            DropDownList ddlCity = (DropDownList)Flavours.FindControl("ddlCity");
+            if (ddlCity != null && ddlCity.SelectedValue == "0")
+            {
+                flag = false;
+            }
+
+            //SuitableFor
+            CheckBoxList chklstSuitableFor = (CheckBoxList)Flavours.FindControl("chklstSuitableFor");
+            if (chklstSuitableFor != null)
+            {
+                flag = false;
+                for (int i = 0; i < chklstSuitableFor.Items.Count; i++)
+                {
+                    if (chklstSuitableFor.Items[i].Selected)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+
+            }
+            //Physical Intensity
+            DropDownList ddlPhysicalIntensity = (DropDownList)Flavours.FindControl("ddlPhysicalIntensity");
+            if (ddlPhysicalIntensity != null && ddlPhysicalIntensity.SelectedValue == "0")
+            {
+                flag = false;
+            }
+            //Product Sub type
+            Repeater repProductSubType = (Repeater)Flavours.FindControl("repProductSubType");
+            if (repProductSubType != null && repProductSubType.Items.Count == 0)
+                flag = false;
+            return flag;
+
+        }
         protected void btnChangeActivityStatus_Click(object sender, EventArgs e)
         {
             try
             {
                 Guid Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                if (ddlActivity_Flavour_Status.SelectedItem.Text == "Review Completed" && !ValidateControl())
+                    return;
+
                 var result = activitySVC.AddUpdateActivityFlavoursStatus(new MDMSVC.DC_ActivityFlavoursStatus()
                 {
                     Activity_Flavour_Id = Activity_Flavour_Id,
@@ -56,19 +104,19 @@ namespace TLGX_Consumer.activity
                 // Response.Redirect("/activity/ManageActivityFlavour?Activity_Flavour_Id=" + Activity_Flavour_Id, true);
                 BootstrapAlert.BootstrapAlertMessage(dvMsgStatusUpdate, "Activity Status updated successfully", BootstrapAlertType.Success);
                 Flavours.getFlavourInfo("header");
-                
+
             }
             catch (Exception ex)
             {
-                
+
             }
         }
 
         protected void btnRedirectToSearch_Click(object sender, EventArgs e)
-        {  
+        {
             Response.Redirect("~/activity/SearchActivityMaster.aspx");
         }
 
-      
+
     }
 }

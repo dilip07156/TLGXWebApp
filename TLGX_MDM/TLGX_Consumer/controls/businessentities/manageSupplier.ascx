@@ -43,9 +43,10 @@
     function getChartData() {
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
         var PriorityId = '0';
+        var ProductCategory = '0';
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid ,'PriorityId': PriorityId},
+            data: { 'Supplier_Id': sid ,'PriorityId': PriorityId,'ProductCategory': ProductCategory},
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
