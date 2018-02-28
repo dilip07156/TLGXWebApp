@@ -217,7 +217,7 @@
 
     }
     function RemoveExtra(record, onClick) {
-       // debugger;
+        // debugger;
         if (!onClick) {
             var currentRow = $(record).parent().parent();
             var AccoDDL = currentRow.find("td:eq(10)").find('select');
@@ -373,6 +373,19 @@
                                             <div class="col-sm-12">&nbsp;</div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="control-label col-sm-4" for="ddlMatchedBy">
+                                                Matched By
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList ID="ddlMatchedBy" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Value="99">-Select-</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">&nbsp;</div>
+                                        </div>
+                                        <div class="form-group">
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
                                             <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
                                         </div>
@@ -450,8 +463,13 @@
                                                 </asp:TemplateField>
                                                 <asp:BoundField DataField="Location" HeaderText="Location">
                                                     <HeaderStyle BackColor="Turquoise" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="Status" HeaderText="Status" />
+                                                </asp:BoundField>                                                
+                                                <asp:TemplateField ShowHeader="true" HeaderText="Status">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label>
+                                                        <asp:Label ID="lblMatchedBy" runat="server" Text='<%# Convert.ToString(Eval("Status")) == "REVIEW" ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <asp:TemplateField ShowHeader="false">
                                                     <ItemTemplate>
                                                         <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
@@ -737,6 +755,20 @@
                                                                             <asp:Label ID="lblProductAddress" runat="server" Text="" Font-Bold="true"></asp:Label></strong>
                                                                     </td>
                                                                 </tr>
+                                                                <tr>
+                                                                    <td><strong>Telephone</strong></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblProductTelephone" runat="server" Text=""></asp:Label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><strong>Lat-Long</strong></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblProductLatitude" runat="server" Text=""></asp:Label>
+                                                                        &nbsp;/&nbsp;
+                                                                        <asp:Label ID="lblProductLongitude" runat="server" Text=""></asp:Label>
+                                                                    </td>
+                                                                </tr>
                                                             </tbody>
                                                         </table>
 
@@ -823,16 +855,70 @@
                                                                 </div>
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
-                                                        </div>
+                                                        </div>    
+                                                        <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                    &nbsp;
+                                                            </div>
+                                                        </div>    
                                                         <div class="form-group form-inline">
                                                             <label class="control-label col-sm-3" for="txtSystemProductCode">Address</label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
-                                                                    <asp:Label ID="lblSystemProductAddress" runat="server" Text=""></asp:Label>
+                                                                    <strong></string><asp:Label ID="lblSystemProductAddress" runat="server" Text=""></asp:Label></strong>
                                                                 </div>
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
-                                                        </div>
+                                                        </div>      
+                                                        <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                    &nbsp;
+                                                            </div>
+                                                        </div>                                                        
+                                                        <div class="form-group form-inline">
+                                                            <label class="control-label col-sm-3" for="lblSystemTelephone">Telephone</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="col-sm-10">
+                                                                    <asp:Label ID="lblSystemTelephone" runat="server" Text=""></asp:Label>
+                                                                </div>
+                                                                <div class="col-sm-2">&nbsp;</div>
+                                                            </div>
+                                                        </div>    
+                                                        <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                    &nbsp;
+                                                            </div>
+                                                        </div>                                                   
+                                                        <div class="form-group form-inline">
+                                                            <label class="control-label col-sm-3" for="lblSystemLatitude">Lat-Long</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="col-sm-10">
+                                                                    <asp:Label ID="lblSystemLatitude" runat="server" Text=""></asp:Label>
+                                                                    &nbsp;/&nbsp;
+                                                                    <asp:Label ID="lblSystemLongitude" runat="server" Text=""></asp:Label>
+                                                                </div>
+                                                                <div class="col-sm-2">&nbsp;</div>
+                                                            </div>
+                                                        </div>       
+                                                        <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                    &nbsp;
+                                                            </div>
+                                                        </div>                                                             
+                                                        <div class="form-group form-inline">
+                                                            <label class="control-label col-sm-3" for="lblSystemLocation">Location</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="col-sm-10">
+                                                                    <asp:Label ID="lblSystemLocation" runat="server" Text=""></asp:Label>
+                                                                </div>
+                                                                <div class="col-sm-2">&nbsp;</div>
+                                                            </div>
+                                                        </div>      
+                                                        <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                    &nbsp;
+                                                            </div>
+                                                        </div> 
                                                         <div class="form-group" style="text-align: right">
                                                             <div class="col-sm-12">
                                                                 <asp:Button ID="btnAddProduct" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Hotel" CommandName="OpenAddProduct" CausesValidation="true" ValidationGroup="AddCity" />
@@ -846,6 +932,13 @@
                                                     <div class="panel-heading">Status</div>
                                                     <div class="panel-body">
                                                         <div class="form-group">
+                                                            <label for="MatchedBy">
+                                                                Matched By&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                
+                                                            </label>
+                                                            <asp:Label ID="lblpMatchedBy" runat="server" Text=""></asp:Label>&nbsp;-&nbsp;
+                                                                <asp:Label ID="lblpMatchedByString" runat="server" Text=""></asp:Label>
+                                                            <div class="form-group">&nbsp;</div>
                                                             <label for="ddlStatus">
                                                                 Status
                                                                         <asp:RequiredFieldValidator ID="vddlStatus" runat="server" ErrorMessage="*" ControlToValidate="ddlStatus" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
