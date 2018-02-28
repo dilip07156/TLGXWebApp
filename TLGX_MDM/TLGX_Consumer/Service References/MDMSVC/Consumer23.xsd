@@ -88,9 +88,11 @@
       <xs:element minOccurs="0" name="LEGACY_COUNTRY" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LEGACY_STATE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Legacy_HTL_ID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Null_Columns" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OfflineDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="OnlineDate" nillable="true" type="xs:dateTime" />
