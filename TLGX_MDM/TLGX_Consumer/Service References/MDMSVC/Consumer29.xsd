@@ -104,6 +104,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
       <xs:element minOccurs="0" name="Supplier_Id" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
@@ -513,6 +514,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CategorySubType_ID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />

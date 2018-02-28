@@ -2,6 +2,7 @@
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DataContracts" />
+  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:complexType name="DC_Mapping_ShiftMapping_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_From_Id" type="ser:guid" />
@@ -39,12 +40,16 @@
       <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Google_Place_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelName_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchedByString" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
@@ -64,9 +69,13 @@
       <xs:element minOccurs="0" name="SystemCityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemFullAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemLatitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemLongitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemStateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemTelephone" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TLGXProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber_tx" nillable="true" type="xs:string" />
@@ -90,6 +99,7 @@
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
@@ -289,6 +299,8 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContinentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContinentName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
@@ -767,6 +779,7 @@
       <xs:element minOccurs="0" name="NextRun" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierId" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SupplierNames" nillable="true" type="q2:ArrayOfstring" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_MappingStats" nillable="true" type="tns:DC_MappingStats" />
