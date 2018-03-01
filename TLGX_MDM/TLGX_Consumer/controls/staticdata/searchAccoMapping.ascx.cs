@@ -61,6 +61,7 @@ namespace TLGX_Consumer.controls.staticdata
                 fillmasterstatus(ddlProductMappingStatus);
                 fillchain(ddlChain);
                 fillbrands(ddlBrand);
+                fillMatchedBy(ddlMatchedBy);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop5", "javascript:callajax();", true);
                 pnlLoadControl.Visible = false;
                 btnMapSelected.Visible = false;
@@ -94,12 +95,31 @@ namespace TLGX_Consumer.controls.staticdata
             fillAttributeValues(ddl, "MappingStatus", "ProductSupplierMapping");
         }
 
+        private void fillMatchedBy(DropDownList ddl)
+        {
+            fillAttributeValues(ddl, "MatchingPriority", "ProductSupplierMapping");
+
+        }
+
+
         private void fillAttributeValues(DropDownList ddl, string Attribute_Name, string OptionFor)
         {
-            ddl.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(OptionFor, Attribute_Name).MasterAttributeValues;
+            MDMSVC.DC_M_masterattributelists list = LookupAtrributes.GetAllAttributeAndValuesByFOR(OptionFor, Attribute_Name);
+            ddl.DataSource = list.MasterAttributeValues;
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
             ddl.DataBind();
+
+            if (list.MasterAttributeValues.Length > 0)
+            {
+                MDMSVC.DC_M_masterattributevalue[] vals = list.MasterAttributeValues;
+
+                foreach (MDMSVC.DC_M_masterattributevalue val in vals)
+                {
+                    if(!string.IsNullOrWhiteSpace(val.OTA_CodeTableValue))
+                        ddl.Items.FindByValue(val.MasterAttributeValue_Id.ToString()).Attributes.Add("title", val.OTA_CodeTableValue);
+                }
+            }
         }
         private void fillcountries(DropDownList ddl)
         {
@@ -338,6 +358,8 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.SupplierCityName = txtSuppCity.Text;
                 if (!string.IsNullOrWhiteSpace(txtSuppProduct.Text))
                     RQ.SupplierProductName = txtSuppProduct.Text;
+                if (ddlMatchedBy.SelectedItem.Value != "99")
+                    RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedItem.Text);
                 RQ.Source = "SYSTEMDATA";
             }
             else
@@ -360,6 +382,8 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.Chain = ddlChain.SelectedItem.Text;
                 if (ddlBrand.SelectedItem.Value != "0")
                     RQ.Brand = ddlBrand.SelectedItem.Text;
+                if (ddlMatchedBy.SelectedItem.Value != "99")
+                    RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedItem.Text);
                 RQ.PageSize = Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Text);
             }
             RQ.PageNo = pPageIndex;
@@ -477,6 +501,19 @@ namespace TLGX_Consumer.controls.staticdata
                     DropDownList ddlAddCountry = (DropDownList)ucAddNew.FindControl("ddlAddCountry");
                     DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
                     DropDownList ddlAddCity = (DropDownList)ucAddNew.FindControl("ddlAddCity");
+
+
+                    Label lblProductTelephone = (Label)frmEditProductMap.FindControl("lblProductTelephone");
+                    Label lblProductLatitude = (Label)frmEditProductMap.FindControl("lblProductLatitude");
+                    Label lblProductLongitude = (Label)frmEditProductMap.FindControl("lblProductLongitude");
+                    Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+                    Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+                    Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+                    Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
+
+                    Label lblpMatchedBy = (Label)frmEditProductMap.FindControl("lblpMatchedBy");
+                    Label lblpMatchedByString = (Label)frmEditProductMap.FindControl("lblpMatchedByString");
+
                     string street = "";
                     string street2 = "";
                     string street3 = "";
@@ -513,7 +550,7 @@ namespace TLGX_Consumer.controls.staticdata
                     lblSupStateName.Text = Convert.ToString(masterRoduct[0].StateName);
                     lblSupCountryCode.Text = "(" + Convert.ToString(masterRoduct[0].CountryCode) + ")";
 
-
+                    
                     if (masterRoduct != null)
                     {
                         
@@ -530,6 +567,17 @@ namespace TLGX_Consumer.controls.staticdata
                         txtStreet.Text = street;
                         txtStreet2.Text = street2 + street3 + street4;
                         txtPostalCode.Text = string.IsNullOrWhiteSpace(masterRoduct[0].PostCode) ? string.Empty : masterRoduct[0].PostCode.ToString();
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].TelephoneNumber))
+                            lblProductTelephone.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].TelephoneNumber));
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].Latitude))
+                            lblProductLatitude.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].Latitude));
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].Longitude))
+                            lblProductLongitude.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].Longitude));
+
+                        if (masterRoduct[0].MatchedBy != null)
+                            lblpMatchedBy.Text = masterRoduct[0].MatchedBy.ToString();
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].MatchedByString))
+                            lblpMatchedByString.Text = masterRoduct[0].MatchedByString.ToString();
 
                         if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemCountryName))
                         {
@@ -629,6 +677,16 @@ namespace TLGX_Consumer.controls.staticdata
                         fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
                         ddlSystemProductName.SelectedIndex = ddlSystemProductName.Items.IndexOf(ddlSystemProductName.Items.FindByText(masterRoduct[0].SystemProductName.ToString()));
                         lblSystemProductAddress.Text = masterRoduct[0].SystemFullAddress;
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemTelephone))
+                            lblSystemTelephone.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].SystemTelephone));
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemLocation))
+                            lblSystemLocation.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].SystemLocation));
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemLatitude))
+                            lblSystemLatitude.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].SystemLatitude));
+                        if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemLongitude))
+                            lblSystemLongitude.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].SystemLongitude));
+
+
                         lblSystemCountryCode.Text = masterdata.GetCodeById("country", Guid.Parse(ddlSystemCountryName.SelectedItem.Value));
                         if (lblSystemCountryCode.Text.Replace(" ", "") != "")
                             lblSystemCountryCode.Text = "(" + lblSystemCountryCode.Text + ")";
@@ -942,6 +1000,10 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
             Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
 
+            Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+            Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+            Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+            Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
             if (ddlSystemProductName.SelectedItem.Value == "0")
             {
                 btnAddProduct.Visible = true;
@@ -960,6 +1022,10 @@ namespace TLGX_Consumer.controls.staticdata
                 if (result != null && result.Count > 0)
                 {
                     lblSystemProductAddress.Text = result[0].FullAddress;
+                    lblSystemTelephone.Text = result[0].Telephone_Tx;
+                    lblSystemLatitude.Text = result[0].Latitude;
+                    lblSystemLongitude.Text = result[0].Longitude;
+                    lblSystemLocation.Text = result[0].Location;
                 }
             }
             txtSystemProductCode.Focus();

@@ -445,6 +445,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Latitude_TxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Legacy_HTL_IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -452,6 +455,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Longitude_TxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Null_ColumnsField;
@@ -1251,6 +1257,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude_Tx {
+            get {
+                return this.Latitude_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Latitude_TxField, value) != true)) {
+                    this.Latitude_TxField = value;
+                    this.RaisePropertyChanged("Latitude_Tx");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> Legacy_HTL_ID {
             get {
                 return this.Legacy_HTL_IDField;
@@ -1285,6 +1304,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
                     this.LongitudeField = value;
                     this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude_Tx {
+            get {
+                return this.Longitude_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Longitude_TxField, value) != true)) {
+                    this.Longitude_TxField = value;
+                    this.RaisePropertyChanged("Longitude_Tx");
                 }
             }
         }
@@ -6371,7 +6403,13 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<bool> InsertFromField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MapCountField;
@@ -6384,6 +6422,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Telephone_TxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalRecordsField;
@@ -6581,6 +6622,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Location {
             get {
                 return this.LocationField;
@@ -6589,6 +6643,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LocationField, value) != true)) {
                     this.LocationField = value;
                     this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -6641,6 +6708,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telephone_Tx {
+            get {
+                return this.Telephone_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Telephone_TxField, value) != true)) {
+                    this.Telephone_TxField = value;
+                    this.RaisePropertyChanged("Telephone_Tx");
                 }
             }
         }
@@ -14322,10 +14402,16 @@ namespace TLGX_Consumer.MDMSVC {
         private string Google_Place_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelName_TxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Latitude_TxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
@@ -14334,10 +14420,16 @@ namespace TLGX_Consumer.MDMSVC {
         private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Longitude_TxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MapIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MatchedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MatchedByStringField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PostCodeField;
@@ -14397,6 +14489,15 @@ namespace TLGX_Consumer.MDMSVC {
         private string SystemFullAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemLatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemLocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemLongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SystemProductCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14404,6 +14505,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SystemStateNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemTelephoneField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TLGXProductCodeField;
@@ -14677,6 +14781,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelName_Tx {
+            get {
+                return this.HotelName_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelName_TxField, value) != true)) {
+                    this.HotelName_TxField = value;
+                    this.RaisePropertyChanged("HotelName_Tx");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool IsActive {
             get {
                 return this.IsActiveField;
@@ -14698,6 +14815,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
                     this.LatitudeField = value;
                     this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude_Tx {
+            get {
+                return this.Latitude_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Latitude_TxField, value) != true)) {
+                    this.Latitude_TxField = value;
+                    this.RaisePropertyChanged("Latitude_Tx");
                 }
             }
         }
@@ -14729,6 +14859,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude_Tx {
+            get {
+                return this.Longitude_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Longitude_TxField, value) != true)) {
+                    this.Longitude_TxField = value;
+                    this.RaisePropertyChanged("Longitude_Tx");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> MapId {
             get {
                 return this.MapIdField;
@@ -14750,6 +14893,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.MatchedByField.Equals(value) != true)) {
                     this.MatchedByField = value;
                     this.RaisePropertyChanged("MatchedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MatchedByString {
+            get {
+                return this.MatchedByStringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MatchedByStringField, value) != true)) {
+                    this.MatchedByStringField = value;
+                    this.RaisePropertyChanged("MatchedByString");
                 }
             }
         }
@@ -15002,6 +15158,45 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemLatitude {
+            get {
+                return this.SystemLatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemLatitudeField, value) != true)) {
+                    this.SystemLatitudeField = value;
+                    this.RaisePropertyChanged("SystemLatitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemLocation {
+            get {
+                return this.SystemLocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemLocationField, value) != true)) {
+                    this.SystemLocationField = value;
+                    this.RaisePropertyChanged("SystemLocation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemLongitude {
+            get {
+                return this.SystemLongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemLongitudeField, value) != true)) {
+                    this.SystemLongitudeField = value;
+                    this.RaisePropertyChanged("SystemLongitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string SystemProductCode {
             get {
                 return this.SystemProductCodeField;
@@ -15036,6 +15231,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SystemStateNameField, value) != true)) {
                     this.SystemStateNameField = value;
                     this.RaisePropertyChanged("SystemStateName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemTelephone {
+            get {
+                return this.SystemTelephoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemTelephoneField, value) != true)) {
+                    this.SystemTelephoneField = value;
+                    this.RaisePropertyChanged("SystemTelephone");
                 }
             }
         }
@@ -15202,6 +15410,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> MatchedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageNoField;
@@ -15383,6 +15594,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
                     this.CountryNameField = value;
                     this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> MatchedBy {
+            get {
+                return this.MatchedByField;
+            }
+            set {
+                if ((this.MatchedByField.Equals(value) != true)) {
+                    this.MatchedByField = value;
+                    this.RaisePropertyChanged("MatchedBy");
                 }
             }
         }
@@ -29556,6 +29780,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -29608,6 +29835,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CodeField, value) != true)) {
                     this.CodeField = value;
                     this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EntityType {
+            get {
+                return this.EntityTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityTypeField, value) != true)) {
+                    this.EntityTypeField = value;
+                    this.RaisePropertyChanged("EntityType");
                 }
             }
         }
@@ -45186,6 +45426,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationClassificationAttributes", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationClassificationAttributesResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes[]> GetAccomodationClassificationAttributesAsync(string Accomodation_Id, string DataKey_Id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetMasterStateData", ReplyAction="http://tempuri.org/IMasters/GetMasterStateDataResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetMasterStateDataDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_State_Master_DDL[] GetMasterStateData(string Country_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetMasterStateData", ReplyAction="http://tempuri.org/IMasters/GetMasterStateDataResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_State_Master_DDL[]> GetMasterStateDataAsync(string Country_Id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetStateByCity", ReplyAction="http://tempuri.org/IMasters/GetStateByCityResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetStateByCityDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_State_Master_DDL[] GetStateByCity(string City_Id);
@@ -45630,6 +45877,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetSupplier", ReplyAction="http://tempuri.org/IMasters/GetSupplierResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier[]> GetSupplierAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ RQ);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetSupplierByEntity", ReplyAction="http://tempuri.org/IMasters/GetSupplierByEntityResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetSupplierByEntityDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Supplier_DDL[] GetSupplierByEntity(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetSupplierByEntity", ReplyAction="http://tempuri.org/IMasters/GetSupplierByEntityResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_DDL[]> GetSupplierByEntityAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ RQ);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetSupplierMarket", ReplyAction="http://tempuri.org/IMasters/GetSupplierMarketResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetSupplierMarketDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SupplierMarket[] GetSupplierMarket(TLGX_Consumer.MDMSVC.DC_SupplierMarket RQ);
@@ -45763,13 +46017,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetProductByCity", ReplyAction="http://tempuri.org/IMasters/GetProductByCityResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[]> GetProductByCityAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL _obj);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetMasterStateData", ReplyAction="http://tempuri.org/IMasters/GetMasterStateDataResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetMasterStateDataDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_State_Master_DDL[] GetMasterStateData(string Country_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetMasterStateData", ReplyAction="http://tempuri.org/IMasters/GetMasterStateDataResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_State_Master_DDL[]> GetMasterStateDataAsync(string Country_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGeoLocation/GetGeoLocationByAddress", ReplyAction="http://tempuri.org/IGeoLocation/GetGeoLocationByAddressResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IGeoLocation/GetGeoLocationByAddressDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -47393,6 +47640,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetAccomodationClassificationAttributesAsync(Accomodation_Id, DataKey_Id);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_State_Master_DDL[] GetMasterStateData(string Country_Id) {
+            return base.Channel.GetMasterStateData(Country_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_State_Master_DDL[]> GetMasterStateDataAsync(string Country_Id) {
+            return base.Channel.GetMasterStateDataAsync(Country_Id);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_State_Master_DDL[] GetStateByCity(string City_Id) {
             return base.Channel.GetStateByCity(City_Id);
         }
@@ -47897,6 +48152,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetSupplierAsync(RQ);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Supplier_DDL[] GetSupplierByEntity(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ RQ) {
+            return base.Channel.GetSupplierByEntity(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_DDL[]> GetSupplierByEntityAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ RQ) {
+            return base.Channel.GetSupplierByEntityAsync(RQ);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_SupplierMarket[] GetSupplierMarket(TLGX_Consumer.MDMSVC.DC_SupplierMarket RQ) {
             return base.Channel.GetSupplierMarket(RQ);
         }
@@ -48047,14 +48310,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[]> GetProductByCityAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL _obj) {
             return base.Channel.GetProductByCityAsync(_obj);
-        }
-        
-        public TLGX_Consumer.MDMSVC.DC_State_Master_DDL[] GetMasterStateData(string Country_Id) {
-            return base.Channel.GetMasterStateData(Country_Id);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_State_Master_DDL[]> GetMasterStateDataAsync(string Country_Id) {
-            return base.Channel.GetMasterStateDataAsync(Country_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_GeoLocation GetGeoLocationByAddress(TLGX_Consumer.MDMSVC.DC_Address_Physical PA) {

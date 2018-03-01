@@ -262,6 +262,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_Get"], RQParams, typeof(MDMSVC.DC_Supplier_Search_RQ), typeof(List<MDMSVC.DC_Supplier>), out result);
             return result as List<DC_Supplier>;
         }
+        public List<MDMSVC.DC_Supplier_DDL> GetSupplierByEntity(MDMSVC.DC_Supplier_Search_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SupplierByEntity_Get"], RQParams, typeof(MDMSVC.DC_Supplier_Search_RQ), typeof(List<MDMSVC.DC_Supplier_DDL>), out result);
+            return result as List<DC_Supplier_DDL>;
+        }
         public List<MDMSVC.DC_SupplierMarket> GetSupplierMarket(MDMSVC.DC_SupplierMarket RQParams)
         {
             object result = null;
