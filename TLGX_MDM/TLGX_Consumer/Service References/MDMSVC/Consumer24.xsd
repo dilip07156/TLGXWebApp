@@ -283,6 +283,7 @@
       <xs:element minOccurs="0" name="SortBy" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="SystemCountryName" nillable="true" type="xs:string" />
@@ -345,6 +346,7 @@
       <xs:element minOccurs="0" name="StateNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
