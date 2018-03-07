@@ -17532,6 +17532,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusExceptField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierCountryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierCountryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -17650,6 +17653,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusExceptField, value) != true)) {
                     this.StatusExceptField = value;
                     this.RaisePropertyChanged("StatusExcept");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierCountryCode {
+            get {
+                return this.SupplierCountryCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierCountryCodeField, value) != true)) {
+                    this.SupplierCountryCodeField = value;
+                    this.RaisePropertyChanged("SupplierCountryCode");
                 }
             }
         }
@@ -18209,6 +18225,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusExceptField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierCityCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierCityNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18444,6 +18463,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusExceptField, value) != true)) {
                     this.StatusExceptField = value;
                     this.RaisePropertyChanged("StatusExcept");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierCityCode {
+            get {
+                return this.SupplierCityCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierCityCodeField, value) != true)) {
+                    this.SupplierCityCodeField = value;
+                    this.RaisePropertyChanged("SupplierCityCode");
                 }
             }
         }

@@ -874,7 +874,21 @@
                                                             <div class="col-sm-12">
                                                                     &nbsp;
                                                             </div>
-                                                        </div>                                                        
+                                                        </div>                                                               
+                                                        <div class="form-group form-inline">
+                                                            <label class="control-label col-sm-3" for="lblSystemLocation">Location</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="col-sm-10">
+                                                                    <asp:Label ID="lblSystemLocation" runat="server" Text=""></asp:Label>
+                                                                </div>
+                                                                <div class="col-sm-2">&nbsp;</div>
+                                                            </div>
+                                                        </div>      
+                                                        <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                    &nbsp;
+                                                            </div>
+                                                        </div>                                                      
                                                         <div class="form-group form-inline">
                                                             <label class="control-label col-sm-3" for="lblSystemTelephone">Telephone</label>
                                                             <div class="col-sm-9">
@@ -900,20 +914,6 @@
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
                                                         </div>       
-                                                        <div class="form-group form-inline">
-                                                            <div class="col-sm-12">
-                                                                    &nbsp;
-                                                            </div>
-                                                        </div>                                                             
-                                                        <div class="form-group form-inline">
-                                                            <label class="control-label col-sm-3" for="lblSystemLocation">Location</label>
-                                                            <div class="col-sm-9">
-                                                                <div class="col-sm-10">
-                                                                    <asp:Label ID="lblSystemLocation" runat="server" Text=""></asp:Label>
-                                                                </div>
-                                                                <div class="col-sm-2">&nbsp;</div>
-                                                            </div>
-                                                        </div>      
                                                         <div class="form-group form-inline">
                                                             <div class="col-sm-12">
                                                                     &nbsp;
@@ -1020,7 +1020,12 @@
                                                         <asp:BoundField DataField="TelephoneNumber" HeaderText="Tel" />
                                                         <asp:BoundField DataField="Latitude" HeaderText="Latitude" />
                                                         <asp:BoundField DataField="Longitude" HeaderText="Longitude" />
-                                                        <asp:BoundField DataField="Status" HeaderText="Status" />
+                                                        <asp:TemplateField ShowHeader="true" HeaderText="Status">
+                                                            <ItemTemplate>
+                                                                <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label>
+                                                                <asp:Label ID="lblMatchedBy" runat="server" Text='<%# Convert.ToString(Eval("Status")) == "REVIEW" ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
                                                         <asp:TemplateField ShowHeader="false">
                                                             <ItemTemplate>
                                                                 <%--  <asp:CheckBox ID="chkSelect" runat="server" CausesValidation="false" CommandName="Select" AutoPostBack="false"
