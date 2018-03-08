@@ -15415,6 +15415,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Country_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelName_TXField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MatchedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -15473,6 +15476,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelephoneNumber_txField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ViaField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -15610,6 +15616,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Country_IdField.Equals(value) != true)) {
                     this.Country_IdField = value;
                     this.RaisePropertyChanged("Country_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelName_TX {
+            get {
+                return this.HotelName_TXField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelName_TXField, value) != true)) {
+                    this.HotelName_TXField = value;
+                    this.RaisePropertyChanged("HotelName_TX");
                 }
             }
         }
@@ -15870,6 +15889,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.TelephoneNumber_txField, value) != true)) {
                     this.TelephoneNumber_txField = value;
                     this.RaisePropertyChanged("TelephoneNumber_tx");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Via {
+            get {
+                return this.ViaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ViaField, value) != true)) {
+                    this.ViaField = value;
+                    this.RaisePropertyChanged("Via");
                 }
             }
         }
