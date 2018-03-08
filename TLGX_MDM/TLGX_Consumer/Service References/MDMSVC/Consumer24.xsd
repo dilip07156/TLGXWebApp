@@ -99,6 +99,8 @@
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="HotelName_TX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
@@ -119,6 +121,7 @@
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TelephoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber_tx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Via" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Mapping_ProductSupplier_Search_RQ" nillable="true" type="tns:DC_Mapping_ProductSupplier_Search_RQ" />

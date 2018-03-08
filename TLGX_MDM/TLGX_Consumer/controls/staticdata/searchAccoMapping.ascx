@@ -740,6 +740,7 @@
                                                                     <td><strong>Product</strong></td>
                                                                     <td>
                                                                         <asp:Label ID="lblProductName" runat="server" Text=""></asp:Label>
+                                                                        <asp:Label ID="lblHotelName_TX" runat="server" Text="" Visible="false"></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>

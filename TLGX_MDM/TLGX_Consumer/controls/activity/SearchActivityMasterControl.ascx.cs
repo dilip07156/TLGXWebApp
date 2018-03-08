@@ -51,6 +51,11 @@ namespace TLGX_Consumer.controls.activity
                     string ProductTypeID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PTID"]);
                     string ProductSubType = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PST"]);
                     string ProductSubTypeID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PSTID"]);
+
+                    string SupplierProductSubType = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["SPST"]);
+                    string SupplierCountryName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["SCoN"]);
+                    string SupplierCityName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["SCiN"]);
+
                     string NoOperatingSchedule = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NOS"]);
                     string NoPhysicalIntensity = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NPI"]);
                     string NoSession = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["NSe"]);
@@ -76,7 +81,11 @@ namespace TLGX_Consumer.controls.activity
 
 
                     if (!string.IsNullOrWhiteSpace(SupplierID))
+                    {
                         ddlSupplier.SelectedIndex = ddlSupplier.Items.IndexOf(ddlSupplier.Items.FindByValue(SupplierID));
+                        FillSupplierProductsubType(ddlSupplier.SelectedValue);
+
+                    }
 
                     if (!string.IsNullOrWhiteSpace(ActivityFlavourStatus))
                         ddlActivityFlavourStatus.SelectedIndex = ddlActivityFlavourStatus.Items.IndexOf(ddlActivityFlavourStatus.Items.FindByText(ActivityFlavourStatus));
@@ -97,6 +106,19 @@ namespace TLGX_Consumer.controls.activity
                     if (!string.IsNullOrWhiteSpace(ProductSubType))
                     {
                         ddlProductSubType.SelectedIndex = ddlProductSubType.Items.IndexOf(ddlProductSubType.Items.FindByText(ProductSubType));
+                    }
+
+                    if (!string.IsNullOrWhiteSpace(SupplierCountryName))
+                        txtSupplierCountryName.Text = SupplierCountryName;
+
+                    if (!string.IsNullOrWhiteSpace(SupplierCityName))
+                        txtSupplierCityName.Text = SupplierCityName;
+
+
+
+                    if (!string.IsNullOrWhiteSpace(SupplierProductSubType))
+                    {
+                        ddlSupplierProductSupType.SelectedIndex = ddlSupplierProductSupType.Items.IndexOf(ddlSupplierProductSupType.Items.FindByValue(SupplierProductSubType));
                     }
 
 
@@ -343,8 +365,15 @@ namespace TLGX_Consumer.controls.activity
                 {
                     _objSearch.ProductNameSubTypeId = Guid.Parse(ddlProductSubType.SelectedValue);
                 }
-
-
+                
+                if (ddlSupplierProductSupType.SelectedIndex > 1)
+                {
+                    _objSearch.SupplierProductNameSubType = ddlSupplierProductSupType.SelectedValue;
+                }
+                if (!string.IsNullOrWhiteSpace(txtSupplierCountryName.Text))
+                    _objSearch.SupplierCountryName = txtSupplierCountryName.Text;
+                if (!string.IsNullOrWhiteSpace(txtSupplierCityName.Text))
+                    _objSearch.SupplierCityName = txtSupplierCityName.Text;
 
                 _objSearch.NoOpsSchedule = chkNoOperatingSchedule.Checked;
                 _objSearch.NoPhysicalIntensity = chkNoPhysicalIntensity.Checked;
@@ -534,6 +563,15 @@ namespace TLGX_Consumer.controls.activity
             {
                 sb.Append("&PSTID=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedValue));
             }
+            if(ddlSupplierProductSupType.SelectedIndex >  1)
+            {
+                sb.Append("&SPST=" + HttpUtility.UrlEncode(ddlSupplierProductSupType.SelectedValue)); 
+            }
+            if (!string.IsNullOrWhiteSpace(txtSupplierCountryName.Text))
+                sb.Append("&SCoN=" + HttpUtility.UrlEncode(txtSupplierCountryName.Text));
+            if (!string.IsNullOrWhiteSpace(txtSupplierCityName.Text))
+                sb.Append("&SCiN=" + HttpUtility.UrlEncode(txtSupplierCityName.Text));
+
             sb.Append("&NOS=" + HttpUtility.UrlEncode(Convert.ToString(chkNoOperatingSchedule.Checked)));
             sb.Append("&NPI=" + HttpUtility.UrlEncode(Convert.ToString(chkNoPhysicalIntensity.Checked)));
             sb.Append("&NSe=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSession.Checked)));
@@ -565,6 +603,21 @@ namespace TLGX_Consumer.controls.activity
                     }
                 }
             }
+        }
+
+        protected void ddlSupplier_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FillSupplierProductsubType(ddlSupplier.SelectedValue);
+        }
+        public void FillSupplierProductsubType(string Supplier_Id)
+        {
+            ddlSupplierProductSupType.Items.Clear();
+            var CategoryTypes = activitySVC.GetSupplierProductSubType(new MDMSVC.DC_Supplier_DDL { Supplier_Id = Guid.Parse(Supplier_Id) });
+            ddlSupplierProductSupType.DataSource = CategoryTypes;
+            ddlSupplierProductSupType.DataTextField = "SupProdSubType";
+            ddlSupplierProductSupType.DataValueField = "SupProdSubTypeCode";
+            ddlSupplierProductSupType.DataBind();
+            ddlSupplierProductSupType.Items.Insert(0, new ListItem("--All--", "0"));
         }
 
 

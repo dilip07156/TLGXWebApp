@@ -14,7 +14,7 @@
         var totalpagecountval = parseInt(totalpagecount.innerHTML, 10);
         var inputpage = document.getElementById("txtGoToPageNo");
         var inputpageval = parseInt(inputpage.value, 10);
-        
+
         var finalVal = parseInt((inputpageval + e.key), 10);
         if (finalVal <= 0) {
             e.preventDefault();
@@ -32,8 +32,8 @@
 </script>
 <style>
     .urlLink {
-        color:inherit !important;
-        text-decoration : none !important;
+        color: inherit !important;
+        text-decoration: none !important;
         font: inherit !important;
     }
 </style>
@@ -59,155 +59,184 @@
                                         <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ActivitySearch" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">System</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlCountry">System Country</label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
 
-                                <div class="col-sm-6">
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlCity">System City</label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlProductCategorySubType">
+                                                    System Category SubType
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlProductCategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategorySubType_SelectedIndexChanged">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
 
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="txtProductName">Product Name</label>
-                                        <div class="col-sm-6">
-                                            <asp:TextBox ID="txtProductName" runat="server" CssClass="form-control"></asp:TextBox>
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlProductType">
+                                                    System Product Type
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlProductSubType">
+                                                    System Product Sub Type
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlProductSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                        <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlActivityFlavourStatus">
+                                                    Activity Status
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlActivityFlavourStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlCountry">Country</label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlCity">City</label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlSupplier">
-                                            Supplier
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlSupplier" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <%-- <div class="form-group col-sm-12">
-                                        <label class="control-label col-sm-6" for="ddlStatus">
-                                            Status
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>--%>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlProductCategorySubType">
-                                            Category SubType
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductCategorySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategorySubType_SelectedIndexChanged">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlProductType">
-                                            Product Type
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductType_SelectedIndexChanged">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlProductSubType">
-                                            Product Sub Type
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlProductSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                                <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="ddlActivityFlavourStatus">
-                                            Activity Status
-                                        </label>
-                                        <div class="col-sm-6">
-                                            <asp:DropDownList ID="ddlActivityFlavourStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                            </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">Supplier</h4>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="txtProductName">Product Name</label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox ID="txtProductName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="txtProductName">Supplier Country Name</label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox ID="txtSupplierCountryName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="txtProductName">Supplier City Name</label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox ID="txtSupplierCityName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlSupplier">
+                                                    Supplier
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlSupplier" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlSupplier_SelectedIndexChanged" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
 
-                                <div class="col-sm-6">
+                                            <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlSupplier">
+                                                    Supplier Product Sub Type 
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlSupplierProductSupType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+                                            
 
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="chkNoSuitableFor">Suitable For is not defined</label>
-                                        <div class="col-sm-6">
-                                            <asp:CheckBox ID="chkNoSuitableFor" runat="server" />
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="chkNoPhysicalIntensity">Physical Intensity is not defined</label>
-                                        <div class="col-sm-6">
-                                            <asp:CheckBox ID="chkNoPhysicalIntensity" runat="server" />
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">Auto Mapping</h4>
                                         </div>
-                                    </div>
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <label class="control-label col-sm-9" for="chkNoSuitableFor">Suitable For is not defined</label>
+                                                <div class="col-sm-3">
+                                                    <asp:CheckBox ID="chkNoSuitableFor" runat="server" />
+                                                </div>
+                                            </div>
 
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="chkNoOperatingSchedule">Operating Schedule is not defined</label>
-                                        <div class="col-sm-6">
-                                            <asp:CheckBox ID="chkNoOperatingSchedule" runat="server" />
-                                        </div>
-                                    </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-9" for="chkNoPhysicalIntensity">Physical Intensity is not defined</label>
+                                                <div class="col-sm-3">
+                                                    <asp:CheckBox ID="chkNoPhysicalIntensity" runat="server" />
+                                                </div>
+                                            </div>
 
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="chkNoSession">Session is not defined</label>
-                                        <div class="col-sm-6">
-                                            <asp:CheckBox ID="chkNoSession" runat="server" />
-                                        </div>
-                                    </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-9" for="chkNoOperatingSchedule">Operating Schedule is not defined</label>
+                                                <div class="col-sm-3">
+                                                    <asp:CheckBox ID="chkNoOperatingSchedule" runat="server" />
+                                                </div>
+                                            </div>
 
-                                    <div class="row">
-                                        <label class="control-label col-sm-6" for="chkNoSpecials">Special is not defined</label>
-                                        <div class="col-sm-6">
-                                            <asp:CheckBox ID="chkNoSpecial" runat="server" />
-                                        </div>
-                                    </div>
+                                            <div class="row">
+                                                <label class="control-label col-sm-9" for="chkNoSession">Session is not defined</label>
+                                                <div class="col-sm-3">
+                                                    <asp:CheckBox ID="chkNoSession" runat="server" />
+                                                </div>
+                                            </div>
 
-                                    <div class="row">
-                                        <div class="form-group col-sm-6">
-                                            <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
-                                            <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
-                                        </div>
-                                        <%--<div class="form-group col-sm-6">
+                                            <div class="row">
+                                                <label class="control-label col-sm-9" for="chkNoSpecials">Special is not defined</label>
+                                                <div class="col-sm-3">
+                                                    <asp:CheckBox ID="chkNoSpecial" runat="server" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-6">
+                                                    <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
+                                                    <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
+                                                </div>
+                                                <%--<div class="form-group col-sm-6">
                                             <asp:LinkButton ID="btnNewActivity" runat="server" Text="Add New" CssClass="btn btn-primary btn-sm" OnClientClick="showAddNewActivityModal();" />
                                         </div>--%>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
 
                             </div>
 
@@ -267,7 +296,8 @@
                 </div>
 
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
-                    <div class="panel-body" > <%--style="padding:0;border:0px;height:450px;overflow-y:auto"--%>
+                    <div class="panel-body">
+                        <%--style="padding:0;border:0px;height:450px;overflow-y:auto"--%>
 
                         <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
@@ -294,7 +324,7 @@
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                               <%-- <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select"
+                                <%-- <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" Text="Select"
                                     ControlStyle-Font-Bold="true" NavigateUrl="~/activity/ManageActivityFlavour.aspx" ControlStyle-CssClass="btn btn-default btn-sm" />--%>
                             </Columns>
 

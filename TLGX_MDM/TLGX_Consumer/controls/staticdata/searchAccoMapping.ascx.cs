@@ -274,6 +274,7 @@ namespace TLGX_Consumer.controls.staticdata
             Label lblSupCountryName = (Label)frmEditProductMap.FindControl("lblSupCountryName");
             Label lblCityName = (Label)frmEditProductMap.FindControl("lblCityName");
             Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
+            Label lblHotelName_TX = (Label)frmEditProductMap.FindControl("lblHotelName_TX");
             DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             DropDownList ddlStatus = (DropDownList)frmEditProductMap.FindControl("ddlStatus");
@@ -292,7 +293,10 @@ namespace TLGX_Consumer.controls.staticdata
             if (!string.IsNullOrWhiteSpace(lblSupCountryName.Text))
                 RQ.CityName = lblCityName.Text;
             if (!string.IsNullOrWhiteSpace(lblProductName.Text))
-                RQ.ProductName = lblProductName.Text;
+                RQ.SupplierProductName = lblProductName.Text;
+            if (!string.IsNullOrWhiteSpace(lblHotelName_TX.Text))
+                RQ.HotelName_TX = lblHotelName_TX.Text;
+            RQ.Via = "CROSS";
             RQ.StatusExcept = ddlStatus.SelectedItem.Text.Trim().ToUpper();
             RQ.PageNo = pPageIndex;
             RQ.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
@@ -343,8 +347,10 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     RQ.SupplierName = ddlSupplierName.SelectedItem.Text;
                 }
+                //if (ddlCountry.SelectedItem.Value != "0")
+                //    RQ.CountryName = ddlCountry.SelectedItem.Text;
                 if (ddlCountry.SelectedItem.Value != "0")
-                    RQ.CountryName = ddlCountry.SelectedItem.Text;
+                    RQ.Country_Id = Guid.Parse(ddlCountry.SelectedItem.Value);
                 if (ddlSupplierCity.SelectedItem.Value != "0")
                     RQ.CityName = ddlSupplierCity.SelectedItem.Text;
                 if (ddlProduct.SelectedItem.Value != "0")
@@ -473,6 +479,7 @@ namespace TLGX_Consumer.controls.staticdata
                     Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
                     Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
                     Label lblProductAddress = (Label)frmEditProductMap.FindControl("lblProductAddress");
+                    Label lblHotelName_TX = (Label)frmEditProductMap.FindControl("lblHotelName_TX");
 
                     DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
                     TextBox txtSystemCountryCode = (TextBox)frmEditProductMap.FindControl("txtSystemCountryCode");
@@ -543,6 +550,7 @@ namespace TLGX_Consumer.controls.staticdata
                     if (System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].CityCode)) != "")
                         lblCityCode.Text = "(" + System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].CityCode)) + ")";
                     lblProductName.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].ProductName);
+                    lblHotelName_TX.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].HotelName_Tx);
                     lblProductCode.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].ProductId);
                     if (masterRoduct[0].Remarks != null)
                         txtSystemRemark.Text = masterRoduct[0].Remarks.ToString(); //masters.GetRemarksForMapping("product", myRow_Id);
