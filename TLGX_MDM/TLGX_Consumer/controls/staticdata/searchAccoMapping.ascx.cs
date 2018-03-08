@@ -292,7 +292,7 @@ namespace TLGX_Consumer.controls.staticdata
             if (!string.IsNullOrWhiteSpace(lblSupCountryName.Text))
                 RQ.CityName = lblCityName.Text;
             if (!string.IsNullOrWhiteSpace(lblProductName.Text))
-                RQ.ProductName = lblProductName.Text;
+                RQ.SupplierProductName = lblProductName.Text;
             RQ.StatusExcept = ddlStatus.SelectedItem.Text.Trim().ToUpper();
             RQ.PageNo = pPageIndex;
             RQ.PageSize = Convert.ToInt32(ddlMatchingPageSize.SelectedItem.Text);
@@ -343,8 +343,10 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     RQ.SupplierName = ddlSupplierName.SelectedItem.Text;
                 }
+                //if (ddlCountry.SelectedItem.Value != "0")
+                //    RQ.CountryName = ddlCountry.SelectedItem.Text;
                 if (ddlCountry.SelectedItem.Value != "0")
-                    RQ.CountryName = ddlCountry.SelectedItem.Text;
+                    RQ.Country_Id = Guid.Parse(ddlCountry.SelectedItem.Value);
                 if (ddlSupplierCity.SelectedItem.Value != "0")
                     RQ.CityName = ddlSupplierCity.SelectedItem.Text;
                 if (ddlProduct.SelectedItem.Value != "0")
