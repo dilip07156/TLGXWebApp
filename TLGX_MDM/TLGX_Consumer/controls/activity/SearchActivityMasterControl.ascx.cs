@@ -366,7 +366,7 @@ namespace TLGX_Consumer.controls.activity
                     _objSearch.ProductNameSubTypeId = Guid.Parse(ddlProductSubType.SelectedValue);
                 }
                 
-                if (ddlSupplierProductSupType.SelectedIndex > 1)
+                if (ddlSupplierProductSupType.SelectedIndex > 0)
                 {
                     _objSearch.SupplierProductNameSubType = ddlSupplierProductSupType.SelectedValue;
                 }
@@ -563,7 +563,7 @@ namespace TLGX_Consumer.controls.activity
             {
                 sb.Append("&PSTID=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedValue));
             }
-            if(ddlSupplierProductSupType.SelectedIndex >  1)
+            if(ddlSupplierProductSupType.SelectedIndex >  0)
             {
                 sb.Append("&SPST=" + HttpUtility.UrlEncode(ddlSupplierProductSupType.SelectedValue)); 
             }
