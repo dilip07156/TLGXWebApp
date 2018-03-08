@@ -6403,7 +6403,13 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<bool> InsertFromField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MapCountField;
@@ -6416,6 +6422,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Telephone_TxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int TotalRecordsField;
@@ -6613,6 +6622,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Latitude {
+            get {
+                return this.LatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
+                    this.LatitudeField = value;
+                    this.RaisePropertyChanged("Latitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Location {
             get {
                 return this.LocationField;
@@ -6621,6 +6643,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LocationField, value) != true)) {
                     this.LocationField = value;
                     this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Longitude {
+            get {
+                return this.LongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
+                    this.LongitudeField = value;
+                    this.RaisePropertyChanged("Longitude");
                 }
             }
         }
@@ -6673,6 +6708,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telephone_Tx {
+            get {
+                return this.Telephone_TxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Telephone_TxField, value) != true)) {
+                    this.Telephone_TxField = value;
+                    this.RaisePropertyChanged("Telephone_Tx");
                 }
             }
         }
@@ -14445,6 +14493,15 @@ namespace TLGX_Consumer.MDMSVC {
         private string SystemFullAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemLatitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemLocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemLongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SystemProductCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14452,6 +14509,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SystemStateNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemTelephoneField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TLGXProductCodeField;
@@ -15102,6 +15162,45 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemLatitude {
+            get {
+                return this.SystemLatitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemLatitudeField, value) != true)) {
+                    this.SystemLatitudeField = value;
+                    this.RaisePropertyChanged("SystemLatitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemLocation {
+            get {
+                return this.SystemLocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemLocationField, value) != true)) {
+                    this.SystemLocationField = value;
+                    this.RaisePropertyChanged("SystemLocation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemLongitude {
+            get {
+                return this.SystemLongitudeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemLongitudeField, value) != true)) {
+                    this.SystemLongitudeField = value;
+                    this.RaisePropertyChanged("SystemLongitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string SystemProductCode {
             get {
                 return this.SystemProductCodeField;
@@ -15136,6 +15235,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SystemStateNameField, value) != true)) {
                     this.SystemStateNameField = value;
                     this.RaisePropertyChanged("SystemStateName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemTelephone {
+            get {
+                return this.SystemTelephoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemTelephoneField, value) != true)) {
+                    this.SystemTelephoneField = value;
+                    this.RaisePropertyChanged("SystemTelephone");
                 }
             }
         }
@@ -15302,6 +15414,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Country_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MatchedByField;
@@ -15486,6 +15601,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
                     this.CountryNameField = value;
                     this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Country_Id {
+            get {
+                return this.Country_IdField;
+            }
+            set {
+                if ((this.Country_IdField.Equals(value) != true)) {
+                    this.Country_IdField = value;
+                    this.RaisePropertyChanged("Country_Id");
                 }
             }
         }
@@ -17424,6 +17552,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusExceptField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierCountryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierCountryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -17542,6 +17673,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusExceptField, value) != true)) {
                     this.StatusExceptField = value;
                     this.RaisePropertyChanged("StatusExcept");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierCountryCode {
+            get {
+                return this.SupplierCountryCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierCountryCodeField, value) != true)) {
+                    this.SupplierCountryCodeField = value;
+                    this.RaisePropertyChanged("SupplierCountryCode");
                 }
             }
         }
@@ -18101,6 +18245,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusExceptField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierCityCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierCityNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18336,6 +18483,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusExceptField, value) != true)) {
                     this.StatusExceptField = value;
                     this.RaisePropertyChanged("StatusExcept");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierCityCode {
+            get {
+                return this.SupplierCityCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierCityCodeField, value) != true)) {
+                    this.SupplierCityCodeField = value;
+                    this.RaisePropertyChanged("SupplierCityCode");
                 }
             }
         }

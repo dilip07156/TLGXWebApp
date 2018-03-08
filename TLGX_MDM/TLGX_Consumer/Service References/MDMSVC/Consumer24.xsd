@@ -69,9 +69,13 @@
       <xs:element minOccurs="0" name="SystemCityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemFullAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemLatitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemLongitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemStateName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemTelephone" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TLGXProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelephoneNumber_tx" nillable="true" type="xs:string" />
@@ -95,6 +99,7 @@
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
@@ -279,6 +284,7 @@
       <xs:element minOccurs="0" name="SortBy" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="SystemCountryName" nillable="true" type="xs:string" />
@@ -341,6 +347,7 @@
       <xs:element minOccurs="0" name="StateNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StatusExcept" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />

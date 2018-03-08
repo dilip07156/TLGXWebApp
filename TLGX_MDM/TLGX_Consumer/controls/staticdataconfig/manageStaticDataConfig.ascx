@@ -396,7 +396,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-4" for="txtDescription">Description</label>
                                                     <div class="col-sm-8">
-                                                        <textarea maxlength="255" id="txtDescription" runat="server" class="form-control"></textarea>
+                                                        <textarea maxlength="510" id="txtDescription" runat="server" class="form-control"></textarea>
                                                         <%--<asp:TextBox ID="txtDescription" runat="server" class="form-control" MaxLength="255" />--%>
                                                     </div>
                                                 </div>
@@ -505,7 +505,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-4" for="txtDescription">Description</label>
                                                     <div class="col-sm-8">
-                                                        <textarea maxlength="10" id="txtDescription" runat="server" class="form-control"></textarea>
+                                                        <textarea maxlength="510" id="txtDescription" runat="server" class="form-control"></textarea>
                                                         <%--<asp:TextBox ID="txtDescription" runat="server" class="form-control" MaxLength="255" />--%>
                                                     </div>
                                                 </div>

@@ -563,11 +563,14 @@
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="HotelNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InsertFrom" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapCount" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Starrating" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telephone_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
