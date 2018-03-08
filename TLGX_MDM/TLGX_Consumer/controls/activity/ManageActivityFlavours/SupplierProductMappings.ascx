@@ -27,37 +27,39 @@
             </div>
         </headertemplate>
 
-                <h4 class="panel-title pull-left">
-                    Supplier Product Mapping (Total Count:
+        <h4 class="panel-title pull-left">Supplier Product Mapping (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
-                <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" Text="Add New" OnClientClick="showAddNewPolicyModal()" />
-                <div class="col-lg-3 pull-right">
-                    <div class="form-group pull-right">
-                        <div class="input-group" runat="server" id="divDropdownForEntries">
-                            <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
-                            <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                                <asp:ListItem>10</asp:ListItem>
-                                <asp:ListItem>25</asp:ListItem>
-                                <asp:ListItem>50</asp:ListItem>
-                                <asp:ListItem>100</asp:ListItem>
-                            </asp:DropDownList>
-                        </div>
-                    </div>
+        <asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" Text="Add New" OnClientClick="showAddNewPolicyModal()" />
+        <div class="col-lg-3 pull-right">
+            <div class="form-group pull-right">
+                <div class="input-group" runat="server" id="divDropdownForEntries">
+                    <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                    <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>25</asp:ListItem>
+                        <asp:ListItem>50</asp:ListItem>
+                        <asp:ListItem>100</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
+            </div>
+        </div>
 
 
-                <asp:GridView ID="grdSupplierProductMapping" runat="server" AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Activity_ID"
-                    EmptyDataText="No Data Found" CssClass="table table-hover table-striped" OnRowCommand="grdSupplierProductMapping_RowCommand" OnRowDataBound="grdSupplierProductMapping_RowDataBound">
+        <asp:GridView ID="grdSupplierProductMapping" runat="server" AllowPaging="true" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Activity_ID"
+            EmptyDataText="No Data Found" CssClass="table table-hover table-striped" OnRowCommand="grdSupplierProductMapping_RowCommand" OnRowDataBound="grdSupplierProductMapping_RowDataBound">
 
-                    <Columns>
-                        <asp:BoundField DataField="SupplierCode" HeaderText="SupplierCode" SortExpression="SupplierCode" />
-                        <asp:BoundField DataField="SupplierName" HeaderText="SupplierName" SortExpression="SupplierName" />
-                        <asp:BoundField DataField="SupplierType" HeaderText="SupplierType" SortExpression="SupplierType" />
-                        <asp:BoundField DataField="SuplierProductCode" HeaderText="SuplierProductCode" SortExpression="SuplierProductCode" />
-                        <asp:BoundField DataField="SupplierProductName" HeaderText="SupplierProductName" SortExpression="SupplierProductName" />
-                        <asp:BoundField DataField="SupplierProductType" HeaderText="SupplierProductType" SortExpression="SupplierProductType" />
+            <Columns>
+                <asp:BoundField DataField="SupplierCode" HeaderText="SupplierCode" SortExpression="SupplierCode" />
+                <asp:BoundField DataField="SupplierName" HeaderText="SupplierName" SortExpression="SupplierName" />
+                <asp:BoundField DataField="SupplierType" HeaderText="SupplierType" SortExpression="SupplierType" />
+                <asp:BoundField DataField="SuplierProductCode" HeaderText="SuplierProductCode" SortExpression="SuplierProductCode" />
+                <asp:BoundField DataField="SupplierProductName" HeaderText="SupplierProductName" SortExpression="SupplierProductName" />
+                <asp:BoundField DataField="SupplierProductType" HeaderText="SupplierProductType" SortExpression="SupplierProductType" />
+                <asp:BoundField DataField="SupplierCityName" HeaderText="SupplierCityName" SortExpression="SupplierCityName" />
+                <asp:BoundField DataField="SupplierCountryName" HeaderText="SupplierCountryName" SortExpression="SupplierCountryName" />
 
-                        <%--<asp:TemplateField ShowHeader="false">
+
+                <%--<asp:TemplateField ShowHeader="false">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CssClass="btn btn-default"
                                     Enabled='<%# Eval("IsActive") %>' CommandArgument='<%# Bind("ActivitySupplierProductMapping_Id") %>' OnClientClick="showAddNewPolicyModal();">
@@ -75,10 +77,10 @@
                                 </asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>--%>
-                    </Columns>
-                    <PagerStyle CssClass="pagination-ys" />
-                </asp:GridView>
-            
+            </Columns>
+            <PagerStyle CssClass="pagination-ys" />
+        </asp:GridView>
+
     </ContentTemplate>
 </asp:UpdatePanel>
 

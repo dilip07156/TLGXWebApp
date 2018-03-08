@@ -330,5 +330,14 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+
+        #region Activity Flavour Status
+        public List<DC_Activity_CategoryTypes_DDL> GetSupplierProductSubType(MDMSVC.DC_Supplier_DDL RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_SupplierProductSubType_ForDDL"], RQParams, typeof(DC_Supplier_DDL), typeof(List<MDMSVC.DC_Activity_CategoryTypes_DDL>), out result);
+            return result as List<DC_Activity_CategoryTypes_DDL>;
+        }
+        #endregion
     }
 }
