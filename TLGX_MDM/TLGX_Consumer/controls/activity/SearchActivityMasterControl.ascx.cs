@@ -366,7 +366,7 @@ namespace TLGX_Consumer.controls.activity
                     _objSearch.ProductNameSubTypeId = Guid.Parse(ddlProductSubType.SelectedValue);
                 }
                 
-                if (ddlSupplierProductSupType.SelectedIndex > 1)
+                if (ddlSupplierProductSupType.SelectedIndex > 0)
                 {
                     _objSearch.SupplierProductNameSubType = ddlSupplierProductSupType.SelectedValue;
                 }
@@ -440,6 +440,10 @@ namespace TLGX_Consumer.controls.activity
             ddlPageSize.SelectedIndex = 0;
 
             txtProductName.Text = string.Empty;
+            txtSupplierCityName.Text = string.Empty;
+            txtSupplierCountryName.Text = string.Empty;
+
+            FillSupplierProductsubType("0");
 
             lblTotalRecords.Text = string.Empty;
             gvActivitySearch.DataSource = null;
@@ -563,7 +567,7 @@ namespace TLGX_Consumer.controls.activity
             {
                 sb.Append("&PSTID=" + HttpUtility.UrlEncode(ddlProductSubType.SelectedValue));
             }
-            if(ddlSupplierProductSupType.SelectedIndex >  1)
+            if(ddlSupplierProductSupType.SelectedIndex >  0)
             {
                 sb.Append("&SPST=" + HttpUtility.UrlEncode(ddlSupplierProductSupType.SelectedValue)); 
             }
@@ -612,10 +616,13 @@ namespace TLGX_Consumer.controls.activity
         public void FillSupplierProductsubType(string Supplier_Id)
         {
             ddlSupplierProductSupType.Items.Clear();
-            var CategoryTypes = activitySVC.GetSupplierProductSubType(new MDMSVC.DC_Supplier_DDL { Supplier_Id = Guid.Parse(Supplier_Id) });
-            ddlSupplierProductSupType.DataSource = CategoryTypes;
-            ddlSupplierProductSupType.DataTextField = "SupProdSubType";
-            ddlSupplierProductSupType.DataValueField = "SupProdSubTypeCode";
+            if (Supplier_Id != "0")
+            {
+                var CategoryTypes = activitySVC.GetSupplierProductSubType(new MDMSVC.DC_Supplier_DDL { Supplier_Id = Guid.Parse(Supplier_Id) });
+                ddlSupplierProductSupType.DataSource = CategoryTypes;
+                ddlSupplierProductSupType.DataTextField = "SupProdSubType";
+                ddlSupplierProductSupType.DataValueField = "SupProdSubTypeCode";
+            }
             ddlSupplierProductSupType.DataBind();
             ddlSupplierProductSupType.Items.Insert(0, new ListItem("--All--", "0"));
         }
