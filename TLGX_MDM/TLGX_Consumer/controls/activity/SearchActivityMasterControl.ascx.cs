@@ -302,7 +302,7 @@ namespace TLGX_Consumer.controls.activity
         private void fillSupplierList(DropDownList ddl)
         {
             ddl.Items.Clear();
-            ddl.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType="Activity" });
+            ddl.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType="Activities" });
             ddl.DataTextField = "Name";
             ddl.DataValueField = "Supplier_Id";
             ddl.DataBind();
@@ -440,6 +440,10 @@ namespace TLGX_Consumer.controls.activity
             ddlPageSize.SelectedIndex = 0;
 
             txtProductName.Text = string.Empty;
+            txtSupplierCityName.Text = string.Empty;
+            txtSupplierCountryName.Text = string.Empty;
+
+            FillSupplierProductsubType("0");
 
             lblTotalRecords.Text = string.Empty;
             gvActivitySearch.DataSource = null;
@@ -612,10 +616,13 @@ namespace TLGX_Consumer.controls.activity
         public void FillSupplierProductsubType(string Supplier_Id)
         {
             ddlSupplierProductSupType.Items.Clear();
-            var CategoryTypes = activitySVC.GetSupplierProductSubType(new MDMSVC.DC_Supplier_DDL { Supplier_Id = Guid.Parse(Supplier_Id) });
-            ddlSupplierProductSupType.DataSource = CategoryTypes;
-            ddlSupplierProductSupType.DataTextField = "SupProdSubType";
-            ddlSupplierProductSupType.DataValueField = "SupProdSubTypeCode";
+            if (Supplier_Id != "0")
+            {
+                var CategoryTypes = activitySVC.GetSupplierProductSubType(new MDMSVC.DC_Supplier_DDL { Supplier_Id = Guid.Parse(Supplier_Id) });
+                ddlSupplierProductSupType.DataSource = CategoryTypes;
+                ddlSupplierProductSupType.DataTextField = "SupProdSubType";
+                ddlSupplierProductSupType.DataValueField = "SupProdSubTypeCode";
+            }
             ddlSupplierProductSupType.DataBind();
             ddlSupplierProductSupType.Items.Insert(0, new ListItem("--All--", "0"));
         }

@@ -163,8 +163,10 @@ namespace TLGX_Consumer.controls.staticdata
 
         private void fillsuppliers()
         {
-            // ddlSupplierName.DataSource = masterdata.GetSupplierMasterData();
-            ddlSupplierName.DataSource = _objMasterData.GetSupplierMasterData();
+            //ddlSupplierName.DataSource = _objMasterData.GetSupplierMasterData();
+            MDMSVC.DC_Supplier_Search_RQ RQ = new MDMSVC.DC_Supplier_Search_RQ();
+            RQ.EntityType = "Accommodation";
+            ddlSupplierName.DataSource = _objMasterData.GetSupplierByEntity(RQ);
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
             ddlSupplierName.DataBind();
