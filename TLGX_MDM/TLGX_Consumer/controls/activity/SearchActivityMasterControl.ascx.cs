@@ -302,7 +302,7 @@ namespace TLGX_Consumer.controls.activity
         private void fillSupplierList(DropDownList ddl)
         {
             ddl.Items.Clear();
-            ddl.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType="Activity" });
+            ddl.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType="Activities" });
             ddl.DataTextField = "Name";
             ddl.DataValueField = "Supplier_Id";
             ddl.DataBind();
