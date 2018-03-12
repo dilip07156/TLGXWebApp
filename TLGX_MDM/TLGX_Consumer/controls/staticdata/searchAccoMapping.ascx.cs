@@ -166,6 +166,7 @@ namespace TLGX_Consumer.controls.staticdata
             //ddlSupplierName.DataSource = _objMasterData.GetSupplierMasterData();
             MDMSVC.DC_Supplier_Search_RQ RQ = new MDMSVC.DC_Supplier_Search_RQ();
             RQ.EntityType = "Accommodation";
+            RQ.StatusCode = "ACTIVE";
             ddlSupplierName.DataSource = _objMasterData.GetSupplierByEntity(RQ);
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
