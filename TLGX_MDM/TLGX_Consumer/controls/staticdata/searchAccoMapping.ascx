@@ -365,7 +365,6 @@
                                                     <asp:ListItem Text="10" Value="10"></asp:ListItem>
                                                     <asp:ListItem Text="25" Value="25"></asp:ListItem>
                                                     <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                    <asp:ListItem Text="100" Value="100"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -591,7 +590,6 @@
                                                         <asp:ListItem Text="10" Value="10"></asp:ListItem>
                                                         <asp:ListItem Text="25" Value="25"></asp:ListItem>
                                                         <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                        <asp:ListItem Text="100" Value="100"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
@@ -990,7 +988,6 @@
                                                         <asp:ListItem Text="10" Value="10"></asp:ListItem>
                                                         <asp:ListItem Text="25" Value="25"></asp:ListItem>
                                                         <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                        <asp:ListItem Text="100" Value="100"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
