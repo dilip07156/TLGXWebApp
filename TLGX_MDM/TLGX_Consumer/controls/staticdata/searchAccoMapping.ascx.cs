@@ -973,7 +973,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //MatchedStatus = ddlStatus.SelectedItem.Text;
                     if (!(ddlSystemCountryName.SelectedIndex == 0))
                     {
-                        fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                        //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                         fillmatchingdata("", 0);
                         dvMatchingRecords.Visible = true;
                         btnMatchedMapSelected.Visible = true;
@@ -1336,7 +1336,7 @@ namespace TLGX_Consumer.controls.staticdata
                 }
 
             }
-            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void btnMapAll_Click(object sender, EventArgs e)
@@ -1405,7 +1405,7 @@ namespace TLGX_Consumer.controls.staticdata
                     mySupplier_Id = Guid.Empty;
                 }
             }
-            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void chkSelect_CheckedChanged(object sender, EventArgs e)
@@ -1627,7 +1627,7 @@ namespace TLGX_Consumer.controls.staticdata
             if (mapperSVc.UpdateProductMappingData(newObj))
             {
                 fillmatchingdata("", grdMatchingProducts.PageIndex);
-                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                 hdnFlag.Value = "false";
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
             }
@@ -1671,7 +1671,7 @@ namespace TLGX_Consumer.controls.staticdata
             if (mapperSVc.UpdateProductMappingData(newObj))
             {
                 fillmatchingdata("", grdMatchingProducts.PageIndex);
-                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                 hdnFlag.Value = "false";
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
             }

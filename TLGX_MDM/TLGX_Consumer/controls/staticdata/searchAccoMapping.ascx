@@ -682,7 +682,7 @@
 
     <br />
     <!-- OPEN IN MODAL -->
-    <div class="modal fade" id="moCityMapping" role="dialog">
+    <div class="modal fade" id="moCityMapping" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg x-lg">
             <div class="modal-content">
 
@@ -1044,7 +1044,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" runat="server" onserverclick="btnSearch_Click">Close</button>
                 </div>
             </div>
         </div>
