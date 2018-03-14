@@ -246,7 +246,8 @@ namespace TLGX_Consumer.controls.staticdata
             //via = "supplier";
             bool _isDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            fillproductdata(ref _isDataExist, "supplier", 0);
+
+            fillproductdata(ref _isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
             if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
             {
                 btnMapSelected.Visible = _isDataExist;
@@ -824,7 +825,8 @@ namespace TLGX_Consumer.controls.staticdata
         {
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             //PageIndex = e.NewPageIndex;
-            fillproductdata(ref isDataExist, "supplier", e.NewPageIndex);
+            hdnPageNumber.Value = e.NewPageIndex.ToString();
+            fillproductdata(ref isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
         }
 
         protected void ddlCountryName_SelectedIndexChanged(object sender, EventArgs e)
@@ -973,7 +975,7 @@ namespace TLGX_Consumer.controls.staticdata
                     //MatchedStatus = ddlStatus.SelectedItem.Text;
                     if (!(ddlSystemCountryName.SelectedIndex == 0))
                     {
-                        fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                        //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                         fillmatchingdata("", 0);
                         dvMatchingRecords.Visible = true;
                         btnMatchedMapSelected.Visible = true;
@@ -998,7 +1000,8 @@ namespace TLGX_Consumer.controls.staticdata
                 dvMatchingRecords.Visible = false;
                 btnMatchedMapSelected.Visible = false;
                 btnMatchedMapAll.Visible = false;
-                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                hdnPageNumber.Value = grdAccoMaps.PageIndex.ToString();
+                fillproductdata(ref isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
             }
             else if (e.CommandName == "OpenAddProduct")
             {
@@ -1336,7 +1339,7 @@ namespace TLGX_Consumer.controls.staticdata
                 }
 
             }
-            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void btnMapAll_Click(object sender, EventArgs e)
@@ -1405,7 +1408,7 @@ namespace TLGX_Consumer.controls.staticdata
                     mySupplier_Id = Guid.Empty;
                 }
             }
-            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void chkSelect_CheckedChanged(object sender, EventArgs e)
@@ -1627,7 +1630,7 @@ namespace TLGX_Consumer.controls.staticdata
             if (mapperSVc.UpdateProductMappingData(newObj))
             {
                 fillmatchingdata("", grdMatchingProducts.PageIndex);
-                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                 hdnFlag.Value = "false";
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
             }
@@ -1671,7 +1674,7 @@ namespace TLGX_Consumer.controls.staticdata
             if (mapperSVc.UpdateProductMappingData(newObj))
             {
                 fillmatchingdata("", grdMatchingProducts.PageIndex);
-                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                 hdnFlag.Value = "false";
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Matching Records are mapped successfully", BootstrapAlertType.Success);
             }
