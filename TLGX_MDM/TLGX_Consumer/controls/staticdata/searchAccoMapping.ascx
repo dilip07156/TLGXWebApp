@@ -382,7 +382,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-sm-12">&nbsp;</div>
+                                            <div class="col-sm-12">
+                                                <asp:HiddenField ID="hdnPageNumber" runat="server" Value="0" />
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />

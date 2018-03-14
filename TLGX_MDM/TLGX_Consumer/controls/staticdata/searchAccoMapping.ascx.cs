@@ -246,7 +246,8 @@ namespace TLGX_Consumer.controls.staticdata
             //via = "supplier";
             bool _isDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            fillproductdata(ref _isDataExist, "supplier", 0);
+
+            fillproductdata(ref _isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
             if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
             {
                 btnMapSelected.Visible = _isDataExist;
@@ -824,7 +825,8 @@ namespace TLGX_Consumer.controls.staticdata
         {
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
             //PageIndex = e.NewPageIndex;
-            fillproductdata(ref isDataExist, "supplier", e.NewPageIndex);
+            hdnPageNumber.Value = e.NewPageIndex.ToString();
+            fillproductdata(ref isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
         }
 
         protected void ddlCountryName_SelectedIndexChanged(object sender, EventArgs e)
@@ -998,7 +1000,8 @@ namespace TLGX_Consumer.controls.staticdata
                 dvMatchingRecords.Visible = false;
                 btnMatchedMapSelected.Visible = false;
                 btnMatchedMapAll.Visible = false;
-                fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                hdnPageNumber.Value = grdAccoMaps.PageIndex.ToString();
+                fillproductdata(ref isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
             }
             else if (e.CommandName == "OpenAddProduct")
             {
