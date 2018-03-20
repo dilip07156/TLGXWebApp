@@ -17,6 +17,7 @@
         }
     }
 </style>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
 <script>
     function showAddZoneModal() {
         $("#moAddZoneModal").modal('show');
@@ -24,6 +25,27 @@
     function closeAddZoneModal() {
         $("#moAddZoneModal").modal('hide');
     }
+    
+       function getLatLong () {
+            var zoneName = $('#MainContent_txtAddZoneName').val();
+            var city = $('#MainContent_ddlMasterCityAddModal').find("option:selected").text();
+            var country = $('#MainContent_ddlMasterCountryAddModal').find("option:selected").text();
+            if (zoneName !== '' && city != '' && country != '') {
+                var address = zoneName + ',' + city + ',' + country;
+                var geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                        $('#MainContent_txtLatitude').val(latitude);
+                        $('#MainContent_txtLongitude').val(longitude);
+                    } else {
+                        alert("Request failed.")
+                    }
+                });
+            }
+        }
+   
 </script>
 
 <asp:UpdatePanel ID="updZoneMasterSearch" runat="server">
@@ -210,7 +232,8 @@
                                             </div>
                                            <div class="form-group row">
                                                <div class="col-sm-12">
-                                                 <asp:Button ID="btnGetLatLong" runat="server" CssClass="btn btn-primary btn-sm" Text="Get Latitude and Longitude"  />
+                                                   <%--<button type="button" id="btnGetLatLong" class="btn btn-primary btn-sm">Get Latitude and Longitude</button>--%>
+                                                <asp:Button ID="btnGetLatLong" runat="server" CssClass="btn btn-primary btn-sm" Text="Get Latitude and Longitude"  OnClientClick="getLatLong()"/>
                                                 </div>
                                             </div>
                                         </div>
