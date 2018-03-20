@@ -78,27 +78,9 @@ namespace TLGX_Consumer.geography
             fillcountries(ddlMasterCountryAddModal);
             BindZoneType(ddlAddZoneType);
             BindZoneType(ddlZoneType);
-            //fillattributes("SystemStatus", "Status", ddlStatus);
-           // fillattributes("SystemStatus", "Status", ddlAddStatus);
         }
-
-        //public void fillattributes(string masterfor, string attributename, DropDownList ddl)
-        //{
-        //    ddl.Items.Clear();
-        //    MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
-        //    RQ.MasterFor = masterfor;
-        //    RQ.Name = attributename;
-        //    var resvalues = masterSVc.GetAllAttributeAndValues(RQ);
-        //    resvalues
-        //    ddl.DataSource = resvalues;
-        //    ddl.DataTextField = "AttributeValue";
-        //    ddl.DataValueField = "MasterAttributeValue_Id";
-        //    ddl.DataBind();
-        //    ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
-        //}
         private void fillcountries(DropDownList ddl)
         {
-            ddl.Items.Clear();
             ddl.DataSource = masterSVc.GetAllCountries();
             ddl.DataValueField = "Country_Id";
             ddl.DataTextField = "Country_Name";
@@ -186,7 +168,6 @@ namespace TLGX_Consumer.geography
         {
             resetControls();
         }
-
         private void resetControls()
         {
             ddlMasterCountry.SelectedIndex = 0;
@@ -310,6 +291,16 @@ namespace TLGX_Consumer.geography
             fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
         }
 
-     
+        protected void btnAddZone_Click(object sender, EventArgs e)
+        {
+            ddlMasterCountryAddModal.SelectedIndex = 0;
+            ddlMasterCityAddModal.Items.Clear();
+            ddlMasterCityAddModal.Items.Add(new ListItem("---Select---", "0"));
+            ddlAddZoneType.SelectedIndex = 0;
+            txtLatitude.Text = string.Empty;
+            txtLongitude.Text = string.Empty;
+            txtAddZoneName.Text = string.Empty;
+            dvmsgAdd.Style.Add("display", "none");
+        }
     }
 }

@@ -184,15 +184,6 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.TextBox txtLatitude;
         
         /// <summary>
-        /// btnGetLatLong control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGetLatLong;
-        
-        /// <summary>
         /// ddlAddZoneType control.
         /// </summary>
         /// <remarks>
