@@ -112,6 +112,15 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlMatchedBy;
         
         /// <summary>
+        /// hdnPageNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnPageNumber;
+        
+        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>

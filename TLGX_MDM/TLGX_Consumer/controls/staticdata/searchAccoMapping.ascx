@@ -365,7 +365,6 @@
                                                     <asp:ListItem Text="10" Value="10"></asp:ListItem>
                                                     <asp:ListItem Text="25" Value="25"></asp:ListItem>
                                                     <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                    <asp:ListItem Text="100" Value="100"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -383,7 +382,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="col-sm-12">&nbsp;</div>
+                                            <div class="col-sm-12">
+                                                <asp:HiddenField ID="hdnPageNumber" runat="server" Value="0" />
+                                            </div>
                                         </div>
                                         <div class="form-group">
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
@@ -591,7 +592,6 @@
                                                         <asp:ListItem Text="10" Value="10"></asp:ListItem>
                                                         <asp:ListItem Text="25" Value="25"></asp:ListItem>
                                                         <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                        <asp:ListItem Text="100" Value="100"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
@@ -684,7 +684,7 @@
 
     <br />
     <!-- OPEN IN MODAL -->
-    <div class="modal fade" id="moCityMapping" role="dialog">
+    <div class="modal fade" id="moCityMapping" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg x-lg">
             <div class="modal-content">
 
@@ -740,6 +740,7 @@
                                                                     <td><strong>Product</strong></td>
                                                                     <td>
                                                                         <asp:Label ID="lblProductName" runat="server" Text=""></asp:Label>
+                                                                        <asp:Label ID="lblHotelName_TX" runat="server" Text="" Visible="false"></asp:Label>
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -989,7 +990,6 @@
                                                         <asp:ListItem Text="10" Value="10"></asp:ListItem>
                                                         <asp:ListItem Text="25" Value="25"></asp:ListItem>
                                                         <asp:ListItem Text="50" Value="50"></asp:ListItem>
-                                                        <asp:ListItem Text="100" Value="100"></asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="input-group">&nbsp;&nbsp;&nbsp;&nbsp;</div>
@@ -1046,7 +1046,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" runat="server" onserverclick="btnSearch_Click">Close</button>
                 </div>
             </div>
         </div>
