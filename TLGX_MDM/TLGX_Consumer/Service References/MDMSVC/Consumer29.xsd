@@ -203,6 +203,90 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_keywordApply_RQ" nillable="true" type="tns:DC_keywordApply_RQ" />
+  <xs:complexType name="DC_ZoneRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistanceRange" type="xs:int" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GooglePlaceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ZoneCityMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone_id" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_ZoneRQ" nillable="true" type="tns:DC_ZoneRQ" />
+  <xs:complexType name="ArrayOfDC_ZoneSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_ZoneSearch" nillable="true" type="tns:DC_ZoneSearch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_ZoneSearch" nillable="true" type="tns:ArrayOfDC_ZoneSearch" />
+  <xs:complexType name="DC_ZoneSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoOfHotels" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone_Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone_id" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_ZoneSearch" nillable="true" type="tns:DC_ZoneSearch" />
+  <xs:complexType name="ArrayOfDC_ZoneCitiesSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_ZoneCitiesSearch" nillable="true" type="tns:DC_ZoneCitiesSearch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_ZoneCitiesSearch" nillable="true" type="tns:ArrayOfDC_ZoneCitiesSearch" />
+  <xs:complexType name="DC_ZoneCitiesSearch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City_id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ZoneCityMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone_id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_ZoneCitiesSearch" nillable="true" type="tns:DC_ZoneCitiesSearch" />
+  <xs:complexType name="ArrayOfDC_ZoneHotelList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_ZoneHotelList" nillable="true" type="tns:DC_ZoneHotelList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_ZoneHotelList" nillable="true" type="tns:ArrayOfDC_ZoneHotelList" />
+  <xs:complexType name="DC_ZoneHotelList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Distance" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="FullAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_ZoneHotelList" nillable="true" type="tns:DC_ZoneHotelList" />
   <xs:complexType name="DC_Country_Search_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country_Code" nillable="true" type="xs:string" />

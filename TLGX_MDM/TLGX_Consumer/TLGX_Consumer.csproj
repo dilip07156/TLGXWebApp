@@ -384,6 +384,8 @@
     <Content Include="geography\CountryStateMgmt.aspx" />
     <Content Include="geography\PortManage.aspx" />
     <Content Include="geography\portSearch.aspx" />
+    <Content Include="geography\Zone.aspx" />
+    <Content Include="geography\ZoneCityMasterEdit.aspx" />
     <Content Include="hotels\addnew.aspx" />
     <Content Include="hotels\missingAttributeReports.aspx" />
     <Content Include="hotels\rollOffReports.aspx" />
@@ -931,7 +933,16 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ZoneSearch.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ZoneHotelList.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service\CountryAutoComplete.ashx" />
@@ -1836,6 +1847,20 @@
     </Compile>
     <Compile Include="geography\portSearch.aspx.designer.cs">
       <DependentUpon>portSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\Zone.aspx.cs">
+      <DependentUpon>Zone.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\Zone.aspx.designer.cs">
+      <DependentUpon>Zone.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\ZoneCityMasterEdit.aspx.cs">
+      <DependentUpon>ZoneCityMasterEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\ZoneCityMasterEdit.aspx.designer.cs">
+      <DependentUpon>ZoneCityMasterEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="hotels\addnew.aspx.cs">
       <DependentUpon>addnew.aspx</DependentUpon>
