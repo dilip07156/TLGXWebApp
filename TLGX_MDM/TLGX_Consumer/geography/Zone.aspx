@@ -41,6 +41,7 @@
                         var longitude = results[0].geometry.location.lng();
                         $('#MainContent_txtLatitude').val(latitude);
                         $('#MainContent_txtLongitude').val(longitude);
+                        $("#hdnPlaceId").val(results[0].place_id);
                     } else {
                         alert("Request failed.")
                     }
@@ -151,12 +152,12 @@
                             <div id="collapseSearchResult" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <div id="dvMsg1" runat="server" style="display: none;"></div>
+                                        <div id="dvMsgDeleted" runat="server" style="display: none;"></div>
                                     </div>
 
                                     <asp:GridView ID="grdZoneSearch" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                         EmptyDataText="No Zones Found" CssClass="table table-hover table-striped" DataKeyNames="Zone_id,Latitude,Longitude"
-                                        OnPageIndexChanging="grdZoneSearch_PageIndexChanging" OnRowCommand="grdZoneSearch_RowCommand">
+                                        OnPageIndexChanging="grdZoneSearch_PageIndexChanging" OnRowCommand="grdZoneSearch_RowCommand" OnRowDataBound="grdZoneSearch_RowDataBound">
                                         <Columns>
                                             <asp:BoundField DataField="Zone_Type" HeaderText="Zone Type" />
                                             <asp:BoundField DataField="CountryName" HeaderText="Country" />
@@ -174,10 +175,10 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "Fasle" ? "UnDelete" : "SoftDelete"   %>'
+                                                    <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "false" ? "UnDelete" : "SoftDelete"   %>'
                                                         CssClass="btn btn-default" CommandArgument='<%# Bind("Zone_id") %>'>
-                                                    <span aria-hidden="true" class='<%# Eval("Status").ToString() == "False" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
-                                                    <%# Eval("Status").ToString() == "False" ? "UnDelete" : "Delete"   %>
+                                                    <span aria-hidden="true" class='<%# Eval("Status").ToString() == "false" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
+                                                    <%# Eval("Status").ToString() == "false" ? "UnDelete" : "Delete"   %>
                                                     </asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -211,6 +212,7 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-sm-6">
+                                                <asp:HiddenField ClientIDMode="Static" ID="hdnPlaceId" runat="server"/>
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-4" for="txtAddZoneName">Name</label>
                                                     <div class="col-sm-8">

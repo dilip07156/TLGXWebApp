@@ -107,7 +107,7 @@
                                                     <asp:DropDownList ID="ddlMasterCityEdit" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
                                                     </asp:DropDownList>
-                                                   
+
                                                 </div>
                                                 <div class="col-sm-8 pull-left">
                                                     <asp:Button ID="btnAddZoneCity" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" OnClick="btnAddZoneCity_Click" />
@@ -122,10 +122,10 @@
                                                         <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                         <asp:TemplateField HeaderText="Action">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDeleteZoneCity" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "Fasle" ? "UnDelete" : "SoftDelete"  %>'
+                                                                <asp:LinkButton ID="btnDeleteZoneCity" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "false" ? "UnDelete" : "SoftDelete"  %>'
                                                                     CssClass="btn btn-default" CommandArgument='<%# Bind("ZoneCityMapping_Id") %>'>
                                                     <span aria-hidden="true" class='<%# Eval("Status").ToString() == "False" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
-                                                    <%# Eval("Status").ToString() == "False" ? "UnDelete" : "Delete"   %>
+                                                    <%# Eval("Status").ToString() == "false" ? "UnDelete" : "Delete"   %>
                                                                 </asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
@@ -136,16 +136,40 @@
                                         </div>
 
                                         <!--For Hotel-List-->
-                                         <div role="tabpanel" id="ShowZoneHotelList" class="tab-pane fade in">
+                                        <div role="tabpanel" id="ShowZoneHotelList" class="tab-pane fade in">
                                             <br />
+                                            <div class="col-sm-12">
+                                                <div class="input-group col-md-3 pull-right" runat="server" id="divDropdownForDistance">
+                                                <label class="input-group-addon" for="ddlShowDistance">Distance(Km)</label>
+                                                <asp:DropDownList ID="ddlShowDistance" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowDistance_SelectedIndexChanged">
+                                                    <asp:ListItem Value="4000">4</asp:ListItem>
+                                                    <asp:ListItem Value="10000">10</asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                            </div>
+                                            <br /><br /><br />
+                                            <div class="col-sm-12">
+                                                     <asp:GridView ID="grdZoneHotelSearch" runat="server" AutoGenerateColumns="False"
+                                                    EmptyDataText="No Hotels found for thiz Zone " CssClass="table table-hover table-striped" DataKeyNames="Accommodation_Id">
+                                                    <Columns>
+                                                        <asp:BoundField DataField="HotelName" HeaderText="HotelName" />
+                                                        <asp:BoundField DataField="Distance" HeaderText="Distance(km)" />
+                                                        <asp:BoundField DataField="City" HeaderText="City" />
+                                                      <%--<asp:BoundField DataField="Accommodation_Id" HeaderText="Accommodation_Id" />--%>
+                                                        <%--<asp:BoundField DataField="Latitude" HeaderText="Latitude" />--%>
+                                                        <%--<asp:BoundField DataField="Longitude" HeaderText="Longitude" />--%>
+                                                        
+                                                    </Columns>
+                                                </asp:GridView>
+                                            </div>
 
-                                         </div>
+                                        </div>
 
                                         <!--For Hotel-Map-->
-                                         <div role="tabpanel" id="MapHotels" class="tab-pane fade in">
+                                        <div role="tabpanel" id="MapHotels" class="tab-pane fade in">
                                             <br />
 
-                                         </div>
+                                        </div>
                                     </div>
                                 </div>
 

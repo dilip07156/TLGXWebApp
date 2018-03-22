@@ -120,19 +120,19 @@ namespace TLGX_Consumer.geography
         {
             try
             {
-                MDMSVC.DC_ZoneRQ RQ = new MDMSVC.DC_ZoneRQ();
-                RQ.PageNo = pageindex;
-                RQ.PageSize = pagesize;
+                MDMSVC.DC_ZoneRQ R = new MDMSVC.DC_ZoneRQ();
+                R.PageNo = pageindex;
+                R.PageSize = pagesize;
                 if (ddlMasterCountry.SelectedItem.Value != "0")
-                    RQ.Country_id = new Guid(ddlMasterCountry.SelectedValue);
+                    R.Country_id = new Guid(ddlMasterCountry.SelectedValue);
                 if (ddlMasterCity.SelectedItem.Value != "0")
-                    RQ.City_id = new Guid(ddlMasterCity.SelectedValue);
+                    R.City_id = new Guid(ddlMasterCity.SelectedValue);
                 if (ddlZoneType.SelectedItem.Value != "0")
-                    RQ.Zone_Type = ddlZoneType.SelectedItem.Text;
+                    R.Zone_Type = ddlZoneType.SelectedItem.Text;
                 if (ddlStatus.SelectedItem.Value != "0")
-                    RQ.Status = Convert.ToBoolean(ddlStatus.SelectedValue);
+                    R.Status = Convert.ToBoolean(ddlStatus.SelectedValue);
 
-                var res = masterSVc.SearchZone(RQ);
+                var res = masterSVc.SearchZone(R);
 
                 if (res != null && res.Count>0)
                 {
@@ -199,7 +199,8 @@ namespace TLGX_Consumer.geography
             MDMSVC.DC_ZoneRQ param = new MDMSVC.DC_ZoneRQ();
             param.Action = "ADD";
             param.Zone_id = Guid.NewGuid();
-
+            param.Create_Date = DateTime.Now;
+            param.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
             if (ddlMasterCityAddModal.SelectedItem.Value != "0")
                 param.City_id = new Guid(ddlMasterCityAddModal.SelectedValue);
 
@@ -237,14 +238,51 @@ namespace TLGX_Consumer.geography
         {
             try
             {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
                 if (e.CommandName == "Select")
                 {
-                    Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                   // Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                    //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
                     //create Query String
-                    string strQueryString = GetQueryString(myRow_Id.ToString(), ((GridView)sender).PageIndex.ToString());
+                    string strQueryString = GetQueryString(myRowId.ToString(), ((GridView)sender).PageIndex.ToString());
                     Response.Redirect(strQueryString, true);
                     //end Query string
+                }
+                if (e.CommandName == "SoftDelete")
+                {
+                    MDMSVC.DC_ZoneRQ RQ = new MDMSVC.DC_ZoneRQ();
+                    RQ.Zone_id = myRowId;
+                    RQ.Action = "ZoneMaster";
+                    RQ.Edit_Date = DateTime.Now;
+                    RQ.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
+                    RQ.Status = false;
+                    var result = masterSVc.DeactivateOrActivateZones(RQ);
+                    if (result != null)
+                    {
+                        if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
+                        else
+                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+                    }
+                }
+                if (e.CommandName == "UnDelete")
+                {
+                    MDMSVC.DC_ZoneRQ p = new MDMSVC.DC_ZoneRQ();
+                    p.Zone_id = myRowId;
+                    p.Action = "ZoneMaster";
+                    p.Status = true;
+                    p.Edit_Date = DateTime.Now;
+                    p.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
+                    var result = masterSVc.DeactivateOrActivateZones(p);
+                    if (result != null)
+                    {
+                        if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
+                        else
+                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
+                    }
                 }
             }
             catch(Exception)
@@ -301,6 +339,18 @@ namespace TLGX_Consumer.geography
             txtLongitude.Text = string.Empty;
             txtAddZoneName.Text = string.Empty;
             dvmsgAdd.Style.Add("display", "none");
+        }
+
+        protected void grdZoneSearch_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.DataItem != null)
+            {
+                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btndelete");
+                if (btnDelete.CommandName == "UnDelete")
+                {
+                    e.Row.Font.Strikeout = true;
+                }
+            }
         }
     }
 }

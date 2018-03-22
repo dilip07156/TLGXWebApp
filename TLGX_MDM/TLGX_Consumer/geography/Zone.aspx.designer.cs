@@ -121,13 +121,13 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// dvMsg1 control.
+        /// dvMsgDeleted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgDeleted;
         
         /// <summary>
         /// grdZoneSearch control.
@@ -155,6 +155,15 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvmsgAdd;
+        
+        /// <summary>
+        /// hdnPlaceId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnPlaceId;
         
         /// <summary>
         /// txtAddZoneName control.

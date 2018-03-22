@@ -78,8 +78,11 @@ namespace TLGX_Consumer.geography
 
                 hdnCountryId.Value = ddlMasterCountryEdit.SelectedValue;
                 fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
-                
+                //cityList
                 fillgrdZoneCitiesData(Zone_Id);
+                //hotelList
+                fillgrdZoneHotelSearchData();
+                // HotelMap()
             }
         }
         protected void fillgrdZoneCitiesData(Guid Zone_id)
@@ -99,6 +102,26 @@ namespace TLGX_Consumer.geography
             }
         }
 
+        protected void fillgrdZoneHotelSearchData()
+        {
+            MDMSVC.DC_ZoneRQ zh = new MDMSVC.DC_ZoneRQ();
+            zh.Latitude = txtEditLatitude.Text;
+            zh.Longitude = txtEditLongitude.Text;
+            zh.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
+            zh.DistanceRange = Convert.ToInt32(ddlShowDistance.SelectedValue);
+           
+            var result = masterSVc.SearchZoneHotels(zh);
+            if (result != null && result.Count > 0)
+            {
+                grdZoneHotelSearch.DataSource = result;
+                grdZoneHotelSearch.DataBind();
+            }
+            else
+            {
+                grdZoneHotelSearch.DataSource = null;
+                grdZoneHotelSearch.DataBind();
+            }
+        }
         protected void ddlMasterCountryEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             //fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
@@ -116,6 +139,8 @@ namespace TLGX_Consumer.geography
             Param.Latitude = txtEditLatitude.Text;
             Param.Longitude = txtEditLongitude.Text;
             Param.Zone_Type = ddlEditZoneType.SelectedItem.Text;
+            Param.Edit_Date = DateTime.Now;
+            Param.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
             if (a== "True")
             {
                 var res = masterSVc.DeleteZoneCities(Param);
@@ -166,6 +191,11 @@ namespace TLGX_Consumer.geography
         protected void btnRedirectToSearch_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/geography/Zone.aspx");
+        }
+
+        protected void ddlShowDistance_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillgrdZoneHotelSearchData();
         }
     }
 }
