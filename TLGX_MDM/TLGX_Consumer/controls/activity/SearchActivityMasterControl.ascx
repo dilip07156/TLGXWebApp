@@ -210,9 +210,9 @@
                                             </div>
 
                                             <div class="row">
-                                                <label class="control-label col-sm-9" for="chkNoSession">Session is not defined</label>
+                                                <label class="control-label col-sm-9" for="chkNoDuration">Duration is not defined</label>
                                                 <div class="col-sm-3">
-                                                    <asp:CheckBox ID="chkNoSession" runat="server" />
+                                                    <asp:CheckBox ID="chkNoDuration" runat="server" />
                                                 </div>
                                             </div>
 

@@ -14462,6 +14462,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReRunBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReRunSupplierImporrtFile_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RemarksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14982,6 +14988,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
                     this.ProductNameField = value;
                     this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReRunBatch {
+            get {
+                return this.ReRunBatchField;
+            }
+            set {
+                if ((this.ReRunBatchField.Equals(value) != true)) {
+                    this.ReRunBatchField = value;
+                    this.RaisePropertyChanged("ReRunBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReRunSupplierImporrtFile_Id {
+            get {
+                return this.ReRunSupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.ReRunSupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.ReRunSupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("ReRunSupplierImporrtFile_Id");
                 }
             }
         }
