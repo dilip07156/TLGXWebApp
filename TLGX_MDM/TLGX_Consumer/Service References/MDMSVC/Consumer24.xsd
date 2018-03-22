@@ -26,6 +26,7 @@
       <xs:element minOccurs="0" name="Accommodation_ProductMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" type="xs:int" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
@@ -63,6 +64,7 @@
       <xs:element minOccurs="0" name="Street3" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Street4" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductReference" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
@@ -334,6 +336,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityMapping_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />

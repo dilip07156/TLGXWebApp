@@ -14364,6 +14364,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Address_txField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14473,6 +14476,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierImporrtFile_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierNameField;
@@ -14598,6 +14604,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Address_txField, value) != true)) {
                     this.Address_txField = value;
                     this.RaisePropertyChanged("Address_tx");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Batch {
+            get {
+                return this.BatchField;
+            }
+            set {
+                if ((this.BatchField.Equals(value) != true)) {
+                    this.BatchField = value;
+                    this.RaisePropertyChanged("Batch");
                 }
             }
         }
@@ -15079,6 +15098,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupplierIdField, value) != true)) {
                     this.SupplierIdField = value;
                     this.RaisePropertyChanged("SupplierId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierImporrtFile_Id {
+            get {
+                return this.SupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.SupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.SupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("SupplierImporrtFile_Id");
                 }
             }
         }
@@ -18232,6 +18264,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CityCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> CityMapping_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18320,6 +18355,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CityCodeField, value) != true)) {
                     this.CityCodeField = value;
                     this.RaisePropertyChanged("CityCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> CityMapping_Id {
+            get {
+                return this.CityMapping_IdField;
+            }
+            set {
+                if ((this.CityMapping_IdField.Equals(value) != true)) {
+                    this.CityMapping_IdField = value;
+                    this.RaisePropertyChanged("CityMapping_Id");
                 }
             }
         }
