@@ -71,6 +71,15 @@
                 //google.maps.event.trigger(map, 'resize');
             });
         });
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+
+        prm.add_endRequest(function () {
+            // re-bind your jQuery events here
+            $("a[href='#MapHotels']").on('shown.bs.tab', function () {
+                initializeMyMap();
+                //google.maps.event.trigger(map, 'resize');
+            });
+        });
         function displayMarkers() {
            var Latitude = $("#MainContent_txtEditLatitude").val();
            var Longitude = $("#MainContent_txtEditLongitude").val();
