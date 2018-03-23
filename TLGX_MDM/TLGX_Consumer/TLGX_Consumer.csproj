@@ -1053,6 +1053,7 @@
     <Content Include="Service\AllSupplierDataForChart.ashx" />
     <Content Include="Service\FileProgressDashboard.ashx" />
     <Content Include="Service\PentahoStepsInfo.ashx" />
+    <Content Include="Service\GetZoneHotelsForMap.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2637,6 +2638,9 @@
     </Compile>
     <Compile Include="Service\FileProgressDashboard.ashx.cs">
       <DependentUpon>FileProgressDashboard.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetZoneHotelsForMap.ashx.cs">
+      <DependentUpon>GetZoneHotelsForMap.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
       <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>

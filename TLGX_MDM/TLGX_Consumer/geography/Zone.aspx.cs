@@ -134,11 +134,18 @@ namespace TLGX_Consumer.geography
 
                 var res = masterSVc.SearchZone(R);
 
-                if (res != null && res.Count>0)
+                if (res != null )
                 {
+                    if (res.Count > 0)
+                    {
+                        grdZoneSearch.VirtualItemCount = res[0].TotalRecords ?? 0;
                         lblTotalCount.Text = res[0].TotalRecords.ToString();
-                        grdZoneSearch.DataSource = res;
-                        grdZoneSearch.DataBind();
+                    }
+
+                    grdZoneSearch.DataSource = res;
+                    grdZoneSearch.PageIndex = pageindex;
+                    grdZoneSearch.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
+                    grdZoneSearch.DataBind();
                 }
                 else
                 {
@@ -238,13 +245,11 @@ namespace TLGX_Consumer.geography
         {
             try
             {
-                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-                int index = row.RowIndex;
-                Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
                 if (e.CommandName == "Select")
                 {
-                   // Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-                    //GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    int index = row.RowIndex;
+                    Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
                     //create Query String
                     string strQueryString = GetQueryString(myRowId.ToString(), ((GridView)sender).PageIndex.ToString());
                     Response.Redirect(strQueryString, true);
@@ -252,6 +257,9 @@ namespace TLGX_Consumer.geography
                 }
                 if (e.CommandName == "SoftDelete")
                 {
+                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    int index = row.RowIndex;
+                    Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
                     MDMSVC.DC_ZoneRQ RQ = new MDMSVC.DC_ZoneRQ();
                     RQ.Zone_id = myRowId;
                     RQ.Action = "ZoneMaster";
@@ -269,6 +277,9 @@ namespace TLGX_Consumer.geography
                 }
                 if (e.CommandName == "UnDelete")
                 {
+                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    int index = row.RowIndex;
+                    Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
                     MDMSVC.DC_ZoneRQ p = new MDMSVC.DC_ZoneRQ();
                     p.Zone_id = myRowId;
                     p.Action = "ZoneMaster";
@@ -285,7 +296,7 @@ namespace TLGX_Consumer.geography
                     }
                 }
             }
-            catch(Exception)
+            catch(Exception )
             {
                 throw;
             }

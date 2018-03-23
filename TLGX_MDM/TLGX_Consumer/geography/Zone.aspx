@@ -140,10 +140,10 @@
                                 <div class="input-group col-md-3 pull-right" runat="server" id="divDropdownForEntries">
                                     <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                                     <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                                        <asp:ListItem>10</asp:ListItem>
-                                        <asp:ListItem>25</asp:ListItem>
-                                        <asp:ListItem>50</asp:ListItem>
-                                        <asp:ListItem>100</asp:ListItem>
+                                        <asp:ListItem Value="10">10</asp:ListItem>
+                                        <asp:ListItem Value="25">25</asp:ListItem>
+                                        <asp:ListItem Value="50">50</asp:ListItem>
+                                        <asp:ListItem Value="100">100</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
 
@@ -157,7 +157,8 @@
 
                                     <asp:GridView ID="grdZoneSearch" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                         EmptyDataText="No Zones Found" CssClass="table table-hover table-striped" DataKeyNames="Zone_id,Latitude,Longitude"
-                                        OnPageIndexChanging="grdZoneSearch_PageIndexChanging" OnRowCommand="grdZoneSearch_RowCommand" OnRowDataBound="grdZoneSearch_RowDataBound">
+                                        OnPageIndexChanging="grdZoneSearch_PageIndexChanging" OnRowCommand="grdZoneSearch_RowCommand" OnRowDataBound="grdZoneSearch_RowDataBound"
+                                        EnableViewState="true">
                                         <Columns>
                                             <asp:BoundField DataField="Zone_Type" HeaderText="Zone Type" />
                                             <asp:BoundField DataField="CountryName" HeaderText="Country" />
@@ -184,7 +185,7 @@
                                             </asp:TemplateField>
                                         </Columns>
 
-                                        <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
+                                        <PagerStyle CssClass="pagination-ys"/>
 
                                     </asp:GridView>
                                 </div>

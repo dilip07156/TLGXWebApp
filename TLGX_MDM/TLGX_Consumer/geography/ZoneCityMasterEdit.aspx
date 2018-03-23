@@ -5,9 +5,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
     <script>
-
+        //var map;
         function ChangedCountry() {
-            var newCountry = $("#MainContent_ddlMasterCountryEdit").val();
+            var newCountry = $("#MainContent_ddlMasterCountryEdit option:selected").val();
             var oldCountry = $("#hdnCountryId").val();
             if (newCountry != oldCountry) {
                 var result = window.confirm('Country for this zone has been changed..!All cities will be deleted..');
@@ -19,17 +19,22 @@
             else $("#HdnCountryChangeFlag").val("False");
         }
 
-        function myMap() {
+        function initializeMyMap() {
             var lat = $("#MainContent_txtEditLatitude").val();
             var longg = $("#MainContent_txtEditLongitude").val();
             var zoneLatLong = new google.maps.LatLng(lat, longg);
-            var radius = 4000;
-            //$("#MainContent_ddlShowDistance").val();
+            var radius = 4000;   //$("#MainContent_ddlShowDistance").val();
+            //containerForMap
             var mapCanvas = document.getElementById("dvMapHotel");
-            var mapOptions = { center: zoneLatLong, zoom: 13 };
-            var map = new google.maps.Map(mapCanvas, mapOptions);
 
-            var myzonCircle = new google.maps.Circle({
+            //optionsForMap
+            var mapOptions = { center: zoneLatLong, zoom: 13 };
+
+            //createMAP
+            map = new google.maps.Map(mapCanvas, mapOptions);
+
+            //create Circle
+            var myzoneCircle = new google.maps.Circle({
                 center: zoneLatLong,
                 radius: 4000,
                 strokeColor: "#0000FF",
@@ -40,23 +45,89 @@
             });
             myzoneCircle.setMap(map);
 
+            // a new Info Window  created
+            infoWindow = new google.maps.InfoWindow();
+
+            // Event that closes the InfoWindow with a click on the map
+            google.maps.event.addListener(map, 'click', function () {
+                infoWindow.close();
+            });
+          
+            // displayMarkers() function is called to begin the markers creation
+            displayMarkers();
+
             //var markerForZone = new google.maps.Marker({
             //    position: zoneLatLong,
             //    title: "ZoneName"
             //});
             //markerForZone.setMap(map);
             //markerForZone.addListener('click', mappHotel());
-           // function MapHotels() { }
+            // function MapHotels() { }
         }
 
         $(document).ready(function () {
             $("a[href='#MapHotels']").on('shown.bs.tab', function () {
-                myMap();
-                google.maps.event.trigger(map, 'resize');
+                initializeMyMap();
+                //google.maps.event.trigger(map, 'resize');
             });
         });
+        function displayMarkers() {
+           var Latitude = $("#MainContent_txtEditLatitude").val();
+           var Longitude = $("#MainContent_txtEditLongitude").val();
+           var CountryName = $("#MainContent_ddlMasterCountryEdit option:selected").text();
+          //  var DistanceRange = 4;
+            $.ajax({
+                url: '../../../Service/GetZoneHotelsForMap.ashx',
+                data: { 'Latitude': Latitude, 'Longitude': Longitude, 'CountryName': CountryName },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    debugger;
+                    if (result != null) {
+                        // this variable sets the map bounds and zoom level according to markers position
+                        var bounds = new google.maps.LatLngBounds();
+                        for (var i = 0; i < result.length;i++)
+                        {
+                            var markerLatLng = new google.maps.LatLng(result[i].Latitude, result[i].Longitude);
+                            var hotelName = result[i].HotelName;
+                            var acco_Id = result[i].Accommodation_Id;
+                            createMarker(markerLatLng, hotelName, acco_Id);
+                            // Marker’s Lat. and Lng. values are added to bounds variable
+                            bounds.extend(markerLatLng);
+                        }
+                        // Finally the bounds variable is used to set the map bounds
+                        // with API’s fitBounds() function
+                        map.fitBounds(bounds);
+                    }
+                }
 
+            });
+
+        }
       
+        function createMarker(Markerlatlng, Hotelname, acco_id) {
+            //create marker
+            var markerHotels = new google.maps.Marker({
+                map: map,
+                position: Markerlatlng,
+                title: Hotelname
+            });
+            // This event expects a click on a marker When this event is fired the infowindow content is created and the infowindow is opened
+            google.maps.event.addListener(markerHotels, 'click', function () {
+
+                // Variable to define the HTML content to be inserted in the infowindow
+                var iwContent = '<div id="iw_container">' +
+                '<div class="iw_title">' + Hotelname + '</div>' +
+                '<div class="iw_content">' + acco_id + '<br />' + '</div></div>';
+
+                // including content to the infowindow
+                infoWindow.setContent(iwContent);
+
+                // opening the infowindow in the current map and at the current marker location
+                infoWindow.open(map, markerHotels);
+            });
+
+        }
     </script>
     <asp:UpdatePanel ID="uppnl" runat="server">
         <ContentTemplate>
