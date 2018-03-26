@@ -66,6 +66,7 @@
         }
 
         $(document).ready(function () {
+            initializeMyMap();
             $("a[href='#MapHotels']").on('shown.bs.tab', function () {
                 initializeMyMap();
                 //google.maps.event.trigger(map, 'resize');
@@ -213,13 +214,14 @@
                             <div class="panel panel-default">
                                 <div id="Tabs" class="panel-body" role="tabpanel">
                                     <ul class="nav nav-tabs tabs" role="tablist">
-                                        <li class="active"><a role="tab" data-toggle="tab" aria-controls="ShowZoneCities" href="#ShowZoneCities">Zone Cities</a></li>
+                                        
+                                        <li class="active"><a role="tab" data-toggle="tab" aria-controls="MapHotels" href="#MapHotels">Map Hotels</a></li>
                                         <li><a role="tab" data-toggle="tab" aria-controls="ShowZoneHotelList" href="#ShowZoneHotelList">Zone Hotel-List</a></li>
-                                        <li><a role="tab" data-toggle="tab" aria-controls="MapHotels" href="#MapHotels">Map Hotels</a></li>
+                                        <li><a role="tab" data-toggle="tab" aria-controls="ShowZoneCities" href="#ShowZoneCities">Zone Cities</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <!--For Cities-->
-                                        <div role="tabpanel" id="ShowZoneCities" class="tab-pane fade in active">
+                                        <div role="tabpanel" id="ShowZoneCities" class="tab-pane fade in">
                                             <br />
                                             <div class="col-sm-12">
                                                 <div class="col-sm-4">
@@ -241,10 +243,10 @@
                                                         <asp:BoundField DataField="CityName" HeaderText="City Name" />
                                                         <asp:TemplateField HeaderText="Action">
                                                             <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDeleteZoneCity" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "false" ? "UnDelete" : "SoftDelete"  %>'
+                                                                <asp:LinkButton ID="btnDeleteZoneCity" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "SoftDelete"  %>'
                                                                     CssClass="btn btn-default" CommandArgument='<%# Bind("ZoneCityMapping_Id") %>'>
-                                                    <span aria-hidden="true" class='<%# Eval("Status").ToString() == "False" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
-                                                    <%# Eval("Status").ToString() == "false" ? "UnDelete" : "Delete"   %>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "False" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "Delete"   %>
                                                                 </asp:LinkButton>
                                                             </ItemTemplate>
                                                         </asp:TemplateField>
@@ -287,7 +289,7 @@
 
 
                                         <!--For Hotel-Map-->
-                                        <div role="tabpanel" id="MapHotels" class="tab-pane fade in">
+                                        <div role="tabpanel" id="MapHotels" class="tab-pane fade in  active">
                                             <br />
                                             <br />
                                             <div id="dvMapHotel" style="width: 100%; height: 500px">

@@ -16673,6 +16673,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string ActionTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CommonProductIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -16718,10 +16721,22 @@ namespace TLGX_Consumer.MDMSVC {
         private string RatePlanCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReRunBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReRunSupplierImporrtFile_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomDescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[] RoomTypeAttributesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierImporrtFile_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierNameField;
@@ -16836,6 +16851,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ActionTypeField, value) != true)) {
                     this.ActionTypeField = value;
                     this.RaisePropertyChanged("ActionType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Batch {
+            get {
+                return this.BatchField;
+            }
+            set {
+                if ((this.BatchField.Equals(value) != true)) {
+                    this.BatchField = value;
+                    this.RaisePropertyChanged("Batch");
                 }
             }
         }
@@ -17036,6 +17064,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReRunBatch {
+            get {
+                return this.ReRunBatchField;
+            }
+            set {
+                if ((this.ReRunBatchField.Equals(value) != true)) {
+                    this.ReRunBatchField = value;
+                    this.RaisePropertyChanged("ReRunBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReRunSupplierImporrtFile_Id {
+            get {
+                return this.ReRunSupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.ReRunSupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.ReRunSupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("ReRunSupplierImporrtFile_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string RoomDescription {
             get {
                 return this.RoomDescriptionField;
@@ -17049,6 +17103,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomSize {
+            get {
+                return this.RoomSizeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomSizeField, value) != true)) {
+                    this.RoomSizeField = value;
+                    this.RaisePropertyChanged("RoomSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[] RoomTypeAttributes {
             get {
                 return this.RoomTypeAttributesField;
@@ -17057,6 +17124,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.RoomTypeAttributesField, value) != true)) {
                     this.RoomTypeAttributesField = value;
                     this.RaisePropertyChanged("RoomTypeAttributes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierImporrtFile_Id {
+            get {
+                return this.SupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.SupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.SupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("SupplierImporrtFile_Id");
                 }
             }
         }
@@ -17862,6 +17942,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string ActionTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -17919,10 +18002,19 @@ namespace TLGX_Consumer.MDMSVC {
         private string OldCountryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReRunBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReRunSupplierImporrtFile_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RemarksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierImporrtFile_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierNameField;
@@ -17955,6 +18047,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ActionTypeField, value) != true)) {
                     this.ActionTypeField = value;
                     this.RaisePropertyChanged("ActionType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Batch {
+            get {
+                return this.BatchField;
+            }
+            set {
+                if ((this.BatchField.Equals(value) != true)) {
+                    this.BatchField = value;
+                    this.RaisePropertyChanged("Batch");
                 }
             }
         }
@@ -18207,6 +18312,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReRunBatch {
+            get {
+                return this.ReRunBatchField;
+            }
+            set {
+                if ((this.ReRunBatchField.Equals(value) != true)) {
+                    this.ReRunBatchField = value;
+                    this.RaisePropertyChanged("ReRunBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReRunSupplierImporrtFile_Id {
+            get {
+                return this.ReRunSupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.ReRunSupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.ReRunSupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("ReRunSupplierImporrtFile_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Remarks {
             get {
                 return this.RemarksField;
@@ -18228,6 +18359,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierImporrtFile_Id {
+            get {
+                return this.SupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.SupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.SupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("SupplierImporrtFile_Id");
                 }
             }
         }
@@ -18688,6 +18832,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string ActionTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CityCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18757,6 +18904,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> MatchedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ReRunBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ReRunSupplierImporrtFile_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RemarksField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18770,6 +18923,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierImporrtFile_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierNameField;
@@ -18805,6 +18961,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ActionTypeField, value) != true)) {
                     this.ActionTypeField = value;
                     this.RaisePropertyChanged("ActionType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Batch {
+            get {
+                return this.BatchField;
+            }
+            set {
+                if ((this.BatchField.Equals(value) != true)) {
+                    this.BatchField = value;
+                    this.RaisePropertyChanged("Batch");
                 }
             }
         }
@@ -19109,6 +19278,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ReRunBatch {
+            get {
+                return this.ReRunBatchField;
+            }
+            set {
+                if ((this.ReRunBatchField.Equals(value) != true)) {
+                    this.ReRunBatchField = value;
+                    this.RaisePropertyChanged("ReRunBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ReRunSupplierImporrtFile_Id {
+            get {
+                return this.ReRunSupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.ReRunSupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.ReRunSupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("ReRunSupplierImporrtFile_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Remarks {
             get {
                 return this.RemarksField;
@@ -19169,6 +19364,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierImporrtFile_Id {
+            get {
+                return this.SupplierImporrtFile_IdField;
+            }
+            set {
+                if ((this.SupplierImporrtFile_IdField.Equals(value) != true)) {
+                    this.SupplierImporrtFile_IdField = value;
+                    this.RaisePropertyChanged("SupplierImporrtFile_Id");
                 }
             }
         }
@@ -26846,6 +27054,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string GooglePlaceIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -26858,7 +27069,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> PageSizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> StatusField;
+        private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid ZoneCityMapping_IdField;
@@ -27013,6 +27224,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Latitude {
             get {
                 return this.LatitudeField;
@@ -27065,12 +27289,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Status {
+        public string Status {
             get {
                 return this.StatusField;
             }
             set {
-                if ((this.StatusField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
                 }
@@ -27161,6 +27385,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Country_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -27170,7 +27397,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> NoOfHotelsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> StatusField;
+        private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalRecordsField;
@@ -27247,6 +27474,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Latitude {
             get {
                 return this.LatitudeField;
@@ -27286,12 +27526,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Status {
+        public string Status {
             get {
                 return this.StatusField;
             }
             set {
-                if ((this.StatusField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
                 }
@@ -27376,7 +27616,10 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> City_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> StatusField;
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalRecordsField;
@@ -27427,12 +27670,25 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Status {
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
             get {
                 return this.StatusField;
             }
             set {
-                if ((this.StatusField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
                 }

@@ -130,7 +130,7 @@ namespace TLGX_Consumer.geography
                 if (ddlZoneType.SelectedItem.Value != "0")
                     R.Zone_Type = ddlZoneType.SelectedItem.Text;
                 if (ddlStatus.SelectedItem.Value != "0")
-                    R.Status = Convert.ToBoolean(ddlStatus.SelectedValue);
+                    R.Status = ddlStatus.SelectedItem.Text;
 
                 var res = masterSVc.SearchZone(R);
 
@@ -204,8 +204,9 @@ namespace TLGX_Consumer.geography
         protected void btnSaveZoneMaster_Click(object sender, EventArgs e)
         {
             MDMSVC.DC_ZoneRQ param = new MDMSVC.DC_ZoneRQ();
+            var Zone_id= Guid.NewGuid();
             param.Action = "ADD";
-            param.Zone_id = Guid.NewGuid();
+            param.Zone_id = Zone_id;
             param.Create_Date = DateTime.Now;
             param.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
             if (ddlMasterCityAddModal.SelectedItem.Value != "0")
@@ -225,7 +226,13 @@ namespace TLGX_Consumer.geography
             if (result != null)
             {
                 if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                {
+                    string strQueryString = GetQueryString(Zone_id.ToString(), "0");
+                    Response.Redirect(strQueryString, true);
+                    //Response.Redirect("ZoneCityMasterEdit.aspx?Zone_Id=" + Zone_id);
                     BootstrapAlert.BootstrapAlertMessage(dvmsgAdd, "Zone has been added successfully", BootstrapAlertType.Success);
+                }
+                   
                 else
                     BootstrapAlert.BootstrapAlertMessage(dvmsgAdd, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
@@ -265,7 +272,8 @@ namespace TLGX_Consumer.geography
                     RQ.Action = "ZoneMaster";
                     RQ.Edit_Date = DateTime.Now;
                     RQ.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-                    RQ.Status = false;
+                    RQ.Status = "Inactive";
+                    RQ.IsActive = false;
                     var result = masterSVc.DeactivateOrActivateZones(RQ);
                     if (result != null)
                     {
@@ -283,7 +291,8 @@ namespace TLGX_Consumer.geography
                     MDMSVC.DC_ZoneRQ p = new MDMSVC.DC_ZoneRQ();
                     p.Zone_id = myRowId;
                     p.Action = "ZoneMaster";
-                    p.Status = true;
+                    p.Status = "Active";
+                    p.IsActive = true;
                     p.Edit_Date = DateTime.Now;
                     p.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     var result = masterSVc.DeactivateOrActivateZones(p);

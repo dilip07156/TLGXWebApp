@@ -176,10 +176,10 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "false" ? "UnDelete" : "SoftDelete"   %>'
+                                                    <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "SoftDelete"   %>'
                                                         CssClass="btn btn-default" CommandArgument='<%# Bind("Zone_id") %>'>
-                                                    <span aria-hidden="true" class='<%# Eval("Status").ToString() == "false" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
-                                                    <%# Eval("Status").ToString() == "false" ? "UnDelete" : "Delete"   %>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "false" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "Delete"   %>
                                                     </asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
