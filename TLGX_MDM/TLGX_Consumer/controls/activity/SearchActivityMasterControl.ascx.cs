@@ -127,7 +127,7 @@ namespace TLGX_Consumer.controls.activity
                     if (!string.IsNullOrWhiteSpace(NoPhysicalIntensity))
                         chkNoPhysicalIntensity.Checked = Convert.ToBoolean(NoPhysicalIntensity);
                     if (!string.IsNullOrWhiteSpace(NoSession))
-                        chkNoSession.Checked = Convert.ToBoolean(NoSession);
+                        chkNoDuration.Checked = Convert.ToBoolean(NoSession);
                     if (!string.IsNullOrWhiteSpace(NoSpecial))
                         chkNoSpecial.Checked = Convert.ToBoolean(NoSpecial);
                     if (!string.IsNullOrWhiteSpace(NoSuitableFor))
@@ -377,7 +377,7 @@ namespace TLGX_Consumer.controls.activity
 
                 _objSearch.NoOpsSchedule = chkNoOperatingSchedule.Checked;
                 _objSearch.NoPhysicalIntensity = chkNoPhysicalIntensity.Checked;
-                _objSearch.NoSession = chkNoSession.Checked;
+                _objSearch.NoSession = chkNoDuration.Checked;
                 _objSearch.NoSpecials = chkNoSpecial.Checked;
                 _objSearch.NoSuitableFor = chkNoSuitableFor.Checked;
 
@@ -419,6 +419,13 @@ namespace TLGX_Consumer.controls.activity
         }
         private void resetControls()
         {
+            chkNoSuitableFor.Checked = false;
+            chkNoPhysicalIntensity.Checked = false;
+            chkNoOperatingSchedule.Checked = false;
+            chkNoDuration.Checked = false;
+            chkNoSpecial.Checked = false;
+
+
             ddlCountry.SelectedIndex = 0;
 
             ddlCity.Items.Clear();
@@ -578,7 +585,7 @@ namespace TLGX_Consumer.controls.activity
 
             sb.Append("&NOS=" + HttpUtility.UrlEncode(Convert.ToString(chkNoOperatingSchedule.Checked)));
             sb.Append("&NPI=" + HttpUtility.UrlEncode(Convert.ToString(chkNoPhysicalIntensity.Checked)));
-            sb.Append("&NSe=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSession.Checked)));
+            sb.Append("&NSe=" + HttpUtility.UrlEncode(Convert.ToString(chkNoDuration.Checked)));
             sb.Append("&NSp=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSpecial.Checked)));
             sb.Append("&NSF=" + HttpUtility.UrlEncode(Convert.ToString(chkNoSuitableFor.Checked)));
 

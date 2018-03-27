@@ -157,13 +157,13 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.CheckBox chkNoOperatingSchedule;
         
         /// <summary>
-        /// chkNoSession control.
+        /// chkNoDuration control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkNoSession;
+        protected global::System.Web.UI.WebControls.CheckBox chkNoDuration;
         
         /// <summary>
         /// chkNoSpecial control.

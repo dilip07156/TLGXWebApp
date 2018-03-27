@@ -1,33 +1,34 @@
-﻿using System;
-using System.Web;
-using System.Web.UI;
-using TLGX_Consumer.App_Code;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Configuration;
-using TLGX_Consumer.Controller;
-using System.IO;
-using System.Text;
 using System.Linq;
-using System.Collections.Generic;
-using Microsoft.Reporting.WebForms;
 using System.Web.UI.WebControls;
+using TLGX_Consumer.App_Code;
+using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.staticdata
 {
+    public enum ReRunMode
+    {
+        RERUN = 1,
+        SCHEDULE = 2
+    }
+
     public partial class manageSupplierImports : System.Web.UI.Page
     {
-        Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
-        MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
-        Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
+        private Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
+        private MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
+        private Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            //For page authroization 
+            //For page authroization
             Authorize _obj = new Authorize();
             if (_obj.IsRoleAuthorizedForUrl()) { }
             else
                 Response.Redirect(Convert.ToString(ConfigurationManager.AppSettings["UnauthorizedUrl"]));
-
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -51,7 +52,6 @@ namespace TLGX_Consumer.staticdata
                 allsupplierdata.Visible = false;
                 //ddlPriority.Visible = false;
             }
-
         }
 
         private void BindProductCategory(DropDownList ddlProductCategoryBind)
@@ -75,7 +75,7 @@ namespace TLGX_Consumer.staticdata
             ddlPriority.Items.Clear();
             var res = _objMasterSVC.GetSuppliersByProductCategory(productCategory);
             //for allsupplier
-                 // var res = _objMasterSVC.GetSupplierMasterData();
+            // var res = _objMasterSVC.GetSupplierMasterData();
             ddlSupplierName.DataSource = res;
             ddlSupplierName.DataValueField = "Supplier_Id";
             ddlSupplierName.DataTextField = "Name";
@@ -120,11 +120,9 @@ namespace TLGX_Consumer.staticdata
                 ReportViewersupplierwise.DataBind();
                 ReportViewersupplierwise.LocalReport.Refresh();
             }
-
-
         }
 
-        public void InsertFileRecord(string Entity)
+        public MDMSVC.DC_Message InsertFileRecord(string Entity, ReRunMode Mode)
         {
             Guid SupplierImportFile_Id = Guid.NewGuid();
             MappingSVCs _objMappingSVCs = new MappingSVCs();
@@ -134,45 +132,61 @@ namespace TLGX_Consumer.staticdata
             _objFileDetails.Entity = Entity;
             _objFileDetails.OriginalFilePath = "";
             _objFileDetails.SavedFilePath = "";
-            _objFileDetails.STATUS = "UPLOADED";
+
+            if (Mode == ReRunMode.RERUN)
+            {
+                _objFileDetails.STATUS = "UPLOADED";
+            }
+            else if (Mode == ReRunMode.SCHEDULE)
+            {
+                _objFileDetails.STATUS = "SCHEDULED";
+            }
+
             _objFileDetails.Mode = "RE_RUN";
             _objFileDetails.CREATE_DATE = DateTime.Now;
             _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
             MDMSVC.DC_Message _objMsg = _objMappingSVCs.SaveSupplierStaticFileDetails(_objFileDetails);
-            //file Process logic
-            MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
-            MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
-            RQ.SupplierImportFile_Id = SupplierImportFile_Id;
-            RQ.PageNo = 0;
-            RQ.PageSize = int.MaxValue;
-            var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
-            obj.SupplierImportFile_Id = res[0].SupplierImportFile_Id;
-            obj.Supplier_Id = res[0].Supplier_Id;
-            obj.Supplier = res[0].Supplier;
-            obj.SavedFilePath = res[0].SavedFilePath;
-            obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
-            obj.Entity = res[0].Entity;
-            obj.STATUS = res[0].STATUS;
-            obj.Mode = res[0].Mode;
-            var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
-            //end
-            //view File  details
-            ClientScript.RegisterStartupScript(this.GetType(), "showDetailsModal", "showDetailsModal('" + SupplierImportFile_Id + "');", true);
+
+            if (Mode == ReRunMode.RERUN)
+            {
+                //file Process logic
+                MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails();
+                MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                RQ.SupplierImportFile_Id = SupplierImportFile_Id;
+                RQ.PageNo = 0;
+                RQ.PageSize = int.MaxValue;
+                var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+                obj.SupplierImportFile_Id = res[0].SupplierImportFile_Id;
+                obj.Supplier_Id = res[0].Supplier_Id;
+                obj.Supplier = res[0].Supplier;
+                obj.SavedFilePath = res[0].SavedFilePath;
+                obj.PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name;
+                obj.Entity = res[0].Entity;
+                obj.STATUS = res[0].STATUS;
+                obj.Mode = res[0].Mode;
+                var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
+                //end
+                //view File  details
+                ClientScript.RegisterStartupScript(this.GetType(), "showDetailsModal", "showDetailsModal('" + SupplierImportFile_Id + "');", true);
+            }
             // Response.Redirect("~/staticdata/files/upload.aspx");
+
+            return _objMsg;
         }
 
         protected void btnCityReRun_Click(object sender, EventArgs e)
         {
             if (ddlSupplierName.SelectedValue != "0")
             {
-                InsertFileRecord("City");
+                InsertFileRecord("City", ReRunMode.RERUN);
             }
         }
+
         protected void btnCountryReRun_Click(object sender, EventArgs e)
         {
             if (ddlSupplierName.SelectedValue != "0")
             {
-                InsertFileRecord("Country");
+                InsertFileRecord("Country", ReRunMode.RERUN);
             }
         }
 
@@ -180,7 +194,7 @@ namespace TLGX_Consumer.staticdata
         {
             if (ddlSupplierName.SelectedValue != "0")
             {
-                InsertFileRecord("Hotel");
+                InsertFileRecord("Hotel", ReRunMode.RERUN);
             }
         }
 
@@ -188,7 +202,7 @@ namespace TLGX_Consumer.staticdata
         {
             if (ddlSupplierName.SelectedValue != "0")
             {
-                InsertFileRecord("RoomType");
+                InsertFileRecord("RoomType", ReRunMode.RERUN);
             }
         }
 
@@ -196,7 +210,7 @@ namespace TLGX_Consumer.staticdata
         {
             if (ddlSupplierName.SelectedValue != "0")
             {
-                InsertFileRecord("Activity");
+                InsertFileRecord("Activity", ReRunMode.RERUN);
             }
         }
 
@@ -205,6 +219,63 @@ namespace TLGX_Consumer.staticdata
             fillsuppliers(ddlProductCategory.SelectedValue);
         }
 
-      
+        protected void btnActivityReRunSchedule_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                var msg = InsertFileRecord("Activity", ReRunMode.SCHEDULE);
+                dvMsgActivity.Style.Add("display", "block");
+                BootstrapAlert.BootstrapAlertMessage(dvMsgActivity, msg.StatusMessage, (BootstrapAlertType)Convert.ToInt32(msg.StatusCode));
+            }
+        }
+
+        protected void btnRoomTypeReRunSchedule_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                var msg = InsertFileRecord("RoomType", ReRunMode.SCHEDULE);
+                dvMsgRoomType.Style.Add("display", "block");
+                BootstrapAlert.BootstrapAlertMessage(dvMsgRoomType, msg.StatusMessage, (BootstrapAlertType)Convert.ToInt32(msg.StatusCode));
+            }
+        }
+
+        protected void btnHotelReRunSchedule_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                var msg = InsertFileRecord("Hotel", ReRunMode.SCHEDULE);
+                dvMsgHotel.Style.Add("display", "block");
+                BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, msg.StatusMessage, (BootstrapAlertType)Convert.ToInt32(msg.StatusCode));
+            }
+        }
+
+        protected void btnCityReRunSchedule_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                var msg = InsertFileRecord("City", ReRunMode.SCHEDULE);
+                dvMsgCity.Style.Add("display", "block");
+                BootstrapAlert.BootstrapAlertMessage(dvMsgCity, msg.StatusMessage, (BootstrapAlertType)Convert.ToInt32(msg.StatusCode));
+            }
+        }
+
+        protected void btnCountryReRunSchedule_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedValue != "0")
+            {
+                var msg = InsertFileRecord("Country", ReRunMode.SCHEDULE);
+                dvMsgCountry.Style.Add("display", "block");
+                BootstrapAlert.BootstrapAlertMessage(dvMsgCountry, msg.StatusMessage, (BootstrapAlertType)Convert.ToInt32(msg.StatusCode));
+            }
+        }
+
+        protected void btnUpdateSupplier_Click(object sender, EventArgs e)
+        {
+            dvMsgCountry.Style.Add("display", "none");
+            dvMsgHotel.Style.Add("display", "none");
+            dvMsgCity.Style.Add("display", "none");
+            dvMsgRoomType.Style.Add("display", "none");
+            dvMsgActivity.Style.Add("display", "none");
+        }
     }
 }

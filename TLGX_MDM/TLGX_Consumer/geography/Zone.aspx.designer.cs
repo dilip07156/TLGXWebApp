@@ -7,252 +7,243 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.staticdata {
+namespace TLGX_Consumer.geography {
     
     
-    public partial class manageSupplierImports {
+    public partial class Zone {
         
         /// <summary>
-        /// upPnlSearchFilters control.
+        /// updZoneMasterSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel upPnlSearchFilters;
+        protected global::System.Web.UI.UpdatePanel updZoneMasterSearch;
         
         /// <summary>
-        /// ddlProductCategory control.
+        /// ddlMasterCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMasterCountry;
         
         /// <summary>
-        /// ddlPriority control.
+        /// ddlMasterCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMasterCity;
         
         /// <summary>
-        /// ddlSupplierName control.
+        /// btnAddZone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
+        protected global::System.Web.UI.WebControls.Button btnAddZone;
         
         /// <summary>
-        /// btnUpdateSupplier control.
+        /// ddlZoneType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateSupplier;
+        protected global::System.Web.UI.WebControls.DropDownList ddlZoneType;
         
         /// <summary>
-        /// btnExportCsv control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExportCsv;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
-        /// supplierwisedata control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl supplierwisedata;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// btnCountryReRun control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCountryReRun;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// btnCountryReRunSchedule control.
+        /// UPsearchGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCountryReRunSchedule;
+        protected global::System.Web.UI.UpdatePanel UPsearchGrid;
         
         /// <summary>
-        /// dvMsgCountry control.
+        /// lblTotalCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCountry;
+        protected global::System.Web.UI.WebControls.Label lblTotalCount;
         
         /// <summary>
-        /// btnCityReRun control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCityReRun;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
         
         /// <summary>
-        /// btnCityReRunSchedule control.
+        /// ddlShowEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCityReRunSchedule;
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// dvMsgCity control.
+        /// dvMsgDeleted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgCity;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgDeleted;
         
         /// <summary>
-        /// btnHotelReRun control.
+        /// grdZoneSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHotelReRun;
+        protected global::System.Web.UI.WebControls.GridView grdZoneSearch;
         
         /// <summary>
-        /// btnHotelReRunSchedule control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHotelReRunSchedule;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// dvMsgHotel control.
+        /// dvmsgAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgHotel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvmsgAdd;
         
         /// <summary>
-        /// btnRoomTypeReRun control.
+        /// hdnPlaceId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRoomTypeReRun;
+        protected global::System.Web.UI.WebControls.HiddenField hdnPlaceId;
         
         /// <summary>
-        /// btnRoomTypeReRunSchedule control.
+        /// txtAddZoneName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRoomTypeReRunSchedule;
+        protected global::System.Web.UI.WebControls.TextBox txtAddZoneName;
         
         /// <summary>
-        /// dvMsgRoomType control.
+        /// ddlMasterCountryAddModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgRoomType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMasterCountryAddModal;
         
         /// <summary>
-        /// btnActivityReRun control.
+        /// txtLatitude control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivityReRun;
+        protected global::System.Web.UI.WebControls.TextBox txtLatitude;
         
         /// <summary>
-        /// btnActivityReRunSchedule control.
+        /// ddlAddZoneType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnActivityReRunSchedule;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAddZoneType;
         
         /// <summary>
-        /// dvMsgActivity control.
+        /// ddlMasterCityAddModal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgActivity;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMasterCityAddModal;
         
         /// <summary>
-        /// allsupplierdata control.
+        /// txtLongitude control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl allsupplierdata;
+        protected global::System.Web.UI.WebControls.TextBox txtLongitude;
         
         /// <summary>
-        /// report control.
+        /// btnSaveZoneMaster control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl report;
+        protected global::System.Web.UI.WebControls.Button btnSaveZoneMaster;
         
         /// <summary>
-        /// ReportViewersupplierwise control.
+        /// btnCancelZoneMaster control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewersupplierwise;
+        protected global::System.Web.UI.WebControls.Button btnCancelZoneMaster;
         
         /// <summary>
-        /// hdnViewDetailsFlag control.
+        /// dvLatLongMap control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnViewDetailsFlag;
-        
-        /// <summary>
-        /// FileMappingcharts control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.staticdataconfig.FileMappingcharts FileMappingcharts;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvLatLongMap;
     }
 }
