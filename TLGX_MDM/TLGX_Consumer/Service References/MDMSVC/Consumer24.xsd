@@ -402,6 +402,7 @@
       <xs:element minOccurs="0" name="MasterStateCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MasterStateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Master_CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Master_City_id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
       <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />

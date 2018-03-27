@@ -1,6 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchCityMap.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.CityMap" %>
-
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script src="../../../Scripts/JqueryUI/jquery-ui.js"></script>
 <link href="../../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
@@ -30,13 +28,6 @@
 
     #modalHotelList {
         z-index: 2000;
-    }
-
-    /*#moCityMapping {
-        z-index: 9999999999 !important;
-    }*/
-    .ui-autocomplete {
-        z-index: 99999999 !important;
     }
 
     .controls {
@@ -76,11 +67,152 @@
     .x-lg {
         width: 1200px;
     }
+
+    .ui-autocomplete {
+        z-index: 99999999 !important;
+    }
 </style>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        callajax();
+
+    });
+    var prm = Sys.WebForms.PageRequestManager.getInstance();
+    prm.add_endRequest(function () {
+        callajax();
+    });
+    function callajax() {
+        var moCityMapping = document.getElementById("moCityMapping");
+        var hdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
+        var hdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
+        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+
+        $("[id*=txtSearchCity]").autocomplete({
+            //appendTo: moCityMapping,
+            source: function (request, response) {
+                $.ajax({
+                    url: '../../../Service/CityAutoComplete.ashx',
+                    dataType: "json",
+                    data: {
+                        term: request.term,
+                        country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                        source: 'CityMap'
+                    },
+                    success: function (result) {
+                        hdnSystemCity_Id.value = "";
+                        hdnSystemCity.value = "";
+                        vrhdnSelSystemCity_Id.value = "";
+                        var data = [];
+                        for (var i = 0; i < result.length; i++) {
+                            if (hdnSystemCity_Id != null && result[i].City_Id != null) {
+                                hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
+                            }
+                            if (result[i].Name != null) {
+                                var cityname = result[i].Name;
+                                if (result[i].StateName != null) {
+                                    cityname = cityname + "; " + result[i].StateName;
+                                }
+                                else {
+                                    if (result[i].StateCode != null) {
+                                        cityname = cityname + "; " + result[i].StateCode;
+                                    }
+                                }
+                                if (result[i].CountryName != null) {
+                                    cityname = cityname + "; " + result[i].CountryName;
+                                }
+                                else {
+                                    if (result[i].CountryCode != null) {
+                                        cityname = cityname + "; " + result[i].CountryCode;
+                                    }
+                                }
+                                hdnSystemCity.value = hdnSystemCity.value + cityname + "`";
+                                data.push(cityname);
+                            }
+                        }
+                        response(data);
+                    }
+                });
+            },
+            min_length: 3,
+            delay: 300
+        });
+
+        $("[id*=txtSearchCity]").on('autocompleteselect', function (e, ui) {
+            callCityNamechange(ui.item.value);
+        });
+    }
 
 
+    function callCityNamechange(selection) {
+
+        var vrtxtSearch = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSearch");
+        var vrhdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
+        var vrhdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
+        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+        var vrtxtSystemStateName = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemStateName");
+        var vrtxtSystemStateCode = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemStateCode");
+        var vrtxtSystemCityCode = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemCityCode");
+        var vrbtnAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity");
+        var vrdvMsg = document.getElementById("MainContent_CityMap_dvMsg");
+        var vrdvMsg1 = document.getElementById("MainContent_CityMap_dvMsg1");
+        var vrdvAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_dvAddCity");
+
+        var selId = "";
+        vrdvMsg.style.display = "none";
+        vrdvMsg1.style.display = "none";
+
+        if (selection != null) {
+            vrdvAddCity.style.display = "none";
+            if (selection.trim() != "") {
+                var brkvrhdnSystemCity = vrhdnSystemCity.value.split('`');
+                var brkvrhdnSystemCity_Id = vrhdnSystemCity_Id.value.split('`');
+                var idx = brkvrhdnSystemCity.indexOf(selection);
+                if (idx != null && idx != (-1)) {
+                    selId = brkvrhdnSystemCity_Id[idx];
+                }
+            }
+        }
+
+        var ddlSystemCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_ddlSystemCityName");
+        var listItems = '';
+        if (selId != null) {
+            ddlSystemCityName.innerHTML = "";
+            listItems += '<option selected="selected" value="' + selId + '">' + brkvrhdnSystemCity[0].split(';')[0] + '</option>';
+            ddlSystemCityName.append(listItems);
+            debugger;
+            if (vrbtnAddCity != null)
+                vrbtnAddCity.style.display = "none";
+        }
+
+        if (selId != "") {
+            debugger;
+            if (vrbtnAddCity != null)
+                vrbtnAddCity.style.display = "none";
+            vrhdnSelSystemCity_Id.value = selId;
+            $.ajax({
+                url: '../../../Service/CityAutoComplete.ashx',
+                dataType: "json",
+                data: {
+                    city_id: selId,
+                    source: 'CityMap'
+                },
+                responseType: "json",
+                success: function (result) {
+                    vrtxtSystemStateName.value = result[0].StateName;
+                    vrtxtSystemStateCode.value = result[0].StateCode;
+                    vrtxtSystemCityCode.value = result[0].Code;
+                },
+                failure: function () {
+                }
+            });
+        }
+        else {
+            if (isNaN(vrbtnAddCity))
+                vrbtnAddCity.style.display = "block";
+        }
+
+    }
     function callmap() {
         var geocoder = new google.maps.Geocoder();
         var inputCityName = document.getElementById('MainContent_CityMap_frmEditCityMap_txtAddCityName');
@@ -194,7 +326,6 @@
 
     function showCityMappingModal() {
         $("#moCityMapping").modal('show');
-        callajax();
     }
     function closeCityMappingModal() {
         $("#moCityMapping").modal('hide');
@@ -212,133 +343,12 @@
             $('#MainContent_CityMap_hdnFlag').val("false");
         }
     }
-    $(document).ready(function () {
-        callajax();
-        
-    });
-    var prm = Sys.WebForms.PageRequestManager.getInstance();
-    prm.add_endRequest(function () {
-        callajax();
-    });
-    function callajax() {
-        var moCityMapping = document.getElementById("moCityMapping");
-        var hdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
-        var hdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
-        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
-        
-        $("[id*=txtSearchCity]").autocomplete({
-            //appendTo: moCityMapping,
-            source: function (request, response) {
-                $.ajax({
-                    url: '../../../Service/CityAutoComplete.ashx',
-                    dataType: "json",
-                    data: {
-                        term: request.term,
-                        country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
-                        source: 'CityMap'
-                    },
-                    success: function (result) {
-                        var data = [];
-                        hdnSystemCity_Id.value = "";
-                        hdnSystemCity.value = "";
-                        vrhdnSelSystemCity_Id.value = "";
-                        for (var i = 0; i < result.length; i++) {
-                            if (hdnSystemCity_Id != null && result[i].City_Id != null){
-                                hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
-                            }
-                            if (result[i].Name != null) {
-                                var cityname = result[i].Name;
-                                if (result[i].StateName != null){
-                                    cityname = cityname + "; " + result[i].StateName;
-                                }
-                                else{
-                                    if (result[i].StateCode != null) {
-                                        cityname = cityname + "; " + result[i].StateCode;
-                                    }
-                                }
-                                if (result[i].CountryName != null) {
-                                    cityname = cityname + "; " + result[i].CountryName;
-                                }
-                                else {
-                                    if (result[i].CountryCode != null) {
-                                        cityname = cityname + "; " + result[i].CountryCode;
-                                    }
-                                }
-                                hdnSystemCity.value = hdnSystemCity.value + cityname  + "`";
-                                data.push(cityname);
-                            }
-                        }
-                        response(data);
-                    }
-                });
-            },
-            min_length: 3,
-            delay: 300
-        });
-        
-        $("[id*=txtSearchCity]").on('autocompleteselect', function (e, ui) {
-            callCityNamechange(ui.item.value);
-        });
-    }
 
 
-
-    function callCityNamechange(selection) {
-        alert(selection);
-        debugger;
-        var vrtxtSearch = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSearch");
-        var vrhdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
-        var vrhdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
-        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
-        var vrtxtSystemStateName = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemStateName");
-        var vrtxtSystemStateCode = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemStateCode");
-        var vrtxtSystemCityCode = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemCityCode");
-        var vrbtnAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity");
-        var vrdvMsg = document.getElementById("MainContent_CityMap_dvMsg");
-        var vrdvMsg1 = document.getElementById("MainContent_CityMap_dvMsg1");
-        var vrdvAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_dvAddCity");
-
-        var selId = "";
-        vrdvMsg.style.display = "none";
-        vrdvMsg1.style.display = "none";
-        debugger;
-        if (selection != null) {
-            vrdvAddCity.style.display = "none";
-            if (selection.trim() != "") {
-                var brkvrhdnSystemCity = vrhdnSystemCity.value.split('`');
-                var brkvrhdnSystemCity_Id = vrhdnSystemCity_Id.value.split('`');
-                var idx = brkvrhdnSystemCity.indexOf(selection);
-                if (idx != null && idx != (-1)) {
-                    selId = brkvrhdnSystemCity_Id[idx];
-                }
-            }
-        }
-        alert(selId);
-        debugger;
-        if (selId != "") {
-            vrbtnAddCity.style.display = "";
-            vrhdnSelSystemCity_Id.value = selId;
-            $.ajax({
-                url: '../../../Service/CityAutoComplete.ashx',
-                dataType: "json",
-                data: {
-                    city_id: selId,
-                    source: 'CityMap'
-                },
-                responseType: "json",
-                success: function (result) {
-                    vrtxtSystemStateName.value = result[0].StateName;
-                    vrtxtSystemStateCode.value = result[0].StateCode;
-                    vrtxtSystemCityCode.value = result[0].Code;
-                },
-                failure: function () {
-                }
-            });
-        }
-        else {
-            vrbtnAddCity.style.display = "none";
-        }
-        debugger;
+    function callchange() {
+        //initAutocomplete("search");
+        //var e = $.Event("keypress", { which: 13 });
+        //$('#pac-input').trigger(e);
     }
 
     function SelectedRow(element) {
@@ -823,28 +833,16 @@
                                                             <asp:TextBox ID="txtSystemStateCode" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
-                                                    <%--<div class="form-group">
-                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City
-                                                            <asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
-                                                            
-                                                        </label>
-                                                        <div class="col-sm-7">
-                                                            <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
-                                                                <asp:ListItem Value="0">Select</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                        </div>
-                                                    </div>--%>
                                                     <div class="form-group">
-                                                        <label class="control-label col-sm-5" for="txtSystemCityCode">City Name
-                                                            <asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="txtSearchCity" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
-                                                        </label>
+                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
                                                         <div class="col-sm-7">
-                                                            <div class='ui-front'>
-                                                                 <asp:TextBox ID="txtSearchCity" runat="server" CssClass="form-control" onlostfocus="callCityNamechange(this);"></asp:TextBox>
-                                                                <asp:HiddenField ID="hdnSystemCity_Id" runat="server" />
-                                                                <asp:HiddenField ID="hdnSystemCity" runat="server" />
-                                                                <asp:HiddenField ID="hdnSelSystemCity_Id" runat="server" />
-                                                            </div>
+                                                            <asp:TextBox ID="txtSearchCity" runat="server" CssClass="form-control" onlostfocus="callCityNamechange(this);"></asp:TextBox>
+                                                            <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" Style="display: none;" OnSelectedIndexChanged="ddlSystemCityName_SelectedIndexChanged">
+                                                                <%-- <asp:ListItem Value="0">Select</asp:ListItem>--%>
+                                                            </asp:DropDownList>
+                                                            <asp:HiddenField ID="hdnSystemCity_Id" runat="server" />
+                                                            <asp:HiddenField ID="hdnSystemCity" runat="server" />
+                                                            <asp:HiddenField ID="hdnSelSystemCity_Id" runat="server" />
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

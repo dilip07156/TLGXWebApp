@@ -18901,6 +18901,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Master_CityNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Master_City_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MatchedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -19260,6 +19263,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Master_CityNameField, value) != true)) {
                     this.Master_CityNameField = value;
                     this.RaisePropertyChanged("Master_CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Master_City_id {
+            get {
+                return this.Master_City_idField;
+            }
+            set {
+                if ((this.Master_City_idField.Equals(value) != true)) {
+                    this.Master_City_idField = value;
+                    this.RaisePropertyChanged("Master_City_id");
                 }
             }
         }
