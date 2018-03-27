@@ -122,16 +122,11 @@ namespace TLGX_Consumer.geography
                 grdZoneHotelSearch.DataBind();
             }
         }
-        protected void ddlMasterCountryEdit_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
-        }
-
         protected void btnUpdateZoneMaster_Click(object sender, EventArgs e)
         {
             dvUpdateMsg.Style.Add("display", "none");
             dvmsgUpdateZone.Style.Add("display", "none");
-            var a = HdnCountryChangeFlag.Value;
+           // var a = HdnCountryChangeFlag.Value;
             MDMSVC.DC_ZoneRQ Param = new MDMSVC.DC_ZoneRQ();
             Param.Action = "UPDATE";
             Param.Zone_id = Zone_Id;
@@ -141,32 +136,31 @@ namespace TLGX_Consumer.geography
             Param.Zone_Type = ddlEditZoneType.SelectedItem.Text;
             Param.Edit_Date = DateTime.Now;
             Param.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
-            if (a== "True")
-            {
-                var res = masterSVc.DeleteZoneCities(Param);
-                var result = masterSVc.AddzoneMaster(Param);
-                if (result != null)
-                {
-                    if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
-                    {
-                        BootstrapAlert.BootstrapAlertMessage(dvmsgUpdateZone, "Zone has been Updated successfully", BootstrapAlertType.Success);
-                        fillgrdZoneCitiesData(Zone_Id); 
-                        BootstrapAlert.BootstrapAlertMessage(dvMsgaddZoneCity, "Please Add atleast One CITY for this zone", BootstrapAlertType.Warning);
-                        fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
-                    } 
-                    else
-                        BootstrapAlert.BootstrapAlertMessage(dvmsgUpdateZone, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
-                }
+            //if (a== "True")
+            //{
+            //    var res = masterSVc.DeleteZoneCities(Param);
+            //    var result = masterSVc.AddzoneMaster(Param);
+            //    if (result != null)
+            //    {
+            //        if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+            //        {
+            //            BootstrapAlert.BootstrapAlertMessage(dvmsgUpdateZone, "Zone has been Updated successfully", BootstrapAlertType.Success);
+            //            fillgrdZoneCitiesData(Zone_Id); 
+            //            BootstrapAlert.BootstrapAlertMessage(dvMsgaddZoneCity, "Please Add atleast One CITY for this zone", BootstrapAlertType.Warning);
+            //            fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
+            //        } 
+            //        else
+            //            BootstrapAlert.BootstrapAlertMessage(dvmsgUpdateZone, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+            //    }
                 
-            }
-            else if (a == "False")
-            {
-                getZoneInfo(string.Empty);
-            }
-            else
-            {
+            //}
+            //else if (a == "False")
+            //{
+            //    getZoneInfo(string.Empty);
+            //}
+           // else{
                 var result = masterSVc.AddzoneMaster(Param);
-            }
+           // }
             getZoneInfo(string.Empty);
         }
         protected void btnAddZoneCity_Click(object sender, EventArgs e)

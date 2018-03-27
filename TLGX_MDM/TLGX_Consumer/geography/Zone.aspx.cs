@@ -278,7 +278,11 @@ namespace TLGX_Consumer.geography
                     if (result != null)
                     {
                         if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                        {
+                            fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
+                        }
+                            
                         else
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
                     }
@@ -299,7 +303,11 @@ namespace TLGX_Consumer.geography
                     if (result != null)
                     {
                         if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
+                        {
+                            fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
+                        }
+                            
                         else
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
                     }
@@ -359,6 +367,7 @@ namespace TLGX_Consumer.geography
             txtLongitude.Text = string.Empty;
             txtAddZoneName.Text = string.Empty;
             dvmsgAdd.Style.Add("display", "none");
+            dvLatLongMap.Style.Add("display", "none");
         }
 
         protected void grdZoneSearch_RowDataBound(object sender, GridViewRowEventArgs e)

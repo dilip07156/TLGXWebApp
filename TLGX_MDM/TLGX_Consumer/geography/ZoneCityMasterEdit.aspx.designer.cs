@@ -49,6 +49,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvUpdateMsg;
         
         /// <summary>
+        /// hdnupdateMap control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnupdateMap;
+        
+        /// <summary>
         /// hdnCountryId control.
         /// </summary>
         /// <remarks>
@@ -56,15 +65,6 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdnCountryId;
-        
-        /// <summary>
-        /// HdnCountryChangeFlag control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HdnCountryChangeFlag;
         
         /// <summary>
         /// dvmsgUpdateZone control.

@@ -1,16 +1,12 @@
 ﻿<%@ Page Title="Zone Master" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="Zone.aspx.cs" Inherits="TLGX_Consumer.geography.Zone" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<%--<%@ Register Src="~/controls/geography/zoneManager.ascx" TagPrefix="uc1" TagName="zoneManager" %>--%>
 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
-        <h1 class="page-header">Zone Manager</h1>
-    </div>
-    <%--<uc1:zoneManager runat="server" id="zoneManager" />--%>
-    <style>
+
+     <style>
         @media (min-width: 768px) {
             .modal-lg {
                 width: 80%;
@@ -18,11 +14,11 @@
             }
         }
     </style>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
     <script>
         function showAddZoneModal() {
             $("#moAddZoneModal").modal('show');
-
         }
         function closeAddZoneModal() {
             $("#moAddZoneModal").modal('hide');
@@ -48,9 +44,43 @@
                 });
             }
         }
+        function GetLatLongOnMap() {
+            $("#MainContent_dvLatLongMap").empty();
+            $("#MainContent_dvLatLongMap").show();
+            var zoneName = $('#MainContent_txtAddZoneName').val();
+            var country = $('#MainContent_ddlMasterCountryAddModal').find("option:selected").text();
+            var address = zoneName + ',' + country;
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var lat = results[0].geometry.location.lat();
+                    var longg = results[0].geometry.location.lng();
+                    var zoneLatLong = new google.maps.LatLng(lat, longg);
+                    var mapCanvasgetLatLong = document.getElementById("MainContent_dvLatLongMap");
 
+                    //optionsForMap
+                    var mapOptions = { center: zoneLatLong, zoom: 13 };
+
+                    //createMAP
+                    map = new google.maps.Map(mapCanvasgetLatLong, mapOptions);
+                    google.maps.event.addListener(map, 'click', function (e) {
+                        //infoWindow.close();
+                        $("#MainContent_txtLatitude").val(e.latLng.lat());
+                        $("#MainContent_txtLongitude").val(e.latLng.lng());
+                    });
+                }
+                else {
+                    alert("Request failed.")
+                }
+            });
+        }
     </script>
 
+    <div class="container">
+        <h1 class="page-header">Zone Manager</h1>
+    </div>
+
+    <!--search region-->
     <asp:UpdatePanel ID="updZoneMasterSearch" runat="server">
         <ContentTemplate>
             <div class="panel-group" id="accordion">
@@ -176,11 +206,12 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
-                                                    <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "SoftDelete"   %>'
+                                                    <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"    %>'
                                                         CssClass="btn btn-default" CommandArgument='<%# Bind("Zone_id") %>'>
-                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "false" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
-                                                    <%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "Delete"   %>
+                                                    <span aria-hidden="true" class='<%# Eval("IsActive").ToString() ==  "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
+                                                    <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"     %>
                                                     </asp:LinkButton>
+                                                    
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
@@ -238,6 +269,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <button type="button" id="btnGetLatLong" class="btn btn-primary btn-sm" onclick="getLatLong()">Get Latitude and Longitude</button>
+                                                        <button type="button" id="btnGetLatLongOnMap" class="btn btn-primary btn-sm" onclick="GetLatLongOnMap()">Get LatLong On Map</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -283,6 +315,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div id="dvLatLongMap" style=" width: 500px;height: 300px" runat="server">
                                             </div>
                                         </div>
                                     </div>

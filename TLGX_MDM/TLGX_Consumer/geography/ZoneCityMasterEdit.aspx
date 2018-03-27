@@ -4,22 +4,48 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
+    <style>
+        #overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+
+#text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+    </style>
     <script>
         //var map;
-        function ChangedCountry() {
-            var newCountry = $("#MainContent_ddlMasterCountryEdit option:selected").val();
-            var oldCountry = $("#hdnCountryId").val();
-            if (newCountry != oldCountry) {
-                var result = window.confirm('Country for this zone has been changed..!All cities will be deleted..');
-                if (result == true)
-                    $("#HdnCountryChangeFlag").val("True");
-                else
-                    $("#HdnCountryChangeFlag").val("False");
-            }
-            else $("#HdnCountryChangeFlag").val("False");
-        }
-
+        //function ChangedCountry() {
+        //    var newCountry = $("#MainContent_ddlMasterCountryEdit option:selected").val();
+        //    var oldCountry = $("#hdnCountryId").val();
+        //    if (newCountry != oldCountry) {
+        //        var result = window.confirm('Country for this zone has been changed..!All cities will be deleted..');
+        //        if (result == true)
+        //            $("#HdnCountryChangeFlag").val("True");
+        //        else
+        //            $("#HdnCountryChangeFlag").val("False");
+        //    }
+        //    else $("#HdnCountryChangeFlag").val("False");
+        //}
         function initializeMyMap() {
+            $("#hdnupdateMap").val("HotelMap");
+            $("#dvMapHotel").empty();
             var lat = $("#MainContent_txtEditLatitude").val();
             var longg = $("#MainContent_txtEditLongitude").val();
             var zoneLatLong = new google.maps.LatLng(lat, longg);
@@ -52,7 +78,7 @@
             google.maps.event.addListener(map, 'click', function () {
                 infoWindow.close();
             });
-          
+
             // displayMarkers() function is called to begin the markers creation
             displayMarkers();
 
@@ -67,19 +93,22 @@
 
         $(document).ready(function () {
             initializeMyMap();
-            $("a[href='#MapHotels']").on('shown.bs.tab', function () {
-                initializeMyMap();
-                //google.maps.event.trigger(map, 'resize');
-            });
+            //$("a[href='#MapHotels']").on('shown.bs.tab', function () {
+            //    initializeMyMap();
+            //    //google.maps.event.trigger(map, 'resize');
+            //});
         });
         var prm = Sys.WebForms.PageRequestManager.getInstance();
 
         prm.add_endRequest(function () {
             // re-bind your jQuery events here
-            $("a[href='#MapHotels']").on('shown.bs.tab', function () {
+            var a = $("#hdnupdateMap").val();
+            if (a == "HotelMap")
                 initializeMyMap();
-                //google.maps.event.trigger(map, 'resize');
-            });
+            else if (a == "LatLongMap")
+                GetLatLongOnMap();
+            else initializeMyMap();
+           
         });
         function displayMarkers() {
            var Latitude = $("#MainContent_txtEditLatitude").val();
@@ -92,7 +121,6 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    debugger;
                     if (result != null) {
                         // this variable sets the map bounds and zoom level according to markers position
                         var bounds = new google.maps.LatLngBounds();
@@ -138,6 +166,44 @@
             });
 
         }
+      
+        function GetLatLongOnMap() {
+            $("#hdnupdateMap").val("LatLongMap");
+            //onOverlay();
+            $("#dvMapHotel").empty();
+            var lat = $("#MainContent_txtEditLatitude").val();
+            var longg = $("#MainContent_txtEditLongitude").val();
+            var zoneName = $('#MainContent_txtEditZoneName').val();
+            var country = $('#MainContent_ddlMasterCountryEdit').find("option:selected").text();
+            var address = zoneName + ',' + country;
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    
+                    var centerLatLong = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                    var mapInDvMapHotel = document.getElementById("dvMapHotel");
+
+                    //optionsForMap
+                    var newMapOptions = { center: centerLatLong, zoom: 13 };
+
+                    //createMAP
+                    Newmap = new google.maps.Map(mapInDvMapHotel, newMapOptions);
+                    google.maps.event.addListener(Newmap, 'click', function (e) {
+                        //infoWindow.close();
+                        $("#MainContent_txtEditLatitude").val(e.latLng.lat());
+                        $("#MainContent_txtEditLongitude").val(e.latLng.lng());
+                    });
+                }
+                else {
+                    alert("Request failed.")
+                }
+            });
+        }
+        function offOverlay() {
+            document.getElementById("overlay").style.display = "none";
+        } function onOverlay() {
+            document.getElementById("overlay").style.display = "block";
+        }
     </script>
     <asp:UpdatePanel ID="uppnl" runat="server">
         <ContentTemplate>
@@ -158,8 +224,9 @@
                 <div class="panel-group" id="">
                     <div class="panel panel-default">
                         <div class="panel-body">
+                           <asp:HiddenField ID="hdnupdateMap" runat="server" ClientIDMode="Static" />
                             <asp:HiddenField ID="hdnCountryId" runat="server" ClientIDMode="Static" />
-                            <asp:HiddenField ID="HdnCountryChangeFlag" runat="server" ClientIDMode="Static" />
+                         <%--   <asp:HiddenField ID="HdnCountryChangeFlag" runat="server" ClientIDMode="Static" />--%>
                             <div class="row">
                                 <div class="col-sm-12" style="display: none" id="dvmsgUpdateZone" runat="server"></div>
                                 <div class="col-sm-6">
@@ -179,7 +246,8 @@
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="ddlMasterCountryEdit">Country</label>
                                         <div class="col-sm-8">
-                                            <asp:DropDownList ID="ddlMasterCountryEdit" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlMasterCountryEdit_SelectedIndexChanged">
+                                            <asp:DropDownList ID="ddlMasterCountryEdit" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" Enabled="False">
+                                                <%--onclientclick="changeCountry()"--%>
                                                 <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
@@ -204,7 +272,8 @@
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6">
-                                            <asp:Button ID="btnUpdateZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="UPDATE" OnClick="btnUpdateZoneMaster_Click" OnClientClick="ChangedCountry()" />
+                                            <asp:Button ID="btnUpdateZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save and Show Hotels" OnClick="btnUpdateZoneMaster_Click" OnClientClick="initializeMyMap()" />
+                                            <button id="btnUpdateLatLong" onclick="GetLatLongOnMap()" class="btn btn-primary btn-sm">Get LatLong on Map</button>
                                         </div>
                                     </div>
 
@@ -292,6 +361,9 @@
                                         <div role="tabpanel" id="MapHotels" class="tab-pane fade in  active">
                                             <br />
                                             <br />
+                                            <%--<div id="overlay" onclick="offOverlay()">
+                                                  <div id="text">Click on the map to set Center..!</div>
+                                             </div>--%>
                                             <div id="dvMapHotel" style="width: 100%; height: 500px">
                                             </div>
 
