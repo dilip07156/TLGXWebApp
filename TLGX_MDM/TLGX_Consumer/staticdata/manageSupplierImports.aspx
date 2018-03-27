@@ -4,7 +4,6 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <%@ Register Src="~/controls/staticdataconfig/FileMappingcharts.ascx" TagPrefix="uc1" TagName="FileMappingcharts" %>
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
     <style>
@@ -53,7 +52,7 @@
     </style>
 
     <script type="text/javascript">
-        //script for RUN MAPPING 
+        //script for RUN MAPPING
         var x;
         function myTimer() {
             var hdnval = document.getElementById("hdnFileId").value;
@@ -71,7 +70,7 @@
                 x = setInterval(function () { myTimer() }, 5000);
             }).modal('show');;
             $('#moViewDetials').on('hidden.bs.modal', function () {
-                //stop timer on close of modal 
+                //stop timer on close of modal
                 $('#moViewDetials a:first').tab('show');
                 myStopFunction();
             });
@@ -128,11 +127,11 @@
                     else {
                         var t = nxtrun.split(/[- :]/);
                         var date = new Date(Date.UTC(t[2], t[1] - 1, t[0], t[3], t[4], t[5]));
-                        $(".nxtrundate").append("Next Run is scheduled on :&nbsp <br/>" + date);
+                        $(".nxtrundate").append("Next Run is scheduled on :&nbsp <br />" + date);
                     }
                     //Get SupplierNames
                     if (result[0].SupplierNames != null) {
-                        var ul = $('<ul/>').addClass("list-inline");
+                        var ul = $('<ul />').addClass("list-inline");
                         for (var p = 0; p < result[0].SupplierNames.length; p++) {
                             //$("#SupplierNames").append("" + result[0].SupplierNames[p]+",");
                             ul.append("<li>" + result[0].SupplierNames[p] + "</li>");
@@ -153,8 +152,7 @@
                                 }
                                 else {
                                     $("#countryTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCountry[iCountryMappingData].TotalCount);
-                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount > 0)
-                                    { $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount); }
+                                    if (resultDataForCountry[iCountryMappingData].SuppliersCount > 0) { $("#countrySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCountry[iCountryMappingData].SuppliersCount); }
                                 }
                             }
                         }
@@ -170,8 +168,7 @@
                                 }
                                 else {
                                     $("#cityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForCity[iCityMappingData].TotalCount);
-                                    if (resultDataForCity[iCityMappingData].SuppliersCount > 0)
-                                    { $("#citySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCity[iCityMappingData].SuppliersCount); }
+                                    if (resultDataForCity[iCityMappingData].SuppliersCount > 0) { $("#citySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForCity[iCityMappingData].SuppliersCount); }
                                 }
                             }
 
@@ -180,7 +177,7 @@
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
                             $(".productper").append(per + "%");
                             var resultDataForProduct = result[0].MappingStatsFor[iNodes].MappingData;
-                            for (var iProductMappingData = 0 ; iProductMappingData < resultDataForProduct.length; iProductMappingData++) {
+                            for (var iProductMappingData = 0; iProductMappingData < resultDataForProduct.length; iProductMappingData++) {
                                 if (resultDataForProduct[iProductMappingData].Status != "ALL") {
                                     productArray.push(resultDataForProduct[iProductMappingData]);
                                     $("#detailproduct").append(resultDataForProduct[iProductMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount + "<br>");
@@ -188,8 +185,7 @@
                                 }
                                 else {
                                     $("#productTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount);
-                                    if (resultDataForProduct[iProductMappingData].SuppliersCount > 0)
-                                    { $("#productSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForProduct[iProductMappingData].SuppliersCount); }
+                                    if (resultDataForProduct[iProductMappingData].SuppliersCount > 0) { $("#productSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForProduct[iProductMappingData].SuppliersCount); }
                                 }
                             }
                         }
@@ -197,7 +193,7 @@
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
                             $(".activityper").append(per + "%");
                             var resultDataForActivity = result[0].MappingStatsFor[iNodes].MappingData;
-                            for (var iActivityMappingData = 0 ; iActivityMappingData < resultDataForActivity.length; iActivityMappingData++) {
+                            for (var iActivityMappingData = 0; iActivityMappingData < resultDataForActivity.length; iActivityMappingData++) {
                                 if (resultDataForActivity[iActivityMappingData].Status != "ALL") {
                                     activityArray.push(resultDataForActivity[iActivityMappingData]);
                                     $("#detailactivity").append(resultDataForActivity[iActivityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount + "<br>");
@@ -205,8 +201,7 @@
                                 }
                                 else {
                                     $("#activityTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount);
-                                    if (resultDataForActivity[iActivityMappingData].SuppliersCount > 0)
-                                    { $("#activitySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForActivity[iActivityMappingData].SuppliersCount); }
+                                    if (resultDataForActivity[iActivityMappingData].SuppliersCount > 0) { $("#activitySuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForActivity[iActivityMappingData].SuppliersCount); }
                                 }
                             }
                         }
@@ -214,15 +209,14 @@
                             var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
                             $(".HotelRoomper").append(per + "%");
                             var resultDataForHotelRoom = result[0].MappingStatsFor[iNodes].MappingData;
-                            for (var iHotelRoomMappingData = 0 ; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
+                            for (var iHotelRoomMappingData = 0; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
                                 if (resultDataForHotelRoom[iHotelRoomMappingData].Status != "ALL") {
                                     hotelroomArray.push(resultDataForHotelRoom[iHotelRoomMappingData]);
                                     $("#detailHotelRoom").append(resultDataForHotelRoom[iHotelRoomMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount + "<br>");
                                 }
                                 else {
                                     $("#HotelRoomTotal").append("Total&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount);
-                                    if (resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount > 0)
-                                    { $("#HotelRoomSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount); }
+                                    if (resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount > 0) { $("#HotelRoomSuppliersCount").append("Total Suppliers&nbsp;:&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].SuppliersCount); }
                                 }
                             }
                         }
@@ -319,21 +313,20 @@
                         resize: true
                     });
 
-
                     if (contryArray.length == 0) {
-                        $("#country").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#country").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (cityArray.length == 0) {
-                        $("#city").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#city").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (productArray.length == 0) {
-                        $("#product").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#product").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (activityArray.length == 0) {
-                        $("#activity").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#activity").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (hotelroomArray.length == 0) {
-                        $("#HotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#HotelRoom").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
 
                 },
@@ -360,31 +353,31 @@
                         if (result[inodes].Mappingfor == "Country") {
                             delete result[inodes].Mappingfor;
                             allcontryArray.push(result[inodes]);
-                            $("#alldetailcountry").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                            $("#alldetailcountry").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
 
                         }
                         if (result[inodes].Mappingfor == "City") {
                             delete result[inodes].Mappingfor;
                             allcityArray.push(result[inodes]);
-                            $("#alldetailcity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                            $("#alldetailcity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
 
                         }
                         if (result[inodes].Mappingfor == "Product") {
                             delete result[inodes].Mappingfor;
                             allproductArray.push(result[inodes]);
-                            $("#alldetailproduct").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                            $("#alldetailproduct").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
 
                         }
                         if (result[inodes].Mappingfor == "Activity") {
                             delete result[inodes].Mappingfor;
                             allactivityArray.push(result[inodes]);
-                            $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                            $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
 
                         }
                         if (result[inodes].Mappingfor == "HotelRoom") {
                             delete result[inodes].Mappingfor;
                             allhotelroomArray.push(result[inodes]);
-                            $("#alldetailHotelRoom").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br/>")
+                            $("#alldetailHotelRoom").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
 
                         }
                     }
@@ -460,62 +453,62 @@
                     allcountryChart.options.data.forEach(function (label, i) {
                         var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                         legendItem.find('span')
-                          .css('backgroundColor', allcountryChart.options.colors[i])
-                        .css('width', '20px')
-                          .css('display', 'inline-block')
-                          .css('margin', '5px');
+                            .css('backgroundColor', allcountryChart.options.colors[i])
+                            .css('width', '20px')
+                            .css('display', 'inline-block')
+                            .css('margin', '5px');
                         $('#legendco').append(legendItem)
                     });
                     allcityChart.options.data.forEach(function (label, i) {
                         var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                         legendItem.find('span')
-                          .css('backgroundColor', allcityChart.options.colors[i])
-                        .css('width', '20px')
-                          .css('display', 'inline-block')
-                          .css('margin', '5px');
+                            .css('backgroundColor', allcityChart.options.colors[i])
+                            .css('width', '20px')
+                            .css('display', 'inline-block')
+                            .css('margin', '5px');
                         $('#legendci').append(legendItem)
                     });
                     allproductChart.options.data.forEach(function (label, i) {
                         var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                         legendItem.find('span')
-                          .css('backgroundColor', allproductChart.options.colors[i])
-                        .css('width', '20px')
-                          .css('display', 'inline-block')
-                          .css('margin', '5px');
+                            .css('backgroundColor', allproductChart.options.colors[i])
+                            .css('width', '20px')
+                            .css('display', 'inline-block')
+                            .css('margin', '5px');
                         $('#legendpr').append(legendItem)
                     });
                     allactivityChart.options.data.forEach(function (label, i) {
                         var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                         legendItem.find('span')
-                          .css('backgroundColor', allactivityChart.options.colors[i])
-                        .css('width', '20px')
-                          .css('display', 'inline-block')
-                          .css('margin', '5px');
+                            .css('backgroundColor', allactivityChart.options.colors[i])
+                            .css('width', '20px')
+                            .css('display', 'inline-block')
+                            .css('margin', '5px');
                         $('#legendac').append(legendItem)
                     });
                     allHotelRoomChart.options.data.forEach(function (label, i) {
                         var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
                         legendItem.find('span')
-                          .css('backgroundColor', allHotelRoomChart.options.colors[i])
-                        .css('width', '20px')
-                          .css('display', 'inline-block')
-                          .css('margin', '5px');
+                            .css('backgroundColor', allHotelRoomChart.options.colors[i])
+                            .css('width', '20px')
+                            .css('display', 'inline-block')
+                            .css('margin', '5px');
                         $('#legendhr').append(legendItem)
                     });
                     if (allcontryArray.length == 0) {
-                        $("#allcountry").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#allcountry").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (allcityArray.length == 0) {
-                        $("#allcity").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#allcity").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (allproductArray.length == 0) {
-                        $("#allproduct").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#allproduct").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (allactivityArray.length == 0) {
-                        $("#allactivity").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#allactivity").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                     if (allhotelroomArray.length == 0) {
-                        $("#allHotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
+                        $("#allHotelRoom").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
                 },
                 error: function (xhr, status, error) {
@@ -552,6 +545,13 @@
             });
 
             $("#btnUpdateSupplier").click(function () {
+                debugger;
+                $("#dvMsgCity").hide();
+                $("#dvMsgCountry").hide();
+                $("#dvMsgHotel").hide();
+                $("#dvMsgRoomType").hide();
+                $("#dvMsgActivity").hide();
+
                 $("#ReportViewersupplierwise").hide();
                 var sid = $('#MainContent_ddlSupplierName').val();
                 if (sid == '0') {
@@ -605,8 +605,8 @@
                     </asp:UpdatePanel>
                 </div>
                 <div class="form-group  ">
-                    <%--<asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" />--%>
-                    <button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>
+                    <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" OnClick ="btnUpdateSupplier_Click" />
+                    <%--<button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>--%>
                     <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
             </div>
@@ -631,7 +631,21 @@
                     <b><span id="detailcountry" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body" id="dvCountryReRun">
-                    <asp:Button ID="btnCountryReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCountryReRun_Click" />
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnCountryReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCountryReRun_Click" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnCountryReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnCountryReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="dvMsgCountry" runat="server" style="display: none;"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -654,7 +668,21 @@
                     <b><span id="detailcity" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body" id="dvCityReRun">
-                    <asp:Button ID="btnCityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCityReRun_Click" />
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnCityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCityReRun_Click" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnCityReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnCityReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="dvMsgCity" runat="server" style="display: none;"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="panel-body" style="text-align: center">
                     <b><span class="nxtrundate"></span></b>
@@ -677,7 +705,21 @@
                     <b><span id="detailproduct" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body" id="dvHotelReRun">
-                    <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="dvMsgHotel" runat="server" style="display: none;"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -700,7 +742,21 @@
                     <b><span id="detailHotelRoom" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body" id="dvRoomTypeReRun">
-                    <asp:Button ID="btnRoomTypeReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRun_Click" />
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnRoomTypeReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRun_Click" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnRoomTypeReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="dvMsgRoomType" runat="server" style="display: none;"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -723,7 +779,21 @@
                     <b><span id="detailactivity" style="font-size: small"></span></b>
                 </div>
                 <div class="panel-body" id="dvActivityReRun">
-                    <asp:Button ID="btnActivityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnActivityReRun_Click" />
+                    <table>
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnActivityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnActivityReRun_Click" />
+                            </td>
+                            <td>
+                                <asp:Button ID="btnActivityReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnActivityReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div id="dvMsgActivity" runat="server" style="display: none;"></div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -811,8 +881,6 @@
         </div>
     </div>
 
-
-
     <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -824,7 +892,6 @@
 
                     <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
                     <uc1:FileMappingcharts runat="server" ID="FileMappingcharts" />
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
@@ -832,5 +899,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
