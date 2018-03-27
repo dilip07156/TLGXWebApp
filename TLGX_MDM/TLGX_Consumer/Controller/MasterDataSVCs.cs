@@ -517,5 +517,50 @@ namespace TLGX_Consumer.Controller
 
         }
         #endregion
+
+        #region Zone Master
+        public DC_Message AddzoneMaster(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AddZone"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public DC_Message AddZoneCityMapping(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AddZoneCities"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public List<MDMSVC.DC_ZoneSearch>SearchZone(DC_ZoneRQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZone"], RQ, typeof(DC_ZoneRQ), typeof(List<DC_ZoneSearch>), out result);
+            return result as List<DC_ZoneSearch>;
+        }
+        public List<MDMSVC.DC_ZoneCitiesSearch> SearchZoneCities(DC_ZoneRQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZoneCities"], RQ, typeof(DC_ZoneRQ), typeof(List<DC_ZoneCitiesSearch>), out result);
+            return result as List<DC_ZoneCitiesSearch>;
+        }
+        public DC_Message DeleteZoneCities(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["DeleteZoneCities"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public DC_Message DeactivateOrActivateZones(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["DeactivateZoneAndCities"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public List<DC_ZoneHotelList> SearchZoneHotels(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZoneHotels"], param, typeof(DC_ZoneRQ), typeof(List<DC_ZoneHotelList>), out result);
+            return result as List<DC_ZoneHotelList>;
+        }
+        #endregion
     }
 }

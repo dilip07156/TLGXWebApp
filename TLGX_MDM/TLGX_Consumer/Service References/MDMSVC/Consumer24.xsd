@@ -26,6 +26,7 @@
       <xs:element minOccurs="0" name="Accommodation_ProductMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Address_tx" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" type="xs:int" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
@@ -53,6 +54,8 @@
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
+      <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StarRating" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
@@ -63,6 +66,7 @@
       <xs:element minOccurs="0" name="Street3" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Street4" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductReference" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
@@ -191,6 +195,7 @@
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" type="xs:int" />
       <xs:element minOccurs="0" name="CommonProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
@@ -206,8 +211,12 @@
       <xs:element minOccurs="0" name="Quantity" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="RatePlan" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RatePlanCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
+      <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="RoomDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomTypeAttributes" nillable="true" type="tns:ArrayOfDC_SupplierRoomTypeAttributes" />
+      <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductName" nillable="true" type="xs:string" />
@@ -302,6 +311,7 @@
   <xs:complexType name="DC_CountryMapping">
     <xs:sequence>
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" type="xs:int" />
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ContinentCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ContinentName" nillable="true" type="xs:string" />
@@ -321,8 +331,11 @@
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OldCountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
+      <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecord" type="xs:int" />
@@ -334,6 +347,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityMapping_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Country_Id" nillable="true" type="ser:guid" />
@@ -365,6 +379,7 @@
   <xs:complexType name="DC_CityMapping">
     <xs:sequence>
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" type="xs:int" />
       <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CityMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
@@ -388,11 +403,14 @@
       <xs:element minOccurs="0" name="MasterStateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Master_CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
+      <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateNameWithCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />

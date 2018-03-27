@@ -1,5 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchCityMap.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.CityMap" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<script src="../../../Scripts/JqueryUI/jquery-ui.js"></script>
+<link href="../../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
 <style>
     /* Always set the map height explicitly to define the size of the div
@@ -27,6 +30,13 @@
 
     #modalHotelList {
         z-index: 2000;
+    }
+
+    /*#moCityMapping {
+        z-index: 9999999999 !important;
+    }*/
+    .ui-autocomplete {
+        z-index: 99999999 !important;
     }
 
     .controls {
@@ -69,11 +79,7 @@
 </style>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        //$("#btnLocateMap").click(function () {
 
-        //       });
-    });
 
     function callmap() {
         var geocoder = new google.maps.Geocoder();
@@ -188,6 +194,7 @@
 
     function showCityMappingModal() {
         $("#moCityMapping").modal('show');
+        callajax();
     }
     function closeCityMappingModal() {
         $("#moCityMapping").modal('hide');
@@ -205,14 +212,133 @@
             $('#MainContent_CityMap_hdnFlag').val("false");
         }
     }
+    $(document).ready(function () {
+        callajax();
+        
+    });
     var prm = Sys.WebForms.PageRequestManager.getInstance();
     prm.add_endRequest(function () {
+        callajax();
     });
+    function callajax() {
+        var moCityMapping = document.getElementById("moCityMapping");
+        var hdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
+        var hdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
+        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+        
+        $("[id*=txtSearchCity]").autocomplete({
+            //appendTo: moCityMapping,
+            source: function (request, response) {
+                $.ajax({
+                    url: '../../../Service/CityAutoComplete.ashx',
+                    dataType: "json",
+                    data: {
+                        term: request.term,
+                        country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                        source: 'CityMap'
+                    },
+                    success: function (result) {
+                        var data = [];
+                        hdnSystemCity_Id.value = "";
+                        hdnSystemCity.value = "";
+                        vrhdnSelSystemCity_Id.value = "";
+                        for (var i = 0; i < result.length; i++) {
+                            if (hdnSystemCity_Id != null && result[i].City_Id != null){
+                                hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
+                            }
+                            if (result[i].Name != null) {
+                                var cityname = result[i].Name;
+                                if (result[i].StateName != null){
+                                    cityname = cityname + "; " + result[i].StateName;
+                                }
+                                else{
+                                    if (result[i].StateCode != null) {
+                                        cityname = cityname + "; " + result[i].StateCode;
+                                    }
+                                }
+                                if (result[i].CountryName != null) {
+                                    cityname = cityname + "; " + result[i].CountryName;
+                                }
+                                else {
+                                    if (result[i].CountryCode != null) {
+                                        cityname = cityname + "; " + result[i].CountryCode;
+                                    }
+                                }
+                                hdnSystemCity.value = hdnSystemCity.value + cityname  + "`";
+                                data.push(cityname);
+                            }
+                        }
+                        response(data);
+                    }
+                });
+            },
+            min_length: 3,
+            delay: 300
+        });
+        
+        $("[id*=txtSearchCity]").on('autocompleteselect', function (e, ui) {
+            callCityNamechange(ui.item.value);
+        });
+    }
 
-    function callchange() {
-        //initAutocomplete("search");
-        //var e = $.Event("keypress", { which: 13 });
-        //$('#pac-input').trigger(e);
+
+
+    function callCityNamechange(selection) {
+        alert(selection);
+        debugger;
+        var vrtxtSearch = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSearch");
+        var vrhdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
+        var vrhdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
+        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+        var vrtxtSystemStateName = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemStateName");
+        var vrtxtSystemStateCode = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemStateCode");
+        var vrtxtSystemCityCode = document.getElementById("MainContent_CityMap_frmEditCityMap_txtSystemCityCode");
+        var vrbtnAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity");
+        var vrdvMsg = document.getElementById("MainContent_CityMap_dvMsg");
+        var vrdvMsg1 = document.getElementById("MainContent_CityMap_dvMsg1");
+        var vrdvAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_dvAddCity");
+
+        var selId = "";
+        vrdvMsg.style.display = "none";
+        vrdvMsg1.style.display = "none";
+        debugger;
+        if (selection != null) {
+            vrdvAddCity.style.display = "none";
+            if (selection.trim() != "") {
+                var brkvrhdnSystemCity = vrhdnSystemCity.value.split('`');
+                var brkvrhdnSystemCity_Id = vrhdnSystemCity_Id.value.split('`');
+                var idx = brkvrhdnSystemCity.indexOf(selection);
+                if (idx != null && idx != (-1)) {
+                    selId = brkvrhdnSystemCity_Id[idx];
+                }
+            }
+        }
+        alert(selId);
+        debugger;
+        if (selId != "") {
+            vrbtnAddCity.style.display = "";
+            vrhdnSelSystemCity_Id.value = selId;
+            $.ajax({
+                url: '../../../Service/CityAutoComplete.ashx',
+                dataType: "json",
+                data: {
+                    city_id: selId,
+                    source: 'CityMap'
+                },
+                responseType: "json",
+                success: function (result) {
+                    vrtxtSystemStateName.value = result[0].StateName;
+                    vrtxtSystemStateCode.value = result[0].StateCode;
+                    vrtxtSystemCityCode.value = result[0].Code;
+                },
+                failure: function () {
+                }
+            });
+        }
+        else {
+            vrbtnAddCity.style.display = "none";
+        }
+        debugger;
     }
 
     function SelectedRow(element) {
@@ -368,7 +494,7 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                   <%-- <div class="form-group row">
+                                    <%-- <div class="form-group row">
                                         <label class="control-label col-sm-3" for="chkIsHotel">Hotels</label>
                                         <div class="col-sm-9">
                                             <asp:CheckBox ID="chkIsHotel" runat="server" />
@@ -401,10 +527,10 @@
                                                 <fieldset class="form-group">
                                                     <div class="col-sm-12">
                                                         <asp:CheckBoxList ID="chkListEntityForSearch" runat="server">
-                                                            <asp:ListItem  Text="Hotel" Value="H"></asp:ListItem>
-                                                            <asp:ListItem  Text="Activity" Value="A"></asp:ListItem>
-                                                            <asp:ListItem  Text="Packages" Value="P" Enabled="false"></asp:ListItem>
-                                                            <asp:ListItem  Text="Cruise" Value="C"  Enabled="false"></asp:ListItem>
+                                                            <asp:ListItem Text="Hotel" Value="H"></asp:ListItem>
+                                                            <asp:ListItem Text="Activity" Value="A"></asp:ListItem>
+                                                            <asp:ListItem Text="Packages" Value="P" Enabled="false"></asp:ListItem>
+                                                            <asp:ListItem Text="Cruise" Value="C" Enabled="false"></asp:ListItem>
                                                         </asp:CheckBoxList>
                                                     </div>
                                                 </fieldset>
@@ -419,10 +545,9 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <%--<asp:Button ID="btnBulkMap" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Bulk Add City Mapping" OnClick="btnBulkMap_Click" />--%>
-
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -462,16 +587,16 @@
                                     <Columns>
                                         <asp:BoundField DataField="MapId" HeaderText="Map Id" />
                                         <asp:BoundField DataField="SupplierName" HeaderText="Name" />
-                                       <asp:TemplateField HeaderText="Entity" >
-                                                <ItemTemplate>
-                                                    <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("EntityTypeFlag") %>'
-                                                        RepeatLayout="Flow" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
-                                                        <ItemTemplate>
-                                                              <asp:Label ID="entityNameBind" runat="server" Text='<%# Bind("EntityType") %>'></asp:Label> 
-                                                        </ItemTemplate>
-                                                    </asp:DataList>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Entity">
+                                            <ItemTemplate>
+                                                <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("EntityTypeFlag") %>'
+                                                    RepeatLayout="Flow" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="entityNameBind" runat="server" Text='<%# Bind("EntityType") %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:DataList>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />
                                         <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
                                         <%--<asp:BoundField DataField="StateNameWithCode" HeaderText="State" />--%>
@@ -698,12 +823,28 @@
                                                             <asp:TextBox ID="txtSystemStateCode" runat="server" Enabled="false" CssClass="form-control"></asp:TextBox>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
+                                                    <%--<div class="form-group">
+                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City
+                                                            <asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                            
+                                                        </label>
                                                         <div class="col-sm-7">
-                                                            <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemCityName_SelectedIndexChanged">
+                                                            <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
                                                                 <asp:ListItem Value="0">Select</asp:ListItem>
                                                             </asp:DropDownList>
+                                                        </div>
+                                                    </div>--%>
+                                                    <div class="form-group">
+                                                        <label class="control-label col-sm-5" for="txtSystemCityCode">City Name
+                                                            <asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="txtSearchCity" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                        </label>
+                                                        <div class="col-sm-7">
+                                                            <div class='ui-front'>
+                                                                 <asp:TextBox ID="txtSearchCity" runat="server" CssClass="form-control" onlostfocus="callCityNamechange(this);"></asp:TextBox>
+                                                                <asp:HiddenField ID="hdnSystemCity_Id" runat="server" />
+                                                                <asp:HiddenField ID="hdnSystemCity" runat="server" />
+                                                                <asp:HiddenField ID="hdnSelSystemCity_Id" runat="server" />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

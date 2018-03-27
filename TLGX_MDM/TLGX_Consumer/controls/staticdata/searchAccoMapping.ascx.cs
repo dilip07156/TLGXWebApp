@@ -1339,7 +1339,7 @@ namespace TLGX_Consumer.controls.staticdata
                 }
 
             }
-            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void btnMapAll_Click(object sender, EventArgs e)
@@ -1408,7 +1408,7 @@ namespace TLGX_Consumer.controls.staticdata
                     mySupplier_Id = Guid.Empty;
                 }
             }
-            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+            fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
         }
 
         protected void chkSelect_CheckedChanged(object sender, EventArgs e)
