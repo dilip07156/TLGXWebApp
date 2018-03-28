@@ -209,15 +209,12 @@ namespace TLGX_Consumer.geography
             param.Zone_id = Zone_id;
             param.Create_Date = DateTime.Now;
             param.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
+            param.CountryName = ddlMasterCountryAddModal.SelectedItem.Text;
             if (ddlMasterCityAddModal.SelectedItem.Value != "0")
                 param.City_id = new Guid(ddlMasterCityAddModal.SelectedValue);
 
             if (ddlAddZoneType.SelectedItem.Value != "0")
                 param.Zone_Type = ddlAddZoneType.SelectedItem.Text;
-
-            //if (ddlAddStatus.SelectedItem.Value != "0")
-            //    param.Status = Convert.ToBoolean(ddlAddStatus.SelectedValue);
-            //else param.Status = true;
 
             param.Zone_Name = txtAddZoneName.Text;
             param.Latitude = txtLatitude.Text;
@@ -227,10 +224,11 @@ namespace TLGX_Consumer.geography
             {
                 if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgAdd, "Zone has been added successfully", BootstrapAlertType.Success);
+                    var addHotels = masterSVc.InsertZoneHotelsInTable(param);
                     string strQueryString = GetQueryString(Zone_id.ToString(), "0");
                     Response.Redirect(strQueryString, true);
                     //Response.Redirect("ZoneCityMasterEdit.aspx?Zone_Id=" + Zone_id);
-                    BootstrapAlert.BootstrapAlertMessage(dvmsgAdd, "Zone has been added successfully", BootstrapAlertType.Success);
                 }
                    
                 else

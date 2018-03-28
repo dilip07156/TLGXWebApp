@@ -17,6 +17,7 @@ namespace TLGX_Consumer.geography
         protected void Page_Load(object sender, EventArgs e)
         {
             Zone_Id = new Guid(Request.QueryString["Zone_Id"]);
+            hdnZone_id.Value = Zone_Id.ToString();
             if (!IsPostBack)
             {
                 LoadMasters();
@@ -105,19 +106,23 @@ namespace TLGX_Consumer.geography
         protected void fillgrdZoneHotelSearchData()
         {
             MDMSVC.DC_ZoneRQ zh = new MDMSVC.DC_ZoneRQ();
-            zh.Latitude = txtEditLatitude.Text;
-            zh.Longitude = txtEditLongitude.Text;
-            zh.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
-            zh.DistanceRange = Convert.ToInt32(ddlShowDistance.SelectedValue);
-           
+            //zh.Latitude = txtEditLatitude.Text;
+            //zh.Longitude = txtEditLongitude.Text;
+            // zh.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
+            //zh.DistanceRange = Convert.ToInt32(ddlShowDistance.SelectedValue);
+            var DistanceRange = Convert.ToInt32(ddlShowDistance.SelectedValue);
+            zh.Zone_id = Zone_Id;
             var result = masterSVc.SearchZoneHotels(zh);
             if (result != null && result.Count > 0)
             {
+                result = (from a in result where a.Distance <= DistanceRange select a).ToList();
+                lblTotalCount.Text = (result.Count).ToString();
                 grdZoneHotelSearch.DataSource = result;
                 grdZoneHotelSearch.DataBind();
             }
             else
             {
+                lblTotalCount.Text = string.Empty;
                 grdZoneHotelSearch.DataSource = null;
                 grdZoneHotelSearch.DataBind();
             }
@@ -126,41 +131,30 @@ namespace TLGX_Consumer.geography
         {
             dvUpdateMsg.Style.Add("display", "none");
             dvmsgUpdateZone.Style.Add("display", "none");
-           // var a = HdnCountryChangeFlag.Value;
-            MDMSVC.DC_ZoneRQ Param = new MDMSVC.DC_ZoneRQ();
-            Param.Action = "UPDATE";
-            Param.Zone_id = Zone_Id;
-            Param.Zone_Name = txtEditZoneName.Text;
-            Param.Latitude = txtEditLatitude.Text;
-            Param.Longitude = txtEditLongitude.Text;
-            Param.Zone_Type = ddlEditZoneType.SelectedItem.Text;
-            Param.Edit_Date = DateTime.Now;
-            Param.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
-            //if (a== "True")
-            //{
-            //    var res = masterSVc.DeleteZoneCities(Param);
-            //    var result = masterSVc.AddzoneMaster(Param);
-            //    if (result != null)
-            //    {
-            //        if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
-            //        {
-            //            BootstrapAlert.BootstrapAlertMessage(dvmsgUpdateZone, "Zone has been Updated successfully", BootstrapAlertType.Success);
-            //            fillgrdZoneCitiesData(Zone_Id); 
-            //            BootstrapAlert.BootstrapAlertMessage(dvMsgaddZoneCity, "Please Add atleast One CITY for this zone", BootstrapAlertType.Warning);
-            //            fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
-            //        } 
-            //        else
-            //            BootstrapAlert.BootstrapAlertMessage(dvmsgUpdateZone, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
-            //    }
-                
-            //}
-            //else if (a == "False")
-            //{
-            //    getZoneInfo(string.Empty);
-            //}
-           // else{
-                var result = masterSVc.AddzoneMaster(Param);
-           // }
+            // var a = HdnCountryChangeFlag.Value;
+            var searchZone = masterSVc.SearchZone(new MDMSVC.DC_ZoneRQ { Zone_id = Zone_Id });
+            if (searchZone != null)
+            {
+                var ExistingZone = (from a in searchZone select a).First();
+                if(ExistingZone.Latitude!= txtEditLatitude.Text || ExistingZone.Longitude!= txtEditLongitude.Text)
+                {
+                    var deletezone = masterSVc.DeleteZoneHotelsInTable(new MDMSVC.DC_ZoneRQ { Zone_id = Zone_Id });
+                }
+            }
+            
+            MDMSVC.DC_ZoneRQ UPdparam = new MDMSVC.DC_ZoneRQ();
+            UPdparam.Action = "UPDATE";
+            UPdparam.Zone_id = Zone_Id;
+            UPdparam.Zone_Name = txtEditZoneName.Text;
+            UPdparam.Latitude = txtEditLatitude.Text;
+            UPdparam.Longitude = txtEditLongitude.Text;
+            UPdparam.Zone_Type = ddlEditZoneType.SelectedItem.Text;
+            UPdparam.Edit_Date = DateTime.Now;
+            UPdparam.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
+            UPdparam.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
+            UPdparam.includeUptoRange = Convert.ToInt32(ddlIncludeHotelUpto.SelectedValue);
+            var result = masterSVc.AddzoneMaster(UPdparam);
+            var addZone = masterSVc.InsertZoneHotelsInTable(UPdparam);
             getZoneInfo(string.Empty);
         }
         protected void btnAddZoneCity_Click(object sender, EventArgs e)

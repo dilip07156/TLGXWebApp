@@ -561,6 +561,18 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZoneHotels"], param, typeof(DC_ZoneRQ), typeof(List<DC_ZoneHotelList>), out result);
             return result as List<DC_ZoneHotelList>;
         }
+        public DC_Message InsertZoneHotelsInTable(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["InsertZoneHotelsInTable"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public DC_Message DeleteZoneHotelsInTable(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["DeleteZoneHotelsInTable"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
     }
 }

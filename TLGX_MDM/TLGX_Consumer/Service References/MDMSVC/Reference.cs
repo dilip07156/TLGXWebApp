@@ -27099,6 +27099,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Zone_idField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int includeUptoRangeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -27365,6 +27368,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Zone_idField.Equals(value) != true)) {
                     this.Zone_idField = value;
                     this.RaisePropertyChanged("Zone_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int includeUptoRange {
+            get {
+                return this.includeUptoRangeField;
+            }
+            set {
+                if ((this.includeUptoRangeField.Equals(value) != true)) {
+                    this.includeUptoRangeField = value;
+                    this.RaisePropertyChanged("includeUptoRange");
                 }
             }
         }
@@ -27801,10 +27817,19 @@ namespace TLGX_Consumer.MDMSVC {
         private string HotelNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IncludedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductCategorySubTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StarRatingField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -27895,6 +27920,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Included {
+            get {
+                return this.IncludedField;
+            }
+            set {
+                if ((this.IncludedField.Equals(value) != true)) {
+                    this.IncludedField = value;
+                    this.RaisePropertyChanged("Included");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Latitude {
             get {
                 return this.LatitudeField;
@@ -27916,6 +27954,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
                     this.LongitudeField = value;
                     this.RaisePropertyChanged("Longitude");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductCategorySubType {
+            get {
+                return this.ProductCategorySubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductCategorySubTypeField, value) != true)) {
+                    this.ProductCategorySubTypeField = value;
+                    this.RaisePropertyChanged("ProductCategorySubType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StarRating {
+            get {
+                return this.StarRatingField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StarRatingField, value) != true)) {
+                    this.StarRatingField = value;
+                    this.RaisePropertyChanged("StarRating");
                 }
             }
         }
@@ -47026,6 +47090,20 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchZoneHotels", ReplyAction="http://tempuri.org/IMasters/SearchZoneHotelsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_ZoneHotelList[]> SearchZoneHotelsAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/InsertZoneHotelsInTable", ReplyAction="http://tempuri.org/IMasters/InsertZoneHotelsInTableResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/InsertZoneHotelsInTableDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message InsertZoneHotelsInTable(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/InsertZoneHotelsInTable", ReplyAction="http://tempuri.org/IMasters/InsertZoneHotelsInTableResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> InsertZoneHotelsInTableAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/DeleteZoneHotelsInTable", ReplyAction="http://tempuri.org/IMasters/DeleteZoneHotelsInTableResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/DeleteZoneHotelsInTableDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message DeleteZoneHotelsInTable(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/DeleteZoneHotelsInTable", ReplyAction="http://tempuri.org/IMasters/DeleteZoneHotelsInTableResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteZoneHotelsInTableAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountryNameList", ReplyAction="http://tempuri.org/IMasters/GetCountryNameListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCountryNameListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         string[] GetCountryNameList(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ RQ);
@@ -49321,6 +49399,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_ZoneHotelList[]> SearchZoneHotelsAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param) {
             return base.Channel.SearchZoneHotelsAsync(param);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message InsertZoneHotelsInTable(TLGX_Consumer.MDMSVC.DC_ZoneRQ param) {
+            return base.Channel.InsertZoneHotelsInTable(param);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> InsertZoneHotelsInTableAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param) {
+            return base.Channel.InsertZoneHotelsInTableAsync(param);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message DeleteZoneHotelsInTable(TLGX_Consumer.MDMSVC.DC_ZoneRQ param) {
+            return base.Channel.DeleteZoneHotelsInTable(param);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteZoneHotelsInTableAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param) {
+            return base.Channel.DeleteZoneHotelsInTableAsync(param);
         }
         
         public string[] GetCountryNameList(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ RQ) {

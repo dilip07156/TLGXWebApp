@@ -21,10 +21,10 @@ namespace TLGX_Consumer.Service
         public void ProcessRequest(HttpContext context)
         {
             MDMSVC.DC_ZoneRQ RQ = new MDMSVC.DC_ZoneRQ();
-            RQ.Latitude = context.Request.QueryString["Latitude"];
-            RQ.Longitude = context.Request.QueryString["Longitude"];
-            RQ.CountryName = context.Request.QueryString["CountryName"];
-            RQ.DistanceRange = 4000;
+            //RQ.Latitude = context.Request.QueryString["Latitude"];
+            //RQ.Longitude = context.Request.QueryString["Longitude"];
+            //RQ.CountryName = context.Request.QueryString["CountryName"];
+            RQ.Zone_id = new Guid(context.Request.QueryString["ZoneId"]);
             var res = MapSvc.SearchZoneHotels(RQ);
             context.Response.Write(new JavaScriptSerializer().Serialize(res));
         }
