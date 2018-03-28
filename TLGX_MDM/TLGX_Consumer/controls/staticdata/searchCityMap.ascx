@@ -87,7 +87,6 @@
         var hdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
         var hdnSystemCity = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity");
         var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
-
         $("[id*=txtSearchCity]").autocomplete({
             //appendTo: moCityMapping,
             source: function (request, response) {
