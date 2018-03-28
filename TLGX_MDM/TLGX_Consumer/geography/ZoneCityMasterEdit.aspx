@@ -108,7 +108,7 @@
            //var Latitude = $("#MainContent_txtEditLatitude").val();
            //var Longitude = $("#MainContent_txtEditLongitude").val();
           // var CountryName = $("#MainContent_ddlMasterCountryEdit option:selected").text();
-            
+            var range = parseInt($("#MainContent_ddlIncludeHotelUpto option:selected").val())/1000;
            var ZoneId = $("#hdnZone_id").val();
            //var DistanceRange = 10000;
             $.ajax({
@@ -129,7 +129,7 @@
                             var hotelName = result[i].HotelName;
                             var acco_Id = result[i].Accommodation_Id;
                             var markerHotels;
-                            if (result[i].Distance <= 4.00) {
+                            if (result[i].Distance <= range) {
                                 markerHotels = createGreenMarker(markerLatLng, hotelName);
                             }
                             else {
