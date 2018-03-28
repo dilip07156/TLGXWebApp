@@ -217,20 +217,14 @@
                     <div class="input-group" runat="server" id="divDropdownForEntries">
                         <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
                         <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                            <asp:ListItem>5</asp:ListItem>
                             <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>15</asp:ListItem>
-                            <asp:ListItem>20</asp:ListItem>
                             <asp:ListItem>25</asp:ListItem>
-                            <asp:ListItem>30</asp:ListItem>
-                            <asp:ListItem>35</asp:ListItem>
-                            <asp:ListItem>40</asp:ListItem>
-                            <asp:ListItem>45</asp:ListItem>
                             <asp:ListItem>50</asp:ListItem>
+                            <asp:ListItem>100</asp:ListItem>
                         </asp:DropDownList>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="col-lg-1">
@@ -269,7 +263,7 @@
                                     <ItemTemplate>
                                         <div class="form-inline">
                                             <div class="form-group">
-                                                <img style="height: 25px; width: 25px" src='<%# Eval("STATUS").ToString() == "PROCESSED" ? "../../images/148767.png" : (Eval("STATUS").ToString() == "ERROR" ? "../../images/148766.png" : (Eval("STATUS").ToString() == "UPLOADED" ? "../../images/148764.png" : "../../images/148853.png")) %>' />
+                                                <img style="height: 25px; width: 25px" src='<%# Eval("STATUS").ToString() == "PROCESSED" ? "../../images/148767.png" : (Eval("STATUS").ToString() == "ERROR" ? "../../images/148766.png" : ((Eval("STATUS").ToString() == "UPLOADED" || Eval("STATUS").ToString() == "SCHEDULED") ? "../../images/148764.png" : "../../images/148853.png")) %>' />
                                                 <label><%# Eval("STATUS").ToString() %></label>
                                             </div>
                                         </div>
@@ -344,13 +338,13 @@
             </div>
             <div class="modal-body">
 
-               <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
-                <uc1:FileMappingcharts runat="server" id="FileMappingcharts" />
+                <asp:HiddenField ID="hdnViewDetailsFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                <uc1:FileMappingcharts runat="server" ID="FileMappingcharts" />
 
             </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
-        </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
