@@ -91,7 +91,7 @@
             //appendTo: moCityMapping,
             source: function (request, response) {
                 $.ajax({
-                    url: '../../Service/CityAutoComplete.ashx',
+                    url: '../../../Service/CityAutoComplete.ashx',
                     dataType: "json",
                     data: {
                         term: request.term,
