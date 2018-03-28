@@ -195,7 +195,7 @@
                                             <asp:BoundField DataField="CityName" HeaderText="City" />
                                             <asp:BoundField DataField="Zone_Name" HeaderText="Zone Name" />
                                             <%--<asp:BoundField DataField="Status" HeaderText="Status" />--%>
-                                            <asp:BoundField DataField="" HeaderText="Number Of Hotels" />
+                                            <asp:BoundField DataField="NoOfHotels" HeaderText="Number Of Hotels" />
                                             <asp:TemplateField HeaderText="view-Edit">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
