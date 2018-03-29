@@ -414,7 +414,7 @@ namespace TLGX_Consumer.controls.staticdata
                     ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[9].Text)));
 
                     #region Fill City As per Selected Country
-                    List<MDMSVC.DC_City_Master_DDL> res = new List<DC_City_Master_DDL>();
+                    //List<MDMSVC.DC_City_Master_DDL> res = new List<DC_City_Master_DDL>();
                     //if (ddlSystemCountryName.SelectedItem.Value != "0")
                     //{
                     //    res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
@@ -429,93 +429,93 @@ namespace TLGX_Consumer.controls.staticdata
                     #endregion
 
                     ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[14].Text)));
-                    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[12].Text)));
-                    txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[11].Text);
+                    //ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[12].Text)));
+                    //txtSystemCityCode.Text = System.Web.HttpUtility.HtmlDecode(grdCityMaps.Rows[index].Cells[11].Text);
                     //}
 
-                    if (ddlSystemCityName.SelectedIndex == 0)
-                    {
-                        //var res = objMasterDataDAL.GetMasterCityDatawithCode(new Guid(ddlSystemCountryName.SelectedItem.Value));
-                        //var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
+                    //if (ddlSystemCityName.SelectedIndex == 0)
+                    //{
+                    //    //var res = objMasterDataDAL.GetMasterCityDatawithCode(new Guid(ddlSystemCountryName.SelectedItem.Value));
+                    //    //var res = masterSVc.GetMasterCityData(ddlSystemCountryName.SelectedItem.Value);
 
-                        string ccode = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
-                        string cname = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[7].Controls[1])).Text);
+                    //    string ccode = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[6].Controls[1])).Text);
+                    //    string cname = System.Web.HttpUtility.HtmlDecode(((LinkButton)(grdCityMaps.Rows[index].Cells[7].Controls[1])).Text);
 
-                        if (cname != null)
-                        {
-                            if (cname != "&nbsp;" && cname != "")
-                            {
-                                IEnumerable<MDMSVC.DC_City_Master_DDL> querynamed = res.Where(city => city.Name.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper().Equals(cname.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper()));
+                    //    if (cname != null)
+                    //    {
+                    //        if (cname != "&nbsp;" && cname != "")
+                    //        {
+                    //            IEnumerable<MDMSVC.DC_City_Master_DDL> querynamed = res.Where(city => city.Name.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper().Equals(cname.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper()));
 
-                                if (querynamed.Count() > 0)
-                                {
-                                    foreach (MDMSVC.DC_City_Master_DDL resc in querynamed)
-                                    {
-                                        ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
-                                        if (ddlSystemCityName.SelectedIndex > 0)
-                                        {
-                                            txtSystemCityCode.Text = resc.Code;
-                                            break;
-                                        }
+                    //            if (querynamed.Count() > 0)
+                    //            {
+                    //                foreach (MDMSVC.DC_City_Master_DDL resc in querynamed)
+                    //                {
+                    //                    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                    //                    if (ddlSystemCityName.SelectedIndex > 0)
+                    //                    {
+                    //                        txtSystemCityCode.Text = resc.Code;
+                    //                        break;
+                    //                    }
 
-                                    }
-                                }
+                    //                }
+                    //            }
 
-                                if (ddlSystemCityName.SelectedIndex == 0)
-                                {
-                                    IEnumerable<MDMSVC.DC_City_Master_DDL> queryname = res.Where(city => city.Name.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper().Contains(cname.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper()));
-                                    if (queryname.Count() > 0)
-                                    {
-                                        foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
-                                        {
-                                            ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
-                                            if (ddlSystemCityName.SelectedIndex > 0)
-                                            {
-                                                txtSystemCityCode.Text = resc.Code;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            if (ccode != "&nbsp;" && ccode != "")
-                            {
-                                if (ddlSystemCityName.SelectedIndex == 0)
-                                {
-                                    IEnumerable<MDMSVC.DC_City_Master_DDL> queryname = res.Where(city => city.Name.ToUpper().Equals(ccode));
-                                    if (queryname.Count() > 0)
-                                    {
-                                        foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
-                                        {
-                                            ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
-                                            if (ddlSystemCityName.SelectedIndex > 0)
-                                            {
-                                                txtSystemCityCode.Text = resc.Code;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                                if (ddlSystemCityName.SelectedIndex == 0)
-                                {
-                                    IEnumerable<MDMSVC.DC_City_Master_DDL> queryname = res.Where(city => (city.Code ?? string.Empty).ToUpper().Equals(ccode));
-                                    if (queryname.Count() > 0)
-                                    {
-                                        foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
-                                        {
-                                            ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
-                                            if (ddlSystemCityName.SelectedIndex > 0)
-                                            {
-                                                txtSystemCityCode.Text = resc.Code;
-                                                break;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                    //            if (ddlSystemCityName.SelectedIndex == 0)
+                    //            {
+                    //                IEnumerable<MDMSVC.DC_City_Master_DDL> queryname = res.Where(city => city.Name.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper().Contains(cname.Replace("*", "").Replace("-", "").Replace(" ", "").Replace("#", "").Replace("@", "").Replace("(", "").Replace(")", "").Replace("city", "").ToUpper()));
+                    //                if (queryname.Count() > 0)
+                    //                {
+                    //                    foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
+                    //                    {
+                    //                        ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                    //                        if (ddlSystemCityName.SelectedIndex > 0)
+                    //                        {
+                    //                            txtSystemCityCode.Text = resc.Code;
+                    //                            break;
+                    //                        }
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //        if (ccode != "&nbsp;" && ccode != "")
+                    //        {
+                    //            if (ddlSystemCityName.SelectedIndex == 0)
+                    //            {
+                    //                IEnumerable<MDMSVC.DC_City_Master_DDL> queryname = res.Where(city => city.Name.ToUpper().Equals(ccode));
+                    //                if (queryname.Count() > 0)
+                    //                {
+                    //                    foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
+                    //                    {
+                    //                        ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                    //                        if (ddlSystemCityName.SelectedIndex > 0)
+                    //                        {
+                    //                            txtSystemCityCode.Text = resc.Code;
+                    //                            break;
+                    //                        }
+                    //                    }
+                    //                }
+                    //            }
+                    //            if (ddlSystemCityName.SelectedIndex == 0)
+                    //            {
+                    //                IEnumerable<MDMSVC.DC_City_Master_DDL> queryname = res.Where(city => (city.Code ?? string.Empty).ToUpper().Equals(ccode));
+                    //                if (queryname.Count() > 0)
+                    //                {
+                    //                    foreach (MDMSVC.DC_City_Master_DDL resc in queryname)
+                    //                    {
+                    //                        ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(resc.City_Id.ToString()));
+                    //                        if (ddlSystemCityName.SelectedIndex > 0)
+                    //                        {
+                    //                            txtSystemCityCode.Text = resc.Code;
+                    //                            break;
+                    //                        }
+                    //                    }
+                    //                }
+                    //            }
+                    //        }
+                    //    }
 
-                    }
+                    //}
                     if (ddlSystemCityName.SelectedIndex > 0)
                     {
                         // CityMasterE state = masters.GetCityState(Guid.Parse(ddlSystemCityName.SelectedItem.Value));
@@ -534,9 +534,9 @@ namespace TLGX_Consumer.controls.staticdata
                             txtSystemStateName.Text = result1[0].StateName;
                         }
                         if (ddlSystemCityName.SelectedItem.Value == "0")
-                            btnAddCity.Visible = true;
+                            btnAddCity.Attributes.Add("style", "display:block");
                         else
-                            btnAddCity.Visible = false;
+                            btnAddCity.Attributes.Add("style", "display:none");
                     }
 
 
@@ -722,7 +722,7 @@ namespace TLGX_Consumer.controls.staticdata
                 if (!(ddlSystemCountryName.SelectedIndex == 0))
                 {
                     countryId = new Guid(ddlSystemCountryName.SelectedItem.Value);
-                    if (ddlSystemCityName.Items.Count > 0)
+                    if (ddlSystemCityName.Items.Count > 0 && ddlSystemCityName.SelectedItem.Value != "0")
                     {
                         cityId = new Guid(ddlSystemCityName.SelectedItem.Value);
                         // cityCode = masters.GetCodeById("city", new Guid(ddlSystemCityName.SelectedItem.Value));

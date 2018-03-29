@@ -82,6 +82,24 @@
     prm.add_endRequest(function () {
         callajax();
     });
+  
+
+ function checkLen(val) {
+
+        var rfvtxtSearchCity = document.getElementById("MainContent_CityMap_frmEditCityMap_rfvtxtSearchCity");
+        var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+        if (val.length == 0) {
+            debugger;
+            val.text = null;
+            vrhdnSelSystemCity_Id.value = null;
+            ValidatorEnable(rfvtxtSearchCity, true);
+            document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity").style.display = "block";
+        }
+        else {
+            ValidatorEnable(rfvtxtSearchCity, false);
+            document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity").style.display = "none";
+        }
+    }
     function callajax() {
         var moCityMapping = document.getElementById("moCityMapping");
         var hdnSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSystemCity_Id");
@@ -110,19 +128,17 @@
                             if (result[i].Name != null) {
                                 var cityname = result[i].Name;
                                 if (result[i].StateName != null) {
-                                    cityname = cityname + "; " + result[i].StateName;
+                                    cityname = cityname + ", " + result[i].StateName;
                                 }
-                                else {
-                                    if (result[i].StateCode != null) {
-                                        cityname = cityname + "; " + result[i].StateCode;
-                                    }
+                                if (result[i].StateCode != null) {
+                                           cityname = cityname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
                                 }
                                 if (result[i].CountryName != null) {
-                                    cityname = cityname + "; " + result[i].CountryName;
+                                    cityname = cityname + ", " + result[i].CountryName;
                                 }
                                 else {
                                     if (result[i].CountryCode != null) {
-                                        cityname = cityname + "; " + result[i].CountryCode;
+                                        cityname = cityname + ", " + result[i].CountryCode;
                                     }
                                 }
                                 hdnSystemCity.value = hdnSystemCity.value + cityname + "`";
@@ -833,9 +849,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
+                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City
+                                                            <asp:RequiredFieldValidator ID="rfvtxtSearchCity" runat="server" ErrorMessage="*" ControlToValidate="txtSearchCity" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                            <%--<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
+
+                                                        </label>
                                                         <div class="col-sm-7">
-                                                            <asp:TextBox ID="txtSearchCity" runat="server" CssClass="form-control" onlostfocus="callCityNamechange(this);"></asp:TextBox>
+                                                            <asp:TextBox ID="txtSearchCity" onkeyup="checkLen(this.value)" runat="server" CssClass="form-control" onlostfocus="callCityNamechange(this);"></asp:TextBox>
                                                             <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" Style="display: none;" OnSelectedIndexChanged="ddlSystemCityName_SelectedIndexChanged">
                                                                 <%-- <asp:ListItem Value="0">Select</asp:ListItem>--%>
                                                             </asp:DropDownList>
