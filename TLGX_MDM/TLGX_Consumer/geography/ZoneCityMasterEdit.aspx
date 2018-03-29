@@ -5,44 +5,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAbYHJn_5Kubmfa4-nYyAf_WpHB9mbfvc&libraries=places"></script>
     <style>
-        #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-}
+        #iw-container {
+            margin-bottom: 10px;
+        }
 
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-    color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-}
+            #iw-container .iw-content {
+                font-size: 13px;
+                line-height: 18px;
+                font-weight: 400;
+                margin-right: 1px;
+                padding: 2px;
+                max-height: 140px;
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            #iw-container .iw-title {
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                padding: 5px;
+                background-color: #48b5e9;
+                color: white;
+                margin: 0;
+                border-radius: 2px 2px 0 0;
+            }
     </style>
     <script>
-        //var map;
-        //function ChangedCountry() {
-        //    var newCountry = $("#MainContent_ddlMasterCountryEdit option:selected").val();
-        //    var oldCountry = $("#hdnCountryId").val();
-        //    if (newCountry != oldCountry) {
-        //        var result = window.confirm('Country for this zone has been changed..!All cities will be deleted..');
-        //        if (result == true)
-        //            $("#HdnCountryChangeFlag").val("True");
-        //        else
-        //            $("#HdnCountryChangeFlag").val("False");
-        //    }
-        //    else $("#HdnCountryChangeFlag").val("False");
-        //}
         function initializeMyMap() {
             $("#hdnupdateMap").val("HotelMap");
             $("#dvMapHotel").empty();
@@ -50,12 +39,19 @@
             var longg = $("#MainContent_txtEditLongitude").val();
             var zoneLatLong = new google.maps.LatLng(lat, longg);
             var radius = parseInt($("#MainContent_ddlIncludeHotelUpto option:selected").val());
-            //var radius = 4000;   //$("#MainContent_ddlShowDistance").val();
             //containerForMap
             var mapCanvas = document.getElementById("dvMapHotel");
-
             //optionsForMap
-            var mapOptions = { center: zoneLatLong, zoom: 13 };
+            var mapOptions =
+                {
+                    center: zoneLatLong,
+                    zoom: 13,
+                    styles: [{
+                        featureType: "poi.business",
+                        elementType: "labels",
+                        stylers: [{ visibility: "off" }]
+                    }]
+                };
 
             //createMAP
             map = new google.maps.Map(mapCanvas, mapOptions);
@@ -101,16 +97,13 @@
             else if (a == "LatLongMap")
                 GetLatLongOnMap();
             else initializeMyMap();
-           
+
         });
 
         function displayMarkers() {
-           //var Latitude = $("#MainContent_txtEditLatitude").val();
-           //var Longitude = $("#MainContent_txtEditLongitude").val();
-          // var CountryName = $("#MainContent_ddlMasterCountryEdit option:selected").text();
-            var range = parseInt($("#MainContent_ddlIncludeHotelUpto option:selected").val())/1000;
-           var ZoneId = $("#hdnZone_id").val();
-           //var DistanceRange = 10000;
+            var range = parseInt($("#MainContent_ddlIncludeHotelUpto option:selected").val()) / 1000;
+            var ZoneId = $("#hdnZone_id").val();
+            //var DistanceRange = 10000;
             $.ajax({
                 url: '../../../Service/GetZoneHotelsForMap.ashx',
                 // data: { 'Latitude': Latitude, 'Longitude': Longitude, 'CountryName': CountryName, 'DistanceRange': DistanceRange },
@@ -118,13 +111,12 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                   // debugger;
+                    // debugger;
                     if (result != null) {
-                       // alert("Zone HotelService Called");
+                        // alert("Zone HotelService Called");
                         // this variable sets the map bounds and zoom level according to markers position
                         var bounds = new google.maps.LatLngBounds();
-                        for (var i = 0; i < result.length;i++)
-                        {
+                        for (var i = 0; i < result.length; i++) {
                             var markerLatLng = new google.maps.LatLng(result[i].Latitude, result[i].Longitude);
                             var hotelName = result[i].HotelName;
                             var acco_Id = result[i].Accommodation_Id;
@@ -135,8 +127,8 @@
                             else {
                                 markerHotels = createRedMarker(markerLatLng, hotelName);
                             }
-                            InfWindowoAndMarkerListener(markerHotels,hotelName, acco_Id);
-                           // createMarker(markerLatLng, hotelName, acco_Id);
+                            InfWindowoAndMarkerListener(markerHotels, hotelName, acco_Id);
+                            // createMarker(markerLatLng, hotelName, acco_Id);
                             // Marker’s Lat. and Lng. values are added to bounds variable
                             bounds.extend(markerLatLng);
                         }
@@ -149,69 +141,45 @@
             });
         }
         function createGreenMarker(Markerlatlng, Hotelname) {
-           // create marker
-                 markerHotels = new google.maps.Marker({
-                    map: map,
-                    position: Markerlatlng,
-                    icon: "http://maps.google.com/mapfiles/ms/micons/green-dot.png",
-                    title: Hotelname
-                 });
+            // create marker
+            markerHotels = new google.maps.Marker({
+                map: map,
+                position: Markerlatlng,
+                icon: "http://maps.google.com/mapfiles/ms/micons/green-dot.png",
+                title: Hotelname
+            });
 
-                 return markerHotels;
+            return markerHotels;
         }
         function createRedMarker(Markerlatlng, Hotelname) {
             // create marker
-             markerHotels = new google.maps.Marker({
+            markerHotels = new google.maps.Marker({
                 map: map,
                 position: Markerlatlng,
                 icon: "http://maps.google.com/mapfiles/ms/micons/red-dot.png",
                 title: Hotelname
-             });
+            });
 
-             return markerHotels;
+            return markerHotels;
         }
         function InfWindowoAndMarkerListener(markerHotels, hotelName, acco_Id) {
-           //  This event expects a click on a marker When this event is fired the infowindow content is created and the infowindow is opened
-                google.maps.event.addListener(markerHotels, 'click', function () {
+            //  This event expects a click on a marker When this event is fired the infowindow content is created and the infowindow is opened
+            google.maps.event.addListener(markerHotels, 'click', function () {
 
-                    // Variable to define the HTML content to be inserted in the infowindow
-                    var iwContent = '<div id="iw_container">' +
-                    '<div class="iw_title">' + hotelName + '</div>' +
-                    '<div class="iw_content">' + acco_Id + '<br />' + '</div></div>';
+                // Variable to define the HTML content to be inserted in the infowindow
+                var iwContent = '<div id="iw-container">' +
+                '<div class="iw-title">' + hotelName + '</div>' +
+                '</div>';
+                // for content of infowindow: '<div class="iw-content">' + acco_Id + '<br />' + '</div>'
+                // including content to the infowindow
+                infoWindow.setContent(iwContent);
 
-                    // including content to the infowindow
-                    infoWindow.setContent(iwContent);
+                // opening the infowindow in the current map and at the current marker location
+                infoWindow.open(map, markerHotels);
 
-                    // opening the infowindow in the current map and at the current marker location
-                    infoWindow.open(map, markerHotels);
-                });
+            });
+
         }
-      
-        //function createMarker(Markerlatlng, Hotelname, acco_id) {
-        //    //create marker
-        //    var markerHotels = new google.maps.Marker({
-        //        map: map,
-        //        position: Markerlatlng,
-        //        icon: "http://maps.google.com/mapfiles/ms/micons/green-dot.png",
-        //        title: Hotelname
-        //    });
-        //    // This event expects a click on a marker When this event is fired the infowindow content is created and the infowindow is opened
-        //    google.maps.event.addListener(markerHotels, 'click', function () {
-
-        //        // Variable to define the HTML content to be inserted in the infowindow
-        //        var iwContent = '<div id="iw_container">' +
-        //        '<div class="iw_title">' + Hotelname + '</div>' +
-        //        '<div class="iw_content">' + acco_id + '<br />' + '</div></div>';
-
-        //        // including content to the infowindow
-        //        infoWindow.setContent(iwContent);
-
-        //        // opening the infowindow in the current map and at the current marker location
-        //        infoWindow.open(map, markerHotels);
-        //    });
-
-        //}
-      
         function GetLatLongOnMap() {
             $("#hdnupdateMap").val("LatLongMap");
             //onOverlay();
@@ -224,7 +192,7 @@
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode({ 'address': address }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
-                    
+
                     var centerLatLong = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                     var mapInDvMapHotel = document.getElementById("dvMapHotel");
 
@@ -234,7 +202,6 @@
                     //createMAP
                     Newmap = new google.maps.Map(mapInDvMapHotel, newMapOptions);
                     google.maps.event.addListener(Newmap, 'click', function (e) {
-                        //infoWindow.close();
                         $("#MainContent_txtEditLatitude").val(e.latLng.lat());
                         $("#MainContent_txtEditLongitude").val(e.latLng.lng());
                     });
@@ -270,9 +237,8 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <asp:HiddenField ID="hdnZone_id" runat="server" ClientIDMode="Static" />
-                           <asp:HiddenField ID="hdnupdateMap" runat="server" ClientIDMode="Static" />
+                            <asp:HiddenField ID="hdnupdateMap" runat="server" ClientIDMode="Static" />
                             <asp:HiddenField ID="hdnCountryId" runat="server" ClientIDMode="Static" />
-                         <%--   <asp:HiddenField ID="HdnCountryChangeFlag" runat="server" ClientIDMode="Static" />--%>
                             <div class="row">
                                 <div class="col-sm-12" style="display: none" id="dvmsgUpdateZone" runat="server"></div>
                                 <div class="col-sm-6">
@@ -319,21 +285,21 @@
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="ddlIncludeHotelUpto">Include Hotels Upto Range (km)</label>
                                         <div class="col-sm-8">
-                                             <asp:DropDownList ID="ddlIncludeHotelUpto" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Value="4000">4</asp:ListItem>
-                                                        <asp:ListItem Value="2000">2</asp:ListItem>
+                                            <asp:DropDownList ID="ddlIncludeHotelUpto" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem Value="4000">4</asp:ListItem>
+                                                <asp:ListItem Value="2000">2</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <div class="col-sm-6">
                                             <div class="col-sm-6">
-                                                 <button id="btnUpdateLatLong" onclick="GetLatLongOnMap()" class="btn btn-primary btn-sm">Get LatLong on Map</button>
+                                                <button id="btnUpdateLatLong" onclick="GetLatLongOnMap()" class="btn btn-primary btn-sm">Get LatLong on Map</button>
                                             </div>
                                             <div class="col-sm-6">
-                                            <asp:Button ID="btnUpdateZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save and Show Hotels" OnClick="btnUpdateZoneMaster_Click" OnClientClick="initializeMyMap()" />
-                                           </div>
+                                                <asp:Button ID="btnUpdateZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save and Show Hotels" OnClick="btnUpdateZoneMaster_Click" OnClientClick="initializeMyMap()" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -342,7 +308,7 @@
                             <div class="panel panel-default">
                                 <div id="Tabs" class="panel-body" role="tabpanel">
                                     <ul class="nav nav-tabs tabs" role="tablist">
-                                        
+
                                         <li class="active"><a role="tab" data-toggle="tab" aria-controls="MapHotels" href="#MapHotels">Map Hotels</a></li>
                                         <li><a role="tab" data-toggle="tab" aria-controls="ShowZoneHotelList" href="#ShowZoneHotelList">Zone Hotel-List</a></li>
                                         <li><a role="tab" data-toggle="tab" aria-controls="ShowZoneCities" href="#ShowZoneCities">Zone Cities</a></li>
@@ -388,7 +354,9 @@
                                         <div role="tabpanel" id="ShowZoneHotelList" class="tab-pane fade in">
                                             <br />
                                             <div class="col-sm-3">
-                                              <h4> Search Results (Total Count: <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4></div>
+                                                <h4>Search Results (Total Count:
+                                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
+                                            </div>
                                             <div class="col-sm-8">
                                                 <div class="input-group col-md-3 pull-right" runat="server" id="divDropdownForDistance">
                                                     <label class="input-group-addon" for="ddlShowDistance">Distance(Km)</label>
@@ -407,11 +375,9 @@
                                                     EmptyDataText="No Hotels found for thiz Zone " CssClass="table table-hover table-striped" DataKeyNames="Accommodation_Id">
                                                     <Columns>
                                                         <asp:BoundField DataField="HotelName" HeaderText="HotelName" />
-                                                        <asp:BoundField DataField="Distance" HeaderText="Distance(km)" HtmlEncode="False" DataFormatString="{0:n2}"/>
+                                                        <asp:BoundField DataField="Distance" HeaderText="Distance(km)" HtmlEncode="False" DataFormatString="{0:n2}" />
                                                         <asp:BoundField DataField="StarRating" HeaderText="StarRating" />
                                                         <asp:BoundField DataField="City" HeaderText="City" />
-                                                        <%--<asp:BoundField DataField="Latitude" HeaderText="Latitude" />--%>
-                                                        <%--<asp:BoundField DataField="Longitude" HeaderText="Longitude" />--%>
                                                     </Columns>
                                                 </asp:GridView>
                                             </div>
@@ -423,9 +389,6 @@
                                         <div role="tabpanel" id="MapHotels" class="tab-pane fade in  active">
                                             <br />
                                             <br />
-                                            <%--<div id="overlay" onclick="offOverlay()">
-                                                  <div id="text">Click on the map to set Center..!</div>
-                                             </div>--%>
                                             <div id="dvMapHotel" style="width: 100%; height: 500px">
                                             </div>
 
