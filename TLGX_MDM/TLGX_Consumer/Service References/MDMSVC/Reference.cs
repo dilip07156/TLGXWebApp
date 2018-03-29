@@ -27058,9 +27058,6 @@ namespace TLGX_Consumer.MDMSVC {
         private string Create_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DistanceRangeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Edit_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -27094,13 +27091,13 @@ namespace TLGX_Consumer.MDMSVC {
         private string Zone_NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> Zone_RadiusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Zone_TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Zone_idField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int includeUptoRangeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -27186,19 +27183,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
                     this.Create_UserField = value;
                     this.RaisePropertyChanged("Create_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int DistanceRange {
-            get {
-                return this.DistanceRangeField;
-            }
-            set {
-                if ((this.DistanceRangeField.Equals(value) != true)) {
-                    this.DistanceRangeField = value;
-                    this.RaisePropertyChanged("DistanceRange");
                 }
             }
         }
@@ -27347,6 +27331,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Zone_Radius {
+            get {
+                return this.Zone_RadiusField;
+            }
+            set {
+                if ((this.Zone_RadiusField.Equals(value) != true)) {
+                    this.Zone_RadiusField = value;
+                    this.RaisePropertyChanged("Zone_Radius");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Zone_Type {
             get {
                 return this.Zone_TypeField;
@@ -27368,19 +27365,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Zone_idField.Equals(value) != true)) {
                     this.Zone_idField = value;
                     this.RaisePropertyChanged("Zone_id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int includeUptoRange {
-            get {
-                return this.includeUptoRangeField;
-            }
-            set {
-                if ((this.includeUptoRangeField.Equals(value) != true)) {
-                    this.includeUptoRangeField = value;
-                    this.RaisePropertyChanged("includeUptoRange");
                 }
             }
         }
@@ -27436,6 +27420,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Zone_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> Zone_RadiusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Zone_TypeField;
@@ -27592,6 +27579,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Zone_NameField, value) != true)) {
                     this.Zone_NameField = value;
                     this.RaisePropertyChanged("Zone_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> Zone_Radius {
+            get {
+                return this.Zone_RadiusField;
+            }
+            set {
+                if ((this.Zone_RadiusField.Equals(value) != true)) {
+                    this.Zone_RadiusField = value;
+                    this.RaisePropertyChanged("Zone_Radius");
                 }
             }
         }
@@ -47069,13 +47069,6 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SearchZoneCities", ReplyAction="http://tempuri.org/IMasters/SearchZoneCitiesResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch[]> SearchZoneCitiesAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/DeleteZoneCities", ReplyAction="http://tempuri.org/IMasters/DeleteZoneCitiesResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/DeleteZoneCitiesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message DeleteZoneCities(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/DeleteZoneCities", ReplyAction="http://tempuri.org/IMasters/DeleteZoneCitiesResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteZoneCitiesAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/DeactivateOrActivateZones", ReplyAction="http://tempuri.org/IMasters/DeactivateOrActivateZonesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/DeactivateOrActivateZonesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Message DeactivateOrActivateZones(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ);
@@ -49375,14 +49368,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch[]> SearchZoneCitiesAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ) {
             return base.Channel.SearchZoneCitiesAsync(RQ);
-        }
-        
-        public TLGX_Consumer.MDMSVC.DC_Message DeleteZoneCities(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ) {
-            return base.Channel.DeleteZoneCities(RQ);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteZoneCitiesAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ) {
-            return base.Channel.DeleteZoneCitiesAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message DeactivateOrActivateZones(TLGX_Consumer.MDMSVC.DC_ZoneRQ RQ) {

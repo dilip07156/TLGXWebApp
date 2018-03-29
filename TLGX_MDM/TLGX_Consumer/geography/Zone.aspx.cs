@@ -206,6 +206,7 @@ namespace TLGX_Consumer.geography
             MDMSVC.DC_ZoneRQ param = new MDMSVC.DC_ZoneRQ();
             var Zone_id= Guid.NewGuid();
             param.Action = "ADD";
+            param.Zone_Radius = 4.0;
             param.Zone_id = Zone_id;
             param.Create_Date = DateTime.Now;
             param.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
@@ -228,7 +229,6 @@ namespace TLGX_Consumer.geography
                     var addHotels = masterSVc.InsertZoneHotelsInTable(param);
                     string strQueryString = GetQueryString(Zone_id.ToString(), "0");
                     Response.Redirect(strQueryString, true);
-                    //Response.Redirect("ZoneCityMasterEdit.aspx?Zone_Id=" + Zone_id);
                 }
                    
                 else

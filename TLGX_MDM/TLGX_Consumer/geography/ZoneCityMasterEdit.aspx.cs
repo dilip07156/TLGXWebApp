@@ -22,12 +22,14 @@ namespace TLGX_Consumer.geography
             {
                 LoadMasters();
                 getZoneInfo(string.Empty);
-            }          
+            }
         }
         protected void LoadMasters()
         {
             fillcountries(ddlMasterCountryEdit);
             BindZoneType(ddlEditZoneType);
+            BindZoneRadius(ddlZoneRadius); 
+            BindZoneRadius(ddlShowDistance);
         }
         private void fillcountries(DropDownList ddl)
         {
@@ -65,6 +67,22 @@ namespace TLGX_Consumer.geography
                     ddl.Items.Insert(0, new ListItem { Text = "--Select--", Value = "0" });
                 }
         }
+        private void BindZoneRadius(DropDownList ddl)
+        {
+            ddl.Items.Clear();
+            var result = masterSVc.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "Zone", Name = "ZoneRadius" });
+            if (result != null)
+                if (result.Count > 0)
+                {
+                    ddl.Items.Clear();
+                    ddl.DataSource = result;
+                    ddl.DataTextField = "AttributeValue";
+                    ddl.DataValueField = "AttributeValue";
+                    ddl.DataBind();
+                    //ddl.Items.FindByValue("4.0").Selected = true;
+                }
+        }
+
         public void getZoneInfo(string calledfrom)
         {
             var result = masterSVc.SearchZone(new MDMSVC.DC_ZoneRQ  { Zone_id = Zone_Id });
@@ -75,8 +93,9 @@ namespace TLGX_Consumer.geography
                 txtEditLatitude.Text= (from m in result select m.Latitude).FirstOrDefault();
                 txtEditLongitude.Text = (from m in result select m.Longitude).FirstOrDefault();
                 ddlMasterCountryEdit.SelectedIndex = ddlMasterCountryEdit.Items.IndexOf(ddlMasterCountryEdit.Items.FindByText(result[0].CountryName));
+                ddlZoneRadius.SelectedIndex = ddlZoneRadius.Items.IndexOf(ddlZoneRadius.Items.FindByText((result[0].Zone_Radius).ToString()));
                 ddlEditZoneType.SelectedIndex = ddlEditZoneType.Items.IndexOf(ddlEditZoneType.Items.FindByText(result[0].Zone_Type));
-
+                ddlShowDistance.SelectedIndex = ddlShowDistance.Items.IndexOf(ddlShowDistance.Items.FindByText((result[0].Zone_Radius).ToString()));
                 hdnCountryId.Value = ddlMasterCountryEdit.SelectedValue;
                 fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
                 //cityList
@@ -106,11 +125,7 @@ namespace TLGX_Consumer.geography
         protected void fillgrdZoneHotelSearchData()
         {
             MDMSVC.DC_ZoneRQ zh = new MDMSVC.DC_ZoneRQ();
-            //zh.Latitude = txtEditLatitude.Text;
-            //zh.Longitude = txtEditLongitude.Text;
-            // zh.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
-            //zh.DistanceRange = Convert.ToInt32(ddlShowDistance.SelectedValue);
-            var DistanceRange = Convert.ToInt32(ddlShowDistance.SelectedValue);
+            var DistanceRange = Convert.ToDouble(ddlShowDistance.SelectedValue);
             zh.Zone_id = Zone_Id;
             var result = masterSVc.SearchZoneHotels(zh);
             if (result != null && result.Count > 0)
@@ -131,14 +146,21 @@ namespace TLGX_Consumer.geography
         {
             dvUpdateMsg.Style.Add("display", "none");
             dvmsgUpdateZone.Style.Add("display", "none");
-            // var a = HdnCountryChangeFlag.Value;
+            string lat   = txtEditLatitude.Text;
+            string longg = txtEditLongitude.Text;
+            double zoneRadius = Convert.ToDouble(ddlZoneRadius.SelectedValue);
+
             var searchZone = masterSVc.SearchZone(new MDMSVC.DC_ZoneRQ { Zone_id = Zone_Id });
             if (searchZone != null)
             {
                 var ExistingZone = (from a in searchZone select a).First();
-                if(ExistingZone.Latitude!= txtEditLatitude.Text || ExistingZone.Longitude!= txtEditLongitude.Text)
+                if(ExistingZone.Latitude!= lat || ExistingZone.Longitude!= longg)
                 {
                     var deletezone = masterSVc.DeleteZoneHotelsInTable(new MDMSVC.DC_ZoneRQ { Zone_id = Zone_Id });
+                }
+                if(ExistingZone.Zone_Radius!= zoneRadius)
+                {
+                    var updateZone = masterSVc.UpdateZoneHotelsInTable(new MDMSVC.DC_ZoneRQ { Zone_id = Zone_Id, Zone_Radius= zoneRadius });
                 }
             }
             
@@ -146,13 +168,13 @@ namespace TLGX_Consumer.geography
             UPdparam.Action = "UPDATE";
             UPdparam.Zone_id = Zone_Id;
             UPdparam.Zone_Name = txtEditZoneName.Text;
-            UPdparam.Latitude = txtEditLatitude.Text;
-            UPdparam.Longitude = txtEditLongitude.Text;
+            UPdparam.Latitude = lat;
+            UPdparam.Longitude = longg;
             UPdparam.Zone_Type = ddlEditZoneType.SelectedItem.Text;
             UPdparam.Edit_Date = DateTime.Now;
             UPdparam.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
             UPdparam.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
-            UPdparam.includeUptoRange = Convert.ToInt32(ddlIncludeHotelUpto.SelectedValue);
+            UPdparam.Zone_Radius = zoneRadius;
             var result = masterSVc.AddzoneMaster(UPdparam);
             var addZone = masterSVc.InsertZoneHotelsInTable(UPdparam);
             getZoneInfo(string.Empty);

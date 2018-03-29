@@ -130,13 +130,13 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.TextBox txtEditLongitude;
         
         /// <summary>
-        /// ddlIncludeHotelUpto control.
+        /// ddlZoneRadius control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIncludeHotelUpto;
+        protected global::System.Web.UI.WebControls.DropDownList ddlZoneRadius;
         
         /// <summary>
         /// btnUpdateZoneMaster control.

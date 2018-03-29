@@ -32,13 +32,16 @@
             }
     </style>
     <script>
+        //to set active to Tab
+       
         function initializeMyMap() {
             $("#hdnupdateMap").val("HotelMap");
             $("#dvMapHotel").empty();
             var lat = $("#MainContent_txtEditLatitude").val();
             var longg = $("#MainContent_txtEditLongitude").val();
             var zoneLatLong = new google.maps.LatLng(lat, longg);
-            var radius = parseInt($("#MainContent_ddlIncludeHotelUpto option:selected").val());
+            //range in meter
+            var radius = parseFloat($("#MainContent_ddlZoneRadius option:selected").val()) * 1000;
             //containerForMap
             var mapCanvas = document.getElementById("dvMapHotel");
             //optionsForMap
@@ -101,12 +104,11 @@
         });
 
         function displayMarkers() {
-            var range = parseInt($("#MainContent_ddlIncludeHotelUpto option:selected").val()) / 1000;
+            //range in km
+            //var range = parseFloat($("#MainContent_ddlZoneRadius option:selected").val());
             var ZoneId = $("#hdnZone_id").val();
-            //var DistanceRange = 10000;
             $.ajax({
                 url: '../../../Service/GetZoneHotelsForMap.ashx',
-                // data: { 'Latitude': Latitude, 'Longitude': Longitude, 'CountryName': CountryName, 'DistanceRange': DistanceRange },
                 data: { 'ZoneId': ZoneId },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
@@ -121,7 +123,9 @@
                             var hotelName = result[i].HotelName;
                             var acco_Id = result[i].Accommodation_Id;
                             var markerHotels;
-                            if (result[i].Distance <= range) {
+                            //if (result[i].Distance <= range)
+                            if (result[i].Included == true)
+                            {
                                 markerHotels = createGreenMarker(markerLatLng, hotelName);
                             }
                             else {
@@ -283,11 +287,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="control-label col-sm-4" for="ddlIncludeHotelUpto">Include Hotels Upto Range (km)</label>
+                                        <label class="control-label col-sm-4" for="ddlZoneRadius">Include Hotels Upto Range (km)</label>
                                         <div class="col-sm-8">
-                                            <asp:DropDownList ID="ddlIncludeHotelUpto" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Value="4000">4</asp:ListItem>
-                                                <asp:ListItem Value="2000">2</asp:ListItem>
+                                            <asp:DropDownList ID="ddlZoneRadius" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                     </div>
@@ -315,84 +318,82 @@
                                     </ul>
                                     <div class="tab-content">
                                         <!--For Cities-->
-                                        <div role="tabpanel" id="ShowZoneCities" class="tab-pane fade in">
-                                            <br />
-                                            <div class="col-sm-12">
-                                                <div class="col-sm-4">
-                                                    <asp:DropDownList ID="ddlMasterCityEdit" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                        <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
-                                                    </asp:DropDownList>
+                                       
+                                                <div role="tabpanel" id="ShowZoneCities" class="tab-pane fade in">
+                                                       <br />
+                                                    <div class="col-sm-12">
+                                                        <div class="col-sm-4">
+                                                            <asp:DropDownList ID="ddlMasterCityEdit" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                                <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                            </asp:DropDownList>
 
-                                                </div>
-                                                <div class="col-sm-8 pull-left">
-                                                    <asp:Button ID="btnAddZoneCity" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" OnClick="btnAddZoneCity_Click" />
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <br />
-                                                <div style="display: none" runat="server" id="dvMsgaddZoneCity"></div>
-                                                <asp:GridView ID="grdZoneCities" runat="server" AutoGenerateColumns="False"
-                                                    EmptyDataText="No cities found for thiz Zone " CssClass="table table-hover table-striped" DataKeyNames="ZoneCityMapping_Id">
-                                                    <Columns>
-                                                        <asp:BoundField DataField="CityName" HeaderText="City Name" />
-                                                        <asp:TemplateField HeaderText="Action">
-                                                            <ItemTemplate>
-                                                                <asp:LinkButton ID="btnDeleteZoneCity" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "SoftDelete"  %>'
-                                                                    CssClass="btn btn-default" CommandArgument='<%# Bind("ZoneCityMapping_Id") %>'>
+                                                        </div>
+                                                        <div class="col-sm-8 pull-left">
+                                                            <asp:Button ID="btnAddZoneCity" runat="server" CssClass="btn btn-primary btn-sm" Text="Add City" OnClick="btnAddZoneCity_Click" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12">
+                                                        <br />
+                                                        <div style="display: none" runat="server" id="dvMsgaddZoneCity"></div>
+                                                        <asp:GridView ID="grdZoneCities" runat="server" AutoGenerateColumns="False"
+                                                            EmptyDataText="No cities found for thiz Zone " CssClass="table table-hover table-striped" DataKeyNames="ZoneCityMapping_Id">
+                                                            <Columns>
+                                                                <asp:BoundField DataField="CityName" HeaderText="City Name" />
+                                                                <asp:TemplateField HeaderText="Action">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="btnDeleteZoneCity" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "SoftDelete"  %>'
+                                                                            CssClass="btn btn-default" CommandArgument='<%# Bind("ZoneCityMapping_Id") %>'>
                                                     <span aria-hidden="true" class='<%# Eval("IsActive").ToString() == "False" ? "glyphicon glyphicon-repeat" : "glyphicon glyphicon-remove" %>'></span>
                                                     <%# Eval("IsActive").ToString() == "false" ? "UnDelete" : "Delete"   %>
-                                                                </asp:LinkButton>
-                                                            </ItemTemplate>
-                                                        </asp:TemplateField>
-                                                    </Columns>
-                                                </asp:GridView>
-                                            </div>
-
-                                        </div>
-
-                                        <!--For Hotel-List-->
-                                        <div role="tabpanel" id="ShowZoneHotelList" class="tab-pane fade in">
-                                            <br />
-                                            <div class="col-sm-3">
-                                                <h4>Search Results (Total Count:
-                                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <div class="input-group col-md-3 pull-right" runat="server" id="divDropdownForDistance">
-                                                    <label class="input-group-addon" for="ddlShowDistance">Distance(Km)</label>
-                                                    <asp:DropDownList ID="ddlShowDistance" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowDistance_SelectedIndexChanged">
-                                                        <asp:ListItem Value="2">2</asp:ListItem>
-                                                        <asp:ListItem Value="4">4</asp:ListItem>
-                                                        <asp:ListItem Value="10">10</asp:ListItem>
-                                                    </asp:DropDownList>
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                            </Columns>
+                                                        </asp:GridView>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <br />
-                                            <br />
-                                            <br />
-                                            <div class="col-sm-12">
-                                                <asp:GridView ID="grdZoneHotelSearch" runat="server" AutoGenerateColumns="False"
-                                                    EmptyDataText="No Hotels found for thiz Zone " CssClass="table table-hover table-striped" DataKeyNames="Accommodation_Id">
-                                                    <Columns>
-                                                        <asp:BoundField DataField="HotelName" HeaderText="HotelName" />
-                                                        <asp:BoundField DataField="Distance" HeaderText="Distance(km)" HtmlEncode="False" DataFormatString="{0:n2}" />
-                                                        <asp:BoundField DataField="StarRating" HeaderText="StarRating" />
-                                                        <asp:BoundField DataField="City" HeaderText="City" />
-                                                    </Columns>
-                                                </asp:GridView>
-                                            </div>
-
-                                        </div>
-
-
+                                          
+                                        <!--For Hotel-List-->
+                                    
+                                                <div role="tabpanel" id="ShowZoneHotelList" class="tab-pane fade in">
+                                                       <br />
+                                                    <div class="col-sm-3">
+                                                        <h4>Search Results (Total Count:
+                                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</h4>
+                                                    </div>
+                                                    <div class="col-sm-8">
+                                                        <div class="input-group col-md-3 pull-right" runat="server" id="divDropdownForDistance">
+                                                            <label class="input-group-addon" for="ddlShowDistance">Distance(Km)</label>
+                                                            <asp:DropDownList ID="ddlShowDistance" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowDistance_SelectedIndexChanged">
+                                                               
+                                                            </asp:DropDownList>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <div class="col-sm-12">
+                                                        <asp:GridView ID="grdZoneHotelSearch" runat="server" AutoGenerateColumns="False"
+                                                            EmptyDataText="No Hotels found for thiz Zone " CssClass="table table-hover table-striped" DataKeyNames="Accommodation_Id">
+                                                            <Columns>
+                                                                <asp:BoundField DataField="HotelName" HeaderText="HotelName" />
+                                                                <asp:BoundField DataField="Distance" HeaderText="Distance(km)" HtmlEncode="False" DataFormatString="{0:n2}" />
+                                                                <asp:BoundField DataField="StarRating" HeaderText="StarRating" />
+                                                                <asp:BoundField DataField="City" HeaderText="City" />
+                                                            </Columns>
+                                                        </asp:GridView>
+                                                    </div>
+                                                </div>
+                                     
                                         <!--For Hotel-Map-->
-                                        <div role="tabpanel" id="MapHotels" class="tab-pane fade in  active">
-                                            <br />
-                                            <br />
-                                            <div id="dvMapHotel" style="width: 100%; height: 500px">
-                                            </div>
-
-                                        </div>
+                                      
+                                                <div role="tabpanel" id="MapHotels" class="tab-pane fade in  active">
+                                                    <br />
+                                                    <br />
+                                                    <div id="dvMapHotel" style="width: 100%; height: 500px">
+                                                    </div>
+                                                </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -402,6 +403,4 @@
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
-
-
 </asp:Content>
