@@ -84,7 +84,6 @@ namespace TLGX_Consumer.geography
                     ddl.DataTextField = "AttributeValue";
                     ddl.DataValueField = "AttributeValue";
                     ddl.DataBind();
-                    //ddl.Items.FindByValue("4.0").Selected = true;
                 }
         }
 

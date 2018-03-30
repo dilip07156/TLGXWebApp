@@ -267,11 +267,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlAddHotelIncludeRange">Include Hotels Upto Range (km)</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="ddlAddHotelIncludeRange" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <button type="button" id="btnGetLatLong" class="btn btn-primary btn-sm" onclick="getLatLong()">Get Latitude and Longitude</button>
                                                         <button type="button" id="btnGetLatLongOnMap" class="btn btn-primary btn-sm" onclick="GetLatLongOnMap()">Get LatLong On Map</button>
                                                     </div>
                                                 </div>
+                                              
                                             </div>
 
                                             <div class="col-sm-6">
@@ -306,7 +315,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <div class="pull-right">
+                                                    <div class="col-sm-4"></div>
+                                                    <div  class="col-sm-8">
                                                         <div class="col-sm-6">
                                                             <asp:Button ID="btnSaveZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnSaveZoneMaster_Click" />
                                                         </div>
@@ -318,7 +328,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div id="dvLatLongMap" style=" width: 500px;height: 300px" runat="server">
+                                            <div id="dvLatLongMap" style="height: 300px" runat="server">
                                             </div>
                                         </div>
                                     </div>
