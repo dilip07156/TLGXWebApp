@@ -49,6 +49,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvUpdateMsg;
         
         /// <summary>
+        /// hdnZone_id control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnZone_id;
+        
+        /// <summary>
         /// hdnupdateMap control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.TextBox txtEditLongitude;
         
         /// <summary>
+        /// ddlZoneRadius control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlZoneRadius;
+        
+        /// <summary>
         /// btnUpdateZoneMaster control.
         /// </summary>
         /// <remarks>
@@ -166,6 +184,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.GridView grdZoneCities;
         
         /// <summary>
+        /// lblTotalCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalCount;
+        
+        /// <summary>
         /// divDropdownForDistance control.
         /// </summary>
         /// <remarks>
@@ -184,6 +211,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlShowDistance;
         
         /// <summary>
+        /// btnMapAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMapAll;
+        
+        /// <summary>
         /// grdZoneHotelSearch control.
         /// </summary>
         /// <remarks>
@@ -191,5 +227,14 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdZoneHotelSearch;
+        
+        /// <summary>
+        /// TabName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField TabName;
     }
 }
