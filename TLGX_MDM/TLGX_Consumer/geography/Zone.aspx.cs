@@ -303,7 +303,7 @@ namespace TLGX_Consumer.geography
                         if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                         {
                             fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
-                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
+                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been Undeleted successfully", BootstrapAlertType.Success);
                         }
                             
                         else
