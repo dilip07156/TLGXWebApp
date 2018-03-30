@@ -718,68 +718,76 @@ namespace TLGX_Consumer.controls.staticdata
                 string countryCode = string.Empty;
                 string cityCode = string.Empty;
                 string masterCountryName = string.Empty;
-
-                if (!(ddlSystemCountryName.SelectedIndex == 0))
+                if(txtSearchCity.Text != string.Empty && ddlSystemCountryName.SelectedIndex != 0 && ((ddlSystemCityName.Items.Count > 0 && ddlSystemCityName.SelectedItem.Value != "0") || !string.IsNullOrWhiteSpace(hdnSelSystemCity_Id.Value)))
                 {
-                    countryId = new Guid(ddlSystemCountryName.SelectedItem.Value);
-                    if (ddlSystemCityName.Items.Count > 0 && ddlSystemCityName.SelectedItem.Value != "0")
-                    {
-                        cityId = new Guid(ddlSystemCityName.SelectedItem.Value);
-                        // cityCode = masters.GetCodeById("city", new Guid(ddlSystemCityName.SelectedItem.Value));
-                    }
-                    else if (!string.IsNullOrWhiteSpace(hdnSelSystemCity_Id.Value))
-                    {
-                        cityId = new Guid(hdnSelSystemCity_Id.Value);
-                    }
-                    // cityId = new Guid(ddlSystemCityName.SelectedItem.Value);
-                    cityCode = masters.GetCodeById("city", new Guid(Convert.ToString(cityId)));
-
-
-                    countryCode = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
-                    masterCountryName = ddlSystemCountryName.SelectedItem.Text;
-                }
-
-                MDMSVC.DC_Supplier_DDL sData = new MDMSVC.DC_Supplier_DDL();
-                sData = masterSVc.GetSupplierDataByMapping_Id("CITY", Convert.ToString(myRow_Id));
-                MDMSVC.DC_CityMapping newObj = new MDMSVC.DC_CityMapping
-                {
-                    CityMapping_Id = myRow_Id,
-                    Supplier_Id = sData.Supplier_Id,
-                    SupplierName = sData.Name,
-                    Country_Id = countryId,
-                    City_Id = cityId,
-                    CountryCode = countryCode,
-                    CityCode = cityCode,
-                    Status = ddlStatus.SelectedItem.Text,
-                    MasterCountryName = masterCountryName,
-                    Remarks = txtSystemRemark.Text,
-                    Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
-                };
-                RQ.Add(newObj);
-                if (mapperSVc.UpdateCityMappingDatat(RQ))
-                {
-                    //MatchedPageIndex = 0;
-                    //MappedCountry_ID = new Guid(ddlSystemCountryName.SelectedItem.Value);
-                    //MappedCity_ID = new Guid(ddlSystemCityName.SelectedItem.Value);
-                    //MappedCountry_ID = countryId;
-                    //MappedCity_ID = cityId;
-                    //MatchedCountryName = lblSupCountryName.Text;
-                    //MatchedCityName = lblCityName.Text;
-                    //MatchedStatus = ddlStatus.SelectedItem.Text;
-                    //frmEditCityMap.Visible = false;
                     if (!(ddlSystemCountryName.SelectedIndex == 0))
                     {
-                        fillmatchingdata("", 0);
-                        fillmappingdata(grdCityMaps.PageIndex);
-                        dvMatchingRecords.Visible = true;
-                        btnMatchedMapSelected.Visible = true;
-                        btnMatchedMapAll.Visible = true;
+                        countryId = new Guid(ddlSystemCountryName.SelectedItem.Value);
+                        if (ddlSystemCityName.Items.Count > 0 && ddlSystemCityName.SelectedItem.Value != "0")
+                        {
+                            cityId = new Guid(ddlSystemCityName.SelectedItem.Value);
+                            // cityCode = masters.GetCodeById("city", new Guid(ddlSystemCityName.SelectedItem.Value));
+                        }
+                        else if (!string.IsNullOrWhiteSpace(hdnSelSystemCity_Id.Value))
+                        {
+                            cityId = new Guid(hdnSelSystemCity_Id.Value);
+                        }
+                        // cityId = new Guid(ddlSystemCityName.SelectedItem.Value);
+                        cityCode = masters.GetCodeById("city", new Guid(Convert.ToString(cityId)));
+
+
+                        countryCode = masters.GetCodeById("country", new Guid(ddlSystemCountryName.SelectedItem.Value));
+                        masterCountryName = ddlSystemCountryName.SelectedItem.Text;
                     }
-                    dvMsg.Style.Add("display", "block");
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
-                    hdnFlag.Value = "false";
+
+                    MDMSVC.DC_Supplier_DDL sData = new MDMSVC.DC_Supplier_DDL();
+                    sData = masterSVc.GetSupplierDataByMapping_Id("CITY", Convert.ToString(myRow_Id));
+                    MDMSVC.DC_CityMapping newObj = new MDMSVC.DC_CityMapping
+                    {
+                        CityMapping_Id = myRow_Id,
+                        Supplier_Id = sData.Supplier_Id,
+                        SupplierName = sData.Name,
+                        Country_Id = countryId,
+                        City_Id = cityId,
+                        CountryCode = countryCode,
+                        CityCode = cityCode,
+                        Status = ddlStatus.SelectedItem.Text,
+                        MasterCountryName = masterCountryName,
+                        Remarks = txtSystemRemark.Text,
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
+                    };
+                    RQ.Add(newObj);
+                    if (mapperSVc.UpdateCityMappingDatat(RQ))
+                    {
+                        //MatchedPageIndex = 0;
+                        //MappedCountry_ID = new Guid(ddlSystemCountryName.SelectedItem.Value);
+                        //MappedCity_ID = new Guid(ddlSystemCityName.SelectedItem.Value);
+                        //MappedCountry_ID = countryId;
+                        //MappedCity_ID = cityId;
+                        //MatchedCountryName = lblSupCountryName.Text;
+                        //MatchedCityName = lblCityName.Text;
+                        //MatchedStatus = ddlStatus.SelectedItem.Text;
+                        //frmEditCityMap.Visible = false;
+                        if (!(ddlSystemCountryName.SelectedIndex == 0))
+                        {
+                            fillmatchingdata("", 0);
+                            fillmappingdata(grdCityMaps.PageIndex);
+                            dvMatchingRecords.Visible = true;
+                            btnMatchedMapSelected.Visible = true;
+                            btnMatchedMapAll.Visible = true;
+                        }
+                        dvMsg.Style.Add("display", "block");
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been updated successfully", BootstrapAlertType.Success);
+                        hdnFlag.Value = "false";
+                    }
                 }
+                else
+                {
+                    dvMsg.Style.Add("display", "block");
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please select valid city to Map", BootstrapAlertType.Warning);
+                }
+                
             }
             else if (e.CommandName == "Cancel")
             {
