@@ -574,6 +574,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateZoneHotelsInTable"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+        public DC_Message IncludeExcludeHotels(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["IncludeExcludeHotels"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
     }
 }

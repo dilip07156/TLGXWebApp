@@ -133,7 +133,9 @@
                                             <label class="control-label col-sm-4" for="ddlStatus">Status</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                     <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
+                                                    <asp:ListItem Text="Inactive" Value="Inactive"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -143,7 +145,6 @@
                                                 <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" OnClick="btnReset_Click" />
                                             </div>
                                             <div class="col-sm-6">
-                                                <%--<asp:Button ID="btnBulkMap" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Bulk Add City Mapping" OnClick="btnBulkMap_Click" />--%>
                                             </div>
                                         </div>
 
@@ -194,7 +195,6 @@
                                             <asp:BoundField DataField="CountryName" HeaderText="Country" />
                                             <asp:BoundField DataField="CityName" HeaderText="City" />
                                             <asp:BoundField DataField="Zone_Name" HeaderText="Zone Name" />
-                                            <%--<asp:BoundField DataField="Status" HeaderText="Status" />--%>
                                             <asp:BoundField DataField="NoOfHotels" HeaderText="Number Of Hotels" />
                                             <asp:TemplateField HeaderText="view-Edit">
                                                 <ItemTemplate>
@@ -204,7 +204,7 @@
                                                     </asp:LinkButton>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Status">
+                                            <asp:TemplateField HeaderText="Action">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="btndelete" runat="server" CausesValidation="false" CommandName='<%# Eval("IsActive").ToString() == "True" ? "SoftDelete" : "UnDelete"    %>'
                                                         CssClass="btn btn-default" CommandArgument='<%# Bind("Zone_id") %>'>
@@ -267,11 +267,20 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlAddHotelIncludeRange">Include Hotels Upto Range (km)</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="ddlAddHotelIncludeRange" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                            <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
                                                     <div class="col-sm-12">
                                                         <button type="button" id="btnGetLatLong" class="btn btn-primary btn-sm" onclick="getLatLong()">Get Latitude and Longitude</button>
                                                         <button type="button" id="btnGetLatLongOnMap" class="btn btn-primary btn-sm" onclick="GetLatLongOnMap()">Get LatLong On Map</button>
                                                     </div>
                                                 </div>
+                                              
                                             </div>
 
                                             <div class="col-sm-6">
@@ -306,7 +315,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <div class="pull-right">
+                                                    <div class="col-sm-4"></div>
+                                                    <div  class="col-sm-8">
                                                         <div class="col-sm-6">
                                                             <asp:Button ID="btnSaveZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnSaveZoneMaster_Click" />
                                                         </div>
@@ -318,7 +328,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div id="dvLatLongMap" style=" width: 500px;height: 300px" runat="server">
+                                            <div id="dvLatLongMap" style="height: 300px" runat="server">
                                             </div>
                                         </div>
                                     </div>

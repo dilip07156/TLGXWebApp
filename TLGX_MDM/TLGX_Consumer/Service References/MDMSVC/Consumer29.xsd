@@ -214,6 +214,7 @@
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="GooglePlaceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Included" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
@@ -221,6 +222,7 @@
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ZoneCityMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ZoneProductMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Radius" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Zone_Type" nillable="true" type="xs:string" />
@@ -291,6 +293,7 @@
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductCategorySubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StarRating" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZoneProductMapping_Id" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_ZoneHotelList" nillable="true" type="tns:DC_ZoneHotelList" />

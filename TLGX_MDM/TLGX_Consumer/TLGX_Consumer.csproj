@@ -1055,6 +1055,7 @@
     <Content Include="Service\PentahoStepsInfo.ashx" />
     <Content Include="Service\GetZoneHotelsForMap.ashx" />
     <Content Include="Service\HotelMappingAutoComplete.ashx" />
+    <Content Include="Service\IncludeExcludeZoneHotels.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2624,6 +2625,9 @@
     </Compile>
     <Compile Include="Service\HotelMappingAutoComplete.ashx.cs">
       <DependentUpon>HotelMappingAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\IncludeExcludeZoneHotels.ashx.cs">
+      <DependentUpon>IncludeExcludeZoneHotels.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\PentahoStepsInfo.ashx.cs">
       <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
