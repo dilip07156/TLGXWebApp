@@ -1055,6 +1055,12 @@
     <Content Include="Service\PentahoStepsInfo.ashx" />
     <Content Include="Service\GetZoneHotelsForMap.ashx" />
     <Content Include="Service\HotelMappingAutoComplete.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_AutoComplete_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_AccomodationBasic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
