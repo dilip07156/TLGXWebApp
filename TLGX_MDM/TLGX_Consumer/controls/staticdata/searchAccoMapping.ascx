@@ -468,7 +468,7 @@
                                                 <asp:TemplateField ShowHeader="true" HeaderText="Status">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label>
-                                                        <asp:Label ID="lblMatchedBy" runat="server" Text='<%# Convert.ToString(Eval("Status")) == "REVIEW" ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
+                                                        <asp:Label ID="lblMatchedBy" runat="server" Text='<%# (Convert.ToString(Eval("Status")) == "REVIEW" || Convert.ToString(Eval("Status")) == "AUTOMAPPED") ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField ShowHeader="false">

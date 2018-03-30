@@ -101,25 +101,35 @@ namespace TLGX_Consumer.controls.staticdata
 
         }
 
-
         private void fillAttributeValues(DropDownList ddl, string Attribute_Name, string OptionFor)
         {
             MDMSVC.DC_M_masterattributelists list = LookupAtrributes.GetAllAttributeAndValuesByFOR(OptionFor, Attribute_Name);
             ddl.DataSource = list.MasterAttributeValues;
-            ddl.DataTextField = "AttributeValue";
-            ddl.DataValueField = "MasterAttributeValue_Id";
-            ddl.DataBind();
 
-            if (list.MasterAttributeValues.Length > 0)
+            if (Attribute_Name == "MatchingPriority")
             {
-                MDMSVC.DC_M_masterattributevalue[] vals = list.MasterAttributeValues;
+                ddl.DataTextField = "OTA_CodeTableValue";
+                ddl.DataValueField = "AttributeValue";
+                ddl.DataBind();
 
-                foreach (MDMSVC.DC_M_masterattributevalue val in vals)
+                if (list.MasterAttributeValues.Length > 0)
                 {
-                    if(!string.IsNullOrWhiteSpace(val.OTA_CodeTableValue))
-                        ddl.Items.FindByValue(val.MasterAttributeValue_Id.ToString()).Attributes.Add("title", val.OTA_CodeTableValue);
+                    MDMSVC.DC_M_masterattributevalue[] vals = list.MasterAttributeValues;
+
+                    foreach (MDMSVC.DC_M_masterattributevalue val in vals)
+                    {
+                        if (!string.IsNullOrWhiteSpace(val.OTA_CodeTableValue) && ddl.Items.FindByValue(val.AttributeValue) != null)
+                            ddl.Items.FindByValue(val.AttributeValue).Attributes.Add("title", val.AttributeValue);
+                    }
                 }
             }
+            else
+            {
+                ddl.DataTextField = "AttributeValue";
+                ddl.DataValueField = "MasterAttributeValue_Id";
+                ddl.DataBind();
+            }
+
         }
         private void fillcountries(DropDownList ddl)
         {
@@ -371,7 +381,7 @@ namespace TLGX_Consumer.controls.staticdata
                 if (!string.IsNullOrWhiteSpace(txtSuppProduct.Text))
                     RQ.SupplierProductName = txtSuppProduct.Text;
                 if (ddlMatchedBy.SelectedItem.Value != "99")
-                    RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedItem.Text);
+                    RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedValue);
                 RQ.Source = "SYSTEMDATA";
             }
             else
@@ -395,7 +405,7 @@ namespace TLGX_Consumer.controls.staticdata
                 if (ddlBrand.SelectedItem.Value != "0")
                     RQ.Brand = ddlBrand.SelectedItem.Text;
                 if (ddlMatchedBy.SelectedItem.Value != "99")
-                    RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedItem.Text);
+                    RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedValue);
                 RQ.PageSize = Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Text);
             }
             RQ.PageNo = pPageIndex;
@@ -642,7 +652,7 @@ namespace TLGX_Consumer.controls.staticdata
                             if (lstCountry.Count > 0)
                                 SystemCountry_Id = lstCountry[0].Country_Id ?? Guid.Empty;
                         }
-                        if (!string.IsNullOrWhiteSpace(myCountryName) && (SystemCountry_Id == Guid.Empty || SystemCountry_Id == null ))
+                        if (!string.IsNullOrWhiteSpace(myCountryName) && (SystemCountry_Id == Guid.Empty || SystemCountry_Id == null))
                         {
                             MDMSVC.DC_Country_Search_RQ RQ = new MDMSVC.DC_Country_Search_RQ();
                             List<MDMSVC.DC_Country> lstCountry = new List<MDMSVC.DC_Country>();
@@ -687,7 +697,7 @@ namespace TLGX_Consumer.controls.staticdata
                             if (lstCity.Count > 0)
                                 SystemCity_Id = lstCity[0].City_Id;
                         }
-                        
+
                         /*var selSysCountry_ID = _objMasterRef.GetDetailsByIdOrName(new MDMSVC.DC_GenericMasterDetails_ByIDOrName()
                         {
                             WhatFor = MDMSVC.DetailsWhatFor.IDByName,
@@ -719,7 +729,7 @@ namespace TLGX_Consumer.controls.staticdata
                             Optional1 = myCountryName,
                             ObjName = MDMSVC.EntityType.state
                         });
-                        
+
                         fillStates(ddlSystemCountryName, ddlSystemStateName);
                         if (ddlSystemStateName.Items.Count > 1)
                         {
@@ -740,7 +750,7 @@ namespace TLGX_Consumer.controls.staticdata
                                 if (selState_ID != null && selState_ID.ID != null)
                                 {
                                     if (Guid.Parse(Convert.ToString(selState_ID.ID)) != Guid.Empty)
-                                    ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(selState_ID.ID.ToString()));
+                                        ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(selState_ID.ID.ToString()));
                                 }
                             }
                         }
@@ -751,8 +761,8 @@ namespace TLGX_Consumer.controls.staticdata
                         {
                             //if (!string.IsNullOrWhiteSpace(masterRoduct[0].CityName))
                             //{
-                                if (SystemCity_Id != null && SystemCity_Id != Guid.Empty)
-                                    ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(SystemCity_Id.ToString()));
+                            if (SystemCity_Id != null && SystemCity_Id != Guid.Empty)
+                                ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(SystemCity_Id.ToString()));
                             //}
                         }
 
