@@ -13,6 +13,15 @@ namespace TLGX_Consumer.controls.geography {
     public partial class uc_portManage {
         
         /// <summary>
+        /// btnRedirectToSearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRedirectToSearch;
+        
+        /// <summary>
         /// hdnFlag control.
         /// </summary>
         /// <remarks>
