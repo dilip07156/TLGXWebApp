@@ -78,6 +78,7 @@ namespace TLGX_Consumer.geography
             fillcountries(ddlMasterCountryAddModal);
             BindZoneType(ddlAddZoneType);
             BindZoneType(ddlZoneType);
+            BindZoneRadius(ddlAddHotelIncludeRange);
         }
         private void fillcountries(DropDownList ddl)
         {
@@ -115,7 +116,22 @@ namespace TLGX_Consumer.geography
                     ddl.Items.Insert(0, new ListItem { Text = "--ALL--", Value = "0" });
                 }
         }
-       
+        private void BindZoneRadius(DropDownList ddl)
+        {
+            ddl.Items.Clear();
+            var result = masterSVc.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "Zone", Name = "ZoneRadius" });
+            result = (from a in result select a).OrderBy(s => s.AttributeValue).ToList();
+            if (result != null)
+                if (result.Count > 0)
+                {
+                    ddl.Items.Clear();
+                    ddl.DataSource = result;
+                    ddl.DataTextField = "AttributeValue";
+                    ddl.DataValueField = "AttributeValue";
+                    ddl.DataBind();
+                    //ddl.Items.FindByValue("4.0").Selected = true;
+                }
+        }
         private void fillMasterSearchData(int pageindex, int pagesize)
         {
             try
@@ -206,6 +222,7 @@ namespace TLGX_Consumer.geography
             MDMSVC.DC_ZoneRQ param = new MDMSVC.DC_ZoneRQ();
             var Zone_id= Guid.NewGuid();
             param.Action = "ADD";
+            param.Zone_Radius = 4.0;
             param.Zone_id = Zone_id;
             param.Create_Date = DateTime.Now;
             param.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
@@ -215,6 +232,10 @@ namespace TLGX_Consumer.geography
 
             if (ddlAddZoneType.SelectedItem.Value != "0")
                 param.Zone_Type = ddlAddZoneType.SelectedItem.Text;
+
+            if (ddlAddHotelIncludeRange.SelectedItem.Value != "0")
+                param.Zone_Radius = Convert.ToDouble(ddlAddHotelIncludeRange.SelectedValue);
+            else param.Zone_Radius = 4;
 
             param.Zone_Name = txtAddZoneName.Text;
             param.Latitude = txtLatitude.Text;
@@ -228,7 +249,6 @@ namespace TLGX_Consumer.geography
                     var addHotels = masterSVc.InsertZoneHotelsInTable(param);
                     string strQueryString = GetQueryString(Zone_id.ToString(), "0");
                     Response.Redirect(strQueryString, true);
-                    //Response.Redirect("ZoneCityMasterEdit.aspx?Zone_Id=" + Zone_id);
                 }
                    
                 else
@@ -303,7 +323,7 @@ namespace TLGX_Consumer.geography
                         if (result.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                         {
                             fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
-                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
+                            BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been Undeleted successfully", BootstrapAlertType.Success);
                         }
                             
                         else

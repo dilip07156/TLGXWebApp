@@ -543,12 +543,7 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZoneCities"], RQ, typeof(DC_ZoneRQ), typeof(List<DC_ZoneCitiesSearch>), out result);
             return result as List<DC_ZoneCitiesSearch>;
         }
-        public DC_Message DeleteZoneCities(DC_ZoneRQ param)
-        {
-            object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["DeleteZoneCities"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
-            return result as DC_Message;
-        }
+       
         public DC_Message DeactivateOrActivateZones(DC_ZoneRQ param)
         {
             object result = null;
@@ -571,6 +566,18 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["DeleteZoneHotelsInTable"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public DC_Message UpdateZoneHotelsInTable(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateZoneHotelsInTable"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        public DC_Message IncludeExcludeHotels(DC_ZoneRQ param)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["IncludeExcludeHotels"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion
