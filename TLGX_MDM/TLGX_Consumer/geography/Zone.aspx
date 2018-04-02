@@ -199,7 +199,7 @@
                                             <asp:TemplateField HeaderText="view-Edit">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                                        Enabled="true" CommandArgument='<%#Bind("Zone_id")%>' OnClientClick="showEditZoneModal();">
+                                                        Enabled="true" CommandArgument='<%#Bind("Zone_id")%>'>
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp View/Edit
                                                     </asp:LinkButton>
                                                 </ItemTemplate>

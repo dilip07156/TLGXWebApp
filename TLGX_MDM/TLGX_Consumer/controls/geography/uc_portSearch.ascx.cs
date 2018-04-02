@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -12,26 +13,31 @@ namespace TLGX_Consumer.controls.geography
     {
         #region Variable 
         Controller.MasterDataSVCs _serviceMaster = new Controller.MasterDataSVCs();
-        public int intPageIndex = 0;
-        public int intPageSize = 10;
+        //public int intPageIndex = 0;
+        //public int intPageSize = 10;
 
         #endregion
+
         #region PageMethods
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                FillPageData();
+                LoadMasters();
+                if (Request.UrlReferrer != null && Request.UrlReferrer.AbsoluteUri.Contains("portManage"))
+                {
+                    SetControls();
+                }
             }
         }
         #endregion
+       // PortManage
         #region Data Fetching and Binding
-        private void FillPageData()
+        private void LoadMasters()
         {
             try
             {
                 fillSystemCountry();
-                //fillSystemCity();
                 fillMappingStatus();
             }
             catch (Exception)
@@ -84,29 +90,112 @@ namespace TLGX_Consumer.controls.geography
             }
         }
 
+
+        public string GetQueryString(string myRow_Id, string strpageindex)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("~/geography/portManage.aspx?Port_Id=" + myRow_Id);
+
+            if (ddlMasterCountry.SelectedValue != "0")
+            {
+                sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlMasterCountry.SelectedValue));
+                sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlMasterCountry.SelectedItem.Text));
+            }
+
+            if (ddlMasterCity.SelectedValue != "0")
+            {
+                sb.Append("&CiID=" + HttpUtility.UrlEncode(ddlMasterCity.SelectedValue));
+                sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlMasterCity.SelectedItem.Text));
+            }
+
+            if (!string.IsNullOrWhiteSpace(txtSuppCountry.Text))
+                sb.Append("&SPCoN=" + HttpUtility.UrlEncode(txtSuppCountry.Text));
+
+            if (ddlStatus.SelectedValue != "0")
+                sb.Append("&Status=" + HttpUtility.UrlEncode(ddlStatus.SelectedItem.Text));
+
+
+            string pageindex = strpageindex;
+            sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
+            sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlShowEntries.SelectedValue)));
+
+
+            return sb.ToString();
+        }
+        private void SetControls()
+        {
+            try
+            {
+                #region Get Value from query string
+                string CountryName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoN"]);
+                string CountryID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoID"]);
+                string CityName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CiN"]);
+                string CityID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CiID"]);
+                string SuppPortCountryName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["SPCoN"]);
+                string Status = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["Status"]);
+                string PageNo = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PN"]);
+                string PageSize = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PS"]);
+                #endregion
+                int pageno = 0;
+                int pagesize = 10;
+
+                //if (!string.IsNullOrWhiteSpace(CountryID))
+                //  txtProductName.Text = ProductName;
+                if (!string.IsNullOrWhiteSpace(CountryID))
+                {
+                    ddlMasterCountry.SelectedIndex = ddlMasterCountry.Items.IndexOf(ddlMasterCountry.Items.FindByText(CountryName));
+                    if (!string.IsNullOrWhiteSpace(CountryID))
+                        BindCity(new Guid(CountryID));
+                }
+                if (!string.IsNullOrWhiteSpace(CityName))
+                    ddlMasterCity.SelectedIndex = ddlMasterCity.Items.IndexOf(ddlMasterCity.Items.FindByText(CityName));
+
+
+                if (!string.IsNullOrWhiteSpace(SuppPortCountryName))
+                    txtSuppCountry.Text = SuppPortCountryName;
+
+                if (!string.IsNullOrWhiteSpace(Status))
+                    ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(Status));
+
+                if (!string.IsNullOrWhiteSpace(PageNo))
+                    pageno = Convert.ToInt32(PageNo);
+                if (!string.IsNullOrWhiteSpace(PageSize))
+                    pagesize = Convert.ToInt32(PageSize);
+
+                SearchPortDetails(pageno, pagesize);
+
+            }
+            catch (Exception) { }
+        }
+
         #endregion
+
         #region Control Action 
         protected void ddlMasterCountry_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                string strSelectedCountry = Convert.ToString(ddlMasterCountry.SelectedValue);
-                var resultCity = _serviceMaster.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { Country_Id = Guid.Parse(strSelectedCountry) });
-                if (resultCity != null)
+                if (ddlMasterCountry.SelectedValue != "0")
                 {
-                    if (resultCity.Count > 0)
+                    string strSelectedCountry = Convert.ToString(ddlMasterCountry.SelectedValue);
+                    var resultCity = _serviceMaster.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { Country_Id = Guid.Parse(strSelectedCountry) });
+                    if (resultCity != null)
                     {
-                        ddlMasterCity.Items.Clear();
+                        if (resultCity.Count > 0)
+                        {
+                            ddlMasterCity.Items.Clear();
 
-                        ddlMasterCity.DataSource = resultCity;
-                        ddlMasterCity.DataValueField = "City_Id";
-                        ddlMasterCity.DataTextField = "Name";
-                        ddlMasterCity.DataBind();
-                        ddlMasterCity.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                            ddlMasterCity.DataSource = resultCity;
+                            ddlMasterCity.DataValueField = "City_Id";
+                            ddlMasterCity.DataTextField = "Name";
+                            ddlMasterCity.DataBind();
+                            ddlMasterCity.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                        }
                     }
                 }
+                
             }
-            catch (Exception)
+            catch (Exception )
             {
 
                 throw;
@@ -119,7 +208,7 @@ namespace TLGX_Consumer.controls.geography
         /// <param name="e"></param>
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            SearchPortDetails();
+            SearchPortDetails(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
         }
         /// <summary>
         /// To reset the page controls
@@ -141,25 +230,29 @@ namespace TLGX_Consumer.controls.geography
 
         private void ClearPageControls()
         {
-            ddlMasterCountry.ClearSelection();
+            ddlMasterCountry.SelectedIndex = 0;
             ddlMasterCity.Items.Clear();
             ddlMasterCity.Items.Insert(0, new ListItem { Selected = true, Text = "-All-", Value = "0" });
-            ddlStatus.ClearSelection();
-            ddlShowEntries.ClearSelection();
+            ddlStatus.SelectedIndex = 0;
+            ddlShowEntries.SelectedIndex = 0;
+            lblTotalCount.Text = string.Empty;
+
+            grdPortList.DataSource = null;
+            grdPortList.DataBind();
         }
 
         protected void grdPortList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            intPageIndex = Convert.ToInt32(e.NewPageIndex);
-            SearchPortDetails();
+           // intPageIndex = Convert.ToInt32(e.NewPageIndex);
+            SearchPortDetails(e.NewPageIndex, Convert.ToInt32(ddlShowEntries.SelectedValue));
         }
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
-            SearchPortDetails();
+            //intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
+            SearchPortDetails(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
         }
 
-        private void SearchPortDetails()
+        private void SearchPortDetails(int PageNo, int PageSize)
         {
             try
             {
@@ -176,24 +269,29 @@ namespace TLGX_Consumer.controls.geography
                     _obj.City_Id = Guid.Parse(_ddlMasterCity);
                 if (!string.IsNullOrWhiteSpace(_ddlStatus))
                     _obj.Mapping_Status = _ddlStatus;
-                if (!string.IsNullOrWhiteSpace(_ddlEntriesCount))
-                    _obj.PageSize = Convert.ToInt32(_ddlEntriesCount);
-                else
-                    _obj.PageSize = 10;
+                //if (!string.IsNullOrWhiteSpace(_ddlEntriesCount))
+                //    _obj.PageSize = Convert.ToInt32(_ddlEntriesCount);
+                //else
+                //    _obj.PageSize = 10;
+                    _obj.PageSize = PageNo;
                 if (!string.IsNullOrWhiteSpace(lblPortCountry))
                     _obj.Port_Country_Name = lblPortCountry;
-                _obj.PageNo = intPageIndex;
+                // _obj.PageNo = intPageIndex;
+                _obj.PageNo = PageSize;
 
 
                 var result = _serviceMaster.PortMasterSeach(_obj);
-                grdPortList.PageIndex = intPageIndex;
+                // grdPortList.PageIndex = intPageIndex;
+                grdPortList.PageIndex = PageNo;
                 grdPortList.DataSource = result;
                 if (result != null)
                 {
                     if (result.Count > 0)
                     {
-                        grdPortList.PageSize = intPageSize;
+                        //grdPortList.PageSize = intPageSize;
+                        grdPortList.PageSize = PageSize;
                         grdPortList.VirtualItemCount = result[0].TotalRecords;
+                        lblTotalCount.Text = result[0].TotalRecords.ToString();
                     }
                 }
                 grdPortList.DataBind();
@@ -207,7 +305,27 @@ namespace TLGX_Consumer.controls.geography
 
         protected void grdPortList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    //Create Query string
 
+                    string strQueryString = GetQueryString(myRow_Id.ToString(), ((GridView)sender).PageIndex.ToString());
+                    Response.Redirect(strQueryString, true);
+                    //End Here
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+
+                throw;
+            }
         }
 
 
@@ -241,7 +359,7 @@ namespace TLGX_Consumer.controls.geography
                         ddlCountryEdit.DataValueField = "Country_Id";
                         ddlCountryEdit.DataTextField = "Name";
                         ddlCountryEdit.DataBind();
-                        ddlMasterCountry.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                        ddlCountryEdit.Items.Insert(0, new ListItem { Text = "-Select-", Value = "0" });
 
                     }
                 }
