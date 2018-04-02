@@ -51,9 +51,13 @@
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MatchedBy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MatchedByString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldLatitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldLongitude" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OldProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
       <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Remarks" nillable="true" type="xs:string" />
