@@ -88,10 +88,15 @@
 
         var rfvtxtSearchCity = document.getElementById("MainContent_CityMap_frmEditCityMap_rfvtxtSearchCity");
         var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+        var ddlSystemCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_ddlSystemCityName");
         if (val.length == 0) {
-            debugger;
             val.text = null;
             vrhdnSelSystemCity_Id.value = null;
+            for(var i=0;i < ddlSystemCityName.options.length; i++ )
+            {
+                ddlSystemCityName.remove(i);
+            }
+             
             ValidatorEnable(rfvtxtSearchCity, true);
             document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity").style.display = "block";
         }
@@ -117,35 +122,43 @@
                         source: 'CityMap'
                     },
                     success: function (result) {
-                        hdnSystemCity_Id.value = "";
-                        hdnSystemCity.value = "";
-                        vrhdnSelSystemCity_Id.value = "";
-                        var data = [];
-                        for (var i = 0; i < result.length; i++) {
-                            if (hdnSystemCity_Id != null && result[i].City_Id != null) {
-                                hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
-                            }
-                            if (result[i].Name != null) {
-                                var cityname = result[i].Name;
-                                if (result[i].StateName != null) {
-                                    cityname = cityname + ", " + result[i].StateName;
+                        if (result != null && result.length > 0) {
+                            hdnSystemCity_Id.value = "";
+                            hdnSystemCity.value = "";
+                            vrhdnSelSystemCity_Id.value = "";
+                            var data = [];
+                            for (var i = 0; i < result.length; i++) {
+                                if (hdnSystemCity_Id != null && result[i].City_Id != null) {
+                                    hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
                                 }
-                                if (result[i].StateCode != null) {
-                                           cityname = cityname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
-                                }
-                                if (result[i].CountryName != null) {
-                                    cityname = cityname + ", " + result[i].CountryName;
-                                }
-                                else {
-                                    if (result[i].CountryCode != null) {
-                                        cityname = cityname + ", " + result[i].CountryCode;
+                                if (result[i].Name != null) {
+                                    var cityname = result[i].Name;
+                                    if (result[i].StateName != null) {
+                                        cityname = cityname + ", " + result[i].StateName;
                                     }
+                                    if (result[i].StateCode != null) {
+                                        cityname = cityname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
+                                    }
+                                    if (result[i].CountryName != null) {
+                                        cityname = cityname + ", " + result[i].CountryName;
+                                    }
+                                    else {
+                                        if (result[i].CountryCode != null) {
+                                            cityname = cityname + ", " + result[i].CountryCode;
+                                        }
+                                    }
+                                    hdnSystemCity.value = hdnSystemCity.value + cityname + "`";
+                                    data.push(cityname);
                                 }
-                                hdnSystemCity.value = hdnSystemCity.value + cityname + "`";
-                                data.push(cityname);
                             }
+                            response(data);
                         }
-                        response(data);
+                        else {
+                            var data = [];
+                            var NoDataFound = "No Data Found";
+                            data.push(NoDataFound);
+                            response(data);
+                        }
                     }
                 });
             },
@@ -154,7 +167,12 @@
         });
 
         $("[id*=txtSearchCity]").on('autocompleteselect', function (e, ui) {
-            callCityNamechange(ui.item.value);
+            if (ui.item.value != "No Data Found")
+                callCityNamechange(ui.item.value);
+            else {
+                ui.item.value = null;
+                document.getElementById("MainContent_CityMap_frmEditCityMap_txtSearchCity").value = "";
+            }
         });
     }
 
@@ -195,13 +213,11 @@
             ddlSystemCityName.innerHTML = "";
             listItems += '<option selected="selected" value="' + selId + '">' + brkvrhdnSystemCity[0].split(';')[0] + '</option>';
             ddlSystemCityName.append(listItems);
-            debugger;
             if (vrbtnAddCity != null)
                 vrbtnAddCity.style.display = "none";
         }
 
         if (selId != "") {
-            debugger;
             if (vrbtnAddCity != null)
                 vrbtnAddCity.style.display = "none";
             vrhdnSelSystemCity_Id.value = selId;

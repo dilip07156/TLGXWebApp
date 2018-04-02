@@ -12,6 +12,10 @@
     .x-lg {
         width: 1200px;
     }
+
+    .ui-autocomplete {
+        z-index: 99999999 !important;
+    }
 </style>
 <script type="text/javascript">
     $(function () {
@@ -55,7 +59,20 @@
     $(document).ready(function () {
         callajax();
     });
-
+    function checkLen(val) {
+        var rfvtxtSearchSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_rfvtxtSearchSystemProduct");
+        var hdnSelSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSelSystemProduct_Id");
+        if (val.length == 0) {
+            val.text = null;
+            hdnSelSystemProduct_Id.value = null;
+            ValidatorEnable(rfvtxtSearchSystemProduct, true);
+            document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_btnAddProduct").style.display = "block";
+        }
+        else {
+            ValidatorEnable(rfvtxtSearchSystemProduct, false);
+            document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_btnAddProduct").style.display = "none";
+        }
+    }
 
     var prm = Sys.WebForms.PageRequestManager.getInstance();
     prm.add_endRequest(function () {
@@ -157,6 +174,140 @@
 
 
     }
+                                    if (result[i].StateCode != null) {
+                                        hotelname = hotelname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
+                                    }
+                                    if (result[i].Country != null) {
+                                        hotelname = hotelname + ", " + result[i].Country;
+                                    }
+                                    hdnSystemProduct.value = hdnSystemProduct.value + hotelname + "`";
+                                    data.push(hotelname);
+                                }
+                            }
+                            response(data);
+                        }
+                        else
+                        {
+                            var data = [];
+                            var NoDataFound = "No Data Found";
+                            data.push(NoDataFound);
+                            response(data);
+                        }
+                    }
+                });
+            },
+            min_length: 3,
+            delay: 300
+        });
+
+        $("[id*=txtSearchSystemProduct]").on('autocompleteselect', function (e, ui) {
+
+            if (ui.item.value != "No Data Found")
+                callSystemProductNamechange(ui.item.value);
+            else {
+                ui.item.value = null;
+                document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSearchSystemProduct").value = "";
+            }
+            
+        });
+
+    }
+    function callSystemProductNamechange(selection) {
+
+        var vrtxtSearch = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSearch");
+        var hdnSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSystemProduct_Id");
+        var hdnSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSystemProduct");
+        var hdnSelSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSelSystemProduct_Id");
+        var vrbtnAddProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_btnAddProduct");
+        var selId = "";
+        if (selection != null) {
+            vrbtnAddProduct.style.display = "none";
+            if (selection.trim() != "") {
+                var brkvrhdnSystemProduct = hdnSystemProduct.value.split('`');
+                var brkvrhdnSystemProduct_Id = hdnSystemProduct_Id.value.split('`');
+                var idx = brkvrhdnSystemProduct.indexOf(selection);
+                if (idx != null && idx != (-1)) {
+                    selId = brkvrhdnSystemProduct_Id[idx];
+                }
+            }
+        }
+
+        var ddlSystemProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_ddlSystemProductName");
+        var listItems = '';
+        if (selId != null) {
+            ddlSystemProductName.innerHTML = "";
+            listItems += '<option selected="selected" value="' + selId + '">' + brkvrhdnSystemProduct[0].split(';')[0] + '</option>';
+            ddlSystemProductName.append(listItems);
+            if (vrbtnAddProduct != null)
+                vrbtnAddProduct.style.display = "none";
+
+        }
+
+
+        var ddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_ddlSystemCityName");
+        var ddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_ddlSystemStateName");
+        var txtSystemProductCode = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSystemProductCode");
+        var lblSystemProductAddress = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemProductAddress");
+        var lblSystemLocation = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLocation");
+        var lblSystemTelephone = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemTelephone");
+        var lblSystemLatitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLatitude");
+        var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
+
+        if (selId != "") {
+            if (vrbtnAddProduct != null)
+                vrbtnAddProduct.style.display = "none";
+            hdnSelSystemProduct_Id.value = selId;
+            $.ajax({
+                url: '../../Service/HotelMappingAutoComplete.ashx',
+                dataType: "json",
+                data: {
+                    accoid: selId,
+                    source: 'details'
+                },
+                responseType: "json",
+                success: function (result) {
+                    if (result != null) {
+                        txtSystemProductCode.value = result[0].CompanyHotelID;
+                        lblSystemProductAddress.innerHTML = result[0].FullAddress;
+                        lblSystemLocation.innerHTML = result[0].Location;
+                        lblSystemTelephone.innerHTML = result[0].Telephone_Tx;
+                        lblSystemLatitude.innerHTML = result[0].Latitude;
+                        lblSystemLongitude.innerHTML = result[0].Longitude;
+                        if (result[0].City != null) {
+
+                            for (var i = 0; i < ddlSystemCityName.options.length; i++)
+                            {
+                                if (ddlSystemCityName.options[i].text == result[0].City)
+                                {
+                                    ddlSystemCityName.options[i].selected = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (ddlSystemStateName.options[ddlSystemStateName.selectedIndex].value == "0") {
+                            if (result[0].State_Name != null) {
+                                for (var i = 0; i < ddlSystemStateName.options.length; i++) {
+                                    if (ddlSystemStateName.options[i].text == result[0].State_Name) {
+                                        ddlSystemStateName.options[i].selected = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
+                },
+                failure: function () {
+                }
+            });
+        }
+        else {
+            if (vrbtnAddProduct != null)
+                vrbtnAddProduct.style.display = "none";
+        }
+
+    }
 
     function SelectedRow(element) {
         var ddlStatus = $('#MainContent_searchAccoMapping_ddlMappingStatus option:selected').html();
@@ -250,7 +401,7 @@
         }
     }
 </script>
-<div class="container" id="myWizard">
+<div id="myWizard">
 
     <div class="navbar">
         <div class="navbar-inner">
@@ -260,7 +411,6 @@
             </ul>
         </div>
     </div>
-
 
     <div class="tab-content">
         <div class="tab-pane active" id="panSupplierSearch">
@@ -273,9 +423,9 @@
                             </div>
                             <div id="collapseSearch" class="panel-collapse collapse in">
                                 <div class="panel-body">
-
-                                    <div class="col-lg-4 row">
-                                        <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlSupplierName">
                                                 Supplier Name
                                             </label>
@@ -286,7 +436,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlCountry">
                                                 System Country
                                             </label>
@@ -297,7 +447,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlCity">
                                                 System City
                                             </label>
@@ -308,8 +458,7 @@
                                             </div>
                                         </div>
 
-
-                                        <div class="form-group">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlProduct">
                                                 Product Name
                                             </label>
@@ -320,7 +469,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlMappingStatus">
                                                 Mapping Status
                                             </label>
@@ -330,34 +479,31 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-
-
                                     </div>
-                                    <div class="col-lg-4 row">
-                                        <div class="form-group">
+                                        <div class="col-lg-4">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="txtSuppName">Supplier Country</label>
                                             <div class="col-sm-8">
                                                 <asp:TextBox ID="txtSuppCountry" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
 
-
-                                        <div class="form-group">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="txtSuppName">Supplier City</label>
                                             <div class="col-sm-8">
                                                 <asp:TextBox ID="txtSuppCity" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="txtSuppName">Supplier Product</label>
                                             <div class="col-sm-8">
                                                 <asp:TextBox ID="txtSuppProduct" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4 row">
-                                        <div class="form-group">
+                                        <div class="col-lg-4">
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlPageSize">Page Size</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlPageSize" runat="server" CssClass="form-control col-lg-3">
@@ -368,10 +514,8 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">&nbsp;</div>
-                                        </div>
-                                        <div class="form-group">
+
+                                            <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlMatchedBy">
                                                 Matched By
                                             </label>
@@ -381,27 +525,30 @@
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+
+                                            <div class="form-group row">
                                             <div class="col-sm-12">
                                                 <asp:HiddenField ID="hdnPageNumber" runat="server" Value="0" />
                                             </div>
                                         </div>
-                                        <div class="form-group">
+
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
                                             <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
                                             <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
                                         </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-12">&nbsp;</div>
                                         </div>
 
-
-                                        <div class="form-group">
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
                                             <asp:Button ID="Button4" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Mapping by Supplier" CausesValidation="false" Visible="false" />
                                             <!-- wire me up to go to /addProductMapping add straight to Supplier Search -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
                         </div>
                     </div>
 
@@ -468,7 +615,7 @@
                                                 <asp:TemplateField ShowHeader="true" HeaderText="Status">
                                                     <ItemTemplate>
                                                         <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label>
-                                                        <asp:Label ID="lblMatchedBy" runat="server" Text='<%# Convert.ToString(Eval("Status")) == "REVIEW" ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
+                                                        <asp:Label ID="lblMatchedBy" runat="server" Text='<%# (Convert.ToString(Eval("Status")) == "REVIEW" || Convert.ToString(Eval("Status")) == "AUTOMAPPED") ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <asp:TemplateField ShowHeader="false">
@@ -515,7 +662,7 @@
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-4">
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <asp:HiddenField ID="hdnContext" runat="server" Value="" />
                                                 <label class="control-label col-sm-4" for="ddlCountryName">
                                                     System Country
@@ -527,7 +674,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlCity">
                                                     System City
                                                 </label>
@@ -538,7 +685,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlChain">
                                                     Chain
                                                 </label>
@@ -549,7 +696,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlBrand">
                                                     Brand
                                                 </label>
@@ -559,7 +706,8 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+
+                                            <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlProductName">
                                                     System Product 
                                                 </label>
@@ -568,8 +716,7 @@
                                                 </div>
                                             </div>
 
-
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlProductMappingStatus">
                                                     Mapping Status
                                                 </label>
@@ -578,13 +725,11 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
-
-
                                         </div>
 
                                         <div class="col-lg-4">
 
-                                            <div class="form-group">
+                                            <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlProductBasedPageSize">Page Size</label>
                                                 <div class="col-sm-8">
                                                     <asp:DropDownList ID="ddlProductBasedPageSize" runat="server" CssClass="form-control col-lg-3">
@@ -595,28 +740,21 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
-                                            <br />
-                                            <br />
-                                            <div class="form-group">
 
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
                                                 <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="Button1_Click" />
                                                 <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="Button2_Click" />
-
+                                                </div>
                                             </div>
 
-
-                                            <br />
-                                            <br />
-
-                                            <div class="form-group">
-
+                                            <div class="form-group row">
+                                                <div class="col-sm-12">
                                                 <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Mapping by Product" CausesValidation="false" Visible="false" />
                                                 <!-- wire me up to go to /addProductMapping add straight to Product Search -->
                                             </div>
-
-
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -658,7 +796,6 @@
                                                         </asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
-
                                             </Columns>
                                             <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
                                         </asp:GridView>
@@ -673,16 +810,13 @@
                             <asp:PlaceHolder ID="pnlLoadControl" runat="server">
                                 <uc1:bulkHotelMapping runat="server" ID="bulkHotelMapping" />
                             </asp:PlaceHolder>
-
                         </div>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-
     </div>
 
-    <br />
     <!-- OPEN IN MODAL -->
     <div class="modal fade" id="moCityMapping" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg x-lg">
@@ -772,7 +906,6 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -827,12 +960,20 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-3" for="ddlSystemProductName">
                                                                 Product
-                                                            <asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
+                                                            <asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="rfvtxtSearchSystemProduct" runat="server" ErrorMessage="*" ControlToValidate="txtSearchSystemProduct" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+
+                                                            </label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
-                                                                    <asp:DropDownList ID="ddlSystemProductName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemProductName_SelectedIndexChanged">
-                                                                        <asp:ListItem Value="0">Select</asp:ListItem>
+                                                                    <asp:TextBox ID="txtSearchSystemProduct" onkeyup="checkLen(this.value)" runat="server" CssClass="form-control" onlostfocus="callSystemProductNamechange(this);"></asp:TextBox>
+
+                                                                    <%--AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemProductName_SelectedIndexChanged"--%>
+                                                                    <asp:DropDownList ID="ddlSystemProductName" Style="display: none" runat="server" CssClass="form-control">
                                                                     </asp:DropDownList>
+                                                                    <asp:HiddenField ID="hdnSystemProduct_Id" runat="server" />
+                                                                    <asp:HiddenField ID="hdnSystemProduct" runat="server" />
+                                                                    <asp:HiddenField ID="hdnSelSystemProduct_Id" runat="server" />
                                                                 </div>
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
@@ -935,7 +1076,6 @@
                                                         <div class="form-group">
                                                             <label for="MatchedBy">
                                                                 Matched By&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                
                                                             </label>
                                                             <asp:Label ID="lblpMatchedBy" runat="server" Text=""></asp:Label>&nbsp;-&nbsp;
                                                                 <asp:Label ID="lblpMatchedByString" runat="server" Text=""></asp:Label>
@@ -958,7 +1098,6 @@
                                                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -969,10 +1108,9 @@
                             <div class="row" runat="server" id="dvAddProduct">
                                 <div class="col-lg-4">
                                     <uc2:AddNew runat="server" ID="ucAddNew" />
-
                                 </div>
                             </div>
-                            <div class="row" >
+                            <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
                                         <div id="dvMsg" runat="server" style="display: none;"></div>
@@ -1051,7 +1189,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <script type='text/javascript'>
     $('.next').click(function () {
