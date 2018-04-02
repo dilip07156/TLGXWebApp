@@ -107,7 +107,7 @@
                                             <label class="control-label col-sm-4" for="ddlMasterCity">City</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlMasterCity" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                    <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>

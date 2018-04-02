@@ -30,7 +30,7 @@
                                     <label class="control-label col-sm-4" for="ddlMasterCountry">System Country</label>
                                     <div class="col-sm-8">
                                         <asp:DropDownList EnableViewState="true" ID="ddlMasterCountry" AutoPostBack="true" runat="server" ClientIDMode="Static" CssClass="form-control" OnSelectedIndexChanged="ddlMasterCountry_SelectedIndexChanged">
-                                            <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -38,7 +38,7 @@
                                     <label class="control-label col-sm-4" for="ddlMasterCity">System City</label>
                                     <div class="col-sm-8">
                                         <asp:DropDownList ID="ddlMasterCity" runat="server" EnableViewState="true" CssClass="form-control" ClientIDMode="Static" AppendDataBoundItems="true">
-                                            <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -275,12 +275,11 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <asp:Label runat="server" AssociatedControlID="ddlStateEdit" CssClass="col-md-4 control-label">State
-                                 <asp:RequiredFieldValidator ValidationGroup="Port" runat="server" ControlToValidate="ddlStateEdit"
-                                      CssClass="text-danger" ErrorMessage="The State is required." InitialValue ="0"  Text="*"/>
+                             
                                                             </asp:Label>
                                                             <div class="col-md-8">
                                                                 <asp:DropDownList runat="server" ID="ddlStateEdit" CssClass="form-control">
-                                                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                    <asp:ListItem Value="0">--Select--</asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </div>
                                                         </div>
@@ -290,7 +289,7 @@
                                                             </asp:Label>
                                                             <div class="col-md-8">
                                                                 <asp:DropDownList runat="server" ID="ddlCityEdit" CssClass="form-control">
-                                                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                    <asp:ListItem Value="0">--Select--</asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </div>
                                                         </div>

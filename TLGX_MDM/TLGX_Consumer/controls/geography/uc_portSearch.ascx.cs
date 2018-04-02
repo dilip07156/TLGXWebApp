@@ -35,16 +35,8 @@ namespace TLGX_Consumer.controls.geography
         #region Data Fetching and Binding
         private void LoadMasters()
         {
-            try
-            {
                 fillSystemCountry();
                 fillMappingStatus();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
 
         private void fillMappingStatus()
@@ -54,11 +46,12 @@ namespace TLGX_Consumer.controls.geography
             {
                 if (resultMappingStatus.Count > 0)
                 {
+                    ddlStatus.Items.Clear();
                     ddlStatus.DataSource = resultMappingStatus;
                     ddlStatus.DataValueField = "MasterAttributeValue_Id";
                     ddlStatus.DataTextField = "AttributeValue";
                     ddlStatus.DataBind();
-                    ddlStatus.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                    ddlStatus.Items.Insert(0, new ListItem { Text = "-- ALL --", Value = "0" });
 
                 }
             }
@@ -78,7 +71,7 @@ namespace TLGX_Consumer.controls.geography
                         ddlMasterCountry.DataValueField = "Country_Id";
                         ddlMasterCountry.DataTextField = "Name";
                         ddlMasterCountry.DataBind();
-                        ddlMasterCountry.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                        ddlMasterCountry.Items.Insert(0, new ListItem { Text = "-- ALL--", Value = "0" });
 
                     }
                 }
@@ -145,7 +138,7 @@ namespace TLGX_Consumer.controls.geography
                 {
                     ddlMasterCountry.SelectedIndex = ddlMasterCountry.Items.IndexOf(ddlMasterCountry.Items.FindByText(CountryName));
                     if (!string.IsNullOrWhiteSpace(CountryID))
-                        BindCity(new Guid(CountryID));
+                        BindCity(Guid.Parse(CountryID));
                 }
                 if (!string.IsNullOrWhiteSpace(CityName))
                     ddlMasterCity.SelectedIndex = ddlMasterCity.Items.IndexOf(ddlMasterCity.Items.FindByText(CityName));
@@ -175,6 +168,7 @@ namespace TLGX_Consumer.controls.geography
         {
             try
             {
+               
                 if (ddlMasterCountry.SelectedValue != "0")
                 {
                     string strSelectedCountry = Convert.ToString(ddlMasterCountry.SelectedValue);
@@ -184,16 +178,19 @@ namespace TLGX_Consumer.controls.geography
                         if (resultCity.Count > 0)
                         {
                             ddlMasterCity.Items.Clear();
-
                             ddlMasterCity.DataSource = resultCity;
                             ddlMasterCity.DataValueField = "City_Id";
                             ddlMasterCity.DataTextField = "Name";
                             ddlMasterCity.DataBind();
-                            ddlMasterCity.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                            ddlMasterCity.Items.Insert(0, new ListItem { Text = "-- ALL --", Value = "0" });
                         }
                     }
                 }
-                
+                else
+                {
+                    ddlMasterCity.Items.Clear();
+                    ddlMasterCity.Items.Insert(0, new ListItem { Text = "-- ALL --", Value = "0" });
+                }
             }
             catch (Exception )
             {
@@ -373,41 +370,59 @@ namespace TLGX_Consumer.controls.geography
 
         protected void ddlCountryEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
+          
             DropDownList ddlCountryEdit = (DropDownList)frmPortdetail.FindControl("ddlCountryEdit");
             DropDownList ddlStateEdit = (DropDownList)frmPortdetail.FindControl("ddlStateEdit");
-            string strSelectedCountry = Convert.ToString(ddlCountryEdit.SelectedValue);
-            var resultState = _serviceMaster.GetStateMasterData(new MDMSVC.DC_State_Search_RQ() { Country_Id = Guid.Parse(strSelectedCountry) });
-            if (resultState != null)
+            if (ddlCountryEdit.SelectedValue != "0")
             {
-                if (resultState.Count > 0)
+                string strSelectedCountry = Convert.ToString(ddlCountryEdit.SelectedValue);
+                var resultState = _serviceMaster.GetStateMasterData(new MDMSVC.DC_State_Search_RQ() { Country_Id = Guid.Parse(strSelectedCountry) });
+                if (resultState != null)
+                {
+                    if (resultState.Count > 0)
+                    {
+                        ddlStateEdit.Items.Clear();
+                        ddlStateEdit.DataSource = resultState;
+                        ddlStateEdit.DataValueField = "State_Id";
+                        ddlStateEdit.DataTextField = "State_Name";
+                        ddlStateEdit.DataBind();
+                        ddlStateEdit.Items.Insert(0, new ListItem { Text = "-Select -", Value = "0" });
+                    }
+                }
+                else
                 {
                     ddlStateEdit.Items.Clear();
-                    ddlStateEdit.DataSource = resultState;
-                    ddlStateEdit.DataValueField = "State_Id";
-                    ddlStateEdit.DataTextField = "State_Name";
-                    ddlStateEdit.DataBind();
-                    ddlStateEdit.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                    ddlStateEdit.Items.Insert(0, new ListItem { Text = "-Select -", Value = "0" });
                 }
+                BindCity(Guid.Parse(strSelectedCountry));
             }
-            BindCity(Guid.Parse(strSelectedCountry));
-
+            else
+            {
+                ddlStateEdit.Items.Clear();
+                ddlStateEdit.Items.Insert(0, new ListItem { Text = "--Select--", Value = "0" });
+            }
         }
         private void BindCity(Guid? Country_Id)
         {
             var resultCity = _serviceMaster.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { Country_Id = Country_Id });
             DropDownList ddlCityEdit = (DropDownList)frmPortdetail.FindControl("ddlCityEdit");
-
             if (resultCity != null)
             {
                 if (resultCity.Count > 0)
                 {
+                    ddlCityEdit.Items.Clear();
                     ddlCityEdit.DataSource = resultCity;
                     ddlCityEdit.DataValueField = "City_Id";
                     ddlCityEdit.DataTextField = "Name";
                     ddlCityEdit.DataBind();
-                    ddlCityEdit.Items.Insert(0, new ListItem { Text = "- ALL -", Value = "0" });
+                    ddlCityEdit.Items.Insert(0, new ListItem { Text = "--Select--", Value = "0" });
 
                 }
+            }
+            else
+            {
+                ddlCityEdit.Items.Clear();
+                ddlCityEdit.Items.Insert(0, new ListItem { Text = "--Select--", Value = "0" });
             }
         }
 
