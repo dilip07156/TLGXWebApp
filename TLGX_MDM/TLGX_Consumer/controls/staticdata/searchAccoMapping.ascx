@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchAccoMapping.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.AccoMap" %>
+﻿uh<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchAccoMapping.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.AccoMap" %>
 <%@ Register Src="~/controls/staticdata/bulkHotelMapping.ascx" TagPrefix="uc1" TagName="bulkHotelMapping" %>
 <%@ Register Src="~/controls/hotel/AddNew.ascx" TagPrefix="uc2" TagName="AddNew" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
