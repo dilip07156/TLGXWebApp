@@ -1,6 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="uc_portManage.ascx.cs" Inherits="TLGX_Consumer.controls.geography.uc_portManage" %>
 
-<h1 class="page-header">Port Details</h1>
+<%--<h1 class="page-header">Port Details</h1>--%>
+ <div class="row page-header">
+                <div class="col-md-8">
+                    <h1>Port Details</h1>
+                </div>
+                <div class="col-md-4">
+                    <div class="pull-right" style="margin-top: 25px !important;">
+                        <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Go Back to Port Search Page" />
+                    </div>
+                </div>
+            </div>
 
 <div class="col-lg-12">
     <div class="panel panel-default">

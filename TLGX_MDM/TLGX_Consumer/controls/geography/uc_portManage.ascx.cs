@@ -164,5 +164,10 @@ namespace TLGX_Consumer.controls.geography
             _msg = _objMaster.UpdatePortMaster(_newObj);
             BootstrapAlert.BootstrapAlertMessage(dvMsg, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
         }
+
+        protected void btnRedirectToSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/geography/portSearch.aspx");
+        }
     }
 }

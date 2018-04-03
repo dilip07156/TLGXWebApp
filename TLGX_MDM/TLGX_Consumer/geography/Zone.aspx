@@ -107,7 +107,7 @@
                                             <label class="control-label col-sm-4" for="ddlMasterCity">City</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlMasterCity" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                    <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -199,7 +199,7 @@
                                             <asp:TemplateField HeaderText="view-Edit">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                                        Enabled="true" CommandArgument='<%#Bind("Zone_id")%>' OnClientClick="showEditZoneModal();">
+                                                        Enabled="true" CommandArgument='<%#Bind("Zone_id")%>'>
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp View/Edit
                                                     </asp:LinkButton>
                                                 </ItemTemplate>

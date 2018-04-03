@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchAccoMapping.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.AccoMap" %>
+﻿uh<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchAccoMapping.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.AccoMap" %>
 <%@ Register Src="~/controls/staticdata/bulkHotelMapping.ascx" TagPrefix="uc1" TagName="bulkHotelMapping" %>
 <%@ Register Src="~/controls/hotel/AddNew.ascx" TagPrefix="uc2" TagName="AddNew" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -12,11 +12,17 @@
     .x-lg {
         width: 1200px;
     }
+
+    .ui-autocomplete {
+        z-index: 99999999 !important;
+    }
 </style>
 <script type="text/javascript">
     $(function () {
         $("#accordion").accordion();
     });
+
+
     function showCityMappingModal() {
         //alert("Hi");
         $("#moCityMapping").modal('show');
@@ -55,6 +61,22 @@
     $(document).ready(function () {
         callajax();
     });
+ 
+
+    function checkLen(val) {
+        var rfvtxtSearchSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_rfvtxtSearchSystemProduct");
+        var hdnSelSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSelSystemProduct_Id");
+        if (val.length == 0) {
+            val.text = null;
+            hdnSelSystemProduct_Id.value = null;
+            ValidatorEnable(rfvtxtSearchSystemProduct, true);
+            document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_btnAddProduct").style.display = "block";
+        }
+        else {
+            ValidatorEnable(rfvtxtSearchSystemProduct, false);
+            document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_btnAddProduct").style.display = "none";
+        }
+    }
 
     var prm = Sys.WebForms.PageRequestManager.getInstance();
     prm.add_endRequest(function () {
@@ -134,25 +156,169 @@
             min_length: 3,
             delay: 300
         });
+        var moCityMapping = document.getElementById("moCityMapping");
+        var hdnSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSystemProduct_Id");
+        var hdnSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSystemProduct");
+        var hdnSelSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSelSystemProduct_Id");
 
-        $("[id*=txtSupProductName]").autocomplete({
+        $("[id*=txtSearchSystemProduct]").autocomplete({
             source: function (request, response) {
                 $.ajax({
-                    url: '../../Service/StaticDataHotelsAutoComplete.ashx',
+                    url: '../../Service/HotelMappingAutoComplete.ashx',
                     dataType: "json",
                     data: {
                         term: request.term,
-                        country: $("[id*=txtSupCountry]").val(),
-                        city: $("[id*=txtSupCity]").val()
+                        country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                        state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
+                        source: 'autocomplete'
                     },
-                    success: function (data) {
-                        response(data);
+                    success: function (result) {
+                        if (result != null && result.length > 0) {
+                            hdnSystemProduct_Id.value = "";
+                            hdnSystemProduct.value = "";
+                            hdnSelSystemProduct_Id.value = "";
+                            var data = [];
+                            for (var i = 0; i < result.length; i++) {
+                                if (hdnSystemProduct_Id != null && result[i].Accommodation_Id != null) {
+                                    hdnSystemProduct_Id.value = hdnSystemProduct_Id.value + result[i].Accommodation_Id + "`";
+                                }
+                                if (result[i].HotelName != null) {
+                                    var hotelname = result[i].HotelName;
+                                    if (result[i].City != null) {
+                                        hotelname = hotelname + ", " + result[i].City;
+                                    }
+                                    if (result[i].State != null) {
+                                        hotelname = hotelname + ", " + result[i].State;
+                                    }
+                                    if (result[i].StateCode != null) {
+                                        hotelname = hotelname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
+                                    }
+                                    if (result[i].Country != null) {
+                                        hotelname = hotelname + ", " + result[i].Country;
+                                    }
+                                    hdnSystemProduct.value = hdnSystemProduct.value + hotelname + "`";
+                                    data.push(hotelname);
+                                }
+                            }
+                            response(data);
+                        }
+                        else {
+                            var data = [];
+                            var NoDataFound = "No Data Found";
+                            data.push(NoDataFound);
+                            response(data);
+                        }
                     }
                 });
             },
             min_length: 3,
             delay: 300
         });
+
+        $("[id*=txtSearchSystemProduct]").on('autocompleteselect', function (e, ui) {
+
+            if (ui.item.value != "No Data Found")
+                callSystemProductNamechange(ui.item.value);
+            else {
+                ui.item.value = null;
+                document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSearchSystemProduct").value = "";
+            }
+
+        });
+
+    }
+    function callSystemProductNamechange(selection) {
+
+        var vrtxtSearch = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSearch");
+        var hdnSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSystemProduct_Id");
+        var hdnSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSystemProduct");
+        var hdnSelSystemProduct_Id = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnSelSystemProduct_Id");
+        var vrbtnAddProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_btnAddProduct");
+        var selId = "";
+        if (selection != null) {
+            vrbtnAddProduct.style.display = "none";
+            if (selection.trim() != "") {
+                var brkvrhdnSystemProduct = hdnSystemProduct.value.split('`');
+                var brkvrhdnSystemProduct_Id = hdnSystemProduct_Id.value.split('`');
+                var idx = brkvrhdnSystemProduct.indexOf(selection);
+                if (idx != null && idx != (-1)) {
+                    selId = brkvrhdnSystemProduct_Id[idx];
+                }
+            }
+        }
+
+        var ddlSystemProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_ddlSystemProductName");
+        var listItems = '';
+        if (selId != null) {
+            ddlSystemProductName.innerHTML = "";
+            listItems += '<option selected="selected" value="' + selId + '">' + brkvrhdnSystemProduct[0].split(';')[0] + '</option>';
+            $('#MainContent_searchAccoMapping_frmEditProductMap_ddlSystemProductName').append(listItems);
+            if (vrbtnAddProduct != null)
+                vrbtnAddProduct.style.display = "none";
+
+        }
+
+
+        var ddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_ddlSystemCityName");
+        var ddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_ddlSystemStateName");
+        var txtSystemProductCode = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSystemProductCode");
+        var lblSystemProductAddress = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemProductAddress");
+        var lblSystemLocation = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLocation");
+        var lblSystemTelephone = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemTelephone");
+        var lblSystemLatitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLatitude");
+        var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
+
+        if (selId != "") {
+            if (vrbtnAddProduct != null)
+                vrbtnAddProduct.style.display = "none";
+            hdnSelSystemProduct_Id.value = selId;
+            $.ajax({
+                url: '../../Service/HotelMappingAutoComplete.ashx',
+                dataType: "json",
+                data: {
+                    accoid: selId,
+                    source: 'details'
+                },
+                responseType: "json",
+                success: function (result) {
+                    if (result != null) {
+                        txtSystemProductCode.value = result[0].CompanyHotelID;
+                        lblSystemProductAddress.innerHTML = result[0].FullAddress;
+                        lblSystemLocation.innerHTML = result[0].Location;
+                        lblSystemTelephone.innerHTML = result[0].Telephone_Tx;
+                        lblSystemLatitude.innerHTML = result[0].Latitude;
+                        lblSystemLongitude.innerHTML = result[0].Longitude;
+                        if (result[0].City != null) {
+
+                            for (var i = 0; i < ddlSystemCityName.options.length; i++) {
+                                if (ddlSystemCityName.options[i].text == result[0].City) {
+                                    ddlSystemCityName.options[i].selected = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (ddlSystemStateName.options[ddlSystemStateName.selectedIndex].value == "0") {
+                            if (result[0].State_Name != null) {
+                                for (var i = 0; i < ddlSystemStateName.options.length; i++) {
+                                    if (ddlSystemStateName.options[i].text == result[0].State_Name) {
+                                        ddlSystemStateName.options[i].selected = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+
+
+                    }
+                },
+                failure: function () {
+                }
+            });
+        }
+        else {
+            if (vrbtnAddProduct != null)
+                vrbtnAddProduct.style.display = "none";
+        }
 
     }
 
@@ -215,7 +381,6 @@
 
     }
     function RemoveExtra(record, onClick) {
-        // debugger;
         if (!onClick) {
             var currentRow = $(record).parent().parent();
             var AccoDDL = currentRow.find("td:eq(10)").find('select');
@@ -230,7 +395,6 @@
     }
 
     function ddlStatusChanged(ddl) {
-        //debugger;
         var ddlStatus = $('#MainContent_searchAccoMapping_frmEditProductMap_ddlStatus option:selected').html();
         var mySystemCountryName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCountryName");
         var mySystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCityName");
@@ -381,6 +545,7 @@
 
                                             <div class="form-group row">
                                                 <div class="col-sm-12">
+                                                    <asp:HiddenField ID="hdnIsAnyChanges" runat="server" Value="false"></asp:HiddenField>
                                                     <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="btnSearch_Click" />
                                                     <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="btnReset_Click" />
                                                 </div>
@@ -556,7 +721,7 @@
 
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlProductName">
-                                                    System Product
+                                                    System Product 
                                                 </label>
                                                 <div class="col-sm-8">
                                                     <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"></asp:TextBox>
@@ -694,6 +859,7 @@
                                                                     <td>
                                                                         <asp:Label ID="lblSupplierName" runat="server" Text=""></asp:Label>&nbsp;
                                                                         <asp:Label ID="lblSupplierCode" runat="server" Text=""></asp:Label>
+
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -776,8 +942,7 @@
                                                         </div>
                                                         <%--For State--%>
                                                         <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="ddlSystemStateName">State<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemStateName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%></label>
-                                                            <div class="col-sm-9">
+                                                            <label class="control-label col-sm-3" for="ddlSystemStateName">State<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemStateName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%></label><div class="col-sm-9">
                                                                 <div class="col-sm-10">
                                                                     <asp:DropDownList ID="ddlSystemStateName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemStateName_SelectedIndexChanged">
                                                                         <asp:ListItem Value="0">Select</asp:ListItem>
@@ -807,12 +972,21 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-3" for="ddlSystemProductName">
                                                                 Product
-                                                            <asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
+                                                            <asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                                <asp:RequiredFieldValidator ID="rfvtxtSearchSystemProduct" runat="server" ErrorMessage="*" ControlToValidate="txtSearchSystemProduct" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+
+                                                            </label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
-                                                                    <asp:DropDownList ID="ddlSystemProductName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemProductName_SelectedIndexChanged">
-                                                                        <asp:ListItem Value="0">Select</asp:ListItem>
+                                                                    <asp:TextBox ID="txtSearchSystemProduct" onkeyup="checkLen(this.value)" runat="server" CssClass="form-control" onlostfocus="callSystemProductNamechange(this);"></asp:TextBox>
+
+                                                                    <%--AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemProductName_SelectedIndexChanged"--%>
+                                                                    <asp:DropDownList ID="ddlSystemProductName" Style="display: none" AppendDataBoundItems="true" runat="server" CssClass="form-control">
+                                                                        <asp:ListItem Value="0">-Select-</asp:ListItem>
                                                                     </asp:DropDownList>
+                                                                    <asp:HiddenField ID="hdnSystemProduct_Id" runat="server" />
+                                                                    <asp:HiddenField ID="hdnSystemProduct" runat="server" />
+                                                                    <asp:HiddenField ID="hdnSelSystemProduct_Id" runat="server" />
                                                                 </div>
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
@@ -1023,7 +1197,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" runat="server" onserverclick="btnSearch_Click">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" runat="server"  onserverclick="GridRefersh">Close</button> 
                 </div>
             </div>
         </div>
@@ -1039,7 +1213,7 @@
 
     $('.first').click(function () {
 
-        $('#myWizard a:first').tab('show')
+        $('#myWizard a:first').tab('show');
 
     })
 </script>

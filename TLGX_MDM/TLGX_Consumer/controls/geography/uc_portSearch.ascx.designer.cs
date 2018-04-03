@@ -13,13 +13,13 @@ namespace TLGX_Consumer.controls.geography {
     public partial class portSearch {
         
         /// <summary>
-        /// panSearchConditions control.
+        /// updatepanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panSearchConditions;
+        protected global::System.Web.UI.UpdatePanel updatepanel;
         
         /// <summary>
         /// ddlMasterCountry control.
@@ -40,15 +40,6 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlMasterCity;
         
         /// <summary>
-        /// ddlStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
-        
-        /// <summary>
         /// txtSuppCountry control.
         /// </summary>
         /// <remarks>
@@ -58,13 +49,13 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.TextBox txtSuppCountry;
         
         /// <summary>
-        /// ddlShowEntries control.
+        /// ddlStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
         
         /// <summary>
         /// btnSearch control.
@@ -85,15 +76,6 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
-        /// updbtnCreateNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updbtnCreateNew;
-        
-        /// <summary>
         /// btnNewPort control.
         /// </summary>
         /// <remarks>
@@ -103,13 +85,40 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.Button btnNewPort;
         
         /// <summary>
-        /// UpdPortSearch control.
+        /// UPsearchGrid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdPortSearch;
+        protected global::System.Web.UI.UpdatePanel UPsearchGrid;
+        
+        /// <summary>
+        /// lblTotalCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotalCount;
+        
+        /// <summary>
+        /// divDropdownForEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
+        
+        /// <summary>
+        /// ddlShowEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
         /// dvMsg control.
