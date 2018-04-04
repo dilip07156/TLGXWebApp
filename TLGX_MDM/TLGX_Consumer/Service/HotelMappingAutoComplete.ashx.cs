@@ -13,7 +13,7 @@ namespace TLGX_Consumer.Service
     {
         Controller.AccomodationSVC AccoSvc = new Controller.AccomodationSVC();
         MDMSVC.DC_Accomodation_AutoComplete_RQ RQ;
-        
+
         public void ProcessRequest(HttpContext context)
         {
             var Source = context.Request.QueryString["source"];
@@ -24,14 +24,24 @@ namespace TLGX_Consumer.Service
                 var StateName = context.Request.QueryString["state"];
                 RQ = new MDMSVC.DC_Accomodation_AutoComplete_RQ();
                 if (!string.IsNullOrWhiteSpace(PrefixText))
-                    RQ.HotelName = PrefixText.Trim().TrimStart(' ');
-                if (!string.IsNullOrWhiteSpace(Country))
-                    RQ.Country = Country.Trim().TrimStart(' ');
-                if (!string.IsNullOrWhiteSpace(StateName) && StateName != "---ALL---")
-                    RQ.State = StateName.Trim();
-                RQ.PageNo = 0;
-                var res = AccoSvc.SearchHotelsAutoComplete(RQ);
-                context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                {
+                    if (Convert.ToString(PrefixText).Length > 2)
+                    {
+                        RQ.HotelName = PrefixText.Trim().TrimStart(' ');
+                        if (!string.IsNullOrWhiteSpace(Country))
+                            RQ.Country = Country.Trim().TrimStart(' ');
+                        if (!string.IsNullOrWhiteSpace(StateName) && StateName != "---ALL---")
+                            RQ.State = StateName.Trim();
+                        RQ.PageNo = 0;
+                        var res = AccoSvc.SearchHotelsAutoComplete(RQ);
+                        context.Response.Write(new JavaScriptSerializer().Serialize(res));
+
+                    }
+                    else
+                        context.Response.Write(new JavaScriptSerializer().Serialize(null));
+
+                }
+
             }
             if (Source != null && Source == "details")
             {
