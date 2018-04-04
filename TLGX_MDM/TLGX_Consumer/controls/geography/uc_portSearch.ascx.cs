@@ -270,11 +270,11 @@ namespace TLGX_Consumer.controls.geography
                 //    _obj.PageSize = Convert.ToInt32(_ddlEntriesCount);
                 //else
                 //    _obj.PageSize = 10;
-                    _obj.PageSize = PageNo;
+                    _obj.PageSize = PageSize;
                 if (!string.IsNullOrWhiteSpace(lblPortCountry))
                     _obj.Port_Country_Name = lblPortCountry;
                 // _obj.PageNo = intPageIndex;
-                _obj.PageNo = PageSize;
+                _obj.PageNo = PageNo;
 
 
                 var result = _serviceMaster.PortMasterSeach(_obj);
