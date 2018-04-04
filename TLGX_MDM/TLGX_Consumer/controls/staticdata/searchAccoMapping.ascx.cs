@@ -110,19 +110,19 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 ddl.DataTextField = "OTA_CodeTableValue";
                 ddl.DataValueField = "AttributeValue";
-            ddl.DataBind();
+                ddl.DataBind();
 
-            if (list.MasterAttributeValues.Length > 0)
-            {
-                MDMSVC.DC_M_masterattributevalue[] vals = list.MasterAttributeValues;
-
-                foreach (MDMSVC.DC_M_masterattributevalue val in vals)
+                if (list.MasterAttributeValues.Length > 0)
                 {
+                    MDMSVC.DC_M_masterattributevalue[] vals = list.MasterAttributeValues;
+
+                    foreach (MDMSVC.DC_M_masterattributevalue val in vals)
+                    {
                         if (!string.IsNullOrWhiteSpace(val.OTA_CodeTableValue) && ddl.Items.FindByValue(val.AttributeValue) != null)
                             ddl.Items.FindByValue(val.AttributeValue).Attributes.Add("title", val.AttributeValue);
                     }
                 }
-                }
+            }
             else
             {
                 ddl.DataTextField = "AttributeValue";
@@ -257,7 +257,7 @@ namespace TLGX_Consumer.controls.staticdata
             bool _isDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
 
-            fillproductdata(ref _isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
+            fillproductdata(ref _isDataExist, "supplier", 0);
             if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
             {
                 btnMapSelected.Visible = _isDataExist;
@@ -451,6 +451,7 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid myRow_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString());
                 if (e.CommandName == "Select")
                 {
+                    hdnIsAnyChanges.Value = "false";
                     dvAddProduct.Visible = false;
                     dvMsg.Style.Add("display", "none");
                     grdMatchingProducts.DataSource = null;
@@ -705,7 +706,7 @@ namespace TLGX_Consumer.controls.staticdata
                             if (lstCity.Count > 0)
                                 SystemCity_Id = lstCity[0].City_Id;
                         }
-                        
+
                         /*var selSysCountry_ID = _objMasterRef.GetDetailsByIdOrName(new MDMSVC.DC_GenericMasterDetails_ByIDOrName()
                         {
                             WhatFor = MDMSVC.DetailsWhatFor.IDByName,
@@ -737,7 +738,7 @@ namespace TLGX_Consumer.controls.staticdata
                             Optional1 = myCountryName,
                             ObjName = MDMSVC.EntityType.state
                         });
-                        
+
                         fillStates(ddlSystemCountryName, ddlSystemStateName);
                         if (ddlSystemStateName.Items.Count > 1)
                         {
@@ -758,7 +759,7 @@ namespace TLGX_Consumer.controls.staticdata
                                 if (selState_ID != null && selState_ID.ID != null)
                                 {
                                     if (Guid.Parse(Convert.ToString(selState_ID.ID)) != Guid.Empty)
-                                    ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(selState_ID.ID.ToString()));
+                                        ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(selState_ID.ID.ToString()));
                                 }
                             }
                         }
@@ -769,8 +770,8 @@ namespace TLGX_Consumer.controls.staticdata
                         {
                             //if (!string.IsNullOrWhiteSpace(masterRoduct[0].CityName))
                             //{
-                                if (SystemCity_Id != null && SystemCity_Id != Guid.Empty)
-                                    ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(SystemCity_Id.ToString()));
+                            if (SystemCity_Id != null && SystemCity_Id != Guid.Empty)
+                                ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(SystemCity_Id.ToString()));
                             //}
                         }
 
@@ -808,7 +809,7 @@ namespace TLGX_Consumer.controls.staticdata
                             lblSystemLongitude.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].SystemLongitude));
 
                         if (ddlSystemCountryName.SelectedItem.Value != "0")
-                        lblSystemCountryCode.Text = masterdata.GetCodeById("country", Guid.Parse(ddlSystemCountryName.SelectedItem.Value));
+                            lblSystemCountryCode.Text = masterdata.GetCodeById("country", Guid.Parse(ddlSystemCountryName.SelectedItem.Value));
                         if (lblSystemCountryCode.Text.Replace(" ", "") != "")
                             lblSystemCountryCode.Text = "(" + lblSystemCountryCode.Text + ")";
                         //txtSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
@@ -955,12 +956,15 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
 
             HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
+
+
             //Button btnMatchedMapSelected = (Button)frmEditProductMap.FindControl("btnMatchedMapSelected");
             //Button btnMatchedMapAll = (Button)frmEditProductMap.FindControl("btnMatchedMapAll");
 
             #endregion
             if (e.CommandName == "Add")
             {
+                hdnIsAnyChanges.Value = "true";
                 Guid myRow_Id = Guid.Parse(grdAccoMaps.SelectedDataKey.Value.ToString());
                 Guid? AccoId = null;
                 string countryname = string.Empty;
@@ -971,13 +975,13 @@ namespace TLGX_Consumer.controls.staticdata
 
                 if (txtSearchSystemProduct.Text != string.Empty && ((ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedItem.Value != "0") || !string.IsNullOrWhiteSpace(hdnSelSystemProduct_Id.Value)))
                 {
-                if (ddlSystemCountryName.SelectedIndex != 0)
-                {
+                    if (ddlSystemCountryName.SelectedIndex != 0)
+                    {
 
-                    countryname = ddlSystemCountryName.SelectedItem.Value;
-                    countryId = new Guid(countryname);
-                    cityname = ddlSystemCityName.SelectedItem.Value;
-                    cityId = new Guid(cityname);
+                        countryname = ddlSystemCountryName.SelectedItem.Value;
+                        countryId = new Guid(countryname);
+                        cityname = ddlSystemCityName.SelectedItem.Value;
+                        cityId = new Guid(cityname);
                         if (ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedItem.Value != "0")
                         {
                             AccoId = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
@@ -988,45 +992,45 @@ namespace TLGX_Consumer.controls.staticdata
                             AccoId = Guid.Parse(hdnSelSystemProduct_Id.Value);
                             //productId = Guid.Parse(hdnSelSystemProduct_Id.Value);
                         }
-                }
-                MDMSVC.DC_Accomodation_ProductMapping newObj = new MDMSVC.DC_Accomodation_ProductMapping
-                {
-                    Accommodation_ProductMapping_Id = myRow_Id,
-                    Accommodation_Id = AccoId,
-                    SystemCountryName = countryname,
-                    SystemCityName = cityname,
-                    Status = ddlStatus.SelectedItem.Text,
-                    Remarks = txtSystemRemark.Text,
-                    Edit_Date = DateTime.Now,
-                    Edit_User = System.Web.HttpContext.Current.User.Identity.Name
-                };
+                    }
+                    MDMSVC.DC_Accomodation_ProductMapping newObj = new MDMSVC.DC_Accomodation_ProductMapping
+                    {
+                        Accommodation_ProductMapping_Id = myRow_Id,
+                        Accommodation_Id = AccoId,
+                        SystemCountryName = countryname,
+                        SystemCityName = cityname,
+                        Status = ddlStatus.SelectedItem.Text,
+                        Remarks = txtSystemRemark.Text,
+                        Edit_Date = DateTime.Now,
+                        Edit_User = System.Web.HttpContext.Current.User.Identity.Name
+                    };
 
-                if (!string.IsNullOrEmpty(lblSupplierName.Text))
-                {
-                    newObj.SupplierName = lblSupplierName.Text;
-                    newObj.SupplierId = lblSupplierCode.Text.Replace("(", "").Replace(")", "");
-                }
-                RQ.Add(newObj);
-                if (mapperSVc.UpdateProductMappingData(RQ))
-                {
-                    dvMsg.Style.Add("display", "block");
-                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
-                    if (!(ddlSystemCountryName.SelectedIndex == 0))
+                    if (!string.IsNullOrEmpty(lblSupplierName.Text))
                     {
-                        //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
-                        fillmatchingdata("", 0);
-                        dvMatchingRecords.Visible = true;
-                        btnMatchedMapSelected.Visible = true;
-                        btnMatchedMapAll.Visible = true;
-                        hdnFlag.Value = "false";
+                        newObj.SupplierName = lblSupplierName.Text;
+                        newObj.SupplierId = lblSupplierCode.Text.Replace("(", "").Replace(")", "");
                     }
-                    else
+                    RQ.Add(newObj);
+                    if (mapperSVc.UpdateProductMappingData(RQ))
                     {
-                        dvMatchingRecords.Visible = false;
-                        btnMatchedMapSelected.Visible = false;
-                        btnMatchedMapAll.Visible = false;
-                        hdnFlag.Value = "false";
-                    }
+                        dvMsg.Style.Add("display", "block");
+                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
+                        if (!(ddlSystemCountryName.SelectedIndex == 0))
+                        {
+                            //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
+                            fillmatchingdata("", 0);
+                            dvMatchingRecords.Visible = true;
+                            btnMatchedMapSelected.Visible = true;
+                            btnMatchedMapAll.Visible = true;
+                            hdnFlag.Value = "false";
+                        }
+                        else
+                        {
+                            dvMatchingRecords.Visible = false;
+                            btnMatchedMapSelected.Visible = false;
+                            btnMatchedMapAll.Visible = false;
+                            hdnFlag.Value = "false";
+                        }
                     }
                 }
                 else
@@ -1121,7 +1125,7 @@ namespace TLGX_Consumer.controls.staticdata
 
             //txtSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
             if (ddlSystemCityName.SelectedItem.Value != "0")
-            lblSystemCityCode.Text = masterdata.GetCodeById(MDMSVC.EntityType.city, Guid.Parse(ddlSystemCityName.SelectedItem.Value));
+                lblSystemCityCode.Text = masterdata.GetCodeById(MDMSVC.EntityType.city, Guid.Parse(ddlSystemCityName.SelectedItem.Value));
             if (lblSystemCityCode.Text.Replace(" ", "") != "")
                 lblSystemCityCode.Text = "(" + lblSystemCityCode.Text + ")";
             fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
@@ -1643,6 +1647,7 @@ namespace TLGX_Consumer.controls.staticdata
             Guid mySupplier_Id = Guid.Empty;
             Guid? myAcco_Id = Guid.Empty;
             bool res = false;
+            hdnIsAnyChanges.Value = "true";
             foreach (GridViewRow row in grdMatchingProducts.Rows)
             {
                 HtmlInputCheckBox chk = row.Cells[11].Controls[1] as HtmlInputCheckBox;
@@ -1656,7 +1661,7 @@ namespace TLGX_Consumer.controls.staticdata
                     myRow_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[0].ToString());
                     mySupplier_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[1].ToString());
                     if (ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedValue != "0")
-                    myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
+                        myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
                     else if (!string.IsNullOrWhiteSpace(hdnSelSystemProduct_Id.Value))
                         myAcco_Id = Guid.Parse(hdnSelSystemProduct_Id.Value);
                     //myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
@@ -1693,6 +1698,7 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
 
+            hdnIsAnyChanges.Value = "true";
             List<MDMSVC.DC_Accomodation_ProductMapping> newObj = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
@@ -1708,7 +1714,7 @@ namespace TLGX_Consumer.controls.staticdata
                 mySupplier_Id = Guid.Parse(grdMatchingProducts.DataKeys[index].Values[1].ToString());
 
                 if (ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedValue != "0")
-                myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
+                    myAcco_Id = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
                 else if (!string.IsNullOrWhiteSpace(hdnSelSystemProduct_Id.Value))
                     myAcco_Id = Guid.Parse(hdnSelSystemProduct_Id.Value);
 
@@ -1858,5 +1864,39 @@ namespace TLGX_Consumer.controls.staticdata
         //        throw ex;
         //    }
         //}
+
+        public void GridRefersh(object sender, EventArgs e)
+        {
+            if (Convert.ToBoolean(hdnIsAnyChanges.Value))
+            {
+                bool _isDataExist = false;
+                divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
+
+                fillproductdata(ref _isDataExist, "supplier", Convert.ToInt32(hdnPageNumber.Value ?? "0"));
+                if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
+                {
+                    btnMapSelected.Visible = _isDataExist;
+                    btnMapAll.Visible = _isDataExist;
+                }
+                else if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
+                {
+                    if (ddlCountry.SelectedValue == "0" && ddlSupplierCity.SelectedValue == "0")
+                    {
+                        btnMapSelected.Visible = false;
+                        btnMapAll.Visible = false;
+                    }
+                    else
+                    {
+                        btnMapSelected.Visible = _isDataExist;
+                        btnMapAll.Visible = _isDataExist;
+                    }
+                }
+                else
+                {
+                    btnMapSelected.Visible = false;
+                    btnMapAll.Visible = false;
+                }
+            }
+        }
     }
 }
