@@ -1,4 +1,4 @@
-﻿uh<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchAccoMapping.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.AccoMap" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchAccoMapping.ascx.cs" Inherits="TLGX_Consumer.controls.staticdata.AccoMap" %>
 <%@ Register Src="~/controls/staticdata/bulkHotelMapping.ascx" TagPrefix="uc1" TagName="bulkHotelMapping" %>
 <%@ Register Src="~/controls/hotel/AddNew.ascx" TagPrefix="uc2" TagName="AddNew" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -61,7 +61,7 @@
     $(document).ready(function () {
         callajax();
     });
- 
+
 
     function checkLen(val) {
         var rfvtxtSearchSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_rfvtxtSearchSystemProduct");
@@ -332,7 +332,12 @@
         }
     }
     function MatchedSelect(elem) {
-        elem.parentNode.parentNode.nextSibling.childNodes[11].lastElementChild.focus();
+        debugger;
+        var element = elem.parentNode.parentNode.nextSibling.childNodes[12];
+        if (typeof element !== 'undefined') {
+            if (element.lastElementChild != null)
+                element.lastElementChild.focus();
+        }
     }
     function fillDropDown(record, onClick) {
         if (onClick) {
@@ -1197,7 +1202,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" runat="server"  onserverclick="GridRefersh">Close</button> 
+                    <button type="button" class="btn btn-default" data-dismiss="modal" runat="server" onserverclick="GridRefersh">Close</button>
                 </div>
             </div>
         </div>
