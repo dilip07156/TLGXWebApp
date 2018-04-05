@@ -118,7 +118,7 @@
                     }
                 });
             },
-            min_length: 3,
+            minLength: 3,
             delay: 300
         });
 
@@ -961,7 +961,10 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="ddlSystemCityName">City<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
+                                                            <label class="control-label col-sm-3" for="ddlSystemCityName">City
+                                                                <%--<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
+
+                                                            </label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
                                                                     <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemCityName_SelectedIndexChanged">
@@ -977,7 +980,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-3" for="ddlSystemProductName">
                                                                 Product
-                                                            <asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                            <%--<asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
                                                                 <asp:RequiredFieldValidator ID="rfvtxtSearchSystemProduct" runat="server" ErrorMessage="*" ControlToValidate="txtSearchSystemProduct" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
 
                                                             </label>

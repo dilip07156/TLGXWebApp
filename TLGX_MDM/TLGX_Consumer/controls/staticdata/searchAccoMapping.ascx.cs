@@ -10,6 +10,9 @@ using System.Data;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
 using System.Web.UI.HtmlControls;
+using TLGX_Consumer.Service;
+using System.Net;
+using TLGX_Consumer.MDMSVC;
 
 namespace TLGX_Consumer.controls.staticdata
 {
@@ -703,8 +706,22 @@ namespace TLGX_Consumer.controls.staticdata
                             RQ.PageNo = 0;
                             RQ.PageSize = int.MaxValue;
                             lstCity = _objMasterRef.GetCityMasterData(RQ);
-                            if (lstCity.Count > 0)
-                                SystemCity_Id = lstCity[0].City_Id;
+                            bool foundExactMatch = false;
+                            if (lstCity.Count > 1)
+                            {
+                                foreach (var item in lstCity)
+                                {
+                                    if (item.Name.ToString() == myCityName.Trim())
+                                    {
+                                        SystemCity_Id = item.City_Id;
+                                        foundExactMatch = true; 
+                                        break;
+                                    }
+                                }
+                            }
+                            if (lstCity.Count > 0 && !foundExactMatch) 
+                                    SystemCity_Id = lstCity[0].City_Id;
+                            
                         }
 
                         /*var selSysCountry_ID = _objMasterRef.GetDetailsByIdOrName(new MDMSVC.DC_GenericMasterDetails_ByIDOrName()
@@ -949,8 +966,18 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditProductMap.FindControl("txtSystemCityCode");
             Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
-            TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+
+          TextBox txtSystemProductCode          = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+            Label lblSystemProductAddress   = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            Label lblSystemLocation         = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+            Label lblSystemTelephone        = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+            Label lblSystemLatitude         = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+            Label lblSystemLongitude        = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
+
+            Button btnAddProduct = (Button)frmEditProductMap.FindControl("btnAddProduct");
+
             DropDownList ddlStatus = (DropDownList)frmEditProductMap.FindControl("ddlStatus");
             TextBox txtSystemRemark = (TextBox)frmEditProductMap.FindControl("txtSystemRemark");
             TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
@@ -970,7 +997,7 @@ namespace TLGX_Consumer.controls.staticdata
                 string countryname = string.Empty;
                 Guid? countryId = null;
                 string cityname = string.Empty;
-                Guid? cityId = null;
+                //Guid? cityId = null;
                 //Guid? productId = null;
 
                 if (txtSearchSystemProduct.Text != string.Empty && ((ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedItem.Value != "0") || !string.IsNullOrWhiteSpace(hdnSelSystemProduct_Id.Value)))
@@ -981,7 +1008,7 @@ namespace TLGX_Consumer.controls.staticdata
                         countryname = ddlSystemCountryName.SelectedItem.Value;
                         countryId = new Guid(countryname);
                         cityname = ddlSystemCityName.SelectedItem.Value;
-                        cityId = new Guid(cityname);
+                        //cityId = new Guid(cityname);
                         if (ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedItem.Value != "0")
                         {
                             AccoId = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
@@ -1013,12 +1040,27 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.Add(newObj);
                     if (mapperSVc.UpdateProductMappingData(RQ))
                     {
+
+                        var result = AccSvc.GetAccomodationBasicInfo(newObj.Accommodation_Id ?? Guid.Empty);
+                        if (result != null)
+                        {
+                            txtSystemProductCode.Text = Convert.ToString(result[0].CompanyHotelID);
+                            lblSystemProductAddress.Text = Convert.ToString(result[0].FullAddress);
+                            lblSystemLocation.Text = Convert.ToString(result[0].Location);
+                            lblSystemTelephone.Text = Convert.ToString(result[0].Telephone_Tx);
+                            lblSystemLatitude.Text = Convert.ToString(result[0].Latitude);
+                            lblSystemLongitude.Text = Convert.ToString(result[0].Longitude);
+                            btnAddProduct.Attributes.Add("style", "display:none");
+
+                        }
                         dvMsg.Style.Add("display", "block");
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
                         if (!(ddlSystemCountryName.SelectedIndex == 0))
                         {
                             //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                             fillmatchingdata("", 0);
+                            //Setting control value setted in javascript
+
                             dvMatchingRecords.Visible = true;
                             btnMatchedMapSelected.Visible = true;
                             btnMatchedMapAll.Visible = true;
