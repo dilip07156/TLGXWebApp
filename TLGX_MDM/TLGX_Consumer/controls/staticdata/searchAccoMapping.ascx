@@ -163,53 +163,55 @@
 
         $("[id*=txtSearchSystemProduct]").autocomplete({
             source: function (request, response) {
-                $.ajax({
-                    url: '../../Service/HotelMappingAutoComplete.ashx',
-                    dataType: "json",
-                    data: {
-                        term: request.term,
-                        country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
-                        state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
-                        source: 'autocomplete'
-                    },
-                    success: function (result) {
-                        if (result != null && result.length > 0) {
-                            hdnSystemProduct_Id.value = "";
-                            hdnSystemProduct.value = "";
-                            hdnSelSystemProduct_Id.value = "";
-                            var data = [];
-                            for (var i = 0; i < result.length; i++) {
-                                if (hdnSystemProduct_Id != null && result[i].Accommodation_Id != null) {
-                                    hdnSystemProduct_Id.value = hdnSystemProduct_Id.value + result[i].Accommodation_Id + "`";
+                if (request.term.length > 2) {
+                    $.ajax({
+                        url: '../../Service/HotelMappingAutoComplete.ashx',
+                        dataType: "json",
+                        data: {
+                            term: request.term,
+                            country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                            state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
+                            source: 'autocomplete'
+                        },
+                        success: function (result) {
+                            if (result != null && result.length > 0) {
+                                hdnSystemProduct_Id.value = "";
+                                hdnSystemProduct.value = "";
+                                hdnSelSystemProduct_Id.value = "";
+                                var data = [];
+                                for (var i = 0; i < result.length; i++) {
+                                    if (hdnSystemProduct_Id != null && result[i].Accommodation_Id != null) {
+                                        hdnSystemProduct_Id.value = hdnSystemProduct_Id.value + result[i].Accommodation_Id + "`";
+                                    }
+                                    if (result[i].HotelName != null) {
+                                        var hotelname = result[i].HotelName;
+                                        if (result[i].City != null) {
+                                            hotelname = hotelname + ", " + result[i].City;
+                                        }
+                                        if (result[i].State != null) {
+                                            hotelname = hotelname + ", " + result[i].State;
+                                        }
+                                        if (result[i].StateCode != null) {
+                                            hotelname = hotelname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
+                                        }
+                                        if (result[i].Country != null) {
+                                            hotelname = hotelname + ", " + result[i].Country;
+                                        }
+                                        hdnSystemProduct.value = hdnSystemProduct.value + hotelname + "`";
+                                        data.push(hotelname);
+                                    }
                                 }
-                                if (result[i].HotelName != null) {
-                                    var hotelname = result[i].HotelName;
-                                    if (result[i].City != null) {
-                                        hotelname = hotelname + ", " + result[i].City;
-                                    }
-                                    if (result[i].State != null) {
-                                        hotelname = hotelname + ", " + result[i].State;
-                                    }
-                                    if (result[i].StateCode != null) {
-                                        hotelname = hotelname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
-                                    }
-                                    if (result[i].Country != null) {
-                                        hotelname = hotelname + ", " + result[i].Country;
-                                    }
-                                    hdnSystemProduct.value = hdnSystemProduct.value + hotelname + "`";
-                                    data.push(hotelname);
-                                }
+                                response(data);
                             }
-                            response(data);
+                            else {
+                                var data = [];
+                                var NoDataFound = "No Data Found";
+                                data.push(NoDataFound);
+                                response(data);
+                            }
                         }
-                        else {
-                            var data = [];
-                            var NoDataFound = "No Data Found";
-                            data.push(NoDataFound);
-                            response(data);
-                        }
-                    }
-                });
+                    });
+                }
             },
             min_length: 3,
             delay: 300
@@ -293,6 +295,7 @@
                             for (var i = 0; i < ddlSystemCityName.options.length; i++) {
                                 if (ddlSystemCityName.options[i].text == result[0].City) {
                                     ddlSystemCityName.options[i].selected = true;
+                                    // __doPostBack("ctl00$MainContent$searchAccoMapping$frmEditProductMap$ddlSystemCityName", "ddlchange");
                                     break;
                                 }
                             }
@@ -302,6 +305,7 @@
                                 for (var i = 0; i < ddlSystemStateName.options.length; i++) {
                                     if (ddlSystemStateName.options[i].text == result[0].State_Name) {
                                         ddlSystemStateName.options[i].selected = true;
+                                        //   __doPostBack("ctl00$MainContent$searchAccoMapping$frmEditProductMap$ddlSystemStateName", "ddlchange");
                                         break;
                                     }
                                 }
@@ -597,12 +601,17 @@
                                                 <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
                                                 <asp:BoundField DataField="FullAddress" HeaderText="Address" />
                                                 <asp:BoundField DataField="TelephoneNUmber" HeaderText="Tel" />
+                                                <asp:TemplateField HeaderText="Country">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSupCoutry" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CountryCode"))) ? Eval("CountryName") : Eval("CountryName") + " (" + Eval("CountryCode") + " )" %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <%--   <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />--%>
-                                                <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
+                                                <%--<asp:BoundField DataField="CountryName" HeaderText="Country Name" />--%>
                                                 <%--   <asp:BoundField DataField="CityCode" HeaderText="City Code" />--%>
                                                 <asp:TemplateField HeaderText="City">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CityCode"))) ? Eval("CityName") : Eval("CityName") + " (" + Eval("CityCode") + " )" %>'></asp:Label>
+                                                        <asp:Label ID="lblSupCity" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CityCode"))) ? Eval("CityName") : Eval("CityName") + " (" + Eval("CityCode") + " )" %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <%--<asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
@@ -961,9 +970,9 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="ddlSystemCityName">City
+                                                            <label class="control-label col-sm-3" for="ddlSystemCityName">
+                                                                City
                                                                 <%--<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
-
                                                             </label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">

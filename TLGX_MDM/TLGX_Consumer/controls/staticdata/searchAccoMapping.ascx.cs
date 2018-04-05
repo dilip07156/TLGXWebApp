@@ -714,14 +714,14 @@ namespace TLGX_Consumer.controls.staticdata
                                     if (item.Name.ToString() == myCityName.Trim())
                                     {
                                         SystemCity_Id = item.City_Id;
-                                        foundExactMatch = true; 
+                                        foundExactMatch = true;
                                         break;
                                     }
                                 }
                             }
-                            if (lstCity.Count > 0 && !foundExactMatch) 
-                                    SystemCity_Id = lstCity[0].City_Id;
-                            
+                            if (lstCity.Count > 0 && !foundExactMatch)
+                                SystemCity_Id = lstCity[0].City_Id;
+
                         }
 
                         /*var selSysCountry_ID = _objMasterRef.GetDetailsByIdOrName(new MDMSVC.DC_GenericMasterDetails_ByIDOrName()
@@ -968,13 +968,15 @@ namespace TLGX_Consumer.controls.staticdata
             Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
 
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
+            DropDownList ddlSystemSystemName = (DropDownList)frmEditProductMap.FindControl("ddlSystemSystemName");
 
-          TextBox txtSystemProductCode          = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
-            Label lblSystemProductAddress   = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
-            Label lblSystemLocation         = (Label)frmEditProductMap.FindControl("lblSystemLocation");
-            Label lblSystemTelephone        = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
-            Label lblSystemLatitude         = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
-            Label lblSystemLongitude        = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
+
+            TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+            Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+            Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+            Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
 
             Button btnAddProduct = (Button)frmEditProductMap.FindControl("btnAddProduct");
 
@@ -1050,6 +1052,14 @@ namespace TLGX_Consumer.controls.staticdata
                             lblSystemTelephone.Text = Convert.ToString(result[0].Telephone_Tx);
                             lblSystemLatitude.Text = Convert.ToString(result[0].Latitude);
                             lblSystemLongitude.Text = Convert.ToString(result[0].Longitude);
+                            //if (!string.IsNullOrWhiteSpace(Convert.ToString(result[0].City)))
+                            //{
+                            //    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(Convert.ToString(result[0].City)));
+                            //}
+                            //if (!string.IsNullOrWhiteSpace(Convert.ToString(result[0].State_Name)))
+                            //{
+                            //    ddlSystemSystemName.SelectedIndex = ddlSystemSystemName.Items.IndexOf(ddlSystemSystemName.Items.FindByText(Convert.ToString(result[0].State_Name)));
+                            //}
                             btnAddProduct.Attributes.Add("style", "display:none");
 
                         }
@@ -1111,7 +1121,6 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSystemCountryCode = (TextBox)frmEditProductMap.FindControl("txtSystemCountryCode");
             TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
             Label lblSystemCountryCode = (Label)frmEditProductMap.FindControl("lblSystemCountryCode");
-            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
 
             DropDownList ddlSystemStateName = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
             TextBox txtSystemStateCode = (TextBox)frmEditProductMap.FindControl("txtSystemStateCode");
@@ -1119,7 +1128,9 @@ namespace TLGX_Consumer.controls.staticdata
 
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditProductMap.FindControl("txtSystemCityCode");
-            Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+
+
+
             DropDownList ddlAddCountry = (DropDownList)ucAddNew.FindControl("ddlAddCountry");
             DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
             DropDownList ddlAddCity = (DropDownList)ucAddNew.FindControl("ddlAddCity");
@@ -1135,8 +1146,6 @@ namespace TLGX_Consumer.controls.staticdata
                 fillcities(ddlSystemCityName, ddlSystemCountryName);
 
                 //txtSystemCityCode.Text = "";
-                lblSystemCityCode.Text = "";
-
                 ddlAddCountry.SelectedIndex = ddlAddCountry.Items.IndexOf(ddlAddCountry.Items.FindByValue(ddlSystemCountryName.SelectedItem.Value));
                 fillStates(ddlAddCountry, ddlAddState);
                 fillcities(ddlAddCity, ddlAddCountry);
@@ -1146,8 +1155,32 @@ namespace TLGX_Consumer.controls.staticdata
             ddlSystemCityName.SelectedIndex = 0;
             lblSystemCountryCode.Text = string.Empty;
             txtSystemProductCode.Text = string.Empty;
+            //ResetSystemDetails();
+        }
+        public void ResetSystemDetails()
+        {
+            Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+            Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+            Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+            Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+            Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
+            TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
+            HiddenField hdnSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSystemProduct_Id");
+            HiddenField hdnSystemProduct = (HiddenField)frmEditProductMap.FindControl("hdnSystemProduct");
+            HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
+            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            lblSystemCityCode.Text = "";
             lblSystemProductAddress.Text = string.Empty;
             lblSystemCityCode.Text = string.Empty;
+            lblSystemLocation.Text = string.Empty;
+            lblSystemTelephone.Text = string.Empty;
+            lblSystemLatitude.Text = string.Empty;
+            lblSystemLongitude.Text = string.Empty;
+            txtSearchSystemProduct.Text = string.Empty;
+            hdnSystemProduct_Id.Value = null;
+            hdnSystemProduct.Value = null;
+            hdnSelSystemProduct_Id.Value = null;
+
         }
 
         protected void ddlSystemCityName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1174,6 +1207,7 @@ namespace TLGX_Consumer.controls.staticdata
             txtSystemProductCode.Text = "";
             ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(ddlSystemCityName.SelectedItem.Value));
             ddlSystemProductName.Focus();
+            //ResetSystemDetails();
         }
 
         protected void ddlSystemProductName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1792,8 +1826,9 @@ namespace TLGX_Consumer.controls.staticdata
         {
             DropDownList ddlSystemStateName = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
             DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
-
+            //ResetSystemDetails();
             ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(ddlSystemStateName.SelectedItem.Value));
+
         }
 
         //protected Control GetPostBackControl(System.Web.UI.Control page)
