@@ -1155,16 +1155,19 @@ namespace TLGX_Consumer.controls.staticdata
             ddlSystemCityName.SelectedIndex = 0;
             lblSystemCountryCode.Text = string.Empty;
             txtSystemProductCode.Text = string.Empty;
-            //ResetSystemDetails();
+            ResetSystemDetails("");
         }
-        public void ResetSystemDetails()
+        public void ResetSystemDetails(string byReset)
         {
+            DropDownList ddlStystemCity = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
+            DropDownList ddlStystemState = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
             Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
             Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
             Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
             Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
             Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
             TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
+            TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
             HiddenField hdnSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSystemProduct_Id");
             HiddenField hdnSystemProduct = (HiddenField)frmEditProductMap.FindControl("hdnSystemProduct");
             HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
@@ -1177,9 +1180,14 @@ namespace TLGX_Consumer.controls.staticdata
             lblSystemLatitude.Text = string.Empty;
             lblSystemLongitude.Text = string.Empty;
             txtSearchSystemProduct.Text = string.Empty;
+            txtSystemProductCode.Text = string.Empty;
             hdnSystemProduct_Id.Value = null;
             hdnSystemProduct.Value = null;
             hdnSelSystemProduct_Id.Value = null;
+            if (byReset == "state")
+            {
+                ddlStystemCity.SelectedIndex = 0;
+            }
 
         }
 
@@ -1196,6 +1204,9 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlAddCountry = (DropDownList)ucAddNew.FindControl("ddlAddCountry");
             DropDownList ddlAddCity = (DropDownList)ucAddNew.FindControl("ddlAddCity");
             Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            HiddenField hdnIsJavascriptChagedValueddlSystemStateName = (HiddenField)frmEditProductMap.FindControl("hdnIsJavascriptChagedValueddlSystemStateName");
+            HiddenField hdnIsJavascriptChagedValueddlSystemCityName = (HiddenField)frmEditProductMap.FindControl("hdnIsJavascriptChagedValueddlSystemCityName");
+
             lblSystemProductAddress.Text = "";
 
             //txtSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
@@ -1207,7 +1218,11 @@ namespace TLGX_Consumer.controls.staticdata
             txtSystemProductCode.Text = "";
             ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(ddlSystemCityName.SelectedItem.Value));
             ddlSystemProductName.Focus();
-            //ResetSystemDetails();
+            if (hdnIsJavascriptChagedValueddlSystemCityName.Value != "true")
+                ResetSystemDetails("");
+            else
+                hdnIsJavascriptChagedValueddlSystemCityName.Value = "false";
+
         }
 
         protected void ddlSystemProductName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1826,7 +1841,11 @@ namespace TLGX_Consumer.controls.staticdata
         {
             DropDownList ddlSystemStateName = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
             DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
-            //ResetSystemDetails();
+            HiddenField hdnIsJavascriptChagedValueddlSystemStateName = (HiddenField)frmEditProductMap.FindControl("hdnIsJavascriptChagedValueddlSystemStateName");
+            if (hdnIsJavascriptChagedValueddlSystemStateName.Value != "true")
+                ResetSystemDetails("state");
+            else
+                hdnIsJavascriptChagedValueddlSystemStateName.Value = "false";
             ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(ddlSystemStateName.SelectedItem.Value));
 
         }

@@ -269,6 +269,12 @@
         var lblSystemTelephone = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemTelephone");
         var lblSystemLatitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLatitude");
         var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
+        var hdnIsJavascriptChagedValueddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemStateName");
+
+        var hdnIsJavascriptChagedValueddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemCityName");
+
+
+        var txtSearchSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSearchSystemProduct")
 
         if (selId != "") {
             if (vrbtnAddProduct != null)
@@ -284,6 +290,7 @@
                 responseType: "json",
                 success: function (result) {
                     if (result != null) {
+                        txtSearchSystemProduct.value = result[0].HotelName;
                         txtSystemProductCode.value = result[0].CompanyHotelID;
                         lblSystemProductAddress.innerHTML = result[0].FullAddress;
                         lblSystemLocation.innerHTML = result[0].Location;
@@ -295,7 +302,7 @@
                             for (var i = 0; i < ddlSystemCityName.options.length; i++) {
                                 if (ddlSystemCityName.options[i].text == result[0].City) {
                                     ddlSystemCityName.options[i].selected = true;
-                                    // __doPostBack("ctl00$MainContent$searchAccoMapping$frmEditProductMap$ddlSystemCityName", "ddlchange");
+                                    hdnIsJavascriptChagedValueddlSystemCityName.value = "true";
                                     break;
                                 }
                             }
@@ -305,7 +312,7 @@
                                 for (var i = 0; i < ddlSystemStateName.options.length; i++) {
                                     if (ddlSystemStateName.options[i].text == result[0].State_Name) {
                                         ddlSystemStateName.options[i].selected = true;
-                                        //   __doPostBack("ctl00$MainContent$searchAccoMapping$frmEditProductMap$ddlSystemStateName", "ddlchange");
+                                        hdnIsJavascriptChagedValueddlSystemStateName.value = "true";
                                         break;
                                     }
                                 }
@@ -958,6 +965,8 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-3" for="ddlSystemStateName">State<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemStateName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%></label><div class="col-sm-9">
                                                                 <div class="col-sm-10">
+                                                                    <asp:HiddenField ID="hdnIsJavascriptChagedValueddlSystemStateName" runat="server" Value="" />
+
                                                                     <asp:DropDownList ID="ddlSystemStateName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemStateName_SelectedIndexChanged">
                                                                         <asp:ListItem Value="0">Select</asp:ListItem>
                                                                     </asp:DropDownList>
@@ -976,6 +985,7 @@
                                                             </label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
+                                                                    <asp:HiddenField ID="hdnIsJavascriptChagedValueddlSystemCityName" runat="server" Value="" />
                                                                     <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemCityName_SelectedIndexChanged">
                                                                         <asp:ListItem Value="0">Select</asp:ListItem>
                                                                     </asp:DropDownList>
