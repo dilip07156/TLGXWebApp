@@ -143,7 +143,7 @@ namespace TLGX_Consumer.controls.geography
             _newObj.Port_Id = Guid.Parse(Port_ID);
             _newObj.OAG_loc = txtOAG_loc.Text;
             _newObj.OAG_multicity = txtOAG_multicity.Text;
-            _newObj.OAG_type = txtoag_lon.Text;
+            _newObj.Oag_lon = txtoag_lon.Text;
             _newObj.Oag_inactive = txtoag_inactive.Text;
             _newObj.MappingStatus = txtMappingStatus.Text;
             _newObj.Oag_ctryname = txtoag_ctryname.Text;

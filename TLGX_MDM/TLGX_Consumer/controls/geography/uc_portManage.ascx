@@ -117,8 +117,6 @@
                     </div>
                     <div class="form-group row">
                         <asp:Label runat="server" AssociatedControlID="ddlStateEdit" CssClass="col-md-4 control-label">State
-                                 <asp:RequiredFieldValidator ValidationGroup="Port" runat="server" ControlToValidate="ddlStateEdit"
-                                      CssClass="text-danger" ErrorMessage="The State is required." InitialValue ="0"  Text="*"/>
                         </asp:Label>
                         <div class="col-md-8">
                             <asp:DropDownList runat="server" ID="ddlStateEdit" CssClass="form-control">
