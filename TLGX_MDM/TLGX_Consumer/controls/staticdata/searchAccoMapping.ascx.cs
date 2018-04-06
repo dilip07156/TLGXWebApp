@@ -10,6 +10,9 @@ using System.Data;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
 using System.Web.UI.HtmlControls;
+using TLGX_Consumer.Service;
+using System.Net;
+using TLGX_Consumer.MDMSVC;
 
 namespace TLGX_Consumer.controls.staticdata
 {
@@ -703,8 +706,22 @@ namespace TLGX_Consumer.controls.staticdata
                             RQ.PageNo = 0;
                             RQ.PageSize = int.MaxValue;
                             lstCity = _objMasterRef.GetCityMasterData(RQ);
-                            if (lstCity.Count > 0)
+                            bool foundExactMatch = false;
+                            if (lstCity.Count > 1)
+                            {
+                                foreach (var item in lstCity)
+                                {
+                                    if (item.Name.ToString() == myCityName.Trim())
+                                    {
+                                        SystemCity_Id = item.City_Id;
+                                        foundExactMatch = true;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (lstCity.Count > 0 && !foundExactMatch)
                                 SystemCity_Id = lstCity[0].City_Id;
+
                         }
 
                         /*var selSysCountry_ID = _objMasterRef.GetDetailsByIdOrName(new MDMSVC.DC_GenericMasterDetails_ByIDOrName()
@@ -949,8 +966,20 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditProductMap.FindControl("txtSystemCityCode");
             Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
+            DropDownList ddlSystemSystemName = (DropDownList)frmEditProductMap.FindControl("ddlSystemSystemName");
+
+
             TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+            Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+            Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+            Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
+
+            Button btnAddProduct = (Button)frmEditProductMap.FindControl("btnAddProduct");
+
             DropDownList ddlStatus = (DropDownList)frmEditProductMap.FindControl("ddlStatus");
             TextBox txtSystemRemark = (TextBox)frmEditProductMap.FindControl("txtSystemRemark");
             TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
@@ -970,7 +999,7 @@ namespace TLGX_Consumer.controls.staticdata
                 string countryname = string.Empty;
                 Guid? countryId = null;
                 string cityname = string.Empty;
-                Guid? cityId = null;
+                //Guid? cityId = null;
                 //Guid? productId = null;
 
                 if (txtSearchSystemProduct.Text != string.Empty && ((ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedItem.Value != "0") || !string.IsNullOrWhiteSpace(hdnSelSystemProduct_Id.Value)))
@@ -981,7 +1010,7 @@ namespace TLGX_Consumer.controls.staticdata
                         countryname = ddlSystemCountryName.SelectedItem.Value;
                         countryId = new Guid(countryname);
                         cityname = ddlSystemCityName.SelectedItem.Value;
-                        cityId = new Guid(cityname);
+                        //cityId = new Guid(cityname);
                         if (ddlSystemProductName.Items.Count > 0 && ddlSystemProductName.SelectedItem.Value != "0")
                         {
                             AccoId = Guid.Parse(ddlSystemProductName.SelectedItem.Value);
@@ -1013,12 +1042,35 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.Add(newObj);
                     if (mapperSVc.UpdateProductMappingData(RQ))
                     {
+
+                        var result = AccSvc.GetAccomodationBasicInfo(newObj.Accommodation_Id ?? Guid.Empty);
+                        if (result != null)
+                        {
+                            txtSystemProductCode.Text = Convert.ToString(result[0].CompanyHotelID);
+                            lblSystemProductAddress.Text = Convert.ToString(result[0].FullAddress);
+                            lblSystemLocation.Text = Convert.ToString(result[0].Location);
+                            lblSystemTelephone.Text = Convert.ToString(result[0].Telephone_Tx);
+                            lblSystemLatitude.Text = Convert.ToString(result[0].Latitude);
+                            lblSystemLongitude.Text = Convert.ToString(result[0].Longitude);
+                            //if (!string.IsNullOrWhiteSpace(Convert.ToString(result[0].City)))
+                            //{
+                            //    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(Convert.ToString(result[0].City)));
+                            //}
+                            //if (!string.IsNullOrWhiteSpace(Convert.ToString(result[0].State_Name)))
+                            //{
+                            //    ddlSystemSystemName.SelectedIndex = ddlSystemSystemName.Items.IndexOf(ddlSystemSystemName.Items.FindByText(Convert.ToString(result[0].State_Name)));
+                            //}
+                            btnAddProduct.Attributes.Add("style", "display:none");
+
+                        }
                         dvMsg.Style.Add("display", "block");
                         BootstrapAlert.BootstrapAlertMessage(dvMsg, "Record has been mapped successfully", BootstrapAlertType.Success);
                         if (!(ddlSystemCountryName.SelectedIndex == 0))
                         {
                             //fillproductdata(ref isDataExist, "supplier", grdAccoMaps.PageIndex);
                             fillmatchingdata("", 0);
+                            //Setting control value setted in javascript
+
                             dvMatchingRecords.Visible = true;
                             btnMatchedMapSelected.Visible = true;
                             btnMatchedMapAll.Visible = true;
@@ -1069,7 +1121,6 @@ namespace TLGX_Consumer.controls.staticdata
             TextBox txtSystemCountryCode = (TextBox)frmEditProductMap.FindControl("txtSystemCountryCode");
             TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
             Label lblSystemCountryCode = (Label)frmEditProductMap.FindControl("lblSystemCountryCode");
-            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
 
             DropDownList ddlSystemStateName = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
             TextBox txtSystemStateCode = (TextBox)frmEditProductMap.FindControl("txtSystemStateCode");
@@ -1077,7 +1128,9 @@ namespace TLGX_Consumer.controls.staticdata
 
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditProductMap.FindControl("txtSystemCityCode");
-            Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+
+
+
             DropDownList ddlAddCountry = (DropDownList)ucAddNew.FindControl("ddlAddCountry");
             DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
             DropDownList ddlAddCity = (DropDownList)ucAddNew.FindControl("ddlAddCity");
@@ -1093,8 +1146,6 @@ namespace TLGX_Consumer.controls.staticdata
                 fillcities(ddlSystemCityName, ddlSystemCountryName);
 
                 //txtSystemCityCode.Text = "";
-                lblSystemCityCode.Text = "";
-
                 ddlAddCountry.SelectedIndex = ddlAddCountry.Items.IndexOf(ddlAddCountry.Items.FindByValue(ddlSystemCountryName.SelectedItem.Value));
                 fillStates(ddlAddCountry, ddlAddState);
                 fillcities(ddlAddCity, ddlAddCountry);
@@ -1104,8 +1155,40 @@ namespace TLGX_Consumer.controls.staticdata
             ddlSystemCityName.SelectedIndex = 0;
             lblSystemCountryCode.Text = string.Empty;
             txtSystemProductCode.Text = string.Empty;
+            ResetSystemDetails("");
+        }
+        public void ResetSystemDetails(string byReset)
+        {
+            DropDownList ddlStystemCity = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
+            DropDownList ddlStystemState = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
+            Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+            Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+            Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+            Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+            Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
+            TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
+            TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+            HiddenField hdnSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSystemProduct_Id");
+            HiddenField hdnSystemProduct = (HiddenField)frmEditProductMap.FindControl("hdnSystemProduct");
+            HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
+            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            lblSystemCityCode.Text = "";
             lblSystemProductAddress.Text = string.Empty;
             lblSystemCityCode.Text = string.Empty;
+            lblSystemLocation.Text = string.Empty;
+            lblSystemTelephone.Text = string.Empty;
+            lblSystemLatitude.Text = string.Empty;
+            lblSystemLongitude.Text = string.Empty;
+            txtSearchSystemProduct.Text = string.Empty;
+            txtSystemProductCode.Text = string.Empty;
+            hdnSystemProduct_Id.Value = null;
+            hdnSystemProduct.Value = null;
+            hdnSelSystemProduct_Id.Value = null;
+            if (byReset == "state")
+            {
+                ddlStystemCity.SelectedIndex = 0;
+            }
+
         }
 
         protected void ddlSystemCityName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1121,6 +1204,9 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlAddCountry = (DropDownList)ucAddNew.FindControl("ddlAddCountry");
             DropDownList ddlAddCity = (DropDownList)ucAddNew.FindControl("ddlAddCity");
             Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+            HiddenField hdnIsJavascriptChagedValueddlSystemStateName = (HiddenField)frmEditProductMap.FindControl("hdnIsJavascriptChagedValueddlSystemStateName");
+            HiddenField hdnIsJavascriptChagedValueddlSystemCityName = (HiddenField)frmEditProductMap.FindControl("hdnIsJavascriptChagedValueddlSystemCityName");
+
             lblSystemProductAddress.Text = "";
 
             //txtSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
@@ -1132,6 +1218,11 @@ namespace TLGX_Consumer.controls.staticdata
             txtSystemProductCode.Text = "";
             ddlAddCity.SelectedIndex = ddlAddCity.Items.IndexOf(ddlAddCity.Items.FindByValue(ddlSystemCityName.SelectedItem.Value));
             ddlSystemProductName.Focus();
+            if (hdnIsJavascriptChagedValueddlSystemCityName.Value != "true")
+                ResetSystemDetails("");
+            else
+                hdnIsJavascriptChagedValueddlSystemCityName.Value = "false";
+
         }
 
         protected void ddlSystemProductName_SelectedIndexChanged(object sender, EventArgs e)
@@ -1750,8 +1841,13 @@ namespace TLGX_Consumer.controls.staticdata
         {
             DropDownList ddlSystemStateName = (DropDownList)frmEditProductMap.FindControl("ddlSystemStateName");
             DropDownList ddlAddState = (DropDownList)ucAddNew.FindControl("ddlAddState");
-
+            HiddenField hdnIsJavascriptChagedValueddlSystemStateName = (HiddenField)frmEditProductMap.FindControl("hdnIsJavascriptChagedValueddlSystemStateName");
+            if (hdnIsJavascriptChagedValueddlSystemStateName.Value != "true")
+                ResetSystemDetails("state");
+            else
+                hdnIsJavascriptChagedValueddlSystemStateName.Value = "false";
             ddlAddState.SelectedIndex = ddlAddState.Items.IndexOf(ddlAddState.Items.FindByValue(ddlSystemStateName.SelectedItem.Value));
+
         }
 
         //protected Control GetPostBackControl(System.Web.UI.Control page)

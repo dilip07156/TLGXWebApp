@@ -118,7 +118,7 @@
                     }
                 });
             },
-            min_length: 3,
+            minLength: 3,
             delay: 300
         });
 
@@ -163,53 +163,55 @@
 
         $("[id*=txtSearchSystemProduct]").autocomplete({
             source: function (request, response) {
-                $.ajax({
-                    url: '../../Service/HotelMappingAutoComplete.ashx',
-                    dataType: "json",
-                    data: {
-                        term: request.term,
-                        country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
-                        state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
-                        source: 'autocomplete'
-                    },
-                    success: function (result) {
-                        if (result != null && result.length > 0) {
-                            hdnSystemProduct_Id.value = "";
-                            hdnSystemProduct.value = "";
-                            hdnSelSystemProduct_Id.value = "";
-                            var data = [];
-                            for (var i = 0; i < result.length; i++) {
-                                if (hdnSystemProduct_Id != null && result[i].Accommodation_Id != null) {
-                                    hdnSystemProduct_Id.value = hdnSystemProduct_Id.value + result[i].Accommodation_Id + "`";
+                if (request.term.length > 2) {
+                    $.ajax({
+                        url: '../../Service/HotelMappingAutoComplete.ashx',
+                        dataType: "json",
+                        data: {
+                            term: request.term,
+                            country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                            state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
+                            source: 'autocomplete'
+                        },
+                        success: function (result) {
+                            if (result != null && result.length > 0) {
+                                hdnSystemProduct_Id.value = "";
+                                hdnSystemProduct.value = "";
+                                hdnSelSystemProduct_Id.value = "";
+                                var data = [];
+                                for (var i = 0; i < result.length; i++) {
+                                    if (hdnSystemProduct_Id != null && result[i].Accommodation_Id != null) {
+                                        hdnSystemProduct_Id.value = hdnSystemProduct_Id.value + result[i].Accommodation_Id + "`";
+                                    }
+                                    if (result[i].HotelName != null) {
+                                        var hotelname = result[i].HotelName;
+                                        if (result[i].City != null) {
+                                            hotelname = hotelname + ", " + result[i].City;
+                                        }
+                                        if (result[i].State != null) {
+                                            hotelname = hotelname + ", " + result[i].State;
+                                        }
+                                        if (result[i].StateCode != null) {
+                                            hotelname = hotelname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
+                                        }
+                                        if (result[i].Country != null) {
+                                            hotelname = hotelname + ", " + result[i].Country;
+                                        }
+                                        hdnSystemProduct.value = hdnSystemProduct.value + hotelname + "`";
+                                        data.push(hotelname);
+                                    }
                                 }
-                                if (result[i].HotelName != null) {
-                                    var hotelname = result[i].HotelName;
-                                    if (result[i].City != null) {
-                                        hotelname = hotelname + ", " + result[i].City;
-                                    }
-                                    if (result[i].State != null) {
-                                        hotelname = hotelname + ", " + result[i].State;
-                                    }
-                                    if (result[i].StateCode != null) {
-                                        hotelname = hotelname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
-                                    }
-                                    if (result[i].Country != null) {
-                                        hotelname = hotelname + ", " + result[i].Country;
-                                    }
-                                    hdnSystemProduct.value = hdnSystemProduct.value + hotelname + "`";
-                                    data.push(hotelname);
-                                }
+                                response(data);
                             }
-                            response(data);
+                            else {
+                                var data = [];
+                                var NoDataFound = "No Data Found";
+                                data.push(NoDataFound);
+                                response(data);
+                            }
                         }
-                        else {
-                            var data = [];
-                            var NoDataFound = "No Data Found";
-                            data.push(NoDataFound);
-                            response(data);
-                        }
-                    }
-                });
+                    });
+                }
             },
             min_length: 3,
             delay: 300
@@ -267,6 +269,12 @@
         var lblSystemTelephone = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemTelephone");
         var lblSystemLatitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLatitude");
         var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
+        var hdnIsJavascriptChagedValueddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemStateName");
+
+        var hdnIsJavascriptChagedValueddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemCityName");
+
+
+        var txtSearchSystemProduct = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_txtSearchSystemProduct")
 
         if (selId != "") {
             if (vrbtnAddProduct != null)
@@ -282,6 +290,7 @@
                 responseType: "json",
                 success: function (result) {
                     if (result != null) {
+                        txtSearchSystemProduct.value = result[0].HotelName;
                         txtSystemProductCode.value = result[0].CompanyHotelID;
                         lblSystemProductAddress.innerHTML = result[0].FullAddress;
                         lblSystemLocation.innerHTML = result[0].Location;
@@ -293,6 +302,7 @@
                             for (var i = 0; i < ddlSystemCityName.options.length; i++) {
                                 if (ddlSystemCityName.options[i].text == result[0].City) {
                                     ddlSystemCityName.options[i].selected = true;
+                                    hdnIsJavascriptChagedValueddlSystemCityName.value = "true";
                                     break;
                                 }
                             }
@@ -302,6 +312,7 @@
                                 for (var i = 0; i < ddlSystemStateName.options.length; i++) {
                                     if (ddlSystemStateName.options[i].text == result[0].State_Name) {
                                         ddlSystemStateName.options[i].selected = true;
+                                        hdnIsJavascriptChagedValueddlSystemStateName.value = "true";
                                         break;
                                     }
                                 }
@@ -597,12 +608,17 @@
                                                 <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
                                                 <asp:BoundField DataField="FullAddress" HeaderText="Address" />
                                                 <asp:BoundField DataField="TelephoneNUmber" HeaderText="Tel" />
+                                                <asp:TemplateField HeaderText="Country">
+                                                    <ItemTemplate>
+                                                        <asp:Label ID="lblSupCoutry" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CountryCode"))) ? Eval("CountryName") : Eval("CountryName") + " (" + Eval("CountryCode") + " )" %>'></asp:Label>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
                                                 <%--   <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />--%>
-                                                <asp:BoundField DataField="CountryName" HeaderText="Country Name" />
+                                                <%--<asp:BoundField DataField="CountryName" HeaderText="Country Name" />--%>
                                                 <%--   <asp:BoundField DataField="CityCode" HeaderText="City Code" />--%>
                                                 <asp:TemplateField HeaderText="City">
                                                     <ItemTemplate>
-                                                        <asp:Label ID="Label1" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CityCode"))) ? Eval("CityName") : Eval("CityName") + " (" + Eval("CityCode") + " )" %>'></asp:Label>
+                                                        <asp:Label ID="lblSupCity" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CityCode"))) ? Eval("CityName") : Eval("CityName") + " (" + Eval("CityCode") + " )" %>'></asp:Label>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                                 <%--<asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
@@ -949,6 +965,8 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-3" for="ddlSystemStateName">State<%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemStateName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%></label><div class="col-sm-9">
                                                                 <div class="col-sm-10">
+                                                                    <asp:HiddenField ID="hdnIsJavascriptChagedValueddlSystemStateName" runat="server" Value="" />
+
                                                                     <asp:DropDownList ID="ddlSystemStateName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemStateName_SelectedIndexChanged">
                                                                         <asp:ListItem Value="0">Select</asp:ListItem>
                                                                     </asp:DropDownList>
@@ -961,9 +979,13 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label class="control-label col-sm-3" for="ddlSystemCityName">City<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator></label>
+                                                            <label class="control-label col-sm-3" for="ddlSystemCityName">
+                                                                City
+                                                                <%--<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
+                                                            </label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
+                                                                    <asp:HiddenField ID="hdnIsJavascriptChagedValueddlSystemCityName" runat="server" Value="" />
                                                                     <asp:DropDownList ID="ddlSystemCityName" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemCityName_SelectedIndexChanged">
                                                                         <asp:ListItem Value="0">Select</asp:ListItem>
                                                                     </asp:DropDownList>
@@ -977,7 +999,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label col-sm-3" for="ddlSystemProductName">
                                                                 Product
-                                                            <asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
+                                                            <%--<asp:RequiredFieldValidator ID="vddlSystemProductName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemProductName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
                                                                 <asp:RequiredFieldValidator ID="rfvtxtSearchSystemProduct" runat="server" ErrorMessage="*" ControlToValidate="txtSearchSystemProduct" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
 
                                                             </label>
