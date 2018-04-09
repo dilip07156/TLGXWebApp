@@ -143,7 +143,7 @@ namespace TLGX_Consumer.controls.geography
             _newObj.Port_Id = Guid.Parse(Port_ID);
             _newObj.OAG_loc = txtOAG_loc.Text;
             _newObj.OAG_multicity = txtOAG_multicity.Text;
-            _newObj.OAG_type = txtoag_lon.Text;
+            _newObj.Oag_lon = txtoag_lon.Text;
             _newObj.Oag_inactive = txtoag_inactive.Text;
             _newObj.MappingStatus = txtMappingStatus.Text;
             _newObj.Oag_ctryname = txtoag_ctryname.Text;
@@ -163,6 +163,11 @@ namespace TLGX_Consumer.controls.geography
 
             _msg = _objMaster.UpdatePortMaster(_newObj);
             BootstrapAlert.BootstrapAlertMessage(dvMsg, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
+        }
+
+        protected void btnRedirectToSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/geography/portSearch.aspx");
         }
     }
 }

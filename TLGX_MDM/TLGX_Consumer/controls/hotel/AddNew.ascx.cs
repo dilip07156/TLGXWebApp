@@ -51,7 +51,7 @@ namespace TLGX_Consumer.controls.hotel
 
             string ParentPageName = vPath.Replace(dir, "");
 
-            
+
             return ParentPageName;
         }
 
@@ -533,6 +533,9 @@ namespace TLGX_Consumer.controls.hotel
                     DropDownList ddlSystemCityName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCityName");
                     DropDownList ddlSystemProductName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemProductName");
                     TextBox txtSystemProductCode = (TextBox)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("txtSystemProductCode");
+
+
+
                     Button btnAddProduct = (Button)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("btnAddProduct");
 
                     ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByValue(ddlAddCountry.SelectedItem.Value));
@@ -541,6 +544,37 @@ namespace TLGX_Consumer.controls.hotel
 
                     ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
                     ddlSystemProductName.SelectedIndex = ddlSystemProductName.Items.IndexOf(ddlSystemProductName.Items.FindByText(txtHotelName.Text.ToString()));
+                    //Added for textbox search product
+                    if (ParentPageName == "search.aspx")
+                    {
+                        TextBox txtSearchSystemProduct = (TextBox)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("txtSearchSystemProduct");
+                        HiddenField hdnSelSystemProduct_Id = (HiddenField)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
+                        txtSearchSystemProduct.Text = ddlSystemProductName.SelectedItem.Text;
+                        hdnSelSystemProduct_Id.Value = ddlSystemProductName.SelectedValue;
+
+                        var res = AccSvc.GetAccomodationBasicInfo(Guid.Parse(hdnSelSystemProduct_Id.Value));
+                        if (res != null && res.Count > 0)
+                        {
+                            Label lblSystemProductAddress = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemProductAddress");
+                            Label lblSystemLocation = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemLocation");
+                            Label lblSystemTelephone = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemTelephone");
+                            Label lblSystemLatitude = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemLatitude");
+                            Label lblSystemLongitude = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemLongitude");
+                            lblSystemProductAddress.Text = res[0].FullAddress;
+                            lblSystemLocation.Text = res[0].Location;
+                            lblSystemTelephone.Text = res[0].Telephone_Tx;
+                            lblSystemLatitude.Text = res[0].Latitude;
+                            lblSystemLongitude.Text = res[0].Longitude;
+                        }
+
+
+
+
+                    }
+                    else
+                    {
+
+                    }
                     txtSystemProductCode.Text = masterdata.GetCodeById("product", Guid.Parse(ddlSystemProductName.SelectedItem.Value));
                     btnAddProduct.Visible = false;
                     this.Parent.Visible = false;
@@ -684,7 +718,7 @@ namespace TLGX_Consumer.controls.hotel
 
         protected void ddlAddState_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlAddState.SelectedIndex==0)
+            if (ddlAddState.SelectedIndex == 0)
             {
                 ddlAddCity.Items.Clear();
                 fillcitydropdown(ddlAddCountry.SelectedValue);
@@ -692,7 +726,7 @@ namespace TLGX_Consumer.controls.hotel
             else
             {
                 Guid ddlstate_id = Guid.Parse(ddlAddState.SelectedValue);
-                var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() {State_Id=ddlstate_id });
+                var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { State_Id = ddlstate_id });
 
                 if (result != null)
                 {

@@ -82,6 +82,7 @@ namespace TLGX_Consumer.geography
         }
         private void fillcountries(DropDownList ddl)
         {
+            ddl.Items.Clear();
             ddl.DataSource = masterSVc.GetAllCountries();
             ddl.DataValueField = "Country_Id";
             ddl.DataTextField = "Country_Name";
@@ -99,7 +100,7 @@ namespace TLGX_Consumer.geography
                 ddl.DataTextField = "Name";
                 ddl.DataBind();
             }
-            ddl.Items.Insert(0, new ListItem("---Select---", "0"));
+            ddl.Items.Insert(0, new ListItem("--ALL--", "0"));
         }
         private void BindZoneType(DropDownList ddl)
         {
@@ -120,7 +121,7 @@ namespace TLGX_Consumer.geography
         {
             ddl.Items.Clear();
             var result = masterSVc.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "Zone", Name = "ZoneRadius" });
-            result = (from a in result select a).OrderBy(s => s.AttributeValue).ToList();
+            result = (from a in result select a).OrderBy(s => Convert.ToDecimal(s.AttributeValue)).ToList();
             if (result != null)
                 if (result.Count > 0)
                 {

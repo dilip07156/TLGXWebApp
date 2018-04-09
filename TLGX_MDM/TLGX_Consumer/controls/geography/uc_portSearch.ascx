@@ -13,114 +13,164 @@
         }
     }
 </script>
-<asp:Panel ID="panSearchConditions" runat="server">
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Search Ports</a>
-                </h4>
-            </div>
-            <div id="collapseSearch" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    <div class="container">
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlMasterCountry">System Country</label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList EnableViewState="true" ID="ddlMasterCountry" AutoPostBack="true" runat="server" ClientIDMode="Static" CssClass="form-control" OnSelectedIndexChanged="ddlMasterCountry_SelectedIndexChanged">
-                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
+<asp:UpdatePanel ID="updatepanel" runat="server">
+    <ContentTemplate>
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseSearch">Search Ports</a>
+                    </h4>
+                </div>
+                <div id="collapseSearch" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="col-sm-6">
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlMasterCountry">System Country</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList EnableViewState="true" ID="ddlMasterCountry" AutoPostBack="true" runat="server" ClientIDMode="Static" CssClass="form-control" OnSelectedIndexChanged="ddlMasterCountry_SelectedIndexChanged">
+                                            <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlMasterCity">System City</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlMasterCity" runat="server" EnableViewState="true" CssClass="form-control" ClientIDMode="Static" AppendDataBoundItems="true">
+                                            <asp:ListItem Text="--ALL--" Value="0"></asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="txtSuppCountry">Port Country Name</label>
+                                    <div class="col-sm-8">
+                                        <asp:TextBox ID="txtSuppCountry" runat="server" CssClass="form-control"></asp:TextBox>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlMasterCity">System City</label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlMasterCity" runat="server" EnableViewState="true" CssClass="form-control" ClientIDMode="Static" AppendDataBoundItems="true">
-                                        <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
+                            <div class="col-sm-6">
+                                <%--  <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlShowEntries">Entries</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlShowEntries" AutoPostBack="true" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" runat="server" CssClass="form-control">
+                                            <asp:ListItem>10</asp:ListItem>
+                                            <asp:ListItem>15</asp:ListItem>
+                                            <asp:ListItem>20</asp:ListItem>
+                                            <asp:ListItem>25</asp:ListItem>
+                                            <asp:ListItem>30</asp:ListItem>
+                                            <asp:ListItem>35</asp:ListItem>
+                                            <asp:ListItem>40</asp:ListItem>
+                                            <asp:ListItem>45</asp:ListItem>
+                                            <asp:ListItem>50</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>--%>
+
+                                <div class="form-group row">
+                                    <label class="control-label col-sm-4" for="ddlStatus">Mapping Status</label>
+                                    <div class="col-sm-8">
+                                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        </asp:DropDownList>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlStatus">Mapping Status</label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                    </asp:DropDownList>
+                                <br />
+                                <div class="form-group row ">
+                                    <div class="col-sm-12">
+                                        <asp:Button ID="btnSearch" OnClick="btnSearch_Click" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" />
+                                        <asp:Button ID="btnReset" OnClick="btnReset_Click" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" />
+                                        <%--<asp:UpdatePanel ID="updbtnCreateNew" runat="server">
+                                            <ContentTemplate>--%>
+                                        <asp:Button runat="server" ID="btnNewPort" OnClick="btnNewPort_Click" OnClientClick="showPortModal();" CssClass="btn btn-primary btn-sm" Text="Add New Port" />
+                                        <%--</ContentTemplate>
+                                        </asp:UpdatePanel>--%>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="txtSuppName">Port Country Name</label>
-                                <div class="col-sm-8">
-                                    <asp:TextBox ID="txtSuppCountry" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label class="control-label col-sm-4" for="ddlShowEntries">Entries</label>
-                                <div class="col-sm-8">
-                                    <asp:DropDownList ID="ddlShowEntries" AutoPostBack="true" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" runat="server" CssClass="form-control">
-                                        <asp:ListItem>10</asp:ListItem>
-                                        <asp:ListItem>15</asp:ListItem>
-                                        <asp:ListItem>20</asp:ListItem>
-                                        <asp:ListItem>25</asp:ListItem>
-                                        <asp:ListItem>30</asp:ListItem>
-                                        <asp:ListItem>35</asp:ListItem>
-                                        <asp:ListItem>40</asp:ListItem>
-                                        <asp:ListItem>45</asp:ListItem>
-                                        <asp:ListItem>50</asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="form-group row btn-group">
-                                <div class="col-sm-12 row">
-                                    <asp:Button ID="btnSearch" OnClick="btnSearch_Click" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" />
-                                    <asp:Button ID="btnReset" OnClick="btnReset_Click" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" />
-                                    <asp:UpdatePanel ID="updbtnCreateNew" runat="server">
-                                        <ContentTemplate>
-                                            <asp:Button runat="server" ID="btnNewPort" OnClick="btnNewPort_Click" OnClientClick="showPortModal();" CssClass="btn btn-primary btn-sm" Text="Add New Port" />
-                                        </ContentTemplate>
-                                    </asp:UpdatePanel>
-                                </div>
-                                <div class="col-sm-12">&nbsp; </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br />
-    <h4>Search Results</h4>
-    <hr />
 
-    <asp:UpdatePanel ID="UpdPortSearch" runat="server">
-        <ContentTemplate>
-            <div id="dvMsg" runat="server" style="display: none;"></div>
-            <asp:GridView ID="grdPortList" Style="height: 200px; overflow: auto" runat="server" AllowPaging="True" AllowSorting="True" AllowCustomPaging="true" AutoGenerateColumns="False" DataKeyNames="Port_Id" CssClass="table table-hover table-striped" OnPageIndexChanging="grdPortList_PageIndexChanging" OnRowCommand="grdPortList_RowCommand">
-                <Columns>
-                    <asp:BoundField DataField="Oag_portname" HeaderText="Oag_portname" SortExpression="Oag_portname" />
-                    <asp:BoundField DataField="Oag_name" HeaderText="Oag_name" SortExpression="Oag_name" />
-                    <asp:BoundField DataField="CountryName" HeaderText="CountryName" SortExpression="CountryName" />
-                    <asp:HyperLinkField DataNavigateUrlFields="Port_Id" Text="Select" DataNavigateUrlFormatString="~/geography/portManage?Port_Id={0}" NavigateUrl="~/geography/portManage" HeaderText="Manage" />
-                </Columns>
-                <PagerStyle CssClass="pagination-ys" BorderStyle="None" />
-            </asp:GridView>
-        </ContentTemplate>
-    </asp:UpdatePanel>
-</asp:Panel>
-<div class="modal fade" id="moAddUpdatePort" role="dialog">
+        <!--Search result-->
+        <asp:UpdatePanel ID="UPsearchGrid" runat="server">
+            <ContentTemplate>
+                <div class="panel-group" id="accordionResult">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+
+                            <div class="col-md-6">
+                                <h4 class="panel-title pull-left">
+                                    <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">Search Results (Total Count:
+                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div class="input-group col-md-3 pull-right" runat="server" id="divDropdownForEntries">
+                                <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                                <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged" CssClass="form-control">
+                                    <asp:ListItem Value="10">10</asp:ListItem>
+                                    <asp:ListItem Value="25">25</asp:ListItem>
+                                    <asp:ListItem Value="50">50</asp:ListItem>
+                                    <asp:ListItem Value="75">75</asp:ListItem>
+                                    <asp:ListItem Value="100">100</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        <div id="collapseSearchResult" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div class="form-group">
+                                    <div id="dvMsg" runat="server" style="display: none;"></div>
+                                </div>
+
+                                <asp:GridView ID="grdPortList" runat="server" AllowPaging="True"
+                                  AllowCustomPaging="true" AutoGenerateColumns="False"
+                                    DataKeyNames="Port_Id" CssClass="table table-hover table-striped"
+                                    OnPageIndexChanging="grdPortList_PageIndexChanging"
+                                    OnRowCommand="grdPortList_RowCommand" EmptyDataText="No Ports Found">
+                                  <%--     AllowSorting="True"--%>
+                                    <Columns>
+                                        <asp:BoundField DataField="Oag_portname" HeaderText="Oag_portname" /> <%-- SortExpression="Oag_portname"--%>
+                                        <asp:BoundField DataField="Oag_name" HeaderText="Oag_name" />
+                                        <asp:BoundField DataField="CountryName" HeaderText="CountryName" />
+                                        <asp:TemplateField HeaderText="Manage">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                                                    Enabled="true" CommandArgument='<%#Bind("Port_Id")%>' >
+                                        <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Select
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <%-- <asp:HyperLinkField DataNavigateUrlFields="Port_Id" Text="Select" DataNavigateUrlFormatString="~/geography/portManage?Port_Id={0}" NavigateUrl="~/geography/portManage" HeaderText="Manage" />--%>
+                                    </Columns>
+                                    <PagerStyle CssClass="pagination-ys" />
+                                </asp:GridView>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </ContentTemplate>
+</asp:UpdatePanel>
+
+<!--Add Modal-->
+
+<div class="modal fade" id="moAddUpdatePort" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="input-group">
+               <%-- <div class="input-group">
                     <h4 class="input-group-addon">Add Port </h4>
-                </div>
+                </div>--%>
+               <h4 class="modal-title"><b>Add Port </b></h4>
             </div>
             <div class="modal-body">
                 <asp:UpdatePanel ID="UpdUserAddModal" runat="server">
                     <ContentTemplate>
-                        <div class="container">
                             <div class="form-group row">
                                 <div class="col-sm-6">
                                     <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="Port" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
@@ -129,16 +179,15 @@
 
                                 </div>
                             </div>
-                        </div>
                         <div class="row">
-                            <div class="col-lg-12">
+                            <div class="col-md-12">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">Port Information</div>
                                     <div class="panel-body">
-                                        <asp:FormView ID="frmPortdetail" CssClass="col-lg-12" runat="server" OnItemCommand="frmPortdetail_ItemCommand" DefaultMode="Insert">
+                                        <asp:FormView ID="frmPortdetail" CssClass="col-md-12" runat="server" OnItemCommand="frmPortdetail_ItemCommand" DefaultMode="Insert">
                                             <InsertItemTemplate>
-                                                <div class="col-lg-12">
-                                                    <div class="col-lg-6">
+                                                <div class="col-md-12">
+                                                    <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <label for="txtoag_portname" class="col-md-4 col-form-label">
                                                                 oag_portname
@@ -212,7 +261,7 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-lg-6">
+                                                    <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <asp:Label runat="server" AssociatedControlID="ddlCountryEdit" CssClass="col-md-4 control-label">Country
                                 <asp:RequiredFieldValidator ValidationGroup="Port" runat="server" ControlToValidate="ddlCountryEdit" CssClass="text-danger"
@@ -226,12 +275,11 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <asp:Label runat="server" AssociatedControlID="ddlStateEdit" CssClass="col-md-4 control-label">State
-                                 <asp:RequiredFieldValidator ValidationGroup="Port" runat="server" ControlToValidate="ddlStateEdit"
-                                      CssClass="text-danger" ErrorMessage="The State is required." InitialValue ="0"  Text="*"/>
+                             
                                                             </asp:Label>
                                                             <div class="col-md-8">
                                                                 <asp:DropDownList runat="server" ID="ddlStateEdit" CssClass="form-control">
-                                                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                    <asp:ListItem Value="0">--Select--</asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </div>
                                                         </div>
@@ -241,15 +289,16 @@
                                                             </asp:Label>
                                                             <div class="col-md-8">
                                                                 <asp:DropDownList runat="server" ID="ddlCityEdit" CssClass="form-control">
-                                                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                    <asp:ListItem Value="0">--Select--</asp:ListItem>
                                                                 </asp:DropDownList>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="form-group">
-                                                                <label for="txtOAG_typeC" class="col-md-4 control-label">OAG Type
-                                                                  <asp:RegularExpressionValidator Text="*" ControlToValidate = "txtOAG_type" ID="RegularExpressionValidator1" ValidationExpression = "^[\s\S]{0,1}$" runat="server" 
-                                                                     ValidationGroup="Port"  ErrorMessage="Maximum 1 characters allowed for OAG Type."></asp:RegularExpressionValidator>
+                                                                <label for="txtOAG_typeC" class="col-md-4 control-label">
+                                                                    OAG Type
+                                                                  <asp:RegularExpressionValidator Text="*" ControlToValidate="txtOAG_type" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{0,1}$" runat="server"
+                                                                      ValidationGroup="Port" ErrorMessage="Maximum 1 characters allowed for OAG Type."></asp:RegularExpressionValidator>
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <asp:TextBox runat="server" ID="txtOAG_type" CssClass="form-control" />
@@ -258,9 +307,10 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <div class="form-group">
-                                                                <label for="txtOAG_subtype" class="col-md-4 control-label">OAG_subtype
-                                                                     <asp:RegularExpressionValidator Text="*" ControlToValidate = "txtOAG_subtype" ID="RegularExpressionValidator2" ValidationExpression = "^[\s\S]{0,1}$" runat="server" 
-                                                                     ValidationGroup="Port"  ErrorMessage="Maximum 1 characters allowed for OAG Sub type."></asp:RegularExpressionValidator>
+                                                                <label for="txtOAG_subtype" class="col-md-4 control-label">
+                                                                    OAG_subtype
+                                                                     <asp:RegularExpressionValidator Text="*" ControlToValidate="txtOAG_subtype" ID="RegularExpressionValidator2" ValidationExpression="^[\s\S]{0,1}$" runat="server"
+                                                                         ValidationGroup="Port" ErrorMessage="Maximum 1 characters allowed for OAG Sub type."></asp:RegularExpressionValidator>
                                                                 </label>
                                                                 <div class="col-md-8">
                                                                     <asp:TextBox runat="server" ID="txtOAG_subtype" CssClass="form-control" />
@@ -301,8 +351,7 @@
                                         </asp:FormView>
                                     </div>
                                 </div>
-                            </div>
-
+                                </div>
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>

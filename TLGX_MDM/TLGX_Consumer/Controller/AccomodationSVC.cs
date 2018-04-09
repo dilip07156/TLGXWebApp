@@ -22,6 +22,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_SearchURI"], RQParams, typeof(MDMSVC.DC_Accomodation_Search_RQ), typeof(List<MDMSVC.DC_Accomodation_Search_RS>), out result);
             return result as List<DC_Accomodation_Search_RS>;
         }
+        public List<DC_Accomodation_AutoComplete_RS> SearchHotelsAutoComplete(MDMSVC.DC_Accomodation_AutoComplete_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Accomodation_SearchAutoComplete"], RQParams, typeof(MDMSVC.DC_Accomodation_AutoComplete_RQ), typeof(List<MDMSVC.DC_Accomodation_AutoComplete_RS>), out result);
+            return result as List<DC_Accomodation_AutoComplete_RS>;
+        }
 
         public List<string> GetAccomodationNames(MDMSVC.DC_Accomodation_Search_RQ RQParams)
         {
@@ -42,6 +48,12 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_DetailURI"], AccommodationId), typeof(List<DC_Accomodation>), out result);
             return result as List<DC_Accomodation>;
+        }
+        public List<DC_AccomodationBasic> GetAccomodationBasicInfo(Guid AccommodationId)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_DetailBasic"], AccommodationId), typeof(List<DC_AccomodationBasic>), out result);
+            return result as List<DC_AccomodationBasic>;
         }
 
         // Add Hotel with Basic Data

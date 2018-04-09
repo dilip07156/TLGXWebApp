@@ -1,6 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="uc_portManage.ascx.cs" Inherits="TLGX_Consumer.controls.geography.uc_portManage" %>
 
-<h1 class="page-header">Port Details</h1>
+<%--<h1 class="page-header">Port Details</h1>--%>
+ <div class="row page-header">
+                <div class="col-md-8">
+                    <h1>Port Details</h1>
+                </div>
+                <div class="col-md-4">
+                    <div class="pull-right" style="margin-top: 25px !important;">
+                        <asp:Button runat="server" ID="btnRedirectToSearch" OnClick="btnRedirectToSearch_Click" CssClass="btn btn-link" Text="Go Back to Port Search Page" />
+                    </div>
+                </div>
+            </div>
 
 <div class="col-lg-12">
     <div class="panel panel-default">
@@ -107,8 +117,6 @@
                     </div>
                     <div class="form-group row">
                         <asp:Label runat="server" AssociatedControlID="ddlStateEdit" CssClass="col-md-4 control-label">State
-                                 <asp:RequiredFieldValidator ValidationGroup="Port" runat="server" ControlToValidate="ddlStateEdit"
-                                      CssClass="text-danger" ErrorMessage="The State is required." InitialValue ="0"  Text="*"/>
                         </asp:Label>
                         <div class="col-md-8">
                             <asp:DropDownList runat="server" ID="ddlStateEdit" CssClass="form-control">

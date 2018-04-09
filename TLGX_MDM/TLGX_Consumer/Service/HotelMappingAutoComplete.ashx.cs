@@ -11,36 +11,50 @@ namespace TLGX_Consumer.Service
     /// </summary>
     public class HotelMappingAutoComplete : IHttpHandler
     {
-        Controller.MasterDataSVCs msterdata = new Controller.MasterDataSVCs();
-        MDMSVC.DC_City_Search_RQ RQ = new MDMSVC.DC_City_Search_RQ();
+        Controller.AccomodationSVC AccoSvc = new Controller.AccomodationSVC();
+        MDMSVC.DC_Accomodation_AutoComplete_RQ RQ;
+
         public void ProcessRequest(HttpContext context)
         {
-            var PrefixText = context.Request.QueryString["term"];
-            var Country = context.Request.QueryString["country"];
             var Source = context.Request.QueryString["source"];
-            var StateCode = context.Request.QueryString["statecode"];
-            var StateName = context.Request.QueryString["statename"];
-
-            RQ = new MDMSVC.DC_City_Search_RQ();
-            if (!string.IsNullOrWhiteSpace(Country))
-                RQ.Country_Name = Country.Trim().TrimStart(' ');
-            if (!string.IsNullOrWhiteSpace(PrefixText))
-                RQ.City_Name = PrefixText.Trim();
-            if (!string.IsNullOrWhiteSpace(StateName))
-                RQ.State_Name = StateName.Trim();
-
-            if (Source != null)
+            if (Source != null && Source == "autocomplete")
             {
-                RQ.Status = "ACTIVE";
-                RQ.PageNo = 0;
-                RQ.PageSize = int.MaxValue;
-                var res = msterdata.GetCityMasterData(RQ);
-                context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                var PrefixText = context.Request.QueryString["term"];
+                var Country = context.Request.QueryString["country"];
+                var StateName = context.Request.QueryString["state"];
+                RQ = new MDMSVC.DC_Accomodation_AutoComplete_RQ();
+                if (!string.IsNullOrWhiteSpace(PrefixText))
+                {
+                    if (Convert.ToString(PrefixText).Length > 2)
+                    {
+                        RQ.HotelName = PrefixText.Trim().TrimStart(' ');
+                        if (!string.IsNullOrWhiteSpace(Country))
+                            RQ.Country = Country.Trim().TrimStart(' ');
+                        if (!string.IsNullOrWhiteSpace(StateName) && StateName != "---ALL---")
+                            RQ.State = StateName.Trim();
+                        RQ.PageNo = 0;
+                        var res = AccoSvc.SearchHotelsAutoComplete(RQ);
+                        context.Response.Write(new JavaScriptSerializer().Serialize(res));
+
+                    }
+                    else
+                        context.Response.Write(new JavaScriptSerializer().Serialize(null));
+
+                }
+
             }
-            else
+            if (Source != null && Source == "details")
             {
-                var res = msterdata.GetCityNameList(RQ);
-                context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                var accoid = context.Request.QueryString["accoid"];
+                if (accoid != null)
+                {
+                    var res = AccoSvc.GetAccomodationBasicInfo(Guid.Parse(accoid));
+                    context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                }
+                else
+                {
+                    context.Response.Write(new JavaScriptSerializer().Serialize(null));
+                }
             }
         }
 

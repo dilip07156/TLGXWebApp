@@ -82,16 +82,20 @@
     prm.add_endRequest(function () {
         callajax();
     });
-  
 
- function checkLen(val) {
+
+    function checkLen(val) {
 
         var rfvtxtSearchCity = document.getElementById("MainContent_CityMap_frmEditCityMap_rfvtxtSearchCity");
         var vrhdnSelSystemCity_Id = document.getElementById("MainContent_CityMap_frmEditCityMap_hdnSelSystemCity_Id");
+        var ddlSystemCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_ddlSystemCityName");
         if (val.length == 0) {
-            debugger;
             val.text = null;
             vrhdnSelSystemCity_Id.value = null;
+            for (var i = 0; i < ddlSystemCityName.options.length; i++) {
+                ddlSystemCityName.remove(i);
+            }
+
             ValidatorEnable(rfvtxtSearchCity, true);
             document.getElementById("MainContent_CityMap_frmEditCityMap_btnAddCity").style.display = "block";
         }
@@ -117,35 +121,43 @@
                         source: 'CityMap'
                     },
                     success: function (result) {
-                        hdnSystemCity_Id.value = "";
-                        hdnSystemCity.value = "";
-                        vrhdnSelSystemCity_Id.value = "";
-                        var data = [];
-                        for (var i = 0; i < result.length; i++) {
-                            if (hdnSystemCity_Id != null && result[i].City_Id != null) {
-                                hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
-                            }
-                            if (result[i].Name != null) {
-                                var cityname = result[i].Name;
-                                if (result[i].StateName != null) {
-                                    cityname = cityname + ", " + result[i].StateName;
+                        if (result != null && result.length > 0) {
+                            hdnSystemCity_Id.value = "";
+                            hdnSystemCity.value = "";
+                            vrhdnSelSystemCity_Id.value = "";
+                            var data = [];
+                            for (var i = 0; i < result.length; i++) {
+                                if (hdnSystemCity_Id != null && result[i].City_Id != null) {
+                                    hdnSystemCity_Id.value = hdnSystemCity_Id.value + result[i].City_Id + "`";
                                 }
-                                if (result[i].StateCode != null) {
-                                           cityname = cityname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
-                                }
-                                if (result[i].CountryName != null) {
-                                    cityname = cityname + ", " + result[i].CountryName;
-                                }
-                                else {
-                                    if (result[i].CountryCode != null) {
-                                        cityname = cityname + ", " + result[i].CountryCode;
+                                if (result[i].Name != null) {
+                                    var cityname = result[i].Name;
+                                    if (result[i].StateName != null) {
+                                        cityname = cityname + ", " + result[i].StateName;
                                     }
+                                    if (result[i].StateCode != null) {
+                                        cityname = cityname + " (" + result[i].StateCode.substring(3, result[i].StateCode.length) + ")";
+                                    }
+                                    if (result[i].CountryName != null) {
+                                        cityname = cityname + ", " + result[i].CountryName;
+                                    }
+                                    else {
+                                        if (result[i].CountryCode != null) {
+                                            cityname = cityname + ", " + result[i].CountryCode;
+                                        }
+                                    }
+                                    hdnSystemCity.value = hdnSystemCity.value + cityname + "`";
+                                    data.push(cityname);
                                 }
-                                hdnSystemCity.value = hdnSystemCity.value + cityname + "`";
-                                data.push(cityname);
                             }
+                            response(data);
                         }
-                        response(data);
+                        else {
+                            var data = [];
+                            var NoDataFound = "No Data Found";
+                            data.push(NoDataFound);
+                            response(data);
+                        }
                     }
                 });
             },
@@ -154,7 +166,12 @@
         });
 
         $("[id*=txtSearchCity]").on('autocompleteselect', function (e, ui) {
-            callCityNamechange(ui.item.value);
+            if (ui.item.value != "No Data Found")
+                callCityNamechange(ui.item.value);
+            else {
+                ui.item.value = null;
+                document.getElementById("MainContent_CityMap_frmEditCityMap_txtSearchCity").value = "";
+            }
         });
     }
 
@@ -174,8 +191,10 @@
         var vrdvAddCity = document.getElementById("MainContent_CityMap_frmEditCityMap_dvAddCity");
 
         var selId = "";
-        vrdvMsg.style.display = "none";
-        vrdvMsg1.style.display = "none";
+        if (vrdvMsg != null)
+            vrdvMsg.style.display = "none";
+        if (vrdvMsg1 != null)
+            vrdvMsg1.style.display = "none";
 
         if (selection != null) {
             vrdvAddCity.style.display = "none";
@@ -194,14 +213,13 @@
         if (selId != null) {
             ddlSystemCityName.innerHTML = "";
             listItems += '<option selected="selected" value="' + selId + '">' + brkvrhdnSystemCity[0].split(';')[0] + '</option>';
-            ddlSystemCityName.append(listItems);
-            debugger;
+            $('#MainContent_CityMap_frmEditCityMap_ddlSystemCityName').append(listItems);
+            //ddlSystemCityName.append(listItems);
             if (vrbtnAddCity != null)
                 vrbtnAddCity.style.display = "none";
         }
 
         if (selId != "") {
-            debugger;
             if (vrbtnAddCity != null)
                 vrbtnAddCity.style.display = "none";
             vrhdnSelSystemCity_Id.value = selId;
@@ -325,14 +343,21 @@
         var mySystemCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCityName");
         var mySystemAddCityName = document.getElementById("MainContent_CityMap_frmEditCityMap_vddlSystemCountryNameAddCity");
         if (ddlStatus == 'DELETE') {
-            ValidatorEnable(mySystemCountryName, false);
-            ValidatorEnable(mySystemCityName, false);
-            ValidatorEnable(mySystemAddCityName, false);
+            if (mySystemCountryName != null)
+                ValidatorEnable(mySystemCountryName, false);
+            if (mySystemCityName != null)
+                ValidatorEnable(mySystemCityName, false);
+            if (mySystemAddCityName != null)
+                ValidatorEnable(mySystemAddCityName, false);
+
         }
         else {
-            ValidatorEnable(mySystemCountryName, true);
-            ValidatorEnable(mySystemCityName, true);
-            ValidatorEnable(mySystemAddCityName, true);
+            if (mySystemCountryName != null)
+                ValidatorEnable(mySystemCountryName, true);
+            if (mySystemCityName != null)
+                ValidatorEnable(mySystemCityName, true);
+            if (mySystemAddCityName != null)
+                ValidatorEnable(mySystemAddCityName, true);
         }
     }
 </script>
@@ -377,7 +402,10 @@
         }
     }
     function MatchedSelect(elem) {
-        elem.parentNode.parentNode.nextSibling.childNodes[15].lastElementChild.focus();
+        if (elem.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild != null) {
+            elem.parentNode.parentNode.nextSibling.childNodes[14].lastElementChild.focus();
+
+        }
     }
     //var onClick = true;
     //Fill City dropdown in Grid
@@ -849,10 +877,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">City
+                                                        <label class="control-label col-sm-5" for="ddlSystemCityName">
+                                                            City
                                                             <asp:RequiredFieldValidator ID="rfvtxtSearchCity" runat="server" ErrorMessage="*" ControlToValidate="txtSearchCity" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>
                                                             <%--<asp:RequiredFieldValidator ID="vddlSystemCityName" runat="server" ErrorMessage="*" ControlToValidate="ddlSystemCityName" InitialValue="0" CssClass="text-danger" ValidationGroup="CityMappingPop"></asp:RequiredFieldValidator>--%>
-
                                                         </label>
                                                         <div class="col-sm-7">
                                                             <asp:TextBox ID="txtSearchCity" onkeyup="checkLen(this.value)" runat="server" CssClass="form-control" onlostfocus="callCityNamechange(this);"></asp:TextBox>
