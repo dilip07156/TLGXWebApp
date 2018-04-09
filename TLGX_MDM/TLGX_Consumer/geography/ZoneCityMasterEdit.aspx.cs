@@ -75,7 +75,7 @@ namespace TLGX_Consumer.geography
         {
             ddl.Items.Clear();
             var result = masterSVc.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "Zone", Name = "ZoneRadius" });
-            result = (from a in result select a).OrderBy(s => s.AttributeValue).ToList();
+            result = (from a in result select a).OrderBy(s => Convert.ToDecimal(s.AttributeValue)).ToList();
             if (result != null)
                 if (result.Count > 0)
                 {
