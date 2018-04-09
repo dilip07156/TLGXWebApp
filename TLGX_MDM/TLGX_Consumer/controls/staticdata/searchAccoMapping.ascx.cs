@@ -423,6 +423,8 @@ namespace TLGX_Consumer.controls.staticdata
                     isDataExist = true;
                     grdAccoMaps.VirtualItemCount = res[0].TotalRecords;
                     lblAccoMaps.Text = res[0].TotalRecords.ToString();
+                    //To handle last page index after status changes
+                    pPageIndex = res[0].PageIndex;
                 }
                 else
                 {
@@ -830,7 +832,8 @@ namespace TLGX_Consumer.controls.staticdata
                         if (lblSystemCountryCode.Text.Replace(" ", "") != "")
                             lblSystemCountryCode.Text = "(" + lblSystemCountryCode.Text + ")";
                         //txtSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
-                        lblSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
+                        if (ddlSystemCityName.SelectedItem.Value != "0")
+                            lblSystemCityCode.Text = masterdata.GetCodeById("city", Guid.Parse(ddlSystemCityName.SelectedItem.Value));
                         if (lblSystemCityCode.Text.Replace(" ", "") != "")
                         {
                             lblSystemCityCode.Text = "(" + lblSystemCityCode.Text + ")";

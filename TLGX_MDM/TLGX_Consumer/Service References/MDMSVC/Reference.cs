@@ -33159,6 +33159,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string OldProductTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageIndexField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PostCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -33697,6 +33700,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.OldProductTypeField, value) != true)) {
                     this.OldProductTypeField = value;
                     this.RaisePropertyChanged("OldProductType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageIndex {
+            get {
+                return this.PageIndexField;
+            }
+            set {
+                if ((this.PageIndexField.Equals(value) != true)) {
+                    this.PageIndexField = value;
+                    this.RaisePropertyChanged("PageIndex");
                 }
             }
         }

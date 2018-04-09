@@ -54,6 +54,7 @@
       <xs:element minOccurs="0" name="OldLatitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OldLongitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OldProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageIndex" type="xs:int" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
