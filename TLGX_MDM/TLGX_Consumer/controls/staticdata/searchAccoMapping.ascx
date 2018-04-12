@@ -269,6 +269,9 @@
         var lblSystemTelephone = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemTelephone");
         var lblSystemLatitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLatitude");
         var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
+        var lblSystemProductType = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemProductType");
+
+        
         var hdnIsJavascriptChagedValueddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemStateName");
 
         var hdnIsJavascriptChagedValueddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemCityName");
@@ -297,6 +300,7 @@
                         lblSystemTelephone.innerHTML = result[0].Telephone_Tx;
                         lblSystemLatitude.innerHTML = result[0].Latitude;
                         lblSystemLongitude.innerHTML = result[0].Longitude;
+                        lblSystemProductType.innerHTML = result[0].SystemProductType;
                         if (result[0].City != null) {
 
                             for (var i = 0; i < ddlSystemCityName.options.length; i++) {
@@ -336,15 +340,14 @@
     function SelectedRow(element) {
         var ddlStatus = $('#MainContent_searchAccoMapping_ddlMappingStatus option:selected').html();
         if (ddlStatus == "REVIEW") {
-            element.parentNode.parentNode.nextSibling.childNodes[15].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[16].lastElementChild.focus();
         }
         else if (ddlStatus == "UNMAPPED") {
-            element.parentNode.parentNode.nextSibling.childNodes[6].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[7].lastElementChild.focus();
         }
     }
     function MatchedSelect(elem) {
-        debugger;
-        var element = elem.parentNode.parentNode.nextSibling.childNodes[12];
+        var element = elem.parentNode.parentNode.nextSibling.childNodes[13];
         if (typeof element !== 'undefined') {
             if (element.lastElementChild != null)
                 element.lastElementChild.focus();
@@ -354,10 +357,10 @@
         if (onClick) {
             //Getting Dropdown
             var currentRow = $(record).parent().parent();
-            var countryname = currentRow.find("td:eq(7)").text();
-            var cityname = currentRow.find("td:eq(9)").text();
+            var countryname = currentRow.find("td:eq(8)").text();
+            var cityname = currentRow.find("td:eq(10)").text();
 
-            var AccoDDL = currentRow.find("td:eq(10)").find('select');
+            var AccoDDL = currentRow.find("td:eq(11)").find('select');
             var selectedText = AccoDDL.find("option:selected").text();
             var selectedOption = AccoDDL.find("option");
             var selectedVal = AccoDDL.val();
@@ -399,7 +402,7 @@
     function RemoveExtra(record, onClick) {
         if (!onClick) {
             var currentRow = $(record).parent().parent();
-            var AccoDDL = currentRow.find("td:eq(10)").find('select');
+            var AccoDDL = currentRow.find("td:eq(11)").find('select');
             var selectedText = AccoDDL.find("option:selected").text();
             var selectedVal = AccoDDL.val();
             AccoDDL.find("option:not(:first)").remove();
@@ -462,7 +465,14 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-4" for="txtSuppName">Product Type</label>
+                                                <div class="col-sm-8">
+                                                     <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlCountry">
                                                     System Country
@@ -528,6 +538,7 @@
                                                     <asp:TextBox ID="txtSuppProduct" runat="server" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group row">
@@ -606,6 +617,7 @@
                                                 <asp:BoundField DataField="SupplierName" HeaderText="Supplier Name" />
                                                 <asp:BoundField DataField="ProductId" HeaderText="ProductId" />
                                                 <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
+                                                <asp:BoundField DataField="ProductType" HeaderText="ProductType" />
                                                 <asp:BoundField DataField="FullAddress" HeaderText="Address" />
                                                 <asp:BoundField DataField="TelephoneNUmber" HeaderText="Tel" />
                                                 <asp:TemplateField HeaderText="Country">
@@ -911,6 +923,12 @@
                                                                         <asp:Label ID="lblHotelName_TX" runat="server" Text="" Visible="false"></asp:Label>
                                                                     </td>
                                                                 </tr>
+                                                                 <tr>
+                                                                    <td><strong>ProductType</strong></td>
+                                                                    <td>
+                                                                        <asp:Label ID="lblProductType" runat="server" Text=""></asp:Label>
+                                                                    </td>
+                                                                </tr>
                                                                 <tr>
                                                                     <td><strong>Code</strong></td>
                                                                     <td>
@@ -1039,6 +1057,20 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group form-inline">
+                                                            <div class="col-sm-12">
+                                                                &nbsp;
+                                                            </div>
+                                                        </div>
+                                                         <div class="form-group form-inline">
+                                                            <label class="control-label col-sm-3" for="lblSystemLocation">Product Type</label>
+                                                            <div class="col-sm-9">
+                                                                <div class="col-sm-10">
+                                                                    <asp:Label ID="lblSystemProductType" runat="server" Text=""></asp:Label>
+                                                                </div>
+                                                                <div class="col-sm-2">&nbsp;</div>
+                                                            </div>
+                                                        </div>
+                                                         <div class="form-group form-inline">
                                                             <div class="col-sm-12">
                                                                 &nbsp;
                                                             </div>
@@ -1191,6 +1223,7 @@
                                                         <asp:BoundField DataField="SupplierName" HeaderText="Supplier Name" />
                                                         <asp:BoundField DataField="SupplierProductReference" HeaderText="Product Code" />
                                                         <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
+                                                        <asp:BoundField DataField="ProductType" HeaderText="ProductType" />
                                                         <asp:BoundField DataField="FullAddress" HeaderText="Address" />
                                                         <asp:BoundField DataField="PostCode" HeaderText="Post Code" />
                                                         <asp:BoundField DataField="CityName" HeaderText="City Name" />

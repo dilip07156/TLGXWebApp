@@ -7116,6 +7116,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string SuburbDowntownField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemProductTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Telephone_TxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -7403,6 +7406,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SuburbDowntownField, value) != true)) {
                     this.SuburbDowntownField = value;
                     this.RaisePropertyChanged("SuburbDowntown");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemProductType {
+            get {
+                return this.SystemProductTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemProductTypeField, value) != true)) {
+                    this.SystemProductTypeField = value;
+                    this.RaisePropertyChanged("SystemProductType");
                 }
             }
         }
@@ -33246,6 +33262,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string SystemProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemProductTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SystemStateNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -34082,6 +34101,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemProductType {
+            get {
+                return this.SystemProductTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemProductTypeField, value) != true)) {
+                    this.SystemProductTypeField = value;
+                    this.RaisePropertyChanged("SystemProductType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string SystemStateName {
             get {
                 return this.SystemStateNameField;
@@ -34290,6 +34322,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ProductTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SourceField;
@@ -34553,6 +34588,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
                     this.ProductNameField = value;
                     this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ProductType {
+            get {
+                return this.ProductTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ProductTypeField, value) != true)) {
+                    this.ProductTypeField = value;
+                    this.RaisePropertyChanged("ProductType");
                 }
             }
         }

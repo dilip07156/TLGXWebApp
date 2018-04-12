@@ -638,6 +638,7 @@
       <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StreetNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SuburbDowntown" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Telephone_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Town" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
