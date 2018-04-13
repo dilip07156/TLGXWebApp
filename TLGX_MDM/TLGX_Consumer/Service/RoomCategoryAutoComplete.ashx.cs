@@ -33,6 +33,15 @@ namespace TLGX_Consumer.Service
                     context.Response.Write(new JavaScriptSerializer().Serialize(res));
                 }
             }
+            if (type != null && type == "fillcategorywithdetails")
+            {
+                RQ = new MDMSVC.DC_RoomCategoryMaster_RQ();
+                if (acco_id != "")
+                {
+                    var res = Acco.GetRoomDetails_RoomCategoryWithDetails(Guid.Parse(acco_id));
+                    context.Response.Write(new JavaScriptSerializer().Serialize(res));
+                }
+            }
             else
             {
                 RQ = new MDMSVC.DC_RoomCategoryMaster_RQ();
