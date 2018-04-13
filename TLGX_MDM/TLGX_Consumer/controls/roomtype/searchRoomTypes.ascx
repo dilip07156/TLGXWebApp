@@ -4,6 +4,10 @@
     .paddingleft {
         margin-left: 6px !important;
     }
+    .roomtype{
+    white-space:normal !important;
+    word-wrap: break-all; 
+}
 </style>
 <script>
     $(document).ready(function () {
@@ -22,13 +26,14 @@
     function mySelectedID(selectedcheckboxval) {
         var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
         var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-        var Button = tillUL.parentElement.firstElementChild.firstChild;
-        var AllCheckbox = tillUL.getElementsByClassName("checkboxClass");
-        for (var i = 0 ; i < AllCheckbox.length ; i++) {
-            AllCheckbox[i].checked = false;
+        var Button = tillUL.firstElementChild.firstChild;
+        var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
+        for (var i = 1 ; i < tr.length ; i++) {
+            tr[i].childNodes[0].firstChild.checked = false;
+            tr[i].className = "row";
         }
-        debugger;
-        Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.textContent;
+        selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
+        Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
         selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
         var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.parentElement.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
         hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
@@ -52,27 +57,28 @@
                         var value = JSON.stringify(result);
                         var listItems = '';
                         if (result != null) {
-                            var def = '<li> <table>  <tr class="row"><th class="col-md-1"></th><th class="col-md-5">Room Name</th> <th class="col-md-4">Room Category</th>';
-                            def = def + ' <th class="col-md-1">Bed Type</th> <th class="col-md-1">Is Smoking</th></tr> </table> </li>';
+                            var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-5">Room Name</th> <th class="col-md-4">Room Category</th>';
+                            def = def + ' <th class="col-md-1">Bed Type</th> <th class="col-md-1">Is Smoking</th></tr>';
                             var li = def;
                             var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
                             var td = '<td class="col-md-3">';
-                            var td5 = '<td class="col-md-5">';
-                            var td4 = '<td class="col-md-4">';
+                            var td5 = '<td class="col-md-4" style="word-wrap:  break-all;">';
+                            var td4 = '<td class="col-md-4" style="word-wrap:  break-all;">';
                             var td1 = '<td class="col-md-1">';
 
                             var lic = ' <td style="display: none;" id="tdRoomInfoId">';
-                            var licClose = ' </td></tr></table></li>';
+                            var licClose = '</table>';
                             var tdc = '</td>';
                             for (var i = 0; i < result.length; i++) {
-                                li = li + '<li class="divider"></li> <li>' + ' <table> <tr class="row">';
+                                li = li + '<tr class="row">';
                                 li = li + td1 + licheckbox + tdc;
                                 li = li + td5 + result[i].RoomName + tdc;
                                 li = li + td4 + result[i].RoomCategory + tdc;
                                 li = li + td1 + result[i].BedType + tdc;
                                 li = li + td1 + result[i].IsSomking + tdc;
-                                li = li + lic + result[i].Accommodation_RoomInfo_Id + licClose;
+                                li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
                             }
+                            li = li + licClose;
                             ulRoomInfo[0].innerHTML = li;
                         }
                     },
@@ -309,12 +315,12 @@
                                                     <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
                                                     </asp:DropDownList>
                                                     <div class="dropdown" runat="server" id="ddlSuggestions">
-                                                        <button class="btn btn-primary dropdown-toggle roomtype" type="button" data-toggle="dropdown" onclick="BindRTDetails(this);">
+                                                        <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
                                                             -Select- 
                                                             <span class="caret paddingleft"></span>
                                                         </button>
-                                                        <ul class="dropdown-menu" id="ulRoomInfo" style="width: 435%; max-height: 200px; overflow-y: scroll;">
-                                                        </ul>
+                                                        <div class="dropdown-menu" id="ulRoomInfo" style="width: 430%; max-height: 200px; overflow-y: scroll;">
+                                                        </div>
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
