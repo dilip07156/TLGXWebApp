@@ -58,6 +58,8 @@
     function BindRTDetails(controlval) {
         var acco_id = $(controlval).parent().parent().parent().find('.hidnAcoo_Id').val();
         var ulRoomInfo = $(controlval).parent().find('#ulRoomInfo');
+        var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
+
         if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
             if (acco_id != null && ulRoomInfo != null) {
                 $.ajax({
@@ -77,24 +79,36 @@
                             def = def + ' <th class="col-md-1">Bed Type</th> <th class="col-md-1">Is Smoking</th></tr>';
                             var li = def;
                             var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
+                            var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
+
                             var td = '<td class="col-md-3">';
-                            var td5 = '<td class="col-md-4" style="word-wrap:  break-all;">';
                             var td4 = '<td class="col-md-4" style="word-wrap:  break-all;">';
                             var td1 = '<td class="col-md-1">';
+                            var td2 = '<td class="col-md-2">';
+
 
                             var lic = ' <td style="display: none;" id="tdRoomInfoId">';
                             var licClose = '</table>';
                             var tdc = '</td>';
                             for (var i = 0; i < result.length; i++) {
-                                li = li + '<tr class="row">';
-                                li = li + td1 + licheckbox + tdc;
-                                li = li + td5 + result[i].RoomName + tdc;
+                                if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
+                                    li = li + '<tr class="row alert alert-success">';
+                                    li = li + td1 + licheckboxWithChecked + tdc;
+                                }
+                                else {
+                                    li = li + '<tr class="row">';
+                                    li = li + td1 + licheckbox + tdc;
+                                }
+                                
+                                li = li + td4 + result[i].RoomName + tdc;
                                 li = li + td4 + result[i].RoomCategory + tdc;
-                                li = li + td1 + result[i].BedType + tdc;
+                                li = li + td2 + result[i].BedType + tdc;
                                 li = li + td1 + result[i].IsSomking + tdc;
                                 li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
                             }
                             li = li + licClose;
+
+
                             ulRoomInfo[0].innerHTML = li;
                         }
                     },
