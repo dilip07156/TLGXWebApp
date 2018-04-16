@@ -4,10 +4,11 @@
     .paddingleft {
         margin-left: 6px !important;
     }
-    .roomtype{
-    white-space:normal !important;
-    word-wrap: break-all; 
-}
+
+    .roomtype {
+        white-space: normal !important;
+        word-wrap: break-all;
+    }
 </style>
 <script>
     $(document).ready(function () {
@@ -35,14 +36,29 @@
         selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
         Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
         selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
-        var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.parentElement.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
+        var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
         hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
+
+        //Setting check box and Dropdown to Mapped
+        var checkBoxForSelectedRow = tillUL.parentElement.parentElement.lastElementChild.firstElementChild;
+        if (checkBoxForSelectedRow != null)
+            checkBoxForSelectedRow.checked = true;
+
+        var MappingStatusDdl = tillUL.parentElement.parentElement.getElementsByClassName("MappingStatus")[0];
+        if (MappingStatusDdl != null) {
+            for (var i = 0; i < MappingStatusDdl.options.length; i++) {
+                if (MappingStatusDdl.options[i].text == "MAPPED") {
+                    MappingStatusDdl.options[i].selected = true;
+                    break;
+                }
+            }
+        }
+
     }
     function BindRTDetails(controlval) {
         var acco_id = $(controlval).parent().parent().parent().find('.hidnAcoo_Id').val();
         var ulRoomInfo = $(controlval).parent().find('#ulRoomInfo');
         if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
-            debugger;
             if (acco_id != null && ulRoomInfo != null) {
                 $.ajax({
                     url: '../../../Service/RoomCategoryAutoComplete.ashx',
@@ -337,7 +353,7 @@
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control" runat="server">
+                                                    <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
                                                         <asp:ListItem Value="ADD">ADD</asp:ListItem>
                                                         <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
                                                         <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
