@@ -24,6 +24,12 @@
             if (row.find('.dropdownforBind') != null)
                 row.find('.dropdownforBind').focus();
     }
+    function showLoadingImage() {
+        $('#loading').show();
+    }
+    function hideLoadingImage() {
+        $('#loading').hide();
+    }
     function mySelectedID(selectedcheckboxval) {
         var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
         var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
@@ -56,11 +62,13 @@
 
     }
     function BindRTDetails(controlval) {
+        showLoadingImage();
         var acco_id = $(controlval).parent().parent().parent().find('.hidnAcoo_Id').val();
         var ulRoomInfo = $(controlval).parent().find('#ulRoomInfo');
         var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
-
-        if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
+        debugger;
+        //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
+        if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
             if (acco_id != null && ulRoomInfo != null) {
                 $.ajax({
                     url: '../../../Service/RoomCategoryAutoComplete.ashx',
@@ -99,7 +107,7 @@
                                     li = li + '<tr class="row">';
                                     li = li + td1 + licheckbox + tdc;
                                 }
-                                
+
                                 li = li + td4 + result[i].RoomName + tdc;
                                 li = li + td4 + result[i].RoomCategory + tdc;
                                 li = li + td2 + result[i].BedType + tdc;
@@ -108,7 +116,7 @@
                             }
                             li = li + licClose;
 
-
+                            hideLoadingImage();
                             ulRoomInfo[0].innerHTML = li;
                         }
                     },
@@ -345,12 +353,16 @@
                                                     <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
                                                     </asp:DropDownList>
                                                     <div class="dropdown" runat="server" id="ddlSuggestions">
-                                                        <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
+                                                        <button class="btn dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
                                                             -Select- 
                                                             <span class="caret paddingleft"></span>
                                                         </button>
                                                         <div class="dropdown-menu" id="ulRoomInfo" style="width: 430%; max-height: 200px; overflow-y: scroll;">
+                                                            <div id="loading" style="padding: 5px;">
+                                                                <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                            </div>
                                                         </div>
+
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
@@ -368,7 +380,8 @@
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
                                                     <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
-                                                        <asp:ListItem Value="ADD">ADD</asp:ListItem>
+                                                        <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                       <%-- <asp:ListItem Value="ADD">ADD</asp:ListItem>--%>
                                                         <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
                                                         <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
                                                         <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
