@@ -353,7 +353,7 @@
                                                     <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
                                                     </asp:DropDownList>
                                                     <div class="dropdown" runat="server" id="ddlSuggestions">
-                                                        <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
+                                                        <button class="btn dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
                                                             -Select- 
                                                             <span class="caret paddingleft"></span>
                                                         </button>
@@ -380,7 +380,8 @@
                                             <asp:TemplateField HeaderText="Status">
                                                 <ItemTemplate>
                                                     <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
-                                                        <asp:ListItem Value="ADD">ADD</asp:ListItem>
+                                                        <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                       <%-- <asp:ListItem Value="ADD">ADD</asp:ListItem>--%>
                                                         <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
                                                         <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
                                                         <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
