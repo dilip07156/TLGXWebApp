@@ -358,7 +358,7 @@
                                                             <span class="caret paddingleft"></span>
                                                         </button>
                                                         <div class="dropdown-menu" id="ulRoomInfo" style="width: 430%; max-height: 200px; overflow-y: scroll;">
-                                                            <div id="loading">
+                                                            <div id="loading" style="padding: 5px;">
                                                                 <img alt="Loading..." src="../../../images/ajax-loader.gif" />
                                                             </div>
                                                         </div>
