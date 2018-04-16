@@ -38,11 +38,6 @@ namespace TLGX_Consumer.controls.geography
 
         private void fillgvCountryList()
         {
-            //dtCountryMaster = objMasterDataDAL.GetMasterCountryData("");
-            //ddlCountry.DataSource = dtCountryMaster;
-            //ddlCountry.DataTextField = "Name";
-            //ddlCountry.DataValueField = "Country_Id";
-
             var result = _objMasterData.GetAllCountries();
             ddlCountry.DataSource = result;
             ddlCountry.DataTextField = "Country_Name";
@@ -52,7 +47,7 @@ namespace TLGX_Consumer.controls.geography
 
         private void fillgvCityyList(Guid CountryID, int pageindex)
         {
-            //dtCityyMaster = objMasterDataDAL.GetMasterCityData(CountryID);
+
             intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
             string CityName = string.Empty;
             if (!string.IsNullOrWhiteSpace(txtCityName.Text))
@@ -77,7 +72,7 @@ namespace TLGX_Consumer.controls.geography
         // used tofill the header city detail form 
         private void fillCityForm(string City_Id, ref Guid refcountryID)
         {
-            //dtCityDetail = objMasterDataDAL.GetMasterCityDetail(Guid.Parse(City_Id));
+
             var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { City_Id = Guid.Parse(City_Id) });
             if (result != null && result.Count > 0)
             {
@@ -91,7 +86,7 @@ namespace TLGX_Consumer.controls.geography
         // used to fill the city area read form
         private void fillCityAreaForm(string CityArea_Id)
         {
-            //dtCityAreaDetail = objMasterDataDAL.GetMasterCityAreaDetail(Guid.Parse(CityArea_Id));
+
             var result = _objMasterData.GetMasterCityAreaDetail(CityArea_Id);
             frmCityArea.ChangeMode(FormViewMode.Edit);
             frmCityArea.DataSource = result;
@@ -101,7 +96,7 @@ namespace TLGX_Consumer.controls.geography
 
         private void fillCityAreaLocationDetailForm(string CityAreaLocation_Id)
         {
-            //dtCityAreaLocationDetail = objMasterDataDAL.GetMasterCityAreaLocationDetail(Guid.Parse(CityAreaLocation_Id));
+
             var result = _objMasterData.GetMasterCityAreaLocationDetail(CityAreaLocation_Id);
             frmCityAreaLocation.ChangeMode(FormViewMode.Edit);
             frmCityAreaLocation.DataSource = result;
@@ -113,7 +108,6 @@ namespace TLGX_Consumer.controls.geography
         // used to fill city area grid
         private void fillCityArea(string City_Id)
         {
-            // dtCityArea = objMasterDataDAL.GetMasterCityAreaData(Guid.Parse(City_Id));
             var result = _objMasterData.GetMasterCityAreaData(City_Id);
             grdCityAreas.DataSource = result;
             grdCityAreas.DataBind();
@@ -121,7 +115,7 @@ namespace TLGX_Consumer.controls.geography
 
         private void fillCityAreaLocation(string CityArea_Id)
         {
-            //dtCityAreaLocation = objMasterDataDAL.GetMasterCityAreaLocationData(Guid.Parse(CityArea_Id));\
+
             var result = _objMasterData.GetMasterCityAreaLocationData(CityArea_Id);
             grdCityAreaLocation.DataSource = result;
             grdCityAreaLocation.DataBind();
@@ -164,15 +158,14 @@ namespace TLGX_Consumer.controls.geography
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
 
-            //var result = _objMasterData.GetStatesByCountry(Convert.ToString(refCountryId));
-            //int statecode = (ddlState.SelectedIndex) - 1;
+
             var result = _objMasterData.GetStateNameAndCode(new MDMSVC.DC_State_Master_DDL_RQ
             {
                 State_ID = Convert.ToString(ddlState.SelectedValue)
             });
             if (result != null)
             {
-                txtStateCode.Text = result.StateCode.ToString();
+                txtStateCode.Text = Convert.ToString(result.StateCode);
             }
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -210,20 +203,17 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtCityAreaCode = (TextBox)frmCityArea.FindControl("txtCityAreaCode");
 
             MDMSVC.DC_CityArea _obj = new MDMSVC.DC_CityArea();
-            //Models.CityAreaE obj = new Models.CityAreaE();
-            //obj.City_Id = Guid.Parse(Request.QueryString["City_Id"].ToString());
-            //obj.Name = txtCityAreaName.Text.Trim();
-            //obj.Code = txtCityAreaCode.Text.Trim();
-            _obj.City_Id = Guid.Parse(Request.QueryString["City_Id"].ToString());
+
+            _obj.City_Id = Guid.Parse(Convert.ToString(Request.QueryString["City_Id"]));
             _obj.Name = txtCityAreaName.Text.Trim();
             _obj.Code = txtCityAreaCode.Text.Trim();
-            if (e.CommandName.ToString() == "Add")
+            if (Convert.ToString(e.CommandName) == "Add")
             {
                 _obj.CityArea_Id = Guid.NewGuid();
                 _obj.Option = "Save";
                 _objMasterData.SaveCityArea(_obj);
 
-                // objMasterDataDAL.SaveCityArea(obj, Models.MasterDataDAL.operation.Save);
+
 
                 fillCityArea(Request.QueryString["City_Id"]);
                 txtCityAreaName.Text = "";
@@ -232,11 +222,10 @@ namespace TLGX_Consumer.controls.geography
 
 
             }
-            else if (e.CommandName.ToString() == "Save")
+            else if (Convert.ToString(e.CommandName) == "Save")
             {
-                //obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
-                //objMasterDataDAL.SaveCityArea(obj, Models.MasterDataDAL.operation.Update);
-                _obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
+
+                _obj.CityArea_Id = Guid.Parse(Convert.ToString(grdCityAreas.SelectedDataKey.Value));
                 _obj.Option = "UPDATE";
                 _objMasterData.SaveCityArea(_obj);
 
@@ -254,8 +243,8 @@ namespace TLGX_Consumer.controls.geography
 
             dvCityAreaLocations.Visible = true;
             frmCityAreaLocation.ChangeMode(FormViewMode.Insert);
-            fillCityAreaLocation(grdCityAreas.SelectedDataKey["CityArea_Id"].ToString());
-            fillCityAreaForm(grdCityAreas.SelectedDataKey["CityArea_Id"].ToString());
+            fillCityAreaLocation(Convert.ToString(grdCityAreas.SelectedDataKey["CityArea_Id"]));
+            fillCityAreaForm(Convert.ToString(grdCityAreas.SelectedDataKey["CityArea_Id"]));
         }
 
         protected void frmCityAreaLocation_ItemCommand(object sender, FormViewCommandEventArgs e)
@@ -265,21 +254,21 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtCityAreaCode = (TextBox)frmCityAreaLocation.FindControl("txtCityAreaCode");
 
             MDMSVC.DC_CityAreaLocation obj = new MDMSVC.DC_CityAreaLocation();
-            obj.City_Id = Guid.Parse(Request.QueryString["City_Id"].ToString());
+            obj.City_Id = Guid.Parse(Convert.ToString(Request.QueryString["City_Id"]));
             obj.Name = txtCityAreaName.Text.Trim();
             obj.Code = txtCityAreaCode.Text.Trim();
-            obj.CityArea_Id = Guid.Parse(grdCityAreas.SelectedDataKey.Value.ToString());
+            obj.CityArea_Id = Guid.Parse(Convert.ToString(grdCityAreas.SelectedDataKey.Value));
 
 
-            switch (e.CommandName.ToString())
+            switch (Convert.ToString(e.CommandName))
             {
                 case "Add":
                     {
                         obj.CityAreaLocation_Id = Guid.NewGuid();
-                        //objMasterDataDAL.SaveCityAreaLocation(obj, Models.MasterDataDAL.operation.Save);
+
                         obj.Option = "SAVE";
                         _objMasterData.SaveCityAreaLocation(obj);
-                        fillCityAreaLocation(grdCityAreas.SelectedDataKey["CityArea_Id"].ToString());
+                        fillCityAreaLocation(Convert.ToString(grdCityAreas.SelectedDataKey["CityArea_Id"]));
                         txtCityAreaName.Text = "";
                         txtCityAreaCode.Text = "";
                         frmCityAreaLocation.ChangeMode(FormViewMode.Insert);
@@ -289,11 +278,11 @@ namespace TLGX_Consumer.controls.geography
 
                 case "Save":
                     {
-                        obj.CityAreaLocation_Id = Guid.Parse(grdCityAreaLocation.SelectedDataKey.Value.ToString());
+                        obj.CityAreaLocation_Id = Guid.Parse(Convert.ToString(grdCityAreaLocation.SelectedDataKey.Value));
                         obj.Option = "UPDATE";
                         _objMasterData.SaveCityAreaLocation(obj);
-                        //objMasterDataDAL.SaveCityAreaLocation(obj, Models.MasterDataDAL.operation.Update);
-                        fillCityAreaLocation(grdCityAreas.SelectedDataKey["CityArea_Id"].ToString());
+
+                        fillCityAreaLocation(Convert.ToString(grdCityAreas.SelectedDataKey["CityArea_Id"]));
                         txtCityAreaName.Text = "";
                         txtCityAreaCode.Text = "";
                         frmCityAreaLocation.ChangeMode(FormViewMode.Insert);
@@ -307,7 +296,7 @@ namespace TLGX_Consumer.controls.geography
 
         protected void grdCityAreaLocation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillCityAreaLocationDetailForm(grdCityAreaLocation.SelectedDataKey["CityAreaLocation_Id"].ToString());
+            fillCityAreaLocationDetailForm(Convert.ToString(grdCityAreaLocation.SelectedDataKey["CityAreaLocation_Id"]));
         }
 
         protected void btnresetCityAreaLocation_Click(object sender, EventArgs e)
@@ -323,7 +312,7 @@ namespace TLGX_Consumer.controls.geography
 
         protected void btnGetCities_Click(object sender, EventArgs e)
         {
-            CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
+            CountryID = Guid.Parse(Convert.ToString(ddlCountry.SelectedValue));
             fillgvCityyList(CountryID, 0);
             if (ddlCountry.SelectedIndex != 0)
                 btnNewCity.Visible = true;
@@ -333,13 +322,13 @@ namespace TLGX_Consumer.controls.geography
 
         protected void grdCityList_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            CountryID = new Guid(ddlCountry.SelectedValue.ToString());
+            CountryID = new Guid(Convert.ToString(ddlCountry.SelectedValue));
             fillgvCityyList(CountryID, e.NewPageIndex);
         }
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CountryID = Guid.Parse(ddlCountry.SelectedValue.ToString());
+            CountryID = Guid.Parse(Convert.ToString(ddlCountry.SelectedValue));
             fillgvCityyList(CountryID, 0);
             dvMsgCity2.Visible = false;
         }
@@ -351,7 +340,7 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtCityName = (TextBox)frmCityMaster.FindControl("txtCityName");
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
             dvMsgCity.Visible = true;
-            if (e.CommandName.ToString() == "UpdateCityManager")
+            if (Convert.ToString(e.CommandName) == "UpdateCityManager")
             {
                 MDMSVC.DC_City _obj = new MDMSVC.DC_City();
                 _obj.City_Id = Guid.Parse(Request.QueryString["City_Id"]);
@@ -381,11 +370,6 @@ namespace TLGX_Consumer.controls.geography
             fillStateCode();
         }
 
-        //protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (ddlCountry.SelectedIndex == 0)
-        //        btnNewCity.Visible = false;
-        //}
 
         protected void btnNewCity_Click(object sender, EventArgs e)
         {
@@ -400,7 +384,7 @@ namespace TLGX_Consumer.controls.geography
             DropDownList ddlStatus = (DropDownList)frmvwCity.FindControl("ddlStatus");
             Guid ddlCountry_Id_Value = Guid.Parse(ddlCountry.SelectedValue);
 
-            if (e.CommandName.ToString() == "AddCity")
+            if (Convert.ToString(e.CommandName) == "AddCity")
             {
                 var stateid = Guid.Parse(Convert.ToString(ddlStates.SelectedValue).Trim());
                 var status = Convert.ToString(ddlStatus.SelectedValue);

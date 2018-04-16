@@ -65,12 +65,25 @@ namespace TLGX_Consumer.controls.staticdata
                 fillchain(ddlChain);
                 fillbrands(ddlBrand);
                 fillMatchedBy(ddlMatchedBy);
+                fillsuppliersproductType(string.Empty);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop5", "javascript:callajax();", true);
                 pnlLoadControl.Visible = false;
                 btnMapSelected.Visible = false;
                 btnMapAll.Visible = false;
                 //hdnContext.Value = contex;
             }
+        }
+
+        private void fillsuppliersproductType(string supplierId)
+        {
+            ddlProductType.DataSource = _objMasterData.GetAllAttributeAndValues(new DC_MasterAttribute
+            {
+                MasterFor = "HotelInfo",
+                Name = "ProductCategorySubType"
+            });
+            ddlProductType.DataValueField = "MasterAttributeValue_Id";
+            ddlProductType.DataTextField = "AttributeValue";
+            ddlProductType.DataBind();
         }
 
         private void fillmasterstatus(DropDownList ddl)
@@ -212,30 +225,30 @@ namespace TLGX_Consumer.controls.staticdata
             //    AddSuperHeader(myGridView);
             if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
             {
-                myGridView.Columns[10].Visible = true;
-                myGridView.Columns[11].Visible = false;
-                myGridView.Columns[15].Visible = true;
+                myGridView.Columns[11].Visible = true;
+                myGridView.Columns[12].Visible = false;
+                myGridView.Columns[16].Visible = true;
             }
             else if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
             {
                 if (ddlSupplierCity.SelectedItem.Value != "0")
                 {
-                    myGridView.Columns[10].Visible = false;
-                    myGridView.Columns[11].Visible = true;
-                    myGridView.Columns[15].Visible = true;
+                    myGridView.Columns[11].Visible = false;
+                    myGridView.Columns[12].Visible = true;
+                    myGridView.Columns[16].Visible = true;
                 }
                 else
                 {
-                    myGridView.Columns[10].Visible = true;
-                    myGridView.Columns[11].Visible = false;
-                    myGridView.Columns[15].Visible = false;
+                    myGridView.Columns[11].Visible = true;
+                    myGridView.Columns[12].Visible = false;
+                    myGridView.Columns[16].Visible = false;
                 }
             }
             else
             {
-                myGridView.Columns[10].Visible = true;
-                myGridView.Columns[11].Visible = false;
-                myGridView.Columns[15].Visible = false;
+                myGridView.Columns[11].Visible = true;
+                myGridView.Columns[12].Visible = false;
+                myGridView.Columns[16].Visible = false;
             }
         }
 
@@ -385,6 +398,10 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.SupplierProductName = txtSuppProduct.Text;
                 if (ddlMatchedBy.SelectedItem.Value != "99")
                     RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedValue);
+                if (ddlProductType.SelectedValue != "0")
+                {
+                    RQ.ProductType = Convert.ToString(ddlProductType.SelectedValue);
+                }
                 RQ.Source = "SYSTEMDATA";
             }
             else
@@ -470,13 +487,14 @@ namespace TLGX_Consumer.controls.staticdata
                         SupplierName = grdAccoMaps.Rows[index].Cells[1].Text,
                         ProductId = grdAccoMaps.Rows[index].Cells[2].Text,
                         ProductName = grdAccoMaps.Rows[index].Cells[3].Text,
-                        Street = grdAccoMaps.Rows[index].Cells[4].Text,
-                        TelephoneNumber = grdAccoMaps.Rows[index].Cells[5].Text,
-                        CountryCode = grdAccoMaps.Rows[index].Cells[6].Text,
-                        CountryName = grdAccoMaps.Rows[index].Cells[7].Text,
-                        CityCode = grdAccoMaps.Rows[index].Cells[8].Text,
-                        CityName = grdAccoMaps.Rows[index].Cells[9].Text,
-                        Status = grdAccoMaps.Rows[index].Cells[13].Text
+                        ProductType = grdAccoMaps.Rows[index].Cells[4].Text,
+                        Street = grdAccoMaps.Rows[index].Cells[5].Text,
+                        TelephoneNumber = grdAccoMaps.Rows[index].Cells[6].Text,
+                        CountryCode = grdAccoMaps.Rows[index].Cells[7].Text,
+                        CountryName = grdAccoMaps.Rows[index].Cells[8].Text,
+                        CityCode = grdAccoMaps.Rows[index].Cells[9].Text,
+                        CityName = grdAccoMaps.Rows[index].Cells[10].Text,
+                        Status = grdAccoMaps.Rows[index].Cells[14].Text
                     });
 
                     if (grdAccoMaps.DataKeys[index].Values[1] != null)
@@ -500,6 +518,7 @@ namespace TLGX_Consumer.controls.staticdata
                     Label lblCityCode = (Label)frmEditProductMap.FindControl("lblCityCode");
                     Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
                     Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
+                    Label lblProductType = (Label)frmEditProductMap.FindControl("lblProductType");
                     Label lblProductAddress = (Label)frmEditProductMap.FindControl("lblProductAddress");
                     Label lblHotelName_TX = (Label)frmEditProductMap.FindControl("lblHotelName_TX");
 
@@ -536,6 +555,8 @@ namespace TLGX_Consumer.controls.staticdata
                     Label lblProductLatitude = (Label)frmEditProductMap.FindControl("lblProductLatitude");
                     Label lblProductLongitude = (Label)frmEditProductMap.FindControl("lblProductLongitude");
                     Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+                    Label lblSystemProductType = (Label)frmEditProductMap.FindControl("lblSystemProductType");
+
                     Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
                     Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
                     Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
@@ -579,6 +600,10 @@ namespace TLGX_Consumer.controls.staticdata
                     lblProductName.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].ProductName);
                     lblHotelName_TX.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].HotelName_Tx);
                     lblProductCode.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].ProductId);
+                    //Added code to set Product Type
+                    if (!string.IsNullOrWhiteSpace(System.Web.HttpUtility.HtmlDecode(masterRoduct[0].ProductType)))
+                        lblProductType.Text = System.Web.HttpUtility.HtmlDecode(masterRoduct[0].ProductType);
+
                     if (masterRoduct[0].Remarks != null)
                         txtSystemRemark.Text = masterRoduct[0].Remarks.ToString(); //masters.GetRemarksForMapping("product", myRow_Id);
                                                                                    //State Name
@@ -817,6 +842,7 @@ namespace TLGX_Consumer.controls.staticdata
                             hdnSelSystemProduct_Id.Value = sysproduct_Id;
                         }
 
+                        lblSystemProductType.Text = masterRoduct[0].SystemProductType;
                         lblSystemProductAddress.Text = masterRoduct[0].SystemFullAddress;
                         if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemTelephone))
                             lblSystemTelephone.Text = System.Web.HttpUtility.HtmlDecode(Convert.ToString(masterRoduct[0].SystemTelephone));
@@ -962,6 +988,7 @@ namespace TLGX_Consumer.controls.staticdata
             Label lblCityName = (Label)frmEditProductMap.FindControl("lblCityName");
             Label lblCityCode = (Label)frmEditProductMap.FindControl("lblCityCode");
             Label lblProductName = (Label)frmEditProductMap.FindControl("lblProductName");
+            Label lblSystemProductType = (Label)frmEditProductMap.FindControl("lblSystemProductType");
             Label lblProductCode = (Label)frmEditProductMap.FindControl("lblProductCode");
             DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
             TextBox txtSystemCountryCode = (TextBox)frmEditProductMap.FindControl("txtSystemCountryCode");
@@ -969,6 +996,7 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditProductMap.FindControl("txtSystemCityCode");
             Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
+            
 
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             DropDownList ddlSystemSystemName = (DropDownList)frmEditProductMap.FindControl("ddlSystemSystemName");
@@ -1055,6 +1083,7 @@ namespace TLGX_Consumer.controls.staticdata
                             lblSystemTelephone.Text = Convert.ToString(result[0].Telephone_Tx);
                             lblSystemLatitude.Text = Convert.ToString(result[0].Latitude);
                             lblSystemLongitude.Text = Convert.ToString(result[0].Longitude);
+                            lblSystemProductType.Text = Convert.ToString(result[0].SystemProductType);
                             //if (!string.IsNullOrWhiteSpace(Convert.ToString(result[0].City)))
                             //{
                             //    ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(Convert.ToString(result[0].City)));
@@ -1567,10 +1596,10 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 int index = e.Row.RowIndex;
                 Guid myCountryId = Guid.Empty;
-                string CountryName = e.Row.Cells[7].Text.ToUpper();
-                string CityName = e.Row.Cells[9].Text.ToUpper();
+                string CountryName = e.Row.Cells[8].Text.ToUpper();
+                string CityName = e.Row.Cells[10].Text.ToUpper();
                 MDMSVC.DC_Accomodation_Search_RQ RQParams = new MDMSVC.DC_Accomodation_Search_RQ();
-                DropDownList ddl = e.Row.Cells[11].Controls[1] as DropDownList;
+                DropDownList ddl = e.Row.Cells[12].Controls[1] as DropDownList;
                 if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
                     if (ddlSupplierCity.SelectedItem.Value != "0")

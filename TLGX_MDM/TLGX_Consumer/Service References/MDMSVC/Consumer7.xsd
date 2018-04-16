@@ -83,6 +83,7 @@
       <xs:element minOccurs="0" name="SystemLongitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemStateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemTelephone" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TLGXProductCode" nillable="true" type="xs:string" />
@@ -115,6 +116,7 @@
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StarRating" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
