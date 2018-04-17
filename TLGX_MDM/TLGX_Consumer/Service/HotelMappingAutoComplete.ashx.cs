@@ -21,6 +21,8 @@ namespace TLGX_Consumer.Service
             {
                 var PrefixText = context.Request.QueryString["term"];
                 var Country = context.Request.QueryString["country"];
+                var country_id = context.Request.QueryString["country_id"];
+
                 var StateName = context.Request.QueryString["state"];
                 RQ = new MDMSVC.DC_Accomodation_AutoComplete_RQ();
                 if (!string.IsNullOrWhiteSpace(PrefixText))
@@ -28,8 +30,15 @@ namespace TLGX_Consumer.Service
                     if (Convert.ToString(PrefixText).Length > 2)
                     {
                         RQ.HotelName = PrefixText.Trim().TrimStart(' ');
+
                         if (!string.IsNullOrWhiteSpace(Country))
+                        {
+                            Guid countryId;
                             RQ.Country = Country.Trim().TrimStart(' ');
+                            bool resultConversion = Guid.TryParse(country_id, out countryId);
+                            if (resultConversion)
+                                RQ.Country_Id = countryId;
+                        }
                         if (!string.IsNullOrWhiteSpace(StateName) && StateName != "---ALL---")
                             RQ.State = StateName.Trim();
                         RQ.PageNo = 0;

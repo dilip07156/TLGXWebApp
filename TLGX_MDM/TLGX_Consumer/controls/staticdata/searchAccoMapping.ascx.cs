@@ -1451,7 +1451,7 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "REVIEW")
                 {
-                    HtmlInputCheckBox chk = row.Cells[15].Controls[1] as HtmlInputCheckBox;
+                    HtmlInputCheckBox chk = row.Cells[16].Controls[1] as HtmlInputCheckBox;
                     //CheckBox chk = row.Cells[15].Controls[1] as CheckBox;
                     if (chk != null && chk.Checked)
                     {
@@ -1466,9 +1466,9 @@ namespace TLGX_Consumer.controls.staticdata
                 }
                 if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
-                    HtmlInputCheckBox chk = row.Cells[15].Controls[1] as HtmlInputCheckBox;
+                    HtmlInputCheckBox chk = row.Cells[16].Controls[1] as HtmlInputCheckBox;
                     //CheckBox chk = row.Cells[15].Controls[1] as CheckBox;
-                    DropDownList ddl = row.Cells[11].Controls[1] as DropDownList;
+                    DropDownList ddl = row.Cells[12].Controls[1] as DropDownList;
                     if (chk != null && chk.Checked)
                     {
                         myRow_Id = Guid.Empty;
@@ -1476,7 +1476,7 @@ namespace TLGX_Consumer.controls.staticdata
                         mySupplier_Id = Guid.Empty;
                         int index = row.RowIndex;
                         myRow_Id = Guid.Parse(grdAccoMaps.DataKeys[index].Values[0].ToString());
-                        HiddenField hdnAccp_Id = row.Cells[16].Controls[1] as HiddenField; //Set value from ajax changes
+                        HiddenField hdnAccp_Id = row.Cells[17].Controls[1] as HiddenField; //Set value from ajax changes
 
                         if (!string.IsNullOrWhiteSpace(hdnAccp_Id.Value) && hdnAccp_Id.Value != "0")
                         {
@@ -1537,10 +1537,10 @@ namespace TLGX_Consumer.controls.staticdata
                 }
                 if (ddlMappingStatus.SelectedItem.Text.Trim().ToUpper() == "UNMAPPED")
                 {
-                    HtmlInputCheckBox chk = row.Cells[15].Controls[1] as HtmlInputCheckBox;
+                    HtmlInputCheckBox chk = row.Cells[16].Controls[1] as HtmlInputCheckBox;
                     //CheckBox chk = row.Cells[15].Controls[1] as CheckBox;
-                    DropDownList ddl = row.Cells[11].Controls[1] as DropDownList;
-                    HiddenField hdnAccp_Id = row.Cells[16].Controls[1] as HiddenField; //Set value from ajax changes
+                    DropDownList ddl = row.Cells[12].Controls[1] as DropDownList;
+                    HiddenField hdnAccp_Id = row.Cells[17].Controls[1] as HiddenField; //Set value from ajax changes
                     if (ddl.SelectedItem.Value != "0" || !string.IsNullOrWhiteSpace(hdnAccp_Id.Value))
                     {
                         myRow_Id = Guid.Empty;
@@ -1773,7 +1773,7 @@ namespace TLGX_Consumer.controls.staticdata
             hdnIsAnyChanges.Value = "true";
             foreach (GridViewRow row in grdMatchingProducts.Rows)
             {
-                HtmlInputCheckBox chk = row.Cells[11].Controls[1] as HtmlInputCheckBox;
+                HtmlInputCheckBox chk = row.Cells[12].Controls[1] as HtmlInputCheckBox;
                 //   CheckBox chk = row.Cells[11].Controls[1] as CheckBox;
                 if (chk != null && chk.Checked)
                 {

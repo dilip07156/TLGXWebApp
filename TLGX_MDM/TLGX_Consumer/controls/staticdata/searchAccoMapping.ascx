@@ -170,6 +170,7 @@
                         data: {
                             term: request.term,
                             country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                            country_id: $("[id*=ddlSystemCountryName]").children("option:selected").val(),
                             state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
                             source: 'autocomplete'
                         },
@@ -271,7 +272,7 @@
         var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
         var lblSystemProductType = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemProductType");
 
-        
+
         var hdnIsJavascriptChagedValueddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemStateName");
 
         var hdnIsJavascriptChagedValueddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemCityName");
@@ -343,7 +344,7 @@
             element.parentNode.parentNode.nextSibling.childNodes[16].lastElementChild.focus();
         }
         else if (ddlStatus == "UNMAPPED") {
-            element.parentNode.parentNode.nextSibling.childNodes[7].lastElementChild.focus();
+            element.parentNode.parentNode.nextSibling.childNodes[12].lastElementChild.focus();
         }
     }
     function MatchedSelect(elem) {
@@ -357,14 +358,27 @@
         if (onClick) {
             //Getting Dropdown
             var currentRow = $(record).parent().parent();
-            var countryname = currentRow.find("td:eq(8)").text();
-            var cityname = currentRow.find("td:eq(10)").text();
+            //var countryname = currentRow.find("td:eq(8)").text().trim();
+            //var cityname = currentRow.find("td:eq(10)").text().trim();
+            var countryname = null;
+            var cityname = null;
+            // var hdnAccoVal = currentRow.find("td:eq(16)");
+
+            var countrynameddl = document.getElementById("MainContent_searchAccoMapping_ddlCountry");
+            var citynameddl = document.getElementById("MainContent_searchAccoMapping_ddlSupplierCity");
+            if (countrynameddl != null)
+                countryname = countrynameddl.options[countrynameddl.selectedIndex].text;
+            if (citynameddl != null)
+                cityname = citynameddl.options[citynameddl.selectedIndex].text;
+
 
             var AccoDDL = currentRow.find("td:eq(11)").find('select');
             var selectedText = AccoDDL.find("option:selected").text();
             var selectedOption = AccoDDL.find("option");
             var selectedVal = AccoDDL.val();
-            if (countryname != null || cityname != null) {
+            //if (hdnAccoVal != null)
+            //    hdnAccoVal.val(selectedVal);
+            if ((countryname != null && countryname != "") || (cityname != null && cityname != "")) {
                 if (AccoDDL != null && AccoDDL.is("select")) {
                     $.ajax({
                         url: '../../../Service/ToFillDDL.ashx',
@@ -377,7 +391,9 @@
                         },
                         responseType: "json",
                         success: function (result) {
-                            AccoDDL.find("option:not(:first)").remove();
+                            // AccoDDL.find("option:not(:first)").remove();
+                            AccoDDL.find('option').remove();
+                            AccoDDL.append("<option value='0'>Select</option>");
                             var value = JSON.stringify(result);
                             var listItems = '';
                             if (result != null) {
@@ -386,6 +402,7 @@
                                 }
                                 AccoDDL.append(listItems);
                             }
+
 
                             AccoDDL.find("option").prop('selected', false).filter(function () {
                                 return $(this).text() == selectedText;
@@ -405,10 +422,12 @@
             var AccoDDL = currentRow.find("td:eq(11)").find('select');
             var selectedText = AccoDDL.find("option:selected").text();
             var selectedVal = AccoDDL.val();
-            AccoDDL.find("option:not(:first)").remove();
+            // AccoDDL.find("option:not(:first)").remove();
+            AccoDDL.find('option').remove();
+            AccoDDL.append("<option value='0'>Select</option>");
             var listItems = "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
             AccoDDL.append(listItems);
-            var acco_id = record.parentNode.parentNode.childNodes[16].firstElementChild;
+            var acco_id = record.parentNode.parentNode.childNodes[17].firstElementChild;
             acco_id.value = selectedVal;
         }
     }
@@ -417,17 +436,19 @@
         var ddlStatus = $('#MainContent_searchAccoMapping_frmEditProductMap_ddlStatus option:selected').html();
         var mySystemCountryName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCountryName");
         var mySystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCityName");
-        var myProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemProductName");
+        // var myProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemProductName");
         //var myVal = $('#vddlSystemCountryName').val();
         if (ddlStatus == 'DELETE') {
             ValidatorEnable(mySystemCountryName, false);
-            ValidatorEnable(mySystemCityName, false);
-            ValidatorEnable(myProductName, false);
+            if (mySystemCityName != null)
+                ValidatorEnable(mySystemCityName, false);
+            //  ValidatorEnable(myProductName, false);
         }
         else {
             ValidatorEnable(mySystemCountryName, true);
-            ValidatorEnable(mySystemCityName, true);
-            ValidatorEnable(myProductName, true);
+            if (mySystemCityName != null)
+                ValidatorEnable(mySystemCityName, true);
+            // ValidatorEnable(myProductName, true);
         }
     }
 </script>
@@ -468,7 +489,7 @@
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="txtSuppName">Product Type</label>
                                                 <div class="col-sm-8">
-                                                     <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
@@ -538,7 +559,7 @@
                                                     <asp:TextBox ID="txtSuppProduct" runat="server" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group row">
@@ -923,7 +944,7 @@
                                                                         <asp:Label ID="lblHotelName_TX" runat="server" Text="" Visible="false"></asp:Label>
                                                                     </td>
                                                                 </tr>
-                                                                 <tr>
+                                                                <tr>
                                                                     <td><strong>ProductType</strong></td>
                                                                     <td>
                                                                         <asp:Label ID="lblProductType" runat="server" Text=""></asp:Label>
@@ -1061,7 +1082,7 @@
                                                                 &nbsp;
                                                             </div>
                                                         </div>
-                                                         <div class="form-group form-inline">
+                                                        <div class="form-group form-inline">
                                                             <label class="control-label col-sm-3" for="lblSystemLocation">Product Type</label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
@@ -1070,7 +1091,7 @@
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
                                                         </div>
-                                                         <div class="form-group form-inline">
+                                                        <div class="form-group form-inline">
                                                             <div class="col-sm-12">
                                                                 &nbsp;
                                                             </div>
