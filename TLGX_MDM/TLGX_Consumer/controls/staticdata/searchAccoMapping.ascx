@@ -271,7 +271,7 @@
         var lblSystemLongitude = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemLongitude");
         var lblSystemProductType = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_lblSystemProductType");
 
-        
+
         var hdnIsJavascriptChagedValueddlSystemStateName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemStateName");
 
         var hdnIsJavascriptChagedValueddlSystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_hdnIsJavascriptChagedValueddlSystemCityName");
@@ -414,20 +414,23 @@
     }
 
     function ddlStatusChanged(ddl) {
+        debugger;
         var ddlStatus = $('#MainContent_searchAccoMapping_frmEditProductMap_ddlStatus option:selected').html();
         var mySystemCountryName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCountryName");
         var mySystemCityName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemCityName");
-        var myProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemProductName");
+        // var myProductName = document.getElementById("MainContent_searchAccoMapping_frmEditProductMap_vddlSystemProductName");
         //var myVal = $('#vddlSystemCountryName').val();
         if (ddlStatus == 'DELETE') {
             ValidatorEnable(mySystemCountryName, false);
-            ValidatorEnable(mySystemCityName, false);
-            ValidatorEnable(myProductName, false);
+            if (mySystemCityName != null)
+                ValidatorEnable(mySystemCityName, false);
+            //  ValidatorEnable(myProductName, false);
         }
         else {
             ValidatorEnable(mySystemCountryName, true);
-            ValidatorEnable(mySystemCityName, true);
-            ValidatorEnable(myProductName, true);
+            if (mySystemCityName != null)
+                ValidatorEnable(mySystemCityName, true);
+            // ValidatorEnable(myProductName, true);
         }
     }
 </script>
@@ -468,7 +471,7 @@
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="txtSuppName">Product Type</label>
                                                 <div class="col-sm-8">
-                                                     <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:DropDownList ID="ddlProductType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
                                                     </asp:DropDownList>
                                                 </div>
@@ -538,7 +541,7 @@
                                                     <asp:TextBox ID="txtSuppProduct" runat="server" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group row">
@@ -923,7 +926,7 @@
                                                                         <asp:Label ID="lblHotelName_TX" runat="server" Text="" Visible="false"></asp:Label>
                                                                     </td>
                                                                 </tr>
-                                                                 <tr>
+                                                                <tr>
                                                                     <td><strong>ProductType</strong></td>
                                                                     <td>
                                                                         <asp:Label ID="lblProductType" runat="server" Text=""></asp:Label>
@@ -1061,7 +1064,7 @@
                                                                 &nbsp;
                                                             </div>
                                                         </div>
-                                                         <div class="form-group form-inline">
+                                                        <div class="form-group form-inline">
                                                             <label class="control-label col-sm-3" for="lblSystemLocation">Product Type</label>
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
@@ -1070,7 +1073,7 @@
                                                                 <div class="col-sm-2">&nbsp;</div>
                                                             </div>
                                                         </div>
-                                                         <div class="form-group form-inline">
+                                                        <div class="form-group form-inline">
                                                             <div class="col-sm-12">
                                                                 &nbsp;
                                                             </div>

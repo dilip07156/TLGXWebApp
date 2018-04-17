@@ -1773,7 +1773,7 @@ namespace TLGX_Consumer.controls.staticdata
             hdnIsAnyChanges.Value = "true";
             foreach (GridViewRow row in grdMatchingProducts.Rows)
             {
-                HtmlInputCheckBox chk = row.Cells[11].Controls[1] as HtmlInputCheckBox;
+                HtmlInputCheckBox chk = row.Cells[12].Controls[1] as HtmlInputCheckBox;
                 //   CheckBox chk = row.Cells[11].Controls[1] as CheckBox;
                 if (chk != null && chk.Checked)
                 {
