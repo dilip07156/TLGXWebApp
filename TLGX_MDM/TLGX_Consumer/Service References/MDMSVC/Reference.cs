@@ -6806,6 +6806,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CountryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Country_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string HotelNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -6836,6 +6839,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CountryField, value) != true)) {
                     this.CountryField = value;
                     this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Country_Id {
+            get {
+                return this.Country_IdField;
+            }
+            set {
+                if ((this.Country_IdField.Equals(value) != true)) {
+                    this.Country_IdField = value;
+                    this.RaisePropertyChanged("Country_Id");
                 }
             }
         }
@@ -47413,6 +47429,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddAccomodationClassificationAttributes", ReplyAction="http://tempuri.org/IAccomodation/AddAccomodationClassificationAttributesResponse")]
         System.Threading.Tasks.Task<bool> AddAccomodationClassificationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes CA);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        void UpdateAccomodationTxInfo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoResponse")]
+        System.Threading.Tasks.Task UpdateAccomodationTxInfoAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationList", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Accomodation[] GetAccomodationList(string PageNo, string PageSize);
@@ -49689,6 +49712,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<bool> AddAccomodationClassificationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes CA) {
             return base.Channel.AddAccomodationClassificationAttributesAsync(CA);
+        }
+        
+        public void UpdateAccomodationTxInfo() {
+            base.Channel.UpdateAccomodationTxInfo();
+        }
+        
+        public System.Threading.Tasks.Task UpdateAccomodationTxInfoAsync() {
+            return base.Channel.UpdateAccomodationTxInfoAsync();
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation[] GetAccomodationList(string PageNo, string PageSize) {

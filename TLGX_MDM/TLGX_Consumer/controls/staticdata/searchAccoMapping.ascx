@@ -170,6 +170,7 @@
                         data: {
                             term: request.term,
                             country: $("[id*=ddlSystemCountryName]").children("option:selected").text(),
+                            country_id: $("[id*=ddlSystemCountryName]").children("option:selected").val(),
                             state: $("[id*=ddlSystemStateName]").children("option:selected").text(),
                             source: 'autocomplete'
                         },
