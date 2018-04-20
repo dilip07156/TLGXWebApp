@@ -584,6 +584,7 @@
   <xs:complexType name="DC_Accomodation_AutoComplete_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
@@ -638,6 +639,7 @@
       <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StreetNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SuburbDowntown" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Telephone_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Town" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
@@ -792,6 +794,22 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_Category_DDL" nillable="true" type="tns:DC_Accomodation_Category_DDL" />
+  <xs:complexType name="ArrayOfDC_Accomodation_Category_DDL_WithExtraDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accomodation_Category_DDL_WithExtraDetails" nillable="true" type="tns:DC_Accomodation_Category_DDL_WithExtraDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Accomodation_Category_DDL_WithExtraDetails" nillable="true" type="tns:ArrayOfDC_Accomodation_Category_DDL_WithExtraDetails" />
+  <xs:complexType name="DC_Accomodation_Category_DDL_WithExtraDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="BedType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSomking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Accomodation_Category_DDL_WithExtraDetails" nillable="true" type="tns:DC_Accomodation_Category_DDL_WithExtraDetails" />
   <xs:complexType name="ArrayOfDC_CountryMaster">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_CountryMaster" nillable="true" type="tns:DC_CountryMaster" />

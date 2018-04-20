@@ -58,7 +58,7 @@
                                     listItems += "<option value='0'>Select</option>";
 
                                     for (var i = 0; i < result.length; i++) {
-                                        listItems += "<option value='" + result[i].Accommodation_RoomInfo_Id + "'>" + result[i].RoomCategory + "</option>";
+                                        listItems += "<option value='" + result[i].Accommodation_RoomInfo_Id + "'>" + result[i].RoomName + "| " + result[i].RoomCategory + "| " + result[i].BedType + "| " + result[i].IsSomking + "</option>";
                                     }
                                     ddlRoomInfo.append(listItems);
                                 }
