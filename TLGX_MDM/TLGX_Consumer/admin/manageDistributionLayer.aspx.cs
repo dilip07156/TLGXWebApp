@@ -48,6 +48,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -61,6 +62,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -74,6 +76,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -87,6 +90,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -100,6 +104,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -113,6 +118,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -126,6 +132,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -139,6 +146,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
@@ -153,6 +161,7 @@ namespace TLGX_Consumer.admin
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
             }
             else
             {
