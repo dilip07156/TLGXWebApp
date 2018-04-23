@@ -8257,6 +8257,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Geometry))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Bounds))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
@@ -8911,6 +8913,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Geometry))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Bounds))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
@@ -45901,6 +45905,115 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_RefreshDistributionDataLog", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_RefreshDistributionDataLog : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ElementField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Element {
+            get {
+                return this.ElementField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ElementField, value) != true)) {
+                    this.ElementField = value;
+                    this.RaisePropertyChanged("Element");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_State_City_Area_Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
     [System.SerializableAttribute()]
     public partial class DC_Country_State_City_Area_Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -47412,6 +47525,13 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddAccomodationClassificationAttributes", ReplyAction="http://tempuri.org/IAccomodation/AddAccomodationClassificationAttributesResponse")]
         System.Threading.Tasks.Task<bool> AddAccomodationClassificationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes CA);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        void UpdateAccomodationTxInfo();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoResponse")]
+        System.Threading.Tasks.Task UpdateAccomodationTxInfoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationList", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -49622,6 +49742,66 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/DeleteFile", ReplyAction="http://tempuri.org/IFileTransfer/DeleteFileResponse")]
         System.Threading.Tasks.Task<bool> DeleteFileAsync(string FilePath);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCountryMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncCountryMaster(string country_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCountryMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCountryMasterAsync(string country_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCountryMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMappingDC_ErrorStatusFault" +
+            "", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncCountryMapping(string country_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCountryMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCountryMappingAsync(string country_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCityMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCityMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncCityMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncCityMaster(string city_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCityMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCityMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCityMasterAsync(string city_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCityMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCityMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncCityMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncCityMapping(string city_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncCityMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncCityMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCityMappingAsync(string city_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingDC_ErrorStatusFaul" +
+            "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncActivityMapping(string activity_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncActivityMappingAsync(string activity_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncSupplierMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierMasterDC_ErrorStatusFault" +
+            "", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncSupplierMaster(string supplier_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncSupplierMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncSupplierMasterAsync(string supplier_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLog", ReplyAction="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[] GetRefreshDistributionLog();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLog", ReplyAction="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]> GetRefreshDistributionLogAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -49689,6 +49869,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<bool> AddAccomodationClassificationAttributesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes CA) {
             return base.Channel.AddAccomodationClassificationAttributesAsync(CA);
+        }
+        
+        public void UpdateAccomodationTxInfo() {
+            base.Channel.UpdateAccomodationTxInfo();
+        }
+        
+        public System.Threading.Tasks.Task UpdateAccomodationTxInfoAsync() {
+            return base.Channel.UpdateAccomodationTxInfoAsync();
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation[] GetAccomodationList(string PageNo, string PageSize) {
@@ -52113,6 +52301,70 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<bool> DeleteFileAsync(string FilePath) {
             return base.Channel.DeleteFileAsync(FilePath);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncCountryMaster(string country_id, string CreatedBy) {
+            return base.Channel.SyncCountryMaster(country_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCountryMasterAsync(string country_id, string CreatedBy) {
+            return base.Channel.SyncCountryMasterAsync(country_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncCountryMapping(string country_id, string CreatedBy) {
+            return base.Channel.SyncCountryMapping(country_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCountryMappingAsync(string country_id, string CreatedBy) {
+            return base.Channel.SyncCountryMappingAsync(country_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncCityMaster(string city_id, string CreatedBy) {
+            return base.Channel.SyncCityMaster(city_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCityMasterAsync(string city_id, string CreatedBy) {
+            return base.Channel.SyncCityMasterAsync(city_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncCityMapping(string city_id, string CreatedBy) {
+            return base.Channel.SyncCityMapping(city_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncCityMappingAsync(string city_id, string CreatedBy) {
+            return base.Channel.SyncCityMappingAsync(city_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id, string CreatedBy) {
+            return base.Channel.SyncHotelMapping(hotel_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id, string CreatedBy) {
+            return base.Channel.SyncHotelMappingAsync(hotel_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncActivityMapping(string activity_id, string CreatedBy) {
+            return base.Channel.SyncActivityMapping(activity_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncActivityMappingAsync(string activity_id, string CreatedBy) {
+            return base.Channel.SyncActivityMappingAsync(activity_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncSupplierMaster(string supplier_id, string CreatedBy) {
+            return base.Channel.SyncSupplierMaster(supplier_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncSupplierMasterAsync(string supplier_id, string CreatedBy) {
+            return base.Channel.SyncSupplierMasterAsync(supplier_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[] GetRefreshDistributionLog() {
+            return base.Channel.GetRefreshDistributionLog();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]> GetRefreshDistributionLogAsync() {
+            return base.Channel.GetRefreshDistributionLogAsync();
         }
     }
 }

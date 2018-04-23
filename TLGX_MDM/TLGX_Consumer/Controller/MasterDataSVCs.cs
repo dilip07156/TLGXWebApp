@@ -543,7 +543,7 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZoneCities"], RQ, typeof(DC_ZoneRQ), typeof(List<DC_ZoneCitiesSearch>), out result);
             return result as List<DC_ZoneCitiesSearch>;
         }
-       
+
         public DC_Message DeactivateOrActivateZones(DC_ZoneRQ param)
         {
             object result = null;
@@ -579,6 +579,81 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["IncludeExcludeHotels"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
             return result as DC_Message;
+        }
+        #endregion
+
+        #region Refresh Distribution data
+
+        public DC_Message RefreshCountryMaster(Guid country_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_CountryMaster"], country_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+
+        public DC_Message RefreshCountryMapping(Guid country_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_CountryMapping"], country_id ,System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+
+        public DC_Message RefreshCityMaster(Guid city_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_CityMaster"], city_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        public DC_Message RefreshCityMapping(Guid city_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_CityMapping"], city_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+
+        public DC_Message RefreshHotelMapping(Guid hotel_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMapping"], hotel_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        public DC_Message RefreshActivityMapping(Guid activity_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_ActivityMapping"], activity_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        public DC_Message RefreshSupplyMaster(Guid supply_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_SupplyMaster"], supply_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        public DC_Message RefreshPortMaster(Guid port_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_PortMaster"], port_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        public DC_Message RefreshStateMaster(Guid port_id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StateMaster"], port_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+
+
+
+        #endregion
+
+        #region Get date
+
+        public List<DC_RefreshDistributionDataLog> GetRefreshDistributionLog(MDMSVC.DC_RefreshDistributionDataLog RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistributionDate"]), typeof(List<MDMSVC.DC_RefreshDistributionDataLog>), out result);
+            //return Convert.ToDateTime(result); 
+            return result as List<DC_RefreshDistributionDataLog>;
         }
         #endregion
     }
