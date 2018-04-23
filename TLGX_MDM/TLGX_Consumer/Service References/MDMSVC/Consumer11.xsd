@@ -584,6 +584,7 @@
   <xs:complexType name="DC_Accomodation_AutoComplete_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
