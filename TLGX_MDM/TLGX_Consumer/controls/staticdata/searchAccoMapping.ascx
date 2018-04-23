@@ -15,6 +15,8 @@
 
     .ui-autocomplete {
         z-index: 99999999 !important;
+        max-height: 250px;
+        overflow-y: scroll;
     }
 </style>
 <script type="text/javascript">
@@ -82,6 +84,12 @@
     prm.add_endRequest(function () {
         callajax();
     });
+    function showLoadingImage() {
+        $('#loading').show();
+    }
+    function hideLoadingImage() {
+        $('#loading').hide();
+    }
     function callajax() {
         $("[id*=txtSearch]").autocomplete({
             source: function (request, response) {
@@ -164,6 +172,7 @@
         $("[id*=txtSearchSystemProduct]").autocomplete({
             source: function (request, response) {
                 if (request.term.length > 2) {
+                    showLoadingImage();
                     $.ajax({
                         url: '../../Service/HotelMappingAutoComplete.ashx',
                         dataType: "json",
@@ -202,6 +211,7 @@
                                         data.push(hotelname);
                                     }
                                 }
+                                hideLoadingImage();
                                 response(data);
                             }
                             else {
@@ -212,6 +222,9 @@
                             }
                         }
                     });
+                }
+                else {
+                    hideLoadingImage();
                 }
             },
             min_length: 3,
@@ -1045,7 +1058,9 @@
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
                                                                     <asp:TextBox ID="txtSearchSystemProduct" onkeyup="checkLen(this.value)" runat="server" CssClass="form-control" onlostfocus="callSystemProductNamechange(this);"></asp:TextBox>
-
+                                                                    <div id="loading" style="padding: 5px; display:none;">
+                                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                                    </div>
                                                                     <%--AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemProductName_SelectedIndexChanged"--%>
                                                                     <asp:DropDownList ID="ddlSystemProductName" Style="display: none" AppendDataBoundItems="true" runat="server" CssClass="form-control">
                                                                         <asp:ListItem Value="0">-Select-</asp:ListItem>

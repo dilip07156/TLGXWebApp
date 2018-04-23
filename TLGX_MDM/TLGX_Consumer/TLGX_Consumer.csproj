@@ -256,10 +256,12 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\JS_Defined\searchRoomTypes.js" />
     <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
     <Content Include="Content\multilevelformsbootstrapmenu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Style_Defined\searchRoomType.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
