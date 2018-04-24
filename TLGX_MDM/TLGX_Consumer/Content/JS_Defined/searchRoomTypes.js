@@ -92,16 +92,16 @@ function BindRTDetails(controlval) {
                     var value = JSON.stringify(result);
                     var listItems = '';
                     if (result != null) {
-                        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-3">Room Name</th> <th class="col-md-4">Room Category</th>';
-                        def = def + '  <th class="col-md-1">Bed Type</th> <th class="col-md-2">Room Size</th>  <th class="col-md-1">Is Smoking</th></tr>';
+                        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-2">Room Name</th> <th class="col-md-3">Room Category</th>';
+                        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-2"> Size</th>  <th class="col-md-1">Smk</th></tr>';
                         var li = def;
                         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
                         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
 
+                        var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
                         var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
-                        var td4 = '<td class="col-md-4" style="word-wrap:  break-all;">';
                         var td1 = '<td class="col-md-1">';
-                        var td2 = '<td class="col-md-2">';
+                        //var td21 = '<td class="col-md-2">';
 
 
                         var lic = ' <td style="display: none;" id="tdRoomInfoId">';
@@ -117,10 +117,11 @@ function BindRTDetails(controlval) {
                                 li = li + td1 + licheckbox + tdc;
                             }
 
-                            li = li + td3 + result[i].RoomName + tdc;
-                            li = li + td4 + result[i].RoomCategory + tdc;
+                            li = li + td2 + result[i].RoomName + tdc;
+                            li = li + td3 + result[i].RoomCategory + tdc;
                             li = li + td2 + result[i].BedType + tdc;
-                            li = li + td4 + result[i].RoomSize + tdc;
+                            li = li + td2 + result[i].RoomView + tdc;
+                            li = li + td2 + result[i].RoomSize + tdc;
                             li = li + td1 + result[i].IsSomking + tdc;
                             li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
                         }

@@ -35543,7 +35543,19 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> ChildAgeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CommonProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ExtraBedField;
@@ -35625,6 +35637,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SmokingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StateNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid SupplierImporrtFile_IdField;
@@ -35841,6 +35859,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityCode {
+            get {
+                return this.CityCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityCodeField, value) != true)) {
+                    this.CityCodeField = value;
+                    this.RaisePropertyChanged("CityCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string CommonProductId {
             get {
                 return this.CommonProductIdField;
@@ -35849,6 +35893,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CommonProductIdField, value) != true)) {
                     this.CommonProductIdField = value;
                     this.RaisePropertyChanged("CommonProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryCode {
+            get {
+                return this.CountryCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryCodeField, value) != true)) {
+                    this.CountryCodeField = value;
+                    this.RaisePropertyChanged("CountryCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
                 }
             }
         }
@@ -36200,6 +36270,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SmokingField, value) != true)) {
                     this.SmokingField = value;
                     this.RaisePropertyChanged("Smoking");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StateCode {
+            get {
+                return this.StateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StateCodeField, value) != true)) {
+                    this.StateCodeField = value;
+                    this.RaisePropertyChanged("StateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StateName {
+            get {
+                return this.StateNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StateNameField, value) != true)) {
+                    this.StateNameField = value;
+                    this.RaisePropertyChanged("StateName");
                 }
             }
         }
@@ -44958,6 +45054,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomSizeField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomViewField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -45042,6 +45141,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.RoomSizeField, value) != true)) {
                     this.RoomSizeField = value;
                     this.RaisePropertyChanged("RoomSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomView {
+            get {
+                return this.RoomViewField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomViewField, value) != true)) {
+                    this.RoomViewField = value;
+                    this.RaisePropertyChanged("RoomView");
                 }
             }
         }

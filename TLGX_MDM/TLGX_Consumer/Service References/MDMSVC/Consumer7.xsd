@@ -209,7 +209,11 @@
       <xs:element minOccurs="0" name="BeddingConfig" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Bedrooms" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ChildAge" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CommonProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ExtraBed" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FloorName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FloorNumber" nillable="true" type="xs:int" />
@@ -237,6 +241,8 @@
       <xs:element minOccurs="0" name="RoomTypeAttributes" nillable="true" type="tns:ArrayOfDC_SupplierRoomTypeAttributes" />
       <xs:element minOccurs="0" name="RoomViewCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Smoking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductId" nillable="true" type="xs:string" />
