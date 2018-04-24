@@ -807,6 +807,7 @@
       <xs:element minOccurs="0" name="IsSomking" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_Category_DDL_WithExtraDetails" nillable="true" type="tns:DC_Accomodation_Category_DDL_WithExtraDetails" />

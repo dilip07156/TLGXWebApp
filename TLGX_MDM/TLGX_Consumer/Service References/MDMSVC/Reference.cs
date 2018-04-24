@@ -35522,10 +35522,37 @@ namespace TLGX_Consumer.MDMSVC {
         private string ActionTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AmenitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int BatchField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BathRoomTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BedTypeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BeddingConfigField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BedroomsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ChildAgeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CommonProductIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ExtraBedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FloorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> FloorNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
@@ -35549,6 +35576,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> MaxInfantsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> MinGuestOccupancyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumberOfRoomsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -35559,6 +35589,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PromotionalVendorCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> QuantityField;
@@ -35579,10 +35612,19 @@ namespace TLGX_Consumer.MDMSVC {
         private string RoomDescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomLocationCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomSizeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[] RoomTypeAttributesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomViewCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SmokingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid SupplierImporrtFile_IdField;
@@ -35595,6 +35637,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierProductNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierProviderField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierRoomCategoryField;
@@ -35705,6 +35750,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Amenities {
+            get {
+                return this.AmenitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AmenitiesField, value) != true)) {
+                    this.AmenitiesField = value;
+                    this.RaisePropertyChanged("Amenities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Batch {
             get {
                 return this.BatchField;
@@ -35718,6 +35776,71 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BathRoomType {
+            get {
+                return this.BathRoomTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BathRoomTypeField, value) != true)) {
+                    this.BathRoomTypeField = value;
+                    this.RaisePropertyChanged("BathRoomType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BedTypeCode {
+            get {
+                return this.BedTypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BedTypeCodeField, value) != true)) {
+                    this.BedTypeCodeField = value;
+                    this.RaisePropertyChanged("BedTypeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BeddingConfig {
+            get {
+                return this.BeddingConfigField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BeddingConfigField, value) != true)) {
+                    this.BeddingConfigField = value;
+                    this.RaisePropertyChanged("BeddingConfig");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Bedrooms {
+            get {
+                return this.BedroomsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BedroomsField, value) != true)) {
+                    this.BedroomsField = value;
+                    this.RaisePropertyChanged("Bedrooms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ChildAge {
+            get {
+                return this.ChildAgeField;
+            }
+            set {
+                if ((this.ChildAgeField.Equals(value) != true)) {
+                    this.ChildAgeField = value;
+                    this.RaisePropertyChanged("ChildAge");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string CommonProductId {
             get {
                 return this.CommonProductIdField;
@@ -35726,6 +35849,45 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CommonProductIdField, value) != true)) {
                     this.CommonProductIdField = value;
                     this.RaisePropertyChanged("CommonProductId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ExtraBed {
+            get {
+                return this.ExtraBedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExtraBedField, value) != true)) {
+                    this.ExtraBedField = value;
+                    this.RaisePropertyChanged("ExtraBed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FloorName {
+            get {
+                return this.FloorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorNameField, value) != true)) {
+                    this.FloorNameField = value;
+                    this.RaisePropertyChanged("FloorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> FloorNumber {
+            get {
+                return this.FloorNumberField;
+            }
+            set {
+                if ((this.FloorNumberField.Equals(value) != true)) {
+                    this.FloorNumberField = value;
+                    this.RaisePropertyChanged("FloorNumber");
                 }
             }
         }
@@ -35822,6 +35984,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> MinGuestOccupancy {
+            get {
+                return this.MinGuestOccupancyField;
+            }
+            set {
+                if ((this.MinGuestOccupancyField.Equals(value) != true)) {
+                    this.MinGuestOccupancyField = value;
+                    this.RaisePropertyChanged("MinGuestOccupancy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int NumberOfRooms {
             get {
                 return this.NumberOfRoomsField;
@@ -35869,6 +36044,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
                     this.ProductNameField = value;
                     this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PromotionalVendorCode {
+            get {
+                return this.PromotionalVendorCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PromotionalVendorCodeField, value) != true)) {
+                    this.PromotionalVendorCodeField = value;
+                    this.RaisePropertyChanged("PromotionalVendorCode");
                 }
             }
         }
@@ -35952,6 +36140,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomLocationCode {
+            get {
+                return this.RoomLocationCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomLocationCodeField, value) != true)) {
+                    this.RoomLocationCodeField = value;
+                    this.RaisePropertyChanged("RoomLocationCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string RoomSize {
             get {
                 return this.RoomSizeField;
@@ -35973,6 +36174,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.RoomTypeAttributesField, value) != true)) {
                     this.RoomTypeAttributesField = value;
                     this.RaisePropertyChanged("RoomTypeAttributes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomViewCode {
+            get {
+                return this.RoomViewCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomViewCodeField, value) != true)) {
+                    this.RoomViewCodeField = value;
+                    this.RaisePropertyChanged("RoomViewCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Smoking {
+            get {
+                return this.SmokingField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SmokingField, value) != true)) {
+                    this.SmokingField = value;
+                    this.RaisePropertyChanged("Smoking");
                 }
             }
         }
@@ -36025,6 +36252,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupplierProductNameField, value) != true)) {
                     this.SupplierProductNameField = value;
                     this.RaisePropertyChanged("SupplierProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierProvider {
+            get {
+                return this.SupplierProviderField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierProviderField, value) != true)) {
+                    this.SupplierProviderField = value;
+                    this.RaisePropertyChanged("SupplierProvider");
                 }
             }
         }
@@ -44715,6 +44955,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomNameField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomSizeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -44786,6 +45029,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.RoomNameField, value) != true)) {
                     this.RoomNameField = value;
                     this.RaisePropertyChanged("RoomName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomSize {
+            get {
+                return this.RoomSizeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomSizeField, value) != true)) {
+                    this.RoomSizeField = value;
+                    this.RaisePropertyChanged("RoomSize");
                 }
             }
         }
@@ -49818,6 +50074,20 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLog", ReplyAction="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]> GetRefreshDistributionLogAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncPortMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncPortMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncPortMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncPortMaster(string port_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncPortMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncPortMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncPortMasterAsync(string port_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncStateMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncStateMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncStateMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncStateMaster(string state_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncStateMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncStateMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncStateMasterAsync(string state_id, string CreatedBy);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -52381,6 +52651,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]> GetRefreshDistributionLogAsync() {
             return base.Channel.GetRefreshDistributionLogAsync();
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncPortMaster(string port_id, string CreatedBy) {
+            return base.Channel.SyncPortMaster(port_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncPortMasterAsync(string port_id, string CreatedBy) {
+            return base.Channel.SyncPortMasterAsync(port_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncStateMaster(string state_id, string CreatedBy) {
+            return base.Channel.SyncStateMaster(state_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncStateMasterAsync(string state_id, string CreatedBy) {
+            return base.Channel.SyncStateMasterAsync(state_id, CreatedBy);
         }
     }
 }

@@ -4508,4 +4508,34 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SyncPortMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="port_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncPortMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q466="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncPortMasterResult" nillable="true" type="q466:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncStateMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="state_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncStateMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q467="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncStateMasterResult" nillable="true" type="q467:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -2870,6 +2870,24 @@
   <wsdl:message name="IConsumer_GetRefreshDistributionLog_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q316="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q316:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_SyncPortMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncPortMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncPortMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncPortMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncPortMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q317="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q317:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncStateMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncStateMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncStateMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncStateMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncStateMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q318="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q318:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="UpdateAccomodationDynamicAttributes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/UpdateAccomodationDynamicAttributes" message="tns:IConsumer_UpdateAccomodationDynamicAttributes_InputMessage" />
@@ -4454,6 +4472,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLog" message="tns:IConsumer_GetRefreshDistributionLog_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogResponse" message="tns:IConsumer_GetRefreshDistributionLog_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetRefreshDistributionLog_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncPortMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncPortMaster" message="tns:IConsumer_SyncPortMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncPortMasterResponse" message="tns:IConsumer_SyncPortMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncPortMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncPortMaster_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncStateMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncStateMaster" message="tns:IConsumer_SyncStateMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncStateMasterResponse" message="tns:IConsumer_SyncStateMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncStateMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncStateMaster_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />

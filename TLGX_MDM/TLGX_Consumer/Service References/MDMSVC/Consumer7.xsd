@@ -202,8 +202,17 @@
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="ActionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Amenities" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Batch" type="xs:int" />
+      <xs:element minOccurs="0" name="BathRoomType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BedTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BeddingConfig" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Bedrooms" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChildAge" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="CommonProductId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExtraBed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FloorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FloorNumber" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MappingStatus" nillable="true" type="xs:string" />
@@ -211,22 +220,28 @@
       <xs:element minOccurs="0" name="MaxChild" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MaxGuestOccupancy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MaxInfants" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MinGuestOccupancy" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="NumberOfRooms" type="xs:int" />
       <xs:element minOccurs="0" name="OldSupplierRoomName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Oldstg_SupplierHotelRoomMapping_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PromotionalVendorCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Quantity" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="RatePlan" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RatePlanCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ReRunBatch" type="xs:int" />
       <xs:element minOccurs="0" name="ReRunSupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="RoomDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomLocationCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomTypeAttributes" nillable="true" type="tns:ArrayOfDC_SupplierRoomTypeAttributes" />
+      <xs:element minOccurs="0" name="RoomViewCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Smoking" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierImporrtFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierProvider" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierRoomCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierRoomCategoryId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierRoomId" nillable="true" type="xs:string" />
