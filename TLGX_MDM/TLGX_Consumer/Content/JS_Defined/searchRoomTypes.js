@@ -57,6 +57,37 @@ function mySelectedID(selectedcheckboxval) {
     }
 
 }
+function mySelectedOnlineOptionID(selectedcheckboxval) {
+    var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
+    var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+    var Button = tillUL.firstElementChild.firstChild;
+    var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
+    for (var i = 1 ; i < tr.length ; i++) {
+        tr[i].childNodes[0].firstChild.checked = false;
+        tr[i].className = "row";
+    }
+    selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
+    // Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
+    selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
+    var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
+    hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
+
+    //Setting check box and Dropdown to Mapped
+    var checkBoxForSelectedRow = tillUL.parentElement.parentElement.lastElementChild.firstElementChild;
+    if (checkBoxForSelectedRow != null)
+        checkBoxForSelectedRow.checked = true;
+
+    var MappingStatusDdl = tillUL.parentElement.parentElement.getElementsByClassName("MappingStatus")[0];
+    if (MappingStatusDdl != null) {
+        for (var i = 0; i < MappingStatusDdl.options.length; i++) {
+            if (MappingStatusDdl.options[i].text == "MAPPED") {
+                MappingStatusDdl.options[i].selected = true;
+                break;
+            }
+        }
+    }
+
+}
 
 function showLoadingImage() {
     $('#loading').show();
@@ -64,6 +95,13 @@ function showLoadingImage() {
 function hideLoadingImage() {
     $('#loading').hide();
 }
+function showLoadingImageOnline() {
+    $('#loadingOnline').show();
+}
+function hideLoadingImageOnline() {
+    $('#loadingOnline').hide();
+}
+
 function SelectedRow(element) {
     var row = $(element).parent().parent().closest('tr').next();
     if (row != null)
@@ -137,6 +175,70 @@ function BindRTDetails(controlval) {
         }
     }
 }
+
+function CheckSuggestionOnline(controlval) {
+    showLoadingImageOnline();
+    var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
+    var ulRoomInfo = $(controlval).parent().find('#ulRoomInfoOnline');
+    var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
+    //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
+    if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
+        if (acco_id != null && ulRoomInfo != null) {
+            $.ajax({
+                url: '../../../Service/GetSRT_ML_suggestion.ashx',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    'acco_SupplierRoomTypeMapping_Id': acco_SupplierRoomTypeMapping_Id
+                },
+                responseType: "json",
+                success: function (result) {
+                    var value = JSON.stringify(result);
+                    var listItems = '';
+                    if (result != null) {
+                        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-3">supplier_id</th> <th class="col-md-3">product_id</th>';
+                        def = def + '  <th class="col-md-3">matching_string </th></tr>';
+                        var li = def;
+                        var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedOnlineOptionID(this)">';
+                        var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedOnlineOptionID(this)">';
+
+                        var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
+                        var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
+                        var td1 = '<td class="col-md-1">';
+                        //var td21 = '<td class="col-md-2">';
+
+
+                        //var lic = ' <td style="display: none;" id="tdRoomInfoId">';
+                        var licClose = '</table>';
+                        var tdc = '</td>';
+                        for (var i = 0; i < result.length; i++) {
+                            //if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
+                            //    li = li + '<tr class="row alert alert-success">';
+                            //    li = li + td1 + licheckboxWithChecked + tdc;
+                            //}
+                            //else {
+                            li = li + '<tr class="row">';
+                            li = li + td1 + licheckbox + tdc;
+                            //}
+
+                            li = li + td2 + result[i].supplier_id + tdc;
+                            li = li + td3 + result[i].product_id + tdc;
+                            li = li + td2 + result[i].matching_string + tdc;
+                            //li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
+                        }
+                        li = li + licClose;
+
+                        hideLoadingImageOnline();
+                        ulRoomInfo[0].innerHTML = li;
+                    }
+                },
+                failure: function () {
+                }
+            });
+        }
+    }
+}
+
 
 
 function SelectedRow(element) {
