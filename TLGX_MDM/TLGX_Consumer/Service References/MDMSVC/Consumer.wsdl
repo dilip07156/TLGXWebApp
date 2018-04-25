@@ -2798,6 +2798,96 @@
   <wsdl:message name="IConsumer_DeleteFile_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCountryMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCountryMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCountryMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCountryMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCountryMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q309="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q309:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCountryMapping_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCountryMapping" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCountryMapping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCountryMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCountryMapping_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q310="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q310:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCityMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCityMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCityMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCityMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCityMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q311="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q311:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCityMapping_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCityMapping" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCityMapping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncCityMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncCityMapping_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q312="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q312:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncHotelMapping_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncHotelMapping" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncHotelMapping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncHotelMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncHotelMapping_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q313="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q313:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncActivityMapping_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncActivityMapping" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncActivityMapping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncActivityMappingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncActivityMapping_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q314="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q314:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncSupplierMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncSupplierMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncSupplierMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncSupplierMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncSupplierMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q315="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q315:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetRefreshDistributionLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRefreshDistributionLog" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetRefreshDistributionLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRefreshDistributionLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetRefreshDistributionLog_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q316="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q316:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncPortMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncPortMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncPortMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncPortMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncPortMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q317="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q317:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncStateMaster_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncStateMaster" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncStateMaster_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncStateMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncStateMaster_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q318="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q318:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="UpdateAccomodationDynamicAttributes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/UpdateAccomodationDynamicAttributes" message="tns:IConsumer_UpdateAccomodationDynamicAttributes_InputMessage" />
@@ -4342,6 +4432,56 @@
     <wsdl:operation name="DeleteFile">
       <wsdl:input wsaw:Action="http://tempuri.org/IFileTransfer/DeleteFile" message="tns:IConsumer_DeleteFile_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IFileTransfer/DeleteFileResponse" message="tns:IConsumer_DeleteFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncCountryMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMaster" message="tns:IConsumer_SyncCountryMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMasterResponse" message="tns:IConsumer_SyncCountryMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncCountryMaster_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncCountryMapping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMapping" message="tns:IConsumer_SyncCountryMapping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMappingResponse" message="tns:IConsumer_SyncCountryMapping_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCountryMappingDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncCountryMapping_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncCityMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCityMaster" message="tns:IConsumer_SyncCityMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCityMasterResponse" message="tns:IConsumer_SyncCityMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCityMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncCityMaster_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncCityMapping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCityMapping" message="tns:IConsumer_SyncCityMapping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCityMappingResponse" message="tns:IConsumer_SyncCityMapping_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncCityMappingDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncCityMapping_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncHotelMapping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping" message="tns:IConsumer_SyncHotelMapping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse" message="tns:IConsumer_SyncHotelMapping_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncHotelMapping_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncActivityMapping">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMapping" message="tns:IConsumer_SyncActivityMapping_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingResponse" message="tns:IConsumer_SyncActivityMapping_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncActivityMapping_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncSupplierMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierMaster" message="tns:IConsumer_SyncSupplierMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierMasterResponse" message="tns:IConsumer_SyncSupplierMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncSupplierMaster_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRefreshDistributionLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLog" message="tns:IConsumer_GetRefreshDistributionLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogResponse" message="tns:IConsumer_GetRefreshDistributionLog_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/GetRefreshDistributionLogDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetRefreshDistributionLog_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncPortMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncPortMaster" message="tns:IConsumer_SyncPortMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncPortMasterResponse" message="tns:IConsumer_SyncPortMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncPortMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncPortMaster_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncStateMaster">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncStateMaster" message="tns:IConsumer_SyncStateMaster_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncStateMasterResponse" message="tns:IConsumer_SyncStateMaster_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncStateMasterDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncStateMaster_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />

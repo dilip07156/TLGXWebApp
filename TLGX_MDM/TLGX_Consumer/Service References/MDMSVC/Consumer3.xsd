@@ -4391,4 +4391,151 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="SyncCountryMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="country_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCountryMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q458="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMasterResult" nillable="true" type="q458:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCountryMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="country_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCountryMappingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q459="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMappingResult" nillable="true" type="q459:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCityMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="city_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCityMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q460="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMasterResult" nillable="true" type="q460:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCityMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="city_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncCityMappingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q461="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMappingResult" nillable="true" type="q461:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncHotelMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="hotel_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncHotelMappingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q462="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingResult" nillable="true" type="q462:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncActivityMapping">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="activity_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncActivityMappingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q463="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncActivityMappingResult" nillable="true" type="q463:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncSupplierMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="supplier_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncSupplierMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q464="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierMasterResult" nillable="true" type="q464:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRefreshDistributionLog">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRefreshDistributionLogResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q465="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshDistributionLogResult" nillable="true" type="q465:ArrayOfDC_RefreshDistributionDataLog" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncPortMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="port_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncPortMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q466="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncPortMasterResult" nillable="true" type="q466:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncStateMaster">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="state_id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncStateMasterResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q467="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncStateMasterResult" nillable="true" type="q467:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

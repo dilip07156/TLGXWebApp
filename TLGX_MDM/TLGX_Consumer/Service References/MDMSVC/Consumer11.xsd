@@ -807,6 +807,8 @@
       <xs:element minOccurs="0" name="IsSomking" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomView" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_Category_DDL_WithExtraDetails" nillable="true" type="tns:DC_Accomodation_Category_DDL_WithExtraDetails" />
@@ -957,4 +959,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_FileProgressDashboard" nillable="true" type="tns:DC_FileProgressDashboard" />
+  <xs:complexType name="ArrayOfDC_RefreshDistributionDataLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_RefreshDistributionDataLog" nillable="true" type="tns:DC_RefreshDistributionDataLog" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_RefreshDistributionDataLog" nillable="true" type="tns:ArrayOfDC_RefreshDistributionDataLog" />
+  <xs:complexType name="DC_RefreshDistributionDataLog">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Element" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_RefreshDistributionDataLog" nillable="true" type="tns:DC_RefreshDistributionDataLog" />
 </xs:schema>
