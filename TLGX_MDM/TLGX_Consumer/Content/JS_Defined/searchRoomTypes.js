@@ -198,7 +198,6 @@ function CheckSuggestionOnline(controlval) {
                     var tr = "<tr>"; var trc = "</tr>";
                     var td = "<td>"; var tdc = "</td>";
                     listItems = listItems + "<div class='col-md-12'><table class='table table-striped'>";
-                    debugger;
                     if (result != null) {
                         if (result.length > 0) {
                             if (result[0].matches.length > 0)
@@ -221,7 +220,6 @@ function CheckSuggestionOnline(controlval) {
                         }
                         hideLoadingImageOnline();
                         listItems = listItems + "</table></div>";
-                        debugger;
                         ulRoomInfo[0].innerHTML = listItems;
                     }
                 },
