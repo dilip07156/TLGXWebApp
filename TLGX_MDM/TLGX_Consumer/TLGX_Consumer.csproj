@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -256,10 +257,12 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\JS_Defined\searchRoomTypes.js" />
     <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
     <Content Include="Content\multilevelformsbootstrapmenu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Style_Defined\searchRoomType.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
@@ -1015,6 +1018,13 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\GetSRT_ML_suggestion.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2590,6 +2600,9 @@
     </Compile>
     <Compile Include="Service\PentahoStepsInfo.ashx.cs">
       <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\RoomCategoryAutoComplete.ashx.cs">
       <DependentUpon>RoomCategoryAutoComplete.ashx</DependentUpon>
