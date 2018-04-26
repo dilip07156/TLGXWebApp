@@ -218,6 +218,17 @@
                                             <asp:TemplateField HeaderText="Suggested Room Info">
                                                 <ItemTemplate>
                                                     <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
+
+                                                    <div class="dropdown" runat="server" id="ddlSuggestionsOnline">
+                                                        <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionOnline" data-toggle="dropdown" onclick="CheckSuggestionOnline(this);">
+                                                            Check Online 
+                                                        </button>
+                                                        <div class="dropdown-menu ulRoomInfoOnline" id="ulRoomInfoOnline">
+                                                            <div id="loadingOnline" style="padding: 5px;">
+                                                                <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:TemplateField HeaderText="TLGX Room Info">
@@ -229,7 +240,7 @@
                                                             -Select- 
                                                             <span class="caret paddingleft"></span>
                                                         </button>
-                                                        <div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo"  >
+                                                        <div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo">
                                                             <div id="loading" style="padding: 5px;">
                                                                 <img alt="Loading..." src="../../../images/ajax-loader.gif" />
                                                             </div>
@@ -267,6 +278,7 @@
                                                     <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
                                                     <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
                                                     <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+                                                    <input type="hidden" class="hdnAccommodation_SupplierRoomTypeMapping_Id" runat="server" id="hdnAccommodation_SupplierRoomTypeMapping_Id" value='<%# Eval("Accommodation_SupplierRoomTypeMapping_Id") %>' />
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>

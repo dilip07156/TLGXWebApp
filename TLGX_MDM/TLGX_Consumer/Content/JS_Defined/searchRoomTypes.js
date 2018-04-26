@@ -57,6 +57,37 @@ function mySelectedID(selectedcheckboxval) {
     }
 
 }
+function mySelectedOnlineOptionID(selectedcheckboxval) {
+    var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
+    var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+    var Button = tillUL.firstElementChild.firstChild;
+    var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
+    for (var i = 1 ; i < tr.length ; i++) {
+        tr[i].childNodes[0].firstChild.checked = false;
+        tr[i].className = "row";
+    }
+    selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
+    // Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
+    selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
+    var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
+    hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
+
+    //Setting check box and Dropdown to Mapped
+    var checkBoxForSelectedRow = tillUL.parentElement.parentElement.lastElementChild.firstElementChild;
+    if (checkBoxForSelectedRow != null)
+        checkBoxForSelectedRow.checked = true;
+
+    var MappingStatusDdl = tillUL.parentElement.parentElement.getElementsByClassName("MappingStatus")[0];
+    if (MappingStatusDdl != null) {
+        for (var i = 0; i < MappingStatusDdl.options.length; i++) {
+            if (MappingStatusDdl.options[i].text == "MAPPED") {
+                MappingStatusDdl.options[i].selected = true;
+                break;
+            }
+        }
+    }
+
+}
 
 function showLoadingImage() {
     $('#loading').show();
@@ -64,6 +95,13 @@ function showLoadingImage() {
 function hideLoadingImage() {
     $('#loading').hide();
 }
+function showLoadingImageOnline() {
+    $('#loadingOnline').show();
+}
+function hideLoadingImageOnline() {
+    $('#loadingOnline').hide();
+}
+
 function SelectedRow(element) {
     var row = $(element).parent().parent().closest('tr').next();
     if (row != null)
@@ -137,6 +175,61 @@ function BindRTDetails(controlval) {
         }
     }
 }
+
+function CheckSuggestionOnline(controlval) {
+    showLoadingImageOnline();
+    var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
+    var ulRoomInfo = $(controlval).parent().find('#ulRoomInfoOnline');
+    var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
+    //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
+    if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
+        if (acco_SupplierRoomTypeMapping_Id != null && ulRoomInfo != null) {
+            $.ajax({
+                url: '../../../Service/GetSRT_ML_suggestion.ashx',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    'acco_SupplierRoomTypeMapping_Id': acco_SupplierRoomTypeMapping_Id
+                },
+                responseType: "json",
+                success: function (result) {
+                    var value = JSON.stringify(result);
+                    var listItems = '';
+                    var tr = "<tr>"; var trc = "</tr>";
+                    var td = "<td>"; var tdc = "</td>";
+                    listItems = listItems + "<div class='col-md-12'><table class='table table-striped'>";
+                    if (result != null) {
+                        if (result.length > 0) {
+                            if (result[0].matches.length > 0)
+                                for (var i = 0; i < result[0].matches.length; i++) {
+                                    listItems = listItems + tr + td + "<b>Matched String</b>" + tdc + td + result[0].matches[0].matched_string + tdc;
+                                    listItems = listItems + tr + td + "<b>Score</b>" + tdc + td + result[0].matches[0].score + tdc;
+                                }
+                            listItems = listItems + "<tr><td colspan='2'>" + "<b>Accommodation Room Details :</b>" + "</td></tr>";
+                            //listItems = listItems + "<tr><th>AccommodationRoomInfo_Id</th><th> system_room_name</th></tr>";
+
+                            //<tr><th colspan='2'>Accommodation Room Details :</td></tr>
+                            if (result[0].AccommodationRoomInfo_Id.length > 0) {
+                                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'><table class='table table-striped'><tr><th>AccommodationRoomInfo_Id</th><th> system_room_name</th></tr>";
+                                for (var j = 0; j < result[0].AccommodationRoomInfo_Id.length; j++) {
+                                    listItems = listItems + "<tr> <td> " + result[0].AccommodationRoomInfo_Id[j].AccommodationRoomInfo_Id + "</td>";
+                                    listItems = listItems + "<td> " + result[0].AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+                                }
+                                listItems = listItems + "</table></div></td></tr>";
+                            }
+                        }
+                        hideLoadingImageOnline();
+                        listItems = listItems + "</table></div>";
+                        ulRoomInfo[0].innerHTML = listItems;
+                    }
+                },
+                failure: function () {
+                }
+            });
+        }
+    }
+}
+
 
 
 function SelectedRow(element) {
