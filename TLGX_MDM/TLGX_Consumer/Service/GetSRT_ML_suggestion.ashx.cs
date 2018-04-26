@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Configuration;
 using System.Web.Script.Serialization;
-using System.Web.Services;
+using TLGX_Consumer.Models;
+using System.Runtime.Serialization.Json;
+using System.Data;
 
 namespace TLGX_Consumer.Service
 {
+    /// <summary>
+    /// Summary description for CountryAutoComplete
+    /// </summary>
+
     public class GetSRT_ML_suggestion : IHttpHandler
     {
+
         Controller.AccomodationSVC Acco = new Controller.AccomodationSVC();
         public void ProcessRequest(HttpContext context)
         {

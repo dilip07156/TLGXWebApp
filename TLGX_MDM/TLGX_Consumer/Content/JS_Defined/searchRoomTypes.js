@@ -183,7 +183,7 @@ function CheckSuggestionOnline(controlval) {
     var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
     //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
     if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
-        if (acco_id != null && ulRoomInfo != null) {
+        if (acco_SupplierRoomTypeMapping_Id != null && ulRoomInfo != null) {
             $.ajax({
                 url: '../../../Service/GetSRT_ML_suggestion.ashx',
                 contentType: "application/json; charset=utf-8",
@@ -195,41 +195,34 @@ function CheckSuggestionOnline(controlval) {
                 success: function (result) {
                     var value = JSON.stringify(result);
                     var listItems = '';
+                    var tr = "<tr>"; var trc = "</tr>";
+                    var td = "<td>"; var tdc = "</td>";
+                    listItems = listItems + "<div class='col-md-12'><table class='table table-striped'>";
+                    debugger;
                     if (result != null) {
-                        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-3">supplier_id</th> <th class="col-md-3">product_id</th>';
-                        def = def + '  <th class="col-md-3">matching_string </th></tr>';
-                        var li = def;
-                        var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedOnlineOptionID(this)">';
-                        var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedOnlineOptionID(this)">';
+                        if (result.length > 0) {
+                            if (result[0].matches.length > 0)
+                                for (var i = 0; i < result[0].matches.length; i++) {
+                                    listItems = listItems + tr + td + "<b>Matched String</b>" + tdc + td + result[0].matches[0].matched_string + tdc;
+                                    listItems = listItems + tr + td + "<b>Score</b>" + tdc + td + result[0].matches[0].score + tdc;
+                                }
+                            listItems = listItems + "<tr><td colspan='2'>" + "<b>Accommodation Room Details :</b>" + "</td></tr>";
+                            //listItems = listItems + "<tr><th>AccommodationRoomInfo_Id</th><th> system_room_name</th></tr>";
 
-                        var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
-                        var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
-                        var td1 = '<td class="col-md-1">';
-                        //var td21 = '<td class="col-md-2">';
-
-
-                        //var lic = ' <td style="display: none;" id="tdRoomInfoId">';
-                        var licClose = '</table>';
-                        var tdc = '</td>';
-                        for (var i = 0; i < result.length; i++) {
-                            //if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
-                            //    li = li + '<tr class="row alert alert-success">';
-                            //    li = li + td1 + licheckboxWithChecked + tdc;
-                            //}
-                            //else {
-                            li = li + '<tr class="row">';
-                            li = li + td1 + licheckbox + tdc;
-                            //}
-
-                            li = li + td2 + result[i].supplier_id + tdc;
-                            li = li + td3 + result[i].product_id + tdc;
-                            li = li + td2 + result[i].matching_string + tdc;
-                            //li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
+                            //<tr><th colspan='2'>Accommodation Room Details :</td></tr>
+                            if (result[0].AccommodationRoomInfo_Id.length > 0) {
+                                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'><table class='table table-striped'><tr><th>AccommodationRoomInfo_Id</th><th> system_room_name</th></tr>";
+                                for (var j = 0; j < result[0].AccommodationRoomInfo_Id.length; j++) {
+                                    listItems = listItems + "<tr> <td> " + result[0].AccommodationRoomInfo_Id[j].AccommodationRoomInfo_Id + "</td>";
+                                    listItems = listItems + "<td> " + result[0].AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+                                }
+                                listItems = listItems + "</table></div></td></tr>";
+                            }
                         }
-                        li = li + licClose;
-
                         hideLoadingImageOnline();
-                        ulRoomInfo[0].innerHTML = li;
+                        listItems = listItems + "</table></div>";
+                        debugger;
+                        ulRoomInfo[0].innerHTML = listItems;
                     }
                 },
                 failure: function () {

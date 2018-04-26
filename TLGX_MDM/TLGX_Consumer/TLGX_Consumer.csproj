@@ -477,7 +477,6 @@
     </None>
     <Content Include="Service\CityFillForDDL.ashx" />
     <Content Include="Service\ActivityNameAutoComplete.ashx" />
-    <Content Include="Service\GetSRT_ML_suggestion.asmx" />
     <Content Include="Service\RoomCategoryAutoComplete.ashx" />
     <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <Content Include="Service\CityFillForDDL.ashx" />
@@ -1025,6 +1024,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\GetSRT_ML_suggestion.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2592,9 +2592,6 @@
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Service\GetSRT_ML_suggestion.asmx.cs">
-      <DependentUpon>GetSRT_ML_suggestion.asmx</DependentUpon>
-    </Compile>
     <Compile Include="Service\HotelMappingAutoComplete.ashx.cs">
       <DependentUpon>HotelMappingAutoComplete.ashx</DependentUpon>
     </Compile>
@@ -2603,6 +2600,9 @@
     </Compile>
     <Compile Include="Service\PentahoStepsInfo.ashx.cs">
       <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\RoomCategoryAutoComplete.ashx.cs">
       <DependentUpon>RoomCategoryAutoComplete.ashx</DependentUpon>
