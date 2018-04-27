@@ -19,7 +19,7 @@ function DisplayToolTip(controls) {
 function HideToolTip(controls) {
     var div = controls.nextElementSibling;
     if (div != null) {
-        div.innerHTML = "";
+       // div.innerHTML = "";
         div.classList.remove("TooltipDescriptionShow");
         div.classList.add("TooltipDescriptionHide");
     }
@@ -218,6 +218,7 @@ function CheckSuggestionOnline(controlval) {
                                 listItems = listItems + "</table></div></td></tr>";
                             }
                         }
+                        debugger;
                         hideLoadingImageOnline();
                         listItems = listItems + "</table></div>";
                         ulRoomInfo[0].innerHTML = listItems;
