@@ -8272,12 +8272,19 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Address_Components))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Geometry))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Bounds))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog))]
@@ -8934,12 +8941,19 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Address_Components))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Geometry))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Bounds))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog))]
@@ -46192,15 +46206,15 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response_Syntactic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
-    public partial class DC_SRT_ML_Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DC_SRT_ML_Response_Syntactic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo[] AccommodationRoomInfo_IdField;
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic[] AccommodationRoomInfo_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Accommodation_IdField;
@@ -46209,7 +46223,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string Supplier_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Match[] matchesField;
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic[] matchesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string matching_stringField;
@@ -46225,7 +46239,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo[] AccommodationRoomInfo_Id {
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic[] AccommodationRoomInfo_Id {
             get {
                 return this.AccommodationRoomInfo_IdField;
             }
@@ -46264,7 +46278,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Match[] matches {
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic[] matches {
             get {
                 return this.matchesField;
             }
@@ -46301,9 +46315,9 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_AccommodationRoomInfo", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_AccommodationRoomInfo_Syntactic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
-    public partial class DC_SRT_ML_AccommodationRoomInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DC_SRT_ML_AccommodationRoomInfo_Syntactic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -46362,9 +46376,9 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Match", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Match_Syntactic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
-    public partial class DC_SRT_ML_Match : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DC_SRT_ML_Match_Syntactic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -46373,7 +46387,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string matched_stringField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int scoreField;
+        private float scoreField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -46399,7 +46413,299 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int score {
+        public float score {
+            get {
+                return this.scoreField;
+            }
+            set {
+                if ((this.scoreField.Equals(value) != true)) {
+                    this.scoreField = value;
+                    this.RaisePropertyChanged("score");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_SRT_ML_Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic _objMLSemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic _objMLSynField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic _objMLSem {
+            get {
+                return this._objMLSemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._objMLSemField, value) != true)) {
+                    this._objMLSemField = value;
+                    this.RaisePropertyChanged("_objMLSem");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic _objMLSyn {
+            get {
+                return this._objMLSynField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._objMLSynField, value) != true)) {
+                    this._objMLSynField = value;
+                    this.RaisePropertyChanged("_objMLSyn");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response_Semantic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_SRT_ML_Response_Semantic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic[] AccommodationRoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Supplier_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic[] matchesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string matching_stringField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic[] AccommodationRoomInfo_Id {
+            get {
+                return this.AccommodationRoomInfo_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccommodationRoomInfo_IdField, value) != true)) {
+                    this.AccommodationRoomInfo_IdField = value;
+                    this.RaisePropertyChanged("AccommodationRoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Accommodation_IdField, value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Supplier_Id {
+            get {
+                return this.Supplier_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Supplier_IdField, value) != true)) {
+                    this.Supplier_IdField = value;
+                    this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic[] matches {
+            get {
+                return this.matchesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.matchesField, value) != true)) {
+                    this.matchesField = value;
+                    this.RaisePropertyChanged("matches");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string matching_string {
+            get {
+                return this.matching_stringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.matching_stringField, value) != true)) {
+                    this.matching_stringField = value;
+                    this.RaisePropertyChanged("matching_string");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_AccommodationRoomInfo_Semantic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_SRT_ML_AccommodationRoomInfo_Semantic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AccommodationRoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string system_room_nameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AccommodationRoomInfo_Id {
+            get {
+                return this.AccommodationRoomInfo_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccommodationRoomInfo_IdField, value) != true)) {
+                    this.AccommodationRoomInfo_IdField = value;
+                    this.RaisePropertyChanged("AccommodationRoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string system_room_name {
+            get {
+                return this.system_room_nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.system_room_nameField, value) != true)) {
+                    this.system_room_nameField = value;
+                    this.RaisePropertyChanged("system_room_name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Match_Semantic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_SRT_ML_Match_Semantic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string matched_stringField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float scoreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string matched_string {
+            get {
+                return this.matched_stringField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.matched_stringField, value) != true)) {
+                    this.matched_stringField = value;
+                    this.RaisePropertyChanged("matched_string");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float score {
             get {
                 return this.scoreField;
             }
@@ -49395,12 +49701,26 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_TTFUALL", ReplyAction="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_TTFUALLResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AccomodationSupplierRoomTypeMapping_TTFUALLAsync(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response[] GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Syntactic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[] GetRTM_ML_Suggestions_Syntactic(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Syntactic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]> GetRTM_ML_Suggestions_SyntacticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response[]> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id);
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[] GetRTM_ML_Suggestions_Semantic(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]> GetRTM_ML_Suggestions_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetCountryMapping", ReplyAction="http://tempuri.org/IMapping/GetCountryMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetCountryMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -51895,12 +52215,28 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AccomodationSupplierRoomTypeMapping_TTFUALLAsync(Acco_RoomTypeMap_Ids);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response[] GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id) {
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[] GetRTM_ML_Suggestions_Syntactic(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_Syntactic(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]> GetRTM_ML_Suggestions_SyntacticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_SyntacticAsync(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id) {
             return base.Channel.GetRTM_ML_Suggestions(Accomodation_SupplierRoomTypeMapping_Id);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response[]> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
             return base.Channel.GetRTM_ML_SuggestionsAsync(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[] GetRTM_ML_Suggestions_Semantic(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_Semantic(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]> GetRTM_ML_Suggestions_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_SemanticAsync(Accomodation_SupplierRoomTypeMapping_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ) {

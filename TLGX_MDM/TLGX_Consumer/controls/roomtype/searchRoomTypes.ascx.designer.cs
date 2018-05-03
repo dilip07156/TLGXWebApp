@@ -184,6 +184,15 @@ namespace TLGX_Consumer.controls.roomtype {
         protected global::System.Web.UI.WebControls.Button btnTTFUAllBySupplier;
         
         /// <summary>
+        /// UpdatePanel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
         /// divMsgForMapping control.
         /// </summary>
         /// <remarks>
@@ -200,6 +209,15 @@ namespace TLGX_Consumer.controls.roomtype {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grdRoomTypeMappingSearchResultsBySupplier;
+        
+        /// <summary>
+        /// UpdatePanel3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
         /// UpdatePanel1 control.

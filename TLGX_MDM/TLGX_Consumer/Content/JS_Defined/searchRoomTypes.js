@@ -19,7 +19,7 @@ function DisplayToolTip(controls) {
 function HideToolTip(controls) {
     var div = controls.nextElementSibling;
     if (div != null) {
-       // div.innerHTML = "";
+        // div.innerHTML = "";
         div.classList.remove("TooltipDescriptionShow");
         div.classList.add("TooltipDescriptionHide");
     }
@@ -176,59 +176,103 @@ function BindRTDetails(controlval) {
     }
 }
 
+function BindResponse(result) {
+    debugger;
+    var value = JSON.stringify(result);
+    var table = "<table class='table table-bordered'>";
+    var tableparent = "<table class='table table-bordered' style='width:23%'>";
+    var listItems = tableparent + "<tr><th>Syntactic</th><th>Semantic (Unsupervised)</th><th>Semantic (Supervised)</th></tr><tr><td>";
+    var tr = "<tr>"; var trc = "</tr>";
+    var td = "<td>"; var tdc = "</td>";
+
+    listItems = listItems + table;
+    debugger;
+    if (result != null) {
+        listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
+        for (var i = 0; i < result._objMLSyn.matches.length; i++) {
+            listItems = listItems + tr + td + result._objMLSyn.matches[i].matched_string + tdc;
+            listItems = listItems + td + result._objMLSyn.matches[i].score + tdc + trc;
+        }
+        //listItems = listItems + "<tr><td colspan='2'>" + "<b>Accommodation Room Details :</b>" + "</td></tr>";<th>AccommodationRoomInfo_Id</th>
+        if (result._objMLSyn.AccommodationRoomInfo_Id.length > 0) {
+            listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
+            for (var j = 0; j < result._objMLSyn.AccommodationRoomInfo_Id.length; j++) {
+                //listItems = listItems + "<tr> <td> " + result[0].AccommodationRoomInfo_Id[j].AccommodationRoomInfo_Id + "</td>";
+                listItems = listItems + "<tr><td> " + result._objMLSyn.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+            }
+            listItems = listItems + "</table></div></td></tr></table><td>";
+        }
+
+        listItems = listItems + table;
+        if (result._objMLSem != null) {
+            if (result._objMLSem.matches.length > 0) {
+                listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
+                for (var i = 0; i < result._objMLSem.matches.length; i++) {
+                    listItems = listItems + tr + td + result._objMLSem.matches[i].matched_string + tdc;
+                    listItems = listItems + td + result._objMLSem.matches[i].score + tdc + trc;
+                }
+            }
+            if (result._objMLSem.AccommodationRoomInfo_Id.length > 0) {
+                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
+                for (var j = 0; j < result._objMLSem.AccommodationRoomInfo_Id.length; j++) {
+                    listItems = listItems + "<tr> <td> " + result._objMLSem.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+                }
+                listItems = listItems + "</table></div></td></tr></table><td>";
+            }
+        }
+
+        //listItems = listItems + table;
+        //if (result._objMLSem != null) {
+        //    if (result._objMLSem.matches.length > 0) {
+        //        listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
+        //        for (var i = 0; i < result._objMLSem.matches.length; i++) {
+        //            listItems = listItems + tr + td + result._objMLSem.matches[i].matched_string + tdc;
+        //            listItems = listItems + td + result._objMLSem.matches[i].score + tdc + trc;
+        //        }
+        //    }
+        //    if (result._objMLSem.AccommodationRoomInfo_Id.length > 0) {
+        //        listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
+        //        for (var j = 0; j < result._objMLSem.AccommodationRoomInfo_Id.length; j++) {
+        //            listItems = listItems + "<tr> <td> " + result._objMLSem.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+        //        }
+        //        listItems = listItems + "</table></div></td></tr></table>";
+        //    }
+        //}
+        debugger;
+        hideLoadingImageOnline();
+       // listItems = listItems.replace("<td></td>", "");
+        listItems = listItems + "</table>";
+        $('.ulRoomInfoOnline').html(listItems);
+    }
+
+}
 function CheckSuggestionOnline(controlval) {
     showLoadingImageOnline();
     var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
-    var ulRoomInfo = $(controlval).parent().find('#ulRoomInfoOnline');
+    debugger;
+    var ulRoomInfo = $('.ulRoomInfoOnline');// $(controlval).parent().find('#ulRoomInfoOnline');
     var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
     //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
-    if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
-        if (acco_SupplierRoomTypeMapping_Id != null && ulRoomInfo != null) {
-            $.ajax({
-                url: '../../../Service/GetSRT_ML_suggestion.ashx',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: {
-                    'acco_SupplierRoomTypeMapping_Id': acco_SupplierRoomTypeMapping_Id
-                },
-                responseType: "json",
-                success: function (result) {
-                    var value = JSON.stringify(result);
-                    var listItems = '';
-                    var tr = "<tr>"; var trc = "</tr>";
-                    var td = "<td>"; var tdc = "</td>";
-                    listItems = listItems + "<div class='col-md-12'><table class='table table-striped'>";
-                    if (result != null) {
-                        if (result.length > 0) {
-                            if (result[0].matches.length > 0)
-                                for (var i = 0; i < result[0].matches.length; i++) {
-                                    listItems = listItems + tr + td + "<b>Matched String</b>" + tdc + td + result[0].matches[0].matched_string + tdc;
-                                    listItems = listItems + tr + td + "<b>Score</b>" + tdc + td + result[0].matches[0].score + tdc;
-                                }
-                            listItems = listItems + "<tr><td colspan='2'>" + "<b>Accommodation Room Details :</b>" + "</td></tr>";
-                            //listItems = listItems + "<tr><th>AccommodationRoomInfo_Id</th><th> system_room_name</th></tr>";
-
-                            //<tr><th colspan='2'>Accommodation Room Details :</td></tr>
-                            if (result[0].AccommodationRoomInfo_Id.length > 0) {
-                                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'><table class='table table-striped'><tr><th>AccommodationRoomInfo_Id</th><th> system_room_name</th></tr>";
-                                for (var j = 0; j < result[0].AccommodationRoomInfo_Id.length; j++) {
-                                    listItems = listItems + "<tr> <td> " + result[0].AccommodationRoomInfo_Id[j].AccommodationRoomInfo_Id + "</td>";
-                                    listItems = listItems + "<td> " + result[0].AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
-                                }
-                                listItems = listItems + "</table></div></td></tr>";
-                            }
-                        }
-                        debugger;
-                        hideLoadingImageOnline();
-                        listItems = listItems + "</table></div>";
-                        ulRoomInfo[0].innerHTML = listItems;
-                    }
-                },
-                failure: function () {
+    // if (ulRoomInfo != null) {
+    if (acco_SupplierRoomTypeMapping_Id != null) {
+        $.ajax({
+            url: '../../../Service/GetSRT_ML_suggestion.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: {
+                'acco_SupplierRoomTypeMapping_Id': acco_SupplierRoomTypeMapping_Id
+            },
+            responseType: "json",
+            success: function (result) {
+                if (result != null) {
+                    BindResponse(result);
                 }
-            });
-        }
+            },
+            failure: function () {
+            }
+        });
     }
+    //}
 }
 
 
@@ -319,3 +363,14 @@ function RemoveExtra(record, onClick) {
         hdnAccommodation_RoomInfo_Id.val(selectedVal);
     }
 }
+
+function showOnlineSuggestionModal(controlval) {
+    CheckSuggestionOnline(controlval);
+    $("#modalOnlineSuggestion").modal('show');
+}
+function closeOnlineSuggestionModal() {
+    $("#modalOnlineSuggestion").modal('hide');
+}
+//$("#modalOnlineSuggestion").on('shown.bs.modal', function (e) {
+//    alert("I want this to appear after the modal has opened!");
+//});

@@ -1021,6 +1021,14 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\GetSRT_ML_suggestion_Syntactic.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion_Semantic.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -2592,6 +2600,12 @@
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion_Semantic.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion_Semantic.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\HotelMappingAutoComplete.ashx.cs">
       <DependentUpon>HotelMappingAutoComplete.ashx</DependentUpon>
     </Compile>
@@ -2601,8 +2615,8 @@
     <Compile Include="Service\PentahoStepsInfo.ashx.cs">
       <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
-      <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
+    <Compile Include="Service\GetSRT_ML_suggestion_Syntactic.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion_Syntactic.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\RoomCategoryAutoComplete.ashx.cs">
       <DependentUpon>RoomCategoryAutoComplete.ashx</DependentUpon>

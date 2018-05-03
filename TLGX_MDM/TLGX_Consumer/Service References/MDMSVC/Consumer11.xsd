@@ -949,48 +949,97 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Bounds" nillable="true" type="tns:Bounds" />
-  <xs:complexType name="ArrayOfDC_SRT_ML_Response">
+  <xs:complexType name="ArrayOfDC_SRT_ML_Response_Syntactic">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Response" nillable="true" type="tns:DC_SRT_ML_Response" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Response_Syntactic" nillable="true" type="tns:DC_SRT_ML_Response_Syntactic" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfDC_SRT_ML_Response" nillable="true" type="tns:ArrayOfDC_SRT_ML_Response" />
-  <xs:complexType name="DC_SRT_ML_Response">
+  <xs:element name="ArrayOfDC_SRT_ML_Response_Syntactic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Response_Syntactic" />
+  <xs:complexType name="DC_SRT_ML_Response_Syntactic">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo" />
+      <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo_Syntactic" />
       <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="matches" nillable="true" type="tns:ArrayOfDC_SRT_ML_Match" />
+      <xs:element minOccurs="0" name="matches" nillable="true" type="tns:ArrayOfDC_SRT_ML_Match_Syntactic" />
       <xs:element minOccurs="0" name="matching_string" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="DC_SRT_ML_Response" nillable="true" type="tns:DC_SRT_ML_Response" />
-  <xs:complexType name="ArrayOfDC_SRT_ML_AccommodationRoomInfo">
+  <xs:element name="DC_SRT_ML_Response_Syntactic" nillable="true" type="tns:DC_SRT_ML_Response_Syntactic" />
+  <xs:complexType name="ArrayOfDC_SRT_ML_AccommodationRoomInfo_Syntactic">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_AccommodationRoomInfo" nillable="true" type="tns:DC_SRT_ML_AccommodationRoomInfo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_AccommodationRoomInfo_Syntactic" nillable="true" type="tns:DC_SRT_ML_AccommodationRoomInfo_Syntactic" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfDC_SRT_ML_AccommodationRoomInfo" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo" />
-  <xs:complexType name="DC_SRT_ML_AccommodationRoomInfo">
+  <xs:element name="ArrayOfDC_SRT_ML_AccommodationRoomInfo_Syntactic" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo_Syntactic" />
+  <xs:complexType name="DC_SRT_ML_AccommodationRoomInfo_Syntactic">
     <xs:sequence>
       <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="system_room_name" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="DC_SRT_ML_AccommodationRoomInfo" nillable="true" type="tns:DC_SRT_ML_AccommodationRoomInfo" />
-  <xs:complexType name="ArrayOfDC_SRT_ML_Match">
+  <xs:element name="DC_SRT_ML_AccommodationRoomInfo_Syntactic" nillable="true" type="tns:DC_SRT_ML_AccommodationRoomInfo_Syntactic" />
+  <xs:complexType name="ArrayOfDC_SRT_ML_Match_Syntactic">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Match" nillable="true" type="tns:DC_SRT_ML_Match" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Match_Syntactic" nillable="true" type="tns:DC_SRT_ML_Match_Syntactic" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfDC_SRT_ML_Match" nillable="true" type="tns:ArrayOfDC_SRT_ML_Match" />
-  <xs:complexType name="DC_SRT_ML_Match">
+  <xs:element name="ArrayOfDC_SRT_ML_Match_Syntactic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Match_Syntactic" />
+  <xs:complexType name="DC_SRT_ML_Match_Syntactic">
     <xs:sequence>
       <xs:element minOccurs="0" name="matched_string" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="score" type="xs:int" />
+      <xs:element minOccurs="0" name="score" type="xs:float" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="DC_SRT_ML_Match" nillable="true" type="tns:DC_SRT_ML_Match" />
+  <xs:element name="DC_SRT_ML_Match_Syntactic" nillable="true" type="tns:DC_SRT_ML_Match_Syntactic" />
+  <xs:complexType name="DC_SRT_ML_Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="_objMLSem" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
+      <xs:element minOccurs="0" name="_objMLSyn" nillable="true" type="tns:DC_SRT_ML_Response_Syntactic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SRT_ML_Response" nillable="true" type="tns:DC_SRT_ML_Response" />
+  <xs:complexType name="DC_SRT_ML_Response_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo_Semantic" />
+      <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="matches" nillable="true" type="tns:ArrayOfDC_SRT_ML_Match_Semantic" />
+      <xs:element minOccurs="0" name="matching_string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SRT_ML_Response_Semantic" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
+  <xs:complexType name="ArrayOfDC_SRT_ML_AccommodationRoomInfo_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_AccommodationRoomInfo_Semantic" nillable="true" type="tns:DC_SRT_ML_AccommodationRoomInfo_Semantic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SRT_ML_AccommodationRoomInfo_Semantic" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo_Semantic" />
+  <xs:complexType name="DC_SRT_ML_AccommodationRoomInfo_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="system_room_name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SRT_ML_AccommodationRoomInfo_Semantic" nillable="true" type="tns:DC_SRT_ML_AccommodationRoomInfo_Semantic" />
+  <xs:complexType name="ArrayOfDC_SRT_ML_Match_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Match_Semantic" nillable="true" type="tns:DC_SRT_ML_Match_Semantic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SRT_ML_Match_Semantic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Match_Semantic" />
+  <xs:complexType name="DC_SRT_ML_Match_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="matched_string" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="score" type="xs:float" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SRT_ML_Match_Semantic" nillable="true" type="tns:DC_SRT_ML_Match_Semantic" />
+  <xs:complexType name="ArrayOfDC_SRT_ML_Response_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Response_Semantic" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SRT_ML_Response_Semantic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Response_Semantic" />
   <xs:complexType name="DC_FileProgressDashboard">
     <xs:sequence>
       <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ErrorLog" nillable="true" type="q9:ArrayOfDC_SupplierImportFile_ErrorLog" />

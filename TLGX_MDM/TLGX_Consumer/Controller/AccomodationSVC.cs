@@ -445,11 +445,23 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomCategoryWithDetails"], Accommodation_Id), typeof(List<DC_Accomodation_Category_DDL_WithExtraDetails>), out result);
             return result as List<DC_Accomodation_Category_DDL_WithExtraDetails>;
         }
-        public List<DC_SRT_ML_Response> GetRTM_ML_Suggestions(string Accommodation_SupplierRoomTypeMapping_Id)
+        public DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accommodation_SupplierRoomTypeMapping_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RTM_ML_Suggestion"], Accommodation_SupplierRoomTypeMapping_Id), typeof(List<DC_SRT_ML_Response>), out result);
-            return result as List<DC_SRT_ML_Response>;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RTM_ML_Suggestion"], Accommodation_SupplierRoomTypeMapping_Id), typeof(DC_SRT_ML_Response), out result);
+            return result as DC_SRT_ML_Response;
+        }
+        public List<DC_SRT_ML_Response_Semantic> GetRTM_ML_Suggestions_Semantic(string Accommodation_SupplierRoomTypeMapping_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RTM_ML_Suggestion_Semantic"], Accommodation_SupplierRoomTypeMapping_Id), typeof(List<DC_SRT_ML_Response_Semantic>), out result);
+            return result as List<DC_SRT_ML_Response_Semantic>;
+        }
+        public List<DC_SRT_ML_Response_Syntactic> GetRTM_ML_Suggestions_Syntactic(string Accommodation_SupplierRoomTypeMapping_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RTM_ML_Suggestion_Syntactic"], Accommodation_SupplierRoomTypeMapping_Id), typeof(List<DC_SRT_ML_Response_Syntactic>), out result);
+            return result as List<DC_SRT_ML_Response_Syntactic>;
         }
         public bool AddRoom(MDMSVC.DC_Accommodation_RoomInfo AF)
         {
