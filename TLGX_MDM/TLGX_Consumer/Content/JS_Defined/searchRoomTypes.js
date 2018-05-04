@@ -184,16 +184,14 @@ function BindRTDetails(controlval) {
 }
 
 function BindResponse(result) {
-    debugger;
     var value = JSON.stringify(result);
     var table = "<table class='table table-bordered'>";
     var tableparent = "<table class='table table-bordered' style='width:23%'>";
-    var listItems = tableparent + "<tr><th>Syntactic</th><th>Semantic (Unsupervised)</th><th>Semantic (Supervised)</th></tr><tr><td>";
+    var listItems = tableparent + "<tr><th style='font-size: 14px;'>Syntactic</th><th style='font-size: 14px;'>Semantic (Unsupervised)</th><th style='font-size: 14px;'>Semantic (Supervised)</th></tr><tr><td>";
     var tr = "<tr>"; var trc = "</tr>";
     var td = "<td>"; var tdc = "</td>";
 
     listItems = listItems + table;
-    debugger;
     if (result != null) {
         listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
         for (var i = 0; i < result._objMLSyn.matches.length; i++) {
@@ -245,7 +243,6 @@ function BindResponse(result) {
         //        listItems = listItems + "</table></div></td></tr></table>";
         //    }
         //}
-        debugger;
         hideLoadingImageOnline();
         // listItems = listItems.replace("<td></td>", "");
         listItems = listItems + "</table>";
@@ -256,7 +253,6 @@ function BindResponse(result) {
 function CheckSuggestionOnline(controlval) {
     showLoadingImageOnline();
     var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
-    debugger;
     var ulRoomInfo = $('.ulRoomInfoOnline');// $(controlval).parent().find('#ulRoomInfoOnline');
     var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
     //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
