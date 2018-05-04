@@ -10,24 +10,15 @@
 namespace TLGX_Consumer.geography {
     
     
-    public partial class City {
+    public partial class SearchCityMaster {
         
         /// <summary>
-        /// btnRedirectToSearch control.
+        /// citySearchManager control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRedirectToSearch;
-        
-        /// <summary>
-        /// cityManager control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.geography.cityMapper cityManager;
+        protected global::TLGX_Consumer.controls.geography.citySearchManager citySearchManager;
     }
 }

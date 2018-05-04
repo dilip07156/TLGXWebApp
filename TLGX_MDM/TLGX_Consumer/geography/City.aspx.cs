@@ -13,18 +13,11 @@ namespace TLGX_Consumer.geography
 {
     public partial class City : System.Web.UI.Page
     {
-        protected void Page_Init(object sender, EventArgs e)
-        {
-            //For page authroization 
-            Authorize _obj = new Authorize();
-            if (_obj.IsRoleAuthorizedForUrl()) { }
-            else
-                Response.Redirect(Convert.ToString(ConfigurationManager.AppSettings["UnauthorizedUrl"]));
+       
 
-        }
-        protected void Page_Load(object sender, EventArgs e)
+        protected void btnRedirectToSearch_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/geography/SearchCityMaster.aspx");
         }
     }
 }

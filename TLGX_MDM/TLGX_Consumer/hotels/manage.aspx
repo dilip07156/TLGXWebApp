@@ -41,19 +41,19 @@
             <%--<div class="navbar-inner">--%>
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#panOverview" data-toggle="tab">Key Facts</a></li>
-                <li><a href="#panFacilities" data-toggle="tab">Facilities</a></li>
+                <li><a href="#panFacilities" data-toggle="tab" style="display:none">Facilities</a></li>
                 <li><a href="#panDescriptions" data-toggle="tab">Descriptions</a></li>
                 <li><a href="#panRooms" data-toggle="tab">Rooms</a></li>
-                <li><a href="#panOccupancy" data-toggle="tab">Occupancy</a></li>
-                <li><a href="#panInAndAround" data-toggle="tab">In/Around</a></li>
-                <li><a href="#panReach" data-toggle="tab">Reach</a></li>               
-                <li><a href="#panRules" data-toggle="tab">Rules</a></li>
-                <li><a href="#panMedia" data-toggle="tab">Media</a></li>
-                <li><a href="#panUpdates" data-toggle="tab">Updates</a></li>
-                <li><a href="#panHealthAndSafety" data-toggle="tab">H/S</a></li>
+                <li><a href="#panOccupancy" data-toggle="tab" style="display:none">Occupancy</a></li>
+                <li><a href="#panInAndAround" data-toggle="tab" style="display:none">In/Around</a></li>
+                <li><a href="#panReach" data-toggle="tab" style="display:none">Reach</a></li>               
+                <li><a href="#panRules" data-toggle="tab" style="display:none">Rules</a></li>
+                <li><a href="#panMedia" data-toggle="tab" style="display:none">Media</a></li>
+                <li><a href="#panUpdates" data-toggle="tab" style="display:none">Updates</a></li>
+                <li><a href="#panHealthAndSafety" data-toggle="tab" style="display:none">H/S</a></li>
                 <%--<li><a href="#panAncil" data-toggle="tab">Ancillary</a></li>--%>
                 <li><a href="#panStatus" data-toggle="tab">Status</a></li>
-                <li><a href="#panclassificationAttributes" data-toggle="tab">Attributes</a></li>
+                <li><a href="#panclassificationAttributes" data-toggle="tab" style="display:none">Attributes</a></li>
                 <%--<li><a href="#panSupplierMapping" data-toggle="tab">Map Product</a></li>
                 <li><a href="#panRoomMapping" data-toggle="tab">Map RoomType</a></li>--%>
             </ul>

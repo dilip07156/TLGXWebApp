@@ -318,7 +318,9 @@
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
+    <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
+    <Content Include="controls\geography\portManager.ascx" />
     <Content Include="controls\geography\uc_portManage.ascx" />
     <Content Include="controls\geography\supplierCityMapping.ascx" />
     <Content Include="controls\geography\supplierCountryMapping.ascx" />
@@ -387,6 +389,7 @@
     <Content Include="geography\CountryStateMgmt.aspx" />
     <Content Include="geography\PortManage.aspx" />
     <Content Include="geography\portSearch.aspx" />
+    <Content Include="geography\SearchCityMaster.aspx" />
     <Content Include="geography\Zone.aspx" />
     <Content Include="geography\ZoneCityMasterEdit.aspx" />
     <Content Include="hotels\addnew.aspx" />
@@ -1623,12 +1626,26 @@
     <Compile Include="controls\businessentities\supplierStaticDataHandling.ascx.designer.cs">
       <DependentUpon>supplierStaticDataHandling.ascx</DependentUpon>
     </Compile>
+    <Compile Include="controls\geography\citySearchManager.ascx.cs">
+      <DependentUpon>citySearchManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\citySearchManager.ascx.designer.cs">
+      <DependentUpon>citySearchManager.ascx</DependentUpon>
+    </Compile>
     <Compile Include="controls\geography\countryStateMgmt.ascx.cs">
       <DependentUpon>countryStateMgmt.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\geography\countryStateMgmt.ascx.designer.cs">
       <DependentUpon>countryStateMgmt.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\portManager.ascx.cs">
+      <DependentUpon>portManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\portManager.ascx.designer.cs">
+      <DependentUpon>portManager.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\uc_portManage.ascx.cs">
       <DependentUpon>uc_portManage.ascx</DependentUpon>
@@ -1825,6 +1842,13 @@
     </Compile>
     <Compile Include="geography\portSearch.aspx.designer.cs">
       <DependentUpon>portSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\SearchCityMaster.aspx.cs">
+      <DependentUpon>SearchCityMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\SearchCityMaster.aspx.designer.cs">
+      <DependentUpon>SearchCityMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="geography\Zone.aspx.cs">
       <DependentUpon>Zone.aspx</DependentUpon>
