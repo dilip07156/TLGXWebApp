@@ -4,6 +4,13 @@ function pageLoad(sender, args) {
     autosize(ta);
 }
 
+function showOnlineSuggestionModal(controlval) {
+    CheckSuggestionOnline(controlval);
+    $("#modalOnlineSuggestion").modal('show');
+}
+function closeOnlineSuggestionModal() {
+    $("#modalOnlineSuggestion").modal('hide');
+}
 //function to show  RoomDescription as tooltip 
 function DisplayToolTip(controls) {
     var div = controls.nextElementSibling;
@@ -240,7 +247,7 @@ function BindResponse(result) {
         //}
         debugger;
         hideLoadingImageOnline();
-       // listItems = listItems.replace("<td></td>", "");
+        // listItems = listItems.replace("<td></td>", "");
         listItems = listItems + "</table>";
         $('.ulRoomInfoOnline').html(listItems);
     }
@@ -364,13 +371,7 @@ function RemoveExtra(record, onClick) {
     }
 }
 
-function showOnlineSuggestionModal(controlval) {
-    CheckSuggestionOnline(controlval);
-    $("#modalOnlineSuggestion").modal('show');
-}
-function closeOnlineSuggestionModal() {
-    $("#modalOnlineSuggestion").modal('hide');
-}
+
 //$("#modalOnlineSuggestion").on('shown.bs.modal', function (e) {
 //    alert("I want this to appear after the modal has opened!");
 //});
