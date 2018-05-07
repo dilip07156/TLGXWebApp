@@ -1034,6 +1034,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service\GetSRT_ML_suggestion.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
