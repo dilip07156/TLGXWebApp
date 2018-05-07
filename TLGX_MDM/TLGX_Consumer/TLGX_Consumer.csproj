@@ -257,10 +257,12 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\JS_Defined\searchRoomTypes.js" />
     <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
     <Content Include="Content\multilevelformsbootstrapmenu.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Style_Defined\searchRoomType.css" />
     <Content Include="controls\activity\ckis\manageCKISMaster.ascx" />
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
@@ -316,7 +318,9 @@
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
+    <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
+    <Content Include="controls\geography\portManager.ascx" />
     <Content Include="controls\geography\uc_portManage.ascx" />
     <Content Include="controls\geography\supplierCityMapping.ascx" />
     <Content Include="controls\geography\supplierCountryMapping.ascx" />
@@ -385,6 +389,7 @@
     <Content Include="geography\CountryStateMgmt.aspx" />
     <Content Include="geography\PortManage.aspx" />
     <Content Include="geography\portSearch.aspx" />
+    <Content Include="geography\SearchCityMaster.aspx" />
     <Content Include="geography\Zone.aspx" />
     <Content Include="geography\ZoneCityMasterEdit.aspx" />
     <Content Include="hotels\addnew.aspx" />
@@ -1019,6 +1024,16 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\GetSRT_ML_suggestion.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1611,12 +1626,26 @@
     <Compile Include="controls\businessentities\supplierStaticDataHandling.ascx.designer.cs">
       <DependentUpon>supplierStaticDataHandling.ascx</DependentUpon>
     </Compile>
+    <Compile Include="controls\geography\citySearchManager.ascx.cs">
+      <DependentUpon>citySearchManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\citySearchManager.ascx.designer.cs">
+      <DependentUpon>citySearchManager.ascx</DependentUpon>
+    </Compile>
     <Compile Include="controls\geography\countryStateMgmt.ascx.cs">
       <DependentUpon>countryStateMgmt.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="controls\geography\countryStateMgmt.ascx.designer.cs">
       <DependentUpon>countryStateMgmt.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\geography\portManager.ascx.cs">
+      <DependentUpon>portManager.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\geography\portManager.ascx.designer.cs">
+      <DependentUpon>portManager.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\uc_portManage.ascx.cs">
       <DependentUpon>uc_portManage.ascx</DependentUpon>
@@ -1813,6 +1842,13 @@
     </Compile>
     <Compile Include="geography\portSearch.aspx.designer.cs">
       <DependentUpon>portSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geography\SearchCityMaster.aspx.cs">
+      <DependentUpon>SearchCityMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geography\SearchCityMaster.aspx.designer.cs">
+      <DependentUpon>SearchCityMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="geography\Zone.aspx.cs">
       <DependentUpon>Zone.aspx</DependentUpon>
@@ -2585,6 +2621,9 @@
     </Compile>
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\HotelMappingAutoComplete.ashx.cs">
       <DependentUpon>HotelMappingAutoComplete.ashx</DependentUpon>

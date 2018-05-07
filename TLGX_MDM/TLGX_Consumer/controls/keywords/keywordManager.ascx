@@ -109,25 +109,15 @@
                                         </div>
                                     </div>
 
-                                    <%--<div class="form-group row">
-                                        <label class="control-label col-sm-4" for="chkAttribute">Attribute</label>
-                                        <div class="col-sm-8">
-                                            <asp:CheckBox ID="chkAttribute" runat="server"></asp:CheckBox>
-
-                                        </div>
-                                    </div>--%>
-
                                     <div class="form-group row">
                                         <label class="control-label col-sm-4" for="rdoBtnAttribute">Attribute</label>
                                         <div class="col-sm-8">
-
                                             <label class="radio-inline">
                                                 <input type="radio" id="rdoIsAttributeAll" runat="server" name="IsAttribute"><b>All</b></label>
                                             <label class="radio-inline">
                                                 <input type="radio" id="rdoIsAttributeYes" runat="server" name="IsAttribute"><b>Yes</b></label>
                                             <label class="radio-inline">
                                                 <input type="radio" id="rdoIsAttributeNo" runat="server" name="IsAttribute"><b>No</b></label>
-
                                         </div>
                                     </div>
 
@@ -163,14 +153,38 @@
                                 <div class="col-lg-3">
 
                                     <div class="form-group row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <asp:Button runat="server" ID="btnSearch" CssClass="btn btn-primary btn-sm pull-right" Text="Search" OnClick="btnSearch_Click" />
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <asp:Button runat="server" ID="btnReset" CssClass="btn btn-primary btn-sm pull-right" Text="Reset" OnClick="btnReset_Click" />
                                         </div>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <asp:Button runat="server" ID="btnAddNew" CssClass="btn btn-primary btn-sm pull-right" Text="Add New" OnClick="btnAddNew_Click" OnClientClick="showModal();" />
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <asp:Button runat="server" ID="btnReRun" CssClass="btn btn-primary btn-sm pull-right" Text="ReRun" OnClick="btnReRun_Click" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="panel-group">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <strong>Wildcard keywords special operation</strong>
+                                                        <p>Below keywords can be added with values for respective action.</p>
+                                                    </h4>
+                                                </div>
+                                                <ul>
+                                                    <li>##_REMOVE_WORD_FROM_START</li>
+                                                    <li>##_REMOVE_WORD_FROM_END</li>
+                                                    <li>##_REMOVE_WORD_FROM_STRING</li>
+                                                    <li>##_REMOVE_ANYWHERE_IN_STRING</li>
+                                                    <li>##_REMOVE_CONTENTS_IN_BRACKETS (YES/NO)</li>
+                                                    <li>##_REPLACE_NUMBERS_WITH_WORDS (YES/NO)</li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
 

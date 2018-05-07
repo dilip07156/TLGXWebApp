@@ -9,6 +9,7 @@ using TLGX_Consumer;
 using TLGX_Consumer.Models;
 using TLGX_Consumer.Controller;
 using TLGX_Consumer.App_Code;
+using System.Text;
 
 namespace TLGX_Consumer.controls.geography
 {
@@ -178,6 +179,8 @@ namespace TLGX_Consumer.controls.geography
                     fillCityForm(Request.QueryString["City_Id"], ref refCountryId);
                     fillCityArea((Request.QueryString["City_Id"]));
                     fillStateByCountryId(Convert.ToString(refCountryId));
+
+                  
                 }
 
                 else
@@ -186,14 +189,91 @@ namespace TLGX_Consumer.controls.geography
                     fillgvCountryList();
                 }
 
+
+                //Bind Page Controls
+            
+
             }
             else
             {
+                //if (Request.UrlReferrer != null && Request.UrlReferrer.AbsoluteUri.Contains("CoN"))
+                //{
+                //    SetControls();
+                //}
                 dvMsgCity2.Visible = false;
             }
         }
 
+        private void SetControls()
+        {
 
+
+
+            /*
+             
+                StringBuilder sb = new StringBuilder();
+            sb.Append("~/geography/city?City_Id=" + myRow_Id);
+            if (!string.IsNullOrWhiteSpace(txtCityName.Text))
+                sb.Append("&CiN=" + HttpUtility.UrlEncode(txtCityName.Text));
+            if (ddlCountry.SelectedIndex > 1)
+            {
+                sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlCountry.SelectedValue));
+                sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+            }
+            else
+            {
+                if (ddlCountry.SelectedItem.Text.Contains("UNMAPPED"))
+                    sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+            }
+            
+
+            string pageindex = strpageindex;
+            sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
+            sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlShowEntries.SelectedValue)));
+
+            
+             
+             
+             */
+             
+
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(Convert.ToString(Request.UrlReferrer.AbsoluteUri.Contains("ManageActivityFlavour"))))
+                {
+                    #region Get Value from query string
+                    //string ProductName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["ProdN"]);
+                    string CountryName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoN"]);
+                    string CountryID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CoID"]);
+                    string CityName = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["CiN"]);
+                    string CityID = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["City_Id"]);
+                    string PageNo = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PN"]);
+                    string PageSize = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PS"]);
+
+                    #endregion
+                    int pageno = 0;
+                    int pagesize = 5;
+
+                    if (!string.IsNullOrWhiteSpace(CityName))
+                        txtCityName.Text = CityName;
+                                     
+                    if (!string.IsNullOrWhiteSpace(PageNo))
+                        pageno = Convert.ToInt32(PageNo);
+                    if (!string.IsNullOrWhiteSpace(PageSize))
+                        pagesize = Convert.ToInt32(PageSize);
+
+                    //searchActivityMaster(pageno, pagesize);
+                    fillgvCityyList(Guid.Parse(CountryID), pagesize);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
 
         // route the formview command to the correct data action -- matt.watson@coxandkings.com -- 11022017
         protected void frmCityArea_ItemCommand(object sender, FormViewCommandEventArgs e)
@@ -431,6 +511,57 @@ namespace TLGX_Consumer.controls.geography
             txtCityCode.Text = String.Empty;
             ddlStates.SelectedIndex = 0;
             ddlStatus.SelectedIndex = 0;
+        }
+
+        protected void grdCityList_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                if (e.CommandName == "Select")
+                {
+                    Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                    GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                    //Create Query string
+
+                    string strQueryString = GetQueryString(myRow_Id.ToString(), ((GridView)sender).PageIndex.ToString());
+                    Response.Redirect(strQueryString, true);
+                    //End Here
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+
+                throw;
+            }
+        }
+
+        public string GetQueryString(string myRow_Id, string strpageindex)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("~/geography/city?City_Id=" + myRow_Id);
+            if (!string.IsNullOrWhiteSpace(txtCityName.Text))
+                sb.Append("&CiN=" + HttpUtility.UrlEncode(txtCityName.Text));
+            if (ddlCountry.SelectedIndex > 1)
+            {
+                sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlCountry.SelectedValue));
+                sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+            }
+            else
+            {
+                if (ddlCountry.SelectedItem.Text.Contains("UNMAPPED"))
+                    sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlCountry.SelectedItem.Text));
+            }
+            
+
+            string pageindex = strpageindex;
+            sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
+            sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlShowEntries.SelectedValue)));
+
+
+            return sb.ToString();
         }
     }
 }

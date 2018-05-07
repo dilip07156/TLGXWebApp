@@ -1,141 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchRoomTypes.ascx.cs" Inherits="TLGX_Consumer.controls.roomtype.searchRoomTypes" %>
 <script src="../../../Scripts/autosize.min.js"></script>
-<style>
-    .paddingleft {
-        margin-left: 6px !important;
-    }
-
-    .roomtype {
-        white-space: normal !important;
-        word-wrap: break-all;
-    }
-</style>
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-    function pageLoad(sender, args) {
-        var ta = document.querySelectorAll('textarea');
-        autosize(ta);
-    }
-    function SelectedRow(element) {
-        var row = $(element).parent().parent().closest('tr').next();
-        if (row != null)
-            if (row.find('.dropdownforBind') != null)
-                row.find('.dropdownforBind').focus();
-    }
-    function showLoadingImage() {
-        $('#loading').show();
-    }
-    function hideLoadingImage() {
-        $('#loading').hide();
-    }
-    function mySelectedID(selectedcheckboxval) {
-        var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
-        var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-        var Button = tillUL.firstElementChild.firstChild;
-        var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
-        for (var i = 1 ; i < tr.length ; i++) {
-            tr[i].childNodes[0].firstChild.checked = false;
-            tr[i].className = "row";
-        }
-        selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
-        Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
-        selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
-        var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
-        hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
-
-        //Setting check box and Dropdown to Mapped
-        var checkBoxForSelectedRow = tillUL.parentElement.parentElement.lastElementChild.firstElementChild;
-        if (checkBoxForSelectedRow != null)
-            checkBoxForSelectedRow.checked = true;
-
-        var MappingStatusDdl = tillUL.parentElement.parentElement.getElementsByClassName("MappingStatus")[0];
-        if (MappingStatusDdl != null) {
-            for (var i = 0; i < MappingStatusDdl.options.length; i++) {
-                if (MappingStatusDdl.options[i].text == "MAPPED") {
-                    MappingStatusDdl.options[i].selected = true;
-                    break;
-                }
-            }
-        }
-
-    }
-    function BindRTDetails(controlval) {
-        showLoadingImage();
-        var acco_id = $(controlval).parent().parent().parent().find('.hidnAcoo_Id').val();
-        var ulRoomInfo = $(controlval).parent().find('#ulRoomInfo');
-        var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
-        debugger;
-        //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
-        if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
-            if (acco_id != null && ulRoomInfo != null) {
-                $.ajax({
-                    url: '../../../Service/RoomCategoryAutoComplete.ashx',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    data: {
-                        'acco_id': acco_id,
-                        'type': 'fillcategorywithdetails'
-                    },
-                    responseType: "json",
-                    success: function (result) {
-                        var value = JSON.stringify(result);
-                        var listItems = '';
-                        if (result != null) {
-                            var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-5">Room Name</th> <th class="col-md-4">Room Category</th>';
-                            def = def + ' <th class="col-md-1">Bed Type</th> <th class="col-md-1">Is Smoking</th></tr>';
-                            var li = def;
-                            var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
-                            var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
-
-                            var td = '<td class="col-md-3">';
-                            var td4 = '<td class="col-md-4" style="word-wrap:  break-all;">';
-                            var td1 = '<td class="col-md-1">';
-                            var td2 = '<td class="col-md-2">';
-
-
-                            var lic = ' <td style="display: none;" id="tdRoomInfoId">';
-                            var licClose = '</table>';
-                            var tdc = '</td>';
-                            for (var i = 0; i < result.length; i++) {
-                                if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
-                                    li = li + '<tr class="row alert alert-success">';
-                                    li = li + td1 + licheckboxWithChecked + tdc;
-                                }
-                                else {
-                                    li = li + '<tr class="row">';
-                                    li = li + td1 + licheckbox + tdc;
-                                }
-
-                                li = li + td4 + result[i].RoomName + tdc;
-                                li = li + td4 + result[i].RoomCategory + tdc;
-                                li = li + td2 + result[i].BedType + tdc;
-                                li = li + td1 + result[i].IsSomking + tdc;
-                                li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
-                            }
-                            li = li + licClose;
-
-                            hideLoadingImage();
-                            ulRoomInfo[0].innerHTML = li;
-                        }
-                    },
-                    failure: function () {
-                    }
-                });
-            }
-        }
-    }
-
-</script>
-<style>
-    .floatingButton {
-        position: fixed;
-        bottom: 15px;
-        z-index: 1000;
-    }
-</style>
-
+<script src="../../Scripts/JqueryUI/jquery-ui.js"></script>
+<link href="../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
+<script type="text/javascript" src="../../../Content/JS_Defined/searchRoomTypes.js"></script>
+<link rel="Stylesheet" type="text/css" href="../../../Content/Style_Defined/searchRoomType.css" />
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav nav-tabs">
@@ -150,7 +18,6 @@
         <!-- search filters panel -->
         <asp:UpdatePanel ID="updActivityMappingSearch" runat="server">
             <ContentTemplate>
-
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel-group" id="accordion">
@@ -308,100 +175,121 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div id="divMsgForMapping" runat="server" style="display: none;"></div>
-                                    <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
-                                        DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id"
-                                        CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
-                                        OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
-                                        <Columns>
-                                            <%--<asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />--%>
-                                            <asp:TemplateField HeaderText="Product Name" ItemStyle-Width="12%">
-                                                <ItemTemplate>
-                                                    <asp:Label runat="server" ID="lblProductName" Text='<%# Eval("ProductName") %>'></asp:Label><br />
-                                                    <strong>(
+                                    <asp:UpdatePanel runat="server" ID="UpdatePanel2">
+                                        <ContentTemplate>
+                                            <div id="divMsgForMapping" runat="server" style="display: none;"></div>
+                                            <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
+                                                DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id"
+                                                CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
+                                                OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
+                                                <Columns>
+                                                    <%--<asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />--%>
+                                                    <asp:TemplateField HeaderText="Product Name" ItemStyle-Width="12%">
+                                                        <ItemTemplate>
+                                                            <asp:Label runat="server" ID="lblProductName" Text='<%# Eval("ProductName") %>'></asp:Label><br />
+                                                            <strong>(
                                                     <asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>)</strong>
 
-                                                    <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <%--<asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="10%" />--%>
-                                            <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
-                                            <%-- <asp:TemplateField HeaderText="TLGX Rooms">
+                                                            <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <%--<asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="10%" />--%>
+                                                    <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
+                                                    <%-- <asp:TemplateField HeaderText="TLGX Rooms">
                                                 <ItemTemplate>
                                                    
                                                 </ItemTemplate>
                                             </asp:TemplateField>--%>
-                                            <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
-                                            <%-- <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomTypeCode" />--%>
-                                            <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
-                                            <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
-                                                <ItemTemplate>
-                                                    <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
-                                                    <strong>(
+                                                    <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
+                                                    <%-- <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomTypeCode" />--%>
+                                                    <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
+                                                    <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
+                                                        <ItemTemplate>
+                                                            <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
+                                                            <strong>(
                                                     <asp:Label runat="server" ID="lblSupplierRoomTypeCode" Text='<%# Eval("SupplierRoomTypeCode") %>'></asp:Label>)</strong>
-                                                    <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
-                                                    <a href="#" data-toggle="popover" class="glyphicon glyphicon-info-sign" title='<%#Convert.ToString(Eval("RoomDescription")) %>' data-content='<%#Server.HtmlDecode(Convert.ToString(Eval("RoomDescription"))) %>'></a>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Suggested Room Info">
-                                                <ItemTemplate>
-                                                    <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="TLGX Room Info">
-                                                <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
-                                                    </asp:DropDownList>
-                                                    <div class="dropdown" runat="server" id="ddlSuggestions">
-                                                        <button class="btn dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
-                                                            -Select- 
-                                                            <span class="caret paddingleft"></span>
+                                                            <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
+                                                            <a href="#" id="aHelp" runat="server" onmouseover="DisplayToolTip(this);" onclick="return false" onmouseout="HideToolTip(this);" data-toggle="popover" class="glyphicon glyphicon-info-sign Tooltipicon" title=''></a>
+                                                            <div id="divToolTip" class="TooltipDescriptionHide">
+                                                                <%#Convert.ToString(Eval("RoomDescription")) %>
+                                                            </div>
+
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Suggested Room Info">
+                                                        <ItemTemplate>
+                                                            <%--CheckSuggestionOnline(this);--%>
+                                                            <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
+                                                            <asp:LinkButton ID="btnSuggestionOnline" runat="server" CausesValidation="false" CssClass="btn btn-primary" Enabled="true" Text="Check Online" OnClientClick="showOnlineSuggestionModal(this);"></asp:LinkButton>
+                                                            <%-- <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionOnline" onclick="showOnlineSuggestionModal();">
+                                                                Check Online</button>--%>
+                                                            <%--  <div class="dropdown" runat="server" id="ddlSuggestionsOnline">
+                                                        <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionOnline" data-toggle="dropdown" onclick="showOnlineSuggestionModal();">
+                                                            Check Online 
                                                         </button>
-                                                        <div class="dropdown-menu" id="ulRoomInfo" style="width: 430%; max-height: 200px; overflow-y: scroll;">
-                                                            <div id="loading" style="padding: 5px;">
+                                                        <div class="dropdown-menu ulRoomInfoOnline" id="ulRoomInfoOnline">
+                                                            <div id="loadingOnline" style="padding: 5px;">
                                                                 <img alt="Loading..." src="../../../images/ajax-loader.gif" />
                                                             </div>
                                                         </div>
-
-                                                    </div>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-
-                                            <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
-                                                <ItemTemplate>
-                                                    <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
-                                                        RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
-                                                        <ItemTemplate>
-                                                            <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
+                                                    </div>--%>
                                                         </ItemTemplate>
-                                                    </asp:DataList>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField HeaderText="Status">
-                                                <ItemTemplate>
-                                                    <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
-                                                        <asp:ListItem Value="0">-Select-</asp:ListItem>
-                                                       <%-- <asp:ListItem Value="ADD">ADD</asp:ListItem>--%>
-                                                        <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
-                                                        <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
-                                                        <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
-                                                    </asp:DropDownList>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField ShowHeader="false">
-                                                <ItemTemplate>
-                                                    <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
-                                                    <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
-                                                    <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
-                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
-                                                    <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="TLGX Room Info">
+                                                        <ItemTemplate>
+                                                            <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
+                                                            </asp:DropDownList>
+                                                            <div class="dropdown" runat="server" id="ddlSuggestions">
+                                                                <button class="btn dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
+                                                                    -Select- 
+                                                            <span class="caret paddingleft"></span>
+                                                                </button>
+                                                                <div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo">
+                                                                    <div id="loading" style="padding: 5px;">
+                                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                                    </div>
+                                                                </div>
 
-                                                    <%-- <input type="hidden" class="hdnRoomDescription" id="hdnRoomDescription" runat="server" value='<%# Eval("RoomDescription") %>' />--%>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                        <PagerStyle CssClass="pagination-ys" />
-                                    </asp:GridView>
+                                                            </div>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+                                                    <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
+                                                        <ItemTemplate>
+                                                            <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
+                                                                RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
+                                                                <ItemTemplate>
+                                                                    <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
+                                                                </ItemTemplate>
+                                                            </asp:DataList>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField HeaderText="Status">
+                                                        <ItemTemplate>
+                                                            <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
+                                                                <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                <%-- <asp:ListItem Value="ADD">ADD</asp:ListItem>--%>
+                                                                <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
+                                                                <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
+                                                                <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:TemplateField ShowHeader="false">
+                                                        <ItemTemplate>
+                                                            <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
+                                                            <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
+                                                            <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
+                                                            <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
+                                                            <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+                                                            <input type="hidden" class="hdnAccommodation_SupplierRoomTypeMapping_Id" runat="server" id="hdnAccommodation_SupplierRoomTypeMapping_Id" value='<%# Eval("Accommodation_SupplierRoomTypeMapping_Id") %>' />
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                </Columns>
+                                                <PagerStyle CssClass="pagination-ys" />
+                                            </asp:GridView>
+                                        </ContentTemplate>
+                                    </asp:UpdatePanel>
                                 </div>
                             </div>
                         </div>
@@ -410,6 +298,32 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+    <div class="modal fade" id="modalOnlineSuggestion" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="panel-title">
+                        <h4 class="modal-title">Online Suggestion</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                        <ContentTemplate>
+                            <div class="ulRoomInfoOnline" id="ulRoomInfoOnline">
+                                <div id="loadingOnline" style="padding: 5px;">
+                                    <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                </div>
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Product Based Search -->
     <div class="tab-pane fade in" id="panProductSearch">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -589,4 +503,6 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+
+
 </div>
