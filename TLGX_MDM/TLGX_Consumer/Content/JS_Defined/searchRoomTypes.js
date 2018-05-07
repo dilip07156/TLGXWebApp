@@ -193,12 +193,15 @@ function BindResponse(result) {
 
     listItems = listItems + table;
     if (result != null) {
-        listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
-        for (var i = 0; i < result._objMLSyn.matches.length; i++) {
-            listItems = listItems + tr + td + result._objMLSyn.matches[i].matched_string + tdc;
-            listItems = listItems + td + result._objMLSyn.matches[i].score + tdc + trc;
+        if (result._objMLSyn.matches.length > 0) {
+            listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
+            for (var i = 0; i < result._objMLSyn.matches.length; i++) {
+                listItems = listItems + tr + td + result._objMLSyn.matches[i].matched_string + tdc;
+                listItems = listItems + td + result._objMLSyn.matches[i].score + tdc + trc;
+            }
         }
         //listItems = listItems + "<tr><td colspan='2'>" + "<b>Accommodation Room Details :</b>" + "</td></tr>";<th>AccommodationRoomInfo_Id</th>
+
         if (result._objMLSyn.AccommodationRoomInfo_Id.length > 0) {
             listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
             for (var j = 0; j < result._objMLSyn.AccommodationRoomInfo_Id.length; j++) {

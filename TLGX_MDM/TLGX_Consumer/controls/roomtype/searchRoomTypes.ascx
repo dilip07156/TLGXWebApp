@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchRoomTypes.ascx.cs" Inherits="TLGX_Consumer.controls.roomtype.searchRoomTypes" %>
 <script src="../../../Scripts/autosize.min.js"></script>
-<script src="../../Scripts/JqueryUI/jquery-ui.js"></script>
-<link href="../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
+<script src="../../../Scripts/JqueryUI/jquery-ui.js"></script>
+<link href="../../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
 <script type="text/javascript" src="../../../Content/JS_Defined/searchRoomTypes.js"></script>
 <link rel="Stylesheet" type="text/css" href="../../../Content/Style_Defined/searchRoomType.css" />
 <div class="navbar">
