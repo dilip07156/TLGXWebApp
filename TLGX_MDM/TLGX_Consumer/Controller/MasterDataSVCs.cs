@@ -656,5 +656,44 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_RefreshDistributionDataLog>;
         }
         #endregion
+
+        #region Get detail static hotel
+
+        public List<DC_RefreshDistributionDataLog> GetRefreshedStaticHotelLog(MDMSVC.DC_RefreshDistributionDataLog RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistributionStaticHotelDate"]), typeof(List<MDMSVC.DC_RefreshDistributionDataLog>), out result);
+            //return Convert.ToDateTime(result); 
+            return result as List<DC_RefreshDistributionDataLog>;
+        }
+        #endregion
+
+
+        #region Static Hotel Data
+
+        public List<DC_SupplierEntity> GetStaticHotel(MDMSVC.DC_SupplierEntity RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionStaticHotelData"]), typeof(List<MDMSVC.DC_SupplierEntity>), out result);
+            //return Convert.ToDateTime(result); 
+            return result as List<DC_SupplierEntity>;
+        }
+        #endregion
+
+
+
+        #region Static Hotel
+
+        public DC_Message RefreshStaticHotel(Guid log_id, Guid Supplier_id)
+        {
+            object result = null;
+            //ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"]),Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"],log_id, Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            //return Convert.ToDateTime(result); 
+            return (DC_Message)result;
+        }
+        #endregion
+
+
     }
 }

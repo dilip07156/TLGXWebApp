@@ -379,6 +379,13 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["KeywordAlias_Get"], RQ, typeof(DC_Keyword_RQ), typeof(List<DC_keyword_alias>), out result);
             return result as List<DC_keyword_alias>;
         }
+
+        public DC_Message KeywordReRun(string Entity)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Keyword_ReRun"], Entity), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
 
         #region Process Or Test Uploaded Files
