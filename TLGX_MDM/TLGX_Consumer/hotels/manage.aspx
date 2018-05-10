@@ -71,15 +71,15 @@
             </div>
 
 
-            <div class="tab-pane fade in" id="panFacilities">
+          <%--  <div class="tab-pane fade in" id="panFacilities">
                 <uc1:facilities runat="server" ID="facilities1" />
-            </div>
+            </div>--%>
 
             <div class="tab-pane" id="panRooms">
                 <uc1:roominfo runat="server" ID="roominfo" />
             </div>
 
-            <div class="tab-pane" id="panOccupancy">
+           <%-- <div class="tab-pane" id="panOccupancy">
                 <uc1:passengeroccupancy runat="server" ID="passengeroccupancy" />
             </div>
 
@@ -105,7 +105,7 @@
 
             <div class="tab-pane" id="panHealthAndSafety">
                 <uc1:healthandsafety runat="server" ID="healthandsafety" />
-            </div>
+            </div>--%>
 
             <%-- <div class="tab-pane" id="panAncil">
              <uc1:ancilary runat="server" id="ancilary" />          
@@ -115,9 +115,9 @@
                 <uc1:status runat="server" ID="status" />
             </div>
 
-            <div class="tab-pane" id="panclassificationAttributes">
+        <%--    <div class="tab-pane" id="panclassificationAttributes">
                 <uc1:ClassificationAttributes runat="server" ID="ClassificationAttributes" />
-            </div>
+            </div>--%>
 
 
             <%--<div class="tab-pane" id="panSupplierMapping">
