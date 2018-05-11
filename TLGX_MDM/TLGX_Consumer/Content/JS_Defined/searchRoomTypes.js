@@ -38,7 +38,7 @@ function mySelectedID(selectedcheckboxval) {
     var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
     var Button = tillUL.firstElementChild.firstChild;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
-    for (var i = 1 ; i < tr.length ; i++) {
+    for (var i = 1; i < tr.length; i++) {
         tr[i].childNodes[0].firstChild.checked = false;
         tr[i].className = "row";
     }
@@ -69,7 +69,7 @@ function mySelectedOnlineOptionID(selectedcheckboxval) {
     var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
     var Button = tillUL.firstElementChild.firstChild;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
-    for (var i = 1 ; i < tr.length ; i++) {
+    for (var i = 1; i < tr.length; i++) {
         tr[i].childNodes[0].firstChild.checked = false;
         tr[i].className = "row";
     }
@@ -223,66 +223,65 @@ function BindResponse(result) {
                 }
             }
             if (result._objMLSem.AccommodationRoomInfo_Id.length > 0) {
-                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" +table + "<tr><th> System Room Name</th></tr>";
-                for (var j = 0; j < result._objMLSem.AccommodationRoomInfo_Id.length; j++)
-                    {
-                     listItems = listItems + "<tr> <td> " +result._objMLSem.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
-                    }
+                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
+                for (var j = 0; j < result._objMLSem.AccommodationRoomInfo_Id.length; j++) {
+                    listItems = listItems + "<tr> <td> " + result._objMLSem.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+                }
                 listItems = listItems + "</table></div></td></tr></table><td>";
-    }
-    }
+            }
+        }
 
-        //listItems = listItems + table;
-        //if (result._objMLSem != null) {
-        //    if (result._objMLSem.matches.length > 0) {
-        //        listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
-        //        for (var i = 0; i < result._objMLSem.matches.length; i++) {
-        //            listItems = listItems + tr + td + result._objMLSem.matches[i].matched_string + tdc;
-        //            listItems = listItems + td + result._objMLSem.matches[i].score + tdc + trc;
-        //        }
-        //    }
-        //    if (result._objMLSem.AccommodationRoomInfo_Id.length > 0) {
-        //        listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
-        //        for (var j = 0; j < result._objMLSem.AccommodationRoomInfo_Id.length; j++) {
-        //            listItems = listItems + "<tr> <td> " + result._objMLSem.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
-        //        }
-        //        listItems = listItems + "</table></div></td></tr></table>";
-        //    }
-        //}
+        listItems = listItems + table;
+        if (result._objMLSupSem != null) {
+            if (result._objMLSupSem.matches.length > 0) {
+                listItems = listItems + "<tr><th>Matched String</th><th>Score</th></tr>";
+                for (var i = 0; i < result._objMLSupSem.matches.length; i++) {
+                    listItems = listItems + tr + td + result._objMLSupSem.matches[i].matched_string + tdc;
+                    listItems = listItems + td + result._objMLSupSem.matches[i].score + tdc + trc;
+                }
+            }
+            if (result._objMLSupSem.AccommodationRoomInfo_Id.length > 0) {
+                listItems = listItems + "<tr><td colspan='2'><div class='ulRoomInfoOnlineAccoDetails'>" + table + "<tr><th> System Room Name</th></tr>";
+                for (var j = 0; j < result._objMLSupSem.AccommodationRoomInfo_Id.length; j++) {
+                    listItems = listItems + "<tr> <td> " + result._objMLSupSem.AccommodationRoomInfo_Id[j].system_room_name + "</td></tr>";
+                }
+                listItems = listItems + "</table></div></td></tr></table>";
+            }
+        }
         hideLoadingImageOnline();
         // listItems = listItems.replace("<td></td>", "");
         listItems = listItems + "</table>";
         $('.ulRoomInfoOnline').html(listItems);
-        }
+    }
 
-        }
-        function CheckSuggestionOnline(controlval) {
-            showLoadingImageOnline();
-            var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
-            var ulRoomInfo = $('.ulRoomInfoOnline');// $(controlval).parent().find('#ulRoomInfoOnline');
-            var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
-            //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
-            // if (ulRoomInfo != null) {
-            if (acco_SupplierRoomTypeMapping_Id != null) {
-                    $.ajax({
-                    url: '../../../Service/GetSRT_ML_suggestion.ashx',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                        data: {
+}
+function CheckSuggestionOnline(controlval) {
+    showLoadingImageOnline();
+    var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
+    var ulRoomInfo = $('.ulRoomInfoOnline');// $(controlval).parent().find('#ulRoomInfoOnline');
+    var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
+    //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
+    // if (ulRoomInfo != null) {
+    if (acco_SupplierRoomTypeMapping_Id != null) {
+        $.ajax({
+            url: '../../../Service/GetSRT_ML_suggestion.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: {
                 'acco_SupplierRoomTypeMapping_Id': acco_SupplierRoomTypeMapping_Id
-                            },
-                responseType: "json",
-                                        success: function (result) {
-                                    if (result != null) {
-                BindResponse(result);
-            }
+            },
+            responseType: "json",
+            success: function (result) {
+                if (result != null) {
+                    BindResponse(result);
+                }
             },
             failure: function () {
-        }
+            }
         });
-        }
-            //}
-        }
+    }
+    //}
+}
 
 
 
@@ -291,38 +290,38 @@ function SelectedRow(element) {
     if (row != null)
         if (row.find('.dropdownforBind') != null)
             row.find('.dropdownforBind').focus();
-            }
-            function fillDropDown(record, onClick) {
+}
+function fillDropDown(record, onClick) {
 
-                if (onClick) {
-                    var currentRow = $(record).parent().parent();
-                    var acco_id = currentRow.find('.hidnAcoo_Id').val();
-                    var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id');
-                    var hdnAccommodation_RoomInfo_Name = currentRow.find('.hdnAccommodation_RoomInfo_Name');
+    if (onClick) {
+        var currentRow = $(record).parent().parent();
+        var acco_id = currentRow.find('.hidnAcoo_Id').val();
+        var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id');
+        var hdnAccommodation_RoomInfo_Name = currentRow.find('.hdnAccommodation_RoomInfo_Name');
 
 
-                    var ddlRoomInfo = currentRow.find('.dropdownforBind');
-                    if (acco_id != null && ddlRoomInfo != null) {
+        var ddlRoomInfo = currentRow.find('.dropdownforBind');
+        if (acco_id != null && ddlRoomInfo != null) {
             var selectedText = null;
             var selectedOption = null;
-                        var selectedVal = null;
-                        //if (ddlRoomInfo.find("option").length > 1) {
-                        //    selectedText = ddlRoomInfo.find("option:selected").text();
-                        //    selectedOption = ddlRoomInfo.find("option");
-                        //    selectedVal = ddlRoomInfo.val();
-                            //}
-                    if(ddlRoomInfo != null && ddlRoomInfo.is("select")) {
-                        $.ajax({
-                            url: '../../../Service/RoomCategoryAutoComplete.ashx',
-                        contentType: "application/json; charset=utf-8",
-                            dataType: "json",
-                                data: {
+            var selectedVal = null;
+            //if (ddlRoomInfo.find("option").length > 1) {
+            //    selectedText = ddlRoomInfo.find("option:selected").text();
+            //    selectedOption = ddlRoomInfo.find("option");
+            //    selectedVal = ddlRoomInfo.val();
+            //}
+            if (ddlRoomInfo != null && ddlRoomInfo.is("select")) {
+                $.ajax({
+                    url: '../../../Service/RoomCategoryAutoComplete.ashx',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: {
                         'acco_id': acco_id,
-                                'type': 'fillcategory'
+                        'type': 'fillcategory'
                     },
-                        responseType: "json",
-                            success: function (result) {
-                            //if (ddlRoomInfo.find("option:not(:first)").length > 0) {
+                    responseType: "json",
+                    success: function (result) {
+                        //if (ddlRoomInfo.find("option:not(:first)").length > 0) {
                         ddlRoomInfo.find("option").remove();
                         //}
 
@@ -332,45 +331,45 @@ function SelectedRow(element) {
 
                             listItems += "<option value='0'>Select</option>";
 
-                                for (var i = 0; i < result.length; i++) {
-                                    listItems += "<option value='" + result[i].Accommodation_RoomInfo_Id + "'>" +result[i].RoomName + "| " + result[i].RoomCategory + "| " + result[i].BedType + "| " +result[i].IsSomking + "</option>";
-                        }
-                            ddlRoomInfo.append(listItems);
+                            for (var i = 0; i < result.length; i++) {
+                                listItems += "<option value='" + result[i].Accommodation_RoomInfo_Id + "'>" + result[i].RoomName + "| " + result[i].RoomCategory + "| " + result[i].BedType + "| " + result[i].IsSomking + "</option>";
                             }
+                            ddlRoomInfo.append(listItems);
+                        }
                         $('option:selected', ddlRoomInfo).removeAttr('selected');
-                            //  $('#mySelect option:selected').removeAttr('selected');
-                            if (hdnAccommodation_RoomInfo_Id != null && hdnAccommodation_RoomInfo_Id.val() != '') {
-                                ddlRoomInfo.find("option").prop('selected', false).filter(function () {
-                                    return $(this).val() == hdnAccommodation_RoomInfo_Id.val();
+                        //  $('#mySelect option:selected').removeAttr('selected');
+                        if (hdnAccommodation_RoomInfo_Id != null && hdnAccommodation_RoomInfo_Id.val() != '') {
+                            ddlRoomInfo.find("option").prop('selected', false).filter(function () {
+                                return $(this).val() == hdnAccommodation_RoomInfo_Id.val();
                             }).attr("selected", "selected");
                         }
                         else if (selectedText != null && selectedText != "Select") {
                             ddlRoomInfo.find("option").prop('selected', false).filter(function () {
                                 return $(this).text() == selectedText;
-                        }).attr("selected", "selected");
+                            }).attr("selected", "selected");
                         }
-            },
-                        failure: function () {
+                    },
+                    failure: function () {
                     }
-            });
+                });
             }
 
-            }
-            }
-            }
-            function RemoveExtra(record, onClick) {
-        if (!onClick) {
-            var currentRow = $(record).parent().parent();
-            var ddlRoomInfo = currentRow.find('.dropdownforBind');
-            var selectedText = ddlRoomInfo.find("option:selected").text();
-            var selectedVal = ddlRoomInfo.val();
-            ddlRoomInfo.find("option").remove();
-            var listItems = "<option value='0'>Select</option>";
-            listItems = listItems + "<option selected = 'selected' value='" +selectedVal + "'>" +selectedText + "</option>";
+        }
+    }
+}
+function RemoveExtra(record, onClick) {
+    if (!onClick) {
+        var currentRow = $(record).parent().parent();
+        var ddlRoomInfo = currentRow.find('.dropdownforBind');
+        var selectedText = ddlRoomInfo.find("option:selected").text();
+        var selectedVal = ddlRoomInfo.val();
+        ddlRoomInfo.find("option").remove();
+        var listItems = "<option value='0'>Select</option>";
+        listItems = listItems + "<option selected = 'selected' value='" + selectedVal + "'>" + selectedText + "</option>";
         ddlRoomInfo.append(listItems);
         var hdnAccommodation_RoomInfo_Id = currentRow.find('.hdnAccommodation_RoomInfo_Id');
         hdnAccommodation_RoomInfo_Id.val(selectedVal);
-}
+    }
 }
 
 
