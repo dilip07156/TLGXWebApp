@@ -220,7 +220,8 @@
                                                         <ItemTemplate>
                                                             <%--CheckSuggestionOnline(this);--%>
                                                             <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
-                                                            <asp:LinkButton ID="btnSuggestionOnline" runat="server" CausesValidation="false" CssClass="btn btn-primary" Enabled="true" Text="Check Online" OnClientClick="showOnlineSuggestionModal(this);"></asp:LinkButton>
+                                                            <a onclick="showOnlineSuggestionModal(this);" class="btn btn-primary">Check Online</a>
+                                                            <%--<asp:LinkButton ID="btnSuggestionOnline" runat="server" CausesValidation="false" CssClass="btn btn-primary" Enabled="true" Text="Check Online" OnClientClick="showOnlineSuggestionModal(this);"></asp:LinkButton>--%>
                                                             <%-- <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionOnline" onclick="showOnlineSuggestionModal();">
                                                                 Check Online</button>--%>
                                                             <%--  <div class="dropdown" runat="server" id="ddlSuggestionsOnline">
