@@ -19,7 +19,6 @@ namespace TLGX_Consumer.controls.staticdata
     public partial class AccoMap : System.Web.UI.UserControl
     {
         MasterDataDAL masterdata = new MasterDataDAL();
-        //Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         MDMSVC.DC_Accomodation_Search_RQ RQParams = new MDMSVC.DC_Accomodation_Search_RQ();
         public DataTable dtCountryMappingSearchResults = new DataTable();
         public DataTable dtCountrMappingDetail = new DataTable();
@@ -29,26 +28,11 @@ namespace TLGX_Consumer.controls.staticdata
         Controller.AccomodationSVC accoSVc = new Controller.AccomodationSVC();
         Controller.MasterDataSVCs _objMasterRef = new Controller.MasterDataSVCs();
         public static List<MDMSVC.DC_Accomodation_Search_RS> accoSuggRes = new List<MDMSVC.DC_Accomodation_Search_RS>();
-
-        // MasterDataDAL masters = new MasterDataDAL();
-        //public static string AttributeOptionFor = "ProductSupplierMapping";
-        //public static string AttributeOptionFor1 = "HotelInfo";
-        // public static string SortBy = "";
-        //public static string SortEx = "";
-        //public static string via = "";
-        //public static int PageIndex = 0;
+        
         protected string contex = "<country>~<city>~<brand>~<chain>~<name>";
         public const string controlpath = "~/controls/staticdata/bulkHotelMapping.ascx";
         public const string controlID = "MyUserControl";
-        //public static bool createAgain = false;
-        //public static string MatchedStatus = "";
-        //public static string MatchedCountryName = "";
-        //public static string MatchedCityName = "";
-        //public static string MatchedProdName = "";
-        //public static int MatchedPageIndex = 0;
-        //public static Guid? MappedCountry_ID = Guid.Empty;
-        //public static Guid? MappedCity_ID = Guid.Empty;
-        //public static Guid? MappedProduct_ID = Guid.Empty;
+    
         public bool isDataExist = false;
 
         MasterDataSVCs _objMasterData = new MasterDataSVCs();
