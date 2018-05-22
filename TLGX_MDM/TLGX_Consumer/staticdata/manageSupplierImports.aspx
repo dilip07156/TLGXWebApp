@@ -4,8 +4,8 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <%@ Register Src="~/controls/staticdataconfig/FileMappingcharts.ascx" TagPrefix="uc1" TagName="FileMappingcharts" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-   
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">   
+    
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
     <style>
         @media(min-width: 992px) {
@@ -49,9 +49,8 @@
 
                 .list-inline li::after {
                     content: '|';
-                }
-    </style>
-
+                }                 
+    </style>     
     <script type="text/javascript">
         //script for RUN MAPPING
         var x;
@@ -573,9 +572,9 @@
             });
             getChartData();
         });
-    </script>
-    <script src="../Scripts/ChartJS/raphael-min.js"></script>
-    <script src="../Scripts/ChartJS/morris.min.js"></script>
+    </script> 
+    <script src="../Scripts/ChartJS/raphael-min.js"></script>       
+    <script src="../Scripts/ChartJS/morris.min.js"></script>       
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
      
     <div class="row">
@@ -614,11 +613,12 @@
             </div>
         </div>
     </div>
-
+    
     <div class="row">
         <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
     </div>
-    <hr />
+        
+    <%--<hr />--%>
     <%--for first three charts--%>
     <div class="row" id="supplierwisedata" runat="server">
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
@@ -715,9 +715,10 @@
                             <td>
                                 <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
                             </td>
-                        </tr>                                                   
-                        <tr>
-                            <td>
+                        </tr>  
+                     <tr> <td>&nbsp;</td></tr>
+                          <tr >
+                             <td >
                                 <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" />
                             </td>
                         </tr>
@@ -726,7 +727,7 @@
                                 <div id="dvMsgHotel" runat="server" style="display: none;"></div>
                             </td>
                         </tr>
-                    </table>
+                    </table>                                        
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -811,7 +812,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>         
     <%-- for last three pie charts--%>
     <div class="row" id="allsupplierdata" runat="server">
         <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
@@ -887,8 +888,7 @@
             </rsweb:ReportViewer>
         </div>
     </div>
-
-    <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
+         <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="padding: 5px 5px 5px 15px;">
@@ -905,6 +905,6 @@
                 </div>
             </div>
         </div>
-    </div>            
+    </div>        
 </asp:Content>
 

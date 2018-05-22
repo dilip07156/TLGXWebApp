@@ -280,14 +280,14 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnHotelGeoCode_Click(object sender, EventArgs e)
         {
-
+          
             MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
             RQ.MasterFor = "MappingFileConfig";
             RQ.Name = "MappingEntity";
-            var resvalues = _objMasterSVC.GetAllAttributeAndValues(RQ);           
-            
+            var resvalues = _objMasterSVC.GetAllAttributeAndValues(RQ);
+
             if (resvalues != null && resvalues.Count > 0)
-             {            
+            {
                 Guid entityId = Guid.Parse((resvalues.Where(x => x.AttributeValue == "GeoCode").Select(y => y.MasterAttributeValue_Id).FirstOrDefault()).ToString());
                 Guid SupplierId = Guid.Parse(ddlSupplierName.SelectedItem.Value);
                 var res = MapSvc.Pentaho_SupplierApiLocationId_Get(SupplierId, entityId);
@@ -296,16 +296,18 @@ namespace TLGX_Consumer.staticdata
                 {
                     string callby = System.Web.HttpContext.Current.User.Identity.Name;
                     var ApplicationCallId = Guid.Parse(res[0].ApiLocation_Id.ToString());
-                    //var Geo_res = MapSvc.Pentaho_SupplierHotel_GeoCode(ApplicationCallId, callby);
                     var Geo_res = MapSvc.Pentaho_SupplierApi_Call(ApplicationCallId, callby);
-                    BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, "GeoCode successfully updated", BootstrapAlertType.Information);
-                   
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, Geo_res.StatusMessage, BootstrapAlertType.Information);
                 }
-            else
+                else
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, "API Location not found", BootstrapAlertType.Information);
                 }
+
             }
-        }
+
+
+        }      
+        
     }
 }
