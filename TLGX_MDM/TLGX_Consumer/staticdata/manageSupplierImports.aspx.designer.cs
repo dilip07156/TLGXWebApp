@@ -148,6 +148,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.Button btnHotelReRunSchedule;
         
         /// <summary>
+        /// btnHotelGeoCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHotelGeoCode;
+        
+        /// <summary>
         /// dvMsgHotel control.
         /// </summary>
         /// <remarks>

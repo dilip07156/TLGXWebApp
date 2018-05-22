@@ -18,7 +18,7 @@ namespace TLGX_Consumer.admin
        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            dvMsg.Style.Add("display", "none");
             //For page authroization 
             Authorize _obj = new Authorize();
             if (_obj.IsRoleAuthorizedForUrl()) { }
@@ -82,7 +82,7 @@ namespace TLGX_Consumer.admin
         //For refreshing distribution log 
         protected void GetUpdatedDistributionLog()
         {
-
+            
             MDMSVC.DC_RefreshDistributionDataLog RQ = new MDMSVC.DC_RefreshDistributionDataLog();
             var res = MasterSvc.GetRefreshDistributionLog(RQ);
 
@@ -96,7 +96,7 @@ namespace TLGX_Consumer.admin
             LastUpdatedPortMaster.Text = (res.Where(x => x.Element == "Port" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
             LastUpdatedStateMaster.Text = (res.Where(x => x.Element == "State" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
-
+           
 
 
         }
@@ -284,7 +284,20 @@ namespace TLGX_Consumer.admin
 
         protected void TimerStaticData_Tick(object sender, EventArgs e)
         {
-           GetStaticHotelData();
+            
+            foreach (GridViewRow rowitem in grdSupplierEntity.Rows)
+            {
+                if (rowitem.Cells[4].Text == "Running" || rowitem.Cells[4].Text == "Scheduled")
+                {
+                    foreach (GridViewRow row in grdSupplierEntity.Rows)
+                    {
+                        GetStaticHotelData();
+                    }
+                    break;
+                }
+            }
+
+
         }
 
 

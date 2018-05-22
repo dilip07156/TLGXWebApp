@@ -5,6 +5,7 @@
 <%@ Register Src="~/controls/staticdataconfig/FileMappingcharts.ascx" TagPrefix="uc1" TagName="FileMappingcharts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+   
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
     <style>
         @media(min-width: 992px) {
@@ -576,7 +577,7 @@
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
-
+     
     <div class="row">
         <div class="col-md-4">
             <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
@@ -609,6 +610,7 @@
                     <%--<button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>--%>
                     <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -712,6 +714,11 @@
                             </td>
                             <td>
                                 <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
+                            </td>
+                        </tr>                                                   
+                        <tr>
+                            <td>
+                                <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -898,5 +905,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>            
 </asp:Content>
+
