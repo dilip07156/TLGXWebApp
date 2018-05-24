@@ -15,7 +15,7 @@ namespace TLGX_Consumer.staticdata
     }
 
     public partial class manageSupplierImports : System.Web.UI.Page
-    {
+    {       
         private Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         private MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
         private Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
@@ -277,5 +277,37 @@ namespace TLGX_Consumer.staticdata
             dvMsgRoomType.Style.Add("display", "none");
             dvMsgActivity.Style.Add("display", "none");
         }
+
+        protected void btnHotelGeoCode_Click(object sender, EventArgs e)
+        {
+          
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = "MappingFileConfig";
+            RQ.Name = "MappingEntity";
+            var resvalues = _objMasterSVC.GetAllAttributeAndValues(RQ);
+
+            if (resvalues != null && resvalues.Count > 0)
+            {
+                Guid entityId = Guid.Parse((resvalues.Where(x => x.AttributeValue == "GeoCode").Select(y => y.MasterAttributeValue_Id).FirstOrDefault()).ToString());
+                Guid SupplierId = Guid.Parse(ddlSupplierName.SelectedItem.Value);
+                var res = MapSvc.Pentaho_SupplierApiLocationId_Get(SupplierId, entityId);
+
+                if (res != null && res.Count > 0)
+                {
+                    string callby = System.Web.HttpContext.Current.User.Identity.Name;
+                    var ApplicationCallId = Guid.Parse(res[0].ApiLocation_Id.ToString());
+                    var Geo_res = MapSvc.Pentaho_SupplierApi_Call(ApplicationCallId, callby);
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, Geo_res.StatusMessage, BootstrapAlertType.Information);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, "API Location not found", BootstrapAlertType.Information);
+                }
+
+            }
+
+
+        }      
+        
     }
 }

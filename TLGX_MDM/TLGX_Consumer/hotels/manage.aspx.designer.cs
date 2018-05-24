@@ -40,15 +40,6 @@ namespace TLGX_Consumer.hotels {
         protected global::TLGX_Consumer.controls.hotel.descriptions descriptions;
         
         /// <summary>
-        /// facilities1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.facilities facilities1;
-        
-        /// <summary>
         /// roominfo control.
         /// </summary>
         /// <remarks>
@@ -58,69 +49,6 @@ namespace TLGX_Consumer.hotels {
         protected global::TLGX_Consumer.controls.hotel.roominfo roominfo;
         
         /// <summary>
-        /// passengeroccupancy control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.passengeroccupancy passengeroccupancy;
-        
-        /// <summary>
-        /// route control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.route route;
-        
-        /// <summary>
-        /// inandaround control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.inandaround inandaround;
-        
-        /// <summary>
-        /// rules control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.rules rules;
-        
-        /// <summary>
-        /// media control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.media media;
-        
-        /// <summary>
-        /// updates control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.updates updates;
-        
-        /// <summary>
-        /// healthandsafety control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.healthandsafety healthandsafety;
-        
-        /// <summary>
         /// status control.
         /// </summary>
         /// <remarks>
@@ -128,15 +56,6 @@ namespace TLGX_Consumer.hotels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TLGX_Consumer.controls.hotel.status status;
-        
-        /// <summary>
-        /// ClassificationAttributes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.ClassificationAttributes ClassificationAttributes;
         
         /// <summary>
         /// PreviousPage property.

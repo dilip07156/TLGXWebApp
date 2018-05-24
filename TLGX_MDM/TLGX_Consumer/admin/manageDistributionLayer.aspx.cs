@@ -18,7 +18,7 @@ namespace TLGX_Consumer.admin
        
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            dvMsg.Style.Add("display", "none");
             //For page authroization 
             Authorize _obj = new Authorize();
             if (_obj.IsRoleAuthorizedForUrl()) { }
@@ -35,7 +35,7 @@ namespace TLGX_Consumer.admin
 
         protected void GetStaticHotelData()
         {
-
+            dvMsg.Style.Add("display", "none");
             MDMSVC.DC_SupplierEntity RQ = new MDMSVC.DC_SupplierEntity();
             var result = MasterSvc.GetStaticHotel(RQ);
 
@@ -53,13 +53,36 @@ namespace TLGX_Consumer.admin
             }
 
 
+            foreach (GridViewRow rowitem in grdSupplierEntity.Rows)
+            {
+                if (rowitem.Cells[4].Text == "Running" || rowitem.Cells[4].Text == "Scheduled")
+                {
+                    foreach (GridViewRow row in grdSupplierEntity.Rows)
+                    {
+                        LinkButton refreshButton = (LinkButton)(row.FindControl("btnUpdate"));
+                        refreshButton.Enabled = false;
+                        refreshButton.BackColor = System.Drawing.Color.Red;
+                    }
+                    break;
+                }
+                else
+                {
+                    foreach (GridViewRow row in grdSupplierEntity.Rows)
+                    {
+                        LinkButton refreshButton = (LinkButton)(row.FindControl("btnUpdate"));
+                        refreshButton.Enabled = true;
+                        refreshButton.BackColor = System.Drawing.Color.Green;
+                    }
 
+                }
+
+            }
         }
 
         //For refreshing distribution log 
         protected void GetUpdatedDistributionLog()
         {
-
+            
             MDMSVC.DC_RefreshDistributionDataLog RQ = new MDMSVC.DC_RefreshDistributionDataLog();
             var res = MasterSvc.GetRefreshDistributionLog(RQ);
 
@@ -73,7 +96,7 @@ namespace TLGX_Consumer.admin
             LastUpdatedPortMaster.Text = (res.Where(x => x.Element == "Port" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
             LastUpdatedStateMaster.Text = (res.Where(x => x.Element == "State" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
-
+           
 
 
         }
@@ -209,7 +232,7 @@ namespace TLGX_Consumer.admin
         {
             if (e.CommandName == "refresh")
             {
-
+                dvMsg.Style.Add("display", "none");
                 Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
 
                 var res = MasterSvc.RefreshStaticHotel(Guid.Empty, myRowId);
@@ -252,36 +275,32 @@ namespace TLGX_Consumer.admin
 
                     if (lblcompleted != null)
                         lblcompleted.Text = Convert.ToString(progressWidth) + "%";
-
-                    //divCompleted.Style.Add(HtmlTextWriterStyle.Display, "block");
-                    //divCompleted.Style.Add(HtmlTextWriterStyle.Width, Convert.ToString(progressWidth) + "%");
+                    
                 }
-                if (((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).Status == "Running" || (((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).Status == "Scheduled"))
+                
+            }
+        }
+
+
+        protected void TimerStaticData_Tick(object sender, EventArgs e)
+        {
+            
+            foreach (GridViewRow rowitem in grdSupplierEntity.Rows)
+            {
+                if (rowitem.Cells[4].Text == "Running" || rowitem.Cells[4].Text == "Scheduled")
                 {
-
-                    LinkButton refreshButton = (LinkButton)(e.Row.FindControl("btnUpdate"));
-
-                    refreshButton.Enabled = false;
-                    refreshButton.BackColor = System.Drawing.Color.Red;
-
+                    foreach (GridViewRow row in grdSupplierEntity.Rows)
+                    {
+                        GetStaticHotelData();
+                    }
+                    break;
                 }
-
-                else if (((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).Status == "Completed" || (((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).Status == ""))
-                {
-                    LinkButton refreshButton = (LinkButton)(e.Row.FindControl("btnUpdate"));
-                    refreshButton.Enabled = true;
-                    refreshButton.BackColor = System.Drawing.Color.Green;
-                }
-
-
-
-
             }
 
 
         }
 
-        
+
     }
         
     

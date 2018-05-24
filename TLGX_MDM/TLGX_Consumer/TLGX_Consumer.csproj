@@ -1037,6 +1037,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierEntity.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\GetSRT_ML_suggestion_Syntactic.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion_Semantic.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2624,6 +2627,15 @@
     </Compile>
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion_Supervised_Semantic.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion_Semantic.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion_Semantic.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetSRT_ML_suggestion_Syntactic.ashx.cs">
+      <DependentUpon>GetSRT_ML_suggestion_Syntactic.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>

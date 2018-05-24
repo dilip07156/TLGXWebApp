@@ -30,6 +30,8 @@ namespace TLGX_Consumer.Controller.ServiceConnection
             {
                 var request = (HttpWebRequest)WebRequest.Create(MDMSvcUrl + uri);
                 request.KeepAlive = false;
+                request.Timeout = System.Threading.Timeout.Infinite;
+                request.ReadWriteTimeout = System.Threading.Timeout.Infinite;
                 HttpWebResponse response = request.GetResponse() as HttpWebResponse;
 
                 if (response.StatusCode == HttpStatusCode.OK)
@@ -67,6 +69,8 @@ namespace TLGX_Consumer.Controller.ServiceConnection
                 request.Method = "POST";
                 request.ContentType = "application/json";
                 request.KeepAlive = false;
+                request.Timeout = System.Threading.Timeout.Infinite;
+                request.ReadWriteTimeout = System.Threading.Timeout.Infinite;
                 DataContractJsonSerializer serializerToUpload = new DataContractJsonSerializer(RequestType);
 
                 using (var memoryStream = new MemoryStream())

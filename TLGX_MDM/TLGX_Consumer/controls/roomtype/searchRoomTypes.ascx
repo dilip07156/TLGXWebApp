@@ -208,7 +208,7 @@
                                                             <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
                                                             <strong>(
                                                     <asp:Label runat="server" ID="lblSupplierRoomTypeCode" Text='<%# Eval("SupplierRoomTypeCode") %>'></asp:Label>)</strong>
-                                                            <asp:Label runat="server" ID="lblSupplierRoomTypeName" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
+                                                            <asp:Label runat="server" ID="lblSupplierRoomTypeName" ClientIDMode="Static" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
                                                             <a href="#" id="aHelp" runat="server" onmouseover="DisplayToolTip(this);" onclick="return false" onmouseout="HideToolTip(this);" data-toggle="popover" class="glyphicon glyphicon-info-sign Tooltipicon" title=''></a>
                                                             <div id="divToolTip" class="TooltipDescriptionHide">
                                                                 <%#Convert.ToString(Eval("RoomDescription")) %>
@@ -220,7 +220,8 @@
                                                         <ItemTemplate>
                                                             <%--CheckSuggestionOnline(this);--%>
                                                             <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
-                                                            <asp:LinkButton ID="btnSuggestionOnline" runat="server" CausesValidation="false" CssClass="btn btn-primary" Enabled="true" Text="Check Online" OnClientClick="showOnlineSuggestionModal(this);"></asp:LinkButton>
+                                                            <a onclick="showOnlineSuggestionModal(this);" class="btn btn-primary">Check Online</a>
+                                                            <%--<asp:LinkButton ID="btnSuggestionOnline" runat="server" CausesValidation="false" CssClass="btn btn-primary" Enabled="true" Text="Check Online" OnClientClick="showOnlineSuggestionModal(this);"></asp:LinkButton>--%>
                                                             <%-- <button class="btn btn-primary dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionOnline" onclick="showOnlineSuggestionModal();">
                                                                 Check Online</button>--%>
                                                             <%--  <div class="dropdown" runat="server" id="ddlSuggestionsOnline">
@@ -303,17 +304,57 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="panel-title">
-                        <h4 class="modal-title">Online Suggestion</h4>
+                        <h4 class="modal-title">Online Suggestion For (<label id="lblForSupplierRoomTypeName"></label>
+                            )</h4>
                     </div>
                 </div>
                 <div class="modal-body">
                     <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                         <ContentTemplate>
-                            <div class="ulRoomInfoOnline" id="ulRoomInfoOnline">
-                                <div id="loadingOnline" style="padding: 5px;">
-                                    <img alt="Loading..." src="../../../images/ajax-loader.gif" />
-                                </div>
-                            </div>
+                            <table class='table table-bordered'>
+                                <tr>
+                                    <th style='font-size: 14px; width: 30%;'>Syntactic</th>
+                                    <th style='font-size: 14px; width: 30%;'>Semantic (Unsupervised)</th>
+                                    <th style='font-size: 14px; width: 30%;'>Semantic (Supervised)</th>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                                            <ContentTemplate>
+                                                <div class="ulRoomInfoOnline" id="ulRoomInfoOnlineSyntactic">
+                                                    <div id="loadingOnlineSyntactic" style="padding: 5px;">
+                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </td>
+                                    <td>
+                                        <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                                            <ContentTemplate>
+                                                <div class="ulRoomInfoOnline" id="ulRoomInfoOnlineSemanticUnSup">
+                                                    <div id="loadingOnlineSemanticUnSup" style="padding: 5px;">
+                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </td>
+                                    <td>
+                                        <asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                                            <ContentTemplate>
+                                                <div class="ulRoomInfoOnline" id="ulRoomInfoOnlineSemanticSup">
+                                                    <div id="loadingOnlineSemanticSup" style="padding: 5px;">
+                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </asp:UpdatePanel>
+                                    </td>
+                                </tr>
+                            </table>
+
+
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>

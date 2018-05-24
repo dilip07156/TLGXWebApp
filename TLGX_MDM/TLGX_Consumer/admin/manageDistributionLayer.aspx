@@ -292,43 +292,43 @@
 
                         <div class="panel-heading">Supplier Static Data  </div>
                         <div class="panel-body">
+                            <asp:UpdatePanel ID="UpdStaticHotel" runat="server">
+                                <ContentTemplate>
+                                    <asp:Timer ID="TimerStaticData" runat="server" Interval="3000" OnTick="TimerStaticData_Tick"></asp:Timer>
+                                    <asp:GridView ID="grdSupplierEntity" runat="server" EmptyDataText="No Mappings for search conditions" CssClass="table table-hover" OnRowCommand="grdSupplierEntity_RowCommand" DataKeyNames="Supplier_id" AutoGenerateColumns="False" GridLines="None" BorderStyle="None" OnRowDataBound="grdSupplierEntity_RowDataBound">
+                                        <Columns>
+                                            <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" />
 
-                            <asp:GridView ID="grdSupplierEntity" runat="server" EmptyDataText="No Mappings for search conditions" CssClass="table table-hover" OnRowCommand="grdSupplierEntity_RowCommand" DataKeyNames="Supplier_id" AutoGenerateColumns="False" GridLines="None" BorderStyle="None" OnRowDataBound="grdSupplierEntity_RowDataBound" >
-                                <Columns>
-                                    <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" />
+                                            <asp:BoundField DataField="Element" HeaderText="Element" />
 
-                                    <asp:BoundField DataField="Element" HeaderText="Element" />
+                                            <asp:BoundField DataField="Type" HeaderText="Type" />
+                                            <asp:BoundField DataField="LastUpdated" HeaderText="Last Updated" />
+                                            <asp:BoundField DataField="STATUS" HeaderText="Status" />
 
-                                    <asp:BoundField DataField="Type" HeaderText="Type" />
-                                    <asp:BoundField DataField="LastUpdated" HeaderText="Last Updated" />
-                                    <asp:BoundField DataField="STATUS" HeaderText="Status" />
+                                            <asp:TemplateField ItemStyle-Width="300" HeaderText="Progress">
+                                                <ItemTemplate>
+                                                    <div class='progress'>
 
-                                    <asp:TemplateField ItemStyle-Width="300" HeaderText="Progress">
-                                        <ItemTemplate>
-                                            <div class='progress'>
-
-                                                <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divCompleted">
-                                                    <asp:Label runat="server" ID="lblcompleted"></asp:Label>
-                                                </div>
-                                            </div>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <%--<asp:BoundField DataField="TotalCount" HeaderText="Total Rows" />
-                                    <asp:BoundField DataField="MongoPushCount" HeaderText="Completed Rows" />--%>
-
-
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="false" CommandName="refresh" CssClass="btn btn-primary btn-sm" Text="Update"
-                                                Enabled="true" CommandArgument='<%#Bind("Supplier_id")%>'>
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divCompleted">
+                                                            <asp:Label runat="server" ID="lblcompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                           
+                                            <asp:TemplateField>
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="false" CommandName="refresh" CssClass="btn btn-primary btn-sm" Text="Update"
+                                                        Enabled="true" CommandArgument='<%#Bind("Supplier_id")%>'>
                                     
-                                            </asp:LinkButton>
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
+                                                    </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
 
-                                </Columns>
-                            </asp:GridView>
-
+                                        </Columns>
+                                    </asp:GridView>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                         </div>
 
                     </div>

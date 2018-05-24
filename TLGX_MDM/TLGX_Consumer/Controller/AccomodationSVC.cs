@@ -457,6 +457,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RTM_ML_Suggestion_Semantic"], Accommodation_SupplierRoomTypeMapping_Id), typeof(List<DC_SRT_ML_Response_Semantic>), out result);
             return result as List<DC_SRT_ML_Response_Semantic>;
         }
+        public List<DC_SRT_ML_Response_Supervised_Semantic> GetRTM_ML_Suggestions_Supervised_Semantic(string Accommodation_SupplierRoomTypeMapping_Id)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RTM_ML_Suggestion_Supervised_Semantic"], Accommodation_SupplierRoomTypeMapping_Id), typeof(List<DC_SRT_ML_Response_Supervised_Semantic>), out result);
+            return result as List<DC_SRT_ML_Response_Supervised_Semantic>;
+        }
         public List<DC_SRT_ML_Response_Syntactic> GetRTM_ML_Suggestions_Syntactic(string Accommodation_SupplierRoomTypeMapping_Id)
         {
             object result = null;
