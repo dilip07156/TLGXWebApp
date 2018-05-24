@@ -1119,10 +1119,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtPriority = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtPriority");
+            System.Web.UI.HtmlControls.HtmlGenericControl dvMatchByColumnOrValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvMatchByColumnOrValue");
 
             fillattributes("MappingConfigAttributeTypes", "AttributeType", ddlAttributeType);
             //dvddlAttributeValue.Visible = false;
             //dvtxtAttributeValue.Visible = true;
+
+            dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+
             if (IsMapping)
                 dvtxtPriority.Style.Add(HtmlTextWriterStyle.Display, "none");
             else
@@ -1152,6 +1156,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
             System.Web.UI.HtmlControls.HtmlGenericControl dvAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
+            System.Web.UI.HtmlControls.HtmlGenericControl dvMatchByColumnOrValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvMatchByColumnOrValue");
 
             #endregion //End All Controls
             bool isFound = false;
@@ -1282,6 +1287,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                     else if (!IsMapping && strAttributeType == "match") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- master table Columns
                     {
+                        dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "block");
                         lstAttributeName = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
                         hdnddlAttributeTableName.Value = _mappingTable;
                         lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_masterTable);

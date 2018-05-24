@@ -310,7 +310,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvddlAttributeName" runat="server">
-                                                    <label class="control-label col-sm-4" for="ddlAttributeValue">
+                                                    <label class="control-label col-sm-4" for="ddlAttributeName">
                                                         Name
                                                         <asp:RequiredFieldValidator ID="vddlAttributeName" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeName"
                                                             CssClass="text-danger" InitialValue="-1" ErrorMessage="The Name field is required." Text="*" />
@@ -327,13 +327,23 @@
 
                                                     </div>
                                                 </div>
+
+                                                <div class="form-group row" id="dvMatchByColumnOrValue" runat="server">
+                                                    <div class="col-sm-8">
+                                                        <label class="radio-inline">
+                                                            <input type="radio" id="rdoIsMatchByColumn" runat="server" name="IsMatchByColumnOrValue"><b>Column</b></label>
+                                                        <label class="radio-inline">
+                                                            <input type="radio" id="rdoIsMatchByValue" runat="server" name="IsMatchByColumnOrValue"><b>Value</b></label>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">
                                                         Value
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValuedll" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeValue"
                                                             CssClass="text-danger" InitialValue="0" ErrorMessage="The Value field is required." Text="*" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValue" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtAttributeValue"
-                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*"  Enabled="false"/>
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFrom" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtReplaceFrom"
                                                             CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValueTo" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtReplaceTo"
@@ -438,7 +448,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
-                                                    <label class="control-label col-sm-4" for="txtAttributeName">Value
+                                                    <label class="control-label col-sm-4" for="txtAttributeName">
+                                                        Value
                                                         <%--<asp:RequiredFieldValidator ID="rqfvddlAttributeValuedll" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="ddlAttributeValue"
                                                             CssClass="text-danger" InitialValue="0" ErrorMessage="The Value field is required." Text="*" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValue" ValidationGroup="UpdateConfigValues" runat="server" ControlToValidate="txtAttributeValue"
