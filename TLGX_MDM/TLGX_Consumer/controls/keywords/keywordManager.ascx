@@ -161,11 +161,17 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <asp:Button runat="server" ID="btnAddNew" CssClass="btn btn-primary btn-sm pull-right" Text="Add New" OnClick="btnAddNew_Click" OnClientClick="showModal();" />
+                                            &nbsp;&nbsp;<br />
+                                        </div>                                         
+                                        <div class="col-sm-4">
+                                            <asp:Button runat="server" ID="btnReRun_Master" CssClass="btn btn-primary btn-sm pull-right" Text="ReRunMaster" OnClick="btnReRun_Master_Click"  />
                                         </div>
-                                        <div class="col-sm-3">
-                                            <asp:Button runat="server" ID="btnReRun" CssClass="btn btn-primary btn-sm pull-right" Text="ReRun" OnClick="btnReRun_Click" />
-                                        </div>
+                                        <div class="col-sm-4">
+                                             <asp:Button runat="server" ID="btnReRun_Supplier" CssClass="btn btn-primary btn-sm pull-right" Text="ReRunSupplier" OnClick="btnReRun_Supplier_Click" />
+                                         </div>
                                     </div>
+                                    
+                                   
 
                                     <div class="form-group row">
                                         <div class="panel-group">
@@ -173,7 +179,7 @@
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
                                                         <strong>Wildcard keywords special operation</strong>
-                                                        <p>Below keywords can be added with values for respective action.</p>
+                                                        <p>Below keywords can be added with values for respective action.</p>                                                       
                                                     </h4>
                                                 </div>
                                                 <ul>

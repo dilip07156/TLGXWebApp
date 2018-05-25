@@ -303,11 +303,27 @@ namespace TLGX_Consumer.staticdata
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, "API Location not found", BootstrapAlertType.Information);
                 }
-
             }
+        }
 
+        protected void btnHotelRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedItem.Text != "--All Suppliers--")
+            {
+                Guid SupplierId = Guid.Parse(ddlSupplierName.SelectedItem.Value);                                           
+                var result = MapSvc.KeywordReRun("HotelName", "SUPPLIER", SupplierId);
+                BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, result.StatusMessage, BootstrapAlertType.Information);
+            }
+        }
 
-        }      
-        
+        protected void btnRoomRun_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierName.SelectedItem.Text != "--All Suppliers--")
+            {
+                Guid SupplierId = Guid.Parse(ddlSupplierName.SelectedItem.Value);
+                var result = MapSvc.KeywordReRun("RoomType", "SUPPLIER", SupplierId);
+                BootstrapAlert.BootstrapAlertMessage(dvMsgRoomType, result.StatusMessage, BootstrapAlertType.Information);
+            }
+        }
     }
-}
+}   
