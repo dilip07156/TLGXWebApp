@@ -157,6 +157,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.Button btnHotelGeoCode;
         
         /// <summary>
+        /// btnHotelRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHotelRun;
+        
+        /// <summary>
         /// dvMsgHotel control.
         /// </summary>
         /// <remarks>
@@ -182,6 +191,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRoomTypeReRunSchedule;
+        
+        /// <summary>
+        /// btnRoomRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRoomRun;
         
         /// <summary>
         /// dvMsgRoomType control.

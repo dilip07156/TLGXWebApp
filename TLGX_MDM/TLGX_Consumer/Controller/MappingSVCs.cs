@@ -380,10 +380,10 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_keyword_alias>;
         }
 
-        public DC_Message KeywordReRun(string Entity)
+        public DC_Message KeywordReRun(string Entity,String Table,Guid Supplier_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Keyword_ReRun"], Entity), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Keyword_ReRun"], Entity, Table,Supplier_Id), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion

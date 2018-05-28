@@ -815,14 +815,24 @@ namespace TLGX_Consumer.controls.keywords
                 }
             }
         }
-
-        protected void btnReRun_Click(object sender, EventArgs e)
+                
+        protected void btnReRun_Master_Click(object sender, EventArgs e)
         {
             var selected = chkListEntityForSearch.Items.Cast<ListItem>().Where(x => x.Selected).ToList();
-            if(selected.Count == 1)
+            if (selected.Count == 1)
             {
-                var result = mappingScv.KeywordReRun(selected.First().Text);
+                var result = mappingScv.KeywordReRun(selected.First().Text, "MASTER", Guid.Empty);
             }
+        }
+
+        protected void btnReRun_Supplier_Click(object sender, EventArgs e)
+        {
+            var selected = chkListEntityForSearch.Items.Cast<ListItem>().Where(x => x.Selected).ToList();
+            if (selected.Count == 1)
+            {
+                var result = mappingScv.KeywordReRun(selected.First().Text, "SUPPLIER", Guid.Empty);
+            }
+
         }
     }
 }

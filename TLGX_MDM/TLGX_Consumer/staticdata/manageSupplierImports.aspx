@@ -712,15 +712,19 @@
                             <td>
                                 <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
                             </td>
-                            <td>
+                            <td colspan="1">
                                 <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
                             </td>
                         </tr>  
                      <tr> <td>&nbsp;</td></tr>
                           <tr >
                              <td >
-                                <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" />
+                                <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" Width="70px" />
+                            &nbsp;
                             </td>
+                              <td>
+                                <asp:Button ID="btnHotelRun" runat="server" Text="ReRun HotelNameTx" class="btn btn-primary btn-sm" OnClick="btnHotelRun_Click" />
+                              </td>
                         </tr>
                         <tr>
                             <td colspan="2">
@@ -757,6 +761,12 @@
                             </td>
                             <td>
                                 <asp:Button ID="btnRoomTypeReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="3">
+                               <asp:Button ID="btnRoomRun" runat="server" Text="ReRun RoomNameTx" class="btn btn-primary btn-sm" OnClick="btnRoomRun_Click" />
                             </td>
                         </tr>
                         <tr>
