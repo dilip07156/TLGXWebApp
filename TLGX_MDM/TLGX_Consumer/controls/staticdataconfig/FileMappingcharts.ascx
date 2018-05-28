@@ -335,8 +335,8 @@
                                 <table class="table table-fixed table-condensed">
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Step</th>
+                                            <th style="width:110px;">Date</th>
+                                            <th style="width:1px;">Step</th>
                                             <th>Message</th>
                                         </tr>
                                     </thead>
