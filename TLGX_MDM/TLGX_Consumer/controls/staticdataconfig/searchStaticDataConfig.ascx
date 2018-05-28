@@ -10,7 +10,7 @@
     .progress, .alert {
         margin: 15px;
     }
-   </style>
+</style>
 <script type="text/javascript">
     var prm = Sys.WebForms.PageRequestManager.getInstance();
     prm.add_beginRequest(BeginRequestHandler);
@@ -163,8 +163,13 @@
                                             <asp:BoundField DataField="CREATE_DATE" HeaderText="Created" />
                                             <asp:BoundField DataField="EDIT_DATE" HeaderText="Last Edited" />
                                             <asp:BoundField DataField="Status" HeaderText="Status" />
-                                            <asp:HyperLinkField DataNavigateUrlFields="SupplierImportAttribute_Id" DataNavigateUrlFormatString="~/staticdata/config/manage.aspx?Config_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/staticdata/config/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />
-
+                                            <%-- <asp:HyperLinkField DataNavigateUrlFields="SupplierImportAttribute_Id" DataNavigateUrlFormatString="~/staticdata/config/manage.aspx?Config_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/staticdata/config/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />--%>
+                                            <asp:TemplateField HeaderText="view-Edit">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-primary btn-sm"
+                                                        Enabled="true" CommandArgument='<%#Bind("SupplierImportAttribute_Id")%>'>Select</asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
                                             <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>'

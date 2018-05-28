@@ -229,42 +229,40 @@
                 </div>
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <div class="container">
-                            <div class="col-lg-12">
-                                <asp:GridView ID="grdMappingAttrValues" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Attribute Values Found"
-                                    CssClass="table table-hover table-striped" OnDataBound="grdMappingAttrValues_DataBound" OnRowCommand="grdMappingAttrValues_RowCommand"
-                                    AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrValues_PageIndexChanging" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
-                                    OnRowDataBound="grdMappingAttrValues_RowDataBound">
-                                    <Columns>
-                                        <asp:BoundField DataField="AttributeType" HeaderText="Attribute Type" />
-                                        <asp:BoundField DataField="AttributeName" HeaderText="Attribute Name" />
-                                        <asp:BoundField DataField="AttributeValue" HeaderText="Attribute Value" />
-                                        <asp:BoundField DataField="STATUS" HeaderText="Status" />
-                                        <asp:BoundField DataField="Priority" HeaderText="Priority" />
-                                        <asp:BoundField DataField="Description" HeaderText="Description" />
-                                        <asp:BoundField DataField="AttributeValueType" HeaderText="AttributeValueType" />
-                                        <asp:BoundField DataField="Comparison" HeaderText="Comparison" />
-                                        <asp:TemplateField ShowHeader="false">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                                    Enabled="true" CommandArgument='<%# Bind("SupplierImportAttributeValue_Id") %>' OnClientClick="showManageModal();">
+
+                        <asp:GridView ID="grdMappingAttrValues" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Attribute Values Found"
+                            CssClass="table table-hover table-striped" OnDataBound="grdMappingAttrValues_DataBound" OnRowCommand="grdMappingAttrValues_RowCommand"
+                            AllowCustomPaging="true" OnPageIndexChanging="grdMappingAttrValues_PageIndexChanging" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
+                            OnRowDataBound="grdMappingAttrValues_RowDataBound">
+                            <Columns>
+                                <asp:BoundField DataField="AttributeType" HeaderText="Attribute Type" />
+                                <asp:BoundField DataField="AttributeName" HeaderText="Attribute Name" />
+                                <asp:BoundField DataField="AttributeValue" HeaderText="Attribute Value" />
+                                <asp:BoundField DataField="STATUS" HeaderText="Status" />
+                                <asp:BoundField DataField="Priority" HeaderText="Priority" />
+                                <asp:BoundField DataField="Description" HeaderText="Description" />
+                                <asp:BoundField DataField="AttributeValueType" HeaderText="AttributeValueType" />
+                                <asp:BoundField DataField="Comparison" HeaderText="Comparison" />
+                                <asp:TemplateField ShowHeader="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                                            Enabled="true" CommandArgument='<%# Bind("SupplierImportAttributeValue_Id") %>' OnClientClick="showManageModal();">
                                         <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Select
-                                                </asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField ShowHeader="false">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportAttributeValue_Id") %>'>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField ShowHeader="false">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("STATUS").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>' CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportAttributeValue_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("STATUS").ToString() == "ACTIVE" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat"   %>'</span>
                                         <%# Eval("STATUS").ToString() == "ACTIVE" ? "Delete" : "UnDelete"   %>
-                                                </asp:LinkButton>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <PagerStyle CssClass="pagination-ys" />
-                                </asp:GridView>
-                            </div>
-                        </div>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                            <PagerStyle CssClass="pagination-ys" />
+                        </asp:GridView>
+
                     </div>
                 </div>
             </div>
@@ -333,10 +331,10 @@
                                                 <div class="form-group row" id="dvMatchByColumnOrValue" runat="server" visible="false">
                                                     <div class="col-sm-8">
                                                         <label class="radio-inline">
-                                                            <asp:RadioButton ID="rdoIsMatchByColumn" runat="server" Checked="true" text="Column" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByColumn_CheckedChanged"   AutoPostBack="true"/>
-                                                           </label>
+                                                            <asp:RadioButton ID="rdoIsMatchByColumn" runat="server" Checked="true" Text="Column" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByColumn_CheckedChanged" AutoPostBack="true" />
+                                                        </label>
                                                         <label class="radio-inline">
-                                                            <asp:RadioButton ID="rdoIsMatchByValue" runat="server"  text="Value"  GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByValue_CheckedChanged"  AutoPostBack="true"/>
+                                                            <asp:RadioButton ID="rdoIsMatchByValue" runat="server" Text="Value" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByValue_CheckedChanged" AutoPostBack="true" />
                                                         </label>
                                                     </div>
                                                 </div>
@@ -361,10 +359,11 @@
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
-                                                          <%--For Comparison operator--%>
+                                                        <%--For Comparison operator--%>
                                                         <asp:DropDownList ID="ddlComparisonValue" runat="server" CssClass="form-control " AppendDataBoundItems="true" Visible="false">
-                                                                <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
-                                                            </asp:DropDownList> &nbsp;
+                                                            <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        &nbsp;
                                                         <%--For TextBox Values--%>
                                                         <asp:TextBox ID="txtAttributeValue" runat="server" Visible="false" CssClass="form-control"></asp:TextBox>
                                                         <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeValue" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
@@ -454,14 +453,14 @@
                                                     </div>
                                                 </div>
 
-                                                 <div class="form-group row" id="dvMatchByColumnOrValue" runat="server" visible="false">
+                                                <div class="form-group row" id="dvMatchByColumnOrValue" runat="server" visible="false">
                                                     <div class="col-sm-8">
                                                         <label class="radio-inline">
-                                                            <asp:RadioButton ID="rdoIsMatchByColumn" runat="server" Checked="true" text="Column" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByColumn_CheckedChanged" name="IsMatchByColumnOrValue"  AutoPostBack="true"  />
-                                                           </label>
+                                                            <asp:RadioButton ID="rdoIsMatchByColumn" runat="server" Checked="true" Text="Column" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByColumn_CheckedChanged" name="IsMatchByColumnOrValue" AutoPostBack="true" />
+                                                        </label>
                                                         <label class="radio-inline">
-                                                              <asp:RadioButton ID="rdoIsMatchByValue" runat="server"  text="Value"  GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByValue_CheckedChanged"  name="IsMatchByColumnOrValue" AutoPostBack="true"/>
-                                                          </label>
+                                                            <asp:RadioButton ID="rdoIsMatchByValue" runat="server" Text="Value" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByValue_CheckedChanged" name="IsMatchByColumnOrValue" AutoPostBack="true" />
+                                                        </label>
                                                     </div>
                                                 </div>
 
@@ -482,16 +481,17 @@
                                                     <div class="col-sm-8">
                                                         <%--For Comparison Values--%>
                                                         <asp:DropDownList ID="ddlComparisonValue" runat="server" CssClass="form-control " AppendDataBoundItems="true" Visible="false">
-                                                                <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
-                                                            </asp:DropDownList> &nbsp;
+                                                            <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                        &nbsp;
                                                              <%--For TextBox Values--%>
                                                         <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                                                         <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
-                                                             <%--For Dropdown Values--%>
-                                                          <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <%--For Dropdown Values--%>
+                                                        <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                         </asp:DropDownList>
-                                                             
+
                                                         <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
                                                         <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
                                                         <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
