@@ -22,6 +22,15 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.Button btnRedirectToSearch;
         
         /// <summary>
+        /// upPnlPortManage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upPnlPortManage;
+        
+        /// <summary>
         /// hdnFlag control.
         /// </summary>
         /// <remarks>

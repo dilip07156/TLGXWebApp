@@ -13,6 +13,15 @@ namespace TLGX_Consumer.staticdata {
     public partial class manageSupplierImports {
         
         /// <summary>
+        /// upPnlSupplierWise control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel upPnlSupplierWise;
+        
+        /// <summary>
         /// upPnlSearchFilters control.
         /// </summary>
         /// <remarks>

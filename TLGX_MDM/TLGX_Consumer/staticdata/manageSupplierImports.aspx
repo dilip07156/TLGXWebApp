@@ -52,6 +52,18 @@
                 }                 
     </style>     
     <script type="text/javascript">
+
+        //handling post back - binding data again
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+         if (prm != null) {
+        prm.add_endRequest(function (sender, e) {
+            if (sender._postBackSettings.panelsToUpdate != null) {
+               getChartData();
+            }
+        });
+    };
+        //end handling post back
+
         //script for RUN MAPPING
         var x;
         function myTimer() {
@@ -576,7 +588,9 @@
     <script src="../Scripts/ChartJS/raphael-min.js"></script>       
     <script src="../Scripts/ChartJS/morris.min.js"></script>       
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
-     
+
+    <asp:UpdatePanel runat="server" ID="upPnlSupplierWise">
+    <ContentTemplate>
     <div class="row">
         <div class="col-md-4">
             <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
@@ -613,14 +627,14 @@
             </div>
         </div>
     </div>
-    
+   
     <div class="row">
         <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
     </div>
         
     <%--<hr />--%>
-    <%--for first three charts--%>
-    <div class="row" id="supplierwisedata" runat="server">
+    <%--for first three charts--%>     
+    <div class="row" id="supplierwisedata" runat="server">        
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -821,8 +835,8 @@
                     <h4><b id="activitySuppliersCount"></b></h4>
                 </div>
             </div>
-        </div>
-    </div>         
+        </div>              
+    </div>  
     <%-- for last three pie charts--%>
     <div class="row" id="allsupplierdata" runat="server">
         <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
@@ -885,7 +899,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>           
+</ContentTemplate>
+ </asp:UpdatePanel>
     <%--Export Report--%>
     <div class="container" id="report" runat="server">
         <div style="width: 100%; height: 100%">
