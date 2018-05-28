@@ -8278,18 +8278,19 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Supervised_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Supervised_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Supervised_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Supervised_Semantic))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog))]
@@ -8954,18 +8955,19 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Syntactic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Syntactic))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Semantic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Supervised_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_AccommodationRoomInfo_Supervised_Semantic))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Supervised_Semantic[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Match_Supervised_Semantic))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SRT_ML_Response))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileProgressDashboard))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog))]
@@ -9763,6 +9765,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string AttributeValueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AttributeValueTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> AttributeValue_IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -9770,6 +9775,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CREATE_USERField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ComparisonField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
@@ -9845,6 +9853,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AttributeValueType {
+            get {
+                return this.AttributeValueTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttributeValueTypeField, value) != true)) {
+                    this.AttributeValueTypeField = value;
+                    this.RaisePropertyChanged("AttributeValueType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.Guid> AttributeValue_ID {
             get {
                 return this.AttributeValue_IDField;
@@ -9879,6 +9900,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CREATE_USERField, value) != true)) {
                     this.CREATE_USERField = value;
                     this.RaisePropertyChanged("CREATE_USER");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Comparison {
+            get {
+                return this.ComparisonField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ComparisonField, value) != true)) {
+                    this.ComparisonField = value;
+                    this.RaisePropertyChanged("Comparison");
                 }
             }
         }
@@ -26814,6 +26848,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Country_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InterestTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> InterestTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool NoOpsScheduleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -26951,6 +26991,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Country_IdField.Equals(value) != true)) {
                     this.Country_IdField = value;
                     this.RaisePropertyChanged("Country_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InterestType {
+            get {
+                return this.InterestTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InterestTypeField, value) != true)) {
+                    this.InterestTypeField = value;
+                    this.RaisePropertyChanged("InterestType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> InterestTypeId {
+            get {
+                return this.InterestTypeIdField;
+            }
+            set {
+                if ((this.InterestTypeIdField.Equals(value) != true)) {
+                    this.InterestTypeIdField = value;
+                    this.RaisePropertyChanged("InterestTypeId");
                 }
             }
         }
@@ -27279,6 +27345,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FinanceControlIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InterestTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsPickUpDropDefinedField;
@@ -27691,6 +27760,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.FinanceControlIdField, value) != true)) {
                     this.FinanceControlIdField = value;
                     this.RaisePropertyChanged("FinanceControlId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string InterestType {
+            get {
+                return this.InterestTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InterestTypeField, value) != true)) {
+                    this.InterestTypeField = value;
+                    this.RaisePropertyChanged("InterestType");
                 }
             }
         }
@@ -28139,6 +28221,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string SupProdTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SysInterestTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SysInterestTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SysProdCatField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -28262,6 +28350,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupProdTypeField, value) != true)) {
                     this.SupProdTypeField = value;
                     this.RaisePropertyChanged("SupProdType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SysInterestType {
+            get {
+                return this.SysInterestTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SysInterestTypeField, value) != true)) {
+                    this.SysInterestTypeField = value;
+                    this.RaisePropertyChanged("SysInterestType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SysInterestTypeId {
+            get {
+                return this.SysInterestTypeIdField;
+            }
+            set {
+                if ((this.SysInterestTypeIdField.Equals(value) != true)) {
+                    this.SysInterestTypeIdField = value;
+                    this.RaisePropertyChanged("SysInterestTypeId");
                 }
             }
         }
@@ -46515,83 +46629,6 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class DC_SRT_ML_Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic _objMLSemField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic _objMLSupSemField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic _objMLSynField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic _objMLSem {
-            get {
-                return this._objMLSemField;
-            }
-            set {
-                if ((object.ReferenceEquals(this._objMLSemField, value) != true)) {
-                    this._objMLSemField = value;
-                    this.RaisePropertyChanged("_objMLSem");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic _objMLSupSem {
-            get {
-                return this._objMLSupSemField;
-            }
-            set {
-                if ((object.ReferenceEquals(this._objMLSupSemField, value) != true)) {
-                    this._objMLSupSemField = value;
-                    this.RaisePropertyChanged("_objMLSupSem");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic _objMLSyn {
-            get {
-                return this._objMLSynField;
-            }
-            set {
-                if ((object.ReferenceEquals(this._objMLSynField, value) != true)) {
-                    this._objMLSynField = value;
-                    this.RaisePropertyChanged("_objMLSyn");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response_Semantic", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
     public partial class DC_SRT_ML_Response_Semantic : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -47038,6 +47075,83 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.scoreField.Equals(value) != true)) {
                     this.scoreField = value;
                     this.RaisePropertyChanged("score");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SRT_ML_Response", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_SRT_ML_Response : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic _objMLSemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic _objMLSupSemField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic _objMLSynField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic _objMLSem {
+            get {
+                return this._objMLSemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._objMLSemField, value) != true)) {
+                    this._objMLSemField = value;
+                    this.RaisePropertyChanged("_objMLSem");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic _objMLSupSem {
+            get {
+                return this._objMLSupSemField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._objMLSupSemField, value) != true)) {
+                    this._objMLSupSemField = value;
+                    this.RaisePropertyChanged("_objMLSupSem");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic _objMLSyn {
+            get {
+                return this._objMLSynField;
+            }
+            set {
+                if ((object.ReferenceEquals(this._objMLSynField, value) != true)) {
+                    this._objMLSynField = value;
+                    this.RaisePropertyChanged("_objMLSyn");
                 }
             }
         }
@@ -50206,27 +50320,6 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_TTFUALL", ReplyAction="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_TTFUALLResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AccomodationSupplierRoomTypeMapping_TTFUALLAsync(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Syntactic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[] GetRTM_ML_Suggestions_Syntactic(string Accomodation_SupplierRoomTypeMapping_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Syntactic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]> GetRTM_ML_Suggestions_SyntacticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[] GetRTM_ML_Suggestions_Semantic(string Accomodation_SupplierRoomTypeMapping_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]> GetRTM_ML_Suggestions_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetCountryMapping", ReplyAction="http://tempuri.org/IMapping/GetCountryMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetCountryMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ);
@@ -50375,6 +50468,35 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetHotelListByCityCode", ReplyAction="http://tempuri.org/IMapping/GetHotelListByCityCodeResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]> GetHotelListByCityCodeAsync(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Syntactic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[] GetRTM_ML_Suggestions_Syntactic(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Syntactic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SyntacticResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]> GetRTM_ML_Suggestions_SyntacticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[] GetRTM_ML_Suggestions_Semantic(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_SemanticResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]> GetRTM_ML_Suggestions_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Supervised_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Supervised_SemanticResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Supervised_SemanticDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic[] GetRTM_ML_Suggestions_Supervised_Semantic(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Supervised_Semantic", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_Suggestions_Supervised_SemanticResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic[]> GetRTM_ML_Suggestions_Supervised_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdmin/GetSiteMapMaster", ReplyAction="http://tempuri.org/IAdmin/GetSiteMapMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAdmin/GetSiteMapMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -52751,30 +52873,6 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AccomodationSupplierRoomTypeMapping_TTFUALLAsync(Acco_RoomTypeMap_Ids);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[] GetRTM_ML_Suggestions_Syntactic(string Accomodation_SupplierRoomTypeMapping_Id) {
-            return base.Channel.GetRTM_ML_Suggestions_Syntactic(Accomodation_SupplierRoomTypeMapping_Id);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]> GetRTM_ML_Suggestions_SyntacticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
-            return base.Channel.GetRTM_ML_Suggestions_SyntacticAsync(Accomodation_SupplierRoomTypeMapping_Id);
-        }
-        
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id) {
-            return base.Channel.GetRTM_ML_Suggestions(Accomodation_SupplierRoomTypeMapping_Id);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
-            return base.Channel.GetRTM_ML_SuggestionsAsync(Accomodation_SupplierRoomTypeMapping_Id);
-        }
-        
-        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[] GetRTM_ML_Suggestions_Semantic(string Accomodation_SupplierRoomTypeMapping_Id) {
-            return base.Channel.GetRTM_ML_Suggestions_Semantic(Accomodation_SupplierRoomTypeMapping_Id);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]> GetRTM_ML_Suggestions_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
-            return base.Channel.GetRTM_ML_Suggestions_SemanticAsync(Accomodation_SupplierRoomTypeMapping_Id);
-        }
-        
         public TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ) {
             return base.Channel.GetCountryMapping(RQ);
         }
@@ -52933,6 +53031,38 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]> GetHotelListByCityCodeAsync(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ param) {
             return base.Channel.GetHotelListByCityCodeAsync(param);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[] GetRTM_ML_Suggestions_Syntactic(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_Syntactic(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic[]> GetRTM_ML_Suggestions_SyntacticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_SyntacticAsync(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[] GetRTM_ML_Suggestions_Semantic(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_Semantic(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic[]> GetRTM_ML_Suggestions_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_SemanticAsync(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic[] GetRTM_ML_Suggestions_Supervised_Semantic(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_Supervised_Semantic(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic[]> GetRTM_ML_Suggestions_Supervised_SemanticAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions_Supervised_SemanticAsync(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_Suggestions(Accomodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetRTM_ML_SuggestionsAsync(Accomodation_SupplierRoomTypeMapping_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid) {

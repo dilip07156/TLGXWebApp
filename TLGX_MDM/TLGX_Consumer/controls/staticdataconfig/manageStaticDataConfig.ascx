@@ -242,6 +242,8 @@
                                         <asp:BoundField DataField="STATUS" HeaderText="Status" />
                                         <asp:BoundField DataField="Priority" HeaderText="Priority" />
                                         <asp:BoundField DataField="Description" HeaderText="Description" />
+                                        <asp:BoundField DataField="AttributeValueType" HeaderText="AttributeValueType" />
+                                        <asp:BoundField DataField="Comparison" HeaderText="Comparison" />
                                         <asp:TemplateField ShowHeader="false">
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
@@ -328,12 +330,14 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="form-group row" id="dvMatchByColumnOrValue" runat="server">
+                                                <div class="form-group row" id="dvMatchByColumnOrValue" runat="server" visible="false">
                                                     <div class="col-sm-8">
                                                         <label class="radio-inline">
-                                                            <input type="radio" id="rdoIsMatchByColumn" runat="server" name="IsMatchByColumnOrValue"><b>Column</b></label>
+                                                            <asp:RadioButton ID="rdoIsMatchByColumn" runat="server" Checked="true" text="Column" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByColumn_CheckedChanged"   AutoPostBack="true"/>
+                                                           </label>
                                                         <label class="radio-inline">
-                                                            <input type="radio" id="rdoIsMatchByValue" runat="server" name="IsMatchByColumnOrValue"><b>Value</b></label>
+                                                            <asp:RadioButton ID="rdoIsMatchByValue" runat="server"  text="Value"  GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByValue_CheckedChanged"  AutoPostBack="true"/>
+                                                        </label>
                                                     </div>
                                                 </div>
 
@@ -357,8 +361,10 @@
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                         </asp:DropDownList>
                                                         <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
-
-
+                                                          <%--For Comparison operator--%>
+                                                        <asp:DropDownList ID="ddlComparisonValue" runat="server" CssClass="form-control " AppendDataBoundItems="true" Visible="false">
+                                                                <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                            </asp:DropDownList> &nbsp;
                                                         <%--For TextBox Values--%>
                                                         <asp:TextBox ID="txtAttributeValue" runat="server" Visible="false" CssClass="form-control"></asp:TextBox>
                                                         <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeValue" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
@@ -447,6 +453,18 @@
                                                         <asp:HiddenField ID="hdnddlAttributeTableName" runat="server" />
                                                     </div>
                                                 </div>
+
+                                                 <div class="form-group row" id="dvMatchByColumnOrValue" runat="server" visible="false">
+                                                    <div class="col-sm-8">
+                                                        <label class="radio-inline">
+                                                            <asp:RadioButton ID="rdoIsMatchByColumn" runat="server" Checked="true" text="Column" GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByColumn_CheckedChanged" name="IsMatchByColumnOrValue"  AutoPostBack="true"  />
+                                                           </label>
+                                                        <label class="radio-inline">
+                                                              <asp:RadioButton ID="rdoIsMatchByValue" runat="server"  text="Value"  GroupName="MatchBy" OnCheckedChanged="rdoIsMatchByValue_CheckedChanged"  name="IsMatchByColumnOrValue" AutoPostBack="true"/>
+                                                          </label>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group row" id="dvAttributeValue" runat="server">
                                                     <label class="control-label col-sm-4" for="txtAttributeName">
                                                         Value
@@ -462,11 +480,18 @@
                                                             CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />--%>
                                                     </label>
                                                     <div class="col-sm-8">
+                                                        <%--For Comparison Values--%>
+                                                        <asp:DropDownList ID="ddlComparisonValue" runat="server" CssClass="form-control " AppendDataBoundItems="true" Visible="false">
+                                                                <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                            </asp:DropDownList> &nbsp;
+                                                             <%--For TextBox Values--%>
                                                         <asp:TextBox ID="txtAttributeValue" runat="server" CssClass="form-control" Visible="false"></asp:TextBox>
                                                         <cc1:FilteredTextBoxExtender ID="axfte_txtAttributeName" runat="server" Enabled="false" FilterType="Numbers" TargetControlID="txtAttributeValue" />
-                                                        <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                             <%--For Dropdown Values--%>
+                                                          <asp:DropDownList ID="ddlAttributeValue" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                         </asp:DropDownList>
+                                                             
                                                         <asp:HiddenField ID="hdnddlAttributeTableValueName" runat="server" />
                                                         <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
                                                         <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
@@ -493,8 +518,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="txtAttributeName">Status</label>
+                                                    <label class="control-label col-sm-4" for="ddlAddStatus">Status</label>
                                                     <div class="col-sm-8">
                                                         <asp:DropDownList ID="ddlAddStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
