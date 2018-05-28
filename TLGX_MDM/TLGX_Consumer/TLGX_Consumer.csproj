@@ -1040,6 +1040,9 @@
     <Content Include="Service\GetSRT_ML_suggestion_Syntactic.ashx" />
     <Content Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx" />
     <Content Include="Service\GetSRT_ML_suggestion_Semantic.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

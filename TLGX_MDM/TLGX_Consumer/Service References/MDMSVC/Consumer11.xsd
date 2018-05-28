@@ -991,14 +991,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_SRT_ML_Match_Syntactic" nillable="true" type="tns:DC_SRT_ML_Match_Syntactic" />
-  <xs:complexType name="DC_SRT_ML_Response">
+  <xs:complexType name="ArrayOfDC_SRT_ML_Response_Semantic">
     <xs:sequence>
-      <xs:element minOccurs="0" name="_objMLSem" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
-      <xs:element minOccurs="0" name="_objMLSupSem" nillable="true" type="tns:DC_SRT_ML_Response_Supervised_Semantic" />
-      <xs:element minOccurs="0" name="_objMLSyn" nillable="true" type="tns:DC_SRT_ML_Response_Syntactic" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Response_Semantic" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="DC_SRT_ML_Response" nillable="true" type="tns:DC_SRT_ML_Response" />
+  <xs:element name="ArrayOfDC_SRT_ML_Response_Semantic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Response_Semantic" />
   <xs:complexType name="DC_SRT_ML_Response_Semantic">
     <xs:sequence>
       <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo_Semantic" />
@@ -1035,6 +1033,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_SRT_ML_Match_Semantic" nillable="true" type="tns:DC_SRT_ML_Match_Semantic" />
+  <xs:complexType name="ArrayOfDC_SRT_ML_Response_Supervised_Semantic">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Response_Supervised_Semantic" nillable="true" type="tns:DC_SRT_ML_Response_Supervised_Semantic" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SRT_ML_Response_Supervised_Semantic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Response_Supervised_Semantic" />
   <xs:complexType name="DC_SRT_ML_Response_Supervised_Semantic">
     <xs:sequence>
       <xs:element minOccurs="0" name="AccommodationRoomInfo_Id" nillable="true" type="tns:ArrayOfDC_SRT_ML_AccommodationRoomInfo_Supervised_Semantic" />
@@ -1071,12 +1075,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_SRT_ML_Match_Supervised_Semantic" nillable="true" type="tns:DC_SRT_ML_Match_Supervised_Semantic" />
-  <xs:complexType name="ArrayOfDC_SRT_ML_Response_Semantic">
+  <xs:complexType name="DC_SRT_ML_Response">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SRT_ML_Response_Semantic" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
+      <xs:element minOccurs="0" name="_objMLSem" nillable="true" type="tns:DC_SRT_ML_Response_Semantic" />
+      <xs:element minOccurs="0" name="_objMLSupSem" nillable="true" type="tns:DC_SRT_ML_Response_Supervised_Semantic" />
+      <xs:element minOccurs="0" name="_objMLSyn" nillable="true" type="tns:DC_SRT_ML_Response_Syntactic" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfDC_SRT_ML_Response_Semantic" nillable="true" type="tns:ArrayOfDC_SRT_ML_Response_Semantic" />
+  <xs:element name="DC_SRT_ML_Response" nillable="true" type="tns:DC_SRT_ML_Response" />
   <xs:complexType name="DC_FileProgressDashboard">
     <xs:sequence>
       <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="ErrorLog" nillable="true" type="q9:ArrayOfDC_SupplierImportFile_ErrorLog" />
