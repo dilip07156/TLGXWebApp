@@ -4,7 +4,8 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <%@ Register Src="~/controls/staticdataconfig/FileMappingcharts.ascx" TagPrefix="uc1" TagName="FileMappingcharts" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">   
+    
     <link href="../Scripts/ChartJS/morris.css" rel="stylesheet" media="all" />
     <style>
         @media(min-width: 992px) {
@@ -48,10 +49,21 @@
 
                 .list-inline li::after {
                     content: '|';
-                }
-    </style>
-
+                }                 
+    </style>     
     <script type="text/javascript">
+
+        //handling post back - binding data again
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+         if (prm != null) {
+        prm.add_endRequest(function (sender, e) {
+            if (sender._postBackSettings.panelsToUpdate != null) {
+               getChartData();
+            }
+        });
+    };
+        //end handling post back
+
         //script for RUN MAPPING
         var x;
         function myTimer() {
@@ -572,11 +584,13 @@
             });
             getChartData();
         });
-    </script>
-    <script src="../Scripts/ChartJS/raphael-min.js"></script>
-    <script src="../Scripts/ChartJS/morris.min.js"></script>
+    </script> 
+    <script src="../Scripts/ChartJS/raphael-min.js"></script>       
+    <script src="../Scripts/ChartJS/morris.min.js"></script>       
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
 
+    <asp:UpdatePanel runat="server" ID="upPnlSupplierWise">
+    <ContentTemplate>
     <div class="row">
         <div class="col-md-4">
             <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
@@ -609,16 +623,18 @@
                     <%--<button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>--%>
                     <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
                 </div>
+                
             </div>
         </div>
     </div>
-
+   
     <div class="row">
         <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
     </div>
-    <hr />
-    <%--for first three charts--%>
-    <div class="row" id="supplierwisedata" runat="server">
+        
+    <%--<hr />--%>
+    <%--for first three charts--%>     
+    <div class="row" id="supplierwisedata" runat="server">        
         <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
             <div class="panel  panel-default">
                 <div class="panel-heading">
@@ -710,16 +726,26 @@
                             <td>
                                 <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
                             </td>
-                            <td>
+                            <td colspan="1">
                                 <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
                             </td>
+                        </tr>  
+                     <tr> <td>&nbsp;</td></tr>
+                          <tr >
+                             <td >
+                                <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" Width="70px" />
+                            &nbsp;
+                            </td>
+                              <td>
+                                <asp:Button ID="btnHotelRun" runat="server" Text="ReRun HotelNameTx" class="btn btn-primary btn-sm" OnClick="btnHotelRun_Click" />
+                              </td>
                         </tr>
                         <tr>
                             <td colspan="2">
                                 <div id="dvMsgHotel" runat="server" style="display: none;"></div>
                             </td>
                         </tr>
-                    </table>
+                    </table>                                        
                 </div>
                 <div class="panel-body">
                     <b><span class="nxtrundate"></span></b>
@@ -749,6 +775,12 @@
                             </td>
                             <td>
                                 <asp:Button ID="btnRoomTypeReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRunSchedule_Click" />
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                        <tr>
+                            <td colspan="3">
+                               <asp:Button ID="btnRoomRun" runat="server" Text="ReRun RoomNameTx" class="btn btn-primary btn-sm" OnClick="btnRoomRun_Click" />
                             </td>
                         </tr>
                         <tr>
@@ -803,8 +835,8 @@
                     <h4><b id="activitySuppliersCount"></b></h4>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>              
+    </div>  
     <%-- for last three pie charts--%>
     <div class="row" id="allsupplierdata" runat="server">
         <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
@@ -867,7 +899,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>           
+</ContentTemplate>
+ </asp:UpdatePanel>
     <%--Export Report--%>
     <div class="container" id="report" runat="server">
         <div style="width: 100%; height: 100%">
@@ -880,8 +914,7 @@
             </rsweb:ReportViewer>
         </div>
     </div>
-
-    <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
+         <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header" style="padding: 5px 5px 5px 15px;">
@@ -898,5 +931,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>        
 </asp:Content>
+

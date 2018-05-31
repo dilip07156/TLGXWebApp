@@ -13,5 +13,10 @@ namespace TLGX_Consumer.staticdata.config
         {
 
         }
+
+        protected void btnRedirectToSearch_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/staticdata/config/search.aspx");
+        }
     }
 }

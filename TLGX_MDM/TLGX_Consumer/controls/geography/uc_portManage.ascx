@@ -13,6 +13,8 @@
             </div>
 
 <div class="col-lg-12">
+    <asp:UpdatePanel runat="server" ID="upPnlPortManage">
+    <ContentTemplate>
     <div class="panel panel-default">
         <div class="panel-heading">Port Information</div>
         <div class="panel-body">
@@ -204,4 +206,6 @@
             </div>
         </div>
     </div>
+        </ContentTemplate>
+        </asp:UpdatePanel>
 </div>

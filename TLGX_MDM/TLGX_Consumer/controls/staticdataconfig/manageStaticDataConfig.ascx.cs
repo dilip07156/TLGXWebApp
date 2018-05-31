@@ -77,7 +77,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
-        private void setNoOfColumnsForMapType(int PageIndex,Guid Config_Id)
+        private void setNoOfColumnsForMapType(int PageIndex, Guid Config_Id)
         {
             if (Config_Id != Guid.Empty)
             {
@@ -235,7 +235,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void EnableDisableValidation(RequiredFieldValidator rqfv)
         {
-            if(rqfv!=null)
+            if (rqfv != null)
                 rqfv.Enabled = true;
         }
         private void fillfor(DropDownList ddl)
@@ -322,6 +322,20 @@ namespace TLGX_Consumer.controls.staticdataconfig
             //ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
         }
 
+        public void fillComparisonOperators(string masterfor, string attributename, DropDownList ddl)
+        {
+            MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
+            RQ.MasterFor = masterfor;
+            RQ.Name = attributename;
+            var resvalues = mastersvc.GetAllAttributeAndValues(RQ);
+            ddl.Items.Clear();
+            ddl.DataSource = resvalues;
+            ddl.DataTextField = "AttributeValue";
+            ddl.DataValueField = "AttributeValue";
+            ddl.DataBind();
+            ddl.Items.Insert(0, new ListItem("---Select---", "0"));
+        }
+
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
             Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
@@ -390,6 +404,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     frmAddConfig.DataBind();
                     hdnFlag.Value = "false";
                     bool isFound = false;
+
                     if (res != null && res.Count > 0)
                     {
 
@@ -423,6 +438,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom");
                         TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo");
 
+                        //matchBy
+                        System.Web.UI.HtmlControls.HtmlGenericControl dvMatchByColumnOrValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvMatchByColumnOrValue");
+                        DropDownList ddlComparisonValue = (DropDownList)frmAddConfig.FindControl("ddlComparisonValue");
+                        RadioButton rdoIsMatchByColumn = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByColumn");
+                        RadioButton rdoIsMatchByValue = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByValue");
+                        dvMatchByColumnOrValue.Visible = false;
+                        ddlComparisonValue.Visible = false;
+                        //end
                         #endregion //Get All Controls
 
                         #region Priority 
@@ -443,6 +466,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         //Fill and Set Attribute Name 
                         #region Attribute Name
                         txtAttributeName.Visible = ddlAttributeName.Visible = false;
+
                         if (ddlAttributeType.SelectedItem.Value != "0")
                         {
                             #region For Distinct and Filter AttributeType
@@ -486,6 +510,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 {
                                     lstAttributeName = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
                                     hdnddlAttributeTableName.Value = _mappingTable;
+
                                 }
 
                                 if (lstAttributeName != null)
@@ -622,6 +647,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             #endregion //End  For Filter
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "map" || ddlAttributeType.SelectedItem.Text.ToLower() == "match")
                             {
+                                fillComparisonOperators("MappingConfigAttributeTypes", "ComparisonOperators", ddlComparisonValue);
                                 List<string> lstAttributeValue = null;
                                 if (IsMapping && res[0].AttributeType.ToLower() == "map")
                                 {
@@ -636,19 +662,60 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                                 else if (!IsMapping && res[0].AttributeType.ToLower() == "match")
                                 {
+                                    #region y match By
+                                    if (ddlComparisonValue.Items.FindByText(res[0].Comparison) != null)
+                                    {
+                                        ddlComparisonValue.SelectedIndex = ddlComparisonValue.Items.IndexOf(ddlComparisonValue.Items.FindByText(res[0].Comparison));
+                                    }
+                                    
+                                    dvMatchByColumnOrValue.Visible = true;
+
+                                    if (res[0].AttributeValueType != null)
+                                    {
+                                        if (res[0].AttributeValueType.ToUpper() == "VALUE")
+                                        {
+                                            rdoIsMatchByColumn.Checked = false;
+                                            rdoIsMatchByValue.Checked = true;
+                                            txtAttributeValue.Text = res[0].AttributeValue;
+                                            //ddlAttributeValue.Style.Add("display", "none");
+                                            ddlAttributeValue.Visible = false;
+                                            txtAttributeValue.Visible = true;
+                                            ddlComparisonValue.Visible = true;
+
+                                        }
+                                        else
+                                        {
+                                            rdoIsMatchByColumn.Checked = true;
+                                        }
+                                    }
+                                    #endregion 
                                     lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_masterTable);
-                                    hdnddlAttributeTableValueName.Value = _masterTable;
+                                     hdnddlAttributeTableValueName.Value = _masterTable;
+
                                 }
                                 if (lstAttributeValue != null)
                                 {
-                                    ddlAttributeValue.Visible = true;
-                                    ddlAttributeValue.Items.Clear();
-                                    ddlAttributeValue.DataSource = lstAttributeValue;
-                                    ddlAttributeValue.DataBind();
-                                    ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
-                                    ddlAttributeValue.SelectedIndex = ddlAttributeValue.Items.IndexOf(ddlAttributeValue.Items.FindByText(res[0].AttributeValue.ToString().Split('.')[1]));
-                                    
-                                    EnableDisableValidation(rqfvddlAttributeValuedll);
+                                    //y match By
+                                    if(res[0].AttributeValueType.ToUpper() == "VALUE")
+                                    {
+                                        ddlAttributeValue.Items.Clear();
+                                        ddlAttributeValue.DataSource = lstAttributeValue;
+                                        ddlAttributeValue.DataBind();
+                                        ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                    }
+                                    //end y match By
+                                    else
+                                    {
+                                        ddlAttributeValue.Visible = true;
+                                        ddlAttributeValue.Items.Clear();
+                                        ddlAttributeValue.DataSource = lstAttributeValue;
+                                        ddlAttributeValue.DataBind();
+                                        ddlAttributeValue.Items.Insert(0, new ListItem("---ALL---", "0"));
+                                        ddlAttributeValue.SelectedIndex = ddlAttributeValue.Items.IndexOf(ddlAttributeValue.Items.FindByText(res[0].AttributeValue.ToString().Split('.')[1]));
+
+                                        EnableDisableValidation(rqfvddlAttributeValuedll);
+                                    }
+                                   
                                 }
                             }
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format")
@@ -750,7 +817,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             }
                         }
                         #endregion
-
 
                     }
                     dvMsg.Visible = false;
@@ -878,12 +944,21 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
             TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom"); //New Field added for priority
             TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo"); //New Field added for priority
-
+            //MatchBy
+            RadioButton rdoIsMatchByColumn = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByColumn");
+            RadioButton rdoIsMatchByValue = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByValue");
+            DropDownList ddlComparisonValue = (DropDownList)frmAddConfig.FindControl("ddlComparisonValue");
+            System.Web.UI.HtmlControls.HtmlGenericControl dvMatchByColumnOrValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvMatchByColumnOrValue");
+            //End
             if (e.CommandName == "Add")
             {
                 string strAttributeValue = string.Empty;
                 string strAttributeName = string.Empty;
                 Guid AttributeValue_id = Guid.Empty;
+
+                string strAttributeValueType = string.Empty;
+                string strcomparisonValue = string.Empty;
+
                 bool blnIsGuid = Guid.TryParse(ddlAttributeName.SelectedValue, out AttributeValue_id);
                 if (blnIsGuid && ddlAttributeName.Visible)
                 {
@@ -934,7 +1009,29 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     strAttributeName = strAttributeValue;
                     strAttributeValue = strtemp;
                 }
-
+                //match by
+                if (dvMatchByColumnOrValue.Visible)
+                {
+                    if (rdoIsMatchByValue.Checked)
+                    {
+                        strAttributeValueType = rdoIsMatchByValue.Text.ToUpper();
+                        if (ddlComparisonValue.SelectedValue != "0")
+                            strcomparisonValue = ddlComparisonValue.SelectedValue;
+                        strAttributeValue = txtAttributeValue.Text;
+                    }
+                    else
+                    {
+                        strAttributeValueType = rdoIsMatchByColumn.Text.ToUpper();
+                        strcomparisonValue = "=";
+                    }
+                    if (hdnddlAttributeTableName != null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
+                    {
+                        if (!string.IsNullOrEmpty(hdnddlAttributeTableName.Value) && hdnddlAttributeTableName.Value != "0")
+                            strAttributeName = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
+                        else
+                            strAttributeName = ddlAttributeName.SelectedItem.ToString();
+                    }
+                }
 
                 MDMSVC.DC_SupplierImportAttributeValues newObj = new MDMSVC.DC_SupplierImportAttributeValues
                 {
@@ -948,7 +1045,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     Description = txtDescription.InnerText,
                     STATUS = "ACTIVE",
                     CREATE_DATE = DateTime.Now,
-                    CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name
+                    CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name,
+                    Comparison = strcomparisonValue,
+                    AttributeValueType = strAttributeValueType
+
                 };
 
 
@@ -964,7 +1064,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 {
                     hdnFlag.Value = "true";
                     //PageIndex = 0;
-                    fillmappingattributes(0,Config_Id);
+                    fillmappingattributes(0, Config_Id);
                     fillattributeFilters(Config_Id);
                     dvMsg.Visible = true;
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, dc.StatusMessage, BootstrapAlertType.Success);
@@ -978,6 +1078,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 string strAttributeValue = string.Empty;
                 string strAttributeName = string.Empty;
                 Guid AttributeValue_id = Guid.Empty;
+
+                string strAttributeValueType = string.Empty;
+                string strcomparisonValue = string.Empty;
+
                 bool blnIsGuid = Guid.TryParse(ddlAttributeName.SelectedValue, out AttributeValue_id);
                 if (blnIsGuid && ddlAttributeName.Visible)
                 {
@@ -1029,6 +1133,31 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     strAttributeValue = strtemp;
                 }
 
+                // y match by
+                if (dvMatchByColumnOrValue.Visible)
+                {
+                    if (rdoIsMatchByValue.Checked)
+                    {
+                        strAttributeValueType = rdoIsMatchByValue.Text.ToUpper();
+                        if (ddlComparisonValue.SelectedValue != "0")
+                            strcomparisonValue = ddlComparisonValue.SelectedValue;
+                        strAttributeValue = txtAttributeValue.Text;
+                    }
+                    else
+                    {
+                        strAttributeValueType = rdoIsMatchByColumn.Text.ToUpper();
+                        strcomparisonValue = "=";
+                    }
+                    if (hdnddlAttributeTableName != null && !string.IsNullOrEmpty(hdnddlAttributeTableName.Value))
+                    {
+                        if (!string.IsNullOrEmpty(hdnddlAttributeTableName.Value) && hdnddlAttributeTableName.Value != "0")
+                            strAttributeName = hdnddlAttributeTableName.Value + "." + ddlAttributeName.SelectedItem.ToString();
+                        else
+                            strAttributeName = ddlAttributeName.SelectedItem.ToString();
+                    }
+                }
+                //end
+
                 MDMSVC.DC_SupplierImportAttributeValues newObj = new MDMSVC.DC_SupplierImportAttributeValues
                 {
                     SupplierImportAttributeValue_Id = SelectedSupplierImportAttributeValue_Id,
@@ -1041,7 +1170,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     Priority = Convert.ToInt32(txtPriority.Text),
                     Description = txtDescription.InnerText,
                     EDIT_DATE = DateTime.Now,
-                    EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
+                    EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name,
+                    AttributeValueType = strAttributeValueType,
+                    Comparison = strcomparisonValue
                 };
 
                 lstNewObj.Add(newObj);
@@ -1119,10 +1250,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvddlAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvddlAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtPriority = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtPriority");
-
+            System.Web.UI.HtmlControls.HtmlGenericControl dvMatchByColumnOrValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvMatchByColumnOrValue");
             fillattributes("MappingConfigAttributeTypes", "AttributeType", ddlAttributeType);
+
+            DropDownList ddlComparisonValue = (DropDownList)frmAddConfig.FindControl("ddlComparisonValue");
+            fillComparisonOperators("MappingConfigAttributeTypes", "ComparisonOperators", ddlComparisonValue);
             //dvddlAttributeValue.Visible = false;
             //dvtxtAttributeValue.Visible = true;
+
+            //dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+            dvMatchByColumnOrValue.Visible = false;
+
             if (IsMapping)
                 dvtxtPriority.Style.Add(HtmlTextWriterStyle.Display, "none");
             else
@@ -1152,10 +1290,17 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl dvValueForFilter = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvValueForFilter");
             System.Web.UI.HtmlControls.HtmlGenericControl dvAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
-
+            //matchBy
+            System.Web.UI.HtmlControls.HtmlGenericControl dvMatchByColumnOrValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvMatchByColumnOrValue");
+            DropDownList ddlComparisonValue = (DropDownList)frmAddConfig.FindControl("ddlComparisonValue");
+            RadioButton rdoIsMatchByColumn = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByColumn");
+            RadioButton rdoIsMatchByValue = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByValue");
             #endregion //End All Controls
             bool isFound = false;
 
+            ddlComparisonValue.Visible = false;
+            //dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "none");
+            dvMatchByColumnOrValue.Visible = false;
             #region Set Attribute Name 
             if (ddlAttributeType.SelectedItem.Value != "0")
             {
@@ -1282,6 +1427,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                     else if (!IsMapping && strAttributeType == "match") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- master table Columns
                     {
+                        // dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "block");
+                        dvMatchByColumnOrValue.Visible = true;
+                        rdoIsMatchByValue.Checked = false;
+                        rdoIsMatchByColumn.Checked = true;
                         lstAttributeName = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
                         hdnddlAttributeTableName.Value = _mappingTable;
                         lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_masterTable);
@@ -1509,11 +1658,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         }
                         else
                             if (!(frmAddConfig.CurrentMode.ToString() == "Edit"))
-                            {
-                                axfte_txtAttributeValue.Enabled = false;
-                                rqfvddlAttributeValue.Enabled = false;
-                                rqfvddlAttributeValueFilter.Enabled = false;
-                               //rqfvddlAttributeValueFrom.Enabled = true;
+                        {
+                            axfte_txtAttributeValue.Enabled = false;
+                            rqfvddlAttributeValue.Enabled = false;
+                            rqfvddlAttributeValueFilter.Enabled = false;
+                            //rqfvddlAttributeValueFrom.Enabled = true;
                         }
                     }
 
@@ -1556,6 +1705,37 @@ namespace TLGX_Consumer.controls.staticdataconfig
             fillmappingattributes(0, Config_Id);
             dvMsg.Visible = false;
             setNoOfColumnsForMapType(0, Config_Id);
+        }
+
+        protected void MatchBy_CheckedChanged()
+        {
+            RadioButton rdoIsMatchByValue = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByValue");
+            RadioButton rdoIsMatchByColumn = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByColumn");
+            DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
+            DropDownList ddlComparisonValue = (DropDownList)frmAddConfig.FindControl("ddlComparisonValue");
+            TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
+            if (rdoIsMatchByValue.Checked == true)
+            {
+                ddlAttributeValue.Visible = false;
+                txtAttributeValue.Visible = true;
+                ddlComparisonValue.Visible = true;
+            }
+            else
+            {
+               ddlAttributeValue.Visible = true;
+                txtAttributeValue.Visible = false;
+                ddlComparisonValue.Visible = false;
+            }
+        }
+
+        protected void rdoIsMatchByColumn_CheckedChanged(object sender, EventArgs e)
+        {
+            MatchBy_CheckedChanged();
+        }
+
+        protected void rdoIsMatchByValue_CheckedChanged(object sender, EventArgs e)
+        {
+            MatchBy_CheckedChanged();
         }
     }
 }
