@@ -214,7 +214,7 @@
         }
         return flag;
     }
-    
+
 </script>
 
 <style>
@@ -241,13 +241,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div id="dvMsg" runat="server" style="display: none;"></div>
-                <div id="dvMsgStatusUpdate"  runat="server" style="display: none;"></div>
+                <div id="dvMsgStatusUpdate" runat="server" style="display: none;"></div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <div     id="ValidationSummary" class="alert alert-danger" style="display: none;">
+                <div id="ValidationSummary" class="alert alert-danger" style="display: none;">
                 </div>
                 <%--<asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="ProductOverView" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />--%>
             </div>
@@ -314,6 +314,48 @@
                             <div class="col-sm-8">
                                 <asp:TextBox ID="txtProdCategory" runat="server" Text="ACTIVITIES" CssClass="form-control" Enabled="false">
                                 </asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-sm-2" for="ddlProdNameSubType">
+                                <u>Interest Type</u>
+                                <span class="validation text-danger" style="display: none;" id="vldInterestType">*</span>
+                            </label>
+                            <em>
+                                <asp:Label ID="lblSuppInterestType" runat="server" class="control-label col-sm-2"></asp:Label></em>
+                            <div class="col-sm-8">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <asp:DropDownList ID="ddlInterestType" runat="server" CssClass="col-sm-8 form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>
+                                    <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnAddInterestType" OnClick="btnAddInterestType_Click">
+                                         <i class="glyphicon glyphicon-plus"></i>
+                                    </asp:LinkButton>
+                                </div>
+                                <asp:Repeater ID="repInterestType" runat="server" OnItemCommand="repInterestType_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table class="table table-stripped table-hover" id="tblInterestType">
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr class="row">
+                                            <td class="col-md-10">
+                                                <asp:Label ID="lblInterestType" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "InterestType") %>'></asp:Label>
+                                            </td>
+                                            <td class="col-md-2">
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveInterestType" CommandName="RemoveInterestType" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "InterestType_Id") %>'>
+                                                        <i class="glyphicon glyphicon-minus"></i>
+                                                </asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </table> 
+                                    </FooterTemplate>
+                                </asp:Repeater>
+
                             </div>
                         </div>
 
@@ -445,6 +487,7 @@
 
                             </div>
                         </div>
+
 
                     </div>
                 </div>
