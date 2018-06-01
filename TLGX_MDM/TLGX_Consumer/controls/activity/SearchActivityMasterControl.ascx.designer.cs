@@ -49,6 +49,15 @@ namespace TLGX_Consumer.controls.activity {
         protected global::System.Web.UI.WebControls.DropDownList ddlCity;
         
         /// <summary>
+        /// ddlInterestType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlInterestType;
+        
+        /// <summary>
         /// ddlProductCategorySubType control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace TLGX_Consumer.controls.activity {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkNoSpecial;
+        
+        /// <summary>
+        /// chkOnlyMedia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkOnlyMedia;
         
         /// <summary>
         /// btnSearch control.

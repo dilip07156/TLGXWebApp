@@ -1297,6 +1297,7 @@
       <xs:element minOccurs="0" name="NoSession" type="xs:boolean" />
       <xs:element minOccurs="0" name="NoSpecials" type="xs:boolean" />
       <xs:element minOccurs="0" name="NoSuitableFor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OnlyMedia" type="xs:boolean" />
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ProductCategorySubType" nillable="true" type="xs:string" />

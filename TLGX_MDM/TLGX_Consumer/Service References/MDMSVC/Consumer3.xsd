@@ -1280,6 +1280,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Table" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

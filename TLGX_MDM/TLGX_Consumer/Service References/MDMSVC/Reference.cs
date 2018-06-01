@@ -26869,6 +26869,9 @@ namespace TLGX_Consumer.MDMSVC {
         private bool NoSuitableForField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool OnlyMediaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -27082,6 +27085,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.NoSuitableForField.Equals(value) != true)) {
                     this.NoSuitableForField = value;
                     this.RaisePropertyChanged("NoSuitableFor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool OnlyMedia {
+            get {
+                return this.OnlyMediaField;
+            }
+            set {
+                if ((this.OnlyMediaField.Equals(value) != true)) {
+                    this.OnlyMediaField = value;
+                    this.RaisePropertyChanged("OnlyMedia");
                 }
             }
         }
@@ -49688,10 +49704,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/ReRunKeyword", ReplyAction="http://tempuri.org/IMasters/ReRunKeywordResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/ReRunKeywordDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message ReRunKeyword(string Entity);
+        TLGX_Consumer.MDMSVC.DC_Message ReRunKeyword(string Entity, string Table, string Supplier_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/ReRunKeyword", ReplyAction="http://tempuri.org/IMasters/ReRunKeywordResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> ReRunKeywordAsync(string Entity);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> ReRunKeywordAsync(string Entity, string Table, string Supplier_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetListOfColumnNamesByTable", ReplyAction="http://tempuri.org/IMasters/GetListOfColumnNamesByTableResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetListOfColumnNamesByTableDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -52161,12 +52177,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.ApplyKeywordAsync(RQ);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message ReRunKeyword(string Entity) {
-            return base.Channel.ReRunKeyword(Entity);
+        public TLGX_Consumer.MDMSVC.DC_Message ReRunKeyword(string Entity, string Table, string Supplier_Id) {
+            return base.Channel.ReRunKeyword(Entity, Table, Supplier_Id);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> ReRunKeywordAsync(string Entity) {
-            return base.Channel.ReRunKeywordAsync(Entity);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> ReRunKeywordAsync(string Entity, string Table, string Supplier_Id) {
+            return base.Channel.ReRunKeywordAsync(Entity, Table, Supplier_Id);
         }
         
         public string[] GetListOfColumnNamesByTable(string TableName) {

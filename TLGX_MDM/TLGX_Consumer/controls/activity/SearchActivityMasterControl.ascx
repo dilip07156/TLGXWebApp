@@ -84,6 +84,19 @@
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
+
+                                             <div class="row">
+                                                <label class="control-label col-sm-6" for="ddlInterestType">
+                                                    Interest Type
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:DropDownList ID="ddlInterestType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlInterestType_SelectedIndexChanged">
+                                                            <asp:ListItem Value="0">-ALL-</asp:ListItem>
+                                                            <asp:ListItem Text="-ALL UNMAPPED-" Value="1"></asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
                                             <div class="row">
                                                 <label class="control-label col-sm-6" for="ddlProductCategorySubType">
                                                     System Category SubType
@@ -222,6 +235,12 @@
                                                     <asp:CheckBox ID="chkNoSpecial" runat="server" />
                                                 </div>
                                             </div>
+                                              <div class="row">
+                                                <label class="control-label col-sm-9" for="chkNoSpecials">Show Only With Media</label>
+                                                <div class="col-sm-3">
+                                                    <asp:CheckBox ID="chkOnlyMedia" runat="server" />
+                                                </div>
+                                            </div>
 
                                             <div class="form-group row">
                                                 <div class="col-sm-6">
@@ -299,16 +318,17 @@
                     <div class="panel-body">
                         <%--style="padding:0;border:0px;height:450px;overflow-y:auto"--%>
 
-                        <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
+                        <asp:GridView ID="gvActivitySearch" runat="server" AllowPaging="True" AllowCustomPaging="True"
                             EmptyDataText="No data for search conditions" CssClass="table table-hover table-bordered"
-                            AutoGenerateColumns="false" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging"
-                            OnRowDataBound="gvActivitySearch_RowDataBound" OnRowCommand="gvActivitySearch_RowCommand" PagerSettings-Position="TopAndBottom">
-                            <PagerStyle CssClass="pagination-ys" />
+                            AutoGenerateColumns="False" DataKeyNames="Activity_Flavour_Id" OnPageIndexChanging="gvActivitySearch_PageIndexChanging"
+                            OnRowDataBound="gvActivitySearch_RowDataBound" OnRowCommand="gvActivitySearch_RowCommand" PagerSettings-Position="TopAndBottom" >
+                            <PagerStyle CssClass="pagination-ys"  />
                             <Columns>
                                 <asp:BoundField DataField="CommonProductNameSubType_Id" HeaderText="Common Product ID" />
                                 <asp:HyperLinkField DataNavigateUrlFields="Activity_Flavour_Id" runat="server" DataNavigateUrlFormatString="~/activity/ManageActivityFlavour.aspx?Activity_Flavour_Id={0}" DataTextField="ProductName"
-                                    ControlStyle-Font-Bold="true" HeaderText="Product Name" ControlStyle-CssClass="label urlLink" NavigateUrl="~/activity/ManageActivityFlavour.aspx" />
+                                    ControlStyle-Font-Bold="true" HeaderText="Product Name" ControlStyle-CssClass="label urlLink" NavigateUrl="~/activity/ManageActivityFlavour.aspx"  />
                                 <%--<asp:BoundField DataField="ProductName" HeaderText="Product Name" />--%>
+                                  <asp:BoundField DataField="InterestType" HeaderText="Interest Type" />
                                 <asp:BoundField DataField="ProductCategorySubType" HeaderText="Product Category Sub Type" />
                                 <asp:BoundField DataField="ProductType" HeaderText="Product Type" />
                                 <asp:BoundField DataField="ProductNameSubType" HeaderText="Product Name Sub Type" />
