@@ -1043,6 +1043,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\ActivityMediaInfo.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2618,6 +2619,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ActivityMediaInfo.ashx.cs">
+      <DependentUpon>ActivityMediaInfo.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\ActivityNameAutoComplete.ashx.cs">
       <DependentUpon>ActivityNameAutoComplete.ashx</DependentUpon>
