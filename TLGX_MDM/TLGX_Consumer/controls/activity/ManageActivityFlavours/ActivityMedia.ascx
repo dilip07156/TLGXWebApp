@@ -96,12 +96,12 @@ padding-bottom: 30px;*/
                 var d = $("<div class='carousel-caption'/>");
                 
                 d.append('<h4><b>Details by Supplier  - </b></h4>');
-                d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not Given" : result[i].Media_Caption) + "</p>");
-                d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not Given" : result[i].MediaName) + "</p>");
-                d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not Given" : result[i].Description) + "</p>");
-                d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not Given" : result[i].Media_Width) + "</p>");
-                d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not Given" : result[i].Media_Height) + "</p>");
-                d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not Given" : result[i].MediaType) + "</p>");
+                d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not given by supplier" : result[i].Media_Caption) + "</p>");
+                d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not given by supplier" : result[i].MediaName) + "</p>");
+                d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not given by supplier" : result[i].Description) + "</p>");
+                d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not given by supplier" : result[i].Media_Width) + "</p>");
+                d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not given by supplier" : result[i].Media_Height) + "</p>");
+                d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not given by supplier" : result[i].MediaType) + "</p>");
                 d.append("<br/>");
                 d.append("<div class='carousel-caption-imagedetails'/>");
 
