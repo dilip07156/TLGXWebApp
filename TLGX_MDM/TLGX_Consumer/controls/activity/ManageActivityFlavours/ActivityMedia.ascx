@@ -76,46 +76,50 @@ padding-bottom: 30px;*/
     function renderImageDeatils(result) {
         if (result != null && result.length > 0) {
             for (var i = 0; i < result.length; i++) {
-                var divcontrol = '<div class="item"/>';
-                var divcontrolactive = '<div class="item active"/>';
-                var div = null;
-                if (i == 0) {
-                    div = $(divcontrolactive);
+                if (result[i].Media_URL != null)
+                {
+                    var divcontrol = '<div class="item"/>';
+                    var divcontrolactive = '<div class="item active"/>';
+                    var div = null;
+                    if (i == 0) {
+                        div = $(divcontrolactive);
+                    }
+                    else {
+                        div = $(divcontrol);
+                    }
+                    var imgRowDiv = $('<div class="row"/>');
+
+                    var imgColDiv = $('<div class="col-sm-9" style="padding: 0px!important;"/>');
+                    imgColDiv.append(" <img class='img-responsive' src= '" + result[i].Media_URL + "' alt=' Image Not Found'/>");
+
+                    imgRowDiv.append(imgColDiv);
+
+                    var capColDiv = $('<div class="col-sm-3"/>');
+                    var d = $("<div class='carousel-caption'/>");
+
+                    d.append('<h4><b>Details by Supplier  - </b></h4>');
+                    d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not given by supplier" : result[i].Media_Caption) + "</p>");
+                    d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not given by supplier" : result[i].MediaName) + "</p>");
+                    d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not given by supplier" : result[i].Description) + "</p>");
+                    d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not given by supplier" : result[i].Media_Width) + "</p>");
+                    d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not given by supplier" : result[i].Media_Height) + "</p>");
+                    d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not given by supplier" : result[i].MediaType) + "</p>");
+                    d.append("<br/>");
+                    d.append("<div class='carousel-caption-imagedetails'/>");
+
+                    capColDiv.append(d);
+
+                    imgRowDiv.append(capColDiv);
+
+                    div.append(imgRowDiv);
+
+                    $("#photolost").append(div);
                 }
-                else {
-                    div = $(divcontrol);
-                }
-                var imgRowDiv = $('<div class="row"/>');
-
-                var imgColDiv = $('<div class="col-sm-9" style="padding: 0px!important;"/>');
-                imgColDiv.append(" <img class='img-responsive' src= '" + result[i].Media_URL + "' alt='Not Found'/>");
-
-                imgRowDiv.append(imgColDiv);
-
-                var capColDiv = $('<div class="col-sm-3"/>');
-                var d = $("<div class='carousel-caption'/>");
-                
-                d.append('<h4><b>Details by Supplier  - </b></h4>');
-                d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not given by supplier" : result[i].Media_Caption) + "</p>");
-                d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not given by supplier" : result[i].MediaName) + "</p>");
-                d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not given by supplier" : result[i].Description) + "</p>");
-                d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not given by supplier" : result[i].Media_Width) + "</p>");
-                d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not given by supplier" : result[i].Media_Height) + "</p>");
-                d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not given by supplier" : result[i].MediaType) + "</p>");
-                d.append("<br/>");
-                d.append("<div class='carousel-caption-imagedetails'/>");
-
-                capColDiv.append(d);
-
-                imgRowDiv.append(capColDiv);
-
-                div.append(imgRowDiv);
-
-                $("#photolost").append(div);
             }
             getMeta();
         }
     }
+
     function GetMediaFor() {
         $("#photolost").empty();
         var ActFlavID = '<%= Request.QueryString["Activity_Flavour_Id"] %>';
@@ -130,7 +134,6 @@ padding-bottom: 30px;*/
         showImageModal();
     }
     // GET IMAGE DETAILS FROM SRC
-
     function getMeta() {
         var Naturalheight = $('.item.active').find('img').prop('naturalHeight');
         var Naturalwidth = $('.item.active').find('img').prop('naturalWidth');
@@ -139,7 +142,7 @@ padding-bottom: 30px;*/
         captActive.append('<h4><b>Image Details -</b></h4>');
         captActive.append("<p><b>Natural width</b> : " + Naturalwidth + " pixels </p>");
         captActive.append("<p><b>Natural height</b> : " + Naturalheight + " pixels </p>");
-        captActive.append("<p><b>Dimensions</b> : " + Naturalheight + " x " + Naturalwidth + " </p>");
+        captActive.append("<p><b>Dimensions</b> : " + Naturalwidth + " x " + Naturalheight + " </p>");
     }
     // end
     function showImageModal() {
@@ -247,14 +250,14 @@ padding-bottom: 30px;*/
 </div>
 
 
-<!--Start Gallery-->
+<!--Start Image Gallery-->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="moImgGallery">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+
             <div class="modal-header">
                 <h4 class="modal-title">Image Details</h4>
             </div>
-            <%--   <div class="modal-body" >--%>
 
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" style="width: auto; height: 500px;">
 
@@ -263,7 +266,7 @@ padding-bottom: 30px;*/
                     <!-- Dynamic Image Content from Ajax call -->
                 </div>
 
-                <!-- Controls -->
+                <!-- Controls left and right buttons-->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </a>
@@ -271,10 +274,11 @@ padding-bottom: 30px;*/
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
             </div>
-            <%-- </div>--%>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
+
         </div>
     </div>
 </div>
