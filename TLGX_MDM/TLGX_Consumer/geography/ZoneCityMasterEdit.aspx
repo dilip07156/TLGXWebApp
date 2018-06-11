@@ -329,13 +329,7 @@
                                             </asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="control-label col-md-4" for="txtEditLatitude">Latitude</label>
-                                        <div class="col-md-8">
-                                            <asp:TextBox ID="txtEditLatitude" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
+                                     <div class="form-group row">
                                         <label class="control-label col-md-4" for="ddlMasterCountryEdit">Country</label>
                                         <div class="col-md-8">
                                             <asp:DropDownList ID="ddlMasterCountryEdit" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" Enabled="False">
@@ -344,6 +338,22 @@
                                             </asp:DropDownList>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-4" for="txtEditLatitude">Latitude</label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox ID="txtEditLatitude" runat="server" CssClass="form-control"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <label class="control-label col-md-4" for="ddlZoneRadius">Include Hotels Upto Range (km)</label>
+                                        <div class="col-md-8">
+                                            <asp:DropDownList ID="ddlZoneRadius" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                   
                                 </div>
 
                                 <div class="col-md-6">
@@ -351,7 +361,15 @@
                                     <div class="form-group row">
                                         <label class="control-label col-md-4" for="ddlEditZoneType">Zone type</label>
                                         <div class="col-md-8">
-                                            <asp:DropDownList ID="ddlEditZoneType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:DropDownList ID="ddlEditZoneType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlEditZoneType_SelectedIndexChanged">
+                                                <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+                                      <div class="form-group row">
+                                        <label class="control-label col-md-4" for="ddlEditZoneSubType">Zone SubType</label>
+                                        <div class="col-md-8">
+                                            <asp:DropDownList ID="ddlEditZoneSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                 <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
@@ -360,14 +378,6 @@
                                         <label class="control-label col-md-4" for="txtEditLongitude">Longitude</label>
                                         <div class="col-md-8">
                                             <asp:TextBox ID="txtEditLongitude" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="control-label col-md-4" for="ddlZoneRadius">Include Hotels Upto Range (km)</label>
-                                        <div class="col-md-8">
-                                            <asp:DropDownList ID="ddlZoneRadius" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                <asp:ListItem Value="0">--Select--</asp:ListItem>
-                                            </asp:DropDownList>
                                         </div>
                                     </div>
 

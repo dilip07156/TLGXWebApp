@@ -40,24 +40,6 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlMasterCity;
         
         /// <summary>
-        /// btnAddZone control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddZone;
-        
-        /// <summary>
-        /// ddlZoneType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlZoneType;
-        
-        /// <summary>
         /// ddlStatus control.
         /// </summary>
         /// <remarks>
@@ -83,6 +65,33 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnReset;
+        
+        /// <summary>
+        /// ddlZoneType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlZoneType;
+        
+        /// <summary>
+        /// ddlZoneSubType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlZoneSubType;
+        
+        /// <summary>
+        /// btnAddZone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddZone;
         
         /// <summary>
         /// UPsearchGrid control.
@@ -148,6 +157,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
+        /// vlsSumm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
+        
+        /// <summary>
         /// dvmsgAdd control.
         /// </summary>
         /// <remarks>
@@ -166,6 +184,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.HiddenField hdnPlaceId;
         
         /// <summary>
+        /// rfvAddZoneName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAddZoneName;
+        
+        /// <summary>
         /// txtAddZoneName control.
         /// </summary>
         /// <remarks>
@@ -175,6 +202,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.TextBox txtAddZoneName;
         
         /// <summary>
+        /// rfvMasterCountryAddModal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMasterCountryAddModal;
+        
+        /// <summary>
         /// ddlMasterCountryAddModal control.
         /// </summary>
         /// <remarks>
@@ -182,6 +218,15 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMasterCountryAddModal;
+        
+        /// <summary>
+        /// rfvtxtLatitude control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvtxtLatitude;
         
         /// <summary>
         /// txtLatitude control.
@@ -202,6 +247,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlAddHotelIncludeRange;
         
         /// <summary>
+        /// rfvAddZoneType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAddZoneType;
+        
+        /// <summary>
         /// ddlAddZoneType control.
         /// </summary>
         /// <remarks>
@@ -211,6 +265,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlAddZoneType;
         
         /// <summary>
+        /// ddlAddZoneSubType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAddZoneSubType;
+        
+        /// <summary>
         /// ddlMasterCityAddModal control.
         /// </summary>
         /// <remarks>
@@ -218,6 +281,15 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlMasterCityAddModal;
+        
+        /// <summary>
+        /// rfvLongitude control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLongitude;
         
         /// <summary>
         /// txtLongitude control.

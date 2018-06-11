@@ -225,6 +225,7 @@
       <xs:element minOccurs="0" name="ZoneProductMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Radius" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Zone_SubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Type" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_id" type="ser:guid" />
     </xs:sequence>
@@ -239,9 +240,9 @@
   <xs:complexType name="DC_ZoneSearch">
     <xs:sequence>
       <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="City_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="City_id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Country_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Country_id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
       <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
@@ -250,6 +251,7 @@
       <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Radius" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Zone_SubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Type" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_id" type="ser:guid" />
     </xs:sequence>

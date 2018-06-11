@@ -42,6 +42,7 @@ namespace TLGX_Consumer.geography
             ddl.DataValueField = "Country_Id";
             ddl.DataTextField = "Country_Name";
             ddl.DataBind();
+            ddl.Items.Insert(0, new ListItem("---Select---", "0"));
         }
         private void fillcities(DropDownList ddl, DropDownList ddlp)
         {
@@ -66,10 +67,11 @@ namespace TLGX_Consumer.geography
                     ddl.Items.Clear();
                     ddl.DataSource = result;
                     ddl.DataTextField = "AttributeValue";
-                    ddl.DataValueField = "AttributeValue";
+                    ddl.DataValueField = "MasterAttributeValue_Id";
                     ddl.DataBind();
-                    ddl.Items.Insert(0, new ListItem { Text = "--Select--", Value = "0" });
+                   
                 }
+            ddl.Items.Insert(0, new ListItem { Text = "--Select--", Value = "0" });
         }
         private void BindZoneRadius(DropDownList ddl)
         {
@@ -86,7 +88,23 @@ namespace TLGX_Consumer.geography
                     ddl.DataBind();
                 }
         }
-
+        private void BindZoneSubType(DropDownList ddl, string ZoneTypeValue)
+        {
+            ddl.Items.Clear();
+            var result = masterSVc.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "Zone", Name = "ZoneSubType", ParentAttributeValue_Id = Guid.Parse(ZoneTypeValue) });
+            if (result != null)
+            {
+                if (result.Count > 0)
+                {
+                    ddl.Items.Clear();
+                    ddl.DataSource = result;
+                    ddl.DataTextField = "AttributeValue";
+                    ddl.DataValueField = "MasterAttributeValue_Id";
+                    ddl.DataBind();
+                }
+            }
+            ddl.Items.Insert(0, new ListItem { Text = "---Select---", Value = "0" });
+        }
         public void getZoneInfo(string calledfrom)
         {
             var result = masterSVc.SearchZone(new MDMSVC.DC_ZoneRQ { Zone_id = Zone_Id });
@@ -99,6 +117,11 @@ namespace TLGX_Consumer.geography
                 ddlMasterCountryEdit.SelectedIndex = ddlMasterCountryEdit.Items.IndexOf(ddlMasterCountryEdit.Items.FindByText(result[0].CountryName));
                 ddlZoneRadius.SelectedIndex = ddlZoneRadius.Items.IndexOf(ddlZoneRadius.Items.FindByText((result[0].Zone_Radius).ToString()));
                 ddlEditZoneType.SelectedIndex = ddlEditZoneType.Items.IndexOf(ddlEditZoneType.Items.FindByText(result[0].Zone_Type));
+
+                if (ddlEditZoneType.SelectedValue != "0")
+                    BindZoneSubType(ddlEditZoneSubType, ddlEditZoneType.SelectedValue);
+                ddlEditZoneSubType.SelectedIndex =  (result[0].Zone_SubType == null)?0:ddlEditZoneSubType.Items.IndexOf(ddlEditZoneSubType.Items.FindByText(result[0].Zone_SubType));
+
                 ddlShowDistance.SelectedIndex = ddlShowDistance.Items.IndexOf(ddlShowDistance.Items.FindByText((result[0].Zone_Radius).ToString()));
                 hdnCountryId.Value = ddlMasterCountryEdit.SelectedValue;
                 fillcities(ddlMasterCityEdit, ddlMasterCountryEdit);
@@ -174,11 +197,20 @@ namespace TLGX_Consumer.geography
             UPdparam.Zone_Name = txtEditZoneName.Text;
             UPdparam.Latitude = lat;
             UPdparam.Longitude = longg;
-            UPdparam.Zone_Type = ddlEditZoneType.SelectedItem.Text;
             UPdparam.Edit_Date = DateTime.Now;
             UPdparam.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-            UPdparam.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
+            if(ddlEditZoneType.SelectedItem.Value!="0")
+                UPdparam.Zone_Type = ddlEditZoneType.SelectedItem.Text;
+            if (ddlEditZoneSubType.SelectedItem.Value != "0")
+                UPdparam.Zone_SubType = ddlEditZoneSubType.SelectedItem.Text;
+            if (ddlMasterCountryEdit.SelectedItem.Value != "0")
+            {
+                UPdparam.CountryName = ddlMasterCountryEdit.SelectedItem.Text;
+                UPdparam.Country_id = Guid.Parse(ddlMasterCountryEdit.SelectedValue);
+            }
+
             UPdparam.Zone_Radius = zoneRadius;
+            
             var result = masterSVc.AddzoneMaster(UPdparam);
             var addZone = masterSVc.InsertZoneHotelsInTable(UPdparam);
             getZoneInfo(string.Empty);
@@ -190,7 +222,8 @@ namespace TLGX_Consumer.geography
             RQ.Create_Date = DateTime.Now;
             RQ.Create_User= System.Web.HttpContext.Current.User.Identity.Name; ;
             RQ.Zone_id = Zone_Id;
-            RQ.City_id = new Guid(ddlMasterCityEdit.SelectedValue);
+            if(ddlMasterCityEdit.SelectedValue != "0")
+                 RQ.City_id = new Guid(ddlMasterCityEdit.SelectedValue);
             var result = masterSVc.AddZoneCityMapping(RQ);
             if (result != null)
             {
@@ -287,6 +320,12 @@ namespace TLGX_Consumer.geography
                     e.Row.Font.Strikeout = true;
                 }
             }
+        }
+
+        protected void ddlEditZoneType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlEditZoneType.SelectedValue != "0")
+                BindZoneSubType(ddlEditZoneSubType, ddlEditZoneType.SelectedValue);
         }
     }
 }

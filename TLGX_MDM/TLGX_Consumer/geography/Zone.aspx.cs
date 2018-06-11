@@ -40,6 +40,7 @@ namespace TLGX_Consumer.geography
                 string ZoneStatus = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["Status"]);
                 string PageNo = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PN"]);
                 string PageSize = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["PS"]);
+                string ZoneSubType = Convert.ToString(HttpUtility.ParseQueryString(Request.UrlReferrer.Query)["ZoSubType"]);
                 #endregion
                 int pageno = 0;
                 int pagesize = 10;
@@ -58,6 +59,9 @@ namespace TLGX_Consumer.geography
 
                 if (!string.IsNullOrWhiteSpace(ZoneType))
                     ddlZoneType.SelectedIndex = ddlZoneType.Items.IndexOf(ddlZoneType.Items.FindByText(ZoneType));
+
+                if (!string.IsNullOrWhiteSpace(ZoneSubType))
+                    ddlZoneSubType.SelectedIndex = ddlZoneSubType.Items.IndexOf(ddlZoneSubType.Items.FindByText(ZoneSubType));
 
                 if (!string.IsNullOrWhiteSpace(ZoneStatus))
                     ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(ZoneStatus));
@@ -112,10 +116,27 @@ namespace TLGX_Consumer.geography
                     ddl.Items.Clear();
                     ddl.DataSource = result;
                     ddl.DataTextField = "AttributeValue";
-                    ddl.DataValueField = "AttributeValue";
+                    ddl.DataValueField = "MasterAttributeValue_Id";
                     ddl.DataBind();
-                    ddl.Items.Insert(0, new ListItem { Text = "--ALL--", Value = "0" });
                 }
+            ddl.Items.Insert(0, new ListItem { Text = "--ALL--", Value = "0" });
+        }
+        private void BindZoneSubType(DropDownList ddl, string ZoneTypeValue)
+        {
+            ddl.Items.Clear();
+            var result = masterSVc.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "Zone", Name = "ZoneSubType", ParentAttributeValue_Id = Guid.Parse(ZoneTypeValue) });
+            if (result != null)
+            {
+                if (result.Count > 0)
+                {
+                    ddl.Items.Clear();
+                    ddl.DataSource = result;
+                    ddl.DataTextField = "AttributeValue";
+                    ddl.DataValueField = "MasterAttributeValue_Id";
+                    ddl.DataBind();
+                }
+            }
+            ddl.Items.Insert(0, new ListItem { Text = "---Select---", Value = "0" });
         }
         private void BindZoneRadius(DropDownList ddl)
         {
@@ -146,12 +167,16 @@ namespace TLGX_Consumer.geography
                     R.City_id = new Guid(ddlMasterCity.SelectedValue);
                 if (ddlZoneType.SelectedItem.Value != "0")
                     R.Zone_Type = ddlZoneType.SelectedItem.Text;
+
+                if (ddlZoneSubType.SelectedItem.Value != "0")
+                    R.Zone_SubType = ddlZoneSubType.SelectedItem.Text;
+
                 if (ddlStatus.SelectedItem.Value != "0")
                     R.Status = ddlStatus.SelectedItem.Text;
 
                 var res = masterSVc.SearchZone(R);
 
-                if (res != null )
+                if (res != null)
                 {
                     if (res.Count > 0)
                     {
@@ -175,7 +200,7 @@ namespace TLGX_Consumer.geography
             {
                 throw;
             }
-           
+
         }
 
         protected void ddlMasterCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +224,8 @@ namespace TLGX_Consumer.geography
             ddlMasterCity.Items.Add(new ListItem("---Select---", "0"));
             ddlStatus.SelectedIndex = 0;
             ddlZoneType.SelectedIndex = 0;
+            ddlZoneSubType.Items.Clear();
+            ddlZoneSubType.Items.Add(new ListItem("---Select---", "0"));
             ddlShowEntries.SelectedIndex = 0;
             lblTotalCount.Text = string.Empty;
 
@@ -211,8 +238,10 @@ namespace TLGX_Consumer.geography
             ddlMasterCountryAddModal.SelectedIndex = 0;
             ddlMasterCityAddModal.Items.Clear();
             ddlMasterCityAddModal.Items.Add(new ListItem("---Select---", "0"));
-           // ddlAddStatus.SelectedIndex = 0;
-            ddlZoneType.SelectedIndex = 0;
+            // ddlAddStatus.SelectedIndex = 0;
+            ddlAddZoneType.SelectedIndex = 0;
+            ddlAddZoneSubType.Items.Clear();
+            ddlAddZoneSubType.Items.Add(new ListItem("---Select---", "0"));
             txtAddZoneName.Text = "";
             txtLatitude.Text = "";
             txtLongitude.Text = "";
@@ -221,22 +250,33 @@ namespace TLGX_Consumer.geography
         protected void btnSaveZoneMaster_Click(object sender, EventArgs e)
         {
             MDMSVC.DC_ZoneRQ param = new MDMSVC.DC_ZoneRQ();
-            var Zone_id= Guid.NewGuid();
+            var Zone_id = Guid.NewGuid();
             param.Action = "ADD";
             param.Zone_Radius = 4.0;
             param.Zone_id = Zone_id;
             param.Create_Date = DateTime.Now;
             param.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
-            param.CountryName = ddlMasterCountryAddModal.SelectedItem.Text;
+
+
+            if (ddlMasterCountryAddModal.SelectedItem.Value != "0")
+            {
+                param.CountryName = ddlMasterCountryAddModal.SelectedItem.Text;
+                param.Country_id = new Guid(ddlMasterCountryAddModal.SelectedValue);
+            }
+
             if (ddlMasterCityAddModal.SelectedItem.Value != "0")
                 param.City_id = new Guid(ddlMasterCityAddModal.SelectedValue);
 
             if (ddlAddZoneType.SelectedItem.Value != "0")
                 param.Zone_Type = ddlAddZoneType.SelectedItem.Text;
 
+            if (ddlAddZoneSubType.SelectedItem.Value != "0")
+                param.Zone_SubType = ddlAddZoneSubType.SelectedItem.Text;
+
             if (ddlAddHotelIncludeRange.SelectedItem.Value != "0")
                 param.Zone_Radius = Convert.ToDouble(ddlAddHotelIncludeRange.SelectedValue);
-            else param.Zone_Radius = 4;
+
+            //else param.Zone_Radius = 4;
 
             param.Zone_Name = txtAddZoneName.Text;
             param.Latitude = txtLatitude.Text;
@@ -251,12 +291,12 @@ namespace TLGX_Consumer.geography
                     string strQueryString = GetQueryString(Zone_id.ToString(), "0");
                     Response.Redirect(strQueryString, true);
                 }
-                   
+
                 else
                     BootstrapAlert.BootstrapAlertMessage(dvmsgAdd, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
             }
         }
-     
+
         protected void ddlMasterCountryAddModal_SelectedIndexChanged(object sender, EventArgs e)
         {
             fillcities(ddlMasterCityAddModal, ddlMasterCountryAddModal);
@@ -301,7 +341,7 @@ namespace TLGX_Consumer.geography
                             fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been deleted successfully", BootstrapAlertType.Success);
                         }
-                            
+
                         else
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
                     }
@@ -326,43 +366,46 @@ namespace TLGX_Consumer.geography
                             fillMasterSearchData(0, Convert.ToInt32(ddlShowEntries.SelectedValue));
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, "Zone has been Undeleted successfully", BootstrapAlertType.Success);
                         }
-                            
+
                         else
                             BootstrapAlert.BootstrapAlertMessage(dvMsgDeleted, result.StatusMessage, (BootstrapAlertType)result.StatusCode);
                     }
                 }
             }
-            catch(Exception )
+            catch (Exception)
             {
                 throw;
             }
-           
+
         }
 
         public string GetQueryString(string myRow_Id, string strpageindex)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("~/geography/ZoneCityMasterEdit.aspx?Zone_Id=" + myRow_Id);
-            
-            if (ddlMasterCountry.SelectedValue !="0")
+
+            if (ddlMasterCountry.SelectedValue != "0")
             {
                 sb.Append("&CoID=" + HttpUtility.UrlEncode(ddlMasterCountry.SelectedValue));
                 sb.Append("&CoN=" + HttpUtility.UrlEncode(ddlMasterCountry.SelectedItem.Text));
             }
-           
+
             if (ddlMasterCity.SelectedValue != "0")
             {
                 sb.Append("&CiID=" + HttpUtility.UrlEncode(ddlMasterCity.SelectedValue));
                 sb.Append("&CiN=" + HttpUtility.UrlEncode(ddlMasterCity.SelectedItem.Text));
             }
-            
+
             if (ddlZoneType.SelectedValue != "0")
                 sb.Append("&ZoType=" + HttpUtility.UrlEncode(ddlZoneType.SelectedItem.Text));
+
+            if (ddlZoneSubType.SelectedValue != "0")
+                sb.Append("&ZoSubType=" + HttpUtility.UrlEncode(ddlZoneSubType.SelectedItem.Text));
 
             if (ddlStatus.SelectedValue != "0")
                 sb.Append("&Status=" + HttpUtility.UrlEncode(ddlStatus.SelectedItem.Text));
 
-          
+
             string pageindex = strpageindex;
             sb.Append("&PN=" + HttpUtility.UrlEncode(pageindex));
             sb.Append("&PS=" + HttpUtility.UrlEncode(Convert.ToString(ddlShowEntries.SelectedValue)));
@@ -382,6 +425,8 @@ namespace TLGX_Consumer.geography
             ddlMasterCityAddModal.Items.Clear();
             ddlMasterCityAddModal.Items.Add(new ListItem("---Select---", "0"));
             ddlAddZoneType.SelectedIndex = 0;
+            ddlAddZoneSubType.Items.Clear();
+            ddlAddZoneSubType.Items.Add(new ListItem("---Select---", "0"));
             txtLatitude.Text = string.Empty;
             txtLongitude.Text = string.Empty;
             txtAddZoneName.Text = string.Empty;
@@ -399,6 +444,18 @@ namespace TLGX_Consumer.geography
                     e.Row.Font.Strikeout = true;
                 }
             }
+        }
+
+        protected void ddlAddZoneType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlAddZoneType.SelectedValue != "0")
+                BindZoneSubType(ddlAddZoneSubType, ddlAddZoneType.SelectedValue);
+        }
+
+        protected void ddlZoneType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlZoneType.SelectedValue != "0")
+                BindZoneSubType(ddlZoneSubType, ddlZoneType.SelectedValue);
         }
     }
 }

@@ -94,6 +94,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.TextBox txtEditZoneName;
         
         /// <summary>
+        /// ddlMasterCountryEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMasterCountryEdit;
+        
+        /// <summary>
         /// txtEditLatitude control.
         /// </summary>
         /// <remarks>
@@ -103,13 +112,13 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.TextBox txtEditLatitude;
         
         /// <summary>
-        /// ddlMasterCountryEdit control.
+        /// ddlZoneRadius control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlMasterCountryEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlZoneRadius;
         
         /// <summary>
         /// ddlEditZoneType control.
@@ -121,6 +130,15 @@ namespace TLGX_Consumer.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlEditZoneType;
         
         /// <summary>
+        /// ddlEditZoneSubType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditZoneSubType;
+        
+        /// <summary>
         /// txtEditLongitude control.
         /// </summary>
         /// <remarks>
@@ -128,15 +146,6 @@ namespace TLGX_Consumer.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEditLongitude;
-        
-        /// <summary>
-        /// ddlZoneRadius control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlZoneRadius;
         
         /// <summary>
         /// btnUpdateZoneMaster control.

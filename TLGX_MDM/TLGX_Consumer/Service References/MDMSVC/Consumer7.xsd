@@ -214,6 +214,8 @@
       <xs:element minOccurs="0" name="CommonProductId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ExtraBed" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FloorName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FloorNumber" nillable="true" type="xs:int" />
@@ -240,6 +242,7 @@
       <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomTypeAttributes" nillable="true" type="tns:ArrayOfDC_SupplierRoomTypeAttributes" />
       <xs:element minOccurs="0" name="RoomViewCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Smoking" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StateName" nillable="true" type="xs:string" />

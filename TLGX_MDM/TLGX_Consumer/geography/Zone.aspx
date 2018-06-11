@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-     <style>
+    <style>
         @media (min-width: 768px) {
             .modal-lg {
                 width: 80%;
@@ -28,8 +28,13 @@
             var zoneName = $('#MainContent_txtAddZoneName').val();
             var city = $('#MainContent_ddlMasterCityAddModal').find("option:selected").text();
             var country = $('#MainContent_ddlMasterCountryAddModal').find("option:selected").text();
-            if (zoneName !== '' && city != '' && country != '') {
-                var address = zoneName + ',' + city + ',' + country;
+            if (zoneName !== '') {
+                var address = zoneName;
+                if (city != '--ALL--')
+                    address = zoneName + ',' + city;
+                if (country != '--ALL--')
+                    address = zoneName + ',' + country;
+                
                 var geocoder = new google.maps.Geocoder();
                 geocoder.geocode({ 'address': address }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
@@ -77,7 +82,7 @@
     </script>
 
     <div class="container">
-        <h1 class="page-header">Zone Manager</h1>
+        <h1 class="page-header">Undetermined Geographic Entity Manager</h1>
     </div>
 
     <!--search region-->
@@ -112,28 +117,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <div class="col-sm-6">
-                                                <asp:Button ID="btnAddZone" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" OnClientClick="showAddZoneModal()" OnClick="btnAddZone_Click" />
-                                            </div>
-                                            <div class="col-sm-6"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-
-                                        <div class="form-group row">
-                                            <label class="control-label col-sm-4" for="ddlZoneType">Zone type</label>
-                                            <div class="col-sm-8">
-                                                <asp:DropDownList ID="ddlZoneType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
                                             <label class="control-label col-sm-4" for="ddlStatus">Status</label>
                                             <div class="col-sm-8">
                                                 <asp:DropDownList ID="ddlStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                     <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                    <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                                     <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
                                                     <asp:ListItem Text="Inactive" Value="Inactive"></asp:ListItem>
                                                 </asp:DropDownList>
@@ -147,7 +134,33 @@
                                             <div class="col-sm-6">
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4" for="ddlZoneType">Zone type</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList ID="ddlZoneType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlZoneType_SelectedIndexChanged" AutoPostBack="true">
+                                                    <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="control-label col-sm-4" for="ddlZoneSubType">Zone Sub Type</label>
+                                            <div class="col-sm-8">
+                                                <asp:DropDownList ID="ddlZoneSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row  ">
+                                            </div>
+                                     <br /><br />
+                                        <div class="form-group row  ">
+                                             <div class="col-sm-6"></div>
+                                            <div class="col-sm-6 pull-right">
+                                                <asp:Button ID="btnAddZone" runat="server" CssClass="btn btn-primary btn-sm" Text="Add" OnClientClick="showAddZoneModal()" OnClick="btnAddZone_Click" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -192,6 +205,7 @@
                                         EnableViewState="true">
                                         <Columns>
                                             <asp:BoundField DataField="Zone_Type" HeaderText="Zone Type" />
+                                             <asp:BoundField DataField="Zone_SubType" HeaderText="Zone SubType" />
                                             <asp:BoundField DataField="CountryName" HeaderText="Country" />
                                             <asp:BoundField DataField="CityName" HeaderText="City" />
                                             <asp:BoundField DataField="Zone_Name" HeaderText="Zone Name" />
@@ -211,12 +225,12 @@
                                                     <span aria-hidden="true" class='<%# Eval("IsActive").ToString() ==  "True" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                                     <%# Eval("IsActive").ToString() == "True" ? "Delete" : "UnDelete"     %>
                                                     </asp:LinkButton>
-                                                    
+
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                         </Columns>
 
-                                        <PagerStyle CssClass="pagination-ys"/>
+                                        <PagerStyle CssClass="pagination-ys" />
 
                                     </asp:GridView>
                                 </div>
@@ -233,35 +247,42 @@
         <div class="modal-dialog ">
             <div class="modal-content">
                 <div class="modal-header" style="padding: 5px 5px 5px 15px;">
-                    <h4 class="modal-title"><b>Add Zone Master </b></h4>
+                    <h4 class="modal-title"><b> Add Undetermined Geographic Entity </b></h4>
                 </div>
                 <div class="modal-body">
                     <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
+                            <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="MZone" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                             <div style="display: none" runat="server" id="dvmsgAdd"></div>
                             <div class="panel-group" id="">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <asp:HiddenField ClientIDMode="Static" ID="hdnPlaceId" runat="server"/>
+                                                <asp:HiddenField ClientIDMode="Static" ID="hdnPlaceId" runat="server" />
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="txtAddZoneName">Name</label>
+                                                    <label class="control-label col-sm-4" for="txtAddZoneName">Name
+                                                        <asp:RequiredFieldValidator ID="rfvAddZoneName" runat="server" ControlToValidate="txtAddZoneName" CssClass="text-warning" ErrorMessage="Please enter Zone name." Text="*" ValidationGroup="MZone"></asp:RequiredFieldValidator>
+                                                    </label>
                                                     <div class="col-sm-8">
-                                                        <asp:TextBox ID="txtAddZoneName" runat="server" CssClass="form-control">
-                                                        </asp:TextBox>
-                                                    </div>
+                                                        <asp:TextBox ID="txtAddZoneName" runat="server" CssClass="form-control"> </asp:TextBox>
+                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="ddlMasterCountryAddModal">Country</label>
+                                                    <label class="control-label col-sm-4" for="ddlMasterCountryAddModal">Country
+                                                        <asp:RequiredFieldValidator ID="rfvMasterCountryAddModal" runat="server" ControlToValidate="ddlMasterCountryAddModal" CssClass="text-warning" ErrorMessage="Please enter Country name." Text="*" ValidationGroup="MZone" InitialValue="0"></asp:RequiredFieldValidator>
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <asp:DropDownList ID="ddlMasterCountryAddModal" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlMasterCountryAddModal_SelectedIndexChanged">
                                                             <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
                                                         </asp:DropDownList>
+                                                         
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="txtLatitude">Latitude</label>
+                                                    <label class="control-label col-sm-4" for="txtLatitude">Latitude
+                                                         <asp:RequiredFieldValidator ID="rfvtxtLatitude" runat="server" ControlToValidate="txtLatitude" CssClass="text-warning" ErrorMessage="Please enter Latitude." Text="*" ValidationGroup="MZone"></asp:RequiredFieldValidator>
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <asp:TextBox ID="txtLatitude" runat="server" CssClass="form-control"></asp:TextBox>
                                                     </div>
@@ -276,22 +297,34 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-12">
-                                                        <button type="button" id="btnGetLatLong" class="btn btn-primary btn-sm" onclick="getLatLong()">Get Latitude and Longitude</button>
-                                                        <button type="button" id="btnGetLatLongOnMap" class="btn btn-primary btn-sm" onclick="GetLatLongOnMap()">Get LatLong On Map</button>
+                                                        <button type="button" id="btnGetLatLong" class="btn btn-primary btn-sm" onclick="getLatLong()">Get Latitude and Longitude</button> 
+                                                        <br /><br />
+                                                        <button type="button" id="btnGetLatLongOnMap" class="btn btn-primary btn-sm" onclick="GetLatLongOnMap()">Get LatLong From Map</button>
                                                     </div>
                                                 </div>
-                                              
+
                                             </div>
 
                                             <div class="col-sm-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="ddlAddZoneType">Zone type</label>
+                                                    <label class="control-label col-sm-4" for="ddlAddZoneType">Zone type
+                                                        <asp:RequiredFieldValidator ID="rfvAddZoneType" runat="server" ControlToValidate="ddlAddZoneType" CssClass="text-warning" ErrorMessage="Please enter ZoneType." Text="*" ValidationGroup="MZone" InitialValue="0"></asp:RequiredFieldValidator>
+                                                    </label>
                                                     <div class="col-sm-8">
-                                                        <asp:DropDownList ID="ddlAddZoneType" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                        <asp:DropDownList ID="ddlAddZoneType" runat="server" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlAddZoneType_SelectedIndexChanged" AutoPostBack="true">
                                                             <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-4" for="ddlAddZoneType">Zone Sub Type</label>
+                                                    <div class="col-sm-8">
+                                                        <asp:DropDownList ID="ddlAddZoneSubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
+                                                            <asp:ListItem Text="---Select---" Value="0" ></asp:ListItem>
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-4" for="ddlMasterCityAddModal">City</label>
                                                     <div class="col-sm-8">
@@ -309,16 +342,18 @@
                                                 </div>
                                             </div>--%>
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-4" for="txtLongitude">Longitude</label>
+                                                    <label class="control-label col-sm-4" for="txtLongitude">Longitude
+                                                        <asp:RequiredFieldValidator ID="rfvLongitude" runat="server" ControlToValidate="txtLongitude" CssClass="text-warning" ErrorMessage="Please enter Longitude." Text="*" ValidationGroup="MZone"></asp:RequiredFieldValidator>
+                                                    </label>
                                                     <div class="col-sm-8">
                                                         <asp:TextBox ID="txtLongitude" runat="server" CssClass="form-control"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-4"></div>
-                                                    <div  class="col-sm-8">
+                                                    <div class="col-sm-8">
                                                         <div class="col-sm-6">
-                                                            <asp:Button ID="btnSaveZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnSaveZoneMaster_Click" />
+                                                            <asp:Button ID="btnSaveZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Save" OnClick="btnSaveZoneMaster_Click" ValidationGroup="MZone"/>
                                                         </div>
                                                         <div class="col-sm-6">
                                                             <asp:Button ID="btnCancelZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Cancel" OnClick="btnCancelZoneMaster_Click" />

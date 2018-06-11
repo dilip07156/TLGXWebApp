@@ -18,6 +18,7 @@
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" />
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/DataContracts.STG" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IConsumer_UpdateAccomodationDynamicAttributes_InputMessage">
@@ -2960,6 +2961,33 @@
   <wsdl:message name="IConsumer_SyncSupplierStaticHotel_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q326="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q326:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_InsertKafkaInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertKafkaInfo" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_InsertKafkaInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertKafkaInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_InsertKafkaInfo_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q327="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q327:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UpdateKafkaInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateKafkaInfo" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UpdateKafkaInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateKafkaInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_UpdateKafkaInfo_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q328="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q328:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetPollData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPollData" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetPollData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPollDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetPollData_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q329="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q329:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="UpdateAccomodationDynamicAttributes">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/UpdateAccomodationDynamicAttributes" message="tns:IConsumer_UpdateAccomodationDynamicAttributes_InputMessage" />
@@ -4594,6 +4622,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotel" message="tns:IConsumer_SyncSupplierStaticHotel_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotelResponse" message="tns:IConsumer_SyncSupplierStaticHotel_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotelDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncSupplierStaticHotel_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertKafkaInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKafka/InsertKafkaInfo" message="tns:IConsumer_InsertKafkaInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKafka/InsertKafkaInfoResponse" message="tns:IConsumer_InsertKafkaInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKafka/InsertKafkaInfoDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_InsertKafkaInfo_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateKafkaInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKafka/UpdateKafkaInfo" message="tns:IConsumer_UpdateKafkaInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKafka/UpdateKafkaInfoResponse" message="tns:IConsumer_UpdateKafkaInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKafka/UpdateKafkaInfoDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_UpdateKafkaInfo_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPollData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKafka/GetPollData" message="tns:IConsumer_GetPollData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKafka/GetPollDataResponse" message="tns:IConsumer_GetPollData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKafka/GetPollDataDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetPollData_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />
