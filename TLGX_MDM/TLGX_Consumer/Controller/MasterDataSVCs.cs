@@ -508,6 +508,7 @@ namespace TLGX_Consumer.Controller
             return result as List<string>;
         }
         #endregion
+
         #region pentaho
         public List<string> Pentaho_SupplierApiCall_Status()
         {
@@ -668,7 +669,6 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
-
         #region Static Hotel Data
 
         public List<DC_SupplierEntity> GetStaticHotel(MDMSVC.DC_SupplierEntity RQParams)
@@ -679,8 +679,6 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_SupplierEntity>;
         }
         #endregion
-
-
 
         #region Static Hotel
 
@@ -693,7 +691,5 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #endregion
-
-
     }
 }
