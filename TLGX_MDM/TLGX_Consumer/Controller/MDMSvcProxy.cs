@@ -29,6 +29,17 @@ namespace TLGX_Consumer.Controller.ServiceConnection
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(MDMSvcUrl + uri);
+
+                request.Headers.Add("CallingAgent", "MDM");
+                if(!string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+                {
+                    request.Headers.Add("CallingUser", System.Web.HttpContext.Current.User.Identity.Name);
+                }
+                else
+                {
+                    request.Headers.Add("CallingUser", "MDM_USER");
+                }
+                
                 request.KeepAlive = false;
                 request.Timeout = System.Threading.Timeout.Infinite;
                 request.ReadWriteTimeout = System.Threading.Timeout.Infinite;
@@ -66,6 +77,17 @@ namespace TLGX_Consumer.Controller.ServiceConnection
             try
             {
                 var request = (HttpWebRequest)WebRequest.Create(MDMSvcUrl + URI);
+
+                request.Headers.Add("CallingAgent", "MDM");
+                if (!string.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
+                {
+                    request.Headers.Add("CallingUser", System.Web.HttpContext.Current.User.Identity.Name);
+                }
+                else
+                {
+                    request.Headers.Add("CallingUser", string.Empty);
+                }
+
                 request.Method = "POST";
                 request.ContentType = "application/json";
                 request.KeepAlive = false;
