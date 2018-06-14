@@ -18,8 +18,30 @@
         max-height: 250px;
         overflow-y: scroll;
     }
+        .MouseOverCell{
+            background-color: rgb(22, 53,114);
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
 </style>
 <script type="text/javascript">
+    // Highlight the cell when mouse over on it  
+    function onMouseOver(rowIndex) {
+        var gv = document.getElementById("MainContent_searchAccoMapping_grdAccoMaps");
+        var rowElement = gv.rows[rowIndex];
+        //rowElement.style.backgroundColor = "#c8e4b6";
+        rowElement.cells[2].classList.add("MouseOverCell");
+        rowElement.cells[8].classList.add("MouseOverCell");
+    }
+
+    function onMouseOut(rowIndex) {
+        var gv = document.getElementById("MainContent_searchAccoMapping_grdAccoMaps");
+        var rowElement = gv.rows[rowIndex];
+       // rowElement.style.backgroundColor = "#fff";
+        rowElement.cells[2].classList.remove("MouseOverCell");
+        rowElement.cells[8].classList.remove("MouseOverCell");
+    }
+    //End
     $(function () {
         $("#accordion").accordion();
     });

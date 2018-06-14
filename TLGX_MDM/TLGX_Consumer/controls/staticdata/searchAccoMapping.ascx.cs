@@ -1578,6 +1578,8 @@ namespace TLGX_Consumer.controls.staticdata
             var myGridView = (GridView)sender;
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                e.Row.Attributes["onmouseover"] = "onMouseOver('" + (e.Row.RowIndex + 1) + "')";
+                e.Row.Attributes["onmouseout"] = "onMouseOut('" + (e.Row.RowIndex + 1) + "')";
                 int index = e.Row.RowIndex;
                 Guid myCountryId = Guid.Empty;
                 string CountryName = e.Row.Cells[8].Text.ToUpper();
