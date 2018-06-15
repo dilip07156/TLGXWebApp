@@ -256,6 +256,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl allsupplierdata;
         
         /// <summary>
+        /// hdnFileId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnFileId;
+        
+        /// <summary>
         /// report control.
         /// </summary>
         /// <remarks>

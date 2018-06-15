@@ -7,7 +7,7 @@ using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.staticdata
-{
+{    
     public enum ReRunMode
     {
         RERUN = 1,
@@ -15,11 +15,11 @@ namespace TLGX_Consumer.staticdata
     }
 
     public partial class manageSupplierImports : System.Web.UI.Page
-    {       
+    {
         private Models.MasterDataDAL objMasterDataDAL = new Models.MasterDataDAL();
         private MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
         private Controller.MappingSVCs MapSvc = new Controller.MappingSVCs();
-
+       
         protected void Page_Init(object sender, EventArgs e)
         {
             //For page authroization
@@ -167,6 +167,7 @@ namespace TLGX_Consumer.staticdata
                 var result = _objMappingSVCs.StaticFileUploadProcessFile(obj);
                 //end
                 //view File  details
+                hdnFileId.Value = SupplierImportFile_Id.ToString();
                 ClientScript.RegisterStartupScript(this.GetType(), "showDetailsModal", "showDetailsModal('" + SupplierImportFile_Id + "');", true);
             }
             // Response.Redirect("~/staticdata/files/upload.aspx");
@@ -307,11 +308,11 @@ namespace TLGX_Consumer.staticdata
         }
 
         protected void btnHotelRun_Click(object sender, EventArgs e)
-        {
+        {            
             if (ddlSupplierName.SelectedItem.Text != "--All Suppliers--")
             {
-                Guid SupplierId = Guid.Parse(ddlSupplierName.SelectedItem.Value);                                           
-                var result = MapSvc.KeywordReRun("HotelName", "SUPPLIER", SupplierId);
+                Guid SupplierId = Guid.Parse(ddlSupplierName.SelectedItem.Value);                
+                var result = MapSvc.KeywordReRun("HotelName", "SUPPLIER", SupplierId);             
                 BootstrapAlert.BootstrapAlertMessage(dvMsgHotel, result.StatusMessage, BootstrapAlertType.Information);
             }
         }
