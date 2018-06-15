@@ -29,21 +29,45 @@
 }
 </style>
 <script type="text/javascript">
+
+
     // Highlight the cell when mouse over on it  
     function onMouseOver(rowIndex) {
         var gv = document.getElementById("MainContent_searchAccoMapping_grdAccoMaps");
         var rowElement = gv.rows[rowIndex];
         $(rowElement).addClass("MouseOverRow");
+        //var isChecked = $(rowElement.cells[15]).find('input');
+        //isChecked.change(function () {
+        //    if (isChecked.is(':checked')) {
+        //        $(rowElement).addClass("alert alert-success");
+        //    }
+        //    else {
+        //        $(rowElement).removeClass("alert alert-success");
+        //    }
+        //});
+
+
         $(rowElement.cells[2]).on('mouseover', function () {
             rowElement.cells[2].classList.add("MouseOverCell");
             rowElement.cells[8].classList.add("MouseOverCell");
             //click event
-            //$(this).unbind('click').click(function (e)
-            //{
-            //    e.preventDefault();
-            //    alert($(this).text());
-            //});
-           
+            $(this).unbind('click').click(function (e) {
+                //e.preventDefault();
+                var txtStatus = $(rowElement.cells[13]).text().trim();
+                if (txtStatus.includes("REVIEW")) {
+                    debugger;
+                    var isChkChecked = $(rowElement.cells[15]).find('input');
+                    if (isChkChecked.is(':checked')) {
+                        $(rowElement.cells[15]).find('input').attr("checked", false);
+                        //$(rowElement).removeClass("alert alert-success");
+                    }
+                    else {
+                        $(rowElement.cells[15]).find('input').attr("checked", true);
+                        //$(rowElement).addClass("alert alert-success");
+                    }
+                }
+            });
+
         });
         $(rowElement.cells[8]).on('mouseover', function () {
             rowElement.cells[2].classList.add("MouseOverCell");
@@ -68,7 +92,7 @@
         rowElement.cells[4].classList.remove("MouseOverCell");
         rowElement.cells[11].classList.remove("MouseOverCell");
         //Remove click event
-       // $(rowElement.cells[2]).removeAttr("onclick");
+        $(rowElement.cells[2]).removeAttr("onclick");
     }
     //End
     $(function () {
