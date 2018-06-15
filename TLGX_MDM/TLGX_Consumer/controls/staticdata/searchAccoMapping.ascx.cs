@@ -28,11 +28,11 @@ namespace TLGX_Consumer.controls.staticdata
         Controller.AccomodationSVC accoSVc = new Controller.AccomodationSVC();
         Controller.MasterDataSVCs _objMasterRef = new Controller.MasterDataSVCs();
         public static List<MDMSVC.DC_Accomodation_Search_RS> accoSuggRes = new List<MDMSVC.DC_Accomodation_Search_RS>();
-        
+
         protected string contex = "<country>~<city>~<brand>~<chain>~<name>";
         public const string controlpath = "~/controls/staticdata/bulkHotelMapping.ascx";
         public const string controlID = "MyUserControl";
-    
+
         public bool isDataExist = false;
 
         MasterDataSVCs _objMasterData = new MasterDataSVCs();
@@ -304,14 +304,22 @@ namespace TLGX_Consumer.controls.staticdata
             //    RQ.ProductName = MatchedProdName.Trim();
             if (!string.IsNullOrWhiteSpace(lblSupCountryName.Text))
                 RQ.CountryName = lblSupCountryName.Text;
-            if (ddlCountry.SelectedItem.Value != "0")
-                RQ.Country_Id = Guid.Parse(ddlCountry.SelectedItem.Value);
+
+            if (ddlSystemCountryName.SelectedItem.Value != "0")
+                RQ.Country_Id = Guid.Parse(ddlSystemCountryName.SelectedItem.Value);
+
+            if (ddlSystemCityName.SelectedItem.Value != "0")
+                RQ.City_Id = Guid.Parse(ddlSystemCityName.SelectedItem.Value);
+
             if (!string.IsNullOrWhiteSpace(lblCityName.Text))
                 RQ.CityName = lblCityName.Text;
+
             if (!string.IsNullOrWhiteSpace(lblProductName.Text))
                 RQ.SupplierProductName = lblProductName.Text;
+
             if (!string.IsNullOrWhiteSpace(lblHotelName_TX.Text))
                 RQ.HotelName_TX = lblHotelName_TX.Text;
+
             RQ.Via = "CROSS";
             RQ.StatusExcept = ddlStatus.SelectedItem.Text.Trim().ToUpper();
             RQ.PageNo = pPageIndex;
@@ -362,38 +370,56 @@ namespace TLGX_Consumer.controls.staticdata
                 if (ddlSupplierName.SelectedItem.Value != "0")
                 {
                     RQ.SupplierName = ddlSupplierName.SelectedItem.Text;
+                    RQ.Supplier_Id = Guid.Parse(ddlSupplierName.SelectedItem.Value);
                 }
                 //if (ddlCountry.SelectedItem.Value != "0")
                 //    RQ.CountryName = ddlCountry.SelectedItem.Text;
                 if (ddlCountry.SelectedItem.Value != "0")
                     RQ.Country_Id = Guid.Parse(ddlCountry.SelectedItem.Value);
+
                 if (ddlSupplierCity.SelectedItem.Value != "0")
+                {
                     RQ.CityName = ddlSupplierCity.SelectedItem.Text;
+                    RQ.City_Id = Guid.Parse(ddlSupplierCity.SelectedItem.Value);
+                }
+
                 if (ddlProduct.SelectedItem.Value != "0")
                     RQ.ProductName = ddlProduct.SelectedItem.Text;
+
                 if (ddlMappingStatus.SelectedItem.Value != "0")
                     RQ.Status = ddlMappingStatus.SelectedItem.Text;
+
                 RQ.PageSize = Convert.ToInt32(ddlPageSize.SelectedItem.Text);
+
                 if (!string.IsNullOrWhiteSpace(txtSuppCountry.Text))
                     RQ.SupplierCountryName = txtSuppCountry.Text;
+
                 if (!string.IsNullOrWhiteSpace(txtSuppCity.Text))
                     RQ.SupplierCityName = txtSuppCity.Text;
+
                 if (!string.IsNullOrWhiteSpace(txtSuppProduct.Text))
                     RQ.SupplierProductName = txtSuppProduct.Text;
+
                 if (ddlMatchedBy.SelectedItem.Value != "99")
                     RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedValue);
+
                 if (ddlProductType.SelectedValue != "0")
                 {
                     RQ.ProductType = Convert.ToString(ddlProductType.SelectedValue);
                 }
+
                 RQ.Source = "SYSTEMDATA";
             }
             else
             {
+
+
                 if (ddlCountryName.SelectedItem.Value != "0")
                     RQ.CountryName = ddlCountryName.SelectedItem.Text;
+
                 if (ddlCity.SelectedItem.Value != "0")
                     RQ.CityName = ddlCity.SelectedItem.Text;
+
                 if (txtSearch.Text != "")
                 {
                     string str = txtSearch.Text;
@@ -401,15 +427,19 @@ namespace TLGX_Consumer.controls.staticdata
                     int ix2 = ix1 > 0 ? str.LastIndexOf(',', ix1 - 1) : -1;
                     RQ.ProductName = str.Substring(0, ix2);
                 }
+
                 if (ddlProductMappingStatus.SelectedItem.Value != "0")
                     RQ.Status = ddlProductMappingStatus.SelectedItem.Text;
 
                 if (ddlChain.SelectedItem.Value != "0")
                     RQ.Chain = ddlChain.SelectedItem.Text;
+
                 if (ddlBrand.SelectedItem.Value != "0")
                     RQ.Brand = ddlBrand.SelectedItem.Text;
+
                 if (ddlMatchedBy.SelectedItem.Value != "99")
                     RQ.MatchedBy = Convert.ToInt32(ddlMatchedBy.SelectedValue);
+
                 RQ.PageSize = Convert.ToInt32(ddlProductBasedPageSize.SelectedItem.Text);
             }
             RQ.PageNo = pPageIndex;
@@ -980,7 +1010,7 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
             TextBox txtSystemCityCode = (TextBox)frmEditProductMap.FindControl("txtSystemCityCode");
             Label lblSystemCityCode = (Label)frmEditProductMap.FindControl("lblSystemCityCode");
-            
+
 
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             DropDownList ddlSystemSystemName = (DropDownList)frmEditProductMap.FindControl("ddlSystemSystemName");

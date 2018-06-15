@@ -15357,13 +15357,13 @@ namespace TLGX_Consumer.MDMSVC {
         private string ActionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid City_idField;
+        private System.Nullable<System.Guid> City_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CountryNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Country_idField;
+        private System.Nullable<System.Guid> Country_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Create_DateField;
@@ -15402,10 +15402,10 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ZoneCityMapping_IdField;
+        private System.Nullable<System.Guid> ZoneCityMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid ZoneProductMapping_IdField;
+        private System.Nullable<System.Guid> ZoneProductMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Zone_NameField;
@@ -15420,7 +15420,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string Zone_TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Zone_idField;
+        private System.Nullable<System.Guid> Zone_idField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -15446,7 +15446,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid City_id {
+        public System.Nullable<System.Guid> City_id {
             get {
                 return this.City_idField;
             }
@@ -15472,7 +15472,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Country_id {
+        public System.Nullable<System.Guid> Country_id {
             get {
                 return this.Country_idField;
             }
@@ -15641,7 +15641,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ZoneCityMapping_Id {
+        public System.Nullable<System.Guid> ZoneCityMapping_Id {
             get {
                 return this.ZoneCityMapping_IdField;
             }
@@ -15654,7 +15654,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid ZoneProductMapping_Id {
+        public System.Nullable<System.Guid> ZoneProductMapping_Id {
             get {
                 return this.ZoneProductMapping_IdField;
             }
@@ -15719,7 +15719,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Zone_id {
+        public System.Nullable<System.Guid> Zone_id {
             get {
                 return this.Zone_idField;
             }
@@ -34844,6 +34844,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CityNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> City_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CountryCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -35018,6 +35021,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
                     this.CityNameField = value;
                     this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> City_Id {
+            get {
+                return this.City_IdField;
+            }
+            set {
+                if ((this.City_IdField.Equals(value) != true)) {
+                    this.City_IdField = value;
+                    this.RaisePropertyChanged("City_Id");
                 }
             }
         }
