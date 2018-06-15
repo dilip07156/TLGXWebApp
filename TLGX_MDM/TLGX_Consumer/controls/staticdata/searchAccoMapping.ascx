@@ -23,23 +23,42 @@
             color: rgb(255, 255, 255);
             font-weight: bold;
         }
+        .MouseOverRow{
+            background-color: #d1e7fa;
+        }
 </style>
 <script type="text/javascript">
     // Highlight the cell when mouse over on it  
     function onMouseOver(rowIndex) {
         var gv = document.getElementById("MainContent_searchAccoMapping_grdAccoMaps");
         var rowElement = gv.rows[rowIndex];
-        //rowElement.style.backgroundColor = "#c8e4b6";
-        rowElement.cells[2].classList.add("MouseOverCell");
-        rowElement.cells[8].classList.add("MouseOverCell");
+        $(rowElement).addClass("MouseOverRow");
+        $(rowElement.cells[2]).on('mouseover', function () {
+            rowElement.cells[2].classList.add("MouseOverCell");
+            rowElement.cells[8].classList.add("MouseOverCell");
+        });
+        $(rowElement.cells[8]).on('mouseover', function () {
+            rowElement.cells[2].classList.add("MouseOverCell");
+            rowElement.cells[8].classList.add("MouseOverCell");
+        });
+        $(rowElement.cells[4]).on('mouseover', function () {
+            rowElement.cells[4].classList.add("MouseOverCell");
+            rowElement.cells[11].classList.add("MouseOverCell");
+        });
+        $(rowElement.cells[11]).on('mouseover', function () {
+            rowElement.cells[4].classList.add("MouseOverCell");
+            rowElement.cells[11].classList.add("MouseOverCell");
+        });
     }
 
     function onMouseOut(rowIndex) {
         var gv = document.getElementById("MainContent_searchAccoMapping_grdAccoMaps");
         var rowElement = gv.rows[rowIndex];
-       // rowElement.style.backgroundColor = "#fff";
+        $(rowElement).removeClass("MouseOverRow");
         rowElement.cells[2].classList.remove("MouseOverCell");
         rowElement.cells[8].classList.remove("MouseOverCell");
+        rowElement.cells[4].classList.remove("MouseOverCell");
+        rowElement.cells[11].classList.remove("MouseOverCell");
     }
     //End
     $(function () {
