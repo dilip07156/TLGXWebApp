@@ -18,14 +18,15 @@
         max-height: 250px;
         overflow-y: scroll;
     }
-        .MouseOverCell{
-            background-color: rgb(22, 53,114);
-            color: rgb(255, 255, 255);
-            font-weight: bold;
-        }
-        .MouseOverRow{
-            background-color: #d1e7fa;
-        }
+.MouseOverCell{
+    background-color: rgb(22, 53,114);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    cursor:pointer;
+}
+.MouseOverRow{
+    background-color: #d1e7fa !important;
+}
 </style>
 <script type="text/javascript">
     // Highlight the cell when mouse over on it  
@@ -36,6 +37,13 @@
         $(rowElement.cells[2]).on('mouseover', function () {
             rowElement.cells[2].classList.add("MouseOverCell");
             rowElement.cells[8].classList.add("MouseOverCell");
+            //click event
+            //$(this).unbind('click').click(function (e)
+            //{
+            //    e.preventDefault();
+            //    alert($(this).text());
+            //});
+           
         });
         $(rowElement.cells[8]).on('mouseover', function () {
             rowElement.cells[2].classList.add("MouseOverCell");
@@ -59,6 +67,8 @@
         rowElement.cells[8].classList.remove("MouseOverCell");
         rowElement.cells[4].classList.remove("MouseOverCell");
         rowElement.cells[11].classList.remove("MouseOverCell");
+        //Remove click event
+       // $(rowElement.cells[2]).removeAttr("onclick");
     }
     //End
     $(function () {
@@ -1099,7 +1109,7 @@
                                                             <div class="col-sm-9">
                                                                 <div class="col-sm-10">
                                                                     <asp:TextBox ID="txtSearchSystemProduct" onkeyup="checkLen(this.value)" runat="server" CssClass="form-control" onlostfocus="callSystemProductNamechange(this);"></asp:TextBox>
-                                                                    <div id="loading" style="padding: 5px; display:none;">
+                                                                    <div id="loading" style="padding: 5px; display: none;">
                                                                         <img alt="Loading..." src="../../../images/ajax-loader.gif" />
                                                                     </div>
                                                                     <%--AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlSystemProductName_SelectedIndexChanged"--%>
