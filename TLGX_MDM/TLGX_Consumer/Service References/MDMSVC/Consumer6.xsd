@@ -206,9 +206,9 @@
   <xs:complexType name="DC_ZoneRQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="City_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="City_id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Country_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Country_id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
@@ -221,13 +221,13 @@
       <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ZoneCityMapping_Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="ZoneProductMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="ZoneCityMapping_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="ZoneProductMapping_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Zone_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Radius" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="Zone_SubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Zone_Type" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Zone_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Zone_id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_ZoneRQ" nillable="true" type="tns:DC_ZoneRQ" />

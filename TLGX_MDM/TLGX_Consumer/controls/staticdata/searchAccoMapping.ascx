@@ -57,6 +57,12 @@
             rowElement.cells[4].classList.add("MouseOverCell");
             rowElement.cells[11].classList.add("MouseOverCell");
         });
+        $(rowElement.cells[15]).on('mouseover', function () {
+            rowElement.cells[2].classList.add("MouseOverCell");
+            rowElement.cells[8].classList.add("MouseOverCell");
+            rowElement.cells[4].classList.add("MouseOverCell");
+            rowElement.cells[11].classList.add("MouseOverCell");
+        });
     }
 
     function onMouseOut(rowIndex) {
