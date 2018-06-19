@@ -294,7 +294,7 @@
                         <div class="panel-body">
                             <asp:UpdatePanel ID="UpdStaticHotel" runat="server">
                                 <ContentTemplate>
-                                    <asp:Timer ID="TimerStaticData" runat="server" Interval="3000" OnTick="TimerStaticData_Tick"></asp:Timer>
+                                    <asp:Timer ID="TimerStaticData" runat="server" Interval="60000" OnTick="TimerStaticData_Tick"></asp:Timer>
                                     <asp:GridView ID="grdSupplierEntity" runat="server" EmptyDataText="No Mappings for search conditions" CssClass="table table-hover" OnRowCommand="grdSupplierEntity_RowCommand" DataKeyNames="Supplier_id" AutoGenerateColumns="False" GridLines="None" BorderStyle="None" OnRowDataBound="grdSupplierEntity_RowDataBound">
                                         <Columns>
                                             <asp:BoundField DataField="Supplier_Name" HeaderText="Supplier" />
