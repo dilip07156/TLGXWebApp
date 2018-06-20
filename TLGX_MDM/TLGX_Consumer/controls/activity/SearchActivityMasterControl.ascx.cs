@@ -517,15 +517,15 @@ namespace TLGX_Consumer.controls.activity
                 //Get Hyperlink 
                 //System.Web.UI.Control hlf = e.Row.Cells[10];
 
-                if (e.Row.Cells[8].Text.ToUpper() == "REVIEW COMPLETED")
+                if (e.Row.Cells[9].Text.ToUpper() == "REVIEW COMPLETED")
                 {
                     e.Row.CssClass = "alert alert-success";
                 }
-                else if (e.Row.Cells[8].Text.ToUpper() == "UNDER REVIEW")
+                else if (e.Row.Cells[9].Text.ToUpper() == "UNDER REVIEW")
                 {
                     e.Row.CssClass = "alert alert-warning";
                 }
-                else if (e.Row.Cells[8].Text.ToUpper() == "NOT YET REVIEWED")
+                else if (e.Row.Cells[9].Text.ToUpper() == "NOT YET REVIEWED")
                 {
                     e.Row.CssClass = "alert alert-danger";
                 }

@@ -173,11 +173,13 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                 if (ptl.Where(w => w.InterestType_Id == interesttypeid.ToString()).Count() == 0)
                 {
+
                     ptl.Add(new InterestTypeData
                     {
                         InterestType = ddlInterestType.Items.FindByValue(interesttypeid).Text,
                         InterestType_Id = interesttypeid
                     });
+
                 }
             }
 
@@ -761,16 +763,43 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             repInterestType.DataSource = pstl;
             repInterestType.DataBind();
         }
-        private void fillproductcaterogysubtype()
+        private void fillproductcaterogysubtype(List<string> interestTypeids)
         {
             try
             {
                 ddlProdcategorySubType.Items.Clear();
-                ddlProdcategorySubType.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
+                var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
+                var result = (from  s in dropdownvalues
+                              where interestTypeids.Contains((s.ParentAttributeValue_Id ?? Guid.Empty).ToString())
+                              orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
+                              select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id });
+                ddlProdcategorySubType.DataSource = result;
                 ddlProdcategorySubType.DataTextField = "AttributeValue";
                 ddlProdcategorySubType.DataValueField = "MasterAttributeValue_Id";
                 ddlProdcategorySubType.DataBind();
                 ddlProdcategorySubType.Items.Insert(0, new ListItem("-Select-", "0"));
+
+                List<SubCategoryData> ptl = new List<SubCategoryData>();
+                foreach (RepeaterItem item in repSubCategory.Items)
+                {
+                    if (item.ItemType == ListItemType.Item || item.ItemType == ListItemType.AlternatingItem)
+                    {
+                        LinkButton btnRemoveSubCategory = (LinkButton)item.FindControl("btnRemoveSubCategory");
+                        if (result.Where(w => w.MasterAttributeValue_Id == Guid.Parse(btnRemoveSubCategory.CommandArgument)).Count() > 0)
+                        {
+                            Label lblSubCategory = (Label)item.FindControl("lblSubCategory");
+                            ptl.Add(new SubCategoryData
+                            {
+                                SubCategory = lblSubCategory.Text,
+                                SubCategory_Id = btnRemoveSubCategory.CommandArgument
+                            });
+                        }
+                    }
+                }
+                repSubCategory.DataSource = ptl;
+                repSubCategory.DataBind();
+
+                fillProductType(ptl.Select(s => s.SubCategory_Id).ToList());
             }
             catch (Exception ex)
             {
@@ -916,6 +945,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
                 repInterestType.DataSource = itl;
                 repInterestType.DataBind();
+                fillproductcaterogysubtype(itl.Select(s => s.InterestType_Id).ToList());
 
             }
         }
@@ -1073,6 +1103,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                 repInterestType.DataSource = ptl;
                 repInterestType.DataBind();
+                fillproductcaterogysubtype(ptl.Select(s => s.InterestType_Id).ToList());
             }
         }
         protected void repSubCategory_ItemCommand(object source, RepeaterCommandEventArgs e)
