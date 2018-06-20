@@ -289,11 +289,11 @@ namespace TLGX_Consumer.admin
             {
                 if (rowitem.Cells[4].Text == "Running" || rowitem.Cells[4].Text == "Scheduled")
                 {
-                    foreach (GridViewRow row in grdSupplierEntity.Rows)
-                    {
+                    //foreach (GridViewRow row in grdSupplierEntity.Rows)
+                    //{
                         GetStaticHotelData();
-                    }
-                    break;
+                    //}
+                   // break;
                 }
             }
 
