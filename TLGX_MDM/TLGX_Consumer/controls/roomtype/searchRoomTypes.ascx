@@ -188,13 +188,15 @@
                                                         <ItemTemplate>
                                                             <asp:Label runat="server" ID="lblProductName" Text='<%# Eval("ProductName") %>'></asp:Label><br />
                                                             <strong>(
-                                                    <asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>)</strong>
+                                                    <asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>) ,</strong>
+                                                            <asp:Label runat="server" ID="lblLocation" Text='<%# Eval("Location") %>'></asp:Label></strong>
+                                                       
 
                                                             <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                     <%--<asp:BoundField HeaderText="Product Name" DataField="ProductName" ItemStyle-Width="10%" />--%>
-                                                    <asp:BoundField HeaderText="City Name (Country)" DataField="Location" />
+                                                    <%--<asp:BoundField HeaderText="City Name (Country)" DataField="Location" />--%>
                                                     <%-- <asp:TemplateField HeaderText="TLGX Rooms">
                                                 <ItemTemplate>
                                                    
@@ -236,21 +238,20 @@
                                                     </div>--%>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="TLGX Room Info">
+                                                    <asp:TemplateField HeaderText="TLGX Room Info" ItemStyle-Width="20%">
                                                         <ItemTemplate>
                                                             <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
                                                             </asp:DropDownList>
                                                             <div class="dropdown" runat="server" id="ddlSuggestions">
-                                                                <button class="btn dropdown-toggle roomtype" style="width: 120px;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
+                                                                <button class="btn dropdown-toggle roomtype" style="width: inherit;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
                                                                     -Select- 
                                                             <span class="caret paddingleft"></span>
                                                                 </button>
-                                                                <div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo">
+                                                                <%--<div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo">
                                                                     <div id="loading" style="padding: 5px;">
                                                                         <img alt="Loading..." src="../../../images/ajax-loader.gif" />
                                                                     </div>
-                                                                </div>
-
+                                                                </div>--%>
                                                             </div>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
@@ -265,14 +266,17 @@
                                                             </asp:DataList>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Status">
+                                                    <asp:TemplateField HeaderText="Status" ItemStyle-Width="12%">
                                                         <ItemTemplate>
                                                             <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
                                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
-                                                                <%-- <asp:ListItem Value="ADD">ADD</asp:ListItem>--%>
+                                                                <asp:ListItem Value="ADD">ADD</asp:ListItem>
                                                                 <asp:ListItem Value="MAPPED">MAPPED</asp:ListItem>
                                                                 <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
                                                                 <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
+                                                                <asp:ListItem Value="AUTOMAPPED">AUTOMAPPED</asp:ListItem>
+
+
                                                             </asp:DropDownList>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
@@ -364,7 +368,33 @@
             </div>
         </div>
     </div>
-
+    <div class="modal fade" id="modalTLGXRoomInfo" role="dialog">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="panel-title">
+                        <h4 class="modal-title">TLGX Room Info </h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+                        <ContentTemplate>
+                            <div class="ulRoomInfoStyle" id="ulRoomInfo">
+                                <div id="loading" style="padding: 5px;">
+                                    <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                </div>
+                            </div>
+                            <asp:HiddenField runat="server" ID="hdnAccommodation_SupplierRoomInfo_IdPopUp" ClientIDMode="Static" />
+                            <asp:HiddenField runat="server" ID="hdnControlID" ClientIDMode="Static" />                            
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Product Based Search -->
     <div class="tab-pane fade in" id="panProductSearch">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">

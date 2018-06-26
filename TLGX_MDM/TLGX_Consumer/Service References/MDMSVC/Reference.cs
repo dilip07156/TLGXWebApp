@@ -14175,6 +14175,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string IsSomkingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<double> MatchingScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomCategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14231,6 +14234,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.IsSomkingField, value) != true)) {
                     this.IsSomkingField = value;
                     this.RaisePropertyChanged("IsSomking");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<double> MatchingScore {
+            get {
+                return this.MatchingScoreField;
+            }
+            set {
+                if ((this.MatchingScoreField.Equals(value) != true)) {
+                    this.MatchingScoreField = value;
+                    this.RaisePropertyChanged("MatchingScore");
                 }
             }
         }

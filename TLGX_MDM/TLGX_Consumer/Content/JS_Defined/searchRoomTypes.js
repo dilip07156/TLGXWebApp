@@ -37,34 +37,70 @@ function HideToolTip(controls) {
 
 
 function mySelectedID(selectedcheckboxval) {
-    var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
-    var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
-    var Button = tillUL.firstElementChild.firstChild;
+    debugger;
+    // var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
     for (var i = 1; i < tr.length; i++) {
         tr[i].childNodes[0].firstChild.checked = false;
         tr[i].className = "row";
     }
     selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
-    Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
     selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
-    var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
-    hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
+    var hdnAccommodation_SupplierRoomInfo_IdPopUp = $("#hdnAccommodation_SupplierRoomInfo_IdPopUp");
 
-    //Setting check box and Dropdown to Mapped
-    var checkBoxForSelectedRow = tillUL.parentElement.parentElement.lastElementChild.firstElementChild;
-    if (checkBoxForSelectedRow != null)
-        checkBoxForSelectedRow.checked = true;
+    var parentTr = (document.getElementById("MainContent_searchRoomTypes_grdRoomTypeMappingSearchResultsBySupplier")).getElementsByTagName("tr");
+    for (var j = 0; j < parentTr.length; j++) {
+        if (parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0] != undefined && parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_SupplierRoomTypeMapping_Id")[0].value == hdnAccommodation_SupplierRoomInfo_IdPopUp.val()) {
+            //get Row
+            parentTr[j].getElementsByClassName("roomtype")[0].textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
+            var hdnAccommodation_RoomInfo_Id = parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
+            hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
 
-    var MappingStatusDdl = tillUL.parentElement.parentElement.getElementsByClassName("MappingStatus")[0];
-    if (MappingStatusDdl != null) {
-        for (var i = 0; i < MappingStatusDdl.options.length; i++) {
-            if (MappingStatusDdl.options[i].text == "MAPPED") {
-                MappingStatusDdl.options[i].selected = true;
-                break;
+
+
+
+            //Setting check box and Dropdown to Mapped
+            var checkBoxForSelectedRow = parentTr[j].lastElementChild.firstElementChild;
+            if (checkBoxForSelectedRow != null)
+                checkBoxForSelectedRow.checked = true;
+
+            var MappingStatusDdl = parentTr[j].getElementsByClassName("MappingStatus")[0];
+            if (MappingStatusDdl != null) {
+                for (var i = 0; i < MappingStatusDdl.options.length; i++) {
+                    if (MappingStatusDdl.options[i].text == "MAPPED") {
+                        MappingStatusDdl.options[i].selected = true;
+                        break;
+                    }
+                }
             }
+
         }
     }
+
+
+
+    //var tillUL = selectedcheckboxval.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+    //var Button = tillUL.firstElementChild.firstChild;
+
+    //Button.textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
+    //selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
+    //var hdnAccommodation_RoomInfo_Id = tillUL.parentElement.parentElement.lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
+    //hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
+
+    ////Setting check box and Dropdown to Mapped
+    //var checkBoxForSelectedRow = tillUL.parentElement.parentElement.lastElementChild.firstElementChild;
+    //if (checkBoxForSelectedRow != null)
+    //    checkBoxForSelectedRow.checked = true;
+
+    //var MappingStatusDdl = tillUL.parentElement.parentElement.getElementsByClassName("MappingStatus")[0];
+    //if (MappingStatusDdl != null) {
+    //    for (var i = 0; i < MappingStatusDdl.options.length; i++) {
+    //        if (MappingStatusDdl.options[i].text == "MAPPED") {
+    //            MappingStatusDdl.options[i].selected = true;
+    //            break;
+    //        }
+    //    }
+    //}
 
 }
 function mySelectedOnlineOptionID(selectedcheckboxval) {
@@ -119,71 +155,109 @@ function SelectedRow(element) {
             row.find('.dropdownforBind').focus();
 }
 
-function BindRTDetails(controlval) {
-    showLoadingImage();
-    var acco_id = $(controlval).parent().parent().parent().find('.hidnAcoo_Id').val();
-    var ulRoomInfo = $(controlval).parent().find('#ulRoomInfo');
-    var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
-    //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
-    if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
-        if (acco_id != null && ulRoomInfo != null) {
-            $.ajax({
-                url: '../../../Service/RoomCategoryAutoComplete.ashx',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: {
-                    'acco_id': acco_id,
-                    'type': 'fillcategorywithdetails'
-                },
-                responseType: "json",
-                success: function (result) {
-                    var value = JSON.stringify(result);
-                    var listItems = '';
-                    if (result != null) {
-                        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-2">Room Name</th> <th class="col-md-3">Room Category</th>';
-                        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-2"> Size</th>  <th class="col-md-1">Smk</th></tr>';
-                        var li = def;
-                        var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
-                        var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
+function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
+    var value = JSON.stringify(result);
+    //var hdnAccommodation_RoomInfo_IdPopUp = $("#hdnAccommodation_RoomInfo_IdPopUp");
 
-                        var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
-                        var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
-                        var td1 = '<td class="col-md-1">';
-                        //var td21 = '<td class="col-md-2">';
+    //hdnAccommodation_RoomInfo_IdPopUp.val(acco_roomType_id);
+    var listItems = '';
+    if (result != null) {
+        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-2">Room Name</th> <th class="col-md-3">Room Category</th>';
+        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th></tr>';
+        var li = def;
+        var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
+        var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
+
+        var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
+        var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
+        var td1 = '<td class="col-md-1">';
+        //var td21 = '<td class="col-md-2">';
 
 
-                        var lic = ' <td style="display: none;" id="tdRoomInfoId">';
-                        var licClose = '</table>';
-                        var tdc = '</td>';
-                        for (var i = 0; i < result.length; i++) {
-                            if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
-                                li = li + '<tr class="row alert alert-success">';
-                                li = li + td1 + licheckboxWithChecked + tdc;
-                            }
-                            else {
-                                li = li + '<tr class="row">';
-                                li = li + td1 + licheckbox + tdc;
-                            }
+        var lic = ' <td style="display: none;" id="tdRoomInfoId">';
+        var licClose = '</table>';
+        var tdc = '</td>';
 
-                            li = li + td2 + result[i].RoomName + tdc;
-                            li = li + td3 + result[i].RoomCategory + tdc;
-                            li = li + td2 + result[i].BedType + tdc;
-                            li = li + td2 + result[i].RoomView + tdc;
-                            li = li + td2 + result[i].RoomSize + tdc;
-                            li = li + td1 + result[i].IsSomking + tdc;
-                            li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
-                        }
-                        li = li + licClose;
-
-                        hideLoadingImage();
-                        ulRoomInfo[0].innerHTML = li;
-                    }
-                },
-                failure: function () {
-                }
-            });
+        //Find index
+        for (var i = 0; i < result.length; i++) {
+            if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
+                li = li + '<tr class="row alert alert-success">';
+                li = li + td1 + licheckboxWithChecked + tdc;
+                li = li + td2 + result[i].RoomName + tdc;
+                li = li + td3 + result[i].RoomCategory + tdc;
+                li = li + td2 + result[i].BedType + tdc;
+                li = li + td2 + result[i].RoomView + tdc;
+                li = li + td2 + result[i].RoomSize + tdc;
+                li = li + td1 + result[i].IsSomking + tdc;
+               li = li + td1 + (result[i].MatchingScore == null ? '' : result[i].MatchingScore) + tdc;
+                li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
+            }
         }
+
+        for (var i = 0; i < result.length; i++) {
+            if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
+                continue;
+                //li = li + '<tr class="row alert alert-success">';
+                //li = li + td1 + licheckboxWithChecked + tdc;
+            }
+            else {
+                li = li + '<tr class="row">';
+                li = li + td1 + licheckbox + tdc;
+            }
+
+            li = li + td2 + result[i].RoomName + tdc;
+            li = li + td3 + result[i].RoomCategory + tdc;
+            li = li + td2 + result[i].BedType + tdc;
+            li = li + td2 + result[i].RoomView + tdc;
+            li = li + td2 + result[i].RoomSize + tdc;
+            li = li + td1 + result[i].IsSomking + tdc;
+            li = li + td1 + (result[i].MatchingScore == null ? '' : result[i].MatchingScore) + tdc;
+            li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
+        }
+        li = li + licClose;
+        hideLoadingImage();
+        ulRoomInfo.html(li);
     }
+}
+function BindRTDetails(controlval) {
+
+    $("#modalTLGXRoomInfo").modal('show');
+    showLoadingImage();
+    var hdnControlID = $("#hdnControlID");
+    hdnControlID.val = controlval;
+    var acco_id = $(controlval).parent().parent().parent().find('.hidnAcoo_Id').val();
+    var ulRoomInfo = $('#ulRoomInfo');
+    var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
+    var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
+
+
+    //Getting Row identity id and set into the model hidden variable
+    var hdnAccommodation_SupplierRoomInfo_IdPopUp = $("#hdnAccommodation_SupplierRoomInfo_IdPopUp");
+    if (hdnAccommodation_SupplierRoomInfo_IdPopUp != undefined && hdnAccommodation_SupplierRoomInfo_IdPopUp != null)
+        hdnAccommodation_SupplierRoomInfo_IdPopUp.val(acco_SupplierRoomTypeMapping_Id);
+
+
+    //if (ulRoomInfo != null && ulRoomInfo[0].innerHTML.trim() == "") {
+    // if (ulRoomInfo != null && ulRoomInfo[0].getElementsByTagName("table")[0] === undefined) {
+    if (acco_id != null && ulRoomInfo != null) {
+        $.ajax({
+            url: '../../../Service/RoomCategoryAutoComplete.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: {
+                'acco_id': acco_id,
+                'type': 'fillcategorywithdetails'
+            },
+            responseType: "json",
+            success: function (result) {
+                BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id, controlval);
+
+            },
+            failure: function () {
+            }
+        });
+    }
+    //}
 }
 
 function BindResponse(result) {

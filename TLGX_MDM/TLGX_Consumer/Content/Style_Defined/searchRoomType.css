@@ -33,9 +33,10 @@
 }
 
 .ulRoomInfoStyle {
-    width: 430%;
-    min-height: 200px;
+    /*width: 430%;
+    min-height: 200px;*/
     overflow-y: scroll;
+    display: block;
 }
 
 .ulRoomInfoOnline {
