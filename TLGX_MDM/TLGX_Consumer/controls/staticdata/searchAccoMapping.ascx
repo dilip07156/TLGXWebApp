@@ -18,15 +18,17 @@
         max-height: 250px;
         overflow-y: scroll;
     }
-.MouseOverCell{
-    background-color: rgb(22, 53,114);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    cursor:pointer;
-}
-.MouseOverRow{
-    background-color: #d1e7fa !important;
-}
+
+    .MouseOverCell {
+        background-color: rgb(22, 53,114);
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .MouseOverRow {
+        background-color: #d1e7fa !important;
+    }
 </style>
 <script type="text/javascript">
 
@@ -551,8 +553,8 @@
     <div class="navbar">
         <div class="navbar-inner">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#panSupplierSearch" data-toggle="tab">Search by Supplier</a></li>
-                <li><a href="#panProductSearch" data-toggle="tab">Search by Product</a></li>
+                <li class="active"><a href="#panSupplierSearch" data-toggle="tab"><strong>Search by Supplier</strong></a></li>
+                <li><a href="#panProductSearch" data-toggle="tab"><strong>Search by Product</strong></a></li>
             </ul>
         </div>
     </div>
@@ -721,85 +723,83 @@
                             <div id="collapseSearchResult" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <div id="divMsgForMapping" runat="server" style="display: none;"></div>
-                                    <div class="col-lg-12">
-                                        <!-- if you adjust the grid you will need to adjust the codebehin that is generating the super header -->
-                                        <asp:GridView ID="grdAccoMaps" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Static Updates"
-                                            CssClass="table table-hover table-striped" OnDataBound="grdAccoMaps_DataBound" OnRowCommand="grdAccoMaps_RowCommand"
-                                            AllowCustomPaging="true" OnPageIndexChanging="grdAccoMaps_PageIndexChanging" DataKeyNames="Accommodation_ProductMapping_Id,Accommodation_Id,Supplier_Id,mstAcco_Id,mstHotelName"
-                                            OnRowDataBound="grdAccoMaps_RowDataBound">
-                                            <Columns>
-                                                <%--<asp:BoundField HeaderText="Map Id" DataField="MapId" />--%>
-                                                <asp:BoundField DataField="SupplierName" HeaderText="Supplier Name" />
-                                                <asp:BoundField DataField="ProductId" HeaderText="ProductId" />
-                                                <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
-                                                <asp:BoundField DataField="ProductType" HeaderText="ProductType" />
-                                                <asp:BoundField DataField="FullAddress" HeaderText="Address" />
-                                                <asp:BoundField DataField="TelephoneNUmber" HeaderText="Tel" />
-                                                <asp:TemplateField HeaderText="Country">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lblSupCoutry" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CountryCode"))) ? Eval("CountryName") : Eval("CountryName") + " (" + Eval("CountryCode") + " )" %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <%--   <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />--%>
-                                                <%--<asp:BoundField DataField="CountryName" HeaderText="Country Name" />--%>
-                                                <%--   <asp:BoundField DataField="CityCode" HeaderText="City Code" />--%>
-                                                <asp:TemplateField HeaderText="City">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lblSupCity" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CityCode"))) ? Eval("CityName") : Eval("CityName") + " (" + Eval("CityCode") + " )" %>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <%--<asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
-                                                <asp:BoundField DataField="SystemProductName" HeaderText="System Product">
-                                                    <HeaderStyle BackColor="Turquoise" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="SystemCountryName" HeaderText="Country Name">
-                                                    <HeaderStyle BackColor="Turquoise" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="SystemCityName" HeaderText="City Name">
-                                                    <HeaderStyle BackColor="Turquoise" />
-                                                </asp:BoundField>
-                                                <asp:BoundField DataField="SystemFullAddress" HeaderText="Address">
-                                                    <HeaderStyle BackColor="Turquoise" />
-                                                </asp:BoundField>
-                                                <asp:TemplateField ShowHeader="true" HeaderText="Master Product Name">
-                                                    <ItemTemplate>
-                                                        <asp:DropDownList ID="ddlGridProduct" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="false" onfocus="fillDropDown(this,true);" onchange="RemoveExtra(this,false);" onclick="fillDropDown(this,true);">
-                                                            <asp:ListItem Value="0">Select</asp:ListItem>
-                                                        </asp:DropDownList>
-                                                    </ItemTemplate>
-                                                    <HeaderStyle BackColor="Turquoise" />
-                                                </asp:TemplateField>
-                                                <asp:BoundField DataField="Location" HeaderText="Location">
-                                                    <HeaderStyle BackColor="Turquoise" />
-                                                </asp:BoundField>
-                                                <asp:TemplateField ShowHeader="true" HeaderText="Status">
-                                                    <ItemTemplate>
-                                                        <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label>
-                                                        <asp:Label ID="lblMatchedBy" runat="server" Text='<%# (Convert.ToString(Eval("Status")) == "REVIEW" || Convert.ToString(Eval("Status")) == "AUTOMAPPED") ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField ShowHeader="false">
-                                                    <ItemTemplate>
-                                                        <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
-                                                            Enabled="true" CommandArgument='<%# Bind("Accommodation_ProductMapping_Id") %>' OnClientClick="showCityMappingModal();">
+                                    <!-- if you adjust the grid you will need to adjust the codebehin that is generating the super header -->
+                                    <asp:GridView ID="grdAccoMaps" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Static Updates"
+                                        CssClass="table table-hover table-striped" OnDataBound="grdAccoMaps_DataBound" OnRowCommand="grdAccoMaps_RowCommand"
+                                        AllowCustomPaging="true" OnPageIndexChanging="grdAccoMaps_PageIndexChanging" DataKeyNames="Accommodation_ProductMapping_Id,Accommodation_Id,Supplier_Id,mstAcco_Id,mstHotelName"
+                                        OnRowDataBound="grdAccoMaps_RowDataBound">
+                                        <Columns>
+                                            <%--<asp:BoundField HeaderText="Map Id" DataField="MapId" />--%>
+                                            <asp:BoundField DataField="SupplierName" HeaderText="Supplier Name" />
+                                            <asp:BoundField DataField="ProductId" HeaderText="ProductId" />
+                                            <asp:BoundField DataField="ProductName" HeaderText="ProductName" />
+                                            <asp:BoundField DataField="ProductType" HeaderText="ProductType" />
+                                            <asp:BoundField DataField="FullAddress" HeaderText="Address" />
+                                            <asp:BoundField DataField="TelephoneNUmber" HeaderText="Tel" />
+                                            <asp:TemplateField HeaderText="Country">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblSupCoutry" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CountryCode"))) ? Eval("CountryName") : Eval("CountryName") + " (" + Eval("CountryCode") + " )" %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <%--   <asp:BoundField DataField="CountryCode" HeaderText="Country Code" />--%>
+                                            <%--<asp:BoundField DataField="CountryName" HeaderText="Country Name" />--%>
+                                            <%--   <asp:BoundField DataField="CityCode" HeaderText="City Code" />--%>
+                                            <asp:TemplateField HeaderText="City">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblSupCity" runat="server" Text='<%# string.IsNullOrWhiteSpace(Convert.ToString(Eval("CityCode"))) ? Eval("CityName") : Eval("CityName") + " (" + Eval("CityCode") + " )" %>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <%--<asp:BoundField DataField="CityName" HeaderText="City Name" />--%>
+                                            <asp:BoundField DataField="SystemProductName" HeaderText="System Product">
+                                                <HeaderStyle BackColor="Turquoise" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="SystemCountryName" HeaderText="Country Name">
+                                                <HeaderStyle BackColor="Turquoise" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="SystemCityName" HeaderText="City Name">
+                                                <HeaderStyle BackColor="Turquoise" />
+                                            </asp:BoundField>
+                                            <asp:BoundField DataField="SystemFullAddress" HeaderText="Address">
+                                                <HeaderStyle BackColor="Turquoise" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField ShowHeader="true" HeaderText="Master Product Name">
+                                                <ItemTemplate>
+                                                    <asp:DropDownList ID="ddlGridProduct" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="false" onfocus="fillDropDown(this,true);" onchange="RemoveExtra(this,false);" onclick="fillDropDown(this,true);">
+                                                        <asp:ListItem Value="0">Select</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </ItemTemplate>
+                                                <HeaderStyle BackColor="Turquoise" />
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="Location" HeaderText="Location">
+                                                <HeaderStyle BackColor="Turquoise" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField ShowHeader="true" HeaderText="Status">
+                                                <ItemTemplate>
+                                                    <asp:Label ID="lblStatus" runat="server" Text='<%# Bind("Status")%>'></asp:Label>
+                                                    <asp:Label ID="lblMatchedBy" runat="server" Text='<%# (Convert.ToString(Eval("Status")) == "REVIEW" || Convert.ToString(Eval("Status")) == "AUTOMAPPED") ? (string.IsNullOrWhiteSpace(Convert.ToString(Eval("MatchedBy"))) ? "" :  " (" + Eval("MatchedBy") + ")") : "" %>' ToolTip='<%# Bind("MatchedByString")%>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField ShowHeader="false">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-default"
+                                                        Enabled="true" CommandArgument='<%# Bind("Accommodation_ProductMapping_Id") %>' OnClientClick="showCityMappingModal();">
                                                             <span aria-hidden="true" class="glyphicon glyphicon-edit"></span>&nbsp Select
-                                                        </asp:LinkButton>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField ShowHeader="false">
-                                                    <ItemTemplate>
-                                                        <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:TemplateField ShowHeader="false" ItemStyle-CssClass="hideColumn" HeaderStyle-CssClass="hideColumn">
-                                                    <ItemTemplate>
-                                                        <asp:HiddenField ID="hdnAcco_Id" Value="" runat="server" />
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                            <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
-                                        </asp:GridView>
-                                    </div>
+                                                    </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField ShowHeader="false">
+                                                <ItemTemplate>
+                                                    <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField ShowHeader="false" ItemStyle-CssClass="hideColumn" HeaderStyle-CssClass="hideColumn">
+                                                <ItemTemplate>
+                                                    <asp:HiddenField ID="hdnAcco_Id" Value="" runat="server" />
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
+                                    </asp:GridView>
                                 </div>
                             </div>
                         </div>
