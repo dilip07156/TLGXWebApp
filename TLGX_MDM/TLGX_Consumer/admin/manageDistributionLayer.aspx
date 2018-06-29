@@ -165,6 +165,16 @@
                                     </tr>
 
                                     <tr>
+                                        <td>Hotels</td>
+                                        <td>MappingLite</td>
+                                        <td>
+                                            <asp:Label Text="" ID="LastUpdatedHotelMappingLite" runat="server"></asp:Label></td>
+                                        <td>
+                                            <asp:Button ID="btnRefreshHotelMappingLite" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRefreshHotelMappingLite_Click" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
                                         <td>Activities</td>
                                         <td>Master</td>
                                         <td>01/01/1900</td>
@@ -315,7 +325,7 @@
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                           
+
                                             <asp:TemplateField>
                                                 <ItemTemplate>
                                                     <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="false" CommandName="refresh" CssClass="btn btn-primary btn-sm" Text="Update"

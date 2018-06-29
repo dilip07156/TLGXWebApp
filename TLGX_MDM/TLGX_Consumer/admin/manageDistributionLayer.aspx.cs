@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -88,12 +89,19 @@ namespace TLGX_Consumer.admin
 
             LastUpdatedCountryMaster.Text = (res.Where(x => x.Element == "Country" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
             LastUpdatedCountryMapping.Text = (res.Where(x => x.Element == "Country" && x.Type == "Mapping").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
             LastUpdatedCityMapping.Text = (res.Where(x => x.Element == "City" && x.Type == "Mapping").Select(y => y.Create_Date).FirstOrDefault()).ToString();
             LastUpdatedCityMaster.Text = (res.Where(x => x.Element == "City" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
             LastUpdatedHotelMapping.Text = (res.Where(x => x.Element == "Hotel" && x.Type == "Mapping").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+            LastUpdatedHotelMappingLite.Text = (res.Where(x => x.Element == "Hotel" && x.Type == "MappingLite").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
             LastUpdatedActivityMapping.Text = (res.Where(x => x.Element == "Activities" && x.Type == "Mapping").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
             LastUpdatedSupplierMapping.Text = (res.Where(x => x.Element == "Supplier" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
             LastUpdatedPortMaster.Text = (res.Where(x => x.Element == "Port" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
             LastUpdatedStateMaster.Text = (res.Where(x => x.Element == "State" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
            
@@ -300,7 +308,19 @@ namespace TLGX_Consumer.admin
 
         }
 
-
+        protected void btnRefreshHotelMappingLite_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.RefreshHotelMappingLite(Guid.Empty);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
     }
         
     
