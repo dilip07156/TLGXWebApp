@@ -7978,6 +7978,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileUploadResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_UploadResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Status))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Message))]
@@ -8012,7 +8013,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS))]
@@ -8657,6 +8657,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileUploadResponse))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_FileData))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_UploadResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Status))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Message))]
@@ -8691,7 +8692,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS))]
@@ -49414,6 +49414,13 @@ namespace TLGX_Consumer.MDMSVC {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MDMSVC.IConsumer")]
     public interface IConsumer {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationStatusResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] GetAccomodationStatus(string Accomodation_Id, string DataKey_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationStatusResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]> GetAccomodationStatusAsync(string Accomodation_Id, string DataKey_Id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationStatusResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/UpdateAccomodationStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         bool UpdateAccomodationStatus(TLGX_Consumer.MDMSVC.DC_Accommodation_Status AS);
@@ -49894,6 +49901,14 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationRoomInfoResponse")]
         System.Threading.Tasks.Task<bool> UpdateAccomodationRoomInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo RI);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyRoomId", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyRoomIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyRoomIdDC_ErrorStatusFau" +
+            "lt", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] GetAccomodationRoomInfobyRoomId(string Accomodation_Id, string Room_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyRoomId", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyRoomIdResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]> GetAccomodationRoomInfobyRoomIdAsync(string Accomodation_Id, string Room_id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomFacilities", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomFacilitiesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationRoomFacilitiesDC_ErrorStatusFault" +
             "", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -49959,13 +49974,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationRuleInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationRuleInfoResponse")]
         System.Threading.Tasks.Task<bool> UpdateAccomodationRuleInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo RI);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationStatusResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] GetAccomodationStatus(string Accomodation_Id, string DataKey_Id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationStatusResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]> GetAccomodationStatusAsync(string Accomodation_Id, string DataKey_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetProductByCity", ReplyAction="http://tempuri.org/IMasters/GetProductByCityResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetProductByCityDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -51776,10 +51784,18 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id, string CreatedBy);
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id, string CreatedBy);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLite", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteDC_ErrorStatusFau" +
+            "lt", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLite", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingLiteAsync(string hotel_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingDC_ErrorStatusFaul" +
@@ -51869,6 +51885,78 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKafka/SelectKafkaInfo", ReplyAction="http://tempuri.org/IKafka/SelectKafkaInfoResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Stg_Kafka[]> SelectKafkaInfoAsync(string Row_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodation", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferMasterAccommodation();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodation", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationResponse")]
+        System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
+            "es", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
+            "esResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
+            "esDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferMasterAccommodationRoomFacilities();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
+            "es", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
+            "esResponse")]
+        System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomFacilitiesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
+            "ion", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
+            "ionResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
+            "ionDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferMasterAccommodationRoomInformation();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
+            "ion", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
+            "ionResponse")]
+        System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomInformationAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatching", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatchingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatchingDC_ErrorStatusF" +
+            "ault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferRoomTypeMatching();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatching", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatchingResponse")]
+        System.Threading.Tasks.Task<string> ML_DataTransferRoomTypeMatchingAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationDataRespon" +
+            "se")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationDataDC_Err" +
+            "orStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferSupplierAccommodationData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationDataRespon" +
+            "se")]
+        System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationDataAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomDataRe" +
+            "sponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomDataDC" +
+            "_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferSupplierAccommodationRoomData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomDataRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomDataAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
+            "edAttributes", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
+            "edAttributesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
+            "edAttributesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        string ML_DataTransferSupplierAccommodationRoomExtendedAttributes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
+            "edAttributes", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
+            "edAttributesResponse")]
+        System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -51896,6 +51984,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public ConsumerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] GetAccomodationStatus(string Accomodation_Id, string DataKey_Id) {
+            return base.Channel.GetAccomodationStatus(Accomodation_Id, DataKey_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]> GetAccomodationStatusAsync(string Accomodation_Id, string DataKey_Id) {
+            return base.Channel.GetAccomodationStatusAsync(Accomodation_Id, DataKey_Id);
         }
         
         public bool UpdateAccomodationStatus(TLGX_Consumer.MDMSVC.DC_Accommodation_Status AS) {
@@ -52410,6 +52506,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.UpdateAccomodationRoomInfoAsync(RI);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] GetAccomodationRoomInfobyRoomId(string Accomodation_Id, string Room_id) {
+            return base.Channel.GetAccomodationRoomInfobyRoomId(Accomodation_Id, Room_id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]> GetAccomodationRoomInfobyRoomIdAsync(string Accomodation_Id, string Room_id) {
+            return base.Channel.GetAccomodationRoomInfobyRoomIdAsync(Accomodation_Id, Room_id);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[] GetAccomodationRoomFacilities(string Accomodation_Id, string Accommodation_RoomInfo_Id, string DataKey_Id) {
             return base.Channel.GetAccomodationRoomFacilities(Accomodation_Id, Accommodation_RoomInfo_Id, DataKey_Id);
         }
@@ -52480,14 +52584,6 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<bool> UpdateAccomodationRuleInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo RI) {
             return base.Channel.UpdateAccomodationRuleInfoAsync(RI);
-        }
-        
-        public TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] GetAccomodationStatus(string Accomodation_Id, string DataKey_Id) {
-            return base.Channel.GetAccomodationStatus(Accomodation_Id, DataKey_Id);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_Status[]> GetAccomodationStatusAsync(string Accomodation_Id, string DataKey_Id) {
-            return base.Channel.GetAccomodationStatusAsync(Accomodation_Id, DataKey_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[] GetProductByCity(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL _obj) {
@@ -54482,12 +54578,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SyncCityMappingAsync(city_id, CreatedBy);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id, string CreatedBy) {
-            return base.Channel.SyncHotelMapping(hotel_id, CreatedBy);
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id) {
+            return base.Channel.SyncHotelMapping(hotel_id);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id, string CreatedBy) {
-            return base.Channel.SyncHotelMappingAsync(hotel_id, CreatedBy);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id) {
+            return base.Channel.SyncHotelMappingAsync(hotel_id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id) {
+            return base.Channel.SyncHotelMappingLite(hotel_id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingLiteAsync(string hotel_id) {
+            return base.Channel.SyncHotelMappingLiteAsync(hotel_id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message SyncActivityMapping(string activity_id, string CreatedBy) {
@@ -54584,6 +54688,62 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Stg_Kafka[]> SelectKafkaInfoAsync(string Row_Id) {
             return base.Channel.SelectKafkaInfoAsync(Row_Id);
+        }
+        
+        public string ML_DataTransferMasterAccommodation() {
+            return base.Channel.ML_DataTransferMasterAccommodation();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationAsync() {
+            return base.Channel.ML_DataTransferMasterAccommodationAsync();
+        }
+        
+        public string ML_DataTransferMasterAccommodationRoomFacilities() {
+            return base.Channel.ML_DataTransferMasterAccommodationRoomFacilities();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomFacilitiesAsync() {
+            return base.Channel.ML_DataTransferMasterAccommodationRoomFacilitiesAsync();
+        }
+        
+        public string ML_DataTransferMasterAccommodationRoomInformation() {
+            return base.Channel.ML_DataTransferMasterAccommodationRoomInformation();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomInformationAsync() {
+            return base.Channel.ML_DataTransferMasterAccommodationRoomInformationAsync();
+        }
+        
+        public string ML_DataTransferRoomTypeMatching() {
+            return base.Channel.ML_DataTransferRoomTypeMatching();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferRoomTypeMatchingAsync() {
+            return base.Channel.ML_DataTransferRoomTypeMatchingAsync();
+        }
+        
+        public string ML_DataTransferSupplierAccommodationData() {
+            return base.Channel.ML_DataTransferSupplierAccommodationData();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationDataAsync() {
+            return base.Channel.ML_DataTransferSupplierAccommodationDataAsync();
+        }
+        
+        public string ML_DataTransferSupplierAccommodationRoomData() {
+            return base.Channel.ML_DataTransferSupplierAccommodationRoomData();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomDataAsync() {
+            return base.Channel.ML_DataTransferSupplierAccommodationRoomDataAsync();
+        }
+        
+        public string ML_DataTransferSupplierAccommodationRoomExtendedAttributes() {
+            return base.Channel.ML_DataTransferSupplierAccommodationRoomExtendedAttributes();
+        }
+        
+        public System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync() {
+            return base.Channel.ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync();
         }
     }
 }
