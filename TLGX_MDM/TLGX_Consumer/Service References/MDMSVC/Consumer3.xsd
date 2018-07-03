@@ -4613,7 +4613,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="hotel_id" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4628,7 +4627,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="hotel_id" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4768,28 +4766,28 @@
   <xs:element name="InsertKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q490:DC_Stg_Kafka" />
+        <xs:element xmlns:q488="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q488:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q491:DC_Message" />
+        <xs:element xmlns:q489="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q489:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q492:DC_Stg_Kafka" />
+        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q490:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q493="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q493:DC_Message" />
+        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q491:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4801,7 +4799,7 @@
   <xs:element name="GetPollDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q494="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q494:ArrayOfDC_Stg_Kafka" />
+        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q492:ArrayOfDC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

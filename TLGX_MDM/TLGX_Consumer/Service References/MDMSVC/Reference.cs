@@ -51863,10 +51863,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id, string CreatedBy);
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id, string CreatedBy);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLite", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteDC_ErrorStatusFau" +
@@ -54664,12 +54664,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SyncCityMappingAsync(city_id, CreatedBy);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id, string CreatedBy) {
-            return base.Channel.SyncHotelMapping(hotel_id, CreatedBy);
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMapping(string hotel_id) {
+            return base.Channel.SyncHotelMapping(hotel_id);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id, string CreatedBy) {
-            return base.Channel.SyncHotelMappingAsync(hotel_id, CreatedBy);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingAsync(string hotel_id) {
+            return base.Channel.SyncHotelMappingAsync(hotel_id);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id) {
+            return base.Channel.SyncHotelMappingLite(hotel_id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingLiteAsync(string hotel_id) {
+            return base.Channel.SyncHotelMappingLiteAsync(hotel_id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id, string CreatedBy) {
