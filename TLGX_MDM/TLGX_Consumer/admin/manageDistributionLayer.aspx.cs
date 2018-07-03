@@ -16,7 +16,7 @@ namespace TLGX_Consumer.admin
     {
         Controller.MasterDataSVCs MasterSvc = new Controller.MasterDataSVCs();
 
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             dvMsg.Style.Add("display", "none");
@@ -83,7 +83,7 @@ namespace TLGX_Consumer.admin
         //For refreshing distribution log 
         protected void GetUpdatedDistributionLog()
         {
-            
+
             MDMSVC.DC_RefreshDistributionDataLog RQ = new MDMSVC.DC_RefreshDistributionDataLog();
             var res = MasterSvc.GetRefreshDistributionLog(RQ);
 
@@ -104,7 +104,7 @@ namespace TLGX_Consumer.admin
 
             LastUpdatedStateMaster.Text = (res.Where(x => x.Element == "State" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
-           
+
 
 
         }
@@ -130,7 +130,7 @@ namespace TLGX_Consumer.admin
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
                 GetUpdatedDistributionLog();
-                            }
+            }
             else
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Country Mapping Sync failed.", BootstrapAlertType.Danger);
@@ -255,20 +255,20 @@ namespace TLGX_Consumer.admin
                 {
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Staic Hotel Sync failed.", BootstrapAlertType.Danger);
                 }
-                
+
             }
         }
 
         protected void grdSupplierEntity_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.DataItem != null)
-                               
+
             {
                 //coding for progress bar
                 int intTotalCount = ((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).TotalCount ?? 0;
                 int intMongoPushCount = ((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).MongoPushCount ?? 0;
 
-                double progressWidth = intTotalCount != 0 ? Math.Round((Convert.ToDouble(intMongoPushCount) / Convert.ToDouble(intTotalCount)) * 100.0,2) : 0.0;
+                double progressWidth = intTotalCount != 0 ? Math.Round((Convert.ToDouble(intMongoPushCount) / Convert.ToDouble(intTotalCount)) * 100.0, 2) : 0.0;
 
                 //find div in row
                 HtmlControl divCompleted = (HtmlControl)e.Row.FindControl("divCompleted");
@@ -283,25 +283,25 @@ namespace TLGX_Consumer.admin
 
                     if (lblcompleted != null)
                         lblcompleted.Text = Convert.ToString(progressWidth) + "%";
-                    
+
                 }
-                
+
             }
         }
 
 
         protected void TimerStaticData_Tick(object sender, EventArgs e)
         {
-            
+
             foreach (GridViewRow rowitem in grdSupplierEntity.Rows)
             {
                 if (rowitem.Cells[4].Text == "Running" || rowitem.Cells[4].Text == "Scheduled")
                 {
                     //foreach (GridViewRow row in grdSupplierEntity.Rows)
                     //{
-                        GetStaticHotelData();
+                    GetStaticHotelData();
                     //}
-                   // break;
+                    // break;
                 }
             }
 
@@ -321,7 +321,56 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
             }
         }
+
+        protected void btnAccoMasterDataPush_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "Master", Element = "MLDATAMASTERACCO" });
+        }
+        protected void btnAccoMasterRoomFacility_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "Master", Element = "MLDATAMASTERACCORMFACILITY" });
+
+        }
+        protected void btnAccoMasterRoomInfo_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "Master", Element = "MLDATAMASTERACCORMINFO" });
+
+        }
+        protected void btnRoomTypeMatching_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "MAPPING", Element = "MLDATAROOMTYPEMATCHING" });
+
+        }
+        protected void btnSupplierAcco_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "MAPPING", Element = "MLDATASUPPLIERACCO" });
+
+        }
+        protected void btnSupplierAccoRoom_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "MAPPING", Element = "MLDATASUPPLIERACCORM" });
+
+        }
+
+        protected void btnSupplierAccoRoomExtedAttr_Click(object sender, EventArgs e)
+        {
+            RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "MAPPING", Element = "MLDATASUPPLIERACCORMEXTATTR" });
+        }
+
+
+        public void RunMLDATAAPI(MDMSVC.DC_Distribution_MLDataRQ _obj)
+        {
+            var res = MasterSvc.PushSyncMLAPIData(_obj);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
     }
-        
-    
+
+
 }

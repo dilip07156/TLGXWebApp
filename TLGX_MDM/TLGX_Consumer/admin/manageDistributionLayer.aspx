@@ -118,9 +118,6 @@
 
                 </div>
 
-
-
-
                 <div class="col-lg-4">
 
                     <div class="panel panel-default">
@@ -232,9 +229,6 @@
 
                 </div>
 
-
-
-
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">System</div>
@@ -343,7 +337,101 @@
 
                     </div>
                 </div>
-            </div>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+
+                        <div class="panel-heading">Data API Integration  </div>
+                        <div class="panel-body">
+                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                <ContentTemplate>
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Element</th>
+                                                <th>Type</th>
+                                                <%--<th>Last Updated</th>--%>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Accommodation</td>
+                                                <td>Master</td>
+                                                <%--<td>
+                                                    <label runat="server" id="lblAccoMasterDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnAccoMasterDataPush" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnAccoMasterDataPush_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accommodation Room Facility</td>
+                                                <td>Master</td>
+                                               <%-- <td>
+                                                    <label runat="server" id="lblAccoMasterRoomFacilityDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnAccoMasterRoomFacility" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnAccoMasterRoomFacility_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Accommodation Room Info</td>
+                                                <td>Master</td>
+                                               <%-- <td>
+                                                    <label runat="server" id="lblAccoMasterRoomInfoDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnAccoMasterRoomInfo" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnAccoMasterRoomInfo_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Room Type Matching</td>
+                                                <td>Supplier</td>
+                                                <%--<td>
+                                                    <label runat="server" id="lblRoomTypeMatchingDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnRoomTypeMatching" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRoomTypeMatching_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supplier Accommodation Data</td>
+                                                <td>Supplier</td>
+                                               <%-- <td>
+                                                    <label runat="server" id="lblSupplierAccoDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnSupplierAcco" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierAcco_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supplier Accommodation Room Data</td>
+                                                <td>Supplier</td>
+                                               <%-- <td>
+                                                    <label runat="server" id="lblSupplierAccoRoomDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnSupplierAccoRoom" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierAccoRoom_Click" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Supplier Accommodation Room Data  Extended Attribute</td>
+                                                <td>Supplier</td>
+                                               <%-- <td>
+                                                    <label runat="server" id="lblSupplierAccoRoomExtendedAttrDataPushLastRun"></label>
+                                                </td>--%>
+                                                <td>
+                                                    <asp:Button ID="btnSupplierAccoRoomExtedAttr" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierAccoRoomExtedAttr_Click" />
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </ContentTemplate>
+
+                            </asp:UpdatePanel>
+                        </div>
+                    </div>
+                </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 

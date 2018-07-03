@@ -5,6 +5,12 @@
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" />
+  <xs:complexType name="ArrayOfDC_Accommodation_Status">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accommodation_Status" nillable="true" type="tns:DC_Accommodation_Status" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Accommodation_Status" nillable="true" type="tns:ArrayOfDC_Accommodation_Status" />
   <xs:complexType name="DC_Accommodation_Status">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
@@ -530,12 +536,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accommodation_Contact" nillable="true" type="tns:DC_Accommodation_Contact" />
-  <xs:complexType name="ArrayOfDC_Accommodation_Status">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Accommodation_Status" nillable="true" type="tns:DC_Accommodation_Status" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_Accommodation_Status" nillable="true" type="tns:ArrayOfDC_Accommodation_Status" />
   <xs:complexType name="DC_Accomodation_Search_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="AccomodationId" nillable="true" type="xs:string" />
@@ -1130,4 +1130,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_SupplierEntity" nillable="true" type="tns:DC_SupplierEntity" />
+  <xs:complexType name="DC_Distribution_MLDataRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Element" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Distribution_MLDataRQ" nillable="true" type="tns:DC_Distribution_MLDataRQ" />
 </xs:schema>

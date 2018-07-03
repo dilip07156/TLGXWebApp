@@ -532,7 +532,7 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AddZoneCities"], param, typeof(DC_ZoneRQ), typeof(DC_Message), out result);
             return result as DC_Message;
         }
-        public List<MDMSVC.DC_ZoneSearch>SearchZone(DC_ZoneRQ RQ)
+        public List<MDMSVC.DC_ZoneSearch> SearchZone(DC_ZoneRQ RQ)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SearchZone"], RQ, typeof(DC_ZoneRQ), typeof(List<DC_ZoneSearch>), out result);
@@ -595,7 +595,7 @@ namespace TLGX_Consumer.Controller
         public DC_Message RefreshCountryMapping(Guid country_id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_CountryMapping"], country_id ,System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_CountryMapping"], country_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
 
@@ -694,9 +694,54 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             //ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"]),Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"],log_id, Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"], log_id, Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
             //return Convert.ToDateTime(result); 
             return (DC_Message)result;
+        }
+        #endregion
+
+
+        #region == ML Data API Integration
+        //public void PushMasterAccoData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushMasterAccoData"]), typeof(String), out result);
+        //}
+        //public void PushMasterAccoRoomFacilityData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushMasterAccoRoomFacilityData"]), typeof(String), out result);
+        //}
+        //public void PushMasterAccoRoomInfoData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushMasterAccoRoomInfoData"]), typeof(String), out result);
+        //}
+        //public void PushRoomTypeMatchingData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushRoomTypeMatchingData"]), typeof(String), out result);
+        //}
+        //public void PushSupplierAccoData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushSupplierAccoData"]), typeof(String), out result);
+        //}
+        //public void PushSupplierAccoRoomData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushSupplierAccoRoomData"]), typeof(String), out result);
+        //}
+        //public void PushSupplierAccoRoomExtedAttrData()
+        //{
+        //    object result = null;
+        //    ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["PushSupplierAccoRoomExtedAttrData"]), typeof(String), out result);
+        //}
+        public DC_Message PushSyncMLAPIData(DC_Distribution_MLDataRQ _obj)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["PushSyncMLAPIData"], _obj, typeof(DC_Distribution_MLDataRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
         }
         #endregion
     }
