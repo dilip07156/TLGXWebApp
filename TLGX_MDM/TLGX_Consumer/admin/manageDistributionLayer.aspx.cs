@@ -167,7 +167,7 @@ namespace TLGX_Consumer.admin
 
         protected void btnRefreshHotelMapping_Click(object sender, EventArgs e)
         {
-            var res = MasterSvc.RefreshHotelMapping(0);
+            var res = MasterSvc.RefreshHotelMapping(Guid.Empty);
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
@@ -310,7 +310,7 @@ namespace TLGX_Consumer.admin
 
         protected void btnRefreshHotelMappingLite_Click(object sender, EventArgs e)
         {
-            var res = MasterSvc.RefreshHotelMappingLite(0);
+            var res = MasterSvc.RefreshHotelMappingLite(Guid.Empty);
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);

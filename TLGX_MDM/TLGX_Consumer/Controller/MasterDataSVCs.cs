@@ -612,17 +612,17 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #region Hotel Distribution Refresh
-        public DC_Message RefreshHotelMapping(int MapId)
+        public DC_Message RefreshHotelMapping(Guid  ProdMapId)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMapping"], MapId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMapping"], ProdMapId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
 
-        public DC_Message RefreshHotelMappingLite(int MapId)
+        public DC_Message RefreshHotelMappingLite(Guid ProdMapId)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMappingLite"], MapId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMappingLite"], ProdMapId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
         #endregion
