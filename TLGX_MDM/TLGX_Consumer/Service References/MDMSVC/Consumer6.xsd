@@ -1133,6 +1133,7 @@
   <xs:complexType name="DC_Distribution_MLDataRQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Element" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Logid" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
     </xs:sequence>
