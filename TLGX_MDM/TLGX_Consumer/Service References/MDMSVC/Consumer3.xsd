@@ -11,6 +11,7 @@
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" />
   <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/DataContracts.STG" />
+  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/DataContracts.ML" />
   <xs:element name="GetAccomodationStatus">
     <xs:complexType>
       <xs:sequence>
@@ -4766,28 +4767,28 @@
   <xs:element name="InsertKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q488="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q488:DC_Stg_Kafka" />
+        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q490:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q489="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q489:DC_Message" />
+        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q491:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q490:DC_Stg_Kafka" />
+        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q492:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q491:DC_Message" />
+        <xs:element xmlns:q493="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q493:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4799,7 +4800,7 @@
   <xs:element name="GetPollDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q492:ArrayOfDC_Stg_Kafka" />
+        <xs:element xmlns:q494="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q494:ArrayOfDC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4826,9 +4827,7 @@
   </xs:element>
   <xs:element name="ML_DataTransferMasterAccommodationResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferMasterAccommodationResult" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ML_DataTransferMasterAccommodationRoomFacilities">
@@ -4840,9 +4839,7 @@
   </xs:element>
   <xs:element name="ML_DataTransferMasterAccommodationRoomFacilitiesResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferMasterAccommodationRoomFacilitiesResult" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ML_DataTransferMasterAccommodationRoomInformation">
@@ -4854,9 +4851,7 @@
   </xs:element>
   <xs:element name="ML_DataTransferMasterAccommodationRoomInformationResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferMasterAccommodationRoomInformationResult" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ML_DataTransferRoomTypeMatching">
@@ -4868,9 +4863,7 @@
   </xs:element>
   <xs:element name="ML_DataTransferRoomTypeMatchingResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferRoomTypeMatchingResult" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ML_DataTransferSupplierAccommodationData">
@@ -4882,9 +4875,7 @@
   </xs:element>
   <xs:element name="ML_DataTransferSupplierAccommodationDataResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferSupplierAccommodationDataResult" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ML_DataTransferSupplierAccommodationRoomData">
@@ -4896,9 +4887,7 @@
   </xs:element>
   <xs:element name="ML_DataTransferSupplierAccommodationRoomDataResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferSupplierAccommodationRoomDataResult" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ML_DataTransferSupplierAccommodationRoomExtendedAttributes">
@@ -4910,8 +4899,18 @@
   </xs:element>
   <xs:element name="ML_DataTransferSupplierAccommodationRoomExtendedAttributesResponse">
     <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMLDataApiTransferStatus">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMLDataApiTransferStatusResponse">
+    <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ML_DataTransferSupplierAccommodationRoomExtendedAttributesResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q496="http://schemas.datacontract.org/2004/07/DataContracts.ML" minOccurs="0" name="GetMLDataApiTransferStatusResult" nillable="true" type="q496:ArrayOfDL_ML_DL_EntityStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

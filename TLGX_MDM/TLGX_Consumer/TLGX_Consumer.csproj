@@ -477,6 +477,9 @@
     <None Include="Service References\MDMSVC\Consumer16.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\MDMSVC\Consumer17.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -1048,6 +1051,9 @@
     </Content>
     <Content Include="Service\ActivityMediaInfo.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Stg_Kafka.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">

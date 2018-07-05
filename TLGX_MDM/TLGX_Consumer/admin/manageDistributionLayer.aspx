@@ -3,7 +3,11 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    <style>
+        .lblFont{
+            font-weight: normal !important;
+        }
+    </style>
     <h2 class="page-header">Refresh Distribution Layer</h2>
     <asp:UpdatePanel ID="UpdDistributionLayer" runat="server">
         <ContentTemplate>
@@ -347,19 +351,32 @@
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Element</th>
-                                                <th>Type</th>
-                                                <%--<th>Last Updated</th>--%>
-                                                <th></th>
+                                                <th style="width: 16%">Element</th>
+                                                <th style="width: 16%">Type</th>
+                                                <th style="width: 16%">Last Updated</th>
+                                                <th style="width: 16%">Status</th>
+                                                <th style="width: 26%">Progress</th>
+                                                <th style="width: 10%"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>Accommodation</td>
                                                 <td>Master</td>
-                                                <%--<td>
-                                                    <label runat="server" id="lblAccoMasterDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblAccoMasterDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server"  class="lblFont" id="lblAccoMasterDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divAccoMasterDataPushLastRun">
+                                                            <asp:Label runat="server" ID="AccoMasterDataPushLastRuncompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnAccoMasterDataPush" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnAccoMasterDataPush_Click" />
                                                 </td>
@@ -367,9 +384,20 @@
                                             <tr>
                                                 <td>Accommodation Room Facility</td>
                                                 <td>Master</td>
-                                               <%-- <td>
-                                                    <label runat="server" id="lblAccoMasterRoomFacilityDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblAccoMasterRoomFacilityDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblAccoMasterRoomFacilityDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divAccoMasterRoomFacilityDataPushLastRunCompleted">
+                                                            <asp:Label runat="server" ID="AccoMasterRoomFacilityDataPushLastRunCompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnAccoMasterRoomFacility" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnAccoMasterRoomFacility_Click" />
                                                 </td>
@@ -377,9 +405,20 @@
                                             <tr>
                                                 <td>Accommodation Room Info</td>
                                                 <td>Master</td>
-                                               <%-- <td>
-                                                    <label runat="server" id="lblAccoMasterRoomInfoDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblAccoMasterRoomInfoDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblAccoMasterRoomInfoDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divAccoMasterRoomInfoDataPushLastRunCompleted">
+                                                            <asp:Label runat="server" ID="AccoMasterRoomInfoDataPushLastRunCompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnAccoMasterRoomInfo" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnAccoMasterRoomInfo_Click" />
                                                 </td>
@@ -387,9 +426,20 @@
                                             <tr>
                                                 <td>Room Type Matching</td>
                                                 <td>Supplier</td>
-                                                <%--<td>
-                                                    <label runat="server" id="lblRoomTypeMatchingDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblRoomTypeMatchingDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblRoomTypeMatchingDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divRoomTypeMatchingDataPushLastRunCompleted">
+                                                            <asp:Label runat="server" ID="RoomTypeMatchingDataPushLastRunCompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnRoomTypeMatching" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRoomTypeMatching_Click" />
                                                 </td>
@@ -397,9 +447,20 @@
                                             <tr>
                                                 <td>Supplier Accommodation Data</td>
                                                 <td>Supplier</td>
-                                               <%-- <td>
-                                                    <label runat="server" id="lblSupplierAccoDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont"   id="lblSupplierAccoDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server"  class="lblFont" id="lblSupplierAccoDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divSupplierAccoDataPushLastRunCompleted">
+                                                            <asp:Label runat="server" ID="SupplierAccoDataPushLastRunCompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnSupplierAcco" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierAcco_Click" />
                                                 </td>
@@ -407,9 +468,20 @@
                                             <tr>
                                                 <td>Supplier Accommodation Room Data</td>
                                                 <td>Supplier</td>
-                                               <%-- <td>
-                                                    <label runat="server" id="lblSupplierAccoRoomDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblSupplierAccoRoomDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblSupplierAccoRoomDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divSupplierAccoRoomDataPushLastRunCompleted">
+                                                            <asp:Label runat="server" ID="SupplierAccoRoomDataPushLastRunCompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnSupplierAccoRoom" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierAccoRoom_Click" />
                                                 </td>
@@ -417,9 +489,20 @@
                                             <tr>
                                                 <td>Supplier Accommodation Room Data  Extended Attribute</td>
                                                 <td>Supplier</td>
-                                               <%-- <td>
-                                                    <label runat="server" id="lblSupplierAccoRoomExtendedAttrDataPushLastRun"></label>
-                                                </td>--%>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblSupplierAccoRoomExtendedAttrDataPushLastRun"></label>
+                                                </td>
+                                                <td>
+                                                    <label runat="server" class="lblFont" id="lblSupplierAccoRoomExtendedAttrDataPushLastRunStatus"></label>
+                                                </td>
+                                                <td>
+                                                    <div class='progress'>
+
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divSupplierAccoRoomExtendedAttrDataPushLastRun">
+                                                            <asp:Label runat="server" ID="SupplierAccoRoomExtendedAttrDataPushLastRunCompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <asp:Button ID="btnSupplierAccoRoomExtedAttr" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierAccoRoomExtedAttr_Click" />
                                                 </td>

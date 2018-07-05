@@ -247,6 +247,42 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// lblAccoMasterDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAccoMasterDataPushLastRun;
+        
+        /// <summary>
+        /// lblAccoMasterDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAccoMasterDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divAccoMasterDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAccoMasterDataPushLastRun;
+        
+        /// <summary>
+        /// AccoMasterDataPushLastRuncompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AccoMasterDataPushLastRuncompleted;
+        
+        /// <summary>
         /// btnAccoMasterDataPush control.
         /// </summary>
         /// <remarks>
@@ -254,6 +290,42 @@ namespace TLGX_Consumer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAccoMasterDataPush;
+        
+        /// <summary>
+        /// lblAccoMasterRoomFacilityDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAccoMasterRoomFacilityDataPushLastRun;
+        
+        /// <summary>
+        /// lblAccoMasterRoomFacilityDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAccoMasterRoomFacilityDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divAccoMasterRoomFacilityDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAccoMasterRoomFacilityDataPushLastRunCompleted;
+        
+        /// <summary>
+        /// AccoMasterRoomFacilityDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AccoMasterRoomFacilityDataPushLastRunCompleted;
         
         /// <summary>
         /// btnAccoMasterRoomFacility control.
@@ -265,6 +337,42 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.WebControls.Button btnAccoMasterRoomFacility;
         
         /// <summary>
+        /// lblAccoMasterRoomInfoDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAccoMasterRoomInfoDataPushLastRun;
+        
+        /// <summary>
+        /// lblAccoMasterRoomInfoDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblAccoMasterRoomInfoDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divAccoMasterRoomInfoDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divAccoMasterRoomInfoDataPushLastRunCompleted;
+        
+        /// <summary>
+        /// AccoMasterRoomInfoDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AccoMasterRoomInfoDataPushLastRunCompleted;
+        
+        /// <summary>
         /// btnAccoMasterRoomInfo control.
         /// </summary>
         /// <remarks>
@@ -272,6 +380,42 @@ namespace TLGX_Consumer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnAccoMasterRoomInfo;
+        
+        /// <summary>
+        /// lblRoomTypeMatchingDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRoomTypeMatchingDataPushLastRun;
+        
+        /// <summary>
+        /// lblRoomTypeMatchingDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblRoomTypeMatchingDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divRoomTypeMatchingDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRoomTypeMatchingDataPushLastRunCompleted;
+        
+        /// <summary>
+        /// RoomTypeMatchingDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label RoomTypeMatchingDataPushLastRunCompleted;
         
         /// <summary>
         /// btnRoomTypeMatching control.
@@ -283,6 +427,42 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.WebControls.Button btnRoomTypeMatching;
         
         /// <summary>
+        /// lblSupplierAccoDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSupplierAccoDataPushLastRun;
+        
+        /// <summary>
+        /// lblSupplierAccoDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSupplierAccoDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divSupplierAccoDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSupplierAccoDataPushLastRunCompleted;
+        
+        /// <summary>
+        /// SupplierAccoDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SupplierAccoDataPushLastRunCompleted;
+        
+        /// <summary>
         /// btnSupplierAcco control.
         /// </summary>
         /// <remarks>
@@ -292,6 +472,42 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.WebControls.Button btnSupplierAcco;
         
         /// <summary>
+        /// lblSupplierAccoRoomDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSupplierAccoRoomDataPushLastRun;
+        
+        /// <summary>
+        /// lblSupplierAccoRoomDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSupplierAccoRoomDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divSupplierAccoRoomDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSupplierAccoRoomDataPushLastRunCompleted;
+        
+        /// <summary>
+        /// SupplierAccoRoomDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SupplierAccoRoomDataPushLastRunCompleted;
+        
+        /// <summary>
         /// btnSupplierAccoRoom control.
         /// </summary>
         /// <remarks>
@@ -299,6 +515,42 @@ namespace TLGX_Consumer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSupplierAccoRoom;
+        
+        /// <summary>
+        /// lblSupplierAccoRoomExtendedAttrDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSupplierAccoRoomExtendedAttrDataPushLastRun;
+        
+        /// <summary>
+        /// lblSupplierAccoRoomExtendedAttrDataPushLastRunStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblSupplierAccoRoomExtendedAttrDataPushLastRunStatus;
+        
+        /// <summary>
+        /// divSupplierAccoRoomExtendedAttrDataPushLastRun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSupplierAccoRoomExtendedAttrDataPushLastRun;
+        
+        /// <summary>
+        /// SupplierAccoRoomExtendedAttrDataPushLastRunCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label SupplierAccoRoomExtendedAttrDataPushLastRunCompleted;
         
         /// <summary>
         /// btnSupplierAccoRoomExtedAttr control.

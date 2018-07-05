@@ -7942,6 +7942,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.MarshalByRefObject))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Stg_Kafka))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Stg_Kafka[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes))]
@@ -8622,6 +8624,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.MarshalByRefObject))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Stg_Kafka))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Stg_Kafka[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes))]
@@ -9296,6 +9300,131 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.TopicPartionOffsetField, value) != true)) {
                     this.TopicPartionOffsetField = value;
                     this.RaisePropertyChanged("TopicPartionOffset");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DL_ML_DL_EntityStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.ML")]
+    [System.SerializableAttribute()]
+    public partial class DL_ML_DL_EntityStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LastUpdateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal PerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PushedCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TotalCountField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EntityType {
+            get {
+                return this.EntityTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityTypeField, value) != true)) {
+                    this.EntityTypeField = value;
+                    this.RaisePropertyChanged("EntityType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime LastUpdate {
+            get {
+                return this.LastUpdateField;
+            }
+            set {
+                if ((this.LastUpdateField.Equals(value) != true)) {
+                    this.LastUpdateField = value;
+                    this.RaisePropertyChanged("LastUpdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per {
+            get {
+                return this.PerField;
+            }
+            set {
+                if ((this.PerField.Equals(value) != true)) {
+                    this.PerField = value;
+                    this.RaisePropertyChanged("Per");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PushedCount {
+            get {
+                return this.PushedCountField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PushedCountField, value) != true)) {
+                    this.PushedCountField = value;
+                    this.RaisePropertyChanged("PushedCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TotalCount {
+            get {
+                return this.TotalCountField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TotalCountField, value) != true)) {
+                    this.TotalCountField = value;
+                    this.RaisePropertyChanged("TotalCount");
                 }
             }
         }
@@ -16499,6 +16628,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string ElementField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> LogidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -16523,6 +16655,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ElementField, value) != true)) {
                     this.ElementField = value;
                     this.RaisePropertyChanged("Element");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Logid {
+            get {
+                return this.LogidField;
+            }
+            set {
+                if ((this.LogidField.Equals(value) != true)) {
+                    this.LogidField = value;
+                    this.RaisePropertyChanged("Logid");
                 }
             }
         }
@@ -51871,10 +52016,10 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLite", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteDC_ErrorStatusFau" +
             "lt", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id, string CreatedBy);
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLite", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelMappingLiteResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingLiteAsync(string hotel_id, string CreatedBy);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingLiteAsync(string hotel_id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncActivityMappingDC_ErrorStatusFaul" +
@@ -51975,74 +52120,81 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodation", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationDC_ErrorStat" +
             "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferMasterAccommodation(string Logid);
+        void ML_DataTransferMasterAccommodation(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodation", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationResponse")]
-        System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferMasterAccommodationAsync(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
             "es", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
             "esResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
             "esDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferMasterAccommodationRoomFacilities(string Logid);
+        void ML_DataTransferMasterAccommodationRoomFacilities(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
             "es", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomFaciliti" +
             "esResponse")]
-        System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomFacilitiesAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferMasterAccommodationRoomFacilitiesAsync(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
             "ion", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
             "ionResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
             "ionDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferMasterAccommodationRoomInformation(string Logid);
+        void ML_DataTransferMasterAccommodationRoomInformation(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
             "ion", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferMasterAccommodationRoomInformat" +
             "ionResponse")]
-        System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomInformationAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferMasterAccommodationRoomInformationAsync(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatching", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatchingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatchingDC_ErrorStatusF" +
             "ault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferRoomTypeMatching(string Logid);
+        void ML_DataTransferRoomTypeMatching(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatching", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferRoomTypeMatchingResponse")]
-        System.Threading.Tasks.Task<string> ML_DataTransferRoomTypeMatchingAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferRoomTypeMatchingAsync(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationDataRespon" +
             "se")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationDataDC_Err" +
             "orStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferSupplierAccommodationData(string Logid);
+        void ML_DataTransferSupplierAccommodationData(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationDataRespon" +
             "se")]
-        System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationDataAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferSupplierAccommodationDataAsync(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomDataRe" +
             "sponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomDataDC" +
             "_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferSupplierAccommodationRoomData(string Logid);
+        void ML_DataTransferSupplierAccommodationRoomData(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomDataRe" +
             "sponse")]
-        System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomDataAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferSupplierAccommodationRoomDataAsync(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
             "edAttributes", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
             "edAttributesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
             "edAttributesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        string ML_DataTransferSupplierAccommodationRoomExtendedAttributes(string Logid);
+        void ML_DataTransferSupplierAccommodationRoomExtendedAttributes(string Logid);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
             "edAttributes", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtend" +
             "edAttributesResponse")]
-        System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync(string Logid);
+        System.Threading.Tasks.Task ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync(string Logid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatus", ReplyAction="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[] GetMLDataApiTransferStatus();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatus", ReplyAction="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]> GetMLDataApiTransferStatusAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -54680,14 +54832,6 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SyncHotelMappingLiteAsync(hotel_id);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelMappingLite(string hotel_id, string CreatedBy) {
-            return base.Channel.SyncHotelMappingLite(hotel_id, CreatedBy);
-        }
-        
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelMappingLiteAsync(string hotel_id, string CreatedBy) {
-            return base.Channel.SyncHotelMappingLiteAsync(hotel_id, CreatedBy);
-        }
-        
         public TLGX_Consumer.MDMSVC.DC_Message SyncActivityMapping(string activity_id, string CreatedBy) {
             return base.Channel.SyncActivityMapping(activity_id, CreatedBy);
         }
@@ -54792,60 +54936,68 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SelectKafkaInfoAsync(Row_Id);
         }
         
-        public string ML_DataTransferMasterAccommodation(string Logid) {
-            return base.Channel.ML_DataTransferMasterAccommodation(Logid);
+        public void ML_DataTransferMasterAccommodation(string Logid) {
+            base.Channel.ML_DataTransferMasterAccommodation(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferMasterAccommodationAsync(string Logid) {
             return base.Channel.ML_DataTransferMasterAccommodationAsync(Logid);
         }
         
-        public string ML_DataTransferMasterAccommodationRoomFacilities(string Logid) {
-            return base.Channel.ML_DataTransferMasterAccommodationRoomFacilities(Logid);
+        public void ML_DataTransferMasterAccommodationRoomFacilities(string Logid) {
+            base.Channel.ML_DataTransferMasterAccommodationRoomFacilities(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomFacilitiesAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferMasterAccommodationRoomFacilitiesAsync(string Logid) {
             return base.Channel.ML_DataTransferMasterAccommodationRoomFacilitiesAsync(Logid);
         }
         
-        public string ML_DataTransferMasterAccommodationRoomInformation(string Logid) {
-            return base.Channel.ML_DataTransferMasterAccommodationRoomInformation(Logid);
+        public void ML_DataTransferMasterAccommodationRoomInformation(string Logid) {
+            base.Channel.ML_DataTransferMasterAccommodationRoomInformation(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferMasterAccommodationRoomInformationAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferMasterAccommodationRoomInformationAsync(string Logid) {
             return base.Channel.ML_DataTransferMasterAccommodationRoomInformationAsync(Logid);
         }
         
-        public string ML_DataTransferRoomTypeMatching(string Logid) {
-            return base.Channel.ML_DataTransferRoomTypeMatching(Logid);
+        public void ML_DataTransferRoomTypeMatching(string Logid) {
+            base.Channel.ML_DataTransferRoomTypeMatching(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferRoomTypeMatchingAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferRoomTypeMatchingAsync(string Logid) {
             return base.Channel.ML_DataTransferRoomTypeMatchingAsync(Logid);
         }
         
-        public string ML_DataTransferSupplierAccommodationData(string Logid) {
-            return base.Channel.ML_DataTransferSupplierAccommodationData(Logid);
+        public void ML_DataTransferSupplierAccommodationData(string Logid) {
+            base.Channel.ML_DataTransferSupplierAccommodationData(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationDataAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferSupplierAccommodationDataAsync(string Logid) {
             return base.Channel.ML_DataTransferSupplierAccommodationDataAsync(Logid);
         }
         
-        public string ML_DataTransferSupplierAccommodationRoomData(string Logid) {
-            return base.Channel.ML_DataTransferSupplierAccommodationRoomData(Logid);
+        public void ML_DataTransferSupplierAccommodationRoomData(string Logid) {
+            base.Channel.ML_DataTransferSupplierAccommodationRoomData(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomDataAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferSupplierAccommodationRoomDataAsync(string Logid) {
             return base.Channel.ML_DataTransferSupplierAccommodationRoomDataAsync(Logid);
         }
         
-        public string ML_DataTransferSupplierAccommodationRoomExtendedAttributes(string Logid) {
-            return base.Channel.ML_DataTransferSupplierAccommodationRoomExtendedAttributes(Logid);
+        public void ML_DataTransferSupplierAccommodationRoomExtendedAttributes(string Logid) {
+            base.Channel.ML_DataTransferSupplierAccommodationRoomExtendedAttributes(Logid);
         }
         
-        public System.Threading.Tasks.Task<string> ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync(string Logid) {
+        public System.Threading.Tasks.Task ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync(string Logid) {
             return base.Channel.ML_DataTransferSupplierAccommodationRoomExtendedAttributesAsync(Logid);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[] GetMLDataApiTransferStatus() {
+            return base.Channel.GetMLDataApiTransferStatus();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]> GetMLDataApiTransferStatusAsync() {
+            return base.Channel.GetMLDataApiTransferStatusAsync();
         }
     }
 }

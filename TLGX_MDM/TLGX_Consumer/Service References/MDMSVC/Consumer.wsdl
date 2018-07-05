@@ -19,6 +19,7 @@
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/System.IO" />
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/System" />
       <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd16" namespace="http://schemas.datacontract.org/2004/07/DataContracts.STG" />
+      <xsd:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd17" namespace="http://schemas.datacontract.org/2004/07/DataContracts.ML" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IConsumer_GetAccomodationStatus_InputMessage">
@@ -3132,6 +3133,15 @@
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationRoomExtendedAttributes_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q345="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q345:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_GetMLDataApiTransferStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMLDataApiTransferStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetMLDataApiTransferStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMLDataApiTransferStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_GetMLDataApiTransferStatus_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q346="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q346:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="GetAccomodationStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/GetAccomodationStatus" message="tns:IConsumer_GetAccomodationStatus_InputMessage" />
@@ -4861,6 +4871,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtendedAttributes" message="tns:IConsumer_ML_DataTransferSupplierAccommodationRoomExtendedAttributes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtendedAttributesResponse" message="tns:IConsumer_ML_DataTransferSupplierAccommodationRoomExtendedAttributes_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransferSupplierAccommodationRoomExtendedAttributesDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_ML_DataTransferSupplierAccommodationRoomExtendedAttributes_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMLDataApiTransferStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatus" message="tns:IConsumer_GetMLDataApiTransferStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusResponse" message="tns:IConsumer_GetMLDataApiTransferStatus_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetMLDataApiTransferStatus_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />

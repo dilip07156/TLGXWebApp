@@ -30,9 +30,12 @@ namespace TLGX_Consumer.admin
             {
                 GetStaticHotelData();
                 GetUpdatedDistributionLog();
+                GetMLDataTransferStatus();
 
             }
         }
+
+
 
         protected void GetStaticHotelData()
         {
@@ -321,7 +324,133 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
             }
         }
+        #region == DATA trans to ML  Button Event click
+        private void GetMLDataTransferStatus()
+        {
+            try
+            {
+                //Get All 
+                var res = MasterSvc.GetMLDataApiTransferStatus();
+                foreach (var item in res)
+                {
+                    if (item.EntityType == "MLDATAMASTERACCO")
+                    {
+                        lblAccoMasterDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblAccoMasterDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
 
+                        if (item.Per > 0)
+                        {
+                            divAccoMasterDataPushLastRun.Attributes.Remove("aria-valuenow");
+                            divAccoMasterDataPushLastRun.Attributes.Add("aria-valuenow", item.Per.ToString());
+
+                            divAccoMasterDataPushLastRun.Attributes.Remove("style");
+                            divAccoMasterDataPushLastRun.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            AccoMasterDataPushLastRuncompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+                    }
+                    else if (item.EntityType == "MLDATAMASTERACCORMFACILITY")
+                    {
+                        lblAccoMasterRoomFacilityDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblAccoMasterRoomFacilityDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
+                        if (item.Per > 0)
+                        {
+                            divAccoMasterRoomFacilityDataPushLastRunCompleted.Attributes.Remove("aria-valuenow");
+                            divAccoMasterRoomFacilityDataPushLastRunCompleted.Attributes.Add("aria-valuenow", item.Per.ToString());
+                            divAccoMasterRoomFacilityDataPushLastRunCompleted.Attributes.Remove("style");
+                            divAccoMasterRoomFacilityDataPushLastRunCompleted.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            AccoMasterRoomFacilityDataPushLastRunCompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+                    }
+                    else if (item.EntityType == "MLDATAMASTERACCORMINFO")
+                    {
+                        lblAccoMasterRoomInfoDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblAccoMasterRoomInfoDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
+                        if (item.Per > 0)
+                        {
+                            divAccoMasterRoomInfoDataPushLastRunCompleted.Attributes.Remove("aria-valuenow");
+                            divAccoMasterRoomInfoDataPushLastRunCompleted.Attributes.Add("aria-valuenow", item.Per.ToString());
+                            divAccoMasterRoomInfoDataPushLastRunCompleted.Attributes.Remove("style");
+                            divAccoMasterRoomInfoDataPushLastRunCompleted.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            AccoMasterRoomInfoDataPushLastRunCompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+                    }
+                    else if (item.EntityType == "MLDATAROOMTYPEMATCHING")
+                    {
+                        lblRoomTypeMatchingDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblRoomTypeMatchingDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
+                        if (item.Per > 0)
+                        {
+                            divRoomTypeMatchingDataPushLastRunCompleted.Attributes.Remove("aria-valuenow");
+                            divRoomTypeMatchingDataPushLastRunCompleted.Attributes.Add("aria-valuenow", item.Per.ToString());
+                            divRoomTypeMatchingDataPushLastRunCompleted.Attributes.Remove("style");
+                            divRoomTypeMatchingDataPushLastRunCompleted.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            RoomTypeMatchingDataPushLastRunCompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+                    }
+                    else if (item.EntityType == "MLDATASUPPLIERACCO")
+                    {
+                        lblSupplierAccoDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblSupplierAccoDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
+                        if (item.Per > 0)
+                        {
+                            divSupplierAccoDataPushLastRunCompleted.Attributes.Remove("aria-valuenow");
+                            divSupplierAccoDataPushLastRunCompleted.Attributes.Add("aria-valuenow", item.Per.ToString());
+                            divSupplierAccoDataPushLastRunCompleted.Attributes.Remove("style");
+                            divSupplierAccoDataPushLastRunCompleted.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            SupplierAccoDataPushLastRunCompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+
+                    }
+                    else if (item.EntityType == "MLDATASUPPLIERACCORM")
+                    {
+                        lblSupplierAccoRoomDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblSupplierAccoRoomDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
+                        if (item.Per > 0)
+                        {
+                            divSupplierAccoRoomDataPushLastRunCompleted.Attributes.Remove("aria-valuenow");
+                            divSupplierAccoRoomDataPushLastRunCompleted.Attributes.Add("aria-valuenow", item.Per.ToString());
+                            divSupplierAccoRoomDataPushLastRunCompleted.Attributes.Remove("style");
+                            divSupplierAccoRoomDataPushLastRunCompleted.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            SupplierAccoRoomDataPushLastRunCompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+
+                    }
+                    else if (item.EntityType == "MLDATASUPPLIERACCORMEXTATTR")
+                    {
+                        lblSupplierAccoRoomExtendedAttrDataPushLastRun.InnerText = Convert.ToString(item.LastUpdate);
+                        lblSupplierAccoRoomExtendedAttrDataPushLastRunStatus.InnerText = Convert.ToString(item.Status);
+                        if (item.Per > 0)
+                        {
+                            divSupplierAccoRoomExtendedAttrDataPushLastRun.Attributes.Remove("aria-valuenow");
+                            divSupplierAccoRoomExtendedAttrDataPushLastRun.Attributes.Add("aria-valuenow", item.Per.ToString());
+                            divSupplierAccoRoomExtendedAttrDataPushLastRun.Attributes.Remove("style");
+                            divSupplierAccoRoomExtendedAttrDataPushLastRun.Attributes.Add("style", "width: " + item.Per.ToString() + "%");
+
+                            SupplierAccoRoomExtendedAttrDataPushLastRunCompleted.Text = Convert.ToString(item.Per) + "%";
+
+                        }
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         protected void btnAccoMasterDataPush_Click(object sender, EventArgs e)
         {
             RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "Master", Element = "MLDATAMASTERACCO" });
@@ -356,8 +485,6 @@ namespace TLGX_Consumer.admin
         {
             RunMLDATAAPI(new MDMSVC.DC_Distribution_MLDataRQ { Type = "MAPPING", Element = "MLDATASUPPLIERACCORMEXTATTR" });
         }
-
-
         public void RunMLDATAAPI(MDMSVC.DC_Distribution_MLDataRQ _obj)
         {
             var res = MasterSvc.PushSyncMLAPIData(_obj);
@@ -370,6 +497,9 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
             }
         }
+
+        #endregion
+
     }
 
 

@@ -743,6 +743,12 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["PushSyncMLAPIData"], _obj, typeof(DC_Distribution_MLDataRQ), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+        public List<MDMSVC.DL_ML_DL_EntityStatus> GetMLDataApiTransferStatus()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DataAPITransferstatus"]), typeof(List<MDMSVC.DL_ML_DL_EntityStatus>), out result);
+            return (List<MDMSVC.DL_ML_DL_EntityStatus>)result;
+        }
         #endregion
     }
 }
