@@ -373,7 +373,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="panel-title">
-                        <h4 class="modal-title">TLGX Room Info </h4>
+                        <h4 class="modal-title">TLGX Room Info : <label id="lblForTLGXRoomInfoName"></label>
+                            </h4>
                     </div>
                 </div>
                 <div class="modal-body">

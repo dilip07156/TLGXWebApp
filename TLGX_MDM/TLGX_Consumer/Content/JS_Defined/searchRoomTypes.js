@@ -52,7 +52,7 @@ function mySelectedID(selectedcheckboxval) {
     for (var j = 0; j < parentTr.length; j++) {
         if (parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0] != undefined && parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_SupplierRoomTypeMapping_Id")[0].value == hdnAccommodation_SupplierRoomInfo_IdPopUp.val()) {
             //get Row
-            parentTr[j].getElementsByClassName("roomtype")[0].textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
+            parentTr[j].getElementsByClassName("roomtype")[0].textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.textContent;
             var hdnAccommodation_RoomInfo_Id = parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
             hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
 
@@ -220,7 +220,8 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
     }
 }
 function BindRTDetails(controlval) {
-
+    debugger;
+    $('#lblForTLGXRoomInfoName').text($(controlval).parent().parent().parent().find('#lblSupplierRoomTypeName').text());
     $("#modalTLGXRoomInfo").modal('show');
     showLoadingImage();
     var hdnControlID = $("#hdnControlID");
