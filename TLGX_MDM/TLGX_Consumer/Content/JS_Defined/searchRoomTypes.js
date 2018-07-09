@@ -247,6 +247,7 @@ function BindRTDetails(controlval) {
             dataType: "json",
             data: {
                 'acco_id': acco_id,
+                'acco_SupplierRoomTypeMapping_Id': acco_SupplierRoomTypeMapping_Id,
                 'type': 'fillcategorywithdetails'
             },
             responseType: "json",

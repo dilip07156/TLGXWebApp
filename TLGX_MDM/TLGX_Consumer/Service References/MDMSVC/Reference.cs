@@ -50105,11 +50105,11 @@ namespace TLGX_Consumer.MDMSVC {
             "esponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategoryWithDetailsD" +
             "C_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[] GetAccomodationRoomInfo_RoomCategoryWithDetails(string Accomodation_Id);
+        TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[] GetAccomodationRoomInfo_RoomCategoryWithDetails(string Accomodation_Id, string acco_SupplierRoomTypeMapping_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategoryWithDetails", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfo_RoomCategoryWithDetailsR" +
             "esponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[]> GetAccomodationRoomInfo_RoomCategoryWithDetailsAsync(string Accomodation_Id);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[]> GetAccomodationRoomInfo_RoomCategoryWithDetailsAsync(string Accomodation_Id, string acco_SupplierRoomTypeMapping_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/AddAccomodationRoomInfoResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddAccomodationRoomInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -52720,12 +52720,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetAccomodationRoomInfo_RoomCategoryAsync(Accomodation_Id);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[] GetAccomodationRoomInfo_RoomCategoryWithDetails(string Accomodation_Id) {
-            return base.Channel.GetAccomodationRoomInfo_RoomCategoryWithDetails(Accomodation_Id);
+        public TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[] GetAccomodationRoomInfo_RoomCategoryWithDetails(string Accomodation_Id, string acco_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetAccomodationRoomInfo_RoomCategoryWithDetails(Accomodation_Id, acco_SupplierRoomTypeMapping_Id);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[]> GetAccomodationRoomInfo_RoomCategoryWithDetailsAsync(string Accomodation_Id) {
-            return base.Channel.GetAccomodationRoomInfo_RoomCategoryWithDetailsAsync(Accomodation_Id);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails[]> GetAccomodationRoomInfo_RoomCategoryWithDetailsAsync(string Accomodation_Id, string acco_SupplierRoomTypeMapping_Id) {
+            return base.Channel.GetAccomodationRoomInfo_RoomCategoryWithDetailsAsync(Accomodation_Id, acco_SupplierRoomTypeMapping_Id);
         }
         
         public bool AddAccomodationRoomInfo(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo RI) {

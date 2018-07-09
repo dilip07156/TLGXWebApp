@@ -439,10 +439,10 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomCategory"], Accommodation_Id), typeof(List<DC_Accomodation_Category_DDL>), out result);
             return result as List<DC_Accomodation_Category_DDL>;
         }
-        public List<DC_Accomodation_Category_DDL_WithExtraDetails> GetRoomDetails_RoomCategoryWithDetails(Guid Accommodation_Id)
+        public List<DC_Accomodation_Category_DDL_WithExtraDetails> GetRoomDetails_RoomCategoryWithDetails(Guid Accommodation_Id, Guid acco_SupplierRoomTypeMapping_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomCategoryWithDetails"], Accommodation_Id), typeof(List<DC_Accomodation_Category_DDL_WithExtraDetails>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Accomodation_RoomCategoryWithDetails"], Accommodation_Id, acco_SupplierRoomTypeMapping_Id), typeof(List<DC_Accomodation_Category_DDL_WithExtraDetails>), out result);
             return result as List<DC_Accomodation_Category_DDL_WithExtraDetails>;
         }
         public DC_SRT_ML_Response GetRTM_ML_Suggestions(string Accommodation_SupplierRoomTypeMapping_Id)

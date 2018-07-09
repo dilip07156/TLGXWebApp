@@ -23,6 +23,8 @@ namespace TLGX_Consumer.Service
             var PrefixText = context.Request.QueryString["term"];
             var type = context.Request.QueryString["type"];
             var acco_id = context.Request.QueryString["acco_id"];
+            var acco_SupplierRoomTypeMapping_Id = context.Request.QueryString["acco_SupplierRoomTypeMapping_Id"];
+
 
             if (type != null && type == "fillcategory")
             {
@@ -38,7 +40,7 @@ namespace TLGX_Consumer.Service
                 RQ = new MDMSVC.DC_RoomCategoryMaster_RQ();
                 if (acco_id != "")
                 {
-                    var res = Acco.GetRoomDetails_RoomCategoryWithDetails(Guid.Parse(acco_id));
+                    var res = Acco.GetRoomDetails_RoomCategoryWithDetails(Guid.Parse(acco_id),Guid.Parse(acco_SupplierRoomTypeMapping_Id));
                     context.Response.Write(new JavaScriptSerializer().Serialize(res));
                 }
             }
