@@ -5,6 +5,12 @@
 .roomtype {
     white-space: normal !important;
     word-wrap: break-all;
+    text-align: left;
+    padding: 6px 9px !important;
+}
+.CheckboxColumn {
+    width: 3% !important;
+    padding: 0 0 0 5px !important;
 }
 
 .TooltipDescriptionShow {

@@ -14320,6 +14320,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomViewField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoRoomIdField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -14430,6 +14433,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.RoomViewField, value) != true)) {
                     this.RoomViewField = value;
                     this.RaisePropertyChanged("RoomView");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoRoomId {
+            get {
+                return this.TLGXAccoRoomIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoRoomIdField, value) != true)) {
+                    this.TLGXAccoRoomIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoRoomId");
                 }
             }
         }
@@ -19266,6 +19282,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Accommodation_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Accommodation_RoomInfo_CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Accommodation_RoomInfo_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -19476,6 +19495,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Accommodation_IdField.Equals(value) != true)) {
                     this.Accommodation_IdField = value;
                     this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Accommodation_RoomInfo_Category {
+            get {
+                return this.Accommodation_RoomInfo_CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Accommodation_RoomInfo_CategoryField, value) != true)) {
+                    this.Accommodation_RoomInfo_CategoryField = value;
+                    this.RaisePropertyChanged("Accommodation_RoomInfo_Category");
                 }
             }
         }

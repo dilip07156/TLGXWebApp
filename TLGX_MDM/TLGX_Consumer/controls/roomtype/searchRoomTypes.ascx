@@ -8,7 +8,7 @@
     <div class="navbar-inner">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#panSupplierSearch" data-toggle="tab">Search by Supplier</a></li>
-            <li><a href="#panProductSearch" data-toggle="tab">Search by Product</a></li>
+            <%--<li><a href="#panProductSearch" data-toggle="tab">Search by Product</a></li>--%>
         </ul>
     </div>
 </div>
@@ -216,7 +216,7 @@
 
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Suggested Room Info">
+                                                    <asp:TemplateField HeaderText="Suggested Room Info" ItemStyle-Width="18%">
                                                         <ItemTemplate>
                                                             <%--CheckSuggestionOnline(this);--%>
                                                             <textarea runat="server" id="txtSuggestedRoomInfoInGridBySupplier" value='<%# Eval("Tx_StrippedName") %>' class="form-control"></textarea>
@@ -236,7 +236,7 @@
                                                     </div>--%>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="TLGX Room Info" ItemStyle-Width="20%">
+                                                    <asp:TemplateField HeaderText="TLGX Room Info (Room Category)" ItemStyle-Width="25%">
                                                         <ItemTemplate>
                                                             <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server" onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);">
                                                             </asp:DropDownList>
@@ -256,7 +256,7 @@
 
                                                     <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
                                                         <ItemTemplate>
-                                                            <asp:DataList ID="lstAlias" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
+                                                            <asp:DataList ID="lstAlias" ClientIDMode="Static" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
                                                                 RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
                                                                 <ItemTemplate>
                                                                     <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
@@ -278,7 +278,7 @@
                                                             </asp:DropDownList>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField ShowHeader="false">
+                                                    <asp:TemplateField ShowHeader="false" ItemStyle-Width="5%">
                                                         <ItemTemplate>
                                                             <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
                                                             <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
@@ -373,6 +373,7 @@
                     <div class="panel-title">
                         <h4 class="modal-title">Supplier Room Type Name : <label id="lblForTLGXRoomInfoName"></label>
                             </h4>
+                        <div id="divAttribute"></div>
                     </div>
                 </div>
                 <div class="modal-body">

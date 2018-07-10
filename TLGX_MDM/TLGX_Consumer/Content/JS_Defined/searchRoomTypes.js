@@ -37,6 +37,7 @@ function HideToolTip(controls) {
 
 
 function mySelectedID(selectedcheckboxval) {
+    
     // var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
     for (var i = 1; i < tr.length; i++) {
@@ -51,7 +52,15 @@ function mySelectedID(selectedcheckboxval) {
     for (var j = 0; j < parentTr.length; j++) {
         if (parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0] != undefined && parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_SupplierRoomTypeMapping_Id")[0].value == hdnAccommodation_SupplierRoomInfo_IdPopUp.val()) {
             //get Row
-            parentTr[j].getElementsByClassName("roomtype")[0].textContent = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.textContent;
+            debugger;
+            var RoomInfoName = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
+            var RoomCategory = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent;
+            if (RoomCategory != undefined && RoomCategory != "") {
+
+                RoomInfoName = RoomInfoName + "\n" + "(" + RoomCategory + ")";
+            }
+            debugger;
+            parentTr[j].getElementsByClassName("roomtype")[0].textContent = RoomInfoName;
             var hdnAccommodation_RoomInfo_Id = parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
             hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
 
@@ -161,7 +170,7 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
     //hdnAccommodation_RoomInfo_IdPopUp.val(acco_roomType_id);
     var listItems = '';
     if (result != null) {
-        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1"></th><th class="col-md-2">Room Name</th> <th class="col-md-3">Room Category</th>';
+        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1  CheckboxColumn"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">Room Name</th> <th class="col-md-2">Room Category</th>';
         def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th></tr>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -170,6 +179,7 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
         var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
         var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
         var td1 = '<td class="col-md-1">';
+        var tdCheckbox = '<td class="col-md-1 CheckboxColumn">';
         //var td21 = '<td class="col-md-2">';
 
 
@@ -181,14 +191,15 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
         for (var i = 0; i < result.length; i++) {
             if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
                 li = li + '<tr class="row alert alert-success">';
-                li = li + td1 + licheckboxWithChecked + tdc;
+                li = li + tdCheckbox + licheckboxWithChecked + tdc;
+                li = li + td1 + result[i].TLGXAccoRoomId + tdc;
                 li = li + td2 + result[i].RoomName + tdc;
-                li = li + td3 + result[i].RoomCategory + tdc;
+                li = li + td2 + result[i].RoomCategory + tdc;
                 li = li + td2 + result[i].BedType + tdc;
                 li = li + td2 + result[i].RoomView + tdc;
                 li = li + td2 + result[i].RoomSize + tdc;
                 li = li + td1 + result[i].IsSomking + tdc;
-               li = li + td1 + (result[i].MatchingScore == null ? '' : result[i].MatchingScore) + tdc;
+                li = li + td1 + (result[i].MatchingScore == null ? '' : result[i].MatchingScore) + tdc;
                 li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
             }
         }
@@ -201,11 +212,12 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
             }
             else {
                 li = li + '<tr class="row">';
-                li = li + td1 + licheckbox + tdc;
+                li = li + tdCheckbox + licheckbox + tdc;
             }
 
+            li = li + td1 + result[i].TLGXAccoRoomId + tdc;
             li = li + td2 + result[i].RoomName + tdc;
-            li = li + td3 + result[i].RoomCategory + tdc;
+            li = li + td2 + result[i].RoomCategory + tdc;
             li = li + td2 + result[i].BedType + tdc;
             li = li + td2 + result[i].RoomView + tdc;
             li = li + td2 + result[i].RoomSize + tdc;
@@ -219,7 +231,33 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
     }
 }
 function BindRTDetails(controlval) {
-    $('#lblForTLGXRoomInfoName').text($(controlval).parent().parent().parent().find('#lblSupplierRoomTypeName').text());
+    debugger;
+
+    var lblSupplierRoomTypeName = $(controlval).parent().parent().parent().find('#lblSupplierRoomTypeName').text();
+    //Getting Extracted Attribute
+    var ExtractedAttribute = "";
+    var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-bordered'><tbody><tr>";
+    var flag = 0;
+    if ($(controlval).parent().parent().parent().find('#lstAlias') != undefined) {
+        if ($(controlval).parent().parent().parent().find('#lstAlias tr').length > 0) {
+            for (var i = 0; i < $(controlval).parent().parent().parent().find('#lstAlias tr td').length; i++) {
+                var CurrentTd = $(controlval).parent().parent().parent().find('#lstAlias tr td')[i];
+                if (CurrentTd != undefined && CurrentTd.firstElementChild != null && CurrentTd.firstElementChild.firstElementChild != null) {
+                    if (flag > 3) {
+                        tableExtractedAttribute = tableExtractedAttribute + "</tr><tr>"
+                        flag = 0;
+                    }
+                    tableExtractedAttribute = tableExtractedAttribute + "<td>" + CurrentTd.firstElementChild.firstElementChild.title.trim() + "</td>";
+                    flag += 1;
+                }
+            }
+        }
+    }
+    tableExtractedAttribute = tableExtractedAttribute + "</tr></tbody></table></tr></tbody></table>";
+    $('#lblForTLGXRoomInfoName').text(lblSupplierRoomTypeName);
+    $('#divAttribute').html(tableExtractedAttribute);
+
+
     $("#modalTLGXRoomInfo").modal('show');
     showLoadingImage();
     var hdnControlID = $("#hdnControlID");

@@ -199,6 +199,7 @@
   <xs:complexType name="DC_Accommodation_SupplierRoomTypeMap_SearchRS">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Category" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" type="ser:guid" />

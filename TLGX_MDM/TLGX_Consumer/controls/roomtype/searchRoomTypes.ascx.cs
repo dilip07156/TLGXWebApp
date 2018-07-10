@@ -76,7 +76,13 @@ namespace TLGX_Consumer.controls.roomtype
         }
         private void fillsuppliers()
         {
-            ddlSupplierNameBySupplier.DataSource = masterSVc.GetSupplierMasterData();
+            //ddl.Items.Clear();
+            //ddl.DataSource = 
+            //ddl.DataTextField = "Name";
+            //ddl.DataValueField = "Supplier_Id";
+            //ddl.DataBind();
+            //ddl.Items.Insert(0, new ListItem("-ALL-", "0"));
+            ddlSupplierNameBySupplier.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType = "Accommodation", CategorySubType_ID = "Apartments" });
             ddlSupplierNameBySupplier.DataValueField = "Supplier_Id";
             ddlSupplierNameBySupplier.DataTextField = "Name";
             ddlSupplierNameBySupplier.DataBind();
@@ -270,21 +276,20 @@ namespace TLGX_Consumer.controls.roomtype
                         if (ddlSuggestions != null)
                         {
                             ddlSuggestions.Style.Add(HtmlTextWriterStyle.Display, "block");
-
-
-
                         }
 
                         bool blnHaveRoomInfo_Id = ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.HasValue;
                         string RoomInfo_Name = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Name);
+                        string RoomInfo_Category = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Category);
                         if (blnHaveRoomInfo_Id && RoomInfo_Name != null && RoomInfo_Name != "")
                         {
                             string Accommodation_RoomInfo_Id = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.Value);
-                            ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(RoomInfo_Name, Accommodation_RoomInfo_Id));
+                            string strRoomInfoName = RoomInfo_Name + (string.IsNullOrEmpty(RoomInfo_Category) ? string.Empty : "<br/>(" + RoomInfo_Category + ")");
+                            ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(strRoomInfoName, Accommodation_RoomInfo_Id));
                             if ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis")) != null)
                             {
                                 var innerHtml = ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml;
-                                ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml = innerHtml.Replace("-Select-", RoomInfo_Name);
+                                ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml = innerHtml.Replace("-Select-", strRoomInfoName);
                             }
 
                             //ddlSuggestions.F
