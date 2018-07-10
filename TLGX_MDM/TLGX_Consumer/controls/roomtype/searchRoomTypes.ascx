@@ -184,11 +184,10 @@
                                                 OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
                                                 <Columns>
                                                     <%--<asp:BoundField HeaderText="Hotel ID" DataField="CommonProductId" />--%>
-                                                    <asp:TemplateField HeaderText="Product Name" ItemStyle-Width="12%">
+                                                    <asp:TemplateField HeaderText="System Product Name" ItemStyle-Width="12%">
                                                         <ItemTemplate>
                                                             <asp:Label runat="server" ID="lblProductName" Text='<%# Eval("ProductName") %>'></asp:Label><br />
-                                                            <strong>(
-                                                    <asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>) ,</strong>
+                                                            <strong>(<asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>) ,</strong>
                                                             <asp:Label runat="server" ID="lblLocation" Text='<%# Eval("Location") %>'></asp:Label></strong>
                                                        
 
@@ -208,8 +207,7 @@
                                                     <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
                                                         <ItemTemplate>
                                                             <%-- <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>--%>
-                                                            <strong>(
-                                                    <asp:Label runat="server" ID="lblSupplierRoomTypeCode" Text='<%# Eval("SupplierRoomTypeCode") %>'></asp:Label>)</strong>
+                                                            <strong>(<asp:Label runat="server" ID="lblSupplierRoomTypeCode" Text='<%# Eval("SupplierRoomTypeCode") %>'></asp:Label>)</strong>
                                                             <asp:Label runat="server" ID="lblSupplierRoomTypeName" ClientIDMode="Static" Text='<%# Eval("SupplierRoomName") %>'></asp:Label>
                                                             <a href="#" id="aHelp" runat="server" onmouseover="DisplayToolTip(this);" onclick="return false" onmouseout="HideToolTip(this);" data-toggle="popover" class="glyphicon glyphicon-info-sign Tooltipicon" title=''></a>
                                                             <div id="divToolTip" class="TooltipDescriptionHide">
@@ -373,7 +371,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="panel-title">
-                        <h4 class="modal-title">TLGX Room Info : <label id="lblForTLGXRoomInfoName"></label>
+                        <h4 class="modal-title">Supplier Room Type Name : <label id="lblForTLGXRoomInfoName"></label>
                             </h4>
                     </div>
                 </div>

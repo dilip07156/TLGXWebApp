@@ -201,6 +201,7 @@ namespace TLGX_Consumer.controls.roomtype
             ddlStatusBySupplier.SelectedValue = "0";
             ddlPageSizeBySupplier.SelectedValue = "5";
             txtProductNameBySupplier.Text = string.Empty;
+            txtSupplierRoomName.Text = string.Empty;
             MappingButtonShowHide(false);
             lblSupplierRoomSearchCount.Text = "0";
             grdRoomTypeMappingSearchResultsBySupplier.DataSource = null;

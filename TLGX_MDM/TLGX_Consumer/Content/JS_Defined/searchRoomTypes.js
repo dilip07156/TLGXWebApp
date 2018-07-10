@@ -37,7 +37,6 @@ function HideToolTip(controls) {
 
 
 function mySelectedID(selectedcheckboxval) {
-    debugger;
     // var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
     for (var i = 1; i < tr.length; i++) {
@@ -220,7 +219,6 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
     }
 }
 function BindRTDetails(controlval) {
-    debugger;
     $('#lblForTLGXRoomInfoName').text($(controlval).parent().parent().parent().find('#lblSupplierRoomTypeName').text());
     $("#modalTLGXRoomInfo").modal('show');
     showLoadingImage();
