@@ -448,7 +448,9 @@
                             </asp:DropDownList>
                         </div>
                     </div>
-                    <asp:GridView ID="grdRoomTypes" runat="server" AutoGenerateColumns="False" DataKeyNames="Accommodation_RoomInfo_Id" CssClass="table table-hover table-striped" AllowPaging="True" EmptyDataText="Not Hotel Rooms defined for this Product" PageSize="5" AllowCustomPaging="true" OnPageIndexChanging="grdRoomTypes_PageIndexChanging" OnRowCommand="grdRoomTypes_SelectedIndexChanged" OnRowDataBound="grdRoomTypes_RowDataBound">
+                    <asp:GridView ID="grdRoomTypes" runat="server" AutoGenerateColumns="False" DataKeyNames="Accommodation_RoomInfo_Id" CssClass="table table-hover table-striped" 
+                        AllowPaging="True" EmptyDataText="Not Hotel Rooms defined for this Product" PageSize="5" AllowCustomPaging="true" 
+                        OnPageIndexChanging="grdRoomTypes_PageIndexChanging" OnRowCommand="grdRoomTypes_RowCommand" OnRowDataBound="grdRoomTypes_RowDataBound">
                         <Columns>
                             <asp:BoundField DataField="RoomId" HeaderText="Id" SortExpression="RoomId" />
                             <asp:BoundField DataField="RoomCategory" HeaderText="Category" SortExpression="RoomCategory" />

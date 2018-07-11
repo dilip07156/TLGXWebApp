@@ -226,7 +226,7 @@ namespace TLGX_Consumer.controls.hotel
             }
         }
 
-        protected void grdRoomTypes_SelectedIndexChanged(object sender, GridViewCommandEventArgs e)
+        protected void grdRoomTypes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             //int index = Convert.ToInt32(e.CommandArgument);
 
@@ -413,5 +413,7 @@ namespace TLGX_Consumer.controls.hotel
             PageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
             GetRoomInfoDetails(PageSize, intPageIndex);
         }
+
+
     }
 }
