@@ -536,6 +536,32 @@
                                 </asp:DropDownList>
                             </div>
                         </div>
+
+                         <div class="form-group row">
+                            <div class="col-sm-6 row">
+                                <label class="control-label col-sm-4">
+                                    <u>Tour Type</u>
+                                </label>
+                                <em>
+                                <asp:Label ID="lblSupplierTourType" runat="server" class="control-label col-sm-2"></asp:Label></em>
+                            </div>
+                            <div class="col-sm-6">
+                               <asp:TextBox ID="txtTourType" runat="server" CssClass="form-control" MaxLength="100"></asp:TextBox>
+                            </div>
+                        </div>
+
+                          <div class="form-group row">
+                            <div class="col-sm-6 row">
+                                <label class="control-label col-sm-4">
+                                    <u>Area/Address</u>
+                                </label>
+                                <em>
+                                <asp:Label ID="lblSupplierLocation" runat="server" class="control-label col-sm-2"></asp:Label></em>
+                            </div>
+                            <div class="col-sm-6">
+                               <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" MaxLength="100"></asp:TextBox>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
