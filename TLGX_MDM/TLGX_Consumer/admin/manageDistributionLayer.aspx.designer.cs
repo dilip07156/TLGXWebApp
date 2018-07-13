@@ -139,6 +139,42 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.WebControls.Button btnRefreshStateMaster;
         
         /// <summary>
+        /// LastUpdatedZoneMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LastUpdatedZoneMaster;
+        
+        /// <summary>
+        /// btnRefreshZoneMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRefreshZoneMaster;
+        
+        /// <summary>
+        /// LastUpdatedZoneTypeMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LastUpdatedZoneTypeMaster;
+        
+        /// <summary>
+        /// btnRefreshZoneTypeMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRefreshZoneTypeMaster;
+        
+        /// <summary>
         /// LastUpdatedHotelMapping control.
         /// </summary>
         /// <remarks>
