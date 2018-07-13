@@ -597,7 +597,6 @@
     <Content Include="Service\HotelNameAutoComplete.ashx" />
     <Content Include="Service\ToFillDDL.ashx" />
     <Content Include="Service\SupplierWiseDataForChart.ashx" />
-    <Content Include="Service\AllSupplierDataForChart.ashx" />
     <Content Include="Service\FileProgressDashboard.ashx" />
     <Content Include="Service\PentahoStepsInfo.ashx" />
     <Content Include="Service\GetZoneHotelsForMap.ashx" />
@@ -2688,9 +2687,6 @@
     </Compile>
     <Compile Include="Service\HotelNameAutoComplete.ashx.cs">
       <DependentUpon>HotelNameAutoComplete.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="Service\AllSupplierDataForChart.ashx.cs">
-      <DependentUpon>AllSupplierDataForChart.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\FileProgressDashboard.ashx.cs">
       <DependentUpon>FileProgressDashboard.ashx</DependentUpon>

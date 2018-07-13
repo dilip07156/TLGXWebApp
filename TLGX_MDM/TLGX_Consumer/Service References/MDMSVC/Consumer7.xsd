@@ -833,6 +833,7 @@
   <xs:complexType name="DC_MappingStats">
     <xs:sequence>
       <xs:element minOccurs="0" name="MappingStatsFor" nillable="true" type="tns:ArrayOfDC_MappingStatsFor" />
+      <xs:element minOccurs="0" name="MappingStatsForSuppliers" nillable="true" type="tns:ArrayOfDC_MappingStatsForSuppliers" />
       <xs:element minOccurs="0" name="NextRun" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierId" type="ser:guid" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />

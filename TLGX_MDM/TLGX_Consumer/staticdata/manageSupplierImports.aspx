@@ -49,85 +49,83 @@
 
                 .list-inline li::after {
                     content: '|';
-                }                 
+                }
     </style>
     <script type="text/javascript">
         var a = '';
         //handling post back - binding data again
-       var prm = Sys.WebForms.PageRequestManager.getInstance();
-         if (prm != null) {
-        prm.add_endRequest(function (sender, e) {
-            if (sender._postBackSettings.panelsToUpdate != null) {
-               getChartData();
-               var sid = $('#MainContent_ddlSupplierName').val();
-                if(sid=='0'){
-                    $("#dvCityReRun").hide();
-                    $("#dvCountryReRun").hide();
-                    $("#dvHotelReRun").hide();
-                    $("#dvRoomTypeReRun").hide();
-                    $("#dvActivityReRun").hide();
-                     }
-                else
-                {
-                    $("#dvCityReRun").show();
-                    $("#dvCountryReRun").show();
-                    $("#dvHotelReRun").show();
-                    $("#dvRoomTypeReRun").show();
-                    $("#dvActivityReRun").show();
-                }
-                $("#MainContent_btnExportCsv").click(function () {
-                $('#ReportViewersupplierwise').show();
-                });
-            $("#btnUpdateSupplier").click(function () {
-                $("#dvMsgCity").hide();
-                $("#dvMsgCountry").hide();
-                $("#dvMsgHotel").hide();
-                $("#dvMsgRoomType").hide();
-                $("#dvMsgActivity").hide();
-                $("#ReportViewersupplierwise").hide();
-                var sid = $('#MainContent_ddlSupplierName').val();
-                if (sid == '0') {
-                    $("#dvCityReRun").hide();
-                    $("#dvCountryReRun").hide();
-                    $("#dvHotelReRun").hide();
-                    $("#dvRoomTypeReRun").hide();
-                    $("#dvActivityReRun").hide();
-                }
-                else {
-                    $("#dvCityReRun").show();
-                    $("#dvCountryReRun").show();
-                    $("#dvHotelReRun").show();
-                    $("#dvRoomTypeReRun").show();
-                    $("#dvActivityReRun").show();
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        if (prm != null) {
+            prm.add_endRequest(function (sender, e) {
+                if (sender._postBackSettings.panelsToUpdate != null) {
+                    getChartData();
+                    var sid = $('#MainContent_ddlSupplierName').val();
+                    if (sid == '0') {
+                        $("#dvCityReRun").hide();
+                        $("#dvCountryReRun").hide();
+                        $("#dvHotelReRun").hide();
+                        $("#dvRoomTypeReRun").hide();
+                        $("#dvActivityReRun").hide();
+                    }
+                    else {
+                        $("#dvCityReRun").show();
+                        $("#dvCountryReRun").show();
+                        $("#dvHotelReRun").show();
+                        $("#dvRoomTypeReRun").show();
+                        $("#dvActivityReRun").show();
+                    }
+                    $("#MainContent_btnExportCsv").click(function () {
+                        $('#ReportViewersupplierwise').show();
+                    });
+                    $("#btnUpdateSupplier").click(function () {
+                        $("#dvMsgCity").hide();
+                        $("#dvMsgCountry").hide();
+                        $("#dvMsgHotel").hide();
+                        $("#dvMsgRoomType").hide();
+                        $("#dvMsgActivity").hide();
+                        $("#ReportViewersupplierwise").hide();
+                        var sid = $('#MainContent_ddlSupplierName').val();
+                        if (sid == '0') {
+                            $("#dvCityReRun").hide();
+                            $("#dvCountryReRun").hide();
+                            $("#dvHotelReRun").hide();
+                            $("#dvRoomTypeReRun").hide();
+                            $("#dvActivityReRun").hide();
+                        }
+                        else {
+                            $("#dvCityReRun").show();
+                            $("#dvCountryReRun").show();
+                            $("#dvHotelReRun").show();
+                            $("#dvRoomTypeReRun").show();
+                            $("#dvActivityReRun").show();
+                        }
+                    });
+                    a = document.getElementById('<%=hdnFileId.ClientID%>').value;
+                    if (a != "") {
+                        $("#moViewDetials").modal('show');
+                        $('#moViewDetials').on('show.bs.modal', function () {
+                            getChartDataFileMapping(a);
+                            //strat timer
+                            if (a != "") {
+                                x = setInterval(function () { myTimer(a) }, 5000);
+                            }
+                        }).modal('show');
+                        $('#moViewDetials').on('hidden.bs.modal', function () {
+                            //stop timer on close of modal
+                            $('#moViewDetials a:first').tab('show');
+                            myStopFunction();
+                        });
+                    }
+                    document.getElementById('<%=hdnFileId.ClientID%>').value = "";
                 }
             });
-                 a = document.getElementById('<%=hdnFileId.ClientID%>').value;
-                if(a !="")  
-                {
-                    $("#moViewDetials").modal('show');
-                    $('#moViewDetials').on('show.bs.modal', function () {               
-                    getChartDataFileMapping(a);
-                //strat timer
-                if (a != "") {
-                    x = setInterval(function () { myTimer(a) }, 5000);
-                }
-                }).modal('show');
-            $('#moViewDetials').on('hidden.bs.modal', function () {
-                //stop timer on close of modal
-                $('#moViewDetials a:first').tab('show');
-                myStopFunction();
-              });
-                }
-                document.getElementById('<%=hdnFileId.ClientID%>').value="";
-            }           
-        });
-    };
+        };
         //end handling post back
 
-       //script for RUN MAPPING        
+        //script for RUN MAPPING        
         function myTimer() {
-           // getChartDataFileMapping(hdnval);
-            getChartDataFileMapping(a);    
+            // getChartDataFileMapping(hdnval);
+            getChartDataFileMapping(a);
         }
         function myStopFunction() {
             a = '';
@@ -135,14 +133,14 @@
             clearInterval(x);
         }
         function showDetailsModal(fileid) {
-                $("#moViewDetials").modal('show');
-                $('#moViewDetials').on('show.bs.modal', function () {
+            $("#moViewDetials").modal('show');
+            $('#moViewDetials').on('show.bs.modal', function () {
                 var fileid = document.getElementById('<%=hdnFileId.ClientID%>').value;//NEW
                 getChartDataFileMapping(fileid);
                 //strat timer
-                    x = setInterval(function () { myTimer() }, 5000);              
-                }).modal('show');
-       
+                x = setInterval(function () { myTimer() }, 5000);
+            }).modal('show');
+
             $('#moViewDetials').on('hidden.bs.modal', function () {
                 //stop timer on close of modal
                 $('#moViewDetials a:first').tab('show');
@@ -171,7 +169,6 @@
             if (sid == '0') {
                 $('#ReportViewersupplierwise').hide();
                 var PriorityId = $('#MainContent_ddlPriority').val();
-                getAllSupplierData(PriorityId, ProductCategory);
                 sid = '00000000-0000-0000-0000-000000000000'
             }
             else {
@@ -403,192 +400,185 @@
                         $("#HotelRoom").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
 
+                    //if (result[0].MappingStatsForSuppliers.length > 0) {
+                        getAllSupplierData(result[0].MappingStatsForSuppliers);
+                    //}
+
                 },
                 error: function (xhr, status, error) {
                     // alert("failed to load file");
                 }
             });
         }
-        function getAllSupplierData(PriorityId, ProductCategory) {
-            $.ajax({
-                url: '../../../Service/AllSupplierDataForChart.ashx',
-                data: { 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                type: 'GET',
-                success: function (result) {
-                    var allcontryArray = [];
-                    var allcityArray = [];
-                    var allproductArray = [];
-                    var allactivityArray = [];
-                    var allhotelroomArray = [];
-                    var inodes = 0;
-                    for (; inodes < result.length; inodes++) {
-                        if (result[inodes].Mappingfor == "Country") {
-                            delete result[inodes].Mappingfor;
-                            allcontryArray.push(result[inodes]);
-                            $("#alldetailcountry").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
+        function getAllSupplierData(result) {
 
-                        }
-                        if (result[inodes].Mappingfor == "City") {
-                            delete result[inodes].Mappingfor;
-                            allcityArray.push(result[inodes]);
-                            $("#alldetailcity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
+            var allcontryArray = [];
+            var allcityArray = [];
+            var allproductArray = [];
+            var allactivityArray = [];
+            var allhotelroomArray = [];
+            var inodes = 0;
+            for (; inodes < result.length; inodes++) {
+                if (result[inodes].Mappingfor == "Country") {
+                    delete result[inodes].Mappingfor;
+                    allcontryArray.push(result[inodes]);
+                    $("#alldetailcountry").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
 
-                        }
-                        if (result[inodes].Mappingfor == "Product") {
-                            delete result[inodes].Mappingfor;
-                            allproductArray.push(result[inodes]);
-                            $("#alldetailproduct").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
-
-                        }
-                        if (result[inodes].Mappingfor == "Activity") {
-                            delete result[inodes].Mappingfor;
-                            allactivityArray.push(result[inodes]);
-                            $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
-
-                        }
-                        if (result[inodes].Mappingfor == "HotelRoom") {
-                            delete result[inodes].Mappingfor;
-                            allhotelroomArray.push(result[inodes]);
-                            $("#alldetailHotelRoom").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
-
-                        }
-                    }
-                    //changing labels
-                    for (var i = 0; i < allcontryArray.length; i++) {
-                        var o = allcontryArray[i];
-                        o.label = o.SupplierName;
-                        delete o.SupplierName;
-                        o.value = o.totalcount;
-                        delete o.totalcount;
-                    }
-                    for (var i = 0; i < allcityArray.length; i++) {
-                        var o = allcityArray[i];
-                        o.label = o.SupplierName;
-                        delete o.SupplierName;
-                        o.value = o.totalcount;
-                        delete o.totalcount;
-                    }
-                    for (var i = 0; i < allproductArray.length; i++) {
-                        var o = allproductArray[i];
-                        o.label = o.SupplierName;
-                        delete o.SupplierName;
-                        o.value = o.totalcount;
-                        delete o.totalcount;
-                    }
-                    for (var i = 0; i < allactivityArray.length; i++) {
-                        var o = allactivityArray[i];
-                        o.label = o.SupplierName;
-                        delete o.SupplierName;
-                        o.value = o.totalcount;
-                        delete o.totalcount;
-                    }
-                    for (var i = 0; i < allhotelroomArray.length; i++) {
-                        var o = allhotelroomArray[i];
-                        o.label = o.SupplierName;
-                        delete o.SupplierName;
-                        o.value = o.totalcount;
-                        delete o.totalcount;
-                    }
-                    //end
-
-                    var allcountryChart = Morris.Donut({
-                        element: 'allcountry',
-                        data: allcontryArray,
-                        colors: colorsArray,
-                        resize: true,
-                    })
-                    var allcityChart = Morris.Donut({
-                        element: 'allcity',
-                        data: allcityArray,
-                        colors: colorsArray,
-                        resize: true,
-                    })
-                    var allproductChart = Morris.Donut({
-                        element: 'allproduct',
-                        data: allproductArray,
-                        colors: colorsArray,
-                        resize: true,
-                    })
-                    var allactivityChart = Morris.Donut({
-                        element: 'allactivity',
-                        data: allactivityArray,
-                        colors: colorsArray,
-                        resize: true,
-                    })
-                    var allHotelRoomChart = Morris.Donut({
-                        element: 'allHotelRoom',
-                        data: allhotelroomArray,
-                        colors: colorsArray,
-                        resize: true,
-                    })
-                    ////For legends.
-                    allcountryChart.options.data.forEach(function (label, i) {
-                        var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
-                        legendItem.find('span')
-                            .css('backgroundColor', allcountryChart.options.colors[i])
-                            .css('width', '20px')
-                            .css('display', 'inline-block')
-                            .css('margin', '5px');
-                        $('#legendco').append(legendItem)
-                    });
-                    allcityChart.options.data.forEach(function (label, i) {
-                        var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
-                        legendItem.find('span')
-                            .css('backgroundColor', allcityChart.options.colors[i])
-                            .css('width', '20px')
-                            .css('display', 'inline-block')
-                            .css('margin', '5px');
-                        $('#legendci').append(legendItem)
-                    });
-                    allproductChart.options.data.forEach(function (label, i) {
-                        var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
-                        legendItem.find('span')
-                            .css('backgroundColor', allproductChart.options.colors[i])
-                            .css('width', '20px')
-                            .css('display', 'inline-block')
-                            .css('margin', '5px');
-                        $('#legendpr').append(legendItem)
-                    });
-                    allactivityChart.options.data.forEach(function (label, i) {
-                        var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
-                        legendItem.find('span')
-                            .css('backgroundColor', allactivityChart.options.colors[i])
-                            .css('width', '20px')
-                            .css('display', 'inline-block')
-                            .css('margin', '5px');
-                        $('#legendac').append(legendItem)
-                    });
-                    allHotelRoomChart.options.data.forEach(function (label, i) {
-                        var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
-                        legendItem.find('span')
-                            .css('backgroundColor', allHotelRoomChart.options.colors[i])
-                            .css('width', '20px')
-                            .css('display', 'inline-block')
-                            .css('margin', '5px');
-                        $('#legendhr').append(legendItem)
-                    });
-                    if (allcontryArray.length == 0) {
-                        $("#allcountry").append("<br /><br />No Static Data Found").addClass("nodata");
-                    }
-                    if (allcityArray.length == 0) {
-                        $("#allcity").append("<br /><br />No Static Data Found").addClass("nodata");
-                    }
-                    if (allproductArray.length == 0) {
-                        $("#allproduct").append("<br /><br />No Static Data Found").addClass("nodata");
-                    }
-                    if (allactivityArray.length == 0) {
-                        $("#allactivity").append("<br /><br />No Static Data Found").addClass("nodata");
-                    }
-                    if (allhotelroomArray.length == 0) {
-                        $("#allHotelRoom").append("<br /><br />No Static Data Found").addClass("nodata");
-                    }
-                },
-                error: function (xhr, status, error) {
-                    // alert("failed to load  all supplier data file");
                 }
+                if (result[inodes].Mappingfor == "City") {
+                    delete result[inodes].Mappingfor;
+                    allcityArray.push(result[inodes]);
+                    $("#alldetailcity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
+
+                }
+                if (result[inodes].Mappingfor == "Product") {
+                    delete result[inodes].Mappingfor;
+                    allproductArray.push(result[inodes]);
+                    $("#alldetailproduct").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
+
+                }
+                if (result[inodes].Mappingfor == "Activity") {
+                    delete result[inodes].Mappingfor;
+                    allactivityArray.push(result[inodes]);
+                    $("#alldetailactivity").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
+
+                }
+                if (result[inodes].Mappingfor == "HotelRoom") {
+                    delete result[inodes].Mappingfor;
+                    allhotelroomArray.push(result[inodes]);
+                    $("#alldetailHotelRoom").append(result[inodes].SupplierName + "&nbsp;&nbsp;:&nbsp;&nbsp;" + result[inodes].totalcount + "<br />")
+
+                }
+            }
+            //changing labels
+            for (var i = 0; i < allcontryArray.length; i++) {
+                var o = allcontryArray[i];
+                o.label = o.SupplierName;
+                delete o.SupplierName;
+                o.value = o.totalcount;
+                delete o.totalcount;
+            }
+            for (var i = 0; i < allcityArray.length; i++) {
+                var o = allcityArray[i];
+                o.label = o.SupplierName;
+                delete o.SupplierName;
+                o.value = o.totalcount;
+                delete o.totalcount;
+            }
+            for (var i = 0; i < allproductArray.length; i++) {
+                var o = allproductArray[i];
+                o.label = o.SupplierName;
+                delete o.SupplierName;
+                o.value = o.totalcount;
+                delete o.totalcount;
+            }
+            for (var i = 0; i < allactivityArray.length; i++) {
+                var o = allactivityArray[i];
+                o.label = o.SupplierName;
+                delete o.SupplierName;
+                o.value = o.totalcount;
+                delete o.totalcount;
+            }
+            for (var i = 0; i < allhotelroomArray.length; i++) {
+                var o = allhotelroomArray[i];
+                o.label = o.SupplierName;
+                delete o.SupplierName;
+                o.value = o.totalcount;
+                delete o.totalcount;
+            }
+            //end
+
+            var allcountryChart = Morris.Donut({
+                element: 'allcountry',
+                data: allcontryArray,
+                colors: colorsArray,
+                resize: true,
+            })
+            var allcityChart = Morris.Donut({
+                element: 'allcity',
+                data: allcityArray,
+                colors: colorsArray,
+                resize: true,
+            })
+            var allproductChart = Morris.Donut({
+                element: 'allproduct',
+                data: allproductArray,
+                colors: colorsArray,
+                resize: true,
+            })
+            var allactivityChart = Morris.Donut({
+                element: 'allactivity',
+                data: allactivityArray,
+                colors: colorsArray,
+                resize: true,
+            })
+            var allHotelRoomChart = Morris.Donut({
+                element: 'allHotelRoom',
+                data: allhotelroomArray,
+                colors: colorsArray,
+                resize: true,
+            })
+            ////For legends.
+            allcountryChart.options.data.forEach(function (label, i) {
+                var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
+                legendItem.find('span')
+                    .css('backgroundColor', allcountryChart.options.colors[i])
+                    .css('width', '20px')
+                    .css('display', 'inline-block')
+                    .css('margin', '5px');
+                $('#legendco').append(legendItem)
             });
+            allcityChart.options.data.forEach(function (label, i) {
+                var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
+                legendItem.find('span')
+                    .css('backgroundColor', allcityChart.options.colors[i])
+                    .css('width', '20px')
+                    .css('display', 'inline-block')
+                    .css('margin', '5px');
+                $('#legendci').append(legendItem)
+            });
+            allproductChart.options.data.forEach(function (label, i) {
+                var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
+                legendItem.find('span')
+                    .css('backgroundColor', allproductChart.options.colors[i])
+                    .css('width', '20px')
+                    .css('display', 'inline-block')
+                    .css('margin', '5px');
+                $('#legendpr').append(legendItem)
+            });
+            allactivityChart.options.data.forEach(function (label, i) {
+                var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
+                legendItem.find('span')
+                    .css('backgroundColor', allactivityChart.options.colors[i])
+                    .css('width', '20px')
+                    .css('display', 'inline-block')
+                    .css('margin', '5px');
+                $('#legendac').append(legendItem)
+            });
+            allHotelRoomChart.options.data.forEach(function (label, i) {
+                var legendItem = $('<span></span>').text(label['label'] + " ( " + label['value'] + " )").prepend('<br><span>&nbsp;</span>');
+                legendItem.find('span')
+                    .css('backgroundColor', allHotelRoomChart.options.colors[i])
+                    .css('width', '20px')
+                    .css('display', 'inline-block')
+                    .css('margin', '5px');
+                $('#legendhr').append(legendItem)
+            });
+            if (allcontryArray.length == 0) {
+                $("#allcountry").append("<br /><br />No Static Data Found").addClass("nodata");
+            }
+            if (allcityArray.length == 0) {
+                $("#allcity").append("<br /><br />No Static Data Found").addClass("nodata");
+            }
+            if (allproductArray.length == 0) {
+                $("#allproduct").append("<br /><br />No Static Data Found").addClass("nodata");
+            }
+            if (allactivityArray.length == 0) {
+                $("#allactivity").append("<br /><br />No Static Data Found").addClass("nodata");
+            }
+            if (allhotelroomArray.length == 0) {
+                $("#allHotelRoom").append("<br /><br />No Static Data Found").addClass("nodata");
+            }
         }
         $(document).ready(function () {
             $("a[title=PDF]").remove();
@@ -597,7 +587,7 @@
             $("#ctl00_MainContent_ReportViewer1_ctl05_ctl04_ctl00_Menu > div").eq(2).remove();
         });
         $(window).on('load', function () {
-            var sid = $('#MainContent_ddlSupplierName').val();          
+            var sid = $('#MainContent_ddlSupplierName').val();
             if (sid == '0') {
                 $("#dvCityReRun").hide();
                 $("#dvCountryReRun").hide();
@@ -686,12 +676,26 @@
                     </div>
                 </div>
             </div>
-
+               <%--for SupplierNames Section--%>
             <div class="row">
-                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
+                <div class="col-sm-12">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" id="ShowSupplierData" data-parent="#accordion" href="#collapseSearch" style="margin-left: 20px; font-size: small" aria-expanded="true">Supplier Names</a>
+
+                                </h4>
+                            </div>
+                            <div id="collapseSearch" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <%--<hr />--%>
+             <%-- END for SupplierNames Section--%>
             <%--for first three charts--%>
             <div class="row" id="supplierwisedata" runat="server">
                 <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
@@ -964,20 +968,20 @@
                 </div>
             </div>
             <input type="hidden" id="hdnFileId" name="hdnFileId" runat="server" />
-        
-    <%--Export Report--%>
-    <div class="container" id="report" runat="server">
-        <div style="width: 100%; height: 100%">
-            <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
-                <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
-                    <DataSources>
-                        <rsweb:ReportDataSource Name="DataSet1" />
-                    </DataSources>
-                </LocalReport>
-            </rsweb:ReportViewer>
-        </div>
-    </div>
-    </ContentTemplate>
+
+            <%--Export Report--%>
+            <div class="container" id="report" runat="server">
+                <div style="width: 100%; height: 100%">
+                    <rsweb:ReportViewer ID="ReportViewersupplierwise" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+                        <LocalReport ReportPath="staticdata\rptSupplierwiseReport.rdlc">
+                            <DataSources>
+                                <rsweb:ReportDataSource Name="DataSet1" />
+                            </DataSources>
+                        </LocalReport>
+                    </rsweb:ReportViewer>
+                </div>
+            </div>
+        </ContentTemplate>
     </asp:UpdatePanel>
     <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">

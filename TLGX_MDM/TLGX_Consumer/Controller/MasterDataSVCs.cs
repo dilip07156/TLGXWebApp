@@ -750,5 +750,14 @@ namespace TLGX_Consumer.Controller
             return (List<MDMSVC.DL_ML_DL_EntityStatus>)result;
         }
         #endregion
+
+        #region Zone &zoneType
+        public DC_Message SyncGeographyData(DC_MongoDbSyncRQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["GeographyDataSync"], RQ, typeof(DC_MongoDbSyncRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }

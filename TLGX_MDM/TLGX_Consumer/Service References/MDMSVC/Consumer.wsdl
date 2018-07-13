@@ -3034,6 +3034,15 @@
   <wsdl:message name="IConsumer_SyncMLAPIData_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q334="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q334:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_SyncGeographyData_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncGeographyData" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncGeographyData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncGeographyDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_SyncGeographyData_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q335="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q335:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:message name="IConsumer_InsertKafkaInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:InsertKafkaInfo" />
   </wsdl:message>
@@ -3041,7 +3050,7 @@
     <wsdl:part name="parameters" element="tns:InsertKafkaInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_InsertKafkaInfo_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q335="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q335:DC_ErrorStatus" />
+    <wsdl:part xmlns:q336="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q336:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateKafkaInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateKafkaInfo" />
@@ -3050,7 +3059,7 @@
     <wsdl:part name="parameters" element="tns:UpdateKafkaInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_UpdateKafkaInfo_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q336="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q336:DC_ErrorStatus" />
+    <wsdl:part xmlns:q337="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q337:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetPollData_InputMessage">
     <wsdl:part name="parameters" element="tns:GetPollData" />
@@ -3059,7 +3068,7 @@
     <wsdl:part name="parameters" element="tns:GetPollDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetPollData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q337="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q337:DC_ErrorStatus" />
+    <wsdl:part xmlns:q338="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q338:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SelectKafkaInfo_InputMessage">
     <wsdl:part name="parameters" element="tns:SelectKafkaInfo" />
@@ -3068,7 +3077,7 @@
     <wsdl:part name="parameters" element="tns:SelectKafkaInfoResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_SelectKafkaInfo_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q338="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q338:DC_ErrorStatus" />
+    <wsdl:part xmlns:q339="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q339:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferMasterAccommodation_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferMasterAccommodation" />
@@ -3077,7 +3086,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferMasterAccommodationResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferMasterAccommodation_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q339="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q339:DC_ErrorStatus" />
+    <wsdl:part xmlns:q340="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q340:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferMasterAccommodationRoomFacilities_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferMasterAccommodationRoomFacilities" />
@@ -3086,7 +3095,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferMasterAccommodationRoomFacilitiesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferMasterAccommodationRoomFacilities_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q340="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q340:DC_ErrorStatus" />
+    <wsdl:part xmlns:q341="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q341:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferMasterAccommodationRoomInformation_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferMasterAccommodationRoomInformation" />
@@ -3095,7 +3104,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferMasterAccommodationRoomInformationResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferMasterAccommodationRoomInformation_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q341="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q341:DC_ErrorStatus" />
+    <wsdl:part xmlns:q342="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q342:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferRoomTypeMatching_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferRoomTypeMatching" />
@@ -3104,7 +3113,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferRoomTypeMatchingResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferRoomTypeMatching_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q342="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q342:DC_ErrorStatus" />
+    <wsdl:part xmlns:q343="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q343:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationData_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferSupplierAccommodationData" />
@@ -3113,7 +3122,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferSupplierAccommodationDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q343="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q343:DC_ErrorStatus" />
+    <wsdl:part xmlns:q344="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q344:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationRoomData_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferSupplierAccommodationRoomData" />
@@ -3122,7 +3131,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferSupplierAccommodationRoomDataResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationRoomData_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q344="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q344:DC_ErrorStatus" />
+    <wsdl:part xmlns:q345="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q345:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationRoomExtendedAttributes_InputMessage">
     <wsdl:part name="parameters" element="tns:ML_DataTransferSupplierAccommodationRoomExtendedAttributes" />
@@ -3131,7 +3140,7 @@
     <wsdl:part name="parameters" element="tns:ML_DataTransferSupplierAccommodationRoomExtendedAttributesResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_ML_DataTransferSupplierAccommodationRoomExtendedAttributes_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q345="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q345:DC_ErrorStatus" />
+    <wsdl:part xmlns:q346="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q346:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMLDataApiTransferStatus_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMLDataApiTransferStatus" />
@@ -3140,7 +3149,7 @@
     <wsdl:part name="parameters" element="tns:GetMLDataApiTransferStatusResponse" />
   </wsdl:message>
   <wsdl:message name="IConsumer_GetMLDataApiTransferStatus_DC_ErrorStatusFault_FaultMessage">
-    <wsdl:part xmlns:q346="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q346:DC_ErrorStatus" />
+    <wsdl:part xmlns:q347="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q347:DC_ErrorStatus" />
   </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="GetAccomodationList">
@@ -4816,6 +4825,11 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIData" message="tns:IConsumer_SyncMLAPIData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIDataResponse" message="tns:IConsumer_SyncMLAPIData_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIDataDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncMLAPIData_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncGeographyData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncGeographyData" message="tns:IConsumer_SyncGeographyData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncGeographyDataResponse" message="tns:IConsumer_SyncGeographyData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IRefreshDistributionData/SyncGeographyDataDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_SyncGeographyData_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
     <wsdl:operation name="InsertKafkaInfo">
       <wsdl:input wsaw:Action="http://tempuri.org/IKafka/InsertKafkaInfo" message="tns:IConsumer_InsertKafkaInfo_InputMessage" />

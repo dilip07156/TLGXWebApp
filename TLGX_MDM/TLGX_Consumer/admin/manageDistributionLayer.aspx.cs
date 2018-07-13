@@ -107,11 +107,14 @@ namespace TLGX_Consumer.admin
 
             LastUpdatedStateMaster.Text = (res.Where(x => x.Element == "State" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
+            LastUpdatedZoneMaster.Text = (res.Where(x => x.Element == "Zone" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
+            LastUpdatedZoneTypeMaster.Text = (res.Where(x => x.Element == "ZoneType" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
 
         }
-
+        #region ==Geography Masters&Mapping
+        #region == Country Master&Mapping
         protected void btnRefreshCountryMaster_Click(object sender, EventArgs e)
         {
             var res = MasterSvc.RefreshCountryMaster(Guid.Empty);
@@ -139,7 +142,9 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Country Mapping Sync failed.", BootstrapAlertType.Danger);
             }
         }
+        #endregion
 
+        #region == City Master&Mapping
         protected void btnRefreshCityMaster_Click(object sender, EventArgs e)
         {
             var res = MasterSvc.RefreshCityMaster(Guid.Empty);
@@ -153,7 +158,6 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "City Mapping Sync failed.", BootstrapAlertType.Danger);
             }
         }
-
         protected void btnRefreshCityMapping_Click(object sender, EventArgs e)
         {
             var res = MasterSvc.RefreshCityMapping(Guid.Empty);
@@ -167,49 +171,9 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "City Mapping Sync failed.", BootstrapAlertType.Danger);
             }
         }
+        #endregion
 
-        protected void btnRefreshHotelMapping_Click(object sender, EventArgs e)
-        {
-            var res = MasterSvc.RefreshHotelMapping(Guid.Empty);
-            if (res != null)
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
-                GetUpdatedDistributionLog();
-            }
-            else
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel Mapping Sync failed.", BootstrapAlertType.Danger);
-            }
-        }
-
-        protected void btnRefreshActivityMapping_Click(object sender, EventArgs e)
-        {
-            var res = MasterSvc.RefreshActivityMapping(Guid.Empty);
-            if (res != null)
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
-                GetUpdatedDistributionLog();
-            }
-            else
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Activity Mapping Sync failed.", BootstrapAlertType.Danger);
-            }
-        }
-
-        protected void btnRefreshSupplyMaster_Click(object sender, EventArgs e)
-        {
-            var res = MasterSvc.RefreshSupplyMaster(Guid.Empty);
-            if (res != null)
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
-                GetUpdatedDistributionLog();
-            }
-            else
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supply Master Sync failed.", BootstrapAlertType.Danger);
-            }
-        }
-
+        #region== Port & state Master
         protected void btnRefreshPortMaster_Click(object sender, EventArgs e)
         {
             var res = MasterSvc.RefreshPortMaster(Guid.Empty);
@@ -238,7 +202,97 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Port Master Sync failed.", BootstrapAlertType.Danger);
             }
         }
+        #endregion
 
+        #region == Zone &zoneType
+        protected void btnRefreshZoneMaster_Click(object sender, EventArgs e)
+        {
+            LoadGeographyData(new MDMSVC.DC_MongoDbSyncRQ { Element = "Zone", Type = "Master" });
+        }
+
+        protected void btnRefreshZoneTypeMaster_Click(object sender, EventArgs e)
+        {
+            LoadGeographyData(new MDMSVC.DC_MongoDbSyncRQ { Element = "ZoneType", Type = "Master" });
+        }
+        protected void LoadGeographyData(MDMSVC.DC_MongoDbSyncRQ RQ)
+        {
+            var res = MasterSvc.SyncGeographyData(RQ);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Data Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
+        #endregion
+
+        protected void btnRefreshSupplyMaster_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.RefreshSupplyMaster(Guid.Empty);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supply Master Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
+        #endregion
+
+        #region ProductMaster & mapping
+
+        #region == Hotel Master & mappingLite
+        protected void btnRefreshHotelMapping_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.RefreshHotelMapping(Guid.Empty);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel Mapping Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
+        protected void btnRefreshHotelMappingLite_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.RefreshHotelMappingLite(Guid.Empty);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
+        #endregion
+
+        #region = Acitvity Mapping
+        protected void btnRefreshActivityMapping_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.RefreshActivityMapping(Guid.Empty);
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Activity Mapping Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
+        #endregion
+
+        #endregion
+        
+        #region == Supplier Static Data
         protected void grdSupplierEntity_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "refresh")
@@ -310,20 +364,8 @@ namespace TLGX_Consumer.admin
 
 
         }
+        #endregion
 
-        protected void btnRefreshHotelMappingLite_Click(object sender, EventArgs e)
-        {
-            var res = MasterSvc.RefreshHotelMappingLite(Guid.Empty);
-            if (res != null)
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
-                GetUpdatedDistributionLog();
-            }
-            else
-            {
-                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel MappingLite Sync failed.", BootstrapAlertType.Danger);
-            }
-        }
         #region == DATA trans to ML  Button Event click
         private void GetMLDataTransferStatus()
         {
