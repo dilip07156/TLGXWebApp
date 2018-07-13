@@ -24,10 +24,6 @@ namespace TLGX_Consumer.controls.roomtype
 
 
 
-        public static string AttributeOptionForMappingStatus = "ProductSupplierMapping";
-        public static int intPageIndex = 0;
-
-
         #endregion
         #region Tab2
         #endregion
@@ -64,7 +60,7 @@ namespace TLGX_Consumer.controls.roomtype
         }
         private void fillmappingstatus(DropDownList ddl)
         {
-            fillAttributeValues(ddl, "MappingStatus", AttributeOptionForMappingStatus);
+            fillAttributeValues(ddl, "MappingStatus", "ProductSupplierMapping");
         }
         private void fillAttributeValues(DropDownList ddl, string Attribute_Name, string OptionFor)
         {
@@ -117,8 +113,8 @@ namespace TLGX_Consumer.controls.roomtype
         {
             bool blnDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            intPageIndex = 0;
-            SearchRoomTypeMappingData(ref blnDataExist);
+            //intPageIndex = 0;
+            SearchRoomTypeMappingData(ref blnDataExist, 0);
         }
         public void MappingButtonShowHide(bool blnStatus)
         {
@@ -132,7 +128,7 @@ namespace TLGX_Consumer.controls.roomtype
                 divPagging.Style.Add(HtmlTextWriterStyle.Display, "none");
             ddlPageSizeBySupplier.Visible = blnStatus;
         }
-        private void SearchRoomTypeMappingData(ref bool blnDataExist)
+        private void SearchRoomTypeMappingData(ref bool blnDataExist, int pageIndex)
         {
             try
             {
@@ -156,7 +152,7 @@ namespace TLGX_Consumer.controls.roomtype
 
                 _objSearch.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
 
-                _objSearch.PageNo = intPageIndex;
+                _objSearch.PageNo = pageIndex;
                 var res = _mapping.GetAccomodationSupplierRoomTypeMapping_Search(_objSearch);
                 if (res != null)
                 {
@@ -181,7 +177,7 @@ namespace TLGX_Consumer.controls.roomtype
                     MappingButtonShowHide(blnDataExist);
                 }
                 grdRoomTypeMappingSearchResultsBySupplier.DataSource = res;
-                grdRoomTypeMappingSearchResultsBySupplier.PageIndex = intPageIndex;
+                grdRoomTypeMappingSearchResultsBySupplier.PageIndex = pageIndex;
                 grdRoomTypeMappingSearchResultsBySupplier.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
                 grdRoomTypeMappingSearchResultsBySupplier.DataBind();
             }
@@ -222,8 +218,8 @@ namespace TLGX_Consumer.controls.roomtype
         {
             bool _blnDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            intPageIndex = e.NewPageIndex;
-            SearchRoomTypeMappingData(ref _blnDataExist);
+            //intPageIndex = e.NewPageIndex;
+            SearchRoomTypeMappingData(ref _blnDataExist, e.NewPageIndex);
 
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -377,6 +373,7 @@ namespace TLGX_Consumer.controls.roomtype
             Guid myAcco_Id;
             MDMSVC.DC_Message _newmsg = new MDMSVC.DC_Message();
             List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update> _lstUpdate = new List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>();
+            int localPageIndex = grdRoomTypeMappingSearchResultsBySupplier.PageIndex;
             foreach (GridViewRow row in grdRoomTypeMappingSearchResultsBySupplier.Rows)
             {
                 HtmlInputCheckBox chkSelect = (HtmlInputCheckBox)row.FindControl("chkSelect");
@@ -446,7 +443,7 @@ namespace TLGX_Consumer.controls.roomtype
                 if (_newmsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
                     bool blnDataExist = false;
-                    SearchRoomTypeMappingData(ref blnDataExist);
+                    SearchRoomTypeMappingData(ref blnDataExist, localPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(divMsgForMapping, _newmsg.StatusMessage, BootstrapAlertType.Success);
                 }
                 else
@@ -462,6 +459,7 @@ namespace TLGX_Consumer.controls.roomtype
             Guid myAcco_Id;
             MDMSVC.DC_Message _newmsg = new MDMSVC.DC_Message();
             List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update> _lstUpdate = new List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>();
+            int localPageIndex = grdRoomTypeMappingSearchResultsBySupplier.PageIndex;
             foreach (GridViewRow row in grdRoomTypeMappingSearchResultsBySupplier.Rows)
             {
 
@@ -525,7 +523,7 @@ namespace TLGX_Consumer.controls.roomtype
                 if (_newmsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
                     bool blnDataExist = false;
-                    SearchRoomTypeMappingData(ref blnDataExist);
+                    SearchRoomTypeMappingData(ref blnDataExist, localPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(divMsgForMapping, _newmsg.StatusMessage, BootstrapAlertType.Success);
                 }
                 else
@@ -540,6 +538,7 @@ namespace TLGX_Consumer.controls.roomtype
             Guid Acco_RoomTypeMap_Id;
             MDMSVC.DC_Message _newmsg = new MDMSVC.DC_Message();
             List<MDMSVC.DC_SupplierRoomType_TTFU_RQ> _lstUpdate = new List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>();
+            int localPageIndex = grdRoomTypeMappingSearchResultsBySupplier.PageIndex;
             foreach (GridViewRow row in grdRoomTypeMappingSearchResultsBySupplier.Rows)
             {
                 //HtmlInputCheckBox chkSelect = (HtmlInputCheckBox)row.FindControl("chkSelect");
@@ -560,7 +559,7 @@ namespace TLGX_Consumer.controls.roomtype
                 if (_newmsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
                     bool blnDataExist = false;
-                    SearchRoomTypeMappingData(ref blnDataExist);
+                    SearchRoomTypeMappingData(ref blnDataExist, localPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(divMsgForMapping, _newmsg.StatusMessage, BootstrapAlertType.Success);
                 }
                 else
@@ -574,6 +573,8 @@ namespace TLGX_Consumer.controls.roomtype
             Guid Acco_RoomTypeMap_Id;
             MDMSVC.DC_Message _newmsg = new MDMSVC.DC_Message();
             List<MDMSVC.DC_SupplierRoomType_TTFU_RQ> _lstUpdate = new List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>();
+            int localPageIndex = grdRoomTypeMappingSearchResultsBySupplier.PageIndex;
+
             foreach (GridViewRow row in grdRoomTypeMappingSearchResultsBySupplier.Rows)
             {
                 HtmlInputCheckBox chkSelect = (HtmlInputCheckBox)row.FindControl("chkSelect");
@@ -594,7 +595,7 @@ namespace TLGX_Consumer.controls.roomtype
                 if (_newmsg.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success)
                 {
                     bool blnDataExist = false;
-                    SearchRoomTypeMappingData(ref blnDataExist);
+                    SearchRoomTypeMappingData(ref blnDataExist, localPageIndex);
                     BootstrapAlert.BootstrapAlertMessage(divMsgForMapping, _newmsg.StatusMessage, BootstrapAlertType.Success);
                 }
                 else
@@ -606,7 +607,7 @@ namespace TLGX_Consumer.controls.roomtype
         protected void ddlPageSizeBySupplier_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool blnFlag = false;
-            SearchRoomTypeMappingData(ref blnFlag);
+            SearchRoomTypeMappingData(ref blnFlag, 0);
         }
         #endregion
 
@@ -627,7 +628,7 @@ namespace TLGX_Consumer.controls.roomtype
 
         private void BindMappingStatusByProduct()
         {
-            ddlStatusByProduct.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR(AttributeOptionForMappingStatus, "MappingStatus").MasterAttributeValues;
+            ddlStatusByProduct.DataSource = LookupAtrributes.GetAllAttributeAndValuesByFOR("ProductSupplierMapping", "MappingStatus").MasterAttributeValues;
             ddlStatusByProduct.DataTextField = "AttributeValue";
             ddlStatusByProduct.DataValueField = "MasterAttributeValue_Id";
             ddlStatusByProduct.DataBind();
@@ -648,10 +649,10 @@ namespace TLGX_Consumer.controls.roomtype
         {
             bool blnDataExist = false;
             divMsgForMapping.Style.Add(HtmlTextWriterStyle.Display, "none");
-            SearchRoomTypeMappingDataByProduct(ref blnDataExist);
+            SearchRoomTypeMappingDataByProduct(ref blnDataExist, 0);
         }
 
-        private void SearchRoomTypeMappingDataByProduct(ref bool blnDataExist)
+        private void SearchRoomTypeMappingDataByProduct(ref bool blnDataExist, int pageindex = 0)
         {
             try
             {
@@ -671,7 +672,7 @@ namespace TLGX_Consumer.controls.roomtype
 
                         _objSearch.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
 
-                _objSearch.PageNo = intPageIndex;
+                _objSearch.PageNo = pageindex;
                 var res = _mapping.GetAccomodationSupplierRoomTypeMapping_Search(_objSearch);
                 if (res != null)
                 {
@@ -696,7 +697,7 @@ namespace TLGX_Consumer.controls.roomtype
                     MappingButtonShowHide(blnDataExist);
                 }
                 grdRoomTypeMappingSearchResultsBySupplier.DataSource = res;
-                grdRoomTypeMappingSearchResultsBySupplier.PageIndex = intPageIndex;
+                grdRoomTypeMappingSearchResultsBySupplier.PageIndex = pageindex;
                 grdRoomTypeMappingSearchResultsBySupplier.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
                 grdRoomTypeMappingSearchResultsBySupplier.DataBind();
             }
