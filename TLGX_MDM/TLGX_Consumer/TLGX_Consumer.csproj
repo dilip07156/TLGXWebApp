@@ -860,9 +860,6 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MappingStats.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_MasterAttribute.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
