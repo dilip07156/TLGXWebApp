@@ -540,7 +540,7 @@
                          <div class="form-group row">
                             <div class="col-sm-6 row">
                                 <label class="control-label col-sm-4">
-                                    <u>Tour Type</u>
+                                    Tour Type
                                 </label>
                                 <em>
                                 <asp:Label ID="lblSupplierTourType" runat="server" class="control-label col-sm-2"></asp:Label></em>
@@ -553,7 +553,7 @@
                           <div class="form-group row">
                             <div class="col-sm-6 row">
                                 <label class="control-label col-sm-4">
-                                    <u>Area/Address</u>
+                                    Area/Address
                                 </label>
                                 <em>
                                 <asp:Label ID="lblSupplierLocation" runat="server" class="control-label col-sm-2"></asp:Label></em>
