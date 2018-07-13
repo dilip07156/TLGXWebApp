@@ -400,9 +400,9 @@
                         $("#HotelRoom").append("<br /><br />No Static Data Found").addClass("nodata");
                     }
 
-                    if (result[0].MappingStatsForSuppliers.length > 0) {
+                    //if (result[0].MappingStatsForSuppliers.length > 0) {
                         getAllSupplierData(result[0].MappingStatsForSuppliers);
-                    }
+                    //}
 
                 },
                 error: function (xhr, status, error) {

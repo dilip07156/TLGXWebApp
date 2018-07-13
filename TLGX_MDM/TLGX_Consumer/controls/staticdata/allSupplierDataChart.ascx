@@ -313,10 +313,7 @@
                 }
 
                 //For unmapped Data Charts.
-                if (result[0].MappingStatsForSuppliers.length > 0)
-                {
                     getAllSupplierData(result[0].MappingStatsForSuppliers);
-                }
                 
             },
             error: function (xhr, status, error) {
@@ -346,6 +343,8 @@
                 var allactivityArray = [];
                 var allhotelroomArray = [];
                 var inodes = 0;
+       
+
                 for (; inodes < result.length; inodes++) {
                     if (result[inodes].Mappingfor == "Country") {
                         delete result[inodes].Mappingfor;
