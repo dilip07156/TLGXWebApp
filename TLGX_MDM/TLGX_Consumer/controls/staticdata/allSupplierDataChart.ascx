@@ -312,20 +312,19 @@
                     $("#HotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
                 }
 
+                //For unmapped Data Charts.
+                if (result[0].MappingStatsForSuppliers.length > 0)
+                {
+                    getAllSupplierData(result[0].MappingStatsForSuppliers);
+                }
+                
             },
             error: function (xhr, status, error) {
             }
         });
     }
 
-    function getAllSupplierData(PriorityId, ProductCategory) {
-        $.ajax({
-            url: '../../../Service/AllSupplierDataForChart.ashx',
-            data: { 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            type: 'GET',
-            success: function (result) {
+    function getAllSupplierData(result) {
                 $("#alldetailcountry").empty();
                 $("#alldetailcity").empty();
                 $("#alldetailproduct").empty();
@@ -513,25 +512,18 @@
                 if (allhotelroomArray.length == 0) {
                     $("#allHotelRoom").append("<br/><br/>No Static Data Found").addClass("nodata");
                 }
-
-            },
-            error: function (xhr, status, error) {
-            }
-        });
     }
 
     $(document).ready(function () {
         var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         var ProductCategory = $('#MainContent_LoginView1_allSupplierDataChart_ddlProductCategory').val();
         getChartData(PriorityId, ProductCategory);
-        getAllSupplierData(PriorityId, ProductCategory);
     });
 
     function getPriotityWiseData() {
         var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         var CategoryId = $('#MainContent_LoginView1_allSupplierDataChart_ddlProductCategory').val();
         getChartData(PriorityId, CategoryId);
-        getAllSupplierData(PriorityId, CategoryId);
     }
 </script>
 
@@ -565,10 +557,28 @@
         <asp:AsyncPostBackTrigger ControlID="ddlProductCategory" EventName="SelectedIndexChanged" />
     </Triggers>
 </asp:UpdatePanel>
-<div class="row">
-    <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
-</div>
+ <%--for SupplierNames Section--%>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" id="ShowSupplierData" data-parent="#accordion" href="#collapseSearch" style="margin-left: 20px; font-size: small" aria-expanded="true">Supplier Names</a>
+
+                                </h4>
+                            </div>
+                            <div id="collapseSearch" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <%-- END for SupplierNames Section--%>
 <hr />
+
 <%-- for first three pie charts--%>
 <div class="row">
     <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">

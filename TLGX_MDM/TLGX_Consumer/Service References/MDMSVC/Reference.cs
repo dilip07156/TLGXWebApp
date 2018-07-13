@@ -26417,6 +26417,9 @@ namespace TLGX_Consumer.MDMSVC {
         private TLGX_Consumer.MDMSVC.DC_MappingStatsFor[] MappingStatsForField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] MappingStatsForSuppliersField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NextRunField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -26447,6 +26450,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.MappingStatsForField, value) != true)) {
                     this.MappingStatsForField = value;
                     this.RaisePropertyChanged("MappingStatsFor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_MappingStatsForSuppliers[] MappingStatsForSuppliers {
+            get {
+                return this.MappingStatsForSuppliersField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MappingStatsForSuppliersField, value) != true)) {
+                    this.MappingStatsForSuppliersField = value;
+                    this.RaisePropertyChanged("MappingStatsForSuppliers");
                 }
             }
         }
