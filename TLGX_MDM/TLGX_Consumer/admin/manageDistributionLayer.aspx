@@ -4,7 +4,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style>
-        .lblFont{
+        .lblFont {
             font-weight: normal !important;
         }
     </style>
@@ -109,6 +109,26 @@
                                             <asp:Label Text="" ID="LastUpdatedStateMaster" runat="server"></asp:Label></td>
                                         <td>
                                             <asp:Button ID="btnRefreshStateMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRefreshStateMaster_Click" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Zone</td>
+                                        <td>Master</td>
+                                        <td>
+                                            <asp:Label Text="" ID="LastUpdatedZoneMaster" runat="server"></asp:Label></td>
+                                        <td>
+                                            <asp:Button ID="btnRefreshZoneMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRefreshZoneMaster_Click" />
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>ZoneType</td>
+                                        <td>Master</td>
+                                        <td>
+                                            <asp:Label Text="" ID="LastUpdatedZoneTypeMaster" runat="server"></asp:Label></td>
+                                        <td>
+                                            <asp:Button ID="btnRefreshZoneTypeMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRefreshZoneTypeMaster_Click" />
                                         </td>
                                     </tr>
 
@@ -367,7 +387,7 @@
                                                     <label runat="server" class="lblFont" id="lblAccoMasterDataPushLastRun"></label>
                                                 </td>
                                                 <td>
-                                                    <label runat="server"  class="lblFont" id="lblAccoMasterDataPushLastRunStatus"></label>
+                                                    <label runat="server" class="lblFont" id="lblAccoMasterDataPushLastRunStatus"></label>
                                                 </td>
                                                 <td>
                                                     <div class='progress'>
@@ -448,10 +468,10 @@
                                                 <td>Supplier Accommodation Data</td>
                                                 <td>Supplier</td>
                                                 <td>
-                                                    <label runat="server" class="lblFont"   id="lblSupplierAccoDataPushLastRun"></label>
+                                                    <label runat="server" class="lblFont" id="lblSupplierAccoDataPushLastRun"></label>
                                                 </td>
                                                 <td>
-                                                    <label runat="server"  class="lblFont" id="lblSupplierAccoDataPushLastRunStatus"></label>
+                                                    <label runat="server" class="lblFont" id="lblSupplierAccoDataPushLastRunStatus"></label>
                                                 </td>
                                                 <td>
                                                     <div class='progress'>
