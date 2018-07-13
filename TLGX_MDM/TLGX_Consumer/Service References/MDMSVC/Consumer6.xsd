@@ -1140,4 +1140,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Distribution_MLDataRQ" nillable="true" type="tns:DC_Distribution_MLDataRQ" />
+  <xs:complexType name="DC_MongoDbSyncRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Element" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Logid" type="ser:guid" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_MongoDbSyncRQ" nillable="true" type="tns:DC_MongoDbSyncRQ" />
 </xs:schema>
