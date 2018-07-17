@@ -29121,6 +29121,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsFullPullField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -29148,6 +29151,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CodeField, value) != true)) {
                     this.CodeField = value;
                     this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsFullPull {
+            get {
+                return this.IsFullPullField;
+            }
+            set {
+                if ((this.IsFullPullField.Equals(value) != true)) {
+                    this.IsFullPullField = value;
+                    this.RaisePropertyChanged("IsFullPull");
                 }
             }
         }
@@ -34632,6 +34648,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> File_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsFullPullField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -34784,6 +34803,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.File_IdField.Equals(value) != true)) {
                     this.File_IdField = value;
                     this.RaisePropertyChanged("File_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsFullPull {
+            get {
+                return this.IsFullPullField;
+            }
+            set {
+                if ((this.IsFullPullField.Equals(value) != true)) {
+                    this.IsFullPullField = value;
+                    this.RaisePropertyChanged("IsFullPull");
                 }
             }
         }
