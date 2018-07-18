@@ -165,6 +165,7 @@
         function getChartData() {
             var sid = $('#MainContent_ddlSupplierName').val();
             var ProductCategory = $('#MainContent_ddlProductCategory').val();
+            var IsMDM = $("#IsMDM").is(":checked") ? "true" : "false";
             var PriorityId = "0";
             if (sid == '0') {
                 $('#ReportViewersupplierwise').hide();
@@ -176,7 +177,7 @@
             }
             $.ajax({
                 url: '../../../Service/SupplierWiseDataForChart.ashx',
-                data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
+                data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM },
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (result) {
@@ -652,6 +653,7 @@
                         <div class="form-group  ">
                             <asp:UpdatePanel runat="server" ID="upPnlSearchFilters">
                                 <ContentTemplate>
+                                    <label  for="IsMDM">IsMDM</label> &nbsp;&nbsp;<input type="checkbox" id="IsMDM" class="form-control"> &nbsp;
                                     <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged">
                                         <asp:ListItem Value="0">--All Category--</asp:ListItem>
                                     </asp:DropDownList>

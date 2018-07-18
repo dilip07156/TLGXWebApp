@@ -44,9 +44,10 @@
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
         var PriorityId = '0';
         var ProductCategory = '0';
+        var IsMDM = "false";
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
+            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM  },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {

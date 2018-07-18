@@ -23,7 +23,8 @@ namespace TLGX_Consumer.Service
             var Supplier_Id = context.Request.QueryString["Supplier_Id"];
             var PriorityId = context.Request.QueryString["PriorityId"];
             var ProductCategory = context.Request.QueryString["ProductCategory"];
-            var res = MapSvc.GetMappingStatistics(Supplier_Id, PriorityId, ProductCategory);
+            string IsMDM = context.Request.QueryString["IsMDM"];
+            var res = MapSvc.GetMappingStatistics(Supplier_Id, PriorityId, ProductCategory, IsMDM);
             context.Response.Write(new JavaScriptSerializer().Serialize(res));
         }
         public bool IsReusable

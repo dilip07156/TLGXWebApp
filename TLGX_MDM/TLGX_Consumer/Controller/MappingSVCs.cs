@@ -99,10 +99,10 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Mapping Statictics
-        public List<DC_MappingStats> GetMappingStatistics(string Supplier_Id, string PriorityId,string ProductCategory)
+        public List<DC_MappingStats> GetMappingStatistics(string Supplier_Id, string PriorityId,string ProductCategory,string isMDM)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_Staitistics_Get"], Supplier_Id, PriorityId, ProductCategory), typeof(List<DC_MappingStats>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_Staitistics_Get"], Supplier_Id, PriorityId, ProductCategory, isMDM), typeof(List<DC_MappingStats>), out result);
             return result as List<DC_MappingStats>;
         }
         #endregion

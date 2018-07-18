@@ -53,11 +53,11 @@
         colorsArray.push("#" + ("ffffff" + color.toString(16)).slice(-6));
     }
     //end
-    function getChartData(PriorityId, ProductCategory) {
+    function getChartData(PriorityId, ProductCategory,IsMDM) {
         sid = '00000000-0000-0000-0000-000000000000';
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory },
+            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -516,13 +516,18 @@
     $(document).ready(function () {
         var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         var ProductCategory = $('#MainContent_LoginView1_allSupplierDataChart_ddlProductCategory').val();
-        getChartData(PriorityId, ProductCategory);
+        var IsMDM = $("#IsMDM").is(":checked") ? "true" : "false";
+        //var IsMDM = document.getElementById("IsMDM").checked;
+        getChartData(PriorityId, ProductCategory, IsMDM);
     });
 
     function getPriotityWiseData() {
         var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         var CategoryId = $('#MainContent_LoginView1_allSupplierDataChart_ddlProductCategory').val();
-        getChartData(PriorityId, CategoryId);
+        debugger;
+        var IsMDM = $("#IsMDM").is(":checked") ? "true" : "false";
+        //var IsMDM = document.getElementById("IsMDM").checked;
+        getChartData(PriorityId, CategoryId, IsMDM);
     }
 </script>
 
@@ -540,6 +545,7 @@
                     <br />
                     <br />
                     <div class="form-group pull-right ">
+                        <label  for="IsMDM">IsMDM</label> &nbsp;&nbsp;<input type="checkbox" id="IsMDM" class="form-control"> &nbsp;
                         <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem Value="0">--All Category--</asp:ListItem>
                         </asp:DropDownList>
