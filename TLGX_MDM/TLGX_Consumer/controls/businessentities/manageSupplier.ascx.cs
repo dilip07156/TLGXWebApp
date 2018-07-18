@@ -80,6 +80,7 @@ namespace TLGX_Consumer.controls.businessentities
                         DropDownList ddlStatusEdit = (DropDownList)frmSupplierDetail.FindControl("ddlStatusEdit");
                         DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
                         DropDownList ddlPriorityEdit = (DropDownList)frmSupplierDetail.FindControl("ddlPriorityEdit");
+                        CheckBox chkIsFullPull = (CheckBox)frmSupplierDetail.FindControl("chkIsFullPull");
                         if (result[0].StatusCode == string.Empty)
                             ddlStatusEdit.SelectedIndex = ddlStatusEdit.Items.IndexOf(ddlStatusEdit.Items.FindByText("-Select-"));
                         else
@@ -94,6 +95,8 @@ namespace TLGX_Consumer.controls.businessentities
                             ddlPriorityEdit.SelectedIndex = ddlPriorityEdit.Items.IndexOf(ddlPriorityEdit.Items.FindByText("-Select-"));
                         else
                             ddlPriorityEdit.SelectedIndex = ddlPriorityEdit.Items.IndexOf(ddlPriorityEdit.Items.FindByValue(Convert.ToString(result[0].Priority)));
+
+                        chkIsFullPull.Checked = (result[0].IsFullPull == null ? false : true);
 
 
                         //ddlSupplierType.Items.FindByText(result[0].SupplierType).Selected = true;
@@ -118,6 +121,7 @@ namespace TLGX_Consumer.controls.businessentities
             DropDownList ddlPriorityEdit = (DropDownList)frmSupplierDetail.FindControl("ddlPriorityEdit");
             TextBox txtNameSupplierEdit = (TextBox)frmSupplierDetail.FindControl("txtNameSupplierEdit");
             TextBox txtCodeSupplierEdit = (TextBox)frmSupplierDetail.FindControl("txtCodeSupplierEdit");
+            CheckBox chkIsFullPull = (CheckBox)frmSupplierDetail.FindControl("chkIsFullPull");
             MDMSVC.DC_Message _msg = new MDMSVC.DC_Message();
 
             if (e.CommandName == "EditCommand")
@@ -132,6 +136,7 @@ namespace TLGX_Consumer.controls.businessentities
                 else
                     priority = Convert.ToInt32(ddlPriorityEdit.SelectedItem.Value);
 
+
                 _msg = _objMaster.AddUpdateSupplier(new MDMSVC.DC_Supplier()
                 {
                     Supplier_Id = mySupplier_Id,
@@ -142,6 +147,7 @@ namespace TLGX_Consumer.controls.businessentities
                     Edit_Date = DateTime.Now,
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name,
                     Priority = priority,
+                    IsFullPull = chkIsFullPull.Checked
 
                 });
                 if (Convert.ToInt32(_msg.StatusCode) == Convert.ToInt32(BootstrapAlertType.Success))

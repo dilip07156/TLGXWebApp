@@ -79,7 +79,12 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     lblSuppCountry.Text = result[0].SupplierCountry;
                     lblSuppProductType.Text = result[0].SupplierProductType;
                     lblSuppProdNameSubType.Text = result[0].SupplierProductNameSubType;
+                    //TourType
+                    lblSupplierTourType.Text = result[0].SupplierTourType;
+                    txtTourType.Text = result[0].Activity_TourType;
 
+                    lblSupplierLocation.Text = result[0].SupplierLocation;
+                    txtLocation.Text = result[0].Location;
                     //GetActivityDescriptions(Activity_Flavour_Id);
 
                     fillcoutries();
@@ -573,6 +578,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
             FlavData.Categories = CategoryTypes.ToArray();
+            
 
             //SubCat
             List<SubCategoryData> ptl = new List<SubCategoryData>();
@@ -607,6 +613,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
             FlavData.ProductType = string.Join(",", ptyl.Select(s => s.ProductType_Id).ToList());
+
+            //TourType
+            FlavData.Activity_TourType = txtTourType.Text.Trim();
+            FlavData.Location = txtLocation.Text.Trim();
 
             //ProdSubType
             List<ProductSubTypeData> pstl = new List<ProductSubTypeData>();
