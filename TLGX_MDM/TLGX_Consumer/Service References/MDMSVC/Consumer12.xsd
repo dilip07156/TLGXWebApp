@@ -1330,6 +1330,7 @@
       <xs:element minOccurs="0" name="Activity_StatusNotes" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Activity_Status_Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Activity_Status_Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Activity_TourType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Categories" nillable="true" type="tns:ArrayOfDC_Activity_CategoryTypes" />
       <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
@@ -1371,12 +1372,14 @@
       <xs:element minOccurs="0" name="SupplierCity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierCountry" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierLocation" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductCategorySubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductNameSubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierTourType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="USP" nillable="true" type="xs:string" />
