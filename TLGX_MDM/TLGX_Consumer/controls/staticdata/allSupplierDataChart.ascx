@@ -516,17 +516,16 @@
     $(document).ready(function () {
         var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         var ProductCategory = $('#MainContent_LoginView1_allSupplierDataChart_ddlProductCategory').val();
-        var IsMDM = $("#IsMDM").is(":checked") ? "true" : "false";
-        //var IsMDM = document.getElementById("IsMDM").checked;
+        var IsMDM = "false";
+        //var IsMDM =  $("#IsMDM").is(":checked") ? "true" : "false";
         getChartData(PriorityId, ProductCategory, IsMDM);
     });
 
     function getPriotityWiseData() {
         var PriorityId = $('#MainContent_LoginView1_allSupplierDataChart_ddlPriority').val();
         var CategoryId = $('#MainContent_LoginView1_allSupplierDataChart_ddlProductCategory').val();
-        debugger;
-        var IsMDM = $("#IsMDM").is(":checked") ? "true" : "false";
-        //var IsMDM = document.getElementById("IsMDM").checked;
+        var IsMDM = "false";
+        //var IsMDM =  $("#IsMDM").is(":checked") ? "true" : "false";
         getChartData(PriorityId, CategoryId, IsMDM);
     }
 </script>
@@ -545,7 +544,7 @@
                     <br />
                     <br />
                     <div class="form-group pull-right ">
-                        <label  for="IsMDM">IsMDM</label> &nbsp;&nbsp;<input type="checkbox" id="IsMDM" class="form-control"> &nbsp;
+                       <%-- <label  for="IsMDM">IsMDM</label> &nbsp;&nbsp;<input type="checkbox" id="IsMDM" class="form-control"> &nbsp;--%>
                         <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged" AutoPostBack="true">
                             <asp:ListItem Value="0">--All Category--</asp:ListItem>
                         </asp:DropDownList>
