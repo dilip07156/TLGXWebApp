@@ -53,7 +53,13 @@
         colorsArray.push("#" + ("ffffff" + color.toString(16)).slice(-6));
     }
     //end
-    function getChartData(PriorityId, ProductCategory,IsMDM) {
+    function showLoadingImage() {
+        $('#loading').show();
+    }
+    function hideLoadingImage() {
+        $('#loading').hide();}
+    function getChartData(PriorityId, ProductCategory, IsMDM) {
+        showLoadingImage();
         sid = '00000000-0000-0000-0000-000000000000';
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
@@ -314,7 +320,7 @@
 
                 //For unmapped Data Charts.
                     getAllSupplierData(result[0].MappingStatsForSuppliers);
-                
+                hideLoadingImage();
             },
             error: function (xhr, status, error) {
             }
@@ -562,22 +568,8 @@
     </Triggers>
 </asp:UpdatePanel>
  <%--for SupplierNames Section--%>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" id="ShowSupplierData" data-parent="#accordion" href="#collapseSearch" style="margin-left: 20px; font-size: small" aria-expanded="true">Supplier Names</a>
-
-                                </h4>
-                            </div>
-                            <div id="collapseSearch" class="panel-collapse collapse in" aria-expanded="true" style="">
-                                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             <div class="row">
+                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
             </div>
 
              <%-- END for SupplierNames Section--%>
@@ -585,6 +577,13 @@
 
 <%-- for first three pie charts--%>
 <div class="row">
+      <div id="loading" style="display:none;" role="status" aria-hidden="true">
+         <div class="progressbar">
+            <div class="progressbar-content">
+                 <img alt="Loading..." src="../../../images/ajax-loader.gif">
+            </div>
+        </div> 
+    </div>
     <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
         <div class="panel  panel-default">
             <div class="panel-heading">
