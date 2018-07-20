@@ -3199,6 +3199,7 @@
         <xs:element minOccurs="0" name="SupplierID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="PriorityId" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ISMDM" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

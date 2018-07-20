@@ -51495,10 +51495,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetMappingStatisticsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId, string ProductCategory);
+        TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId, string ProductCategory, string ISMDM);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetMappingStatistics", ReplyAction="http://tempuri.org/IStaticData/GetMappingStatisticsResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId, string ProductCategory);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId, string ProductCategory, string ISMDM);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -54246,12 +54246,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddUpdateApplicationAsync(apmgmt);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId, string ProductCategory) {
-            return base.Channel.GetMappingStatistics(SupplierID, PriorityId, ProductCategory);
+        public TLGX_Consumer.MDMSVC.DC_MappingStats[] GetMappingStatistics(string SupplierID, string PriorityId, string ProductCategory, string ISMDM) {
+            return base.Channel.GetMappingStatistics(SupplierID, PriorityId, ProductCategory, ISMDM);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId, string ProductCategory) {
-            return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId, ProductCategory);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_MappingStats[]> GetMappingStatisticsAsync(string SupplierID, string PriorityId, string ProductCategory, string ISMDM) {
+            return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId, ProductCategory, ISMDM);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
