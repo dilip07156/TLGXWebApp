@@ -52,6 +52,12 @@
                 }
     </style>
     <script type="text/javascript">
+        function showLoadingImage() {
+        $('#loading').show();
+    }
+    function hideLoadingImage() {
+        $('#loading').hide();
+    }
         var a = '';
         //handling post back - binding data again
         var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -163,6 +169,7 @@
         }
 
         function getChartData() {
+            showLoadingImage();
             var sid = $('#MainContent_ddlSupplierName').val();
             var ProductCategory = $('#MainContent_ddlProductCategory').val();
             var PriorityId = "0";
@@ -403,7 +410,7 @@
                     //if (result[0].MappingStatsForSuppliers.length > 0) {
                         getAllSupplierData(result[0].MappingStatsForSuppliers);
                     //}
-
+                    hideLoadingImage();
                 },
                 error: function (xhr, status, error) {
                     // alert("failed to load file");
@@ -637,7 +644,13 @@
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
-
+    <div id="loading" style="display:none;" role="status" aria-hidden="true">
+         <div class="progressbar">
+            <div class="progressbar-content">
+                 <img alt="Loading..." src="../../../images/ajax-loader.gif">
+            </div>
+        </div> 
+    </div>
     <asp:UpdatePanel runat="server" ID="upPnlSupplierWise">
         <ContentTemplate>
             <div class="row">
@@ -678,21 +691,7 @@
             </div>
                <%--for SupplierNames Section--%>
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" id="ShowSupplierData" data-parent="#accordion" href="#collapseSearch" style="margin-left: 20px; font-size: small" aria-expanded="true">Supplier Names</a>
-
-                                </h4>
-                            </div>
-                            <div id="collapseSearch" class="panel-collapse collapse in" aria-expanded="true" style="">
-                                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
             </div>
 
              <%-- END for SupplierNames Section--%>
