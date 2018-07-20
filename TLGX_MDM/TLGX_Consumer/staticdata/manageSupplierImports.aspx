@@ -694,21 +694,7 @@
             </div>
                <%--for SupplierNames Section--%>
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" id="ShowSupplierData" data-parent="#accordion" href="#collapseSearch" style="margin-left: 20px; font-size: small" aria-expanded="true">Supplier Names</a>
-
-                                </h4>
-                            </div>
-                            <div id="collapseSearch" class="panel-collapse collapse in" aria-expanded="true" style="">
-                                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
             </div>
 
              <%-- END for SupplierNames Section--%>

@@ -53,14 +53,15 @@
         colorsArray.push("#" + ("ffffff" + color.toString(16)).slice(-6));
     }
     //end
-    function showLoadingImage() {
+ function showLoadingImage() {
         $('#loading').show();
     }
     function hideLoadingImage() {
         $('#loading').hide();}
-    function getChartData(PriorityId, ProductCategory, IsMDM) {
+    function getChartData(PriorityId, ProductCategory) {
         showLoadingImage();
         sid = '00000000-0000-0000-0000-000000000000';
+            
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
             data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM },
@@ -568,7 +569,7 @@
     </Triggers>
 </asp:UpdatePanel>
  <%--for SupplierNames Section--%>
-             <div class="row">
+            <div class="row">
                 <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
             </div>
 
@@ -577,7 +578,7 @@
 
 <%-- for first three pie charts--%>
 <div class="row">
-      <div id="loading" style="display:none;" role="status" aria-hidden="true">
+    <div id="loading" style="display:none;" role="status" aria-hidden="true">
          <div class="progressbar">
             <div class="progressbar-content">
                  <img alt="Loading..." src="../../../images/ajax-loader.gif">
