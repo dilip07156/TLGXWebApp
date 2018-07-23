@@ -2,7 +2,19 @@
 function pageLoad(sender, args) {
     var ta = document.querySelectorAll('textarea');
     autosize(ta);
+    if ($('#tblTLGXRoomInfo').length > 0)
+        $('#tblTLGXRoomInfo').DataTable({
+            "bPaginate": true,
+            "bProcessing": true
+        });
 }
+$(document).ready(function () {
+    if ($('#tblTLGXRoomInfo').length > 0)
+        $('#tblTLGXRoomInfo').DataTable({
+            "bPaginate": true,
+            "bProcessing": true
+        });
+});
 
 function showOnlineSuggestionModal(controlval) {
     $('#lblForSupplierRoomTypeName').text($(controlval).parent().closest('td').prev().find('#lblSupplierRoomTypeName').text());
@@ -37,7 +49,7 @@ function HideToolTip(controls) {
 
 
 function mySelectedID(selectedcheckboxval) {
-    
+
     // var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
     for (var i = 1; i < tr.length; i++) {
@@ -52,14 +64,12 @@ function mySelectedID(selectedcheckboxval) {
     for (var j = 0; j < parentTr.length; j++) {
         if (parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0] != undefined && parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_SupplierRoomTypeMapping_Id")[0].value == hdnAccommodation_SupplierRoomInfo_IdPopUp.val()) {
             //get Row
-            debugger;
             var RoomInfoName = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
             var RoomCategory = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent;
             if (RoomCategory != undefined && RoomCategory != "") {
 
                 RoomInfoName = RoomInfoName + "\n" + "(" + RoomCategory + ")";
             }
-            debugger;
             parentTr[j].getElementsByClassName("roomtype")[0].textContent = RoomInfoName;
             var hdnAccommodation_RoomInfo_Id = parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
             hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
@@ -170,8 +180,8 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
     //hdnAccommodation_RoomInfo_IdPopUp.val(acco_roomType_id);
     var listItems = '';
     if (result != null) {
-        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1  CheckboxColumn"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">Room Name</th> <th class="col-md-2">Room Category</th>';
-        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th></tr>';
+        var def = '<table id="tblTLGXRoomInfo" class="table-bordered"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">Room Name</th> <th class="col-md-2">Room Category</th>';
+        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th><th style="display: none;"></th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -228,11 +238,14 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
         li = li + licClose;
         hideLoadingImage();
         ulRoomInfo.html(li);
+        if ($('#tblTLGXRoomInfo').length > 0)
+            $('#tblTLGXRoomInfo').DataTable({
+                "bPaginate": true,
+                "bProcessing": true
+            });
     }
 }
 function BindRTDetails(controlval) {
-    debugger;
-
     var lblSupplierRoomTypeName = $(controlval).parent().parent().parent().find('#lblSupplierRoomTypeName').text();
     //Getting Extracted Attribute
     var ExtractedAttribute = "";

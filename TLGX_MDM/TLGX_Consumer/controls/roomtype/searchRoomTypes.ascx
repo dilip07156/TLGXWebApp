@@ -2,8 +2,12 @@
 <script src="../../../Scripts/autosize.min.js"></script>
 <script src="../../../Scripts/JqueryUI/jquery-ui.js"></script>
 <link href="../../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
+<%--<link href="../../../Scripts/Styles/bootstrap.min.css" rel="stylesheet" />--%>
+<link href="../../../Scripts/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="../../../Scripts/jquery.dataTables.min.css" rel="stylesheet" />
 <script type="text/javascript" src="../../../Content/JS_Defined/searchRoomTypes.js"></script>
 <link rel="Stylesheet" type="text/css" href="../../../Content/Style_Defined/searchRoomType.css" />
+
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav nav-tabs">
@@ -577,3 +581,6 @@
 
 
 </div>
+<script type="text/javascript" src="../../../Scripts/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../../../Scripts/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../../Scripts/bootstrap.min.js"></script>
