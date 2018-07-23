@@ -44,9 +44,10 @@
         var sid = '<%=this.Request.QueryString["Supplier_Id"]%>';
         var PriorityId = '0';
         var ProductCategory = '0';
+        var IsMDM = "false";
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid ,'PriorityId': PriorityId,'ProductCategory': ProductCategory},
+            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM  },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -336,11 +337,14 @@
                                                 <asp:TextBox ID="txtCodeSupplierEdit" CssClass="form-control" runat="server" Enabled="false" Text='<%# Bind("Code") %>' />
                                             </div>
 
+                                            
                                             <div class="form-group">
                                                 <div class="col-sm-10">
                                                     <asp:Button ID="btnUpdateSupplier" CommandName="EditCommand" CausesValidation="true" ValidationGroup="SupplierEdit" runat="server" CssClass="btn btn-primary btn-sm" Text="Update Supplier" />
                                                 </div>
                                             </div>
+
+
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
@@ -366,6 +370,10 @@
                                                     <asp:ListItem Value="3">3</asp:ListItem>
                                                     <asp:ListItem Value="4">4</asp:ListItem>
                                                 </asp:DropDownList>
+                                            </div>
+                                            <div class="form-group">
+                                                    <label  for="chkIsFullPull">IsFullPull Supplier</label>&nbsp; &nbsp;&nbsp;
+                                                     <asp:CheckBox ID="chkIsFullPull" runat="server" />
                                             </div>
                                         </div>
                                     </div>

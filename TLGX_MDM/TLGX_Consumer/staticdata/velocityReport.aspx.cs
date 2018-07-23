@@ -75,7 +75,7 @@ namespace TLGX_Consumer.staticdata
             parm.Priority = Convert.ToInt32(ddlPriority.SelectedValue);
 
             var res = MapSvc.GetVelocityDashboard(parm);
-            
+
             var iNodes = 0;
             bool blnIsCityDataExist = false;
             bool blnIsCountryDataExist = false;
@@ -98,8 +98,6 @@ namespace TLGX_Consumer.staticdata
                         lblcountryestimate.Text = Convert.ToString(estimate);
                         if (resultDataForCountry != null)
                             blnIsCountryDataExist = true;
-
-
                     }
                     else if (res[0].MappingStatsFor[iNodes].MappingFor == "City")
                     {
@@ -257,6 +255,77 @@ namespace TLGX_Consumer.staticdata
             var range = Convert.ToInt32(ddlDateOptions.SelectedValue);
             calculateDateRange(range);
             Pnlupdatesearch.Update();
+        }
+        Decimal CityDataTotal;
+        protected void gvcity_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+           // Decimal Page_Sum = 0;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblCountTotal = (Label)e.Row.FindControl("lblCityCount");
+                CityDataTotal = CityDataTotal + Decimal.Parse(lblCountTotal.Text);
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                Label lblTotal = (Label)e.Row.FindControl("lblCityTotal");
+                lblTotal.Text = CityDataTotal.ToString();
+            }
+        }
+        Decimal CountryDataTotal;
+        protected void gvcountry_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblCountTotal = (Label)e.Row.FindControl("lblCountryCount");
+                CountryDataTotal = CountryDataTotal + Decimal.Parse(lblCountTotal.Text);
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                Label lblTotal = (Label)e.Row.FindControl("lblCountryTotal");
+                lblTotal.Text = CountryDataTotal.ToString();
+            }
+        }
+        Decimal ProductDataTotal;
+        protected void gvproduct_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblCountTotal = (Label)e.Row.FindControl("lblHotelCount");
+                ProductDataTotal = ProductDataTotal + Decimal.Parse(lblCountTotal.Text);
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                Label lblTotal = (Label)e.Row.FindControl("lblHotelTotal");
+                lblTotal.Text = ProductDataTotal.ToString();
+            }
+        }
+        Decimal RoomTypeDataTotal;
+        protected void gvroomtype_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblCountTotal = (Label)e.Row.FindControl("lblRoomTypesCount");
+                RoomTypeDataTotal = RoomTypeDataTotal + Decimal.Parse(lblCountTotal.Text);
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                Label lblTotal = (Label)e.Row.FindControl("lblRoomTypesTotal");
+                lblTotal.Text = RoomTypeDataTotal.ToString();
+            }
+        }
+        Decimal ActivityDataTotal;
+        protected void gvactivity_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Label lblCountTotal = (Label)e.Row.FindControl("lblActivityCount");
+                ActivityDataTotal = ActivityDataTotal + Decimal.Parse(lblCountTotal.Text);
+            }
+            if (e.Row.RowType == DataControlRowType.Footer)
+            {
+                Label lblTotal = (Label)e.Row.FindControl("lblActivityTotal");
+                lblTotal.Text = ActivityDataTotal.ToString();
+            }
         }
     }
 

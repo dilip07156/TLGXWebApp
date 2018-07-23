@@ -103,6 +103,7 @@
   <xs:complexType name="DC_Supplier_DDL">
     <xs:sequence>
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFullPull" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Priority" type="xs:int" />
       <xs:element minOccurs="0" name="Supplier_Id" type="ser:guid" />
@@ -642,6 +643,7 @@
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="File_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsFullPull" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ProductCategory" nillable="true" type="xs:string" />

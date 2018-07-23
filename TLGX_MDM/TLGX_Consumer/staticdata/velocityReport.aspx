@@ -42,10 +42,10 @@
                                                 <label for="ddlPriority" class="control-label-mand ">Select Priority </label>
                                                 <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true">
                                                     <asp:ListItem Value="0">--All Priority--</asp:ListItem>
-                                                     <asp:ListItem Value="1">1</asp:ListItem>
-                                                     <asp:ListItem Value="2">2</asp:ListItem>
-                                                     <asp:ListItem Value="3">3</asp:ListItem>
-                                                     <asp:ListItem Value="4">4</asp:ListItem>
+                                                    <asp:ListItem Value="1">1</asp:ListItem>
+                                                    <asp:ListItem Value="2">2</asp:ListItem>
+                                                    <asp:ListItem Value="3">3</asp:ListItem>
+                                                    <asp:ListItem Value="4">4</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -126,11 +126,26 @@
                         <div class="panel-body">
                             <div class="col-md-6">
                                 <div class="panel-heading"><strong>Country</strong> </div>
-                                <asp:GridView ID="gvcountry" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
-                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range.">
+                                <asp:GridView ID="gvcountry" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" ShowFooter="true"
+                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range." OnRowDataBound="gvcountry_RowDataBound">
                                     <Columns>
-                                        <asp:BoundField HeaderText="UserName" DataField="Username" />
-                                        <asp:BoundField HeaderText="Count" DataField="Totalcount" />
+                                         <asp:TemplateField HeaderText="UserName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCountryUser" runat="server" Text='<%# Eval("Username") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblCountryTotalText" runat="server" Text="Total" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Count">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCountryCount" runat="server" Text='<%# Eval("Totalcount") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblCountryTotal" runat="server" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+
                                     </Columns>
                                 </asp:GridView>
                                 <div class="panel-footer">
@@ -143,11 +158,26 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="panel-heading"><strong>City</strong> </div>
-                                <asp:GridView ID="gvcity" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
-                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range.">
+                                <asp:GridView ID="gvcity" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" ShowFooter="true"
+                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range." OnRowDataBound="gvcity_RowDataBound">
                                     <Columns>
-                                        <asp:BoundField HeaderText="UserName" DataField="Username" />
-                                        <asp:BoundField HeaderText="Count" DataField="Totalcount" />
+                                         <asp:TemplateField HeaderText="UserName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCityUser" runat="server" Text='<%# Eval("Username") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblCityTotalText" runat="server" Text="Total" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Count">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblCityCount" runat="server" Text='<%# Eval("Totalcount") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblCityTotal" runat="server" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+
                                     </Columns>
                                 </asp:GridView>
                                 <div class="panel-footer">
@@ -169,11 +199,26 @@
                         <div class="panel-body">
                             <div class="col-md-6">
                                 <div class="panel-heading"><strong>Hotel</strong> </div>
-                                <asp:GridView ID="gvproduct" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
-                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range.">
+                                <asp:GridView ID="gvproduct" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" ShowFooter="true"
+                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range." OnRowDataBound="gvproduct_RowDataBound">
                                     <Columns>
-                                        <asp:BoundField HeaderText="UserName" DataField="Username" />
-                                        <asp:BoundField HeaderText="Count" DataField="Totalcount" />
+                                         <asp:TemplateField HeaderText="UserName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblHotelUser" runat="server" Text='<%# Eval("Username") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblHotelTotalText" runat="server" Text="Total" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Count">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblHotelCount" runat="server" Text='<%# Eval("Totalcount") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblHotelTotal" runat="server" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+
                                     </Columns>
                                 </asp:GridView>
                                 <div class="panel-footer">
@@ -185,11 +230,26 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="panel-heading"><strong>Room Type</strong> </div>
-                                <asp:GridView ID="gvroomtype" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" EmptyDataText="No mapping activity has not been done for this date range."
-                                    ShowHeaderWhenEmpty="false">
+                                <asp:GridView ID="gvroomtype" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" EmptyDataText="No mapping activity has not been done for this date range." ShowFooter="true"
+                                    ShowHeaderWhenEmpty="false" OnRowDataBound="gvroomtype_RowDataBound">
                                     <Columns>
-                                        <asp:BoundField HeaderText="UserName" DataField="Username" />
-                                        <asp:BoundField HeaderText="Count" DataField="Totalcount" />
+                                         <asp:TemplateField HeaderText="UserName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblRoomTypesUser" runat="server" Text='<%# Eval("Username") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblRoomTypesTotalText" runat="server" Text="Total" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Count">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblRoomTypesCount" runat="server" Text='<%# Eval("Totalcount") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblRoomTypesTotal" runat="server" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+
                                     </Columns>
                                 </asp:GridView>
                                 <div class="panel-footer">
@@ -212,11 +272,26 @@
                         <div class="panel-body">
                             <div class="col-md-6">
                                 <div class="panel-heading"><strong>Activity</strong> </div>
-                                <asp:GridView ID="gvactivity" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
-                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range.">
+                                <asp:GridView ID="gvactivity" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped" ShowFooter="true"
+                                    ShowHeaderWhenEmpty="false" EmptyDataText="No mapping activity has not been done for this date range." OnRowDataBound="gvactivity_RowDataBound">
                                     <Columns>
-                                        <asp:BoundField HeaderText="UserName" DataField="Username" />
-                                        <asp:BoundField HeaderText="Count" DataField="Totalcount" />
+                                         <asp:TemplateField HeaderText="UserName">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblActivityUser" runat="server" Text='<%# Eval("Username") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblActivityTotalText" runat="server" Text="Total" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Count">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblActivityCount" runat="server" Text='<%# Eval("Totalcount") %>' />
+                                            </ItemTemplate>
+                                            <FooterTemplate>
+                                                <asp:Label ID="lblActivityTotal" runat="server" />
+                                            </FooterTemplate>
+                                        </asp:TemplateField>
+
                                     </Columns>
                                 </asp:GridView>
                                 <div class="panel-footer">
