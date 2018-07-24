@@ -498,6 +498,7 @@
     <Content Include="staticdata\city\search.aspx" />
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
+    <Content Include="staticdata\ExportSupplierReport.aspx" />
     <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
@@ -1050,6 +1051,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -2754,6 +2758,13 @@
     </Compile>
     <Compile Include="staticdata\country\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\ExportSupplierReport.aspx.cs">
+      <DependentUpon>ExportSupplierReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\ExportSupplierReport.aspx.designer.cs">
+      <DependentUpon>ExportSupplierReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\files\APIData.aspx.cs">
       <DependentUpon>APIData.aspx</DependentUpon>
