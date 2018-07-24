@@ -101,7 +101,7 @@ namespace TLGX_Consumer.staticdata
                 for (int k = 0; k < gvSupplier.Columns.Count; k++)
                 {
                     //add separator
-                    sb.Append(gvSupplier.Rows[i].Cells[k].Text + ',');
+                    sb.Append(gvSupplier.Rows[i].Cells[k].Text.Replace("&nbsp;", "")  + ',');
                 }
                 //append new line
                 sb.Append("\r\n");
