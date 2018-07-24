@@ -2,7 +2,19 @@
 function pageLoad(sender, args) {
     var ta = document.querySelectorAll('textarea');
     autosize(ta);
+    if ($('#tblTLGXRoomInfo').length > 0)
+        $('#tblTLGXRoomInfo').DataTable({
+            "bPaginate": true,
+            "bProcessing": true
+        });
 }
+$(document).ready(function () {
+    if ($('#tblTLGXRoomInfo').length > 0) 
+        $('#tblTLGXRoomInfo').DataTable({
+            "bPaginate": true,
+            "bProcessing": true
+        });
+});
 
 function showOnlineSuggestionModal(controlval) {
     $('#lblForSupplierRoomTypeName').text($(controlval).parent().closest('td').prev().find('#lblSupplierRoomTypeName').text());
@@ -37,14 +49,15 @@ function HideToolTip(controls) {
 
 
 function mySelectedID(selectedcheckboxval) {
-    
+
     // var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
-    for (var i = 1; i < tr.length; i++) {
+    for (var i = 0; i < tr.length; i++) {
         tr[i].childNodes[0].firstChild.checked = false;
         tr[i].className = "row";
     }
     selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
+    selectedcheckboxval.parentElement.parentElement.className += " backgroundRowColor";
     selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
     var hdnAccommodation_SupplierRoomInfo_IdPopUp = $("#hdnAccommodation_SupplierRoomInfo_IdPopUp");
 
@@ -52,14 +65,12 @@ function mySelectedID(selectedcheckboxval) {
     for (var j = 0; j < parentTr.length; j++) {
         if (parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0] != undefined && parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_SupplierRoomTypeMapping_Id")[0].value == hdnAccommodation_SupplierRoomInfo_IdPopUp.val()) {
             //get Row
-            debugger;
             var RoomInfoName = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.textContent;
             var RoomCategory = selectedcheckboxval.parentElement.parentElement.firstChild.nextSibling.nextSibling.nextSibling.textContent;
             if (RoomCategory != undefined && RoomCategory != "") {
 
                 RoomInfoName = RoomInfoName + "\n" + "(" + RoomCategory + ")";
             }
-            debugger;
             parentTr[j].getElementsByClassName("roomtype")[0].textContent = RoomInfoName;
             var hdnAccommodation_RoomInfo_Id = parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0];
             hdnAccommodation_RoomInfo_Id.value = selectedcheckboxval.parentElement.parentElement.lastElementChild.firstChild.textContent;
@@ -170,8 +181,8 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
     //hdnAccommodation_RoomInfo_IdPopUp.val(acco_roomType_id);
     var listItems = '';
     if (result != null) {
-        var def = '<table class="table-bordered">  <tr class="row"><th class="col-md-1  CheckboxColumn"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">Room Name</th> <th class="col-md-2">Room Category</th>';
-        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th></tr>';
+        var def = '<table id="tblTLGXRoomInfo" class="table table-responsive table-hover table-striped table-bordered" style="border-collapse:collapse;" cellspacing="0" border="1" rules="all"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">Room Name</th> <th class="col-md-2">Room Category</th>';
+        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th><th style="display: none;"></th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -190,7 +201,7 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
         //Find index
         for (var i = 0; i < result.length; i++) {
             if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
-                li = li + '<tr class="row alert alert-success">';
+                li = li + '<tr class="row alert alert-success backgroundRowColor" >';
                 li = li + tdCheckbox + licheckboxWithChecked + tdc;
                 li = li + td1 + result[i].TLGXAccoRoomId + tdc;
                 li = li + td2 + result[i].RoomName + tdc;
@@ -228,15 +239,18 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
         li = li + licClose;
         hideLoadingImage();
         ulRoomInfo.html(li);
+        if ($('#tblTLGXRoomInfo').length > 0)
+            $('#tblTLGXRoomInfo').DataTable({
+                "bPaginate": true,
+                "bProcessing": true
+            });
     }
 }
 function BindRTDetails(controlval) {
-    debugger;
-
     var lblSupplierRoomTypeName = $(controlval).parent().parent().parent().find('#lblSupplierRoomTypeName').text();
     //Getting Extracted Attribute
     var ExtractedAttribute = "";
-    var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-bordered'><tbody><tr>";
+    var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-responsive table-hover table-striped table-bordered'><tbody><tr>";
     var flag = 0;
     if ($(controlval).parent().parent().parent().find('#lstAlias') != undefined) {
         if ($(controlval).parent().parent().parent().find('#lstAlias tr').length > 0) {
@@ -300,8 +314,8 @@ function BindRTDetails(controlval) {
 
 function BindResponse(result) {
     var value = JSON.stringify(result);
-    var table = "<table class='table table-bordered'>";
-    var tableparent = "<table class='table table-bordered' style='width:23%'>";
+    var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
+    var tableparent = "<table class='table table-responsive table-hover table-striped table-bordered' style='width:23%'>";
     var listItems = tableparent + "<tr><th style='font-size: 14px;'>Syntactic</th><th style='font-size: 14px;'>Semantic (Unsupervised)</th><th style='font-size: 14px;'>Semantic (Supervised)</th></tr><tr><td>";
     var tr = "<tr>"; var trc = "</tr>";
     var td = "<td>"; var tdc = "</td>";
@@ -408,9 +422,9 @@ function hideLoadingImageOnlineSyntactic() {
 }
 function BindResponseSyntactic(resultarray) {
     var value = JSON.stringify(result);
-    var table = "<table class='table table-bordered'>";
+    var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
 
-    var tableparent = "<table class='table table-bordered' style='width: 23%;'>";
+    var tableparent = "<table class='table table-responsive table-hover table-striped table-bordered' style='width: 23%;'>";
     var tr = "<tr>"; var trc = "</tr>";
     var td = "<td>"; var tdc = "</td>";
     var listItems = tableparent;
@@ -478,9 +492,9 @@ function hideLoadingImageOnlineSemanticUnSup() {
 }
 function BindResponseSemanticUnSup(resultarray) {
     var value = JSON.stringify(result);
-    var table = "<table class='table table-bordered'>";
+    var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
 
-    var tableparent = "<table class='table table-bordered' style='width: 23%;'>";
+    var tableparent = "<table class='table table-responsive table-hover table-striped table-bordered' style='width: 23%;'>";
     var tr = "<tr>"; var trc = "</tr>";
     var td = "<td>"; var tdc = "</td>";
     var listItems = tableparent;
@@ -547,9 +561,9 @@ function hideLoadingImageOnlineSemanticSup() {
 }
 function BindResponseSemanticSup(resultarray) {
     var value = JSON.stringify(result);
-    var table = "<table class='table table-bordered'>";
+    var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
 
-    var tableparent = "<table class='table table-bordered' style='width: 23%;'>";
+    var tableparent = "<table class='table table-responsive table-hover table-striped table-bordered' style='width: 23%;'>";
     var tr = "<tr>"; var trc = "</tr>";
     var td = "<td>"; var tdc = "</td>";
     var listItems = tableparent;

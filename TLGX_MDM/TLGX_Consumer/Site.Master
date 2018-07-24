@@ -182,13 +182,16 @@
                             <bootmenu:BootstrapMenu runat="server"
                                 DataSourceID="AspNetSqlSiteMapProvider"
                                 Orientation="Horizontal" />--%>
-
-
-
+                    
+                                 
+                           
+                          
                             <!-- this is the right hand side for everyone currently hard coded for demo-->
                             <ul class="nav navbar-nav navbar-right">
+ 
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>
+                                        <asp:Label id="lblLoggedInUser" runat="server"  style="color: white;"></asp:Label>
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
 

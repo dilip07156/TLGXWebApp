@@ -103,6 +103,9 @@ namespace TLGX_Consumer
                 Controller.AccomodationSVC AccSvc = new Controller.AccomodationSVC();
                 if (String.IsNullOrWhiteSpace(System.Web.HttpContext.Current.User.Identity.Name))
                     Response.Redirect("/Account/Login",true);
+
+                Label LoggedInUser = (Label)LoginViewForSiteMap.FindControl("lblLoggedInUser");
+                LoggedInUser.Text = System.Web.HttpContext.Current.User.Identity.Name;
                 List<MDMSVC.DC_SiteMap> objSiteMap = AccSvc.GetSiteMapByUserRole(System.Web.HttpContext.Current.User.Identity.Name);
                 objSiteMap = (from s in objSiteMap where s.ID != 1 orderby s.ID select s).ToList();
                 return objSiteMap;

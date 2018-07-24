@@ -58,7 +58,10 @@
 
 @media (min-width: 768px) {
     .modal-xl {
-        width: 80%;
-        max-width: 1200px;
+        width: 90%;
+        /*max-width: 1200px;*/
     }
+}
+.backgroundRowColor{
+   background: rgb(214, 233, 198)!important;
 }
