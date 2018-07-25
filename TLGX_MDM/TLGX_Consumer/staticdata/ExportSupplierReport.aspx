@@ -7,10 +7,8 @@
             <h1 class="page-header">Export Supplier Report</h1>
         </div>
     </div>
-
-
-<%--    <asp:UpdatePanel runat="server" ID="PnlUpdateDiv">
-        <ContentTemplate>--%>
+    <asp:UpdatePanel runat="server" ID="PnlUpdateDiv">
+        <ContentTemplate>
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -76,7 +74,7 @@
 
                 </div>
             </div>
-       <%-- </ContentTemplate>
-    </asp:UpdatePanel>--%>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
 </asp:Content>

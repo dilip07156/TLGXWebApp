@@ -30,8 +30,8 @@ namespace TLGX_Consumer.staticdata
                 ddlSupplierName.DataBind();
 
                 getData(Guid.Empty, false);
-                ScriptManager.GetCurrent(Page).RegisterPostBackControl(btnExportSuppilerCsv);
             }
+            ScriptManager.GetCurrent(Page).RegisterPostBackControl(btnExportSuppilerCsv);
         }
         public void getData(Guid Supplier_id, bool isMDM)
         {
@@ -84,7 +84,7 @@ namespace TLGX_Consumer.staticdata
             Response.Clear();
             Response.Buffer = true;
             Response.AddHeader("content-disposition",
-             "attachment;filename=GridViewExport.csv");
+             "attachment;filename = SupplierMappingReport.csv");
             Response.Charset = "";
             Response.ContentType = "application/text";
 
