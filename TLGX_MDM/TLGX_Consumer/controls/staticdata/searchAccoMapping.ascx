@@ -650,9 +650,16 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="txtSuppName">Supplier Product</label>
+                                                <label class="control-label col-sm-4" for="txtSuppName">Supplier Product Name</label>
                                                 <div class="col-sm-8">
                                                     <asp:TextBox ID="txtSuppProduct" runat="server" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-4" for="txtSuppProdCode">Supplier Product Code</label>
+                                                <div class="col-sm-8">
+                                                    <asp:TextBox ID="txtSuppProdCode" runat="server" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -716,8 +723,8 @@
                                 <asp:Label ID="lblAccoMaps" runat="server" Text="0"></asp:Label>)</a>
                                 </h4>
                                 <div class="form-group pull-right">
-                                    <asp:Button ID="btnMapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClick="btnMapSelected_Click" />
-                                    <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" OnClick="btnMapAll_Click" />
+                                    <asp:Button ID="btnMapSelected" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');"  OnClick="btnMapSelected_Click" />
+                                    <asp:Button ID="btnMapAll" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');"   OnClick="btnMapAll_Click" />
                                 </div>
                             </div>
                             <div id="collapseSearchResult" class="panel-collapse collapse in">
@@ -856,6 +863,10 @@
                                                 </div>
                                             </div>
 
+
+                                        </div>
+
+                                        <div class="col-lg-4">
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-4" for="ddlBrand">
                                                     Brand
@@ -863,6 +874,16 @@
                                                 <div class="col-sm-8">
                                                     <asp:DropDownList ID="ddlBrand" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                         <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-4" for="ddlProductMappingStatus">
+                                                    Mapping Status
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <asp:DropDownList ID="ddlProductMappingStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                                     </asp:DropDownList>
                                                 </div>
                                             </div>
@@ -877,21 +898,39 @@
                                             </div>
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="ddlProductMappingStatus">
-                                                    Mapping Status
-                                                </label>
-                                                <div class="col-sm-8">
-                                                    <asp:DropDownList ID="ddlProductMappingStatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    </asp:DropDownList>
+                                                <div class="col-sm-12">
+                                                    <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Mapping by Product" CausesValidation="false" Visible="false" />
+                                                    <!-- wire me up to go to /addProductMapping add straight to Product Search -->
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="col-lg-4">
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="txtCommonProdId">
+                                                    Company Hotel ID
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox runat="server" ID="txtCompanyHotelId" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                                                        ControlToValidate="txtCompanyHotelId" runat="server"
+                                                        ErrorMessage="Only Numbers allowed"
+                                                        ValidationExpression="\d+"  ForeColor="Red">
+                                                    </asp:RegularExpressionValidator>
+                                                </div>
+                                            </div>
 
                                             <div class="form-group row">
-                                                <label class="control-label col-sm-4" for="ddlProductBasedPageSize">Page Size</label>
-                                                <div class="col-sm-8">
+                                                <label class="control-label col-sm-6" for="txtTLGXAccoId">
+                                                    TLGX AccoId
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox runat="server" ID="txtTLGXAccoId" CssClass="form-control"></asp:TextBox>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-6" for="ddlProductBasedPageSize">Page Size</label>
+                                                <div class="col-sm-6">
                                                     <asp:DropDownList ID="ddlProductBasedPageSize" runat="server" CssClass="form-control col-lg-3">
                                                         <asp:ListItem Text="5" Value="5" Selected="True"></asp:ListItem>
                                                         <asp:ListItem Text="10" Value="10"></asp:ListItem>
@@ -905,13 +944,6 @@
                                                 <div class="col-sm-12">
                                                     <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary btn-sm" Text="Search" OnClick="Button1_Click" />
                                                     <asp:Button ID="Button2" runat="server" CssClass="btn btn-primary btn-sm" Text="Reset" CausesValidation="false" OnClick="Button2_Click" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                                <div class="col-sm-12">
-                                                    <asp:Button ID="Button3" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Mapping by Product" CausesValidation="false" Visible="false" />
-                                                    <!-- wire me up to go to /addProductMapping add straight to Product Search -->
                                                 </div>
                                             </div>
                                         </div>
@@ -1327,8 +1359,8 @@
                                                     </asp:DropDownList>
                                                 </div>
                                                 <div class="input-group pull-right">
-                                                    <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" OnClick="btnMatchedMapSelected_Click" CausesValidation="false" />
-                                                    <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" OnClick="btnMatchedMapAll_Click" CausesValidation="false" />
+                                                    <asp:Button ID="btnMatchedMapSelected" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map Selected" CommandName="MapSelected" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');" OnClick="btnMatchedMapSelected_Click" CausesValidation="false" />
+                                                    <asp:Button ID="btnMatchedMapAll" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Map All" CommandName="MapAll" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');"  OnClick="btnMatchedMapAll_Click" CausesValidation="false" />
                                                 </div>
                                             </div>
                                             <div class="form-group">

@@ -407,6 +407,8 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     RQ.ProductType = Convert.ToString(ddlProductType.SelectedValue);
                 }
+                if (!string.IsNullOrWhiteSpace(txtSuppProdCode.Text))
+                    RQ.SupplierProductCode = txtSuppProdCode.Text.Trim();
 
                 RQ.Source = "SYSTEMDATA";
             }
@@ -957,6 +959,10 @@ namespace TLGX_Consumer.controls.staticdata
                 RQ.Chain = ddlChain.SelectedItem.Text;
             if (ddlBrand.SelectedItem.Value != "0")
                 RQ.Brand = ddlBrand.SelectedItem.Text;
+            if (!string.IsNullOrWhiteSpace(txtCompanyHotelId.Text))
+                RQ.CompanyHotelId = Convert.ToInt32(txtCompanyHotelId.Text.Trim());
+            if (!string.IsNullOrWhiteSpace(txtTLGXAccoId.Text))
+                RQ.TLGXAccoId = txtTLGXAccoId.Text.Trim();
 
             RQ.PageNo = pPageIndex;
             RQ.PageSize = pageSize;
@@ -1393,6 +1399,8 @@ namespace TLGX_Consumer.controls.staticdata
                 //3. Grid Hide and bind with  null
                 grdTLGXProdData.Visible = false;
                 bulkHotelMapping.Visible = false;
+                txtCompanyHotelId.Text = string.Empty;
+                txtTLGXAccoId.Text = string.Empty;
 
             }
             catch (Exception)
@@ -1430,6 +1438,7 @@ namespace TLGX_Consumer.controls.staticdata
                 lblAccoMaps.Text = "0";
                 //3. Grid Hide and bind with  null
                 grdAccoMaps.Visible = false;
+                txtSuppProdCode.Text = string.Empty;
             }
             catch (Exception)
             {

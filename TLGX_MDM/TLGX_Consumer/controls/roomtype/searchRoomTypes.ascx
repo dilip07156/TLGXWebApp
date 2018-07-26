@@ -44,7 +44,7 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-6" for="ddlProductCategorySubType">
                                                         Supplier Name
@@ -71,9 +71,17 @@
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-6" for="txtSupplierRoomName">
+                                                        Supplier RoomName
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <asp:TextBox runat="server" ID="txtSupplierRoomName" CssClass="form-control"></asp:TextBox>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <div class="form-group row">
                                                     <label class="control-label col-sm-6" for="ddlMappingTypeBySupplier">Mapping Type</label>
                                                     <div class="col-sm-6">
@@ -102,38 +110,55 @@
                                                         <asp:TextBox runat="server" ID="txtProductNameBySupplier" CssClass="form-control"></asp:TextBox>
                                                     </div>
                                                 </div>
+                                            </div>
 
+                                            <div class="col-lg-4">
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-6" for="txtSupplierRoomName">
-                                                        Supplier RoomName
+                                                    <label class="control-label col-sm-6" for="txtCommonProdId">
+                                                        Company Hotel ID
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox runat="server" ID="txtSupplierRoomName" CssClass="form-control"></asp:TextBox>
+                                                        <asp:TextBox runat="server" ID="txtCompanyHotelId" CssClass="form-control"></asp:TextBox>
+                                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                                                        ControlToValidate="txtCompanyHotelId" runat="server"
+                                                        ErrorMessage="Only Numbers allowed"
+                                                        ValidationExpression="\d+"  ForeColor="Red">
+                                                        </asp:RegularExpressionValidator>
                                                     </div>
                                                 </div>
-
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-6" for="txtTLGXAccoId">
+                                                        TLGX AccoId
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <asp:TextBox runat="server" ID="txtTLGXAccoId" CssClass="form-control"></asp:TextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-6" for="txtTLGXAccoRoomId">
+                                                        TLGX Acco RoomId
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <asp:TextBox runat="server" ID="txtTLGXAccoRoomId" CssClass="form-control"></asp:TextBox>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-6">
                                                         <asp:Button ID="btnSearchBySupplier" runat="server" OnClick="btnSearchBySupplier_Click" CssClass="btn btn-primary btn-sm" Text="Search" ValidationGroup="HotelSearch" />
                                                         <asp:Button ID="btnResetBySupplier" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnResetBySupplier_Click" Text="Reset" CausesValidation="false" />
                                                     </div>
                                                 </div>
-
                                             </div>
+
+
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Search Results Panel -->
-
-
-
                 <div class="panel-group" id="accordionProductSearchResult">
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -166,8 +191,8 @@
                             <div class="floatingButton">
                                 <asp:UpdatePanel runat="server" ID="upnlbtns">
                                     <ContentTemplate>
-                                        <asp:Button ID="btnMapSelectedBySupplier" OnClick="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
-                                        <asp:Button ID="btnMapAllBySupplier" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
+                                        <asp:Button ID="btnMapSelectedBySupplier" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');"    OnClick ="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
+                                        <asp:Button ID="btnMapAllBySupplier" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
 
                                         <asp:Button ID="btnTTFUSelectedBySupplier" runat="server" OnClick="btnTTFUSelectedBySupplier_Click" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU Selected" />
                                         <asp:Button ID="btnTTFUAllBySupplier" OnClick="btnTTFUAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-success btn-sm" Text="TTFU All" />
@@ -191,8 +216,9 @@
                                                     <asp:TemplateField HeaderText="System Product Name" ItemStyle-Width="12%">
                                                         <ItemTemplate>
                                                             <asp:Label runat="server" ID="lblProductName" Text='<%# Eval("ProductName") %>'></asp:Label><br />
-                                                            <strong>(<asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>) ,</strong>
-                                                            <asp:Label runat="server" ID="lblLocation" Text='<%# Eval("Location") %>'></asp:Label></strong>
+                                                            <strong>(<asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>), </strong>
+                                                           <%-- <asp:HyperLink runat="server" Text='<%# Eval("CommonProductId") %>'></asp:HyperLink>--%>
+                                                             <asp:Label runat="server" ID="lblLocation" Text='<%# Eval("Location") %>'></asp:Label></strong>
                                                        
 
                                                             <%# Convert.ToInt32(Eval("NumberOfRooms")) > 0 ? "<h4><span class='label label-success '>" + Convert.ToString(Eval("NumberOfRooms")) + "</span></h4>" : "<h5><span class='label label-danger'>No</span></h5>" %>
@@ -205,7 +231,15 @@
                                                    
                                                 </ItemTemplate>
                                             </asp:TemplateField>--%>
-                                                    <asp:BoundField HeaderText="Supplier" DataField="SupplierName" />
+                                                    <%--<asp:BoundField HeaderText="Supplier" DataField="SupplierName" />--%>
+                                                    <asp:TemplateField HeaderText="Supplier" ItemStyle-Wrap="true">
+                                                        <ItemTemplate>
+                                                             <asp:Label runat="server" ID="lblSuppName" ClientIDMode="Static" Text='<%# Eval("SupplierName") %>'></asp:Label>
+                                                            <p>(<asp:Label runat="server" ID="lblSupplierProdCode" Text='<%# Eval("SupplierProductId") %>'></asp:Label> -
+                                                                <asp:Label runat="server" ID="lblSupplierProdName" Text='<%# Eval("SupplierProductName") %>'></asp:Label>
+                                                                )</p>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
                                                     <%-- <asp:BoundField HeaderText="Supplier ID" DataField="SupplierRoomTypeCode" />--%>
                                                     <%-- <asp:BoundField  DataField="SupplierRoomName"    />--%>
                                                     <asp:TemplateField HeaderText="Supplier Room Type Name" ItemStyle-Width="12%" ItemStyle-Wrap="true">
@@ -375,8 +409,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="panel-title">
-                        <h4 class="modal-title">Supplier Room Type Name : <label id="lblForTLGXRoomInfoName"></label>
-                            </h4>
+                        <h4 class="modal-title">Supplier Room Type Name :
+                            <label id="lblForTLGXRoomInfoName"></label>
+                        </h4>
                         <div id="divAttribute"></div>
                     </div>
                 </div>
@@ -389,7 +424,7 @@
                                 </div>
                             </div>
                             <asp:HiddenField runat="server" ID="hdnAccommodation_SupplierRoomInfo_IdPopUp" ClientIDMode="Static" />
-                            <asp:HiddenField runat="server" ID="hdnControlID" ClientIDMode="Static" />                            
+                            <asp:HiddenField runat="server" ID="hdnControlID" ClientIDMode="Static" />
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
@@ -581,6 +616,5 @@
 
 
 </div>
-<script type="text/javascript" src="../../../Scripts/dataTables.bootstrap.min.js"></script>
+
 <script type="text/javascript" src="../../../Scripts/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="../../../Scripts/bootstrap.min.js"></script>

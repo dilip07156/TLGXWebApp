@@ -150,11 +150,18 @@ namespace TLGX_Consumer.controls.roomtype
                 if (!string.IsNullOrWhiteSpace(txtSupplierRoomName.Text))
                     _objSearch.SupplierRoomName = txtSupplierRoomName.Text.Trim();
 
+                if (!string.IsNullOrWhiteSpace(txtTLGXAccoId.Text))
+                    _objSearch.TLGXAccoId = txtTLGXAccoId.Text.Trim();
+                if (!string.IsNullOrWhiteSpace(txtTLGXAccoRoomId.Text))
+                    _objSearch.TLGXAccoRoomId = txtTLGXAccoRoomId.Text.Trim();
+                if (!string.IsNullOrWhiteSpace(txtCompanyHotelId.Text))
+                    _objSearch.CompanyHotelID = Convert.ToInt32(txtCompanyHotelId.Text.Trim());
+
                 _objSearch.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
 
                 _objSearch.PageNo = pageIndex;
                 var res = _mapping.GetAccomodationSupplierRoomTypeMapping_Search(_objSearch);
-                if (res != null)
+                    if (res != null)
                 {
                     if (res.Count > 0)
                     {
@@ -208,6 +215,9 @@ namespace TLGX_Consumer.controls.roomtype
             lblSupplierRoomSearchCount.Text = "0";
             grdRoomTypeMappingSearchResultsBySupplier.DataSource = null;
             grdRoomTypeMappingSearchResultsBySupplier.DataBind();
+            txtTLGXAccoId.Text = string.Empty;
+            txtTLGXAccoRoomId.Text = string.Empty;
+            txtCompanyHotelId.Text = string.Empty;
 
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_RowCommand(object sender, GridViewCommandEventArgs e)

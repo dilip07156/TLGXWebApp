@@ -103,6 +103,15 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.TextBox txtSuppProduct;
         
         /// <summary>
+        /// txtSuppProdCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSuppProdCode;
+        
+        /// <summary>
         /// ddlPageSize control.
         /// </summary>
         /// <remarks>
@@ -265,6 +274,15 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.DropDownList ddlBrand;
         
         /// <summary>
+        /// ddlProductMappingStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductMappingStatus;
+        
+        /// <summary>
         /// txtSearch control.
         /// </summary>
         /// <remarks>
@@ -274,13 +292,40 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// ddlProductMappingStatus control.
+        /// Button3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlProductMappingStatus;
+        protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// txtCompanyHotelId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCompanyHotelId;
+        
+        /// <summary>
+        /// RegularExpressionValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
+        
+        /// <summary>
+        /// txtTLGXAccoId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTLGXAccoId;
         
         /// <summary>
         /// ddlProductBasedPageSize control.
@@ -308,15 +353,6 @@ namespace TLGX_Consumer.controls.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
-        
-        /// <summary>
-        /// Button3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
         /// lblTLGXProdData control.

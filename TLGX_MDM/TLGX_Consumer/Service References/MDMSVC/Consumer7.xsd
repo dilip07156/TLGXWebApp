@@ -129,6 +129,7 @@
       <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierProductCode" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TelephoneNumber" nillable="true" type="xs:string" />
@@ -178,6 +179,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CalledFromTLGX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CompanyHotelID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Country" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="MappingType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
@@ -187,6 +189,8 @@
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierRoomName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TLGXAccoId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TLGXAccoRoomId" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accommodation_SupplierRoomTypeMap_SearchRQ" nillable="true" type="tns:DC_Accommodation_SupplierRoomTypeMap_SearchRQ" />
@@ -884,6 +888,52 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_MappingStatsForSuppliers" nillable="true" type="tns:DC_MappingStatsForSuppliers" />
+  <xs:complexType name="ArrayOfDC_SupplierExportDataReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierExportDataReport" nillable="true" type="tns:DC_SupplierExportDataReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierExportDataReport" nillable="true" type="tns:ArrayOfDC_SupplierExportDataReport" />
+  <xs:complexType name="DC_SupplierExportDataReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AvaialbleFromSupplier" type="xs:int" />
+      <xs:element minOccurs="0" name="CityTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="City_AutoMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="City_CompletePercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="City_MannualMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="City_ReviewMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="City_TotalRecordReceived" type="xs:int" />
+      <xs:element minOccurs="0" name="City_Unmapped" type="xs:int" />
+      <xs:element minOccurs="0" name="CountryTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="Country_AutoMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Country_CompletePercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Country_LastFetched" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Country_MannualMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Country_ReviewMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Country_TotalRecordReceived" type="xs:int" />
+      <xs:element minOccurs="0" name="Country_Unmapped" type="xs:int" />
+      <xs:element minOccurs="0" name="HotelTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotel_AutoMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotel_CompletePercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Hotel_MannualMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotel_ReviewMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotel_TotalRecordReceived" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotel_Unmapped" type="xs:int" />
+      <xs:element minOccurs="0" name="HotelsMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoomTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="Room_Add" type="xs:int" />
+      <xs:element minOccurs="0" name="Room_AutoMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Room_CompletePercentage" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Room_MannualMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Room_ReviewMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Room_Unmapped" type="xs:int" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalEligibleRoom" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierExportDataReport" nillable="true" type="tns:DC_SupplierExportDataReport" />
   <xs:complexType name="DC_RollOFParams">
     <xs:sequence>
       <xs:element minOccurs="0" name="Fromdate" nillable="true" type="xs:string" />
