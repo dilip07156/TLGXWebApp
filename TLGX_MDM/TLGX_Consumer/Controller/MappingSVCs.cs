@@ -427,6 +427,15 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_VelocityMappingStats>;
         }
         #endregion
+
+        #region Get SupplierData ForExport
+        public List<DC_SupplierExportDataReport> GetSupplierDataForExport(Guid Supplier_Id, bool isMDM)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_SupplierDataExport"], Supplier_Id.ToString(), isMDM.ToString()), typeof(List<DC_SupplierExportDataReport>), out result);
+            return result as List<DC_SupplierExportDataReport>;
+        }
+        #endregion
         #region File Progress Dashboard
         public DC_FileProgressDashboard getFileProgressDashBoardData(string fileid)
         {
