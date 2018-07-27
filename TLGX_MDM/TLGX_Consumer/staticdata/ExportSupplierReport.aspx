@@ -30,11 +30,11 @@
 
                         <div class="col-md-12" style="overflow-x:auto">
                             <asp:GridView ID="gvSupplier" runat="server" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
-                                ShowHeaderWhenEmpty="false" ShowFooter="true" EmptyDataText="No data found for Suppliers." OnDataBound="gvSupplier_DataBound" Style="overflow-x: scroll" OnRowDataBound="gvSupplier_RowDataBound">
+                                ShowHeaderWhenEmpty="false" ShowFooter="true" EmptyDataText="No data found for Suppliers." Style="overflow-x: scroll">
                                 <Columns>
                                     <asp:BoundField HeaderText="Priority" DataField="Priority" />
                                     <asp:BoundField HeaderText="Supplier Name" DataField="SupplierName" ItemStyle-Font-Bold="true" />
-                                    <asp:BoundField HeaderText="LAST FETCHED FROM" DataField="Country_LastFetched" />
+                                    <asp:BoundField HeaderText="LAST FETCHED FROM SUPPLIERS" DataField="Country_LastFetched" />
                                     <asp:BoundField HeaderText="COUNTRY TOTAL RECORDS RECEIVED FROM SUPPLIER" DataField="Country_TotalRecordReceived" />
                                     <asp:BoundField HeaderText="COUNTRY AUTO MAPPED" DataField="Country_AutoMapped" />
                                     <asp:BoundField HeaderText="COUNTRY MANNUAL MAPPED" DataField="Country_MannualMapped" />
@@ -57,12 +57,12 @@
                                     <asp:BoundField HeaderText="HOTEL TOTAL" DataField="HotelTotal" />
                                     <asp:BoundField HeaderText="HOTEL COMPLETE %" DataField="Hotel_CompletePercentage" />
                                     <asp:BoundField HeaderText="TOTAL ROOM TYPES AVAILABLE FROM SUPPLIERS" DataField="AvaialbleFromSupplier" />
-                                    <asp:BoundField HeaderText="ROOM MAPPED" DataField="HotelsMapped" />
-                                    <asp:BoundField HeaderText="Eligible Room" DataField="TotalEligibleRoom" />
+                                    <asp:BoundField HeaderText="HOTELS MAPPED" DataField="HotelsMapped" />
+                                    <asp:BoundField HeaderText="TOTAL ELIGIBLE ROOM TYPES" DataField="TotalEligibleRoom" />
                                     <asp:BoundField HeaderText="ROOM AUTO MAPPED" DataField="Room_AutoMapped" />
                                     <asp:BoundField HeaderText="ROOM MANUAL MAPPED" DataField="Room_MannualMapped" />
                                     <asp:BoundField HeaderText="ROOM REVIEW" DataField="Room_ReviewMapped" />
-                                    <asp:BoundField HeaderText="Add" DataField="Room_Add" />
+                                    <asp:BoundField HeaderText="PROBABLE NEW ROOM TYPES" DataField="Room_Add" />
                                     <asp:BoundField HeaderText="ROOM UNMAPPED" DataField="Room_Unmapped" />
                                     <asp:BoundField HeaderText="ROOM TOTAL" DataField="RoomTotal" />
                                     <asp:BoundField HeaderText="ROOM COMPLETE %" DataField="Room_CompletePercentage" />
