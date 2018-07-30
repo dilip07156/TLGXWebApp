@@ -6156,6 +6156,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ToDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -6401,6 +6404,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoId {
+            get {
+                return this.TLGXAccoIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoIdField, value) != true)) {
+                    this.TLGXAccoIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoId");
                 }
             }
         }
@@ -18242,6 +18258,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string SupplierNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierProductCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SupplierProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18639,6 +18658,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
                     this.SupplierNameField = value;
                     this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierProductCode {
+            get {
+                return this.SupplierProductCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierProductCodeField, value) != true)) {
+                    this.SupplierProductCodeField = value;
+                    this.RaisePropertyChanged("SupplierProductCode");
                 }
             }
         }
@@ -19179,6 +19211,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> CityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CompanyHotelIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> CountryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -19204,6 +19239,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoRoomIdField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -19237,6 +19278,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.CityField.Equals(value) != true)) {
                     this.CityField = value;
                     this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> CompanyHotelID {
+            get {
+                return this.CompanyHotelIDField;
+            }
+            set {
+                if ((this.CompanyHotelIDField.Equals(value) != true)) {
+                    this.CompanyHotelIDField = value;
+                    this.RaisePropertyChanged("CompanyHotelID");
                 }
             }
         }
@@ -19354,6 +19408,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Supplier_IdField.Equals(value) != true)) {
                     this.Supplier_IdField = value;
                     this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoId {
+            get {
+                return this.TLGXAccoIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoIdField, value) != true)) {
+                    this.TLGXAccoIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoRoomId {
+            get {
+                return this.TLGXAccoRoomIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoRoomIdField, value) != true)) {
+                    this.TLGXAccoRoomIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoRoomId");
                 }
             }
         }
@@ -26903,7 +26983,7 @@ namespace TLGX_Consumer.MDMSVC {
         private int City_ReviewMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int City_TotalRecordReceivedField;
+        private string City_TotalRecordReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int City_UnmappedField;
@@ -26918,16 +26998,13 @@ namespace TLGX_Consumer.MDMSVC {
         private decimal Country_CompletePercentageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Country_LastFetchedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Country_MannualMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Country_ReviewMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Country_TotalRecordReceivedField;
+        private string Country_TotalRecordReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Country_UnmappedField;
@@ -26948,13 +27025,16 @@ namespace TLGX_Consumer.MDMSVC {
         private int Hotel_ReviewMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Hotel_TotalRecordReceivedField;
+        private string Hotel_TotalRecordReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Hotel_UnmappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int HotelsMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> LastFetchedDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PriorityField;
@@ -27078,12 +27158,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int City_TotalRecordReceived {
+        public string City_TotalRecordReceived {
             get {
                 return this.City_TotalRecordReceivedField;
             }
             set {
-                if ((this.City_TotalRecordReceivedField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.City_TotalRecordReceivedField, value) != true)) {
                     this.City_TotalRecordReceivedField = value;
                     this.RaisePropertyChanged("City_TotalRecordReceived");
                 }
@@ -27143,19 +27223,6 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Country_LastFetched {
-            get {
-                return this.Country_LastFetchedField;
-            }
-            set {
-                if ((this.Country_LastFetchedField.Equals(value) != true)) {
-                    this.Country_LastFetchedField = value;
-                    this.RaisePropertyChanged("Country_LastFetched");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Country_MannualMapped {
             get {
                 return this.Country_MannualMappedField;
@@ -27182,12 +27249,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Country_TotalRecordReceived {
+        public string Country_TotalRecordReceived {
             get {
                 return this.Country_TotalRecordReceivedField;
             }
             set {
-                if ((this.Country_TotalRecordReceivedField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.Country_TotalRecordReceivedField, value) != true)) {
                     this.Country_TotalRecordReceivedField = value;
                     this.RaisePropertyChanged("Country_TotalRecordReceived");
                 }
@@ -27273,12 +27340,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Hotel_TotalRecordReceived {
+        public string Hotel_TotalRecordReceived {
             get {
                 return this.Hotel_TotalRecordReceivedField;
             }
             set {
-                if ((this.Hotel_TotalRecordReceivedField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.Hotel_TotalRecordReceivedField, value) != true)) {
                     this.Hotel_TotalRecordReceivedField = value;
                     this.RaisePropertyChanged("Hotel_TotalRecordReceived");
                 }
@@ -27307,6 +27374,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.HotelsMappedField.Equals(value) != true)) {
                     this.HotelsMappedField = value;
                     this.RaisePropertyChanged("HotelsMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LastFetchedDate {
+            get {
+                return this.LastFetchedDateField;
+            }
+            set {
+                if ((this.LastFetchedDateField.Equals(value) != true)) {
+                    this.LastFetchedDateField = value;
+                    this.RaisePropertyChanged("LastFetchedDate");
                 }
             }
         }

@@ -556,6 +556,7 @@
       <xs:element minOccurs="0" name="Searchfrom" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Starrating" nillable="true" type="xs:string" />
       <xs:element name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TLGXAccoId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
     </xs:sequence>
