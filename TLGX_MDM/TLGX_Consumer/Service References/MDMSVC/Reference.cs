@@ -27034,9 +27034,6 @@ namespace TLGX_Consumer.MDMSVC {
         private int HotelsMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> LastFetchedDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PriorityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -27374,19 +27371,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.HotelsMappedField.Equals(value) != true)) {
                     this.HotelsMappedField = value;
                     this.RaisePropertyChanged("HotelsMapped");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> LastFetchedDate {
-            get {
-                return this.LastFetchedDateField;
-            }
-            set {
-                if ((this.LastFetchedDateField.Equals(value) != true)) {
-                    this.LastFetchedDateField = value;
-                    this.RaisePropertyChanged("LastFetchedDate");
                 }
             }
         }

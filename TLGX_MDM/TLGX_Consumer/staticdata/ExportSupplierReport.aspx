@@ -34,7 +34,7 @@
                                 <Columns>
                                     <asp:BoundField HeaderText="Priority" DataField="Priority" />
                                     <asp:BoundField HeaderText="Supplier Name" DataField="SupplierName" ItemStyle-Font-Bold="true" />
-                                    <asp:BoundField HeaderText="LAST FETCHED FROM SUPPLIERS" DataField="LastFetchedDate" />
+                                    <%--<asp:BoundField HeaderText="LAST FETCHED FROM SUPPLIERS" DataField="LastFetchedDate" />--%>
                                     <asp:BoundField HeaderText="COUNTRY TOTAL RECORDS RECEIVED FROM SUPPLIER" DataField="Country_TotalRecordReceived" />
                                     <asp:BoundField HeaderText="COUNTRY AUTO MAPPED" DataField="Country_AutoMapped" />
                                     <asp:BoundField HeaderText="COUNTRY MANNUAL MAPPED" DataField="Country_MannualMapped" />

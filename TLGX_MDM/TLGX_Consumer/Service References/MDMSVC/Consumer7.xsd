@@ -919,7 +919,6 @@
       <xs:element minOccurs="0" name="Hotel_TotalRecordReceived" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hotel_Unmapped" type="xs:int" />
       <xs:element minOccurs="0" name="HotelsMapped" type="xs:int" />
-      <xs:element minOccurs="0" name="LastFetchedDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomTotal" type="xs:int" />
       <xs:element minOccurs="0" name="Room_Add" type="xs:int" />
