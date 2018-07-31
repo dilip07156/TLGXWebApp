@@ -1,4 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="searchRoomTypes.ascx.cs" Inherits="TLGX_Consumer.controls.roomtype.searchRoomTypes" %>
+<%@ Register Src="~/controls/staticdata/UpdateSupplierProductMapping.ascx" TagPrefix="uc1" TagName="UpdateSupplierProductMapping" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <script src="../../../Scripts/autosize.min.js"></script>
 <script src="../../../Scripts/JqueryUI/jquery-ui.js"></script>
 <link href="../../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
@@ -8,6 +10,20 @@
 <script type="text/javascript" src="../../../Content/JS_Defined/searchRoomTypes.js"></script>
 <link rel="Stylesheet" type="text/css" href="../../../Content/Style_Defined/searchRoomType.css" />
 
+    <script type="text/javascript">
+        function showProductMappingModal() {
+            //alert('Hi');
+            $("#moProductMapping").modal('show');
+        }
+        function closeProductMappingModal() {
+            //alert("Hi");
+            $("#moProductMapping").modal('hide');
+        } 
+
+        $(document).ready(function () {
+            callajax();
+        });
+</script>
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav nav-tabs">
@@ -208,7 +224,7 @@
                                         <ContentTemplate>
                                             <div id="divMsgForMapping" runat="server" style="display: none;"></div>
                                             <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
-                                                DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id"
+                                                DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id,Supplier_Id,SupplierProductId"
                                                 CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
                                                 OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging" OnRowDataBound="grdRoomTypeMappingSearchResultsBySupplier_RowDataBound">
                                                 <Columns>
@@ -216,8 +232,8 @@
                                                     <asp:TemplateField HeaderText="System Product Name" ItemStyle-Width="12%">
                                                         <ItemTemplate>
                                                             <asp:Label runat="server" ID="lblProductName" Text='<%# Eval("ProductName") %>'></asp:Label><br />
-                                                            <strong>(<asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>), </strong>
-                                                           <%-- <asp:HyperLink runat="server" Text='<%# Eval("CommonProductId") %>'></asp:HyperLink>--%>
+                                                          <%--  <strong>(<asp:Label runat="server" ID="lblHotelID" Text='<%# Eval("CommonProductId") %>'></asp:Label>), </strong>--%>
+                                                           <strong>( <asp:LinkButton runat="server" Text='<%# Eval("CommonProductId") %>' CommandName="OPENSPM"></asp:LinkButton>), </strong>
                                                              <asp:Label runat="server" ID="lblLocation" Text='<%# Eval("Location") %>'></asp:Label></strong>
                                                        
 
@@ -617,4 +633,29 @@
 
 </div>
 
+
 <script type="text/javascript" src="../../../Scripts/jquery.dataTables.min.js"></script>
+<%--UpdateSupplierMapping PopUp--%>
+<div class="modal fade" id="moProductMapping" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg x-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <div class="panel-heading">
+                        <h4 class="modal-title">Update Supplier Product Mapping</h4>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdProductMapModal" runat="server">
+                        <ContentTemplate>
+                    <uc1:UpdateSupplierProductMapping runat="server" id="UpdateSupplierProductMapping" />
+                             </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>

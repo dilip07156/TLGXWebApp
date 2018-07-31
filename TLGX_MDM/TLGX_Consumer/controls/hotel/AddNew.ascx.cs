@@ -43,21 +43,20 @@ namespace TLGX_Consumer.controls.hotel
             }
             else
             {
-                //((TLGX_Consumer.staticdata.searchAccommodationProductMapping)this.BindingContainer).searchAccoMapping.dtCountrMappingDetail
+                //((TLGX_Consumer.staticdata.searchAccommodationProductMapping)this.BindingContainer).UpdateSupplierProductMapping.dtCountrMappingDetail
                 vPath = ((System.Web.UI.TemplateControl)this.BindingContainer).AppRelativeVirtualPath;
             }
 
             string dir = this.NamingContainer.BindingContainer.AppRelativeTemplateSourceDirectory;
 
             string ParentPageName = vPath.Replace(dir, "");
-
-
+            
             return ParentPageName;
         }
 
         private void initializeSetParentPage(string ParentPageName)
         {
-            if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
+            if (ParentPageName == "UpdateSupplierProductMapping.ascx" || ParentPageName == "search.aspx")
             {
                 InsertFrom = true;
                 dvKeyFacts.Visible = false;
@@ -307,19 +306,20 @@ namespace TLGX_Consumer.controls.hotel
                     OverviewData.IsActive = true;
                     if (AccSvc.UpdateHotelGeoDetail(OverviewData))
                     {
-                        DropDownList ddlSystemCountryName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCountryName");
-                        DropDownList ddlSystemCityName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCityName");
-                        DropDownList ddlSystemProductName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemProductName");
-                        TextBox txtSystemProductCode = (TextBox)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("txtSystemProductCode");
-                        Button btnAddProduct = (Button)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("btnAddProduct");
+                        FormView frmEditProductMap = (FormView)((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).FindControl("frmEditProductMap");
+                        DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
+                        DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
+                        DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
+                        TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+                        Button btnAddProduct = (Button)frmEditProductMap.FindControl("btnAddProduct");
 
 
                         ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByText(myCountryName));
-                        ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillcities(ddlSystemCityName, ddlSystemCountryName);
+                        ((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).fillcities(ddlSystemCityName, ddlSystemCountryName);
                         //ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByText(myCityName));
                         ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.Cast<ListItem>().FirstOrDefault(i => i.Text.Equals(myCityName, StringComparison.InvariantCultureIgnoreCase)));
 
-                        ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
+                        ((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
                         ddlSystemProductName.SelectedIndex = ddlSystemProductName.Items.IndexOf(ddlSystemProductName.Items.FindByText(myHotelName));
                         txtSystemProductCode.Text = masterdata.GetCodeById("product", Guid.Parse(ddlSystemProductName.SelectedItem.Value));
                         btnAddProduct.Visible = false;
@@ -456,17 +456,18 @@ namespace TLGX_Consumer.controls.hotel
             {
                 //ret = true;
             }
-            DropDownList ddlSystemCountryName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCountryName");
-            DropDownList ddlSystemCityName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCityName");
-            DropDownList ddlSystemProductName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemProductName");
-            TextBox txtSystemProductCode = (TextBox)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("txtSystemProductCode");
-            Button btnAddProduct = (Button)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("btnAddProduct");
+            FormView frmEditProductMap= (FormView)((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).FindControl("frmEditProductMap");
+            DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
+            DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
+            DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
+            TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
+            Button btnAddProduct = (Button)frmEditProductMap.FindControl("btnAddProduct");
 
             ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByValue(ddlAddCountry.SelectedItem.Value));
-            ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillcities(ddlSystemCityName, ddlSystemCountryName);
+            ((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).fillcities(ddlSystemCityName, ddlSystemCountryName);
             ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(ddlAddCity.SelectedItem.Value));
 
-            ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
+            ((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
 
             if (res.Count == 1)
             {
@@ -527,39 +528,41 @@ namespace TLGX_Consumer.controls.hotel
             {
                 ret = true;
                 string ParentPageName = setParentPage();
-                if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
+                if (ParentPageName == "UpdateSupplierProductMapping.ascx" || ParentPageName == "search.aspx")
                 {
-                    DropDownList ddlSystemCountryName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCountryName");
-                    DropDownList ddlSystemCityName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemCityName");
-                    DropDownList ddlSystemProductName = (DropDownList)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("ddlSystemProductName");
-                    TextBox txtSystemProductCode = (TextBox)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("txtSystemProductCode");
+                    FormView frmEditProductMap = (FormView)((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).FindControl("frmEditProductMap");
+                    DropDownList ddlSystemCountryName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCountryName");
+                    DropDownList ddlSystemCityName = (DropDownList)frmEditProductMap.FindControl("ddlSystemCityName");
+                    DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
+                    TextBox txtSystemProductCode = (TextBox)frmEditProductMap.FindControl("txtSystemProductCode");
 
 
 
-                    Button btnAddProduct = (Button)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("btnAddProduct");
+                    Button btnAddProduct = (Button)frmEditProductMap.FindControl("btnAddProduct");
 
                     ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByValue(ddlAddCountry.SelectedItem.Value));
-                    ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillcities(ddlSystemCityName, ddlSystemCountryName);
+                    ((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).fillcities(ddlSystemCityName, ddlSystemCountryName);
                     ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(ddlAddCity.SelectedItem.Value));
 
-                    ((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
+                    ((TLGX_Consumer.controls.staticdata.UpdateSupplierProductMapping)this.Parent.NamingContainer).fillproducts(ddlSystemProductName, ddlSystemCityName, ddlSystemCountryName);
                     ddlSystemProductName.SelectedIndex = ddlSystemProductName.Items.IndexOf(ddlSystemProductName.Items.FindByText(txtHotelName.Text.ToString()));
                     //Added for textbox search product
                     if (ParentPageName == "search.aspx")
                     {
-                        TextBox txtSearchSystemProduct = (TextBox)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("txtSearchSystemProduct");
-                        HiddenField hdnSelSystemProduct_Id = (HiddenField)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
+                        
+                        TextBox txtSearchSystemProduct = (TextBox)frmEditProductMap.FindControl("txtSearchSystemProduct");
+                        HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
                         txtSearchSystemProduct.Text = ddlSystemProductName.SelectedItem.Text;
                         hdnSelSystemProduct_Id.Value = ddlSystemProductName.SelectedValue;
 
                         var res = AccSvc.GetAccomodationBasicInfo(Guid.Parse(hdnSelSystemProduct_Id.Value));
                         if (res != null && res.Count > 0)
                         {
-                            Label lblSystemProductAddress = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemProductAddress");
-                            Label lblSystemLocation = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemLocation");
-                            Label lblSystemTelephone = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemTelephone");
-                            Label lblSystemLatitude = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemLatitude");
-                            Label lblSystemLongitude = (Label)((TLGX_Consumer.controls.staticdata.AccoMap)this.Parent.NamingContainer).frmEditProductMap.FindControl("lblSystemLongitude");
+                            Label lblSystemProductAddress = (Label)frmEditProductMap.FindControl("lblSystemProductAddress");
+                            Label lblSystemLocation = (Label)frmEditProductMap.FindControl("lblSystemLocation");
+                            Label lblSystemTelephone = (Label)frmEditProductMap.FindControl("lblSystemTelephone");
+                            Label lblSystemLatitude = (Label)frmEditProductMap.FindControl("lblSystemLatitude");
+                            Label lblSystemLongitude = (Label)frmEditProductMap.FindControl("lblSystemLongitude");
                             lblSystemProductAddress.Text = res[0].FullAddress;
                             lblSystemLocation.Text = res[0].Location;
                             lblSystemTelephone.Text = res[0].Telephone_Tx;
@@ -593,7 +596,7 @@ namespace TLGX_Consumer.controls.hotel
             {
                 dvGridExist.Visible = false;
                 string ParentPageName = setParentPage();
-                if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
+                if (ParentPageName == "UpdateSupplierProductMapping.ascx" || ParentPageName == "search.aspx")
                 {
                     if (ret == "placeid")
                     {
@@ -631,6 +634,7 @@ namespace TLGX_Consumer.controls.hotel
         {
             loadExistingProductGrid();
             ScriptManager.RegisterStartupScript(this, this.GetType(), "map", "callmap();", true);
+            //ScriptManager.RegisterStartupScript((Control) btnMapLookup, ((Control)).GetType(), "mapp", "callmap();", true);
         }
         protected void btnAdd_Command(object sender, CommandEventArgs e)
         {
@@ -641,7 +645,7 @@ namespace TLGX_Consumer.controls.hotel
             {
                 dvGridExist.Visible = false;
                 string ParentPageName = setParentPage();
-                if (ParentPageName == "searchAccoMapping.ascx" || ParentPageName == "search.aspx")
+                if (ParentPageName == "UpdateSupplierProductMapping.ascx" || ParentPageName == "search.aspx")
                 {
                     //if (ret == "placeid" || ((res != null) && (res.Count == 1)))
                     //{

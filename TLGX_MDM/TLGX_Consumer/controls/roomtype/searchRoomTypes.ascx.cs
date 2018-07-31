@@ -222,7 +222,49 @@ namespace TLGX_Consumer.controls.roomtype
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+            int index = row.RowIndex;
+            Guid myRow_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[0].ToString());
+            if (e.CommandName == "OPENSPM")
+            {
+                MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQ = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
+                if (grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[1] != null)
+                {
+                    RQ.Accommodation_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[1].ToString());
+                }
+                if (grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[2] != null)
+                {
+                    RQ.Supplier_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[2].ToString());
+                }
+                if (grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[3] != null)
+                {
+                    RQ.SupplierProductCode = grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[3].ToString();
+                }
+                
+                RQ.PageSize = int.MaxValue;
+                
+                var searchAPM = _mapping.GetProductMappingData(RQ);
+                if(searchAPM!=null && searchAPM.Count > 0)
+                {
+                    UpdateSupplierProductMapping.CalledFrom = "RTM";
+                    UpdateSupplierProductMapping.Accommodation_ProductMapping_Id = searchAPM[0].Accommodation_ProductMapping_Id;
+                    UpdateSupplierProductMapping.SupplierId = searchAPM[0].SupplierId;
+                    UpdateSupplierProductMapping.SupplierName = searchAPM[0].SupplierName;
+                    UpdateSupplierProductMapping.ProductId = searchAPM[0].ProductId;
+                    UpdateSupplierProductMapping.ProductName = searchAPM[0].ProductName;
+                    UpdateSupplierProductMapping.ProductType = searchAPM[0].ProductType;
+                    UpdateSupplierProductMapping.Street = searchAPM[0].FullAddress;
+                    UpdateSupplierProductMapping.TelephoneNumber = searchAPM[0].TelephoneNumber;
+                    UpdateSupplierProductMapping.CountryCode = searchAPM[0].CountryCode;
+                    UpdateSupplierProductMapping.CountryName = searchAPM[0].CountryName;
+                    UpdateSupplierProductMapping.CityCode = searchAPM[0].CityCode;
+                    UpdateSupplierProductMapping.CityName = searchAPM[0].CityName;
+                    UpdateSupplierProductMapping.Status = searchAPM[0].Status;
+                }
+                UpdateSupplierProductMapping.BindData();
+                ScriptManager.RegisterStartupScript((Control)grdRoomTypeMappingSearchResultsBySupplier, ((Control)grdRoomTypeMappingSearchResultsBySupplier).GetType(), "Pop" + index.ToString(), "showProductMappingModal();", true);
+                //ClientScriptManager.RegisterStartupScript(this.GetType(), "tmp", "CreateClickableLinks();", false);
+            }
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {

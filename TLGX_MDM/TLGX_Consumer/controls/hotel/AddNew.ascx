@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AddNew.ascx.cs" Inherits="TLGX_Consumer.controls.hotel.AddNew" %>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCMaiicvgxsZeI8LqtPfEE6k7dufNqWsEA&libraries=places"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhxUUgHmu48Zv0_ECSms00t9OzxZkE1h0&libraries=places"></script>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <style>
@@ -91,24 +91,24 @@
         var input = document.getElementById('pac-input');
         var vrZoom = 18;
         if (vrmap == null) {
-            vrmap = document.getElementById("MainContent_searchAccoMapping_ucAddNew_map");
+            vrmap = document.getElementById("MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_map");
 
             if (vrmap != null) {
-                inputProductName = document.getElementById('MainContent_searchAccoMapping_ucAddNew_txtHotelName');
-                inputStreet = document.getElementById('MainContent_searchAccoMapping_ucAddNew_txtStreet');
-                inputStreet2 = document.getElementById('MainContent_searchAccoMapping_ucAddNew_txtStreet2');
-                inputPostCode = document.getElementById('MainContent_searchAccoMapping_ucAddNew_txtPostalCode');
-                inputCountry = document.getElementById('MainContent_searchAccoMapping_ucAddNew_ddlAddCountry');
-                inputCity = document.getElementById('MainContent_searchAccoMapping_ucAddNew_ddlAddCity');
-                inputPlaceId = document.getElementById('MainContent_searchAccoMapping_ucAddNew_txtAddCityPlaceId');
-                hdnStreet = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnStreet');
-                hdnStreet2 = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnStreet2');
-                hdnCity = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnCity');
-                hdnState = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnState');
-                hdnCountry = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnCountry');
-                hdnPostCode = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnPostCode');
-                hdnLat = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnLat');
-                hdnLng = document.getElementById('MainContent_searchAccoMapping_ucAddNew_hdnLng');
+                inputProductName = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_txtHotelName');
+                inputStreet = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_txtStreet');
+                inputStreet2 = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_txtStreet2');
+                inputPostCode = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_txtPostalCode');
+                inputCountry = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_ddlAddCountry');
+                inputCity = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_ddlAddCity');
+                inputPlaceId = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_txtAddCityPlaceId');
+                hdnStreet = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnStreet');
+                hdnStreet2 = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnStreet2');
+                hdnCity = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnCity');
+                hdnState = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnState');
+                hdnCountry = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnCountry');
+                hdnPostCode = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnPostCode');
+                hdnLat = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnLat');
+                hdnLng = document.getElementById('MainContent_searchAccoMapping_UpdateSupplierProductMapping_ucAddNew_hdnLng');
                 input = document.getElementById('pac-input');
                 vrZoom = 16;
             }

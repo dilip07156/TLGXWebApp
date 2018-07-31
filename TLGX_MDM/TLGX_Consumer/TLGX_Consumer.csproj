@@ -372,6 +372,7 @@
     <Content Include="controls\staticdataconfig\manageFIleUpload.ascx" />
     <Content Include="controls\staticdataconfig\manageStaticDataConfig.ascx" />
     <Content Include="controls\staticdataconfig\searchStaticDataConfig.ascx" />
+    <Content Include="controls\staticdata\UpdateSupplierProductMapping.ascx" />
     <Content Include="controls\staticdata\supplierWiseDataChart.ascx" />
     <Content Include="controls\staticdata\bulkHotelMapping.ascx" />
     <Content Include="controls\staticdata\CityMap.ascx" />
@@ -1810,6 +1811,13 @@
     </Compile>
     <Compile Include="controls\staticdataconfig\searchStaticDataConfig.ascx.designer.cs">
       <DependentUpon>searchStaticDataConfig.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\staticdata\UpdateSupplierProductMapping.ascx.cs">
+      <DependentUpon>UpdateSupplierProductMapping.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\staticdata\UpdateSupplierProductMapping.ascx.designer.cs">
+      <DependentUpon>UpdateSupplierProductMapping.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\staticdata\supplierWiseDataChart.ascx.cs">
       <DependentUpon>supplierWiseDataChart.ascx</DependentUpon>
