@@ -28,10 +28,8 @@ namespace TLGX_Consumer.staticdata
                 ddlSupplierName.DataValueField = "Supplier_Id";
                 ddlSupplierName.DataTextField = "Name";
                 ddlSupplierName.DataBind();
-
-                getData(Guid.Empty, false);
-                ScriptManager.GetCurrent(Page).RegisterPostBackControl(btnExportSuppilerCsv);
             }
+            ScriptManager.GetCurrent(Page).RegisterPostBackControl(btnExportSuppilerCsv);
         }
         public void getData(Guid Supplier_id, bool isMDM)
         {
@@ -40,41 +38,6 @@ namespace TLGX_Consumer.staticdata
             gvSupplier.DataBind();
         }
 
-        protected void gvSupplier_DataBound(object sender, EventArgs e)
-        {
-            //GridViewRow row = new GridViewRow(0, 0, DataControlRowType.Header, DataControlRowState.Normal);
-            //TableHeaderCell cell1 = new TableHeaderCell();
-            //cell1.Text = "";
-            //cell1.ColumnSpan = 2;
-            //row.Controls.Add(cell1);
-
-            //TableHeaderCell cell2 = new TableHeaderCell();
-            //cell2.Text = "COUNTRY MAPPING";
-            ////cell2.Text = TextAlign.Right.;
-            //cell2.ColumnSpan = 8;
-            //row.Controls.Add(cell2);
-
-            //TableHeaderCell cell3 = new TableHeaderCell();
-            //cell3.Text = "CITY MAPPING";
-            //cell3.ColumnSpan = 7;
-            //row.Controls.Add(cell3);
-
-            //TableHeaderCell cell4 = new TableHeaderCell();
-            //cell4.Text = "HOTEL MAPPING";
-            //cell4.ColumnSpan = 8;
-            //row.Controls.Add(cell4);
-
-            //TableHeaderCell cell5 = new TableHeaderCell();
-            //cell5.Text = "ROOM TYPES MAPPING";
-            //cell5.ColumnSpan = 10;
-            //row.Controls.Add(cell5);
-            //// row.BackColor = ColorTranslator.FromHtml("#3AC0F2");
-            //gvSupplier.HeaderRow.Parent.Controls.AddAt(0, row);
-        }
-
-        protected void gvSupplier_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-        }
         public override void VerifyRenderingInServerForm(Control control)
         {
             /* Verifies that the control is rendered */
@@ -84,7 +47,7 @@ namespace TLGX_Consumer.staticdata
             Response.Clear();
             Response.Buffer = true;
             Response.AddHeader("content-disposition",
-             "attachment;filename=GridViewExport.csv");
+             "attachment;filename = SupplierMappingReport.csv");
             Response.Charset = "";
             Response.ContentType = "application/text";
 
@@ -101,7 +64,7 @@ namespace TLGX_Consumer.staticdata
                 for (int k = 0; k < gvSupplier.Columns.Count; k++)
                 {
                     //add separator
-                    sb.Append(gvSupplier.Rows[i].Cells[k].Text + ',');
+                    sb.Append(gvSupplier.Rows[i].Cells[k].Text.Replace("&nbsp;", "")  + ',');
                 }
                 //append new line
                 sb.Append("\r\n");

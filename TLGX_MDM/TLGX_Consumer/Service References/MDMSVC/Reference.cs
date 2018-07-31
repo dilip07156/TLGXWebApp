@@ -26983,7 +26983,7 @@ namespace TLGX_Consumer.MDMSVC {
         private int City_ReviewMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int City_TotalRecordReceivedField;
+        private string City_TotalRecordReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int City_UnmappedField;
@@ -26998,16 +26998,13 @@ namespace TLGX_Consumer.MDMSVC {
         private decimal Country_CompletePercentageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Country_LastFetchedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Country_MannualMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Country_ReviewMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Country_TotalRecordReceivedField;
+        private string Country_TotalRecordReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Country_UnmappedField;
@@ -27028,7 +27025,7 @@ namespace TLGX_Consumer.MDMSVC {
         private int Hotel_ReviewMappedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Hotel_TotalRecordReceivedField;
+        private string Hotel_TotalRecordReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Hotel_UnmappedField;
@@ -27158,12 +27155,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int City_TotalRecordReceived {
+        public string City_TotalRecordReceived {
             get {
                 return this.City_TotalRecordReceivedField;
             }
             set {
-                if ((this.City_TotalRecordReceivedField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.City_TotalRecordReceivedField, value) != true)) {
                     this.City_TotalRecordReceivedField = value;
                     this.RaisePropertyChanged("City_TotalRecordReceived");
                 }
@@ -27223,19 +27220,6 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Country_LastFetched {
-            get {
-                return this.Country_LastFetchedField;
-            }
-            set {
-                if ((this.Country_LastFetchedField.Equals(value) != true)) {
-                    this.Country_LastFetchedField = value;
-                    this.RaisePropertyChanged("Country_LastFetched");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Country_MannualMapped {
             get {
                 return this.Country_MannualMappedField;
@@ -27262,12 +27246,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Country_TotalRecordReceived {
+        public string Country_TotalRecordReceived {
             get {
                 return this.Country_TotalRecordReceivedField;
             }
             set {
-                if ((this.Country_TotalRecordReceivedField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.Country_TotalRecordReceivedField, value) != true)) {
                     this.Country_TotalRecordReceivedField = value;
                     this.RaisePropertyChanged("Country_TotalRecordReceived");
                 }
@@ -27353,12 +27337,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Hotel_TotalRecordReceived {
+        public string Hotel_TotalRecordReceived {
             get {
                 return this.Hotel_TotalRecordReceivedField;
             }
             set {
-                if ((this.Hotel_TotalRecordReceivedField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.Hotel_TotalRecordReceivedField, value) != true)) {
                     this.Hotel_TotalRecordReceivedField = value;
                     this.RaisePropertyChanged("Hotel_TotalRecordReceived");
                 }

@@ -902,22 +902,21 @@
       <xs:element minOccurs="0" name="City_CompletePercentage" type="xs:decimal" />
       <xs:element minOccurs="0" name="City_MannualMapped" type="xs:int" />
       <xs:element minOccurs="0" name="City_ReviewMapped" type="xs:int" />
-      <xs:element minOccurs="0" name="City_TotalRecordReceived" type="xs:int" />
+      <xs:element minOccurs="0" name="City_TotalRecordReceived" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="City_Unmapped" type="xs:int" />
       <xs:element minOccurs="0" name="CountryTotal" type="xs:int" />
       <xs:element minOccurs="0" name="Country_AutoMapped" type="xs:int" />
       <xs:element minOccurs="0" name="Country_CompletePercentage" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Country_LastFetched" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Country_MannualMapped" type="xs:int" />
       <xs:element minOccurs="0" name="Country_ReviewMapped" type="xs:int" />
-      <xs:element minOccurs="0" name="Country_TotalRecordReceived" type="xs:int" />
+      <xs:element minOccurs="0" name="Country_TotalRecordReceived" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Country_Unmapped" type="xs:int" />
       <xs:element minOccurs="0" name="HotelTotal" type="xs:int" />
       <xs:element minOccurs="0" name="Hotel_AutoMapped" type="xs:int" />
       <xs:element minOccurs="0" name="Hotel_CompletePercentage" type="xs:decimal" />
       <xs:element minOccurs="0" name="Hotel_MannualMapped" type="xs:int" />
       <xs:element minOccurs="0" name="Hotel_ReviewMapped" type="xs:int" />
-      <xs:element minOccurs="0" name="Hotel_TotalRecordReceived" type="xs:int" />
+      <xs:element minOccurs="0" name="Hotel_TotalRecordReceived" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Hotel_Unmapped" type="xs:int" />
       <xs:element minOccurs="0" name="HotelsMapped" type="xs:int" />
       <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:string" />

@@ -13,6 +13,15 @@ namespace TLGX_Consumer.staticdata {
     public partial class ExportSupplierReport {
         
         /// <summary>
+        /// PnlUpdateDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel PnlUpdateDiv;
+        
+        /// <summary>
         /// chkIsMDMDataOnly control.
         /// </summary>
         /// <remarks>
