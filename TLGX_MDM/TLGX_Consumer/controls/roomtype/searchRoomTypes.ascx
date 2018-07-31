@@ -114,16 +114,16 @@
 
                                             <div class="col-lg-4">
                                                 <div class="form-group row">
-                                                    <label class="control-label col-sm-6" for="txtCommonProdId">
-                                                        Company Hotel ID
-                                                    </label>
-                                                    <div class="col-sm-6">
-                                                        <asp:TextBox runat="server" ID="txtCompanyHotelId" CssClass="form-control"></asp:TextBox>
+                                                    <label class="control-label col-sm-6" for="txtCommonProdId"> Company Hotel ID 
                                                         <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
                                                         ControlToValidate="txtCompanyHotelId" runat="server"
                                                         ErrorMessage="Only Numbers allowed"
                                                         ValidationExpression="\d+"  ForeColor="Red">
                                                         </asp:RegularExpressionValidator>
+                                                    </label>
+                                                     
+                                                    <div class="col-sm-6">
+                                                        <asp:TextBox runat="server" ID="txtCompanyHotelId" CssClass="form-control"></asp:TextBox>
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">

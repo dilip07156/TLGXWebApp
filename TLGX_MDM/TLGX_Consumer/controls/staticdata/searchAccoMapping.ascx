@@ -908,14 +908,14 @@
                                             <div class="form-group row">
                                                 <label class="control-label col-sm-6" for="txtCommonProdId">
                                                     Company Hotel ID
-                                                </label>
-                                                <div class="col-sm-6">
-                                                    <asp:TextBox runat="server" ID="txtCompanyHotelId" CssClass="form-control"></asp:TextBox>
-                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                                                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
                                                         ControlToValidate="txtCompanyHotelId" runat="server"
                                                         ErrorMessage="Only Numbers allowed"
                                                         ValidationExpression="\d+"  ForeColor="Red">
                                                     </asp:RegularExpressionValidator>
+                                                </label>
+                                                <div class="col-sm-6">
+                                                    <asp:TextBox runat="server" ID="txtCompanyHotelId" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
