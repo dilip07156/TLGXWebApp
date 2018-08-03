@@ -551,6 +551,7 @@
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element name="PageNo" type="xs:int" />
       <xs:element name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:int" />
       <xs:element name="ProductCategory" nillable="true" type="xs:string" />
       <xs:element name="ProductCategorySubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Searchfrom" nillable="true" type="xs:string" />

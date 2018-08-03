@@ -6143,6 +6143,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         private int PageSizeField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
         private string ProductCategoryField;
         
         private string ProductCategorySubTypeField;
@@ -6339,6 +6342,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.PageSizeField.Equals(value) != true)) {
                     this.PageSizeField = value;
                     this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }
@@ -18219,6 +18235,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string PostCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -18489,6 +18508,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.PostCodeField, value) != true)) {
                     this.PostCodeField = value;
                     this.RaisePropertyChanged("PostCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
                 }
             }
         }

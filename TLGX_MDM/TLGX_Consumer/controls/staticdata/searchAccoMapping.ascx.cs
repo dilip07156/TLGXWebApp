@@ -55,6 +55,8 @@ namespace TLGX_Consumer.controls.staticdata
                 btnMapSelected.Visible = false;
                 btnMapAll.Visible = false;
                 //hdnContext.Value = contex;
+                fillAccomodationPriority(ddlAccoPriority);
+                fillAccomodationPriority(ddlAccoPrioritySearchByProd);
             }
         }
 
@@ -183,7 +185,25 @@ namespace TLGX_Consumer.controls.staticdata
             ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
         }
 
+        private void fillAccomodationPriority(DropDownList ddl)
+        {
+            MDMSVC.DC_M_masterattributelists list = LookupAtrributes.GetAllAttributeAndValuesByFOR("Accommodation", "Priority");
 
+            try
+            {
+                list.MasterAttributeValues = list.MasterAttributeValues.OrderBy(x => Convert.ToInt32(x.AttributeValue)).ToArray();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            ddl.Items.Clear();
+            ddl.DataSource = list.MasterAttributeValues;
+            ddl.DataValueField = "AttributeValue";
+            ddl.DataTextField = "OTA_CodeTableValue";
+            ddl.DataBind();
+            ddl.Items.Insert(0, new ListItem("--ALL--", "0"));
+        }
 
         //private static void AddSuperHeader(GridView gridView)
         //{
@@ -330,7 +350,14 @@ namespace TLGX_Consumer.controls.staticdata
                     RQ.ProductType = Convert.ToString(ddlProductType.SelectedValue);
                 }
                 if (!string.IsNullOrWhiteSpace(txtSuppProdCode.Text))
+                {
                     RQ.SupplierProductCode = txtSuppProdCode.Text.Trim();
+                }
+                if(ddlAccoPriority.SelectedValue != "0")
+                {
+                    RQ.Priority = Convert.ToInt32(ddlAccoPriority.SelectedValue);
+                }
+                    
 
                 RQ.Source = "SYSTEMDATA";
             }
@@ -508,6 +535,10 @@ namespace TLGX_Consumer.controls.staticdata
                 RQ.CompanyHotelId = Convert.ToInt32(txtCompanyHotelId.Text.Trim());
             if (!string.IsNullOrWhiteSpace(txtTLGXAccoId.Text))
                 RQ.TLGXAccoId = txtTLGXAccoId.Text.Trim();
+            if (ddlAccoPrioritySearchByProd.SelectedValue != "0")
+            {
+                RQ.Priority = Convert.ToInt32(ddlAccoPrioritySearchByProd.SelectedValue);
+            }
 
             RQ.PageNo = pPageIndex;
             RQ.PageSize = pageSize;
@@ -636,6 +667,7 @@ namespace TLGX_Consumer.controls.staticdata
                 bulkHotelMapping.Visible = false;
                 txtCompanyHotelId.Text = string.Empty;
                 txtTLGXAccoId.Text = string.Empty;
+                ddlAccoPrioritySearchByProd.SelectedIndex = 0;
 
             }
             catch (Exception)
@@ -674,6 +706,7 @@ namespace TLGX_Consumer.controls.staticdata
                 //3. Grid Hide and bind with  null
                 grdAccoMaps.Visible = false;
                 txtSuppProdCode.Text = string.Empty;
+                ddlAccoPriority.SelectedIndex = 0;
             }
             catch (Exception)
             {

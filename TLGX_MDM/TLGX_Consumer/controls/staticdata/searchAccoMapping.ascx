@@ -664,6 +664,16 @@
                                                 </div>
                                             </div>
 
+                                             <div class="form-group row">
+                                                <label class="control-label col-sm-4" for="ddlAccoPriority">
+                                                    Accomodation Priority
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <asp:DropDownList ID="ddlAccoPriority" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                    </asp:DropDownList>
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="col-lg-4">
                                             <div class="form-group row">
@@ -864,6 +874,16 @@
                                                 </div>
                                             </div>
 
+                                            <div class="form-group row">
+                                                <label class="control-label col-sm-4" for="ddlSearchByProdAccoPriority">
+                                                    Accomodation Priority
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <asp:DropDownList ID="ddlAccoPrioritySearchByProd" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                                   </asp:DropDownList>
+                                                </div>
+                                            </div>
+
 
                                         </div>
 
@@ -948,6 +968,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>

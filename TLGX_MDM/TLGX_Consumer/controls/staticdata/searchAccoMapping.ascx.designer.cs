@@ -112,6 +112,15 @@ namespace TLGX_Consumer.controls.staticdata {
         protected global::System.Web.UI.WebControls.TextBox txtSuppProdCode;
         
         /// <summary>
+        /// ddlAccoPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAccoPriority;
+        
+        /// <summary>
         /// ddlPageSize control.
         /// </summary>
         /// <remarks>
@@ -263,6 +272,15 @@ namespace TLGX_Consumer.controls.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlChain;
+        
+        /// <summary>
+        /// ddlAccoPrioritySearchByProd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAccoPrioritySearchByProd;
         
         /// <summary>
         /// ddlBrand control.
