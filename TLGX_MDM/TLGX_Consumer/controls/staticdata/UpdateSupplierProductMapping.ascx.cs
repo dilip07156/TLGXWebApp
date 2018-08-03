@@ -70,33 +70,33 @@ namespace TLGX_Consumer.controls.staticdata
                     CityName = CityName,
                     Status = Status,
                     Accommodation_Id = Accommodation_Id,
-               });
+                });
             }
             else if (CalledFrom == "RTM")
             {
                 //get data from db via service assign to obj
-                
-                    obj.Add(new MDMSVC.DC_Accomodation_ProductMapping
-                    {
 
-                        Accommodation_ProductMapping_Id = Accommodation_ProductMapping_Id,
-                        SupplierId = SupplierId,
-                        SupplierName = SupplierName,
-                        ProductId = ProductId,
-                        ProductName = ProductName,
-                        ProductType = ProductType,
-                        Street = Street,
-                        TelephoneNumber = TelephoneNumber,
-                        CountryCode = CountryCode,
-                        CountryName = CountryName,
-                        CityCode = CityCode,
-                        CityName = CityName,
-                        Status = Status,
-                        Accommodation_Id = Accommodation_Id,
+                obj.Add(new MDMSVC.DC_Accomodation_ProductMapping
+                {
+
+                    Accommodation_ProductMapping_Id = Accommodation_ProductMapping_Id,
+                    SupplierId = SupplierId,
+                    SupplierName = SupplierName,
+                    ProductId = ProductId,
+                    ProductName = ProductName,
+                    ProductType = ProductType,
+                    Street = Street,
+                    TelephoneNumber = TelephoneNumber,
+                    CountryCode = CountryCode,
+                    CountryName = CountryName,
+                    CityCode = CityCode,
+                    CityName = CityName,
+                    Status = Status,
+                    Accommodation_Id = Accommodation_Id,
                 });
 
             }
-            
+
             frmEditProductMap.Visible = true;
             frmEditProductMap.ChangeMode(FormViewMode.Edit);
             frmEditProductMap.DataSource = obj;
@@ -163,9 +163,9 @@ namespace TLGX_Consumer.controls.staticdata
             HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
 
             //clear Grid  (Hotel exist )from Add New screen
-                GridView gvGridExist = (GridView)ucAddNew.FindControl("gvGridExist");
-                gvGridExist.DataSource = null;
-                gvGridExist.DataBind();
+            GridView gvGridExist = (GridView)ucAddNew.FindControl("gvGridExist");
+            gvGridExist.DataSource = null;
+            gvGridExist.DataBind();
             //End
             //hide Div Exist Product on page load
             HtmlGenericControl dvGridExist = (HtmlGenericControl)ucAddNew.FindControl("dvGridExist");
@@ -217,7 +217,7 @@ namespace TLGX_Consumer.controls.staticdata
                                                                            //State Name
             lblSupStateName.Text = Convert.ToString(masterRoduct[0].StateName);
             lblSupCountryCode.Text = "(" + Convert.ToString(masterRoduct[0].CountryCode) + ")";
-            
+
             if (masterRoduct != null)
             {
                 #region BindSupplierdata Section
@@ -249,7 +249,7 @@ namespace TLGX_Consumer.controls.staticdata
 
                 #endregion
 
-                
+
                 #region country,StateName, CityName
                 if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemCountryName))
                 { myCountryName = Convert.ToString(masterRoduct[0].SystemCountryName); }
@@ -265,7 +265,7 @@ namespace TLGX_Consumer.controls.staticdata
                 { myCityName = Convert.ToString(masterRoduct[0].CityName); }
 
                 #endregion
-                
+
                 Guid SystemCountry_Id = Guid.Empty; Guid SystemCity_Id = Guid.Empty;
 
                 if (masterRoduct[0].Country_Id != null)
@@ -353,12 +353,12 @@ namespace TLGX_Consumer.controls.staticdata
                         SystemCity_Id = lstCity[0].City_Id;
 
                 }
-                
+
                 if (SystemCountry_Id != null && Guid.Parse(Convert.ToString(SystemCountry_Id)) != Guid.Empty)
                     ddlAddCountry.SelectedIndex = ddlAddCountry.Items.IndexOf(ddlAddCountry.Items.FindByValue(Convert.ToString(SystemCountry_Id.ToString())));
                 if (SystemCountry_Id != null && Guid.Parse(Convert.ToString(SystemCountry_Id)) != Guid.Empty)
                     ddlSystemCountryName.SelectedIndex = ddlSystemCountryName.Items.IndexOf(ddlSystemCountryName.Items.FindByValue(Convert.ToString(SystemCountry_Id.ToString())));
-                
+
                 //Added code for state dropdown
                 var selState_ID = _objMasterRef.GetDetailsByIdOrName(new MDMSVC.DC_GenericMasterDetails_ByIDOrName()
                 {
@@ -409,7 +409,7 @@ namespace TLGX_Consumer.controls.staticdata
                 ddlStatus.SelectedIndex = ddlStatus.Items.IndexOf(ddlStatus.Items.FindByText(System.Web.HttpUtility.HtmlDecode(masterRoduct[0].Status)));
                 if (SystemCity_Id != null && SystemCity_Id != Guid.Empty)
                     ddlSystemCityName.SelectedIndex = ddlSystemCityName.Items.IndexOf(ddlSystemCityName.Items.FindByValue(SystemCity_Id.ToString()));
-                
+
                 if (!string.IsNullOrWhiteSpace(masterRoduct[0].SystemProductName))
                 {
                     string sysproductname = Convert.ToString(masterRoduct[0].SystemProductName);
@@ -444,8 +444,17 @@ namespace TLGX_Consumer.controls.staticdata
                 {
                     lblSystemCityCode.Text = "(" + lblSystemCityCode.Text + ")";
                 }
-                txtSystemProductCode.Text = masterdata.GetCodeById("product", Guid.Parse(ddlSystemProductName.SelectedItem.Value));
 
+
+                Guid AccoId;
+                if (Guid.TryParse(ddlSystemProductName.SelectedItem.Value, out AccoId))
+                {
+                    txtSystemProductCode.Text = masterdata.GetCodeById("product", Guid.Parse(ddlSystemProductName.SelectedItem.Value));
+                }
+                else
+                {
+                    txtSystemProductCode.Text = string.Empty;
+                }
 
             }
             if (ddlSystemProductName.SelectedItem.Value == "0")
@@ -465,11 +474,11 @@ namespace TLGX_Consumer.controls.staticdata
                 ddl.DataTextField = "Country_Name";
                 ddl.DataBind();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw;
             }
-           
+
         }
         private void fillmappingstatus(DropDownList ddl)
         {
@@ -705,7 +714,7 @@ namespace TLGX_Consumer.controls.staticdata
                 var AddHotelcalledFrom = this.Parent.Page.ToString();
                 if (AddHotelcalledFrom.Contains("roomtype"))
                 {
-                  dvMsg.Style.Add("display", "block");
+                    dvMsg.Style.Add("display", "block");
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please add hotel from HotelMapping Screen", BootstrapAlertType.Warning);
                 }
                 else
@@ -845,7 +854,7 @@ namespace TLGX_Consumer.controls.staticdata
                 fillStates(ddlSystemCountryName, ddlSystemStateName);
 
                 fillcities(ddlSystemCityName, ddlSystemCountryName);
-                
+
                 ddlAddCountry.SelectedIndex = ddlAddCountry.Items.IndexOf(ddlAddCountry.Items.FindByValue(ddlSystemCountryName.SelectedItem.Value));
                 fillStates(ddlAddCountry, ddlAddState);
                 fillcities(ddlAddCity, ddlAddCountry);
