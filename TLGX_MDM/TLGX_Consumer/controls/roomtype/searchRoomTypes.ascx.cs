@@ -9,6 +9,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
+using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
 
 namespace TLGX_Consumer.controls.roomtype
@@ -50,7 +51,7 @@ namespace TLGX_Consumer.controls.roomtype
                 fillsuppliers();
                 fillcountries(ddlCountryBySupplier);
                 fillmappingstatus(ddlStatusBySupplier);
-
+                fillAccomodationPriority(ddlPriority);
             }
             catch (Exception)
             {
@@ -159,9 +160,12 @@ namespace TLGX_Consumer.controls.roomtype
 
                 _objSearch.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
 
+                if (ddlPriority.SelectedValue != "0")
+                    _objSearch.Priority = Convert.ToInt32(ddlPriority.SelectedValue);
+
                 _objSearch.PageNo = pageIndex;
                 var res = _mapping.GetAccomodationSupplierRoomTypeMapping_Search(_objSearch);
-                    if (res != null)
+                if (res != null)
                 {
                     if (res.Count > 0)
                     {
@@ -240,11 +244,11 @@ namespace TLGX_Consumer.controls.roomtype
                 {
                     RQ.SupplierProductCode = grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[3].ToString();
                 }
-                
+
                 RQ.PageSize = int.MaxValue;
-                
+
                 var searchAPM = _mapping.GetProductMappingData(RQ);
-                if(searchAPM!=null && searchAPM.Count > 0)
+                if (searchAPM != null && searchAPM.Count > 0)
                 {
                     UpdateSupplierProductMapping.CalledFrom = "RTM";
                     UpdateSupplierProductMapping.Accommodation_ProductMapping_Id = searchAPM[0].Accommodation_ProductMapping_Id;
@@ -807,6 +811,28 @@ namespace TLGX_Consumer.controls.roomtype
 
         protected void grdRoomTypeMappingSearchResultsByProduct_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+
+        }
+
+        private void fillAccomodationPriority(DropDownList ddl)
+        {
+            MDMSVC.DC_M_masterattributelists list = LookupAtrributes.GetAllAttributeAndValuesByFOR("Accommodation", "Priority");
+
+            try
+            {
+                list.MasterAttributeValues = list.MasterAttributeValues.OrderBy(x => Convert.ToInt32(x.AttributeValue)).ToArray();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            ddl.Items.Clear();
+            ddl.DataSource = list.MasterAttributeValues;
+            ddl.DataValueField = "AttributeValue";
+            ddl.DataTextField = "OTA_CodeTableValue";
+            ddl.DataBind();
+            ddl.Items.Insert(0, new ListItem("--ALL--", "0"));
 
         }
     }

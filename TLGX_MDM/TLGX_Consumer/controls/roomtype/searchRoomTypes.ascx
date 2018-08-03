@@ -126,6 +126,15 @@
                                                         <asp:TextBox runat="server" ID="txtProductNameBySupplier" CssClass="form-control"></asp:TextBox>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-6" for="ddlPriority">
+                                                        Accommodation Priority
+                                                    </label>
+                                                    <div class="col-sm-6">
+                                                        <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control">                                                         
+                                                        </asp:DropDownList>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="col-lg-4">
