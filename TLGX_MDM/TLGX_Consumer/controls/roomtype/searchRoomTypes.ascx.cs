@@ -226,11 +226,12 @@ namespace TLGX_Consumer.controls.roomtype
         }
         protected void grdRoomTypeMappingSearchResultsBySupplier_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
-            int index = row.RowIndex;
-            Guid myRow_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[0].ToString());
             if (e.CommandName == "OPENSPM")
             {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                Guid myRow_Id = Guid.Parse(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[0].ToString());
+
                 MDMSVC.DC_Mapping_ProductSupplier_Search_RQ RQ = new MDMSVC.DC_Mapping_ProductSupplier_Search_RQ();
                 if (grdRoomTypeMappingSearchResultsBySupplier.DataKeys[index].Values[1] != null)
                 {
