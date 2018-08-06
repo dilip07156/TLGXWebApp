@@ -13,15 +13,6 @@ namespace TLGX_Consumer.controls.staticdata {
     public partial class UpdateSupplierProductMapping {
         
         /// <summary>
-        /// hdnIsAnyChanges control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnIsAnyChanges;
-        
-        /// <summary>
         /// hdnFlag control.
         /// </summary>
         /// <remarks>

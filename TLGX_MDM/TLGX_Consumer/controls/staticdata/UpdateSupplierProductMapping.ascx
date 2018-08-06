@@ -337,12 +337,10 @@
     }
 </script>
 <div id="UpdateSupProdmapping">
-    <asp:HiddenField ID="hdnIsAnyChanges" runat="server" Value="false"></asp:HiddenField>
      <asp:HiddenField ID="hdnFlag" runat="server" Value="" EnableViewState="false" />
     <asp:HiddenField ID="hdmApmId" runat="server" Value="" />
     <asp:UpdatePanel ID="UpdCityMapModal" runat="server">
         <ContentTemplate>
-            <%--<asp:HiddenField ID="hdnIsAnyChanges" runat="server" Value="false"></asp:HiddenField>--%>
             <asp:FormView ID="frmEditProductMap" runat="server" DefaultMode="Insert" DataKeyNames="Accommodation_ProductMapping_Id" OnItemCommand="frmEditProductMap_ItemCommand">
                 <EditItemTemplate>
                     <!-- should be edit item template, but using insert just to show UI -->

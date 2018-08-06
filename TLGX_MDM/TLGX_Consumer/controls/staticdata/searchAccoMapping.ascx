@@ -118,13 +118,13 @@
         //alert("Hi");
         $("#moCityMapping").modal('hide');
     }
-    function pageLoad(sender, args) {
-        var hv = $('#MainContent_searchAccoMapping_hdnFlag').val();
-        if (hv == "true") {
-            closeCityMappingModal();
-            $('#MainContent_searchAccoMapping_hdnFlag').val("false");
-        }
-    }
+    //function pageLoad(sender, args) {
+    //    var hv = $('#MainContent_searchAccoMapping_UpdateSupplierProductMapping_hdnFlag').val();
+    //    if (hv != undefined && hv == "true") {
+    //        closeCityMappingModal();
+    //        $('#MainContent_searchAccoMapping_UpdateSupplierProductMapping_hdnFlag').val("false");
+    //    }
+    //}
     function removeRsrtNmSpace(controlID, e) {
         var str = controlID.id;
         var contex = document.getElementById(str.replace("txtProductName", "hdnContext"));

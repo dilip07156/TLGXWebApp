@@ -595,6 +595,7 @@ namespace TLGX_Consumer.controls.staticdata
 
             //Button btnMatchedMapSelected = (Button)frmEditProductMap.FindControl("btnMatchedMapSelected");
             //Button btnMatchedMapAll = (Button)frmEditProductMap.FindControl("btnMatchedMapAll");
+            HiddenField hdnIsAnyChanges = (HiddenField)this.Parent.FindControl("hdnIsAnyChanges");
 
             #endregion
             if (e.CommandName == "Add")
@@ -939,11 +940,17 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
             List<MDMSVC.DC_Accomodation_ProductMapping> newObj = new List<MDMSVC.DC_Accomodation_ProductMapping>();
+
+            //To Refresh AccoMapping Grid after closing PopUp.
+            HiddenField hdnIsAnyChanges = (HiddenField)this.Parent.FindControl("hdnIsAnyChanges");
+            hdnIsAnyChanges.Value = "true";
+            //end
+
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
             Guid? myAcco_Id = Guid.Empty;
             bool res = false;
-            hdnIsAnyChanges.Value = "true";
+           
             foreach (GridViewRow row in grdMatchingProducts.Rows)
             {
                 HtmlInputCheckBox chk = row.Cells[12].Controls[1] as HtmlInputCheckBox;
@@ -993,7 +1000,11 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemProductName = (DropDownList)frmEditProductMap.FindControl("ddlSystemProductName");
             HiddenField hdnSelSystemProduct_Id = (HiddenField)frmEditProductMap.FindControl("hdnSelSystemProduct_Id");
 
+            //To Refresh AccoMapping Grid after closing PopUp.
+            HiddenField hdnIsAnyChanges = (HiddenField)this.Parent.FindControl("hdnIsAnyChanges");
             hdnIsAnyChanges.Value = "true";
+            //end
+
             List<MDMSVC.DC_Accomodation_ProductMapping> newObj = new List<MDMSVC.DC_Accomodation_ProductMapping>();
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
