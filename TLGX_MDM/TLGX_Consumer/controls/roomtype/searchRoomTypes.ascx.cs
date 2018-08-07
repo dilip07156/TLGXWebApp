@@ -283,16 +283,9 @@ namespace TLGX_Consumer.controls.roomtype
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //HiddenField hdnRoomDescription = (HiddenField)e.Row.FindControl("hdnRoomDescription");
-                //if (hdnRoomDescription != null)
-                //{
-                //    e.Row.Cells[3].ToolTip = HttpUtility.HtmlEncode(hdnRoomDescription.Value);
-                //}
                 Guid Accoid = Guid.Parse(Convert.ToString(grdRoomTypeMappingSearchResultsBySupplier.DataKeys[e.Row.RowIndex][1]));
-                var result = _accoService.GetRoomDetails_RoomCategory(Accoid);
                 DropDownList ddlSuggestedRoomInGridBySupplier = (DropDownList)e.Row.FindControl("ddlSuggestedRoomInGridBySupplier");
                 DropDownList ddlMappingStatusInGridBySupplier = (DropDownList)e.Row.FindControl("ddlMappingStatusInGridBySupplier");
-                // HtmlControl aHelp = (HtmlControl)e.Row.FindControl("aHelp");
 
                 HtmlControl ddlSuggestions = (HtmlControl)e.Row.FindControl("ddlSuggestions");
                 var mappingStatus = ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).MappingStatus;
@@ -344,12 +337,6 @@ namespace TLGX_Consumer.controls.roomtype
                                 var innerHtml = ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml;
                                 ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml = innerHtml.Replace("-Select-", strRoomInfoName);
                             }
-
-                            //ddlSuggestions.F
-
-                            //if (ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id) != null)
-                            //    ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id).Selected = true;
-                            //ddlSuggestedRoomInGridBySupplier.Items.FindByValue(Accommodation_RoomInfo_Id).Selected = true;
                         }
                         else
                         {
