@@ -63,7 +63,7 @@
         <div id="Deals">
         </div>
         <div>
-            <uc1:Deals runat="server" ID="Deals1" />
+            <%--<uc1:Deals runat="server" ID="Deals1" />--%>
         </div>
     </ContentTemplate>
 </asp:UpdatePanel>

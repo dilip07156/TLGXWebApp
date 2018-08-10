@@ -45,6 +45,12 @@
         <asp:BoundField HeaderText="Price Code" DataField="PriceCode" />
         <asp:BoundField HeaderText="Price Basis" DataField="PriceBasis" />
         <asp:BoundField HeaderText="Price Type" DataField="Price_Type" />
+        <asp:BoundField HeaderText="Market" DataField="Market" />
+        <asp:BoundField HeaderText="FromPax" DataField="FromPax" />
+        <asp:BoundField HeaderText="ToPax" DataField="ToPax" />
+        <asp:BoundField HeaderText="Person Type" DataField="PersonType" />
+        <asp:BoundField HeaderText="Price_ValidFrom" DataField="Price_ValidFrom" />
+        <asp:BoundField HeaderText="Price_ValidTo" DataField="Price_ValidTo" />
         <asp:BoundField HeaderText="Price OptionCode" DataField="Price_OptionCode" />
         <asp:BoundField HeaderText="Price InternalOptionCode" DataField="Price_InternalOptionCode" />
     </Columns>

@@ -50,7 +50,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            BindPrices(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), gvPricesSearch.PageIndex);
         }
 
         protected void ddlShowEntries_SelectedIndexChanged1(object sender, EventArgs e)
@@ -65,6 +65,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
         protected void gvPricesSearch_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            BindPrices(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
 
         }
 

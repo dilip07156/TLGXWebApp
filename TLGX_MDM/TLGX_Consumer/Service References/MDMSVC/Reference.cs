@@ -45468,7 +45468,16 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FromPaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MarketField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PersonTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<decimal> PriceField;
@@ -45493,6 +45502,15 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Price_TypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Price_ValidFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Price_ValidToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ToPaxField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalrecordsField;
@@ -45599,6 +45617,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FromPax {
+            get {
+                return this.FromPaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FromPaxField, value) != true)) {
+                    this.FromPaxField = value;
+                    this.RaisePropertyChanged("FromPax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<bool> IsActive {
             get {
                 return this.IsActiveField;
@@ -45607,6 +45638,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Market {
+            get {
+                return this.MarketField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MarketField, value) != true)) {
+                    this.MarketField = value;
+                    this.RaisePropertyChanged("Market");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PersonType {
+            get {
+                return this.PersonTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PersonTypeField, value) != true)) {
+                    this.PersonTypeField = value;
+                    this.RaisePropertyChanged("PersonType");
                 }
             }
         }
@@ -45711,6 +45768,45 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Price_TypeField, value) != true)) {
                     this.Price_TypeField = value;
                     this.RaisePropertyChanged("Price_Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Price_ValidFrom {
+            get {
+                return this.Price_ValidFromField;
+            }
+            set {
+                if ((this.Price_ValidFromField.Equals(value) != true)) {
+                    this.Price_ValidFromField = value;
+                    this.RaisePropertyChanged("Price_ValidFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Price_ValidTo {
+            get {
+                return this.Price_ValidToField;
+            }
+            set {
+                if ((this.Price_ValidToField.Equals(value) != true)) {
+                    this.Price_ValidToField = value;
+                    this.RaisePropertyChanged("Price_ValidTo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ToPax {
+            get {
+                return this.ToPaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ToPaxField, value) != true)) {
+                    this.ToPaxField = value;
+                    this.RaisePropertyChanged("ToPax");
                 }
             }
         }
