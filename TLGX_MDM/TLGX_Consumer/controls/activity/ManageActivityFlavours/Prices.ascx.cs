@@ -30,11 +30,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (result != null)
             {
                 gvPricesSearch.DataSource = result;
-                gvPricesSearch.DataBind();
+               
                 if (result.Count() > 0)
                 {
+                    gvPricesSearch.VirtualItemCount = result[0].Totalrecords ?? 0;
+                    gvPricesSearch.PageIndex = pageno;
+                    gvPricesSearch.PageSize = pagesize;
                     lblTotalRecords.Text = Convert.ToString(result[0].Totalrecords);
                 }
+                gvPricesSearch.DataBind();
             }
             else
             {
