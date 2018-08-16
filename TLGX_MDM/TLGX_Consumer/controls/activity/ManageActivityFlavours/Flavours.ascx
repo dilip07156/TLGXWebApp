@@ -2,6 +2,8 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%--<%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityContactDetails.ascx" TagPrefix="uc1" TagName="ActivityContactDetails" %>--%>
 <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityStatus.ascx" TagPrefix="uc1" TagName="ActivityStatus" %>
+<%@ Register Src="~/controls/activity/ManageActivityFlavours/ucNonOperatingDays.ascx" TagPrefix="uc1" TagName="ucNonOperatingDays" %>
+
 
 <script type="text/javascript">
 
@@ -597,8 +599,9 @@
                         </div>
                     </div>
                     <div class="row">
-
+                        
                         <div class="col-md-9">
+                            <uc1:ucNonOperatingDays runat="server" ID="ucNonOperatingDays" />
                             <asp:Repeater ID="repOperatingDays" runat="server" OnItemCommand="repOperatingDays_ItemCommand" OnItemDataBound="repOperatingDays_ItemDataBound">
 
                                 <HeaderTemplate>
@@ -607,9 +610,8 @@
                                         <div class="panel panel-primary">
                                             <div class="panel-body">
                                 </HeaderTemplate>
-
+                                
                                 <ItemTemplate>
-
                                     <div class="form-group row well">
 
                                         <div class="col-sm-3">
@@ -658,7 +660,7 @@
                                         <div class="col-sm-1" style="padding-left: 0px;">
                                             <div class="input-group">
                                                 <asp:CheckBox ID="chkToDeleteOperation" runat="server" CssClass="chkToDeleteOperation input-group-addon" />
-                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfOperation_Id") %>'>
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(null,"Activity_DaysOfOperation_Id") %>'>
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </asp:LinkButton>
                                             </div>

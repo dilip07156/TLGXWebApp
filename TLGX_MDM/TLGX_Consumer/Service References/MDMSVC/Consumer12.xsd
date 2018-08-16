@@ -1784,6 +1784,7 @@
       <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsOperatingDays" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_OperatingDays" nillable="true" type="tns:DC_Activity_OperatingDays" />

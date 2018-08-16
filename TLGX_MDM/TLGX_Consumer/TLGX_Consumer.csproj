@@ -279,6 +279,7 @@
     <Content Include="controls\activity\ManageActivityFlavours\PricesNDeals.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ReviewsNScores.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\ucNonOperatingDays.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\Ancilary.ascx" />
     <Content Include="controls\activity\ManageActivityMaster\AttachedProductPolicy.ascx" />
@@ -1440,6 +1441,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\SupplierProductMappings.ascx.designer.cs">
       <DependentUpon>SupplierProductMappings.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ucNonOperatingDays.ascx.cs">
+      <DependentUpon>ucNonOperatingDays.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\ucNonOperatingDays.ascx.designer.cs">
+      <DependentUpon>ucNonOperatingDays.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityMaster\AdditionalInfo.ascx.cs">
       <DependentUpon>AdditionalInfo.ascx</DependentUpon>

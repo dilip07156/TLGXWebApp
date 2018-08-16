@@ -48518,6 +48518,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsOperatingDaysField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalRecordsField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -48641,6 +48644,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.IsOperatingDaysField.Equals(value) != true)) {
                     this.IsOperatingDaysField = value;
                     this.RaisePropertyChanged("IsOperatingDays");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
                 }
             }
         }
@@ -52946,10 +52962,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/GetActivityNonOperatingDaysResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityNonOperatingDaysDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] GetActivityNonOperatingDays(string Activity_Flavour_Id);
+        TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] GetActivityNonOperatingDays(string Activity_Flavour_Id, string PageSize, string PageNo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/GetActivityNonOperatingDaysResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[]> GetActivityNonOperatingDaysAsync(string Activity_Flavour_Id);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[]> GetActivityNonOperatingDaysAsync(string Activity_Flavour_Id, string PageSize, string PageNo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDaysResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDaysDC_ErrorStatusFault" +
@@ -52958,6 +52974,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDays", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityNonOperatingDaysResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityNonOperatingDaysAsync(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/DeleteActivityNonOperatingDaysById", ReplyAction="http://tempuri.org/IActivity/DeleteActivityNonOperatingDaysByIdResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/DeleteActivityNonOperatingDaysByIdDC_ErrorStatusFaul" +
+            "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message DeleteActivityNonOperatingDaysById(string ActivityDaysOfOperationId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/DeleteActivityNonOperatingDaysById", ReplyAction="http://tempuri.org/IActivity/DeleteActivityNonOperatingDaysByIdResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteActivityNonOperatingDaysByIdAsync(string ActivityDaysOfOperationId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatus", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatusResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityFlavoursStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -55750,12 +55774,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddUpdateActivityOperatingDaysAsync(RQ);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] GetActivityNonOperatingDays(string Activity_Flavour_Id) {
-            return base.Channel.GetActivityNonOperatingDays(Activity_Flavour_Id);
+        public TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] GetActivityNonOperatingDays(string Activity_Flavour_Id, string PageSize, string PageNo) {
+            return base.Channel.GetActivityNonOperatingDays(Activity_Flavour_Id, PageSize, PageNo);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[]> GetActivityNonOperatingDaysAsync(string Activity_Flavour_Id) {
-            return base.Channel.GetActivityNonOperatingDaysAsync(Activity_Flavour_Id);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[]> GetActivityNonOperatingDaysAsync(string Activity_Flavour_Id, string PageSize, string PageNo) {
+            return base.Channel.GetActivityNonOperatingDaysAsync(Activity_Flavour_Id, PageSize, PageNo);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityNonOperatingDays(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ) {
@@ -55764,6 +55788,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityNonOperatingDaysAsync(TLGX_Consumer.MDMSVC.DC_Activity_OperatingDays[] RQ) {
             return base.Channel.AddUpdateActivityNonOperatingDaysAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message DeleteActivityNonOperatingDaysById(string ActivityDaysOfOperationId) {
+            return base.Channel.DeleteActivityNonOperatingDaysById(ActivityDaysOfOperationId);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> DeleteActivityNonOperatingDaysByIdAsync(string ActivityDaysOfOperationId) {
+            return base.Channel.DeleteActivityNonOperatingDaysByIdAsync(ActivityDaysOfOperationId);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityFlavoursStatus(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus _obj) {
