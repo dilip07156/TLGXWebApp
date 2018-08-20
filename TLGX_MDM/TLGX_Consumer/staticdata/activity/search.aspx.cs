@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace TLGX_Consumer.staticdata
 {
-    public partial class activity : System.Web.UI.Page
+    public partial class Activity : System.Web.UI.Page
     {
         protected void Page_Init(object sender, EventArgs e)
         {

@@ -4512,45 +4512,59 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetActivitiesReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReportType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetActivitiesReportResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q469="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivitiesReportResult" nillable="true" type="q469:ArrayOfDC_Activity_Report_RS" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UploadFile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q469="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q469:DC_RemoteFileInfo" />
+        <xs:element xmlns:q470="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q470:DC_RemoteFileInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q470="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileResult" nillable="true" type="q470:DC_FileUploadResponse" />
+        <xs:element xmlns:q471="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileResult" nillable="true" type="q471:DC_FileUploadResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TransferFileInChunks">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q471="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q471:DC_FileData" />
+        <xs:element xmlns:q472="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q472:DC_FileData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TransferFileInChunksResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q472="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="TransferFileInChunksResult" nillable="true" type="q472:DC_UploadResponse" />
+        <xs:element xmlns:q473="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="TransferFileInChunksResult" nillable="true" type="q473:DC_UploadResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileInChunks">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q473="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q473:DC_FileData" />
+        <xs:element xmlns:q474="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q474:DC_FileData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileInChunksResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q474="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileInChunksResult" nillable="true" type="q474:DC_UploadResponse" />
+        <xs:element xmlns:q475="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileInChunksResult" nillable="true" type="q475:DC_UploadResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4579,7 +4593,7 @@
   <xs:element name="SyncCountryMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q475="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMasterResult" nillable="true" type="q475:DC_Message" />
+        <xs:element xmlns:q476="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMasterResult" nillable="true" type="q476:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4594,7 +4608,7 @@
   <xs:element name="SyncCountryMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q476="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMappingResult" nillable="true" type="q476:DC_Message" />
+        <xs:element xmlns:q477="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMappingResult" nillable="true" type="q477:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4609,7 +4623,7 @@
   <xs:element name="SyncCityMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q477="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMasterResult" nillable="true" type="q477:DC_Message" />
+        <xs:element xmlns:q478="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMasterResult" nillable="true" type="q478:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4624,7 +4638,7 @@
   <xs:element name="SyncCityMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q478="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMappingResult" nillable="true" type="q478:DC_Message" />
+        <xs:element xmlns:q479="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMappingResult" nillable="true" type="q479:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4638,7 +4652,7 @@
   <xs:element name="SyncHotelMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q479="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingResult" nillable="true" type="q479:DC_Message" />
+        <xs:element xmlns:q480="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingResult" nillable="true" type="q480:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4652,7 +4666,7 @@
   <xs:element name="SyncHotelMappingLiteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q480="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingLiteResult" nillable="true" type="q480:DC_Message" />
+        <xs:element xmlns:q481="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingLiteResult" nillable="true" type="q481:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4667,7 +4681,7 @@
   <xs:element name="SyncActivityMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q481="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncActivityMappingResult" nillable="true" type="q481:DC_Message" />
+        <xs:element xmlns:q482="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncActivityMappingResult" nillable="true" type="q482:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4682,7 +4696,7 @@
   <xs:element name="SyncSupplierMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q482="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierMasterResult" nillable="true" type="q482:DC_Message" />
+        <xs:element xmlns:q483="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierMasterResult" nillable="true" type="q483:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4694,7 +4708,7 @@
   <xs:element name="GetRefreshDistributionLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q483="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshDistributionLogResult" nillable="true" type="q483:ArrayOfDC_RefreshDistributionDataLog" />
+        <xs:element xmlns:q484="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshDistributionLogResult" nillable="true" type="q484:ArrayOfDC_RefreshDistributionDataLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4706,7 +4720,7 @@
   <xs:element name="GetRefreshStaticHotelLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q484="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshStaticHotelLogResult" nillable="true" type="q484:ArrayOfDC_RefreshDistributionDataLog" />
+        <xs:element xmlns:q485="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshStaticHotelLogResult" nillable="true" type="q485:ArrayOfDC_RefreshDistributionDataLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4721,7 +4735,7 @@
   <xs:element name="SyncPortMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q485="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncPortMasterResult" nillable="true" type="q485:DC_Message" />
+        <xs:element xmlns:q486="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncPortMasterResult" nillable="true" type="q486:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4736,7 +4750,7 @@
   <xs:element name="SyncStateMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q486="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncStateMasterResult" nillable="true" type="q486:DC_Message" />
+        <xs:element xmlns:q487="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncStateMasterResult" nillable="true" type="q487:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4748,7 +4762,7 @@
   <xs:element name="LoadSupplierDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q487="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="LoadSupplierDataResult" nillable="true" type="q487:ArrayOfDC_SupplierEntity" />
+        <xs:element xmlns:q488="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="LoadSupplierDataResult" nillable="true" type="q488:ArrayOfDC_SupplierEntity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4764,63 +4778,63 @@
   <xs:element name="SyncSupplierStaticHotelResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q488="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierStaticHotelResult" nillable="true" type="q488:DC_Message" />
+        <xs:element xmlns:q489="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierStaticHotelResult" nillable="true" type="q489:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncMLAPIData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q489="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="_obj" nillable="true" type="q489:DC_Distribution_MLDataRQ" />
+        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="_obj" nillable="true" type="q490:DC_Distribution_MLDataRQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncMLAPIDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncMLAPIDataResult" nillable="true" type="q490:DC_Message" />
+        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncMLAPIDataResult" nillable="true" type="q491:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncGeographyData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="RQ" nillable="true" type="q491:DC_MongoDbSyncRQ" />
+        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="RQ" nillable="true" type="q492:DC_MongoDbSyncRQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncGeographyDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncGeographyDataResult" nillable="true" type="q492:DC_Message" />
+        <xs:element xmlns:q493="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncGeographyDataResult" nillable="true" type="q493:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q493="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q493:DC_Stg_Kafka" />
+        <xs:element xmlns:q494="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q494:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q494="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q494:DC_Message" />
+        <xs:element xmlns:q495="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q495:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q495="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q495:DC_Stg_Kafka" />
+        <xs:element xmlns:q496="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q496:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q496="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q496:DC_Message" />
+        <xs:element xmlns:q497="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q497:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4832,7 +4846,7 @@
   <xs:element name="GetPollDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q497="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q497:ArrayOfDC_Stg_Kafka" />
+        <xs:element xmlns:q498="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q498:ArrayOfDC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4846,7 +4860,7 @@
   <xs:element name="SelectKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q498="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="SelectKafkaInfoResult" nillable="true" type="q498:ArrayOfDC_Stg_Kafka" />
+        <xs:element xmlns:q499="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="SelectKafkaInfoResult" nillable="true" type="q499:ArrayOfDC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4942,7 +4956,7 @@
   <xs:element name="GetMLDataApiTransferStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q499="http://schemas.datacontract.org/2004/07/DataContracts.ML" minOccurs="0" name="GetMLDataApiTransferStatusResult" nillable="true" type="q499:ArrayOfDL_ML_DL_EntityStatus" />
+        <xs:element xmlns:q500="http://schemas.datacontract.org/2004/07/DataContracts.ML" minOccurs="0" name="GetMLDataApiTransferStatusResult" nillable="true" type="q500:ArrayOfDL_ML_DL_EntityStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

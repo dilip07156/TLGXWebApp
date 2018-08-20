@@ -345,5 +345,14 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_Activity_CategoryTypes_DDL>;
         }
         #endregion
+
+        #region Activities Reports
+        public List<DC_Activity_Report_RS> GetActivitiesReport(int ReportType)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetActivitiesReport"], ReportType.ToString()), typeof(List<DC_Activity_Report_RS>), out result);
+            return result as List<DC_Activity_Report_RS>;
+        }
+        #endregion
     }
 }

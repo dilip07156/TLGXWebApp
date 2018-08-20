@@ -8337,6 +8337,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
@@ -9022,6 +9024,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
@@ -49208,6 +49212,99 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_Report_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_Report_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ActivitiesCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierCityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierCountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> ActivitiesCount {
+            get {
+                return this.ActivitiesCountField;
+            }
+            set {
+                if ((this.ActivitiesCountField.Equals(value) != true)) {
+                    this.ActivitiesCountField = value;
+                    this.RaisePropertyChanged("ActivitiesCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierCityName {
+            get {
+                return this.SupplierCityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierCityNameField, value) != true)) {
+                    this.SupplierCityNameField = value;
+                    this.RaisePropertyChanged("SupplierCityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierCountryName {
+            get {
+                return this.SupplierCountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierCountryNameField, value) != true)) {
+                    this.SupplierCountryNameField = value;
+                    this.RaisePropertyChanged("SupplierCountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_State_City_Area_Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
     [System.SerializableAttribute()]
     public partial class DC_Country_State_City_Area_Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -52997,6 +53094,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetSupplierProductSubType", ReplyAction="http://tempuri.org/IActivity/GetSupplierProductSubTypeResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL[]> GetSupplierProductSubTypeAsync(TLGX_Consumer.MDMSVC.DC_Supplier_DDL _objAct);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivitiesReport", ReplyAction="http://tempuri.org/IActivity/GetActivitiesReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivitiesReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[] GetActivitiesReport(string ReportType);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivitiesReport", ReplyAction="http://tempuri.org/IActivity/GetActivitiesReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]> GetActivitiesReportAsync(string ReportType);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request);
@@ -55812,6 +55916,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL[]> GetSupplierProductSubTypeAsync(TLGX_Consumer.MDMSVC.DC_Supplier_DDL _objAct) {
             return base.Channel.GetSupplierProductSubTypeAsync(_objAct);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[] GetActivitiesReport(string ReportType) {
+            return base.Channel.GetActivitiesReport(ReportType);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]> GetActivitiesReportAsync(string ReportType) {
+            return base.Channel.GetActivitiesReportAsync(ReportType);
         }
         
         public TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request) {

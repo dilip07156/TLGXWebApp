@@ -10,7 +10,7 @@
 namespace TLGX_Consumer.staticdata {
     
     
-    public partial class activity {
+    public partial class Activity {
         
         /// <summary>
         /// searchActivityMapping control.
