@@ -84,7 +84,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     txtTourType.Text = result[0].Activity_TourType;
 
                     lblSupplierLocation.Text = result[0].SupplierLocation;
-                    txtLocation.Text = result[0].Location;
+                    HtmlTextArea txtLocation = (HtmlTextArea)this.FindControl("txtLocation");
+                    txtLocation.InnerText = result[0].Location ?? "";
                     //GetActivityDescriptions(Activity_Flavour_Id);
 
                     fillcoutries();
@@ -616,7 +617,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             //TourType
             FlavData.Activity_TourType = txtTourType.Text.Trim();
-            FlavData.Location = txtLocation.Text.Trim();
+            FlavData.Location = txtLocation.Value.Trim();
 
             //ProdSubType
             List<ProductSubTypeData> pstl = new List<ProductSubTypeData>();

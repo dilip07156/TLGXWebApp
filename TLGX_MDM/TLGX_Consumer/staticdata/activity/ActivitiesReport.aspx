@@ -41,7 +41,7 @@
                         <div class="col-md-12" id="report" runat="server">
                             <div style="width: 100%; height: 100%">
                                 <rsweb:ReportViewer ID="ReportVieweractivity" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
-                                    <LocalReport ReportPath="staticdata/activity/ActivitiesCountReport.rdlc">
+                                    <LocalReport ReportPath="~/staticdata/activity/ActivitiesCountReport.rdlc">
                                         <DataSources>
                                             <rsweb:ReportDataSource Name="DsAcitivityCount" />
                                         </DataSources>

@@ -49,7 +49,7 @@ namespace TLGX_Consumer.staticdata.activity
             ReportDataSource rds = new ReportDataSource("DsActivityCount", DsActivityCount);
             //ReportViewer ReportVieweractivity = new ReportViewer();
             ReportVieweractivity.LocalReport.DataSources.Clear();
-            ReportVieweractivity.LocalReport.ReportPath = "staticdata/activity/ActivitiesCountReport.rdlc";//Server.MapPath("~/staticdata/activity/ActivitiesCountReport.rdlc");
+            ReportVieweractivity.LocalReport.ReportPath = Server.MapPath("~/staticdata/activity/ActivitiesCountReport.rdlc");//"staticdata/activity/ActivitiesCountReport.rdlc";//;
             ReportVieweractivity.LocalReport.DataSources.Add(rds);
             ReportVieweractivity.Visible = true;
             ReportVieweractivity.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;

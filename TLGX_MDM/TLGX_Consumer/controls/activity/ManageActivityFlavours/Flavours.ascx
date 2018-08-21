@@ -227,6 +227,12 @@
      $("#supplierInfo").hide(); 
         });
     });
+
+    $('textarea').keypress(function (event) {
+        if (event.which == 13) {
+            event.stopPropagation();
+        }
+    });
 </script>
 
 <style>
@@ -587,7 +593,7 @@
                                 <asp:Label ID="lblSupplierLocation" runat="server" class="control-label col-sm-2"></asp:Label></em>
                             </div>
                             <div class="col-sm-6">
-                               <asp:TextBox ID="txtLocation" runat="server" CssClass="form-control" MaxLength="100"></asp:TextBox>
+                               <textarea ID="txtLocation" runat="server" CssClass="form-control" cols="35" MaxLength="100"></textarea>
                             </div>
                         </div>
                     </div>
@@ -715,7 +721,7 @@
                                         <div class="col-sm-1" style="padding-left: 0px;">
                                             <div class="input-group">
                                                 <asp:CheckBox ID="chkToDeleteOperation" runat="server" CssClass="chkToDeleteOperation input-group-addon" />
-                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(null,"Activity_DaysOfOperation_Id") %>'>
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Activity_DaysOfOperation_Id") %>'>
                                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </asp:LinkButton>
                                             </div>
