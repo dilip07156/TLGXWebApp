@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <script src="../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../Scripts/jquery-3.3.1.js"></script>
     <link href="../../Scripts/Styles/bootstrap.css" rel="stylesheet" />
     <title></title>
     <style>
