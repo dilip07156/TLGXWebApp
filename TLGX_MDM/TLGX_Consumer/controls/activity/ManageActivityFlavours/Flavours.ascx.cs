@@ -1313,6 +1313,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 LinkButton btnRemoveOperatingDays = (LinkButton)repOpsDay.FindControl("btnRemoveOperatingDays");
 
                 TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
+                TextBox txtEndTime = (TextBox)itemDOW.FindControl("txtEndTime");
                 DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
                 DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
                 HtmlInputCheckBox chkMon = (HtmlInputCheckBox)itemDOW.FindControl("chkMon");
@@ -1347,7 +1348,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                             Wed = chkWed.Checked,
                             Session = ddlSession.SelectedItem.Text,
                             Duration = (ddlDurationDay.SelectedItem.Text + "." + ddlDurationHour.SelectedItem.Text + ":" + ddlDurationMinute.SelectedItem.Text),
-                            EndTime = string.Empty,
+                            EndTime = txtEndTime.Text,
                             StartTime = txtStartTime.Text,
                             DurationType = ddlDurationType.SelectedItem.Text
                         });
@@ -1531,6 +1532,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                 if (chkToDeleteDays != null && !chkToDeleteDays.Checked)
                                 {
                                     TextBox txtStartTime = (TextBox)itemDOW.FindControl("txtStartTime");
+                                    TextBox txtEndTime = (TextBox)itemDOW.FindControl("txtEndTime");
                                     HiddenField hdnDuration = (HiddenField)itemDOW.FindControl("hdnDuration");
                                     DropDownList ddlSession = (DropDownList)itemDOW.FindControl("ddlSession");
                                     DropDownList ddlDurationType = (DropDownList)itemDOW.FindControl("ddlDurationType");
@@ -1567,6 +1569,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                                         Session = (ddlSession.SelectedIndex == 0 ? string.Empty : ddlSession.SelectedItem.Text),
                                         Sun = chkSun.Checked,
                                         StartTime = txtStartTime.Text,
+                                        EndTime = txtEndTime.Text,
                                         Thur = chkThurs.Checked,
                                         Tues = chkTues.Checked,
                                         Wed = chkWed.Checked,

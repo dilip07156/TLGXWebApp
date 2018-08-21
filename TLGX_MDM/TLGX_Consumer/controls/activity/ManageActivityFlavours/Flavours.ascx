@@ -217,9 +217,32 @@
         return flag;
     }
 
+    
+
+    $(document).ready(function(){
+        $("#hover").hover(function () {
+            $("#supplierInfo").show();
+
+     },function(){
+     $("#supplierInfo").hide(); 
+        });
+    });
 </script>
 
 <style>
+    #supplierInfo
+    {
+        display: none;
+        position: absolute;
+        width: 280px;
+        padding: 10px;
+        background: #eeeeee;
+        color: #000000;
+        border: 1px solid #1a1a1a;
+        font-size: 90%;
+        z-index: 2;
+    }
+
     .selectRemoveArrow {
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -235,6 +258,9 @@
         position: fixed;
         bottom: 15px;
         z-index: 1000;
+    }
+    .wellleftpaddingzero{
+        padding-left:0px !important;
     }
 </style>
 <asp:UpdatePanel ID="upActivityFlavour" runat="server">
@@ -594,13 +620,42 @@
 
                             </div>
                             <div class="col-md-3 ">
-                                &nbsp;
+                                <div id="hover"><h4><strong>Supplier Level Info</strong></h4></div>
+                                <div id="supplierInfo">
+                                    <asp:Repeater ID="repSupplierInformation" runat="server">
+                                        <HeaderTemplate>
+                                            <h4><strong>Supplier Level Info</strong></h4>
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th>Type</th>
+                                                    <th>SubType</th>
+                                                    <th>Value</th>
+                                                </tr>
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <tr>
+                                                <td style="word-wrap: break-word;">
+                                                    <em><strong><%# DataBinder.Eval(Container.DataItem, "AttributeType") %></strong></em>
+                                                </td>
+                                                <td style="word-wrap: break-word;">
+                                                    <em><%# DataBinder.Eval(Container.DataItem, "AttributeSubType") %></em>
+                                                </td>
+                                                <td style="word-break: break-all;">
+                                                    <em><%# DataBinder.Eval(Container.DataItem, "AttributeValue") %></em>
+                                                </td>
+                                            </tr>
+                                        </ItemTemplate>
+                                        <FooterTemplate>
+                                            </table>
+                                        </FooterTemplate>
+                                    </asp:Repeater>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         
-                        <div class="col-md-9">
+                        <div class="col-md-12">
                             <uc1:ucNonOperatingDays runat="server" ID="ucNonOperatingDays" />
                             <asp:Repeater ID="repOperatingDays" runat="server" OnItemCommand="repOperatingDays_ItemCommand" OnItemDataBound="repOperatingDays_ItemDataBound">
 
@@ -680,11 +735,17 @@
                                                 <ItemTemplate>
 
                                                     <div class="row">
-                                                        <div class="col-xs-2">
+                                                        <div class="col-xs-1">
                                                             <label class="control-label-mand" for="txtStartTime">
                                                                 Start Time
                                                             </label>
                                                             <em>&nbsp;(<asp:Label ID="lblSupplierStartTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierStartTime") %>'></asp:Label>)</em>
+                                                        </div>
+                                                        <div class="col-xs-1">
+                                                            <label class="control-label-mand" for="txtEndTime">
+                                                                End Time
+                                                            </label>
+                                                            <em>&nbsp;(<asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierEndTime") %>'></asp:Label>)</em>
                                                         </div>
                                                         <div class="col-xs-2">
                                                             <label class="control-label-mand" for="txtSession">
@@ -716,15 +777,20 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="row well">
+                                                    <div class="row well wellleftpaddingzero">
 
-                                                        <div class="col-xs-2">
+                                                        <div class="col-xs-1">
                                                             <asp:TextBox ID="txtStartTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "StartTime") %>' CssClass="form-control" onchange="SetSession(this)"></asp:TextBox>
                                                             <cc1:MaskedEditExtender ID="txtStartTime_MaskEditExtender" runat="server" AcceptAMPM="false"
                                                                 Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtStartTime"
                                                                 UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
                                                         </div>
-
+                                                        <div class="col-xs-1">
+                                                            <asp:TextBox ID="txtEndTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EndTime") %>' CssClass="form-control"></asp:TextBox>
+                                                            <cc1:MaskedEditExtender ID="txtEndTime_MaskEditExtender" runat="server" AcceptAMPM="false"
+                                                                Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtEndTime"
+                                                                UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                                        </div>
                                                         <div class="col-xs-2">
                                                             <asp:DropDownList ID="ddlSession" runat="server" onchange="SetddlValue(this)" CssClass="form-control sessionSet" AppendDataBoundItems="true">
                                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
@@ -1015,9 +1081,15 @@
                                                                 </div>
 
                                                                 <div class="row">
-                                                                    <div class="col-xs-2">
+                                                                    <div class="col-xs-1">
                                                                         <label class="control-label-mand" for="txtStartTime">
                                                                             Start Time (HH:mm)
+                                                                        </label>
+                                                                    </div>
+
+                                                                    <div class="col-xs-1">
+                                                                        <label class="control-label-mand" for="txtEndTime">
+                                                                            End Time (HH:mm)
                                                                         </label>
                                                                     </div>
 
@@ -1050,12 +1122,19 @@
 
                                                                 </div>
 
-                                                                <div class="row well">
+                                                                <div class="row well wellleftpaddingzero">
 
-                                                                    <div class="col-xs-2">
+                                                                    <div class="col-xs-1">
                                                                         <asp:TextBox ID="txtStartTime" runat="server" CssClass="form-control" onchange="SetSession(this)"></asp:TextBox>
                                                                         <cc1:MaskedEditExtender ID="txtStartTime_MaskEditExtender" runat="server" AcceptAMPM="false"
                                                                             Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtStartTime"
+                                                                            UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                                                    </div>
+
+                                                                    <div class="col-xs-1">
+                                                                        <asp:TextBox ID="txtEndTime" runat="server" CssClass="form-control"></asp:TextBox>
+                                                                        <cc1:MaskedEditExtender ID="txtEndTime_MaskEditExtender" runat="server" AcceptAMPM="false"
+                                                                            Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtEndTime"
                                                                             UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
                                                                     </div>
 
@@ -1411,37 +1490,6 @@
 
                             </asp:Repeater>
                         </div>
-
-                        <div class="col-md-3">
-                            <asp:Repeater ID="repSupplierInformation" runat="server">
-                                <HeaderTemplate>
-                                    <h4><strong>Supplier Level Info</strong></h4>
-                                    <table class="table table-hover table-bordered">
-                                        <tr>
-                                            <th>Type</th>
-                                            <th>SubType</th>
-                                            <th>Value</th>
-                                        </tr>
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <tr>
-                                        <td style="word-wrap: break-word;">
-                                            <em><strong><%# DataBinder.Eval(Container.DataItem, "AttributeType") %></strong></em>
-                                        </td>
-                                        <td style="word-wrap: break-word;">
-                                            <em><%# DataBinder.Eval(Container.DataItem, "AttributeSubType") %></em>
-                                        </td>
-                                        <td style="word-break: break-all;">
-                                            <em><%# DataBinder.Eval(Container.DataItem, "AttributeValue") %></em>
-                                        </td>
-                                    </tr>
-                                </ItemTemplate>
-                                <FooterTemplate>
-                                    </table>
-                                </FooterTemplate>
-                            </asp:Repeater>
-                        </div>
-
                     </div>
                 </div>
             </div>
