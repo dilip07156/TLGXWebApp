@@ -121,7 +121,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             //string RemoveNonOperatingDays = btn.CommandArgument;
             GridViewRow row = btn.NamingContainer as GridViewRow;
             string pk = gvNonOperatingData.DataKeys[row.RowIndex].Values[0].ToString();
-
+            gvNonOperatingData.PageSize = Convert.ToInt16(ddlShowEntries.SelectedValue);
             Guid ActivityDaysOfOperationId = Guid.Parse(pk);
 
             if (ActivityDaysOfOperationId != Guid.Empty)
