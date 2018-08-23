@@ -8337,6 +8337,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityCountStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
@@ -9024,6 +9025,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityFlavoursStatus))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_CategoryTypes_DDL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityCountStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Report_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
@@ -43220,7 +43222,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<bool> IsPickUpDropDefinedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> LatitudeField;
+        private string LatitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Legacy_Product_IDField;
@@ -43229,7 +43231,7 @@ namespace TLGX_Consumer.MDMSVC {
         private string LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<decimal> LongitudeField;
+        private string LongitudeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> MustSeeInCountryField;
@@ -43677,12 +43679,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> Latitude {
+        public string Latitude {
             get {
                 return this.LatitudeField;
             }
             set {
-                if ((this.LatitudeField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.LatitudeField, value) != true)) {
                     this.LatitudeField = value;
                     this.RaisePropertyChanged("Latitude");
                 }
@@ -43716,12 +43718,12 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> Longitude {
+        public string Longitude {
             get {
                 return this.LongitudeField;
             }
             set {
-                if ((this.LongitudeField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.LongitudeField, value) != true)) {
                     this.LongitudeField = value;
                     this.RaisePropertyChanged("Longitude");
                 }
@@ -49212,24 +49214,21 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_Report_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_ActivityCountStats", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
     [System.SerializableAttribute()]
-    public partial class DC_Activity_Report_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class DC_ActivityCountStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ActivitiesCountField;
+        private string CityIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SupplierCityNameField;
+        private string CountryIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SupplierCountryNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SupplierNameField;
+        private string SupplierIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -49242,40 +49241,107 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> ActivitiesCount {
+        public string CityID {
             get {
-                return this.ActivitiesCountField;
+                return this.CityIDField;
             }
             set {
-                if ((this.ActivitiesCountField.Equals(value) != true)) {
-                    this.ActivitiesCountField = value;
-                    this.RaisePropertyChanged("ActivitiesCount");
+                if ((object.ReferenceEquals(this.CityIDField, value) != true)) {
+                    this.CityIDField = value;
+                    this.RaisePropertyChanged("CityID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SupplierCityName {
+        public string CountryID {
             get {
-                return this.SupplierCityNameField;
+                return this.CountryIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.SupplierCityNameField, value) != true)) {
-                    this.SupplierCityNameField = value;
-                    this.RaisePropertyChanged("SupplierCityName");
+                if ((object.ReferenceEquals(this.CountryIDField, value) != true)) {
+                    this.CountryIDField = value;
+                    this.RaisePropertyChanged("CountryID");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string SupplierCountryName {
+        public string SupplierID {
             get {
-                return this.SupplierCountryNameField;
+                return this.SupplierIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.SupplierCountryNameField, value) != true)) {
-                    this.SupplierCountryNameField = value;
-                    this.RaisePropertyChanged("SupplierCountryName");
+                if ((object.ReferenceEquals(this.SupplierIDField, value) != true)) {
+                    this.SupplierIDField = value;
+                    this.RaisePropertyChanged("SupplierID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_Report_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_Report_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalCountField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
                 }
             }
         }
@@ -49289,6 +49355,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
                     this.SupplierNameField = value;
                     this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalCount {
+            get {
+                return this.TotalCountField;
+            }
+            set {
+                if ((this.TotalCountField.Equals(value) != true)) {
+                    this.TotalCountField = value;
+                    this.RaisePropertyChanged("TotalCount");
                 }
             }
         }
@@ -53096,10 +53175,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivitiesReport", ReplyAction="http://tempuri.org/IActivity/GetActivitiesReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivitiesReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[] GetActivitiesReport(string ReportType);
+        TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[] GetActivitiesReport(TLGX_Consumer.MDMSVC.DC_ActivityCountStats ReportType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivitiesReport", ReplyAction="http://tempuri.org/IActivity/GetActivitiesReportResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]> GetActivitiesReportAsync(string ReportType);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]> GetActivitiesReportAsync(TLGX_Consumer.MDMSVC.DC_ActivityCountStats ReportType);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -55918,11 +55997,11 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetSupplierProductSubTypeAsync(_objAct);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[] GetActivitiesReport(string ReportType) {
+        public TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[] GetActivitiesReport(TLGX_Consumer.MDMSVC.DC_ActivityCountStats ReportType) {
             return base.Channel.GetActivitiesReport(ReportType);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]> GetActivitiesReportAsync(string ReportType) {
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_Report_RS[]> GetActivitiesReportAsync(TLGX_Consumer.MDMSVC.DC_ActivityCountStats ReportType) {
             return base.Channel.GetActivitiesReportAsync(ReportType);
         }
         
