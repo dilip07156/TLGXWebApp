@@ -19,7 +19,7 @@
     <div class="panel-heading clearfix">--%>
 <h4 class="panel-title pull-left">Prices Details (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
-<asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New Price" OnClientClick="showPriceModal()" />
+<asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New Price" OnClientClick="showPriceModal()" Visible="false"/>
 <div class="col-lg-3 pull-right">
     <div class="form-group pull-right">
         <div class="input-group" runat="server" id="divDropdownForEntries">

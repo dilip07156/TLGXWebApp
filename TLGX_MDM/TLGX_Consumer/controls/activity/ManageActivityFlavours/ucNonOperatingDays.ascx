@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <br />
-                <div class="col-lg-3 pull-right">
+                <div class="col-lg-2 pull-right">
                     <div class="form-group pull-right">
                         <div class="input-group" runat="server" id="divDropdownForEntries">
                             <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
@@ -80,13 +80,12 @@
                     <div id="dvMsgAlert" runat="server" data-auto-dismiss="2000" style="display: none"></div>
                 </div>
                 <asp:GridView ID="gvNonOperatingData" runat="server" DataKeyNames="Activity_DaysOfOperation_Id" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
-                    ShowHeaderWhenEmpty="false" ShowFooter="true" EmptyDataText="No data found for Dates." Style="overflow-x: scroll" AllowPaging="True" AllowCustomPaging="true" OnPageIndexChanging="gvNonOperatingData_PageIndexChanging">
+                    ShowHeaderWhenEmpty="false" Style="overflow-x: scroll" AllowPaging="True" AllowCustomPaging="true" OnPageIndexChanging="gvNonOperatingData_PageIndexChanging">
                     <Columns>
                         <asp:BoundField HeaderText="From Date" DataField="FromDate" HtmlEncode="False" DataFormatString="{0:d}"/>
                         <asp:BoundField HeaderText="To Date" DataField="EndDate" HtmlEncode="False" DataFormatString="{0:d}"/>
                         <asp:TemplateField ShowHeader="false">
                             <ItemTemplate>
-                                <label class="control-label" for="txtFrom"> Delete </label>
                                 <asp:LinkButton CssClass="btn btn-default" runat="server" ID="LinkButton1" CommandName="RemoveNonOperatingDays" OnClick="deleteNonOperatingDate_Click">
                                       <i class="glyphicon glyphicon-trash"></i>
                                 </asp:LinkButton>

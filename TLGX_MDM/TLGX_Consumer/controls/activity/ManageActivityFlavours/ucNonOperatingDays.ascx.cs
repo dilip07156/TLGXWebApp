@@ -30,16 +30,23 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 {
                     Guid guidActivity_Flavour_Id = Activity_Flavour_Id ?? Guid.Empty;
                     var result = AccSvc.GetActivityNonOperatingDays(guidActivity_Flavour_Id, pagesize, pageno);
+
                     if (result != null)
                     {
+                        gvNonOperatingData.DataSource = result;
                         if (result.Count() > 0)
                         {
-                            gvNonOperatingData.DataSource = result;
                             gvNonOperatingData.VirtualItemCount = result[0].TotalRecords ?? 0;
                             gvNonOperatingData.PageIndex = pageno;
                             gvNonOperatingData.PageSize = pagesize;
-                            gvNonOperatingData.DataBind();
                         }
+                        gvNonOperatingData.DataBind();
+
+                    }
+                    else
+                    {
+                        gvNonOperatingData.DataSource = null;
+                        gvNonOperatingData.DataBind();
                     }
                 }
                

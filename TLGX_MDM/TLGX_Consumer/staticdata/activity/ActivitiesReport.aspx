@@ -37,7 +37,7 @@
                                 </asp:DropDownList>
                             </div>
                             <div class="col-md-1">
-                                <label class="control-label" for="ddlSupplierName">City</label>
+                                <label class="control-label" for="ddlCity">City</label>
                             </div>
                             <div class="col-md-2">
                                 <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
