@@ -1353,10 +1353,10 @@
       <xs:element minOccurs="0" name="FinanceControlId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="InterestType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsPickUpDropDefined" nillable="true" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Latitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Legacy_Product_ID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MustSeeInCountry" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="PlaceOfEvent" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string" />
@@ -1843,6 +1843,14 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_CategoryTypes_DDL" nillable="true" type="tns:DC_Activity_CategoryTypes_DDL" />
+  <xs:complexType name="DC_ActivityCountStats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_ActivityCountStats" nillable="true" type="tns:DC_ActivityCountStats" />
   <xs:complexType name="ArrayOfDC_Activity_Report_RS">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_Report_RS" nillable="true" type="tns:DC_Activity_Report_RS" />
@@ -1851,10 +1859,10 @@
   <xs:element name="ArrayOfDC_Activity_Report_RS" nillable="true" type="tns:ArrayOfDC_Activity_Report_RS" />
   <xs:complexType name="DC_Activity_Report_RS">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ActivitiesCount" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="SupplierCityName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SupplierCountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalCount" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Report_RS" nillable="true" type="tns:DC_Activity_Report_RS" />
