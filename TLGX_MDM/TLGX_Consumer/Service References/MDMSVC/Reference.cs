@@ -45478,6 +45478,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_Prices_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgeFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgeToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Create_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -45582,6 +45588,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_Prices_IdField.Equals(value) != true)) {
                     this.Activity_Prices_IdField = value;
                     this.RaisePropertyChanged("Activity_Prices_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AgeFrom {
+            get {
+                return this.AgeFromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgeFromField, value) != true)) {
+                    this.AgeFromField = value;
+                    this.RaisePropertyChanged("AgeFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AgeTo {
+            get {
+                return this.AgeToField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgeToField, value) != true)) {
+                    this.AgeToField = value;
+                    this.RaisePropertyChanged("AgeTo");
                 }
             }
         }
