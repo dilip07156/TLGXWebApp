@@ -334,7 +334,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtLocation;
         
         /// <summary>
         /// btnRemoveSelectedOperationDays control.
@@ -344,6 +344,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRemoveSelectedOperationDays;
+        
+        /// <summary>
+        /// repSupplierInformation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repSupplierInformation;
         
         /// <summary>
         /// ucNonOperatingDays control.
@@ -362,14 +371,5 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repOperatingDays;
-        
-        /// <summary>
-        /// repSupplierInformation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repSupplierInformation;
     }
 }

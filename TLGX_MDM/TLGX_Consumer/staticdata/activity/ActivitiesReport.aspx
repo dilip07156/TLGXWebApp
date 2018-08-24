@@ -10,7 +10,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-header">Export Activity Count</h1>
+            <h1 class="page-header">Export Activity Statistics</h1>
         </div>
     </div>
     <asp:UpdatePanel runat="server" ID="PnlUpdateDiv">
@@ -18,39 +18,53 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="col-md-8">
+                        <div class="col-md-12">
                             <div class="col-md-2">
-                                <label>Report Type</label>
+                                <label class="control-label" for="ddlSupplierName">Supplier Name</label>
                             </div>
-                            <div class="col-md-4">
-                                <asp:DropDownList ID="ddlReportType" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlReportType_SelectedIndexChanged">
-                                    <asp:ListItem Value="0">--Select Report--</asp:ListItem>
-                                    <asp:ListItem>Activities Count By Country</asp:ListItem>
-                                    <asp:ListItem>Activities Count By City</asp:ListItem>
-                                    <asp:ListItem Selected="True">Activities Count By Supplier</asp:ListItem>
+                            <div class="col-md-2">
+                                <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
+                                    <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
                                 </asp:DropDownList>
                             </div>
+                            <div class="col-md-1">
+                                <label class="control-label" for="ddlCountry">Country</label>
+                            </div>
                             <div class="col-md-2">
+                                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                                    <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="-ALL Countries-" Value="1"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-1">
+                                <label class="control-label" for="ddlCity">City</label>
+                            </div>
+                            <div class="col-md-2">
+                                <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
+                                    <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
+                                    <asp:ListItem Text="-ALL Cities-" Value="1"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col-md-1">
                                 <asp:Button runat="server" Text="View Report" CssClass="btn btn-sm btn-primary" ID="btnViewReport" OnClick="btnViewReport_Click"></asp:Button>
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-md-12">
                             <div id="dvMsgAlert" runat="server" data-auto-dismiss="2000" style="display: none"></div>
                         </div>
 
-
+                        <div class="col-md-12" id="report" runat="server">
+                            <div style="width: 100%; height: 100%">
+                                <rsweb:ReportViewer ID="ReportVieweractivity" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+                                    <LocalReport ReportPath="~/staticdata/activity/ActivitiesCountReport.rdlc">
+                                        <DataSources>
+                                            <rsweb:ReportDataSource Name="DsAcitivityCount" />
+                                        </DataSources>
+                                    </LocalReport>
+                                </rsweb:ReportViewer>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-12" id="report" runat="server">
-                <div style="width: 100%; height: 100%">
-                    <rsweb:ReportViewer ID="ReportVieweractivity" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
-                        <LocalReport ReportPath="staticdata/activity/ActivitiesCountReport.rdlc">
-                            <DataSources>
-                                <rsweb:ReportDataSource Name="DsAcitivityCount" />
-                            </DataSources>
-                        </LocalReport>
-                    </rsweb:ReportViewer>
                 </div>
             </div>
         </ContentTemplate>

@@ -347,10 +347,10 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Activities Reports
-        public List<DC_Activity_Report_RS> GetActivitiesReport(int ReportType)
+        public List<DC_Activity_Report_RS> GetActivitiesReport(DC_ActivityCountStats RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Activity_GetActivitiesReport"], ReportType.ToString()), typeof(List<DC_Activity_Report_RS>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivitiesReport"],RQParams,typeof(DC_ActivityCountStats),typeof(List<DC_Activity_Report_RS>), out result);
             return result as List<DC_Activity_Report_RS>;
         }
         #endregion

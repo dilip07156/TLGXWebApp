@@ -19,7 +19,7 @@
     <div class="panel-heading clearfix">--%>
 <h4 class="panel-title pull-left">Prices Details (Total Count:
                             <asp:Label ID="lblTotalRecords" runat="server" Text="0"></asp:Label>)</h4>
-<asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New Price" OnClientClick="showPriceModal()" />
+<asp:Button CssClass="pull-right btn btn-primary" runat="server" ID="btnNewUpload" OnClick="btnNewUpload_Click" Text="Add New Price" OnClientClick="showPriceModal()" Visible="false"/>
 <div class="col-lg-3 pull-right">
     <div class="form-group pull-right">
         <div class="input-group" runat="server" id="divDropdownForEntries">
@@ -51,6 +51,8 @@
         <asp:BoundField HeaderText="FromPax" DataField="FromPax" />
         <asp:BoundField HeaderText="ToPax" DataField="ToPax" />
         <asp:BoundField HeaderText="Person Type" DataField="PersonType" />
+        <asp:BoundField HeaderText="AgeFrom" DataField="AgeFrom" />
+        <asp:BoundField HeaderText="AgeToe" DataField="AgeTo" />
         <asp:BoundField HeaderText="Price ValidFrom" DataField="Price_ValidFrom" HtmlEncode="False" DataFormatString="{0:d}" />
         <asp:BoundField HeaderText="Price ValidTo" DataField="Price_ValidTo" HtmlEncode="False" DataFormatString="{0:d}" />
     </Columns>
