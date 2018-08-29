@@ -1,6 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="AddNew.ascx.cs" Inherits="TLGX_Consumer.controls.hotel.AddNew" %>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhxUUgHmu48Zv0_ECSms00t9OzxZkE1h0&libraries=places"></script>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <style>
@@ -45,7 +43,6 @@
         display: inline;
     }
 </style>
-
 
 <script type="text/javascript">
     function showModal() {
@@ -265,7 +262,6 @@
         });
     }
 </script>
-
 
 <div class="container">
     <div class="row">
@@ -548,3 +544,5 @@
         </div>
     </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhxUUgHmu48Zv0_ECSms00t9OzxZkE1h0&libraries=places"></script>
