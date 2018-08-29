@@ -10473,10 +10473,25 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CurrentBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EntityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> From_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsPausedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsRestartedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsResumedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsStoppedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ModeField;
@@ -10516,6 +10531,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> CurrentBatch {
+            get {
+                return this.CurrentBatchField;
+            }
+            set {
+                if ((this.CurrentBatchField.Equals(value) != true)) {
+                    this.CurrentBatchField = value;
+                    this.RaisePropertyChanged("CurrentBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Entity {
             get {
                 return this.EntityField;
@@ -10537,6 +10565,58 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.From_DateField.Equals(value) != true)) {
                     this.From_DateField = value;
                     this.RaisePropertyChanged("From_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsPaused {
+            get {
+                return this.IsPausedField;
+            }
+            set {
+                if ((this.IsPausedField.Equals(value) != true)) {
+                    this.IsPausedField = value;
+                    this.RaisePropertyChanged("IsPaused");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsRestarted {
+            get {
+                return this.IsRestartedField;
+            }
+            set {
+                if ((this.IsRestartedField.Equals(value) != true)) {
+                    this.IsRestartedField = value;
+                    this.RaisePropertyChanged("IsRestarted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsResumed {
+            get {
+                return this.IsResumedField;
+            }
+            set {
+                if ((this.IsResumedField.Equals(value) != true)) {
+                    this.IsResumedField = value;
+                    this.RaisePropertyChanged("IsResumed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsStopped {
+            get {
+                return this.IsStoppedField;
+            }
+            set {
+                if ((this.IsStoppedField.Equals(value) != true)) {
+                    this.IsStoppedField = value;
+                    this.RaisePropertyChanged("IsStopped");
                 }
             }
         }
@@ -10687,10 +10767,25 @@ namespace TLGX_Consumer.MDMSVC {
         private string CREATE_USERField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CurrentBatchField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EntityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsPausedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsRestartedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsResumedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsStoppedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ModeField;
@@ -10772,6 +10867,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> CurrentBatch {
+            get {
+                return this.CurrentBatchField;
+            }
+            set {
+                if ((this.CurrentBatchField.Equals(value) != true)) {
+                    this.CurrentBatchField = value;
+                    this.RaisePropertyChanged("CurrentBatch");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Entity {
             get {
                 return this.EntityField;
@@ -10793,6 +10901,58 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.IsActiveField.Equals(value) != true)) {
                     this.IsActiveField = value;
                     this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsPaused {
+            get {
+                return this.IsPausedField;
+            }
+            set {
+                if ((this.IsPausedField.Equals(value) != true)) {
+                    this.IsPausedField = value;
+                    this.RaisePropertyChanged("IsPaused");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsRestarted {
+            get {
+                return this.IsRestartedField;
+            }
+            set {
+                if ((this.IsRestartedField.Equals(value) != true)) {
+                    this.IsRestartedField = value;
+                    this.RaisePropertyChanged("IsRestarted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsResumed {
+            get {
+                return this.IsResumedField;
+            }
+            set {
+                if ((this.IsResumedField.Equals(value) != true)) {
+                    this.IsResumedField = value;
+                    this.RaisePropertyChanged("IsResumed");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsStopped {
+            get {
+                return this.IsStoppedField;
+            }
+            set {
+                if ((this.IsStoppedField.Equals(value) != true)) {
+                    this.IsStoppedField = value;
+                    this.RaisePropertyChanged("IsStopped");
                 }
             }
         }
@@ -52781,6 +52941,14 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardData", ReplyAction="http://tempuri.org/IUploadStaticData/getFileProgressDashBoardDataResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileProgressDashboard> getFileProgressDashBoardDataAsync(string fileid);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetails", ReplyAction="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsDC_ErrorStatu" +
+            "sFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message UpdateSupplierImportFileDetails(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetails", ReplyAction="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_Call", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy);
@@ -55555,6 +55723,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_FileProgressDashboard> getFileProgressDashBoardDataAsync(string fileid) {
             return base.Channel.getFileProgressDashBoardDataAsync(fileid);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message UpdateSupplierImportFileDetails(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj) {
+            return base.Channel.UpdateSupplierImportFileDetails(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj) {
+            return base.Channel.UpdateSupplierImportFileDetailsAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy) {

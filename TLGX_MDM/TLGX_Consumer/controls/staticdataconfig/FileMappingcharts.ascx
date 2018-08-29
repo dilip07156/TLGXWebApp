@@ -4,6 +4,10 @@
     function getChartDataFileMapping(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
+            var hdnval = document.getElementById("hdnFileId").value;
+            //alert(hdnval);
+            $('#hiddenFileId').val(hdnval);
+            
             var colorarray = ["#007F00", "#faebd7"];
             var readarray = [];
             var txarray = [];
@@ -60,6 +64,34 @@
                         var status = result.FileDetails[0].STATUS;
                         if (status == "ERROR" || status == "PROCESSED") {
                             myStopFunction();
+                        }
+
+                        if (status == "PROCESSING") {
+                            $("#btnResume").attr("disabled", "disabled");
+                            $("#btnRestart").attr("disabled","disabled");
+                        }
+                        $("#fileUploadStatusMode").show();
+
+                        if (result.FileDetails[0].IsStopped == true) {
+                            $("#btnRestart").removeAttr("disabled");
+                            $("#btnStop").attr("disabled","disabled");
+                            $("#btnPause").attr("disabled","disabled");
+                            $("#btnResume").attr("disabled","disabled");
+                        }
+                        if (result.FileDetails[0].IsRestarted == true) {
+                             $("#btnResume").attr("disabled", "disabled");
+                            $("#btnRestart").attr("disabled", "disabled");
+                            $("#btnStop").removeAttr("disabled");
+                            $("#btnPause").removeAttr("disabled");
+                        }
+                        if (result.FileDetails[0].IsPaused == true) {
+                            $("#btnStop").attr("disabled","disabled");
+                            $("#btnRestart").attr("disabled","disabled");
+                            $("#btnPause").attr("disabled","disabled");
+                            $("#btnResume").removeAttr("disabled");
+                        }
+                        if (result.FileDetails[0].IsResumed == true) {
+                            
                         }
                     }
                     //process charts
@@ -204,6 +236,13 @@
             });
         }
     }
+
+    //$(document).ready(function () {
+    //    $("#btnStop").attr("disabled", "disabled");
+    //    $("#btnRestart").attr("disabled", "disabled");
+    //    $("#btnPause").attr("disabled", "disabled");
+    //    $("#btnResume").attr("disabled");
+    //});
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
@@ -276,6 +315,25 @@
     </div>
 </div>
 <br />
+<asp:HiddenField ID="hiddenFileId" runat="Server" Value=""  ClientIDMode="Static"/>
+<%--<input type="hidden" id="hiddenFileId" name="hiddenFileId" value="" />--%>
+<asp:UpdatePanel ID="UpdateFileStatusModal" runat="server">
+    <ContentTemplate>
+        
+        <div class="panel panel-default" id="fileUploadStatusMode" ">  <%--style="display:none;--%>
+            <%-- <div class="panel-heading">Actions</div>--%>
+            <div class="panel-body" style="padding-bottom: 0px;">
+                <div class="form-group">
+                    <asp:Button ID="btnStop" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="STOP" OnClick="btnStop_Click" />
+                    <asp:Button ID="btnRestart" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="RESTART" OnClick="btnRestart_Click" />
+                    <asp:Button ID="btnPause" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="PAUSE" OnClick="btnPause_Click" />
+                    <asp:Button ID="btnResume" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="RESUME" OnClick="btnResume_Click" />
+                    
+                </div>
+            </div>
+        </div>
+    </ContentTemplate>
+</asp:UpdatePanel>
 <div class="row">
     <div class="col-md-12">
         <div class="col-sm-2 " id="readdiv">

@@ -275,6 +275,16 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region SupplierDataImportFileDetails
+
+        public DC_Message UpdateSupplierImportFileDeails(MDMSVC.DC_SupplierImportFileDetails RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateSupplierImportFileDeails_Update"], RQ, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
         #region Supplier Static File Details
 
         //Save

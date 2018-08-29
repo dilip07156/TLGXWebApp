@@ -3737,6 +3737,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateSupplierImportFileDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q377="http://schemas.datacontract.org/2004/07/DataContracts.UploadStaticData" minOccurs="0" name="obj" nillable="true" type="q377:DC_SupplierImportFileDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSupplierImportFileDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q378="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateSupplierImportFileDetailsResult" nillable="true" type="q378:DC_Message" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="Pentaho_SupplierApi_Call">
     <xs:complexType>
       <xs:sequence>
@@ -3748,7 +3762,7 @@
   <xs:element name="Pentaho_SupplierApi_CallResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q377="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="Pentaho_SupplierApi_CallResult" nillable="true" type="q377:DC_Message" />
+        <xs:element xmlns:q379="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="Pentaho_SupplierApi_CallResult" nillable="true" type="q379:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3762,7 +3776,7 @@
   <xs:element name="Pentaho_SupplierApiCall_ViewDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q378="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" minOccurs="0" name="Pentaho_SupplierApiCall_ViewDetailsResult" nillable="true" type="q378:DC_PentahoTransStatus_TransStatus" />
+        <xs:element xmlns:q380="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" minOccurs="0" name="Pentaho_SupplierApiCall_ViewDetailsResult" nillable="true" type="q380:DC_PentahoTransStatus_TransStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3777,7 +3791,7 @@
   <xs:element name="Pentaho_SupplierApiLocation_GetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q379="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Pentaho_SupplierApiLocation_GetResult" nillable="true" type="q379:ArrayOfDC_Supplier_ApiLocation" />
+        <xs:element xmlns:q381="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Pentaho_SupplierApiLocation_GetResult" nillable="true" type="q381:ArrayOfDC_Supplier_ApiLocation" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3792,21 +3806,21 @@
   <xs:element name="Pentaho_SupplierApiCall_RemoveResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q380="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="Pentaho_SupplierApiCall_RemoveResult" nillable="true" type="q380:DC_Message" />
+        <xs:element xmlns:q382="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="Pentaho_SupplierApiCall_RemoveResult" nillable="true" type="q382:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Pentaho_SupplierApiCall_List">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q381="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" minOccurs="0" name="RQ" nillable="true" type="q381:DC_PentahoApiCallLogDetails_RQ" />
+        <xs:element xmlns:q383="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" minOccurs="0" name="RQ" nillable="true" type="q383:DC_PentahoApiCallLogDetails_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="Pentaho_SupplierApiCall_ListResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q382="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" minOccurs="0" name="Pentaho_SupplierApiCall_ListResult" nillable="true" type="q382:ArrayOfDC_PentahoApiCallLogDetails" />
+        <xs:element xmlns:q384="http://schemas.datacontract.org/2004/07/DataContracts.Pentaho" minOccurs="0" name="Pentaho_SupplierApiCall_ListResult" nillable="true" type="q384:ArrayOfDC_PentahoApiCallLogDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3818,49 +3832,49 @@
   <xs:element name="Pentaho_SupplierApiCall_StatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q383="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Pentaho_SupplierApiCall_StatusResult" nillable="true" type="q383:ArrayOfstring" />
+        <xs:element xmlns:q385="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Pentaho_SupplierApiCall_StatusResult" nillable="true" type="q385:ArrayOfstring" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActivitySearch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q384="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Activity_Request" nillable="true" type="q384:DC_Activity_Search_RQ" />
+        <xs:element xmlns:q386="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="Activity_Request" nillable="true" type="q386:DC_Activity_Search_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ActivitySearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q385="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="ActivitySearchResult" nillable="true" type="q385:ArrayOfDC_ActivitySearch_RS" />
+        <xs:element xmlns:q387="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="ActivitySearchResult" nillable="true" type="q387:ArrayOfDC_ActivitySearch_RS" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivity">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q386="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q386:DC_Activity" />
+        <xs:element xmlns:q388="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q388:DC_Activity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q387="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityResult" nillable="true" type="q387:DC_Message" />
+        <xs:element xmlns:q389="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityResult" nillable="true" type="q389:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateProductInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q388="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q388:DC_Activity" />
+        <xs:element xmlns:q390="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q390:DC_Activity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateProductInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q389="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateProductInfoResult" nillable="true" type="q389:DC_Message" />
+        <xs:element xmlns:q391="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateProductInfoResult" nillable="true" type="q391:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3875,14 +3889,14 @@
   <xs:element name="GetActivityContactsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q390="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityContactsResult" nillable="true" type="q390:ArrayOfDC_Activity_Contact" />
+        <xs:element xmlns:q392="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityContactsResult" nillable="true" type="q392:ArrayOfDC_Activity_Contact" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateActivityContacts">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q391="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AC" nillable="true" type="q391:DC_Activity_Contact" />
+        <xs:element xmlns:q393="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AC" nillable="true" type="q393:DC_Activity_Contact" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3896,7 +3910,7 @@
   <xs:element name="AddActivityContacts">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q392="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AC" nillable="true" type="q392:DC_Activity_Contact" />
+        <xs:element xmlns:q394="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AC" nillable="true" type="q394:DC_Activity_Contact" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3932,14 +3946,14 @@
   <xs:element name="GetActivityStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q393="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityStatusResult" nillable="true" type="q393:ArrayOfDC_Activity_Status" />
+        <xs:element xmlns:q395="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityStatusResult" nillable="true" type="q395:ArrayOfDC_Activity_Status" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateActivityStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q394="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AS" nillable="true" type="q394:DC_Activity_Status" />
+        <xs:element xmlns:q396="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AS" nillable="true" type="q396:DC_Activity_Status" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3953,7 +3967,7 @@
   <xs:element name="AddActivityStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q395="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AS" nillable="true" type="q395:DC_Activity_Status" />
+        <xs:element xmlns:q397="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="AS" nillable="true" type="q397:DC_Activity_Status" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -3967,105 +3981,105 @@
   <xs:element name="GetActivityMedia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q396="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q396:DC_Activity_Media_Search_RQ" />
+        <xs:element xmlns:q398="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q398:DC_Activity_Media_Search_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityMediaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q397="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityMediaResult" nillable="true" type="q397:ArrayOfDC_Activity_Media" />
+        <xs:element xmlns:q399="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityMediaResult" nillable="true" type="q399:ArrayOfDC_Activity_Media" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityMedia">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q398="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q398:DC_Activity_Media" />
+        <xs:element xmlns:q400="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q400:DC_Activity_Media" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityMediaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q399="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityMediaResult" nillable="true" type="q399:DC_Message" />
+        <xs:element xmlns:q401="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityMediaResult" nillable="true" type="q401:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityInclusions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q400="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q400:DC_Activity_Inclusions_RQ" />
+        <xs:element xmlns:q402="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q402:DC_Activity_Inclusions_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityInclusionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q401="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityInclusionsResult" nillable="true" type="q401:ArrayOfDC_Activity_Inclusions" />
+        <xs:element xmlns:q403="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityInclusionsResult" nillable="true" type="q403:ArrayOfDC_Activity_Inclusions" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityInclusions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q402="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q402:DC_Activity_Inclusions" />
+        <xs:element xmlns:q404="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q404:DC_Activity_Inclusions" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityInclusionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q403="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityInclusionsResult" nillable="true" type="q403:DC_Message" />
+        <xs:element xmlns:q405="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityInclusionsResult" nillable="true" type="q405:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityInclusionDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q404="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q404:DC_Activity_InclusionDetails_RQ" />
+        <xs:element xmlns:q406="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q406:DC_Activity_InclusionDetails_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityInclusionDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q405="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityInclusionDetailsResult" nillable="true" type="q405:ArrayOfDC_Activity_InclusionsDetails" />
+        <xs:element xmlns:q407="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityInclusionDetailsResult" nillable="true" type="q407:ArrayOfDC_Activity_InclusionsDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateInclusionDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q406="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q406:DC_Activity_InclusionsDetails" />
+        <xs:element xmlns:q408="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q408:DC_Activity_InclusionsDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateInclusionDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q407="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateInclusionDetailsResult" nillable="true" type="q407:DC_Message" />
+        <xs:element xmlns:q409="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateInclusionDetailsResult" nillable="true" type="q409:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityClasificationAttributes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q408="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q408:DC_Activity_ClassificationAttributes_RQ" />
+        <xs:element xmlns:q410="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q410:DC_Activity_ClassificationAttributes_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityClasificationAttributesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q409="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityClasificationAttributesResult" nillable="true" type="q409:ArrayOfDC_Activity_ClassificationAttributes" />
+        <xs:element xmlns:q411="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityClasificationAttributesResult" nillable="true" type="q411:ArrayOfDC_Activity_ClassificationAttributes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddActivityClassifiationAttributes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q410="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q410:DC_Activity_ClassificationAttributes" />
+        <xs:element xmlns:q412="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q412:DC_Activity_ClassificationAttributes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4079,7 +4093,7 @@
   <xs:element name="UpdateActivityClassifiationAttributes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q411="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q411:DC_Activity_ClassificationAttributes" />
+        <xs:element xmlns:q413="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q413:DC_Activity_ClassificationAttributes" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4093,322 +4107,322 @@
   <xs:element name="GetActivityPickUpDrop">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q412="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q412:DC_Activity_PickUpDrop_RQ" />
+        <xs:element xmlns:q414="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q414:DC_Activity_PickUpDrop_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityPickUpDropResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q413="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPickUpDropResult" nillable="true" type="q413:ArrayOfDC_Activity_PickUpDrop" />
+        <xs:element xmlns:q415="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPickUpDropResult" nillable="true" type="q415:ArrayOfDC_Activity_PickUpDrop" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdatePickUpDrop">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q414="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q414:DC_Activity_PickUpDrop" />
+        <xs:element xmlns:q416="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q416:DC_Activity_PickUpDrop" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdatePickUpDropResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q415="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdatePickUpDropResult" nillable="true" type="q415:DC_Message" />
+        <xs:element xmlns:q417="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdatePickUpDropResult" nillable="true" type="q417:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetPickUpDropDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q416="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q416:DC_Activity_PickUpDropDetails_RQ" />
+        <xs:element xmlns:q418="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q418:DC_Activity_PickUpDropDetails_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetPickUpDropDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q417="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetPickUpDropDetailsResult" nillable="true" type="q417:ArrayOfDC_Activity_PickUpDropDetails" />
+        <xs:element xmlns:q419="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetPickUpDropDetailsResult" nillable="true" type="q419:ArrayOfDC_Activity_PickUpDropDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdatePickUpDropDetails">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q418="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q418:DC_Activity_PickUpDropDetails" />
+        <xs:element xmlns:q420="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q420:DC_Activity_PickUpDropDetails" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdatePickUpDropDetailsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q419="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdatePickUpDropDetailsResult" nillable="true" type="q419:DC_Message" />
+        <xs:element xmlns:q421="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdatePickUpDropDetailsResult" nillable="true" type="q421:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityDescription">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q420="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q420:DC_Activity_Descriptions_RQ" />
+        <xs:element xmlns:q422="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q422:DC_Activity_Descriptions_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityDescriptionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q421="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityDescriptionResult" nillable="true" type="q421:ArrayOfDC_Activity_Descriptions" />
+        <xs:element xmlns:q423="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityDescriptionResult" nillable="true" type="q423:ArrayOfDC_Activity_Descriptions" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityDescription">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q422="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q422:DC_Activity_Descriptions" />
+        <xs:element xmlns:q424="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q424:DC_Activity_Descriptions" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityDescriptionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q423="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityDescriptionResult" nillable="true" type="q423:DC_Message" />
+        <xs:element xmlns:q425="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityDescriptionResult" nillable="true" type="q425:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityFlavour">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q424="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q424:DC_Activity_Flavour_RQ" />
+        <xs:element xmlns:q426="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q426:DC_Activity_Flavour_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityFlavourResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q425="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityFlavourResult" nillable="true" type="q425:ArrayOfDC_Activity_Flavour" />
+        <xs:element xmlns:q427="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityFlavourResult" nillable="true" type="q427:ArrayOfDC_Activity_Flavour" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityFlavour">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q426="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q426:DC_Activity_Flavour" />
+        <xs:element xmlns:q428="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q428:DC_Activity_Flavour" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityFlavourResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q427="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavourResult" nillable="true" type="q427:DC_Message" />
+        <xs:element xmlns:q429="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavourResult" nillable="true" type="q429:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityCA">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q428="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q428:ArrayOfDC_Activity_CA_CRUD" />
+        <xs:element xmlns:q430="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q430:ArrayOfDC_Activity_CA_CRUD" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityCAResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q429="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityCAResult" nillable="true" type="q429:DC_Message" />
+        <xs:element xmlns:q431="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityCAResult" nillable="true" type="q431:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityFlavourOptions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q430="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q430:DC_Activity_Flavour_Options_RQ" />
+        <xs:element xmlns:q432="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q432:DC_Activity_Flavour_Options_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityFlavourOptionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q431="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityFlavourOptionsResult" nillable="true" type="q431:ArrayOfDC_Activity_Flavour_Options" />
+        <xs:element xmlns:q433="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityFlavourOptionsResult" nillable="true" type="q433:ArrayOfDC_Activity_Flavour_Options" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityFlavourOptions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q432="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q432:DC_Activity_Flavour_Options" />
+        <xs:element xmlns:q434="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q434:DC_Activity_Flavour_Options" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityFlavourOptionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q433="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavourOptionsResult" nillable="true" type="q433:DC_Message" />
+        <xs:element xmlns:q435="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavourOptionsResult" nillable="true" type="q435:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityDeals">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q434="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q434:DC_Activity_Deals_RQ" />
+        <xs:element xmlns:q436="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q436:DC_Activity_Deals_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityDealsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q435="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityDealsResult" nillable="true" type="q435:ArrayOfDC_Activity_Deals" />
+        <xs:element xmlns:q437="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityDealsResult" nillable="true" type="q437:ArrayOfDC_Activity_Deals" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityDeals">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q436="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q436:DC_Activity_Deals" />
+        <xs:element xmlns:q438="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q438:DC_Activity_Deals" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityDealsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q437="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityDealsResult" nillable="true" type="q437:DC_Message" />
+        <xs:element xmlns:q439="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityDealsResult" nillable="true" type="q439:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityPrices">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q438="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q438:DC_Activity_Prices_RQ" />
+        <xs:element xmlns:q440="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q440:DC_Activity_Prices_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityPricesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q439="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPricesResult" nillable="true" type="q439:ArrayOfDC_Activity_Prices" />
+        <xs:element xmlns:q441="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPricesResult" nillable="true" type="q441:ArrayOfDC_Activity_Prices" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityPrices">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q440="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q440:DC_Activity_Prices" />
+        <xs:element xmlns:q442="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q442:DC_Activity_Prices" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityPricesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q441="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPricesResult" nillable="true" type="q441:DC_Message" />
+        <xs:element xmlns:q443="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPricesResult" nillable="true" type="q443:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActSupplierProdMapping">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q442="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q442:DC_Activity_SupplierProductMapping_RQ" />
+        <xs:element xmlns:q444="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q444:DC_Activity_SupplierProductMapping_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActSupplierProdMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q443="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActSupplierProdMappingResult" nillable="true" type="q443:ArrayOfDC_Activity_SupplierProductMapping" />
+        <xs:element xmlns:q445="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActSupplierProdMappingResult" nillable="true" type="q445:ArrayOfDC_Activity_SupplierProductMapping" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActSupplierProdMapping">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q444="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q444:DC_Activity_SupplierProductMapping" />
+        <xs:element xmlns:q446="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q446:DC_Activity_SupplierProductMapping" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActSupplierProdMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q445="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActSupplierProdMappingResult" nillable="true" type="q445:DC_Message" />
+        <xs:element xmlns:q447="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActSupplierProdMappingResult" nillable="true" type="q447:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActReviewsAndScores">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q446="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q446:DC_Activity_ReviewsAndScores_RQ" />
+        <xs:element xmlns:q448="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q448:DC_Activity_ReviewsAndScores_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActReviewsAndScoresResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q447="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActReviewsAndScoresResult" nillable="true" type="q447:ArrayOfDC_Activity_ReviewsAndScores" />
+        <xs:element xmlns:q449="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActReviewsAndScoresResult" nillable="true" type="q449:ArrayOfDC_Activity_ReviewsAndScores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActReviewsNScores">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q448="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q448:DC_Activity_ReviewsAndScores" />
+        <xs:element xmlns:q450="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q450:DC_Activity_ReviewsAndScores" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActReviewsNScoresResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q449="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActReviewsNScoresResult" nillable="true" type="q449:DC_Message" />
+        <xs:element xmlns:q451="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActReviewsNScoresResult" nillable="true" type="q451:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActSupplierProdMapping_CA">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q450="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q450:DC_Activity_SupplierProductMapping_CA_RQ" />
+        <xs:element xmlns:q452="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q452:DC_Activity_SupplierProductMapping_CA_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActSupplierProdMapping_CAResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q451="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActSupplierProdMapping_CAResult" nillable="true" type="q451:ArrayOfDC_Activity_SupplierProductMapping_CA" />
+        <xs:element xmlns:q453="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActSupplierProdMapping_CAResult" nillable="true" type="q453:ArrayOfDC_Activity_SupplierProductMapping_CA" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActSupplierProdMapping_CA">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q452="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q452:DC_Activity_SupplierProductMapping_CA" />
+        <xs:element xmlns:q454="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q454:DC_Activity_SupplierProductMapping_CA" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActSupplierProdMapping_CAResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q453="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActSupplierProdMapping_CAResult" nillable="true" type="q453:DC_Message" />
+        <xs:element xmlns:q455="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActSupplierProdMapping_CAResult" nillable="true" type="q455:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityPolicy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q454="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q454:DC_Activity_Policy_RQ" />
+        <xs:element xmlns:q456="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q456:DC_Activity_Policy_RQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivityPolicyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q455="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPolicyResult" nillable="true" type="q455:ArrayOfDC_Activity_Policy" />
+        <xs:element xmlns:q457="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityPolicyResult" nillable="true" type="q457:ArrayOfDC_Activity_Policy" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityPolicy">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q456="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q456:DC_Activity_Policy" />
+        <xs:element xmlns:q458="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q458:DC_Activity_Policy" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityPolicyResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q457="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPolicyResult" nillable="true" type="q457:DC_Message" />
+        <xs:element xmlns:q459="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityPolicyResult" nillable="true" type="q459:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4422,21 +4436,21 @@
   <xs:element name="GetActivityOperatingDaysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q458="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityOperatingDaysResult" nillable="true" type="q458:ArrayOfDC_Activity_OperatingDays" />
+        <xs:element xmlns:q460="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityOperatingDaysResult" nillable="true" type="q460:ArrayOfDC_Activity_OperatingDays" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityOperatingDays">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q459="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q459:ArrayOfDC_Activity_OperatingDays" />
+        <xs:element xmlns:q461="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q461:ArrayOfDC_Activity_OperatingDays" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityOperatingDaysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q460="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityOperatingDaysResult" nillable="true" type="q460:DC_Message" />
+        <xs:element xmlns:q462="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityOperatingDaysResult" nillable="true" type="q462:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4452,21 +4466,21 @@
   <xs:element name="GetActivityNonOperatingDaysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q461="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityNonOperatingDaysResult" nillable="true" type="q461:ArrayOfDC_Activity_OperatingDays" />
+        <xs:element xmlns:q463="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivityNonOperatingDaysResult" nillable="true" type="q463:ArrayOfDC_Activity_OperatingDays" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityNonOperatingDays">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q462="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q462:ArrayOfDC_Activity_OperatingDays" />
+        <xs:element xmlns:q464="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="RQ" nillable="true" type="q464:ArrayOfDC_Activity_OperatingDays" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityNonOperatingDaysResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q463="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityNonOperatingDaysResult" nillable="true" type="q463:DC_Message" />
+        <xs:element xmlns:q465="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityNonOperatingDaysResult" nillable="true" type="q465:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4480,91 +4494,91 @@
   <xs:element name="DeleteActivityNonOperatingDaysByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q464="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="DeleteActivityNonOperatingDaysByIdResult" nillable="true" type="q464:DC_Message" />
+        <xs:element xmlns:q466="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="DeleteActivityNonOperatingDaysByIdResult" nillable="true" type="q466:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityFlavoursStatus">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q465="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_obj" nillable="true" type="q465:DC_ActivityFlavoursStatus" />
+        <xs:element xmlns:q467="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_obj" nillable="true" type="q467:DC_ActivityFlavoursStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddUpdateActivityFlavoursStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q466="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavoursStatusResult" nillable="true" type="q466:DC_Message" />
+        <xs:element xmlns:q468="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="AddUpdateActivityFlavoursStatusResult" nillable="true" type="q468:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSupplierProductSubType">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q467="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q467:DC_Supplier_DDL" />
+        <xs:element xmlns:q469="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="_objAct" nillable="true" type="q469:DC_Supplier_DDL" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSupplierProductSubTypeResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q468="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetSupplierProductSubTypeResult" nillable="true" type="q468:ArrayOfDC_Activity_CategoryTypes_DDL" />
+        <xs:element xmlns:q470="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetSupplierProductSubTypeResult" nillable="true" type="q470:ArrayOfDC_Activity_CategoryTypes_DDL" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivitiesReport">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q469="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="ReportType" nillable="true" type="q469:DC_ActivityCountStats" />
+        <xs:element xmlns:q471="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="ReportType" nillable="true" type="q471:DC_ActivityCountStats" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetActivitiesReportResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q470="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivitiesReportResult" nillable="true" type="q470:ArrayOfDC_Activity_Report_RS" />
+        <xs:element xmlns:q472="http://schemas.datacontract.org/2004/07/DataContracts.Masters" minOccurs="0" name="GetActivitiesReportResult" nillable="true" type="q472:ArrayOfDC_Activity_Report_RS" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFile">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q471="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q471:DC_RemoteFileInfo" />
+        <xs:element xmlns:q473="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q473:DC_RemoteFileInfo" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q472="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileResult" nillable="true" type="q472:DC_FileUploadResponse" />
+        <xs:element xmlns:q474="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileResult" nillable="true" type="q474:DC_FileUploadResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TransferFileInChunks">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q473="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q473:DC_FileData" />
+        <xs:element xmlns:q475="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q475:DC_FileData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="TransferFileInChunksResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q474="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="TransferFileInChunksResult" nillable="true" type="q474:DC_UploadResponse" />
+        <xs:element xmlns:q476="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="TransferFileInChunksResult" nillable="true" type="q476:DC_UploadResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileInChunks">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q475="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q475:DC_FileData" />
+        <xs:element xmlns:q477="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="request" nillable="true" type="q477:DC_FileData" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UploadFileInChunksResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q476="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileInChunksResult" nillable="true" type="q476:DC_UploadResponse" />
+        <xs:element xmlns:q478="http://schemas.datacontract.org/2004/07/DataContracts.FileTransfer" minOccurs="0" name="UploadFileInChunksResult" nillable="true" type="q478:DC_UploadResponse" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4593,7 +4607,7 @@
   <xs:element name="SyncCountryMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q477="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMasterResult" nillable="true" type="q477:DC_Message" />
+        <xs:element xmlns:q479="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMasterResult" nillable="true" type="q479:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4608,7 +4622,7 @@
   <xs:element name="SyncCountryMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q478="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMappingResult" nillable="true" type="q478:DC_Message" />
+        <xs:element xmlns:q480="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCountryMappingResult" nillable="true" type="q480:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4623,7 +4637,7 @@
   <xs:element name="SyncCityMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q479="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMasterResult" nillable="true" type="q479:DC_Message" />
+        <xs:element xmlns:q481="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMasterResult" nillable="true" type="q481:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4638,7 +4652,7 @@
   <xs:element name="SyncCityMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q480="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMappingResult" nillable="true" type="q480:DC_Message" />
+        <xs:element xmlns:q482="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncCityMappingResult" nillable="true" type="q482:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4652,7 +4666,7 @@
   <xs:element name="SyncHotelMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q481="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingResult" nillable="true" type="q481:DC_Message" />
+        <xs:element xmlns:q483="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingResult" nillable="true" type="q483:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4666,7 +4680,7 @@
   <xs:element name="SyncHotelMappingLiteResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q482="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingLiteResult" nillable="true" type="q482:DC_Message" />
+        <xs:element xmlns:q484="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncHotelMappingLiteResult" nillable="true" type="q484:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4681,7 +4695,7 @@
   <xs:element name="SyncActivityMappingResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q483="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncActivityMappingResult" nillable="true" type="q483:DC_Message" />
+        <xs:element xmlns:q485="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncActivityMappingResult" nillable="true" type="q485:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4696,7 +4710,7 @@
   <xs:element name="SyncSupplierMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q484="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierMasterResult" nillable="true" type="q484:DC_Message" />
+        <xs:element xmlns:q486="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierMasterResult" nillable="true" type="q486:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4708,7 +4722,7 @@
   <xs:element name="GetRefreshDistributionLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q485="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshDistributionLogResult" nillable="true" type="q485:ArrayOfDC_RefreshDistributionDataLog" />
+        <xs:element xmlns:q487="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshDistributionLogResult" nillable="true" type="q487:ArrayOfDC_RefreshDistributionDataLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4720,7 +4734,7 @@
   <xs:element name="GetRefreshStaticHotelLogResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q486="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshStaticHotelLogResult" nillable="true" type="q486:ArrayOfDC_RefreshDistributionDataLog" />
+        <xs:element xmlns:q488="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="GetRefreshStaticHotelLogResult" nillable="true" type="q488:ArrayOfDC_RefreshDistributionDataLog" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4735,7 +4749,7 @@
   <xs:element name="SyncPortMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q487="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncPortMasterResult" nillable="true" type="q487:DC_Message" />
+        <xs:element xmlns:q489="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncPortMasterResult" nillable="true" type="q489:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4750,7 +4764,7 @@
   <xs:element name="SyncStateMasterResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q488="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncStateMasterResult" nillable="true" type="q488:DC_Message" />
+        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncStateMasterResult" nillable="true" type="q490:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4762,7 +4776,7 @@
   <xs:element name="LoadSupplierDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q489="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="LoadSupplierDataResult" nillable="true" type="q489:ArrayOfDC_SupplierEntity" />
+        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="LoadSupplierDataResult" nillable="true" type="q491:ArrayOfDC_SupplierEntity" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4778,63 +4792,63 @@
   <xs:element name="SyncSupplierStaticHotelResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q490="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierStaticHotelResult" nillable="true" type="q490:DC_Message" />
+        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncSupplierStaticHotelResult" nillable="true" type="q492:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncMLAPIData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q491="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="_obj" nillable="true" type="q491:DC_Distribution_MLDataRQ" />
+        <xs:element xmlns:q493="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="_obj" nillable="true" type="q493:DC_Distribution_MLDataRQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncMLAPIDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q492="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncMLAPIDataResult" nillable="true" type="q492:DC_Message" />
+        <xs:element xmlns:q494="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncMLAPIDataResult" nillable="true" type="q494:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncGeographyData">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q493="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="RQ" nillable="true" type="q493:DC_MongoDbSyncRQ" />
+        <xs:element xmlns:q495="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="RQ" nillable="true" type="q495:DC_MongoDbSyncRQ" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="SyncGeographyDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q494="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncGeographyDataResult" nillable="true" type="q494:DC_Message" />
+        <xs:element xmlns:q496="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="SyncGeographyDataResult" nillable="true" type="q496:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q495="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q495:DC_Stg_Kafka" />
+        <xs:element xmlns:q497="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q497:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="InsertKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q496="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q496:DC_Message" />
+        <xs:element xmlns:q498="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="InsertKafkaInfoResult" nillable="true" type="q498:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q497="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q497:DC_Stg_Kafka" />
+        <xs:element xmlns:q499="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="KafkaInfo" nillable="true" type="q499:DC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q498="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q498:DC_Message" />
+        <xs:element xmlns:q500="http://schemas.datacontract.org/2004/07/DataContracts" minOccurs="0" name="UpdateKafkaInfoResult" nillable="true" type="q500:DC_Message" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4846,7 +4860,7 @@
   <xs:element name="GetPollDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q499="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q499:ArrayOfDC_Stg_Kafka" />
+        <xs:element xmlns:q501="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="GetPollDataResult" nillable="true" type="q501:ArrayOfDC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4860,7 +4874,7 @@
   <xs:element name="SelectKafkaInfoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q500="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="SelectKafkaInfoResult" nillable="true" type="q500:ArrayOfDC_Stg_Kafka" />
+        <xs:element xmlns:q502="http://schemas.datacontract.org/2004/07/DataContracts.STG" minOccurs="0" name="SelectKafkaInfoResult" nillable="true" type="q502:ArrayOfDC_Stg_Kafka" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -4956,7 +4970,7 @@
   <xs:element name="GetMLDataApiTransferStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q501="http://schemas.datacontract.org/2004/07/DataContracts.ML" minOccurs="0" name="GetMLDataApiTransferStatusResult" nillable="true" type="q501:ArrayOfDL_ML_DL_EntityStatus" />
+        <xs:element xmlns:q503="http://schemas.datacontract.org/2004/07/DataContracts.ML" minOccurs="0" name="GetMLDataApiTransferStatusResult" nillable="true" type="q503:ArrayOfDL_ML_DL_EntityStatus" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

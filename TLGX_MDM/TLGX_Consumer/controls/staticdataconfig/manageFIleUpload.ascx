@@ -334,7 +334,8 @@
         <div class="modal-content">
             <div class="modal-header" style="padding: 5px 5px 5px 15px;">
                 <h4 class="modal-title"><b>File Status </b></h4>
-                <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />
+              <%--  <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />--%>
+                <asp:HiddenField  id="hdnFileId" value="" runat="server" ClientIDMode="Static" />
             </div>
             <div class="modal-body">
 
