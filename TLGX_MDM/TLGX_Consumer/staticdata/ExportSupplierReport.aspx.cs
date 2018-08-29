@@ -31,9 +31,9 @@ namespace TLGX_Consumer.staticdata
             ScriptManager.GetCurrent(Page).RegisterPostBackControl(btnExportSuppilerCsv);
         }
 
-        public void getData(Guid Supplier_id, bool isMDM)
+        public void getData(string Priority, Guid Supplier_id, bool isMDM)
         {
-            var res = MapSvc.GetSupplierDataForExport(Supplier_id, isMDM);
+            var res = MapSvc.GetSupplierDataForExport(Priority, Supplier_id, isMDM);
             gvSupplier.DataSource = res;
             gvSupplier.DataBind();
         }
@@ -107,13 +107,15 @@ namespace TLGX_Consumer.staticdata
         protected void btnViewReport_Click(object sender, EventArgs e)
         {
             bool isMdm = chkIsMDMDataOnly.Checked;
+            string AccoPriority = ddlAccoPriority.SelectedValue;
+
             if (ddlSupplierName.SelectedValue == "0")
             {
-                getData(Guid.Empty, isMdm);
+                getData(AccoPriority, Guid.Empty, isMdm);
             }
             else
             {
-                getData(Guid.Parse(ddlSupplierName.SelectedValue), isMdm);
+                getData(AccoPriority, Guid.Parse(ddlSupplierName.SelectedValue), isMdm);
             }
         }
     }
