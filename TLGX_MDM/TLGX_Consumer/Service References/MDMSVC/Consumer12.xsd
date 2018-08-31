@@ -1529,6 +1529,8 @@
       <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Activity_Prices_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AgeFrom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AgeTo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />

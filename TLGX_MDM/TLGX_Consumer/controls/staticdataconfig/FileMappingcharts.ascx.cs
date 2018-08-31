@@ -38,6 +38,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnRestart_Click(object sender, EventArgs e)
         {
+            divFileProgressStatus.InnerText = "";
             getSupplierImportFileId();
             if (supplierimportfile_Id != Guid.Empty)
             {
@@ -56,6 +57,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnResume_Click(object sender, EventArgs e)
         {
+            divFileProgressStatus.InnerText = "";
             getSupplierImportFileId();
             if (supplierimportfile_Id != Guid.Empty)
             {
@@ -83,6 +85,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 request.Entity = res[0].Entity;
                 request.STATUS = res[0].STATUS;
                 request.Mode = res[0].Mode;
+                request.CurrentBatch = res[0].CurrentBatch;
             
                 var result = mappingsvc.UpdateSupplierImportFileDeails(request);
 

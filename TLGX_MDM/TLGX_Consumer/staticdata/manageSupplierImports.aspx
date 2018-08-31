@@ -973,7 +973,8 @@
                     </div>
                 </div>
             </div>
-            <input type="hidden" id="hdnFileId" name="hdnFileId" runat="server" />
+            <%--<input type="hidden" id="hdnFileId" name="hdnFileId" runat="server" />--%>
+            <asp:HiddenField ID="hdnFileId" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
             <%--Export Report--%>
             <div class="container" id="report" runat="server">

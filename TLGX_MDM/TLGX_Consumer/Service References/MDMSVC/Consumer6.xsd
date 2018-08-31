@@ -52,6 +52,8 @@
       <xs:enumeration value="Primary" />
       <xs:enumeration value="Duplicate" />
       <xs:enumeration value="Failed" />
+      <xs:enumeration value="Stopped" />
+      <xs:enumeration value="Paused" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ReadOnlyMessage.StatusCode" nillable="true" type="tns:ReadOnlyMessage.StatusCode" />

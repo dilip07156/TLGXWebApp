@@ -3213,6 +3213,7 @@
   <xs:element name="GetSupplierDataForExport">
     <xs:complexType>
       <xs:sequence>
+        <xs:element minOccurs="0" name="AccoPriority" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="SupplierID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IsMdmDataOnly" nillable="true" type="xs:string" />
       </xs:sequence>

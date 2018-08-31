@@ -4,8 +4,7 @@
     function getChartDataFileMapping(fileid) {
         if (fileid != null && fileid != "") {
             //console.log(fileid);
-            var hdnval = document.getElementById("hdnFileId").value;
-            //alert(hdnval);
+            var hdnval = fileid;//document.getElementById("hdnFileId").value;
             $('#hiddenFileId').val(hdnval);
             
             var colorarray = ["#007F00", "#faebd7"];
@@ -65,33 +64,49 @@
                         if (status == "ERROR" || status == "PROCESSED") {
                             myStopFunction();
                         }
+                        if (status == "ERROR" || status == "PROCESSED") {
+                            $("#fileUploadStatusMode").hide();
+                        }
+                        else {
+                            $("#fileUploadStatusMode").show();
+                        }
 
                         if (status == "PROCESSING") {
                             $("#btnResume").attr("disabled", "disabled");
                             $("#btnRestart").attr("disabled","disabled");
                         }
-                        $("#fileUploadStatusMode").show();
-
+                        
                         if (result.FileDetails[0].IsStopped == true) {
+                            $("#divFileProgressStatus").empty();
                             $("#btnRestart").removeAttr("disabled");
                             $("#btnStop").attr("disabled","disabled");
                             $("#btnPause").attr("disabled","disabled");
-                            $("#btnResume").attr("disabled","disabled");
+                            $("#btnResume").attr("disabled", "disabled");
+                            $("#divFileProgressStatus").show();
+                            $("#divFileProgressStatus").text("File Processing Status is Stopped");
                         }
                         if (result.FileDetails[0].IsRestarted == true) {
+                             $("#divFileProgressStatus").empty();
                              $("#btnResume").attr("disabled", "disabled");
                             $("#btnRestart").attr("disabled", "disabled");
                             $("#btnStop").removeAttr("disabled");
                             $("#btnPause").removeAttr("disabled");
                         }
                         if (result.FileDetails[0].IsPaused == true) {
+                             $("#divFileProgressStatus").empty();
                             $("#btnStop").attr("disabled","disabled");
                             $("#btnRestart").attr("disabled","disabled");
                             $("#btnPause").attr("disabled","disabled");
                             $("#btnResume").removeAttr("disabled");
+                            $("#divFileProgressStatus").text("File Processing Status is Paused");
                         }
                         if (result.FileDetails[0].IsResumed == true) {
-                            
+                            $("#divFileProgressStatus").empty();
+                            $("#btnStop").removeAttr("disabled");
+                            $("#btnRestart").attr("disabled","disabled");
+                            $("#btnPause").removeAttr("disabled");
+                            $("#btnResume").attr("disabled", "disabled");
+                            $("#divFileProgressStatus").text("File Processing Status is Resumed");
                         }
                     }
                     //process charts
@@ -320,7 +335,7 @@
 <asp:UpdatePanel ID="UpdateFileStatusModal" runat="server">
     <ContentTemplate>
         
-        <div class="panel panel-default" id="fileUploadStatusMode" ">  <%--style="display:none;--%>
+        <div class="panel panel-default" id="fileUploadStatusMode" >  <%--style="display:none;"--%>
             <%-- <div class="panel-heading">Actions</div>--%>
             <div class="panel-body" style="padding-bottom: 0px;">
                 <div class="form-group">
@@ -328,7 +343,7 @@
                     <asp:Button ID="btnRestart" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="RESTART" OnClick="btnRestart_Click" />
                     <asp:Button ID="btnPause" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="PAUSE" OnClick="btnPause_Click" />
                     <asp:Button ID="btnResume" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="RESUME" OnClick="btnResume_Click" />
-                    
+                    <div id="divFileProgressStatus" ClientIDMode="Static" runat="server" style="display: none; font-weight:bold"></div>
                 </div>
             </div>
         </div>

@@ -383,6 +383,12 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Failed = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Stopped = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Paused = 9,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -11844,6 +11850,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> BatchNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -11868,6 +11877,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> BatchNumber {
+            get {
+                return this.BatchNumberField;
+            }
+            set {
+                if ((this.BatchNumberField.Equals(value) != true)) {
+                    this.BatchNumberField = value;
+                    this.RaisePropertyChanged("BatchNumber");
+                }
             }
         }
         
@@ -45622,6 +45644,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Activity_Prices_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgeFromField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AgeToField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Create_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -45726,6 +45754,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Activity_Prices_IdField.Equals(value) != true)) {
                     this.Activity_Prices_IdField = value;
                     this.RaisePropertyChanged("Activity_Prices_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AgeFrom {
+            get {
+                return this.AgeFromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgeFromField, value) != true)) {
+                    this.AgeFromField = value;
+                    this.RaisePropertyChanged("AgeFrom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AgeTo {
+            get {
+                return this.AgeToField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AgeToField, value) != true)) {
+                    this.AgeToField = value;
+                    this.RaisePropertyChanged("AgeTo");
                 }
             }
         }
@@ -52655,10 +52709,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetSupplierDataForExport", ReplyAction="http://tempuri.org/IStaticData/GetSupplierDataForExportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetSupplierDataForExportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string SupplierID, string IsMdmDataOnly);
+        TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetSupplierDataForExport", ReplyAction="http://tempuri.org/IStaticData/GetSupplierDataForExportResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string SupplierID, string IsMdmDataOnly);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -55437,12 +55491,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId, ProductCategory, ISMDM);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string SupplierID, string IsMdmDataOnly) {
-            return base.Channel.GetSupplierDataForExport(SupplierID, IsMdmDataOnly);
+        public TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly) {
+            return base.Channel.GetSupplierDataForExport(AccoPriority, SupplierID, IsMdmDataOnly);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string SupplierID, string IsMdmDataOnly) {
-            return base.Channel.GetSupplierDataForExportAsync(SupplierID, IsMdmDataOnly);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly) {
+            return base.Channel.GetSupplierDataForExportAsync(AccoPriority, SupplierID, IsMdmDataOnly);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
