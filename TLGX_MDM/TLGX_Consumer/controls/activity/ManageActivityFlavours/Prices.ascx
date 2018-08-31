@@ -51,6 +51,8 @@
         <asp:BoundField HeaderText="FromPax" DataField="FromPax" />
         <asp:BoundField HeaderText="ToPax" DataField="ToPax" />
         <asp:BoundField HeaderText="Person Type" DataField="PersonType" />
+        <asp:BoundField HeaderText="AgeFrom" DataField="AgeFrom" />
+        <asp:BoundField HeaderText="AgeToe" DataField="AgeTo" />
         <asp:BoundField HeaderText="Price ValidFrom" DataField="Price_ValidFrom" HtmlEncode="False" DataFormatString="{0:d}" />
         <asp:BoundField HeaderText="Price ValidTo" DataField="Price_ValidTo" HtmlEncode="False" DataFormatString="{0:d}" />
     </Columns>

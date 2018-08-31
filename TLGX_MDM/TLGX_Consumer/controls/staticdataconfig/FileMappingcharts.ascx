@@ -207,6 +207,7 @@
                         tr = $('<tr/>');
                         tr.append("<td>" + date + "</td>");
                         tr.append("<td>" + result.VerboseLog[i].Step + "</td>");
+                        tr.append("<td>" + result.VerboseLog[i].BatchNumber + "</td>");
                         tr.append("<td>" + result.VerboseLog[i].Message + "</td>");
                         $("#verboselog table").append(tr);
                         if (i == result.VerboseLog.length - 1) {
@@ -410,6 +411,7 @@
                                         <tr>
                                             <th style="width:110px;">Date</th>
                                             <th style="width:1px;">Step</th>
+                                            <th style="width:1px;">Batch</th>
                                             <th>Message</th>
                                         </tr>
                                     </thead>

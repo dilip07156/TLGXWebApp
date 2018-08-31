@@ -33,7 +33,7 @@
             var filestatus = $("#lblstatus").text();
             getChartDataFileMapping(fileid);
             //strat timer
-            x = setInterval(function () { myTimer() }, 5000);
+            x = setInterval(function () { myTimer() }, 15000);
         }
         );
         $('#moViewDetials').on('hidden.bs.modal', function () {
