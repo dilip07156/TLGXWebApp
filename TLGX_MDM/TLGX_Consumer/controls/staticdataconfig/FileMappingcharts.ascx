@@ -65,10 +65,10 @@
                             myStopFunction();
                         }
                         if (status == "ERROR" || status == "PROCESSED") {
-                            $("#fileUploadStatusMode").hide();
-                        }
-                        else {
-                            $("#fileUploadStatusMode").show();
+                            $("#btnResume").attr("disabled", "disabled");
+                            $("#btnRestart").removeAttr("disabled");
+                            $("#btnStop").attr("disabled", "disabled");
+                            $("#btnPause").attr("disabled", "disabled");
                         }
 
                         if (status == "PROCESSING") {
@@ -93,11 +93,12 @@
                             $("#btnPause").removeAttr("disabled");
                         }
                         if (result.FileDetails[0].IsPaused == true) {
-                             $("#divFileProgressStatus").empty();
+                            $("#divFileProgressStatus").empty();
                             $("#btnStop").attr("disabled","disabled");
                             $("#btnRestart").attr("disabled","disabled");
                             $("#btnPause").attr("disabled","disabled");
                             $("#btnResume").removeAttr("disabled");
+                            $("#divFileProgressStatus").show();
                             $("#divFileProgressStatus").text("File Processing Status is Paused");
                         }
                         if (result.FileDetails[0].IsResumed == true) {
@@ -252,13 +253,6 @@
             });
         }
     }
-
-    //$(document).ready(function () {
-    //    $("#btnStop").attr("disabled", "disabled");
-    //    $("#btnRestart").attr("disabled", "disabled");
-    //    $("#btnPause").attr("disabled", "disabled");
-    //    $("#btnResume").attr("disabled");
-    //});
 </script>
 <script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>
@@ -344,7 +338,7 @@
                     <asp:Button ID="btnRestart" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="RESTART" OnClick="btnRestart_Click" />
                     <asp:Button ID="btnPause" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="PAUSE" OnClick="btnPause_Click" />
                     <asp:Button ID="btnResume" ClientIDMode="Static" runat="server" CssClass="btn btn-primary btn-sm" Text="RESUME" OnClick="btnResume_Click" />
-                    <div id="divFileProgressStatus" ClientIDMode="Static" runat="server" style="display: none; font-weight:bold"></div>
+                    <div id="divFileProgressStatus" ClientIDMode="Static" runat="server" style="display: none; font-weight:bold; color:red;"></div>
                 </div>
             </div>
         </div>

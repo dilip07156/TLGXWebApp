@@ -25,20 +25,31 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 supplierimportfile_Id = Guid.Parse(hiddenFileId.Value);
             }
         }
-        
+
 
         protected void btnStop_Click(object sender, EventArgs e)
         {
+            divFileProgressStatus.InnerText = "";
+            divFileProgressStatus.Visible = true;
+            divFileProgressStatus.InnerText = "File Processing Status is Stopped";
+            btnRestart.Enabled = true;
+            btnStop.Enabled = false;
+            btnResume.Enabled = false;
+            btnPause.Enabled = false;
             getSupplierImportFileId();
-            if (supplierimportfile_Id!=Guid.Empty)
+            if (supplierimportfile_Id != Guid.Empty)
             {
-                updateData(new DC_SupplierImportFileDetails {SupplierImportFile_Id= supplierimportfile_Id, IsStopped = true, IsRestarted = null, IsPaused = null, IsResumed = null });
+                updateData(new DC_SupplierImportFileDetails { SupplierImportFile_Id = supplierimportfile_Id, IsStopped = true, IsRestarted = null, IsPaused = null, IsResumed = null });
             }
         }
 
         protected void btnRestart_Click(object sender, EventArgs e)
         {
             divFileProgressStatus.InnerText = "";
+            btnStop.Enabled = true;
+            btnPause.Enabled = true;
+            btnRestart.Enabled = false;
+            btnResume.Enabled = false;
             getSupplierImportFileId();
             if (supplierimportfile_Id != Guid.Empty)
             {
@@ -48,6 +59,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnPause_Click(object sender, EventArgs e)
         {
+            divFileProgressStatus.InnerText = "";
+            divFileProgressStatus.Visible = true;
+            divFileProgressStatus.InnerText = "File Processing Status is Paused";
+            btnResume.Enabled = true;
+            btnStop.Enabled = false;
+            btnRestart.Enabled = false;
+            btnPause.Enabled = false;
             getSupplierImportFileId();
             if (supplierimportfile_Id != Guid.Empty)
             {
@@ -57,6 +75,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         protected void btnResume_Click(object sender, EventArgs e)
         {
+            divFileProgressStatus.InnerText = "";
+            btnResume.Enabled = false;
+            btnPause.Enabled = true;
+            btnStop.Enabled = true;
+            btnRestart.Enabled = false;
+
             divFileProgressStatus.InnerText = "";
             getSupplierImportFileId();
             if (supplierimportfile_Id != Guid.Empty)
