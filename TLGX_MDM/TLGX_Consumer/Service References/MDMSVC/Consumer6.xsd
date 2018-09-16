@@ -807,6 +807,7 @@
   <xs:complexType name="DC_Accomodation_Category_DDL_WithExtraDetails">
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Value_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="BedType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsSomking" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MatchingScore" nillable="true" type="xs:double" />
@@ -814,7 +815,11 @@
       <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomSize" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomView" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemEditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SystemMappingStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TLGXAccoRoomId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserEditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserMappingStatus" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accomodation_Category_DDL_WithExtraDetails" nillable="true" type="tns:DC_Accomodation_Category_DDL_WithExtraDetails" />

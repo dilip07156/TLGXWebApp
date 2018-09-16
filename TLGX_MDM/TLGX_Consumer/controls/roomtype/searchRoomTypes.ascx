@@ -217,6 +217,7 @@
                             <div class="floatingButton">
                                 <asp:UpdatePanel runat="server" ID="upnlbtns">
                                     <ContentTemplate>
+                                        <asp:Button ID="btnAddSelected" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');" OnClick="btnAddSelected_Click" Visible="false" runat="server" CssClass="btn btn-primary btn-sm" Text="Add Selected" />
                                         <asp:Button ID="btnMapSelectedBySupplier" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');" OnClick="btnMapSelectedBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map Selected" />
                                         <asp:Button ID="btnMapAllBySupplier" OnClientClick="javascript:return confirm('Are you really sure you want to do this?');" OnClick="btnMapAllBySupplier_Click" runat="server" Visible="false" CssClass="btn btn-primary btn-sm" Text="Map All" />
 
@@ -304,26 +305,8 @@
                                                     </div>--%>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="TLGX Room Info (Room Category)" ItemStyle-Width="25%">
-                                                        <ItemTemplate>
-                                                            <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server">
-                                                                <%--onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);"--%>
-                                                            </asp:DropDownList>
-                                                            <div class="dropdown" runat="server" id="ddlSuggestions">
-                                                                <button class="btn dropdown-toggle roomtype" style="width: inherit;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown" onclick="BindRTDetails(this);">
-                                                                    -Select- 
-                                                            <span class="caret paddingleft"></span>
-                                                                </button>
-                                                                <%--<div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo">
-                                                                    <div id="loading" style="padding: 5px;">
-                                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
-                                                                    </div>
-                                                                </div>--%>
-                                                            </div>
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
 
-                                                    <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
+                                                     <asp:TemplateField HeaderText="Attribute Flags" ItemStyle-Width="7%">
                                                         <ItemTemplate>
                                                             <asp:DataList ID="lstAlias" ClientIDMode="Static" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
                                                                 RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
@@ -333,8 +316,33 @@
                                                             </asp:DataList>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Status" ItemStyle-Width="12%">
+
+                                                    <asp:TemplateField HeaderText="TLGX Room Info (Room Category)" ItemStyle-Width="25%">
                                                         <ItemTemplate>
+                                                            <asp:DropDownList ID="ddlSuggestedRoomInGridBySupplier" CssClass="form-control dropdownforBind " runat="server">
+                                                                <%--onfocus="fillDropDown(this,true);" onclick="fillDropDown(this,true);" onchange="RemoveExtra(this,false);"--%>
+                                                            </asp:DropDownList>
+                                                            
+                                                            <div class="dropdown" runat="server" id="ddlSuggestions">
+                                                                <button class="btn btn-primary" OnClientClick="Static" type="button" runat="server" id="btnSuggestion" Text="Change" onclick="BindRTDetails(this);">Change</button><br />
+                                                                
+                                                                <div class="btn dropdown-toggle roomtype" style="width: inherit;" type="button" runat="server" id="btnSuggestionis" data-toggle="dropdown">
+                                                                    -- 
+                                                                    <span class="paddingleft"></span>
+                                                                </div>
+                                                                <%--<div class="dropdown-menu ulRoomInfoStyle" id="ulRoomInfo">
+                                                                    <div id="loading" style="padding: 5px;">
+                                                                        <img alt="Loading..." src="../../../images/ajax-loader.gif" />
+                                                                    </div>
+                                                                </div>--%>
+                                                                
+                                                            </div>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
+                                                    <asp:TemplateField HeaderText="Status" ItemStyle-Width="12%" Visible="false">
+                                                        <ItemTemplate>
+                                                            <asp:Label runat="server" ID="lblStatus" ClientIDMode="Static" Text='<%# Eval("MappingStatus") %>'></asp:Label>
                                                             <asp:DropDownList ID="ddlMappingStatusInGridBySupplier" CssClass="form-control MappingStatus" runat="server">
                                                                 <asp:ListItem Value="0">-Select-</asp:ListItem>
                                                                 <asp:ListItem Value="ADD">ADD</asp:ListItem>
@@ -346,10 +354,11 @@
 
                                                             </asp:DropDownList>
                                                         </ItemTemplate>
+
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField ShowHeader="false" ItemStyle-Width="5%">
+                                                    <asp:TemplateField HeaderText="Add" ItemStyle-Width="5%">
                                                         <ItemTemplate>
-                                                            <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" />
+                                                            <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" disabled/>
                                                             <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
                                                             <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
                                                             <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />

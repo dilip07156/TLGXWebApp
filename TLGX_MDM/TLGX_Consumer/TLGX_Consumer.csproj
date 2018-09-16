@@ -1072,6 +1072,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Report_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\fillAttributeDDL.ashx" />
+    <Content Include="Service\AddUpdateMappingDetails.ashx" />
+    <Content Include="Service\TTFUSelectedBySupplier.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2680,6 +2683,9 @@
     <Compile Include="Service\ActivityNameAutoComplete.ashx.cs">
       <DependentUpon>ActivityNameAutoComplete.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\AddUpdateMappingDetails.ashx.cs">
+      <DependentUpon>AddUpdateMappingDetails.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>
     </Compile>
@@ -2688,6 +2694,9 @@
     </Compile>
     <Compile Include="Service\CityAutoComplete.ashx.cs">
       <DependentUpon>CityAutoComplete.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\fillAttributeDDL.ashx.cs">
+      <DependentUpon>fillAttributeDDL.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion_Supervised_Semantic.ashx</DependentUpon>
@@ -2730,6 +2739,9 @@
     </Compile>
     <Compile Include="Service\ToFillDDL.ashx.cs">
       <DependentUpon>ToFillDDL.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\TTFUSelectedBySupplier.ashx.cs">
+      <DependentUpon>TTFUSelectedBySupplier.ashx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

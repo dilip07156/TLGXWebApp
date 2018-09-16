@@ -9,7 +9,7 @@ function pageLoad(sender, args) {
         });
 }
 $(document).ready(function () {
-    if ($('#tblTLGXRoomInfo').length > 0) 
+    if ($('#tblTLGXRoomInfo').length > 0)
         $('#tblTLGXRoomInfo').DataTable({
             "bPaginate": true,
             "bProcessing": true
@@ -53,12 +53,12 @@ function mySelectedID(selectedcheckboxval) {
     // var roomName = selectedcheckboxval.parentElement.parentElement.firstChild.textContent;
     var tr = selectedcheckboxval.parentElement.parentElement.parentElement.getElementsByTagName("tr");
     for (var i = 0; i < tr.length; i++) {
-        tr[i].childNodes[0].firstChild.checked = false;
+        //tr[i].childNodes[0].firstChild.checked = false;
         tr[i].className = "row";
     }
-    selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
-    selectedcheckboxval.parentElement.parentElement.className += " backgroundRowColor";
-    selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
+    //selectedcheckboxval.parentElement.parentElement.className += " alert alert-success";
+    //selectedcheckboxval.parentElement.parentElement.className += " backgroundRowColor";
+    //selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
     var hdnAccommodation_SupplierRoomInfo_IdPopUp = $("#hdnAccommodation_SupplierRoomInfo_IdPopUp");
 
     var parentTr = (document.getElementById("MainContent_searchRoomTypes_grdRoomTypeMappingSearchResultsBySupplier")).getElementsByTagName("tr");
@@ -174,15 +174,14 @@ function SelectedRow(element) {
             row.find('.dropdownforBind').focus();
 }
 
-function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
+function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id, acco_id, acco_SupplierRoomTypeMapping_Id ) {
     var value = JSON.stringify(result);
     //var hdnAccommodation_RoomInfo_IdPopUp = $("#hdnAccommodation_RoomInfo_IdPopUp");
-
     //hdnAccommodation_RoomInfo_IdPopUp.val(acco_roomType_id);
-    var listItems = '';
+    $("#hdnAcco_SuppRoomTypeMapping_Id").val(acco_SupplierRoomTypeMapping_Id);
     if (result != null) {
-        var def = '<table id="tblTLGXRoomInfo" class="table table-responsive table-hover table-striped table-bordered" style="border-collapse:collapse;" cellspacing="0" border="1" rules="all"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">Room Name</th> <th class="col-md-2">Room Category</th>';
-        def = def + '  <th class="col-md-1">Bed </th> <th class="col-md-2">View </th> <th class="col-md-1"> Size</th>  <th class="col-md-1">Smk</th><th class="col-md-1">Score</th><th style="display: none;"></th></tr></thead>';
+        var def = '<table id="tblTLGXRoomInfo" runat="server" class="table table-responsive table-hover table-striped table-bordered" style="border-collapse:collapse;" cellspacing="0" border="1" rules="all"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn" style="display: none;"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">MDM Room Name</th> <th class="col-md-2">MDM Room Category</th>';
+        def = def + '  <th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -190,19 +189,49 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
         var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
         var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
         var td1 = '<td class="col-md-1">';
-        var tdCheckbox = '<td class="col-md-1 CheckboxColumn">';
+        var tdCheckbox = '<td class="col-md-1 CheckboxColumn" style="display: none;">';
         //var td21 = '<td class="col-md-2">';
 
 
+        var ddlStatusValues = null;
+
+        $.ajax({
+            url: '../../../Service/fillAttributeDDL.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            async: false,
+            data: {
+                'OptionFor': 'ProductSupplierMapping',
+                'Attribute_Name': 'MappingStatus'
+            },
+            responseType: "json",
+            success: function (resultStatusValues) {
+
+                ddlStatusValues = resultStatusValues;
+            },
+            failure: function () {
+            }
+        });
+
+
         var lic = ' <td style="display: none;" id="tdRoomInfoId">';
+        var lic1 = ' <td style="display: none;" id="tdacco_SupplierRoomTypeMapping_Id">';
+        var lic2 = '<td style="display: none;" id="acco_id">';
+        var lic3 = ' <td style="display: none;" id="tdacco_SupplierRoomTypeMapping_Value_Id">';
+        var lic4 = ' <td style="display: none;" id="tdCurrentMaapingStatus">';
+
         var licClose = '</table>';
         var tdc = '</td>';
-
+        var selected = '';
+        var listItems = '';
+        var hdnAccommodation_RoomInfo_Id = '<input type="hidden" id="custId" name="custId" value="">';
+        var hiddentd = '<td style="visibility:hidden" class="divOne">id2</td>';
+        var currentMappingStatus = '';
         //Find index
         for (var i = 0; i < result.length; i++) {
             if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
-                li = li + '<tr class="row alert alert-success backgroundRowColor" >';
-                li = li + tdCheckbox + licheckboxWithChecked + tdc;
+                li = li + '<tr class="row" >';
+                li = li + tdCheckbox + licheckbox + tdc;
                 li = li + td1 + result[i].TLGXAccoRoomId + tdc;
                 li = li + td2 + result[i].RoomName + tdc;
                 li = li + td2 + result[i].RoomCategory + tdc;
@@ -211,10 +240,40 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
                 li = li + td2 + result[i].RoomSize + tdc;
                 li = li + td1 + result[i].IsSomking + tdc;
                 li = li + td1 + (result[i].MatchingScore == null ? '' : result[i].MatchingScore) + tdc;
-                li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
+                listItems = '';
+                
+                if (Date.parse(result[i].SystemEditDate) > Date.parse(result[i].UserEditDate)) {
+                    currentMappingStatus = result[i].SystemMappingStatus;
+                }
+                else {
+                    currentMappingStatus = result[i].UserMappingStatus;
+                }
+                for (var j = 0; j < ddlStatusValues.length; j++) {
+                    var ddlStatusDetalis = '<select id= ddlAttributeValues_' + result[i].Accommodation_RoomInfo_Id + '>';
+                    if (currentMappingStatus == null && ddlStatusValues[j].AttributeValue == "UNMAPPED") {
+                        listItems += "<option selected='selected' value='" + ddlStatusValues[j].MasterAttributeValue_Id + "'>" + ddlStatusValues[j].AttributeValue + "</option>";
+                    }
+                    else if (currentMappingStatus == ddlStatusValues[j].AttributeValue) {
+                        listItems += "<option selected='selected' value='" + ddlStatusValues[j].MasterAttributeValue_Id + "'>" + ddlStatusValues[j].AttributeValue + "</option>";
+                    }
+                    else {
+                        listItems += "<option value='" + ddlStatusValues[j].MasterAttributeValue_Id + "'>" + ddlStatusValues[j].AttributeValue + "</option>";
+                    }
+                }
+                li = li + td1 + ddlStatusDetalis + listItems + '</select>' + tdc;
+                li = li + lic1 + acco_SupplierRoomTypeMapping_Id + tdc;
+                li = li + lic2 + acco_id + tdc;
+                li = li + lic3 + result[i].Accommodation_SupplierRoomTypeMapping_Value_Id + tdc;
+                li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc;
+
+                if (currentMappingStatus == null) {
+                    currentMappingStatus = "UNMAPPED";
+                }
+                li = li + lic4 + result[i].MappingStatus + tdc + "</tr>";
             }
         }
-
+        listItems = '';
+        currentMappingStatus = '';
         for (var i = 0; i < result.length; i++) {
             if (acco_roomType_id != null && acco_roomType_id == result[i].Accommodation_RoomInfo_Id) {
                 continue;
@@ -234,7 +293,38 @@ function BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id) {
             li = li + td2 + result[i].RoomSize + tdc;
             li = li + td1 + result[i].IsSomking + tdc;
             li = li + td1 + (result[i].MatchingScore == null ? '' : result[i].MatchingScore) + tdc;
-            li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc + "</tr>";
+            listItems = '';
+            
+            if (Date.parse(result[i].SystemEditDate) > Date.parse(result[i].UserEditDate)) {
+                currentMappingStatus = result[i].SystemMappingStatus; 
+            }
+            else {
+                currentMappingStatus = result[i].UserMappingStatus;
+            }
+
+            for (var j = 0; j < ddlStatusValues.length; j++) {
+                var ddlStatusDetalis = '<select id= ddlAttributeValues_' + result[i].Accommodation_RoomInfo_Id + '>';
+                if (currentMappingStatus == null && ddlStatusValues[j].AttributeValue == "UNMAPPED") {
+                    listItems += "<option selected='selected' value='" + ddlStatusValues[j].MasterAttributeValue_Id + "'>" + ddlStatusValues[j].AttributeValue + "</option>";
+                }
+                else if (currentMappingStatus == ddlStatusValues[j].AttributeValue) {
+                    listItems += "<option selected='selected' value='" + ddlStatusValues[j].MasterAttributeValue_Id + "'>" + ddlStatusValues[j].AttributeValue + "</option>";
+                }
+                else {
+                    listItems += "<option value='" + ddlStatusValues[j].MasterAttributeValue_Id + "'>" + ddlStatusValues[j].AttributeValue + "</option>";
+                }
+            }
+            
+            li = li + td1 + ddlStatusDetalis + listItems + '</select>' + tdc;
+            li = li + lic1 + acco_SupplierRoomTypeMapping_Id + tdc;
+            li = li + lic2 + acco_id + tdc;
+            li = li + lic3 + result[i].Accommodation_SupplierRoomTypeMapping_Value_Id + tdc;
+            li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc;
+            if (currentMappingStatus == null) {
+                currentMappingStatus = "UNMAPPED";
+            }
+            
+            li = li + lic4 + currentMappingStatus + tdc + "</tr>";
         }
         li = li + licClose;
         hideLoadingImage();
@@ -268,6 +358,8 @@ function BindRTDetails(controlval) {
         }
     }
     tableExtractedAttribute = tableExtractedAttribute + "</tr></tbody></table></tr></tbody></table>";
+    tableExtractedAttribute = tableExtractedAttribute + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr><td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td> <td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td><td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td></tr></table>";
+    tableExtractedAttribute = tableExtractedAttribute + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr><td><div id='responseMessage' style='display: none;' class=''></div></td></tr></table>";
     $('#lblForTLGXRoomInfoName').text(lblSupplierRoomTypeName);
     $('#divAttribute').html(tableExtractedAttribute);
 
@@ -280,7 +372,7 @@ function BindRTDetails(controlval) {
     var ulRoomInfo = $('#ulRoomInfo');
     var acco_roomType_id = $(controlval).parent().parent().parent().find('.hdnAccommodation_RoomInfo_Id').val();
     var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
-
+    //alert(acco_id + "====" + acco_roomType_id + "====" + acco_SupplierRoomTypeMapping_Id);
 
     //Getting Row identity id and set into the model hidden variable
     var hdnAccommodation_SupplierRoomInfo_IdPopUp = $("#hdnAccommodation_SupplierRoomInfo_IdPopUp");
@@ -302,7 +394,7 @@ function BindRTDetails(controlval) {
             },
             responseType: "json",
             success: function (result) {
-                BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id, controlval);
+                BindRTDetailsInTable(result, ulRoomInfo, acco_roomType_id, acco_id, acco_SupplierRoomTypeMapping_Id );
 
             },
             failure: function () {
@@ -710,7 +802,106 @@ function RemoveExtra(record, onClick) {
     }
 }
 
+function submitSave() {
+    var r = confirm("Are you really sure you want to do this ?");
+    if (r == true) {
+        showLoadingImage();
+        var values = new Array();
+        //var checkcount = $('#tblTLGXRoomInfo #myCheck:checked').length;
+        var table = $("#tblTLGXRoomInfo");
+        jsonObj = [];
+        var emptyGuid = '00000000-0000-0000-0000-000000000000';
+       
+        table.find('tr').each(function (i) {
+            var row = $(this);
+           // if (row.find('input[type="checkbox"]').is(':checked')) {
+           
+                var $tds = $(this).find('td');
+            item = {};
+            item.Accommodation_RoomInfo_Id = $tds.eq(13).text();
+            var ddlMapingStatusData = $('#ddlAttributeValues_' + item.Accommodation_RoomInfo_Id + ' :selected').text();
+            if (ddlMapingStatusData != $tds.eq(14).text()) {
+                item.id = $tds.eq(1).text();
+                item.RoomCategory = $tds.eq(3).text();
+                item.MatchingScore = $tds.eq(8).text();
+                item.Accommodation_RoomInfo_Id = $tds.eq(13).text();
+                item.UserMappingStatus = $('#ddlAttributeValues_' + item.Accommodation_RoomInfo_Id + ' :selected').text();
+                item.Accommodation_SupplierRoomTypeMapping_Id = $tds.eq(10).text();
+                item.acco_id = $tds.eq(11).text();
+                item.Accommodation_SupplierRoomTypeMapping_Value_Id = $tds.eq(12).text();
+                if (item.Accommodation_SupplierRoomTypeMapping_Value_Id == 'null')
+                    item.Accommodation_SupplierRoomTypeMapping_Value_Id = emptyGuid;
 
+
+                jsonObj.push(item);
+            }
+          //  }
+                //option: selected").val();
+
+            //}
+        });
+
+        console.log(jsonObj);
+        $.ajax({
+            type: 'POST',
+            url: '../../../Service/AddUpdateMappingDetails.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(jsonObj),
+            responseType: "json",
+            success: function (result) {
+                $("#btnSuggestion").click();
+                hideLoadingImage();
+                $("#responseMessage").css("display", "block").addClass("alert alert-success").html(result.StatusMessage).delay(2000).fadeOut();
+            },
+            failure: function () {
+                hideLoadingImage();
+                $("#responseMessage").css("display", "block").addClass("alert alert-warning").html(result.StatusMessage).delay(2000).fadeOut();
+            }
+        });
+    }
+    else {
+        return false;
+    }
+
+}
+
+function submitTTFU() {
+    var r = confirm("Are you really sure you want to do this ?");
+    if (r == true) {
+        showLoadingImage();
+        var values = new Array();
+
+        jsonObj = [];
+        item = {};
+        item.Acco_RoomTypeMap_Id = $("#hdnAcco_SuppRoomTypeMapping_Id").val();
+        jsonObj.push(item);
+
+        console.log(jsonObj);
+        $.ajax({
+            type: 'POST',
+            url: '../../../Service/TTFUSelectedBySupplier.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(jsonObj),
+            responseType: "json",
+            success: function (result) {
+                //$("#btnSuggestion").click();
+                hideLoadingImage();
+                $("#responseMessage").css("display", "block").addClass("alert alert-success").html("Mapping Updated Successfully").delay(2000).fadeOut();
+            },
+            failure: function () {
+                hideLoadingImage();
+                $("#responseMessage").css("display", "block").addClass("alert alert-warning").html("Error while updating mapping").delay(2000).fadeOut();
+            }
+        });
+
+    }
+        else {
+            return false;
+        }
+    
+}
 $("#modalOnlineSuggestion").on('shown.bs.modal', function (e) {
     alert("I want this to appear after the modal has opened!");
 });

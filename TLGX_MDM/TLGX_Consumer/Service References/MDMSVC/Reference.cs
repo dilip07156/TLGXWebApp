@@ -8137,6 +8137,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMapping[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMapping))]
@@ -8825,6 +8827,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMapping[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMapping))]
@@ -14526,6 +14530,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Accommodation_RoomInfo_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_SupplierRoomTypeMapping_Value_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string BedTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14547,7 +14554,19 @@ namespace TLGX_Consumer.MDMSVC {
         private string RoomViewField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> SystemEditDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemMappingStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TLGXAccoRoomIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> UserEditDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserMappingStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -14568,6 +14587,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
                     this.Accommodation_RoomInfo_IdField = value;
                     this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_SupplierRoomTypeMapping_Value_Id {
+            get {
+                return this.Accommodation_SupplierRoomTypeMapping_Value_IdField;
+            }
+            set {
+                if ((this.Accommodation_SupplierRoomTypeMapping_Value_IdField.Equals(value) != true)) {
+                    this.Accommodation_SupplierRoomTypeMapping_Value_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_SupplierRoomTypeMapping_Value_Id");
                 }
             }
         }
@@ -14664,6 +14696,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> SystemEditDate {
+            get {
+                return this.SystemEditDateField;
+            }
+            set {
+                if ((this.SystemEditDateField.Equals(value) != true)) {
+                    this.SystemEditDateField = value;
+                    this.RaisePropertyChanged("SystemEditDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemMappingStatus {
+            get {
+                return this.SystemMappingStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemMappingStatusField, value) != true)) {
+                    this.SystemMappingStatusField = value;
+                    this.RaisePropertyChanged("SystemMappingStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string TLGXAccoRoomId {
             get {
                 return this.TLGXAccoRoomIdField;
@@ -14672,6 +14730,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.TLGXAccoRoomIdField, value) != true)) {
                     this.TLGXAccoRoomIdField = value;
                     this.RaisePropertyChanged("TLGXAccoRoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> UserEditDate {
+            get {
+                return this.UserEditDateField;
+            }
+            set {
+                if ((this.UserEditDateField.Equals(value) != true)) {
+                    this.UserEditDateField = value;
+                    this.RaisePropertyChanged("UserEditDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserMappingStatus {
+            get {
+                return this.UserMappingStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserMappingStatusField, value) != true)) {
+                    this.UserMappingStatusField = value;
+                    this.RaisePropertyChanged("UserMappingStatus");
                 }
             }
         }
@@ -21130,6 +21214,211 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.TotalBatchField.Equals(value) != true)) {
                     this.TotalBatchField = value;
                     this.RaisePropertyChanged("TotalBatch");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_SupplierRoomTypeMapping_Values", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accommodation_SupplierRoomTypeMapping_Values : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_RoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_SupplierRoomTypeMapping_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_SupplierRoomTypeMapping_Value_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Created_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_SystemUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MatchingScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemMappingStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserMappingStatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_RoomInfo_Id {
+            get {
+                return this.Accommodation_RoomInfo_IdField;
+            }
+            set {
+                if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
+                    this.Accommodation_RoomInfo_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_SupplierRoomTypeMapping_Id {
+            get {
+                return this.Accommodation_SupplierRoomTypeMapping_IdField;
+            }
+            set {
+                if ((this.Accommodation_SupplierRoomTypeMapping_IdField.Equals(value) != true)) {
+                    this.Accommodation_SupplierRoomTypeMapping_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_SupplierRoomTypeMapping_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_SupplierRoomTypeMapping_Value_Id {
+            get {
+                return this.Accommodation_SupplierRoomTypeMapping_Value_IdField;
+            }
+            set {
+                if ((this.Accommodation_SupplierRoomTypeMapping_Value_IdField.Equals(value) != true)) {
+                    this.Accommodation_SupplierRoomTypeMapping_Value_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_SupplierRoomTypeMapping_Value_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Created_User {
+            get {
+                return this.Created_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Created_UserField, value) != true)) {
+                    this.Created_UserField = value;
+                    this.RaisePropertyChanged("Created_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_SystemUser {
+            get {
+                return this.Edit_SystemUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_SystemUserField, value) != true)) {
+                    this.Edit_SystemUserField = value;
+                    this.RaisePropertyChanged("Edit_SystemUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MatchingScore {
+            get {
+                return this.MatchingScoreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MatchingScoreField, value) != true)) {
+                    this.MatchingScoreField = value;
+                    this.RaisePropertyChanged("MatchingScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCategory {
+            get {
+                return this.RoomCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCategoryField, value) != true)) {
+                    this.RoomCategoryField = value;
+                    this.RaisePropertyChanged("RoomCategory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemMappingStatus {
+            get {
+                return this.SystemMappingStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemMappingStatusField, value) != true)) {
+                    this.SystemMappingStatusField = value;
+                    this.RaisePropertyChanged("SystemMappingStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserMappingStatus {
+            get {
+                return this.UserMappingStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserMappingStatusField, value) != true)) {
+                    this.UserMappingStatusField = value;
+                    this.RaisePropertyChanged("UserMappingStatus");
                 }
             }
         }
@@ -52403,6 +52692,16 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_TTFUALL", ReplyAction="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_TTFUALLResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AccomodationSupplierRoomTypeMapping_TTFUALLAsync(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMappingValues", ReplyAction="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMappingValuesRespon" +
+            "se")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMappingValuesDC_Err" +
+            "orStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message UpdateAccomodationSupplierRoomTypeMappingValues(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[] obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMappingValues", ReplyAction="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMappingValuesRespon" +
+            "se")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMappingValuesAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[] obj);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetCountryMapping", ReplyAction="http://tempuri.org/IMapping/GetCountryMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetCountryMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ);
@@ -55153,6 +55452,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AccomodationSupplierRoomTypeMapping_TTFUALLAsync(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids) {
             return base.Channel.AccomodationSupplierRoomTypeMapping_TTFUALLAsync(Acco_RoomTypeMap_Ids);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message UpdateAccomodationSupplierRoomTypeMappingValues(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[] obj) {
+            return base.Channel.UpdateAccomodationSupplierRoomTypeMappingValues(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMappingValuesAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[] obj) {
+            return base.Channel.UpdateAccomodationSupplierRoomTypeMappingValuesAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ) {

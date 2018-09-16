@@ -59,7 +59,6 @@
                 //e.preventDefault();
                 var txtStatus = $(rowElement.cells[13]).text().trim();
                 if (txtStatus.includes("REVIEW")) {
-                    debugger;
                     var isChkChecked = $(rowElement.cells[15]).find('input');
                     if (isChkChecked.is(':checked')) {
                         $(rowElement.cells[15]).find('input').attr("checked", false);

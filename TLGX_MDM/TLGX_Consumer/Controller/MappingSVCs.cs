@@ -420,6 +420,13 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_UpdateTTFU"], RQParams, typeof(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+        public DC_Message UpdateAccomodationSupplierRoomTypeMapping(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateAccomodationSupplierRoomTypeMapping"], RQParams, typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
         #endregion
         #region hotel report
         public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)
