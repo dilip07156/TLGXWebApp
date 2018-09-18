@@ -1075,6 +1075,7 @@
     <Content Include="Service\fillAttributeDDL.ashx" />
     <Content Include="Service\AddUpdateMappingDetails.ashx" />
     <Content Include="Service\TTFUSelectedBySupplier.ashx" />
+    <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2742,6 +2743,9 @@
     </Compile>
     <Compile Include="Service\TTFUSelectedBySupplier.ashx.cs">
       <DependentUpon>TTFUSelectedBySupplier.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx.cs">
+      <DependentUpon>UpdateSupplierRoomTypeTrainingFlag.ashx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

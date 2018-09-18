@@ -324,7 +324,18 @@ function ddlAttributeValueChange(ddlAttributeValue) {
 }
 
 function BindRTDetails(controlval) {
+
     var lblSupplierRoomTypeName = $(controlval).parent().parent().find('#lblSupplierRoomTypeName').text();
+    $('#lblForTLGXRoomInfoName').text(lblSupplierRoomTypeName);
+
+    var lblIsNotTraining = $(controlval).parent().parent().find('#lblIsNotTraining').text();
+    if (lblIsNotTraining == "True") {
+        lblIsNotTraining = "checked"
+    }
+    else {
+        lblIsNotTraining = "";
+    }
+
     //Getting Extracted Attribute
     var ExtractedAttribute = "";
     var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-responsive table-hover table-striped table-bordered'><tbody><tr>";
@@ -346,10 +357,18 @@ function BindRTDetails(controlval) {
     }
 
     tableExtractedAttribute = tableExtractedAttribute + "</tr></tbody></table></tr></tbody></table>";
-    tableExtractedAttribute = tableExtractedAttribute + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr><td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td> <td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td><td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td><td><input type='hidden' id='hdnAcco_Id'  value='' /></td></tr></table>";
-    tableExtractedAttribute = tableExtractedAttribute + "</br><div id='responseMessage' style='display: none;' class=''></div>";
-    $('#lblForTLGXRoomInfoName').text(lblSupplierRoomTypeName);
+
+    var ActionButtons = '';
+    ActionButtons = ActionButtons + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr>" // ";
+    ActionButtons = ActionButtons + "<td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td>";
+    ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td>";
+    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining + " onchange='UpdateTrainingFlag(this)'>Don't Submit as Training Data</td>";
+    ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td>";
+    ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_Id'  value='' /></td>";
+    ActionButtons = ActionButtons + "</tr></tbody></table>";
+
     $('#divAttribute').html(tableExtractedAttribute);
+    $('#divActionButtons').html(ActionButtons);
 
     $("#modalTLGXRoomInfo").modal('show');
     showLoadingImage();
@@ -387,6 +406,33 @@ function BindRTDetails(controlval) {
         });
     }
     //}
+}
+
+function UpdateTrainingFlag(check) {
+    debugger;
+    showLoadingImage();
+    var jsonObj = [];
+    var item = {};
+    item.IsNotTraining = check.checked;
+    item.Accommodation_SupplierRoomTypeMapping_Id = $("#hdnAcco_SuppRoomTypeMapping_Id").val();
+    jsonObj.push(item);
+
+    $.ajax({
+        type: 'POST',
+        url: '../../../Service/UpdateSupplierRoomTypeTrainingFlag.ashx',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        data: JSON.stringify(jsonObj),
+        responseType: "json",
+        success: function (result) {
+            hideLoadingImage();
+            $("#responseMessage").css("display", "block").addClass("alert alert-success").html(result.StatusMessage).delay(2000).fadeOut();
+        },
+        failure: function () {
+            hideLoadingImage();
+            $("#responseMessage").css("display", "block").addClass("alert alert-danger").html("Training Flag not updated").delay(2000).fadeOut();
+        }
+    });
 }
 
 function BindResponse(result) {
@@ -492,12 +538,15 @@ function CheckSuggestionOnline(controlval) {
 
 //ML Lazy loding
 //ML Syntactic
+
 function showLoadingImageOnlineSyntactic() {
     $('#loadingOnlineSyntactic').show();
 }
+
 function hideLoadingImageOnlineSyntactic() {
     $('#loadingOnlineSyntactic').hide();
 }
+
 function BindResponseSyntactic(resultarray) {
     var value = JSON.stringify(result);
     var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
@@ -533,6 +582,7 @@ function BindResponseSyntactic(resultarray) {
         }
     }
 }
+
 function CheckSuggestionOnlineSyntactic(controlval) {
     showLoadingImageOnlineSyntactic();
     var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
@@ -562,12 +612,15 @@ function CheckSuggestionOnlineSyntactic(controlval) {
 //END ML Syntactic
 
 //ML UnS Semantic
+
 function showLoadingImageOnlineSemanticUnSup() {
     $('#loadingOnlineSemanticUnSup').show();
 }
+
 function hideLoadingImageOnlineSemanticUnSup() {
     $('#loadingOnlineSemanticUnSup').hide();
 }
+
 function BindResponseSemanticUnSup(resultarray) {
     var value = JSON.stringify(result);
     var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
@@ -603,6 +656,7 @@ function BindResponseSemanticUnSup(resultarray) {
         }
     }
 }
+
 function CheckSuggestionOnlineSemanticUnSup(controlval) {
     showLoadingImageOnlineSemanticUnSup();
     var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
@@ -628,15 +682,19 @@ function CheckSuggestionOnlineSemanticUnSup(controlval) {
     }
 
 }
+
 //End ML UsS Semantic
 
 //ML Sup Semantic
+
 function showLoadingImageOnlineSemanticSup() {
     $('#loadingOnlineSemanticSup').show();
 }
+
 function hideLoadingImageOnlineSemanticSup() {
     $('#loadingOnlineSemanticSup').hide();
 }
+
 function BindResponseSemanticSup(resultarray) {
     var value = JSON.stringify(result);
     var table = "<table class='table table-responsive table-hover table-striped table-bordered'>";
@@ -672,6 +730,7 @@ function BindResponseSemanticSup(resultarray) {
         }
     }
 }
+
 function CheckSuggestionOnlineSemanticSup(controlval) {
     showLoadingImageOnlineSemanticSup();
     var acco_SupplierRoomTypeMapping_Id = $(controlval).parent().parent().find('.hdnAccommodation_SupplierRoomTypeMapping_Id').val();
@@ -697,9 +756,9 @@ function CheckSuggestionOnlineSemanticSup(controlval) {
     }
 
 }
+
 //End ML UsS Semantic
 //
-
 
 function SelectedRow(element) {
     var row = $(element).parent().parent().closest('tr').next();
@@ -707,6 +766,7 @@ function SelectedRow(element) {
         if (row.find('.dropdownforBind') != null)
             row.find('.dropdownforBind').focus();
 }
+
 function fillDropDown(record, onClick) {
 
     if (onClick) {
@@ -773,6 +833,7 @@ function fillDropDown(record, onClick) {
         }
     }
 }
+
 function RemoveExtra(record, onClick) {
     if (!onClick) {
         var currentRow = $(record).parent().parent();
@@ -791,8 +852,6 @@ function RemoveExtra(record, onClick) {
 function submitSave() {
     var r = confirm("Are you really sure you want to do this ?");
     if (r == true) {
-
-
 
         showLoadingImage();
         var values = new Array();

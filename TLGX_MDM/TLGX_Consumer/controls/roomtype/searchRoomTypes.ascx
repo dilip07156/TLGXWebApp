@@ -34,6 +34,7 @@
 </div>
 
 <div class="tab-content">
+
     <div class="tab-pane active" id="panSupplierSearch">
         <!-- search filters panel -->
         <asp:UpdatePanel ID="updActivityMappingSearch" runat="server">
@@ -342,6 +343,14 @@
                                                             <input type="hidden" class="hdnAccommodation_SupplierRoomTypeMapping_Id" runat="server" id="hdnAccommodation_SupplierRoomTypeMapping_Id" value='<%# Eval("Accommodation_SupplierRoomTypeMapping_Id") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
+
+                                                    <asp:TemplateField HeaderText="Is Not Training Data" ItemStyle-Width="5%">
+                                                        <ItemTemplate>
+                                                            <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IsNotTraining").ToString() == "True" ? "ok" : "" %>"></span></h4>
+                                                            <label id="lblIsNotTraining" style="display:none"><%# Eval("IsNotTraining").ToString() %></label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+
                                                 </Columns>
                                                 <PagerStyle CssClass="pagination-ys" />
                                             </asp:GridView>
@@ -355,6 +364,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+
     <div class="modal fade" id="modalOnlineSuggestion" role="dialog">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
@@ -430,6 +440,10 @@
                             <label id="lblForTLGXRoomInfoName"></label>
                         </h4>
                         <div id="divAttribute"></div>
+                        <br />
+                        <div id="divActionButtons"></div>
+                        <br />
+                        <div id="responseMessage" style="display: none;"></div>
                     </div>
                 </div>
                 <div class="modal-body">

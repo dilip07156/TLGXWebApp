@@ -19851,6 +19851,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<int> FloorNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsNotTrainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -20287,6 +20290,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.FloorNumberField.Equals(value) != true)) {
                     this.FloorNumberField = value;
                     this.RaisePropertyChanged("FloorNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsNotTraining {
+            get {
+                return this.IsNotTrainingField;
+            }
+            set {
+                if ((this.IsNotTrainingField.Equals(value) != true)) {
+                    this.IsNotTrainingField = value;
+                    this.RaisePropertyChanged("IsNotTraining");
                 }
             }
         }
@@ -21145,6 +21161,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsNotTrainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string RoomCategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -21211,6 +21230,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsNotTraining {
+            get {
+                return this.IsNotTrainingField;
+            }
+            set {
+                if ((this.IsNotTrainingField.Equals(value) != true)) {
+                    this.IsNotTrainingField = value;
+                    this.RaisePropertyChanged("IsNotTraining");
                 }
             }
         }
@@ -52847,6 +52879,18 @@ namespace TLGX_Consumer.MDMSVC {
             "se")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMappingValuesAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[] obj);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMapping_TrainingFla" +
+            "g", ReplyAction="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMapping_TrainingFla" +
+            "gResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMapping_TrainingFla" +
+            "gDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message UpdateAccomodationSupplierRoomTypeMapping_TrainingFlag(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update[] obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMapping_TrainingFla" +
+            "g", ReplyAction="http://tempuri.org/IMapping/UpdateAccomodationSupplierRoomTypeMapping_TrainingFla" +
+            "gResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMapping_TrainingFlagAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update[] obj);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetCountryMapping", ReplyAction="http://tempuri.org/IMapping/GetCountryMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetCountryMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ);
@@ -55605,6 +55649,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMappingValuesAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values[] obj) {
             return base.Channel.UpdateAccomodationSupplierRoomTypeMappingValuesAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message UpdateAccomodationSupplierRoomTypeMapping_TrainingFlag(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update[] obj) {
+            return base.Channel.UpdateAccomodationSupplierRoomTypeMapping_TrainingFlag(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMapping_TrainingFlagAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update[] obj) {
+            return base.Channel.UpdateAccomodationSupplierRoomTypeMapping_TrainingFlagAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ) {

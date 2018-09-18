@@ -427,6 +427,13 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
 
+        public DC_Message UpdateAccomodationSupplierRoomTypeMappingTrainingFlag(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateAccomodationSupplierRoomTypeMappingTrainingFlag"], RQParams, typeof(List<MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
         #endregion
         #region hotel report
         public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)

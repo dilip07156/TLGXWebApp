@@ -227,6 +227,7 @@
       <xs:element minOccurs="0" name="ExtraBed" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FloorName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FloorNumber" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IsNotTraining" type="xs:boolean" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MappedRoomInfo" nillable="true" type="tns:ArrayOfDC_MappedRoomInfo" />
@@ -320,6 +321,7 @@
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsNotTraining" type="xs:boolean" />
       <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomTypeAttributes" nillable="true" type="tns:ArrayOfDC_SupplierRoomTypeAttributes" />
       <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
