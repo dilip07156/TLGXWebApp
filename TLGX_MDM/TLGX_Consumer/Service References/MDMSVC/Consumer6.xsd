@@ -809,7 +809,7 @@
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Value_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="BedType" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsSomking" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSmoking" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MatchingScore" nillable="true" type="xs:double" />
       <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomName" nillable="true" type="xs:string" />

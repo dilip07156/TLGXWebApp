@@ -229,6 +229,7 @@
       <xs:element minOccurs="0" name="FloorNumber" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MapId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MappedRoomInfo" nillable="true" type="tns:ArrayOfDC_MappedRoomInfo" />
       <xs:element minOccurs="0" name="MappingStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MaxAdults" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MaxChild" nillable="true" type="xs:int" />
@@ -273,6 +274,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Accommodation_SupplierRoomTypeMap_SearchRS" nillable="true" type="tns:DC_Accommodation_SupplierRoomTypeMap_SearchRS" />
+  <xs:complexType name="ArrayOfDC_MappedRoomInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_MappedRoomInfo" nillable="true" type="tns:DC_MappedRoomInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_MappedRoomInfo" nillable="true" type="tns:ArrayOfDC_MappedRoomInfo" />
+  <xs:complexType name="DC_MappedRoomInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Category" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Accommodation_RoomInfo_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMap_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="MappingStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MatchingScore" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_MappedRoomInfo" nillable="true" type="tns:DC_MappedRoomInfo" />
   <xs:complexType name="ArrayOfDC_SupplierRoomTypeAttributes">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierRoomTypeAttributes" nillable="true" type="tns:DC_SupplierRoomTypeAttributes" />

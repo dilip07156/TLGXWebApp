@@ -20,8 +20,8 @@ namespace TLGX_Consumer.Service
             context.Response.ContentType = "application/json";
             string strJson = new StreamReader(context.Request.InputStream).ReadToEnd();
             string strDecodedJson = System.Web.HttpUtility.UrlDecode(strJson);
-            List<MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values> objPlaces = JsonConvert.DeserializeObject<List<MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values>>(strDecodedJson);
-            var result = MappingSVC.UpdateAccomodationSupplierRoomTypeMapping(objPlaces);
+            List<MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values> objRoomMappingValues = JsonConvert.DeserializeObject<List<MDMSVC.DC_Accommodation_SupplierRoomTypeMapping_Values>>(strDecodedJson);
+            var result = MappingSVC.UpdateAccomodationSupplierRoomTypeMapping(objRoomMappingValues);
             context.Response.Write(new JavaScriptSerializer().Serialize(result));
         }
 

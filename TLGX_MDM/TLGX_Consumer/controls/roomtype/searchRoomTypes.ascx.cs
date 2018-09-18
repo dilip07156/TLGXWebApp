@@ -195,9 +195,6 @@ namespace TLGX_Consumer.controls.roomtype
             }
             catch (Exception ex)
             {
-
-
-
                 throw;
             }
         }
@@ -330,25 +327,28 @@ namespace TLGX_Consumer.controls.roomtype
                             ddlSuggestions.Style.Add(HtmlTextWriterStyle.Display, "block");
                         }
 
-                        bool blnHaveRoomInfo_Id = ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.HasValue;
-                        string RoomInfo_Name = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Name);
-                        string RoomInfo_Category = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Category);
-                        if (blnHaveRoomInfo_Id && RoomInfo_Name != null && RoomInfo_Name != "")
-                        {
-                            string Accommodation_RoomInfo_Id = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.Value);
+                        //bool blnHaveRoomInfo_Id = ((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.HasValue;
+                        //string RoomInfo_Name = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Name);
+                        //string RoomInfo_Category = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Category);
 
-                            string strRoomInfoName = "<ul><li>" + RoomInfo_Name + (string.IsNullOrEmpty(RoomInfo_Category) ? string.Empty : "(" + RoomInfo_Category + ")") +"-"+ mappingStatus + "</li></ul>";
-                            ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(strRoomInfoName, Accommodation_RoomInfo_Id));
-                            if ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis")) != null)
-                            {
-                                var innerHtml = ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml;
-                                ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml = innerHtml.Replace("--", strRoomInfoName);
-                            }
-                        }
-                        else
-                        {
-                            ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem("Select", "0"));
-                        }
+                        //if (blnHaveRoomInfo_Id && RoomInfo_Name != null && RoomInfo_Name != "")
+                        //{
+                        //    string Accommodation_RoomInfo_Id = Convert.ToString(((TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_SearchRS)e.Row.DataItem).Accommodation_RoomInfo_Id.Value);
+
+                        //    string strRoomInfoName = "<ul><li>" + RoomInfo_Name + (string.IsNullOrEmpty(RoomInfo_Category) ? string.Empty : "(" + RoomInfo_Category + ")") +"-"+ mappingStatus + "</li></ul>";
+                        //    ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem(strRoomInfoName, Accommodation_RoomInfo_Id));
+                        //    var innerHtml = ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml;
+                        //    ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml = innerHtml.Replace("--", strRoomInfoName);
+                        //    //if ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis")) != null)
+                        //    //{
+                        //    //    var innerHtml = ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml;
+                        //    //    ((System.Web.UI.HtmlControls.HtmlContainerControl)(ddlSuggestions.FindControl("btnSuggestionis"))).InnerHtml = innerHtml.Replace("--", strRoomInfoName);
+                        //    //}
+                        //}
+                        //else
+                        //{
+                        //    ddlSuggestedRoomInGridBySupplier.Items.Add(new ListItem("Select", "0"));
+                        //}
 
                     }
                 }
