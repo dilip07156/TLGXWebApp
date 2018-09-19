@@ -306,7 +306,6 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         $('#grdRoomTypeMappingSearchResultsBySupplier').find('tr').each(function (i) {
             var row = $(this);
             if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == acco_SupplierRoomTypeMapping_Id) {
-                debugger;
                 if ($(row).find('td').find('#lstMappedRoomList').length > 0) {
                     $(row).find('td').find('#lstMappedRoomList').empty;
                     $(row).find('td').find('#lstMappedRoomList').html(mappedRoomInfo);
