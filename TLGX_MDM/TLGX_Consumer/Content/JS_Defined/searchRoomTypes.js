@@ -61,7 +61,7 @@ function mySelectedID(selectedcheckboxval) {
     //selectedcheckboxval.parentElement.getElementsByClassName("checkboxClass")[0].checked = true;
     var hdnAccommodation_SupplierRoomInfo_IdPopUp = $("#hdnAccommodation_SupplierRoomInfo_IdPopUp");
 
-    var parentTr = (document.getElementById("MainContent_searchRoomTypes_grdRoomTypeMappingSearchResultsBySupplier")).getElementsByTagName("tr");
+    var parentTr = (document.getElementById("grdRoomTypeMappingSearchResultsBySupplier")).getElementsByTagName("tr");
     for (var j = 0; j < parentTr.length; j++) {
         if (parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_RoomInfo_Id")[0] != undefined && parentTr[j].lastElementChild.getElementsByClassName("hdnAccommodation_SupplierRoomTypeMapping_Id")[0].value == hdnAccommodation_SupplierRoomInfo_IdPopUp.val()) {
             //get Row
@@ -200,7 +200,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
     if (result != null) {
         var def = '<table id="tblTLGXRoomInfo" runat="server" class="table table-responsive table-hover table-striped table-bordered" style="border-collapse:collapse;" cellspacing="0" border="1" rules="all"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn" style="display: none;"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">MDM Room Name</th> <th class="col-md-2">MDM Room Category</th>';
-        def = def + '  <th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
+        def = def + '<th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -224,7 +224,6 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             },
             responseType: "json",
             success: function (resultStatusValues) {
-
                 ddlStatusValues = resultStatusValues;
             },
             failure: function () {
@@ -232,10 +231,10 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         });
 
         var lic = ' <td style="display: none;" id="tdRoomInfoId">';
-        var lic1 = ' <td style="display: none;" id="tdacco_SupplierRoomTypeMapping_Id">';
+        var lic1 = '<td style="display: none;" id="tdacco_SupplierRoomTypeMapping_Id">';
         var lic2 = '<td style="display: none;" id="acco_id">';
-        var lic3 = ' <td style="display: none;" id="tdacco_SupplierRoomTypeMapping_Value_Id">';
-        var lic4 = ' <td style="display: none;" id="tdCurrentMaapingStatus">';
+        var lic3 = '<td style="display: none;" id="tdacco_SupplierRoomTypeMapping_Value_Id">';
+        var lic4 = '<td style="display: none;" id="tdCurrentMaapingStatus">';
 
         var licClose = '</table>';
         var tdc = '</td>';
@@ -244,6 +243,8 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         var hdnAccommodation_RoomInfo_Id = '<input type="hidden" id="custId" name="custId" value="">';
         var hiddentd = '<td style="visibility:hidden" class="divOne">id2</td>';
         var currentMappingStatus = '';
+
+        var mappedRoomInfo = "<tbody>";
 
         //Find index
         for (var i = 0; i < result.length; i++) {
@@ -268,6 +269,11 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
             var ddlStatusDetails = '<select id = ddlAttributeValues_' + result[i].Accommodation_RoomInfo_Id + '>';
             //onchange = "ddlAttributeValueChange(this)
+
+            //Construct mapped room list
+            if (currentMappingStatus != "UNMAPPED") {
+                mappedRoomInfo += "<tr><td style ='white-space:nowrap;'><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
+            }
 
             for (var j = 0; j < ddlStatusValues.length; j++) {
                 //don't allow user to select auto map
@@ -294,6 +300,25 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         }
 
         li = li + licClose;
+        mappedRoomInfo += "</tbody>";
+
+        //Find the List for Supplier Room Record and assign the table
+        $('#grdRoomTypeMappingSearchResultsBySupplier').find('tr').each(function (i) {
+            var row = $(this);
+            if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == acco_SupplierRoomTypeMapping_Id) {
+                debugger;
+                if ($(row).find('td').find('#lstMappedRoomList').length > 0) {
+                    $(row).find('td').find('#lstMappedRoomList').empty;
+                    $(row).find('td').find('#lstMappedRoomList').html(mappedRoomInfo);
+                }
+                else {
+                    mappedRoomInfo = '<table id="lstMappedRoomList" class="table table-bordered table-responsive table-condensed">' + mappedRoomInfo + '</table>';
+                    //var html = $.parseHTML(mappedRoomInfo);
+                    mappedRoomInfo = $($(row).find('td').find('#btnSuggestion')[0].parentElement).html() + mappedRoomInfo
+                    $($(row).find('td').find('#btnSuggestion')[0].parentElement).html(mappedRoomInfo);
+                }
+            }
+        });
 
         hideLoadingImage();
         $('#ulRoomInfo').html(li);
@@ -362,7 +387,7 @@ function BindRTDetails(controlval) {
     ActionButtons = ActionButtons + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr>" // ";
     ActionButtons = ActionButtons + "<td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td>";
-    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining + " onchange='UpdateTrainingFlag(this)'>Don't Submit as Training Data</td>";
+    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining + " onchange='UpdateTrainingFlag(this)'><strong>Don't Submit as Training Data</strong></td>";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td>";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_Id'  value='' /></td>";
     ActionButtons = ActionButtons + "</tr></tbody></table>";
@@ -409,7 +434,7 @@ function BindRTDetails(controlval) {
 }
 
 function UpdateTrainingFlag(check) {
-    debugger;
+   
     showLoadingImage();
     var jsonObj = [];
     var item = {};
@@ -425,6 +450,21 @@ function UpdateTrainingFlag(check) {
         data: JSON.stringify(jsonObj),
         responseType: "json",
         success: function (result) {
+            
+            $('#grdRoomTypeMappingSearchResultsBySupplier').find('tr').each(function (i) {
+                var row = $(this);
+                if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == $("#hdnAcco_SuppRoomTypeMapping_Id").val()) {
+                    $(row).find('td').find('#spnIsNotTraining').removeAttr('class');
+                    if (check.checked) {
+                        $(row).find('td').find('#lblIsNotTraining').html("True");
+                        $(row).find('td').find('#spnIsNotTraining').addClass("glyphicon glyphicon-ok");
+                    }
+                    else {
+                        $(row).find('td').find('#lblIsNotTraining').html("False");
+                    }
+                }
+            });
+
             hideLoadingImage();
             $("#responseMessage").css("display", "block").addClass("alert alert-success").html(result.StatusMessage).delay(2000).fadeOut();
         },

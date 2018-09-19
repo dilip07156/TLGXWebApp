@@ -235,7 +235,7 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                                         <ContentTemplate>
                                             <div id="divMsgForMapping" runat="server" style="display: none;"></div>
-                                            <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
+                                            <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" ClientIDMode ="Static" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                                 DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id,Supplier_Id,SupplierProductId"
                                                 CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
                                                 OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging">
@@ -307,8 +307,8 @@
                                                         <ItemTemplate>
 
                                                             <button class="btn btn-primary" onclientclick="Static" type="button" runat="server" id="btnSuggestion" text="Check" onclick="BindRTDetails(this);">Check</button><br />
-                                                            <asp:DataList ID="lstMappedRoomList" ClientIDMode="Static" runat="server" DataSource='<%# Bind("MappedRoomInfo") %>'
-                                                                RepeatLayout="Table" RepeatColumns="1" RepeatDirection="Vertical" ItemStyle-Wrap="false" CssClass="table">
+                                                            <asp:DataList ID = "lstMappedRoomList" ClientIDMode="Static" runat="server" DataSource='<%# Bind("MappedRoomInfo") %>'
+                                                                RepeatLayout="Table" RepeatColumns="1" RepeatDirection="Vertical" ItemStyle-Wrap="false" CssClass="table table-bordered table-responsive table-condensed">
                                                                 <ItemTemplate>
                                                                     <label><%# Eval("Accommodation_RoomInfo_Name") + " : " + Eval("Accommodation_RoomInfo_Category") + " : " + Eval("MappingStatus") %></label>
                                                                 </ItemTemplate>
@@ -327,8 +327,6 @@
                                                                 <asp:ListItem Value="UNMAPPED">UNMAPPED</asp:ListItem>
                                                                 <asp:ListItem Value="REVIEW">REVIEW</asp:ListItem>
                                                                 <asp:ListItem Value="AUTOMAPPED">AUTOMAPPED</asp:ListItem>
-
-
                                                             </asp:DropDownList>
                                                         </ItemTemplate>
 
@@ -346,7 +344,7 @@
 
                                                     <asp:TemplateField HeaderText="Is Not Training Data" ItemStyle-Width="5%">
                                                         <ItemTemplate>
-                                                            <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IsNotTraining").ToString() == "True" ? "ok" : "" %>"></span></h4>
+                                                            <h4><span id="spnIsNotTraining" aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IsNotTraining").ToString() == "True" ? "ok" : "" %>"></span></h4>
                                                             <label id="lblIsNotTraining" style="display:none"><%# Eval("IsNotTraining").ToString() %></label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
