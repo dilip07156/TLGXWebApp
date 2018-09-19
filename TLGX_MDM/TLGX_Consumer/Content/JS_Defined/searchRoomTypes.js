@@ -312,9 +312,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
                 }
                 else {
                     mappedRoomInfo = '<table id="lstMappedRoomList" class="table table-bordered table-responsive table-condensed">' + mappedRoomInfo + '</table>';
-                    //var html = $.parseHTML(mappedRoomInfo);
-                    mappedRoomInfo = $($(row).find('td').find('#btnSuggestion')[0].parentElement).html() + mappedRoomInfo
-                    $($(row).find('td').find('#btnSuggestion')[0].parentElement).html(mappedRoomInfo);
+                    $($(row).find('td').find('#btnSuggestion')[0].parentElement).append(mappedRoomInfo);
                 }
             }
         });
@@ -429,7 +427,7 @@ function BindRTDetails(controlval) {
             }
         });
     }
-    //}
+   
 }
 
 function UpdateTrainingFlag(check) {
