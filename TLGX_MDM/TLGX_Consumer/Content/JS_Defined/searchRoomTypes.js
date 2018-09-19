@@ -463,10 +463,12 @@ function UpdateTrainingFlag(check) {
             });
 
             hideLoadingImage();
+            $("#responseMessage").removeAttr('class');
             $("#responseMessage").css("display", "block").addClass("alert alert-success").html(result.StatusMessage).delay(2000).fadeOut();
         },
         failure: function () {
             hideLoadingImage();
+            $("#responseMessage").removeAttr('class');
             $("#responseMessage").css("display", "block").addClass("alert alert-danger").html("Training Flag not updated").delay(2000).fadeOut();
         }
     });
@@ -930,16 +932,19 @@ function submitSave() {
                     //$("#btnSuggestion").click();
                     reloadMappingDataTable($("#hdnAcco_Id").val(), $("#hdnAcco_SuppRoomTypeMapping_Id").val());
                     hideLoadingImage();
+                    $("#responseMessage").removeAttr('class');
                     $("#responseMessage").css("display", "block").addClass("alert alert-success").html(result.StatusMessage).delay(2000).fadeOut();
                 },
                 failure: function () {
                     hideLoadingImage();
+                    $("#responseMessage").removeAttr('class');
                     $("#responseMessage").css("display", "block").addClass("alert alert-warning").html('Mapping Data Updation failed.').delay(2000).fadeOut();
                 }
             });
         }
         else {
             hideLoadingImage();
+            $("#responseMessage").removeAttr('class');
             $("#responseMessage").css("display", "block").addClass("alert alert-warning").html('No records to update.').delay(2000).fadeOut();
         }
     }
@@ -974,10 +979,12 @@ function submitTTFU() {
             success: function (result) {
                 reloadMappingDataTable($("#hdnAcco_Id").val(), $("#hdnAcco_SuppRoomTypeMapping_Id").val());
                 hideLoadingImage();
+                $("#responseMessage").removeAttr('class');
                 $("#responseMessage").css("display", "block").addClass("alert alert-success").html("Mapping Updated Successfully.").delay(2000).fadeOut();
             },
             failure: function () {
                 hideLoadingImage();
+                $("#responseMessage").removeAttr('class');
                 $("#responseMessage").css("display", "block").addClass("alert alert-warning").html("Error while updating mapping.").delay(2000).fadeOut();
             }
         });
@@ -1003,6 +1010,7 @@ function reloadMappingDataTable(accoId, supplierRoomTypeMapId) {
             BindRTDetailsInTable(resultReLoad, $("#hdnAcco_Id").val(), $("#hdnAcco_SuppRoomTypeMapping_Id").val());
         },
         failure: function () {
+            $("#responseMessage").removeAttr('class');
             $("#responseMessage").css("display", "block").addClass("alert alert-danger").html("Error while reloading mapped data.").delay(2000).fadeOut();
         }
     });
