@@ -1076,6 +1076,10 @@
     <Content Include="Service\AddUpdateMappingDetails.ashx" />
     <Content Include="Service\TTFUSelectedBySupplier.ashx" />
     <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\GetAttributeData.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2698,6 +2702,9 @@
     </Compile>
     <Compile Include="Service\fillAttributeDDL.ashx.cs">
       <DependentUpon>fillAttributeDDL.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetAttributeData.ashx.cs">
+      <DependentUpon>GetAttributeData.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion_Supervised_Semantic.ashx</DependentUpon>

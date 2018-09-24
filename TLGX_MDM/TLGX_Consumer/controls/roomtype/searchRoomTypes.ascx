@@ -297,7 +297,7 @@
                                                             <asp:DataList ID="lstAlias" ClientIDMode="Static" runat="server" DataSource='<%# Bind("RoomTypeAttributes") %>'
                                                                 RepeatLayout="Table" RepeatColumns="3" RepeatDirection="Horizontal" ItemStyle-Wrap="true" CssClass="">
                                                                 <ItemTemplate>
-                                                                    <h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
+                                                                    <h4><span id="spnAttributeFlag" aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IconClass") %>" title="<%# Eval("SystemAttributeKeyword") + " : " + Eval("SupplierRoomTypeAttribute")  %>  "></span></h4>
                                                                 </ItemTemplate>
                                                             </asp:DataList>
                                                         </ItemTemplate>

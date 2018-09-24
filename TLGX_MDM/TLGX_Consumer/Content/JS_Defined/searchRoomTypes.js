@@ -360,7 +360,7 @@ function BindRTDetails(controlval) {
 
     //Getting Extracted Attribute
     var ExtractedAttribute = "";
-    var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-responsive table-hover table-striped table-bordered'><tbody><tr>";
+    var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-responsive table-hover table-striped table-bordered'><tbody id='tblAttributes'><tr>";
     var flag = 0;
     if ($(controlval).parent().parent().find('#lstAlias') != undefined) {
         if ($(controlval).parent().parent().find('#lstAlias tr').length > 0) {
@@ -977,7 +977,9 @@ function submitTTFU() {
             data: JSON.stringify(jsonObj),
             responseType: "json",
             success: function (result) {
+                reloadAttributeDataTable($("#hdnAcco_SuppRoomTypeMapping_Id").val());
                 reloadMappingDataTable($("#hdnAcco_Id").val(), $("#hdnAcco_SuppRoomTypeMapping_Id").val());
+                
                 hideLoadingImage();
                 $("#responseMessage").removeAttr('class');
                 $("#responseMessage").css("display", "block").addClass("alert alert-success").html("Mapping Updated Successfully.").delay(2000).fadeOut();
@@ -1012,6 +1014,74 @@ function reloadMappingDataTable(accoId, supplierRoomTypeMapId) {
         failure: function () {
             $("#responseMessage").removeAttr('class');
             $("#responseMessage").css("display", "block").addClass("alert alert-danger").html("Error while reloading mapped data.").delay(2000).fadeOut();
+        }
+    });
+}
+
+function reloadAttributeDataTable(supplierRoomTypeMapId)
+{
+    $.ajax({
+        type: 'GET',
+        url: '../../../Service/GetAttributeData.ashx',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        async: false,
+        data: {
+            'acco_SupplierRoomTypeMapping_Id': $("#hdnAcco_SuppRoomTypeMapping_Id").val()
+        },
+        responseType: "json",
+        success: function (resultRefresh) {
+            $('#tblAttributes').empty();
+
+           // var td = '', tr = '';
+            var listAttstr = '<tr>';
+            var flg = 0;
+            for (var i = 0; i < resultRefresh.length; i++)
+            {
+                var td = '<td>' + resultRefresh[i].SystemAttributeKeyword + ':' + resultRefresh[i].SupplierRoomTypeAttribute + '</td>';
+                flg++;
+                if (flg > 4) {
+                    //td = td + "</tr>";
+                    listAttstr = listAttstr + '</tr> <tr>';
+                    flg = 0;
+                }
+                listAttstr = listAttstr + td;
+            }
+            $('#tblAttributes').append(listAttstr+'</tr>');
+
+            //$('#tblAttributes').html(resultRefresh[0].SystemAttributeKeyword + " : " + resultRefresh[0].SupplierRoomTypeAttribute);
+            $('#grdRoomTypeMappingSearchResultsBySupplier').find('tr').each(function (i) {
+                var row = $(this);
+                if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == $("#hdnAcco_SuppRoomTypeMapping_Id").val())
+                {
+                    if ($(row).find('td:nth-child(5)').find('#lstAlias').length == 0) {
+                        $(row).find('td:nth-child(5)').append('<table id="lstAlias" cellspacing="0" style="border-collapse:collapse;"><tbody></tbody></table>');
+                    }
+                    
+                    var lstAliasTablebody = $(row).find('#lstAlias tbody');
+                    lstAliasTablebody.empty();
+                    
+                    var listAliastr = '<tr>';
+                    var flag = 0;
+                        for (var j = 0; j < resultRefresh.length; j++)
+                        {
+                            var td = '<td><h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-' + resultRefresh[j].IconClass + '" title="' + resultRefresh[j].SystemAttributeKeyword + ':' + resultRefresh[j].SupplierRoomTypeAttribute + '"></span></h4></td>';
+                            flag++;
+                            if (flag > 3) {
+                                listAliastr = listAliastr + '</tr> <tr>';
+                                flag = 0;
+                            }
+                            listAliastr = listAliastr + td;
+                            
+                        }
+                    lstAliasTablebody.append(listAliastr+'</tr>');
+                    //}        
+             }
+            });
+        },
+        failure: function () {
+            $("#responseMessage").removeAttr('class');
+            $("#responseMessage").css("display", "block").addClass("alert alert-danger").html("Error while reloading attribute data.").delay(2000).fadeOut();
         }
     });
 }

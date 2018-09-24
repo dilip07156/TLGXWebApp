@@ -434,6 +434,14 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
 
+        
+        public List<MDMSVC.DC_SupplierRoomTypeAttributes> GetAttributeForAccomodationSupplierRoomTypeMapping(string  RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["GetAttributeForAccomodationSupplierRoomTypeMapping"], RQParams), typeof(List<MDMSVC.DC_SupplierRoomTypeAttributes>), out result);
+            return result as List<MDMSVC.DC_SupplierRoomTypeAttributes>;
+        }
+
         #endregion
         #region hotel report
         public List<DC_newHotelsReport> getNewHotelsAddedReport(MDMSVC.DC_RollOFParams parm)

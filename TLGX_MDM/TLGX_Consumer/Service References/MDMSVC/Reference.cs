@@ -52891,6 +52891,16 @@ namespace TLGX_Consumer.MDMSVC {
             "gResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMapping_TrainingFlagAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update[] obj);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetAttributesForAccomodationSupplierRoomTypeMapping", ReplyAction="http://tempuri.org/IMapping/GetAttributesForAccomodationSupplierRoomTypeMappingRe" +
+            "sponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetAttributesForAccomodationSupplierRoomTypeMappingDC" +
+            "_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[] GetAttributesForAccomodationSupplierRoomTypeMapping(string SupplierRoomtypeMappingID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetAttributesForAccomodationSupplierRoomTypeMapping", ReplyAction="http://tempuri.org/IMapping/GetAttributesForAccomodationSupplierRoomTypeMappingRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[]> GetAttributesForAccomodationSupplierRoomTypeMappingAsync(string SupplierRoomtypeMappingID);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetCountryMapping", ReplyAction="http://tempuri.org/IMapping/GetCountryMappingResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetCountryMappingDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ);
@@ -55657,6 +55667,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateAccomodationSupplierRoomTypeMapping_TrainingFlagAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_SupplierRoomTypeMap_Update[] obj) {
             return base.Channel.UpdateAccomodationSupplierRoomTypeMapping_TrainingFlagAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[] GetAttributesForAccomodationSupplierRoomTypeMapping(string SupplierRoomtypeMappingID) {
+            return base.Channel.GetAttributesForAccomodationSupplierRoomTypeMapping(SupplierRoomtypeMappingID);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes[]> GetAttributesForAccomodationSupplierRoomTypeMappingAsync(string SupplierRoomtypeMappingID) {
+            return base.Channel.GetAttributesForAccomodationSupplierRoomTypeMappingAsync(SupplierRoomtypeMappingID);
         }
         
         public TLGX_Consumer.MDMSVC.DC_CountryMapping[] GetCountryMapping(TLGX_Consumer.MDMSVC.DC_CountryMappingRQ RQ) {
