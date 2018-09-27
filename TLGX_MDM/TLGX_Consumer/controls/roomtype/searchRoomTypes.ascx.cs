@@ -79,7 +79,7 @@ namespace TLGX_Consumer.controls.roomtype
             //ddl.DataValueField = "Supplier_Id";
             //ddl.DataBind();
             //ddl.Items.Insert(0, new ListItem("-ALL-", "0"));
-            ddlSupplierNameBySupplier.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType = "Accommodation", CategorySubType_ID = "Apartments" });
+            ddlSupplierNameBySupplier.DataSource = masterSVc.GetSupplierByEntity(new MDMSVC.DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, EntityType = "Accommodation" });//, CategorySubType_ID = "Apartments"
             ddlSupplierNameBySupplier.DataValueField = "Supplier_Id";
             ddlSupplierNameBySupplier.DataTextField = "Name";
             ddlSupplierNameBySupplier.DataBind();
