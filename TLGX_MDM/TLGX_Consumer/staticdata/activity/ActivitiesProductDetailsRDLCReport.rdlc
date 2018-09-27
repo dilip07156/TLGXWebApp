@@ -15,7 +15,7 @@
               <Width>3.24083cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.10313cm</Width>
+              <Width>2.39417cm</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>2.12958cm</Width>
@@ -71,6 +71,10 @@
                   <CellContents>
                     <Textbox Name="Textbox7">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!SupplierName.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -103,6 +107,10 @@
                   <CellContents>
                     <Textbox Name="Textbox9">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!ActivityCode.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -135,6 +143,10 @@
                   <CellContents>
                     <Textbox Name="Textbox29">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!ActivityName.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -167,6 +179,10 @@
                   <CellContents>
                     <Textbox Name="Textbox13">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Country.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -199,6 +215,10 @@
                   <CellContents>
                     <Textbox Name="Textbox15">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!City.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -231,6 +251,10 @@
                   <CellContents>
                     <Textbox Name="Textbox17">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!InterestType.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -263,6 +287,10 @@
                   <CellContents>
                     <Textbox Name="Textbox19">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!CategorySubType.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -293,8 +321,12 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox21">
+                    <Textbox Name="ProductNameType">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!ProductType.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -309,7 +341,6 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox21</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -325,8 +356,12 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox23">
+                    <Textbox Name="ProductNameSubType">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!ProductSubType.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -341,7 +376,6 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox23</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -359,6 +393,10 @@
                   <CellContents>
                     <Textbox Name="Textbox25">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!SuitableFor.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -391,6 +429,10 @@
                   <CellContents>
                     <Textbox Name="Textbox27">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!PhysicalLevel.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -423,6 +465,10 @@
                   <CellContents>
                     <Textbox Name="Textbox32">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!AreaAddress.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -455,6 +501,10 @@
                   <CellContents>
                     <Textbox Name="Textbox42">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!FromDate.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -487,6 +537,10 @@
                   <CellContents>
                     <Textbox Name="Textbox44">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!ToDate.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -519,6 +573,10 @@
                   <CellContents>
                     <Textbox Name="Textbox46">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Duration.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -551,6 +609,10 @@
                   <CellContents>
                     <Textbox Name="Textbox34">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!LongDescription.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -583,6 +645,10 @@
                   <CellContents>
                     <Textbox Name="Textbox36">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!ShortDescription.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -615,6 +681,10 @@
                   <CellContents>
                     <Textbox Name="Textbox38">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Inclusions.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -647,6 +717,10 @@
                   <CellContents>
                     <Textbox Name="Textbox40">
                       <CanGrow>true</CanGrow>
+                      <UserSort>
+                        <SortExpression>=Fields!Exclusions.Value</SortExpression>
+                        <SortTarget>DsActivitiesProductDetails</SortTarget>
+                      </UserSort>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -773,6 +847,7 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Country1">
+                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -802,6 +877,7 @@
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="City1">
+                      <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
@@ -1017,7 +1093,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Label>AreaAddress</Label>
                               <Value>=Fields!AreaAddress.Value</Value>
+                              <ToolTip>=Fields!AreaAddress.Value</ToolTip>
+                              <MarkupType>HTML</MarkupType>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1136,7 +1215,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Label>LongDescription</Label>
                               <Value>=Fields!LongDescription.Value</Value>
+                              <ToolTip>=Fields!LongDescription.Value</ToolTip>
+                              <MarkupType>HTML</MarkupType>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1144,6 +1226,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>LongDescription</rd:DefaultName>
+                      <ToolTip>=Fields!LongDescription.Value</ToolTip>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1165,7 +1248,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
+                              <Label>ShortDescription</Label>
                               <Value>=Fields!ShortDescription.Value</Value>
+                              <ToolTip>=Fields!ShortDescription.Value</ToolTip>
+                              <MarkupType>HTML</MarkupType>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -1173,6 +1259,7 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>ShortDescription</rd:DefaultName>
+                      <ToolTip>=Fields!ShortDescription.Value</ToolTip>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -1308,7 +1395,7 @@
         <Top>1.0287cm</Top>
         <Left>0.49953cm</Left>
         <Height>1.2cm</Height>
-        <Width>55.66271cm</Width>
+        <Width>55.95375cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1319,7 +1406,7 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>22.11112in</Width>
+  <Width>22.4757in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>

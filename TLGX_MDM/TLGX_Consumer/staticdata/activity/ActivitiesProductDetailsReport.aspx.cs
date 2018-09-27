@@ -23,7 +23,7 @@ namespace TLGX_Consumer.staticdata.activity
                 {
 
                     LoadMasters();
-                    getData(new DC_ActivityCountStats { SupplierID = ddlSupplierName.SelectedValue, CountryID = ddlCountry.SelectedValue, CityID = ddlCity.SelectedValue });
+                    getData(null);
                 }
 
             }
@@ -54,11 +54,12 @@ namespace TLGX_Consumer.staticdata.activity
             ddlCountry.DataBind();
             InsertDefaultValuesInDDL(ddlCountry);
             ddlCountry.Items.Insert(1, new ListItem("-ALL Countries-", "1"));
+            InsertDefaultValuesInDDL(ddlCity);
         }
 
         private void InsertDefaultValuesInDDL(DropDownList ddl)
         {
-            ddl.Items.Insert(0, new ListItem("-ALL-", "0"));
+            ddl.Items.Insert(0, new ListItem("-Select-", "0"));
         }
 
         protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,17 +103,21 @@ namespace TLGX_Consumer.staticdata.activity
         protected void getData(DC_ActivityCountStats ActivityCountRequest)
         {
             report.Visible = true;
-            var DsActivitiesProductDetails = AccSvc.GetActivitiesProductDetailsReport(ActivityCountRequest);
+            List<DC_ActivityProductDetailsReport> DsActivitiesProductDetails = new List<DC_ActivityProductDetailsReport>();
+            if (ActivityCountRequest != null)
+            {
+                DsActivitiesProductDetails = AccSvc.GetActivitiesProductDetailsReport(ActivityCountRequest);
+            }
 
-                ReportDataSource rds = new ReportDataSource("DsActivitiesProductDetails", DsActivitiesProductDetails);
-                // ReportViewer ReportViewerActivityProductDetails = new ReportViewer();
-                ReportViewerActivityProductDetails.LocalReport.DataSources.Clear();
-                ReportViewerActivityProductDetails.LocalReport.ReportPath = Server.MapPath("~/staticdata/activity/ActivitiesProductDetailsRDLCReport.rdlc");
-                ReportViewerActivityProductDetails.LocalReport.DataSources.Add(rds);
-                ReportViewerActivityProductDetails.Visible = true;
-                ReportViewerActivityProductDetails.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
-                ReportViewerActivityProductDetails.DataBind();
-                ReportViewerActivityProductDetails.LocalReport.Refresh();
+            ReportDataSource rds = new ReportDataSource("DsActivitiesProductDetails", DsActivitiesProductDetails);
+            // ReportViewer ReportViewerActivityProductDetails = new ReportViewer();
+            ReportViewerActivityProductDetails.LocalReport.DataSources.Clear();
+            ReportViewerActivityProductDetails.LocalReport.ReportPath = Server.MapPath("~/staticdata/activity/ActivitiesProductDetailsRDLCReport.rdlc");
+            ReportViewerActivityProductDetails.LocalReport.DataSources.Add(rds);
+            ReportViewerActivityProductDetails.Visible = true;
+            ReportViewerActivityProductDetails.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
+            ReportViewerActivityProductDetails.DataBind();
+            ReportViewerActivityProductDetails.LocalReport.Refresh();
         }
     }
 }

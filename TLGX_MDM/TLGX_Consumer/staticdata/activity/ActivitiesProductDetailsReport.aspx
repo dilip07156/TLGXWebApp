@@ -29,8 +29,7 @@
                             </div>
                             <div class="col-md-2">
                                 <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
-                                    <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                    <asp:ListItem Text="-ALL Countries-" Value="1"></asp:ListItem>
+                                 
                                 </asp:DropDownList>
                             </div>
                             <div class="col-md-1">
@@ -38,8 +37,6 @@
                             </div>
                             <div class="col-md-2">
                                 <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control">
-                                    <asp:ListItem Text="-ALL-" Value="0"></asp:ListItem>
-                                    <asp:ListItem Text="-ALL Cities-" Value="1"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                             <div class="col-md-1">
