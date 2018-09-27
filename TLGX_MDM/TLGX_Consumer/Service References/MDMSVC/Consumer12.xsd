@@ -1868,4 +1868,34 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Report_RS" nillable="true" type="tns:DC_Activity_Report_RS" />
+  <xs:complexType name="ArrayOfDC_ActivityProductDetailsReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_ActivityProductDetailsReport" nillable="true" type="tns:DC_ActivityProductDetailsReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_ActivityProductDetailsReport" nillable="true" type="tns:ArrayOfDC_ActivityProductDetailsReport" />
+  <xs:complexType name="DC_ActivityProductDetailsReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreaAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CategorySubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Duration" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Exclusions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Inclusions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InterestType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LongDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhysicalLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductSubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShortDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuitableFor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_ActivityProductDetailsReport" nillable="true" type="tns:DC_ActivityProductDetailsReport" />
 </xs:schema>

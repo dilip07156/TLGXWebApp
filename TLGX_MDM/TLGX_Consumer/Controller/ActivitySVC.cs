@@ -353,6 +353,13 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivitiesReport"],RQParams,typeof(DC_ActivityCountStats),typeof(List<DC_Activity_Report_RS>), out result);
             return result as List<DC_Activity_Report_RS>;
         }
+
+        public List<DC_ActivityProductDetailsReport> GetActivitiesProductDetailsReport(DC_ActivityCountStats RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Activity_GetActivitiesProductDetailsReport"], RQParams, typeof(DC_ActivityCountStats), typeof(List<DC_ActivityProductDetailsReport>), out result);
+            return result as List<DC_ActivityProductDetailsReport>;
+        }
         #endregion
     }
 }

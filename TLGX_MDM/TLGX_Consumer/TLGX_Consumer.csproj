@@ -511,6 +511,7 @@
     <Content Include="Service\AddUpdateNearByPlaces.ashx" />
     <Content Include="Service\CountryAutoComplete.ashx" />
     <Content Include="Service\CityAutoComplete.ashx" />
+    <Content Include="staticdata\activity\ActivitiesProductDetailsReport.aspx" />
     <Content Include="staticdata\activity\ActivitiesReport.aspx" />
     <Content Include="staticdata\city\bulkCityMap.aspx" />
     <Content Include="staticdata\city\search.aspx" />
@@ -1080,6 +1081,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service\GetAttributeData.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2770,6 +2774,13 @@
     </Compile>
     <Compile Include="SqlSiteMapProvider.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="staticdata\activity\ActivitiesProductDetailsReport.aspx.cs">
+      <DependentUpon>ActivitiesProductDetailsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\activity\ActivitiesProductDetailsReport.aspx.designer.cs">
+      <DependentUpon>ActivitiesProductDetailsReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\activity\ActivitiesReport.aspx.cs">
       <DependentUpon>ActivitiesReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2984,6 +2995,9 @@
     <Content Include="staticdata\activity\ActivitiesCountReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="staticdata\activity\ActivitiesProductDetailsRDLCReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
