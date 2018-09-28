@@ -2995,9 +2995,9 @@
     <Content Include="staticdata\activity\ActivitiesCountReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="staticdata\activity\ActivitiesProductDetailsRDLCReport.rdlc">
+    <Content Include="staticdata\activity\ActivitiesProductDetailsRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
