@@ -17,7 +17,10 @@ namespace TLGX_Consumer.staticdata.files
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
                 BindDropdown();
+                //btnUploadCompleted.Style.Add("display", "none");
+            }
         }
 
         private void BindDropdown()
@@ -74,7 +77,7 @@ namespace TLGX_Consumer.staticdata.files
             }
             if (FileUpload1.HasFile)
             {
-                string strFileType = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName).Replace(".","").ToLower();
+                string strFileType = System.IO.Path.GetExtension(FileUpload1.PostedFile.FileName).Replace(".", "").ToLower();
                 string strSavedValidFileExtension = ValidFile();
                 if (strFileType == string.Empty)
                 {
@@ -99,7 +102,8 @@ namespace TLGX_Consumer.staticdata.files
                         _objFileDetails.Entity = ddlEntityList.SelectedItem.Text;
                         _objFileDetails.OriginalFilePath = FileUpload1.FileName;
                         _objFileDetails.SavedFilePath = response.UploadedPath;
-                        _objFileDetails.STATUS = "UPLOADED";
+                        //_objFileDetails.STATUS = "UPLOADED";
+                        _objFileDetails.STATUS = "NEW";
                         _objFileDetails.Mode = "ALL";
                         _objFileDetails.CREATE_DATE = DateTime.Now;
                         _objFileDetails.CREATE_USER = System.Web.HttpContext.Current.User.Identity.Name;
@@ -169,6 +173,8 @@ namespace TLGX_Consumer.staticdata.files
             ddlEntityList.ClearSelection();
             ddlEntityList.SelectedIndex = 0;
             FileUpload1.Dispose();
+            gvFileUploadSearchForNew.DataSource = null;
+            gvFileUploadSearchForNew.DataBind();
         }
 
         private MDMSVC.DC_UploadResponse UploadFileInChunks(HttpPostedFile file, long actualFileSize, Guid FileUploadId)
@@ -231,6 +237,198 @@ namespace TLGX_Consumer.staticdata.files
         protected void btnReset_Click(object sender, EventArgs e)
         {
             clearControls();
+        }
+
+        private void fillmatchingdataForNew(int PageSize, int PageNo)
+        {
+            //lblTotalRecords.Text = string.Empty;
+            MDMSVC.DC_SupplierImportFileDetails_RQ RQParam = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+
+            if (ddlSupplierList.SelectedItem.Value != "0")
+                RQParam.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedItem.Value);
+            if (ddlEntityList.SelectedItem.Value != "0")
+                RQParam.Entity = ddlEntityList.SelectedItem.Text;
+
+
+            RQParam.PageNo = PageNo;
+            RQParam.PageSize = PageSize;
+            RQParam.STATUS = "NEW";
+
+            var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQParam);
+            if (res != null)
+            {
+                if (res.Count > 0)
+                {
+                    gvFileUploadSearchForNew.VirtualItemCount = res[0].TotalRecords;
+
+                    gvFileUploadSearchForNew.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
+                    gvFileUploadSearchForNew.PageIndex = PageNo;
+                    gvFileUploadSearchForNew.PageSize = 10;//Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
+                    gvFileUploadSearchForNew.DataBind();
+                    btnUploadCompleted.Visible = true;
+                    //lblTotalRecords.Text = res[0].TotalRecords.ToString();
+                }
+                else
+                {
+                    gvFileUploadSearchForNew.DataSource = null;
+                    gvFileUploadSearchForNew.DataBind();
+                    btnUploadCompleted.Visible = false;
+                }
+
+              
+                //btnUploadCompleted.Style.Add("display", "");
+            }
+            else
+            {
+                gvFileUploadSearchForNew.DataSource = null;
+                gvFileUploadSearchForNew.DataBind();
+                btnUploadCompleted.Visible = false;
+                //lblTotalRecords.Text = string.Empty;
+            }
+
+        }
+
+        protected void ddlSupplierList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSupplierList.SelectedIndex != 0 && ddlEntityList.SelectedIndex != 0)
+            {
+                fillmatchingdataForNew(10, 0);
+            }
+
+
+        }
+
+        protected void ddlEntityList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSupplierList.SelectedIndex != 0 && ddlEntityList.SelectedIndex != 0)
+            {
+                fillmatchingdataForNew(10, 0);
+            }
+
+        }
+
+        protected void gvFileUploadSearchForNew_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.DataItem != null)
+            {
+                // Retrieve the key value for the current row. Here it is an int.
+                string SupplierImportFile_Id = gvFileUploadSearchForNew.DataKeys[e.Row.RowIndex].Values[0].ToString();// Convert.ToString(rowView["SupplierImportFile_Id"]);
+
+                LinkButton btnDelete = (LinkButton)e.Row.FindControl("btnDelete");
+                if (btnDelete.CommandName == "UnDelete")
+                {
+                    e.Row.Font.Strikeout = true;
+                }
+            }   
+        }
+
+        public static Guid SelectedSupplierImportAttributeValue_Id = Guid.Empty;
+        public static Guid? SupplierImportFile_Id { get; private set; }
+        protected void gvFileUploadSearchForNew_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+                Guid myRowId = Guid.Parse(gvFileUploadSearchForNew.DataKeys[index].Values[0].ToString());
+
+             
+                if (e.CommandName == "SoftDelete")
+                {
+                    MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                    RQ.SupplierImportFile_Id = myRowId;
+                    RQ.PageNo = 0;
+                    RQ.PageSize = int.MaxValue;
+                    var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+
+                    MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails
+                    {
+                        SupplierImportFile_Id = myRowId,
+                        STATUS = res[0].STATUS,
+                        PROCESS_DATE = DateTime.Now,
+                        PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name,
+                        IsActive = false
+                    };
+
+                    var result = _objMappingSVCs.UpdateSupplierStaticFileDetails(obj);
+                    fillmatchingdataForNew(10, 0);
+
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "File has been deleted Successfully", (BootstrapAlertType)result.StatusCode);
+                }
+                if (e.CommandName == "UnDelete")
+                {
+                    MDMSVC.DC_SupplierImportFileDetails_RQ RQ = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+                    RQ.SupplierImportFile_Id = myRowId;
+                    RQ.PageNo = 0;
+                    RQ.PageSize = int.MaxValue;
+                    var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQ);
+                    MDMSVC.DC_SupplierImportFileDetails obj = new MDMSVC.DC_SupplierImportFileDetails
+                    {
+                        SupplierImportFile_Id = myRowId,
+                        STATUS = res[0].STATUS,
+                        PROCESS_DATE = DateTime.Now,
+                        PROCESS_USER = System.Web.HttpContext.Current.User.Identity.Name,
+                        IsActive = true
+                    };
+                    var result = _objMappingSVCs.UpdateSupplierStaticFileDetails(obj);
+                    fillmatchingdataForNew(10, 0);
+
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "File has been un deleted Successfully", (BootstrapAlertType)result.StatusCode);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+        protected void btnUploadComplete_Click(object sender, EventArgs e)
+        {
+            if (ddlSupplierList.SelectedValue == "0" || ddlEntityList.SelectedValue == "0")
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "Please select valid supplier & entity before upload.", BootstrapAlertType.Danger);
+                return;
+            }
+
+            MDMSVC.DC_SupplierImportFileDetails_RQ RQParam = new MDMSVC.DC_SupplierImportFileDetails_RQ();
+
+            if (ddlSupplierList.SelectedItem.Value != "0")
+                RQParam.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedItem.Value);
+            if (ddlEntityList.SelectedItem.Value != "0")
+                RQParam.Entity = ddlEntityList.SelectedItem.Text;
+
+            var res = _objMappingSVCs.GetSupplierStaticFileDetails(RQParam);
+            if (res != null)
+            {
+                if (res.Count > 0)
+                {
+                    MDMSVC.DC_SupplierImportFileDetails RQParams = new MDMSVC.DC_SupplierImportFileDetails();
+                    RQParams.Supplier_Id = Guid.Parse(ddlSupplierList.SelectedItem.Value);
+                    RQParams.Entity = ddlEntityList.SelectedItem.Text;
+                    RQParams.STATUS = "NEW";
+                    RQParams.IsActive = true;
+
+                    gvFileUploadSearchForNew.VirtualItemCount = res[0].TotalRecords;
+
+                    //lblTotalRecords.Text = res[0].TotalRecords.ToString();
+                    _objMappingSVCs.UpdateSupplierImportFileDetailsFromNewToUploaded(RQParams);
+                    fillmatchingdataForNew(10, 0);
+                    //clearControls();
+                    //BindDropdown();
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "No file has been selected to upload.", BootstrapAlertType.Danger);
+                }
+
+
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvmsgUploadCompleted, "No file has been selected to upload.", BootstrapAlertType.Danger);
+            }
+
         }
     }
 }

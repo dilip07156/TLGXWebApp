@@ -263,7 +263,7 @@
                                     <ItemTemplate>
                                         <div class="form-inline">
                                             <div class="form-group">
-                                                <img style="height: 25px; width: 25px" src='<%# Eval("STATUS").ToString() == "PROCESSED" ? "../../images/148767.png" : (Eval("STATUS").ToString() == "ERROR" ? "../../images/148766.png" : ((Eval("STATUS").ToString() == "UPLOADED" || Eval("STATUS").ToString() == "SCHEDULED") ? "../../images/148764.png" : "../../images/148853.png")) %>' />
+                                                <img style="height: 25px; width: 25px" src='<%# Eval("STATUS").ToString() == "PROCESSED" ? "../../images/148767.png" : (Eval("STATUS").ToString() == "ERROR" ? "../../images/148766.png" : ((Eval("STATUS").ToString() == "UPLOADED" || Eval("STATUS").ToString() == "SCHEDULED" || Eval("STATUS").ToString() == "NEW") ? "../../images/148764.png" : "../../images/148853.png")) %>' />
                                                 <label><%# Eval("STATUS").ToString() %></label>
                                             </div>
                                         </div>
@@ -311,31 +311,34 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 
-<div class="modal fade" id="moFileUpload" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="panel-title">
-                    <h4 class="modal-title">File Upload</h4>
-                </div>
-            </div>
-            <div class="modal-body">
-                <iframe class="col-md-12" style="min-height: 215px;" frameborder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+        <div class="modal fade" id="moFileUpload" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="panel-title">
+                            <h4 class="modal-title">File Upload</h4>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <iframe class="col-md-12" style="min-height: 500px;" frameborder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
+   
 <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header" style="padding: 5px 5px 5px 15px;">
                 <h4 class="modal-title"><b>File Status </b></h4>
-              <%--  <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />--%>
-                <asp:HiddenField  id="hdnFileId" value="" runat="server" ClientIDMode="Static" />
+                <%--  <input type="hidden" id="hdnFileId" name="hdnFileId" value="" />--%>
+                <asp:HiddenField ID="hdnFileId" Value="" runat="server" ClientIDMode="Static" />
             </div>
             <div class="modal-body">
 

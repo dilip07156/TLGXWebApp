@@ -280,7 +280,15 @@ namespace TLGX_Consumer.Controller
         public DC_Message UpdateSupplierImportFileDeails(MDMSVC.DC_SupplierImportFileDetails RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateSupplierImportFileDeails_Update"], RQ, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateSupplierImportFileDetails_Update"], RQ, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+
+        public DC_Message UpdateSupplierImportFileDetailsFromNewToUploaded(MDMSVC.DC_SupplierImportFileDetails RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["UpdateSupplierImportFileDetails_UpdateUploaded"], RQ, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion
