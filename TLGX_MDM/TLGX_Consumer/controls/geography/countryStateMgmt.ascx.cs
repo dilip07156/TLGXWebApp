@@ -77,6 +77,13 @@ namespace TLGX_Consumer.controls.geography
                     lblCountryName.InnerText = Convert.ToString(result[0].Name);
                     txtCountryName.Text = Convert.ToString(result[0].Name);
                     txtCountryCode.Text = Convert.ToString(result[0].Code);
+
+                    txtRegionCode.Text = Convert.ToString(result[0].RegionCode);
+                    txtRegionName.Text = Convert.ToString(result[0].RegionName);
+                    txtRank.Text = Convert.ToString(result[0].Rank);
+                    txtKey.Text = Convert.ToString(result[0].Key);
+                    txtPriority.Text = Convert.ToString(result[0].Priority);
+
                     ddlStatus.SelectedValue = Convert.ToString(result[0].Status);
                     txt_ISOofficial_name_en.Text = Convert.ToString(result[0].ISOofficial_name_en);
                     txt_ISO3166_1_Alpha_2.Text = Convert.ToString(result[0].ISO3166_1_Alpha_2);
@@ -374,6 +381,14 @@ namespace TLGX_Consumer.controls.geography
             _objCountry.Name = Convert.ToString(txtCountryName.Text);
             _objCountry.Code = Convert.ToString(txtCountryCode.Text);
             _objCountry.Status = Convert.ToString(ddlStatus.SelectedValue);
+
+            _objCountry.RegionName = Convert.ToString(txtRegionName.Text);
+            _objCountry.RegionCode = Convert.ToString(txtRegionCode.Text);
+            _objCountry.Key = Convert.ToString(txtKey.Text);
+            _objCountry.Rank = Convert.ToString(txtRank.Text);
+            _objCountry.Priority = Convert.ToString(txtPriority.Text);
+
+
             _objCountry.ISOofficial_name_en = Convert.ToString(txt_ISOofficial_name_en.Text);
             _objCountry.ISO3166_1_Alpha_2 = Convert.ToString(txt_ISO3166_1_Alpha_2.Text);
             _objCountry.ISO3166_1_Alpha_3 = Convert.ToString(txt_ISO3166_1_Alpha_3.Text);

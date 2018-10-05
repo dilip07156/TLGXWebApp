@@ -93,9 +93,68 @@
                                                 <asp:ListItem Value="Active">Active</asp:ListItem>
                                                 <asp:ListItem Value="InActive">InActive</asp:ListItem>
                                             </asp:DropDownList>
-                                            <div class="clear">&nbsp;</div>
+                                            <%--<div class="clear">&nbsp;</div>--%>
                                         </div>
                                     </div>
+                                    <%--Varun Added--%>
+
+                                    <div class="form-group row">
+                                        <asp:Label runat="server" AssociatedControlID="txtKey" CssClass="col-md-4 control-label">Key
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtKey" Text="*"
+                                            CssClass="text-danger" ErrorMessage="The Key field is required." />
+                                        </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox runat="server" ID="txtKey" CssClass="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <%--varun Ended--%>
+                                </div>
+
+
+                                <div class="col-lg-6">
+                                    <div class="form-group row ">
+                                        <asp:Label runat="server" AssociatedControlID="txtRegionName" CssClass="col-md-4 control-label">Region Name
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtRegionName"
+                                            CssClass="text-danger" Text="*" ErrorMessage="The Region name field is required." />
+                                        </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox runat="server" ID="txtRegionName" CssClass="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <asp:Label runat="server" AssociatedControlID="txtRegionCode" CssClass="col-md-4 control-label">Region Code
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtRegionCode" Text="*"
+                                            CssClass="text-danger" ErrorMessage="The Region Code field is required." />
+                                        </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox runat="server" ID="txtRegionCode" CssClass="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group row ">
+                                        <asp:Label runat="server" AssociatedControlID="txtRank" CssClass="col-md-4 control-label">Rank
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtRank"
+                                            CssClass="text-danger" Text="*" ErrorMessage="The Rank field is required." />
+                                        </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox runat="server" ID="txtRank" CssClass="form-control" />
+                                        </div>
+                                    </div>
+
+                                      <div class="form-group row">
+                                        <asp:Label runat="server" AssociatedControlID="txtPriority" CssClass="col-md-4 control-label">Priority
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtPriority" Text="*"
+                                            CssClass="text-danger" ErrorMessage="The Priority field is required." />
+                                        </asp:Label>
+                                        <div class="col-md-8">
+                                            <asp:TextBox runat="server" ID="txtPriority" CssClass="form-control" />
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -599,7 +658,7 @@
                                                         <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
-                                                <div class="form-group row" style="display:none">
+                                                <div class="form-group row" style="display: none">
                                                     <label for="txtCityCode" class="col-md-4 col-form-label">
                                                         City Code
                                                     </label>
