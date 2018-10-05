@@ -32,17 +32,51 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                        <div class="col-sm-6 ">
-                            <%--  <h4>Countries</h4>
-                            <p>Based on EZ1 Country City Mapping</p>--%>
-                            <div class="form-group form-inline">
-                                <label for="ddlApplilcation"><strong>Countries: </strong></label>
-                                <asp:TextBox ID="txtCountryNameSearch" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                                <asp:Button ID="btnFilter" runat="server" CssClass="btn btn-primary btn-sm" Text="Find" OnClick="btnFilter_Click" />
+                        <div class="col-lg-6">
+                            <div class="form-group row ">
+                                <asp:Label runat="server" AssociatedControlID="ddlKey" CssClass="col-md-4 control-label">Key
+                                </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlKey" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <asp:Label runat="server" AssociatedControlID="ddlRank" CssClass="col-md-4 control-label">Rank
+                                </asp:Label>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlRank" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <asp:Button runat="server" ID="btnNewCreate" OnClientClick="showAddUpdateCountryModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Create New Country" />
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <asp:Label runat="server" AssociatedControlIDl="ddlRegion" CssClass="col-md-4 control-label">Region</asp:Label>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlRegion" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <%--Varun Added--%>
+
+                            <div class="form-group row">
+                                <asp:Label runat="server" AssociatedControlID="txtCountryNameSearch" CssClass="col-md-4 control-label">Countries:
+                                </asp:Label>
+                                <div class="col-md-8">
+                                    <div class="form-group form-inline">
+                                        <asp:TextBox ID="txtCountryNameSearch" Width="50%" runat="server" CssClass="form-control input-sm"></asp:TextBox>
+                                        <asp:Button ID="btnFilter" runat="server" CssClass="btn btn-primary btn-sm" Text="Find" OnClick="btnFilter_Click" />
+                                        <asp:Button runat="server" ID="btnNewCreate" OnClientClick="showAddUpdateCountryModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Create New Country" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <%--varun Ended--%>
                         </div>
                     </div>
                 </div>
@@ -71,11 +105,15 @@
                                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                                     <asp:BoundField DataField="Code" HeaderText="Code" SortExpression="Code" />
                                     <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                                    <asp:BoundField DataField="RegionName" HeaderText="Region" SortExpression="RegionName" />
+                                    <asp:BoundField DataField="Key" HeaderText="Key" SortExpression="Key" />
+                                    <asp:BoundField DataField="Rank" HeaderText="Rank" SortExpression="Rank" />
+                                    <asp:BoundField DataField="Priority" HeaderText="Priority" SortExpression="Priority" />
                                     <asp:BoundField HeaderText="# Hotels" />
                                     <asp:BoundField HeaderText="# Attractions" />
                                     <asp:BoundField HeaderText="# Holidays" />
                                     <asp:HyperLinkField DataNavigateUrlFields="Country_Id" DataNavigateUrlFormatString="~/geography/CountryStateMgmt?Country_Id={0}"
-                                        Text="Select" NavigateUrl="~/geography/CountryStateMgmt" HeaderText="Manage" ControlStyle-CssClass="btn btn-default"/>
+                                        Text="Select" NavigateUrl="~/geography/CountryStateMgmt" HeaderText="Manage" ControlStyle-CssClass="btn btn-default" />
                                 </Columns>
                                 <PagerStyle CssClass="pagination-ys" />
                             </asp:GridView>
@@ -160,9 +198,66 @@
                                                                             <asp:ListItem Value="Active">Active</asp:ListItem>
                                                                             <asp:ListItem Value="InActive">InActive</asp:ListItem>
                                                                         </asp:DropDownList>
-                                                                        <div class="clear">&nbsp;</div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <asp:Label runat="server" AssociatedControlID="txtKey" CssClass="col-md-4 control-label">Key
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtKey" Text="*"
+                                            CssClass="text-danger" ErrorMessage="The Key field is required." />
+                                                                    </asp:Label>
+                                                                    <div class="col-md-8">
+                                                                        <asp:TextBox runat="server" ID="txtKey" CssClass="form-control" />
                                                                     </div>
                                                                 </div>
+
+                                                            </div>
+
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group row ">
+                                                                    <asp:Label runat="server" AssociatedControlID="txtRegionName" CssClass="col-md-4 control-label">Region Name
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtRegionName"
+                                            CssClass="text-danger" Text="*" ErrorMessage="The Region name field is required." />
+                                                                    </asp:Label>
+                                                                    <div class="col-md-8">
+                                                                        <asp:TextBox runat="server" ID="txtRegionName" CssClass="form-control" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <asp:Label runat="server" AssociatedControlID="txtRegionCode" CssClass="col-md-4 control-label">Region Code
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtCountryCode" Text="*"
+                                            CssClass="text-danger" ErrorMessage="The Region Code field is required." />
+                                                                    </asp:Label>
+                                                                    <div class="col-md-8">
+                                                                        <asp:TextBox runat="server" ID="txtRegionCode" CssClass="form-control" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group row ">
+                                                                    <asp:Label runat="server" AssociatedControlID="txtRank" CssClass="col-md-4 control-label">Rank
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtRank"
+                                            CssClass="text-danger" Text="*" ErrorMessage="The Rank field is required." />
+                                                                    </asp:Label>
+                                                                    <div class="col-md-8">
+                                                                        <asp:TextBox runat="server" ID="txtRank" CssClass="form-control" />
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <asp:Label runat="server" AssociatedControlID="txtPriority" CssClass="col-md-4 control-label">Priority
+                                        <asp:RequiredFieldValidator ValidationGroup="Country" runat="server" ControlToValidate="txtPriority" Text="*"
+                                            CssClass="text-danger" ErrorMessage="The Priority field is required." />
+                                                                    </asp:Label>
+                                                                    <div class="col-md-8">
+                                                                        <asp:TextBox runat="server" ID="txtPriority" CssClass="form-control" />
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>

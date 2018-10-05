@@ -32,8 +32,34 @@ namespace TLGX_Consumer.controls.geography
             {
                 //dsMasters = objMasterDataDAL.GetMasterData();
                 fillgvCountryList();
+                fillDropdowns();
 
             }
+        }
+
+        private void fillDropdowns()
+        {
+            DC_Country_Search_RQ _objSearch = new DC_Country_Search_RQ();
+            _objSearch.PageNo = 0;
+            _objSearch.PageSize = 5000;
+            var result = _objMaster.GetCountryMasterData(_objSearch); //.Select(o => new { o.RegionCode, o.RegionName }).Where(y => y.RegionCode != null).Distinct();
+            divEntries.Style.Add(HtmlTextWriterStyle.Display, "block");
+            ddlRegion.DataSource = result.Select(o => new { o.RegionCode, o.RegionName }).Where(y => y.RegionCode != null).Distinct();
+            ddlRegion.DataValueField = "RegionCode";
+            ddlRegion.DataTextField = "RegionName";
+            ddlRegion.DataBind();
+
+            ddlKey.DataSource = result.Select(o => new { o.Key }).Where(y => y.Key != null).Distinct();
+            ddlKey.DataValueField = "Key";
+            ddlKey.DataTextField = "Key";
+            ddlKey.DataBind();
+
+            ddlRank.DataSource = result.Select(o => new { o.Rank }).Where(y => y.Rank != null).Distinct();
+            ddlRank.DataValueField = "Rank";
+            ddlRank.DataTextField = "Rank";
+            ddlRank.DataBind();
+
+
         }
 
         private void fillgvCountryList()
@@ -120,6 +146,11 @@ namespace TLGX_Consumer.controls.geography
             // filters search results list based on text field
             DC_Country_Search_RQ _objSearch = new DC_Country_Search_RQ();
             _objSearch.Country_Name = txtCountryNameSearch.Text.Trim();
+
+            _objSearch.RegionCode = ddlRegion.SelectedValue.Replace("0", "") ;
+            _objSearch.Key  = ddlKey.SelectedValue.Replace("0", "");
+            _objSearch.Rank = ddlRank.SelectedValue.Replace("0", "");
+
             _objSearch.PageNo = intPageIndex;
             _objSearch.PageSize = PageSize;
             grdCurrentCountryList.PageIndex = intPageIndex;
@@ -165,6 +196,13 @@ namespace TLGX_Consumer.controls.geography
                 //Getting all controls here
                 TextBox txtCountryName = (TextBox)frmCountrydetail.FindControl("txtCountryName");
                 TextBox txtCountryCode = (TextBox)frmCountrydetail.FindControl("txtCountryCode");
+
+                TextBox txtKey = (TextBox)frmCountrydetail.FindControl("txtKey");
+                TextBox txtRegionName = (TextBox)frmCountrydetail.FindControl("txtRegionName");
+                TextBox txtRegionCode = (TextBox)frmCountrydetail.FindControl("txtRegionCode");
+                TextBox txtRank = (TextBox)frmCountrydetail.FindControl("txtRank");
+                TextBox txtPriority = (TextBox)frmCountrydetail.FindControl("txtPriority");
+
                 DropDownList ddlStatus = (DropDownList)frmCountrydetail.FindControl("ddlStatus");
 
                 TextBox txt_ISOofficial_name_en = (TextBox)frmCountrydetail.FindControl("txt_ISOofficial_name_en");
@@ -197,8 +235,14 @@ namespace TLGX_Consumer.controls.geography
                     _objCountry.Create_Date = DateTime.Now;
                     _objCountry.Create_User = System.Web.HttpContext.Current.User.Identity.Name;
                     _objCountry.Country_Id = _countryid;
-                    _objCountry.Name = Convert.ToString(txtCountryName.Text);
+                    _objCountry.Name = (Convert.ToString(txtCountryName.Text));
                     _objCountry.Code = Convert.ToString(txtCountryCode.Text);
+                    _objCountry.RegionCode = (Convert.ToString(txtRegionCode.Text));
+                    _objCountry.RegionName = (Convert.ToString(txtRegionName.Text));
+                    _objCountry.Key = (Convert.ToString(txtKey.Text));
+                    _objCountry.Rank = (Convert.ToString(txtRank.Text));
+                    _objCountry.Priority = (Convert.ToString(txtPriority.Text));
+
                     _objCountry.Status = Convert.ToString(ddlStatus.SelectedValue);
                     _objCountry.ISOofficial_name_en = Convert.ToString(txt_ISOofficial_name_en.Text);
                     _objCountry.ISO3166_1_Alpha_2 = Convert.ToString(txt_ISO3166_1_Alpha_2.Text);
@@ -229,7 +273,7 @@ namespace TLGX_Consumer.controls.geography
                     }
                     else
                     {
-                        BootstrapAlert.BootstrapAlertMessage(msgAlert, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode); 
+                        BootstrapAlert.BootstrapAlertMessage(msgAlert, _msg.StatusMessage, (BootstrapAlertType)_msg.StatusCode);
                     }
                 }
 
