@@ -53966,6 +53966,18 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetails", ReplyAction="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsFromNewToUplo" +
+            "aded", ReplyAction="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsFromNewToUplo" +
+            "adedResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsFromNewToUplo" +
+            "adedDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message UpdateSupplierImportFileDetailsFromNewToUploaded(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsFromNewToUplo" +
+            "aded", ReplyAction="http://tempuri.org/IUploadStaticData/UpdateSupplierImportFileDetailsFromNewToUplo" +
+            "adedResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsFromNewToUploadedAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_Call", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy);
@@ -56780,6 +56792,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj) {
             return base.Channel.UpdateSupplierImportFileDetailsAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message UpdateSupplierImportFileDetailsFromNewToUploaded(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj) {
+            return base.Channel.UpdateSupplierImportFileDetailsFromNewToUploaded(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsFromNewToUploadedAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj) {
+            return base.Channel.UpdateSupplierImportFileDetailsFromNewToUploadedAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy) {
