@@ -418,6 +418,11 @@ namespace TLGX_Consumer.controls.geography
             TextBox txtCityCode = (TextBox)frmCityMaster.FindControl("txtCityCode");
             TextBox txtStateCode = (TextBox)frmCityMaster.FindControl("txtStateCode");
             TextBox txtCityName = (TextBox)frmCityMaster.FindControl("txtCityName");
+
+            TextBox txtKey = (TextBox)frmCityMaster.FindControl("txtKey");
+            TextBox txtRank = (TextBox)frmCityMaster.FindControl("txtRank");
+            TextBox txtPriority = (TextBox)frmCityMaster.FindControl("txtPriority");
+
             DropDownList ddlState = (DropDownList)frmCityMaster.FindControl("ddlState");
             dvMsgCity.Visible = true;
             if (Convert.ToString(e.CommandName) == "UpdateCityManager")
@@ -427,6 +432,9 @@ namespace TLGX_Consumer.controls.geography
                 _obj.Country_Id = refCountryId;
                 _obj.Name = txtCityName.Text;
                 _obj.Code = txtCityCode.Text;
+                _obj.Key = txtKey.Text;
+                _obj.Rank = txtRank.Text;
+                _obj.Priority = txtPriority.Text;
                 _obj.State_Id = Guid.Parse(ddlState.SelectedValue);
                 _obj.StateName = ddlState.SelectedItem.Text;
                 _obj.StateCode = txtStateCode.Text;

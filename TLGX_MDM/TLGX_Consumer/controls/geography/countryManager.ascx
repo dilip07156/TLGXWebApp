@@ -62,21 +62,37 @@
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <%--Varun Added--%>
-
                             <div class="form-group row">
                                 <asp:Label runat="server" AssociatedControlID="txtCountryNameSearch" CssClass="col-md-4 control-label">Countries:
                                 </asp:Label>
                                 <div class="col-md-8">
                                     <div class="form-group form-inline">
                                         <asp:TextBox ID="txtCountryNameSearch" Width="50%" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                                        <asp:Button ID="btnFilter" runat="server" CssClass="btn btn-primary btn-sm" Text="Find" OnClick="btnFilter_Click" />
-                                        <asp:Button runat="server" ID="btnNewCreate" OnClientClick="showAddUpdateCountryModal();" CssClass="btn btn-sm btn-primary pull-right" Text="Create New Country" />
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <%--varun Ended--%>
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <asp:Label runat="server" AssociatedControlIDl="ddlPriority" CssClass="col-md-4 control-label">Priority</asp:Label>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <div class="form-group form-inline">
+                                    <asp:Button ID="btnFilter" runat="server" CssClass="btn btn-primary btn-sm" Text="Find" OnClick="btnFilter_Click" />
+                                    <asp:Button runat="server" ID="btnNewCreate" style="margin-left:30%;" OnClientClick="showAddUpdateCountryModal();" CssClass="btn btn-sm btn-primary" Text="Create New Country" />
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

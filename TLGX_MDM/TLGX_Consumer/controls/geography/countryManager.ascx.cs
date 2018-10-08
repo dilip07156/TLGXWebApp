@@ -44,20 +44,25 @@ namespace TLGX_Consumer.controls.geography
             _objSearch.PageSize = 5000;
             var result = _objMaster.GetCountryMasterData(_objSearch); //.Select(o => new { o.RegionCode, o.RegionName }).Where(y => y.RegionCode != null).Distinct();
             divEntries.Style.Add(HtmlTextWriterStyle.Display, "block");
-            ddlRegion.DataSource = result.Select(o => new { o.RegionCode, o.RegionName }).Where(y => y.RegionCode != null).Distinct();
+            ddlRegion.DataSource = result.Select(o => new { o.RegionCode, o.RegionName }).Where(y => y.RegionCode != null && y.RegionCode != "").Distinct();
             ddlRegion.DataValueField = "RegionCode";
             ddlRegion.DataTextField = "RegionName";
             ddlRegion.DataBind();
 
-            ddlKey.DataSource = result.Select(o => new { o.Key }).Where(y => y.Key != null).Distinct();
+            ddlKey.DataSource = result.Select(o => new { o.Key }).Where(y => y.Key != null && y.Key != "").Distinct();
             ddlKey.DataValueField = "Key";
             ddlKey.DataTextField = "Key";
             ddlKey.DataBind();
 
-            ddlRank.DataSource = result.Select(o => new { o.Rank }).Where(y => y.Rank != null).Distinct();
+            ddlRank.DataSource = result.Select(o => new { o.Rank }).Where(y => y.Rank != null && y.Rank != "").Distinct();
             ddlRank.DataValueField = "Rank";
             ddlRank.DataTextField = "Rank";
             ddlRank.DataBind();
+
+            ddlPriority.DataSource = result.Select(o => new { o.Priority }).Where(y => y.Priority != null && y.Priority != "").Distinct();
+            ddlPriority.DataValueField = "Priority";
+            ddlPriority.DataTextField = "Priority";
+            ddlPriority.DataBind();
 
 
         }
@@ -150,6 +155,7 @@ namespace TLGX_Consumer.controls.geography
             _objSearch.RegionCode = ddlRegion.SelectedValue.Replace("0", "") ;
             _objSearch.Key  = ddlKey.SelectedValue.Replace("0", "");
             _objSearch.Rank = ddlRank.SelectedValue.Replace("0", "");
+            _objSearch.Priority = ddlPriority.SelectedValue.Replace("0", "");
 
             _objSearch.PageNo = intPageIndex;
             _objSearch.PageSize = PageSize;
