@@ -52,11 +52,24 @@ namespace TLGX_Consumer.controls.geography
 
             intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
             string CityName = string.Empty;
+            string _Key = string.Empty;
+            string _Rank = string.Empty;
+            string _Priority = string.Empty;
+
             if (!string.IsNullOrWhiteSpace(txtCityName.Text))
             {
                 CityName = txtCityName.Text;
             }
-            var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { Country_Id = CountryID, City_Name = CityName, Status = "ACTIVE", PageNo = pageindex, PageSize = intPageSize });
+
+            if (!string.IsNullOrWhiteSpace(ddlKey.SelectedValue.Replace("0", ""))) { _Key = ddlKey.SelectedValue; }
+
+            if (!string.IsNullOrWhiteSpace(ddlRank.SelectedValue.Replace("0", ""))) { _Rank = ddlRank.SelectedValue; }
+
+            if (!string.IsNullOrWhiteSpace(ddlPriority.SelectedValue.Replace("0", ""))) { _Priority = ddlPriority.SelectedValue; }
+
+            var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ()
+            { Country_Id = CountryID, City_Name = CityName, Key = _Key, Rank = _Rank, Priority = _Priority, Status = "ACTIVE", PageNo = pageindex, PageSize = intPageSize });
+
             grdCityList.DataSource = result;
             if (result != null && result.Count > 0)
             {
@@ -180,11 +193,13 @@ namespace TLGX_Consumer.controls.geography
                 if (Request.UrlReferrer != null && Request.UrlReferrer.AbsoluteUri.Contains("city"))
                 {
                     fillgvCountryList();
+                    //fillDropdowns();
                     SetControls();
                 }
                 else
                 {
                     fillgvCountryList();
+                    //fillDropdowns();
                 }
 
 
@@ -199,9 +214,45 @@ namespace TLGX_Consumer.controls.geography
             }
         }
 
+        /// <summary>
+        /// Added by / On / TMAP ID : Varun Phadke / 8 Oct 2018 / T691
+        /// Desc     : 3 Additionsl filters for Key, Rank, Priority
+        /// </summary>
+        private void fillDropdowns()
+        {
+            ddlKey.Items.Clear(); ddlRank.Items.Clear(); ddlPriority.Items.Clear();
+
+            ddlKey.Items.Insert(0, new ListItem("---ALL---", "0"));
+            ddlRank.Items.Insert(0, new ListItem("---ALL---", "0"));
+            ddlPriority.Items.Insert(0, new ListItem("---ALL---", "0"));
+
+
+            CountryID = Guid.Parse(Convert.ToString(ddlCountry.SelectedValue));
+
+            var result = _objMasterData.GetCityMasterData(new MDMSVC.DC_City_Search_RQ() { Country_Id = CountryID, City_Name = "", Status = "ACTIVE", PageNo = 0, PageSize = 5000 });
+            divEntries.Style.Add(HtmlTextWriterStyle.Display, "block");
+
+            ddlKey.DataSource = result.Select(o => new { o.Key }).Where(y => y.Key != null && y.Key != "").Distinct();
+            ddlKey.DataValueField = "Key";
+            ddlKey.DataTextField = "Key";
+            ddlKey.DataBind();
+
+            ddlRank.DataSource = result.Select(o => new { o.Rank }).Where(y => y.Rank != null && y.Rank != "").Distinct();
+            ddlRank.DataValueField = "Rank";
+            ddlRank.DataTextField = "Rank";
+            ddlRank.DataBind();
+
+            ddlPriority.DataSource = result.Select(o => new { o.Priority }).Where(y => y.Priority != null && y.Priority != "").Distinct();
+            ddlPriority.DataValueField = "Priority";
+            ddlPriority.DataTextField = "Priority";
+            ddlPriority.DataBind();
+
+
+        }
+
         private void SetControls()
         {
-            
+
 
             try
             {
@@ -284,6 +335,10 @@ namespace TLGX_Consumer.controls.geography
         {
             TextBox txtCityName = (TextBox)frmvwCity.FindControl("txtCityName");
             TextBox txtCityCode = (TextBox)frmvwCity.FindControl("txtCityCode");
+            TextBox txtKey = (TextBox)frmvwCity.FindControl("txtKey");
+            TextBox txtRank = (TextBox)frmvwCity.FindControl("txtRank");
+            TextBox txtPriority = (TextBox)frmvwCity.FindControl("txtPriority");
+
             DropDownList ddlStates = (DropDownList)frmvwCity.FindControl("ddlStates");
             DropDownList ddlStatus = (DropDownList)frmvwCity.FindControl("ddlStatus");
             Guid ddlCountry_Id_Value = Guid.Parse(ddlCountry.SelectedValue);
@@ -296,6 +351,10 @@ namespace TLGX_Consumer.controls.geography
                 _objCityMaster.City_Id = Guid.NewGuid();
                 _objCityMaster.Name = Convert.ToString(txtCityName.Text).Trim();
                 _objCityMaster.Code = Convert.ToString(txtCityCode.Text).Trim();
+                _objCityMaster.Key = Convert.ToString(txtKey.Text).Trim();
+                _objCityMaster.Rank = Convert.ToString(txtRank.Text).Trim();
+                _objCityMaster.Priority = Convert.ToString(txtPriority.Text).Trim();
+
                 _objCityMaster.State_Id = stateid;
                 //Get Country Details
                 var resultCountry = _objMasterData.GetCountryMasterData(new MDMSVC.DC_Country_Search_RQ() { Country_Id = ddlCountry_Id_Value });
@@ -386,6 +445,11 @@ namespace TLGX_Consumer.controls.geography
 
 
             return sb.ToString();
+        }
+
+        protected void ddlCountry_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillDropdowns();
         }
     }
 }

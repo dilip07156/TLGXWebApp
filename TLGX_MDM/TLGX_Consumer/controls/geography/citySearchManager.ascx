@@ -32,32 +32,92 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+
+                    <%--Original / Previous Div design--%>
+                    <%--<div class="row">
                         <div class="form-inline">
                             <div class="col-sm-12">
+                            </div>
+                        </div>
+                        <asp:LinkButton ID="btnGetCities" runat="server" CommandName="Search" Text="Search" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHealthAndSafety" OnClick="btnGetCities_Click" />
+                    </div>--%>
 
-                                <label for="ddlCountry">
-                                    Country
+                    <%--New Div design--%>
+                    <div class="panel-body">
+                        <div class="col-lg-4">
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label for="ddlCountry">
+                                        Country
                             <asp:RequiredFieldValidator ValidationGroup="CityManager" runat="server" ControlToValidate="ddlCountry"
                                 Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please select a country before search !" />
-                                </label>
-                                <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control" AppendDataBoundItems="True">
-                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
-                                </asp:DropDownList>
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlCountry" runat="server" AutoPostBack="true" CssClass="form-control" AppendDataBoundItems="True" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged">
+                                        <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
 
-
-                                <label for="txtCityName">CityName</label>
-                                <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" />
-
-                                <asp:LinkButton ID="btnGetCities" runat="server" CommandName="Search" Text="Search" CssClass="btn btn-primary btn-sm" ValidationGroup="CityManager" OnClick="btnGetCities_Click" />
-                                <asp:LinkButton ID="btnNewCity" runat="server" CommandName="Create" Text="Create City" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnNewCity_Click" OnClientClick="showCityMappingModal();" Visible="false" />
-
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <asp:Label runat="server" AssociatedControlID="ddlRank" CssClass="col-md-4 control-label">Rank
+                                    </asp:Label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlRank" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
                             </div>
                         </div>
 
+                        <div class="col-lg-4">
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label for="txtCityName">CityName</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtCityName" runat="server" CssClass="form-control" />
+                                </div>
+                            </div>
 
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label runat="server" associatedcontrolidl="ddlPriority">Priority</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
 
-                        <%--<asp:LinkButton ID="btnGetCities" runat="server" CommandName="Search" Text="Search" CssClass="btn btn-primary btn-sm" ValidationGroup="vldgrpHealthAndSafety" OnClick="btnGetCities_Click" />--%>
+                        <div class="col-lg-4">
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label runat="server" associatedcontrolid="ddlKey">
+                                        Key
+                                    </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlKey" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <asp:LinkButton ID="btnGetCities" runat="server" CommandName="Search" Text="Search" CssClass="btn btn-primary btn-sm" ValidationGroup="CityManager" OnClick="btnGetCities_Click" />
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:LinkButton ID="btnNewCity" runat="server" CommandName="Create" Text="Create City" CssClass="btn btn-primary btn-sm pull-right" OnClick="btnNewCity_Click" OnClientClick="showCityMappingModal();" Visible="false" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -91,16 +151,19 @@
                                         <asp:GridView ID="grdCityList" EmptyDataText="No Data Found." runat="server" AllowPaging="True" AllowCustomPaging="true" AllowSorting="True" AutoGenerateColumns="False"
                                             DataKeyNames="City_Id, Country_Id" CssClass="table table-hover table-striped" OnPageIndexChanging="grdCityList_PageIndexChanging" OnRowCommand="grdCityList_RowCommand">
                                             <Columns>
-                                                <asp:BoundField DataField="Code" HeaderText="Code"  />
-                                                <asp:BoundField DataField="Name" HeaderText="Name"  />
-                                                <asp:BoundField DataField="StateCode" HeaderText="State Code"  />
+                                                <asp:BoundField DataField="Code" HeaderText="Code" />
+                                                <asp:BoundField DataField="Name" HeaderText="Name" />
+                                                <asp:BoundField DataField="StateCode" HeaderText="State Code" />
                                                 <asp:BoundField DataField="StateName" HeaderText="State Name" />
-                                                <asp:BoundField DataField="CountryName" HeaderText="CountryName"  />
-                                                <asp:BoundField DataField="Edit_Date" HeaderText="Edit_Date"  />
+                                                <asp:BoundField DataField="CountryName" HeaderText="CountryName" />
+                                                <asp:BoundField DataField="Key" HeaderText="Key" />
+                                                <asp:BoundField DataField="Rank" HeaderText="Rank" />
+                                                <asp:BoundField DataField="Priority" HeaderText="Priority" />
+                                                <asp:BoundField DataField="Edit_Date" HeaderText="Edit_Date" />
                                                 <asp:BoundField DataField="Edit_User" HeaderText="Edit_User" />
                                                 <asp:BoundField HeaderText="# Hotels" DataField="TotalHotelRecords" />
                                                 <asp:BoundField HeaderText="# Attractions" DataField="TotalAttractionsRecords" />
-                                                <asp:BoundField HeaderText="# Supplier City" DataField="TotalSupplierCityRecords"  />
+                                                <asp:BoundField HeaderText="# Supplier City" DataField="TotalSupplierCityRecords" />
                                                 <%-- <asp:HyperLinkField DataNavigateUrlFields="City_Id" ControlStyle-CssClass="btn btn-default" DataNavigateUrlFormatString="~/geography/city?City_Id={0}" Text="Manage" NavigateUrl="~/geography/city" HeaderText="Manage" />--%>
                                                 <asp:TemplateField ShowHeader="false">
                                                     <ItemTemplate>
@@ -256,6 +319,42 @@
                                                             <asp:ListItem Value="InActive">InActive</asp:ListItem>
 
                                                         </asp:DropDownList>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="ddlStateName" class="col-md-4 col-form-label">
+                                                        Key
+                                                    </label>
+                                                    <asp:RequiredFieldValidator ValidationGroup="City" runat="server" ControlToValidate="txtKey" Text="*"
+                                                        CssClass="text-danger" ErrorMessage="The Key field is required." />
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <asp:TextBox ID="txtKey" runat="server" CssClass="form-control" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="ddlStateName" class="col-md-4 col-form-label">
+                                                        Rank
+                                                    </label>
+                                                    <asp:RequiredFieldValidator ValidationGroup="City" runat="server" ControlToValidate="txtRank" Text="*"
+                                                        CssClass="text-danger" ErrorMessage="The Rank field is required." />
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <asp:TextBox ID="txtRank" runat="server" CssClass="form-control" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label for="ddlStateName" class="col-md-4 col-form-label">
+                                                        Priority
+                                                    </label>
+                                                    <asp:RequiredFieldValidator ValidationGroup="City" runat="server" ControlToValidate="txtPriority" Text="*"
+                                                        CssClass="text-danger" ErrorMessage="The Priority field is required." />
+                                                    </label>
+                                                    <div class="col-md-8">
+                                                        <asp:TextBox ID="txtPriority" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
                                                 <div class="row pull-right col-md-3">
