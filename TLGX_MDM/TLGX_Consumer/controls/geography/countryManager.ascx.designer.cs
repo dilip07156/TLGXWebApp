@@ -31,6 +31,15 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.DropDownList ddlKey;
         
         /// <summary>
+        /// ddlPriority control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        
+        /// <summary>
         /// ddlRank control.
         /// </summary>
         /// <remarks>
@@ -38,15 +47,6 @@ namespace TLGX_Consumer.controls.geography {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlRank;
-        
-        /// <summary>
-        /// ddlRegion control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
         
         /// <summary>
         /// txtCountryNameSearch control.
@@ -58,13 +58,13 @@ namespace TLGX_Consumer.controls.geography {
         protected global::System.Web.UI.WebControls.TextBox txtCountryNameSearch;
         
         /// <summary>
-        /// ddlPriority control.
+        /// ddlRegion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPriority;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
         
         /// <summary>
         /// btnFilter control.

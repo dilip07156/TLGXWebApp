@@ -49,7 +49,6 @@ namespace TLGX_Consumer.controls.geography
 
         private void fillgvCityyList(Guid CountryID, int pageindex)
         {
-
             intPageSize = Convert.ToInt32(ddlShowEntries.SelectedValue);
             string CityName = string.Empty;
             string _Key = string.Empty;
@@ -193,13 +192,11 @@ namespace TLGX_Consumer.controls.geography
                 if (Request.UrlReferrer != null && Request.UrlReferrer.AbsoluteUri.Contains("city"))
                 {
                     fillgvCountryList();
-                    //fillDropdowns();
                     SetControls();
                 }
                 else
                 {
                     fillgvCountryList();
-                    //fillDropdowns();
                 }
 
 
@@ -284,7 +281,7 @@ namespace TLGX_Consumer.controls.geography
                 ddlShowEntries.SelectedValue = Convert.ToString(pagesize);
                 //searchActivityMaster(pageno, pagesize);
                 fillgvCityyList(Guid.Parse(CountryID), pageno);
-
+                fillDropdowns();
                 if (ddlCountry.SelectedIndex != 0)
                     btnNewCity.Visible = true;
                 else
@@ -392,6 +389,11 @@ namespace TLGX_Consumer.controls.geography
             }
             txtCityName.Text = String.Empty;
             txtCityCode.Text = String.Empty;
+
+            txtKey.Text = string.Empty;
+            txtRank.Text = string.Empty;
+            txtPriority.Text = string.Empty;
+
             ddlStates.SelectedIndex = 0;
             ddlStatus.SelectedIndex = 0;
         }

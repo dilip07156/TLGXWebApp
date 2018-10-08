@@ -62,8 +62,8 @@
 
                             <div class="form-group row ">
                                 <div class="col-md-4">
-                                    <asp:Label runat="server" AssociatedControlID="ddlRank" CssClass="col-md-4 control-label">Rank
-                                    </asp:Label>
+                                    <Label runat="server" AssociatedControlID="ddlRank" CssClass="col-md-4 control-label">Rank
+                                    </Label>
                                 </div>
                                 <div class="col-md-8">
                                     <asp:DropDownList ID="ddlRank" runat="server" CssClass="form-control" AppendDataBoundItems="true">

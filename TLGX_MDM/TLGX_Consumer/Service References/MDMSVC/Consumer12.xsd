@@ -1913,4 +1913,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_ActivityProductDetailsReport" nillable="true" type="tns:DC_ActivityProductDetailsReport" />
+  <xs:complexType name="DC_Activity_MediaAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_MediaAttributes_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Media_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Create_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Create_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsSystemAttribute" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_MediaAttributes" nillable="true" type="tns:DC_Activity_MediaAttributes" />
 </xs:schema>

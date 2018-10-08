@@ -31,11 +31,15 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-lg-6">
+                    <div class="panel-body">
+
+                        <div class="col-lg-4">
                             <div class="form-group row ">
-                                <asp:Label runat="server" AssociatedControlID="ddlKey" CssClass="col-md-4 control-label">Key
-                                </asp:Label>
+                                <div class="col-md-4">
+                                    <label runat="server" associatedcontrolid="ddlKey" cssclass="col-md-4 control-label">
+                                        Key
+                                    </label>
+                                </div>
                                 <div class="col-md-8">
                                     <asp:DropDownList ID="ddlKey" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
@@ -43,57 +47,63 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <asp:Label runat="server" AssociatedControlID="ddlRank" CssClass="col-md-4 control-label">Rank
-                                </asp:Label>
-                                <div class="col-md-8">
-                                    <asp:DropDownList ID="ddlRank" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label runat="server" associatedcontrolidl="ddlPriority" cssclass="control-label">Priority</label>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group row">
-                                <asp:Label runat="server" AssociatedControlIDl="ddlRegion" CssClass="col-md-4 control-label">Region</asp:Label>
-                                <div class="col-md-8">
-                                    <asp:DropDownList ID="ddlRegion" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                    </asp:DropDownList>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <asp:Label runat="server" AssociatedControlID="txtCountryNameSearch" CssClass="col-md-4 control-label">Countries:
-                                </asp:Label>
-                                <div class="col-md-8">
-                                    <div class="form-group form-inline">
-                                        <asp:TextBox ID="txtCountryNameSearch" Width="50%" runat="server" CssClass="form-control input-sm"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
-                            <div class="form-group row">
-                                <asp:Label runat="server" AssociatedControlIDl="ddlPriority" CssClass="col-md-4 control-label">Priority</asp:Label>
                                 <div class="col-md-8">
                                     <asp:DropDownList ID="ddlPriority" runat="server" CssClass="form-control" AppendDataBoundItems="true">
                                         <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group row">
-                                <div class="form-group form-inline">
-                                    <asp:Button ID="btnFilter" runat="server" CssClass="btn btn-primary btn-sm" Text="Find" OnClick="btnFilter_Click" />
-                                    <asp:Button runat="server" ID="btnNewCreate" style="margin-left:30%;" OnClientClick="showAddUpdateCountryModal();" CssClass="btn btn-sm btn-primary" Text="Create New Country" />
+                        <div class="col-lg-4">
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label runat="server" associatedcontrolid="ddlRank" cssclass="col-md-4 control-label">Rank </label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlRank" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
+
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <asp:Label runat="server" AssociatedControlID="txtCountryNameSearch" CssClass="ontrol-label">Countries:
+                                    </asp:Label>
+
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:TextBox ID="txtCountryNameSearch" runat="server" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <label runat="server" associatedcontrolidl="ddlRegion" cssclass="col-md-4 control-label">Region</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:DropDownList ID="ddlRegion" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                                        <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                            <div class="form-group row ">
+                                <div class="col-md-4">
+                                    <asp:Button ID="btnFilter" runat="server" CssClass="btn btn-primary btn-sm" Text="Find" OnClick="btnFilter_Click" />
+                                </div>
+                                <div class="col-md-8">
+                                    <asp:Button runat="server" ID="btnNewCreate" Style="margin-left: 30%;" OnClientClick="showAddUpdateCountryModal();" CssClass="btn btn-sm btn-primary" Text="Create New Country" />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <div class="panel-body">
