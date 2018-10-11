@@ -5059,4 +5059,28 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ML_DataTransfer_DeleteTrainingData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accommodation_SupplierRoomTypeMapping_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_DeleteTrainingDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_TrainingDataPushToAIML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accommodation_SupplierRoomTypeMapping_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_TrainingDataPushToAIMLResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -431,7 +431,8 @@ function BindRTDetails(controlval) {
 }
 
 function UpdateTrainingFlag(check) {
-   
+
+    
     showLoadingImage();
     var jsonObj = [];
     var item = {};
@@ -899,6 +900,10 @@ function submitSave() {
         var jsonObj = [];
         var emptyGuid = '00000000-0000-0000-0000-000000000000';
 
+        //Check Training data push or not 
+        var chk = $('#chkIsNotTraining');
+       
+
         table.find('tr').each(function (i) {
             var row = $(this);
             var $tds = $(this).find('td');
@@ -911,6 +916,8 @@ function submitSave() {
                     item.UserMappingStatus = ddlMapingStatusData;
                     item.Accommodation_SupplierRoomTypeMapping_Id = $tds.eq(10).text();
                     item.Accommodation_SupplierRoomTypeMapping_Value_Id = $tds.eq(12).text();
+                    if (chk !== null)
+                        item.IsNotTraining = chk[0].checked;
                     jsonObj.push(item);
                 }
             }
