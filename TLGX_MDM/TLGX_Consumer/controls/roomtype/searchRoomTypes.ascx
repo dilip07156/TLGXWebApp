@@ -24,6 +24,17 @@
         callajax();
     });
 </script>
+
+<style>
+    .overflow-wrap {
+        overflow-wrap: break-word;
+    }
+
+    .word-break {
+        word-break: break-all;
+    }
+</style>
+
 <div class="navbar">
     <div class="navbar-inner">
         <ul class="nav nav-tabs">
@@ -235,7 +246,7 @@
                                     <asp:UpdatePanel runat="server" ID="UpdatePanel2">
                                         <ContentTemplate>
                                             <div id="divMsgForMapping" runat="server" style="display: none;"></div>
-                                            <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" ClientIDMode ="Static" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
+                                            <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" ClientIDMode="Static" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                                 DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id,Supplier_Id,SupplierProductId"
                                                 CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
                                                 OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging">
@@ -307,8 +318,8 @@
                                                         <ItemTemplate>
 
                                                             <button class="btn btn-primary" onclientclick="Static" type="button" runat="server" id="btnSuggestion" text="Check" onclick="BindRTDetails(this);">Check</button><br />
-                                                            <asp:DataList ID = "lstMappedRoomList" ClientIDMode="Static" runat="server" DataSource='<%# Bind("MappedRoomInfo") %>'
-                                                                RepeatLayout="Table" RepeatColumns="1" RepeatDirection="Vertical" ItemStyle-Wrap="false" CssClass="table table-bordered table-responsive table-condensed">
+                                                            <asp:DataList ID="lstMappedRoomList" ClientIDMode="Static" runat="server" DataSource='<%# Bind("MappedRoomInfo") %>'
+                                                                RepeatLayout="Table" RepeatColumns="1" RepeatDirection="Vertical" ItemStyle-Wrap="true" CssClass="table table-bordered table-responsive table-condensed">
                                                                 <ItemTemplate>
                                                                     <label><%# Eval("Accommodation_RoomInfo_Name") + " : " + Eval("Accommodation_RoomInfo_Category") + " : " + Eval("MappingStatus") %></label>
                                                                 </ItemTemplate>
@@ -331,13 +342,13 @@
                                                         </ItemTemplate>
 
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField HeaderText="Add" ItemStyle-Width="5%">
+                                                    <asp:TemplateField HeaderText="Add Suggested By System" ItemStyle-Width="5%">
                                                         <ItemTemplate>
                                                             <input type="checkbox" runat="server" id="chkSelect" onclick="SelectedRow(this);" disabled />
                                                             <input type="hidden" class="hidnAcoo_Id" value='<%# Eval("Accommodation_Id") %>' />
-                                                            <input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
+                                                            <%--<input type="hidden" class="hdnRoomCount" id="hdnRoomCount" runat="server" value='<%# Eval("NumberOfRooms") %>' />
                                                             <input type="hidden" class="hdnAccommodation_RoomInfo_Id" runat="server" id="hdnAccommodation_RoomInfo_Id" value='<%# Eval("Accommodation_RoomInfo_Id") %>' />
-                                                            <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />
+                                                            <input type="hidden" class="hdnAccommodation_RoomInfo_Name" value='<%# Eval("Accommodation_RoomInfo_Name") %>' />--%>
                                                             <input type="hidden" class="hdnAccommodation_SupplierRoomTypeMapping_Id" runat="server" id="hdnAccommodation_SupplierRoomTypeMapping_Id" value='<%# Eval("Accommodation_SupplierRoomTypeMapping_Id") %>' />
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
@@ -345,7 +356,7 @@
                                                     <asp:TemplateField HeaderText="Is Not Training Data" ItemStyle-Width="5%">
                                                         <ItemTemplate>
                                                             <h4><span id="spnIsNotTraining" aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-<%# Eval("IsNotTraining").ToString() == "True" ? "ok" : "" %>"></span></h4>
-                                                            <label id="lblIsNotTraining" style="display:none"><%# Eval("IsNotTraining").ToString() %></label>
+                                                            <label id="lblIsNotTraining" style="display: none"><%# Eval("IsNotTraining").ToString() %></label>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
 

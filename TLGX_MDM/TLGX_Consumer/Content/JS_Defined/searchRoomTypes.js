@@ -272,7 +272,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
             //Construct mapped room list
             if (currentMappingStatus != "UNMAPPED") {
-                mappedRoomInfo += "<tr><td style ='white-space:nowrap;'><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
+                mappedRoomInfo += "<tr><td><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
             }
 
             for (var j = 0; j < ddlStatusValues.length; j++) {
