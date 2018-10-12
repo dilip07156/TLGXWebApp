@@ -21442,6 +21442,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsNotTrainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MatchingScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -21550,6 +21553,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsNotTraining {
+            get {
+                return this.IsNotTrainingField;
+            }
+            set {
+                if ((this.IsNotTrainingField.Equals(value) != true)) {
+                    this.IsNotTrainingField = value;
+                    this.RaisePropertyChanged("IsNotTraining");
                 }
             }
         }
@@ -54963,6 +54979,24 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatus", ReplyAction="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]> GetMLDataApiTransferStatusAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        void ML_DataTransfer_DeleteTrainingData(string accommodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataResponse")]
+        System.Threading.Tasks.Task ML_DataTransfer_DeleteTrainingDataAsync(string accommodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIML", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLResponse" +
+            "")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLDC_Error" +
+            "StatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        void ML_DataTransfer_TrainingDataPushToAIML(string accommodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIML", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLResponse" +
+            "")]
+        System.Threading.Tasks.Task ML_DataTransfer_TrainingDataPushToAIMLAsync(string accommodation_SupplierRoomTypeMapping_Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -57846,6 +57880,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]> GetMLDataApiTransferStatusAsync() {
             return base.Channel.GetMLDataApiTransferStatusAsync();
+        }
+        
+        public void ML_DataTransfer_DeleteTrainingData(string accommodation_SupplierRoomTypeMapping_Id) {
+            base.Channel.ML_DataTransfer_DeleteTrainingData(accommodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task ML_DataTransfer_DeleteTrainingDataAsync(string accommodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.ML_DataTransfer_DeleteTrainingDataAsync(accommodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public void ML_DataTransfer_TrainingDataPushToAIML(string accommodation_SupplierRoomTypeMapping_Id) {
+            base.Channel.ML_DataTransfer_TrainingDataPushToAIML(accommodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task ML_DataTransfer_TrainingDataPushToAIMLAsync(string accommodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.ML_DataTransfer_TrainingDataPushToAIMLAsync(accommodation_SupplierRoomTypeMapping_Id);
         }
     }
 }
