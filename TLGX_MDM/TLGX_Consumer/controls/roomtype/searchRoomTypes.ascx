@@ -104,8 +104,8 @@
                                                     <div class="col-sm-6">
                                                         <asp:DropDownList ID="ddlMappingTypeBySupplier" runat="server" CssClass="form-control">
                                                             <asp:ListItem Text="---ALL---" Value="0"></asp:ListItem>
-                                                            <asp:ListItem Text="Static File" Value=""></asp:ListItem>
-                                                            <asp:ListItem Text="Dynamic Search Results" Value=""></asp:ListItem>
+                                                            <asp:ListItem Text="Static File" Value="StaticFile"></asp:ListItem>
+                                                            <asp:ListItem Text="Dynamic Search Results" Value="Online"></asp:ListItem>
                                                         </asp:DropDownList>
                                                     </div>
                                                 </div>

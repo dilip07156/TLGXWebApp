@@ -19546,6 +19546,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -19686,6 +19689,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
                     this.ProductNameField = value;
                     this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Source {
+            get {
+                return this.SourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceField, value) != true)) {
+                    this.SourceField = value;
+                    this.RaisePropertyChanged("Source");
                 }
             }
         }
