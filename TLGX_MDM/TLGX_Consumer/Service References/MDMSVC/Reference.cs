@@ -53544,10 +53544,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetSupplierDataForExport", ReplyAction="http://tempuri.org/IStaticData/GetSupplierDataForExportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetSupplierDataForExportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly);
+        TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetSupplierDataForExport", ReplyAction="http://tempuri.org/IStaticData/GetSupplierDataForExportResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -56358,12 +56358,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId, ProductCategory, ISMDM);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly) {
-            return base.Channel.GetSupplierDataForExport(AccoPriority, SupplierID, IsMdmDataOnly);
+        public TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority) {
+            return base.Channel.GetSupplierDataForExport(AccoPriority, SupplierID, IsMdmDataOnly, SuppPriority);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly) {
-            return base.Channel.GetSupplierDataForExportAsync(AccoPriority, SupplierID, IsMdmDataOnly);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority) {
+            return base.Channel.GetSupplierDataForExportAsync(AccoPriority, SupplierID, IsMdmDataOnly, SuppPriority);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {

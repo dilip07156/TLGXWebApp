@@ -461,10 +461,10 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Get SupplierData ForExport
-        public List<DC_SupplierExportDataReport> GetSupplierDataForExport(string AccoPriority, Guid Supplier_Id, bool isMDM)
+        public List<DC_SupplierExportDataReport> GetSupplierDataForExport(string AccoPriority, Guid Supplier_Id, bool isMDM, string SuppPriority)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_SupplierDataExport"], AccoPriority, Supplier_Id.ToString(), isMDM.ToString()), typeof(List<DC_SupplierExportDataReport>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_SupplierDataExport"], AccoPriority, Supplier_Id.ToString(), isMDM.ToString(), SuppPriority), typeof(List<DC_SupplierExportDataReport>), out result);
             return result as List<DC_SupplierExportDataReport>;
         }
         #endregion

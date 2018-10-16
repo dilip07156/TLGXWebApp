@@ -3258,6 +3258,7 @@
         <xs:element minOccurs="0" name="AccoPriority" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="SupplierID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IsMdmDataOnly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SuppPriority" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
