@@ -271,6 +271,7 @@ namespace TLGX_Consumer.controls.hotel
                 }
                 else
                 {
+                    CheckBox blnRTCompleted = (CheckBox)frmHotelOverview.FindControl("blnRTCompleted");
                     CheckBox blnMysteryProduct = (CheckBox)frmHotelOverview.FindControl("blnMysteryProduct");
                     DropDownList ddlCountry = (DropDownList)frmHotelOverview.FindControl("ddlCountry");
                     DropDownList ddlCity = (DropDownList)frmHotelOverview.FindControl("ddlCity");
@@ -396,6 +397,7 @@ namespace TLGX_Consumer.controls.hotel
                     OverviewData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
                     OverviewData.IsActive = true;
                     OverviewData.IsMysteryProduct = blnMysteryProduct.Checked;
+                    OverviewData.IsRoomMappingCompleted= blnRTCompleted.Checked;
                     System.Web.UI.HtmlControls.HtmlGenericControl alert_GeoCode = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("alert_GeoCode");
                     System.Web.UI.HtmlControls.HtmlGenericControl dvMsgContact = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("contacts").FindControl("dvMsgContact");
                     System.Web.UI.HtmlControls.HtmlGenericControl dvMsgDynamicAttributesForHotel = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("DynamicAttributesForHotel").FindControl("dvMsgDynamicAttributesForHotel");
