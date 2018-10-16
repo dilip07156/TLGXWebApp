@@ -199,7 +199,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
     $("#hdnAccommodation_IdPopUp").val(acco_id);
 
     if (result != null) {
-        var def = '<table id="tblTLGXRoomInfo" runat="server" class="table table-responsive table-hover table-striped table-bordered" style="border-collapse:collapse;" cellspacing="0" border="1" rules="all"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn" style="display: none;"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">MDM Room Name</th> <th class="col-md-2">MDM Room Category</th>';
+        var def = '<table id="tblTLGXRoomInfo" runat="server" class="table table-responsive table-hover table-striped table-bordered"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn" style="display: none;"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">MDM Room Name</th> <th class="col-md-2">MDM Room Category</th>';
         def = def + '<th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -272,7 +272,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
             //Construct mapped room list
             if (currentMappingStatus != "UNMAPPED") {
-                mappedRoomInfo += "<tr><td style ='white-space:nowrap;'><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
+                mappedRoomInfo += "<tr><td><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
             }
 
             for (var j = 0; j < ddlStatusValues.length; j++) {
@@ -431,7 +431,8 @@ function BindRTDetails(controlval) {
 }
 
 function UpdateTrainingFlag(check) {
-   
+
+    
     showLoadingImage();
     var jsonObj = [];
     var item = {};
@@ -899,6 +900,10 @@ function submitSave() {
         var jsonObj = [];
         var emptyGuid = '00000000-0000-0000-0000-000000000000';
 
+        //Check Training data push or not 
+        var chk = $('#chkIsNotTraining');
+       
+
         table.find('tr').each(function (i) {
             var row = $(this);
             var $tds = $(this).find('td');
@@ -911,6 +916,8 @@ function submitSave() {
                     item.UserMappingStatus = ddlMapingStatusData;
                     item.Accommodation_SupplierRoomTypeMapping_Id = $tds.eq(10).text();
                     item.Accommodation_SupplierRoomTypeMapping_Value_Id = $tds.eq(12).text();
+                    if (chk !== null)
+                        item.IsNotTraining = chk[0].checked;
                     jsonObj.push(item);
                 }
             }

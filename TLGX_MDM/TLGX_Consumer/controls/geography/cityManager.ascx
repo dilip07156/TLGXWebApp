@@ -99,7 +99,7 @@
                                                 <asp:BoundField DataField="Edit_Date" HeaderText="Edit_Date" SortExpression="Edit_Date" />
                                                 <asp:BoundField DataField="Edit_User" HeaderText="Edit_User" SortExpression="Edit_User" />
                                                 <asp:BoundField HeaderText="# Hotels" DataField="TotalHotelRecords" SortExpression="TotalHotelRecords" />
-                                                <asp:BoundField HeaderText="# Attractions" DataField="TotalAttractionsRecords" SortExpression="TotalAttractionsRecords"/>
+                                                <asp:BoundField HeaderText="# Attractions" DataField="TotalAttractionsRecords" SortExpression="TotalAttractionsRecords" />
                                                 <asp:BoundField HeaderText="# Supplier City" DataField="TotalSupplierCityRecords" SortExpression="TotalSupplierCityRecords" />
                                                 <%-- <asp:HyperLinkField DataNavigateUrlFields="City_Id" ControlStyle-CssClass="btn btn-default" DataNavigateUrlFormatString="~/geography/city?City_Id={0}" Text="Manage" NavigateUrl="~/geography/city" HeaderText="Manage" />--%>
                                                 <asp:TemplateField ShowHeader="false">
@@ -134,7 +134,7 @@
 <asp:UpdatePanel ID="updatePanel1" runat="server">
     <ContentTemplate>
 
-         
+
 
         <div class="container">
             <div class="row">
@@ -166,6 +166,21 @@
 
                                     <label for="txtStateCode">State Code</label>
                                     <asp:TextBox ID="txtStateCode" runat="server" CssClass="form-control" Text='<%# Bind("Code") %>' Enabled="false" />
+
+                                    <label for="txtKey">Key</label>
+                                    <asp:RequiredFieldValidator ValidationGroup="CityDetails" runat="server" ControlToValidate="txtKey"
+                                        Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please enter the Key." />
+                                    <asp:TextBox ID="txtKey" runat="server" CssClass="form-control" Text='<%# Bind("Key") %>' />
+
+                                    <label for="txtRank">Rank</label>
+                                    <asp:RequiredFieldValidator ValidationGroup="CityDetails" runat="server" ControlToValidate="txtRank"
+                                        Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please enter the Rank." />
+                                    <asp:TextBox ID="txtRank" runat="server" CssClass="form-control" Text='<%# Bind("Rank") %>' />
+
+                                    <label for="txtPriority">Priority</label>
+                                    <asp:RequiredFieldValidator ValidationGroup="CityDetails" runat="server" ControlToValidate="txtPriority"
+                                        Text="*" CssClass="text-danger" InitialValue="0" ErrorMessage="Please enter the Priority." />
+                                    <asp:TextBox ID="txtPriority" runat="server" CssClass="form-control" Text='<%# Bind("Priority") %>' />
 
                                     <label for="txtGooglePlaceId">Google Place Id</label>
                                     <asp:TextBox ID="txtGooglePlaceId" runat="server" CssClass="form-control" Text='<%# Bind("Google_PlaceId") %>' Enabled="false" />

@@ -35,6 +35,14 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_CountryGet"], RQParams, typeof(MDMSVC.DC_Country_Search_RQ), typeof(List<MDMSVC.DC_Country>), out result);
             return result as List<DC_Country>;
         }
+
+        public List<DC_Country> getFieldData(MDMSVC.DC_Country_Search_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_CountryGet"], RQParams, typeof(MDMSVC.DC_Country_Search_RQ), typeof(List<MDMSVC.DC_Country>), out result);
+            return result as List<DC_Country>;
+        }
+
         public DC_Message AddUpdateCountryMaster(MDMSVC.DC_Country RQ)
         {
             object result = null;
