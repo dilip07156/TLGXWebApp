@@ -971,6 +971,9 @@ namespace TLGX_Consumer.MDMSVC {
         private bool IsMysteryProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsRoomMappingCompletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LEGACY_CITYField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1738,6 +1741,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.IsMysteryProductField.Equals(value) != true)) {
                     this.IsMysteryProductField = value;
                     this.RaisePropertyChanged("IsMysteryProduct");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsRoomMappingCompleted {
+            get {
+                return this.IsRoomMappingCompletedField;
+            }
+            set {
+                if ((this.IsRoomMappingCompletedField.Equals(value) != true)) {
+                    this.IsRoomMappingCompletedField = value;
+                    this.RaisePropertyChanged("IsRoomMappingCompleted");
                 }
             }
         }
@@ -21427,7 +21443,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Accommodation_RoomInfo_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_SupplierRoomTypeMapping_IdField;
+        private System.Nullable<System.Guid> Accommodation_SupplierRoomTypeMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Accommodation_SupplierRoomTypeMapping_Value_IdField;
@@ -21493,7 +21509,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_SupplierRoomTypeMapping_Id {
+        public System.Nullable<System.Guid> Accommodation_SupplierRoomTypeMapping_Id {
             get {
                 return this.Accommodation_SupplierRoomTypeMapping_IdField;
             }
