@@ -407,7 +407,7 @@ namespace TLGX_Consumer.controls.hotel
                 dvMsgContact.Style.Add(HtmlTextWriterStyle.Display, "none");
                 dvMsgDynamicAttributesForHotel.Style.Add(HtmlTextWriterStyle.Display, "none");
                 if (AccSvc.UpdateHotelDetail(OverviewData))
-                {
+                { 
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel has been updated successfully", BootstrapAlertType.Success);
                 }
                 else
