@@ -265,13 +265,13 @@ namespace TLGX_Consumer.controls.hotel
         {
             if (e.CommandName == "SaveProduct")
             {
-                //if (CheckForDuplicate())
-                //{
-                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
-                //}
-                //else
-                //{
-                CheckBox blnRTCompleted = (CheckBox)frmHotelOverview.FindControl("blnRTCompleted");
+                if (CheckForDuplicate())
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "showModal();", true);
+                }
+                else
+                {
+                    CheckBox blnRTCompleted = (CheckBox)frmHotelOverview.FindControl("blnRTCompleted");
                 CheckBox blnMysteryProduct = (CheckBox)frmHotelOverview.FindControl("blnMysteryProduct");
                 DropDownList ddlCountry = (DropDownList)frmHotelOverview.FindControl("ddlCountry");
                 DropDownList ddlCity = (DropDownList)frmHotelOverview.FindControl("ddlCity");
@@ -415,7 +415,7 @@ namespace TLGX_Consumer.controls.hotel
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "Error Occurred", BootstrapAlertType.Warning);
                 }
 
-                //}
+                }
             }
             else if (e.CommandName == "CancelProduct")
             {
@@ -891,14 +891,14 @@ namespace TLGX_Consumer.controls.hotel
                 RQParams.HotelName = txtHotelName.Text;
 
 
-            if (txtCommonHotelId.Text.Length != 0)
-            {
-                int CompanyHotelId = 0;
-                int.TryParse(txtCommonHotelId.Text, out CompanyHotelId);
+            //if (txtCommonHotelId.Text.Length != 0)
+            //{
+            //    int CompanyHotelId = 0;
+            //    int.TryParse(txtCommonHotelId.Text, out CompanyHotelId);
 
-                if (CompanyHotelId != 0)
-                    RQParams.CompanyHotelId = Convert.ToInt32(txtCommonHotelId.Text);
-            }
+            //    if (CompanyHotelId != 0)
+            //        RQParams.CompanyHotelId = Convert.ToInt32(txtCommonHotelId.Text);
+            //}
 
             if (ddlCountry.SelectedItem.Text != "---ALL---")
                 RQParams.Country = ddlCountry.SelectedItem.Text;
@@ -913,7 +913,7 @@ namespace TLGX_Consumer.controls.hotel
             {
                 foreach (MDMSVC.DC_Accomodation_Search_RS rs in res)
                 {
-                    if (txtHotelID.Text != rs.AccomodationId)
+                    if (txtHotelID.Text.ToUpper() != rs.AccomodationId.ToUpper())
                     {
                         if (rs.Country.ToUpper() == ddlCountry.SelectedItem.Text.ToUpper())
                         {
