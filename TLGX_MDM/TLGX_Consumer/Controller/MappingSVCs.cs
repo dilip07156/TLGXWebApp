@@ -527,5 +527,14 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_HotelListByCityCode>;
         }
         #endregion
+
+        #region NewDashBoardReport
+        public List<DC_NewDashBoardReportCountry_RS> GetNewDashboardReport_CountryWise(DC_NewDashBoardReport_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Country_DashBoardReport"], RQ, typeof(MDMSVC.DC_NewDashBoardReport_RQ), typeof(List<MDMSVC.DC_NewDashBoardReportCountry_RS>), out result);
+            return result as List<DC_NewDashBoardReportCountry_RS>;
+        }
+        #endregion NewDashBoardReport
     }
 }

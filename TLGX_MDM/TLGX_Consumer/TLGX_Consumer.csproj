@@ -520,6 +520,7 @@
     <Content Include="staticdata\city\search.aspx" />
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
+    <Content Include="staticdata\CountryWiseDashBoardReport.aspx" />
     <Content Include="staticdata\ExportSupplierReport.aspx" />
     <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\StaticFileupload.aspx" />
@@ -1085,6 +1086,9 @@
     </Content>
     <Content Include="Service\GetAttributeData.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -2826,6 +2830,13 @@
     <Compile Include="staticdata\config\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\CountryWiseDashBoardReport.aspx.cs">
+      <DependentUpon>CountryWiseDashBoardReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\CountryWiseDashBoardReport.aspx.designer.cs">
+      <DependentUpon>CountryWiseDashBoardReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\country\search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3004,6 +3015,7 @@
     <Content Include="staticdata\ExportSupplierRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="staticdata\rptCountry_NewDashreport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
