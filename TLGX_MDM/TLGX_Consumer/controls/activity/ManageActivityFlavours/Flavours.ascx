@@ -780,6 +780,19 @@ snippet from Animate.css - zoomIn effect
                                 <textarea id="txtLocation" runat="server" cssclass="form-control" cols="35" maxlength="100"></textarea>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6 row">
+                                <label class="control-label">
+                                    TLGX Display SubType
+                                </label>
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:DropDownList ID="ddlTLGX_displaySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

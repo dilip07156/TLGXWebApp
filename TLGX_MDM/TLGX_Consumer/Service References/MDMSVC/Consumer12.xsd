@@ -1399,6 +1399,8 @@
       <xs:element minOccurs="0" name="SupplierProductType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SupplierTourType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TLGXDisplaySubType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TLGXDisplaySubType_ID" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="USP" nillable="true" type="xs:string" />
     </xs:sequence>

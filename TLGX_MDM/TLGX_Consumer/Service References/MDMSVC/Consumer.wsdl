@@ -3304,6 +3304,24 @@
   <wsdl:message name="IConsumer_GetMLDataApiTransferStatus_DC_ErrorStatusFault_FaultMessage">
     <wsdl:part xmlns:q364="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q364:DC_ErrorStatus" />
   </wsdl:message>
+  <wsdl:message name="IConsumer_ML_DataTransfer_DeleteTrainingData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ML_DataTransfer_DeleteTrainingData" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ML_DataTransfer_DeleteTrainingData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ML_DataTransfer_DeleteTrainingDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ML_DataTransfer_DeleteTrainingData_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q365="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q365:DC_ErrorStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ML_DataTransfer_TrainingDataPushToAIML_InputMessage">
+    <wsdl:part name="parameters" element="tns:ML_DataTransfer_TrainingDataPushToAIML" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ML_DataTransfer_TrainingDataPushToAIML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ML_DataTransfer_TrainingDataPushToAIMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsumer_ML_DataTransfer_TrainingDataPushToAIML_DC_ErrorStatusFault_FaultMessage">
+    <wsdl:part xmlns:q366="http://schemas.datacontract.org/2004/07/DataContracts" name="detail" element="q366:DC_ErrorStatus" />
+  </wsdl:message>
   <wsdl:portType name="IConsumer">
     <wsdl:operation name="GetAccomodationStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IAccomodation/GetAccomodationStatus" message="tns:IConsumer_GetAccomodationStatus_InputMessage" />
@@ -5128,6 +5146,16 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatus" message="tns:IConsumer_GetMLDataApiTransferStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusResponse" message="tns:IConsumer_GetMLDataApiTransferStatus_OutputMessage" />
       <wsdl:fault wsaw:Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_GetMLDataApiTransferStatus_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ML_DataTransfer_DeleteTrainingData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingData" message="tns:IConsumer_ML_DataTransfer_DeleteTrainingData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataResponse" message="tns:IConsumer_ML_DataTransfer_DeleteTrainingData_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_ML_DataTransfer_DeleteTrainingData_DC_ErrorStatusFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ML_DataTransfer_TrainingDataPushToAIML">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIML" message="tns:IConsumer_ML_DataTransfer_TrainingDataPushToAIML_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLResponse" message="tns:IConsumer_ML_DataTransfer_TrainingDataPushToAIML_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLDC_ErrorStatusFault" name="DC_ErrorStatusFault" message="tns:IConsumer_ML_DataTransfer_TrainingDataPushToAIML_DC_ErrorStatusFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:service name="Consumer" />

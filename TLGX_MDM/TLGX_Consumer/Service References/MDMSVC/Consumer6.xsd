@@ -290,6 +290,7 @@
       <xs:element minOccurs="0" name="InternalRemarks" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="IsMysteryProduct" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRoomMappingCompleted" type="xs:boolean" />
       <xs:element minOccurs="0" name="LEGACY_CITY" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LEGACY_COUNTRY" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="LEGACY_STATE" nillable="true" type="xs:string" />
