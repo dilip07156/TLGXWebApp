@@ -360,7 +360,6 @@
       <xs:element minOccurs="0" name="Created_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_SystemUser" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsNotTraining" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="MatchingScore" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RoomCategory" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SystemMappingStatus" nillable="true" type="xs:string" />

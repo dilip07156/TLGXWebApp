@@ -274,6 +274,7 @@
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\FlavourOptions_Detailed.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\FlavourOptions.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
@@ -1382,6 +1383,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx.designer.cs">
       <DependentUpon>ActivityDescription.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\FlavourOptions_Detailed.ascx.cs">
+      <DependentUpon>FlavourOptions_Detailed.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\FlavourOptions_Detailed.ascx.designer.cs">
+      <DependentUpon>FlavourOptions_Detailed.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\FlavourOptions.ascx.cs">
       <DependentUpon>FlavourOptions.ascx</DependentUpon>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,14 +9,16 @@ using System.Web.UI.HtmlControls;
 using TLGX_Consumer.App_Code;
 using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
-using System.Text.RegularExpressions;
-using AjaxControlToolkit;
 using System.Drawing;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
     public partial class Flavours : System.Web.UI.UserControl
     {
+        public string state1 = "collapse";
+
+        public string icon1 = "glyphicon-plus";
+
         public Guid Activity_Flavour_Id;
 
         Controller.ActivitySVC AccSvc = new Controller.ActivitySVC();
@@ -30,6 +31,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (!IsPostBack)
             {
                 getFlavourInfo(string.Empty);
+                getNonOperatingDays(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
             }
         }
 
@@ -579,7 +581,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
             FlavData.Categories = CategoryTypes.ToArray();
-            
+
 
             //SubCat
             List<SubCategoryData> ptl = new List<SubCategoryData>();
@@ -780,7 +782,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 ddlProdcategorySubType.Items.Clear();
                 var dropdownvalues = LookupAtrributes.GetAllAttributeAndValuesByFOR("Activity", "ActivityProductCategory").MasterAttributeValues;
-                var result = (from  s in dropdownvalues
+                var result = (from s in dropdownvalues
                               where interestTypeids.Contains((s.ParentAttributeValue_Id ?? Guid.Empty).ToString())
                               orderby s.ParentAttributeValue.Trim(), s.AttributeValue.Trim()
                               select new { AttributeValueOri = s.AttributeValue, AttributeValue = (s.ParentAttributeValue.Trim() == string.Empty) ? s.AttributeValue : "[" + s.ParentAttributeValue + "] " + s.AttributeValue, MasterAttributeValue_Id = s.MasterAttributeValue_Id });
@@ -1257,6 +1259,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
+        protected void AddOperatingOrNonOperatingDays(object source, RepeaterCommandEventArgs e)
+        {
+
+        }
+
         protected void repOperatingDays_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             List<MDMSVC.DC_Activity_OperatingDays> OpDaysList = new List<DC_Activity_OperatingDays>();
@@ -1294,11 +1301,14 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
             else if (e.CommandName == "RemoveOperatingDays")
             {
+                BootstrapAlert.BootstrapAlertMessage(dvMsgAlert, "Locally removed", BootstrapAlertType.Warning);
                 Guid DaysOfOperation_Id = Guid.Parse(e.CommandArgument.ToString());
                 OpDaysList.Remove(OpDaysList.Where(w => w.Activity_DaysOfOperation_Id == DaysOfOperation_Id).Select(s => s).First());
                 repOperatingDays.DataSource = OpDaysList;
                 repOperatingDays.DataBind();
             }
+
+            updOp.Update(); updAdding.Update();
         }
 
         protected void repDaysOfWeek_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -1377,6 +1387,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     }
                 }
 
+                
                 repOperatingDays.DataSource = OpDaysList;
                 repOperatingDays.DataBind();
             }
@@ -1636,6 +1647,179 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         }
 
 
+        protected void NonOperatingDays()
+        {
+            string FromDate = txtFromAdd.Text;
+            string EndDate = txtToAdd.Text;
+
+            if (string.IsNullOrWhiteSpace(FromDate))
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please Select From Date", BootstrapAlertType.Danger);
+                txtFromAdd.Focus();
+            }
+            else if (string.IsNullOrWhiteSpace(EndDate))
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Please Select To Date", BootstrapAlertType.Danger);
+                txtToAdd.Focus();
+            }
+            else if (DateDifference(FromDate, EndDate))
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "To date should be less than From date", BootstrapAlertType.Danger);
+            }
+            else
+            {
+                dvMsg.Style.Add("display", "none");
+                var nonOperatingDays = new DC_Activity_OperatingDays();
+                Guid ActivityDaysOfOperationId = Guid.NewGuid();
+
+                nonOperatingDays.Activity_DaysOfOperation_Id = ActivityDaysOfOperationId;
+                nonOperatingDays.Activity_Flavor_ID = new Guid(Request.QueryString["Activity_Flavour_Id"]); ;
+                nonOperatingDays.FromDate = Convert.ToDateTime(FromDate);
+                nonOperatingDays.EndDate = Convert.ToDateTime(EndDate);
+                nonOperatingDays.IsOperatingDays = false;
+                nonOperatingDays.IsActive = false;
+                nonOperatingDays.CreateUser = System.Web.HttpContext.Current.User.Identity.Name;
+                nonOperatingDays.EditUser = System.Web.HttpContext.Current.User.Identity.Name;
+                List<DC_Activity_OperatingDays> nonOperatingDaysList = new List<DC_Activity_OperatingDays>();
+
+                nonOperatingDaysList.Add(nonOperatingDays);
+                if (nonOperatingDays.Activity_Flavor_ID != Guid.Empty)
+                {
+                    var result = AccSvc.AddUpdateActivityNonOperatingDays(nonOperatingDaysList);
+                    BootstrapAlert.BootstrapAlertMessage(dvMsgAlert, result.StatusMessage, BootstrapAlertType.Success);
+                    getNonOperatingDays(gvNonOperatingData.PageSize, gvNonOperatingData.PageIndex);
+
+                }
+            }
+        }
+
+        protected void btnAddOperatingDays_Click(object sender, EventArgs e)
+        {
+            if (chkSpecificOperatingDays.Checked) { OperatingDays(); updOp.Update(); }
+            else
+            {
+                NonOperatingDays(); updNonOp.Update();
+            }
+
+            updAdding.Update();
+        }
+
+        protected void OperatingDays()
+        {
+            List<MDMSVC.DC_Activity_OperatingDays> OpDaysList = new List<DC_Activity_OperatingDays>();
+            OpDaysList = CollectAllOperatingDaysInfoOnPage();
+
+            //RepeaterItem itemOP = (RepeaterItem)btnAddOperatingDays.Parent;
+            //CheckBox chkSpecificOperatingDays = (CheckBox)itemOP.FindControl("chkSpecificOperatingDays");
+            //TextBox txtFrom = (TextBox)itemOP.FindControl("txtFromAdd");
+            //TextBox txtTo = (TextBox)itemOP.FindControl("txtToAdd");
+
+            DC_Activity_OperatingDays NewOD = new DC_Activity_OperatingDays();
+            NewOD.Activity_DaysOfOperation_Id = Guid.NewGuid();
+            NewOD.Activity_Flavor_ID = Guid.Parse(Request.QueryString["Activity_Flavour_Id"]);
+            NewOD.CreateUser = System.Web.HttpContext.Current.User.Identity.Name;
+            NewOD.DaysOfWeek = new List<DC_Activity_DaysOfWeek>().ToArray();
+            NewOD.EditUser = System.Web.HttpContext.Current.User.Identity.Name;
+            if (!string.IsNullOrWhiteSpace(txtFromAdd.Text))
+            {
+                NewOD.FromDate = DateTime.ParseExact(txtFromAdd.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            }
+            if (!string.IsNullOrWhiteSpace(txtToAdd.Text))
+            {
+                NewOD.EndDate = DateTime.ParseExact(txtToAdd.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+            }
+
+            NewOD.IsActive = true;
+            NewOD.IsOperatingDays = true;
+
+            OpDaysList.Add(NewOD);
+            repOperatingDays.DataSource = OpDaysList;
+            repOperatingDays.DataBind();
+
+            BootstrapAlert.BootstrapAlertMessage(dvMsgAlert, "Success! Data added successfully", BootstrapAlertType.Success);
+        }
+
+        public void getNonOperatingDays(int pagesize, int pageno)
+        {
+            try
+            {
+                Guid? Activity_Flavour_Id = new Guid(Request.QueryString["Activity_Flavour_Id"]);
+                if (Activity_Flavour_Id != Guid.Empty)
+                {
+                    Guid guidActivity_Flavour_Id = Activity_Flavour_Id ?? Guid.Empty;
+                    var result = AccSvc.GetActivityNonOperatingDays(guidActivity_Flavour_Id, pagesize, pageno);
+
+                    if (result != null)
+                    {
+                        gvNonOperatingData.DataSource = result;
+                        if (result.Count() > 0)
+                        {
+                            gvNonOperatingData.VirtualItemCount = result[0].TotalRecords ?? 0;
+                            gvNonOperatingData.PageIndex = pageno;
+                            gvNonOperatingData.PageSize = pagesize;
+                        }
+                        gvNonOperatingData.DataBind();
+
+                    }
+                    else
+                    {
+                        gvNonOperatingData.DataSource = null;
+                        gvNonOperatingData.DataBind();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private bool DateDifference(string FromDate, string EndDate)
+        {
+            DateTime fromdate = Convert.ToDateTime(FromDate);
+            DateTime todate = Convert.ToDateTime(EndDate);
+
+            if (fromdate <= todate) { return false; } else { return true; }
+        }
+
+        protected void deleteNonOperatingDate_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)(sender);
+
+            //string RemoveNonOperatingDays = btn.CommandArgument;
+            GridViewRow row = btn.NamingContainer as GridViewRow;
+            string pk = gvNonOperatingData.DataKeys[row.RowIndex].Values[0].ToString();
+            gvNonOperatingData.PageSize = Convert.ToInt16(ddlShowEntries.SelectedValue);
+            Guid ActivityDaysOfOperationId = Guid.Parse(pk);
+
+            if (ActivityDaysOfOperationId != Guid.Empty)
+            {
+                var result = AccSvc.DeleteActivityNonOperatingDays(ActivityDaysOfOperationId);
+                BootstrapAlert.BootstrapAlertMessage(dvMsgAlert, result.StatusMessage, BootstrapAlertType.Success);
+                getNonOperatingDays(gvNonOperatingData.PageSize, gvNonOperatingData.PageIndex);
+            }
+
+            HtmlControl ctrl = (HtmlControl)this.FindControl("h1");
+
+            ScriptManager.RegisterStartupScript(this.Page, Page.GetType(), "myJsFn", "toggleChevron(" + ctrl + ");", true);
+            updAdding.Update();
+            //ctrl.Attributes.Add("onclick", "javascript:return toggleChevron(" + ctrl + ");");
+
+        }
+
+        protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            getNonOperatingDays(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), gvNonOperatingData.PageIndex);
+        }
+
+        protected void gvNonOperatingData_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dvMsg.Style.Add("display", "none");
+            dvMsgAlert.Style.Add("display", "none");
+            getNonOperatingDays(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
+        }
     }
 
     public class ProductTypeData
@@ -1660,5 +1844,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         public string InterestType_Id { get; set; }
         public string InterestType { get; set; }
     }
+
+
 
 }
