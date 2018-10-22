@@ -3370,6 +3370,7 @@
         <xs:element minOccurs="0" name="AccoPriority" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="SupplierID" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="IsMdmDataOnly" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SuppPriority" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -5169,6 +5170,30 @@
       <xs:sequence>
         <xs:element xmlns:q521="http://schemas.datacontract.org/2004/07/DataContracts.ML" minOccurs="0" name="GetMLDataApiTransferStatusResult" nillable="true" type="q521:ArrayOfDL_ML_DL_EntityStatus" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_DeleteTrainingData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accommodation_SupplierRoomTypeMapping_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_DeleteTrainingDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_TrainingDataPushToAIML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="accommodation_SupplierRoomTypeMapping_Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ML_DataTransfer_TrainingDataPushToAIMLResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

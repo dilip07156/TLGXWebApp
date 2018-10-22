@@ -21667,6 +21667,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsNotTrainingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string MatchingScoreField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -21775,6 +21778,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsNotTraining {
+            get {
+                return this.IsNotTrainingField;
+            }
+            set {
+                if ((this.IsNotTrainingField.Equals(value) != true)) {
+                    this.IsNotTrainingField = value;
+                    this.RaisePropertyChanged("IsNotTraining");
                 }
             }
         }
@@ -44447,6 +44463,12 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Supplier_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXDisplaySubTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> TLGXDisplaySubType_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalRecordsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -45199,6 +45221,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Supplier_IdField.Equals(value) != true)) {
                     this.Supplier_IdField = value;
                     this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXDisplaySubType {
+            get {
+                return this.TLGXDisplaySubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXDisplaySubTypeField, value) != true)) {
+                    this.TLGXDisplaySubTypeField = value;
+                    this.RaisePropertyChanged("TLGXDisplaySubType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> TLGXDisplaySubType_ID {
+            get {
+                return this.TLGXDisplaySubType_IDField;
+            }
+            set {
+                if ((this.TLGXDisplaySubType_IDField.Equals(value) != true)) {
+                    this.TLGXDisplaySubType_IDField = value;
+                    this.RaisePropertyChanged("TLGXDisplaySubType_ID");
                 }
             }
         }
@@ -54291,10 +54339,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetSupplierDataForExport", ReplyAction="http://tempuri.org/IStaticData/GetSupplierDataForExportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/GetSupplierDataForExportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly);
+        TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/GetSupplierDataForExport", ReplyAction="http://tempuri.org/IStaticData/GetSupplierDataForExportResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getStatisticforRuleReport", ReplyAction="http://tempuri.org/IStaticData/getStatisticforRuleReportResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/getStatisticforRuleReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -55263,6 +55311,24 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatus", ReplyAction="http://tempuri.org/IMLDataTransfer/GetMLDataApiTransferStatusResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]> GetMLDataApiTransferStatusAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        void ML_DataTransfer_DeleteTrainingData(string accommodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingData", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_DeleteTrainingDataResponse")]
+        System.Threading.Tasks.Task ML_DataTransfer_DeleteTrainingDataAsync(string accommodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIML", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLResponse" +
+            "")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLDC_Error" +
+            "StatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        void ML_DataTransfer_TrainingDataPushToAIML(string accommodation_SupplierRoomTypeMapping_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIML", ReplyAction="http://tempuri.org/IMLDataTransfer/ML_DataTransfer_TrainingDataPushToAIMLResponse" +
+            "")]
+        System.Threading.Tasks.Task ML_DataTransfer_TrainingDataPushToAIMLAsync(string accommodation_SupplierRoomTypeMapping_Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -57188,12 +57254,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetMappingStatisticsAsync(SupplierID, PriorityId, ProductCategory, ISMDM);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly) {
-            return base.Channel.GetSupplierDataForExport(AccoPriority, SupplierID, IsMdmDataOnly);
+        public TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[] GetSupplierDataForExport(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority) {
+            return base.Channel.GetSupplierDataForExport(AccoPriority, SupplierID, IsMdmDataOnly, SuppPriority);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly) {
-            return base.Channel.GetSupplierDataForExportAsync(AccoPriority, SupplierID, IsMdmDataOnly);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport[]> GetSupplierDataForExportAsync(string AccoPriority, string SupplierID, string IsMdmDataOnly, string SuppPriority) {
+            return base.Channel.GetSupplierDataForExportAsync(AccoPriority, SupplierID, IsMdmDataOnly, SuppPriority);
         }
         
         public TLGX_Consumer.MDMSVC.DC_RollOffReportRule[] getStatisticforRuleReport(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
@@ -58210,6 +58276,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus[]> GetMLDataApiTransferStatusAsync() {
             return base.Channel.GetMLDataApiTransferStatusAsync();
+        }
+        
+        public void ML_DataTransfer_DeleteTrainingData(string accommodation_SupplierRoomTypeMapping_Id) {
+            base.Channel.ML_DataTransfer_DeleteTrainingData(accommodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task ML_DataTransfer_DeleteTrainingDataAsync(string accommodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.ML_DataTransfer_DeleteTrainingDataAsync(accommodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public void ML_DataTransfer_TrainingDataPushToAIML(string accommodation_SupplierRoomTypeMapping_Id) {
+            base.Channel.ML_DataTransfer_TrainingDataPushToAIML(accommodation_SupplierRoomTypeMapping_Id);
+        }
+        
+        public System.Threading.Tasks.Task ML_DataTransfer_TrainingDataPushToAIMLAsync(string accommodation_SupplierRoomTypeMapping_Id) {
+            return base.Channel.ML_DataTransfer_TrainingDataPushToAIMLAsync(accommodation_SupplierRoomTypeMapping_Id);
         }
     }
 }

@@ -10,6 +10,7 @@ using TLGX_Consumer.App_Code;
 using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
 using System.Drawing;
+using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
@@ -31,6 +32,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             if (!IsPostBack)
             {
                 getFlavourInfo(string.Empty);
+                BindTLGX_SubType();
                 getNonOperatingDays(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
             }
         }
@@ -127,10 +129,22 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     fillOperatingDaysWithWeekdays(Activity_Flavour_Id);
 
                     BindSupplierClassifications(Activity_Flavour_Id);
+
+                    ddlTLGX_displaySubType.SelectedValue = (result[0].TLGXDisplaySubType != null ? Convert.ToString(result[0].TLGXDisplaySubType_ID) : "0");
                 }
             }
         }
 
+        private void BindTLGX_SubType()
+        {
+            MasterDataSVCs _objMst = new MasterDataSVCs();
+            //var result = _objMst.GetAttributeDetails("9402310E-70A3-4BB9-AFC1-8D1A9D7EE322");
+            var resultAttributes = _objMst.GetAttributeValues("9402310E-70A3-4BB9-AFC1-8D1A9D7EE322", Convert.ToString(0), Convert.ToString(10000));
+            ddlTLGX_displaySubType.DataSource = resultAttributes;
+            ddlTLGX_displaySubType.DataValueField = "MasterAttributeValue_Id";
+            ddlTLGX_displaySubType.DataTextField = "AttributeValue";
+            ddlTLGX_displaySubType.DataBind();
+        }
 
 
         private void fillInterestTypedData()
@@ -637,6 +651,11 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
             }
             FlavData.ProductNameSubType = string.Join(",", pstl.Select(s => s.ProductSubType_Id).ToList());
+
+            // TLGX Product SubType
+
+            FlavData.TLGXDisplaySubType_ID = (ddlTLGX_displaySubType.SelectedValue == "0" ? Guid.Empty : Guid.Parse(ddlTLGX_displaySubType.SelectedValue));
+            FlavData.TLGXDisplaySubType = (ddlTLGX_displaySubType.SelectedValue == "0" ? null : ddlTLGX_displaySubType.SelectedItem.Text);
 
             //InterestType
             List<InterestTypeData> itl = new List<InterestTypeData>();
@@ -1387,7 +1406,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                     }
                 }
 
-                
+
                 repOperatingDays.DataSource = OpDaysList;
                 repOperatingDays.DataBind();
             }
