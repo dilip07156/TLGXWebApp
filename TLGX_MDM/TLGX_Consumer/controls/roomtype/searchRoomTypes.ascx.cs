@@ -164,6 +164,9 @@ namespace TLGX_Consumer.controls.roomtype
                 if (ddlPriority.SelectedValue != "0")
                     _objSearch.Priority = Convert.ToInt32(ddlPriority.SelectedValue);
 
+                if (ddlMappingTypeBySupplier.SelectedValue != "0")
+                    _objSearch.Source = Convert.ToString(ddlMappingTypeBySupplier.SelectedValue).ToLower();
+
                 _objSearch.PageNo = pageIndex;
                 var res = _mapping.GetAccomodationSupplierRoomTypeMapping_Search(_objSearch);
                 if (res != null)

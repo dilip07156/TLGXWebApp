@@ -145,7 +145,7 @@ namespace TLGX_Consumer.controls.hotel
             if (ddlArea.SelectedItem.Text != "-Select-")
             {
                 ddlLocation.Items.Clear();
-              //  ddlLocation.DataSource = MasterData.GetMasterCityAreaLocationData(new Guid(ddlArea.SelectedItem.Value));
+                //  ddlLocation.DataSource = MasterData.GetMasterCityAreaLocationData(new Guid(ddlArea.SelectedItem.Value));
                 ddlLocation.DataSource = masterSVc.GetMasterCityAreaLocationData(ddlArea.SelectedValue);
 
                 ddlLocation.DataTextField = "Name";
@@ -271,147 +271,149 @@ namespace TLGX_Consumer.controls.hotel
                 }
                 else
                 {
-                    CheckBox blnMysteryProduct = (CheckBox)frmHotelOverview.FindControl("blnMysteryProduct");
-                    DropDownList ddlCountry = (DropDownList)frmHotelOverview.FindControl("ddlCountry");
-                    DropDownList ddlCity = (DropDownList)frmHotelOverview.FindControl("ddlCity");
-                    DropDownList ddlProductCategorySubType = (DropDownList)frmHotelOverview.FindControl("ddlProductCategorySubType");
-                    DropDownList ddlAffiliation = (DropDownList)frmHotelOverview.FindControl("ddlAffiliation");
-                    DropDownList ddlLocation = (DropDownList)frmHotelOverview.FindControl("ddlLocation");
-                    DropDownList ddlArea = (DropDownList)frmHotelOverview.FindControl("ddlArea");
-                    DropDownList ddlState = (DropDownList)frmHotelOverview.FindControl("ddlState");
-                    DropDownList ddlSuburbs = (DropDownList)frmHotelOverview.FindControl("ddlSuburbs");
-                    DropDownList ddlChain = (DropDownList)frmHotelOverview.FindControl("ddlChain");
+                    CheckBox blnRTCompleted = (CheckBox)frmHotelOverview.FindControl("blnRTCompleted");
+                CheckBox blnMysteryProduct = (CheckBox)frmHotelOverview.FindControl("blnMysteryProduct");
+                DropDownList ddlCountry = (DropDownList)frmHotelOverview.FindControl("ddlCountry");
+                DropDownList ddlCity = (DropDownList)frmHotelOverview.FindControl("ddlCity");
+                DropDownList ddlProductCategorySubType = (DropDownList)frmHotelOverview.FindControl("ddlProductCategorySubType");
+                DropDownList ddlAffiliation = (DropDownList)frmHotelOverview.FindControl("ddlAffiliation");
+                DropDownList ddlLocation = (DropDownList)frmHotelOverview.FindControl("ddlLocation");
+                DropDownList ddlArea = (DropDownList)frmHotelOverview.FindControl("ddlArea");
+                DropDownList ddlState = (DropDownList)frmHotelOverview.FindControl("ddlState");
+                DropDownList ddlSuburbs = (DropDownList)frmHotelOverview.FindControl("ddlSuburbs");
+                DropDownList ddlChain = (DropDownList)frmHotelOverview.FindControl("ddlChain");
 
-                    DropDownList ddlStarRating = (DropDownList)frmHotelOverview.FindControl("ddlStarRating");
-                    DropDownList ddlCompanyRating = (DropDownList)frmHotelOverview.FindControl("ddlCompanyRating");
-                    DropDownList ddlBrand = (DropDownList)frmHotelOverview.FindControl("ddlBrand");
-                    TextBox txtHotelName = (TextBox)frmHotelOverview.FindControl("txtHotelName");
-                    TextBox txtCommonHotelId = (TextBox)frmHotelOverview.FindControl("txtCommonHotelId");
-                    TextBox txtPostalCode = (TextBox)frmHotelOverview.FindControl("txtPostalCode");
-                    TextBox txtHotelID = (TextBox)frmHotelOverview.FindControl("txtHotelID");
-                    TextBox txtAwardsReceived = (TextBox)frmHotelOverview.FindControl("txtAwardsReceived");
-                    TextBox txtCheckinTime = (TextBox)frmHotelOverview.FindControl("txtCheckinTime");
-                    TextBox txtCheckOut = (TextBox)frmHotelOverview.FindControl("txtCheckOut");
-                    TextBox txtCompanyHotelID = (TextBox)frmHotelOverview.FindControl("txtCompanyHotelID");
-                    TextBox txtCompanyName = (TextBox)frmHotelOverview.FindControl("txtCompanyName");
-                    CheckBox chkCompanyRecommended = (CheckBox)frmHotelOverview.FindControl("chkCompanyRecommended");
-                    TextBox txtDisplayName = (TextBox)frmHotelOverview.FindControl("txtDisplayName");
-                    TextBox txtFinanceControlId = (TextBox)frmHotelOverview.FindControl("txtFinanceControlId");
+                DropDownList ddlStarRating = (DropDownList)frmHotelOverview.FindControl("ddlStarRating");
+                DropDownList ddlCompanyRating = (DropDownList)frmHotelOverview.FindControl("ddlCompanyRating");
+                DropDownList ddlBrand = (DropDownList)frmHotelOverview.FindControl("ddlBrand");
+                TextBox txtHotelName = (TextBox)frmHotelOverview.FindControl("txtHotelName");
+                TextBox txtCommonHotelId = (TextBox)frmHotelOverview.FindControl("txtCommonHotelId");
+                TextBox txtPostalCode = (TextBox)frmHotelOverview.FindControl("txtPostalCode");
+                TextBox txtHotelID = (TextBox)frmHotelOverview.FindControl("txtHotelID");
+                TextBox txtAwardsReceived = (TextBox)frmHotelOverview.FindControl("txtAwardsReceived");
+                TextBox txtCheckinTime = (TextBox)frmHotelOverview.FindControl("txtCheckinTime");
+                TextBox txtCheckOut = (TextBox)frmHotelOverview.FindControl("txtCheckOut");
+                TextBox txtCompanyHotelID = (TextBox)frmHotelOverview.FindControl("txtCompanyHotelID");
+                TextBox txtCompanyName = (TextBox)frmHotelOverview.FindControl("txtCompanyName");
+                CheckBox chkCompanyRecommended = (CheckBox)frmHotelOverview.FindControl("chkCompanyRecommended");
+                TextBox txtDisplayName = (TextBox)frmHotelOverview.FindControl("txtDisplayName");
+                TextBox txtFinanceControlId = (TextBox)frmHotelOverview.FindControl("txtFinanceControlId");
 
-                    TextBox txtInternalRemarks = (TextBox)frmHotelOverview.FindControl("txtInternalRemarks");
-                    TextBox txtHotelLat = (TextBox)frmHotelOverview.FindControl("txtHotelLat");
-                    TextBox txtHotelLon = (TextBox)frmHotelOverview.FindControl("txtHotelLon");
-                    TextBox txtRatingDate = (TextBox)frmHotelOverview.FindControl("txtRatingDate");
-                    TextBox txtStreet = (TextBox)frmHotelOverview.FindControl("txtStreet");
-                    TextBox txtStreet2 = (TextBox)frmHotelOverview.FindControl("txtStreet2");
-                    TextBox txtStreet3 = (TextBox)frmHotelOverview.FindControl("txtStreet3");
-                    TextBox txtStreet4 = (TextBox)frmHotelOverview.FindControl("txtStreet4");
-                    TextBox txtStreet5 = (TextBox)frmHotelOverview.FindControl("txtStreet5");
-                    TextBox txtTotalFloor = (TextBox)frmHotelOverview.FindControl("txtTotalFloor");
-                    TextBox txtTotalRooms = (TextBox)frmHotelOverview.FindControl("txtTotalRooms");
-                    TextBox txtYearBuilt = (TextBox)frmHotelOverview.FindControl("txtYearBuilt");
+                TextBox txtInternalRemarks = (TextBox)frmHotelOverview.FindControl("txtInternalRemarks");
+                TextBox txtHotelLat = (TextBox)frmHotelOverview.FindControl("txtHotelLat");
+                TextBox txtHotelLon = (TextBox)frmHotelOverview.FindControl("txtHotelLon");
+                TextBox txtRatingDate = (TextBox)frmHotelOverview.FindControl("txtRatingDate");
+                TextBox txtStreet = (TextBox)frmHotelOverview.FindControl("txtStreet");
+                TextBox txtStreet2 = (TextBox)frmHotelOverview.FindControl("txtStreet2");
+                TextBox txtStreet3 = (TextBox)frmHotelOverview.FindControl("txtStreet3");
+                TextBox txtStreet4 = (TextBox)frmHotelOverview.FindControl("txtStreet4");
+                TextBox txtStreet5 = (TextBox)frmHotelOverview.FindControl("txtStreet5");
+                TextBox txtTotalFloor = (TextBox)frmHotelOverview.FindControl("txtTotalFloor");
+                TextBox txtTotalRooms = (TextBox)frmHotelOverview.FindControl("txtTotalRooms");
+                TextBox txtYearBuilt = (TextBox)frmHotelOverview.FindControl("txtYearBuilt");
 
-                    MDMSVC.DC_Accomodation OverviewData = new MDMSVC.DC_Accomodation();
+                MDMSVC.DC_Accomodation OverviewData = new MDMSVC.DC_Accomodation();
 
-                    OverviewData.Accommodation_Id = new Guid(txtHotelID.Text);
-                    OverviewData.ProductCategory = "Accommodation";
-                    if (ddlProductCategorySubType.SelectedIndex != 0)
-                        OverviewData.ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text;
-                    if (ddlAffiliation.SelectedIndex != 0)
-                        OverviewData.Affiliation = ddlAffiliation.SelectedItem.Text;
-                    if (ddlArea.SelectedIndex != 0)
-                        OverviewData.Area = ddlArea.SelectedItem.Text;
-                    if (ddlBrand.SelectedIndex != 0)
-                        OverviewData.Brand = ddlBrand.SelectedItem.Text;
-                    if (ddlChain.SelectedIndex != 0)
-                        OverviewData.Chain = ddlChain.SelectedItem.Text;
-                    if (ddlCountry.SelectedIndex != 0)
-                        OverviewData.Country = ddlCountry.SelectedItem.Text;
-                    if (ddlCity.SelectedIndex != 0)
-                        OverviewData.City = ddlCity.SelectedItem.Text;
-                    if (ddlState.SelectedIndex != 0)
-                        OverviewData.State_Name = ddlState.SelectedItem.Text;
-                    if (ddlCompanyRating.SelectedIndex != 0)
-                        OverviewData.CompanyRating = ddlCompanyRating.SelectedItem.Text;
-                    if (ddlStarRating.SelectedIndex != 0)
-                        OverviewData.HotelRating = ddlStarRating.SelectedItem.Text;
+                OverviewData.Accommodation_Id = new Guid(txtHotelID.Text);
+                OverviewData.ProductCategory = "Accommodation";
+                if (ddlProductCategorySubType.SelectedIndex != 0)
+                    OverviewData.ProductCategorySubType = ddlProductCategorySubType.SelectedItem.Text;
+                if (ddlAffiliation.SelectedIndex != 0)
+                    OverviewData.Affiliation = ddlAffiliation.SelectedItem.Text;
+                if (ddlArea.SelectedIndex != 0)
+                    OverviewData.Area = ddlArea.SelectedItem.Text;
+                if (ddlBrand.SelectedIndex != 0)
+                    OverviewData.Brand = ddlBrand.SelectedItem.Text;
+                if (ddlChain.SelectedIndex != 0)
+                    OverviewData.Chain = ddlChain.SelectedItem.Text;
+                if (ddlCountry.SelectedIndex != 0)
+                    OverviewData.Country = ddlCountry.SelectedItem.Text;
+                if (ddlCity.SelectedIndex != 0)
+                    OverviewData.City = ddlCity.SelectedItem.Text;
+                if (ddlState.SelectedIndex != 0)
+                    OverviewData.State_Name = ddlState.SelectedItem.Text;
+                if (ddlCompanyRating.SelectedIndex != 0)
+                    OverviewData.CompanyRating = ddlCompanyRating.SelectedItem.Text;
+                if (ddlStarRating.SelectedIndex != 0)
+                    OverviewData.HotelRating = ddlStarRating.SelectedItem.Text;
 
-                    if (ddlSuburbs.SelectedIndex != 0)
-                        OverviewData.SuburbDowntown = ddlSuburbs.SelectedItem.Text;
-                    if (ddlLocation.SelectedIndex != 0)
-                        OverviewData.Location = ddlLocation.SelectedItem.Text;
+                if (ddlSuburbs.SelectedIndex != 0)
+                    OverviewData.SuburbDowntown = ddlSuburbs.SelectedItem.Text;
+                if (ddlLocation.SelectedIndex != 0)
+                    OverviewData.Location = ddlLocation.SelectedItem.Text;
 
-                    if (!string.IsNullOrEmpty(txtAwardsReceived.Text))
-                        OverviewData.AwardsReceived = txtAwardsReceived.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtCheckinTime.Text))
-                        OverviewData.CheckInTime = txtCheckinTime.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtCheckOut.Text))
-                        OverviewData.CheckOutTime = txtCheckOut.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtDisplayName.Text))
-                        OverviewData.DisplayName = txtDisplayName.Text.ToString();
+                if (!string.IsNullOrEmpty(txtAwardsReceived.Text))
+                    OverviewData.AwardsReceived = txtAwardsReceived.Text.ToString();
+                if (!string.IsNullOrEmpty(txtCheckinTime.Text))
+                    OverviewData.CheckInTime = txtCheckinTime.Text.ToString();
+                if (!string.IsNullOrEmpty(txtCheckOut.Text))
+                    OverviewData.CheckOutTime = txtCheckOut.Text.ToString();
+                if (!string.IsNullOrEmpty(txtDisplayName.Text))
+                    OverviewData.DisplayName = txtDisplayName.Text.ToString();
 
-                    if (!string.IsNullOrEmpty(txtHotelName.Text))
-                        OverviewData.HotelName = txtHotelName.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtInternalRemarks.Text))
-                        OverviewData.InternalRemarks = txtInternalRemarks.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtHotelLat.Text))
-                        OverviewData.Latitude = txtHotelLat.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtHotelLon.Text))
-                        OverviewData.Longitude = txtHotelLon.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtPostalCode.Text))
-                        OverviewData.PostalCode = txtPostalCode.Text.ToString();
-                    //if (!string.IsNullOrEmpty(txtRatingDate.Text))
-                    //   OverviewData.RatingDate = DateTime.ParseExact(txtRatingDate.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    //else
-                    OverviewData.RatingDate = DateTime.ParseExact(DateTime.Now.ToString("dd/MM/yyyy"), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                    if (!string.IsNullOrEmpty(txtStreet.Text))
-                        OverviewData.StreetName = txtStreet.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtStreet2.Text))
-                        OverviewData.StreetNumber = txtStreet2.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtStreet3.Text))
-                        OverviewData.Street3 = txtStreet3.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtStreet4.Text))
-                        OverviewData.Street4 = txtStreet4.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtStreet5.Text))
-                        OverviewData.Street5 = txtStreet5.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtTotalFloor.Text))
-                        OverviewData.TotalFloors = txtTotalFloor.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtTotalRooms.Text))
-                        OverviewData.TotalRooms = txtTotalRooms.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtYearBuilt.Text))
-                        OverviewData.YearBuilt = txtYearBuilt.Text.ToString();
-                    if (!string.IsNullOrEmpty(txtCompanyName.Text))
-                        OverviewData.CompanyName = txtCompanyName.Text.ToString();
-                    //if (!string.IsNullOrEmpty(txtCommonHotelId.Text))
-                    //    OverviewData.CommonHotelId = txtCommonHotelId.Text.ToString();
+                if (!string.IsNullOrEmpty(txtHotelName.Text))
+                    OverviewData.HotelName = txtHotelName.Text.ToString();
+                if (!string.IsNullOrEmpty(txtInternalRemarks.Text))
+                    OverviewData.InternalRemarks = txtInternalRemarks.Text.ToString();
+                if (!string.IsNullOrEmpty(txtHotelLat.Text))
+                    OverviewData.Latitude = txtHotelLat.Text.ToString();
+                if (!string.IsNullOrEmpty(txtHotelLon.Text))
+                    OverviewData.Longitude = txtHotelLon.Text.ToString();
+                if (!string.IsNullOrEmpty(txtPostalCode.Text))
+                    OverviewData.PostalCode = txtPostalCode.Text.ToString();
+                //if (!string.IsNullOrEmpty(txtRatingDate.Text))
+                //   OverviewData.RatingDate = DateTime.ParseExact(txtRatingDate.Text.Trim(), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                //else
+                OverviewData.RatingDate = DateTime.ParseExact(DateTime.Now.ToString("dd/MM/yyyy"), "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                if (!string.IsNullOrEmpty(txtStreet.Text))
+                    OverviewData.StreetName = txtStreet.Text.ToString();
+                if (!string.IsNullOrEmpty(txtStreet2.Text))
+                    OverviewData.StreetNumber = txtStreet2.Text.ToString();
+                if (!string.IsNullOrEmpty(txtStreet3.Text))
+                    OverviewData.Street3 = txtStreet3.Text.ToString();
+                if (!string.IsNullOrEmpty(txtStreet4.Text))
+                    OverviewData.Street4 = txtStreet4.Text.ToString();
+                if (!string.IsNullOrEmpty(txtStreet5.Text))
+                    OverviewData.Street5 = txtStreet5.Text.ToString();
+                if (!string.IsNullOrEmpty(txtTotalFloor.Text))
+                    OverviewData.TotalFloors = txtTotalFloor.Text.ToString();
+                if (!string.IsNullOrEmpty(txtTotalRooms.Text))
+                    OverviewData.TotalRooms = txtTotalRooms.Text.ToString();
+                if (!string.IsNullOrEmpty(txtYearBuilt.Text))
+                    OverviewData.YearBuilt = txtYearBuilt.Text.ToString();
+                if (!string.IsNullOrEmpty(txtCompanyName.Text))
+                    OverviewData.CompanyName = txtCompanyName.Text.ToString();
+                //if (!string.IsNullOrEmpty(txtCommonHotelId.Text))
+                //    OverviewData.CommonHotelId = txtCommonHotelId.Text.ToString();
 
-                    OverviewData.CompanyRecommended = chkCompanyRecommended.Checked;
+                OverviewData.CompanyRecommended = chkCompanyRecommended.Checked;
 
-                    if (!string.IsNullOrEmpty(txtFinanceControlId.Text))
-                        OverviewData.FinanceControlID = Convert.ToInt32(txtFinanceControlId.Text);
-                    if (!string.IsNullOrEmpty(txtCompanyHotelID.Text))
-                        OverviewData.CompanyHotelID = Convert.ToInt32(txtCompanyHotelID.Text.ToString());
+                if (!string.IsNullOrEmpty(txtFinanceControlId.Text))
+                    OverviewData.FinanceControlID = Convert.ToInt32(txtFinanceControlId.Text);
+                if (!string.IsNullOrEmpty(txtCompanyHotelID.Text))
+                    OverviewData.CompanyHotelID = Convert.ToInt32(txtCompanyHotelID.Text.ToString());
 
-                    OverviewData.Edit_Date = DateTime.Now;
-                    OverviewData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
-                    OverviewData.IsActive = true;
-                    OverviewData.IsMysteryProduct = blnMysteryProduct.Checked;
-                    System.Web.UI.HtmlControls.HtmlGenericControl alert_GeoCode = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("alert_GeoCode");
-                    System.Web.UI.HtmlControls.HtmlGenericControl dvMsgContact = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("contacts").FindControl("dvMsgContact");
-                    System.Web.UI.HtmlControls.HtmlGenericControl dvMsgDynamicAttributesForHotel = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("DynamicAttributesForHotel").FindControl("dvMsgDynamicAttributesForHotel");
+                OverviewData.Edit_Date = DateTime.Now;
+                OverviewData.Edit_User = System.Web.HttpContext.Current.User.Identity.Name;
+                OverviewData.IsActive = true;
+                OverviewData.IsMysteryProduct = blnMysteryProduct.Checked;
+                OverviewData.IsRoomMappingCompleted = blnRTCompleted.Checked;
+                System.Web.UI.HtmlControls.HtmlGenericControl alert_GeoCode = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("alert_GeoCode");
+                System.Web.UI.HtmlControls.HtmlGenericControl dvMsgContact = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("contacts").FindControl("dvMsgContact");
+                System.Web.UI.HtmlControls.HtmlGenericControl dvMsgDynamicAttributesForHotel = (System.Web.UI.HtmlControls.HtmlGenericControl)frmHotelOverview.FindControl("DynamicAttributesForHotel").FindControl("dvMsgDynamicAttributesForHotel");
 
-                    
-                    alert_GeoCode.Style.Add(HtmlTextWriterStyle.Display, "none");
-                    dvMsgContact.Style.Add(HtmlTextWriterStyle.Display, "none");
-                    dvMsgDynamicAttributesForHotel.Style.Add(HtmlTextWriterStyle.Display, "none");
-                    if (AccSvc.UpdateHotelDetail(OverviewData))
-                    {
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel has been updated successfully", BootstrapAlertType.Success);
-                    }
-                    else
-                    {
-                        BootstrapAlert.BootstrapAlertMessage(dvMsg, "Error Occurred", BootstrapAlertType.Warning);
-                    }
+
+                alert_GeoCode.Style.Add(HtmlTextWriterStyle.Display, "none");
+                dvMsgContact.Style.Add(HtmlTextWriterStyle.Display, "none");
+                dvMsgDynamicAttributesForHotel.Style.Add(HtmlTextWriterStyle.Display, "none");
+                if (AccSvc.UpdateHotelDetail(OverviewData))
+                { 
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Hotel has been updated successfully", BootstrapAlertType.Success);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Error Occurred", BootstrapAlertType.Warning);
+                }
 
                 }
             }
@@ -889,14 +891,14 @@ namespace TLGX_Consumer.controls.hotel
                 RQParams.HotelName = txtHotelName.Text;
 
 
-            if (txtCommonHotelId.Text.Length != 0)
-            {
-                int CompanyHotelId = 0;
-                int.TryParse(txtCommonHotelId.Text, out CompanyHotelId);
+            //if (txtCommonHotelId.Text.Length != 0)
+            //{
+            //    int CompanyHotelId = 0;
+            //    int.TryParse(txtCommonHotelId.Text, out CompanyHotelId);
 
-                if (CompanyHotelId != 0)
-                    RQParams.CompanyHotelId = Convert.ToInt32(txtCommonHotelId.Text);
-            }
+            //    if (CompanyHotelId != 0)
+            //        RQParams.CompanyHotelId = Convert.ToInt32(txtCommonHotelId.Text);
+            //}
 
             if (ddlCountry.SelectedItem.Text != "---ALL---")
                 RQParams.Country = ddlCountry.SelectedItem.Text;
@@ -911,7 +913,7 @@ namespace TLGX_Consumer.controls.hotel
             {
                 foreach (MDMSVC.DC_Accomodation_Search_RS rs in res)
                 {
-                    if (txtHotelID.Text != rs.AccomodationId)
+                    if (txtHotelID.Text.ToUpper() != rs.AccomodationId.ToUpper())
                     {
                         if (rs.Country.ToUpper() == ddlCountry.SelectedItem.Text.ToUpper())
                         {

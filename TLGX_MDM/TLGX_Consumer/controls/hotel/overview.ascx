@@ -743,6 +743,12 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">Key Facts</div>
                         <div class="panel-body">
+                              <div class="form-group">
+                                <label class="control-label col-sm-6" for="blnRTCompleted">Room Mapping Complete</label>
+                                <div class="col-sm-6">
+                                    <asp:CheckBox ID="blnRTCompleted" runat="server" CssClass="form-control" Checked='<%# Bind("IsRoomMappingCompleted") %>' />
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-6" for="blnMysteryProduct">Mystery Product</label>
