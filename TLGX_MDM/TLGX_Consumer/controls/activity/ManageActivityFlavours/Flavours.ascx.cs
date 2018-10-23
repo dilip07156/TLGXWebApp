@@ -579,6 +579,10 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             FlavData.ProductCategory = txtProdCategory.Text;
 
+            // TLGX Subtype
+            FlavData.TLGXDisplaySubType_ID = (ddlTLGX_displaySubType.SelectedValue == "0" ? Guid.Empty : Guid.Parse(ddlTLGX_displaySubType.SelectedValue));
+            FlavData.TLGXDisplaySubType = (ddlTLGX_displaySubType.SelectedValue == "0" ? null : ddlTLGX_displaySubType.SelectedItem.Text);
+
             List<DC_Activity_CategoryTypes> CategoryTypes = new List<DC_Activity_CategoryTypes>();
             foreach (RepeaterItem item in repProductSubType.Items)
             {
