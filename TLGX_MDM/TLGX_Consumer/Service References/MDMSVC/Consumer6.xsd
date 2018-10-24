@@ -878,6 +878,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_CountryMaster" nillable="true" type="tns:DC_CountryMaster" />
+  <xs:complexType name="ArrayOfDC_Master_Region">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Master_Region" nillable="true" type="tns:DC_Master_Region" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Master_Region" nillable="true" type="tns:ArrayOfDC_Master_Region" />
+  <xs:complexType name="DC_Master_Region">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="RegionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegionName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Master_Region" nillable="true" type="tns:DC_Master_Region" />
   <xs:complexType name="ArrayOfDC_Master_Country">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Master_Country" nillable="true" type="tns:DC_Master_Country" />

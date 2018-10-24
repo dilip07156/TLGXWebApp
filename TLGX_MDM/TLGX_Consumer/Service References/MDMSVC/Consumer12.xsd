@@ -300,6 +300,13 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_ZoneHotelList" nillable="true" type="tns:DC_ZoneHotelList" />
+  <xs:complexType name="DC_CitywithMultipleCountry_Search_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CountryIdList" nillable="true" type="q2:ArrayOfguid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_CitywithMultipleCountry_Search_RQ" nillable="true" type="tns:DC_CitywithMultipleCountry_Search_RQ" />
   <xs:complexType name="DC_Country_Search_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country_Code" nillable="true" type="xs:string" />
@@ -1447,7 +1454,7 @@
       <xs:element minOccurs="0" name="Activity_Flavour_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="AttributeSubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AttributeValues" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AttributeValues" nillable="true" type="q3:ArrayOfstring" />
       <xs:element minOccurs="0" name="User" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

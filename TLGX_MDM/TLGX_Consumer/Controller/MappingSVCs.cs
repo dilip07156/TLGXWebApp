@@ -527,5 +527,12 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_HotelListByCityCode>;
         }
         #endregion
+
+        public List<DC_EzeegoHotelVsSupplierHotelMappingReport> EzeegoHotelVsSupplierHotelMappingReport(MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_EzeegoHotelVsSupplierHotelMapping"], RQ, typeof(List<MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ>), typeof(List<MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport>), out result);
+            return result as List<MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport>;
+        }
     }
 }

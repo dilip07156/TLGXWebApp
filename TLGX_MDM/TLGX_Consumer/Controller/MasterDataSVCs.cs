@@ -767,5 +767,47 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+
+        #region Region Data
+        public List<MDMSVC.DC_Master_Region> GetAllRegions()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAllRegions"]), typeof(List<DC_Master_Region>), out result);
+            return result as List<DC_Master_Region>;
+        }
+        #endregion
+
+        #region Multiselect dropdown
+
+        public List<MDMSVC.DC_Master_Country> GetRegionwiseCountriesList(List<string> RegionCode)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_GetRegionwiseCountriesList"], RegionCode, typeof(List<string>), typeof(List<DC_Master_Country>), out result);
+            return result as List<DC_Master_Country>;
+        }
+
+        public List<MDMSVC.DC_Master_City> GetAllCountrywiseCitiesList(List<string> CountryIdList)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_GetAllCountrywiseCitiesList"], CountryIdList, typeof(List<string>), typeof(List<DC_Master_City>), out result);
+            return result as List<DC_Master_City>;
+        }
+
+        public List<MDMSVC.DC_Master_City> GetCountrywiseCitiesList(DC_CitywithMultipleCountry_Search_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_GetCountrywiseCitiesList"], RQ, typeof(DC_CitywithMultipleCountry_Search_RQ), typeof(List<DC_Master_City>), out result);
+            return result as List<DC_Master_City>;
+        }
+
+        public List<MDMSVC.DC_Master_City> GetCitiesDetails(string CountryName, string CityName)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Master_GetMasterCityDetails"], CountryName, CityName), typeof(List<DC_Master_City>), out result);
+            return result as List<DC_Master_City>;
+        }
+
+
+        #endregion
     }
 }
