@@ -874,6 +874,41 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_HotelListByCityCode" nillable="true" type="tns:DC_HotelListByCityCode" />
+  <xs:complexType name="ArrayOfDC_NewDashBoardReportCountry_RS">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_NewDashBoardReportCountry_RS" nillable="true" type="tns:DC_NewDashBoardReportCountry_RS" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_NewDashBoardReportCountry_RS" nillable="true" type="tns:ArrayOfDC_NewDashBoardReportCountry_RS" />
+  <xs:complexType name="DC_NewDashBoardReportCountry_RS">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Add_Room" type="xs:int" />
+      <xs:element minOccurs="0" name="AutoMapped_Room" type="xs:int" />
+      <xs:element minOccurs="0" name="ContentScore" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country_id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Mapped_Hotel" type="xs:int" />
+      <xs:element minOccurs="0" name="Mapped_Room" type="xs:int" />
+      <xs:element minOccurs="0" name="NoOfSuppliers_H" type="xs:int" />
+      <xs:element minOccurs="0" name="NoOfSuppliers_R" type="xs:int" />
+      <xs:element minOccurs="0" name="Per_Add_Room" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Per_AutoMapped_Room" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Per_Mapped_Hotel" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Per_Mapped_Room" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Per_Review_Hotel" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Per_Review_Room" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Per_Unmapped_Room" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PreferredHotels" type="xs:int" />
+      <xs:element minOccurs="0" name="RegionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Review_Hotel" type="xs:int" />
+      <xs:element minOccurs="0" name="Review_Room" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalSupplierHotels" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalSupplierRoom" type="xs:int" />
+      <xs:element minOccurs="0" name="Unmapped_Hotel" type="xs:int" />
+      <xs:element minOccurs="0" name="Unmapped_Room" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_NewDashBoardReportCountry_RS" nillable="true" type="tns:DC_NewDashBoardReportCountry_RS" />
   <xs:complexType name="ArrayOfDC_MappingStats">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_MappingStats" nillable="true" type="tns:DC_MappingStats" />
