@@ -474,6 +474,8 @@
     <Content Include="Scripts\JqueryUI\jquery-ui.js" />
     <Content Include="Scripts\JqueryUI\jquery-ui.min.css" />
     <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
+    <Content Include="Scripts\MultiSelectJS\jquery.sumoselect.min.js" />
+    <Content Include="Scripts\MultiSelectJS\sumoselect.min.css" />
     <Content Include="Scripts\Styles\bootstrap.css" />
     <Content Include="Scripts\Styles\bootstrap.min.css" />
     <Content Include="Scripts\Styles\Login\core.css" />
@@ -520,7 +522,10 @@
     <Content Include="staticdata\city\search.aspx" />
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
-    <Content Include="staticdata\ExportSupplierReport.aspx" />
+    <Content Include="staticdata\ExportSupplierReport.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\EzeegoHotelvsSupplierHotelReport.aspx" />
     <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
@@ -1087,6 +1092,13 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\MultipleCountrywiseCityAutoComplete.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2731,6 +2743,9 @@
     <Compile Include="Service\IncludeExcludeZoneHotels.ashx.cs">
       <DependentUpon>IncludeExcludeZoneHotels.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\MultipleCountrywiseCityAutoComplete.ashx.cs">
+      <DependentUpon>MultipleCountrywiseCityAutoComplete.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\PentahoStepsInfo.ashx.cs">
       <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
     </Compile>
@@ -2836,9 +2851,18 @@
     <Compile Include="staticdata\ExportSupplierReport.aspx.cs">
       <DependentUpon>ExportSupplierReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="staticdata\ExportSupplierReport.aspx.designer.cs">
       <DependentUpon>ExportSupplierReport.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="staticdata\EzeegoHotelvsSupplierHotelReport.aspx.cs">
+      <DependentUpon>EzeegoHotelvsSupplierHotelReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\EzeegoHotelvsSupplierHotelReport.aspx.designer.cs">
+      <DependentUpon>EzeegoHotelvsSupplierHotelReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\files\APIData.aspx.cs">
       <DependentUpon>APIData.aspx</DependentUpon>
@@ -3004,6 +3028,7 @@
     <Content Include="staticdata\ExportSupplierRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="staticdata\EzeegoHotelvsSupplierHotelRDLCReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />

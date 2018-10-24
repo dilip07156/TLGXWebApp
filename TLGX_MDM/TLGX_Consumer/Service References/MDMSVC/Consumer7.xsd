@@ -354,7 +354,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Accommodation_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_RoomInfo_Id" nillable="true" type="ser:guid" />
-      <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Accommodation_SupplierRoomTypeMapping_Value_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="Created_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Edit_SystemUser" nillable="true" type="xs:string" />
@@ -1171,4 +1171,35 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_newHotelsReport" nillable="true" type="tns:DC_newHotelsReport" />
+  <xs:complexType name="DC_EzeegoHotelVsSupplierHotelMappingReport_RQ">
+    <xs:sequence>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AccoPriority" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="City" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Country" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Region" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Supplier" nillable="true" type="q7:ArrayOfstring" />
+      <xs:element minOccurs="0" name="selectedHotelId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_EzeegoHotelVsSupplierHotelMappingReport_RQ" nillable="true" type="tns:DC_EzeegoHotelVsSupplierHotelMappingReport_RQ" />
+  <xs:complexType name="ArrayOfDC_EzeegoHotelVsSupplierHotelMappingReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_EzeegoHotelVsSupplierHotelMappingReport" nillable="true" type="tns:DC_EzeegoHotelVsSupplierHotelMappingReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_EzeegoHotelVsSupplierHotelMappingReport" nillable="true" type="tns:ArrayOfDC_EzeegoHotelVsSupplierHotelMappingReport" />
+  <xs:complexType name="DC_EzeegoHotelVsSupplierHotelMappingReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HotelName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Legacy_HTL_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RegionName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TLGXAccoId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_EzeegoHotelVsSupplierHotelMappingReport" nillable="true" type="tns:DC_EzeegoHotelVsSupplierHotelMappingReport" />
 </xs:schema>
