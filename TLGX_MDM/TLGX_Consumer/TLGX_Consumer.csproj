@@ -3015,7 +3015,7 @@
     <Content Include="staticdata\ExportSupplierRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="staticdata\rptCountry_NewDashreport.rdlc" />
+    <EmbeddedResource Include="staticdata\HotelMappingCountryReport.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
