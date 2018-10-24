@@ -3039,7 +3039,12 @@
     <Content Include="staticdata\ExportSupplierRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="staticdata\EzeegoHotelvsSupplierHotelRDLCReport.rdlc" />
+    <Content Include="staticdata\EzeegoHotelvsSupplierHotelRDLCReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\HotelMappingCountryReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
