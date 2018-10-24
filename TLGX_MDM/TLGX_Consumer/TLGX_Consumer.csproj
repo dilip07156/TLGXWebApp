@@ -517,6 +517,7 @@
     <Content Include="staticdata\city\search.aspx" />
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
+    <Content Include="staticdata\CountryWiseDashBoardReport.aspx" />
     <Content Include="staticdata\ExportSupplierReport.aspx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -2851,6 +2852,13 @@
     </Compile>
     <Compile Include="staticdata\config\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="staticdata\CountryWiseDashBoardReport.aspx.cs">
+      <DependentUpon>CountryWiseDashBoardReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\CountryWiseDashBoardReport.aspx.designer.cs">
+      <DependentUpon>CountryWiseDashBoardReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\country\search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
