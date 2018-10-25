@@ -1088,6 +1088,15 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
