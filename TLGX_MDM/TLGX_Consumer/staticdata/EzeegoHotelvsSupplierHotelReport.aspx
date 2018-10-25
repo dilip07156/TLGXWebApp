@@ -115,7 +115,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1 class="page-header">Ezeego Hotels vs Supplier Hotels Mapping Report</h1>
+            <h1 class="page-header">TLGX ACCO Supplier Mapping</h1>
         </div>
     </div>
 
