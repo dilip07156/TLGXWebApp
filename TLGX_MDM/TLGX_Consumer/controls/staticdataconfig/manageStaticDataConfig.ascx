@@ -83,7 +83,7 @@
 
 </script>
 
-<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" OnUnload="UpdatePanel1_Unload">
     <ContentTemplate>
         <div class="panel-group" id="accordion">
             <div class="panel panel-default">
@@ -288,6 +288,9 @@
                             <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                             <div id="dvModalMsg" runat="server" style="display: none;"></div>
                             <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                            <asp:Label runat="server" ID="lblSelectedSupplierImportAttributeValue_Id" Visible="false" />
+                            <asp:Label runat="server" ID="lblconfigresultCount" Visible="false" Text="0" />
+
                         </div>
 
                         <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
@@ -343,15 +346,15 @@
                                                     <label class="control-label col-sm-4" for="ddlAttributeValue">
                                                         Value
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValuedll" ValidationGroup="AddConfig" runat="server" ControlToValidate="ddlAttributeValue"
-                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Value field is required." Text="*" />
+                                                            CssClass="text-danger" InitialValue="0" ErrorMessage="The Value field is required1." Text="*" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValue" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtAttributeValue"
-                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required2." Text="*" Enabled="false" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFrom" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtReplaceFrom"
-                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required3." Text="*" Enabled="false" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValueTo" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtReplaceTo"
-                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required4." Text="*" Enabled="false" />
                                                         <asp:RequiredFieldValidator ID="rqfvddlAttributeValueFilter" ValidationGroup="AddConfig" runat="server" ControlToValidate="txtValueForFilter"
-                                                            CssClass="text-danger" ErrorMessage="The Value field is required." Text="*" Enabled="false" />
+                                                            CssClass="text-danger" ErrorMessage="The Value field is required5." Text="*" Enabled="false" />
                                                     </label>
                                                     <div class="col-sm-8">
                                                         <%--For Dropdown Values--%>

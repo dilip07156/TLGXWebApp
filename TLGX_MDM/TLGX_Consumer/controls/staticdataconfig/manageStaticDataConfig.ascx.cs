@@ -8,6 +8,7 @@ using TLGX_Consumer.App_Code;
 using System.Web.UI.HtmlControls;
 using AjaxControlToolkit;
 using System.Text;
+using System.Dynamic;
 
 namespace TLGX_Consumer.controls.staticdataconfig
 {
@@ -19,15 +20,18 @@ namespace TLGX_Consumer.controls.staticdataconfig
         //public static string AttributeOptionForType = "MappingConfigAttributeTypes";
         //public static int PageIndex = 0;
         //public static Guid Config_Id = Guid.Empty;
-        public static Guid SelectedSupplierImportAttributeValue_Id = Guid.Empty;
 
-        public static bool IsMapping = false;
-        public static int configresultCount = 0;
+
+        //public static Guid SelectedSupplierImportAttributeValue_Id = Guid.Empty;
+        //public static bool IsMapping = false;
+        //public static int configresultCount = 0;
+        //public static int intNumberOfColumnHasBeenAdded = 0;
+
         public static bool IsFileDetailsFileFormatCsvTxt = false;
         public static bool IsFileDetailsFileFormatXPath = false;
         public static bool IsFileDetailsFileFormatJPath = false;
 
-        public static int intNumberOfColumnHasBeenAdded = 0;
+
 
 
         public static string _stgTable = string.Empty;
@@ -49,6 +53,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 }
             }
         }
+
+
 
         private void fillattributeFilters(Guid Config_Id)
         {
@@ -98,28 +104,68 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     {
 
                         //Set Value for IsNumberOfColumnHasBeenAdded
-                        var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
-                        if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
-                        {
-                            if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
-                                intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
-                        }
-                        else
-                            intNumberOfColumnHasBeenAdded = 0;
+                        //var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
+                        //if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
+                        //{
+                        //    if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
+                        //        intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        //}
+                        //else
+                        //    intNumberOfColumnHasBeenAdded = 0;
                     }
                     else
                     {
                         lblTotalUploadConfig.Text = "0";
-                        configresultCount = 0;
+                        lblconfigresultCount.Text = "0";
                     }
                 }
                 else
                 {
                     lblTotalUploadConfig.Text = "0";
-                    configresultCount = 0;
+                    lblconfigresultCount.Text = "0";
                 }
 
             }
+        }
+
+        private int intNumberOfColumnHasBeenAdded()
+        {
+            int ColumnCount = 0;
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+
+            if (Config_Id != Guid.Empty)
+            {
+                MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
+                RQ.SupplierImportAttribute_Id = Config_Id;
+                RQ.PageNo = 0;
+
+                if (ddlFilterPriority.SelectedItem.Value != "-1")
+                    RQ.Priority = Convert.ToInt32(ddlFilterPriority.SelectedItem.Text); //intFilterPriority;
+                else
+                    RQ.Priority = -1;
+                RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
+
+                var res = mappingsvc.GetStaticDataMappingAttributeValues(RQ);
+
+                if (res != null)
+                {
+                    if (res.Count > 0)
+                    {
+
+                        //Set Value for IsNumberOfColumnHasBeenAdded
+                        var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
+                        if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
+                        {
+                            if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
+                                ColumnCount = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        }
+                        else
+                            ColumnCount = 0;
+                    }
+                }
+            }
+
+            return ColumnCount;
         }
 
         private void fillmappingattributes(int PageIndex, Guid Config_Id)
@@ -139,13 +185,14 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
 
                 var res = mappingsvc.GetStaticDataMappingAttributeValues(RQ);
+
                 if (res != null)
                 {
                     if (res.Count > 0)
                     {
                         grdMappingAttrValues.VirtualItemCount = res[0].TotalRecords;
                         lblTotalUploadConfig.Text = res[0].TotalRecords.ToString();
-                        configresultCount = Convert.ToInt32(res[0].TotalRecords);
+                        lblconfigresultCount.Text = Convert.ToInt32(res[0].TotalRecords).ToString();
 
                         //Set Valur For File Type
                         var resAttributeFileformate = (from x in res where x.AttributeValue.ToLower() == "format" select x).ToList();
@@ -164,24 +211,24 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             IsFileDetailsFileFormatCsvTxt = false;
                         //Set Value for IsNumberOfColumnHasBeenAdded
                         var resNumberOfColumns = (from x in res where x.AttributeValue.ToLower() == "numberofcolumns" select x).ToList();
-                        if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
-                        {
-                            if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
-                                intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
-                        }
-                        else
-                            intNumberOfColumnHasBeenAdded = 0;
+                        //if (resNumberOfColumns != null && resNumberOfColumns.Count > 0)
+                        //{
+                        //    if ((resNumberOfColumns[0].AttributeName) != null && (resNumberOfColumns[0].AttributeName) != string.Empty)
+                        //        intNumberOfColumnHasBeenAdded = Convert.ToInt32(resNumberOfColumns[0].AttributeName);
+                        //}
+                        //else
+                        //    intNumberOfColumnHasBeenAdded = 0;
                     }
                     else
                     {
                         lblTotalUploadConfig.Text = "0";
-                        configresultCount = 0;
+                        lblconfigresultCount.Text = "0";
                     }
                 }
                 else
                 {
                     lblTotalUploadConfig.Text = "0";
-                    configresultCount = 0;
+                    lblconfigresultCount.Text = "0";
                 }
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                 grdMappingAttrValues.DataSource = (from a in res orderby a.CREATE_DATE descending select a).ToList();
@@ -193,8 +240,57 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
         }
 
+        private dynamic IsMapping(string Type)
+        {
+            dynamic obj = new ExpandoObject();
+            Guid Config_Id = new Guid(Request.QueryString["Config_Id"]);
+
+            if (Config_Id != Guid.Empty)
+            {
+                MDMSVC.DC_SupplierImportAttributes_RQ RQ = new MDMSVC.DC_SupplierImportAttributes_RQ();
+                RQ.SupplierImportAttribute_Id = Config_Id;
+                RQ.PageNo = 0;
+                RQ.PageSize = int.MaxValue;
+
+                var res = mappingsvc.GetStaticDataMappingAttributes(RQ);
+
+                switch (Type)
+                {
+                    case "bool":
+                        if (res != null)
+                        {
+                            if (res.Count > 0)
+                            {
+                                if (res[0].For.ToLower() == "mapping")
+                                    obj = true;
+                                else if (res[0].For.ToLower() == "matching")
+                                    obj = false;
+                            }
+                        }
+                        break;
+                    case "_stgTable":
+                        if (res != null) { if (res.Count > 0) { obj = Convert.ToString(res[0].STG_Table); } else { obj = ""; } } else { obj = ""; }
+                        break;
+                    case "_masterTable":
+                        if (res != null) { if (res.Count > 0) { obj = Convert.ToString(res[0].Master_Table); } else { obj = ""; } } else { obj = ""; }
+                        break;
+                    case "_mappingTable":
+                        if (res != null) { if (res.Count > 0) { obj = Convert.ToString(res[0].Mapping_Table); } else { obj = ""; } } else { obj = ""; }
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+
+            return obj;
+        }
+
         private void fillconfigdata(Guid Config_Id)
         {
+            bool IsMapping = false;
+
             if (Config_Id != Guid.Empty)
             {
                 MDMSVC.DC_SupplierImportAttributes_RQ RQ = new MDMSVC.DC_SupplierImportAttributes_RQ();
@@ -216,6 +312,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         _mappingTable = Convert.ToString(res[0].Mapping_Table);
                         _masterTable = Convert.ToString(res[0].Master_Table);
                         _stgTable = Convert.ToString(res[0].STG_Table);
+                        
+                        
+                        //IsMapping("_mappingTable")
+                        //IsMapping("_masterTable")
+                        //IsMapping("_stgTable")
 
                         ddlSupplierName.SelectedIndex = ddlSupplierName.Items.IndexOf(ddlSupplierName.Items.FindByValue(res[0].Supplier_Id.ToString()));
                         ddlEntity.SelectedIndex = ddlEntity.Items.IndexOf(ddlEntity.Items.FindByText(res[0].Entity));
@@ -272,35 +373,37 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         public void fillattributes(string masterfor, string attributename, DropDownList ddl)
         {
+
             MDMSVC.DC_MasterAttribute RQ = new MDMSVC.DC_MasterAttribute();
             RQ.MasterFor = masterfor;
             RQ.Name = attributename;
             var resvalues = mastersvc.GetAllAttributeAndValues(RQ);
+
             //Apply business logic 
             if (resvalues != null && resvalues.Count > 0)
             {
                 if (ddl.ID == "ddlAttributeType")
                 {
                     //If for == matching then show only two options into type dropdown match and map 
-                    if (!IsMapping)
+                    if (!IsMapping("bool"))
                         resvalues = (from x in resvalues where x.AttributeValue.ToLower() == "map" || x.AttributeValue.ToLower() == "match" select x).ToList();
-                    else if (IsMapping)
+                    else if (IsMapping("bool"))
                         resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "match" select x).ToList();
 
 
                     //If no file config is added, show only "File Details" opens in File drop down
-                    if (configresultCount == 0 && IsMapping)
+                    if (Convert.ToInt32(lblconfigresultCount.Text) == 0 && IsMapping("bool"))
                         resvalues = (from x in resvalues where x.AttributeValue.ToLower() == "filedetails" select x).ToList();
 
                     //Distinct & Filter option only available when number of column has been added
-                    if (configresultCount > 0 && intNumberOfColumnHasBeenAdded == 0)
+                    if (Convert.ToInt32(lblconfigresultCount.Text) > 0 && intNumberOfColumnHasBeenAdded() == 0)
                     {
                         resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "filter" select x).ToList();
                         resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "distinct" select x).ToList();
                     }
 
                     //For Xpath and Jpath option available only
-                    if (intNumberOfColumnHasBeenAdded > 0)
+                    if (intNumberOfColumnHasBeenAdded() > 0)
                     {
                         if (IsFileDetailsFileFormatXPath || IsFileDetailsFileFormatJPath)
                         {
@@ -388,11 +491,13 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 if (e.CommandName.ToString() == "Select")
                 {
+                    int intNoOfColumn = intNumberOfColumnHasBeenAdded();
+
                     dvModalMsg.Visible = false;
                     List<MDMSVC.DC_SupplierImportAttributeValues> lstobj = new List<MDMSVC.DC_SupplierImportAttributeValues>();
                     MDMSVC.DC_SupplierImportAttributeValues obj = new MDMSVC.DC_SupplierImportAttributeValues();
                     MDMSVC.DC_SupplierImportAttributeValues_RQ RQ = new MDMSVC.DC_SupplierImportAttributeValues_RQ();
-                    SelectedSupplierImportAttributeValue_Id = myRow_Id;
+                    lblSelectedSupplierImportAttributeValue_Id.Text = Convert.ToString(myRow_Id);
                     RQ.SupplierImportAttributeValue_Id = myRow_Id;
                     RQ.PageNo = 0;
                     RQ.PageSize = int.MaxValue;
@@ -449,7 +554,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         #endregion //Get All Controls
 
                         #region Priority 
-                        if (IsMapping)
+                        if (IsMapping("bool"))
                             dvtxtPriority.Style.Add(HtmlTextWriterStyle.Display, "none");
                         else
                             dvtxtPriority.Style.Add(HtmlTextWriterStyle.Display, "block");
@@ -472,9 +577,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             #region For Distinct and Filter AttributeType
                             if (ddlAttributeType.SelectedItem.Text.ToLower() == "distinct" || ddlAttributeType.SelectedItem.Text.ToLower() == "filter")
                             {
-                                int intNoOfColumn = intNumberOfColumnHasBeenAdded;
+
+
                                 ddlAttributeName.Visible = true;
-                                if (intNumberOfColumnHasBeenAdded > 0)
+
+                                if (intNoOfColumn > 0)
                                 {
                                     ddlAttributeName.Items.Clear();
                                     ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
@@ -489,16 +596,15 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "map" || ddlAttributeType.SelectedItem.Text.ToLower() == "match")
                             {
                                 List<string> lstAttributeName = new List<string>();
-                                if (!IsMapping && res[0].AttributeType.ToLower() == "map")
+                                if (!IsMapping("bool") && res[0].AttributeType.ToLower() == "map")
                                 {
                                     lstAttributeName = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
                                     hdnddlAttributeTableName.Value = _mappingTable;
                                 }
-                                else if (IsMapping && res[0].AttributeType.ToLower() == "map")
+                                else if (IsMapping("bool") && res[0].AttributeType.ToLower() == "map")
                                 {
-                                    if (intNumberOfColumnHasBeenAdded > 0)
+                                    if (intNoOfColumn > 0)
                                     {
-                                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                                         ddlAttributeName.Items.Clear();
                                         for (int i = --intNoOfColumn; i >= 0; i--)
                                             lstAttributeName.Add(i.ToString());
@@ -506,7 +612,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     }
                                     hdnddlAttributeTableName.Value = "0";
                                 }
-                                else if (!IsMapping && res[0].AttributeType.ToLower() == "match")
+                                else if (!IsMapping("bool") && res[0].AttributeType.ToLower() == "match")
                                 {
                                     lstAttributeName = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
                                     hdnddlAttributeTableName.Value = _mappingTable;
@@ -532,9 +638,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             }
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "jpath" || ddlAttributeType.SelectedItem.Text.ToLower() == "xpath")
                             {
-                                int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                                 ddlAttributeName.Visible = true;
-                                if (intNumberOfColumnHasBeenAdded > 0)
+                                if (intNoOfColumn > 0)
                                 {
                                     ddlAttributeName.Items.Clear();
                                     for (int i = --intNoOfColumn; i >= 0; i--)
@@ -546,7 +651,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                         ddlAttributeName.Items.FindByText(res[0].AttributeValue.ToString()).Selected = true;
                                 }
                             }
-                            else if (IsMapping && ddlAttributeType.SelectedItem.Text.ToLower() == "keyword")
+                            else if (IsMapping("bool") && ddlAttributeType.SelectedItem.Text.ToLower() == "keyword")
                             {
                                 ddlAttributeName.Visible = true;
                                 var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
@@ -649,25 +754,33 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             {
                                 fillComparisonOperators("MappingConfigAttributeTypes", "ComparisonOperators", ddlComparisonValue);
                                 List<string> lstAttributeValue = null;
-                                if (IsMapping && res[0].AttributeType.ToLower() == "map")
+                                if (IsMapping("bool") && res[0].AttributeType.ToLower() == "map")
                                 {
-                                    lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
-                                    hdnddlAttributeTableValueName.Value = _stgTable;
+                                    //lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
+                                    //hdnddlAttributeTableValueName.Value = _stgTable;
+                                    hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
+                                    lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
+                                    
+
+                                    
                                 }
-                                else if (!IsMapping && res[0].AttributeType.ToLower() == "map")
+                                else if (!IsMapping("bool") && res[0].AttributeType.ToLower() == "map")
                                 {
-                                    lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
-                                    hdnddlAttributeTableValueName.Value = _stgTable;
+                                    //lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
+                                    //hdnddlAttributeTableValueName.Value = _stgTable;
+                                    hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
+                                    lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
+                                    
                                 }
 
-                                else if (!IsMapping && res[0].AttributeType.ToLower() == "match")
+                                else if (!IsMapping("bool") && res[0].AttributeType.ToLower() == "match")
                                 {
                                     #region y match By
                                     if (ddlComparisonValue.Items.FindByText(res[0].Comparison) != null)
                                     {
                                         ddlComparisonValue.SelectedIndex = ddlComparisonValue.Items.IndexOf(ddlComparisonValue.Items.FindByText(res[0].Comparison));
                                     }
-                                    
+
                                     dvMatchByColumnOrValue.Visible = true;
 
                                     if (res[0].AttributeValueType != null)
@@ -688,15 +801,15 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                             rdoIsMatchByColumn.Checked = true;
                                         }
                                     }
-                                    #endregion 
+                                    #endregion
                                     lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_masterTable);
-                                     hdnddlAttributeTableValueName.Value = _masterTable;
+                                    hdnddlAttributeTableValueName.Value = _masterTable;
 
                                 }
                                 if (lstAttributeValue != null)
                                 {
                                     //y match By
-                                    if(res[0].AttributeValueType.ToUpper() == "VALUE")
+                                    if (res[0].AttributeValueType.ToUpper() == "VALUE")
                                     {
                                         ddlAttributeValue.Items.Clear();
                                         ddlAttributeValue.DataSource = lstAttributeValue;
@@ -715,7 +828,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                                         EnableDisableValidation(rqfvddlAttributeValuedll);
                                     }
-                                   
+
                                 }
                             }
                             else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format")
@@ -944,7 +1057,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
             TextBox txtReplaceFrom = (TextBox)frmAddConfig.FindControl("txtReplaceFrom"); //New Field added for priority
             TextBox txtReplaceTo = (TextBox)frmAddConfig.FindControl("txtReplaceTo"); //New Field added for priority
-            //MatchBy
+                                                                                      //MatchBy
             RadioButton rdoIsMatchByColumn = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByColumn");
             RadioButton rdoIsMatchByValue = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByValue");
             DropDownList ddlComparisonValue = (DropDownList)frmAddConfig.FindControl("ddlComparisonValue");
@@ -1160,7 +1273,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
                 MDMSVC.DC_SupplierImportAttributeValues newObj = new MDMSVC.DC_SupplierImportAttributeValues
                 {
-                    SupplierImportAttributeValue_Id = SelectedSupplierImportAttributeValue_Id,
+                    SupplierImportAttributeValue_Id = Guid.Parse(lblSelectedSupplierImportAttributeValue_Id.Text),
                     SupplierImportAttribute_Id = Config_Id,
                     AttributeType = ddlAttributeType.SelectedItem.Text,
                     AttributeName = strAttributeName,
@@ -1178,6 +1291,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 lstNewObj.Add(newObj);
                 MDMSVC.DC_Message dc = new MDMSVC.DC_Message();
                 dc = mappingsvc.UpdateStaticDataMappingAttributeValue(lstNewObj);
+
+
                 if (!(dc.StatusCode == MDMSVC.ReadOnlyMessageStatusCode.Success))
                 {
                     hdnFlag.Value = "false";
@@ -1261,7 +1376,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             //dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "none");
             dvMatchByColumnOrValue.Visible = false;
 
-            if (IsMapping)
+            if (IsMapping("bool"))
                 dvtxtPriority.Style.Add(HtmlTextWriterStyle.Display, "none");
             else
                 dvtxtPriority.Style.Add(HtmlTextWriterStyle.Display, "block");
@@ -1272,6 +1387,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
         protected void ddlAttributeType_SelectedIndexChanged(object sender, EventArgs e)
         {
             #region All Controls 
+            int intNoOfColumn = intNumberOfColumnHasBeenAdded();
+
             DropDownList ddlAttributeType = (DropDownList)frmAddConfig.FindControl("ddlAttributeType");
             DropDownList ddlAttributeValue = (DropDownList)frmAddConfig.FindControl("ddlAttributeValue");
             DropDownList ddlAttributeName = (DropDownList)frmAddConfig.FindControl("ddlAttributeName");
@@ -1283,6 +1400,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             RequiredFieldValidator rqfvddlAttributeValueFrom = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFrom");
             RequiredFieldValidator rqfvddlAttributeValueTo = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueTo");
             RequiredFieldValidator rqfvddlAttributeValueFilter = (RequiredFieldValidator)frmAddConfig.FindControl("rqfvddlAttributeValueFilter");
+            RequiredFieldValidator vddlAttributeName = (RequiredFieldValidator)frmAddConfig.FindControl("vddlAttributeName");
+
             TextBox txtAttributeName = (TextBox)frmAddConfig.FindControl("txtAttributeName");
             TextBox txtAttributeValue = (TextBox)frmAddConfig.FindControl("txtAttributeValue");
             System.Web.UI.HtmlControls.HtmlGenericControl dvtxtAttributeValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("dvtxtAttributeValue");
@@ -1311,9 +1430,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 if (strAttributeType == "filter" || strAttributeType == "distinct")
                 {
                     ddlAttributeName.Visible = true;
-                    if (intNumberOfColumnHasBeenAdded > 0)
+                    if (intNoOfColumn > 0)
                     {
-                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
                         ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                         for (int i = --intNoOfColumn; i >= 0; i--)
@@ -1328,12 +1446,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         EnableDisableValidation(rqfvddlAttributeValueFilter);
                     }
                 }
-                else if (IsMapping && strAttributeType == "map")
+                else if (IsMapping("bool") && strAttributeType == "map")
                 {
                     ddlAttributeName.Visible = true;
-                    if (intNumberOfColumnHasBeenAdded > 0)
+                    if (intNoOfColumn > 0)
                     {
-                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
                         ddlAttributeName.Items.Insert(0, new ListItem("---ALL---", "-1"));
                         for (int i = --intNoOfColumn; i >= 0; i--)
@@ -1341,8 +1458,12 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                     hdnddlAttributeTableName.Value = "0";
                     //set Attribute Value STG Table 
-                    var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
-                    hdnddlAttributeTableValueName.Value = _stgTable;
+                    
+                    //hdnddlAttributeTableValueName.Value = _stgTable;
+                    //var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
+                    hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
+                    var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
+
                     if (lstAttributeValue != null)
                     {
                         ddlAttributeValue.Visible = true;
@@ -1357,7 +1478,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         rqfvddlAttributeValueFilter.Enabled = false;
                     }
                 }
-                else if (IsMapping && strAttributeType == "keyword")
+                else if (IsMapping("bool") && strAttributeType == "keyword")
                 {
                     ddlAttributeName.Visible = true;
                     var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
@@ -1380,12 +1501,15 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
 
                 }
-                else if (IsMapping && (strAttributeType == "jpath" || strAttributeType == "xpath"))
+                else if (strAttributeType == "encode")
+                {
+                    EnableDisableValidation(vddlAttributeName);
+                }
+                else if (IsMapping("bool") && (strAttributeType == "jpath" || strAttributeType == "xpath"))
                 {
                     ddlAttributeName.Visible = true;
-                    if (intNumberOfColumnHasBeenAdded > 0)
+                    if (intNoOfColumn > 0)
                     {
-                        int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                         ddlAttributeName.Items.Clear();
 
                         for (int i = --intNoOfColumn; i >= 0; i--)
@@ -1399,33 +1523,38 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     EnableDisableValidation(rqfvddlAttributeValue);
 
                 }
-                else if (!IsMapping) //Match & Map
+                else if (!IsMapping("bool")) //Match & Map
                 {
                     List<string> lstAttributeName = null;
                     List<string> lstAttributeValue = null;
-                    if (IsMapping && strAttributeType == "map") // ddlAttributeName -- Name No of columns , ddlAttributeValue -- Stg table Columns
+                    if (IsMapping("bool") && strAttributeType == "map") // ddlAttributeName -- Name No of columns , ddlAttributeValue -- Stg table Columns
                     {
-                        if (intNumberOfColumnHasBeenAdded > 0)
+                        if (intNoOfColumn > 0)
                         {
-                            int intNoOfColumn = intNumberOfColumnHasBeenAdded;
                             ddlAttributeName.Items.Clear();
                             for (int i = --intNoOfColumn; i >= 0; i--)
                                 lstAttributeName.Add(i.ToString());
 
                         }
                         hdnddlAttributeTableName.Value = string.Empty;
-                        lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
-                        hdnddlAttributeTableValueName.Value = _stgTable;
+                        //lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
+                        //hdnddlAttributeTableValueName.Value = _stgTable;
+                        hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
+                        lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
+                        
+                        
                     }
-                    else if (!IsMapping && strAttributeType == "map") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- Stg table Columns
+                    else if (!IsMapping("bool") && strAttributeType == "map") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- Stg table Columns
                     {
                         lstAttributeName = mastersvc.GetListOfColumnNamesByTable(_mappingTable);
                         hdnddlAttributeTableName.Value = _mappingTable;
-                        lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
-                        hdnddlAttributeTableValueName.Value = _stgTable;
+                        //hdnddlAttributeTableValueName.Value = _stgTable;
+                        //lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
 
+                        hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
+                        lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
                     }
-                    else if (!IsMapping && strAttributeType == "match") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- master table Columns
+                    else if (!IsMapping("bool") && strAttributeType == "match") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- master table Columns
                     {
                         // dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "block");
                         dvMatchByColumnOrValue.Visible = true;
@@ -1599,7 +1728,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
             System.Web.UI.HtmlControls.HtmlGenericControl divReplaceValue = (System.Web.UI.HtmlControls.HtmlGenericControl)frmAddConfig.FindControl("divReplaceValue");
             HiddenField hdnIsReplaceWith = (HiddenField)frmAddConfig.FindControl("hdnIsReplaceWith");
 
-
+            rqfvddlAttributeValuedll.Enabled = false;
+            rqfvddlAttributeValue.Enabled = false;
+            rqfvddlAttributeValueFrom.Enabled = false;
+            rqfvddlAttributeValueTo.Enabled = false;
+            rqfvddlAttributeValueFilter.Enabled = false;
 
 
             if (ddlAttributeType.SelectedItem.Text.ToLower() != "map" && ddlAttributeType.SelectedItem.Text.ToLower() != "match" && ddlAttributeType.SelectedItem.Text.ToLower() != "keyword")
@@ -1645,7 +1778,10 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             ddlAttributeValue.Visible = txtAttributeValue.Visible = false;
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "block");
 
+                            //rqfvddlAttributeValue.Enabled = false;
+
                             EnableDisableValidation(rqfvddlAttributeValueFrom);
+                            EnableDisableValidation(rqfvddlAttributeValueTo);
                         }
                         else if (ddlAttributeType.SelectedItem.Text.ToLower() == "format" && ddlAttributeName.SelectedItem.Text.ToLower() == "replace all spcl chrs")
                         {
@@ -1654,6 +1790,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             txtAttributeValue.Visible = true;
                             divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
 
+                            //rqfvddlAttributeValueFrom.Enabled = false;
+                            //rqfvddlAttributeValueTo.Enabled = false;
                             EnableDisableValidation(rqfvddlAttributeValue);
                         }
                         else
@@ -1722,7 +1860,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
             }
             else
             {
-               ddlAttributeValue.Visible = true;
+                ddlAttributeValue.Visible = true;
                 txtAttributeValue.Visible = false;
                 ddlComparisonValue.Visible = false;
             }
