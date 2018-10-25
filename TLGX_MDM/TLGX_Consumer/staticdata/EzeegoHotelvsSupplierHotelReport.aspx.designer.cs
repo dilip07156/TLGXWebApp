@@ -7,144 +7,135 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
+namespace TLGX_Consumer.staticdata {
     
     
-    public partial class ucNonOperatingDays {
+    public partial class EzeegoHotelvsSupplierHotelReport {
         
         /// <summary>
-        /// dvMsg control.
+        /// UpdatePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel;
         
         /// <summary>
-        /// chkSpecificOperatingDays control.
+        /// ddlRegion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkSpecificOperatingDays;
+        protected global::System.Web.UI.WebControls.ListBox ddlRegion;
         
         /// <summary>
-        /// txtFrom control.
+        /// ddlSupplierName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFrom;
+        protected global::System.Web.UI.WebControls.ListBox ddlSupplierName;
         
         /// <summary>
-        /// iCalFrom control.
+        /// ddlCountry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton iCalFrom;
+        protected global::System.Web.UI.WebControls.ListBox ddlCountry;
         
         /// <summary>
-        /// calFromDate control.
+        /// ddlAccoPriority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calFromDate;
+        protected global::System.Web.UI.WebControls.ListBox ddlAccoPriority;
         
         /// <summary>
-        /// axfte_txtFrom control.
+        /// rdoIsAllCities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtFrom;
+        protected global::System.Web.UI.WebControls.RadioButton rdoIsAllCities;
         
         /// <summary>
-        /// txtTo control.
+        /// txtHotelNameOrHDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTo;
+        protected global::System.Web.UI.WebControls.TextBox txtHotelNameOrHDL;
         
         /// <summary>
-        /// iCalTo control.
+        /// rdoIsSelectiveCities control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton iCalTo;
+        protected global::System.Web.UI.WebControls.RadioButton rdoIsSelectiveCities;
         
         /// <summary>
-        /// calToDate control.
+        /// txtCityLookup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.CalendarExtender calToDate;
+        protected global::System.Web.UI.WebControls.TextBox txtCityLookup;
         
         /// <summary>
-        /// axfte_txtTo control.
+        /// btnAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender axfte_txtTo;
+        protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
-        /// btnAddDays control.
+        /// btnViewReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAddDays;
+        protected global::System.Web.UI.WebControls.Button btnViewReport;
         
         /// <summary>
-        /// divDropdownForEntries control.
+        /// repSelectedCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
+        protected global::System.Web.UI.WebControls.Repeater repSelectedCity;
         
         /// <summary>
-        /// ddlShowEntries control.
+        /// HotelMappingreport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl HotelMappingreport;
         
         /// <summary>
-        /// dvMsgAlert control.
+        /// RptEzeegoHotelvsSupplierHotel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgAlert;
-        
-        /// <summary>
-        /// gvNonOperatingData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvNonOperatingData;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer RptEzeegoHotelvsSupplierHotel;
     }
 }

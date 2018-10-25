@@ -7,72 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.staticdata {
+namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
     
     
-    public partial class ExportSupplierReport {
+    public partial class FlavourOptions_Detailed {
         
         /// <summary>
-        /// PnlUpdateDiv control.
+        /// updPanFlavourOptions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel PnlUpdateDiv;
+        protected global::System.Web.UI.UpdatePanel updPanFlavourOptions;
         
         /// <summary>
-        /// ddlAccoPriority control.
+        /// dvMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAccoPriority;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// chkIsMDMDataOnly control.
+        /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkIsMDMDataOnly;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
         
         /// <summary>
-        /// ddlSupplierPriority control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierPriority;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
         
         /// <summary>
-        /// ddlSupplierName control.
+        /// ddlShowEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
         
         /// <summary>
-        /// btnViewReport control.
+        /// gvActFlavourOptins control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewReport;
+        protected global::System.Web.UI.WebControls.GridView gvActFlavourOptins;
         
         /// <summary>
-        /// ExportSupplierDetailsReport control.
+        /// rptCustomers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ExportSupplierDetailsReport;
+        protected global::System.Web.UI.WebControls.Repeater rptCustomers;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Reporting.WebForms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -26,16 +27,30 @@ namespace TLGX_Consumer.staticdata
             if (!IsPostBack)
             {
                 fillAccomodationPriority(ddlAccoPriority);
-                fillSupplier(ddlSupplierName);
+                fillSupplier(ddlSupplierName, ddlSupplierPriority);
+                ExportSupplierDetailsReport.Visible = false;
+                //getData("0", Guid.Empty, false,"0");
             }
-            ScriptManager.GetCurrent(Page).RegisterPostBackControl(btnExportSuppilerCsv);
         }
 
-        public void getData(string Priority, Guid Supplier_id, bool isMDM)
+        public void getData(string Priority, Guid Supplier_id, bool isMDM, string SuppPriority)
         {
-            var res = MapSvc.GetSupplierDataForExport(Priority, Supplier_id, isMDM);
-            gvSupplier.DataSource = res;
-            gvSupplier.DataBind();
+            ExportSupplierDetailsReport.Visible = true;
+
+            List<DC_SupplierExportDataReport> DsExportSupplierReport = new List<DC_SupplierExportDataReport>();
+            DsExportSupplierReport = MapSvc.GetSupplierDataForExport(Priority, Supplier_id, isMDM, SuppPriority);
+
+
+            ReportDataSource rds = new ReportDataSource("DsExportSupplierReport", DsExportSupplierReport);
+            // ReportViewer ExportSupplierReport = new ReportViewer();
+            ExportSupplierDetailsReport.LocalReport.DataSources.Clear();
+            ExportSupplierDetailsReport.LocalReport.ReportPath = Server.MapPath("~/staticdata/ExportSupplierRDLCReport.rdlc");
+            ExportSupplierDetailsReport.LocalReport.DataSources.Add(rds);
+            ExportSupplierDetailsReport.Visible = true;
+            ExportSupplierDetailsReport.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
+            ExportSupplierDetailsReport.DataBind();
+            ExportSupplierDetailsReport.LocalReport.Refresh();
+
         }
 
         private void fillAccomodationPriority(DropDownList ddl)
@@ -59,12 +74,18 @@ namespace TLGX_Consumer.staticdata
             ddl.Items.Insert(0, new ListItem("--ALL--", "0"));
         }
 
-        private void fillSupplier(DropDownList ddl)
+        private void fillSupplier(DropDownList ddl, DropDownList ddlSupplierPriority)
         {
-            ddl.DataSource = _objMasterSVC.GetSupplier(new DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, StatusCode = "ACTIVE" });
+            var result = _objMasterSVC.GetSupplier(new DC_Supplier_Search_RQ { PageNo = 0, PageSize = int.MaxValue, StatusCode = "ACTIVE" });
+            ddl.DataSource = result;
             ddl.DataValueField = "Supplier_Id";
             ddl.DataTextField = "Name";
             ddl.DataBind();
+
+            ddlSupplierPriority.DataSource = (from r in result where r.Priority != null orderby r.Priority select new { Priority = r.Priority }).Distinct().ToList(); ;
+            ddlSupplierPriority.DataValueField = "Priority";
+            ddlSupplierPriority.DataTextField = "Priority";
+            ddlSupplierPriority.DataBind();
         }
 
         public override void VerifyRenderingInServerForm(Control control)
@@ -72,50 +93,19 @@ namespace TLGX_Consumer.staticdata
             /* Verifies that the control is rendered */
         }
 
-        protected void btnExportSupplierCsv_Click(object sender, EventArgs e)
-        {
-            Response.Clear();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition",
-             "attachment;filename = SupplierMappingReport.csv");
-            Response.Charset = "";
-            Response.ContentType = "application/text";
-
-            StringBuilder sb = new StringBuilder();
-            for (int k = 0; k < gvSupplier.Columns.Count; k++)
-            {
-                //add separator
-                sb.Append(gvSupplier.Columns[k].HeaderText + ',');
-            }
-            //append new line
-            sb.Append("\r\n");
-            for (int i = 0; i < gvSupplier.Rows.Count; i++)
-            {
-                for (int k = 0; k < gvSupplier.Columns.Count; k++)
-                {
-                    //add separator
-                    sb.Append(gvSupplier.Rows[i].Cells[k].Text.Replace("&nbsp;", "")  + ',');
-                }
-                //append new line
-                sb.Append("\r\n");
-            }
-            Response.Output.Write(sb.ToString());
-            Response.Flush();
-            Response.End();
-        }
-
         protected void btnViewReport_Click(object sender, EventArgs e)
         {
             bool isMdm = chkIsMDMDataOnly.Checked;
             string AccoPriority = ddlAccoPriority.SelectedValue;
+            string SuppPriority = ddlSupplierPriority.SelectedValue;
 
             if (ddlSupplierName.SelectedValue == "0")
             {
-                getData(AccoPriority, Guid.Empty, isMdm);
+                getData(AccoPriority, Guid.Empty, isMdm, SuppPriority);
             }
             else
             {
-                getData(AccoPriority, Guid.Parse(ddlSupplierName.SelectedValue), isMdm);
+                getData(AccoPriority, Guid.Parse(ddlSupplierName.SelectedValue), isMdm, SuppPriority);
             }
         }
     }

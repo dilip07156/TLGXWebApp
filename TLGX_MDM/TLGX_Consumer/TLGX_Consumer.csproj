@@ -125,7 +125,10 @@
     <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.WebForms.v12.12.0.0.0\lib\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
@@ -271,6 +274,7 @@
     <Content Include="controls\activity\ckis\searchCKISMasters.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityContactDetails.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx" />
+    <Content Include="controls\activity\ManageActivityFlavours\FlavourOptions_Detailed.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\FlavourOptions.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityMedia.ascx" />
     <Content Include="controls\activity\ManageActivityFlavours\ActivityStatus.ascx" />
@@ -471,6 +475,8 @@
     <Content Include="Scripts\JqueryUI\jquery-ui.js" />
     <Content Include="Scripts\JqueryUI\jquery-ui.min.css" />
     <Content Include="Scripts\JqueryUI\jquery-ui.min.js" />
+    <Content Include="Scripts\MultiSelectJS\jquery.sumoselect.min.js" />
+    <Content Include="Scripts\MultiSelectJS\sumoselect.min.css" />
     <Content Include="Scripts\Styles\bootstrap.css" />
     <Content Include="Scripts\Styles\bootstrap.min.css" />
     <Content Include="Scripts\Styles\Login\core.css" />
@@ -491,12 +497,6 @@
     <None Include="Service References\MDMSVC\Consumer.disco" />
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\Consumer16.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\MDMSVC\Consumer17.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -517,11 +517,14 @@
     <Content Include="staticdata\city\search.aspx" />
     <Content Include="staticdata\config\manage.aspx" />
     <Content Include="staticdata\config\search.aspx" />
-    <Content Include="staticdata\ExportSupplierReport.aspx" />
+    <Content Include="staticdata\CountryWiseDashBoardReport.aspx" />
+    <Content Include="staticdata\ExportSupplierReport.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\EzeegoHotelvsSupplierHotelReport.aspx" />
     <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
-    <Content Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
     <Content Include="staticdata\hotels\newHotelReport.aspx" />
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
@@ -617,6 +620,18 @@
     <Content Include="Service\PentahoStepsInfo.ashx" />
     <Content Include="Service\GetZoneHotelsForMap.ashx" />
     <Content Include="Service\HotelMappingAutoComplete.ashx" />
+    <Content Include="Service\IncludeExcludeZoneHotels.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion_Syntactic.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx" />
+    <Content Include="Service\GetSRT_ML_suggestion_Semantic.ashx" />
+    <Content Include="Service\ActivityMediaInfo.ashx" />
+    <Content Include="Service\fillAttributeDDL.ashx" />
+    <Content Include="Service\AddUpdateMappingDetails.ashx" />
+    <Content Include="Service\TTFUSelectedBySupplier.ashx" />
+    <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
+    <Content Include="Service\GetAttributeData.ashx" />
+    <Content Include="Service\MultipleCountrywiseCityAutoComplete.ashx" />
     <None Include="Service References\MDMSVC\Consumer.wsdl" />
     <None Include="Service References\MDMSVC\Consumer.xsd">
       <SubType>Designer</SubType>
@@ -640,6 +655,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MDMSVC\Consumer17.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Consumer2.xsd">
@@ -720,6 +741,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -748,6 +772,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivitySearch_RS.datasource">
@@ -804,6 +831,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Prices.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Report_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_ReviewsAndScores.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -852,6 +882,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EntityType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_FileProgressDashboard.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -897,6 +930,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Country.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_State.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -915,6 +951,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_M_masterparentattributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_newHotelsReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -925,6 +964,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_PortMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Roles.datasource">
@@ -942,13 +984,34 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SiteMap.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_State_Master_DDL.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Statuses.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Stg_Kafka.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierEntity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes.datasource">
@@ -973,6 +1036,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierMarket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_supplierwisesummaryReport.datasource">
@@ -1032,69 +1098,10 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ZoneSearch.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\IncludeExcludeZoneHotels.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Accomodation_Category_DDL_WithExtraDetails.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_RefreshDistributionDataLog.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Semantic.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Syntactic.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\GetSRT_ML_suggestion.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierEntity.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\GetSRT_ML_suggestion_Syntactic.ashx" />
-    <Content Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx" />
-    <Content Include="Service\GetSRT_ML_suggestion_Semantic.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SRT_ML_Response_Supervised_Semantic.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\ActivityMediaInfo.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Stg_Kafka.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Report_RS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\fillAttributeDDL.ashx" />
-    <Content Include="Service\AddUpdateMappingDetails.ashx" />
-    <Content Include="Service\TTFUSelectedBySupplier.ashx" />
-    <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\GetAttributeData.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Region.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -1392,6 +1399,13 @@
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\ActivityDescription.ascx.designer.cs">
       <DependentUpon>ActivityDescription.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\FlavourOptions_Detailed.ascx.cs">
+      <DependentUpon>FlavourOptions_Detailed.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\activity\ManageActivityFlavours\FlavourOptions_Detailed.ascx.designer.cs">
+      <DependentUpon>FlavourOptions_Detailed.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\activity\ManageActivityFlavours\FlavourOptions.ascx.cs">
       <DependentUpon>FlavourOptions.ascx</DependentUpon>
@@ -2741,6 +2755,9 @@
     <Compile Include="Service\IncludeExcludeZoneHotels.ashx.cs">
       <DependentUpon>IncludeExcludeZoneHotels.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\MultipleCountrywiseCityAutoComplete.ashx.cs">
+      <DependentUpon>MultipleCountrywiseCityAutoComplete.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\PentahoStepsInfo.ashx.cs">
       <DependentUpon>PentahoStepsInfo.ashx</DependentUpon>
     </Compile>
@@ -2836,6 +2853,13 @@
     <Compile Include="staticdata\config\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\CountryWiseDashBoardReport.aspx.cs">
+      <DependentUpon>CountryWiseDashBoardReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\CountryWiseDashBoardReport.aspx.designer.cs">
+      <DependentUpon>CountryWiseDashBoardReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\country\search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2846,9 +2870,18 @@
     <Compile Include="staticdata\ExportSupplierReport.aspx.cs">
       <DependentUpon>ExportSupplierReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="staticdata\ExportSupplierReport.aspx.designer.cs">
       <DependentUpon>ExportSupplierReport.aspx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="staticdata\EzeegoHotelvsSupplierHotelReport.aspx.cs">
+      <DependentUpon>EzeegoHotelvsSupplierHotelReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\EzeegoHotelvsSupplierHotelReport.aspx.designer.cs">
+      <DependentUpon>EzeegoHotelvsSupplierHotelReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\files\APIData.aspx.cs">
       <DependentUpon>APIData.aspx</DependentUpon>
@@ -2877,13 +2910,6 @@
     </Compile>
     <Compile Include="staticdata\holidays\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx.cs">
-      <DependentUpon>AccommodationMappingSupplierVSupplier.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx.designer.cs">
-      <DependentUpon>AccommodationMappingSupplierVSupplier.aspx</DependentUpon>
     </Compile>
     <Compile Include="staticdata\hotels\addProductMapping.aspx.cs">
       <DependentUpon>addProductMapping.aspx</DependentUpon>
@@ -3018,7 +3044,15 @@
     <Content Include="staticdata\activity\ActivitiesProductDetailsRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.rdlc" />
+    <Content Include="staticdata\ExportSupplierRDLCReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\EzeegoHotelvsSupplierHotelRDLCReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\HotelMappingCountryReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />

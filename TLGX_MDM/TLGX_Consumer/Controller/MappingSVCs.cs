@@ -477,10 +477,10 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Get SupplierData ForExport
-        public List<DC_SupplierExportDataReport> GetSupplierDataForExport(string AccoPriority, Guid Supplier_Id, bool isMDM)
+        public List<DC_SupplierExportDataReport> GetSupplierDataForExport(string AccoPriority, Guid Supplier_Id, bool isMDM, string SuppPriority)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_SupplierDataExport"], AccoPriority, Supplier_Id.ToString(), isMDM.ToString()), typeof(List<DC_SupplierExportDataReport>), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Get_SupplierDataExport"], AccoPriority, Supplier_Id.ToString(), isMDM.ToString(), SuppPriority), typeof(List<DC_SupplierExportDataReport>), out result);
             return result as List<DC_SupplierExportDataReport>;
         }
         #endregion
@@ -535,5 +535,21 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_HotelListByCityCode>;
         }
         #endregion
+
+        public List<DC_EzeegoHotelVsSupplierHotelMappingReport> EzeegoHotelVsSupplierHotelMappingReport(MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_EzeegoHotelVsSupplierHotelMapping"], RQ, typeof(List<MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ>), typeof(List<MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport>), out result);
+            return result as List<MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport>;
+        }
+
+        #region NewDashBoardReport
+        public List<DC_NewDashBoardReportCountry_RS> GetNewDashboardReport_CountryWise()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
+            return result as List<DC_NewDashBoardReportCountry_RS>;
+        }
+        #endregion NewDashBoardReport
     }
 }

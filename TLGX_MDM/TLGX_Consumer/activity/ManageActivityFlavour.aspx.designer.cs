@@ -109,7 +109,7 @@ namespace TLGX_Consumer.activity {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.FlavourOptions FlavourOptions;
+        protected global::TLGX_Consumer.controls.activity.ManageActivityFlavours.FlavourOptions_Detailed FlavourOptions;
         
         /// <summary>
         /// PricesNDeals control.
