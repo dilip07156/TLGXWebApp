@@ -21,16 +21,15 @@ namespace TLGX_Consumer.staticdata
         {
             //For page authroization 
             Authorize _obj = new Authorize();
-            if (_obj.IsRoleAuthorizedForUrl()) { }
-            else
+            if (!_obj.IsRoleAuthorizedForUrl())
+            {
                 Response.Redirect(Convert.ToString(ConfigurationManager.AppSettings["UnauthorizedUrl"]));
-
+            }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-
                 ShowReport();
             }
         }
@@ -40,13 +39,12 @@ namespace TLGX_Consumer.staticdata
             var DataSet1 = MapSvc.GetNewDashboardReport_CountryWise();
             ReportDataSource rds = new ReportDataSource("DataSet1", DataSet1);
             CountryReportViewer.LocalReport.DataSources.Clear();
-            CountryReportViewer.LocalReport.ReportPath = "staticdata/HotelMappingCountryReport.rdlc.rdlc";
+            CountryReportViewer.LocalReport.ReportPath = "staticdata/HotelMappingCountryReport.rdlc";
             CountryReportViewer.LocalReport.DataSources.Add(rds);
             CountryReportViewer.Visible = true;
             CountryReportViewer.ZoomMode = Microsoft.Reporting.WebForms.ZoomMode.PageWidth;
             CountryReportViewer.DataBind();
             CountryReportViewer.LocalReport.Refresh();
-
         }
     }
 }
