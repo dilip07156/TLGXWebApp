@@ -458,6 +458,14 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_NewHotelsReport"], parm, typeof(MDMSVC.DC_RollOFParams), typeof(List<MDMSVC.DC_newHotelsReport>), out result);
             return result as List<DC_newHotelsReport>;
         }
+
+        //GAURAV-TMAP-645
+        public List<DC_SupplierAccoMappingExportDataReport> AccomodationMappingReport(MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationMapping_GetSupplierVSupplierReport"], dC_SupplerVSupplier_Report_RQ, typeof(MDMSVC.DC_SupplerVSupplier_Report_RQ), typeof(List<MDMSVC.DC_SupplierAccoMappingExportDataReport>), out result);
+            return result as List<DC_SupplierAccoMappingExportDataReport>;
+        }
         #endregion
         #region velocity dashboard
         public List<DC_VelocityMappingStats> GetVelocityDashboard(MDMSVC.DC_VelocityReport parm)

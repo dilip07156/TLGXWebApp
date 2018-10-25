@@ -521,6 +521,7 @@
     <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
+    <Content Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
     <Content Include="staticdata\hotels\newHotelReport.aspx" />
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
@@ -1082,6 +1083,9 @@
     </Content>
     <Content Include="Service\GetAttributeData.ashx" />
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -2865,6 +2869,13 @@
     <Compile Include="staticdata\holidays\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx.cs">
+      <DependentUpon>AccommodationMappingSupplierVSupplier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx.designer.cs">
+      <DependentUpon>AccommodationMappingSupplierVSupplier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\hotels\addProductMapping.aspx.cs">
       <DependentUpon>addProductMapping.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2998,6 +3009,7 @@
     <Content Include="staticdata\activity\ActivitiesProductDetailsRDLCReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MDMSVC\" />
