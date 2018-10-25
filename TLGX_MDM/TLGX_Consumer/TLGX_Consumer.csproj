@@ -525,6 +525,7 @@
     <Content Include="staticdata\files\APIData.aspx" />
     <Content Include="staticdata\files\StaticFileupload.aspx" />
     <Content Include="staticdata\files\upload.aspx" />
+    <Content Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx" />
     <Content Include="staticdata\hotels\addProductMapping.aspx" />
     <Content Include="staticdata\hotels\newHotelReport.aspx" />
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
@@ -1102,6 +1103,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -2911,6 +2915,13 @@
     <Compile Include="staticdata\holidays\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx.cs">
+      <DependentUpon>AccommodationMappingSupplierVSupplier.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.aspx.designer.cs">
+      <DependentUpon>AccommodationMappingSupplierVSupplier.aspx</DependentUpon>
+    </Compile>
     <Compile Include="staticdata\hotels\addProductMapping.aspx.cs">
       <DependentUpon>addProductMapping.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3051,6 +3062,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="staticdata\HotelMappingCountryReport.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="staticdata\hotels\AccommodationMappingSupplierVSupplier.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

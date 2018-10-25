@@ -5,45 +5,26 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.0.2/sumoselect.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sumoselect/3.0.2/jquery.sumoselect.min.js"></script>
-
+    <link href="../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
+    <script src="../../Scripts/JqueryUI/jquery-ui.js"></script>
+    <script src="../../Scripts/MultiSelectJS/jquery.sumoselect.min.js"></script>
+    <link href="../../Scripts/MultiSelectJS/sumoselect.min.css" rel="stylesheet" />
     <script type="text/javascript">
 
         $(document).ready(function () {
             SumoSelectdropdown();
         });
 
-        //function pageLoad(sender, args) {
-        //    SumoSelectdropdown();
-        //}
-
+        
         function SumoSelectdropdown() {
             $('.testselect3').SumoSelect({
                 search: true, searchText: 'Enter Supplier(s).',
                 okCancelInMulti: true, triggerChangeCombined: true,
                 forceCustomRendering: true, selectAll: true
             });
-
-                  <%--  $('#<%=ddlRegion.ClientID %>').SumoSelect({
-                        search: true, searchText: 'Enter Region.', okCancelInMulti: true, triggerChangeCombined: true,
-                        forceCustomRendering: true, selectAll: true
-                    });
-
-                    $('#<%=ddlCountry.ClientID %>').SumoSelect({
-                        search: true, searchText: 'Enter Country.', okCancelInMulti: true, triggerChangeCombined: true,
-                        forceCustomRendering: true, selectAll: true
-                    });
-
-                    $('#<%=ddlSupplierName.ClientID %>').SumoSelect({
-                        search: true, searchText: 'Enter Supplier Name.', okCancelInMulti: true, selectAll: true
-                    });
-
-                    $('#<%=ddlAccoPriority.ClientID %>').SumoSelect({
-                        search: true, searchText: 'Enter AccoPriority.', okCancelInMulti: true, selectAll: true
-                    });--%>
+                         
         }
-</script>
+    </script>
 
 
 

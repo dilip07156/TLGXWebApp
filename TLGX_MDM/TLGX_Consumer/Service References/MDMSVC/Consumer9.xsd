@@ -1207,13 +1207,41 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_newHotelsReport" nillable="true" type="tns:DC_newHotelsReport" />
+  <xs:complexType name="DC_SupplerVSupplier_Report_RQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Accommodation_Source_Id" type="ser:guid" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Compare_WithSupplier_Ids" nillable="true" type="q3:ArrayOfguid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplerVSupplier_Report_RQ" nillable="true" type="tns:DC_SupplerVSupplier_Report_RQ" />
+  <xs:complexType name="ArrayOfDC_SupplierAccoMappingExportDataReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_SupplierAccoMappingExportDataReport" nillable="true" type="tns:DC_SupplierAccoMappingExportDataReport" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_SupplierAccoMappingExportDataReport" nillable="true" type="tns:ArrayOfDC_SupplierAccoMappingExportDataReport" />
+  <xs:complexType name="DC_SupplierAccoMappingExportDataReport">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccoHotelCount" type="xs:int" />
+      <xs:element minOccurs="0" name="AccomodationTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="Accomodation_AutoMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Accomodation_MannualMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Accomodation_ReviewMapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Accomodation_Unmapped" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="SourceSupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierAccoMappingExportDataReport" nillable="true" type="tns:DC_SupplierAccoMappingExportDataReport" />
   <xs:complexType name="DC_EzeegoHotelVsSupplierHotelMappingReport_RQ">
     <xs:sequence>
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AccoPriority" nillable="true" type="q3:ArrayOfstring" />
-      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="City" nillable="true" type="q4:ArrayOfstring" />
-      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Country" nillable="true" type="q5:ArrayOfstring" />
-      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Region" nillable="true" type="q6:ArrayOfstring" />
-      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Supplier" nillable="true" type="q7:ArrayOfstring" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AccoPriority" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="City" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Country" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Region" nillable="true" type="q7:ArrayOfstring" />
+      <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Supplier" nillable="true" type="q8:ArrayOfstring" />
       <xs:element minOccurs="0" name="selectedHotelId" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
