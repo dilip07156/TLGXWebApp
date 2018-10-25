@@ -300,6 +300,27 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_ZoneHotelList" nillable="true" type="tns:DC_ZoneHotelList" />
+  <xs:complexType name="ArrayOfDC_M_masterattributevalue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_M_masterattributevalue" nillable="true" type="tns:DC_M_masterattributevalue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_M_masterattributevalue" nillable="true" type="tns:ArrayOfDC_M_masterattributevalue" />
+  <xs:complexType name="DC_M_masterattributevalue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MasterAttributeValue_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="MasterAttribute_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="MasterAttribute_Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OTA_CodeTableValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentAttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentAttributeValue_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_M_masterattributevalue" nillable="true" type="tns:DC_M_masterattributevalue" />
   <xs:complexType name="DC_Country_Search_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country_Code" nillable="true" type="xs:string" />
@@ -598,27 +619,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_M_masterparentattributes" nillable="true" type="tns:DC_M_masterparentattributes" />
-  <xs:complexType name="ArrayOfDC_M_masterattributevalue">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_M_masterattributevalue" nillable="true" type="tns:DC_M_masterattributevalue" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_M_masterattributevalue" nillable="true" type="tns:ArrayOfDC_M_masterattributevalue" />
-  <xs:complexType name="DC_M_masterattributevalue">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Action" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="MasterAttributeValue_Id" type="ser:guid" />
-      <xs:element minOccurs="0" name="MasterAttribute_Id" nillable="true" type="ser:guid" />
-      <xs:element minOccurs="0" name="MasterAttribute_Name" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="OTA_CodeTableValue" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ParentAttributeValue" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="ParentAttributeValue_Id" nillable="true" type="ser:guid" />
-      <xs:element minOccurs="0" name="TotalCount" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_M_masterattributevalue" nillable="true" type="tns:DC_M_masterattributevalue" />
   <xs:complexType name="DC_M_masterattributelists">
     <xs:sequence>
       <xs:element minOccurs="0" name="MasterAttributeValues" nillable="true" type="tns:ArrayOfDC_M_masterattributevalue" />

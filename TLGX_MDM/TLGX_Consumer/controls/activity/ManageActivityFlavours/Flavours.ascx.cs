@@ -11,6 +11,7 @@ using TLGX_Consumer.MDMSVC;
 using TLGX_Consumer.Models;
 using System.Drawing;
 using TLGX_Consumer.Controller;
+using System.Dynamic;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 {
@@ -130,7 +131,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
                     BindSupplierClassifications(Activity_Flavour_Id);
 
-                    ddlTLGX_displaySubType.SelectedValue = (result[0].TLGXDisplaySubType != null ? Convert.ToString(result[0].TLGXDisplaySubType_ID) : "0");
+                    ddlTLGX_displaySubType.SelectedValue = (result[0].TLGXDisplaySubType != null ? Convert.ToString(result[0].TLGXDisplaySubType) : "0");
                 }
             }
         }
@@ -139,11 +140,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
         {
             MasterDataSVCs _objMst = new MasterDataSVCs();
             //var result = _objMst.GetAttributeDetails("9402310E-70A3-4BB9-AFC1-8D1A9D7EE322");
-            var resultAttributes = _objMst.GetAttributeValues("9402310E-70A3-4BB9-AFC1-8D1A9D7EE322", Convert.ToString(0), Convert.ToString(10000));
-            ddlTLGX_displaySubType.DataSource = resultAttributes;
-            ddlTLGX_displaySubType.DataValueField = "MasterAttributeValue_Id";
-            ddlTLGX_displaySubType.DataTextField = "AttributeValue";
-            ddlTLGX_displaySubType.DataBind();
+            List<DC_M_masterattributevalue> resultAttributes = _objMst.GetAttributeValuesByNameAndType("Activity", "TLGXDisplaySubType").ToList();
+
+            if (resultAttributes.Count > 0)
+            {
+                ddlTLGX_displaySubType.DataSource = resultAttributes;
+                ddlTLGX_displaySubType.DataValueField = "AttributeValue";
+                ddlTLGX_displaySubType.DataTextField = "AttributeValue";
+                ddlTLGX_displaySubType.DataBind();
+            }
         }
 
 
@@ -580,7 +585,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             FlavData.ProductCategory = txtProdCategory.Text;
 
             // TLGX Subtype
-            FlavData.TLGXDisplaySubType_ID = (ddlTLGX_displaySubType.SelectedValue == "0" ? Guid.Empty : Guid.Parse(ddlTLGX_displaySubType.SelectedValue));
+            //FlavData.TLGXDisplaySubType_ID = (ddlTLGX_displaySubType.SelectedValue == "0" ? Guid.Empty : Guid.Parse(ddlTLGX_displaySubType.SelectedValue));
             FlavData.TLGXDisplaySubType = (ddlTLGX_displaySubType.SelectedValue == "0" ? null : ddlTLGX_displaySubType.SelectedItem.Text);
 
             List<DC_Activity_CategoryTypes> CategoryTypes = new List<DC_Activity_CategoryTypes>();
@@ -658,7 +663,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
 
             // TLGX Product SubType
 
-            FlavData.TLGXDisplaySubType_ID = (ddlTLGX_displaySubType.SelectedValue == "0" ? Guid.Empty : Guid.Parse(ddlTLGX_displaySubType.SelectedValue));
+            //FlavData.TLGXDisplaySubType_ID = (ddlTLGX_displaySubType.SelectedValue == "0" ? Guid.Empty : Guid.Parse(ddlTLGX_displaySubType.SelectedValue));
             FlavData.TLGXDisplaySubType = (ddlTLGX_displaySubType.SelectedValue == "0" ? null : ddlTLGX_displaySubType.SelectedItem.Text);
 
             //InterestType
