@@ -312,8 +312,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         _mappingTable = Convert.ToString(res[0].Mapping_Table);
                         _masterTable = Convert.ToString(res[0].Master_Table);
                         _stgTable = Convert.ToString(res[0].STG_Table);
-                        
-                        
+
+
                         //IsMapping("_mappingTable")
                         //IsMapping("_masterTable")
                         //IsMapping("_stgTable")
@@ -760,9 +760,9 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     //hdnddlAttributeTableValueName.Value = _stgTable;
                                     hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
                                     lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
-                                    
 
-                                    
+
+
                                 }
                                 else if (!IsMapping("bool") && res[0].AttributeType.ToLower() == "map")
                                 {
@@ -770,7 +770,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                     //hdnddlAttributeTableValueName.Value = _stgTable;
                                     hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
                                     lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
-                                    
+
                                 }
 
                                 else if (!IsMapping("bool") && res[0].AttributeType.ToLower() == "match")
@@ -1458,7 +1458,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                     hdnddlAttributeTableName.Value = "0";
                     //set Attribute Value STG Table 
-                    
+
                     //hdnddlAttributeTableValueName.Value = _stgTable;
                     //var lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(_stgTable);
                     hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
@@ -1541,8 +1541,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         //hdnddlAttributeTableValueName.Value = _stgTable;
                         hdnddlAttributeTableValueName.Value = IsMapping("_stgTable");
                         lstAttributeValue = mastersvc.GetListOfColumnNamesByTable(hdnddlAttributeTableValueName.Value);
-                        
-                        
+
+
                     }
                     else if (!IsMapping("bool") && strAttributeType == "map") // ddlAttributeName -- mapping table Columns , ddlAttributeValue -- Stg table Columns
                     {
@@ -1734,6 +1734,8 @@ namespace TLGX_Consumer.controls.staticdataconfig
             rqfvddlAttributeValueTo.Enabled = false;
             rqfvddlAttributeValueFilter.Enabled = false;
 
+            //Resetting Default Length to reset Effects during NoOfColumns..
+            txtAttributeValue.MaxLength = 8000; txtAttributeValue.Text = "";
 
             if (ddlAttributeType.SelectedItem.Text.ToLower() != "map" && ddlAttributeType.SelectedItem.Text.ToLower() != "match" && ddlAttributeType.SelectedItem.Text.ToLower() != "keyword")
             {
@@ -1767,6 +1769,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         {
                             ddlAttributeValue.Visible = false;
                             txtAttributeValue.Visible = true;
+                            txtAttributeValue.MaxLength = 4;
                             axfte_txtAttributeValue.Enabled = true;
 
                             EnableDisableValidation(rqfvddlAttributeValue);
