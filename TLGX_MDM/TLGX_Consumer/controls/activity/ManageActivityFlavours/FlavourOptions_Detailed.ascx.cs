@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
@@ -41,11 +42,8 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 //List<MDMSVC.DC_Activity_Flavour_Options> res = new List<MDMSVC.DC_Activity_Flavour_Options>();
                 //if (res != null || res.Count != 0)
-                if (result != null || result.Count != 0)
+                if (result != null && result.Count != 0)
                 {
-                    gvActFlavourOptins.DataSource = result;
-                    gvActFlavourOptins.DataBind();
-
                     rptCustomers.DataSource = result;
                     rptCustomers.DataBind();
 
@@ -56,15 +54,15 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 }
                 else
                 {
-                    gvActFlavourOptins.DataSource = null;
-                    gvActFlavourOptins.DataBind();
+                    rptCustomers.DataSource = null;
+                    rptCustomers.DataBind();
                     divDropdownForEntries.Visible = false;
                 }
             }
             else
             {
-                gvActFlavourOptins.DataSource = null;
-                gvActFlavourOptins.DataBind();
+                rptCustomers.DataSource = null;
+                rptCustomers.DataBind();
                 divDropdownForEntries.Visible = false;
             }
         }
@@ -90,10 +88,35 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             {
                 Label lblId = e.Item.FindControl("lblId") as Label;
                 GridView gvattribute = e.Item.FindControl("gvattribute") as GridView;
-                //EDIT: my vb was showing.
-                gvattribute.DataSource = (List<MDMSVC.DC_Activity_ClassificationAttributes>)(((List<MDMSVC.DC_Activity_ClassificationAttributes>)ViewState["result"]).FindAll(x => x.Activity_FlavourOptions_Id == Guid.Parse(lblId.Text)));
+                List<MDMSVC.DC_Activity_ClassificationAttributes> obj = (List<MDMSVC.DC_Activity_ClassificationAttributes>)(((List<MDMSVC.DC_Activity_ClassificationAttributes>)ViewState["result"]).FindAll(x => x.Activity_FlavourOptions_Id == Guid.Parse(lblId.Text)));
+
+                gvattribute.DataSource = obj;
                 gvattribute.DataBind();
             }
+
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                GridView gvattribute = e.Item.FindControl("gvattribute") as GridView;
+
+                if (gvattribute.Rows.Count == 0)
+                {
+                    //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), DateTime.Today.Ticks.ToString(), "hide('disable" + (e.Item.ItemIndex - 1).ToString() + "');", true);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString("N"), "document.getElementById('disable" + (e.Item.ItemIndex - 1).ToString() + "').style.visibility = 'hidden !important';", false);
+                    //Page.ClientScript.RegisterStartupScript(this.GetType(), "clientscript", "hide('disable" + (e.Item.ItemIndex).ToString() + "');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), (e.Item.ItemIndex).ToString(), "hide('disable" + (e.Item.ItemIndex).ToString() + "');", true);
+
+
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "disable" + (e.Item.ItemIndex).ToString(), "hide('disable" + (e.Item.ItemIndex).ToString() + "');", true);
+
+
+                }
+            }
+            //else
+            //{
+            //    GridView gvattribute = e.Item.FindControl("gvattribute") as GridView;
+            //    gvattribute.DataSource = null;
+            //    gvattribute.DataBind();
+            //}
         }
     }
 }

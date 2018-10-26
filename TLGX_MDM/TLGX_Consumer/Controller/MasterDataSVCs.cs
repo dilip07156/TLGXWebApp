@@ -8,6 +8,7 @@ using System.IO;
 using System.Data;
 using TLGX_Consumer.Models;
 using TLGX_Consumer.MDMSVC;
+using System.Dynamic;
 
 namespace TLGX_Consumer.Controller
 {
@@ -239,6 +240,13 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeValuesById"], MasterAttribute_Id, pagesize, pageno), typeof(List<DC_M_masterattributevalue>), out result);
+            return result as List<DC_M_masterattributevalue>;
+        }
+
+        public List<DC_M_masterattributevalue> GetAttributeValuesByNameAndType(string MasterFor, string Name)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Masters_GetAttributeValuesByBySubtype"], MasterFor, Name), typeof(List<DC_M_masterattributevalue>), out result);
             return result as List<DC_M_masterattributevalue>;
         }
 
@@ -620,7 +628,7 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #region Hotel Distribution Refresh
-        public DC_Message RefreshHotelMapping(Guid  ProdMapId)
+        public DC_Message RefreshHotelMapping(Guid ProdMapId)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMapping"], ProdMapId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
