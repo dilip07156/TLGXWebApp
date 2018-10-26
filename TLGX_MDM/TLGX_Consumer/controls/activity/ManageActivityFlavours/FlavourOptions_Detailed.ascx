@@ -229,41 +229,26 @@ snippet from Animate.css - zoomIn effect
             </HeaderTemplate>
             <ItemTemplate>
                 <tr>
-                    <td colspan="4" style="padding: 1px;">
-                        <div class="container">
-                            <div class="row">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="table-hover table-striped">
-                                        <div class="panel-heading table-hover table-striped" role="tab" id="heading<%# Container.ItemIndex%>name" style="padding-top: 20px; padding-bottom: 40px; height: 40px;">
-                                            <h4 class="panel-title">
-                                                <div class="col-sm-2" style="padding-left: 5px; padding-right: 5px">
-                                                    <a id="disable<%# Container.ItemIndex%>" name="disable<%# Container.ItemIndex%>" onclick="toggleChevron(this);" class="black" data-toggle="collapse" data-parent="#accordion" data-target="#collapse<%# Container.ItemIndex%>name" href="#collapse<%# Container.ItemIndex%>name" aria-expanded="true" aria-controls="collapse<%# Container.ItemIndex%>name">
-                                                        <i class="glyphicon glyphicon-plus"></i><%# Eval("Activity_FlavourName") %></a>
-                                                    <div class="vl" style="float: right;"></div>
-                                                </div>
-                                                <div class="col-sm-2 black" style="padding-left: 5px; padding-right: 5px">
-                                                    <%# Eval("Activity_OptionName") %><div class="vl" style="float: right;"></div>
-                                                </div>
-                                                <div class="col-sm-3 black" style="padding-left: 5px; padding-right: 5px">
-                                                    <%# Eval("Activity_OptionCode") %><div class="vl" style="float: right;"></div>
-                                                </div>
-                                                <div class="col-sm-5 black" style="padding-left: 5px; padding-right: 5px"><%# Eval("Activity_OptionDescription") %></div>
-                                            </h4>
+                    <td><a id="disable<%# Container.ItemIndex%>" name="disable<%# Container.ItemIndex%>" onclick="toggleChevron(this);" class="black" data-toggle="collapse" data-parent="#accordion" data-target="#collapse<%# Container.ItemIndex%>name" href="#collapse<%# Container.ItemIndex%>name" aria-expanded="true" aria-controls="collapse<%# Container.ItemIndex%>name">
+                        <i class="glyphicon glyphicon-plus"></i><%# Eval("Activity_FlavourName") %></a></td>
+                    <td><%# Eval("Activity_OptionName") %></td>
+                    <td><%# Eval("Activity_OptionCode") %></td>
+                    <td><%# Eval("Activity_OptionDescription") %></td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="padding: 0px;">
+                        <div id="collapse<%# Container.ItemIndex%>name" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%# Container.ItemIndex%>name">
+                            <div class="panel-body animated">
 
-
-                                        </div>
-                                        <div id="collapse<%# Container.ItemIndex%>name" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%# Container.ItemIndex%>name">
-                                            <div class="panel-body animated">
-
-                                                <asp:Label runat="server" ID="lblId" Visible="false" Text='<%# Eval("Activity_FlavourOptions_Id") %>' />
-                                                <asp:GridView ID="gvattribute" runat="server"
-                                                    EmptyDataText="No Data Found" CssClass="table table-hover table-striped"
-                                                    AutoGenerateColumns="false">
-                                                    <Columns>
-                                                        <asp:BoundField ItemStyle-CssClass="col-sm-2" HeaderText="Attribute Type" DataField="AttributeType" />
-                                                        <asp:BoundField ItemStyle-CssClass="col-sm-3" HeaderText="Attribute Subtype" DataField="AttributeSubType" />
-                                                        <asp:BoundField ItemStyle-CssClass="col-sm-6" HeaderText="Attribute Value" DataField="AttributeValue" />
-                                                        <%--<asp:TemplateField ItemStyle-CssClass="central" ItemStyle-BackColor="LightGray">
+                                <asp:Label runat="server" ID="lblId" Visible="false" Text='<%# Eval("Activity_FlavourOptions_Id") %>' />
+                                <asp:GridView ID="gvattribute" runat="server"
+                                    EmptyDataText="No Data Found" CssClass="table table-hover table-striped"
+                                    AutoGenerateColumns="false">
+                                    <Columns>
+                                        <asp:BoundField ItemStyle-CssClass="col-sm-2" HeaderText="Attribute Type" DataField="AttributeType" />
+                                        <asp:BoundField ItemStyle-CssClass="col-sm-3" HeaderText="Attribute Subtype" DataField="AttributeSubType" />
+                                        <asp:BoundField ItemStyle-CssClass="col-sm-6" HeaderText="Attribute Value" DataField="AttributeValue" />
+                                        <%--<asp:TemplateField ItemStyle-CssClass="central" ItemStyle-BackColor="LightGray">
                                                             <ItemTemplate>
                                                                 <i style="color: yellow;" class="glyphicon glyphicon-edit"></i>
                                                                 &nbsp;&nbsp;
@@ -273,12 +258,8 @@ snippet from Animate.css - zoomIn effect
                                                             </ItemTemplate>
 
                                                         </asp:TemplateField>--%>
-                                                    </Columns>
-                                                </asp:GridView>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    </Columns>
+                                </asp:GridView>
                             </div>
                         </div>
                     </td>
