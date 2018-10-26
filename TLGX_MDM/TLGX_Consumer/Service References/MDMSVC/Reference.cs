@@ -8290,6 +8290,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_City[]))]
@@ -8384,6 +8386,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStatsFor[]))]
@@ -8417,6 +8421,12 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
@@ -8447,6 +8457,9 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country))]
@@ -8470,8 +8483,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattribute[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributelists))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier[]))]
@@ -8562,6 +8573,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_Physical))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_GeoCode))]
@@ -8987,6 +8999,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_City[]))]
@@ -9081,6 +9095,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStatsFor[]))]
@@ -9114,6 +9130,12 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
@@ -9144,6 +9166,9 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country))]
@@ -9167,8 +9192,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattribute[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributelists))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier[]))]
@@ -9259,6 +9282,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_Physical))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_GeoCode))]
@@ -15209,6 +15233,67 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.NameWithCodeField, value) != true)) {
                     this.NameWithCodeField = value;
                     this.RaisePropertyChanged("NameWithCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Master_Region", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Master_Region : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionCode {
+            get {
+                return this.RegionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionCodeField, value) != true)) {
+                    this.RegionCodeField = value;
+                    this.RaisePropertyChanged("RegionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
                 }
             }
         }
@@ -27534,6 +27619,419 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_NewDashBoardReportCountry_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_NewDashBoardReportCountry_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Add_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AutoMapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ContentScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Country_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Mapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Mapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfSuppliers_HField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfSuppliers_RField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Add_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_AutoMapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Mapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Mapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Review_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Review_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Unmapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PreferredHotelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Review_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Review_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSupplierHotelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSupplierRoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Unmapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Unmapped_RoomField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Add_Room {
+            get {
+                return this.Add_RoomField;
+            }
+            set {
+                if ((this.Add_RoomField.Equals(value) != true)) {
+                    this.Add_RoomField = value;
+                    this.RaisePropertyChanged("Add_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AutoMapped_Room {
+            get {
+                return this.AutoMapped_RoomField;
+            }
+            set {
+                if ((this.AutoMapped_RoomField.Equals(value) != true)) {
+                    this.AutoMapped_RoomField = value;
+                    this.RaisePropertyChanged("AutoMapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ContentScore {
+            get {
+                return this.ContentScoreField;
+            }
+            set {
+                if ((this.ContentScoreField.Equals(value) != true)) {
+                    this.ContentScoreField = value;
+                    this.RaisePropertyChanged("ContentScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Country_id {
+            get {
+                return this.Country_idField;
+            }
+            set {
+                if ((this.Country_idField.Equals(value) != true)) {
+                    this.Country_idField = value;
+                    this.RaisePropertyChanged("Country_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Mapped_Hotel {
+            get {
+                return this.Mapped_HotelField;
+            }
+            set {
+                if ((this.Mapped_HotelField.Equals(value) != true)) {
+                    this.Mapped_HotelField = value;
+                    this.RaisePropertyChanged("Mapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Mapped_Room {
+            get {
+                return this.Mapped_RoomField;
+            }
+            set {
+                if ((this.Mapped_RoomField.Equals(value) != true)) {
+                    this.Mapped_RoomField = value;
+                    this.RaisePropertyChanged("Mapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfSuppliers_H {
+            get {
+                return this.NoOfSuppliers_HField;
+            }
+            set {
+                if ((this.NoOfSuppliers_HField.Equals(value) != true)) {
+                    this.NoOfSuppliers_HField = value;
+                    this.RaisePropertyChanged("NoOfSuppliers_H");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfSuppliers_R {
+            get {
+                return this.NoOfSuppliers_RField;
+            }
+            set {
+                if ((this.NoOfSuppliers_RField.Equals(value) != true)) {
+                    this.NoOfSuppliers_RField = value;
+                    this.RaisePropertyChanged("NoOfSuppliers_R");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Add_Room {
+            get {
+                return this.Per_Add_RoomField;
+            }
+            set {
+                if ((this.Per_Add_RoomField.Equals(value) != true)) {
+                    this.Per_Add_RoomField = value;
+                    this.RaisePropertyChanged("Per_Add_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_AutoMapped_Room {
+            get {
+                return this.Per_AutoMapped_RoomField;
+            }
+            set {
+                if ((this.Per_AutoMapped_RoomField.Equals(value) != true)) {
+                    this.Per_AutoMapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_AutoMapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Mapped_Hotel {
+            get {
+                return this.Per_Mapped_HotelField;
+            }
+            set {
+                if ((this.Per_Mapped_HotelField.Equals(value) != true)) {
+                    this.Per_Mapped_HotelField = value;
+                    this.RaisePropertyChanged("Per_Mapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Mapped_Room {
+            get {
+                return this.Per_Mapped_RoomField;
+            }
+            set {
+                if ((this.Per_Mapped_RoomField.Equals(value) != true)) {
+                    this.Per_Mapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_Mapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Review_Hotel {
+            get {
+                return this.Per_Review_HotelField;
+            }
+            set {
+                if ((this.Per_Review_HotelField.Equals(value) != true)) {
+                    this.Per_Review_HotelField = value;
+                    this.RaisePropertyChanged("Per_Review_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Review_Room {
+            get {
+                return this.Per_Review_RoomField;
+            }
+            set {
+                if ((this.Per_Review_RoomField.Equals(value) != true)) {
+                    this.Per_Review_RoomField = value;
+                    this.RaisePropertyChanged("Per_Review_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Unmapped_Room {
+            get {
+                return this.Per_Unmapped_RoomField;
+            }
+            set {
+                if ((this.Per_Unmapped_RoomField.Equals(value) != true)) {
+                    this.Per_Unmapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_Unmapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PreferredHotels {
+            get {
+                return this.PreferredHotelsField;
+            }
+            set {
+                if ((this.PreferredHotelsField.Equals(value) != true)) {
+                    this.PreferredHotelsField = value;
+                    this.RaisePropertyChanged("PreferredHotels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Review_Hotel {
+            get {
+                return this.Review_HotelField;
+            }
+            set {
+                if ((this.Review_HotelField.Equals(value) != true)) {
+                    this.Review_HotelField = value;
+                    this.RaisePropertyChanged("Review_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Review_Room {
+            get {
+                return this.Review_RoomField;
+            }
+            set {
+                if ((this.Review_RoomField.Equals(value) != true)) {
+                    this.Review_RoomField = value;
+                    this.RaisePropertyChanged("Review_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalSupplierHotels {
+            get {
+                return this.TotalSupplierHotelsField;
+            }
+            set {
+                if ((this.TotalSupplierHotelsField.Equals(value) != true)) {
+                    this.TotalSupplierHotelsField = value;
+                    this.RaisePropertyChanged("TotalSupplierHotels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalSupplierRoom {
+            get {
+                return this.TotalSupplierRoomField;
+            }
+            set {
+                if ((this.TotalSupplierRoomField.Equals(value) != true)) {
+                    this.TotalSupplierRoomField = value;
+                    this.RaisePropertyChanged("TotalSupplierRoom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmapped_Hotel {
+            get {
+                return this.Unmapped_HotelField;
+            }
+            set {
+                if ((this.Unmapped_HotelField.Equals(value) != true)) {
+                    this.Unmapped_HotelField = value;
+                    this.RaisePropertyChanged("Unmapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmapped_Room {
+            get {
+                return this.Unmapped_RoomField;
+            }
+            set {
+                if ((this.Unmapped_RoomField.Equals(value) != true)) {
+                    this.Unmapped_RoomField = value;
+                    this.RaisePropertyChanged("Unmapped_Room");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_MappingStats", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
     [System.SerializableAttribute()]
     public partial class DC_MappingStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -29883,6 +30381,554 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.HotelnameField, value) != true)) {
                     this.HotelnameField = value;
                     this.RaisePropertyChanged("Hotelname");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SupplerVSupplier_Report_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_SupplerVSupplier_Report_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_Source_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid[] Compare_WithSupplier_IdsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_Source_Id {
+            get {
+                return this.Accommodation_Source_IdField;
+            }
+            set {
+                if ((this.Accommodation_Source_IdField.Equals(value) != true)) {
+                    this.Accommodation_Source_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Source_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid[] Compare_WithSupplier_Ids {
+            get {
+                return this.Compare_WithSupplier_IdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Compare_WithSupplier_IdsField, value) != true)) {
+                    this.Compare_WithSupplier_IdsField = value;
+                    this.RaisePropertyChanged("Compare_WithSupplier_Ids");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SupplierAccoMappingExportDataReport", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_SupplierAccoMappingExportDataReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccoHotelCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccomodationTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_AutoMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_MannualMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_ReviewMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_UnmappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceSupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccoHotelCount {
+            get {
+                return this.AccoHotelCountField;
+            }
+            set {
+                if ((this.AccoHotelCountField.Equals(value) != true)) {
+                    this.AccoHotelCountField = value;
+                    this.RaisePropertyChanged("AccoHotelCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccomodationTotal {
+            get {
+                return this.AccomodationTotalField;
+            }
+            set {
+                if ((this.AccomodationTotalField.Equals(value) != true)) {
+                    this.AccomodationTotalField = value;
+                    this.RaisePropertyChanged("AccomodationTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_AutoMapped {
+            get {
+                return this.Accomodation_AutoMappedField;
+            }
+            set {
+                if ((this.Accomodation_AutoMappedField.Equals(value) != true)) {
+                    this.Accomodation_AutoMappedField = value;
+                    this.RaisePropertyChanged("Accomodation_AutoMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_MannualMapped {
+            get {
+                return this.Accomodation_MannualMappedField;
+            }
+            set {
+                if ((this.Accomodation_MannualMappedField.Equals(value) != true)) {
+                    this.Accomodation_MannualMappedField = value;
+                    this.RaisePropertyChanged("Accomodation_MannualMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_ReviewMapped {
+            get {
+                return this.Accomodation_ReviewMappedField;
+            }
+            set {
+                if ((this.Accomodation_ReviewMappedField.Equals(value) != true)) {
+                    this.Accomodation_ReviewMappedField = value;
+                    this.RaisePropertyChanged("Accomodation_ReviewMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_Unmapped {
+            get {
+                return this.Accomodation_UnmappedField;
+            }
+            set {
+                if ((this.Accomodation_UnmappedField.Equals(value) != true)) {
+                    this.Accomodation_UnmappedField = value;
+                    this.RaisePropertyChanged("Accomodation_Unmapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SourceSupplierName {
+            get {
+                return this.SourceSupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceSupplierNameField, value) != true)) {
+                    this.SourceSupplierNameField = value;
+                    this.RaisePropertyChanged("SourceSupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Supplier_Id {
+            get {
+                return this.Supplier_IdField;
+            }
+            set {
+                if ((this.Supplier_IdField.Equals(value) != true)) {
+                    this.Supplier_IdField = value;
+                    this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_EzeegoHotelVsSupplierHotelMappingReport_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_EzeegoHotelVsSupplierHotelMappingReport_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] AccoPriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] RegionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] SupplierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string selectedHotelIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] AccoPriority {
+            get {
+                return this.AccoPriorityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccoPriorityField, value) != true)) {
+                    this.AccoPriorityField = value;
+                    this.RaisePropertyChanged("AccoPriority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Region {
+            get {
+                return this.RegionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionField, value) != true)) {
+                    this.RegionField = value;
+                    this.RaisePropertyChanged("Region");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Supplier {
+            get {
+                return this.SupplierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierField, value) != true)) {
+                    this.SupplierField = value;
+                    this.RaisePropertyChanged("Supplier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string selectedHotelId {
+            get {
+                return this.selectedHotelIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.selectedHotelIdField, value) != true)) {
+                    this.selectedHotelIdField = value;
+                    this.RaisePropertyChanged("selectedHotelId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_EzeegoHotelVsSupplierHotelMappingReport", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_EzeegoHotelVsSupplierHotelMappingReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Legacy_HTL_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelName {
+            get {
+                return this.HotelNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelNameField, value) != true)) {
+                    this.HotelNameField = value;
+                    this.RaisePropertyChanged("HotelName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Legacy_HTL_ID {
+            get {
+                return this.Legacy_HTL_IDField;
+            }
+            set {
+                if ((this.Legacy_HTL_IDField.Equals(value) != true)) {
+                    this.Legacy_HTL_IDField = value;
+                    this.RaisePropertyChanged("Legacy_HTL_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoId {
+            get {
+                return this.TLGXAccoIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoIdField, value) != true)) {
+                    this.TLGXAccoIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoId");
                 }
             }
         }
@@ -32814,6 +33860,256 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.ZoneProductMapping_IdField.Equals(value) != true)) {
                     this.ZoneProductMapping_IdField = value;
                     this.RaisePropertyChanged("ZoneProductMapping_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_CitywithMultipleCountry_Search_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_CitywithMultipleCountry_Search_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid[] CountryIdListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid[] CountryIdList {
+            get {
+                return this.CountryIdListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryIdListField, value) != true)) {
+                    this.CountryIdListField = value;
+                    this.RaisePropertyChanged("CountryIdList");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_M_masterattributevalue", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_M_masterattributevalue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ActionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AttributeValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid MasterAttributeValue_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> MasterAttribute_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MasterAttribute_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OTA_CodeTableValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentAttributeValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ParentAttributeValue_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalCountField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Action {
+            get {
+                return this.ActionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
+                    this.ActionField = value;
+                    this.RaisePropertyChanged("Action");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AttributeValue {
+            get {
+                return this.AttributeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttributeValueField, value) != true)) {
+                    this.AttributeValueField = value;
+                    this.RaisePropertyChanged("AttributeValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsActiveField, value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid MasterAttributeValue_Id {
+            get {
+                return this.MasterAttributeValue_IdField;
+            }
+            set {
+                if ((this.MasterAttributeValue_IdField.Equals(value) != true)) {
+                    this.MasterAttributeValue_IdField = value;
+                    this.RaisePropertyChanged("MasterAttributeValue_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> MasterAttribute_Id {
+            get {
+                return this.MasterAttribute_IdField;
+            }
+            set {
+                if ((this.MasterAttribute_IdField.Equals(value) != true)) {
+                    this.MasterAttribute_IdField = value;
+                    this.RaisePropertyChanged("MasterAttribute_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MasterAttribute_Name {
+            get {
+                return this.MasterAttribute_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MasterAttribute_NameField, value) != true)) {
+                    this.MasterAttribute_NameField = value;
+                    this.RaisePropertyChanged("MasterAttribute_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OTA_CodeTableValue {
+            get {
+                return this.OTA_CodeTableValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OTA_CodeTableValueField, value) != true)) {
+                    this.OTA_CodeTableValueField = value;
+                    this.RaisePropertyChanged("OTA_CodeTableValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentAttributeValue {
+            get {
+                return this.ParentAttributeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentAttributeValueField, value) != true)) {
+                    this.ParentAttributeValueField = value;
+                    this.RaisePropertyChanged("ParentAttributeValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ParentAttributeValue_Id {
+            get {
+                return this.ParentAttributeValue_IdField;
+            }
+            set {
+                if ((this.ParentAttributeValue_IdField.Equals(value) != true)) {
+                    this.ParentAttributeValue_IdField = value;
+                    this.RaisePropertyChanged("ParentAttributeValue_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalCount {
+            get {
+                return this.TotalCountField;
+            }
+            set {
+                if ((this.TotalCountField.Equals(value) != true)) {
+                    this.TotalCountField = value;
+                    this.RaisePropertyChanged("TotalCount");
                 }
             }
         }
@@ -36004,195 +37300,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.ParentAttribute_IdField.Equals(value) != true)) {
                     this.ParentAttribute_IdField = value;
                     this.RaisePropertyChanged("ParentAttribute_Id");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_M_masterattributevalue", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
-    [System.SerializableAttribute()]
-    public partial class DC_M_masterattributevalue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ActionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AttributeValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid MasterAttributeValue_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> MasterAttribute_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MasterAttribute_NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OTA_CodeTableValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentAttributeValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> ParentAttributeValue_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalCountField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Action {
-            get {
-                return this.ActionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
-                    this.ActionField = value;
-                    this.RaisePropertyChanged("Action");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AttributeValue {
-            get {
-                return this.AttributeValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AttributeValueField, value) != true)) {
-                    this.AttributeValueField = value;
-                    this.RaisePropertyChanged("AttributeValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IsActiveField, value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid MasterAttributeValue_Id {
-            get {
-                return this.MasterAttributeValue_IdField;
-            }
-            set {
-                if ((this.MasterAttributeValue_IdField.Equals(value) != true)) {
-                    this.MasterAttributeValue_IdField = value;
-                    this.RaisePropertyChanged("MasterAttributeValue_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> MasterAttribute_Id {
-            get {
-                return this.MasterAttribute_IdField;
-            }
-            set {
-                if ((this.MasterAttribute_IdField.Equals(value) != true)) {
-                    this.MasterAttribute_IdField = value;
-                    this.RaisePropertyChanged("MasterAttribute_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MasterAttribute_Name {
-            get {
-                return this.MasterAttribute_NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MasterAttribute_NameField, value) != true)) {
-                    this.MasterAttribute_NameField = value;
-                    this.RaisePropertyChanged("MasterAttribute_Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OTA_CodeTableValue {
-            get {
-                return this.OTA_CodeTableValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OTA_CodeTableValueField, value) != true)) {
-                    this.OTA_CodeTableValueField = value;
-                    this.RaisePropertyChanged("OTA_CodeTableValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ParentAttributeValue {
-            get {
-                return this.ParentAttributeValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentAttributeValueField, value) != true)) {
-                    this.ParentAttributeValueField = value;
-                    this.RaisePropertyChanged("ParentAttributeValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> ParentAttributeValue_Id {
-            get {
-                return this.ParentAttributeValue_IdField;
-            }
-            set {
-                if ((this.ParentAttributeValue_IdField.Equals(value) != true)) {
-                    this.ParentAttributeValue_IdField = value;
-                    this.RaisePropertyChanged("ParentAttributeValue_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalCount {
-            get {
-                return this.TotalCountField;
-            }
-            set {
-                if ((this.TotalCountField.Equals(value) != true)) {
-                    this.TotalCountField = value;
-                    this.RaisePropertyChanged("TotalCount");
                 }
             }
         }
@@ -44466,9 +45573,6 @@ namespace TLGX_Consumer.MDMSVC {
         private string TLGXDisplaySubTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> TLGXDisplaySubType_IDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalRecordsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -45234,19 +46338,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.TLGXDisplaySubTypeField, value) != true)) {
                     this.TLGXDisplaySubTypeField = value;
                     this.RaisePropertyChanged("TLGXDisplaySubType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> TLGXDisplaySubType_ID {
-            get {
-                return this.TLGXDisplaySubType_IDField;
-            }
-            set {
-                if ((this.TLGXDisplaySubType_IDField.Equals(value) != true)) {
-                    this.TLGXDisplaySubType_IDField = value;
-                    this.RaisePropertyChanged("TLGXDisplaySubType_ID");
                 }
             }
         }
@@ -53451,6 +54542,48 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/IncludeExcludeHotels", ReplyAction="http://tempuri.org/IMasters/IncludeExcludeHotelsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> IncludeExcludeHotelsAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionMaster", ReplyAction="http://tempuri.org/IMasters/GetRegionMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetRegionMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_Region[] GetRegionMaster();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionMaster", ReplyAction="http://tempuri.org/IMasters/GetRegionMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Region[]> GetRegionMasterAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionwiseCountriesList", ReplyAction="http://tempuri.org/IMasters/GetRegionwiseCountriesListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetRegionwiseCountriesListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_Country[] GetRegionwiseCountriesList(string[] RegionCodeList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionwiseCountriesList", ReplyAction="http://tempuri.org/IMasters/GetRegionwiseCountriesListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Country[]> GetRegionwiseCountriesListAsync(string[] RegionCodeList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetAllCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetAllCountrywiseCitiesListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetAllCountrywiseCitiesListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_City[] GetAllCountrywiseCitiesList(string[] CountryIdList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetAllCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetAllCountrywiseCitiesListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetAllCountrywiseCitiesListAsync(string[] CountryIdList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetCountrywiseCitiesListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCountrywiseCitiesListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_City[] GetCountrywiseCitiesList(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetCountrywiseCitiesListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCountrywiseCitiesListAsync(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCitiesDetails", ReplyAction="http://tempuri.org/IMasters/GetCitiesDetailsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCitiesDetailsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_City[] GetCitiesDetails(string CountryName, string CityName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCitiesDetails", ReplyAction="http://tempuri.org/IMasters/GetCitiesDetailsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCitiesDetailsAsync(string CountryName, string CityName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetDisplaySubType", ReplyAction="http://tempuri.org/IMasters/GetDisplaySubTypeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetDisplaySubTypeDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[] GetDisplaySubType(string MasterFor, string Name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetDisplaySubType", ReplyAction="http://tempuri.org/IMasters/GetDisplaySubTypeResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]> GetDisplaySubTypeAsync(string MasterFor, string Name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountryNameList", ReplyAction="http://tempuri.org/IMasters/GetCountryNameListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCountryNameListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         string[] GetCountryNameList(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ RQ);
@@ -54211,6 +55344,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWise", ReplyAction="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWiseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWiseDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[] GetNewDashboardReport_CountryWise();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWise", ReplyAction="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWiseResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]> GetNewDashboardReport_CountryWiseAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdmin/GetSiteMapMaster", ReplyAction="http://tempuri.org/IAdmin/GetSiteMapMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAdmin/GetSiteMapMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid);
@@ -54426,6 +55566,21 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getNewHotelsAddedReport", ReplyAction="http://tempuri.org/IStaticData/getNewHotelsAddedReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/AccomodationMappingReport", ReplyAction="http://tempuri.org/IStaticData/AccomodationMappingReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/AccomodationMappingReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[] AccomodationMappingReport(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/AccomodationMappingReport", ReplyAction="http://tempuri.org/IStaticData/AccomodationMappingReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]> AccomodationMappingReportAsync(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReport", ReplyAction="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReportDC_ErrorSta" +
+            "tusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[] EzeegoHotelVsSupplierHotelMappingReport(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReport", ReplyAction="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]> EzeegoHotelVsSupplierHotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -56278,6 +57433,54 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.IncludeExcludeHotelsAsync(param);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Master_Region[] GetRegionMaster() {
+            return base.Channel.GetRegionMaster();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Region[]> GetRegionMasterAsync() {
+            return base.Channel.GetRegionMasterAsync();
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_Country[] GetRegionwiseCountriesList(string[] RegionCodeList) {
+            return base.Channel.GetRegionwiseCountriesList(RegionCodeList);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Country[]> GetRegionwiseCountriesListAsync(string[] RegionCodeList) {
+            return base.Channel.GetRegionwiseCountriesListAsync(RegionCodeList);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_City[] GetAllCountrywiseCitiesList(string[] CountryIdList) {
+            return base.Channel.GetAllCountrywiseCitiesList(CountryIdList);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetAllCountrywiseCitiesListAsync(string[] CountryIdList) {
+            return base.Channel.GetAllCountrywiseCitiesListAsync(CountryIdList);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_City[] GetCountrywiseCitiesList(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ) {
+            return base.Channel.GetCountrywiseCitiesList(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCountrywiseCitiesListAsync(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ) {
+            return base.Channel.GetCountrywiseCitiesListAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_City[] GetCitiesDetails(string CountryName, string CityName) {
+            return base.Channel.GetCitiesDetails(CountryName, CityName);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCitiesDetailsAsync(string CountryName, string CityName) {
+            return base.Channel.GetCitiesDetailsAsync(CountryName, CityName);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[] GetDisplaySubType(string MasterFor, string Name) {
+            return base.Channel.GetDisplaySubType(MasterFor, Name);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]> GetDisplaySubTypeAsync(string MasterFor, string Name) {
+            return base.Channel.GetDisplaySubTypeAsync(MasterFor, Name);
+        }
+        
         public string[] GetCountryNameList(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ RQ) {
             return base.Channel.GetCountryNameList(RQ);
         }
@@ -57110,6 +58313,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetRTM_ML_SuggestionsAsync(Accomodation_SupplierRoomTypeMapping_Id);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[] GetNewDashboardReport_CountryWise() {
+            return base.Channel.GetNewDashboardReport_CountryWise();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]> GetNewDashboardReport_CountryWiseAsync() {
+            return base.Channel.GetNewDashboardReport_CountryWiseAsync();
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid) {
             return base.Channel.GetSiteMapMaster(ID, applicationid);
         }
@@ -57348,6 +58559,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
             return base.Channel.getNewHotelsAddedReportAsync(parm);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[] AccomodationMappingReport(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ) {
+            return base.Channel.AccomodationMappingReport(dC_SupplerVSupplier_Report_RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]> AccomodationMappingReportAsync(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ) {
+            return base.Channel.AccomodationMappingReportAsync(dC_SupplerVSupplier_Report_RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[] EzeegoHotelVsSupplierHotelMappingReport(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm) {
+            return base.Channel.EzeegoHotelVsSupplierHotelMappingReport(parm);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]> EzeegoHotelVsSupplierHotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm) {
+            return base.Channel.EzeegoHotelVsSupplierHotelMappingReportAsync(parm);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {

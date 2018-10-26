@@ -7,63 +7,63 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.controls.activity.ManageActivityFlavours {
+namespace TLGX_Consumer.staticdata.hotels {
     
     
-    public partial class FlavourOptions_Detailed {
+    public partial class AccommodationMappingSupplierVSupplier {
         
         /// <summary>
-        /// updPanFlavourOptions control.
+        /// dvmsgUploadCompleted control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updPanFlavourOptions;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvmsgUploadCompleted;
         
         /// <summary>
-        /// dvMsg control.
+        /// ddlSupplierName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
-        /// lblTotalRecords control.
+        /// ddlCompareSupplier1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
+        protected global::System.Web.UI.WebControls.ListBox ddlCompareSupplier1;
         
         /// <summary>
-        /// divDropdownForEntries control.
+        /// btnViewReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
+        protected global::System.Web.UI.WebControls.Button btnViewReport;
         
         /// <summary>
-        /// ddlShowEntries control.
+        /// report control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl report;
         
         /// <summary>
-        /// rptCustomers control.
+        /// ReportViewerAccommodationMappingSupplierVSupplier control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCustomers;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewerAccommodationMappingSupplierVSupplier;
     }
 }

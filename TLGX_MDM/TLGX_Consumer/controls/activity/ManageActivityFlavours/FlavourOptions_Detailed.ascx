@@ -159,11 +159,11 @@ snippet from Animate.css - zoomIn effect
                 .prev('.panel-heading')
                 .find("i")
                 .toggleClass('rotate-icon');
-            $('.panel-body.animated').toggleClass('zoomIn zoomOut');
+            //$('.panel-body.animated').toggleClass('zoomIn zoomOut');
         }
 
-        $('#accordion').on('hide.bs.collapse', toggleChevron);
-        $('#accordion').on('show.bs.collapse', toggleChevron);
+        //$('#accordion').on('hide.bs.collapse', toggleChevron);
+        //$('#accordion').on('show.bs.collapse', toggleChevron);
     })
 
 
@@ -172,16 +172,23 @@ snippet from Animate.css - zoomIn effect
             .prev('.panel-heading')
             .find("i")
             .toggleClass('rotate-icon');
-        $('.panel-body.animated').toggleClass('zoomIn zoomOut');
+        //$('.panel-body.animated').toggleClass('zoomIn zoomOut');
 
         //$(e).find('i').toggleClass('rotate-icon');
         $(e).find('i').toggleClass("glyphicon-plus glyphicon-minus");;
 
 
-        $('#accordion').on('hide.bs.collapse', toggleChevron);
-        $('#accordion').on('show.bs.collapse', toggleChevron);
+        //$('#accordion').on('hide.bs.collapse', toggleChevron);
+        //$('#accordion').on('show.bs.collapse', toggleChevron);
     }
 
+    function hide(e) {
+        //var divOne = document.getElementById('disable3');
+        //divOne.style.display = 'none';
+
+        var s = document.getElementById(String(e));
+        s.style.display = 'none';
+    }
 
 </script>
 <asp:UpdatePanel ID="updPanFlavourOptions" runat="server">
@@ -206,21 +213,6 @@ snippet from Animate.css - zoomIn effect
                 </div>
             </div>
         </div>
-
-        <asp:GridView ID="gvActFlavourOptins" runat="server" AllowPaging="True" AllowCustomPaging="true"
-            EmptyDataText="No Data Found" CssClass="table table-hover table-striped"
-            AutoGenerateColumns="false" OnPageIndexChanging="gvActFlavourOptins_PageIndexChanging"
-            OnRowCommand="gvActFlavourOptins_RowCommand" DataKeyNames="Activity_FlavourOptions_Id"
-            OnRowDataBound="gvActFlavourOptins_RowDataBound">
-            <Columns>
-                <asp:BoundField HeaderText="Flavour Name" DataField="Activity_FlavourName" />
-                <asp:BoundField HeaderText="Option Name" DataField="Activity_OptionName" />
-                <asp:BoundField HeaderText="Option Code" DataField="Activity_OptionCode" />
-                <asp:BoundField HeaderText="Option Description" DataField="Activity_OptionDescription" />
-            </Columns>
-            <PagerStyle CssClass="pagination-ys" />
-        </asp:GridView>
-
         <asp:Repeater ID="rptCustomers" runat="server" OnItemDataBound="rptCustomers_ItemDataBound">
             <HeaderTemplate>
                 <table cellspacing="0" rules="all" class="table table-hover table-striped" border="1">
@@ -241,11 +233,11 @@ snippet from Animate.css - zoomIn effect
                         <div class="container">
                             <div class="row">
                                 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    <div class="panel1 panel-custom">
-                                        <div class="panel-heading" role="tab" id="heading<%# Container.ItemIndex%>name" style="padding-top: 20px; padding-bottom: 40px; height: 40px;">
+                                    <div class="table-hover table-striped">
+                                        <div class="panel-heading table-hover table-striped" role="tab" id="heading<%# Container.ItemIndex%>name" style="padding-top: 20px; padding-bottom: 40px; height: 40px;">
                                             <h4 class="panel-title">
                                                 <div class="col-sm-2" style="padding-left: 5px; padding-right: 5px">
-                                                    <a onclick="toggleChevron(this);" class="black" data-toggle="collapse" data-parent="#accordion" data-target="#collapse<%# Container.ItemIndex%>name" href="#collapse<%# Container.ItemIndex%>name" aria-expanded="true" aria-controls="collapse<%# Container.ItemIndex%>name">
+                                                    <a id="disable<%# Container.ItemIndex%>" name="disable<%# Container.ItemIndex%>" onclick="toggleChevron(this);" class="black" data-toggle="collapse" data-parent="#accordion" data-target="#collapse<%# Container.ItemIndex%>name" href="#collapse<%# Container.ItemIndex%>name" aria-expanded="true" aria-controls="collapse<%# Container.ItemIndex%>name">
                                                         <i class="glyphicon glyphicon-plus"></i><%# Eval("Activity_FlavourName") %></a>
                                                     <div class="vl" style="float: right;"></div>
                                                 </div>
@@ -261,7 +253,7 @@ snippet from Animate.css - zoomIn effect
 
                                         </div>
                                         <div id="collapse<%# Container.ItemIndex%>name" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%# Container.ItemIndex%>name">
-                                            <div class="panel-body animated zoomOut">
+                                            <div class="panel-body animated">
 
                                                 <asp:Label runat="server" ID="lblId" Visible="false" Text='<%# Eval("Activity_FlavourOptions_Id") %>' />
                                                 <asp:GridView ID="gvattribute" runat="server"
