@@ -241,7 +241,19 @@
                                             </button>
                                         </td>
                                     </tr>
-
+                                     <tr>
+                                        <td>Sync GIAT Data</td>
+                                        <td>Mapping</td>
+                                        <!-- <td>01/01/1900</td>-->
+                                        <td>
+                                            <asp:Label Text="" ID="lblGIATData" runat="server"></asp:Label></td>
+                                        <td>
+                                            <!-- <button type="button" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-globe"></span>Update
+                                    </button>-->
+                                            <asp:Button ID="btnGIATData" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnGIATAData_Click" />
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
 

@@ -620,7 +620,7 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #region Hotel Distribution Refresh
-        public DC_Message RefreshHotelMapping(Guid  ProdMapId)
+        public DC_Message RefreshHotelMapping(Guid ProdMapId)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_HotelMapping"], ProdMapId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
@@ -765,6 +765,15 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["GeographyDataSync"], RQ, typeof(DC_MongoDbSyncRQ), typeof(DC_Message), out result);
             return result as DC_Message;
+        }
+        #endregion
+
+        #region MasterAccommodation
+        public DC_Message RefreshMasterAccommodation(Guid logId)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_MasterAccommodation"], logId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
         }
         #endregion
     }
