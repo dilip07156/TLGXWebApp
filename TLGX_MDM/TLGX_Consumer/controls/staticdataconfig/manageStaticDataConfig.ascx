@@ -281,7 +281,7 @@
                 </div>
             </div>
             <div class="modal-body">
-                <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
+                <asp:UpdatePanel ID="UpnlAddConfig" runat="server" UpdateMode="Always">
                     <ContentTemplate>
 
                         <div class="row col-lg-12">
@@ -373,7 +373,7 @@
 
                                                         <%--For For Multi TextBox Values--%>
                                                         <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
-                                                        <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
+                                                        <div id="dvValueForFilter" runat="server" class="input-group col-md-12" visible ="false">
                                                             <input id="txtValueForFilter" runat="server" type="text" class="form-control col-md-8 inputTypeForFilter" />
                                                             <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
                                                                 <button class="btn btn-default" id="btnAddValue" type="button">
