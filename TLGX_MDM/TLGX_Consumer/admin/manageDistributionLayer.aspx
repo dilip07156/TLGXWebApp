@@ -230,7 +230,7 @@
                                             </button>
                                         </td>
                                     </tr>
-
+                                     
                                     <tr>
                                         <td>Holidays</td>
                                         <td>Mapping</td>
@@ -243,7 +243,7 @@
                                     </tr>
                                      <tr>
                                         <td>Sync GIAT Data</td>
-                                        <td>Mapping</td>
+                                        <td>Master</td>
                                         <!-- <td>01/01/1900</td>-->
                                         <td>
                                             <asp:Label Text="" ID="lblGIATData" runat="server"></asp:Label></td>
