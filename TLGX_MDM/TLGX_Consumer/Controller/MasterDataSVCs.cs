@@ -817,5 +817,14 @@ namespace TLGX_Consumer.Controller
 
 
         #endregion
+
+        #region MasterAccommodation
+        public DC_Message RefreshMasterAccommodation(Guid logId)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_MasterAccommodation"], logId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
     }
 }
