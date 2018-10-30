@@ -116,9 +116,9 @@ namespace TLGX_Consumer.staticdata
             Cities.Clear();
             repSelectedCity.DataSource = null;
             repSelectedCity.DataBind();
-            var SelectedCountries = GetSelectedList(ddlCountry);
-            var AllCities = masterSVc.GetAllCountrywiseCitiesList(SelectedCountries);
-            Cities.Add(AllCities.Select(x => x.City_Id).ToString());
+            //var SelectedCountries = GetSelectedList(ddlCountry);
+            //var AllCities = masterSVc.GetAllCountrywiseCitiesList(SelectedCountries);
+            //Cities.Add(AllCities.Select(x => x.City_Id).ToString());
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
@@ -211,8 +211,11 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnViewReport_Click(object sender, EventArgs e)
         {
-            var Region = GetSelectedList(ddlRegion);
-            var Country = GetSelectedList(ddlCountry);
+            var selectedRegions = GetSelectedList(ddlRegion);
+            var Region = ddlRegion.Items.Count == selectedRegions.Count ? new List<string> { } : selectedRegions;
+
+            var selectedCountries = GetSelectedList(ddlCountry);
+            var Country = ddlCountry.Items.Count == selectedCountries.Count ? new List<string>{ } : selectedCountries;
 
             var City = new List<string> { };
             if (rdoIsAllCities.Checked)
