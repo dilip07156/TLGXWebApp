@@ -31,11 +31,64 @@ namespace TLGX_Consumer.admin
                 GetStaticHotelData();
                 GetUpdatedDistributionLog();
                 GetMLDataTransferStatus();
+                GetActivityTransferStatus();
 
             }
         }
 
+        private void GetActivityTransferStatus()
+        {
+            try
+            {
+                dvMsg.Style.Add("display", "none");
+                MDMSVC.DC_SupplierEntity RQ = new MDMSVC.DC_SupplierEntity();
+                var result = MasterSvc.GetActivitySysStatusData(RQ);
 
+                if (result != null)
+                {
+                    grdvwActivityData.DataSource = result;
+                    grdvwActivityData.DataBind();
+
+                }
+                else
+                {
+                    grdvwActivityData.DataSource = null;
+                    grdvwActivityData.DataBind();
+
+                }
+
+
+                foreach (GridViewRow rowitem in grdvwActivityData.Rows)
+                {
+                    if (rowitem.Cells[3].Text == "Running" || rowitem.Cells[3].Text == "Scheduled")
+                    {
+                        foreach (GridViewRow row in grdSupplierEntity.Rows)
+                        {
+                            LinkButton refreshButton = (LinkButton)(row.FindControl("btnUpdate"));
+                            refreshButton.Enabled = false;
+                            refreshButton.BackColor = System.Drawing.Color.Red;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        foreach (GridViewRow row in grdSupplierEntity.Rows)
+                        {
+                            LinkButton refreshButton = (LinkButton)(row.FindControl("btnUpdate"));
+                            refreshButton.Enabled = true;
+                            refreshButton.BackColor = System.Drawing.Color.Green;
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         protected void GetStaticHotelData()
         {
@@ -542,6 +595,33 @@ namespace TLGX_Consumer.admin
 
         #endregion
 
+        protected void grdvwActivityData_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "refresh")
+            {
+                dvMsg.Style.Add("display", "none");
+                Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
+
+                var res = MasterSvc.RefreshActivityDataBySupplier(Guid.Empty, myRowId);
+
+                if (res != null)
+                {
+                    GetUpdatedDistributionLog();
+                    GetStaticHotelData();
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Staic Hotel Sync failed.", BootstrapAlertType.Danger);
+                }
+
+            }
+        }
+
+        protected void grdvwActivityData_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+        }
     }
 
 

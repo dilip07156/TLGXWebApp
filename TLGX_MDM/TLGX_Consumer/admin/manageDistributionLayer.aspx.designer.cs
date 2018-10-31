@@ -596,5 +596,23 @@ namespace TLGX_Consumer.admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSupplierAccoRoomExtedAttr;
+        
+        /// <summary>
+        /// UpdActivityMigration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdActivityMigration;
+        
+        /// <summary>
+        /// grdvwActivityData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdvwActivityData;
     }
 }
