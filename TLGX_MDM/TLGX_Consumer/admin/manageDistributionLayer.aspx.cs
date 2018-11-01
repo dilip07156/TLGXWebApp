@@ -60,7 +60,7 @@ namespace TLGX_Consumer.admin
 
                 foreach (GridViewRow rowitem in grdvwActivityData.Rows)
                 {
-                    if (rowitem.Cells[3].Text == "Running" || rowitem.Cells[3].Text == "Scheduled")
+                    if (rowitem.Cells[2].Text == "Running" || rowitem.Cells[2].Text == "Scheduled")
                     {
                         foreach (GridViewRow row in grdSupplierEntity.Rows)
                         {
@@ -620,7 +620,32 @@ namespace TLGX_Consumer.admin
 
         protected void grdvwActivityData_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.DataItem != null)
 
+            {
+                //coding for progress bar
+                int intTotalCount = ((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).TotalCount ?? 0;
+                int intMongoPushCount = ((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).MongoPushCount ?? 0;
+
+                double progressWidth = intTotalCount != 0 ? Math.Round((Convert.ToDouble(intMongoPushCount) / Convert.ToDouble(intTotalCount)) * 100.0, 2) : 0.0;
+
+                //find div in row
+                HtmlControl divCompleted = (HtmlControl)e.Row.FindControl("divCompleted");
+                Label lblcompleted = (Label)e.Row.FindControl("lblcompleted");
+                if (divCompleted != null && progressWidth > 0)
+                {
+                    divCompleted.Attributes.Remove("aria-valuenow");
+                    divCompleted.Attributes.Add("aria-valuenow", progressWidth.ToString());
+
+                    divCompleted.Attributes.Remove("style");
+                    divCompleted.Attributes.Add("style", "width: " + progressWidth.ToString() + "%");
+
+                    if (lblcompleted != null)
+                        lblcompleted.Text = Convert.ToString(progressWidth) + "%";
+
+                }
+
+            }
         }
     }
 
