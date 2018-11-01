@@ -164,6 +164,7 @@ namespace TLGX_Consumer.admin
 
             LastUpdatedZoneTypeMaster.Text = (res.Where(x => x.Element == "ZoneType" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
+            lblGIATData.Text = (res.Where(x => x.Element.ToUpper() == "ACCOMMODATION" && x.Type.ToUpper() == "Mapping".ToUpper()).Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
         }
         #region ==Geography Masters&Mapping
@@ -645,6 +646,19 @@ namespace TLGX_Consumer.admin
 
                 }
 
+            }
+        }
+        protected void btnGIATAData_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.RefreshMasterAccommodation(Guid.NewGuid());
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Accommodation Master Sync failed.", BootstrapAlertType.Danger);
             }
         }
     }

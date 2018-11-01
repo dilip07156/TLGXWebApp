@@ -550,6 +550,23 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
             return result as List<DC_NewDashBoardReportCountry_RS>;
         }
+        
+        public List<DC_NewDashBoardReportCountry_RS> GetHotelMappingReport_CityWise(DC_NewDashBoardReport_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["City_DashBoardReport"],RQ,typeof(List<DC_NewDashBoardReport_RQ>), typeof(List<MDMSVC.DC_NewDashBoardReportCountry_RS>), out result);
+            return result as List<DC_NewDashBoardReportCountry_RS>;
+        }
         #endregion NewDashBoardReport
+
+        #region HotelMappingReport
+        public List<DC_HotelMappingReport_RS> HotelMappingReport(MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Get_HotelMappingReport"], RQ, typeof(MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ), typeof(List<MDMSVC.DC_HotelMappingReport_RS>), out result);
+            return result as List<MDMSVC.DC_HotelMappingReport_RS>;
+        }
+
+        #endregion
     }
 }

@@ -656,6 +656,7 @@
   <xs:element name="ArrayOfDC_Supplier" nillable="true" type="tns:ArrayOfDC_Supplier" />
   <xs:complexType name="DC_Supplier">
     <xs:sequence>
+      <xs:element minOccurs="0" name="BatchSize" type="xs:int" />
       <xs:element minOccurs="0" name="CategorySubType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CategorySubType_ID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />

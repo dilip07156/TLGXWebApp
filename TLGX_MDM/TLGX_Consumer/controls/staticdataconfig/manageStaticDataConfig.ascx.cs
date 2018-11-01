@@ -945,6 +945,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         AttributeType = grdMappingAttrValues.Rows[index].Cells[0].Text,
                         AttributeName = grdMappingAttrValues.Rows[index].Cells[1].Text,
                         AttributeValue = grdMappingAttrValues.Rows[index].Cells[2].Text,
+                        Priority = Convert.ToInt32(string.IsNullOrEmpty(grdMappingAttrValues.Rows[index].Cells[4].Text.Trim()) ? "0" : grdMappingAttrValues.Rows[index].Cells[4].Text.Trim()),
                         STATUS = "INACTIVE",
                         EDIT_DATE = DateTime.Now,
                         EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
@@ -980,6 +981,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         AttributeType = grdMappingAttrValues.Rows[index].Cells[0].Text,
                         AttributeName = grdMappingAttrValues.Rows[index].Cells[1].Text,
                         AttributeValue = grdMappingAttrValues.Rows[index].Cells[2].Text,
+                        Priority = Convert.ToInt32(string.IsNullOrEmpty(grdMappingAttrValues.Rows[index].Cells[4].Text.Trim()) ? "0" : grdMappingAttrValues.Rows[index].Cells[4].Text.Trim()),
                         STATUS = "ACTIVE",
                         EDIT_DATE = DateTime.Now,
                         EDIT_USER = System.Web.HttpContext.Current.User.Identity.Name
@@ -1656,6 +1658,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                 divReplaceValue.Style.Add(HtmlTextWriterStyle.Display, "none");
             }
             #endregion
+            
         }
 
         protected void ddlAttributeValue_SelectedIndexChanged(object sender, EventArgs e)
