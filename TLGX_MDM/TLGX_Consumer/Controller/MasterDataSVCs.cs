@@ -348,6 +348,7 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Update"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+
         #endregion
 
         #region Statuses
@@ -817,5 +818,22 @@ namespace TLGX_Consumer.Controller
 
 
         #endregion
+
+        #region SupplierStaticDownloadData
+        public DC_Message Supplier_StaticDownloadData_AddUpdate(MDMSVC.DC_Supplier_StaticDataDownload RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_StaticDownloadData_AddUpdate"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+        public List<DC_Supplier_StaticDataDownload> Supplier_StaticDownloadData_Get(MDMSVC.DC_Supplier_StaticDataDownload RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_StaticDownloadData_Get"], RQParams, RQParams.GetType(), typeof(List<DC_Supplier_StaticDataDownload>), out result);
+            return result as List<DC_Supplier_StaticDataDownload>;
+        }
+        #endregion
+
     }
 }

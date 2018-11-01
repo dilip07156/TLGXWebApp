@@ -10,114 +10,141 @@
 namespace TLGX_Consumer.controls.businessentities {
     
     
-    public partial class manageSupplier {
+    public partial class supplierStaticDownloadData {
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// supplerStaticDownloadData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel supplerStaticDownloadData;
         
         /// <summary>
-        /// UpdatePanel2 control.
+        /// dvMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// dvMsgUpdateSupplierDetails control.
+        /// vlsSumm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsgUpdateSupplierDetails;
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
-        /// hdnFlag control.
+        /// txtUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnFlag;
+        protected global::System.Web.UI.WebControls.TextBox txtUrl;
         
         /// <summary>
-        /// frmSupplierDetail control.
+        /// rfvSupplier_Url control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView frmSupplierDetail;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupplier_Url;
         
         /// <summary>
-        /// TabName control.
+        /// txtUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField TabName;
+        protected global::System.Web.UI.WebControls.TextBox txtUsername;
         
         /// <summary>
-        /// supplierProductCategory control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierProductCategory supplierProductCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// supplierStaticDataHandling control.
+        /// lnkButtonAddUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierStaticDataHandling supplierStaticDataHandling;
+        protected global::System.Web.UI.WebControls.LinkButton lnkButtonAddUpdate;
         
         /// <summary>
-        /// supplierStaticDownloadData control.
+        /// lnkButtonReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierStaticDownloadData supplierStaticDownloadData;
+        protected global::System.Web.UI.WebControls.LinkButton lnkButtonReset;
         
         /// <summary>
-        /// supplierApiLocation control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierApiLocation supplierApiLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
         
         /// <summary>
-        /// supplierMarket control.
+        /// rfvSupplier_Description control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierMarket supplierMarket;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupplier_Description;
         
         /// <summary>
-        /// suppliersCredentials control.
+        /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.supplierCredentials suppliersCredentials;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
+        
+        /// <summary>
+        /// divDropdownForEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
+        
+        /// <summary>
+        /// ddlShowEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        
+        /// <summary>
+        /// gvSupplerStaticDownloadData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSupplerStaticDownloadData;
     }
 }

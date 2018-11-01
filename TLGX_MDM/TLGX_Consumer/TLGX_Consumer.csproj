@@ -326,6 +326,7 @@
     <Content Include="controls\businessentities\supplierMarket.ascx" />
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
+    <Content Include="controls\businessentities\supplierStaticDownloadData.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
     <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
@@ -1108,6 +1109,12 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1725,6 +1732,13 @@
     </Compile>
     <Compile Include="controls\businessentities\supplierStaticDataHandling.ascx.designer.cs">
       <DependentUpon>supplierStaticDataHandling.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.cs">
+      <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.designer.cs">
+      <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\citySearchManager.ascx.cs">
       <DependentUpon>citySearchManager.ascx</DependentUpon>
