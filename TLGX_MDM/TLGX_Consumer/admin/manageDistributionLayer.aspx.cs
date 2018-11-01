@@ -31,11 +31,64 @@ namespace TLGX_Consumer.admin
                 GetStaticHotelData();
                 GetUpdatedDistributionLog();
                 GetMLDataTransferStatus();
+                GetActivityTransferStatus();
 
             }
         }
 
+        private void GetActivityTransferStatus()
+        {
+            try
+            {
+                dvMsg.Style.Add("display", "none");
+                MDMSVC.DC_SupplierEntity RQ = new MDMSVC.DC_SupplierEntity();
+                var result = MasterSvc.GetActivitySysStatusData(RQ);
 
+                if (result != null)
+                {
+                    grdvwActivityData.DataSource = result;
+                    grdvwActivityData.DataBind();
+
+                }
+                else
+                {
+                    grdvwActivityData.DataSource = null;
+                    grdvwActivityData.DataBind();
+
+                }
+
+
+                foreach (GridViewRow rowitem in grdvwActivityData.Rows)
+                {
+                    if (rowitem.Cells[2].Text == "Running" || rowitem.Cells[2].Text == "Scheduled")
+                    {
+                        foreach (GridViewRow row in grdSupplierEntity.Rows)
+                        {
+                            LinkButton refreshButton = (LinkButton)(row.FindControl("btnUpdate"));
+                            refreshButton.Enabled = false;
+                            refreshButton.BackColor = System.Drawing.Color.Red;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        foreach (GridViewRow row in grdSupplierEntity.Rows)
+                        {
+                            LinkButton refreshButton = (LinkButton)(row.FindControl("btnUpdate"));
+                            refreshButton.Enabled = true;
+                            refreshButton.BackColor = System.Drawing.Color.Green;
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         protected void GetStaticHotelData()
         {
@@ -543,6 +596,58 @@ namespace TLGX_Consumer.admin
 
         #endregion
 
+        protected void grdvwActivityData_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "refresh")
+            {
+                dvMsg.Style.Add("display", "none");
+                Guid myRowId = Guid.Parse(e.CommandArgument.ToString());
+
+                var res = MasterSvc.RefreshActivityDataBySupplier(Guid.Empty, myRowId);
+
+                if (res != null)
+                {
+                    GetUpdatedDistributionLog();
+                    GetStaticHotelData();
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                }
+                else
+                {
+                    BootstrapAlert.BootstrapAlertMessage(dvMsg, "Supplier Staic Hotel Sync failed.", BootstrapAlertType.Danger);
+                }
+
+            }
+        }
+
+        protected void grdvwActivityData_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.DataItem != null)
+
+            {
+                //coding for progress bar
+                int intTotalCount = ((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).TotalCount ?? 0;
+                int intMongoPushCount = ((TLGX_Consumer.MDMSVC.DC_SupplierEntity)e.Row.DataItem).MongoPushCount ?? 0;
+
+                double progressWidth = intTotalCount != 0 ? Math.Round((Convert.ToDouble(intMongoPushCount) / Convert.ToDouble(intTotalCount)) * 100.0, 2) : 0.0;
+
+                //find div in row
+                HtmlControl divCompleted = (HtmlControl)e.Row.FindControl("divCompleted");
+                Label lblcompleted = (Label)e.Row.FindControl("lblcompleted");
+                if (divCompleted != null && progressWidth > 0)
+                {
+                    divCompleted.Attributes.Remove("aria-valuenow");
+                    divCompleted.Attributes.Add("aria-valuenow", progressWidth.ToString());
+
+                    divCompleted.Attributes.Remove("style");
+                    divCompleted.Attributes.Add("style", "width: " + progressWidth.ToString() + "%");
+
+                    if (lblcompleted != null)
+                        lblcompleted.Text = Convert.ToString(progressWidth) + "%";
+
+                }
+
+            }
+        }
         protected void btnGIATAData_Click(object sender, EventArgs e)
         {
             var res = MasterSvc.RefreshMasterAccommodation(Guid.NewGuid());

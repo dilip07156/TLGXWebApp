@@ -546,7 +546,48 @@
                             </asp:UpdatePanel>
                         </div>
                     </div>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Activity Data</div>
+                        <div class="panel-body">
+                            <asp:UpdatePanel ID="UpdActivityMigration" runat="server">
+                                <ContentTemplate>
+                                    <asp:GridView runat="server" ID="grdvwActivityData" EmptyDataText="No Activity supplier avaible to migrate" CssClass="table table-hover"
+                                        OnRowCommand="grdvwActivityData_RowCommand" DataKeyNames="Supplier_id" AutoGenerateColumns="False" GridLines="None" BorderStyle="None"
+                                        OnRowDataBound="grdvwActivityData_RowDataBound">
+                                        <Columns>
+                                            <asp:BoundField DataField="Supplier_Name" ItemStyle-Width="20%" HeaderText="Supplier" />
+                                            <asp:BoundField DataField="LastUpdated"  ItemStyle-Width="15%" HeaderText="Last Updated" />
+                                            <asp:BoundField DataField="STATUS" HeaderText="Status" ItemStyle-Width="15%" />
+                                            <asp:TemplateField  HeaderText="Progress" ItemStyle-Width="40%">
+                                                <ItemTemplate>
+                                                    <div class='progress'>
+                                                        <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divCompleted">
+                                                            <asp:Label runat="server" ID="lblcompleted"></asp:Label>
+                                                        </div>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                            <asp:TemplateField ItemStyle-Width="20%">
+                                                <ItemTemplate>
+                                                    <asp:LinkButton ID="btnUpdate" runat="server" CausesValidation="false" CommandName="refresh" CssClass="btn btn-primary btn-sm" Text="Update"
+                                                        Enabled="true" CommandArgument='<%#Bind("Supplier_id")%>'>
+                                    
+                                                    </asp:LinkButton>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+
+                                        </Columns>
+                                    </asp:GridView>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+
+                        </div>
+
+                    </div>
                 </div>
+            </div>
         </ContentTemplate>
     </asp:UpdatePanel>
 

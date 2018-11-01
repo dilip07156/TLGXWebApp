@@ -715,7 +715,23 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #endregion
-
+        #region Activity Data sync
+        public DC_Message RefreshActivityDataBySupplier(Guid log_id, Guid Supplier_id)
+        {
+            object result = null;
+            //ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"]),Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_ActivitiesBySupplier"], log_id, Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            //return Convert.ToDateTime(result); 
+            return (DC_Message)result;
+        }
+        public List<DC_SupplierEntity> GetActivitySysStatusData(MDMSVC.DC_SupplierEntity RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionActivityData"]), typeof(List<MDMSVC.DC_SupplierEntity>), out result);
+            //return Convert.ToDateTime(result); 
+            return result as List<DC_SupplierEntity>;
+        }
+        #endregion
 
         #region == ML Data API Integration
         //public void PushMasterAccoData()
