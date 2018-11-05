@@ -57144,6 +57144,24 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotel", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotelResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncSupplierStaticHotelAsync(string log_id, string supplier_id, string CreatedBy);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplier", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplierResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplierDC_ErrorStatusF" +
+            "ault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncActivityBySupplier(string log_id, string supplier_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplier", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplierResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncActivityBySupplierAsync(string log_id, string supplier_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusData", ReplyAction="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusDataRespons" +
+            "e")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusDataDC_Erro" +
+            "rStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SupplierEntity[] LoadSupplierActivityStatusData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusData", ReplyAction="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusDataRespons" +
+            "e")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierEntity[]> LoadSupplierActivityStatusDataAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIData", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncMLAPIDataResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIDataDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Message SyncMLAPIData(TLGX_Consumer.MDMSVC.DC_Distribution_MLDataRQ _obj);
@@ -60229,6 +60247,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncSupplierStaticHotelAsync(string log_id, string supplier_id, string CreatedBy) {
             return base.Channel.SyncSupplierStaticHotelAsync(log_id, supplier_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncActivityBySupplier(string log_id, string supplier_id, string CreatedBy) {
+            return base.Channel.SyncActivityBySupplier(log_id, supplier_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncActivityBySupplierAsync(string log_id, string supplier_id, string CreatedBy) {
+            return base.Channel.SyncActivityBySupplierAsync(log_id, supplier_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SupplierEntity[] LoadSupplierActivityStatusData() {
+            return base.Channel.LoadSupplierActivityStatusData();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierEntity[]> LoadSupplierActivityStatusDataAsync() {
+            return base.Channel.LoadSupplierActivityStatusDataAsync();
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message SyncMLAPIData(TLGX_Consumer.MDMSVC.DC_Distribution_MLDataRQ _obj) {
