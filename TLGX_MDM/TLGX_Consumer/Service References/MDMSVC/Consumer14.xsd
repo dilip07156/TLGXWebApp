@@ -328,6 +328,31 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_M_masterattributevalue" nillable="true" type="tns:DC_M_masterattributevalue" />
+  <xs:complexType name="DC_Supplier_StaticDataDownload">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreateDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreateUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EditDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EditUser" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PageNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierCredentialsId" type="ser:guid" />
+      <xs:element minOccurs="0" name="SupplierId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecords" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Supplier_StaticDataDownload" nillable="true" type="tns:DC_Supplier_StaticDataDownload" />
+  <xs:complexType name="ArrayOfDC_Supplier_StaticDataDownload">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Supplier_StaticDataDownload" nillable="true" type="tns:DC_Supplier_StaticDataDownload" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Supplier_StaticDataDownload" nillable="true" type="tns:ArrayOfDC_Supplier_StaticDataDownload" />
   <xs:complexType name="DC_Country_Search_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Country_Code" nillable="true" type="xs:string" />
