@@ -161,26 +161,19 @@
                                     <tr>
                                         <td>Hotels</td>
                                         <td>Master</td>
-                                        <td>01/01/1900</td>
                                         <td>
-                                            <button type="button" class="btn btn-default">
-                                                <span class="glyphicon glyphicon-cog"></span>Update
-                                            </button>
-
+                                            <asp:Label Text="" ID="lblHotelMaster" runat="server"></asp:Label></td>
+                                        <td>
+                                            <asp:Button ID="btnHotelMaster" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnHotelMaster_Click" />
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td>Hotels</td>
                                         <td>Mapping</td>
-                                        <!--<td>01/01/1900</td>-->
                                         <td>
                                             <asp:Label Text="" ID="LastUpdatedHotelMapping" runat="server"></asp:Label></td>
                                         <td>
-                                            <!--    <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-globe"></span>Update
-                                    </button>-->
-
                                             <asp:Button ID="btnRefreshHotelMapping" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRefreshHotelMapping_Click" />
                                         </td>
                                     </tr>
@@ -209,13 +202,9 @@
                                     <tr>
                                         <td>Activities</td>
                                         <td>Mapping</td>
-                                        <!-- <td>01/01/1900</td>-->
                                         <td>
                                             <asp:Label Text="" ID="LastUpdatedActivityMapping" runat="server"></asp:Label></td>
                                         <td>
-                                            <!-- <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-globe"></span>Update
-                                    </button>-->
                                             <asp:Button ID="btnRefreshActivityMapping" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnRefreshActivityMapping_Click" />
                                         </td>
                                     </tr>
@@ -230,7 +219,7 @@
                                             </button>
                                         </td>
                                     </tr>
-                                     
+
                                     <tr>
                                         <td>Holidays</td>
                                         <td>Mapping</td>
@@ -241,17 +230,13 @@
                                             </button>
                                         </td>
                                     </tr>
-                                     <tr>
-                                        <td>Sync GIAT Data</td>
-                                        <td>Master</td>
-                                        <!-- <td>01/01/1900</td>-->
+                                    <tr>
+                                        <td>RoomType</td>
+                                        <td>Mapping</td>
                                         <td>
-                                            <asp:Label Text="" ID="lblGIATData" runat="server"></asp:Label></td>
+                                            <asp:Label Text="" ID="lblSupplierRoomTypeMapping" runat="server"></asp:Label></td>
                                         <td>
-                                            <!-- <button type="button" class="btn btn-default">
-                                        <span class="glyphicon glyphicon-globe"></span>Update
-                                    </button>-->
-                                            <asp:Button ID="btnGIATData" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnGIATAData_Click" />
+                                            <asp:Button ID="btnSupplierRoomTypeMapping" runat="server" CssClass="btn btn-primary btn-sm" Text="Update" OnClick="btnSupplierRoomTypeMapping_Click" />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -557,9 +542,9 @@
                                         OnRowDataBound="grdvwActivityData_RowDataBound">
                                         <Columns>
                                             <asp:BoundField DataField="Supplier_Name" ItemStyle-Width="20%" HeaderText="Supplier" />
-                                            <asp:BoundField DataField="LastUpdated"  ItemStyle-Width="15%" HeaderText="Last Updated" />
+                                            <asp:BoundField DataField="LastUpdated" ItemStyle-Width="15%" HeaderText="Last Updated" />
                                             <asp:BoundField DataField="STATUS" HeaderText="Status" ItemStyle-Width="15%" />
-                                            <asp:TemplateField  HeaderText="Progress" ItemStyle-Width="40%">
+                                            <asp:TemplateField HeaderText="Progress" ItemStyle-Width="40%">
                                                 <ItemTemplate>
                                                     <div class='progress'>
                                                         <div class="progress-bar" role="progressbar" runat="server" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="divCompleted">

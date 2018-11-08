@@ -164,9 +164,12 @@ namespace TLGX_Consumer.admin
 
             LastUpdatedZoneTypeMaster.Text = (res.Where(x => x.Element == "ZoneType" && x.Type == "Master").Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
-            lblGIATData.Text = (res.Where(x => x.Element.ToUpper() == "ACCOMMODATION" && x.Type.ToUpper() == "Mapping".ToUpper()).Select(y => y.Create_Date).FirstOrDefault()).ToString();
+            lblHotelMaster.Text = (res.Where(x => x.Element.ToUpper() == "ACCOMMODATION" && x.Type.ToUpper() == "Master".ToUpper()).Select(y => y.Create_Date).FirstOrDefault()).ToString();
+
+            lblSupplierRoomTypeMapping.Text = (res.Where(x => x.Element.ToUpper() == "ROOMTYPE" && x.Type.ToUpper() == "Mapping".ToUpper()).Select(y => y.Create_Date).FirstOrDefault()).ToString();
 
         }
+
         #region ==Geography Masters&Mapping
         #region == Country Master&Mapping
         protected void btnRefreshCountryMaster_Click(object sender, EventArgs e)
@@ -648,9 +651,10 @@ namespace TLGX_Consumer.admin
 
             }
         }
-        protected void btnGIATAData_Click(object sender, EventArgs e)
+
+        protected void btnHotelMaster_Click(object sender, EventArgs e)
         {
-            var res = MasterSvc.RefreshMasterAccommodation(Guid.NewGuid());
+            var res = MasterSvc.RefreshMasterAccommodation(Guid.NewGuid(), Guid.Empty);
             if (res != null)
             {
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
@@ -661,7 +665,20 @@ namespace TLGX_Consumer.admin
                 BootstrapAlert.BootstrapAlertMessage(dvMsg, "Accommodation Master Sync failed.", BootstrapAlertType.Danger);
             }
         }
+
+        protected void btnSupplierRoomTypeMapping_Click(object sender, EventArgs e)
+        {
+            var res = MasterSvc.SyncRoomTypeMappingToMongo();
+            if (res != null)
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, res.StatusMessage, (BootstrapAlertType)res.StatusCode);
+                GetUpdatedDistributionLog();
+            }
+            else
+            {
+                BootstrapAlert.BootstrapAlertMessage(dvMsg, "Room Type Mapping Sync failed.", BootstrapAlertType.Danger);
+            }
+        }
+
     }
-
-
 }

@@ -716,6 +716,7 @@ namespace TLGX_Consumer.Controller
             return (DC_Message)result;
         }
         #endregion
+
         #region Activity Data sync
         public DC_Message RefreshActivityDataBySupplier(Guid log_id, Guid Supplier_id)
         {
@@ -851,10 +852,20 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region MasterAccommodation
-        public DC_Message RefreshMasterAccommodation(Guid logId)
+        public DC_Message RefreshMasterAccommodation(Guid logId, Guid Accommodation_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_MasterAccommodation"], logId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_MasterAccommodation"], logId.ToString(), Accommodation_Id.ToString(),  System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
+
+        #region Sync Room Type Mapping To Mongo
+        public DC_Message SyncRoomTypeMappingToMongo()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_RoomTypeMapping"], Guid.NewGuid().ToString(), Guid.Empty.ToString()), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
         #endregion

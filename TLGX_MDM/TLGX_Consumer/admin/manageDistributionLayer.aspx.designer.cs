@@ -175,6 +175,24 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.WebControls.Button btnRefreshZoneTypeMaster;
         
         /// <summary>
+        /// lblHotelMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHotelMaster;
+        
+        /// <summary>
+        /// btnHotelMaster control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnHotelMaster;
+        
+        /// <summary>
         /// LastUpdatedHotelMapping control.
         /// </summary>
         /// <remarks>
@@ -229,22 +247,22 @@ namespace TLGX_Consumer.admin {
         protected global::System.Web.UI.WebControls.Button btnRefreshActivityMapping;
         
         /// <summary>
-        /// lblGIATData control.
+        /// lblSupplierRoomTypeMapping control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGIATData;
+        protected global::System.Web.UI.WebControls.Label lblSupplierRoomTypeMapping;
         
         /// <summary>
-        /// btnGIATData control.
+        /// btnSupplierRoomTypeMapping control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGIATData;
+        protected global::System.Web.UI.WebControls.Button btnSupplierRoomTypeMapping;
         
         /// <summary>
         /// LastUpdatedSupplierMapping control.
