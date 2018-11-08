@@ -108,7 +108,7 @@ namespace TLGX_Consumer.controls.geography
                     txt_GooglePlaceID.Text = Convert.ToString(result[0].GooglePlaceID);
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
                 throw;

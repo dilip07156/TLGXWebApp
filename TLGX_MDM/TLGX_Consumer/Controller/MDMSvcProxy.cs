@@ -64,7 +64,7 @@ namespace TLGX_Consumer.Controller.ServiceConnection
                     return false;
                 }
             }
-            catch (Exception e)
+            catch
             {
                 ReturnValue = null;
                 return false;
@@ -138,7 +138,7 @@ namespace TLGX_Consumer.Controller.ServiceConnection
                 else
                     return false;
             }
-            catch (Exception e)
+            catch
             {
                 ReturnValue = null;
                 return false;

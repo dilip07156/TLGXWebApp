@@ -71,7 +71,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityMaster
                 ddl.DataBind();
                 ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }
@@ -87,7 +87,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityMaster
                 ddl.DataBind();
                 ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }
@@ -103,7 +103,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityMaster
                 ddl.DataBind();
                 ddl.Items.Insert(0, new ListItem("---ALL---", "0"));
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }

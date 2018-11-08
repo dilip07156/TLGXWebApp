@@ -196,7 +196,7 @@ namespace TLGX_Consumer.controls.roomtype
                 grdRoomTypeMappingSearchResultsBySupplier.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
                 grdRoomTypeMappingSearchResultsBySupplier.DataBind();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -767,7 +767,7 @@ namespace TLGX_Consumer.controls.roomtype
                 grdRoomTypeMappingSearchResultsBySupplier.PageSize = Convert.ToInt32(ddlPageSizeBySupplier.SelectedItem.Text);
                 grdRoomTypeMappingSearchResultsBySupplier.DataBind();
             }
-            catch (Exception ex)
+            catch
             {
 
                 throw;
@@ -832,7 +832,7 @@ namespace TLGX_Consumer.controls.roomtype
             {
                 list.MasterAttributeValues = list.MasterAttributeValues.OrderBy(x => Convert.ToInt32(x.AttributeValue)).ToArray();
             }
-            catch (Exception ex)
+            catch
             {
 
             }

@@ -196,7 +196,7 @@ namespace TLGX_Consumer.geography
                     grdZoneSearch.DataBind();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

@@ -306,7 +306,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     BootstrapAlert.BootstrapAlertMessage(dvMsg, "File has been un deleted Successfully", (BootstrapAlertType)result.StatusCode);
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
             }

@@ -303,7 +303,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                         //end Query string
                     }
             }
-            catch (Exception ex) { }
+            catch { }
         }
 
         protected void grdMappingConfig_PageIndexChanging(object sender, GridViewPageEventArgs e)

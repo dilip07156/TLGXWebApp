@@ -13,14 +13,14 @@
     <%@ Register Src="~/controls/hotel/route.ascx" TagPrefix="uc1" TagName="route" %>
     <%@ Register Src="~/controls/hotel/updates.ascx" TagPrefix="uc1" TagName="updates" %>
     <%@ Register Src="~/controls/hotel/healthandsafety.ascx" TagPrefix="uc1" TagName="healthandsafety" %>
-    <%@ Register Src="~/controls/hotel/ancilary.ascx" TagPrefix="uc1" TagName="ancilary" %>
+    <%--<%@ Register Src="~/controls/hotel/ancilary.ascx" TagPrefix="uc1" TagName="ancilary" %>--%>
     <%@ Register Src="~/controls/hotel/head.ascx" TagPrefix="uc1" TagName="head" %>
     <%@ Register Src="~/controls/hotel/descriptions.ascx" TagPrefix="uc1" TagName="descriptions" %>
     <%@ Register Src="~/controls/hotel/status.ascx" TagPrefix="uc1" TagName="status" %>
     <%@ Register Src="~/controls/hotel/AddressCheck.ascx" TagPrefix="uc1" TagName="AddressCheck" %>
-    <%@ Register Src="~/controls/hotel/supplierHotelMapping.ascx" TagPrefix="uc1" TagName="supplierHotelMapping" %>
+    <%--<%@ Register Src="~/controls/hotel/supplierHotelMapping.ascx" TagPrefix="uc1" TagName="supplierHotelMapping" %>
     <%@ Register Src="~/controls/hotel/ClassificationAttributes.ascx" TagPrefix="uc1" TagName="ClassificationAttributes" %>
-    <%@ Register Src="~/controls/hotel/roomtypemapping.ascx" TagPrefix="uc1" TagName="roomtypemapping" %>
+    <%@ Register Src="~/controls/hotel/roomtypemapping.ascx" TagPrefix="uc1" TagName="roomtypemapping" %>--%>
 
     <div class="container" id="myWizard">
         <div class="row">
@@ -51,11 +51,11 @@
                 <li><a href="#panMedia" data-toggle="tab">Media</a></li>
                 <li><a href="#panUpdates" data-toggle="tab">Updates</a></li>
                 <li><a href="#panHealthAndSafety" data-toggle="tab">H/S</a></li>
-                <li><a href="#panAncil" data-toggle="tab">Ancillary</a></li>
+                <%--<li><a href="#panAncil" data-toggle="tab">Ancillary</a></li>--%>
                 <li><a href="#panStatus" data-toggle="tab">Status</a></li>
-                <li><a href="#panclassificationAttributes" data-toggle="tab">Attributes</a></li>
+                <%--<li><a href="#panclassificationAttributes" data-toggle="tab">Attributes</a></li>
                 <li><a href="#panSupplierMapping" data-toggle="tab">Map Product</a></li>
-                <li><a href="#panRoomMapping" data-toggle="tab">Map RoomType</a></li>
+                <li><a href="#panRoomMapping" data-toggle="tab">Map RoomType</a></li>--%>
             </ul>
             <%--</div>--%>
         </div>
@@ -107,18 +107,17 @@
                 <uc1:healthandsafety runat="server" ID="healthandsafety" />
             </div>
 
-            <div class="tab-pane" id="panAncil">
+            <%--<div class="tab-pane" id="panAncil">
                 <uc1:ancilary runat="server" id="ancilary" />
-            </div>
+            </div>--%>
 
             <div class="tab-pane" id="panStatus">
                 <uc1:status runat="server" ID="status" />
             </div>
 
-            <div class="tab-pane" id="panclassificationAttributes">
+            <%--<div class="tab-pane" id="panclassificationAttributes">
                 <uc1:ClassificationAttributes runat="server" ID="ClassificationAttributes" />
             </div>
-
 
             <div class="tab-pane" id="panSupplierMapping">
                 <uc1:supplierHotelMapping runat="server" ID="supplierHotelMapping" />
@@ -127,7 +126,7 @@
 
             <div class="tab-pane" id="panRoomMapping">
                 <uc1:roomtypemapping runat="server" ID="roomtypemapping" />
-            </div>
+            </div>--%>
 
         </div>
     </div>

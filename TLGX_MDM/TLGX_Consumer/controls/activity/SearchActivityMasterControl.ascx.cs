@@ -159,7 +159,7 @@ namespace TLGX_Consumer.controls.activity
 
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
                 throw;
@@ -443,7 +443,7 @@ namespace TLGX_Consumer.controls.activity
                     lblTotalRecords.Text = string.Empty;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

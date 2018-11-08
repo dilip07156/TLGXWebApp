@@ -62,7 +62,7 @@ namespace TLGX_Consumer.staticdata
             {
                 list.MasterAttributeValues = list.MasterAttributeValues.OrderBy(x => Convert.ToInt32(x.AttributeValue)).ToArray();
             }
-            catch (Exception ex)
+            catch
             {
 
             }

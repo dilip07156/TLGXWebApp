@@ -516,7 +516,7 @@ namespace TLGX_Consumer.controls.hotel
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch
                         {
 
                         }

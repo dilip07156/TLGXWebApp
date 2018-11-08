@@ -228,7 +228,7 @@ namespace TLGX_Consumer.controls.businessentities
                 LoadPageData();
                 // }
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

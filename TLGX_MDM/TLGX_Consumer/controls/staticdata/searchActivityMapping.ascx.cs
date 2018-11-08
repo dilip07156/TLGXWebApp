@@ -305,9 +305,8 @@ namespace TLGX_Consumer.controls.staticdata
               //  ddlActivityFilterCity.SelectedIndex = ddlActivityFilterCity.Items.IndexOf(ddlActivityFilterCity.Items.FindByText(System.Web.HttpUtility.HtmlDecode(SupplierCityName)));
 
             }
-            catch (Exception ex)
+            catch
             {
-
                 throw;
             }
         }
@@ -467,7 +466,7 @@ namespace TLGX_Consumer.controls.staticdata
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
                 throw;
@@ -544,7 +543,7 @@ namespace TLGX_Consumer.controls.staticdata
 
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
                 throw;

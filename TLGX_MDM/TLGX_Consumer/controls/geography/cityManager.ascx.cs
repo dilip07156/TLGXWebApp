@@ -268,7 +268,7 @@ namespace TLGX_Consumer.controls.geography
 
                 }
             }
-            catch (Exception ex)
+            catch
             {
 
                 throw;

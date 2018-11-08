@@ -106,7 +106,7 @@ namespace TLGX_Consumer.activity
                 Flavours.getFlavourInfo("header");
 
             }
-            catch (Exception ex)
+            catch
             {
 
             }

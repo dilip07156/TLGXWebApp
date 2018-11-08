@@ -198,7 +198,6 @@ namespace TLGX_Consumer.controls.staticdata
             Guid selSupplier_ID = Guid.Empty;
             Guid selCountry_ID = Guid.Empty;
             Guid selCity_ID = Guid.Empty;
-            string selCity = "";
             if (ddlSupplierName.SelectedItem.Value != "0")
                 RQ.Supplier_Id = new Guid(ddlSupplierName.SelectedItem.Value);
             if (ddlMasterCountry.SelectedItem.Value != "0")
@@ -820,7 +819,6 @@ namespace TLGX_Consumer.controls.staticdata
                 //string mystateName = txtSystemStateName.Text;
                 //string mystateCode = txtSystemStateCode.Text;
 
-                bool res = false;
                 foreach (GridViewRow row in grdMatchingCity.Rows)
                 {
                     HtmlInputCheckBox chk = row.Cells[13].Controls[1] as HtmlInputCheckBox;
@@ -882,10 +880,6 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid? myCountry_Id = Guid.Empty;
                 Guid? myCity_Id = Guid.Empty;
 
-                //string mystateName = txtSystemStateName.Text;
-                //string mystateCode = txtSystemStateCode.Text;
-
-                bool res = false;
                 foreach (GridViewRow row in grdMatchingCity.Rows)
                 {
                     myRow_Id = Guid.Empty;
@@ -1448,10 +1442,6 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlmatchedddlStatus = (DropDownList)frmEditCityMap.FindControl("ddlStatus");
             HiddenField hdnSelSystemCity_Id = (HiddenField)frmEditCityMap.FindControl("hdnSelSystemCity_Id");
 
-            //string mystateName = txtSystemStateName.Text;
-            //string mystateCode = txtSystemStateCode.Text;
-
-            bool res = false;
             foreach (GridViewRow row in grdMatchingCity.Rows)
             {
                 HtmlInputCheckBox chk = row.Cells[13].Controls[1] as HtmlInputCheckBox;
@@ -1524,10 +1514,7 @@ namespace TLGX_Consumer.controls.staticdata
             DropDownList ddlSystemCityName = (DropDownList)frmEditCityMap.FindControl("ddlSystemCityName");
             DropDownList ddlmatchedddlStatus = (DropDownList)frmEditCityMap.FindControl("ddlStatus");
             HiddenField hdnSelSystemCity_Id = (HiddenField)frmEditCityMap.FindControl("hdnSelSystemCity_Id");
-            //string mystateName = txtSystemStateName.Text;
-            //string mystateCode = txtSystemStateCode.Text;
-
-            bool res = false;
+           
             foreach (GridViewRow row in grdMatchingCity.Rows)
             {
                 myRow_Id = Guid.Empty;

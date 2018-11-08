@@ -474,7 +474,7 @@ namespace TLGX_Consumer.controls.staticdata
                 ddl.DataTextField = "Country_Name";
                 ddl.DataBind();
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }
@@ -958,7 +958,6 @@ namespace TLGX_Consumer.controls.staticdata
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
             Guid? myAcco_Id = Guid.Empty;
-            bool res = false;
            
             foreach (GridViewRow row in grdMatchingProducts.Rows)
             {
@@ -1018,7 +1017,6 @@ namespace TLGX_Consumer.controls.staticdata
             Guid myRow_Id = Guid.Empty;
             Guid mySupplier_Id = Guid.Empty;
             Guid? myAcco_Id = Guid.Empty;
-            bool res = false;
             foreach (GridViewRow row in grdMatchingProducts.Rows)
             {
                 myRow_Id = Guid.Empty;

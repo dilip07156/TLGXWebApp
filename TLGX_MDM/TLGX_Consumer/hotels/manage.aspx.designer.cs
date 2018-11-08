@@ -121,15 +121,6 @@ namespace TLGX_Consumer.hotels {
         protected global::TLGX_Consumer.controls.hotel.healthandsafety healthandsafety;
         
         /// <summary>
-        /// ancilary control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.ancilary ancilary;
-        
-        /// <summary>
         /// status control.
         /// </summary>
         /// <remarks>
@@ -137,33 +128,6 @@ namespace TLGX_Consumer.hotels {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::TLGX_Consumer.controls.hotel.status status;
-        
-        /// <summary>
-        /// ClassificationAttributes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.ClassificationAttributes ClassificationAttributes;
-        
-        /// <summary>
-        /// supplierHotelMapping control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.supplierHotelMapping supplierHotelMapping;
-        
-        /// <summary>
-        /// roomtypemapping control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.roomtypemapping roomtypemapping;
         
         /// <summary>
         /// PreviousPage property.
