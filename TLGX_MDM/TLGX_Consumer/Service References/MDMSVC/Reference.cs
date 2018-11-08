@@ -2476,6 +2476,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string AreaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Area_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AwardsReceivedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -2591,6 +2594,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Location_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
@@ -2936,6 +2942,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.AreaField, value) != true)) {
                     this.AreaField = value;
                     this.RaisePropertyChanged("Area");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Area_Id {
+            get {
+                return this.Area_IdField;
+            }
+            set {
+                if ((this.Area_IdField.Equals(value) != true)) {
+                    this.Area_IdField = value;
+                    this.RaisePropertyChanged("Area_Id");
                 }
             }
         }
@@ -3443,6 +3462,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LocationField, value) != true)) {
                     this.LocationField = value;
                     this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Location_Id {
+            get {
+                return this.Location_IdField;
+            }
+            set {
+                if ((this.Location_IdField.Equals(value) != true)) {
+                    this.Location_IdField = value;
+                    this.RaisePropertyChanged("Location_Id");
                 }
             }
         }
@@ -57179,10 +57211,18 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMasterDC_ErrorStatus" +
             "Fault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Message SyncAccommodationMaster(string log_id, string CreatedBy);
+        TLGX_Consumer.MDMSVC.DC_Message SyncAccommodationMaster(string log_id, string Accommodation_Id, string CreatedBy);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMasterResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncAccommodationMasterAsync(string log_id, string CreatedBy);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncAccommodationMasterAsync(string log_id, string Accommodation_Id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMappingDC_ErrorStatu" +
+            "sFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelRoomTypeMapping(string log_id, string Supplier_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelRoomTypeMappingAsync(string log_id, string Supplier_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKafka/InsertKafkaInfo", ReplyAction="http://tempuri.org/IKafka/InsertKafkaInfoResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IKafka/InsertKafkaInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -60281,12 +60321,20 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SyncGeographyDataAsync(RQ);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Message SyncAccommodationMaster(string log_id, string CreatedBy) {
-            return base.Channel.SyncAccommodationMaster(log_id, CreatedBy);
+        public TLGX_Consumer.MDMSVC.DC_Message SyncAccommodationMaster(string log_id, string Accommodation_Id, string CreatedBy) {
+            return base.Channel.SyncAccommodationMaster(log_id, Accommodation_Id, CreatedBy);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncAccommodationMasterAsync(string log_id, string CreatedBy) {
-            return base.Channel.SyncAccommodationMasterAsync(log_id, CreatedBy);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncAccommodationMasterAsync(string log_id, string Accommodation_Id, string CreatedBy) {
+            return base.Channel.SyncAccommodationMasterAsync(log_id, Accommodation_Id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelRoomTypeMapping(string log_id, string Supplier_Id) {
+            return base.Channel.SyncHotelRoomTypeMapping(log_id, Supplier_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelRoomTypeMappingAsync(string log_id, string Supplier_Id) {
+            return base.Channel.SyncHotelRoomTypeMappingAsync(log_id, Supplier_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message InsertKafkaInfo(TLGX_Consumer.MDMSVC.DC_Stg_Kafka KafkaInfo) {
