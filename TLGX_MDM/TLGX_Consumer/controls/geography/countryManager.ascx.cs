@@ -152,10 +152,13 @@ namespace TLGX_Consumer.controls.geography
             DC_Country_Search_RQ _objSearch = new DC_Country_Search_RQ();
             _objSearch.Country_Name = txtCountryNameSearch.Text.Trim();
 
-            _objSearch.RegionCode = ddlRegion.SelectedValue.Replace("0", "") ;
-            _objSearch.Key  = ddlKey.SelectedValue.Replace("0", "");
-            _objSearch.Rank = ddlRank.SelectedValue.Replace("0", "");
-            _objSearch.Priority = ddlPriority.SelectedValue.Replace("0", "");
+            if (!string.IsNullOrWhiteSpace(ddlRegion.SelectedValue.Replace("0", ""))) { _objSearch.RegionCode = ddlRegion.SelectedValue; }
+
+            if (!string.IsNullOrWhiteSpace(ddlKey.SelectedValue.Replace("0", ""))) { _objSearch.Key = ddlKey.SelectedValue; }
+
+            if (!string.IsNullOrWhiteSpace(ddlRank.SelectedValue.Replace("0", ""))) { _objSearch.Rank = ddlRank.SelectedValue; }
+
+            if (!string.IsNullOrWhiteSpace(ddlPriority.SelectedValue.Replace("0", ""))) { _objSearch.Priority = ddlPriority.SelectedValue; }
 
             _objSearch.PageNo = intPageIndex;
             _objSearch.PageSize = PageSize;

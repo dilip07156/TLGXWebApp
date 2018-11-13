@@ -7,15 +7,50 @@
 
 <script type="text/javascript">
 
-    function MutExChkList(chk) {
-        var chkList = chk.parentNode.parentNode.parentNode;
-        var chks = chkList.getElementsByTagName("input");
-        for (var i = 0; i < chks.length; i++) {
-            if (chks[i] != chk) {
-                chks[i].checked = chk.checked;
-            }
+
+
+    $(document).ready(function () {
+        $("#hover").hover(function () {
+            $("#supplierInfo").show();
+
+        }, function () {
+            $("#supplierInfo").hide();
+        });
+
+
+    });
+
+    $(function () {
+
+        function toggleChevron(e) {
+            $(e.target)
+                .prev('.panel-heading')
+                .find("i")
+                .toggleClass('rotate-icon');
+            $('.panel-body.animated').toggleClass('zoomIn zoomOut');
         }
+
+        //$(e).find('i').toggleClass("glyphicon-plus glyphicon-minus");
+
+        $('#accordion').on('hide.bs.collapse', toggleChevron);
+        $('#accordion').on('show.bs.collapse', toggleChevron);
+    })
+
+    function toggleChevron(e) {
+        $(e.target)
+            .prev('.panel-heading')
+            //.find("i")
+            .toggleClass('rotate-icon');
+        //$('.panel-body.animated').toggleClass('zoomIn zoomOut');
+
+        //$(e).find('i').toggleClass('rotate-icon');
+        // $(e).find('i').toggleClass("glyphicon-plus glyphicon-minus");
+
+
+        $('#accordion').on('hide.bs.collapse', toggleChevron);
+        $('#accordion').on('show.bs.collapse', toggleChevron);
     }
+
 
     function SetSession(StartTime) {
 
@@ -159,6 +194,15 @@
             vldCity.style.display = "block";
         } else { vldCity.style.display = "none"; }
 
+        // TLGX SubType
+        var TLGXSubType = document.getElementById("MainContent_Flavours_ddlTLGX_displaySubType");
+        var vldTLGX = document.getElementById("vldtlgxSubType");
+        if (TLGXSubType.value == "0") {
+            message = message + "<li>" + "Please select CouTLGX SubType" + "</li>";
+            flag = false;
+            vldTLGX.style.display = "block";
+        } else { vldTLGX.style.display = "none"; }
+
         //Product Name SubType 
         var tblProdNameSubType = document.getElementById("tblProdNameSubType");
         var vldProductNameSubType = document.getElementById("vldProductNameSubType");
@@ -217,16 +261,9 @@
         return flag;
     }
 
-    
 
-    $(document).ready(function(){
-        $("#hover").hover(function () {
-            $("#supplierInfo").show();
 
-     },function(){
-     $("#supplierInfo").hide(); 
-        });
-    });
+
 
     $('textarea').keypress(function (event) {
         if (event.which == 13) {
@@ -236,8 +273,7 @@
 </script>
 
 <style>
-    #supplierInfo
-    {
+    #supplierInfo {
         display: none;
         position: absolute;
         width: 280px;
@@ -265,11 +301,168 @@
         bottom: 15px;
         z-index: 1000;
     }
-    .wellleftpaddingzero{
-        padding-left:0px !important;
+
+    .wellleftpaddingzero {
+        padding-left: 0px !important;
+    }
+
+    @import "compass/css3";
+
+    .rotate-icon {
+        -webkit-transform: rotate(-180deg) !important;
+        -moz-transform: rotate(-180deg) !important;
+        transform: rotate(-180deg) !important;
+    }
+
+
+    .black {
+        color: #333333;
+    }
+    /*
+snippet from Animate.css - zoomIn effect
+*/
+    .black {
+        color: #333333;
+    }
+
+    .central {
+        vertical-align: middle !important;
+        text-align: center !important;
+    }
+
+    .vl {
+        border-left: 6px solid black;
+        height: 5px;
+    }
+
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both
+    }
+
+        .animated.infinite {
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite
+        }
+
+        .animated.hinge {
+            -webkit-animation-duration: 2s;
+            animation-duration: 2s
+        }
+
+    @-webkit-keyframes zoomIn {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale3d(.3,.3,.3);
+            transform: scale3d(.3,.3,.3)
+        }
+
+        50% {
+            opacity: 1
+        }
+    }
+
+    @keyframes zoomIn {
+        0% {
+            opacity: 0;
+            -webkit-transform: scale3d(.3,.3,.3);
+            transform: scale3d(.3,.3,.3)
+        }
+
+        50% {
+            opacity: 1
+        }
+    }
+
+    .zoomIn {
+        -webkit-animation-name: zoomIn;
+        animation-name: zoomIn
+    }
+
+    @-webkit-keyframes zoomOut {
+        0% {
+            opacity: 1
+        }
+
+        50% {
+            opacity: 0;
+            -webkit-transform: scale3d(.3,.3,.3);
+            transform: scale3d(.3,.3,.3)
+        }
+
+        100% {
+            opacity: 0
+        }
+    }
+
+    @keyframes zoomOut {
+        0% {
+            opacity: 1
+        }
+
+        50% {
+            opacity: 0;
+            -webkit-transform: scale3d(.3,.3,.3);
+            transform: scale3d(.3,.3,.3)
+        }
+
+        100% {
+            opacity: 0
+        }
+    }
+
+    .zoomOut {
+        -webkit-animation-name: zoomOut;
+        animation-name: zoomOut
+    }
+
+    #accordion .panel-title i.glyphicon {
+        -moz-transition: -moz-transform 0.5s ease-in-out;
+        -o-transition: -o-transform 0.5s ease-in-out;
+        -webkit-transition: -webkit-transform 0.5s ease-in-out;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .rotate-icon {
+        -webkit-transform: rotate(-225deg);
+        -moz-transform: rotate(-225deg);
+        transform: rotate(-225deg);
+    }
+
+    .panel1 {
+        border: 0px;
+        border-bottom: 1px solid #30bb64;
+    }
+
+    .panel-group .panel1 + .panel {
+        margin-top: 0px;
+    }
+
+    .panel-group .panel1 {
+        border-radius: 0px;
+    }
+
+    .panel-heading {
+        border-radius: 0px;
+        color: white;
+        padding: 25px 15px;
+    }
+
+    .panel-custom > .panel-heading {
+        background-color: Highlight;
+    }
+
+    .panel-group .panel1:last-child {
+        border-bottom: 5px solid #163572;
+    }
+
+    panel-collapse .collapse.in {
+        border-bottom: 0;
     }
 </style>
-<asp:UpdatePanel ID="upActivityFlavour" runat="server">
+<asp:UpdatePanel ID="upActivityFlavour" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
 
         <div class="row">
@@ -571,29 +764,45 @@
                             </div>
                         </div>
 
-                         <div class="form-group row">
+                        <div class="form-group row">
                             <div class="col-sm-6 row">
                                 <label class="control-label col-sm-4">
                                     Tour Type
                                 </label>
                                 <em>
-                                <asp:Label ID="lblSupplierTourType" runat="server" class="control-label col-sm-2"></asp:Label></em>
+                                    <asp:Label ID="lblSupplierTourType" runat="server" class="control-label col-sm-2"></asp:Label></em>
                             </div>
                             <div class="col-sm-6">
-                               <asp:TextBox ID="txtTourType" runat="server" CssClass="form-control" MaxLength="100"></asp:TextBox>
+                                <asp:TextBox ID="txtTourType" runat="server" CssClass="form-control" MaxLength="100"></asp:TextBox>
                             </div>
                         </div>
 
-                          <div class="form-group row">
+                        <div class="form-group row">
                             <div class="col-sm-6 row">
                                 <label class="control-label col-sm-4">
                                     Area/Address
                                 </label>
                                 <em>
-                                <asp:Label ID="lblSupplierLocation" runat="server" class="control-label col-sm-2"></asp:Label></em>
+                                    <asp:Label ID="lblSupplierLocation" runat="server" class="control-label col-sm-2"></asp:Label></em>
                             </div>
                             <div class="col-sm-6">
-                               <textarea ID="txtLocation" runat="server" CssClass="form-control" cols="35" MaxLength="100"></textarea>
+                                <textarea id="txtLocation" runat="server" cssclass="form-control" cols="35" maxlength="100"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-6 row">
+                                <label class="control-label col-sm-4">
+                                    <u>TLGX Display SubType</u>
+                                </label>
+                                <em>
+                                    <span class="validation text-danger" style="display: none;" id="vldtlgxSubType">*</span></em>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <asp:DropDownList ID="ddlTLGX_displaySubType" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true">
+                                    <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                </asp:DropDownList>
                             </div>
                         </div>
                     </div>
@@ -626,7 +835,9 @@
 
                             </div>
                             <div class="col-md-3 ">
-                                <div id="hover"><h4><strong>Supplier Level Info</strong></h4></div>
+                                <div id="hover">
+                                    <h4><strong>Supplier Level Info</strong></h4>
+                                </div>
                                 <div id="supplierInfo">
                                     <asp:Repeater ID="repSupplierInformation" runat="server">
                                         <HeaderTemplate>
@@ -660,426 +871,560 @@
                         </div>
                     </div>
                     <div class="row">
-                        
-                        <div class="col-md-12">
-                            <uc1:ucNonOperatingDays runat="server" ID="ucNonOperatingDays" />
-                            <asp:Repeater ID="repOperatingDays" runat="server" OnItemCommand="repOperatingDays_ItemCommand" OnItemDataBound="repOperatingDays_ItemDataBound">
 
-                                <HeaderTemplate>
+                        <asp:UpdatePanel runat="server" ID="updAdding" UpdateMode="Conditional">
+                            <ContentTemplate>
 
-                                    <div class="form-group">
-                                        <div class="panel panel-primary">
-                                            <div class="panel-body">
-                                </HeaderTemplate>
-                                
-                                <ItemTemplate>
-                                    <div class="form-group row well">
+                                <div class="col-md-12">
+                                    <%--<uc1:ucNonOperatingDays runat="server" ID="ucNonOperatingDays" />--%>
 
-                                        <div class="col-sm-3">
-                                            <label class="control-label col-sm-8" for="chkSpecificOperatingDays">Operating Dates</label>
-                                            <asp:CheckBox ID="chkSpecificOperatingDays" runat="server" CssClass="col-sm-4" Checked='<%# DataBinder.Eval(Container.DataItem, "IsOperatingDays") %>' />
+                                    <div class="panel-footer">
+                                        <div class="form-group row col-md-12">
+                                            <strong>Add Operating Dates</strong>
                                         </div>
 
-                                        <div class="col-sm-4">
-                                            <label class="control-label col-sm-4" for="txtFrom">
-                                                From Date
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <div class="input-group">
-                                                    <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container.DataItem, "FromDate", "{0:dd/MM/yyyy}") %>' />
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button" id="iCalFrom" runat="server">
-                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                        </button>
-                                                    </span>
+
+                                        <div class="form-group row well">
+
+                                            <div class="col-sm-3">
+                                                <label class="control-label col-sm-8" for="chkSpecificOperatingDays">Operating Dates</label>
+                                                <asp:CheckBox ID="chkSpecificOperatingDays" runat="server" CssClass="col-sm-4" />
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <label class="control-label col-sm-4" for="txtFrom">
+                                                    From Date
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <asp:TextBox ID="txtFromAdd" runat="server" CssClass="form-control" />
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button" id="iCalFromAdd">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                    <cc1:CalendarExtender ID="calFromDateAdd" runat="server" TargetControlID="txtFromAdd" Format="dd/MM/yyyy" PopupButtonID="iCalFromAdd"></cc1:CalendarExtender>
+                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtFromAdd" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFromAdd" />
+
                                                 </div>
-                                                <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
-                                                <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
 
                                             </div>
 
-                                        </div>
-
-                                        <div class="col-sm-4">
-                                            <label class="control-label col-sm-4" for="txtTo">
-                                                To Date
-                                            </label>
-                                            <div class="col-sm-8">
-                                                <div class="input-group">
-                                                    <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container.DataItem, "EndDate", "{0:dd/MM/yyyy}") %>' />
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button" id="iCalTo" runat="server">
-                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                        </button>
-                                                    </span>
+                                            <div class="col-sm-4">
+                                                <label class="control-label col-sm-4" for="txtTo">
+                                                    To Date
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <div class="input-group">
+                                                        <asp:TextBox ID="txtToAdd" runat="server" CssClass="form-control" />
+                                                        <span class="input-group-btn">
+                                                            <button class="btn btn-default" type="button" id="iCalToAdd">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                    <cc1:CalendarExtender ID="calToDateAdd" runat="server" TargetControlID="txtToAdd" Format="dd/MM/yyyy" PopupButtonID="iCalToAdd"></cc1:CalendarExtender>
+                                                    <cc1:FilteredTextBoxExtender ID="axfte_txtToAdd" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtToAdd" />
                                                 </div>
-                                                <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
-                                                <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
                                             </div>
-                                        </div>
 
-                                        <div class="col-sm-1" style="padding-left: 0px;">
-                                            <div class="input-group">
-                                                <asp:CheckBox ID="chkToDeleteOperation" runat="server" CssClass="chkToDeleteOperation input-group-addon" />
-                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Activity_DaysOfOperation_Id") %>'>
-                                                    <i class="glyphicon glyphicon-trash"></i>
+                                            <div class="col-sm-1">
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnAddOperatingDays" OnClick="btnAddOperatingDays_Click">
+                                                       <i class="glyphicon glyphicon-plus"></i>         
                                                 </asp:LinkButton>
                                             </div>
+
                                         </div>
 
                                     </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div id="dvMsgAlert" runat="server" data-auto-dismiss="2000" style="display: none"></div>
+                                </div>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
 
-                                    <div class="form-group row">
-                                        <div class="form-group col-sm-12">
-                                            <asp:Repeater ID="repDaysOfWeek" runat="server" DataSource='<%# DataBinder.Eval(Container.DataItem, "DaysOfWeek") %>' OnItemCommand="repDaysOfWeek_ItemCommand" OnItemDataBound="repDaysOfWeek_ItemDataBound">
-                                                <HeaderTemplate>
-
-                                                    <div class="panel panel-primary">
-
-                                                        <div class="panel-body">
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-
-                                                    <div class="row">
-                                                        <div class="col-xs-1">
-                                                            <label class="control-label-mand" for="txtStartTime">
-                                                                Start Time
-                                                            </label>
-                                                            <em>&nbsp;(<asp:Label ID="lblSupplierStartTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierStartTime") %>'></asp:Label>)</em>
-                                                        </div>
-                                                        <div class="col-xs-1">
-                                                            <label class="control-label-mand" for="txtEndTime">
-                                                                End Time
-                                                            </label>
-                                                            <em>&nbsp;(<asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierEndTime") %>'></asp:Label>)</em>
-                                                        </div>
-                                                        <div class="col-xs-2">
-                                                            <label class="control-label-mand" for="txtSession">
-                                                                Session
-                                                            </label>
-                                                            <em>&nbsp;(<asp:Label ID="lblSupplierSession" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierSession") %>'></asp:Label>)</em>
-                                                            <asp:HiddenField ID="hdnSession" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Session") %>' />
-                                                        </div>
-                                                        <div class="col-xs-2">
-                                                            <label class="control-label-mand" for="txtDuration">
-                                                                Duration (dd.HH:mm)
-                                                            </label>
-                                                            <em>&nbsp;(<asp:Label ID="lblSupplierDuration" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierDuration") %>'></asp:Label>)</em>
-                                                            <asp:HiddenField ID="hdnDuration" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Duration") %>' />
-                                                        </div>
-                                                        <div class="col-xs-2">
-                                                            <label class="control-label-mand" for="ddlDurationType">
-                                                                Duration Type
-                                                            </label>
-                                                            <asp:HiddenField ID="hdnDurationType" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "DurationType") %>' />
-                                                        </div>
-                                                        <div class="col-xs-3">
-                                                            <label class="control-label-mand" for="txtSession">
-                                                                Applicable On
-                                                            </label>
-                                                            <em>&nbsp;(<asp:Label ID="lblSupplierFrequency" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierFrequency") %>'></asp:Label>)</em>
-                                                        </div>
-                                                        <div class="col-xs-1">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row well wellleftpaddingzero">
-
-                                                        <div class="col-xs-1">
-                                                            <asp:TextBox ID="txtStartTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "StartTime") %>' CssClass="form-control" onchange="SetSession(this)"></asp:TextBox>
-                                                            <cc1:MaskedEditExtender ID="txtStartTime_MaskEditExtender" runat="server" AcceptAMPM="false"
-                                                                Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtStartTime"
-                                                                UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
-                                                        </div>
-                                                        <div class="col-xs-1">
-                                                            <asp:TextBox ID="txtEndTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EndTime") %>' CssClass="form-control"></asp:TextBox>
-                                                            <cc1:MaskedEditExtender ID="txtEndTime_MaskEditExtender" runat="server" AcceptAMPM="false"
-                                                                Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtEndTime"
-                                                                UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
-                                                        </div>
-                                                        <div class="col-xs-2">
-                                                            <asp:DropDownList ID="ddlSession" runat="server" onchange="SetddlValue(this)" CssClass="form-control sessionSet" AppendDataBoundItems="true">
-                                                                <asp:ListItem Value="0">-Select-</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                        </div>
-
-                                                        <div class="col-xs-2">
-
-                                                            <div class="form-inline">
-                                                                <asp:DropDownList ID="ddlDurationDay" runat="server" class="form-control selectRemoveArrow classDurationDay" onchange="setDurationType(this, 'Day')">
-                                                                    <asp:ListItem Text="00"></asp:ListItem>
-                                                                    <asp:ListItem Text="01"></asp:ListItem>
-                                                                    <asp:ListItem Text="02"></asp:ListItem>
-                                                                    <asp:ListItem Text="03"></asp:ListItem>
-                                                                    <asp:ListItem Text="04"></asp:ListItem>
-                                                                    <asp:ListItem Text="05"></asp:ListItem>
-                                                                    <asp:ListItem Text="06"></asp:ListItem>
-                                                                    <asp:ListItem Text="07"></asp:ListItem>
-                                                                    <asp:ListItem Text="08"></asp:ListItem>
-                                                                    <asp:ListItem Text="09"></asp:ListItem>
-                                                                    <asp:ListItem Text="10"></asp:ListItem>
-                                                                    <asp:ListItem Text="11"></asp:ListItem>
-                                                                    <asp:ListItem Text="12"></asp:ListItem>
-                                                                    <asp:ListItem Text="13"></asp:ListItem>
-                                                                    <asp:ListItem Text="14"></asp:ListItem>
-                                                                    <asp:ListItem Text="15"></asp:ListItem>
-                                                                    <asp:ListItem Text="16"></asp:ListItem>
-                                                                    <asp:ListItem Text="17"></asp:ListItem>
-                                                                    <asp:ListItem Text="18"></asp:ListItem>
-                                                                    <asp:ListItem Text="19"></asp:ListItem>
-                                                                    <asp:ListItem Text="20"></asp:ListItem>
-                                                                    <asp:ListItem Text="21"></asp:ListItem>
-                                                                    <asp:ListItem Text="22"></asp:ListItem>
-                                                                    <asp:ListItem Text="23"></asp:ListItem>
-                                                                    <asp:ListItem Text="24"></asp:ListItem>
-                                                                    <asp:ListItem Text="25"></asp:ListItem>
-                                                                    <asp:ListItem Text="26"></asp:ListItem>
-                                                                    <asp:ListItem Text="27"></asp:ListItem>
-                                                                    <asp:ListItem Text="28"></asp:ListItem>
-                                                                    <asp:ListItem Text="29"></asp:ListItem>
-                                                                    <asp:ListItem Text="30"></asp:ListItem>
-                                                                    <asp:ListItem Text="31"></asp:ListItem>
-                                                                    <asp:ListItem Text="32"></asp:ListItem>
-                                                                    <asp:ListItem Text="33"></asp:ListItem>
-                                                                    <asp:ListItem Text="34"></asp:ListItem>
-                                                                    <asp:ListItem Text="35"></asp:ListItem>
-                                                                    <asp:ListItem Text="36"></asp:ListItem>
-                                                                    <asp:ListItem Text="37"></asp:ListItem>
-                                                                    <asp:ListItem Text="38"></asp:ListItem>
-                                                                    <asp:ListItem Text="39"></asp:ListItem>
-                                                                    <asp:ListItem Text="40"></asp:ListItem>
-                                                                    <asp:ListItem Text="41"></asp:ListItem>
-                                                                    <asp:ListItem Text="42"></asp:ListItem>
-                                                                    <asp:ListItem Text="43"></asp:ListItem>
-                                                                    <asp:ListItem Text="44"></asp:ListItem>
-                                                                    <asp:ListItem Text="45"></asp:ListItem>
-                                                                    <asp:ListItem Text="46"></asp:ListItem>
-                                                                    <asp:ListItem Text="47"></asp:ListItem>
-                                                                    <asp:ListItem Text="48"></asp:ListItem>
-                                                                    <asp:ListItem Text="49"></asp:ListItem>
-                                                                    <asp:ListItem Text="50"></asp:ListItem>
-                                                                    <asp:ListItem Text="51"></asp:ListItem>
-                                                                    <asp:ListItem Text="52"></asp:ListItem>
-                                                                    <asp:ListItem Text="53"></asp:ListItem>
-                                                                    <asp:ListItem Text="54"></asp:ListItem>
-                                                                    <asp:ListItem Text="55"></asp:ListItem>
-                                                                    <asp:ListItem Text="56"></asp:ListItem>
-                                                                    <asp:ListItem Text="57"></asp:ListItem>
-                                                                    <asp:ListItem Text="58"></asp:ListItem>
-                                                                    <asp:ListItem Text="59"></asp:ListItem>
-                                                                    <asp:ListItem Text="60"></asp:ListItem>
-                                                                    <asp:ListItem Text="61"></asp:ListItem>
-                                                                    <asp:ListItem Text="62"></asp:ListItem>
-                                                                    <asp:ListItem Text="63"></asp:ListItem>
-                                                                    <asp:ListItem Text="64"></asp:ListItem>
-                                                                    <asp:ListItem Text="65"></asp:ListItem>
-                                                                    <asp:ListItem Text="66"></asp:ListItem>
-                                                                    <asp:ListItem Text="67"></asp:ListItem>
-                                                                    <asp:ListItem Text="68"></asp:ListItem>
-                                                                    <asp:ListItem Text="69"></asp:ListItem>
-                                                                    <asp:ListItem Text="70"></asp:ListItem>
-                                                                    <asp:ListItem Text="71"></asp:ListItem>
-                                                                    <asp:ListItem Text="72"></asp:ListItem>
-                                                                    <asp:ListItem Text="73"></asp:ListItem>
-                                                                    <asp:ListItem Text="74"></asp:ListItem>
-                                                                    <asp:ListItem Text="75"></asp:ListItem>
-                                                                    <asp:ListItem Text="76"></asp:ListItem>
-                                                                    <asp:ListItem Text="77"></asp:ListItem>
-                                                                    <asp:ListItem Text="78"></asp:ListItem>
-                                                                    <asp:ListItem Text="79"></asp:ListItem>
-                                                                    <asp:ListItem Text="80"></asp:ListItem>
-                                                                    <asp:ListItem Text="81"></asp:ListItem>
-                                                                    <asp:ListItem Text="82"></asp:ListItem>
-                                                                    <asp:ListItem Text="83"></asp:ListItem>
-                                                                    <asp:ListItem Text="84"></asp:ListItem>
-                                                                    <asp:ListItem Text="85"></asp:ListItem>
-                                                                    <asp:ListItem Text="86"></asp:ListItem>
-                                                                    <asp:ListItem Text="87"></asp:ListItem>
-                                                                    <asp:ListItem Text="88"></asp:ListItem>
-                                                                    <asp:ListItem Text="89"></asp:ListItem>
-                                                                    <asp:ListItem Text="90"></asp:ListItem>
-                                                                    <asp:ListItem Text="91"></asp:ListItem>
-                                                                    <asp:ListItem Text="92"></asp:ListItem>
-                                                                    <asp:ListItem Text="93"></asp:ListItem>
-                                                                    <asp:ListItem Text="94"></asp:ListItem>
-                                                                    <asp:ListItem Text="95"></asp:ListItem>
-                                                                    <asp:ListItem Text="96"></asp:ListItem>
-                                                                    <asp:ListItem Text="97"></asp:ListItem>
-                                                                    <asp:ListItem Text="98"></asp:ListItem>
-                                                                    <asp:ListItem Text="99"></asp:ListItem>
-
-                                                                </asp:DropDownList>
-
-                                                                <asp:DropDownList ID="ddlDurationHour" runat="server" class="form-control selectRemoveArrow classDurationHour" onchange="setDurationType(this, 'Hour')">
-                                                                    <asp:ListItem Text="00"></asp:ListItem>
-                                                                    <asp:ListItem Text="01"></asp:ListItem>
-                                                                    <asp:ListItem Text="02"></asp:ListItem>
-                                                                    <asp:ListItem Text="03"></asp:ListItem>
-                                                                    <asp:ListItem Text="04"></asp:ListItem>
-                                                                    <asp:ListItem Text="05"></asp:ListItem>
-                                                                    <asp:ListItem Text="06"></asp:ListItem>
-                                                                    <asp:ListItem Text="07"></asp:ListItem>
-                                                                    <asp:ListItem Text="08"></asp:ListItem>
-                                                                    <asp:ListItem Text="09"></asp:ListItem>
-                                                                    <asp:ListItem Text="10"></asp:ListItem>
-                                                                    <asp:ListItem Text="11"></asp:ListItem>
-                                                                    <asp:ListItem Text="12"></asp:ListItem>
-                                                                    <asp:ListItem Text="13"></asp:ListItem>
-                                                                    <asp:ListItem Text="14"></asp:ListItem>
-                                                                    <asp:ListItem Text="15"></asp:ListItem>
-                                                                    <asp:ListItem Text="16"></asp:ListItem>
-                                                                    <asp:ListItem Text="17"></asp:ListItem>
-                                                                    <asp:ListItem Text="18"></asp:ListItem>
-                                                                    <asp:ListItem Text="19"></asp:ListItem>
-                                                                    <asp:ListItem Text="20"></asp:ListItem>
-                                                                    <asp:ListItem Text="21"></asp:ListItem>
-                                                                    <asp:ListItem Text="22"></asp:ListItem>
-                                                                    <asp:ListItem Text="23"></asp:ListItem>
-                                                                </asp:DropDownList>
-
-                                                                <asp:DropDownList ID="ddlDurationMinute" runat="server" class="form-control selectRemoveArrow classDurationMinute" onchange="setDurationType(this, 'Minute')">
-                                                                    <asp:ListItem Text="00"></asp:ListItem>
-                                                                    <asp:ListItem Text="01"></asp:ListItem>
-                                                                    <asp:ListItem Text="02"></asp:ListItem>
-                                                                    <asp:ListItem Text="03"></asp:ListItem>
-                                                                    <asp:ListItem Text="04"></asp:ListItem>
-                                                                    <asp:ListItem Text="05"></asp:ListItem>
-                                                                    <asp:ListItem Text="06"></asp:ListItem>
-                                                                    <asp:ListItem Text="07"></asp:ListItem>
-                                                                    <asp:ListItem Text="08"></asp:ListItem>
-                                                                    <asp:ListItem Text="09"></asp:ListItem>
-                                                                    <asp:ListItem Text="10"></asp:ListItem>
-                                                                    <asp:ListItem Text="11"></asp:ListItem>
-                                                                    <asp:ListItem Text="12"></asp:ListItem>
-                                                                    <asp:ListItem Text="13"></asp:ListItem>
-                                                                    <asp:ListItem Text="14"></asp:ListItem>
-                                                                    <asp:ListItem Text="15"></asp:ListItem>
-                                                                    <asp:ListItem Text="16"></asp:ListItem>
-                                                                    <asp:ListItem Text="17"></asp:ListItem>
-                                                                    <asp:ListItem Text="18"></asp:ListItem>
-                                                                    <asp:ListItem Text="19"></asp:ListItem>
-                                                                    <asp:ListItem Text="20"></asp:ListItem>
-                                                                    <asp:ListItem Text="21"></asp:ListItem>
-                                                                    <asp:ListItem Text="22"></asp:ListItem>
-                                                                    <asp:ListItem Text="23"></asp:ListItem>
-                                                                    <asp:ListItem Text="24"></asp:ListItem>
-                                                                    <asp:ListItem Text="25"></asp:ListItem>
-                                                                    <asp:ListItem Text="26"></asp:ListItem>
-                                                                    <asp:ListItem Text="27"></asp:ListItem>
-                                                                    <asp:ListItem Text="28"></asp:ListItem>
-                                                                    <asp:ListItem Text="29"></asp:ListItem>
-                                                                    <asp:ListItem Text="30"></asp:ListItem>
-                                                                    <asp:ListItem Text="31"></asp:ListItem>
-                                                                    <asp:ListItem Text="32"></asp:ListItem>
-                                                                    <asp:ListItem Text="33"></asp:ListItem>
-                                                                    <asp:ListItem Text="34"></asp:ListItem>
-                                                                    <asp:ListItem Text="35"></asp:ListItem>
-                                                                    <asp:ListItem Text="36"></asp:ListItem>
-                                                                    <asp:ListItem Text="37"></asp:ListItem>
-                                                                    <asp:ListItem Text="38"></asp:ListItem>
-                                                                    <asp:ListItem Text="39"></asp:ListItem>
-                                                                    <asp:ListItem Text="40"></asp:ListItem>
-                                                                    <asp:ListItem Text="41"></asp:ListItem>
-                                                                    <asp:ListItem Text="42"></asp:ListItem>
-                                                                    <asp:ListItem Text="43"></asp:ListItem>
-                                                                    <asp:ListItem Text="44"></asp:ListItem>
-                                                                    <asp:ListItem Text="45"></asp:ListItem>
-                                                                    <asp:ListItem Text="46"></asp:ListItem>
-                                                                    <asp:ListItem Text="47"></asp:ListItem>
-                                                                    <asp:ListItem Text="48"></asp:ListItem>
-                                                                    <asp:ListItem Text="49"></asp:ListItem>
-                                                                    <asp:ListItem Text="50"></asp:ListItem>
-                                                                    <asp:ListItem Text="51"></asp:ListItem>
-                                                                    <asp:ListItem Text="52"></asp:ListItem>
-                                                                    <asp:ListItem Text="53"></asp:ListItem>
-                                                                    <asp:ListItem Text="54"></asp:ListItem>
-                                                                    <asp:ListItem Text="55"></asp:ListItem>
-                                                                    <asp:ListItem Text="56"></asp:ListItem>
-                                                                    <asp:ListItem Text="57"></asp:ListItem>
-                                                                    <asp:ListItem Text="58"></asp:ListItem>
-                                                                    <asp:ListItem Text="59"></asp:ListItem>
-
-                                                                </asp:DropDownList>
+                        <div class="col-sm-12">
+                            <table class="table table-hover table-striped" cellspacing="0" rules="all" class="table" border="1">
+                                <tr>
+                                    <td style="padding: 5px;">
+                                        <div class="panel-heading table-hover table-striped" role="tab" id="headingOne">
+                                            <h4 class="panel-title black col-sm-9">
+                                                <a data-toggle="collapse" style="text-decoration: underline;" runat="server" onclick="toggleChevron(this);" id="h1" name="h1" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Non Operating Days 
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <asp:UpdatePanel runat="server" ID="updNonOp" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <div class="col-lg-2 pull-right">
+                                                            <div class="form-group pull-right">
+                                                                <div class="input-group" runat="server" id="divDropdownForEntries">
+                                                                    <label class="input-group-addon" for="ddlShowEntries">Page Size</label>
+                                                                    <asp:DropDownList ID="ddlShowEntries" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                                                                        <asp:ListItem>5</asp:ListItem>
+                                                                        <asp:ListItem>10</asp:ListItem>
+                                                                        <asp:ListItem>15</asp:ListItem>
+                                                                        <asp:ListItem>20</asp:ListItem>
+                                                                    </asp:DropDownList>
+                                                                </div>
                                                             </div>
-
                                                         </div>
+                                                        <asp:GridView ID="gvNonOperatingData" runat="server" DataKeyNames="Activity_DaysOfOperation_Id" AutoGenerateColumns="false" CssClass="table table-bordered table-striped"
+                                                            ShowHeaderWhenEmpty="false" Style="overflow-x: scroll" AllowPaging="True" AllowCustomPaging="true" OnPageIndexChanging="gvNonOperatingData_PageIndexChanging" OnClick="deleteNonOperatingDate_Click">
+                                                            <Columns>
+                                                                <asp:BoundField HeaderText="From Date" DataField="FromDate" HtmlEncode="False" DataFormatString="{0:d}" />
+                                                                <asp:BoundField HeaderText="To Date" DataField="EndDate" HtmlEncode="False" DataFormatString="{0:d}" />
+                                                                <asp:TemplateField ShowHeader="false">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton data-parent="#accordion"
+                                                                            CssClass="btn btn-default" runat="server" ID="LinkButton1" OnClick="deleteNonOperatingDate_Click" CommandName="RemoveNonOperatingDays">
+                                      <i class="glyphicon glyphicon-trash"></i>
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                            </Columns>
+                                                            <PagerStyle CssClass="pagination-ys" />
+                                                        </asp:GridView>
 
-                                                        <div class="col-xs-2">
-                                                            <asp:DropDownList ID="ddlDurationType" runat="server" CssClass="form-control classDurationType" AppendDataBoundItems="true" onchange="SetddlValue(this)">
-                                                                <asp:ListItem Value="0">-Select-</asp:ListItem>
-                                                            </asp:DropDownList>
-                                                        </div>
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
 
-                                                        <div class="col-xs-3">
-                                                            <div class="input-group input-group-sm">
-                                                                <label class="control-label">
-                                                                    ALL
+                                <tr>
+                                    <td style="padding: 5px;">
+                                        <div class="panel-heading table-hover table-striped" role="tab" id="headingTwo">
+                                            <h4 class="panel-title black col-sm-9">
+                                                <a class="collapsed" style="text-decoration: underline;" onclick="toggleChevron(this);" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Operating Days                                                
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <asp:UpdatePanel runat="server" ID="updOp" UpdateMode="Conditional">
+                                                    <ContentTemplate>
+                                                        <asp:Repeater ID="repOperatingDays" runat="server" OnItemCommand="repOperatingDays_ItemCommand" OnItemDataBound="repOperatingDays_ItemDataBound">
+
+                                                            <HeaderTemplate>
+
+                                                                <div class="form-group">
+                                                                    <div class="panel panel-primary">
+                                                                        <div class="panel-body">
+                                                            </HeaderTemplate>
+
+                                                            <ItemTemplate>
+                                                                <div class="form-group row well">
+
+                                                                    <div class="col-sm-3">
+                                                                        <label class="control-label col-sm-8" for="chkSpecificOperatingDays">Operating Dates</label>
+                                                                        <asp:CheckBox ID="chkSpecificOperatingDays" runat="server" CssClass="col-sm-4" Checked='<%# DataBinder.Eval(Container.DataItem, "IsOperatingDays") %>' />
+                                                                    </div>
+
+                                                                    <div class="col-sm-4">
+                                                                        <label class="control-label col-sm-4" for="txtFrom">
+                                                                            From Date
+                                                                        </label>
+                                                                        <div class="col-sm-8">
+                                                                            <div class="input-group">
+                                                                                <asp:TextBox ID="txtFrom" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container.DataItem, "FromDate", "{0:dd/MM/yyyy}") %>' />
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-default" type="button" id="iCalFrom" runat="server">
+                                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <cc1:CalendarExtender ID="calFromDate" runat="server" TargetControlID="txtFrom" Format="dd/MM/yyyy" PopupButtonID="iCalFrom"></cc1:CalendarExtender>
+                                                                            <cc1:FilteredTextBoxExtender ID="axfte_txtFrom" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFrom" />
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="col-sm-4">
+                                                                        <label class="control-label col-sm-4" for="txtTo">
+                                                                            To Date
+                                                                        </label>
+                                                                        <div class="col-sm-8">
+                                                                            <div class="input-group">
+                                                                                <asp:TextBox ID="txtTo" runat="server" CssClass="form-control" Text='<%# DataBinder.Eval(Container.DataItem, "EndDate", "{0:dd/MM/yyyy}") %>' />
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-default" type="button" id="iCalTo" runat="server">
+                                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <cc1:CalendarExtender ID="calToDate" runat="server" TargetControlID="txtTo" Format="dd/MM/yyyy" PopupButtonID="iCalTo"></cc1:CalendarExtender>
+                                                                            <cc1:FilteredTextBoxExtender ID="axfte_txtTo" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtTo" />
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-sm-1" style="padding-left: 0px;">
+                                                                        <div class="input-group">
+                                                                            <asp:CheckBox ID="chkToDeleteOperation" runat="server" CssClass="chkToDeleteOperation input-group-addon" />
+                                                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveOperatingDays" CommandName="RemoveOperatingDays" CommandArgument='<%# DataBinder.Eval(Container.DataItem,"Activity_DaysOfOperation_Id") %>'>
+                                                    <i class="glyphicon glyphicon-trash"></i>
+                                                                            </asp:LinkButton>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="form-group row">
+                                                                    <div class="form-group col-sm-12">
+                                                                        <asp:Repeater ID="repDaysOfWeek" runat="server" DataSource='<%# DataBinder.Eval(Container.DataItem, "DaysOfWeek") %>' OnItemCommand="repDaysOfWeek_ItemCommand" OnItemDataBound="repDaysOfWeek_ItemDataBound">
+                                                                            <HeaderTemplate>
+
+                                                                                <div class="panel panel-primary">
+
+                                                                                    <div class="panel-body">
+                                                                            </HeaderTemplate>
+                                                                            <ItemTemplate>
+
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-1">
+                                                                                        <label class="control-label-mand" for="txtStartTime">
+                                                                                            Start Time
+                                                                                        </label>
+                                                                                        <em>&nbsp;(<asp:Label ID="lblSupplierStartTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierStartTime") %>'></asp:Label>)</em>
+                                                                                    </div>
+                                                                                    <div class="col-xs-1">
+                                                                                        <label class="control-label-mand" for="txtEndTime">
+                                                                                            End Time
+                                                                                        </label>
+                                                                                        <em>&nbsp;(<asp:Label ID="Label1" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierEndTime") %>'></asp:Label>)</em>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2">
+                                                                                        <label class="control-label-mand" for="txtSession">
+                                                                                            Session
+                                                                                        </label>
+                                                                                        <em>&nbsp;(<asp:Label ID="lblSupplierSession" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierSession") %>'></asp:Label>)</em>
+                                                                                        <asp:HiddenField ID="hdnSession" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Session") %>' />
+                                                                                    </div>
+                                                                                    <div class="col-xs-2">
+                                                                                        <label class="control-label-mand" for="txtDuration">
+                                                                                            Duration (dd.HH:mm)
+                                                                                        </label>
+                                                                                        <em>&nbsp;(<asp:Label ID="lblSupplierDuration" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierDuration") %>'></asp:Label>)</em>
+                                                                                        <asp:HiddenField ID="hdnDuration" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "Duration") %>' />
+                                                                                    </div>
+                                                                                    <div class="col-xs-2">
+                                                                                        <label class="control-label-mand" for="ddlDurationType">
+                                                                                            Duration Type
+                                                                                        </label>
+                                                                                        <asp:HiddenField ID="hdnDurationType" runat="server" Value='<%# DataBinder.Eval(Container.DataItem, "DurationType") %>' />
+                                                                                    </div>
+                                                                                    <div class="col-xs-3">
+                                                                                        <label class="control-label-mand" for="txtSession">
+                                                                                            Applicable On
+                                                                                        </label>
+                                                                                        <em>&nbsp;(<asp:Label ID="lblSupplierFrequency" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "SupplierFrequency") %>'></asp:Label>)</em>
+                                                                                    </div>
+                                                                                    <div class="col-xs-1">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row well wellleftpaddingzero">
+
+                                                                                    <div class="col-xs-1">
+                                                                                        <asp:TextBox ID="txtStartTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "StartTime") %>' CssClass="form-control" onchange="SetSession(this)"></asp:TextBox>
+                                                                                        <cc1:MaskedEditExtender ID="txtStartTime_MaskEditExtender" runat="server" AcceptAMPM="false"
+                                                                                            Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtStartTime"
+                                                                                            UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                                                                    </div>
+                                                                                    <div class="col-xs-1">
+                                                                                        <asp:TextBox ID="txtEndTime" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "EndTime") %>' CssClass="form-control"></asp:TextBox>
+                                                                                        <cc1:MaskedEditExtender ID="txtEndTime_MaskEditExtender" runat="server" AcceptAMPM="false"
+                                                                                            Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtEndTime"
+                                                                                            UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
+                                                                                    </div>
+                                                                                    <div class="col-xs-2">
+                                                                                        <asp:DropDownList ID="ddlSession" runat="server" onchange="SetddlValue(this)" CssClass="form-control sessionSet" AppendDataBoundItems="true">
+                                                                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                                        </asp:DropDownList>
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-2">
+
+                                                                                        <div class="form-inline">
+                                                                                            <asp:DropDownList ID="ddlDurationDay" runat="server" class="form-control selectRemoveArrow classDurationDay" onchange="setDurationType(this, 'Day')">
+                                                                                                <asp:ListItem Text="00"></asp:ListItem>
+                                                                                                <asp:ListItem Text="01"></asp:ListItem>
+                                                                                                <asp:ListItem Text="02"></asp:ListItem>
+                                                                                                <asp:ListItem Text="03"></asp:ListItem>
+                                                                                                <asp:ListItem Text="04"></asp:ListItem>
+                                                                                                <asp:ListItem Text="05"></asp:ListItem>
+                                                                                                <asp:ListItem Text="06"></asp:ListItem>
+                                                                                                <asp:ListItem Text="07"></asp:ListItem>
+                                                                                                <asp:ListItem Text="08"></asp:ListItem>
+                                                                                                <asp:ListItem Text="09"></asp:ListItem>
+                                                                                                <asp:ListItem Text="10"></asp:ListItem>
+                                                                                                <asp:ListItem Text="11"></asp:ListItem>
+                                                                                                <asp:ListItem Text="12"></asp:ListItem>
+                                                                                                <asp:ListItem Text="13"></asp:ListItem>
+                                                                                                <asp:ListItem Text="14"></asp:ListItem>
+                                                                                                <asp:ListItem Text="15"></asp:ListItem>
+                                                                                                <asp:ListItem Text="16"></asp:ListItem>
+                                                                                                <asp:ListItem Text="17"></asp:ListItem>
+                                                                                                <asp:ListItem Text="18"></asp:ListItem>
+                                                                                                <asp:ListItem Text="19"></asp:ListItem>
+                                                                                                <asp:ListItem Text="20"></asp:ListItem>
+                                                                                                <asp:ListItem Text="21"></asp:ListItem>
+                                                                                                <asp:ListItem Text="22"></asp:ListItem>
+                                                                                                <asp:ListItem Text="23"></asp:ListItem>
+                                                                                                <asp:ListItem Text="24"></asp:ListItem>
+                                                                                                <asp:ListItem Text="25"></asp:ListItem>
+                                                                                                <asp:ListItem Text="26"></asp:ListItem>
+                                                                                                <asp:ListItem Text="27"></asp:ListItem>
+                                                                                                <asp:ListItem Text="28"></asp:ListItem>
+                                                                                                <asp:ListItem Text="29"></asp:ListItem>
+                                                                                                <asp:ListItem Text="30"></asp:ListItem>
+                                                                                                <asp:ListItem Text="31"></asp:ListItem>
+                                                                                                <asp:ListItem Text="32"></asp:ListItem>
+                                                                                                <asp:ListItem Text="33"></asp:ListItem>
+                                                                                                <asp:ListItem Text="34"></asp:ListItem>
+                                                                                                <asp:ListItem Text="35"></asp:ListItem>
+                                                                                                <asp:ListItem Text="36"></asp:ListItem>
+                                                                                                <asp:ListItem Text="37"></asp:ListItem>
+                                                                                                <asp:ListItem Text="38"></asp:ListItem>
+                                                                                                <asp:ListItem Text="39"></asp:ListItem>
+                                                                                                <asp:ListItem Text="40"></asp:ListItem>
+                                                                                                <asp:ListItem Text="41"></asp:ListItem>
+                                                                                                <asp:ListItem Text="42"></asp:ListItem>
+                                                                                                <asp:ListItem Text="43"></asp:ListItem>
+                                                                                                <asp:ListItem Text="44"></asp:ListItem>
+                                                                                                <asp:ListItem Text="45"></asp:ListItem>
+                                                                                                <asp:ListItem Text="46"></asp:ListItem>
+                                                                                                <asp:ListItem Text="47"></asp:ListItem>
+                                                                                                <asp:ListItem Text="48"></asp:ListItem>
+                                                                                                <asp:ListItem Text="49"></asp:ListItem>
+                                                                                                <asp:ListItem Text="50"></asp:ListItem>
+                                                                                                <asp:ListItem Text="51"></asp:ListItem>
+                                                                                                <asp:ListItem Text="52"></asp:ListItem>
+                                                                                                <asp:ListItem Text="53"></asp:ListItem>
+                                                                                                <asp:ListItem Text="54"></asp:ListItem>
+                                                                                                <asp:ListItem Text="55"></asp:ListItem>
+                                                                                                <asp:ListItem Text="56"></asp:ListItem>
+                                                                                                <asp:ListItem Text="57"></asp:ListItem>
+                                                                                                <asp:ListItem Text="58"></asp:ListItem>
+                                                                                                <asp:ListItem Text="59"></asp:ListItem>
+                                                                                                <asp:ListItem Text="60"></asp:ListItem>
+                                                                                                <asp:ListItem Text="61"></asp:ListItem>
+                                                                                                <asp:ListItem Text="62"></asp:ListItem>
+                                                                                                <asp:ListItem Text="63"></asp:ListItem>
+                                                                                                <asp:ListItem Text="64"></asp:ListItem>
+                                                                                                <asp:ListItem Text="65"></asp:ListItem>
+                                                                                                <asp:ListItem Text="66"></asp:ListItem>
+                                                                                                <asp:ListItem Text="67"></asp:ListItem>
+                                                                                                <asp:ListItem Text="68"></asp:ListItem>
+                                                                                                <asp:ListItem Text="69"></asp:ListItem>
+                                                                                                <asp:ListItem Text="70"></asp:ListItem>
+                                                                                                <asp:ListItem Text="71"></asp:ListItem>
+                                                                                                <asp:ListItem Text="72"></asp:ListItem>
+                                                                                                <asp:ListItem Text="73"></asp:ListItem>
+                                                                                                <asp:ListItem Text="74"></asp:ListItem>
+                                                                                                <asp:ListItem Text="75"></asp:ListItem>
+                                                                                                <asp:ListItem Text="76"></asp:ListItem>
+                                                                                                <asp:ListItem Text="77"></asp:ListItem>
+                                                                                                <asp:ListItem Text="78"></asp:ListItem>
+                                                                                                <asp:ListItem Text="79"></asp:ListItem>
+                                                                                                <asp:ListItem Text="80"></asp:ListItem>
+                                                                                                <asp:ListItem Text="81"></asp:ListItem>
+                                                                                                <asp:ListItem Text="82"></asp:ListItem>
+                                                                                                <asp:ListItem Text="83"></asp:ListItem>
+                                                                                                <asp:ListItem Text="84"></asp:ListItem>
+                                                                                                <asp:ListItem Text="85"></asp:ListItem>
+                                                                                                <asp:ListItem Text="86"></asp:ListItem>
+                                                                                                <asp:ListItem Text="87"></asp:ListItem>
+                                                                                                <asp:ListItem Text="88"></asp:ListItem>
+                                                                                                <asp:ListItem Text="89"></asp:ListItem>
+                                                                                                <asp:ListItem Text="90"></asp:ListItem>
+                                                                                                <asp:ListItem Text="91"></asp:ListItem>
+                                                                                                <asp:ListItem Text="92"></asp:ListItem>
+                                                                                                <asp:ListItem Text="93"></asp:ListItem>
+                                                                                                <asp:ListItem Text="94"></asp:ListItem>
+                                                                                                <asp:ListItem Text="95"></asp:ListItem>
+                                                                                                <asp:ListItem Text="96"></asp:ListItem>
+                                                                                                <asp:ListItem Text="97"></asp:ListItem>
+                                                                                                <asp:ListItem Text="98"></asp:ListItem>
+                                                                                                <asp:ListItem Text="99"></asp:ListItem>
+
+                                                                                            </asp:DropDownList>
+
+                                                                                            <asp:DropDownList ID="ddlDurationHour" runat="server" class="form-control selectRemoveArrow classDurationHour" onchange="setDurationType(this, 'Hour')">
+                                                                                                <asp:ListItem Text="00"></asp:ListItem>
+                                                                                                <asp:ListItem Text="01"></asp:ListItem>
+                                                                                                <asp:ListItem Text="02"></asp:ListItem>
+                                                                                                <asp:ListItem Text="03"></asp:ListItem>
+                                                                                                <asp:ListItem Text="04"></asp:ListItem>
+                                                                                                <asp:ListItem Text="05"></asp:ListItem>
+                                                                                                <asp:ListItem Text="06"></asp:ListItem>
+                                                                                                <asp:ListItem Text="07"></asp:ListItem>
+                                                                                                <asp:ListItem Text="08"></asp:ListItem>
+                                                                                                <asp:ListItem Text="09"></asp:ListItem>
+                                                                                                <asp:ListItem Text="10"></asp:ListItem>
+                                                                                                <asp:ListItem Text="11"></asp:ListItem>
+                                                                                                <asp:ListItem Text="12"></asp:ListItem>
+                                                                                                <asp:ListItem Text="13"></asp:ListItem>
+                                                                                                <asp:ListItem Text="14"></asp:ListItem>
+                                                                                                <asp:ListItem Text="15"></asp:ListItem>
+                                                                                                <asp:ListItem Text="16"></asp:ListItem>
+                                                                                                <asp:ListItem Text="17"></asp:ListItem>
+                                                                                                <asp:ListItem Text="18"></asp:ListItem>
+                                                                                                <asp:ListItem Text="19"></asp:ListItem>
+                                                                                                <asp:ListItem Text="20"></asp:ListItem>
+                                                                                                <asp:ListItem Text="21"></asp:ListItem>
+                                                                                                <asp:ListItem Text="22"></asp:ListItem>
+                                                                                                <asp:ListItem Text="23"></asp:ListItem>
+                                                                                            </asp:DropDownList>
+
+                                                                                            <asp:DropDownList ID="ddlDurationMinute" runat="server" class="form-control selectRemoveArrow classDurationMinute" onchange="setDurationType(this, 'Minute')">
+                                                                                                <asp:ListItem Text="00"></asp:ListItem>
+                                                                                                <asp:ListItem Text="01"></asp:ListItem>
+                                                                                                <asp:ListItem Text="02"></asp:ListItem>
+                                                                                                <asp:ListItem Text="03"></asp:ListItem>
+                                                                                                <asp:ListItem Text="04"></asp:ListItem>
+                                                                                                <asp:ListItem Text="05"></asp:ListItem>
+                                                                                                <asp:ListItem Text="06"></asp:ListItem>
+                                                                                                <asp:ListItem Text="07"></asp:ListItem>
+                                                                                                <asp:ListItem Text="08"></asp:ListItem>
+                                                                                                <asp:ListItem Text="09"></asp:ListItem>
+                                                                                                <asp:ListItem Text="10"></asp:ListItem>
+                                                                                                <asp:ListItem Text="11"></asp:ListItem>
+                                                                                                <asp:ListItem Text="12"></asp:ListItem>
+                                                                                                <asp:ListItem Text="13"></asp:ListItem>
+                                                                                                <asp:ListItem Text="14"></asp:ListItem>
+                                                                                                <asp:ListItem Text="15"></asp:ListItem>
+                                                                                                <asp:ListItem Text="16"></asp:ListItem>
+                                                                                                <asp:ListItem Text="17"></asp:ListItem>
+                                                                                                <asp:ListItem Text="18"></asp:ListItem>
+                                                                                                <asp:ListItem Text="19"></asp:ListItem>
+                                                                                                <asp:ListItem Text="20"></asp:ListItem>
+                                                                                                <asp:ListItem Text="21"></asp:ListItem>
+                                                                                                <asp:ListItem Text="22"></asp:ListItem>
+                                                                                                <asp:ListItem Text="23"></asp:ListItem>
+                                                                                                <asp:ListItem Text="24"></asp:ListItem>
+                                                                                                <asp:ListItem Text="25"></asp:ListItem>
+                                                                                                <asp:ListItem Text="26"></asp:ListItem>
+                                                                                                <asp:ListItem Text="27"></asp:ListItem>
+                                                                                                <asp:ListItem Text="28"></asp:ListItem>
+                                                                                                <asp:ListItem Text="29"></asp:ListItem>
+                                                                                                <asp:ListItem Text="30"></asp:ListItem>
+                                                                                                <asp:ListItem Text="31"></asp:ListItem>
+                                                                                                <asp:ListItem Text="32"></asp:ListItem>
+                                                                                                <asp:ListItem Text="33"></asp:ListItem>
+                                                                                                <asp:ListItem Text="34"></asp:ListItem>
+                                                                                                <asp:ListItem Text="35"></asp:ListItem>
+                                                                                                <asp:ListItem Text="36"></asp:ListItem>
+                                                                                                <asp:ListItem Text="37"></asp:ListItem>
+                                                                                                <asp:ListItem Text="38"></asp:ListItem>
+                                                                                                <asp:ListItem Text="39"></asp:ListItem>
+                                                                                                <asp:ListItem Text="40"></asp:ListItem>
+                                                                                                <asp:ListItem Text="41"></asp:ListItem>
+                                                                                                <asp:ListItem Text="42"></asp:ListItem>
+                                                                                                <asp:ListItem Text="43"></asp:ListItem>
+                                                                                                <asp:ListItem Text="44"></asp:ListItem>
+                                                                                                <asp:ListItem Text="45"></asp:ListItem>
+                                                                                                <asp:ListItem Text="46"></asp:ListItem>
+                                                                                                <asp:ListItem Text="47"></asp:ListItem>
+                                                                                                <asp:ListItem Text="48"></asp:ListItem>
+                                                                                                <asp:ListItem Text="49"></asp:ListItem>
+                                                                                                <asp:ListItem Text="50"></asp:ListItem>
+                                                                                                <asp:ListItem Text="51"></asp:ListItem>
+                                                                                                <asp:ListItem Text="52"></asp:ListItem>
+                                                                                                <asp:ListItem Text="53"></asp:ListItem>
+                                                                                                <asp:ListItem Text="54"></asp:ListItem>
+                                                                                                <asp:ListItem Text="55"></asp:ListItem>
+                                                                                                <asp:ListItem Text="56"></asp:ListItem>
+                                                                                                <asp:ListItem Text="57"></asp:ListItem>
+                                                                                                <asp:ListItem Text="58"></asp:ListItem>
+                                                                                                <asp:ListItem Text="59"></asp:ListItem>
+
+                                                                                            </asp:DropDownList>
+                                                                                        </div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-2">
+                                                                                        <asp:DropDownList ID="ddlDurationType" runat="server" CssClass="form-control classDurationType" AppendDataBoundItems="true" onchange="SetddlValue(this)">
+                                                                                            <asp:ListItem Value="0">-Select-</asp:ListItem>
+                                                                                        </asp:DropDownList>
+                                                                                    </div>
+
+                                                                                    <div class="col-xs-3">
+                                                                                        <div class="input-group input-group-sm">
+                                                                                            <label class="control-label">
+                                                                                                ALL
                                                                                     <div>
                                                                                         <input type="checkbox" id="chkAll" name="All" aria-label="Checkbox for daily" onchange="MutExChkList(this)">
                                                                                     </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    M
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                M
                                                             <div>
                                                                 <input type="checkbox" id="chkMon" runat="server" name="Monday" checked='<%# DataBinder.Eval(Container.DataItem, "Mon") %>'>
                                                             </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    T
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                T
                                                             <div>
                                                                 <input type="checkbox" id="chkTues" runat="server" name="Tuesday" checked='<%# DataBinder.Eval(Container.DataItem, "Tues") %>'>
                                                             </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    W
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                W
                                                             <div>
                                                                 <input type="checkbox" id="chkWed" runat="server" name="Wednesday" checked='<%# DataBinder.Eval(Container.DataItem, "Wed") %>'>
                                                             </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    TH
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                TH
                                                             <div>
                                                                 <input type="checkbox" id="chkThurs" runat="server" name="Thursday" checked='<%# DataBinder.Eval(Container.DataItem, "Thur") %>'>
                                                             </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    F
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                F
                                                             <div>
                                                                 <input type="checkbox" id="chkFri" runat="server" name="Friday" checked='<%# DataBinder.Eval(Container.DataItem, "Fri") %>'>
                                                             </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    S
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                S
                                                             <div>
                                                                 <input type="checkbox" id="chkSat" runat="server" name="Saturday" checked='<%# DataBinder.Eval(Container.DataItem, "Sat") %>'>
                                                             </div>
-                                                                </label>
-                                                                <label class="control-label">
-                                                                    SU
+                                                                                            </label>
+                                                                                            <label class="control-label">
+                                                                                                SU
                                                             <div>
                                                                 <input type="checkbox" id="chkSun" runat="server" name="Sunday" checked='<%# DataBinder.Eval(Container.DataItem, "Sun") %>'>
                                                             </div>
-                                                                </label>
-                                                            </div>
-                                                        </div>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
 
-                                                        <div class="col-xs-1" style="padding-left: 0px;">
-                                                            <div class="input-group">
-                                                                <asp:CheckBox ID="chkToDeleteDays" runat="server" CssClass="chkToDeleteDays input-group-addon" />
-                                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveDaysOfWeek" CommandName="RemoveDaysOfWeek" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfWeek_ID") %>'>
+                                                                                    <div class="col-xs-1" style="padding-left: 0px;">
+                                                                                        <div class="input-group">
+                                                                                            <asp:CheckBox ID="chkToDeleteDays" runat="server" CssClass="chkToDeleteDays input-group-addon" />
+                                                                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveDaysOfWeek" CommandName="RemoveDaysOfWeek" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Activity_DaysOfWeek_ID") %>'>
                                                             <i class="glyphicon glyphicon-trash"></i>
-                                                                </asp:LinkButton>
-                                                            </div>
-                                                        </div>
+                                                                                            </asp:LinkButton>
+                                                                                        </div>
+                                                                                    </div>
 
-                                                    </div>
+                                                                                </div>
 
-                                                    <div class="form-group row">
-                                                        <br />
-                                                    </div>
-                                                </ItemTemplate>
-                                                <FooterTemplate>
-                                                    </div>
+                                                                                <div class="form-group row">
+                                                                                    <br />
+                                                                                </div>
+                                                                            </ItemTemplate>
+                                                                            <FooterTemplate>
+                                                                                </div>
                                                             <div class="panel-footer">
 
                                                                 <div class="form-group row col-md-12">
@@ -1420,86 +1765,37 @@
                                                                 </div>
 
                                                             </div>
-                                                    </div>
-                                                </FooterTemplate>
-                                            </asp:Repeater>
-                                        </div>
-                                    </div>
-
-                                    <hr>
-                                </ItemTemplate>
-
-                                <FooterTemplate>
-                                    </div>
-                                                <div class="panel-footer">
-                                                    <div class="form-group row col-md-12">
-                                                        <strong>Add Operating Dates</strong>
-                                                    </div>
-
-                                                    <div class="form-group row well">
-
-                                                        <div class="col-sm-3">
-                                                            <label class="control-label col-sm-8" for="chkSpecificOperatingDays">Operating Dates</label>
-                                                            <asp:CheckBox ID="chkSpecificOperatingDays" runat="server" CssClass="col-sm-4" />
-                                                        </div>
-
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label col-sm-4" for="txtFrom">
-                                                                From Date
-                                                            </label>
-                                                            <div class="col-sm-8">
-                                                                <div class="input-group">
-                                                                    <asp:TextBox ID="txtFromAdd" runat="server" CssClass="form-control" />
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn btn-default" type="button" id="iCalFromAdd">
-                                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                                        </button>
-                                                                    </span>
+                                                                                </div>
+                                                                            </FooterTemplate>
+                                                                        </asp:Repeater>
+                                                                    </div>
                                                                 </div>
-                                                                <cc1:CalendarExtender ID="calFromDateAdd" runat="server" TargetControlID="txtFromAdd" Format="dd/MM/yyyy" PopupButtonID="iCalFromAdd"></cc1:CalendarExtender>
-                                                                <cc1:FilteredTextBoxExtender ID="axfte_txtFromAdd" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtFromAdd" />
 
-                                                            </div>
+                                                                <hr>
+                                                            </ItemTemplate>
 
-                                                        </div>
-
-                                                        <div class="col-sm-4">
-                                                            <label class="control-label col-sm-4" for="txtTo">
-                                                                To Date
-                                                            </label>
-                                                            <div class="col-sm-8">
-                                                                <div class="input-group">
-                                                                    <asp:TextBox ID="txtToAdd" runat="server" CssClass="form-control" />
-                                                                    <span class="input-group-btn">
-                                                                        <button class="btn btn-default" type="button" id="iCalToAdd">
-                                                                            <span class="glyphicon glyphicon-calendar"></span>
-                                                                        </button>
-                                                                    </span>
+                                                            <FooterTemplate>
                                                                 </div>
-                                                                <cc1:CalendarExtender ID="calToDateAdd" runat="server" TargetControlID="txtToAdd" Format="dd/MM/yyyy" PopupButtonID="iCalToAdd"></cc1:CalendarExtender>
-                                                                <cc1:FilteredTextBoxExtender ID="axfte_txtToAdd" runat="server" FilterType="Numbers, Custom" ValidChars="/" TargetControlID="txtToAdd" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-sm-1">
-                                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnAddOperatingDays" CommandName="AddOperatingDays">
-                                                                <i class="glyphicon glyphicon-plus"></i>
-                                                            </asp:LinkButton>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
+                                                
                                     </div>
                                         </div>
-                                </FooterTemplate>
+                                                            </FooterTemplate>
 
-                            </asp:Repeater>
+                                                        </asp:Repeater>
+
+                                                    </ContentTemplate>
+                                                </asp:UpdatePanel>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
     </ContentTemplate>
 </asp:UpdatePanel>

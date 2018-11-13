@@ -281,13 +281,16 @@
                 </div>
             </div>
             <div class="modal-body">
-                <asp:UpdatePanel ID="UpnlAddConfig" runat="server">
+                <asp:UpdatePanel ID="UpnlAddConfig" runat="server" UpdateMode="Always">
                     <ContentTemplate>
 
                         <div class="row col-lg-12">
                             <asp:ValidationSummary ID="vlsSumm" runat="server" ValidationGroup="AddConfig" DisplayMode="BulletList" ShowMessageBox="false" ShowSummary="true" CssClass="alert alert-danger" />
                             <div id="dvModalMsg" runat="server" style="display: none;"></div>
                             <asp:HiddenField ID="hdnFlag" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
+                            <asp:Label runat="server" ID="lblSelectedSupplierImportAttributeValue_Id" Visible="false" />
+                            <asp:Label runat="server" ID="lblconfigresultCount" Visible="false" Text="0" />
+
                         </div>
 
                         <asp:FormView ID="frmAddConfig" runat="server" DefaultMode="Insert" DataKeyNames="SupplierImportAttributeValue_Id,SupplierImportAttribute_Id"
@@ -370,7 +373,7 @@
 
                                                         <%--For For Multi TextBox Values--%>
                                                         <asp:HiddenField runat="server" ID="hdnValueWithCommaSeprated" ClientIDMode="Static" />
-                                                        <div id="dvValueForFilter" runat="server" class="input-group col-md-12" style="display: none;">
+                                                        <div id="dvValueForFilter" runat="server" class="input-group col-md-12" visible ="false">
                                                             <input id="txtValueForFilter" runat="server" type="text" class="form-control col-md-8 inputTypeForFilter" />
                                                             <div class="input-group-btn  col-md-4" style="padding-left: 0px !important;">
                                                                 <button class="btn btn-default" id="btnAddValue" type="button">

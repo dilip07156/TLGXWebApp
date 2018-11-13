@@ -12,7 +12,7 @@
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ReviewsNScores.ascx" TagPrefix="uc1" TagName="ReviewsNScores" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/SupplierProductMappings.ascx" TagPrefix="uc1" TagName="SupplierProductMappings" %>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityDescription.ascx" TagPrefix="uc1" TagName="ActivityDescription" %>
-    <%@ Register Src="~/controls/activity/ManageActivityFlavours/FlavourOptions.ascx" TagPrefix="uc1" TagName="FlavourOptions" %>
+    <%@ Register Src="~/controls/activity/ManageActivityFlavours/FlavourOptions_Detailed.ascx" TagPrefix="uc1" TagName="FlavourOptions" %>
     <%--<%@ Register Src="~/controls/activity/ManageActivityFlavours/ContactDetails.ascx" TagPrefix="uc1" TagName="ContactDetails" %>--%>
     <%@ Register Src="~/controls/activity/ManageActivityFlavours/ActivityContactDetails.ascx" TagPrefix="uc1" TagName="ActivityContactDetails" %>
 

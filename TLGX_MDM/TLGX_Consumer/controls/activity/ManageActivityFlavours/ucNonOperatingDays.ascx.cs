@@ -58,6 +58,20 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
+        private bool DateDifference(string FromDate, string EndDate)
+        {
+            DateTime fromdate = Convert.ToDateTime(FromDate);
+            DateTime todate = Convert.ToDateTime(EndDate);
+            if (fromdate <= todate)
+            {
+                //TimeSpan daycount = todate.Subtract(fromdate);
+                //int dacount1 = Convert.ToInt32(daycount.Days) + 1;
+                return false;
+            }
+            else
+                return true;
+        }
+
         protected void addNonOperatingDate_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -107,20 +121,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
         }
 
-        private bool DateDifference(string FromDate, string EndDate)
-        {
-            DateTime fromdate = Convert.ToDateTime(FromDate);
-            DateTime todate = Convert.ToDateTime(EndDate);
-            if (fromdate <= todate)
-            {
-                //TimeSpan daycount = todate.Subtract(fromdate);
-                //int dacount1 = Convert.ToInt32(daycount.Days) + 1;
-                return false;
-            }
-            else
-            return true;
-        }
-
         protected void deleteNonOperatingDate_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)(sender);
@@ -139,6 +139,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             }
 
         }
+
         protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
         {
             getNonOperatingDays(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), gvNonOperatingData.PageIndex);
@@ -150,5 +151,6 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
             dvMsgAlert.Style.Add("display", "none");
             getNonOperatingDays(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
         }
+
     }
 }
