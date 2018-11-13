@@ -119,6 +119,7 @@
       <xs:element minOccurs="0" name="ArchiveFilePath" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CREATE_DATE" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CREATE_USER" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComboFile_Id" type="ser:guid" />
       <xs:element minOccurs="0" name="CurrentBatch" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />

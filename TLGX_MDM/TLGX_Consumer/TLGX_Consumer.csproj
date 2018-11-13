@@ -1070,21 +1070,39 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport.datasource">
+    <Content Include="Service\fillAttributeDDL.ashx" />
+    <Content Include="Service\AddUpdateMappingDetails.ashx" />
+    <Content Include="Service\TTFUSelectedBySupplier.ashx" />
+    <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
+    <Content Include="Service\GetAttributeData.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Report_RS.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service\fillAttributeDDL.ashx" />
-    <Content Include="Service\AddUpdateMappingDetails.ashx" />
-    <Content Include="Service\TTFUSelectedBySupplier.ashx" />
-    <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Region.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service\GetAttributeData.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">

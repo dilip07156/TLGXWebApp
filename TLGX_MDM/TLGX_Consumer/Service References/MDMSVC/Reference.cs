@@ -819,6 +819,1604 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_Descriptions", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accommodation_Descriptions : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_Description_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FromDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Language_CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Legacy_Htl_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> ToDateField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_Description_Id {
+            get {
+                return this.Accommodation_Description_IdField;
+            }
+            set {
+                if ((this.Accommodation_Description_IdField.Equals(value) != true)) {
+                    this.Accommodation_Description_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Description_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescriptionType {
+            get {
+                return this.DescriptionTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionTypeField, value) != true)) {
+                    this.DescriptionTypeField = value;
+                    this.RaisePropertyChanged("DescriptionType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FromDate {
+            get {
+                return this.FromDateField;
+            }
+            set {
+                if ((this.FromDateField.Equals(value) != true)) {
+                    this.FromDateField = value;
+                    this.RaisePropertyChanged("FromDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Language_Code {
+            get {
+                return this.Language_CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Language_CodeField, value) != true)) {
+                    this.Language_CodeField = value;
+                    this.RaisePropertyChanged("Language_Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Legacy_Htl_Id {
+            get {
+                return this.Legacy_Htl_IdField;
+            }
+            set {
+                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
+                    this.Legacy_Htl_IdField = value;
+                    this.RaisePropertyChanged("Legacy_Htl_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Source {
+            get {
+                return this.SourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceField, value) != true)) {
+                    this.SourceField = value;
+                    this.RaisePropertyChanged("Source");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> ToDate {
+            get {
+                return this.ToDateField;
+            }
+            set {
+                if ((this.ToDateField.Equals(value) != true)) {
+                    this.ToDateField = value;
+                    this.RaisePropertyChanged("ToDate");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_Facility", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accommodation_Facility : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_Facility_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FacilityCategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FacilityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FacilityTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Legacy_Htl_IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_Facility_Id {
+            get {
+                return this.Accommodation_Facility_IdField;
+            }
+            set {
+                if ((this.Accommodation_Facility_IdField.Equals(value) != true)) {
+                    this.Accommodation_Facility_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Facility_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FacilityCategory {
+            get {
+                return this.FacilityCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FacilityCategoryField, value) != true)) {
+                    this.FacilityCategoryField = value;
+                    this.RaisePropertyChanged("FacilityCategory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FacilityName {
+            get {
+                return this.FacilityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FacilityNameField, value) != true)) {
+                    this.FacilityNameField = value;
+                    this.RaisePropertyChanged("FacilityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FacilityType {
+            get {
+                return this.FacilityTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FacilityTypeField, value) != true)) {
+                    this.FacilityTypeField = value;
+                    this.RaisePropertyChanged("FacilityType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Legacy_Htl_Id {
+            get {
+                return this.Legacy_Htl_IdField;
+            }
+            set {
+                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
+                    this.Legacy_Htl_IdField = value;
+                    this.RaisePropertyChanged("Legacy_Htl_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_Contact", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accommodation_Contact : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_Contact_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> City_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Country_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FaxField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Legacy_Htl_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelephoneField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WebSiteURLField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_Contact_Id {
+            get {
+                return this.Accommodation_Contact_IdField;
+            }
+            set {
+                if ((this.Accommodation_Contact_IdField.Equals(value) != true)) {
+                    this.Accommodation_Contact_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Contact_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> City_Id {
+            get {
+                return this.City_IdField;
+            }
+            set {
+                if ((this.City_IdField.Equals(value) != true)) {
+                    this.City_IdField = value;
+                    this.RaisePropertyChanged("City_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Country_Id {
+            get {
+                return this.Country_IdField;
+            }
+            set {
+                if ((this.Country_IdField.Equals(value) != true)) {
+                    this.Country_IdField = value;
+                    this.RaisePropertyChanged("Country_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Fax {
+            get {
+                return this.FaxField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FaxField, value) != true)) {
+                    this.FaxField = value;
+                    this.RaisePropertyChanged("Fax");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Legacy_Htl_Id {
+            get {
+                return this.Legacy_Htl_IdField;
+            }
+            set {
+                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
+                    this.Legacy_Htl_IdField = value;
+                    this.RaisePropertyChanged("Legacy_Htl_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telephone {
+            get {
+                return this.TelephoneField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelephoneField, value) != true)) {
+                    this.TelephoneField = value;
+                    this.RaisePropertyChanged("Telephone");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WebSiteURL {
+            get {
+                return this.WebSiteURLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WebSiteURLField, value) != true)) {
+                    this.WebSiteURLField = value;
+                    this.RaisePropertyChanged("WebSiteURL");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_RoomInfo", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accommodation_RoomInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_RoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[] AmenitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AmenityTypesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BathRoomTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BedTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CompanyRoomCategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FloorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FloorNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsAmenityChangesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Legacy_Htl_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> MysteryRoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> NoOfInterconnectingRoomsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> NoOfRoomsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomCategoryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomDecorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[] RoomFacilitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RoomViewField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> SmokingField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoRoomIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalRecordsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_RoomInfo_Id {
+            get {
+                return this.Accommodation_RoomInfo_IdField;
+            }
+            set {
+                if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
+                    this.Accommodation_RoomInfo_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[] Amenities {
+            get {
+                return this.AmenitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AmenitiesField, value) != true)) {
+                    this.AmenitiesField = value;
+                    this.RaisePropertyChanged("Amenities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AmenityTypes {
+            get {
+                return this.AmenityTypesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AmenityTypesField, value) != true)) {
+                    this.AmenityTypesField = value;
+                    this.RaisePropertyChanged("AmenityTypes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BathRoomType {
+            get {
+                return this.BathRoomTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BathRoomTypeField, value) != true)) {
+                    this.BathRoomTypeField = value;
+                    this.RaisePropertyChanged("BathRoomType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BedType {
+            get {
+                return this.BedTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BedTypeField, value) != true)) {
+                    this.BedTypeField = value;
+                    this.RaisePropertyChanged("BedType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Category {
+            get {
+                return this.CategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
+                    this.CategoryField = value;
+                    this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CompanyName {
+            get {
+                return this.CompanyNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyNameField, value) != true)) {
+                    this.CompanyNameField = value;
+                    this.RaisePropertyChanged("CompanyName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CompanyRoomCategory {
+            get {
+                return this.CompanyRoomCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CompanyRoomCategoryField, value) != true)) {
+                    this.CompanyRoomCategoryField = value;
+                    this.RaisePropertyChanged("CompanyRoomCategory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FloorName {
+            get {
+                return this.FloorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorNameField, value) != true)) {
+                    this.FloorNameField = value;
+                    this.RaisePropertyChanged("FloorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FloorNumber {
+            get {
+                return this.FloorNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FloorNumberField, value) != true)) {
+                    this.FloorNumberField = value;
+                    this.RaisePropertyChanged("FloorNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsAmenityChanges {
+            get {
+                return this.IsAmenityChangesField;
+            }
+            set {
+                if ((this.IsAmenityChangesField.Equals(value) != true)) {
+                    this.IsAmenityChangesField = value;
+                    this.RaisePropertyChanged("IsAmenityChanges");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Legacy_Htl_Id {
+            get {
+                return this.Legacy_Htl_IdField;
+            }
+            set {
+                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
+                    this.Legacy_Htl_IdField = value;
+                    this.RaisePropertyChanged("Legacy_Htl_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> MysteryRoom {
+            get {
+                return this.MysteryRoomField;
+            }
+            set {
+                if ((this.MysteryRoomField.Equals(value) != true)) {
+                    this.MysteryRoomField = value;
+                    this.RaisePropertyChanged("MysteryRoom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> NoOfInterconnectingRooms {
+            get {
+                return this.NoOfInterconnectingRoomsField;
+            }
+            set {
+                if ((this.NoOfInterconnectingRoomsField.Equals(value) != true)) {
+                    this.NoOfInterconnectingRoomsField = value;
+                    this.RaisePropertyChanged("NoOfInterconnectingRooms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> NoOfRooms {
+            get {
+                return this.NoOfRoomsField;
+            }
+            set {
+                if ((this.NoOfRoomsField.Equals(value) != true)) {
+                    this.NoOfRoomsField = value;
+                    this.RaisePropertyChanged("NoOfRooms");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomCategory {
+            get {
+                return this.RoomCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomCategoryField, value) != true)) {
+                    this.RoomCategoryField = value;
+                    this.RaisePropertyChanged("RoomCategory");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomDecor {
+            get {
+                return this.RoomDecorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomDecorField, value) != true)) {
+                    this.RoomDecorField = value;
+                    this.RaisePropertyChanged("RoomDecor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[] RoomFacilities {
+            get {
+                return this.RoomFacilitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomFacilitiesField, value) != true)) {
+                    this.RoomFacilitiesField = value;
+                    this.RaisePropertyChanged("RoomFacilities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomId {
+            get {
+                return this.RoomIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomIdField, value) != true)) {
+                    this.RoomIdField = value;
+                    this.RaisePropertyChanged("RoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomName {
+            get {
+                return this.RoomNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomNameField, value) != true)) {
+                    this.RoomNameField = value;
+                    this.RaisePropertyChanged("RoomName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomSize {
+            get {
+                return this.RoomSizeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomSizeField, value) != true)) {
+                    this.RoomSizeField = value;
+                    this.RaisePropertyChanged("RoomSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RoomView {
+            get {
+                return this.RoomViewField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RoomViewField, value) != true)) {
+                    this.RoomViewField = value;
+                    this.RaisePropertyChanged("RoomView");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> Smoking {
+            get {
+                return this.SmokingField;
+            }
+            set {
+                if ((this.SmokingField.Equals(value) != true)) {
+                    this.SmokingField = value;
+                    this.RaisePropertyChanged("Smoking");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoRoomId {
+            get {
+                return this.TLGXAccoRoomIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoRoomIdField, value) != true)) {
+                    this.TLGXAccoRoomIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoRoomId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation_Roomamenities", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accomodation_Roomamenities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> RoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool isChargeableField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string nameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string typeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> RoomInfo_Id {
+            get {
+                return this.RoomInfo_IdField;
+            }
+            set {
+                if ((this.RoomInfo_IdField.Equals(value) != true)) {
+                    this.RoomInfo_IdField = value;
+                    this.RaisePropertyChanged("RoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool isChargeable {
+            get {
+                return this.isChargeableField;
+            }
+            set {
+                if ((this.isChargeableField.Equals(value) != true)) {
+                    this.isChargeableField = value;
+                    this.RaisePropertyChanged("isChargeable");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.nameField, value) != true)) {
+                    this.nameField = value;
+                    this.RaisePropertyChanged("name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.typeField, value) != true)) {
+                    this.typeField = value;
+                    this.RaisePropertyChanged("type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation_RoomFacilities", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Accomodation_RoomFacilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_RoomFacility_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Accommodation_RoomInfo_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AmenityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AmenityTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Create_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_userField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsRoomActiveField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_Id {
+            get {
+                return this.Accommodation_IdField;
+            }
+            set {
+                if ((this.Accommodation_IdField.Equals(value) != true)) {
+                    this.Accommodation_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_RoomFacility_Id {
+            get {
+                return this.Accommodation_RoomFacility_IdField;
+            }
+            set {
+                if ((this.Accommodation_RoomFacility_IdField.Equals(value) != true)) {
+                    this.Accommodation_RoomFacility_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_RoomFacility_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Accommodation_RoomInfo_Id {
+            get {
+                return this.Accommodation_RoomInfo_IdField;
+            }
+            set {
+                if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
+                    this.Accommodation_RoomInfo_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AmenityName {
+            get {
+                return this.AmenityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AmenityNameField, value) != true)) {
+                    this.AmenityNameField = value;
+                    this.RaisePropertyChanged("AmenityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AmenityType {
+            get {
+                return this.AmenityTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AmenityTypeField, value) != true)) {
+                    this.AmenityTypeField = value;
+                    this.RaisePropertyChanged("AmenityType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Create_Date {
+            get {
+                return this.Create_DateField;
+            }
+            set {
+                if ((this.Create_DateField.Equals(value) != true)) {
+                    this.Create_DateField = value;
+                    this.RaisePropertyChanged("Create_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Create_User {
+            get {
+                return this.Create_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
+                    this.Create_UserField = value;
+                    this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_user {
+            get {
+                return this.Edit_userField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_userField, value) != true)) {
+                    this.Edit_userField = value;
+                    this.RaisePropertyChanged("Edit_user");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsRoomActive {
+            get {
+                return this.IsRoomActiveField;
+            }
+            set {
+                if ((this.IsRoomActiveField.Equals(value) != true)) {
+                    this.IsRoomActiveField = value;
+                    this.RaisePropertyChanged("IsRoomActive");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
     public partial class DC_Accomodation : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -876,6 +2474,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AreaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Area_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string AwardsReceivedField;
@@ -971,6 +2572,9 @@ namespace TLGX_Consumer.MDMSVC {
         private bool IsMysteryProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsRoomMappingCompletedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LEGACY_CITYField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -990,6 +2594,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LocationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Location_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string LongitudeField;
@@ -1335,6 +2942,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.AreaField, value) != true)) {
                     this.AreaField = value;
                     this.RaisePropertyChanged("Area");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Area_Id {
+            get {
+                return this.Area_IdField;
+            }
+            set {
+                if ((this.Area_IdField.Equals(value) != true)) {
+                    this.Area_IdField = value;
+                    this.RaisePropertyChanged("Area_Id");
                 }
             }
         }
@@ -1743,6 +3363,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsRoomMappingCompleted {
+            get {
+                return this.IsRoomMappingCompletedField;
+            }
+            set {
+                if ((this.IsRoomMappingCompletedField.Equals(value) != true)) {
+                    this.IsRoomMappingCompletedField = value;
+                    this.RaisePropertyChanged("IsRoomMappingCompleted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string LEGACY_CITY {
             get {
                 return this.LEGACY_CITYField;
@@ -1829,6 +3462,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.LocationField, value) != true)) {
                     this.LocationField = value;
                     this.RaisePropertyChanged("Location");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Location_Id {
+            get {
+                return this.Location_IdField;
+            }
+            set {
+                if ((this.Location_IdField.Equals(value) != true)) {
+                    this.Location_IdField = value;
+                    this.RaisePropertyChanged("Location_Id");
                 }
             }
         }
@@ -2336,480 +3982,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.YearBuiltField, value) != true)) {
                     this.YearBuiltField = value;
                     this.RaisePropertyChanged("YearBuilt");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_Descriptions", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class DC_Accommodation_Descriptions : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_Description_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> Accommodation_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Create_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Create_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Edit_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Edit_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> FromDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Language_CodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Legacy_Htl_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SourceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> ToDateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_Description_Id {
-            get {
-                return this.Accommodation_Description_IdField;
-            }
-            set {
-                if ((this.Accommodation_Description_IdField.Equals(value) != true)) {
-                    this.Accommodation_Description_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Description_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Accommodation_Id {
-            get {
-                return this.Accommodation_IdField;
-            }
-            set {
-                if ((this.Accommodation_IdField.Equals(value) != true)) {
-                    this.Accommodation_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Create_Date {
-            get {
-                return this.Create_DateField;
-            }
-            set {
-                if ((this.Create_DateField.Equals(value) != true)) {
-                    this.Create_DateField = value;
-                    this.RaisePropertyChanged("Create_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Create_User {
-            get {
-                return this.Create_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
-                    this.Create_UserField = value;
-                    this.RaisePropertyChanged("Create_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DescriptionType {
-            get {
-                return this.DescriptionTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionTypeField, value) != true)) {
-                    this.DescriptionTypeField = value;
-                    this.RaisePropertyChanged("DescriptionType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Edit_Date {
-            get {
-                return this.Edit_DateField;
-            }
-            set {
-                if ((this.Edit_DateField.Equals(value) != true)) {
-                    this.Edit_DateField = value;
-                    this.RaisePropertyChanged("Edit_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Edit_User {
-            get {
-                return this.Edit_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
-                    this.Edit_UserField = value;
-                    this.RaisePropertyChanged("Edit_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> FromDate {
-            get {
-                return this.FromDateField;
-            }
-            set {
-                if ((this.FromDateField.Equals(value) != true)) {
-                    this.FromDateField = value;
-                    this.RaisePropertyChanged("FromDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Language_Code {
-            get {
-                return this.Language_CodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Language_CodeField, value) != true)) {
-                    this.Language_CodeField = value;
-                    this.RaisePropertyChanged("Language_Code");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Legacy_Htl_Id {
-            get {
-                return this.Legacy_Htl_IdField;
-            }
-            set {
-                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
-                    this.Legacy_Htl_IdField = value;
-                    this.RaisePropertyChanged("Legacy_Htl_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Source {
-            get {
-                return this.SourceField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SourceField, value) != true)) {
-                    this.SourceField = value;
-                    this.RaisePropertyChanged("Source");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> ToDate {
-            get {
-                return this.ToDateField;
-            }
-            set {
-                if ((this.ToDateField.Equals(value) != true)) {
-                    this.ToDateField = value;
-                    this.RaisePropertyChanged("ToDate");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_Facility", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class DC_Accommodation_Facility : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_Facility_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> Accommodation_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Create_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Create_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Edit_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Edit_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FacilityCategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FacilityNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FacilityTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Legacy_Htl_IdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_Facility_Id {
-            get {
-                return this.Accommodation_Facility_IdField;
-            }
-            set {
-                if ((this.Accommodation_Facility_IdField.Equals(value) != true)) {
-                    this.Accommodation_Facility_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Facility_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Accommodation_Id {
-            get {
-                return this.Accommodation_IdField;
-            }
-            set {
-                if ((this.Accommodation_IdField.Equals(value) != true)) {
-                    this.Accommodation_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Create_Date {
-            get {
-                return this.Create_DateField;
-            }
-            set {
-                if ((this.Create_DateField.Equals(value) != true)) {
-                    this.Create_DateField = value;
-                    this.RaisePropertyChanged("Create_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Create_User {
-            get {
-                return this.Create_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
-                    this.Create_UserField = value;
-                    this.RaisePropertyChanged("Create_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Edit_Date {
-            get {
-                return this.Edit_DateField;
-            }
-            set {
-                if ((this.Edit_DateField.Equals(value) != true)) {
-                    this.Edit_DateField = value;
-                    this.RaisePropertyChanged("Edit_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Edit_User {
-            get {
-                return this.Edit_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
-                    this.Edit_UserField = value;
-                    this.RaisePropertyChanged("Edit_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FacilityCategory {
-            get {
-                return this.FacilityCategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacilityCategoryField, value) != true)) {
-                    this.FacilityCategoryField = value;
-                    this.RaisePropertyChanged("FacilityCategory");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FacilityName {
-            get {
-                return this.FacilityNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacilityNameField, value) != true)) {
-                    this.FacilityNameField = value;
-                    this.RaisePropertyChanged("FacilityName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FacilityType {
-            get {
-                return this.FacilityTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacilityTypeField, value) != true)) {
-                    this.FacilityTypeField = value;
-                    this.RaisePropertyChanged("FacilityType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Legacy_Htl_Id {
-            get {
-                return this.Legacy_Htl_IdField;
-            }
-            set {
-                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
-                    this.Legacy_Htl_IdField = value;
-                    this.RaisePropertyChanged("Legacy_Htl_Id");
                 }
             }
         }
@@ -4363,499 +5535,6 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_RoomInfo", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class DC_Accommodation_RoomInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> Accommodation_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_RoomInfo_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AmenityTypesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BathRoomTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string BedTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CompanyRoomCategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Create_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Create_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Edit_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Edit_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FloorNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FloorNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Legacy_Htl_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> MysteryRoomField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> NoOfInterconnectingRoomsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> NoOfRoomsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomCategoryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomDecorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[] RoomFacilitiesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomSizeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RoomViewField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> SmokingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> TotalRecordsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Accommodation_Id {
-            get {
-                return this.Accommodation_IdField;
-            }
-            set {
-                if ((this.Accommodation_IdField.Equals(value) != true)) {
-                    this.Accommodation_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_RoomInfo_Id {
-            get {
-                return this.Accommodation_RoomInfo_IdField;
-            }
-            set {
-                if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
-                    this.Accommodation_RoomInfo_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AmenityTypes {
-            get {
-                return this.AmenityTypesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AmenityTypesField, value) != true)) {
-                    this.AmenityTypesField = value;
-                    this.RaisePropertyChanged("AmenityTypes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BathRoomType {
-            get {
-                return this.BathRoomTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BathRoomTypeField, value) != true)) {
-                    this.BathRoomTypeField = value;
-                    this.RaisePropertyChanged("BathRoomType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string BedType {
-            get {
-                return this.BedTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.BedTypeField, value) != true)) {
-                    this.BedTypeField = value;
-                    this.RaisePropertyChanged("BedType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Category {
-            get {
-                return this.CategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
-                    this.CategoryField = value;
-                    this.RaisePropertyChanged("Category");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CompanyName {
-            get {
-                return this.CompanyNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyNameField, value) != true)) {
-                    this.CompanyNameField = value;
-                    this.RaisePropertyChanged("CompanyName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CompanyRoomCategory {
-            get {
-                return this.CompanyRoomCategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CompanyRoomCategoryField, value) != true)) {
-                    this.CompanyRoomCategoryField = value;
-                    this.RaisePropertyChanged("CompanyRoomCategory");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Create_Date {
-            get {
-                return this.Create_DateField;
-            }
-            set {
-                if ((this.Create_DateField.Equals(value) != true)) {
-                    this.Create_DateField = value;
-                    this.RaisePropertyChanged("Create_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Create_User {
-            get {
-                return this.Create_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
-                    this.Create_UserField = value;
-                    this.RaisePropertyChanged("Create_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Edit_Date {
-            get {
-                return this.Edit_DateField;
-            }
-            set {
-                if ((this.Edit_DateField.Equals(value) != true)) {
-                    this.Edit_DateField = value;
-                    this.RaisePropertyChanged("Edit_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Edit_User {
-            get {
-                return this.Edit_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
-                    this.Edit_UserField = value;
-                    this.RaisePropertyChanged("Edit_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FloorName {
-            get {
-                return this.FloorNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FloorNameField, value) != true)) {
-                    this.FloorNameField = value;
-                    this.RaisePropertyChanged("FloorName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FloorNumber {
-            get {
-                return this.FloorNumberField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FloorNumberField, value) != true)) {
-                    this.FloorNumberField = value;
-                    this.RaisePropertyChanged("FloorNumber");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Legacy_Htl_Id {
-            get {
-                return this.Legacy_Htl_IdField;
-            }
-            set {
-                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
-                    this.Legacy_Htl_IdField = value;
-                    this.RaisePropertyChanged("Legacy_Htl_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> MysteryRoom {
-            get {
-                return this.MysteryRoomField;
-            }
-            set {
-                if ((this.MysteryRoomField.Equals(value) != true)) {
-                    this.MysteryRoomField = value;
-                    this.RaisePropertyChanged("MysteryRoom");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> NoOfInterconnectingRooms {
-            get {
-                return this.NoOfInterconnectingRoomsField;
-            }
-            set {
-                if ((this.NoOfInterconnectingRoomsField.Equals(value) != true)) {
-                    this.NoOfInterconnectingRoomsField = value;
-                    this.RaisePropertyChanged("NoOfInterconnectingRooms");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> NoOfRooms {
-            get {
-                return this.NoOfRoomsField;
-            }
-            set {
-                if ((this.NoOfRoomsField.Equals(value) != true)) {
-                    this.NoOfRoomsField = value;
-                    this.RaisePropertyChanged("NoOfRooms");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomCategory {
-            get {
-                return this.RoomCategoryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomCategoryField, value) != true)) {
-                    this.RoomCategoryField = value;
-                    this.RaisePropertyChanged("RoomCategory");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomDecor {
-            get {
-                return this.RoomDecorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomDecorField, value) != true)) {
-                    this.RoomDecorField = value;
-                    this.RaisePropertyChanged("RoomDecor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[] RoomFacilities {
-            get {
-                return this.RoomFacilitiesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomFacilitiesField, value) != true)) {
-                    this.RoomFacilitiesField = value;
-                    this.RaisePropertyChanged("RoomFacilities");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomId {
-            get {
-                return this.RoomIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomIdField, value) != true)) {
-                    this.RoomIdField = value;
-                    this.RaisePropertyChanged("RoomId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomName {
-            get {
-                return this.RoomNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomNameField, value) != true)) {
-                    this.RoomNameField = value;
-                    this.RaisePropertyChanged("RoomName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomSize {
-            get {
-                return this.RoomSizeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomSizeField, value) != true)) {
-                    this.RoomSizeField = value;
-                    this.RaisePropertyChanged("RoomSize");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string RoomView {
-            get {
-                return this.RoomViewField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RoomViewField, value) != true)) {
-                    this.RoomViewField = value;
-                    this.RaisePropertyChanged("RoomView");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Smoking {
-            get {
-                return this.SmokingField;
-            }
-            set {
-                if ((this.SmokingField.Equals(value) != true)) {
-                    this.SmokingField = value;
-                    this.RaisePropertyChanged("Smoking");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> TotalRecords {
-            get {
-                return this.TotalRecordsField;
-            }
-            set {
-                if ((this.TotalRecordsField.Equals(value) != true)) {
-                    this.TotalRecordsField = value;
-                    this.RaisePropertyChanged("TotalRecords");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_RouteInfo", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
     public partial class DC_Accommodation_RouteInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -5426,227 +6105,6 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accommodation_Contact", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class DC_Accommodation_Contact : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_Contact_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> Accommodation_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Create_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Create_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Edit_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Edit_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmailField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FaxField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Legacy_Htl_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TelephoneField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string WebSiteURLField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_Contact_Id {
-            get {
-                return this.Accommodation_Contact_IdField;
-            }
-            set {
-                if ((this.Accommodation_Contact_IdField.Equals(value) != true)) {
-                    this.Accommodation_Contact_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Contact_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Accommodation_Id {
-            get {
-                return this.Accommodation_IdField;
-            }
-            set {
-                if ((this.Accommodation_IdField.Equals(value) != true)) {
-                    this.Accommodation_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Create_Date {
-            get {
-                return this.Create_DateField;
-            }
-            set {
-                if ((this.Create_DateField.Equals(value) != true)) {
-                    this.Create_DateField = value;
-                    this.RaisePropertyChanged("Create_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Create_User {
-            get {
-                return this.Create_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
-                    this.Create_UserField = value;
-                    this.RaisePropertyChanged("Create_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Edit_Date {
-            get {
-                return this.Edit_DateField;
-            }
-            set {
-                if ((this.Edit_DateField.Equals(value) != true)) {
-                    this.Edit_DateField = value;
-                    this.RaisePropertyChanged("Edit_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Edit_User {
-            get {
-                return this.Edit_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
-                    this.Edit_UserField = value;
-                    this.RaisePropertyChanged("Edit_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email {
-            get {
-                return this.EmailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
-                    this.EmailField = value;
-                    this.RaisePropertyChanged("Email");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Fax {
-            get {
-                return this.FaxField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FaxField, value) != true)) {
-                    this.FaxField = value;
-                    this.RaisePropertyChanged("Fax");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Legacy_Htl_Id {
-            get {
-                return this.Legacy_Htl_IdField;
-            }
-            set {
-                if ((this.Legacy_Htl_IdField.Equals(value) != true)) {
-                    this.Legacy_Htl_IdField = value;
-                    this.RaisePropertyChanged("Legacy_Htl_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Telephone {
-            get {
-                return this.TelephoneField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TelephoneField, value) != true)) {
-                    this.TelephoneField = value;
-                    this.RaisePropertyChanged("Telephone");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WebSiteURL {
-            get {
-                return this.WebSiteURLField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WebSiteURLField, value) != true)) {
-                    this.WebSiteURLField = value;
-                    this.RaisePropertyChanged("WebSiteURL");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation_Media_Attributes", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
     [System.SerializableAttribute()]
     public partial class DC_Accomodation_Media_Attributes : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -5868,227 +6326,6 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.TotalRecordsField.Equals(value) != true)) {
                     this.TotalRecordsField = value;
                     this.RaisePropertyChanged("TotalRecords");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Accomodation_RoomFacilities", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-    [System.SerializableAttribute()]
-    public partial class DC_Accomodation_RoomFacilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> Accommodation_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_RoomFacility_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> Accommodation_RoomInfo_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AmenityNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AmenityTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Create_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Create_UserField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> Edit_DateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Edit_userField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsRoomActiveField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Accommodation_Id {
-            get {
-                return this.Accommodation_IdField;
-            }
-            set {
-                if ((this.Accommodation_IdField.Equals(value) != true)) {
-                    this.Accommodation_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_RoomFacility_Id {
-            get {
-                return this.Accommodation_RoomFacility_IdField;
-            }
-            set {
-                if ((this.Accommodation_RoomFacility_IdField.Equals(value) != true)) {
-                    this.Accommodation_RoomFacility_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_RoomFacility_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> Accommodation_RoomInfo_Id {
-            get {
-                return this.Accommodation_RoomInfo_IdField;
-            }
-            set {
-                if ((this.Accommodation_RoomInfo_IdField.Equals(value) != true)) {
-                    this.Accommodation_RoomInfo_IdField = value;
-                    this.RaisePropertyChanged("Accommodation_RoomInfo_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AmenityName {
-            get {
-                return this.AmenityNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AmenityNameField, value) != true)) {
-                    this.AmenityNameField = value;
-                    this.RaisePropertyChanged("AmenityName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AmenityType {
-            get {
-                return this.AmenityTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AmenityTypeField, value) != true)) {
-                    this.AmenityTypeField = value;
-                    this.RaisePropertyChanged("AmenityType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Create_Date {
-            get {
-                return this.Create_DateField;
-            }
-            set {
-                if ((this.Create_DateField.Equals(value) != true)) {
-                    this.Create_DateField = value;
-                    this.RaisePropertyChanged("Create_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Create_User {
-            get {
-                return this.Create_UserField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
-                    this.Create_UserField = value;
-                    this.RaisePropertyChanged("Create_User");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> Edit_Date {
-            get {
-                return this.Edit_DateField;
-            }
-            set {
-                if ((this.Edit_DateField.Equals(value) != true)) {
-                    this.Edit_DateField = value;
-                    this.RaisePropertyChanged("Edit_Date");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Edit_user {
-            get {
-                return this.Edit_userField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Edit_userField, value) != true)) {
-                    this.Edit_userField = value;
-                    this.RaisePropertyChanged("Edit_user");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((this.IsActiveField.Equals(value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool IsRoomActive {
-            get {
-                return this.IsRoomActiveField;
-            }
-            set {
-                if ((this.IsRoomActiveField.Equals(value) != true)) {
-                    this.IsRoomActiveField = value;
-                    this.RaisePropertyChanged("IsRoomActive");
                 }
             }
         }
@@ -8025,12 +8262,20 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.ReadOnlyMessageStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_HealthAndSafety[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_HealthAndSafety))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_HotelUpdates[]))]
@@ -8043,16 +8288,10 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_PaxOccupancy[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_PaxOccupancy))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RouteInfo[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RouteInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS))]
@@ -8083,6 +8322,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_City[]))]
@@ -8177,6 +8418,12 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReport_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStatsFor[]))]
@@ -8210,6 +8457,11 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
@@ -8240,6 +8492,11 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country))]
@@ -8263,8 +8520,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattribute[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributelists))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier[]))]
@@ -8355,6 +8610,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_Physical))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_GeoCode))]
@@ -8720,12 +8976,20 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.ReadOnlyMessageStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_ClassificationAttributes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_HealthAndSafety[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_HealthAndSafety))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_HotelUpdates[]))]
@@ -8738,16 +9002,10 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_NearbyPlaces))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_PaxOccupancy[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_PaxOccupancy))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_RoomFacilities))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RouteInfo[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RouteInfo))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_RuleInfo))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_Search_RS))]
@@ -8778,6 +9036,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Accomodation_DDL[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CountryMaster))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Region))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_Country))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Master_City[]))]
@@ -8872,6 +9132,12 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelListByCityCode))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_NewDashBoardReport_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStats))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_MappingStatsFor[]))]
@@ -8905,6 +9171,11 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_supplierwiseunmappedsummaryReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_newHotelsReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
@@ -8935,6 +9206,11 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneCitiesSearch))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ZoneHotelList))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country))]
@@ -8958,8 +9234,6 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattribute[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterparentattributes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributevalue))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_M_masterattributelists))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier[]))]
@@ -9050,6 +9324,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Country_State_City_Area_Location))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_Physical))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Address_GeoCode))]
@@ -10787,6 +11062,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CREATE_USERField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid ComboFile_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> CurrentBatchField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -10882,6 +11160,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CREATE_USERField, value) != true)) {
                     this.CREATE_USERField = value;
                     this.RaisePropertyChanged("CREATE_USER");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid ComboFile_Id {
+            get {
+                return this.ComboFile_IdField;
+            }
+            set {
+                if ((this.ComboFile_IdField.Equals(value) != true)) {
+                    this.ComboFile_IdField = value;
+                    this.RaisePropertyChanged("ComboFile_Id");
                 }
             }
         }
@@ -15000,6 +15291,67 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.NameWithCodeField, value) != true)) {
                     this.NameWithCodeField = value;
                     this.RaisePropertyChanged("NameWithCode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Master_Region", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+    [System.SerializableAttribute()]
+    public partial class DC_Master_Region : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionCode {
+            get {
+                return this.RegionCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionCodeField, value) != true)) {
+                    this.RegionCodeField = value;
+                    this.RaisePropertyChanged("RegionCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
                 }
             }
         }
@@ -19546,6 +19898,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string ProductNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -19686,6 +20041,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.ProductNameField, value) != true)) {
                     this.ProductNameField = value;
                     this.RaisePropertyChanged("ProductName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Source {
+            get {
+                return this.SourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceField, value) != true)) {
+                    this.SourceField = value;
+                    this.RaisePropertyChanged("Source");
                 }
             }
         }
@@ -21427,7 +21795,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Accommodation_RoomInfo_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid Accommodation_SupplierRoomTypeMapping_IdField;
+        private System.Nullable<System.Guid> Accommodation_SupplierRoomTypeMapping_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Accommodation_SupplierRoomTypeMapping_Value_IdField;
@@ -21493,7 +21861,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid Accommodation_SupplierRoomTypeMapping_Id {
+        public System.Nullable<System.Guid> Accommodation_SupplierRoomTypeMapping_Id {
             get {
                 return this.Accommodation_SupplierRoomTypeMapping_IdField;
             }
@@ -27309,6 +27677,1018 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_NewDashBoardReportCountry_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_NewDashBoardReportCountry_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid City_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ContentScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Country_idField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfSuppliers_HField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfSuppliers_RField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Add_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_AutoMapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Mapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Mapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Review_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Review_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Unmapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PreferredHotelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSupplierHotelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSupplierRoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Unmapped_HotelField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid City_Id {
+            get {
+                return this.City_IdField;
+            }
+            set {
+                if ((this.City_IdField.Equals(value) != true)) {
+                    this.City_IdField = value;
+                    this.RaisePropertyChanged("City_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ContentScore {
+            get {
+                return this.ContentScoreField;
+            }
+            set {
+                if ((this.ContentScoreField.Equals(value) != true)) {
+                    this.ContentScoreField = value;
+                    this.RaisePropertyChanged("ContentScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Country_id {
+            get {
+                return this.Country_idField;
+            }
+            set {
+                if ((this.Country_idField.Equals(value) != true)) {
+                    this.Country_idField = value;
+                    this.RaisePropertyChanged("Country_id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfSuppliers_H {
+            get {
+                return this.NoOfSuppliers_HField;
+            }
+            set {
+                if ((this.NoOfSuppliers_HField.Equals(value) != true)) {
+                    this.NoOfSuppliers_HField = value;
+                    this.RaisePropertyChanged("NoOfSuppliers_H");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfSuppliers_R {
+            get {
+                return this.NoOfSuppliers_RField;
+            }
+            set {
+                if ((this.NoOfSuppliers_RField.Equals(value) != true)) {
+                    this.NoOfSuppliers_RField = value;
+                    this.RaisePropertyChanged("NoOfSuppliers_R");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Add_Room {
+            get {
+                return this.Per_Add_RoomField;
+            }
+            set {
+                if ((this.Per_Add_RoomField.Equals(value) != true)) {
+                    this.Per_Add_RoomField = value;
+                    this.RaisePropertyChanged("Per_Add_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_AutoMapped_Room {
+            get {
+                return this.Per_AutoMapped_RoomField;
+            }
+            set {
+                if ((this.Per_AutoMapped_RoomField.Equals(value) != true)) {
+                    this.Per_AutoMapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_AutoMapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Mapped_Hotel {
+            get {
+                return this.Per_Mapped_HotelField;
+            }
+            set {
+                if ((this.Per_Mapped_HotelField.Equals(value) != true)) {
+                    this.Per_Mapped_HotelField = value;
+                    this.RaisePropertyChanged("Per_Mapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Mapped_Room {
+            get {
+                return this.Per_Mapped_RoomField;
+            }
+            set {
+                if ((this.Per_Mapped_RoomField.Equals(value) != true)) {
+                    this.Per_Mapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_Mapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Review_Hotel {
+            get {
+                return this.Per_Review_HotelField;
+            }
+            set {
+                if ((this.Per_Review_HotelField.Equals(value) != true)) {
+                    this.Per_Review_HotelField = value;
+                    this.RaisePropertyChanged("Per_Review_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Review_Room {
+            get {
+                return this.Per_Review_RoomField;
+            }
+            set {
+                if ((this.Per_Review_RoomField.Equals(value) != true)) {
+                    this.Per_Review_RoomField = value;
+                    this.RaisePropertyChanged("Per_Review_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Unmapped_Room {
+            get {
+                return this.Per_Unmapped_RoomField;
+            }
+            set {
+                if ((this.Per_Unmapped_RoomField.Equals(value) != true)) {
+                    this.Per_Unmapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_Unmapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PreferredHotels {
+            get {
+                return this.PreferredHotelsField;
+            }
+            set {
+                if ((this.PreferredHotelsField.Equals(value) != true)) {
+                    this.PreferredHotelsField = value;
+                    this.RaisePropertyChanged("PreferredHotels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalSupplierHotels {
+            get {
+                return this.TotalSupplierHotelsField;
+            }
+            set {
+                if ((this.TotalSupplierHotelsField.Equals(value) != true)) {
+                    this.TotalSupplierHotelsField = value;
+                    this.RaisePropertyChanged("TotalSupplierHotels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalSupplierRoom {
+            get {
+                return this.TotalSupplierRoomField;
+            }
+            set {
+                if ((this.TotalSupplierRoomField.Equals(value) != true)) {
+                    this.TotalSupplierRoomField = value;
+                    this.RaisePropertyChanged("TotalSupplierRoom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmapped_Hotel {
+            get {
+                return this.Unmapped_HotelField;
+            }
+            set {
+                if ((this.Unmapped_HotelField.Equals(value) != true)) {
+                    this.Unmapped_HotelField = value;
+                    this.RaisePropertyChanged("Unmapped_Hotel");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_NewDashBoardReport_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_NewDashBoardReport_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] RegionField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Region {
+            get {
+                return this.RegionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionField, value) != true)) {
+                    this.RegionField = value;
+                    this.RaisePropertyChanged("Region");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_EzeegoHotelVsSupplierHotelMappingReport_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_EzeegoHotelVsSupplierHotelMappingReport_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] AccoPriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CountryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] RegionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] SupplierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string selectedHotelIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] AccoPriority {
+            get {
+                return this.AccoPriorityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AccoPriorityField, value) != true)) {
+                    this.AccoPriorityField = value;
+                    this.RaisePropertyChanged("AccoPriority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] City {
+            get {
+                return this.CityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityField, value) != true)) {
+                    this.CityField = value;
+                    this.RaisePropertyChanged("City");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Country {
+            get {
+                return this.CountryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryField, value) != true)) {
+                    this.CountryField = value;
+                    this.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Region {
+            get {
+                return this.RegionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionField, value) != true)) {
+                    this.RegionField = value;
+                    this.RaisePropertyChanged("Region");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Supplier {
+            get {
+                return this.SupplierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierField, value) != true)) {
+                    this.SupplierField = value;
+                    this.RaisePropertyChanged("Supplier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string selectedHotelId {
+            get {
+                return this.selectedHotelIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.selectedHotelIdField, value) != true)) {
+                    this.selectedHotelIdField = value;
+                    this.RaisePropertyChanged("selectedHotelId");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_HotelMappingReport_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_HotelMappingReport_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Add_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AutoMapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CommonHotelIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal ContentScoreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Mapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Mapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfSuppliers_HField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int NoOfSuppliers_RField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Add_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_AutoMapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Mapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Mapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Review_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Review_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal Per_Unmapped_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PreferredHotelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Review_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Review_RoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSupplierHotelsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSupplierRoomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Unmapped_HotelField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Unmapped_RoomField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Add_Room {
+            get {
+                return this.Add_RoomField;
+            }
+            set {
+                if ((this.Add_RoomField.Equals(value) != true)) {
+                    this.Add_RoomField = value;
+                    this.RaisePropertyChanged("Add_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AutoMapped_Room {
+            get {
+                return this.AutoMapped_RoomField;
+            }
+            set {
+                if ((this.AutoMapped_RoomField.Equals(value) != true)) {
+                    this.AutoMapped_RoomField = value;
+                    this.RaisePropertyChanged("AutoMapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CommonHotelID {
+            get {
+                return this.CommonHotelIDField;
+            }
+            set {
+                if ((this.CommonHotelIDField.Equals(value) != true)) {
+                    this.CommonHotelIDField = value;
+                    this.RaisePropertyChanged("CommonHotelID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal ContentScore {
+            get {
+                return this.ContentScoreField;
+            }
+            set {
+                if ((this.ContentScoreField.Equals(value) != true)) {
+                    this.ContentScoreField = value;
+                    this.RaisePropertyChanged("ContentScore");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelName {
+            get {
+                return this.HotelNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelNameField, value) != true)) {
+                    this.HotelNameField = value;
+                    this.RaisePropertyChanged("HotelName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Mapped_Hotel {
+            get {
+                return this.Mapped_HotelField;
+            }
+            set {
+                if ((this.Mapped_HotelField.Equals(value) != true)) {
+                    this.Mapped_HotelField = value;
+                    this.RaisePropertyChanged("Mapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Mapped_Room {
+            get {
+                return this.Mapped_RoomField;
+            }
+            set {
+                if ((this.Mapped_RoomField.Equals(value) != true)) {
+                    this.Mapped_RoomField = value;
+                    this.RaisePropertyChanged("Mapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfSuppliers_H {
+            get {
+                return this.NoOfSuppliers_HField;
+            }
+            set {
+                if ((this.NoOfSuppliers_HField.Equals(value) != true)) {
+                    this.NoOfSuppliers_HField = value;
+                    this.RaisePropertyChanged("NoOfSuppliers_H");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int NoOfSuppliers_R {
+            get {
+                return this.NoOfSuppliers_RField;
+            }
+            set {
+                if ((this.NoOfSuppliers_RField.Equals(value) != true)) {
+                    this.NoOfSuppliers_RField = value;
+                    this.RaisePropertyChanged("NoOfSuppliers_R");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Add_Room {
+            get {
+                return this.Per_Add_RoomField;
+            }
+            set {
+                if ((this.Per_Add_RoomField.Equals(value) != true)) {
+                    this.Per_Add_RoomField = value;
+                    this.RaisePropertyChanged("Per_Add_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_AutoMapped_Room {
+            get {
+                return this.Per_AutoMapped_RoomField;
+            }
+            set {
+                if ((this.Per_AutoMapped_RoomField.Equals(value) != true)) {
+                    this.Per_AutoMapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_AutoMapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Mapped_Hotel {
+            get {
+                return this.Per_Mapped_HotelField;
+            }
+            set {
+                if ((this.Per_Mapped_HotelField.Equals(value) != true)) {
+                    this.Per_Mapped_HotelField = value;
+                    this.RaisePropertyChanged("Per_Mapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Mapped_Room {
+            get {
+                return this.Per_Mapped_RoomField;
+            }
+            set {
+                if ((this.Per_Mapped_RoomField.Equals(value) != true)) {
+                    this.Per_Mapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_Mapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Review_Hotel {
+            get {
+                return this.Per_Review_HotelField;
+            }
+            set {
+                if ((this.Per_Review_HotelField.Equals(value) != true)) {
+                    this.Per_Review_HotelField = value;
+                    this.RaisePropertyChanged("Per_Review_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Review_Room {
+            get {
+                return this.Per_Review_RoomField;
+            }
+            set {
+                if ((this.Per_Review_RoomField.Equals(value) != true)) {
+                    this.Per_Review_RoomField = value;
+                    this.RaisePropertyChanged("Per_Review_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Per_Unmapped_Room {
+            get {
+                return this.Per_Unmapped_RoomField;
+            }
+            set {
+                if ((this.Per_Unmapped_RoomField.Equals(value) != true)) {
+                    this.Per_Unmapped_RoomField = value;
+                    this.RaisePropertyChanged("Per_Unmapped_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PreferredHotels {
+            get {
+                return this.PreferredHotelsField;
+            }
+            set {
+                if ((this.PreferredHotelsField.Equals(value) != true)) {
+                    this.PreferredHotelsField = value;
+                    this.RaisePropertyChanged("PreferredHotels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Review_Hotel {
+            get {
+                return this.Review_HotelField;
+            }
+            set {
+                if ((this.Review_HotelField.Equals(value) != true)) {
+                    this.Review_HotelField = value;
+                    this.RaisePropertyChanged("Review_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Review_Room {
+            get {
+                return this.Review_RoomField;
+            }
+            set {
+                if ((this.Review_RoomField.Equals(value) != true)) {
+                    this.Review_RoomField = value;
+                    this.RaisePropertyChanged("Review_Room");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoId {
+            get {
+                return this.TLGXAccoIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoIdField, value) != true)) {
+                    this.TLGXAccoIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalSupplierHotels {
+            get {
+                return this.TotalSupplierHotelsField;
+            }
+            set {
+                if ((this.TotalSupplierHotelsField.Equals(value) != true)) {
+                    this.TotalSupplierHotelsField = value;
+                    this.RaisePropertyChanged("TotalSupplierHotels");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalSupplierRoom {
+            get {
+                return this.TotalSupplierRoomField;
+            }
+            set {
+                if ((this.TotalSupplierRoomField.Equals(value) != true)) {
+                    this.TotalSupplierRoomField = value;
+                    this.RaisePropertyChanged("TotalSupplierRoom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmapped_Hotel {
+            get {
+                return this.Unmapped_HotelField;
+            }
+            set {
+                if ((this.Unmapped_HotelField.Equals(value) != true)) {
+                    this.Unmapped_HotelField = value;
+                    this.RaisePropertyChanged("Unmapped_Hotel");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Unmapped_Room {
+            get {
+                return this.Unmapped_RoomField;
+            }
+            set {
+                if ((this.Unmapped_RoomField.Equals(value) != true)) {
+                    this.Unmapped_RoomField = value;
+                    this.RaisePropertyChanged("Unmapped_Room");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_MappingStats", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
     [System.SerializableAttribute()]
     public partial class DC_MappingStats : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -29658,6 +31038,429 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.HotelnameField, value) != true)) {
                     this.HotelnameField = value;
                     this.RaisePropertyChanged("Hotelname");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SupplerVSupplier_Report_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_SupplerVSupplier_Report_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Accommodation_Source_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid[] Compare_WithSupplier_IdsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Accommodation_Source_Id {
+            get {
+                return this.Accommodation_Source_IdField;
+            }
+            set {
+                if ((this.Accommodation_Source_IdField.Equals(value) != true)) {
+                    this.Accommodation_Source_IdField = value;
+                    this.RaisePropertyChanged("Accommodation_Source_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid[] Compare_WithSupplier_Ids {
+            get {
+                return this.Compare_WithSupplier_IdsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Compare_WithSupplier_IdsField, value) != true)) {
+                    this.Compare_WithSupplier_IdsField = value;
+                    this.RaisePropertyChanged("Compare_WithSupplier_Ids");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SupplierAccoMappingExportDataReport", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_SupplierAccoMappingExportDataReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccoHotelCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccomodationTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_AutoMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_MannualMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_ReviewMappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Accomodation_UnmappedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceSupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccoHotelCount {
+            get {
+                return this.AccoHotelCountField;
+            }
+            set {
+                if ((this.AccoHotelCountField.Equals(value) != true)) {
+                    this.AccoHotelCountField = value;
+                    this.RaisePropertyChanged("AccoHotelCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccomodationTotal {
+            get {
+                return this.AccomodationTotalField;
+            }
+            set {
+                if ((this.AccomodationTotalField.Equals(value) != true)) {
+                    this.AccomodationTotalField = value;
+                    this.RaisePropertyChanged("AccomodationTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_AutoMapped {
+            get {
+                return this.Accomodation_AutoMappedField;
+            }
+            set {
+                if ((this.Accomodation_AutoMappedField.Equals(value) != true)) {
+                    this.Accomodation_AutoMappedField = value;
+                    this.RaisePropertyChanged("Accomodation_AutoMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_MannualMapped {
+            get {
+                return this.Accomodation_MannualMappedField;
+            }
+            set {
+                if ((this.Accomodation_MannualMappedField.Equals(value) != true)) {
+                    this.Accomodation_MannualMappedField = value;
+                    this.RaisePropertyChanged("Accomodation_MannualMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_ReviewMapped {
+            get {
+                return this.Accomodation_ReviewMappedField;
+            }
+            set {
+                if ((this.Accomodation_ReviewMappedField.Equals(value) != true)) {
+                    this.Accomodation_ReviewMappedField = value;
+                    this.RaisePropertyChanged("Accomodation_ReviewMapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Accomodation_Unmapped {
+            get {
+                return this.Accomodation_UnmappedField;
+            }
+            set {
+                if ((this.Accomodation_UnmappedField.Equals(value) != true)) {
+                    this.Accomodation_UnmappedField = value;
+                    this.RaisePropertyChanged("Accomodation_Unmapped");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SourceSupplierName {
+            get {
+                return this.SourceSupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceSupplierNameField, value) != true)) {
+                    this.SourceSupplierNameField = value;
+                    this.RaisePropertyChanged("SourceSupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Supplier_Id {
+            get {
+                return this.Supplier_IdField;
+            }
+            set {
+                if ((this.Supplier_IdField.Equals(value) != true)) {
+                    this.Supplier_IdField = value;
+                    this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_EzeegoHotelVsSupplierHotelMappingReport", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Mapping")]
+    [System.SerializableAttribute()]
+    public partial class DC_EzeegoHotelVsSupplierHotelMappingReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HotelNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Legacy_HTL_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PriorityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RegionNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoIdField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string HotelName {
+            get {
+                return this.HotelNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HotelNameField, value) != true)) {
+                    this.HotelNameField = value;
+                    this.RaisePropertyChanged("HotelName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Legacy_HTL_ID {
+            get {
+                return this.Legacy_HTL_IDField;
+            }
+            set {
+                if ((this.Legacy_HTL_IDField.Equals(value) != true)) {
+                    this.Legacy_HTL_IDField = value;
+                    this.RaisePropertyChanged("Legacy_HTL_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Priority {
+            get {
+                return this.PriorityField;
+            }
+            set {
+                if ((this.PriorityField.Equals(value) != true)) {
+                    this.PriorityField = value;
+                    this.RaisePropertyChanged("Priority");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RegionName {
+            get {
+                return this.RegionNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RegionNameField, value) != true)) {
+                    this.RegionNameField = value;
+                    this.RaisePropertyChanged("RegionName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoId {
+            get {
+                return this.TLGXAccoIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoIdField, value) != true)) {
+                    this.TLGXAccoIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoId");
                 }
             }
         }
@@ -32589,6 +34392,509 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.ZoneProductMapping_IdField.Equals(value) != true)) {
                     this.ZoneProductMapping_IdField = value;
                     this.RaisePropertyChanged("ZoneProductMapping_Id");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_CitywithMultipleCountry_Search_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_CitywithMultipleCountry_Search_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid[] CountryIdListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid[] CountryIdList {
+            get {
+                return this.CountryIdListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryIdListField, value) != true)) {
+                    this.CountryIdListField = value;
+                    this.RaisePropertyChanged("CountryIdList");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_M_masterattributevalue", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_M_masterattributevalue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ActionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AttributeValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid MasterAttributeValue_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> MasterAttribute_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MasterAttribute_NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OTA_CodeTableValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ParentAttributeValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> ParentAttributeValue_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalCountField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Action {
+            get {
+                return this.ActionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
+                    this.ActionField = value;
+                    this.RaisePropertyChanged("Action");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AttributeValue {
+            get {
+                return this.AttributeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttributeValueField, value) != true)) {
+                    this.AttributeValueField = value;
+                    this.RaisePropertyChanged("AttributeValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IsActiveField, value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid MasterAttributeValue_Id {
+            get {
+                return this.MasterAttributeValue_IdField;
+            }
+            set {
+                if ((this.MasterAttributeValue_IdField.Equals(value) != true)) {
+                    this.MasterAttributeValue_IdField = value;
+                    this.RaisePropertyChanged("MasterAttributeValue_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> MasterAttribute_Id {
+            get {
+                return this.MasterAttribute_IdField;
+            }
+            set {
+                if ((this.MasterAttribute_IdField.Equals(value) != true)) {
+                    this.MasterAttribute_IdField = value;
+                    this.RaisePropertyChanged("MasterAttribute_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MasterAttribute_Name {
+            get {
+                return this.MasterAttribute_NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MasterAttribute_NameField, value) != true)) {
+                    this.MasterAttribute_NameField = value;
+                    this.RaisePropertyChanged("MasterAttribute_Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OTA_CodeTableValue {
+            get {
+                return this.OTA_CodeTableValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OTA_CodeTableValueField, value) != true)) {
+                    this.OTA_CodeTableValueField = value;
+                    this.RaisePropertyChanged("OTA_CodeTableValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ParentAttributeValue {
+            get {
+                return this.ParentAttributeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentAttributeValueField, value) != true)) {
+                    this.ParentAttributeValueField = value;
+                    this.RaisePropertyChanged("ParentAttributeValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> ParentAttributeValue_Id {
+            get {
+                return this.ParentAttributeValue_IdField;
+            }
+            set {
+                if ((this.ParentAttributeValue_IdField.Equals(value) != true)) {
+                    this.ParentAttributeValue_IdField = value;
+                    this.RaisePropertyChanged("ParentAttributeValue_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalCount {
+            get {
+                return this.TotalCountField;
+            }
+            set {
+                if ((this.TotalCountField.Equals(value) != true)) {
+                    this.TotalCountField = value;
+                    this.RaisePropertyChanged("TotalCount");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_StaticDataDownload", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Supplier_StaticDataDownload : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> CreateDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreateUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EditDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EditUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierCredentialsIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> SupplierIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> TotalRecordsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string URLField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UsernameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> CreateDate {
+            get {
+                return this.CreateDateField;
+            }
+            set {
+                if ((this.CreateDateField.Equals(value) != true)) {
+                    this.CreateDateField = value;
+                    this.RaisePropertyChanged("CreateDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreateUser {
+            get {
+                return this.CreateUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreateUserField, value) != true)) {
+                    this.CreateUserField = value;
+                    this.RaisePropertyChanged("CreateUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EditDate {
+            get {
+                return this.EditDateField;
+            }
+            set {
+                if ((this.EditDateField.Equals(value) != true)) {
+                    this.EditDateField = value;
+                    this.RaisePropertyChanged("EditDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EditUser {
+            get {
+                return this.EditUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EditUserField, value) != true)) {
+                    this.EditUserField = value;
+                    this.RaisePropertyChanged("EditUser");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageNo {
+            get {
+                return this.PageNoField;
+            }
+            set {
+                if ((this.PageNoField.Equals(value) != true)) {
+                    this.PageNoField = value;
+                    this.RaisePropertyChanged("PageNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierCredentialsId {
+            get {
+                return this.SupplierCredentialsIdField;
+            }
+            set {
+                if ((this.SupplierCredentialsIdField.Equals(value) != true)) {
+                    this.SupplierCredentialsIdField = value;
+                    this.RaisePropertyChanged("SupplierCredentialsId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> SupplierId {
+            get {
+                return this.SupplierIdField;
+            }
+            set {
+                if ((this.SupplierIdField.Equals(value) != true)) {
+                    this.SupplierIdField = value;
+                    this.RaisePropertyChanged("SupplierId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TotalRecords {
+            get {
+                return this.TotalRecordsField;
+            }
+            set {
+                if ((this.TotalRecordsField.Equals(value) != true)) {
+                    this.TotalRecordsField = value;
+                    this.RaisePropertyChanged("TotalRecords");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string URL {
+            get {
+                return this.URLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.URLField, value) != true)) {
+                    this.URLField = value;
+                    this.RaisePropertyChanged("URL");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Username {
+            get {
+                return this.UsernameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UsernameField, value) != true)) {
+                    this.UsernameField = value;
+                    this.RaisePropertyChanged("Username");
                 }
             }
         }
@@ -35795,195 +38101,6 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DC_M_masterattributevalue", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
-    [System.SerializableAttribute()]
-    public partial class DC_M_masterattributevalue : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ActionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AttributeValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IsActiveField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Guid MasterAttributeValue_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> MasterAttribute_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MasterAttribute_NameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string OTA_CodeTableValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ParentAttributeValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.Guid> ParentAttributeValue_IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TotalCountField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Action {
-            get {
-                return this.ActionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ActionField, value) != true)) {
-                    this.ActionField = value;
-                    this.RaisePropertyChanged("Action");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string AttributeValue {
-            get {
-                return this.AttributeValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AttributeValueField, value) != true)) {
-                    this.AttributeValueField = value;
-                    this.RaisePropertyChanged("AttributeValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string IsActive {
-            get {
-                return this.IsActiveField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IsActiveField, value) != true)) {
-                    this.IsActiveField = value;
-                    this.RaisePropertyChanged("IsActive");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Guid MasterAttributeValue_Id {
-            get {
-                return this.MasterAttributeValue_IdField;
-            }
-            set {
-                if ((this.MasterAttributeValue_IdField.Equals(value) != true)) {
-                    this.MasterAttributeValue_IdField = value;
-                    this.RaisePropertyChanged("MasterAttributeValue_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> MasterAttribute_Id {
-            get {
-                return this.MasterAttribute_IdField;
-            }
-            set {
-                if ((this.MasterAttribute_IdField.Equals(value) != true)) {
-                    this.MasterAttribute_IdField = value;
-                    this.RaisePropertyChanged("MasterAttribute_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string MasterAttribute_Name {
-            get {
-                return this.MasterAttribute_NameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MasterAttribute_NameField, value) != true)) {
-                    this.MasterAttribute_NameField = value;
-                    this.RaisePropertyChanged("MasterAttribute_Name");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string OTA_CodeTableValue {
-            get {
-                return this.OTA_CodeTableValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OTA_CodeTableValueField, value) != true)) {
-                    this.OTA_CodeTableValueField = value;
-                    this.RaisePropertyChanged("OTA_CodeTableValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ParentAttributeValue {
-            get {
-                return this.ParentAttributeValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ParentAttributeValueField, value) != true)) {
-                    this.ParentAttributeValueField = value;
-                    this.RaisePropertyChanged("ParentAttributeValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.Guid> ParentAttributeValue_Id {
-            get {
-                return this.ParentAttributeValue_IdField;
-            }
-            set {
-                if ((this.ParentAttributeValue_IdField.Equals(value) != true)) {
-                    this.ParentAttributeValue_IdField = value;
-                    this.RaisePropertyChanged("ParentAttributeValue_Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int TotalCount {
-            get {
-                return this.TotalCountField;
-            }
-            set {
-                if ((this.TotalCountField.Equals(value) != true)) {
-                    this.TotalCountField = value;
-                    this.RaisePropertyChanged("TotalCount");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_M_masterattributelists", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
     [System.SerializableAttribute()]
     public partial class DC_M_masterattributelists : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -36242,6 +38359,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BatchSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategorySubTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -36308,6 +38428,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int BatchSize {
+            get {
+                return this.BatchSizeField;
+            }
+            set {
+                if ((this.BatchSizeField.Equals(value) != true)) {
+                    this.BatchSizeField = value;
+                    this.RaisePropertyChanged("BatchSize");
+                }
             }
         }
         
@@ -41509,6 +43642,9 @@ namespace TLGX_Consumer.MDMSVC {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PageSizeField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> WithActivity_FlavourOptions_IdField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -41619,6 +43755,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.PageSizeField.Equals(value) != true)) {
                     this.PageSizeField = value;
                     this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> WithActivity_FlavourOptions_Id {
+            get {
+                return this.WithActivity_FlavourOptions_IdField;
+            }
+            set {
+                if ((this.WithActivity_FlavourOptions_IdField.Equals(value) != true)) {
+                    this.WithActivity_FlavourOptions_IdField = value;
+                    this.RaisePropertyChanged("WithActivity_FlavourOptions_Id");
                 }
             }
         }
@@ -44222,6 +46371,9 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Supplier_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXDisplaySubTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> TotalRecordsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -44974,6 +47126,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Supplier_IdField.Equals(value) != true)) {
                     this.Supplier_IdField = value;
                     this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXDisplaySubType {
+            get {
+                return this.TLGXDisplaySubTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXDisplaySubTypeField, value) != true)) {
+                    this.TLGXDisplaySubTypeField = value;
+                    this.RaisePropertyChanged("TLGXDisplaySubType");
                 }
             }
         }
@@ -52419,6 +54584,65 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateAccomodationTxInfoResponse")]
         System.Threading.Tasks.Task UpdateAccomodationTxInfoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationDescriptions", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationDescriptionsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddLstAccomodationDescriptionsDC_ErrorStatusFaul" +
+            "t", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddLstAccomodationDescriptions(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[] AD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationDescriptions", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationDescriptionsResponse")]
+        System.Threading.Tasks.Task<bool> AddLstAccomodationDescriptionsAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[] AD);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationFacilities", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationFacilitiesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddLstAccomodationFacilitiesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddLstAccomodationFacilities(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility[] AF);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationFacilities", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationFacilitiesResponse")]
+        System.Threading.Tasks.Task<bool> AddLstAccomodationFacilitiesAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility[] AF);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationStatusResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddLstAccomodationStatusDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddLstAccomodationStatus(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] AS);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationStatus", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationStatusResponse")]
+        System.Threading.Tasks.Task<bool> AddLstAccomodationStatusAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] AS);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationContacts", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationContactsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddLstAccomodationContactsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddLstAccomodationContacts(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[] AC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationContacts", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationContactsResponse")]
+        System.Threading.Tasks.Task<bool> AddLstAccomodationContactsAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[] AC);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyAccoID", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyAccoIDResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyAccoIDDC_ErrorStatusFau" +
+            "lt", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] GetAccomodationRoomInfobyAccoID(string Accomodation_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyAccoID", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationRoomInfobyAccoIDResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]> GetAccomodationRoomInfobyAccoIDAsync(string Accomodation_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationRoomInfoResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddLstAccomodationRoomInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddLstAccomodationRoomInfo(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/AddLstAccomodationRoomInfoResponse")]
+        System.Threading.Tasks.Task<bool> AddLstAccomodationRoomInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateLstAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateLstAccomodationRoomInfoResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/UpdateLstAccomodationRoomInfoDC_ErrorStatusFault" +
+            "", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool UpdateLstAccomodationRoomInfo(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/UpdateLstAccomodationRoomInfo", ReplyAction="http://tempuri.org/IAccomodation/UpdateLstAccomodationRoomInfoResponse")]
+        System.Threading.Tasks.Task<bool> UpdateLstAccomodationRoomInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstRoomAmenities", ReplyAction="http://tempuri.org/IAccomodation/AddLstRoomAmenitiesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/AddLstRoomAmenitiesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool AddLstRoomAmenities(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[] RA);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/AddLstRoomAmenities", ReplyAction="http://tempuri.org/IAccomodation/AddLstRoomAmenitiesResponse")]
+        System.Threading.Tasks.Task<bool> AddLstRoomAmenitiesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[] RA);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccomodation/GetAccomodationList", ReplyAction="http://tempuri.org/IAccomodation/GetAccomodationListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAccomodation/GetAccomodationListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Accomodation[] GetAccomodationList(string PageNo, string PageSize);
@@ -53118,6 +55342,63 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/IncludeExcludeHotels", ReplyAction="http://tempuri.org/IMasters/IncludeExcludeHotelsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> IncludeExcludeHotelsAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionMaster", ReplyAction="http://tempuri.org/IMasters/GetRegionMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetRegionMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_Region[] GetRegionMaster();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionMaster", ReplyAction="http://tempuri.org/IMasters/GetRegionMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Region[]> GetRegionMasterAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionwiseCountriesList", ReplyAction="http://tempuri.org/IMasters/GetRegionwiseCountriesListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetRegionwiseCountriesListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_Country[] GetRegionwiseCountriesList(string[] RegionCodeList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetRegionwiseCountriesList", ReplyAction="http://tempuri.org/IMasters/GetRegionwiseCountriesListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Country[]> GetRegionwiseCountriesListAsync(string[] RegionCodeList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetAllCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetAllCountrywiseCitiesListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetAllCountrywiseCitiesListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_City[] GetAllCountrywiseCitiesList(string[] CountryIdList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetAllCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetAllCountrywiseCitiesListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetAllCountrywiseCitiesListAsync(string[] CountryIdList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetCountrywiseCitiesListResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCountrywiseCitiesListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_City[] GetCountrywiseCitiesList(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountrywiseCitiesList", ReplyAction="http://tempuri.org/IMasters/GetCountrywiseCitiesListResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCountrywiseCitiesListAsync(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCitiesDetails", ReplyAction="http://tempuri.org/IMasters/GetCitiesDetailsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCitiesDetailsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Master_City[] GetCitiesDetails(string CountryName, string CityName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCitiesDetails", ReplyAction="http://tempuri.org/IMasters/GetCitiesDetailsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCitiesDetailsAsync(string CountryName, string CityName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetDisplaySubType", ReplyAction="http://tempuri.org/IMasters/GetDisplaySubTypeResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetDisplaySubTypeDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[] GetDisplaySubType(string MasterFor, string Name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetDisplaySubType", ReplyAction="http://tempuri.org/IMasters/GetDisplaySubTypeResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]> GetDisplaySubTypeAsync(string MasterFor, string Name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SupplierStaticDataDownload_AddUpdate", ReplyAction="http://tempuri.org/IMasters/SupplierStaticDataDownload_AddUpdateResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/SupplierStaticDataDownload_AddUpdateDC_ErrorStatusFau" +
+            "lt", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SupplierStaticDataDownload_AddUpdate(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SupplierStaticDataDownload_AddUpdate", ReplyAction="http://tempuri.org/IMasters/SupplierStaticDataDownload_AddUpdateResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SupplierStaticDataDownload_AddUpdateAsync(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SupplierStaticDataDownload_Get", ReplyAction="http://tempuri.org/IMasters/SupplierStaticDataDownload_GetResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/SupplierStaticDataDownload_GetDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload[] SupplierStaticDataDownload_Get(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/SupplierStaticDataDownload_Get", ReplyAction="http://tempuri.org/IMasters/SupplierStaticDataDownload_GetResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload[]> SupplierStaticDataDownload_GetAsync(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMasters/GetCountryNameList", ReplyAction="http://tempuri.org/IMasters/GetCountryNameListResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMasters/GetCountryNameListDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -53879,6 +56160,27 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetRTM_ML_Suggestions", ReplyAction="http://tempuri.org/IMapping/GetRTM_ML_SuggestionsResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SRT_ML_Response> GetRTM_ML_SuggestionsAsync(string Accomodation_SupplierRoomTypeMapping_Id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWise", ReplyAction="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWiseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWiseDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[] GetNewDashboardReport_CountryWise();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWise", ReplyAction="http://tempuri.org/IMapping/GetNewDashboardReport_CountryWiseResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]> GetNewDashboardReport_CountryWiseAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetHotelMappingReport_CityWise", ReplyAction="http://tempuri.org/IMapping/GetHotelMappingReport_CityWiseResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/GetHotelMappingReport_CityWiseDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[] GetHotelMappingReport_CityWise(TLGX_Consumer.MDMSVC.DC_NewDashBoardReport_RQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/GetHotelMappingReport_CityWise", ReplyAction="http://tempuri.org/IMapping/GetHotelMappingReport_CityWiseResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]> GetHotelMappingReport_CityWiseAsync(TLGX_Consumer.MDMSVC.DC_NewDashBoardReport_RQ param);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/HotelMappingReport", ReplyAction="http://tempuri.org/IMapping/HotelMappingReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/HotelMappingReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[] HotelMappingReport(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/HotelMappingReport", ReplyAction="http://tempuri.org/IMapping/HotelMappingReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[]> HotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdmin/GetSiteMapMaster", ReplyAction="http://tempuri.org/IAdmin/GetSiteMapMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAdmin/GetSiteMapMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid);
@@ -54094,6 +56396,21 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/getNewHotelsAddedReport", ReplyAction="http://tempuri.org/IStaticData/getNewHotelsAddedReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/AccomodationMappingReport", ReplyAction="http://tempuri.org/IStaticData/AccomodationMappingReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/AccomodationMappingReportDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[] AccomodationMappingReport(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/AccomodationMappingReport", ReplyAction="http://tempuri.org/IStaticData/AccomodationMappingReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]> AccomodationMappingReportAsync(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReport", ReplyAction="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReportResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReportDC_ErrorSta" +
+            "tusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[] EzeegoHotelVsSupplierHotelMappingReport(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReport", ReplyAction="http://tempuri.org/IStaticData/EzeegoHotelVsSupplierHotelMappingReportResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]> EzeegoHotelVsSupplierHotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -54859,6 +57176,24 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotel", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncSupplierStaticHotelResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncSupplierStaticHotelAsync(string log_id, string supplier_id, string CreatedBy);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplier", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplierResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplierDC_ErrorStatusF" +
+            "ault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncActivityBySupplier(string log_id, string supplier_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplier", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncActivityBySupplierResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncActivityBySupplierAsync(string log_id, string supplier_id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusData", ReplyAction="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusDataRespons" +
+            "e")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusDataDC_Erro" +
+            "rStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_SupplierEntity[] LoadSupplierActivityStatusData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusData", ReplyAction="http://tempuri.org/IRefreshDistributionData/LoadSupplierActivityStatusDataRespons" +
+            "e")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierEntity[]> LoadSupplierActivityStatusDataAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIData", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncMLAPIDataResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncMLAPIDataDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Message SyncMLAPIData(TLGX_Consumer.MDMSVC.DC_Distribution_MLDataRQ _obj);
@@ -54872,6 +57207,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncGeographyData", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncGeographyDataResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncGeographyDataAsync(TLGX_Consumer.MDMSVC.DC_MongoDbSyncRQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMasterResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMasterDC_ErrorStatus" +
+            "Fault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncAccommodationMaster(string log_id, string Accommodation_Id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMaster", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncAccommodationMasterResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncAccommodationMasterAsync(string log_id, string Accommodation_Id, string CreatedBy);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMappingResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMappingDC_ErrorStatu" +
+            "sFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message SyncHotelRoomTypeMapping(string log_id, string Supplier_Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMapping", ReplyAction="http://tempuri.org/IRefreshDistributionData/SyncHotelRoomTypeMappingResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelRoomTypeMappingAsync(string log_id, string Supplier_Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IKafka/InsertKafkaInfo", ReplyAction="http://tempuri.org/IKafka/InsertKafkaInfoResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IKafka/InsertKafkaInfoDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -55112,6 +57463,70 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task UpdateAccomodationTxInfoAsync() {
             return base.Channel.UpdateAccomodationTxInfoAsync();
+        }
+        
+        public bool AddLstAccomodationDescriptions(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[] AD) {
+            return base.Channel.AddLstAccomodationDescriptions(AD);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddLstAccomodationDescriptionsAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Descriptions[] AD) {
+            return base.Channel.AddLstAccomodationDescriptionsAsync(AD);
+        }
+        
+        public bool AddLstAccomodationFacilities(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility[] AF) {
+            return base.Channel.AddLstAccomodationFacilities(AF);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddLstAccomodationFacilitiesAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Facility[] AF) {
+            return base.Channel.AddLstAccomodationFacilitiesAsync(AF);
+        }
+        
+        public bool AddLstAccomodationStatus(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] AS) {
+            return base.Channel.AddLstAccomodationStatus(AS);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddLstAccomodationStatusAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Status[] AS) {
+            return base.Channel.AddLstAccomodationStatusAsync(AS);
+        }
+        
+        public bool AddLstAccomodationContacts(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[] AC) {
+            return base.Channel.AddLstAccomodationContacts(AC);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddLstAccomodationContactsAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_Contact[] AC) {
+            return base.Channel.AddLstAccomodationContactsAsync(AC);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] GetAccomodationRoomInfobyAccoID(string Accomodation_Id) {
+            return base.Channel.GetAccomodationRoomInfobyAccoID(Accomodation_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[]> GetAccomodationRoomInfobyAccoIDAsync(string Accomodation_Id) {
+            return base.Channel.GetAccomodationRoomInfobyAccoIDAsync(Accomodation_Id);
+        }
+        
+        public bool AddLstAccomodationRoomInfo(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI) {
+            return base.Channel.AddLstAccomodationRoomInfo(RI);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddLstAccomodationRoomInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI) {
+            return base.Channel.AddLstAccomodationRoomInfoAsync(RI);
+        }
+        
+        public bool UpdateLstAccomodationRoomInfo(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI) {
+            return base.Channel.UpdateLstAccomodationRoomInfo(RI);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateLstAccomodationRoomInfoAsync(TLGX_Consumer.MDMSVC.DC_Accommodation_RoomInfo[] RI) {
+            return base.Channel.UpdateLstAccomodationRoomInfoAsync(RI);
+        }
+        
+        public bool AddLstRoomAmenities(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[] RA) {
+            return base.Channel.AddLstRoomAmenities(RA);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddLstRoomAmenitiesAsync(TLGX_Consumer.MDMSVC.DC_Accomodation_Roomamenities[] RA) {
+            return base.Channel.AddLstRoomAmenitiesAsync(RA);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Accomodation[] GetAccomodationList(string PageNo, string PageSize) {
@@ -55880,6 +58295,70 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> IncludeExcludeHotelsAsync(TLGX_Consumer.MDMSVC.DC_ZoneRQ param) {
             return base.Channel.IncludeExcludeHotelsAsync(param);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_Region[] GetRegionMaster() {
+            return base.Channel.GetRegionMaster();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Region[]> GetRegionMasterAsync() {
+            return base.Channel.GetRegionMasterAsync();
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_Country[] GetRegionwiseCountriesList(string[] RegionCodeList) {
+            return base.Channel.GetRegionwiseCountriesList(RegionCodeList);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_Country[]> GetRegionwiseCountriesListAsync(string[] RegionCodeList) {
+            return base.Channel.GetRegionwiseCountriesListAsync(RegionCodeList);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_City[] GetAllCountrywiseCitiesList(string[] CountryIdList) {
+            return base.Channel.GetAllCountrywiseCitiesList(CountryIdList);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetAllCountrywiseCitiesListAsync(string[] CountryIdList) {
+            return base.Channel.GetAllCountrywiseCitiesListAsync(CountryIdList);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_City[] GetCountrywiseCitiesList(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ) {
+            return base.Channel.GetCountrywiseCitiesList(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCountrywiseCitiesListAsync(TLGX_Consumer.MDMSVC.DC_CitywithMultipleCountry_Search_RQ RQ) {
+            return base.Channel.GetCountrywiseCitiesListAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Master_City[] GetCitiesDetails(string CountryName, string CityName) {
+            return base.Channel.GetCitiesDetails(CountryName, CityName);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Master_City[]> GetCitiesDetailsAsync(string CountryName, string CityName) {
+            return base.Channel.GetCitiesDetailsAsync(CountryName, CityName);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[] GetDisplaySubType(string MasterFor, string Name) {
+            return base.Channel.GetDisplaySubType(MasterFor, Name);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_M_masterattributevalue[]> GetDisplaySubTypeAsync(string MasterFor, string Name) {
+            return base.Channel.GetDisplaySubTypeAsync(MasterFor, Name);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SupplierStaticDataDownload_AddUpdate(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj) {
+            return base.Channel.SupplierStaticDataDownload_AddUpdate(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SupplierStaticDataDownload_AddUpdateAsync(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj) {
+            return base.Channel.SupplierStaticDataDownload_AddUpdateAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload[] SupplierStaticDataDownload_Get(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj) {
+            return base.Channel.SupplierStaticDataDownload_Get(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload[]> SupplierStaticDataDownload_GetAsync(TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload obj) {
+            return base.Channel.SupplierStaticDataDownload_GetAsync(obj);
         }
         
         public string[] GetCountryNameList(TLGX_Consumer.MDMSVC.DC_Country_Search_RQ RQ) {
@@ -56714,6 +59193,30 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.GetRTM_ML_SuggestionsAsync(Accomodation_SupplierRoomTypeMapping_Id);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[] GetNewDashboardReport_CountryWise() {
+            return base.Channel.GetNewDashboardReport_CountryWise();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]> GetNewDashboardReport_CountryWiseAsync() {
+            return base.Channel.GetNewDashboardReport_CountryWiseAsync();
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[] GetHotelMappingReport_CityWise(TLGX_Consumer.MDMSVC.DC_NewDashBoardReport_RQ param) {
+            return base.Channel.GetHotelMappingReport_CityWise(param);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS[]> GetHotelMappingReport_CityWiseAsync(TLGX_Consumer.MDMSVC.DC_NewDashBoardReport_RQ param) {
+            return base.Channel.GetHotelMappingReport_CityWiseAsync(param);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[] HotelMappingReport(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ) {
+            return base.Channel.HotelMappingReport(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[]> HotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ) {
+            return base.Channel.HotelMappingReportAsync(RQ);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid) {
             return base.Channel.GetSiteMapMaster(ID, applicationid);
         }
@@ -56952,6 +59455,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_newHotelsReport[]> getNewHotelsAddedReportAsync(TLGX_Consumer.MDMSVC.DC_RollOFParams parm) {
             return base.Channel.getNewHotelsAddedReportAsync(parm);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[] AccomodationMappingReport(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ) {
+            return base.Channel.AccomodationMappingReport(dC_SupplerVSupplier_Report_RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport[]> AccomodationMappingReportAsync(TLGX_Consumer.MDMSVC.DC_SupplerVSupplier_Report_RQ dC_SupplerVSupplier_Report_RQ) {
+            return base.Channel.AccomodationMappingReportAsync(dC_SupplerVSupplier_Report_RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[] EzeegoHotelVsSupplierHotelMappingReport(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm) {
+            return base.Channel.EzeegoHotelVsSupplierHotelMappingReport(parm);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]> EzeegoHotelVsSupplierHotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ parm) {
+            return base.Channel.EzeegoHotelVsSupplierHotelMappingReportAsync(parm);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {
@@ -57770,6 +60289,22 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.SyncSupplierStaticHotelAsync(log_id, supplier_id, CreatedBy);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Message SyncActivityBySupplier(string log_id, string supplier_id, string CreatedBy) {
+            return base.Channel.SyncActivityBySupplier(log_id, supplier_id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncActivityBySupplierAsync(string log_id, string supplier_id, string CreatedBy) {
+            return base.Channel.SyncActivityBySupplierAsync(log_id, supplier_id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_SupplierEntity[] LoadSupplierActivityStatusData() {
+            return base.Channel.LoadSupplierActivityStatusData();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_SupplierEntity[]> LoadSupplierActivityStatusDataAsync() {
+            return base.Channel.LoadSupplierActivityStatusDataAsync();
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_Message SyncMLAPIData(TLGX_Consumer.MDMSVC.DC_Distribution_MLDataRQ _obj) {
             return base.Channel.SyncMLAPIData(_obj);
         }
@@ -57784,6 +60319,22 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncGeographyDataAsync(TLGX_Consumer.MDMSVC.DC_MongoDbSyncRQ RQ) {
             return base.Channel.SyncGeographyDataAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncAccommodationMaster(string log_id, string Accommodation_Id, string CreatedBy) {
+            return base.Channel.SyncAccommodationMaster(log_id, Accommodation_Id, CreatedBy);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncAccommodationMasterAsync(string log_id, string Accommodation_Id, string CreatedBy) {
+            return base.Channel.SyncAccommodationMasterAsync(log_id, Accommodation_Id, CreatedBy);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message SyncHotelRoomTypeMapping(string log_id, string Supplier_Id) {
+            return base.Channel.SyncHotelRoomTypeMapping(log_id, Supplier_Id);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> SyncHotelRoomTypeMappingAsync(string log_id, string Supplier_Id) {
+            return base.Channel.SyncHotelRoomTypeMappingAsync(log_id, Supplier_Id);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message InsertKafkaInfo(TLGX_Consumer.MDMSVC.DC_Stg_Kafka KafkaInfo) {
