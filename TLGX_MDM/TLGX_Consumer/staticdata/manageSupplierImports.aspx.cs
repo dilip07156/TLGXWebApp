@@ -272,6 +272,49 @@ namespace TLGX_Consumer.staticdata
 
         protected void btnUpdateSupplier_Click(object sender, EventArgs e)
         {
+            //GAURAV_TMAP_746
+
+            MDMSVC.DC_Message dC_Message = MapSvc.FileProcessingCheckInSupplierImportFileDetails(ddlSupplierName.SelectedValue);
+            if(dC_Message.StatusMessage == "RUNNING")
+            {
+                btnCityReRun.Enabled = false;
+                btnHotelReRun.Enabled = false;
+                btnHotelRun.Enabled = false;
+                btnRoomTypeReRun.Enabled = false;
+                btnRoomRun.Enabled = false;
+                btnCountryReRun.Enabled = false;
+                btnActivityReRun.Enabled = false;
+
+                btnCityReRun.CssClass = "btn btn-primary btn-sm disabled";
+                btnHotelReRun.CssClass = "btn btn-primary btn-sm disabled";
+                btnHotelRun.CssClass = "btn btn-primary btn-sm disabled";
+                btnRoomTypeReRun.CssClass = "btn btn-primary btn-sm disabled";
+                btnRoomRun.CssClass = "btn btn-primary btn-sm disabled";
+
+                btnCountryReRun.CssClass = "btn btn-primary btn-sm disabled";
+                btnActivityReRun.CssClass = "btn btn-primary btn-sm disabled";
+
+
+
+            }
+            else
+            {
+                btnCityReRun.Enabled = true;
+                btnHotelReRun.Enabled = true;
+                btnHotelRun.Enabled = true;
+                btnRoomTypeReRun.Enabled = true;
+                btnRoomRun.Enabled = true;
+                btnCountryReRun.Enabled = true;
+                btnActivityReRun.Enabled = true;
+                btnCityReRun.CssClass = "btn btn-primary btn-sm";
+                btnHotelReRun.CssClass = "btn btn-primary btn-sm";
+                btnHotelRun.CssClass = "btn btn-primary btn-sm";
+                btnRoomTypeReRun.CssClass = "btn btn-primary btn-sm";
+                btnCountryReRun.CssClass = "btn btn-primary btn-sm";
+                btnActivityReRun.CssClass = "btn btn-primary btn-sm";
+                btnRoomRun.CssClass = "btn btn-primary btn-sm";
+            }
+
             dvMsgCountry.Style.Add("display", "none");
             dvMsgHotel.Style.Add("display", "none");
             dvMsgCity.Style.Add("display", "none");

@@ -8608,6 +8608,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
@@ -9322,6 +9324,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
@@ -53029,6 +53033,131 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Activity_MediaDetailsForAttribute", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class Activity_MediaDetailsForAttribute : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_Flavour_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Activity_Media_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FileFormatField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FilenameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Media_URLField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_Flavour_Id {
+            get {
+                return this.Activity_Flavour_IdField;
+            }
+            set {
+                if ((this.Activity_Flavour_IdField.Equals(value) != true)) {
+                    this.Activity_Flavour_IdField = value;
+                    this.RaisePropertyChanged("Activity_Flavour_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Activity_Media_Id {
+            get {
+                return this.Activity_Media_IdField;
+            }
+            set {
+                if ((this.Activity_Media_IdField.Equals(value) != true)) {
+                    this.Activity_Media_IdField = value;
+                    this.RaisePropertyChanged("Activity_Media_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FileFormat {
+            get {
+                return this.FileFormatField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileFormatField, value) != true)) {
+                    this.FileFormatField = value;
+                    this.RaisePropertyChanged("FileFormat");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Filename {
+            get {
+                return this.FilenameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FilenameField, value) != true)) {
+                    this.FilenameField = value;
+                    this.RaisePropertyChanged("Filename");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Media_URL {
+            get {
+                return this.Media_URLField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Media_URLField, value) != true)) {
+                    this.Media_URLField = value;
+                    this.RaisePropertyChanged("Media_URL");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_State_City_Area_Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
     [System.SerializableAttribute()]
     public partial class DC_Country_State_City_Area_Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -56630,6 +56759,18 @@ namespace TLGX_Consumer.MDMSVC {
             "adedResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> UpdateSupplierImportFileDetailsFromNewToUploadedAsync(TLGX_Consumer.MDMSVC.DC_SupplierImportFileDetails obj);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/FileProcessingCheckInSupplierImportFileDetai" +
+            "ls", ReplyAction="http://tempuri.org/IUploadStaticData/FileProcessingCheckInSupplierImportFileDetai" +
+            "lsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/FileProcessingCheckInSupplierImportFileDetai" +
+            "lsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message FileProcessingCheckInSupplierImportFileDetails(string SupplierId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/FileProcessingCheckInSupplierImportFileDetai" +
+            "ls", ReplyAction="http://tempuri.org/IUploadStaticData/FileProcessingCheckInSupplierImportFileDetai" +
+            "lsResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> FileProcessingCheckInSupplierImportFileDetailsAsync(string SupplierId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_Call", ReplyAction="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IPentaho/Pentaho_SupplierApi_CallDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy);
@@ -57043,6 +57184,13 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddActivityMediaAttributes", ReplyAction="http://tempuri.org/IActivity/AddActivityMediaAttributesResponse")]
         System.Threading.Tasks.Task<bool> AddActivityMediaAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes AM);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityMediaForAttributes", ReplyAction="http://tempuri.org/IActivity/GetActivityMediaForAttributesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityMediaForAttributesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[] GetActivityMediaForAttributes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityMediaForAttributes", ReplyAction="http://tempuri.org/IActivity/GetActivityMediaForAttributesResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]> GetActivityMediaForAttributesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -59681,6 +59829,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.UpdateSupplierImportFileDetailsFromNewToUploadedAsync(obj);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Message FileProcessingCheckInSupplierImportFileDetails(string SupplierId) {
+            return base.Channel.FileProcessingCheckInSupplierImportFileDetails(SupplierId);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> FileProcessingCheckInSupplierImportFileDetailsAsync(string SupplierId) {
+            return base.Channel.FileProcessingCheckInSupplierImportFileDetailsAsync(SupplierId);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_Message Pentaho_SupplierApi_Call(string ApiLocationId, string CalledBy) {
             return base.Channel.Pentaho_SupplierApi_Call(ApiLocationId, CalledBy);
         }
@@ -60143,6 +60299,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<bool> AddActivityMediaAttributesAsync(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes AM) {
             return base.Channel.AddActivityMediaAttributesAsync(AM);
+        }
+        
+        public TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[] GetActivityMediaForAttributes() {
+            return base.Channel.GetActivityMediaForAttributes();
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]> GetActivityMediaForAttributesAsync() {
+            return base.Channel.GetActivityMediaForAttributesAsync();
         }
         
         public TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request) {

@@ -1964,4 +1964,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_MediaAttributes" nillable="true" type="tns:DC_Activity_MediaAttributes" />
+  <xs:complexType name="ArrayOfActivity_MediaDetailsForAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Activity_MediaDetailsForAttribute" nillable="true" type="tns:Activity_MediaDetailsForAttribute" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActivity_MediaDetailsForAttribute" nillable="true" type="tns:ArrayOfActivity_MediaDetailsForAttribute" />
+  <xs:complexType name="Activity_MediaDetailsForAttribute">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Media_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Filename" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media_URL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SupplierName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Activity_MediaDetailsForAttribute" nillable="true" type="tns:Activity_MediaDetailsForAttribute" />
 </xs:schema>
