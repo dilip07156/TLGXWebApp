@@ -226,7 +226,8 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             success: function (resultStatusValues) {
                 ddlStatusValues = resultStatusValues;
             },
-            failure: function () {
+            failure: function (xsh) {
+                Console.log(xsh);
             }
         });
 
