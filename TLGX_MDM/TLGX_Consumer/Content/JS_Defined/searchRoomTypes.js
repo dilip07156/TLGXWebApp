@@ -384,6 +384,7 @@ function BindRTDetails(controlval) {
     ActionButtons = ActionButtons + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr>" // ";
     ActionButtons = ActionButtons + "<td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td>";
+    ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Reset'  onclick='submitReSet()' /> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining + " onchange='UpdateTrainingFlag(this)'><strong>Don't Submit as Training Data</strong></td>";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td>";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_Id'  value='' /></td>";
@@ -1096,3 +1097,86 @@ function reloadAttributeDataTable(supplierRoomTypeMapId)
 $("#modalOnlineSuggestion").on('shown.bs.modal', function (e) {
     alert("I want this to appear after the modal has opened!");
 });
+//GAURAV_TMAP_746
+function submitReSet() {
+    debugger;
+    var r = confirm("This will remove any existing mappings and system will reset to unmapped except mapped data.\r\n Are you really sure you want to do this ?");
+    if (r == true) {
+        
+        //showLoadingImage();
+
+        //$('#ulRoomInfo').empty();
+
+        //var values = new Array();
+
+        var table = $("#tblTLGXRoomInfo");
+        var jsonObj = [];
+        var emptyGuid = '00000000-0000-0000-0000-000000000000';
+
+        //Check Training data push or not 
+        //var chk = $('#chkIsNotTraining');
+
+
+        table.find('tr').each(function (i) {
+            var row = $(this);
+            
+            var $tds = $(this).find('td');
+
+            if ($tds.eq(13).text() != '') {
+                item = {};
+                var ddlMapingStatusData = $('#ddlAttributeValues_' + $tds.eq(13).text() + ' :selected').text();
+                
+
+                if (ddlMapingStatusData != "MAPPED") {
+                    $('#ddlAttributeValues_' + $tds.eq(13).text()).get(0).selectedIndex = 7;
+                }
+
+                //if (ddlMapingStatusData != $tds.eq(14).text()) {
+                //    //item.Accommodation_RoomInfo_Id = $tds.eq(13).text();
+                //    //item.UserMappingStatus = ddlMapingStatusData;
+                //    //item.Accommodation_SupplierRoomTypeMapping_Id = $tds.eq(10).text();
+                //    //item.Accommodation_SupplierRoomTypeMapping_Value_Id = $tds.eq(12).text();
+                //    //if (chk !== null)
+                //    //    item.IsNotTraining = chk[0].checked;
+                //    //jsonObj.push(item);
+                //}
+            }
+
+        });
+
+
+
+        //If Need Reset Using Post back
+        //var jsonObj = [];
+        //var item = {};
+        //item.Acco_RoomTypeMap_Id = $("#hdnAcco_SuppRoomTypeMapping_Id").val();
+        //jsonObj.push(item);
+
+        //$.ajax({
+        //    type: 'POST',
+        //    url: '../../../Service/SupplierRoomTypeReset.ashx',
+        //    contentType: "application/json; charset=utf-8",
+        //    dataType: "json",
+        //    data: JSON.stringify(jsonObj),
+        //    responseType: "json",
+        //    success: function (result) {
+        //        reloadAttributeDataTable($("#hdnAcco_SuppRoomTypeMapping_Id").val());
+        //        reloadMappingDataTable($("#hdnAcco_Id").val(), $("#hdnAcco_SuppRoomTypeMapping_Id").val());
+
+        //        hideLoadingImage();
+        //        //$("#responseMessage").removeAttr('class');
+        //        //$("#responseMessage").css("display", "block").addClass("alert alert-success").html("Resst Mapping Updated Successfully.").delay(2000).fadeOut();
+        //    },
+        //    failure: function () {
+        //        hideLoadingImage();
+        //        $("#responseMessage").removeAttr('class');
+        //        $("#responseMessage").css("display", "block").addClass("alert alert-warning").html("Error while updating mapping.").delay(2000).fadeOut();
+        //    }
+        //});
+        //If Need Reset Using Post back
+    }
+    else {
+        return false;
+    }
+
+}

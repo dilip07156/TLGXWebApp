@@ -578,5 +578,15 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
         #endregion
+
+        #region Supplier RoomType Reset 
+        //GAURAV_TMAP_746
+        public DC_Message AccomodationSupplierRoomTypeMapping_Reset(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_Reset"], RQParams, typeof(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
     }
 }
