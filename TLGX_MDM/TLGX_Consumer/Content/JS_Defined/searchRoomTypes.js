@@ -1099,7 +1099,7 @@ $("#modalOnlineSuggestion").on('shown.bs.modal', function (e) {
 });
 //GAURAV_TMAP_746
 function submitReSet() {
-    debugger;
+    //debugger;
     var r = confirm("This will remove any existing mappings and system will reset to unmapped except mapped data.\r\n Are you really sure you want to do this ?");
     if (r == true) {
         
