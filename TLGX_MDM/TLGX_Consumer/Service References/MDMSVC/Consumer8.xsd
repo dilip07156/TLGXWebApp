@@ -259,6 +259,7 @@
       <xs:element minOccurs="0" name="Accomodation_Status" nillable="true" type="tns:ArrayOfDC_Accommodation_Status" />
       <xs:element minOccurs="0" name="Affiliation" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="AwardsReceived" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Brand" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CarbonFootPrint" nillable="true" type="xs:string" />
@@ -298,6 +299,7 @@
       <xs:element minOccurs="0" name="Latitude_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Legacy_HTL_ID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Location" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Location_Id" nillable="true" type="ser:guid" />
       <xs:element minOccurs="0" name="Longitude" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Longitude_Tx" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Null_Columns" nillable="true" type="xs:string" />

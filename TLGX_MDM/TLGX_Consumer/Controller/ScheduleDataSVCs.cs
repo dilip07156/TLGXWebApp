@@ -14,10 +14,12 @@ namespace TLGX_Consumer.Controller
     public class ScheduleDataSVCs
     {
         #region Supplier
-        public List<MDMSVC.DC_Supplier_Schedule> GetSchedule(string Supplier_ID)
+        public List<MDMSVC.DC_Supplier_Schedule> GetSchedule(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Supplier_GetSchedule"], Supplier_ID), typeof(List<MDMSVC.DC_Supplier_Schedule>), out result);
+            //ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Supplier_GetSchedule"], RQParams), typeof(List<MDMSVC.DC_Supplier_Schedule>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_GetSchedule"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule_RQ), typeof(List<MDMSVC.DC_Supplier_Schedule>), out result);
+
             return result as List<DC_Supplier_Schedule>;
         }
         public DC_Message AddUpdateSchedule(MDMSVC.DC_Supplier_Schedule RQParams)
@@ -25,6 +27,23 @@ namespace TLGX_Consumer.Controller
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_AddUpdateSchedule"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule), typeof(DC_Message), out result);
             return result as DC_Message;
+        }
+        #endregion
+        #region supplier schedule
+        public List<MDMSVC.DC_Supplier_Schedule_RS> GetSupplierSchedule(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_Schedular_Get"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule_RQ), typeof(List<MDMSVC.DC_Supplier_Schedule_RS>), out result);
+
+            return result as List<DC_Supplier_Schedule_RS>;
+        }
+
+        public bool SoftDeleteDetails(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
+        {
+
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_Schedular_SoftDelete"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule_RQ), typeof(bool), out result);
+            return (bool)result;
         }
         #endregion
     }
