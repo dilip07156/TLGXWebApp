@@ -1120,6 +1120,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\SupplierRoomTypeReset.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2798,6 +2799,9 @@
     </Compile>
     <Compile Include="Service\GetZoneHotelsForMap.ashx.cs">
       <DependentUpon>GetZoneHotelsForMap.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SupplierRoomTypeReset.ashx.cs">
+      <DependentUpon>SupplierRoomTypeReset.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
       <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>
