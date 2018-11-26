@@ -8464,6 +8464,9 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierScheduledTaskRQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.SupplierScheduledTask[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.SupplierScheduledTask))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes))]
@@ -9180,6 +9183,9 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierScheduledTaskRQ))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.SupplierScheduledTask[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.SupplierScheduledTask))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes))]
@@ -31766,6 +31772,320 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.WeekOfMonthField.Equals(value) != true)) {
                     this.WeekOfMonthField = value;
                     this.RaisePropertyChanged("WeekOfMonth");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_SupplierScheduledTaskRQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
+    [System.SerializableAttribute()]
+    public partial class DC_SupplierScheduledTaskRQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FromDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SortByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Supplier_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ToDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Entity {
+            get {
+                return this.EntityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityField, value) != true)) {
+                    this.EntityField = value;
+                    this.RaisePropertyChanged("Entity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FromDate {
+            get {
+                return this.FromDateField;
+            }
+            set {
+                if ((this.FromDateField.Equals(value) != true)) {
+                    this.FromDateField = value;
+                    this.RaisePropertyChanged("FromDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageNo {
+            get {
+                return this.PageNoField;
+            }
+            set {
+                if ((this.PageNoField.Equals(value) != true)) {
+                    this.PageNoField = value;
+                    this.RaisePropertyChanged("PageNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SortBy {
+            get {
+                return this.SortByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SortByField, value) != true)) {
+                    this.SortByField = value;
+                    this.RaisePropertyChanged("SortBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Supplier_Id {
+            get {
+                return this.Supplier_IdField;
+            }
+            set {
+                if ((this.Supplier_IdField.Equals(value) != true)) {
+                    this.Supplier_IdField = value;
+                    this.RaisePropertyChanged("Supplier_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ToDate {
+            get {
+                return this.ToDateField;
+            }
+            set {
+                if ((this.ToDateField.Equals(value) != true)) {
+                    this.ToDateField = value;
+                    this.RaisePropertyChanged("ToDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UserName {
+            get {
+                return this.UserNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserNameField, value) != true)) {
+                    this.UserNameField = value;
+                    this.RaisePropertyChanged("UserName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SupplierScheduledTask", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
+    [System.SerializableAttribute()]
+    public partial class SupplierScheduledTask : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ISActiveField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ISCompleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PendingFordaysField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ScheduledDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierScheduleTaskIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Suppllier_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalRecordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool ISActive {
+            get {
+                return this.ISActiveField;
+            }
+            set {
+                if ((this.ISActiveField.Equals(value) != true)) {
+                    this.ISActiveField = value;
+                    this.RaisePropertyChanged("ISActive");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool ISComplete {
+            get {
+                return this.ISCompleteField;
+            }
+            set {
+                if ((this.ISCompleteField.Equals(value) != true)) {
+                    this.ISCompleteField = value;
+                    this.RaisePropertyChanged("ISComplete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PendingFordays {
+            get {
+                return this.PendingFordaysField;
+            }
+            set {
+                if ((this.PendingFordaysField.Equals(value) != true)) {
+                    this.PendingFordaysField = value;
+                    this.RaisePropertyChanged("PendingFordays");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ScheduledDate {
+            get {
+                return this.ScheduledDateField;
+            }
+            set {
+                if ((this.ScheduledDateField.Equals(value) != true)) {
+                    this.ScheduledDateField = value;
+                    this.RaisePropertyChanged("ScheduledDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierScheduleTaskID {
+            get {
+                return this.SupplierScheduleTaskIDField;
+            }
+            set {
+                if ((this.SupplierScheduleTaskIDField.Equals(value) != true)) {
+                    this.SupplierScheduleTaskIDField = value;
+                    this.RaisePropertyChanged("SupplierScheduleTaskID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Suppllier_ID {
+            get {
+                return this.Suppllier_IDField;
+            }
+            set {
+                if ((this.Suppllier_IDField.Equals(value) != true)) {
+                    this.Suppllier_IDField = value;
+                    this.RaisePropertyChanged("Suppllier_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecord {
+            get {
+                return this.TotalRecordField;
+            }
+            set {
+                if ((this.TotalRecordField.Equals(value) != true)) {
+                    this.TotalRecordField = value;
+                    this.RaisePropertyChanged("TotalRecord");
                 }
             }
         }
@@ -56555,6 +56875,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/AddUpdateSchedule", ReplyAction="http://tempuri.org/ISchedule/AddUpdateScheduleResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule obj);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetScheduledTaskByRoles", ReplyAction="http://tempuri.org/ISchedule/GetScheduledTaskByRolesResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduledTaskByRolesDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.SupplierScheduledTask[] GetScheduledTaskByRoles(TLGX_Consumer.MDMSVC.DC_SupplierScheduledTaskRQ obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetScheduledTaskByRoles", ReplyAction="http://tempuri.org/ISchedule/GetScheduledTaskByRolesResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.SupplierScheduledTask[]> GetScheduledTaskByRolesAsync(TLGX_Consumer.MDMSVC.DC_SupplierScheduledTaskRQ obj);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributes", ReplyAction="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributesDC_ErrorStatus" +
             "Fault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -59635,6 +59962,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule obj) {
             return base.Channel.AddUpdateScheduleAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.SupplierScheduledTask[] GetScheduledTaskByRoles(TLGX_Consumer.MDMSVC.DC_SupplierScheduledTaskRQ obj) {
+            return base.Channel.GetScheduledTaskByRoles(obj);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.SupplierScheduledTask[]> GetScheduledTaskByRolesAsync(TLGX_Consumer.MDMSVC.DC_SupplierScheduledTaskRQ obj) {
+            return base.Channel.GetScheduledTaskByRolesAsync(obj);
         }
         
         public TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[] GetStaticDataMappingAttributes(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ obj) {

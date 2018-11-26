@@ -318,6 +318,7 @@
     <Content Include="controls\businessentities\manageClient.ascx" />
     <Content Include="controls\businessentities\manageOrgstructure.ascx" />
     <Content Include="controls\businessentities\manageSupplier.ascx" />
+    <Content Include="controls\businessentities\manageSupplierScheduleTask.ascx" />
     <Content Include="controls\businessentities\searchClient.ascx" />
     <Content Include="controls\businessentities\searchOrgStructure.ascx" />
     <Content Include="controls\businessentities\searchSupplier.ascx" />
@@ -460,6 +461,9 @@
     <Content Include="Scripts\ChartJS\morris.min.js" />
     <Content Include="Scripts\ChartJS\raphael-min.js" />
     <Content Include="Scripts\ChartJS\xepOnline.jqPlugin.008.js" />
+    <Content Include="Scripts\Cron\later.min.js" />
+    <Content Include="Scripts\Cron\Moment.min.js" />
+    <Content Include="Scripts\Cron\prettycron.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.css" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\Google_Related\dataTables.bootstrap.min.css" />
@@ -534,6 +538,7 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
+    <Content Include="suppliers\SupplierSchedularTask.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1120,6 +1125,9 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.SupplierScheduledTask.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1702,6 +1710,13 @@
     </Compile>
     <Compile Include="controls\businessentities\manageSupplier.ascx.designer.cs">
       <DependentUpon>manageSupplier.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\manageSupplierScheduleTask.ascx.cs">
+      <DependentUpon>manageSupplierScheduleTask.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\manageSupplierScheduleTask.ascx.designer.cs">
+      <DependentUpon>manageSupplierScheduleTask.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\businessentities\supplierApiLocation.ascx.cs">
       <DependentUpon>supplierApiLocation.ascx</DependentUpon>
@@ -3017,6 +3032,13 @@
     </Compile>
     <Compile Include="suppliers\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\SupplierSchedularTask.aspx.cs">
+      <DependentUpon>SupplierSchedularTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\SupplierSchedularTask.aspx.designer.cs">
+      <DependentUpon>SupplierSchedularTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

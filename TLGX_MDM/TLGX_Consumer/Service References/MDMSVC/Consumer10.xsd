@@ -29,4 +29,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Supplier_Schedule" nillable="true" type="tns:DC_Supplier_Schedule" />
+  <xs:complexType name="DC_SupplierScheduledTaskRQ">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Supplier_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="ToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_SupplierScheduledTaskRQ" nillable="true" type="tns:DC_SupplierScheduledTaskRQ" />
+  <xs:complexType name="ArrayOfSupplierScheduledTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SupplierScheduledTask" nillable="true" type="tns:SupplierScheduledTask" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupplierScheduledTask" nillable="true" type="tns:ArrayOfSupplierScheduledTask" />
+  <xs:complexType name="SupplierScheduledTask">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ISActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ISComplete" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PendingFordays" type="xs:int" />
+      <xs:element minOccurs="0" name="ScheduledDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SupplierScheduleTaskID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Suppllier_ID" type="ser:guid" />
+      <xs:element minOccurs="0" name="TotalRecord" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SupplierScheduledTask" nillable="true" type="tns:SupplierScheduledTask" />
 </xs:schema>

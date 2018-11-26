@@ -26,6 +26,15 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_AddUpdateSchedule"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+        public List<SupplierScheduledTask> GetScheduleTaskByRoll(MDMSVC.DC_SupplierScheduledTaskRQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ScheduleTask"], RQParams, typeof(MDMSVC.DC_SupplierScheduledTaskRQ), typeof(List<MDMSVC.SupplierScheduledTask>), out result);
+            return result as List<SupplierScheduledTask>;
+        }
+
         #endregion
+
+
     }
 }
