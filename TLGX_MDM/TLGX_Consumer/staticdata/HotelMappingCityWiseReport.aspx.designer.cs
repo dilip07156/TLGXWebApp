@@ -31,6 +31,15 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.ListBox ddlRegion;
         
         /// <summary>
+        /// ddlKeys control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ddlKeys;
+        
+        /// <summary>
         /// ddlCountry control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox ddlCountry;
+        
+        /// <summary>
+        /// ddlPriorities control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ddlPriorities;
         
         /// <summary>
         /// rdoIsAllCities control.
@@ -67,13 +85,13 @@ namespace TLGX_Consumer.staticdata {
         protected global::System.Web.UI.WebControls.TextBox txtCityLookup;
         
         /// <summary>
-        /// btnAdd control.
+        /// ddlRanks control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdd;
+        protected global::System.Web.UI.WebControls.ListBox ddlRanks;
         
         /// <summary>
         /// repSelectedCity control.
@@ -83,6 +101,15 @@ namespace TLGX_Consumer.staticdata {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater repSelectedCity;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
         
         /// <summary>
         /// btnViewReport control.

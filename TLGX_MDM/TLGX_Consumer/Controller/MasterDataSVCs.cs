@@ -99,6 +99,29 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_CityAdd"], RQ, typeof(MDMSVC.DC_City), typeof(MDMSVC.DC_Message), out result);
             return result as MDMSVC.DC_Message;
         }
+
+        //GAURAV_TMAP_876
+        public List<DC_Priorities> GetPrioritiesOfCityMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_CityPriorities"], typeof(List<MDMSVC.DC_Priorities>), out result);
+            return result as List<DC_Priorities>;
+        }
+
+        public List<DC_Keys> GetKeysOfCityMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_CityKeys"], typeof(List<MDMSVC.DC_Keys>), out result);
+            return result as List<DC_Keys>;
+        }
+
+        public List<DC_Ranks> GetRanksOfCityMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_CityRanks"], typeof(List<MDMSVC.DC_Ranks>), out result);
+            return result as List<DC_Ranks>;
+        }
+
         #endregion
 
         #region "State Data"
