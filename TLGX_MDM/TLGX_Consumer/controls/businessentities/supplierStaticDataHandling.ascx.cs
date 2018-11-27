@@ -16,14 +16,36 @@ namespace TLGX_Consumer.controls.businessentities
     {
         ScheduleDataSVCs _objSchedularService = new ScheduleDataSVCs();
         Controller.ScheduleDataSVCs SchSvc = new Controller.ScheduleDataSVCs();
+        public int PageSize = 5;
+        public int intPageIndex = 0;
+        Controller.AdminSVCs _objAdminSVCs = new Controller.AdminSVCs();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-               // LoadPageData();
+                // LoadPageData();
                 LoadSupplierScheduleData();
+                fillroles();
             }
         }
+
+        [System.Web.Services.WebMethod]
+        public static string GetCurrentTime(string name)
+        {
+            return "Hello " + name + Environment.NewLine + "The Current Time is: "
+                + DateTime.Now.ToString();
+        }
+
+        private void fillroles()
+        {
+            Guid _ApplicaitonID = new Guid();
+            var result = _objAdminSVCs.GetAllRole(intPageIndex, PageSize, Convert.ToString(_ApplicaitonID));
+            ddlUserRoleId.DataSource = result;
+            ddlUserRoleId.DataValueField = "RoleID";
+            ddlUserRoleId.DataTextField = "RoleName";
+            ddlUserRoleId.DataBind();
+        }
+
         private List<DC_Supplier_Schedule> GetListOfScheduleBySupplier()
         {
             try
@@ -55,7 +77,7 @@ namespace TLGX_Consumer.controls.businessentities
                 //grdSupplierSchedule.PageSize = intPageSize;
                 grdSupplierSchedule.DataBind();
                 resetControls();
-                
+
             }
 
             catch (Exception)
@@ -316,7 +338,7 @@ namespace TLGX_Consumer.controls.businessentities
                         if (Yearly_type == "byDay")
                         {
                             sbFrequencyTypeCode.Append("M");
-                            _objSupSch.MonthOfYear =Convert.ToInt32(Request.Form["ddl_yearly_Month"]);
+                            _objSupSch.MonthOfYear = Convert.ToInt32(Request.Form["ddl_yearly_Month"]);
                             _objSupSch.DateOfMonth = Convert.ToInt32(Request.Form["ddl_yearly_day"]);
                         }
                         else if (Yearly_type == "byWeek")
@@ -334,13 +356,13 @@ namespace TLGX_Consumer.controls.businessentities
                     if (frequencyvalue == "M")
                     {
                         string Monthly_type = Request.Form["monthlyType"];
-                        if (Monthly_type== "byDay")
+                        if (Monthly_type == "byDay")
                         {
                             sbFrequencyTypeCode.Append("D");
                             _objSupSch.DateOfMonth = Convert.ToInt32(Request.Form["ddl_monthly_day"]);
                             _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_monthly_monthly"]);
                         }
-                        else if (Monthly_type== "byWeek")
+                        else if (Monthly_type == "byWeek")
                         {
                             sbFrequencyTypeCode.Append("W");
                             _objSupSch.WeekOfMonth = Convert.ToInt32(Request.Form["ddl_monthly_nthday"]);
@@ -355,7 +377,7 @@ namespace TLGX_Consumer.controls.businessentities
                     if (frequencyvalue == "W")
                     {
                         //_objSupSch.Recur_No = Convert.ToInt32(txtRecur_Weekly.Text);
-                        
+
                         string test = Request.Form["dayOfWeek"];
 
                         int[] nums = test.Split(',').Select(int.Parse).ToArray();
@@ -365,14 +387,14 @@ namespace TLGX_Consumer.controls.businessentities
                         {
                             if (i != 1)
                             {
-                                sbDay[Convert.ToInt32(i)-2] = '1';
+                                sbDay[Convert.ToInt32(i) - 2] = '1';
                                 // selected.Add(item);
                             }
                             else
                             {
                                 sbDay[Convert.ToInt32(6)] = '1';
                             }
-                        }  
+                        }
                         _objSupSch.DayOfWeek = sbDay.ToString();
                     }
                     #endregion
@@ -385,7 +407,7 @@ namespace TLGX_Consumer.controls.businessentities
                     #region Hourly
                     if (frequencyvalue == "H")
                     {
-                        _objSupSch.Recur_No =Convert.ToInt32(Request.Form["ddl_hourly"]);
+                        _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_hourly"]);
                     }
                     #endregion
                     _objSupSch.FrequencyTypeCode = sbFrequencyTypeCode.ToString();
@@ -406,12 +428,24 @@ namespace TLGX_Consumer.controls.businessentities
                         _objSupSch.lstEnity = selected.ToArray();
                     }
                 _objSupSch.CronExpression = expression;
-                MDMSVC.DC_Message _objMsg = _objSchedularService.AddUpdateSchedule(_objSupSch);
-               
-                if (_objMsg != null)
-                    BootstrapAlert.BootstrapAlertMessage(msgAlert, "" + _objMsg.StatusMessage, (BootstrapAlertType)_objMsg.StatusCode);
-                LoadPageData();
-                
+                _objSupSch.User_Role_Id = Convert.ToString(ddlUserRoleId.SelectedValue);
+                //MDMSVC.DC_Supplier_Schedule_RQ obj = new DC_Supplier_Schedule_RQ();
+                //obj.Suppllier_ID = _objSupSch.Suppllier_ID;
+                //obj.Entities = _objSupSch.lstEnity;
+
+                //var result = _objSchedularService.CheckSupplierScheduleData(obj);
+                //if (result == false)
+                //{
+                //    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "alert('record alreday exist');e.preventDefault();e.stopPropagation(); return false;", true);
+                //    BootstrapAlert.BootstrapAlertMessage(msgAlert, "One of Entity Record Already Exist", BootstrapAlertType.Information);
+                //}
+                //else
+                //{
+                    MDMSVC.DC_Message _objMsg = _objSchedularService.AddUpdateSchedule(_objSupSch);
+                    if (_objMsg != null)
+                        BootstrapAlert.BootstrapAlertMessage(msgAlert, "" + _objMsg.StatusMessage, (BootstrapAlertType)_objMsg.StatusCode);
+                    LoadPageData();
+                //}
 
             }
             catch (Exception ex)
@@ -594,7 +628,7 @@ namespace TLGX_Consumer.controls.businessentities
 
         protected void grdSupplierSchedule_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
+
             Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
             Session["SupplierScheduleId"] = myRow_Id;
             GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
@@ -602,7 +636,7 @@ namespace TLGX_Consumer.controls.businessentities
 
             if (e.CommandName == "Select")
             {
-                
+
                 LoadSupplierDatabyScheduleId(myRow_Id);
             }
 
@@ -615,11 +649,11 @@ namespace TLGX_Consumer.controls.businessentities
                     Edit_User = System.Web.HttpContext.Current.User.Identity.Name
                 };
                 if (_objSchedularService.SoftDeleteDetails(newObj))
-                {                   
+                {
                     BootstrapAlert.BootstrapAlertMessage(msgAlert, "Supplier Scheduler has been deleted successfully", BootstrapAlertType.Success);
                     LoadSupplierScheduleData();
                 };
-            }           
+            }
         }
 
         private void LoadSupplierDatabyScheduleIdPrevious(Guid myRow_Id)
@@ -726,7 +760,7 @@ namespace TLGX_Consumer.controls.businessentities
             {
                 throw ex;
             }
-                       
+
         }
 
         private void LoadSupplierDatabyScheduleId(Guid myRow_Id)
@@ -754,81 +788,83 @@ namespace TLGX_Consumer.controls.businessentities
                             Checkentitysequence.Enabled = false;
 
                             List<string> SchedularStartTime = new List<string>();
-                            if (_objresult[0].StartTime!=null)
-                                {
-                                   
-                                    SchedularStartTime = _objresult[0].StartTime.Split(':').ToList();
-                                }
+                            if (_objresult[0].StartTime != null)
+                            {
+
+                                SchedularStartTime = _objresult[0].StartTime.Split(':').ToList();
+                            }
                             string strActiveFrequencyType = _objresult[0].FrequencyTypeCode.Substring(0, 1);
+                            fillroles();
+                            ddlUserRoleId.SelectedValue = (Convert.ToString(_objresult[0].User_Role_Id));
                             #region AllDiv display none
 
                             #endregion
                             if (strActiveFrequencyType == "Y")
                             {
                                 string yearval = _objresult[0].FrequencyTypeCode.Substring(1, 1);
-                               
+
                                 if (yearval == "M")
                                 {
-                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + _objresult[0].MonthOfYear + "','" + _objresult[0].DateOfMonth + "','" + _objresult[0].Recur_No + "','0','0','" + yearval + "','"+SchedularStartTime[0]+"','"+SchedularStartTime[1]+"') ", true);
-                                    
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + _objresult[0].MonthOfYear + "','" + _objresult[0].DateOfMonth + "','" + _objresult[0].Recur_No + "','0','0','" + yearval + "','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
+
                                 }
                                 else if (yearval == "W")
                                 {
                                     int MonthWeekListvalue = _objresult[0].DayOfWeek.ToString().IndexOf("1") + 1;
-                                    
+
 
                                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + _objresult[0].DateOfMonth + "','" + _objresult[0].WeekOfMonth + "','" + _objresult[0].Recur_No + "','" + MonthWeekListvalue + "','" + _objresult[0].MonthOfYear + "','" + yearval + "','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
-                                   
+
                                 }
                             }
                             if (strActiveFrequencyType == "M")
                             {
-                                string monthval = _objresult[0].FrequencyTypeCode.Substring(1, 1);                            
+                                string monthval = _objresult[0].FrequencyTypeCode.Substring(1, 1);
 
-                                
+
 
                                 if (monthval == "D")
                                 {
                                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + _objresult[0].DateOfMonth + "','0','" + _objresult[0].Recur_No + "','0','0','" + monthval + "','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
 
-                                   
+
                                 }
                                 else if (monthval == "W")
                                 {
                                     int thedaysOf_Month = Convert.ToInt32(_objresult[0].DayOfWeek.ToString().IndexOf('1')) + 1;
-                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + thedaysOf_Month + "','" + _objresult[0].WeekOfMonth + "','"+ _objresult[0].Recur_No + "','0','0','" + monthval + "','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
+                                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + thedaysOf_Month + "','" + _objresult[0].WeekOfMonth + "','" + _objresult[0].Recur_No + "','0','0','" + monthval + "','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
 
-                                  
+
                                 }
                             }
                             if (strActiveFrequencyType == "W")
                             {
-                                
+
                                 StringBuilder sbDay = new StringBuilder(Convert.ToString(_objresult[0].DayOfWeek));
-                                
+
                                 char[] days = sbDay.ToString().ToCharArray();
                                 //List<int> test = new List<int>();
                                 List<char> list = sbDay.ToString().ToList();
                                 string weekdays = "";
                                 weekdays = string.Join(",", list.Select(n => n.ToString()).ToArray());
-                                                               
+
                                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','" + _objresult[0].MonthOfYear + "','" + _objresult[0].DateOfMonth + "','" + _objresult[0].Recur_No + "','" + 0 + "','" + _objresult[0].MonthOfYear + "','" + weekdays + "','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
-                               
+
 
                             }
 
                             if (strActiveFrequencyType == "D")
                             {
-                                
+
                                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','0','0','" + _objresult[0].Recur_No + "','0','0','0','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
-                              
+
                             }
                             if (strActiveFrequencyType == "H")
                             {
-                            
+
 
                                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "GetSupplierScheduleDetailOnEdit('" + strActiveFrequencyType + "','0','0','" + _objresult[0].Recur_No + "','0','0','0','" + SchedularStartTime[0] + "','" + SchedularStartTime[1] + "') ", true);
-                               
+
                             }
                             //timepickerStart_Hourly.Value = Convert.ToString(_objresult[0].StartTime);
                             //timepickerEnd_Hourly.Value = Convert.ToString(_objresult[0].EndTime);
@@ -864,7 +900,7 @@ namespace TLGX_Consumer.controls.businessentities
 
         protected void btnNewCreate_Click(object sender, EventArgs e)
         {
-            
+
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), DateTime.Now.Ticks.ToString(), "NewSupplierSchedular();", true);
             Checkentitysequence.Enabled = true;
 

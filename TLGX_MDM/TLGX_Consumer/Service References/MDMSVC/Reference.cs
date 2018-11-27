@@ -31497,6 +31497,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string Edit_UserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] EntitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -31543,6 +31546,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
                     this.Edit_UserField = value;
                     this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Entities {
+            get {
+                return this.EntitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntitiesField, value) != true)) {
+                    this.EntitiesField = value;
+                    this.RaisePropertyChanged("Entities");
                 }
             }
         }
@@ -31696,6 +31712,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Suppllier_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string User_Role_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WeekOfMonthField;
@@ -31995,6 +32014,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Suppllier_IDField.Equals(value) != true)) {
                     this.Suppllier_IDField = value;
                     this.RaisePropertyChanged("Suppllier_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string User_Role_Id {
+            get {
+                return this.User_Role_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.User_Role_IdField, value) != true)) {
+                    this.User_Role_IdField = value;
+                    this.RaisePropertyChanged("User_Role_Id");
                 }
             }
         }
@@ -56856,6 +56888,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/UpdateSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/UpdateSupplierScheduleResponse")]
         System.Threading.Tasks.Task<bool> UpdateSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/CheckExistingSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/CheckExistingSupplierScheduleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/CheckExistingSupplierScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool CheckExistingSupplierSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/CheckExistingSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/CheckExistingSupplierScheduleResponse")]
+        System.Threading.Tasks.Task<bool> CheckExistingSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributes", ReplyAction="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributesDC_ErrorStatus" +
             "Fault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -59933,6 +59972,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<bool> UpdateSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
             return base.Channel.UpdateSupplierScheduleAsync(RQ);
+        }
+        
+        public bool CheckExistingSupplierSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.CheckExistingSupplierSchedule(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckExistingSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.CheckExistingSupplierScheduleAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[] GetStaticDataMappingAttributes(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ obj) {

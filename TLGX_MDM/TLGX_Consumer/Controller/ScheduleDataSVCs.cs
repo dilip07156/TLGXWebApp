@@ -45,6 +45,14 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_Schedular_SoftDelete"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule_RQ), typeof(bool), out result);
             return (bool)result;
         }
+
+        public bool CheckSupplierScheduleData(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
+        {
+
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Check_Supplier_Schedular_data"], RQParams, typeof(List<MDMSVC.DC_Supplier_Schedule_RQ>), typeof(bool), out result);
+            return (bool)result;
+        }
         #endregion
     }
 }

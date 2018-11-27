@@ -1151,6 +1151,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\CheckExistingSupplierData.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2771,6 +2772,9 @@
     </Compile>
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CheckExistingSupplierData.ashx.cs">
+      <DependentUpon>CheckExistingSupplierData.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\CityFillForDDL.ashx.cs">
       <DependentUpon>CityFillForDDL.ashx</DependentUpon>

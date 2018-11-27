@@ -31,13 +31,12 @@
     }
 </style>
 <script type="text/javascript">
-
+    var dataexist = false; 
     $(document).ready(function () {
 
         cronfunc();
         //LoadFrequencyAndIsAPIXMLChangeData();
-        LoadFrequencyAndIsAPIXMLChangeDataForCron();
-        
+        LoadFrequencyAndIsAPIXMLChangeDataForCron();               
     });
 
 
@@ -146,32 +145,77 @@
             .find("input[name=monthlyType][value=byDay]").prop('checked', true);
     }
 
-    function CheckValidation() {
-        debugger;
+    function CheckExistingData() {
         var current = $('#example1-cron').data('cronBuilder').getExpression();
         $('#cron_expression').val(current);
-        var checked = [];
-        var cnt = $("#Checkentitysequence input:checked").length;
-
         
-
-
-        var rdFrequencyType = document.getElementById("rdbFrequency");
-        var checkedValue;
-        for (var i = 0; i < rdFrequencyType.childNodes.length; i++) {
-            if (rdFrequencyType.childNodes[i].type = "radio") {
-                if (rdFrequencyType.childNodes[0].checked != false) {
-                    checkedValue = value;
+        var jsonObj = [];
+        var item = {};
+        var checked = [];
+        
+        item.Suppllier_ID = '<%=Guid.Parse(Request.QueryString["Supplier_Id"])%>';
+        
+        var checked_checkboxes = $("[id*=Checkentitysequence] input:checked");
+        var message = "";
+        checked_checkboxes.each(function () {
+            checked.push($(this).first().next("label").text());
+        });
+         
+        item.Entities = checked;
+        jsonObj.push(item);
+               
+        $.ajax({
+            type: 'POST',
+            url: '../../../Service/CheckExistingSupplierData.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data:JSON.stringify(jsonObj),                
+            responseType: "json",
+            success: function (result) {
+                debugger;
+                if (result == false) {
+                    
+                    alert('Please select other entity');
+                    dataexist = result;
+                    return dataexist;
                 }
+                else {
+                    dataexist = true;
+                    return dataexist;
+                }
+            },
+            failure: function () {
+                dataexist = false;
+                return dataexist;
             }
-        }
-        if (checkedValue != "Y") {
-            var rfvMonthDay_Year = document.getElementById("rfvMonthDay_Year");
-            ValidatorEnable(rfvMonthDay_Year, false);
-            var rfvRecurEvery_Year = document.getElementById("rfvRecurEvery_Year");
-            ValidatorEnable(rfvRecurEvery_Year, false);
+        });
+       // return dataexist;
+    }
+    
 
-        }
+    function CheckValidation() {
+        //debugger;
+        
+        
+        //CheckExistingData();
+        //return dataexist;
+       
+        //var rdFrequencyType = document.getElementById("rdbFrequency");
+        //var checkedValue;
+        //for (var i = 0; i < rdFrequencyType.childNodes.length; i++) {
+        //    if (rdFrequencyType.childNodes[i].type = "radio") {
+        //        if (rdFrequencyType.childNodes[0].checked != false) {
+        //            checkedValue = value;
+        //        }
+        //    }
+        //}
+        //if (checkedValue != "Y") {
+        //    var rfvMonthDay_Year = document.getElementById("rfvMonthDay_Year");
+        //    ValidatorEnable(rfvMonthDay_Year, false);
+        //    var rfvRecurEvery_Year = document.getElementById("rfvRecurEvery_Year");
+        //    ValidatorEnable(rfvRecurEvery_Year, false);
+
+        //}
     }
 
     function LoadFrequencyAndIsAPIXMLChangeData() {
@@ -464,7 +508,7 @@
                             <div class="input-group row">
                                 <label class="input-group-addon" for="Checkentitysequence">
                                     <strong>Entity</strong>
-                                    
+                                
                                 </label>
                                 <asp:CheckBoxList ID="Checkentitysequence" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal"  runat="server">
                                     <asp:ListItem Text="Country" Value="1"></asp:ListItem>
@@ -473,6 +517,7 @@
                                     <asp:ListItem Text="Room Type" Value="4"></asp:ListItem>
                                     <asp:ListItem Text="Activity" Value="5"></asp:ListItem>
                                     <asp:ListItem Text="Holiday" Value="6"></asp:ListItem>
+
                                 </asp:CheckBoxList>
                                 
                             </div>
@@ -527,6 +572,17 @@
                                 <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server">
                                     <asp:ListItem Text="Active" Value="ACT"></asp:ListItem>
                                     <asp:ListItem Text="Inactive" Value="INA"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-12">
+                        <div class="col-md-5">
+                            <div class="input-group row">
+                                <label class="input-group-addon" for="ddlUserRoleId"><strong>UserRoleID</strong></label>
+                                <asp:DropDownList ID="ddlUserRoleId" CssClass="form-control" runat="server">
+                                    <asp:ListItem Text="---Select---" Value="0"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -749,7 +805,7 @@
                     <div class="form-group row col-md-12">
                     </div>
                     <div class="form-group row col-md-12">
-                        <asp:Button ID="btnSaveSchedule" OnClientClick="CheckValidation();" OnClick="btnSaveSchedule_Click" runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
+                        <asp:Button ID="btnSaveSchedule" OnClick="btnSaveSchedule_Click" OnClientClick="if (!CheckExistingData()) {return false;} else {return true;} "  runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
                         <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnReset_Click" Text="Reset" />
                     </div>
                 </div>
@@ -765,6 +821,7 @@
             </div>
         </div>--%>
     </ContentTemplate>
+
 </asp:UpdatePanel>
 <script type="text/javascript">
     $('#MainContent_manageSupplier_supplierStaticDataHandling_timepickerStart_Hourly').timepicker();
