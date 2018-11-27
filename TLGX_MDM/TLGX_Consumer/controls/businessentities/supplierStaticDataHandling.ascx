@@ -196,26 +196,27 @@
     function CheckValidation() {
         //debugger;
         
-        
+        var current = $('#example1-cron').data('cronBuilder').getExpression();
+        $('#cron_expression').val(current);
         //CheckExistingData();
         //return dataexist;
        
-        //var rdFrequencyType = document.getElementById("rdbFrequency");
-        //var checkedValue;
-        //for (var i = 0; i < rdFrequencyType.childNodes.length; i++) {
-        //    if (rdFrequencyType.childNodes[i].type = "radio") {
-        //        if (rdFrequencyType.childNodes[0].checked != false) {
-        //            checkedValue = value;
-        //        }
-        //    }
-        //}
-        //if (checkedValue != "Y") {
-        //    var rfvMonthDay_Year = document.getElementById("rfvMonthDay_Year");
-        //    ValidatorEnable(rfvMonthDay_Year, false);
-        //    var rfvRecurEvery_Year = document.getElementById("rfvRecurEvery_Year");
-        //    ValidatorEnable(rfvRecurEvery_Year, false);
+        var rdFrequencyType = document.getElementById("rdbFrequency");
+        var checkedValue;
+        for (var i = 0; i < rdFrequencyType.childNodes.length; i++) {
+            if (rdFrequencyType.childNodes[i].type = "radio") {
+                if (rdFrequencyType.childNodes[0].checked != false) {
+                    checkedValue = value;
+                }
+            }
+        }
+        if (checkedValue != "Y") {
+            var rfvMonthDay_Year = document.getElementById("rfvMonthDay_Year");
+            ValidatorEnable(rfvMonthDay_Year, false);
+            var rfvRecurEvery_Year = document.getElementById("rfvRecurEvery_Year");
+            ValidatorEnable(rfvRecurEvery_Year, false);
 
-        //}
+        }
     }
 
     function LoadFrequencyAndIsAPIXMLChangeData() {
@@ -805,7 +806,7 @@
                     <div class="form-group row col-md-12">
                     </div>
                     <div class="form-group row col-md-12">
-                        <asp:Button ID="btnSaveSchedule" OnClick="btnSaveSchedule_Click" OnClientClick="if (!CheckExistingData()) {return false;} else {return true;} "  runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
+                        <asp:Button ID="btnSaveSchedule" OnClick="btnSaveSchedule_Click" OnClientClick="return CheckValidation()"  runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
                         <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnReset_Click" Text="Reset" />
                     </div>
                 </div>
