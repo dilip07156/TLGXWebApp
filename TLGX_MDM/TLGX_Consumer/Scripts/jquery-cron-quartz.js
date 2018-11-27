@@ -6,7 +6,7 @@
 
     var cronInputs = {
         period: '<div class="cron-select-period col-md-5 input-group row"><label class="input-group-addon strongtext"></label><select id="ddl_period" name="ddl_period" class="cron-period-select form-control" runat="server" style="margin-left:0px;"></select></div>',
-        startTime: '<div class="cron-input cron-start-time col-md-5 input-group row"><label class="input-group-addon strongtext" style="width:20%;">Start time </label><select id="ddl_clock_hour" name="ddl_clock_hour" class="cron-clock-hour form-control" runat="server" style="width:35%;margin-left:0px;"></select><select id="ddl_clock_minute" name="ddl_clock_minute" class="cron-clock-minute form-control" runat="server" style="width:35%;"></select></div>',
+        startTime: '<div class="cron-input cron-start-time col-md-8 input-group row"><label class="input-group-addon strongtext" style="width:20%;">Start time </label><select id="ddl_clock_hour" name="ddl_clock_hour" class="cron-clock-hour form-control" runat="server" style="width:35%;margin-left:0px;"></select><select id="ddl_clock_minute" name="ddl_clock_minute" class="cron-clock-minute form-control" runat="server" style="width:35%;"></select></div>',
         container: '<div class="cron-input input-group row"></div>',
         minutes: {
             tag: 'cron-minutes',
@@ -258,19 +258,19 @@
                 case 'W':
                     var $selector = base.$el.find("div.cron-weekly");
                     var ndow = [];
-                    if ($selector.find("input[name=dayOfWeekMon]").is(":checked"))
+                    if ($selector.find("input[value=2]").is(":checked"))
                         ndow.push("MON");
-                    if ($selector.find("input[name=dayOfWeekTue]").is(":checked"))
+                    if ($selector.find("input[value=3]").is(":checked"))
                         ndow.push("TUE");
-                    if ($selector.find("input[name=dayOfWeekWed]").is(":checked"))
+                    if ($selector.find("input[value=4]").is(":checked"))
                         ndow.push("WED");
-                    if ($selector.find("input[name=dayOfWeekThu]").is(":checked"))
+                    if ($selector.find("input[value=5]").is(":checked"))
                         ndow.push("THU");
-                    if ($selector.find("input[name=dayOfWeekFri]").is(":checked"))
+                    if ($selector.find("input[value=6]").is(":checked"))
                         ndow.push("FRI");
-                    if ($selector.find("input[name=dayOfWeekSat]").is(":checked"))
+                    if ($selector.find("input[value=7]").is(":checked"))
                         ndow.push("SAT");
-                    if ($selector.find("input[name=dayOfWeekSun]").is(":checked"))
+                    if ($selector.find("input[value=1]").is(":checked"))
                         ndow.push("SUN");
                     dow = "*";
                     dom = "?";

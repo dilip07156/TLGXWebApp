@@ -518,9 +518,7 @@
                                     <asp:ListItem Text="Room Type" Value="4"></asp:ListItem>
                                     <asp:ListItem Text="Activity" Value="5"></asp:ListItem>
                                     <asp:ListItem Text="Holiday" Value="6"></asp:ListItem>
-
-                                </asp:CheckBoxList>
-                                
+                                </asp:CheckBoxList>                                
                             </div>
                             <div class="row clear">&nbsp;</div>
                             <div class="input-group row">
@@ -589,7 +587,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div id="example1-cron" class="cron-builder">                            
+                        <div id="example1-cron" class="cron-builder col-md-5">                            
                         </div>
                         <asp:HiddenField ID="cron_expression" ClientIDMode="Static" runat="server" Value="" EnableViewState="false" />
                     </div>
