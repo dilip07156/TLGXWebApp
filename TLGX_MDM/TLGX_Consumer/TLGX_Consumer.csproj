@@ -318,7 +318,6 @@
     <Content Include="controls\businessentities\manageClient.ascx" />
     <Content Include="controls\businessentities\manageOrgstructure.ascx" />
     <Content Include="controls\businessentities\manageSupplier.ascx" />
-    <Content Include="controls\businessentities\manageSupplierScheduleTask.ascx" />
     <Content Include="controls\businessentities\searchClient.ascx" />
     <Content Include="controls\businessentities\searchOrgStructure.ascx" />
     <Content Include="controls\businessentities\searchSupplier.ascx" />
@@ -328,6 +327,7 @@
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
     <Content Include="controls\businessentities\supplierStaticDownloadData.ascx" />
+    <Content Include="controls\businessentities\SupplierTaskLog.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
     <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
@@ -539,6 +539,7 @@
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
     <Content Include="suppliers\SupplierSchedularTask.aspx" />
+    <Content Include="suppliers\SupplierTaskManage.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1711,13 +1712,6 @@
     <Compile Include="controls\businessentities\manageSupplier.ascx.designer.cs">
       <DependentUpon>manageSupplier.ascx</DependentUpon>
     </Compile>
-    <Compile Include="controls\businessentities\manageSupplierScheduleTask.ascx.cs">
-      <DependentUpon>manageSupplierScheduleTask.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="controls\businessentities\manageSupplierScheduleTask.ascx.designer.cs">
-      <DependentUpon>manageSupplierScheduleTask.ascx</DependentUpon>
-    </Compile>
     <Compile Include="controls\businessentities\supplierApiLocation.ascx.cs">
       <DependentUpon>supplierApiLocation.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1759,6 +1753,13 @@
     </Compile>
     <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.designer.cs">
       <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskLog.ascx.cs">
+      <DependentUpon>SupplierTaskLog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskLog.ascx.designer.cs">
+      <DependentUpon>SupplierTaskLog.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\citySearchManager.ascx.cs">
       <DependentUpon>citySearchManager.ascx</DependentUpon>
@@ -3039,6 +3040,13 @@
     </Compile>
     <Compile Include="suppliers\SupplierSchedularTask.aspx.designer.cs">
       <DependentUpon>SupplierSchedularTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskManage.aspx.cs">
+      <DependentUpon>SupplierTaskManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskManage.aspx.designer.cs">
+      <DependentUpon>SupplierTaskManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

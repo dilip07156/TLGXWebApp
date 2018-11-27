@@ -31799,13 +31799,16 @@ namespace TLGX_Consumer.MDMSVC {
         private string EntityField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FromDateField;
+        private System.Nullable<System.DateTime> FromDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageNoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RedirectFromField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SortByField;
@@ -31817,7 +31820,7 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<System.Guid> Supplier_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ToDateField;
+        private System.Nullable<System.DateTime> ToDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string UserNameField;
@@ -31846,7 +31849,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FromDate {
+        public System.Nullable<System.DateTime> FromDate {
             get {
                 return this.FromDateField;
             }
@@ -31880,6 +31883,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.PageSizeField.Equals(value) != true)) {
                     this.PageSizeField = value;
                     this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RedirectFrom {
+            get {
+                return this.RedirectFromField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RedirectFromField, value) != true)) {
+                    this.RedirectFromField = value;
+                    this.RaisePropertyChanged("RedirectFrom");
                 }
             }
         }
@@ -31924,7 +31940,7 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ToDate {
+        public System.Nullable<System.DateTime> ToDate {
             get {
                 return this.ToDateField;
             }
@@ -31969,10 +31985,16 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool ISActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool ISCompleteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LogIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PendingFordaysField;
@@ -31981,7 +32003,13 @@ namespace TLGX_Consumer.MDMSVC {
         private System.DateTime ScheduledDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid SupplierScheduleTaskIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SuppllierNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid Suppllier_IDField;
@@ -31996,6 +32024,19 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Entity {
+            get {
+                return this.EntityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityField, value) != true)) {
+                    this.EntityField = value;
+                    this.RaisePropertyChanged("Entity");
+                }
             }
         }
         
@@ -32021,6 +32062,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.ISCompleteField.Equals(value) != true)) {
                     this.ISCompleteField = value;
                     this.RaisePropertyChanged("ISComplete");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LogId {
+            get {
+                return this.LogIdField;
+            }
+            set {
+                if ((this.LogIdField.Equals(value) != true)) {
+                    this.LogIdField = value;
+                    this.RaisePropertyChanged("LogId");
                 }
             }
         }
@@ -32052,6 +32106,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Guid SupplierScheduleTaskID {
             get {
                 return this.SupplierScheduleTaskIDField;
@@ -32060,6 +32127,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.SupplierScheduleTaskIDField.Equals(value) != true)) {
                     this.SupplierScheduleTaskIDField = value;
                     this.RaisePropertyChanged("SupplierScheduleTaskID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SuppllierName {
+            get {
+                return this.SuppllierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuppllierNameField, value) != true)) {
+                    this.SuppllierNameField = value;
+                    this.RaisePropertyChanged("SuppllierName");
                 }
             }
         }

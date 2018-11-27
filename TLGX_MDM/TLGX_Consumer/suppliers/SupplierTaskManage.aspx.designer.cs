@@ -10,7 +10,7 @@
 namespace TLGX_Consumer.suppliers {
     
     
-    public partial class SupplierSchedularTask {
+    public partial class SupplierTaskManage {
         
         /// <summary>
         /// SupplierTaskLog control.

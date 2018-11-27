@@ -8,7 +8,7 @@ using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.controls.businessentities
 {
-    public partial class manageSupplierScheduleTask : System.Web.UI.UserControl
+    public partial class SupplierTaskLog : System.Web.UI.UserControl
     {
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
         MasterDataSVCs _objMaster = new MasterDataSVCs();
@@ -22,8 +22,6 @@ namespace TLGX_Consumer.controls.businessentities
                 if (!String.IsNullOrWhiteSpace(Request.QueryString["RedirectFromAlert"].ToString()))
                     fillgriddata(Request.QueryString["RedirectFromAlert"].ToString());
 
-               
-                //var test= Roles.GetAllRoles();
             }
         }
 
@@ -37,7 +35,7 @@ namespace TLGX_Consumer.controls.businessentities
 
         private void fillentities()
         {
-            var result = _objMaster.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "mapping", Name = "MappingEntity" });
+            var result = _objMaster.GetAllAttributeAndValues(new MDMSVC.DC_MasterAttribute() { MasterFor = "MappingFileConfig", Name = "MappingEntity" });
             if (result != null)
                 if (result.Count > 0)
                 {
@@ -46,13 +44,13 @@ namespace TLGX_Consumer.controls.businessentities
                     ddlEntity.DataTextField = "AttributeValue";
                     ddlEntity.DataValueField = "MasterAttributeValue_Id";
                     ddlEntity.DataBind();
-                    
+
                 }
         }
 
-        protected void btnSearch_Click(object sender,EventArgs args)
+        protected void btnSearch_Click(object sender, EventArgs args)
         {
-            fillgriddata("");
+            fillgriddata(Request.QueryString["RedirectFromAlert"].ToString());
         }
 
         private void fillgriddata(string RedirectFromAlert)
@@ -65,10 +63,11 @@ namespace TLGX_Consumer.controls.businessentities
 
             if (string.IsNullOrWhiteSpace(RedirectFromAlert))
             {
-                if (dtFrom.Value != string.Empty)
-                    RQ.FromDate = Convert.ToDateTime(dtFrom.Value);
-                if (dtFrom.Value != string.Empty)
-                    RQ.FromDate = Convert.ToDateTime(dtFrom.Value);
+                RQ.RedirectFrom = RedirectFromAlert;
+                //if (dtFrom.Value != string.Empty)
+                //    RQ.FromDate = Convert.ToDateTime(dtFrom.Value);
+                //if (dtFrom.Value != string.Empty)
+                //    RQ.FromDate = Convert.ToDateTime(dtFrom.Value);
                 if (ddlSupplierName.SelectedItem.Value != "0")
                     RQ.Supplier_Id = new Guid(ddlSupplierName.SelectedItem.Value);
                 if (ddlEntity.SelectedItem.Value != "0")
@@ -81,13 +80,58 @@ namespace TLGX_Consumer.controls.businessentities
                 RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
                 //RQ.SortBy = (SortBy + " " + SortEx).Trim();
             }
-            
+
             var res = _objScheduleDataSVCs.GetScheduleTaskByRoll(RQ);
             grdSupplierScheduleTask.DataSource = res;
-           
+            grdSupplierScheduleTask.PageIndex = 0;//Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
             grdSupplierScheduleTask.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
             grdSupplierScheduleTask.DataBind();
         }
 
+        protected void ddlShowEntries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadDownloadData(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
+        }
+
+        protected void grdSupplierScheduleTask_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            LoadDownloadData(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), e.NewPageIndex);
+        }
+
+       
+
+        private void LoadDownloadData(int pagesize, int pageno)
+        {
+            fillgriddata(Request.QueryString["RedirectFromAlert"].ToString());
+        }
+
+        protected void grdSupplierScheduleTask_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName.ToString() == "Select")
+            {
+                MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+
+                // RQ.LogId = myRow_Id;
+
+                ////// var result = _objMaster.Supplier_StaticDownloadData_Get(RQ);
+                //// if (result.Count > 0)
+                //// {
+
+                //// }
+
+                // lnkButtonAddUpdate.Text = "Modify";
+                // lnkButtonAddUpdate.CommandName = "Modify";
+                // lnkButtonAddUpdate.CommandArgument = myRow_Id.ToString();
+            }
+
+
+        }
+
+        protected void btnReset_Click(object sender, EventArgs args)
+        {
+            //fillgriddata("");
+        }
     }
 }
