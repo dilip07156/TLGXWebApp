@@ -583,7 +583,7 @@ namespace TLGX_Consumer.controls.businessentities
             {
                 save();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

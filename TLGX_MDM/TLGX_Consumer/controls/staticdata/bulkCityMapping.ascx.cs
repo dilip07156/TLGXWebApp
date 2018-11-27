@@ -99,7 +99,6 @@ namespace TLGX_Consumer.controls.staticdata
             Guid selSupplier_ID = Guid.Empty;
             Guid selCountry_ID = Guid.Empty;
             Guid selCity_ID = Guid.Empty;
-            string selCity = "";
             if (ddlSupplierName.SelectedItem.Value != "0")
                 RQ.Supplier_Id = new Guid(ddlSupplierName.SelectedItem.Value);
 
@@ -237,7 +236,7 @@ namespace TLGX_Consumer.controls.staticdata
             Guid selSupplier_ID = Guid.Empty;
             Guid selCountry_ID = Guid.Empty;
             Guid selCity_ID = Guid.Empty;
-            string selCity = "";
+            
             if (ddlSupplierName.SelectedItem.Value != "0")
                 //selSupplier_ID = 
                 RQ.Supplier_Id = new Guid(ddlSupplierName.SelectedItem.Value);

@@ -99,7 +99,7 @@ namespace TLGX_Consumer.Controller
         #endregion
 
         #region Mapping Statictics
-        public List<DC_MappingStats> GetMappingStatistics(string Supplier_Id, string PriorityId,string ProductCategory,string isMDM)
+        public List<DC_MappingStats> GetMappingStatistics(string Supplier_Id, string PriorityId, string ProductCategory, string isMDM)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Mapping_Staitistics_Get"], Supplier_Id, PriorityId, ProductCategory, isMDM), typeof(List<DC_MappingStats>), out result);
@@ -392,10 +392,10 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_keyword_alias>;
         }
 
-        public DC_Message KeywordReRun(string Entity,String Table,Guid Supplier_Id)
+        public DC_Message KeywordReRun(string Entity, String Table, Guid Supplier_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Keyword_ReRun"], Entity, Table,Supplier_Id), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Keyword_ReRun"], Entity, Table, Supplier_Id), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion
@@ -442,8 +442,8 @@ namespace TLGX_Consumer.Controller
             return result as DC_Message;
         }
 
-        
-        public List<MDMSVC.DC_SupplierRoomTypeAttributes> GetAttributeForAccomodationSupplierRoomTypeMapping(string  RQParams)
+
+        public List<MDMSVC.DC_SupplierRoomTypeAttributes> GetAttributeForAccomodationSupplierRoomTypeMapping(string RQParams)
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["GetAttributeForAccomodationSupplierRoomTypeMapping"], RQParams), typeof(List<MDMSVC.DC_SupplierRoomTypeAttributes>), out result);
@@ -550,11 +550,11 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
             return result as List<DC_NewDashBoardReportCountry_RS>;
         }
-        
+
         public List<DC_NewDashBoardReportCountry_RS> GetHotelMappingReport_CityWise(DC_NewDashBoardReport_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["City_DashBoardReport"],RQ,typeof(List<DC_NewDashBoardReport_RQ>), typeof(List<MDMSVC.DC_NewDashBoardReportCountry_RS>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["City_DashBoardReport"], RQ, typeof(List<DC_NewDashBoardReport_RQ>), typeof(List<MDMSVC.DC_NewDashBoardReportCountry_RS>), out result);
             return result as List<DC_NewDashBoardReportCountry_RS>;
         }
         #endregion NewDashBoardReport
@@ -567,6 +567,26 @@ namespace TLGX_Consumer.Controller
             return result as List<MDMSVC.DC_HotelMappingReport_RS>;
         }
 
+        #endregion
+
+        //GAURAV_TMAP_746
+        #region File Processing Check
+        public DC_Message FileProcessingCheckInSupplierImportFileDetails(string SupplierId)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SupplierFileProcess_Check"], SupplierId, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
+        #region Supplier RoomType Reset 
+        //GAURAV_TMAP_746
+        public DC_Message AccomodationSupplierRoomTypeMapping_Reset(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_Reset"], RQParams, typeof(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
         #endregion
     }
 }

@@ -289,8 +289,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
 
         private void fillconfigdata(Guid Config_Id)
         {
-            bool IsMapping = false;
-
             if (Config_Id != Guid.Empty)
             {
                 MDMSVC.DC_SupplierImportAttributes_RQ RQ = new MDMSVC.DC_SupplierImportAttributes_RQ();
@@ -303,20 +301,11 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     if (res.Count > 0)
                     {
                         ddlFor.SelectedIndex = ddlFor.Items.IndexOf(ddlFor.Items.FindByText(res[0].For));
-                        if (res[0].For.ToLower() == "mapping")
-                            IsMapping = true;
-                        else if (res[0].For.ToLower() == "matching")
-                            IsMapping = false;
-
+                        
                         //Set mappind,master and staging table name
                         _mappingTable = Convert.ToString(res[0].Mapping_Table);
                         _masterTable = Convert.ToString(res[0].Master_Table);
                         _stgTable = Convert.ToString(res[0].STG_Table);
-
-
-                        //IsMapping("_mappingTable")
-                        //IsMapping("_masterTable")
-                        //IsMapping("_stgTable")
 
                         ddlSupplierName.SelectedIndex = ddlSupplierName.Items.IndexOf(ddlSupplierName.Items.FindByValue(res[0].Supplier_Id.ToString()));
                         ddlEntity.SelectedIndex = ddlEntity.Items.IndexOf(ddlEntity.Items.FindByText(res[0].Entity));
@@ -508,7 +497,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     frmAddConfig.DataSource = res;
                     frmAddConfig.DataBind();
                     hdnFlag.Value = "false";
-                    bool isFound = false;
 
                     if (res != null && res.Count > 0)
                     {
@@ -698,7 +686,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                                 if (resvalues != null && resvalues.Count > 0)
                                 {
                                     ddlAttributeName.Visible = true;
-                                    isFound = true;
+                                    
                                     ddlAttributeName.Items.Clear();
                                     ddlAttributeName.DataSource = resvalues;
                                     ddlAttributeName.DataTextField = "AttributeValue";
@@ -1007,7 +995,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
         }
@@ -1417,7 +1405,6 @@ namespace TLGX_Consumer.controls.staticdataconfig
             RadioButton rdoIsMatchByColumn = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByColumn");
             RadioButton rdoIsMatchByValue = (RadioButton)frmAddConfig.FindControl("rdoIsMatchByValue");
             #endregion //End All Controls
-            bool isFound = false;
 
             ddlComparisonValue.Visible = false;
             //dvMatchByColumnOrValue.Style.Add(HtmlTextWriterStyle.Display, "none");
@@ -1605,7 +1592,7 @@ namespace TLGX_Consumer.controls.staticdataconfig
                             resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "delimiter" select x).ToList();
                             resvalues = (from x in resvalues where x.AttributeValue.ToLower() != "textqualifier" select x).ToList();
                         }
-                        isFound = true;
+                        
                         ddlAttributeName.Items.Clear();
                         ddlAttributeName.DataSource = resvalues;
                         ddlAttributeName.DataTextField = "AttributeValue";

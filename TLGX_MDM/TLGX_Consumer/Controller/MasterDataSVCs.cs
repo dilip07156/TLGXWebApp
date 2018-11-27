@@ -348,6 +348,7 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ApiLoc_Update"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
             return result as DC_Message;
         }
+
         #endregion
 
         #region Statuses
@@ -716,6 +717,23 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+        #region Activity Data sync
+        public DC_Message RefreshActivityDataBySupplier(Guid log_id, Guid Supplier_id)
+        {
+            object result = null;
+            //ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_StaticHotel"]),Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_ActivitiesBySupplier"], log_id, Supplier_id, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            //return Convert.ToDateTime(result); 
+            return (DC_Message)result;
+        }
+        public List<DC_SupplierEntity> GetActivitySysStatusData(MDMSVC.DC_SupplierEntity RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionActivityData"]), typeof(List<MDMSVC.DC_SupplierEntity>), out result);
+            //return Convert.ToDateTime(result); 
+            return result as List<DC_SupplierEntity>;
+        }
+        #endregion
 
         #region == ML Data API Integration
         //public void PushMasterAccoData()
@@ -815,16 +833,42 @@ namespace TLGX_Consumer.Controller
             return result as List<DC_Master_City>;
         }
 
+        #endregion
 
+        #region SupplierStaticDownloadData
+        public DC_Message Supplier_StaticDownloadData_AddUpdate(MDMSVC.DC_Supplier_StaticDataDownload RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_StaticDownloadData_AddUpdate"], RQParams, RQParams.GetType(), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+        public List<DC_Supplier_StaticDataDownload> Supplier_StaticDownloadData_Get(MDMSVC.DC_Supplier_StaticDataDownload RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_StaticDownloadData_Get"], RQParams, RQParams.GetType(), typeof(List<DC_Supplier_StaticDataDownload>), out result);
+            return result as List<DC_Supplier_StaticDataDownload>;
+        }
         #endregion
 
         #region MasterAccommodation
-        public DC_Message RefreshMasterAccommodation(Guid logId)
+        public DC_Message RefreshMasterAccommodation(Guid logId, Guid Accommodation_Id)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_MasterAccommodation"], logId, System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_MasterAccommodation"], logId.ToString(), Accommodation_Id.ToString(),  System.Web.HttpContext.Current.User.Identity.Name), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
         #endregion
+
+
+        #region Sync Room Type Mapping To Mongo
+        public DC_Message SyncRoomTypeMappingToMongo()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["DistribuitionRefresh_RoomTypeMapping"], Guid.NewGuid().ToString(), Guid.Empty.ToString()), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+        #endregion
+
     }
 }

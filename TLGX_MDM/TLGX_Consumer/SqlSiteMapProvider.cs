@@ -159,7 +159,7 @@ namespace TLGX_Consumer
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
                 throw new ProviderException(_errmsg8);
             }

@@ -44,8 +44,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <HintPath>..\packages\AjaxControlToolkit.18.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    <Reference Include="AjaxControlToolkit, Version=18.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.18.1.1\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
@@ -264,7 +264,6 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
-    <Content Include="Content\jquery-cron-quartz.css" />
     <Content Include="Content\JS_Defined\searchRoomTypes.js" />
     <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
@@ -327,6 +326,7 @@
     <Content Include="controls\businessentities\supplierMarket.ascx" />
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
+    <Content Include="controls\businessentities\supplierStaticDownloadData.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
     <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
@@ -469,8 +469,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <Content Include="Scripts\jquery-cron-quartz.js" />
-    <Content Include="Scripts\jquery-cron-quartz.min.js" />
     <Content Include="Scripts\jquery.ae.image.resize.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.css" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
@@ -536,7 +534,6 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
-    <Content Include="suppliers\SupplierScheduleTask.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1114,44 +1111,16 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DL_ML_DL_EntityStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service\fillAttributeDDL.ashx" />
-    <Content Include="Service\AddUpdateMappingDetails.ashx" />
-    <Content Include="Service\TTFUSelectedBySupplier.ashx" />
-    <Content Include="Service\UpdateSupplierRoomTypeTrainingFlag.ashx" />
-    <Content Include="Service\GetAttributeData.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_ActivityProductDetailsReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_Report_RS.datasource">
-    </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.State_AlphaPage.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Master_Region.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_NewDashBoardReportCountry_RS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierExportDataReport.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_SupplierRoomTypeAttributes.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_StaticDataDownload.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service\CheckExistingSupplierData.ashx" />
+    <Content Include="Service\SupplierRoomTypeReset.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1769,6 +1738,13 @@
     </Compile>
     <Compile Include="controls\businessentities\supplierStaticDataHandling.ascx.designer.cs">
       <DependentUpon>supplierStaticDataHandling.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.cs">
+      <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.designer.cs">
+      <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\citySearchManager.ascx.cs">
       <DependentUpon>citySearchManager.ascx</DependentUpon>
@@ -2773,9 +2749,6 @@
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Service\CheckExistingSupplierData.ashx.cs">
-      <DependentUpon>CheckExistingSupplierData.ashx</DependentUpon>
-    </Compile>
     <Compile Include="Service\CityFillForDDL.ashx.cs">
       <DependentUpon>CityFillForDDL.ashx</DependentUpon>
     </Compile>
@@ -2826,6 +2799,9 @@
     </Compile>
     <Compile Include="Service\GetZoneHotelsForMap.ashx.cs">
       <DependentUpon>GetZoneHotelsForMap.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SupplierRoomTypeReset.ashx.cs">
+      <DependentUpon>SupplierRoomTypeReset.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
       <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>
@@ -3045,13 +3021,6 @@
     </Compile>
     <Compile Include="suppliers\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="suppliers\SupplierScheduleTask.aspx.cs">
-      <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="suppliers\SupplierScheduleTask.aspx.designer.cs">
-      <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

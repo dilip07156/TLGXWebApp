@@ -386,7 +386,6 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
                 Guid? myCountry_Id = Guid.Empty;
-                bool res = false;
                 foreach (GridViewRow row in grdMatchingCountry.Rows)
                 {
                     //CheckBox chk = row.Cells[7].Controls[1] as CheckBox;
@@ -435,7 +434,7 @@ namespace TLGX_Consumer.controls.staticdata
                 Guid myRow_Id = Guid.Empty;
                 Guid mySupplier_Id = Guid.Empty;
                 Guid? myCountry_Id = Guid.Empty;
-                bool res = false;
+                
                 foreach (GridViewRow row in grdMatchingCountry.Rows)
                 {
                     myRow_Id = Guid.Empty;

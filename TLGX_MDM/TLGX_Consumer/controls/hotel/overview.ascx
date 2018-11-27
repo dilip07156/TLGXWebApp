@@ -169,7 +169,7 @@
                         <div class="panel-body">
                             <div class="form-group" style="display: none">
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtHotelID" runat="server" Text='<%# Bind("Accommodation_Id") %>' class="form-control" />
+                                    <asp:TextBox ID="txtHotelID" runat="server" Text='<%# Bind("Accommodation_Id") %>' CssClass="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -178,7 +178,7 @@
                                     <asp:RequiredFieldValidator ID="vtxtHotelName" runat="server" ErrorMessage="Please enter Hotel Name" Text="*" ControlToValidate="txtHotelName" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator>
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtHotelName" runat="server" Text='<%# Bind("HotelName") %>' class="form-control" />
+                                    <asp:TextBox ID="txtHotelName" runat="server" Text='<%# Bind("HotelName") %>' CssClass="form-control" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -202,35 +202,35 @@
                                     Street
                                     <asp:RequiredFieldValidator ID="vtxtStreet" runat="server" ErrorMessage="Please enter Street" Text="*" ControlToValidate="txtStreet" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtStreet" runat="server" class="form-control" Text='<%# Bind("StreetName") %>' />
+                                    <asp:TextBox ID="txtStreet" runat="server" CssClass="form-control" Text='<%# Bind("StreetName") %>' />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="txtStreet2">Street 2</label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtStreet2" runat="server" class="form-control" Text='<%# Bind("StreetNumber") %>' />
+                                    <asp:TextBox ID="txtStreet2" runat="server" CssClass="form-control" Text='<%# Bind("StreetNumber") %>' />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="txtStreet3">Street 3</label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtStreet3" runat="server" class="form-control" Text='<%# Bind("Street3") %>' />
+                                    <asp:TextBox ID="txtStreet3" runat="server" CssClass="form-control" Text='<%# Bind("Street3") %>' />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="txtStreet4">Street 4</label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtStreet4" runat="server" class="form-control" Text='<%# Bind("Street4") %>' />
+                                    <asp:TextBox ID="txtStreet4" runat="server" CssClass="form-control" Text='<%# Bind("Street4") %>' />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-sm-4" for="txtStreet5">Street 5</label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtStreet5" runat="server" class="form-control" Text='<%# Bind("Street5") %>' />
+                                    <asp:TextBox ID="txtStreet5" runat="server" CssClass="form-control" Text='<%# Bind("Street5") %>' />
                                 </div>
                             </div>
 
@@ -248,7 +248,7 @@
                                     Postal Code
                                     <asp:RequiredFieldValidator ID="vtxtPostalCode" runat="server" ErrorMessage="Please enter Postal Code" Text="*" ControlToValidate="txtPostalCode" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RequiredFieldValidator></label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtPostalCode" runat="server" class="form-control" Text='<%# Bind("PostalCode") %>' />
+                                    <asp:TextBox ID="txtPostalCode" runat="server" CssClass="form-control" Text='<%# Bind("PostalCode") %>' />
                                 </div>
                             </div>
 
@@ -364,7 +364,7 @@
                                                         Hotel Name
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_HotelName" runat="server" class="form-control" ReadOnly="true" />
+                                                        <asp:TextBox ID="txtAddressCheck_HotelName" runat="server" CssClass="form-control" ReadOnly="true" />
                                                     </div>
                                                 </div>
 
@@ -373,35 +373,35 @@
                                                         Street
                                                      <asp:RequiredFieldValidator ID="vldReqFld_txtAddressCheck_Street" runat="server" ErrorMessage="Please enter Street" Text="*" ControlToValidate="txtAddressCheck_Street" CssClass="text-danger" ValidationGroup="GeoLookUpByAddress"></asp:RequiredFieldValidator></label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Street" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Street" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-6" for="txtAddressCheck_Street2">Street 2</label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Street2" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Street2" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-6" for="txtAddressCheck_Street3">Street 3</label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Street3" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Street3" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-6" for="txtAddressCheck_Street4">Street 4</label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Street4" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Street4" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-6" for="txtAddressCheck_Street5">Street 5</label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Street5" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Street5" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -410,7 +410,7 @@
                                                         Suburbs / Downtown
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Suburbs" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Suburbs" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -419,14 +419,14 @@
                                                         Postal Code
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_PostalCode" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_PostalCode" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label class="control-label col-sm-6" for="txtAddressCheck_Country">Country</label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Country" runat="server" class="form-control" ReadOnly="true" />
+                                                        <asp:TextBox ID="txtAddressCheck_Country" runat="server" CssClass="form-control" ReadOnly="true" />
                                                     </div>
                                                 </div>
 
@@ -435,7 +435,7 @@
                                                         State / Region
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_State" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_State" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -445,7 +445,7 @@
                                                         <asp:RequiredFieldValidator ID="vldReqFld_txtAddressCheck_City" runat="server" ErrorMessage="Please enter City" Text="*" ControlToValidate="txtAddressCheck_City" CssClass="text-danger" ValidationGroup="GeoLookUpByAddress"></asp:RequiredFieldValidator>
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_City" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_City" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -454,7 +454,7 @@
                                                         Area
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Area" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Area" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -463,7 +463,7 @@
                                                         Location
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Location" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Location" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -479,7 +479,7 @@
                                                         </asp:RegularExpressionValidator>
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Lat" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Lat" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -495,7 +495,7 @@
                                                         </asp:RegularExpressionValidator>
                                                     </label>
                                                     <div class="col-sm-6">
-                                                        <asp:TextBox ID="txtAddressCheck_Lng" runat="server" class="form-control" />
+                                                        <asp:TextBox ID="txtAddressCheck_Lng" runat="server" CssClass="form-control" />
                                                     </div>
                                                 </div>
 
@@ -661,7 +661,7 @@
                                     </asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtHotelLat" runat="server" class="form-control" Text='<%# Bind("Latitude") %>' />
+                                    <asp:TextBox ID="txtHotelLat" runat="server" CssClass="form-control" Text='<%# Bind("Latitude") %>' />
                                 </div>
                             </div>
 
@@ -674,7 +674,7 @@
                                     </asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-8">
-                                    <asp:TextBox ID="txtHotelLon" runat="server" class="form-control" Text='<%# Bind("Longitude") %>' />
+                                    <asp:TextBox ID="txtHotelLon" runat="server" CssClass="form-control" Text='<%# Bind("Longitude") %>' />
 
                                     <br />
 
@@ -763,7 +763,7 @@
                                     <asp:RegularExpressionValidator ID="rvtxtYearBuilt" runat="server" ErrorMessage="Invalid Year Built" Text="*" ControlToValidate="txtYearBuilt" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-6">
-                                    <asp:TextBox ID="txtYearBuilt" runat="server" Text='<%# Bind("YearBuilt") %>' class="form-control" MaxLength="4" />
+                                    <asp:TextBox ID="txtYearBuilt" runat="server" Text='<%# Bind("YearBuilt") %>' CssClass="form-control" MaxLength="4" />
                                     <cc1:FilteredTextBoxExtender ID="axfte_txtYearBuilt" runat="server" FilterType="Numbers" TargetControlID="txtYearBuilt" />
                                 </div>
                             </div>
@@ -774,7 +774,7 @@
                                     <asp:RegularExpressionValidator ID="rvtxtTotalFloor" runat="server" ErrorMessage="Invalid Total Floor" Text="*" ControlToValidate="txtTotalFloor" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-6">
-                                    <asp:TextBox ID="txtTotalFloor" runat="server" Text='<%# Bind("TotalFloors") %>' class="form-control" />
+                                    <asp:TextBox ID="txtTotalFloor" runat="server" Text='<%# Bind("TotalFloors") %>' CssClass="form-control" />
                                     <cc1:FilteredTextBoxExtender ID="axfte_txtTotalFloor" runat="server" FilterType="Numbers" TargetControlID="txtTotalFloor" />
                                 </div>
                             </div>
@@ -785,7 +785,7 @@
                                     <asp:RegularExpressionValidator ID="rvtxtTotalRooms" runat="server" ErrorMessage="Invalid Total Rooms" Text="*" ControlToValidate="txtTotalRooms" ValidationExpression="^[1-9]\d*$" CssClass="text-danger" ValidationGroup="HotelOverView"></asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-6">
-                                    <asp:TextBox ID="txtTotalRooms" runat="server" Text='<%# Bind("TotalRooms") %>' class="form-control" />
+                                    <asp:TextBox ID="txtTotalRooms" runat="server" Text='<%# Bind("TotalRooms") %>' CssClass="form-control" />
                                 </div>
                             </div>
 
@@ -796,7 +796,7 @@
                                     <asp:RegularExpressionValidator ID="revtxtCheckinTime" runat="server" ErrorMessage="Invalid Check In Time." Text="*" ControlToValidate="txtCheckinTime" CssClass="text-danger" ValidationGroup="HotelOverView" ValidationExpression="^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-6">
-                                    <asp:TextBox ID="txtCheckinTime" runat="server" Text='<%# Bind("CheckInTime") %>' class="form-control" />
+                                    <asp:TextBox ID="txtCheckinTime" runat="server" Text='<%# Bind("CheckInTime") %>' CssClass="form-control" />
                                     <cc1:MaskedEditExtender ID="txtCheckinTime_MaskEditExtender" runat="server" AcceptAMPM="false"
                                         Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtCheckinTime"
                                         UserTimeFormat="TwentyFourHour" InputDirection="LeftToRight"></cc1:MaskedEditExtender>
@@ -810,7 +810,7 @@
                                 <asp:RegularExpressionValidator ID="revtxtCheckOut" runat="server" ErrorMessage="Invalid Check Out Time." Text="*" ControlToValidate="txtCheckOut" CssClass="text-danger" ValidationGroup="HotelOverView" ValidationExpression="^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"></asp:RegularExpressionValidator>
                                 </label>
                                 <div class="col-sm-6">
-                                    <asp:TextBox ID="txtCheckOut" runat="server" Text='<%# Bind("CheckOutTime") %>' class="form-control" />
+                                    <asp:TextBox ID="txtCheckOut" runat="server" Text='<%# Bind("CheckOutTime") %>' CssClass="form-control" />
                                     <cc1:MaskedEditExtender ID="txtCheckinTime_txtCheckOut" runat="server" AcceptAMPM="false"
                                         Mask="99:99" MaskType="Time" PromptCharacter="_" TargetControlID="txtCheckOut"
                                         UserTimeFormat="TwentyFourHour"></cc1:MaskedEditExtender>

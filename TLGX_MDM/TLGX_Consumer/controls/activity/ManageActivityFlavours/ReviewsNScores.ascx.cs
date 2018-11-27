@@ -63,7 +63,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 ddl.DataBind();
                 ddl.Items.Insert(0, new ListItem("---Select---", "0"));
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }
@@ -79,7 +79,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 ddl.DataBind();
                 ddl.Items.Insert(0, new ListItem("---Select---", "0"));
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }
@@ -95,7 +95,7 @@ namespace TLGX_Consumer.controls.activity.ManageActivityFlavours
                 ddl.DataBind();
                 ddl.Items.Insert(0, new ListItem("---Select---", "0"));
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }

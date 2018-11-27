@@ -7,138 +7,144 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.hotels {
+namespace TLGX_Consumer.controls.businessentities {
     
     
-    public partial class manage {
+    public partial class supplierStaticDownloadData {
         
         /// <summary>
-        /// head control.
+        /// supplerStaticDownloadData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.head head;
+        protected global::System.Web.UI.UpdatePanel supplerStaticDownloadData;
         
         /// <summary>
-        /// overview control.
+        /// dvMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.overview overview;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
         
         /// <summary>
-        /// descriptions control.
+        /// vlsSumm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.descriptions descriptions;
+        protected global::System.Web.UI.WebControls.ValidationSummary vlsSumm;
         
         /// <summary>
-        /// facilities1 control.
+        /// txtUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.facilities facilities1;
+        protected global::System.Web.UI.WebControls.TextBox txtUrl;
         
         /// <summary>
-        /// roominfo control.
+        /// rfvSupplier_Url control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.roominfo roominfo;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupplier_Url;
         
         /// <summary>
-        /// passengeroccupancy control.
+        /// txtUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.passengeroccupancy passengeroccupancy;
+        protected global::System.Web.UI.WebControls.TextBox txtUsername;
         
         /// <summary>
-        /// route control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.route route;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
-        /// inandaround control.
+        /// lnkButtonAddUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.inandaround inandaround;
+        protected global::System.Web.UI.WebControls.LinkButton lnkButtonAddUpdate;
         
         /// <summary>
-        /// rules control.
+        /// lnkButtonReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.rules rules;
+        protected global::System.Web.UI.WebControls.LinkButton lnkButtonReset;
         
         /// <summary>
-        /// media control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.media media;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtDescription;
         
         /// <summary>
-        /// updates control.
+        /// rfvSupplier_Description control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.updates updates;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSupplier_Description;
         
         /// <summary>
-        /// healthandsafety control.
+        /// lblTotalRecords control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.healthandsafety healthandsafety;
+        protected global::System.Web.UI.WebControls.Label lblTotalRecords;
         
         /// <summary>
-        /// status control.
+        /// divDropdownForEntries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.hotel.status status;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDropdownForEntries;
         
         /// <summary>
-        /// PreviousPage property.
+        /// ddlShowEntries control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new TLGX_Consumer.hotels.search PreviousPage {
-            get {
-                return ((TLGX_Consumer.hotels.search)(base.PreviousPage));
-            }
-        }
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        
+        /// <summary>
+        /// gvSupplerStaticDownloadData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSupplerStaticDownloadData;
     }
 }

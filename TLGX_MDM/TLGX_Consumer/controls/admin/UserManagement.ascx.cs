@@ -371,7 +371,7 @@ namespace TLGX_Consumer.controls.admin
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
             }
             return _objRolelst;

@@ -193,7 +193,7 @@ namespace TLGX_Consumer.controls.staticdata
             {
                 list.MasterAttributeValues = list.MasterAttributeValues.OrderBy(x => Convert.ToInt32(x.AttributeValue)).ToArray();
             }
-            catch (Exception ex)
+            catch
             {
 
             }
@@ -464,7 +464,7 @@ namespace TLGX_Consumer.controls.staticdata
                 //hdnFlag.Value = "false";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop3", "javascript:showCityMappingModal();", true);
             }
-            catch (Exception ex)
+            catch
             {
                 //throw ex;
             }

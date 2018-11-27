@@ -106,7 +106,7 @@ namespace TLGX_Consumer.controls.businessentities
                     }
                 }
             }
-            catch (Exception e)
+            catch
             {
                 throw;
             }

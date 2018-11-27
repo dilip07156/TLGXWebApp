@@ -7,6 +7,8 @@
 <%@ Register Src="~/controls/businessentities/supplierStaticDataHandling.ascx" TagPrefix="uc1" TagName="supplierStaticDataHandling" %>
 <%@ Register Src="~/controls/businessentities/supplierCredentials.ascx" TagPrefix="uc1" TagName="supplierCredentials" %>
 <%@ Register Src="~/controls/businessentities/supplierApiLocation.ascx" TagPrefix="uc1" TagName="supplierApiLocation" %>
+<%@ Register Src="~/controls/businessentities/supplierStaticDownloadData.ascx" TagPrefix="uc1" TagName="supplierStaticDownloadData" %>
+
 
 <%--for charts--%>
 <%--<%@ Register Src="~/controls/staticdata/supplierWiseDataChart.ascx" TagPrefix="uc1" TagName="supplierWiseDataChart" %>--%>
@@ -432,7 +434,8 @@
                 <ul class="nav nav-tabs tabs" role="tablist">
                     <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
-                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowStaticDataUpdateSchedule">Static Data Update Schedule</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticDownloadData" href="#ShowSupplierStaticDownloadData" id="SupplierStaticDownloadData">Supplier Static Download Data</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierApiLocation" href="#ShowSupplierApiLocation" id="apiLocation">Supplier API Location</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierCredentials" href="#ShowSupplierCredentials">Supplier Credentials</a></li>
@@ -543,6 +546,10 @@
                     <div role="tabpanel" id="ShowStaticDataUpdateSchedule" class="tab-pane fade in">
                         <br />
                         <uc1:supplierStaticDataHandling runat="server" ID="supplierStaticDataHandling" />
+                    </div>
+                    <div role="tabpanel" id="ShowSupplierStaticDownloadData" class="tab-pane fade in">
+                        <br />
+                        <uc1:supplierStaticDownloadData runat="server" ID="supplierStaticDownloadData" />
                     </div>
                     <div role="tabpanel" id="ShowSupplierApiLocation" class="tab-pane fade in">
                         <br />
