@@ -56310,6 +56310,14 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/HotelMappingReport", ReplyAction="http://tempuri.org/IMapping/HotelMappingReportResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[]> HotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_Reset", ReplyAction="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_ResetResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_ResetDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AccomodationSupplierRoomTypeMapping_Reset(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_Reset", ReplyAction="http://tempuri.org/IMapping/AccomodationSupplierRoomTypeMapping_ResetResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AccomodationSupplierRoomTypeMapping_ResetAsync(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAdmin/GetSiteMapMaster", ReplyAction="http://tempuri.org/IAdmin/GetSiteMapMasterResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IAdmin/GetSiteMapMasterDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid);
@@ -59363,6 +59371,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_HotelMappingReport_RS[]> HotelMappingReportAsync(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport_RQ RQ) {
             return base.Channel.HotelMappingReportAsync(RQ);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Message AccomodationSupplierRoomTypeMapping_Reset(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids) {
+            return base.Channel.AccomodationSupplierRoomTypeMapping_Reset(Acco_RoomTypeMap_Ids);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AccomodationSupplierRoomTypeMapping_ResetAsync(TLGX_Consumer.MDMSVC.DC_SupplierRoomType_TTFU_RQ[] Acco_RoomTypeMap_Ids) {
+            return base.Channel.AccomodationSupplierRoomTypeMapping_ResetAsync(Acco_RoomTypeMap_Ids);
         }
         
         public TLGX_Consumer.MDMSVC.DC_SiteMap[] GetSiteMapMaster(string ID, string applicationid) {
