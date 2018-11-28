@@ -61,7 +61,7 @@ namespace TLGX_Consumer.controls.businessentities
             MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
             RQ.UserName = System.Web.HttpContext.Current.User.Identity.Name;
 
-            if (string.IsNullOrWhiteSpace(RedirectFromAlert))
+            if (!string.IsNullOrWhiteSpace(RedirectFromAlert))
             {
                 RQ.RedirectFrom = RedirectFromAlert;
                 //if (dtFrom.Value != string.Empty)

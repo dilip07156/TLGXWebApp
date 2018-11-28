@@ -114,8 +114,8 @@
                                         <div class="form-group">
                                             <label for="ddlstatus">Status</label>
                                                 <asp:DropDownList ID="ddlstatus" runat="server" CssClass="form-control" AppendDataBoundItems="true">
-                                                    <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
-                                                    <asp:ListItem Text="Completed" Value="2"></asp:ListItem>
+                                                    <asp:ListItem Text="Pending" Value="Pending"></asp:ListItem>
+                                                    <asp:ListItem Text="Completed" Value="Completed"></asp:ListItem>
                                                 </asp:DropDownList>
                                         </div>
                                     </div>
@@ -190,6 +190,19 @@
             </div>
                 </div>
         </div>
+
+
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div class="panel-group" id="accordionResult">
+                    <div class="panel panel-default">
+                        <div class="panel-heading clearfix">
+                            <h4 class="panel-title pull-left">
+                                <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">Search Results (Total Count:
+                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>
+
+                            
+                        </div>
         <div id="collapseSearchResult" class="panel-collapse collapse in">
             <div class="panel-body">
                 <asp:GridView ID="grdSupplierScheduleTask" runat="server" AllowPaging="True" AutoGenerateColumns="False" AllowCustomPaging="True"
@@ -201,7 +214,7 @@
                         <asp:BoundField DataField="Entity" HeaderText="Entity" SortExpression="Entity" />
                         <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                         <asp:BoundField DataField="ScheduledDate" HeaderText="Scheduled Date" SortExpression="ScheduledDate" />
-                        <asp:BoundField DataField="PendingDays" HeaderText="Pending For Days" SortExpression="Status" />
+                        <asp:BoundField DataField="PendingFordays" HeaderText="Pending For Days" SortExpression="Status" />
 
                         <asp:TemplateField ShowHeader="false">
 
@@ -232,7 +245,10 @@
                 </asp:GridView>
             </div>
         </div>
-
+</div>
+                    </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
