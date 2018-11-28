@@ -313,6 +313,7 @@
     <Content Include="controls\activity\manageActivityProductName.ascx" />
     <Content Include="controls\activity\SearchActivityMasterControl.ascx" />
     <Content Include="controls\activity\searchActivityProductName.ascx" />
+    <Content Include="controls\admin\Sitemap.ascx" />
     <Content Include="controls\admin\UserManagement.ascx" />
     <Content Include="controls\attributes\attributeManager.ascx" />
     <Content Include="controls\businessentities\manageClient.ascx" />
@@ -1129,6 +1130,7 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Ranks.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\SupplierRoomTypeReset.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -1697,6 +1699,13 @@
     </Compile>
     <Compile Include="controls\activity\searchActivityProductName.ascx.designer.cs">
       <DependentUpon>searchActivityProductName.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\admin\Sitemap.ascx.cs">
+      <DependentUpon>Sitemap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\Sitemap.ascx.designer.cs">
+      <DependentUpon>Sitemap.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\admin\UserManagement.ascx.cs">
       <DependentUpon>UserManagement.ascx</DependentUpon>
@@ -2807,6 +2816,9 @@
     </Compile>
     <Compile Include="Service\GetZoneHotelsForMap.ashx.cs">
       <DependentUpon>GetZoneHotelsForMap.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SupplierRoomTypeReset.ashx.cs">
+      <DependentUpon>SupplierRoomTypeReset.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
       <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>
