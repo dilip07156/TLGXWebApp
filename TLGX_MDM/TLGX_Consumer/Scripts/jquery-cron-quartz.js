@@ -52,7 +52,7 @@
         }
     };
 
-    var periodOpts = arrayToOptions(["Minutes", "Hourly", "Daily", "Weekly", "Monthly", "Yearly"], ["Minutes", "H", "D", "W", "M", "Y"]);
+    var periodOpts = arrayToOptions([ "Hourly", "Daily", "Weekly", "Monthly", "Yearly"], ["H", "D", "W", "M", "Y"]);
     var minuteOpts = rangeToOptions(1, 60);
     var hourOpts = rangeToOptions(1, 24);
     var dayOpts = rangeToOptions(1, 100);

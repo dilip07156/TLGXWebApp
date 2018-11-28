@@ -112,6 +112,15 @@ namespace TLGX_Consumer.controls.businessentities {
         protected global::System.Web.UI.WebControls.HiddenField cron_expression;
         
         /// <summary>
+        /// SupplierScheduleId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField SupplierScheduleId;
+        
+        /// <summary>
         /// btnSaveSchedule control.
         /// </summary>
         /// <remarks>

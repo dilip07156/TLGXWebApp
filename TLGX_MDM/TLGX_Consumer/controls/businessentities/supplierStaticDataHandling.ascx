@@ -145,80 +145,83 @@
             .find("input[name=monthlyType][value=byDay]").prop('checked', true);
     }
 
+    function alertdivMessage(msg) {
+        $('#MainContent_manageSupplier_supplierStaticDataHandling_msgAlert').show();
+        $('#MainContent_manageSupplier_supplierStaticDataHandling_msgAlert').addClass('alert alert-danger alert-dismissable');
+        $('#MainContent_manageSupplier_supplierStaticDataHandling_msgAlert').css({ 'font-weight': 'Bold' });
+        $('#MainContent_manageSupplier_supplierStaticDataHandling_msgAlert').text(msg);
+
+    }
+
     function CheckExistingData() {
+
+        //
+        
+        var checkBoxList = document.getElementById("<%=Checkentitysequence.ClientID %>");
+        var checkboxes = checkBoxList.getElementsByTagName("input");
+        var isValid = false;
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                isValid = true;
+                break;
+            }
+        }
+        if (!isValid) {
+            alertdivMessage('Please select atleast one entity');
+            return false;
+        }
+        //
+        
         var current = $('#example1-cron').data('cronBuilder').getExpression();
         $('#cron_expression').val(current);
-        
-        var jsonObj = [];
-        var item = {};
-        var checked = [];
-        
-        item.Suppllier_ID = '<%=Guid.Parse(Request.QueryString["Supplier_Id"])%>';
-        
-        var checked_checkboxes = $("[id*=Checkentitysequence] input:checked");
-        var message = "";
-        checked_checkboxes.each(function () {
-            checked.push($(this).first().next("label").text());
-        });
-         
-        item.Entities = checked;
-        jsonObj.push(item);
-               
-        $.ajax({
-            type: 'POST',
-            url: '../../../Service/CheckExistingSupplierData.ashx',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            data:JSON.stringify(jsonObj),                
-            responseType: "json",
-            success: function (result) {
-                debugger;
-                if (result == false) {
+        var SupplierScheduleId = $('#SupplierScheduleId').val();
+        if (SupplierScheduleId == "") {
+            var urlParams = new URLSearchParams(location.search);
+            var supplierid = urlParams.get('Supplier_Id');
+            var jsonObj = [];
+            var checked = [];
+
+            var item = {};
+            item.Suppllier_ID = supplierid;
+
+            var checked_checkboxes = $("[id*=Checkentitysequence] input:checked");
+            checked_checkboxes.each(function () {
+                checked.push($(this).first().next("label").text());
+            });
+
+            item.Entities = checked;
+            jsonObj.push(item);
+            $.ajax({
+                async: false,
+                type: 'POST',
+                url: '../../../Service/CheckExistingSupplierData.ashx',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(jsonObj),
+                responseType: "json",
+                success: function (result) {
+                    if (result == false) {
+                        alertdivMessage('Please select other entity');                       
+                        dataexist = result;                        
+                    }
+                    else {
+                        dataexist = true;
+                        
+                    }
+                },
+                failure: function () {
+                    dataexist = false;
                     
-                    alert('Please select other entity');
-                    dataexist = result;
-                    return dataexist;
                 }
-                else {
-                    dataexist = true;
-                    return dataexist;
-                }
-            },
-            failure: function () {
-                dataexist = false;
-                return dataexist;
-            }
-        });
-       // return dataexist;
-    }
-    
-
-    function CheckValidation() {
-        //debugger;
-        
-        var current = $('#example1-cron').data('cronBuilder').getExpression();
-        $('#cron_expression').val(current);
-        //CheckExistingData();
-        //return dataexist;
-       
-        var rdFrequencyType = document.getElementById("rdbFrequency");
-        var checkedValue;
-        for (var i = 0; i < rdFrequencyType.childNodes.length; i++) {
-            if (rdFrequencyType.childNodes[i].type = "radio") {
-                if (rdFrequencyType.childNodes[0].checked != false) {
-                    checkedValue = value;
-                }
-            }
+            });
         }
-        if (checkedValue != "Y") {
-            var rfvMonthDay_Year = document.getElementById("rfvMonthDay_Year");
-            ValidatorEnable(rfvMonthDay_Year, false);
-            var rfvRecurEvery_Year = document.getElementById("rfvRecurEvery_Year");
-            ValidatorEnable(rfvRecurEvery_Year, false);
-
+        else {
+            dataexist = true;
         }
+        return dataexist;
     }
 
+   
     function LoadFrequencyAndIsAPIXMLChangeData() {
         var Freq = { 'H': 'Hourly', 'D': 'Daily', 'W': 'Weekly', 'M': 'Monthly', 'Y': 'Yearly' };
         $('#rdbFrequency input').change(function () {
@@ -445,11 +448,11 @@
     }
     function NewSupplierSchedular() {
         $('#suppliershcedular').css('display', 'block');
-        $('#msgAlert').css('display', 'none');
+        $('#MainContent_manageSupplier_supplierStaticDataHandling_msgAlert').css('display', 'none');
         cronfunc();
         LoadFrequencyAndIsAPIXMLChangeDataForCron();
     }
-
+   
 </script>
 <asp:UpdatePanel ID="supplerStaticData" runat="server" UpdateMode="Conditional">
     <ContentTemplate>
@@ -497,6 +500,7 @@
                     Supplier Content Update Frequency
                 </div>
                 <div id="msgAlert" runat="server" style="display: none;"></div>
+                
                 <div class="panel-body">
                     <div class="form-group row">
                         <div class="col-sm-12">
@@ -508,8 +512,8 @@
                         <div class="col-md-5">
                             <div class="input-group row">
                                 <label class="input-group-addon" for="Checkentitysequence">
-                                    <strong>Entity</strong>
-                                
+                                   
+                                    <strong>Entity</strong>                                
                                 </label>
                                 <asp:CheckBoxList ID="Checkentitysequence" CssClass="radioButtonList form-control" RepeatLayout="Flow" RepeatDirection="Horizontal"  runat="server">
                                     <asp:ListItem Text="Country" Value="1"></asp:ListItem>
@@ -518,7 +522,8 @@
                                     <asp:ListItem Text="Room Type" Value="4"></asp:ListItem>
                                     <asp:ListItem Text="Activity" Value="5"></asp:ListItem>
                                     <asp:ListItem Text="Holiday" Value="6"></asp:ListItem>
-                                </asp:CheckBoxList>                                
+                                </asp:CheckBoxList>
+                                
                             </div>
                             <div class="row clear">&nbsp;</div>
                             <div class="input-group row">
@@ -569,8 +574,8 @@
                             <div class="input-group row">
                                 <label class="input-group-addon" for="ddlStatus"><strong>Status</strong></label>
                                 <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server">
-                                    <asp:ListItem Text="Active" Value="ACT"></asp:ListItem>
-                                    <asp:ListItem Text="Inactive" Value="INA"></asp:ListItem>
+                                    <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
+                                    <asp:ListItem Text="Inactive" Value="Inactives"></asp:ListItem>
                                 </asp:DropDownList>
                             </div>
                         </div>
@@ -590,6 +595,7 @@
                         <div id="example1-cron" class="cron-builder col-md-5">                            
                         </div>
                         <asp:HiddenField ID="cron_expression" ClientIDMode="Static" runat="server" Value="" EnableViewState="false" />
+                        <asp:HiddenField ID="SupplierScheduleId" ClientIDMode="Static" runat="server" Value="" EnableViewState="false" />
                     </div>
 
                     <%--<div id="divYearly" runat="server" class="activediv">
@@ -804,7 +810,7 @@
                     <div class="form-group row col-md-12">
                     </div>
                     <div class="form-group row col-md-12">
-                        <asp:Button ID="btnSaveSchedule" OnClick="btnSaveSchedule_Click" OnClientClick="return CheckValidation()"  runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
+                        <asp:Button ID="btnSaveSchedule" OnClick="btnSaveSchedule_Click" OnClientClick="return CheckExistingData()"  runat="server" ValidationGroup="Frequency" CssClass="btn btn-primary btn-sm" Text="Save" />
                         <asp:Button ID="btnReset" runat="server" CssClass="btn btn-primary btn-sm" OnClick="btnReset_Click" Text="Reset" />
                     </div>
                 </div>

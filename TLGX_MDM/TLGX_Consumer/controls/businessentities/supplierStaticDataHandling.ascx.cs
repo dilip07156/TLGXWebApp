@@ -188,107 +188,7 @@ namespace TLGX_Consumer.controls.businessentities
             //}
         }
 
-        private void LoadPageData()
-        {
-            try
-            {
-                LoadSupplierScheduleData();
-                //Get Data for Schedule
-                List<MDMSVC.DC_Supplier_Schedule> _objresult = new List<MDMSVC.DC_Supplier_Schedule>();
-                _objresult = GetListOfScheduleBySupplier();
-                if (_objresult != null)
-                {
-                    if (_objresult.Count > 0)
-                    {
-                        //Guid SupplierScheduleID = _objresult[0].SupplierScheduleID;
-                        //if (Convert.ToBoolean(_objresult[0].ISXMLSupplier))
-                        //{
-                        //    string strActiveFrequencyType = _objresult[0].FrequencyTypeCode.Substring(0, 1);
-                        //    //rdbFrequency.SelectedValue = strActiveFrequencyType;
-                        //    #region AllDiv display none
-                        //    //divYearly.Attributes["class"] = "Divdisplay";
-                        //    //divMonthly.Attributes["class"] = "Divdisplay";
-                        //    //divWeekly.Attributes["class"] = "Divdisplay";
-                        //    //divDaily.Attributes["class"] = "Divdisplay";
-                        //    //divHourly.Attributes["class"] = "Divdisplay";
-                        //    #endregion
-                        //    if (strActiveFrequencyType == "Y")
-                        //    {
-                        //        string yearval = _objresult[0].FrequencyTypeCode.Substring(1, 1);
-                        //        divYearly.Attributes["class"] = "activediv";
-                        //        ddlYearMonth_Year.SelectedValue = Convert.ToString(_objresult[0].MonthOfYear);
-                        //        txtMonthDay_Year.Text = Convert.ToString(_objresult[0].DateOfMonth);
-                        //        txtRecurEvery_Year.Text = Convert.ToString(_objresult[0].Recur_No);
-                        //        if (yearval == "M")
-                        //        {
-                        //            rbDay_Year.Checked = true;
-                        //        }
-                        //        else if (yearval == "W")
-                        //        {
-                        //            rbOnthe_Year.Checked = true;
-                        //            ddlMonthWeekList_Year.SelectedValue = Convert.ToString(_objresult[0].DayOfWeek.ToString().IndexOf("1") + 1);
-                        //            ddlMonths_Year.SelectedValue = Convert.ToString(_objresult[0].MonthOfYear);
-                        //        }
-                        //    }
-                        //    if (strActiveFrequencyType == "M")
-                        //    {
-                        //        divMonthly.Attributes["class"] = "activediv";
-                        //        string monthval = _objresult[0].FrequencyTypeCode.Substring(1, 1);
-                        //        if (monthval == "D")
-                        //        {
-                        //            rblDays_Monthly.Checked = true;
-                        //            txtDayOf_Monthly.Text = Convert.ToString(_objresult[0].DateOfMonth);
-                        //            txtDayOfEvery_Monthly.Text = Convert.ToString(_objresult[0].Recur_No);
-                        //        }
-                        //        else if (monthval == "W")
-                        //        {
-                        //            rbThe_Montly.Checked = true;
-                        //            ddlTheDaysOf_Month.SelectedValue = Convert.ToString(Convert.ToInt32(_objresult[0].DayOfWeek.ToString().IndexOf('1')) + 1);
-                        //            ddlTheSequencyWeek_Month.SelectedValue = Convert.ToString(_objresult[0].WeekOfMonth);
-                        //            txtOccurEvery_Month.Text = Convert.ToString(_objresult[0].Recur_No);
-                        //        }
-                        //    }
-                        //    if (strActiveFrequencyType == "W")
-                        //    {
-                        //        divWeekly.Attributes["class"] = "activediv";
-                        //        txtRecur_Weekly.Text = Convert.ToString(_objresult[0].Recur_No);
-                        //        StringBuilder sbDay = new StringBuilder(Convert.ToString(_objresult[0].DayOfWeek));
-                        //        char[] days = sbDay.ToString().ToCharArray();
-                        //        int i = 0;
-                        //        foreach (ListItem item in chckbxWeek_Weekly.Items)
-                        //        {
-                        //            item.Selected = Convert.ToBoolean(Convert.ToInt32(days[i].ToString()));
-                        //            i++;
-                        //        }
-
-                        //    }
-
-                        //    if (strActiveFrequencyType == "D")
-                        //    {
-                        //        divDaily.Attributes["class"] = "activediv";
-                        //        txtOccur_Daily.Text = Convert.ToString(_objresult[0].Recur_No);
-                        //    }
-                        //    if (strActiveFrequencyType == "H")
-                        //    {
-                        //        divHourly.Attributes["class"] = "activediv";
-                        //        txtRecur_Hourly.Text = Convert.ToString(_objresult[0].Recur_No);
-                        //    }
-                        //    timepickerStart_Hourly.Value = Convert.ToString(_objresult[0].StartTime);
-                        //    timepickerEnd_Hourly.Value = Convert.ToString(_objresult[0].EndTime);
-                        //    ddlStatus.SelectedValue = (Convert.ToString(_objresult[0].Status));
-
-                        //}
-                    }
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        public void save()
+        public void SupplierSchedulesave()
         {
             try
             {
@@ -327,99 +227,109 @@ namespace TLGX_Consumer.controls.businessentities
                 StringBuilder sbFrequencyTypeCode = new StringBuilder();
 
                 sbFrequencyTypeCode.Append(frequencyvalue);
-                if (Convert.ToBoolean(Convert.ToInt16(rdbtnIsAPIXMLSupplier.SelectedValue)))
+                //if (Convert.ToBoolean(Convert.ToInt16(rdbtnIsAPIXMLSupplier.SelectedValue)))
+                //{
+                #region Yearly
+                if (frequencyvalue == "Y")
                 {
-                    #region Yearly
-                    if (frequencyvalue == "Y")
-                    {
-                        //_objSupSch.Recur_No = Convert.ToInt32(txtRecurEvery_Year.Text);
-                        string Yearly_type = Request.Form["yearlyType"];
+                    //_objSupSch.Recur_No = Convert.ToInt32(txtRecurEvery_Year.Text);
+                    string Yearly_type = Request.Form["yearlyType"];
 
-                        if (Yearly_type == "byDay")
-                        {
-                            sbFrequencyTypeCode.Append("M");
-                            _objSupSch.MonthOfYear = Convert.ToInt32(Request.Form["ddl_yearly_Month"]);
-                            _objSupSch.DateOfMonth = Convert.ToInt32(Request.Form["ddl_yearly_day"]);
-                        }
-                        else if (Yearly_type == "byWeek")
-                        {
-                            sbFrequencyTypeCode.Append("W");
-                            _objSupSch.WeekOfMonth = Convert.ToInt32(Request.Form["ddl_yearly_nthday"]);
-                            string strDays = Convert.ToString("0000000").Remove(Convert.ToInt32(Request.Form["ddl_yearly_day_od_week"]) - 1, 1).Insert(Convert.ToInt32(Request.Form["ddl_yearly_day_od_week"]) - 1, "1");
-                            //  string strDays = "00000000";
-                            _objSupSch.DayOfWeek = strDays;
-                            _objSupSch.MonthOfYear = Convert.ToInt32(Request.Form["ddl_yearly_month_by_week"]);
-                        }
-                    }
-                    #endregion
-                    #region Monthly
-                    if (frequencyvalue == "M")
+                    if (Yearly_type == "byDay")
                     {
-                        string Monthly_type = Request.Form["monthlyType"];
-                        if (Monthly_type == "byDay")
-                        {
-                            sbFrequencyTypeCode.Append("D");
-                            _objSupSch.DateOfMonth = Convert.ToInt32(Request.Form["ddl_monthly_day"]);
-                            _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_monthly_monthly"]);
-                        }
-                        else if (Monthly_type == "byWeek")
-                        {
-                            sbFrequencyTypeCode.Append("W");
-                            _objSupSch.WeekOfMonth = Convert.ToInt32(Request.Form["ddl_monthly_nthday"]);
-                            string strDays = Convert.ToString("0000000").Remove(Convert.ToInt32(Request.Form["ddl_monthly_day_of_week"]) - 1, 1).Insert(Convert.ToInt32(Request.Form["ddl_monthly_day_of_week"]) - 1, "1");
-                            _objSupSch.DayOfWeek = strDays;
-                            //_objSupSch.DayOfWeek = ("1" + strDays.Substring(0, (Convert.ToInt32(ddlTheDaysOf_Month.SelectedValue) - 1))).PadLeft(7, '0');
-                            _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_monthly_month_by_week"]);
-                        }
+                        sbFrequencyTypeCode.Append("M");
+                        _objSupSch.MonthOfYear = Convert.ToInt32(Request.Form["ddl_yearly_Month"]);
+                        _objSupSch.DateOfMonth = Convert.ToInt32(Request.Form["ddl_yearly_day"]);
                     }
-                    #endregion
-                    #region Weekly
-                    if (frequencyvalue == "W")
+                    else if (Yearly_type == "byWeek")
                     {
-                        //_objSupSch.Recur_No = Convert.ToInt32(txtRecur_Weekly.Text);
-
-                        string test = Request.Form["dayOfWeek"];
-
-                        int[] nums = test.Split(',').Select(int.Parse).ToArray();
-                        //1001011  2571  1100101
-                        StringBuilder sbDay = new StringBuilder("0000000");
-                        foreach (int i in nums)
-                        {
-                            if (i != 1)
-                            {
-                                sbDay[Convert.ToInt32(i) - 2] = '1';
-                                // selected.Add(item);
-                            }
-                            else
-                            {
-                                sbDay[Convert.ToInt32(6)] = '1';
-                            }
-                        }
-                        _objSupSch.DayOfWeek = sbDay.ToString();
+                        sbFrequencyTypeCode.Append("W");
+                        _objSupSch.WeekOfMonth = Convert.ToInt32(Request.Form["ddl_yearly_nthday"]);
+                        string strDays = Convert.ToString("0000000").Remove(Convert.ToInt32(Request.Form["ddl_yearly_day_od_week"]) - 1, 1).Insert(Convert.ToInt32(Request.Form["ddl_yearly_day_od_week"]) - 1, "1");
+                        //  string strDays = "00000000";
+                        _objSupSch.DayOfWeek = strDays;
+                        _objSupSch.MonthOfYear = Convert.ToInt32(Request.Form["ddl_yearly_month_by_week"]);
                     }
-                    #endregion
-                    #region Daily
-                    if (frequencyvalue == "D")
-                    {
-                        _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_daily"]);
-                    }
-                    #endregion
-                    #region Hourly
-                    if (frequencyvalue == "H")
-                    {
-                        _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_hourly"]);
-                    }
-                    #endregion
-                    _objSupSch.FrequencyTypeCode = sbFrequencyTypeCode.ToString();
-                    _objSupSch.Status = Convert.ToString(ddlStatus.SelectedValue);
-                    //Need To Do
-                    int startHour = Convert.ToInt32(Request.Form["ddl_clock_hour"]);
-                    int startminute = Convert.ToInt32(Request.Form["ddl_clock_minute"]);
-                    _objSupSch.StartTime = Convert.ToString(startHour + ":" + startminute);
-
-                    //_objSupSch.StartTime = Convert.ToString(timepickerStart_Hourly.Value);
-                    //_objSupSch.EndTime = Convert.ToString(timepickerEnd_Hourly.Value);
                 }
+                #endregion
+                #region Monthly
+                if (frequencyvalue == "M")
+                {
+                    string Monthly_type = Request.Form["monthlyType"];
+                    if (Monthly_type == "byDay")
+                    {
+                        sbFrequencyTypeCode.Append("D");
+                        _objSupSch.DateOfMonth = Convert.ToInt32(Request.Form["ddl_monthly_day"]);
+                        _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_monthly_monthly"]);
+                    }
+                    else if (Monthly_type == "byWeek")
+                    {
+                        sbFrequencyTypeCode.Append("W");
+                        _objSupSch.WeekOfMonth = Convert.ToInt32(Request.Form["ddl_monthly_nthday"]);
+                        string strDays = Convert.ToString("0000000").Remove(Convert.ToInt32(Request.Form["ddl_monthly_day_of_week"]) - 1, 1).Insert(Convert.ToInt32(Request.Form["ddl_monthly_day_of_week"]) - 1, "1");
+                        _objSupSch.DayOfWeek = strDays;
+                        //_objSupSch.DayOfWeek = ("1" + strDays.Substring(0, (Convert.ToInt32(ddlTheDaysOf_Month.SelectedValue) - 1))).PadLeft(7, '0');
+                        _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_monthly_month_by_week"]);
+                    }
+                }
+                #endregion
+                #region Weekly
+                if (frequencyvalue == "W")
+                {
+                    //_objSupSch.Recur_No = Convert.ToInt32(txtRecur_Weekly.Text);
+
+                    string test = Request.Form["dayOfWeek"];
+
+                    int[] nums = test.Split(',').Select(int.Parse).ToArray();
+                    //1001011  2571  1100101
+                    StringBuilder sbDay = new StringBuilder("0000000");
+                    foreach (int i in nums)
+                    {
+                        if (i != 1)
+                        {
+                            sbDay[Convert.ToInt32(i) - 2] = '1';
+                            // selected.Add(item);
+                        }
+                        else
+                        {
+                            sbDay[Convert.ToInt32(6)] = '1';
+                        }
+                    }
+                    _objSupSch.DayOfWeek = sbDay.ToString();
+                }
+                #endregion
+                #region Daily
+                if (frequencyvalue == "D")
+                {
+                    _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_daily"]);
+                }
+                #endregion
+                #region Hourly
+                if (frequencyvalue == "H")
+                {
+                    _objSupSch.Recur_No = Convert.ToInt32(Request.Form["ddl_hourly"]);
+                }
+                #endregion
+                _objSupSch.FrequencyTypeCode = sbFrequencyTypeCode.ToString();
+                _objSupSch.Status = Convert.ToString(ddlStatus.SelectedValue);
+                //Need To Do
+                string startHour = Request.Form["ddl_clock_hour"];
+                string startminute = Request.Form["ddl_clock_minute"];
+                if (Convert.ToInt32(startHour) < 9)
+                {
+                    startHour = startHour.ToString().PadLeft(2, '0');
+                    //startHour = '0' + startHour;
+                }
+                if (Convert.ToInt32(startminute) < 9)
+                {
+                    startminute = startminute.ToString().PadLeft(2, '0');
+                    //startminute = '0' + startminute;
+                }
+                _objSupSch.StartTime = Convert.ToString(startHour + ":" + startminute);
+
+                //_objSupSch.StartTime = Convert.ToString(timepickerStart_Hourly.Value);
+                //_objSupSch.EndTime = Convert.ToString(timepickerEnd_Hourly.Value);
+                //}
                 List<string> selected = new List<string>();
                 foreach (ListItem item in Checkentitysequence.Items)
                     if (item.Selected)
@@ -441,10 +351,10 @@ namespace TLGX_Consumer.controls.businessentities
                 //}
                 //else
                 //{
-                    MDMSVC.DC_Message _objMsg = _objSchedularService.AddUpdateSchedule(_objSupSch);
-                    if (_objMsg != null)
-                        BootstrapAlert.BootstrapAlertMessage(msgAlert, "" + _objMsg.StatusMessage, (BootstrapAlertType)_objMsg.StatusCode);
-                    LoadPageData();
+                MDMSVC.DC_Message _objMsg = _objSchedularService.AddUpdateSchedule(_objSupSch);
+                if (_objMsg != null)
+                    BootstrapAlert.BootstrapAlertMessage(msgAlert, "" + _objMsg.StatusMessage, (BootstrapAlertType)_objMsg.StatusCode);
+                LoadSupplierScheduleData();
                 //}
 
             }
@@ -581,7 +491,7 @@ namespace TLGX_Consumer.controls.businessentities
         {
             try
             {
-                save();
+                SupplierSchedulesave();
             }
             catch
             {
@@ -601,6 +511,7 @@ namespace TLGX_Consumer.controls.businessentities
             Checkentitysequence.ClearSelection();
             rdbtnIsAPIXMLSupplier.ClearSelection();
             Session["SupplierScheduleId"] = null;
+            SupplierScheduleId.Value = string.Empty;
             //rdbFrequency.ClearSelection();
             rdbIsUpdateFrequencyRequired.ClearSelection();
             //ddlTheSequencyWeek_Month.SelectedIndex = 0;
@@ -636,7 +547,7 @@ namespace TLGX_Consumer.controls.businessentities
 
             if (e.CommandName == "Select")
             {
-
+                msgAlert.Style.Add(HtmlTextWriterStyle.Display, "none");
                 LoadSupplierDatabyScheduleId(myRow_Id);
             }
 
@@ -773,10 +684,13 @@ namespace TLGX_Consumer.controls.businessentities
                 {
                     if (_objresult.Count > 0)
                     {
+                        rdbtnIsAPIXMLSupplier.SelectedValue = Convert.ToInt32(_objresult[0].ISXMLSupplier).ToString();
+                        rdbIsUpdateFrequencyRequired.SelectedValue = Convert.ToInt32(_objresult[0].ISUpdateFrequence).ToString();
                         //msgAlert.Attributes.Add("style", "display:none");
                         Guid SupplierScheduleID = _objresult[0].SupplierScheduleID;
-                        if (Convert.ToBoolean(_objresult[0].ISXMLSupplier))
-                        {
+                        SupplierScheduleId.Value = SupplierScheduleID.ToString();
+                        //if (Convert.ToBoolean(_objresult[0].ISXMLSupplier))
+                        //{
                             string entity = Convert.ToString(_objresult[0].Entity);
                             foreach (ListItem item in Checkentitysequence.Items)
                             {
@@ -870,7 +784,7 @@ namespace TLGX_Consumer.controls.businessentities
                             //timepickerEnd_Hourly.Value = Convert.ToString(_objresult[0].EndTime);
                             //ddlStatus.SelectedValue = (Convert.ToString(_objresult[0].Status));
 
-                        }
+                        //}
                     }
                 }
 
@@ -905,5 +819,7 @@ namespace TLGX_Consumer.controls.businessentities
             Checkentitysequence.Enabled = true;
 
         }
+
+       
     }
 }
