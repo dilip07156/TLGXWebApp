@@ -874,6 +874,17 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_HotelListByCityCode" nillable="true" type="tns:DC_HotelListByCityCode" />
+  <xs:complexType name="DC_NewDashBoardReport_RQ">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="City" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Country" nillable="true" type="q3:ArrayOfstring" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Keys" nillable="true" type="q4:ArrayOfstring" />
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Priorities" nillable="true" type="q5:ArrayOfstring" />
+      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Ranks" nillable="true" type="q6:ArrayOfstring" />
+      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Region" nillable="true" type="q7:ArrayOfstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_NewDashBoardReport_RQ" nillable="true" type="tns:DC_NewDashBoardReport_RQ" />
   <xs:complexType name="ArrayOfDC_NewDashBoardReportCountry_RS">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_NewDashBoardReportCountry_RS" nillable="true" type="tns:DC_NewDashBoardReportCountry_RS" />
@@ -906,17 +917,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_NewDashBoardReportCountry_RS" nillable="true" type="tns:DC_NewDashBoardReportCountry_RS" />
-  <xs:complexType name="DC_NewDashBoardReport_RQ">
-    <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="City" nillable="true" type="q2:ArrayOfstring" />
-      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Country" nillable="true" type="q3:ArrayOfstring" />
-      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Keys" nillable="true" type="q4:ArrayOfstring" />
-      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Priorities" nillable="true" type="q5:ArrayOfstring" />
-      <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Ranks" nillable="true" type="q6:ArrayOfstring" />
-      <xs:element xmlns:q7="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Region" nillable="true" type="q7:ArrayOfstring" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_NewDashBoardReport_RQ" nillable="true" type="tns:DC_NewDashBoardReport_RQ" />
   <xs:complexType name="DC_EzeegoHotelVsSupplierHotelMappingReport_RQ">
     <xs:sequence>
       <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AccoPriority" nillable="true" type="q8:ArrayOfstring" />

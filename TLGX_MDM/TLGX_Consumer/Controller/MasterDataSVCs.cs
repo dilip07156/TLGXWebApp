@@ -62,6 +62,31 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Masters_CountryAdd"], RQ, typeof(MDMSVC.DC_Country), typeof(bool), out result);
             return (bool)result;
         }
+
+
+        //GAURAV_TMAP_875
+        public List<DC_Priorities> GetPrioritiesOfCountryMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_CountryPriorities"], typeof(List<MDMSVC.DC_Priorities>), out result);
+            return result as List<DC_Priorities>;
+        }
+
+        public List<DC_Keys> GetKeysOfCountryMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_CountryKeys"], typeof(List<MDMSVC.DC_Keys>), out result);
+            return result as List<DC_Keys>;
+        }
+
+        public List<DC_Ranks> GetRanksOfCountryMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_CountryRanks"], typeof(List<MDMSVC.DC_Ranks>), out result);
+            return result as List<DC_Ranks>;
+        }
+
+
         #endregion
 
         #region "City Data"
@@ -893,5 +918,16 @@ namespace TLGX_Consumer.Controller
         }
         #endregion
 
+
+        #region Accomodation Priority
+        //GAURAV_TMAP_874
+        public List<DC_Priorities> GetPrioritiesOfAccommodationMaster()
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(ConfigurationManager.AppSettings["Masters_AccPriorities"], typeof(List<MDMSVC.DC_Priorities>), out result);
+            return result as List<DC_Priorities>;
+        }
+
+        #endregion
     }
 }

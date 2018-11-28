@@ -29,6 +29,7 @@ namespace TLGX_Consumer.staticdata
         private void LoadDropdown()
         {
             fillRegionList();
+            fillPriorityList();
         }
 
         private void fillRegionList()
@@ -40,6 +41,17 @@ namespace TLGX_Consumer.staticdata
             ddlRegion.DataTextField = "RegionName";
             ddlRegion.DataBind();
         }
+
+        //GAURAV_TMAP_876
+        private void fillPriorityList()
+        {
+            ddlPriorities.Items.Clear();
+            ddlPriorities.DataSource = masterSVc.GetPrioritiesOfAccommodationMaster();
+            ddlPriorities.DataValueField = "Value";
+            ddlPriorities.DataTextField = "Name";
+            ddlPriorities.DataBind();
+        }
+
 
         private List<string> GetSelectedList(ListBox lst)
         {
@@ -217,6 +229,10 @@ namespace TLGX_Consumer.staticdata
             var selectedCountries = GetSelectedList(ddlCountry);
             var Country = ddlCountry.Items.Count == selectedCountries.Count ? new List<string>{ } : selectedCountries;
 
+            //GAURAV_TMAP_874
+            var selectedPriorities = GetSelectedList(ddlPriorities);
+            var Priority = selectedPriorities.Count == 0 ? new List<string> { } : selectedPriorities;
+
             var City = new List<string> { };
             if (rdoIsAllCities.Checked)
             {
@@ -240,7 +256,7 @@ namespace TLGX_Consumer.staticdata
             var report = new DC_EzeegoHotelVsSupplierHotelMappingReport_RQ();
             report.Country = Country.ToArray();
             report.Region = Region.ToArray();
-
+            report.AccoPriority = Priority.ToArray();
             report.City = City.ToArray();
             //report.AccoPriority = AccoPriority.ToArray();
             var reportResponse = mappingSVC.HotelMappingReport(report);

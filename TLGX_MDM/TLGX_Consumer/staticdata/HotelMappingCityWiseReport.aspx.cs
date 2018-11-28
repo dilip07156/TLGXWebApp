@@ -83,14 +83,14 @@ namespace TLGX_Consumer.staticdata
             var Country = ddlCountry.Items.Count == SelectedCountries.Count ? new List<string> { } : SelectedCountries;
 
             var SelectedPriorities = GetSelectedList(ddlPriorities);
-            var Priority = ddlPriorities.Items.Count == SelectedPriorities.Count ? new List<string> { } : SelectedPriorities;
+            var Priority = SelectedPriorities.Count == 0 ? new List<string> { } : SelectedPriorities;
 
 
             var SelectedKyes = GetSelectedList(ddlKeys);
-            var Keys = ddlKeys.Items.Count == SelectedKyes.Count ? new List<string> { } : SelectedKyes;
+            var Keys = SelectedKyes.Count == 0 ? new List<string> { } : SelectedKyes;
 
             var SelectedRanks = GetSelectedList(ddlRanks);
-            var Ranks = ddlRanks.Items.Count == SelectedRanks.Count ? new List<string> { } : SelectedRanks;
+            var Ranks = SelectedRanks.Count == 0 ? new List<string> { } : SelectedRanks;
 
             var City = new List<string> { };
             if (rdoIsAllCities.Checked)
