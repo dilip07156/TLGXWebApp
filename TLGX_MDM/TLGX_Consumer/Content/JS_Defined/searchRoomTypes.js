@@ -350,6 +350,12 @@ function BindRTDetails(controlval) {
     var lblSupplierRoomTypeName = $(controlval).parent().parent().find('#lblSupplierRoomTypeName').text();
     $('#lblForTLGXRoomInfoName').text(lblSupplierRoomTypeName);
 
+    //Get Supplier Room Type name count
+    var sRoomTypeName = lblSupplierRoomTypeName.replace(/(^\s*)|(\s*$)/gi, "");
+    sRoomTypeName = sRoomTypeName.replace(/[ ]{2,}/gi, " ");
+    sRoomTypeName = sRoomTypeName.replace(/\n /, "\n");
+    var count = parseInt(sRoomTypeName.split(' ').length);
+
     var lblIsNotTraining = $(controlval).parent().parent().find('#lblIsNotTraining').text();
     if (lblIsNotTraining == "True") {
         lblIsNotTraining = "checked"
@@ -384,8 +390,11 @@ function BindRTDetails(controlval) {
     ActionButtons = ActionButtons + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr>" // ";
     ActionButtons = ActionButtons + "<td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td>";
-    ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Reset'  onclick='submitReSet()' /> </td>";
-    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining + " onchange='UpdateTrainingFlag(this)'><strong>Don't Submit as Training Data</strong></td>";
+    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining ; 
+    if (count < 2) {
+        ActionButtons = ActionButtons + " checked ";
+    }
+    ActionButtons = ActionButtons + "  onchange = 'UpdateTrainingFlag(this)' > <strong>Don't Submit as Training Data</strong></td > ";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td>";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_Id'  value='' /></td>";
     ActionButtons = ActionButtons + "</tr></tbody></table>";
