@@ -172,13 +172,10 @@
             <br>
             <div class="panel-body">
             <div class="row">
-                <div class="col-8">
-                    <h3>Search Results</h3>
-                </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">page Size</label>
-                        <asp:DropDownList ID="ddlShowEntries" runat="server" CssClass="form-control" AppendDataBoundItems="true">
+                        <asp:DropDownList ID="ddlShowEntries" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
                             <asp:ListItem Text="5" Value="5"></asp:ListItem>
                             <asp:ListItem Text="10" Value="10"></asp:ListItem>
                             <asp:ListItem Text="15" Value="15"></asp:ListItem>
@@ -199,24 +196,31 @@
                         <div class="panel-heading clearfix">
                             <h4 class="panel-title pull-left">
                                 <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">Search Results (Total Count:
-                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>
-
-                            
+                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>                           
                         </div>
         <div id="collapseSearchResult" class="panel-collapse collapse in">
             <div class="panel-body">
-                <asp:GridView ID="grdSupplierScheduleTask" runat="server" AllowPaging="True" AutoGenerateColumns="False" AllowCustomPaging="True"
+                <asp:GridView ID="grdSupplierScheduleTask" runat="server" AllowPaging="True" AllowCustomPaging="true" AllowSorting="True" AutoGenerateColumns="False"
                     EmptyDataText="No Data for search conditions" CssClass="table table-hover table-striped"
-                    OnPageIndexChanging="grdSupplierScheduleTask_PageIndexChanging"
-                    OnRowCommand="grdSupplierScheduleTask_RowCommand">
+                    OnPageIndexChanging="grdSupplierScheduleTask_PageIndexChanging" DataKeyNames="Suppllier_ID,LogType"
+                    OnRowCommand="grdSupplierScheduleTask_RowCommand" OnDataBound="grdSupplierScheduleTask_DataBound" OnRowDataBound="grdSupplierScheduleTask_RowDataBound">
                     <Columns>
                         <asp:BoundField DataField="SuppllierName" HeaderText="Supplier Name" SortExpression="SupplierName" />
                         <asp:BoundField DataField="Entity" HeaderText="Entity" SortExpression="Entity" />
                         <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
                         <asp:BoundField DataField="ScheduledDate" HeaderText="Scheduled Date" SortExpression="ScheduledDate" />
                         <asp:BoundField DataField="PendingFordays" HeaderText="Pending For Days" SortExpression="Status" />
+                        <asp:BoundField DataField="LogType" HeaderText="Job Type" SortExpression="SupplierName" />
 
-                        <asp:TemplateField ShowHeader="false">
+                        <asp:TemplateField ShowHeader="true" HeaderText="View Detail">
+                            <ItemTemplate>
+                                <asp:LinkButton ID="btnDetail" runat="server" CausesValidation="false" CommandName="View" CommandArgument='<%#Bind("logid") %>' CssClass="btn btn-default" Enabled="true">
+                                            <span aria-hidden="true">View Detail</span>
+                                </asp:LinkButton>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:TemplateField ShowHeader="true" HeaderText="Download Instruction">
 
                             <ItemTemplate>
                                 <asp:LinkButton ID="btndownload" runat="server" CausesValidation="false" CommandName="Download" CommandArgument='<%#Bind("logid") %>' CssClass="btn btn-default" Enabled="true">
@@ -225,14 +229,14 @@
                             </ItemTemplate>
 
                         </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="false">
+                        <asp:TemplateField ShowHeader="true" HeaderText="Upload File">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnupload" runat="server" CausesValidation="false" CommandName="Upload" CommandArgument='<%#Bind("logid") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">Upload File</span>
                                 </asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="false">
+                        <asp:TemplateField ShowHeader="true" HeaderText="Task Complete">
                             <ItemTemplate>
                                 <asp:LinkButton ID="btnTaskComp" runat="server" CausesValidation="false" CommandName="TaskComplete" CommandArgument='<%#Bind("logid") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">Task Complete</span>

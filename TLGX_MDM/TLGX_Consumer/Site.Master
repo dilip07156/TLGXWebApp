@@ -182,26 +182,39 @@
                             <bootmenu:BootstrapMenu runat="server"
                                 DataSourceID="AspNetSqlSiteMapProvider"
                                 Orientation="Horizontal" />--%>
-                    
-                                 
-                           
-                          
-                            <!-- this is the right hand side for everyone currently hard coded for demo-->
-                            <ul class="nav navbar-nav navbar-right">
- 
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>
-                                        <asp:Label id="lblLoggedInUser" runat="server"  style="color: white;"></asp:Label>
-                                        <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
 
-                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Manage</a></li>
-                                        <li>
-                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
+
+
+
+                            <!-- this is the right hand side for everyone currently hard coded for demo-->
+                            <%--  <ul class="nav navbar-nav navbar-right">
+                                <a href="/suppliers/SupplierTaskManage.aspx"><span class="glyphicon glyphicon-bell"></span></a>
+                            </ul>--%>
+                            <div class="row col-md-4">
+                                <div class="col-md-3" style="padding-top:5px;padding-left:65px;margin-right:-40px;">
+                                    <%--<a style="font-size: x-large;color:white;" href="/suppliers/SupplierTaskManage.aspx"><span class="glyphicon glyphicon-bell"></span></a>
+                                    <label style="font-size:madium;color:red;margin-left:-10px;/* z-index: 100 !important; */transform: translate(-10%, -30%);background-color: black;">12</label>--%>
+                                    <a href="/suppliers/SupplierTaskManage.aspx" class="btn btn-app no-radius"><i style="color:white; font-size:x-large" class="glyphicon glyphicon-bell"></i>                                            <span class="badge badge-warning badge-left" style="margin-left:-12px;margin-top:-4px;padding-bottom: 2px;padding-top: 2px;padding-left: 3px;padding-right: 3px;">11</span>                                        </a>
+                                </div>
+                                <div class="col-md-9">
+                                    <ul class="nav navbar-nav navbar-right">
+
+                                        <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>
+                                                <asp:Label ID="lblLoggedInUser" runat="server" Style="color: white;"></asp:Label>
+                                                <span class="caret"></span>
+                                                <ul class="dropdown-menu">
+
+                                                    <li><a runat="server" href="~/Account/Manage" title="Manage your account">Manage</a></li>
+                                                    <li>
+                                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
+                                                    </li>
+                                                </ul>
+                                            </a>
                                         </li>
                                     </ul>
-                                </li>
-                            </ul>
+                                </div>
+                            </div>
 
 
                         </LoggedInTemplate>

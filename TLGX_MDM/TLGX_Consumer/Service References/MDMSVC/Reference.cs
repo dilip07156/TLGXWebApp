@@ -31997,6 +31997,9 @@ namespace TLGX_Consumer.MDMSVC {
         private int LogIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LogTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PendingFordaysField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -32075,6 +32078,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.LogIdField.Equals(value) != true)) {
                     this.LogIdField = value;
                     this.RaisePropertyChanged("LogId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LogType {
+            get {
+                return this.LogTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LogTypeField, value) != true)) {
+                    this.LogTypeField = value;
+                    this.RaisePropertyChanged("LogType");
                 }
             }
         }
