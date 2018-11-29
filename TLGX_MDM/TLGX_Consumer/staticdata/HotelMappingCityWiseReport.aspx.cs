@@ -26,6 +26,9 @@ namespace TLGX_Consumer.staticdata
         private void LoadDropdown()
         {
             fillRegionList();
+            fillPriorityList();
+            fillKeysList();
+            fillRanksList();
         }
 
         private void fillRegionList()
@@ -37,13 +40,58 @@ namespace TLGX_Consumer.staticdata
             ddlRegion.DataTextField = "RegionName";
             ddlRegion.DataBind();
         }
-        
+
+
+        //GAURAV_TMAP_876
+        private void fillPriorityList()
+        {
+            ddlPriorities.Items.Clear();
+            ddlPriorities.DataSource = masterSVc.GetPrioritiesOfCityMaster();
+            ddlPriorities.DataValueField = "Value";
+            ddlPriorities.DataTextField = "Name";
+            ddlPriorities.DataBind();
+        }
+
+
+        private void fillKeysList()
+        {
+            ddlKeys.Items.Clear();
+            ddlKeys.DataSource = masterSVc.GetKeysOfCityMaster();
+            ddlKeys.DataValueField = "Value";
+            ddlKeys.DataTextField = "Name";
+            ddlKeys.DataBind();
+        }
+
+
+
+        private void fillRanksList()
+        {
+            ddlRanks.Items.Clear();
+            ddlRanks.DataSource = masterSVc.GetRanksOfCityMaster();
+            ddlRanks.DataValueField = "Value";
+            ddlRanks.DataTextField = "Name";
+            ddlRanks.DataBind();
+        }
+
+
+        //GAURAV_TMAP_876
         protected void btnViewReport_Click(object sender, EventArgs e)
         {
             var SelectedRegions = GetSelectedList(ddlRegion);
             var Region = ddlRegion.Items.Count == SelectedRegions.Count ? new List<string> { } : SelectedRegions;
             var SelectedCountries = GetSelectedList(ddlCountry);
             var Country = ddlCountry.Items.Count == SelectedCountries.Count ? new List<string> { } : SelectedCountries;
+
+            var SelectedPriorities = GetSelectedList(ddlPriorities);
+            var Priority = SelectedPriorities.Count == 0 ? new List<string> { } : SelectedPriorities;
+
+
+            var SelectedKyes = GetSelectedList(ddlKeys);
+            var Keys = SelectedKyes.Count == 0 ? new List<string> { } : SelectedKyes;
+
+            var SelectedRanks = GetSelectedList(ddlRanks);
+            var Ranks = SelectedRanks.Count == 0 ? new List<string> { } : SelectedRanks;
+
             var City = new List<string> { };
             if (rdoIsAllCities.Checked)
             {
@@ -65,6 +113,10 @@ namespace TLGX_Consumer.staticdata
             report.Country = Country.ToArray();
             report.Region = Region.ToArray();
             report.City = City.ToArray();
+            report.Priorities = Priority.ToArray();
+            report.Keys = Keys.ToArray();
+            report.Ranks = Ranks.ToArray();
+
             // Bind data to Report and Show report 
             var reportResponse = mappingSVC.GetHotelMappingReport_CityWise(report);
                 ReportDataSource rds = new ReportDataSource("DataSet1", reportResponse);

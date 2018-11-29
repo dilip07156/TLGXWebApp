@@ -544,10 +544,10 @@ namespace TLGX_Consumer.Controller
         }
 
         #region NewDashBoardReport
-        public List<DC_NewDashBoardReportCountry_RS> GetNewDashboardReport_CountryWise()
+        public List<DC_NewDashBoardReportCountry_RS> GetNewDashboardReport_CountryWise(DC_NewDashBoardReport_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), RQ, typeof(List<DC_NewDashBoardReport_RQ>), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
             return result as List<DC_NewDashBoardReportCountry_RS>;
         }
 
