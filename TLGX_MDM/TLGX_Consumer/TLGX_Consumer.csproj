@@ -264,6 +264,7 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\jquery-cron-quartz.css" />
     <Content Include="Content\JS_Defined\searchRoomTypes.js" />
     <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
@@ -470,6 +471,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-cron-quartz.js" />
+    <Content Include="Scripts\jquery-cron-quartz.min.js" />
     <Content Include="Scripts\jquery.ae.image.resize.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.css" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
