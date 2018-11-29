@@ -18,8 +18,8 @@ namespace TLGX_Consumer.controls.businessentities
         // used for retrieving drop down list attribute values from masters
         MasterDataDAL MasterData = new MasterDataDAL();
         MasterDataSVCs _objMaster = new MasterDataSVCs();
-        public static string AttributeOptionFor = "SupplierInfo";
-        public static Guid mySupplier_Id = Guid.Empty;
+        //public static string AttributeOptionFor = "SupplierInfo";
+        //public static Guid mySupplier_Id = Guid.Empty;
         private void BindMainSupplierData()
         {
             DropDownList ddlSupplierType = (DropDownList)frmSupplierDetail.FindControl("ddlSupplierType");
@@ -57,8 +57,8 @@ namespace TLGX_Consumer.controls.businessentities
             if (!IsPostBack)
             {
                 TabName.Value = Request.Form[TabName.UniqueID];
-                mySupplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]);
-                FillPageData(mySupplier_Id);
+               // mySupplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]);
+                FillPageData(Guid.Parse(Request.QueryString["Supplier_Id"]));
             }
 
         }
@@ -139,7 +139,7 @@ namespace TLGX_Consumer.controls.businessentities
 
                 _msg = _objMaster.AddUpdateSupplier(new MDMSVC.DC_Supplier()
                 {
-                    Supplier_Id = mySupplier_Id,
+                    Supplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]),
                     Name = txtNameSupplierEdit.Text.Trim(),
                     Code = txtCodeSupplierEdit.Text.Trim(),
                     SupplierType = supplierType,
@@ -155,7 +155,7 @@ namespace TLGX_Consumer.controls.businessentities
                     frmSupplierDetail.ChangeMode(FormViewMode.Edit);
                     frmSupplierDetail.DataBind();
                     BootstrapAlert.BootstrapAlertMessage(dvMsgUpdateSupplierDetails, _msg.StatusMessage, BootstrapAlertType.Success);
-                    FillPageData(mySupplier_Id);
+                    FillPageData(Guid.Parse(Request.QueryString["Supplier_Id"]));
                 }
                 else
                 {

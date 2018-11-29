@@ -535,6 +535,7 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
+    <Content Include="suppliers\SupplierScheduleTask.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1131,6 +1132,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service\SupplierRoomTypeReset.ashx" />
+    <Content Include="Service\CheckExistingSupplierData.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2766,6 +2768,9 @@
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\CheckExistingSupplierData.ashx.cs">
+      <DependentUpon>CheckExistingSupplierData.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\CityFillForDDL.ashx.cs">
       <DependentUpon>CityFillForDDL.ashx</DependentUpon>
     </Compile>
@@ -3038,6 +3043,13 @@
     </Compile>
     <Compile Include="suppliers\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\SupplierScheduleTask.aspx.cs">
+      <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\SupplierScheduleTask.aspx.designer.cs">
+      <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

@@ -8462,8 +8462,11 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes))]
@@ -9184,8 +9187,11 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_SupplierAccoMappingExportDataReport))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_EzeegoHotelVsSupplierHotelMappingReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Net.HttpStatusCode))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_DynamicAttributes))]
@@ -31573,6 +31579,163 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_Schedule_RQ", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
+    [System.SerializableAttribute()]
+    public partial class DC_Supplier_Schedule_RQ : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> Edit_DateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Edit_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] EntitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierScheduleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Suppllier_IDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Edit_Date {
+            get {
+                return this.Edit_DateField;
+            }
+            set {
+                if ((this.Edit_DateField.Equals(value) != true)) {
+                    this.Edit_DateField = value;
+                    this.RaisePropertyChanged("Edit_Date");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Edit_User {
+            get {
+                return this.Edit_UserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Edit_UserField, value) != true)) {
+                    this.Edit_UserField = value;
+                    this.RaisePropertyChanged("Edit_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Entities {
+            get {
+                return this.EntitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntitiesField, value) != true)) {
+                    this.EntitiesField = value;
+                    this.RaisePropertyChanged("Entities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageNo {
+            get {
+                return this.PageNoField;
+            }
+            set {
+                if ((this.PageNoField.Equals(value) != true)) {
+                    this.PageNoField = value;
+                    this.RaisePropertyChanged("PageNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierScheduleID {
+            get {
+                return this.SupplierScheduleIDField;
+            }
+            set {
+                if ((this.SupplierScheduleIDField.Equals(value) != true)) {
+                    this.SupplierScheduleIDField = value;
+                    this.RaisePropertyChanged("SupplierScheduleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Suppllier_ID {
+            get {
+                return this.Suppllier_IDField;
+            }
+            set {
+                if ((this.Suppllier_IDField.Equals(value) != true)) {
+                    this.Suppllier_IDField = value;
+                    this.RaisePropertyChanged("Suppllier_ID");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_Schedule", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
     [System.SerializableAttribute()]
     public partial class DC_Supplier_Schedule : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -31585,6 +31748,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Create_UserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CronExpressionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> DateOfMonthField;
@@ -31602,6 +31768,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string EndTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EndYearField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FrequencyTypeCodeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -31609,6 +31781,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool ISXMLSupplierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> MonthOfYearField;
@@ -31620,7 +31795,13 @@ namespace TLGX_Consumer.MDMSVC {
         private string StartTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StartYearField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SupplierNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid SupplierScheduleIDField;
@@ -31629,7 +31810,13 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Guid Suppllier_IDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string User_Role_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> WeekOfMonthField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] lstEnityField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -31663,6 +31850,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Create_UserField, value) != true)) {
                     this.Create_UserField = value;
                     this.RaisePropertyChanged("Create_User");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CronExpression {
+            get {
+                return this.CronExpressionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CronExpressionField, value) != true)) {
+                    this.CronExpressionField = value;
+                    this.RaisePropertyChanged("CronExpression");
                 }
             }
         }
@@ -31733,6 +31933,32 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int EndYear {
+            get {
+                return this.EndYearField;
+            }
+            set {
+                if ((this.EndYearField.Equals(value) != true)) {
+                    this.EndYearField = value;
+                    this.RaisePropertyChanged("EndYear");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Entity {
+            get {
+                return this.EntityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityField, value) != true)) {
+                    this.EntityField = value;
+                    this.RaisePropertyChanged("Entity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string FrequencyTypeCode {
             get {
                 return this.FrequencyTypeCodeField;
@@ -31767,6 +31993,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.ISXMLSupplierField.Equals(value) != true)) {
                     this.ISXMLSupplierField = value;
                     this.RaisePropertyChanged("ISXMLSupplier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool IsActive {
+            get {
+                return this.IsActiveField;
+            }
+            set {
+                if ((this.IsActiveField.Equals(value) != true)) {
+                    this.IsActiveField = value;
+                    this.RaisePropertyChanged("IsActive");
                 }
             }
         }
@@ -31811,6 +32050,215 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StartYear {
+            get {
+                return this.StartYearField;
+            }
+            set {
+                if ((this.StartYearField.Equals(value) != true)) {
+                    this.StartYearField = value;
+                    this.RaisePropertyChanged("StartYear");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SupplierName {
+            get {
+                return this.SupplierNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SupplierNameField, value) != true)) {
+                    this.SupplierNameField = value;
+                    this.RaisePropertyChanged("SupplierName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid SupplierScheduleID {
+            get {
+                return this.SupplierScheduleIDField;
+            }
+            set {
+                if ((this.SupplierScheduleIDField.Equals(value) != true)) {
+                    this.SupplierScheduleIDField = value;
+                    this.RaisePropertyChanged("SupplierScheduleID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Suppllier_ID {
+            get {
+                return this.Suppllier_IDField;
+            }
+            set {
+                if ((this.Suppllier_IDField.Equals(value) != true)) {
+                    this.Suppllier_IDField = value;
+                    this.RaisePropertyChanged("Suppllier_ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string User_Role_Id {
+            get {
+                return this.User_Role_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.User_Role_IdField, value) != true)) {
+                    this.User_Role_IdField = value;
+                    this.RaisePropertyChanged("User_Role_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> WeekOfMonth {
+            get {
+                return this.WeekOfMonthField;
+            }
+            set {
+                if ((this.WeekOfMonthField.Equals(value) != true)) {
+                    this.WeekOfMonthField = value;
+                    this.RaisePropertyChanged("WeekOfMonth");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] lstEnity {
+            get {
+                return this.lstEnityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.lstEnityField, value) != true)) {
+                    this.lstEnityField = value;
+                    this.RaisePropertyChanged("lstEnity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Supplier_Schedule_RS", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers")]
+    [System.SerializableAttribute()]
+    public partial class DC_Supplier_Schedule_RS : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FrequencyTypeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageNoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid SupplierScheduleIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Suppllier_IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int TotalSizeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Entity {
+            get {
+                return this.EntityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityField, value) != true)) {
+                    this.EntityField = value;
+                    this.RaisePropertyChanged("Entity");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FrequencyTypeCode {
+            get {
+                return this.FrequencyTypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FrequencyTypeCodeField, value) != true)) {
+                    this.FrequencyTypeCodeField = value;
+                    this.RaisePropertyChanged("FrequencyTypeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageNo {
+            get {
+                return this.PageNoField;
+            }
+            set {
+                if ((this.PageNoField.Equals(value) != true)) {
+                    this.PageNoField = value;
+                    this.RaisePropertyChanged("PageNo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PageSize {
+            get {
+                return this.PageSizeField;
+            }
+            set {
+                if ((this.PageSizeField.Equals(value) != true)) {
+                    this.PageSizeField = value;
+                    this.RaisePropertyChanged("PageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Status {
             get {
                 return this.StatusField;
@@ -31850,14 +32298,14 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> WeekOfMonth {
+        public int TotalSize {
             get {
-                return this.WeekOfMonthField;
+                return this.TotalSizeField;
             }
             set {
-                if ((this.WeekOfMonthField.Equals(value) != true)) {
-                    this.WeekOfMonthField = value;
-                    this.RaisePropertyChanged("WeekOfMonth");
+                if ((this.TotalSizeField.Equals(value) != true)) {
+                    this.TotalSizeField = value;
+                    this.RaisePropertyChanged("TotalSize");
                 }
             }
         }
@@ -56883,10 +57331,10 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
-        TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id);
+        TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetSchedule", ReplyAction="http://tempuri.org/ISchedule/GetScheduleResponse")]
-        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]> GetScheduleAsync(string Supplier_Id);
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]> GetScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/AddUpdateSchedule", ReplyAction="http://tempuri.org/ISchedule/AddUpdateScheduleResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/AddUpdateScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -56894,6 +57342,27 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/AddUpdateSchedule", ReplyAction="http://tempuri.org/ISchedule/AddUpdateScheduleResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule obj);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetScheduleBySupplier", ReplyAction="http://tempuri.org/ISchedule/GetScheduleBySupplierResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/GetScheduleBySupplierDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS[] GetScheduleBySupplier(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/GetScheduleBySupplier", ReplyAction="http://tempuri.org/ISchedule/GetScheduleBySupplierResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS[]> GetScheduleBySupplierAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/UpdateSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/UpdateSupplierScheduleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/UpdateSupplierScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool UpdateSupplierSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/UpdateSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/UpdateSupplierScheduleResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/CheckExistingSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/CheckExistingSupplierScheduleResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/ISchedule/CheckExistingSupplierScheduleDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        bool CheckExistingSupplierSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISchedule/CheckExistingSupplierSchedule", ReplyAction="http://tempuri.org/ISchedule/CheckExistingSupplierScheduleResponse")]
+        System.Threading.Tasks.Task<bool> CheckExistingSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributes", ReplyAction="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributesResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IUploadStaticData/GetStaticDataMappingAttributesDC_ErrorStatus" +
@@ -60033,12 +60502,12 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.EzeegoHotelVsSupplierHotelMappingReportAsync(parm);
         }
         
-        public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(string Supplier_Id) {
-            return base.Channel.GetSchedule(Supplier_Id);
+        public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[] GetSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.GetSchedule(RQ);
         }
         
-        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]> GetScheduleAsync(string Supplier_Id) {
-            return base.Channel.GetScheduleAsync(Supplier_Id);
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_Schedule[]> GetScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.GetScheduleAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_Message AddUpdateSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule obj) {
@@ -60047,6 +60516,30 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule obj) {
             return base.Channel.AddUpdateScheduleAsync(obj);
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS[] GetScheduleBySupplier(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.GetScheduleBySupplier(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS[]> GetScheduleBySupplierAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.GetScheduleBySupplierAsync(RQ);
+        }
+        
+        public bool UpdateSupplierSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.UpdateSupplierSchedule(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.UpdateSupplierScheduleAsync(RQ);
+        }
+        
+        public bool CheckExistingSupplierSchedule(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.CheckExistingSupplierSchedule(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckExistingSupplierScheduleAsync(TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RQ RQ) {
+            return base.Channel.CheckExistingSupplierScheduleAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes[] GetStaticDataMappingAttributes(TLGX_Consumer.MDMSVC.DC_SupplierImportAttributes_RQ obj) {
