@@ -33,6 +33,20 @@ namespace TLGX_Consumer.Controller
             return result as List<SupplierScheduledTask>;
         }
 
+        public DC_Message UpdateTaskLog(MDMSVC.DC_SupplierScheduledTaskRQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_UpdateTaskLog"], RQParams, typeof(MDMSVC.DC_SupplierScheduledTaskRQ), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+
+        public List<MDMSVC.Supplier_Task_Logs> GetScheduleTaskLogList(string Supplier_ID)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Supplier_Scheduler_GetTaskLogs"], Supplier_ID), typeof(List<MDMSVC.Supplier_Task_Logs>), out result);
+            return result as List<Supplier_Task_Logs>;
+        }
+
         #endregion
 
 

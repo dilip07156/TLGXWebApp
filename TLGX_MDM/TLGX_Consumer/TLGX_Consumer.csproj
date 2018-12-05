@@ -1129,6 +1129,20 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.SupplierScheduledTask.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Keys.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Priorities.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Ranks.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\GetScheduleTaskAssigned.ashx" />
+    <Content Include="Service\GetTaskLogs.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Supplier_Task_Logs.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
@@ -2776,6 +2790,9 @@
     <Compile Include="Service\GetAttributeData.ashx.cs">
       <DependentUpon>GetAttributeData.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\GetScheduleTaskAssigned.ashx.cs">
+      <DependentUpon>GetScheduleTaskAssigned.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion_Supervised_Semantic.ashx</DependentUpon>
     </Compile>
@@ -2787,6 +2804,9 @@
     </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetTaskLogs.ashx.cs">
+      <DependentUpon>GetTaskLogs.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\HotelMappingAutoComplete.ashx.cs">
       <DependentUpon>HotelMappingAutoComplete.ashx</DependentUpon>

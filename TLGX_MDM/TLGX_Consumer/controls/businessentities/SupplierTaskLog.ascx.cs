@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TLGX_Consumer.App_Code;
 using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer.controls.businessentities
@@ -22,7 +23,7 @@ namespace TLGX_Consumer.controls.businessentities
             {
                 fillsuppliers();
                 fillentities();
-                if (Request.QueryString["param"] != null)
+                if (Request.QueryString.Count > 0)
                 {
                     RedirectFromAlert = Request.QueryString["RedirectFromAlert"].ToString();
                     
@@ -101,11 +102,7 @@ namespace TLGX_Consumer.controls.businessentities
             }
             else
                 lblTotalCount.Text = "0";
-            //if (res[0].LogType == "Log")
-            //{
-            //    grdSupplierScheduleTask.Columns[7].Visible = false;
-            //    grdSupplierScheduleTask.Columns[6].Visible = false;
-            //}
+            
             grdSupplierScheduleTask.DataSource = res;
             grdSupplierScheduleTask.PageIndex = PageIndex;
             grdSupplierScheduleTask.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
@@ -139,12 +136,52 @@ namespace TLGX_Consumer.controls.businessentities
                 string logtype = string.Empty;
                 if (myGridView.DataKeys[index].Values[1] != null)
                     logtype = myGridView.DataKeys[index].Values[1].ToString();
-                                  
 
-                if (logtype == "Log")
+                string Status = string.Empty;
+                if (myGridView.DataKeys[index].Values[2] != null)
+                    Status = myGridView.DataKeys[index].Values[2].ToString();
+
+                LinkButton btnupload = e.Row.FindControl("btnupload") as LinkButton;
+                LinkButton btnTaskComp = e.Row.FindControl("btnTaskComp") as LinkButton;
+                LinkButton btnDownload = e.Row.FindControl("btnDownload") as LinkButton;
+                LinkButton btnDetail = e.Row.FindControl("btnDetail") as LinkButton;
+                Label lbldownload = e.Row.FindControl("lbldownload") as Label;
+                Label lblUpload = e.Row.FindControl("lblUpload") as Label;
+                Label lblTask = e.Row.FindControl("lblTask") as Label;
+
+                btnDownload.PostBackUrl = string.Format("~/suppliers/Manage?Supplier_Id={0}&DownloadInfo=info", myGridView.DataKeys[index].Values[0]);
+                if (Status == "Completed")
                 {
-                    LinkButton btnupload = e.Row.FindControl("btnupload") as LinkButton;
-                    LinkButton btnTaskComp = e.Row.FindControl("btnTaskComp") as LinkButton;
+                    e.Row.CssClass = "alert alert-success";
+                }
+                else if (Status == "Pending")
+                {
+                    e.Row.CssClass = "alert alert-warning";
+                }
+                else if (Status == "Running")
+                {
+                    e.Row.CssClass = "alert alert-info";
+                }
+                else if (Status == "Error")
+                {
+                    e.Row.CssClass = "alert alert-danger";
+                }
+
+                if (Status == "Completed" && btnupload != null && btnTaskComp != null && btnDownload!=null)
+                {                   
+                    DisableLinkButton(btnDownload);
+                    DisableLinkButton(btnupload);
+                    DisableLinkButton(btnTaskComp);
+                }
+
+                if (logtype == "API" && Status != "Completed")
+                {
+                    
+                    if (btnDownload != null)
+                    {
+                        btnDownload.Visible = false;
+                    }
+
                     if (btnupload != null)
                     {
                         btnupload.Visible = false;
@@ -153,19 +190,63 @@ namespace TLGX_Consumer.controls.businessentities
                     {
                         btnTaskComp.Visible = false;
                     }
-                    //myGridView.Columns[7].Visible = true;
-                    //myGridView.Columns[6].Visible = true;
+                    if (lbldownload != null)
+                    {
+                        lbldownload.Visible = true;
+                    }
+                    if (lblUpload !=null)
+                    {
+                        lblUpload.Visible = true;
+                    }
+                    if(lblTask !=null)
+                    {
+                        lblTask.Visible = true;
+                    }
+                    if (btnDetail != null)
+                    {
+                        btnDetail.Visible = true;
+                    }
+
                 }
-                else
+                else if(logtype=="File" && Status != "Completed")
                 {
-                    //myGridView.Columns[7].Visible = false;
-                    //myGridView.Columns[6].Visible = false;
+                    if (btnDownload != null)
+                    {
+                        btnDownload.Visible = true;
+                    }
+
+                    if (btnupload != null)
+                    {
+                        btnupload.Visible = true;
+                    }
+                    if (btnTaskComp != null)
+                    {
+                        btnTaskComp.Visible = true;
+                    }
+                    if(btnDetail!=null)
+                    {
+                        btnDetail.Visible = false;
+                    }
+                    if (lbldownload != null)
+                    {
+                        lbldownload.Visible = false;
+                    }
+                    if (lblUpload != null)
+                    {
+                        lblUpload.Visible = false;
+                    }
+                    if (lblTask != null)
+                    {
+                        lblTask.Visible = false;
+                    }
                 }
+
+               
+
             }
 
         }
-
-
+                
         private void LoadDownloadData(int pagesize, int pageno)
         {
             fillgriddata(RedirectFromAlert,pageno,pagesize);
@@ -174,22 +255,20 @@ namespace TLGX_Consumer.controls.businessentities
         protected void grdSupplierScheduleTask_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            if (e.CommandName.ToString() == "Select")
+            if (e.CommandName.ToString() == "TaskComplete")
             {
                 MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+                RQ.LogId = myRow_Id;
+                RQ.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
+                RQ.Edit_Date = System.DateTime.Now;
+                MDMSVC.DC_Message _objMsg=_objScheduleDataSVCs.UpdateTaskLog(RQ);
+                if (_objMsg != null)
+                    BootstrapAlert.BootstrapAlertMessage(msgAlert, "" + _objMsg.StatusMessage, (BootstrapAlertType)_objMsg.StatusCode);
 
-                // RQ.LogId = myRow_Id;
+                LoadDownloadData(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
 
-                ////// var result = _objMaster.Supplier_StaticDownloadData_Get(RQ);
-                //// if (result.Count > 0)
-                //// {
 
-                //// }
-
-                // lnkButtonAddUpdate.Text = "Modify";
-                // lnkButtonAddUpdate.CommandName = "Modify";
-                // lnkButtonAddUpdate.CommandArgument = myRow_Id.ToString();
             }
 
 
@@ -199,5 +278,22 @@ namespace TLGX_Consumer.controls.businessentities
         {
             //fillgriddata("");
         }
+
+        public static void DisableLinkButton(LinkButton linkButton)
+        {
+            linkButton.Attributes.Remove("href");
+            linkButton.Attributes.CssStyle[HtmlTextWriterStyle.Color] = "gray";
+            linkButton.Attributes.CssStyle[HtmlTextWriterStyle.Cursor] = "default";
+            if (linkButton.Enabled != false)
+            {
+                linkButton.Enabled = false;
+            }
+
+            if (linkButton.OnClientClick != null)
+            {
+                linkButton.OnClientClick = null;
+            }
+        }
+
     }
 }

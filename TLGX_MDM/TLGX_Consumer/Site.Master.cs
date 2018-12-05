@@ -15,6 +15,7 @@ using Microsoft.AspNet.Identity.Owin;
 using TLGX_Consumer.App_Code;
 using System.IO;
 using TLGX_Consumer.MDMSVC;
+using TLGX_Consumer.Controller;
 
 namespace TLGX_Consumer
 {
@@ -23,6 +24,7 @@ namespace TLGX_Consumer
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+        ScheduleDataSVCs _objScheduleDataSVCs = new ScheduleDataSVCs();
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -83,6 +85,8 @@ namespace TLGX_Consumer
             {
                 List<MDMSVC.DC_SiteMap> objSiteMap = GetData();
                 PopulateMenu(objSiteMap);
+               
+                
             }
             //Response.Cache.SetCacheability(HttpCacheability.NoCache);
             //if (!IsPostBack)
@@ -95,7 +99,6 @@ namespace TLGX_Consumer
             //}
 
         }
-
         private List<MDMSVC.DC_SiteMap> GetData()
         {
             try

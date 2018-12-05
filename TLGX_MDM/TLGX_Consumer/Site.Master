@@ -191,12 +191,23 @@
                                 <a href="/suppliers/SupplierTaskManage.aspx"><span class="glyphicon glyphicon-bell"></span></a>
                             </ul>--%>
                             <div class="row col-md-4">
-                                <div class="col-md-3" style="padding-top:5px;padding-left:65px;margin-right:-40px;">
-                                    <%--<a style="font-size: x-large;color:white;" href="/suppliers/SupplierTaskManage.aspx"><span class="glyphicon glyphicon-bell"></span></a>
-                                    <label style="font-size:madium;color:red;margin-left:-10px;/* z-index: 100 !important; */transform: translate(-10%, -30%);background-color: black;">12</label>--%>
-                                    <a href="/suppliers/SupplierTaskManage.aspx" class="btn btn-app no-radius"><i style="color:white; font-size:x-large" class="glyphicon glyphicon-bell"></i>                                            <span class="badge badge-warning badge-left" style="margin-left:-12px;margin-top:-4px;padding-bottom: 2px;padding-top: 2px;padding-left: 3px;padding-right: 3px;">11</span>                                        </a>
+                                <div class="col-md-2">
+                                    <li><a href="/suppliers/SupplierTaskManage.aspx" class="btn btn-app no-radius" style="padding-top:0px;padding-left:0px">
+                                        
+                                        <i style="color: white; font-size: large" class="glyphicon glyphicon-bullhorn"></i>
+                                        <span id="spnboth" class="label label-danger" runat="server"></span>
+                                        </a></li>
+
+
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-2">
+                                    <li><a href="/suppliers/SupplierTaskManage.aspx?RedirectFromAlert=Alert#accordionResult" class="btn btn-app no-radius" style="padding-top:0px;padding-left:0px">
+                                        <i style="color: white; font-size: x-large" class="glyphicon glyphicon-bell"></i>
+                                        <span id="spnbell" class="badge badge-warning badge-left" style="margin-left: -12px; margin-top: -4px; padding-bottom: 2px; padding-top: 2px; padding-left: 3px; padding-right: 3px;" runat="server">
+                                            </span>                                        </a></li>
+                                </div>
+
+                                <div class="col-md-8" style="padding-right: 0px; padding-left: 0px;">
                                     <ul class="nav navbar-nav navbar-right">
 
                                         <li class="dropdown">
@@ -209,6 +220,7 @@
                                                     <li>
                                                         <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Account/Login" OnLoggingOut="Unnamed_LoggingOut" />
                                                     </li>
+                                                    <li><a href="/suppliers/SupplierTaskManage.aspx">Dilip</a></li>
                                                 </ul>
                                             </a>
                                         </li>
@@ -265,7 +277,29 @@
 
         $(document).ready(function () {
             $(".level1").removeAttr("onclick");
+           
+            CalculateNoOfTasks();
+
         });
+
+        function CalculateNoOfTasks() {
+
+            $.ajax({
+            type: 'POST',
+            url: '../../../Service/GetScheduleTaskAssigned.ashx',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data:"",                
+            responseType: "json",
+                success: function (result) {
+                    $("#LoginViewForSiteMap_spnboth").text(result[1]);
+                    $("#LoginViewForSiteMap_spnbell").text(result[0]);
+            },
+            failure: function () {
+                
+            }
+        });
+        }
     </script>
 </body>
 </html>
