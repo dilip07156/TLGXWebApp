@@ -7,72 +7,90 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TLGX_Consumer.staticdata {
+namespace TLGX_Consumer.controls.businessentities {
     
     
-    public partial class CountryWiseDashBoardReport {
+    public partial class manageSupplierScheduleTask {
         
         /// <summary>
-        /// UpdatePanel control.
+        /// ddlSupplierName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSupplierName;
         
         /// <summary>
-        /// ddlKeys control.
+        /// ddlEntity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlKeys;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEntity;
         
         /// <summary>
-        /// ddlPriorities control.
+        /// ddlstatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlPriorities;
+        protected global::System.Web.UI.WebControls.DropDownList ddlstatus;
         
         /// <summary>
-        /// ddlRanks control.
+        /// dtFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox ddlRanks;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtFrom;
         
         /// <summary>
-        /// btnViewReport control.
+        /// dtTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnViewReport;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtTo;
         
         /// <summary>
-        /// errordiv control.
+        /// btnSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl errordiv;
+        protected global::System.Web.UI.WebControls.Button btnSearch;
         
         /// <summary>
-        /// CountryReportViewer control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer CountryReportViewer;
+        protected global::System.Web.UI.WebControls.Button btnReset;
+        
+        /// <summary>
+        /// ddlShowEntries control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlShowEntries;
+        
+        /// <summary>
+        /// grdSupplierScheduleTask control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView grdSupplierScheduleTask;
     }
 }

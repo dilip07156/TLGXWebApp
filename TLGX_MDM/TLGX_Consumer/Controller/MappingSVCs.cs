@@ -544,10 +544,10 @@ namespace TLGX_Consumer.Controller
         }
 
         #region NewDashBoardReport
-        public List<DC_NewDashBoardReportCountry_RS> GetNewDashboardReport_CountryWise()
+        public List<DC_NewDashBoardReportCountry_RS> GetNewDashboardReport_CountryWise(DC_NewDashBoardReport_RQ RQ)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.GetData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(string.Format(ConfigurationManager.AppSettings["Country_DashBoardReport"]), RQ, typeof(List<DC_NewDashBoardReport_RQ>), typeof(List<DC_NewDashBoardReportCountry_RS>), out result);
             return result as List<DC_NewDashBoardReportCountry_RS>;
         }
 
@@ -575,6 +575,16 @@ namespace TLGX_Consumer.Controller
         {
             object result = null;
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["SupplierFileProcess_Check"], SupplierId, typeof(MDMSVC.DC_SupplierImportFileDetails), typeof(DC_Message), out result);
+            return result as DC_Message;
+        }
+        #endregion
+
+        #region Supplier RoomType Reset 
+        //GAURAV_TMAP_746
+        public DC_Message AccomodationSupplierRoomTypeMapping_Reset(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ> RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["AccomodationSupplierRoomTypeMapping_Reset"], RQParams, typeof(List<MDMSVC.DC_SupplierRoomType_TTFU_RQ>), typeof(DC_Message), out result);
             return result as DC_Message;
         }
         #endregion

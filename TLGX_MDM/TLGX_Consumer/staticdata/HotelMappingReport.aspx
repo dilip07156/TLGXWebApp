@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-        <link href="../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
+    <link href="../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" />
     <script src="../Scripts/JqueryUI/jquery-ui.js"></script>
     <script src="../Scripts/MultiSelectJS/jquery.sumoselect.min.js"></script>
     <link href="../Scripts/MultiSelectJS/sumoselect.min.css" rel="stylesheet" />
@@ -36,9 +36,9 @@
                 forceCustomRendering: true, selectAll: true
             });
 
-            <%--$('#<%=ddlAccoPriority.ClientID %>').SumoSelect({
+            $('#<%=ddlPriorities.ClientID %>').SumoSelect({
                 search: true, searchText: 'Enter AccoPriority.', okCancelInMulti: true, selectAll: true
-            });--%>
+            });
         }
 
         var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -92,7 +92,7 @@
                 select: function (event, ui) {
                     $("#btnAdd").removeAttr("disabled");
                 },
-                
+
                 min_length: 3,
                 delay: 300
             });
@@ -111,150 +111,181 @@
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
 
-                            <div class="col-md-1">
-                                <label class="control-label" for="ddlRegion">Region</label>
-                            </div>
+                                <div class="col-md-1">
+                                    <label class="control-label" for="ddlRegion">Region</label>
+                                </div>
 
-                            <div class="col-md-3">
-                                <asp:ListBox runat="server" ID="ddlRegion" AutoPostBack="true" ClientIDMode="Static" SelectionMode="multiple" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged"></asp:ListBox>
-                            </div>
-                            <div class="col-md-8">
-                            </div>
-                            
-                        </div>
-                        <br />
-                        <br />
-                        <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <asp:ListBox runat="server" ID="ddlRegion" AutoPostBack="true" ClientIDMode="Static" SelectionMode="multiple" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged"></asp:ListBox>
+                                </div>
+                                <div class="col-md-8">
+                                </div>
 
-                            <div class="col-md-1">
-                                <label class="control-label" for="ddlCountry">Country</label>
                             </div>
+                            <br />
+                            <br />
+                            <div class="col-md-12">
 
-                            <div class="col-md-3">
-                                <asp:ListBox runat="server" ID="ddlCountry" AutoPostBack="true" ClientIDMode="Static" SelectionMode="multiple" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:ListBox>
-                            </div>
+                                <div class="col-md-1">
+                                    <label class="control-label" for="ddlCountry">Country</label>
+                                </div>
 
-                            <div class="col-md-2">
-                            </div>
-                            <div class="col-md-1">
-                            </div>
+                                <div class="col-md-3">
+                                    <asp:ListBox runat="server" ID="ddlCountry" AutoPostBack="true" ClientIDMode="Static" SelectionMode="multiple" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:ListBox>
+                                </div>
 
-                            <div class="col-md-2">
-                                <%--<label class="control-label" for="ddlAccoPriority">Accomodation Priority</label>--%>
-                            </div>
-                            <div class="col-md-2">
-                                <%--<asp:ListBox runat="server" ID="ddlAccoPriority" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>--%>
-                            </div>
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-1">
+                                </div>
 
-                        </div>
-                        <br />
-                        <br />
-                        <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <%--<label class="control-label" for="ddlAccoPriority">Accomodation Priority</label>--%>
+                                </div>
+                                <div class="col-md-2">
+                                    <%--<asp:ListBox runat="server" ID="ddlAccoPriority" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>--%>
+                                </div>
 
-                            <div class="col-md-1">
-                                <label class="control-label" for="ddlCity">City</label>
                             </div>
+                            <br />
+                            <br />
+                            <div class="col-md-12">
 
-                            <div class="col-md-1">
-                                <label class="radio-inline">
-                                    <asp:RadioButton ID="rdoIsAllCities" runat="server" Text="All Cities" GroupName="SelectedByCities" OnCheckedChanged="rdoIsAllCities_CheckedChanged" AutoPostBack="true" />
+                                <div class="col-md-1">
+                                    <label class="control-label" for="ddlCity">City</label>
+                                </div>
+
+                                <div class="col-md-1">
                                     <label class="radio-inline">
+                                        <asp:RadioButton ID="rdoIsAllCities" runat="server" Text="All Cities" GroupName="SelectedByCities" OnCheckedChanged="rdoIsAllCities_CheckedChanged" AutoPostBack="true" />
+                                        <label class="radio-inline">
+                                </div>
+
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-2">
+                                </div>
+
+                                <div class="col-md-2">
+                                </div>
+
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-2">
+                                </div>
+
                             </div>
 
-                            <div class="col-md-1">
-                                
-                            </div>
+                            <div class="col-md-12">
 
-                            <div class="col-md-2">
-                           
-                            </div>
+                                <div class="col-md-1">
+                                </div>
 
-                            <div class="col-md-2">
-                                
-                            </div>
-
-                            <div class="col-md-2">
-                              
-                            </div>
-                            <div class="col-md-2">
-                                
-                            </div>
-
-                        </div>
-
-                        <div class="col-md-12">
-
-                            <div class="col-md-1">
-                            </div>
-
-                            <div class="col-md-1">
-                                <label class="radio-inline">
-                                    <asp:RadioButton ID="rdoIsSelectiveCities" runat="server" Text="Selective Cities" GroupName="SelectedByCities" OnCheckedChanged="rdoIsSelectiveCities_CheckedChanged" AutoPostBack="true" />
+                                <div class="col-md-1">
                                     <label class="radio-inline">
+                                        <asp:RadioButton ID="rdoIsSelectiveCities" runat="server" Text="Selective Cities" GroupName="SelectedByCities" OnCheckedChanged="rdoIsSelectiveCities_CheckedChanged" AutoPostBack="true" />
+                                        <label class="radio-inline">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <asp:TextBox ID="txtCityLookup" runat="server" class="form-control" ClientIDMode="Static" ReadOnly="true"></asp:TextBox>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-sm btn-primary" ClientIDMode="Static" Text="Add" Enabled="false" OnClick="btnAdd_Click"></asp:Button>
+                                </div>
                             </div>
 
-                            <div class="col-md-2">
-                                <asp:TextBox ID="txtCityLookup" runat="server" class="form-control" ClientIDMode="Static" ReadOnly="true"></asp:TextBox>
-                            </div>
 
-                            <div class="col-md-2">
-                                <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-sm btn-primary" ClientIDMode="Static" Text="Add" Enabled="false" OnClick="btnAdd_Click"></asp:Button>
-                            </div>
-                        </div>
 
-                        <div class="col-md-12">
-                            <div class="col-md-2">
-                                <asp:Button runat="server" Text="View Report" CssClass="btn btn-sm btn-primary pull-right" ID="btnViewReport" OnClick="btnViewReport_Click"></asp:Button>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <asp:Repeater ID="repSelectedCity" runat="server" OnItemCommand="repSelectedCity_ItemCommand">
-                                <HeaderTemplate>
-                                    <table class="table table-stripped table-hover" id="tblSelectedCity">
-                                </HeaderTemplate>
-                                <ItemTemplate>
-                                    <tr class="row">
-                                        <td class="col-md-2">
-                                            <asp:Label ID="lblCityId" runat="server" Style="display: none;" Text='<%# DataBinder.Eval(Container.DataItem, "City_Id") %>'></asp:Label>
-                                            <asp:Label ID="lblCityCode" runat="server" Style="display: none;" Text='<%# DataBinder.Eval(Container.DataItem, "City_Code") %>'></asp:Label>
-                                        </td>
-                                        <td class="col-md-5">
-                                            <asp:Label ID="lblCityName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CityName") %>'></asp:Label>
-                                        </td>
-                                        <td class="col-md-5">
-                                            <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveCity" ToolTip="Delete" CommandName="RemoveCity" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "City_Id") %>'>
+                            <div class="col-md-12">
+                                <asp:Repeater ID="repSelectedCity" runat="server" OnItemCommand="repSelectedCity_ItemCommand">
+                                    <HeaderTemplate>
+                                        <table class="table table-stripped table-hover" id="tblSelectedCity">
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr class="row">
+                                            <td class="col-md-2">
+                                                <asp:Label ID="lblCityId" runat="server" Style="display: none;" Text='<%# DataBinder.Eval(Container.DataItem, "City_Id") %>'></asp:Label>
+                                                <asp:Label ID="lblCityCode" runat="server" Style="display: none;" Text='<%# DataBinder.Eval(Container.DataItem, "City_Code") %>'></asp:Label>
+                                            </td>
+                                            <td class="col-md-5">
+                                                <asp:Label ID="lblCityName" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "CityName") %>'></asp:Label>
+                                            </td>
+                                            <td class="col-md-5">
+                                                <asp:LinkButton CssClass="btn btn-default" runat="server" ID="btnRemoveCity" ToolTip="Delete" CommandName="RemoveCity" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "City_Id") %>'>
                                                         <i class="glyphicon glyphicon-minus"></i>
-                                            </asp:LinkButton>
-                                        </td>
-                                    </tr>
-                                </ItemTemplate>
-                                <FooterTemplate>
-                                    </table> 
-                                </FooterTemplate>
-                            </asp:Repeater>
-
-                        </div>
-
-                        <div class="col-md-12" id="HotelMappingreport" runat="server">
-                            <div style="width: 100%; height: 100%; overflow-x: scroll">
-
-                                <rsweb:ReportViewer ID="RptHotelMapping" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
-
-                                    <LocalReport ReportPath="staticdata/HotelMappingRDLCReport.rdlc">
-                                        <DataSources>
-                                            <rsweb:ReportDataSource Name="DsHotelReport" />
-                                        </DataSources>
-                                    </LocalReport>
-                                </rsweb:ReportViewer>
+                                                </asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </table> 
+                                    </FooterTemplate>
+                                </asp:Repeater>
 
                             </div>
+                            <br />
+                            <br />
+                            <div class="col-md-12">
+
+                                <div class="col-md-1">
+                                    <label class="control-label" for="ddlPriorities">Priority</label>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <asp:ListBox runat="server" ID="ddlPriorities" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>
+                                </div>
+
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-1">
+                                </div>
+
+                                <div class="col-md-2">
+                                    <%--<label class="control-label" for="ddlAccoPriority">Accomodation Priority</label>--%>
+                                </div>
+                                <div class="col-md-2">
+                                    <%--<asp:ListBox runat="server" ID="ddlAccoPriority" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>--%>
+                                </div>
+
+                            </div>
+
                         </div>
+
+                                       <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <asp:Button runat="server" Text="View Report" CssClass="btn btn-sm btn-primary pull-right" ID="btnViewReport" OnClick="btnViewReport_Click"></asp:Button>
                     </div>
                 </div>
             </div>
+            <br />
+            <br />
+
+            <div class="col-md-12" id="HotelMappingreport" runat="server">
+                <div style="width: 100%; height: 100%; overflow-x: scroll">
+
+                    <rsweb:ReportViewer ID="RptHotelMapping" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+
+                        <LocalReport ReportPath="staticdata/HotelMappingRDLCReport.rdlc">
+                            <DataSources>
+                                <rsweb:ReportDataSource Name="DsHotelReport" />
+                            </DataSources>
+                        </LocalReport>
+                    </rsweb:ReportViewer>
+
+                </div>
+            </div>
+                    </div>
+                </div>
+            </div>
+         
 
         </ContentTemplate>
     </asp:UpdatePanel>

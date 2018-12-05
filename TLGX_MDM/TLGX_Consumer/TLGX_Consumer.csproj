@@ -264,6 +264,7 @@
     <Content Include="Content\cnk.css" />
     <Content Include="Content\cnklogo.jpg" />
     <Content Include="Content\ez1logo.jpg" />
+    <Content Include="Content\jquery-cron-quartz.css" />
     <Content Include="Content\JS_Defined\searchRoomTypes.js" />
     <Content Include="Content\OpenSans.css" />
     <Content Include="Content\load-aniround.gif" />
@@ -313,6 +314,7 @@
     <Content Include="controls\activity\manageActivityProductName.ascx" />
     <Content Include="controls\activity\SearchActivityMasterControl.ascx" />
     <Content Include="controls\activity\searchActivityProductName.ascx" />
+    <Content Include="controls\admin\Sitemap.ascx" />
     <Content Include="controls\admin\UserManagement.ascx" />
     <Content Include="controls\attributes\attributeManager.ascx" />
     <Content Include="controls\businessentities\manageClient.ascx" />
@@ -473,6 +475,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-cron-quartz.js" />
+    <Content Include="Scripts\jquery-cron-quartz.min.js" />
     <Content Include="Scripts\jquery.ae.image.resize.min.js" />
     <Content Include="Scripts\jquery.dataTables.min.css" />
     <Content Include="Scripts\jquery.dataTables.min.js" />
@@ -1712,6 +1716,13 @@
     <Compile Include="controls\activity\searchActivityProductName.ascx.designer.cs">
       <DependentUpon>searchActivityProductName.ascx</DependentUpon>
     </Compile>
+    <Compile Include="controls\admin\Sitemap.ascx.cs">
+      <DependentUpon>Sitemap.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\admin\Sitemap.ascx.designer.cs">
+      <DependentUpon>Sitemap.ascx</DependentUpon>
+    </Compile>
     <Compile Include="controls\admin\UserManagement.ascx.cs">
       <DependentUpon>UserManagement.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2778,6 +2789,9 @@
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\CheckExistingSupplierData.ashx.cs">
+      <DependentUpon>CheckExistingSupplierData.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\CityFillForDDL.ashx.cs">
       <DependentUpon>CityFillForDDL.ashx</DependentUpon>
     </Compile>
@@ -2834,6 +2848,9 @@
     </Compile>
     <Compile Include="Service\GetZoneHotelsForMap.ashx.cs">
       <DependentUpon>GetZoneHotelsForMap.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\SupplierRoomTypeReset.ashx.cs">
+      <DependentUpon>SupplierRoomTypeReset.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\SupplierWiseDataForChart.ashx.cs">
       <DependentUpon>SupplierWiseDataForChart.ashx</DependentUpon>

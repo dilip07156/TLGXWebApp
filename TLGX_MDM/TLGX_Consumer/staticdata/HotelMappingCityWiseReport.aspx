@@ -18,9 +18,8 @@
         });
 
 
-        function pageLoad()
-        {
-                SumoSelectdropdown();
+        function pageLoad() {
+            SumoSelectdropdown();
         }
 
         function SumoSelectdropdown() {
@@ -33,6 +32,23 @@
                 search: true, searchText: 'Enter Country.', okCancelInMulti: true, triggerChangeCombined: true,
                 forceCustomRendering: true, selectAll: true
             });
+
+            $('#<%=ddlPriorities.ClientID %>').SumoSelect({
+                search: true, searchText: 'Enter Priority.', okCancelInMulti: true, triggerChangeCombined: true,
+                forceCustomRendering: true, selectAll: true
+            });
+
+            $('#<%=ddlKeys.ClientID %>').SumoSelect({
+                search: true, searchText: 'Enter Key.', okCancelInMulti: true, triggerChangeCombined: true,
+                forceCustomRendering: true, selectAll: true
+            });
+
+
+            $('#<%=ddlRanks.ClientID %>').SumoSelect({
+                search: true, searchText: 'Enter Ranks.', okCancelInMulti: true, triggerChangeCombined: true,
+                forceCustomRendering: true, selectAll: true
+            });
+
         }
 
         var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -126,7 +142,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" for="ddlKeys">Key</label>
+                                        <div class="col-md-8">
+                                            <asp:ListBox runat="server" ID="ddlKeys" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>
+                                        </div>
+                                    </div>
+                                </div>
 
+                            </div>
+                            <br />
+                            <br />
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label col-md-4" for="ddlCountry">Country Name</label>
@@ -135,8 +163,17 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" for="ddlPriorities">Priority</label>
+                                        <div class="col-md-8">
+                                            <asp:ListBox runat="server" ID="ddlPriorities" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <br />
                             <br />
                             <div class="row">
                                 <div class="col-md-6">
@@ -156,19 +193,26 @@
                                                     <div class="col-md-9">
                                                         <asp:TextBox ID="txtCityLookup" runat="server" class="form-control" ClientIDMode="Static" ReadOnly="true"></asp:TextBox>
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-sm btn-primary" ClientIDMode="Static" Text="Add" Enabled="false" OnClick="btnAdd_Click"></asp:Button>
-                                                    </div>
 
                                                 </div>
 
                                             </div>
+                                        
                                         </div>
                                     </div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-4" for="ddlRanks">Rank</label>
+                                        <div class="col-md-8">
+                                            <asp:ListBox runat="server" ID="ddlRanks" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <br />
+
                             <div class="row">
                                 <%--  Display Cities--%>
                                 <div class="col-md-6">
@@ -204,6 +248,9 @@
                             <div class="row">
                                 <%--  View REPORT Button--%>
                                 <div class="col-md-12">
+                                    <div class="col-md-3 col-sm-push-4">
+                                        <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-sm btn-primary" ClientIDMode="Static" Text="Add" Enabled="false" OnClick="btnAdd_Click"></asp:Button>
+                                    </div>
                                     <asp:Button runat="server" Text="View Report" CssClass="btn btn-sm btn-primary pull-right" ID="btnViewReport" OnClick="btnViewReport_Click"></asp:Button>
                                 </div>
                                 <%-- END  View REPORT Button--%>
@@ -218,12 +265,12 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-   <%-- ERROR DIV--%>
-    <div id="errordiv" runat="server" class="col-md-12 alert alert-info" style="display:none;">
+    <%-- ERROR DIV--%>
+    <div id="errordiv" runat="server" class="col-md-12 alert alert-info" style="display: none;">
         <p id="nulldate">NO DATA FOUND...!!</p>
     </div>
     <%--   ReportViewer--%>
-    <div class="container" id="HotelMappingCityreport" runat="server" >
+    <div class="container" id="HotelMappingCityreport" runat="server">
         <div style="width: 100%; height: 100%; overflow-x: scroll">
             <rsweb:ReportViewer ID="CityReportViewer" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="True" ZoomMode="FullPage" ShowFindControls="False">
                 <LocalReport ReportPath="staticdata\HotelMappingCityReport.rdlc">

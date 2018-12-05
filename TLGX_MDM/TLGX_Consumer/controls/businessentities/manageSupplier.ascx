@@ -441,7 +441,7 @@
                 <ul id="someList" class="nav nav-tabs tabs" role="tablist">
                     <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
-                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowSupplierStaticData">Static Data Handling</a></li>
+                    <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowStaticDataUpdateSchedule">Static Data Update Schedule</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticDownloadData" href="#ShowSupplierStaticDownloadData" id="SupplierStaticDownloadData">Supplier Static Download Data</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierApiLocation" href="#ShowSupplierApiLocation" id="apiLocation">Supplier API Location</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierMarkets" href="#ShowSupplierMarkets">Supplier Markets</a></li>
@@ -550,7 +550,7 @@
                         <br />
                         <uc1:supplierProductCategory runat="server" ID="supplierProductCategory" />
                     </div>
-                    <div role="tabpanel" id="ShowSupplierStaticData" class="tab-pane fade in">
+                    <div role="tabpanel" id="ShowStaticDataUpdateSchedule" class="tab-pane fade in">
                         <br />
                         <uc1:supplierStaticDataHandling runat="server" ID="supplierStaticDataHandling" />
                     </div>
