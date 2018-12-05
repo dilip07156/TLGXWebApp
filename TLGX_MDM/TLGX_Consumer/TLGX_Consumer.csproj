@@ -329,6 +329,7 @@
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
     <Content Include="controls\businessentities\supplierStaticDownloadData.ascx" />
+    <Content Include="controls\businessentities\SupplierTaskCalender.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
     <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
@@ -539,6 +540,7 @@
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
     <Content Include="suppliers\SupplierScheduleTask.aspx" />
+    <Content Include="suppliers\SupplierTaskCalender.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1767,6 +1769,13 @@
     </Compile>
     <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.designer.cs">
       <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskCalender.ascx.cs">
+      <DependentUpon>SupplierTaskCalender.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskCalender.ascx.designer.cs">
+      <DependentUpon>SupplierTaskCalender.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\citySearchManager.ascx.cs">
       <DependentUpon>citySearchManager.ascx</DependentUpon>
@@ -3053,6 +3062,13 @@
     </Compile>
     <Compile Include="suppliers\SupplierScheduleTask.aspx.designer.cs">
       <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskCalender.aspx.cs">
+      <DependentUpon>SupplierTaskCalender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskCalender.aspx.designer.cs">
+      <DependentUpon>SupplierTaskCalender.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>
