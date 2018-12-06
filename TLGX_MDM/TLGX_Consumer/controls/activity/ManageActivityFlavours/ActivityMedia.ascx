@@ -40,6 +40,9 @@ padding-bottom: 30px;*/
         text-shadow: none;
         /; /*/text-shadow: 0 1px 2px rgba(0,0,0,.6);*/
     }
+    .x-lg{
+        width: 90%;
+    }
 </style>
 
 <script>
@@ -68,6 +71,8 @@ padding-bottom: 30px;*/
         //    getMeta();
         //});
         $('#carousel-example-generic').bind('slid.bs.carousel', function (e) {
+            alert('hii');
+            alert($('#ckh_Watermark').prop("checked"));
             //after slide changed
             getMeta();
         });
@@ -78,6 +83,8 @@ padding-bottom: 30px;*/
             for (var i = 0; i < result.length; i++) {
                 if (result[i].Media_URL != null)
                 {
+                    $('#<%=Product_Id.ClientID %>').text(result[i].CommonProductNameSubType_Id);
+                    
                     var divcontrol = '<div class="item"/>';
                     var divcontrolactive = '<div class="item active"/>';
                     var div = null;
@@ -96,15 +103,29 @@ padding-bottom: 30px;*/
 
                     var capColDiv = $('<div class="col-sm-3"/>');
                     var d = $("<div class='carousel-caption'/>");
-
+                     d.append("<p><h5><b>Media Id</b>:<strong>" + (result[i].MediaID == null ? "Not given by supplier" : result[i].MediaID) + "</strong></h5></p>");
                     d.append('<h4><b>Details by Supplier  - </b></h4>');
-                    d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not given by supplier" : result[i].Media_Caption) + "</p>");
-                    d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not given by supplier" : result[i].MediaName) + "</p>");
-                    d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not given by supplier" : result[i].Description) + "</p>");
-                    d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not given by supplier" : result[i].Media_Width) + "</p>");
-                    d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not given by supplier" : result[i].Media_Height) + "</p>");
-                    d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not given by supplier" : result[i].MediaType) + "</p>");
+
+                    if (result[i].Media_Caption != null) {
+                        d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not given by supplier" : result[i].Media_Caption) + "</p>");
+                    }
+                    if (result[i].MediaName != null) {
+                        d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not given by supplier" : result[i].MediaName) + "</p>");
+                    }
+                    if (result[i].Description != null) {
+                        d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not given by supplier" : result[i].Description) + "</p>");
+                    }
+                    if (result[i].Media_Width != null) {
+                        d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not given by supplier" : result[i].Media_Width) + "</p>");
+                    }
+                    if (result[i].Media_Height != null) {
+                        d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not given by supplier" : result[i].Media_Height) + "</p>");
+                    }
+                    if (result[i].MediaType != null) {
+                        d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not given by supplier" : result[i].MediaType) + "</p>");
+                    }
                     d.append("<br/>");
+                                       
                     d.append("<div class='carousel-caption-imagedetails'/>");
 
                     capColDiv.append(d);
@@ -143,6 +164,14 @@ padding-bottom: 30px;*/
         captActive.append("<p><b>Natural width</b> : " + Naturalwidth + " pixels </p>");
         captActive.append("<p><b>Natural height</b> : " + Naturalheight + " pixels </p>");
         captActive.append("<p><b>Dimensions</b> : " + Naturalwidth + " x " + Naturalheight + " </p>");
+        captActive.append("<br/>");
+        captActive.append("<b>Has Watermark</b>  : <input type=" + 'checkbox runat=server' +" id=" + 'ckh_Watermark' + " />");
+        captActive.append("<br/>");
+        captActive.append("<b>Is relevant</b>  : <input type=" + 'checkbox runat=server' +" id=" + 'cbk_relevent' + " />");
+        captActive.append("<br/>");
+        captActive.append("<b>Is Duplicate</b>  : <input type=" + 'checkbox runat=server' + " id=" + 'chk_duplicate' + " />");
+        captActive.append("<br/>");
+        captActive.append("<b>Feedback</b>  : <textarea rows="+'4'+" cols="+'50'+">");
     }
     // end
     function showImageModal() {
@@ -251,12 +280,12 @@ padding-bottom: 30px;*/
 
 
 <!--Start Image Gallery-->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true" id="moImgGallery">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade bs-example-modal-lg x-lg" tabindex="-1" role="dialog" aria-hidden="true" id="moImgGallery">
+    <div class="modal-dialog modal-lg x-lg">
         <div class="modal-content">
 
             <div class="modal-header">
-                <h4 class="modal-title">Image Details</h4>
+                <h4 class="modal-title">Image Details: <span><strong>Product ID</strong></span> <strong><asp:Label ID="Product_Id" runat="server"></asp:Label></strong></h4>
             </div>
 
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" style="width: auto; height: 500px;">

@@ -1136,6 +1136,9 @@
     </Content>
     <Content Include="Service\SupplierRoomTypeReset.ashx" />
     <Content Include="Service\CheckExistingSupplierData.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

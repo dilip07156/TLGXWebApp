@@ -2662,6 +2662,12 @@ namespace TLGX_Consumer.MDMSVC {
         private string SuburbDowntownField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TLGXAccoIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Telephone_TXField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TotalFloorsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -3748,6 +3754,32 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.SuburbDowntownField, value) != true)) {
                     this.SuburbDowntownField = value;
                     this.RaisePropertyChanged("SuburbDowntown");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TLGXAccoId {
+            get {
+                return this.TLGXAccoIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TLGXAccoIdField, value) != true)) {
+                    this.TLGXAccoIdField = value;
+                    this.RaisePropertyChanged("TLGXAccoId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telephone_TX {
+            get {
+                return this.Telephone_TXField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Telephone_TXField, value) != true)) {
+                    this.Telephone_TXField = value;
+                    this.RaisePropertyChanged("Telephone_TX");
                 }
             }
         }
@@ -9465,6 +9497,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> TimeStampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TopicField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -9622,6 +9657,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> TimeStamp {
+            get {
+                return this.TimeStampField;
+            }
+            set {
+                if ((this.TimeStampField.Equals(value) != true)) {
+                    this.TimeStampField = value;
+                    this.RaisePropertyChanged("TimeStamp");
                 }
             }
         }
@@ -42757,6 +42805,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommonProductNameSubType_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Create_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -42883,6 +42934,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
                     this.CategoryField = value;
                     this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CommonProductNameSubType_Id {
+            get {
+                return this.CommonProductNameSubType_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommonProductNameSubType_IdField, value) != true)) {
+                    this.CommonProductNameSubType_IdField = value;
+                    this.RaisePropertyChanged("CommonProductNameSubType_Id");
                 }
             }
         }
