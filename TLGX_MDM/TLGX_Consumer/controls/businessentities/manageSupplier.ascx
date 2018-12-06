@@ -49,7 +49,7 @@
         var IsMDM = "false";
         $.ajax({
             url: '../../../Service/SupplierWiseDataForChart.ashx',
-            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM  },
+            data: { 'Supplier_Id': sid, 'PriorityId': PriorityId, 'ProductCategory': ProductCategory, 'IsMDM': IsMDM },
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (result) {
@@ -139,7 +139,7 @@
                         var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
                         $(".productper").append(per + "%");
                         var resultDataForProduct = result[0].MappingStatsFor[iNodes].MappingData;
-                        for (var iProductMappingData = 0 ; iProductMappingData < resultDataForProduct.length; iProductMappingData++) {
+                        for (var iProductMappingData = 0; iProductMappingData < resultDataForProduct.length; iProductMappingData++) {
                             if (resultDataForProduct[iProductMappingData].Status != "ALL") {
                                 productArray.push(resultDataForProduct[iProductMappingData]);
                                 $("#detailproduct").append(resultDataForProduct[iProductMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForProduct[iProductMappingData].TotalCount + "<br>");
@@ -154,7 +154,7 @@
                         var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
                         $(".activityper").append(per + "%");
                         var resultDataForActivity = result[0].MappingStatsFor[iNodes].MappingData;
-                        for (var iActivityMappingData = 0 ; iActivityMappingData < resultDataForActivity.length; iActivityMappingData++) {
+                        for (var iActivityMappingData = 0; iActivityMappingData < resultDataForActivity.length; iActivityMappingData++) {
                             if (resultDataForActivity[iActivityMappingData].Status != "ALL") {
                                 activityArray.push(resultDataForActivity[iActivityMappingData]);
                                 $("#detailactivity").append(resultDataForActivity[iActivityMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForActivity[iActivityMappingData].TotalCount + "<br>");
@@ -169,7 +169,7 @@
                         var per = result[0].MappingStatsFor[iNodes].MappedPercentage;
                         $(".HotelRoomper").append(per + "%");
                         var resultDataForHotelRoom = result[0].MappingStatsFor[iNodes].MappingData;
-                        for (var iHotelRoomMappingData = 0 ; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
+                        for (var iHotelRoomMappingData = 0; iHotelRoomMappingData < resultDataForHotelRoom.length; iHotelRoomMappingData++) {
                             if (resultDataForHotelRoom[iHotelRoomMappingData].Status != "ALL") {
                                 hotelroomArray.push(resultDataForHotelRoom[iHotelRoomMappingData]);
                                 $("#detailHotelRoom").append(resultDataForHotelRoom[iHotelRoomMappingData].Status + "&nbsp;&nbsp;:&nbsp;&nbsp;" + resultDataForHotelRoom[iHotelRoomMappingData].TotalCount + "<br>");
@@ -305,6 +305,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         getChartData();
+        var DownloadInfo = $('<%=Request.QueryString["DownloadInfo"]%>');
+        if (DownloadInfo != null) {
+            $('#ShowSupplierStatusChart').removeClass('active');
+            $('#ShowSupplierStaticDownloadData').addClass('active');
+            $('ul#someList li:first').removeClass('active');
+            $('ul#someList li:nth-child(4)').addClass('active');
+        }
     });
 </script>
 
@@ -339,7 +346,7 @@
                                                 <asp:TextBox ID="txtCodeSupplierEdit" CssClass="form-control" runat="server" Enabled="false" Text='<%# Bind("Code") %>' />
                                             </div>
 
-                                            
+
                                             <div class="form-group">
                                                 <div class="col-sm-10">
                                                     <asp:Button ID="btnUpdateSupplier" CommandName="EditCommand" CausesValidation="true" ValidationGroup="SupplierEdit" runat="server" CssClass="btn btn-primary btn-sm" Text="Update Supplier" />
@@ -374,7 +381,7 @@
                                                 </asp:DropDownList>
                                             </div>
                                             <div class="form-group">
-                                                    <label  for="chkIsFullPull">IsFullPull Supplier</label>&nbsp; &nbsp;&nbsp;
+                                                <label for="chkIsFullPull">IsFullPull Supplier</label>&nbsp; &nbsp;&nbsp;
                                                      <asp:CheckBox ID="chkIsFullPull" runat="server" />
                                             </div>
                                         </div>
@@ -431,7 +438,7 @@
         <asp:HiddenField ID="TabName" runat="server" />
         <div class="panel panel-default">
             <div id="Tabs" class="panel-body" role="tabpanel">
-                <ul class="nav nav-tabs tabs" role="tablist">
+                <ul id="someList" class="nav nav-tabs tabs" role="tablist">
                     <li class="active"><a role="tab" data-toggle="tab" aria-controls="SupplierStatusChart" href="#ShowSupplierStatusChart" id="ShowSupplier">Supplier Status Charts</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="ProductMapping" href="#ShowSupplierProductMapping">Product Categories</a></li>
                     <li><a role="tab" data-toggle="tab" aria-controls="SupplierStaticData" href="#ShowStaticDataUpdateSchedule">Static Data Update Schedule</a></li>

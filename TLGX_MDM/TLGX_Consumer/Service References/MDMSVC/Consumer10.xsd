@@ -51,23 +51,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Supplier_Schedule" nillable="true" type="tns:DC_Supplier_Schedule" />
-  <xs:complexType name="ArrayOfDC_Supplier_Schedule_RS">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Supplier_Schedule_RS" nillable="true" type="tns:DC_Supplier_Schedule_RS" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDC_Supplier_Schedule_RS" nillable="true" type="tns:ArrayOfDC_Supplier_Schedule_RS" />
-  <xs:complexType name="DC_Supplier_Schedule_RS">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="FrequencyTypeCode" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PageNo" type="xs:int" />
-      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
-      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SupplierScheduleID" type="ser:guid" />
-      <xs:element minOccurs="0" name="Suppllier_ID" type="ser:guid" />
-      <xs:element minOccurs="0" name="TotalSize" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DC_Supplier_Schedule_RS" nillable="true" type="tns:DC_Supplier_Schedule_RS" />
 </xs:schema>
