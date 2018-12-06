@@ -321,6 +321,8 @@
       <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="StreetNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="SuburbDowntown" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TLGXAccoId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telephone_TX" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalFloors" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TotalRecords" type="xs:int" />
       <xs:element minOccurs="0" name="TotalRecords_Accommodation_Descriptions" nillable="true" type="xs:int" />

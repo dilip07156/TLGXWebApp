@@ -51,12 +51,12 @@ namespace TLGX_Consumer.Controller
 
         #endregion
         #region supplier schedule
-        public List<MDMSVC.DC_Supplier_Schedule_RS> GetSupplierSchedule(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
+        public List<MDMSVC.DC_Supplier_Schedule> GetSupplierSchedule(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
         {
             object result = null;
-            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_Schedular_Get"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule_RQ), typeof(List<MDMSVC.DC_Supplier_Schedule_RS>), out result);
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_GetSchedule"], RQParams, typeof(MDMSVC.DC_Supplier_Schedule_RQ), typeof(List<MDMSVC.DC_Supplier_Schedule>), out result);
 
-            return result as List<DC_Supplier_Schedule_RS>;
+            return result as List<DC_Supplier_Schedule>;
         }
 
         public bool SoftDeleteDetails(MDMSVC.DC_Supplier_Schedule_RQ RQParams)
