@@ -18,16 +18,18 @@ namespace TLGX_Consumer.Service
             string strUserName = System.Web.HttpContext.Current.User.Identity.Name;
             string RedirectFromAlert = string.Empty;
             RQ.UserName = strUserName;
-            RQ.PageNo = 1;         
+            RQ.PageNo = 1;
             var resultboth = MapSvc.GetScheduleTaskByRoll(RQ);
             RQ.RedirectFrom = "Alert";
             var Alertlog = MapSvc.GetScheduleTaskByRoll(RQ);
             List<int> response = new List<int>();
-            int Alertlogcount= Alertlog.Count();
+
+            int Alertlogcount = (Alertlog != null ? Alertlog.Count() : 0);
             response.Add(Alertlogcount);
-            int logCount = resultboth.Count();
+            int logCount = (resultboth != null ? resultboth.Count() : 0);
             response.Add(logCount);
-            context.Response.Write (new JavaScriptSerializer().Serialize(response));
+
+            context.Response.Write(new JavaScriptSerializer().Serialize(response));
         }
         public bool IsReusable
         {
