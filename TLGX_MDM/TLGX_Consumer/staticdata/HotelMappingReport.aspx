@@ -105,9 +105,17 @@
         </div>
     </div>
 
-    <asp:UpdatePanel runat="server" ID="UpdatePanel">
+    <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional">
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="ddlRegion" EventName="SelectedIndexChanged" />
+            <asp:AsyncPostBackTrigger ControlID="ddlCountry" EventName="SelectedIndexChanged" />
+            <asp:AsyncPostBackTrigger ControlID="rdoIsAllCities" EventName="CheckedChanged" />
+            <asp:AsyncPostBackTrigger ControlID="rdoIsSelectiveCities" EventName="CheckedChanged" />
+            <asp:AsyncPostBackTrigger ControlID="btnAdd" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="repSelectedCity"  />
+            <asp:AsyncPostBackTrigger ControlID="btnViewReport" EventName="Click" />
+        </Triggers>
         <ContentTemplate>
-
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-body">
@@ -192,7 +200,7 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <asp:TextBox ID="txtCityLookup" runat="server" class="form-control" ClientIDMode="Static" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtCityLookup" onClientClick="callajax();" runat="server" class="form-control" ClientIDMode="Static" ReadOnly="true"></asp:TextBox>
                                 </div>
 
                                 <div class="col-md-2">
@@ -257,38 +265,40 @@
 
                         </div>
 
-                                       <br />
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-2">
-                        <asp:Button runat="server" Text="View Report" CssClass="btn btn-sm btn-primary pull-right" ID="btnViewReport" OnClick="btnViewReport_Click"></asp:Button>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-2">
+                                    <asp:Button runat="server" Text="View Report" CssClass="btn btn-sm btn-primary pull-right" ID="btnViewReport" OnClick="btnViewReport_Click"></asp:Button>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+
+                        <div class="col-md-12" id="HotelMappingreport" runat="server">
+                            <div style="width: 100%; height: 100%; overflow-x: scroll">
+
+                                <rsweb:ReportViewer ID="RptHotelMapping" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
+
+                                    <LocalReport ReportPath="staticdata/HotelMappingRDLCReport.rdlc">
+                                        <DataSources>
+                                            <rsweb:ReportDataSource Name="DsHotelReport" />
+                                        </DataSources>
+                                    </LocalReport>
+                                </rsweb:ReportViewer>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <br />
-            <br />
 
-            <div class="col-md-12" id="HotelMappingreport" runat="server">
-                <div style="width: 100%; height: 100%; overflow-x: scroll">
-
-                    <rsweb:ReportViewer ID="RptHotelMapping" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" Height="100%" AsyncRendering="False" SizeToReportContent="true" ZoomMode="FullPage" ShowFindControls="False">
-
-                        <LocalReport ReportPath="staticdata/HotelMappingRDLCReport.rdlc">
-                            <DataSources>
-                                <rsweb:ReportDataSource Name="DsHotelReport" />
-                            </DataSources>
-                        </LocalReport>
-                    </rsweb:ReportViewer>
-
-                </div>
-            </div>
-                    </div>
-                </div>
-            </div>
-         
 
         </ContentTemplate>
     </asp:UpdatePanel>
 
 
 </asp:Content>
+
+
