@@ -43,6 +43,7 @@ padding-bottom: 30px;*/
 
     .x-lg {
         width: 90%;
+        overflow-y: hidden !important;
     }
 </style>
 
@@ -312,7 +313,7 @@ padding-bottom: 30px;*/
                 //}
             }
             tbltable = tbltable + "</table>";
-            debugger;
+            
             captActive.append(tbltable);
         }
         else {
