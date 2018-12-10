@@ -1078,12 +1078,16 @@
       <xs:element minOccurs="0" name="Edit_User" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsDuplicate" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRelevent" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsWaterMark" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="Legacy_Product_Id" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="MediaFileMaster" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MediaID" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MediaName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MediaType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Media_Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Media_Feedback" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Media_Height" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="Media_Path" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Media_Position" nillable="true" type="xs:int" />
@@ -1097,6 +1101,16 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DC_Activity_Media" nillable="true" type="tns:DC_Activity_Media" />
+  <xs:complexType name="DC_Activity_MediaReview">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_Media_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsDuplicate" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsRelevent" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsWaterMark" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Media_ReviewFeedback" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_MediaReview" nillable="true" type="tns:DC_Activity_MediaReview" />
   <xs:complexType name="DC_Activity_Inclusions_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Activity_Flavour_Id" nillable="true" type="ser:guid" />
@@ -2021,4 +2035,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Activity_MediaDetailsForAttribute" nillable="true" type="tns:Activity_MediaDetailsForAttribute" />
+  <xs:complexType name="ArrayOfDC_Activity_MediaAttributesForImageReview">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DC_Activity_MediaAttributesForImageReview" nillable="true" type="tns:DC_Activity_MediaAttributesForImageReview" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDC_Activity_MediaAttributesForImageReview" nillable="true" type="tns:ArrayOfDC_Activity_MediaAttributesForImageReview" />
+  <xs:complexType name="DC_Activity_MediaAttributesForImageReview">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity_MediaAttributes_Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="Activity_Media_Id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="AttributeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DC_Activity_MediaAttributesForImageReview" nillable="true" type="tns:DC_Activity_MediaAttributesForImageReview" />
 </xs:schema>

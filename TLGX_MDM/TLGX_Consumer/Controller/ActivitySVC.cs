@@ -223,6 +223,20 @@ namespace TLGX_Consumer.Controller
             ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Media"], RQ, typeof(MDMSVC.DC_Activity_Media), typeof(DC_Message), out result);
             return (DC_Message)result;
         }
+
+        public DC_Message AddUpdateActivityMediaReview(MDMSVC.DC_Activity_MediaReview RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["addUpdate_Activity_Media_Review"], RQ, typeof(MDMSVC.DC_Activity_MediaReview), typeof(DC_Message), out result);
+            return (DC_Message)result;
+        }
+
+         public List<MDMSVC.DC_Activity_MediaAttributesForImageReview> GetActivityMediaAttributesForImageReview(MDMSVC.DC_Activity_Media_Search_RQ RQ)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["get_Activity_MediaAttributesImageReview"], RQ, typeof(DC_Activity_Media_Search_RQ), typeof(List<DC_Activity_MediaAttributesForImageReview>), out result);
+            return result as List<MDMSVC.DC_Activity_MediaAttributesForImageReview>;
+        }
         #endregion
 
         #region Activity Description
