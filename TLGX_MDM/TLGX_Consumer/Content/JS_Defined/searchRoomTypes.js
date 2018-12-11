@@ -368,6 +368,7 @@ function BindRTDetails(controlval) {
     var ExtractedAttribute = "";
     var tableExtractedAttribute = "<table style='border-collapse: collapse;'><tbody><tr><td>Attribute Flags:  </td><table class='table table-responsive table-hover table-striped table-bordered'><tbody id='tblAttributes'><tr>";
     var flag = 0;
+    var isBedTypeAvailable = false;
     if ($(controlval).parent().parent().find('#lstAlias') != undefined) {
         if ($(controlval).parent().parent().find('#lstAlias tr').length > 0) {
             for (var i = 0; i < $(controlval).parent().parent().find('#lstAlias tr td').length; i++) {
@@ -378,9 +379,16 @@ function BindRTDetails(controlval) {
                         flag = 0;
                     }
                     tableExtractedAttribute = tableExtractedAttribute + "<td>" + CurrentTd.firstElementChild.firstElementChild.title.trim() + "</td>";
+                    var SystemAttributeKeyword = CurrentTd.firstElementChild.firstElementChild.title.trim().split(':');
+                    if (SystemAttributeKeyword.length > 1 && SystemAttributeKeyword[0].trim() == 'BED-TYPE') {
+                        isBedTypeAvailable = true;
+                    }
                     flag += 1;
                 }
             }
+        }
+        else { //No Attribute Not sending data for training.
+            isBedTypeAvailable = false;
         }
     }
 
@@ -390,10 +398,13 @@ function BindRTDetails(controlval) {
     ActionButtons = ActionButtons + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr>" // ";
     ActionButtons = ActionButtons + "<td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td>";
-    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining ; 
-    if (count < 2) {
+    ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining;
+     //Logic to not send data for training if BedType is absent in Attribute
+    if (count < 2 || !isBedTypeAvailable) {
         ActionButtons = ActionButtons + " checked ";
     }
+   
+    //End Here
     ActionButtons = ActionButtons + "  onchange = 'UpdateTrainingFlag(this)' > <strong>Don't Submit as Training Data</strong></td > ";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td>";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_Id'  value='' /></td>";
