@@ -35,6 +35,13 @@ namespace TLGX_Consumer.Controller
             return result as List<SupplierScheduledTask>;
         }
 
+        public List<Supplier_Task_Notifications> GetScheduleNotificationTaskLog(MDMSVC.DC_SupplierScheduledTaskRQ RQParams)
+        {
+            object result = null;
+            ServiceConnection.MDMSvcProxy.PostData(ConfigurationManager.AppSettings["Supplier_ScheduleTask_notification"],RQParams, typeof(MDMSVC.DC_SupplierScheduledTaskRQ), typeof(List<MDMSVC.Supplier_Task_Notifications>), out result);
+            return result as List<Supplier_Task_Notifications>;
+        }
+
         public DC_Message UpdateTaskLog(MDMSVC.DC_SupplierScheduledTaskRQ RQParams)
         {
             object result = null;

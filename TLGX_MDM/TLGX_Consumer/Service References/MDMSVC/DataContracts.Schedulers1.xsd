@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/DataContracts.Schedulers" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:57643/Consumer.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:complexType name="DC_Supplier_Schedule_RQ">
     <xs:sequence>
       <xs:element minOccurs="0" name="Edit_Date" nillable="true" type="xs:dateTime" />
@@ -58,6 +58,7 @@
       <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FromDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="LogId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Notification" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PageNo" type="xs:int" />
       <xs:element minOccurs="0" name="PageSize" type="xs:int" />
       <xs:element minOccurs="0" name="RedirectFrom" nillable="true" type="xs:string" />
@@ -121,4 +122,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Supplier_Task_Logs" nillable="true" type="tns:Supplier_Task_Logs" />
+  <xs:complexType name="ArrayOfSupplier_Task_Notifications">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Supplier_Task_Notifications" nillable="true" type="tns:Supplier_Task_Notifications" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSupplier_Task_Notifications" nillable="true" type="tns:ArrayOfSupplier_Task_Notifications" />
+  <xs:complexType name="Supplier_Task_Notifications">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LogType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Log_id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="Notification_Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Task_id" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Supplier_Task_Notifications" nillable="true" type="tns:Supplier_Task_Notifications" />
 </xs:schema>

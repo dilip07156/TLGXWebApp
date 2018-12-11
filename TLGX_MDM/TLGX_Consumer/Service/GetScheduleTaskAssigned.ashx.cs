@@ -16,18 +16,22 @@ namespace TLGX_Consumer.Service
         {
             MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
             string strUserName = System.Web.HttpContext.Current.User.Identity.Name;
-            string RedirectFromAlert = string.Empty;
+            //string RedirectFromAlert = string.Empty;
             RQ.UserName = strUserName;
-            RQ.PageNo = 1;
-            var resultboth = MapSvc.GetScheduleTaskByRoll(RQ);
-            RQ.RedirectFrom = "Alert";
-            var Alertlog = MapSvc.GetScheduleTaskByRoll(RQ);
-            List<int> response = new List<int>();
+            //RQ.PageNo = 1;
+            //RQ.Notification = "Both";
+            //var resultboth = MapSvc.GetScheduleTaskByRoll(RQ);
+            //RQ.RedirectFrom = "Alert";
+            //RQ.Notification = "Alert";
+            //var Alertlog = MapSvc.GetScheduleTaskByRoll(RQ);
+            //List<int> response = new List<int>();
 
-            int Alertlogcount = (Alertlog != null ? Alertlog.Count() : 0);
-            response.Add(Alertlogcount);
-            int logCount = (resultboth != null ? resultboth.Count() : 0);
-            response.Add(logCount);
+            //int Alertlogcount = (Alertlog != null ? Alertlog.Count() : 0);
+            //response.Add(Alertlogcount);
+            //int logCount = (resultboth != null ? resultboth.Count() : 0);
+            //response.Add(logCount);
+
+            var response = MapSvc.GetScheduleNotificationTaskLog(RQ);
 
             context.Response.Write(new JavaScriptSerializer().Serialize(response));
         }

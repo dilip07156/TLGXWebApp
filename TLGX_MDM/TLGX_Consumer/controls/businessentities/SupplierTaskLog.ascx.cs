@@ -23,7 +23,7 @@ namespace TLGX_Consumer.controls.businessentities
             {
                 fillsuppliers();
                 fillentities();
-                if (Request.QueryString.Count > 0)
+                if (Request.QueryString.Count > 1)
                 {
                     RedirectFromAlert = Request.QueryString["RedirectFromAlert"].ToString();
                     
@@ -67,9 +67,9 @@ namespace TLGX_Consumer.controls.businessentities
             string strUserName = System.Web.HttpContext.Current.User.Identity.Name;
             MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
             RQ.UserName = System.Web.HttpContext.Current.User.Identity.Name;
-
-            //if (!string.IsNullOrWhiteSpace(RedirectFromAlert))
-            //{
+            string Notification = Request.QueryString["Notification"].ToString();
+            if (Notification != string.Empty)
+                RQ.Notification = Notification;
                 RQ.RedirectFrom = RedirectFromAlert;
             if (txtFrom.Text != string.Empty)
 
@@ -87,7 +87,7 @@ namespace TLGX_Consumer.controls.businessentities
                 RQ.PageNo = PageIndex;
                 RQ.PageSize = Convert.ToInt32(ddlShowEntries.SelectedItem.Text);
                 //RQ.SortBy = (SortBy + " " + SortEx).Trim();
-            //}
+          
 
             var res = _objScheduleDataSVCs.GetScheduleTaskByRoll(RQ);
             if (res != null)
@@ -167,14 +167,9 @@ namespace TLGX_Consumer.controls.businessentities
                     e.Row.CssClass = "alert alert-danger";
                 }
 
-                if (Status == "Completed" && btnupload != null && btnTaskComp != null && btnDownload!=null)
-                {                   
-                    DisableLinkButton(btnDownload);
-                    DisableLinkButton(btnupload);
-                    DisableLinkButton(btnTaskComp);
-                }
+               
 
-                if (logtype == "API" && Status != "Completed")
+                if (logtype == "API" )
                 {
                     
                     if (btnDownload != null)
@@ -241,7 +236,17 @@ namespace TLGX_Consumer.controls.businessentities
                     }
                 }
 
-               
+                if (Status == "Completed" && logtype == "File" && btnupload != null && btnTaskComp != null && btnDownload != null && btnDetail!=null)
+                {
+                    DisableLinkButton(btnDownload);
+                    DisableLinkButton(btnupload);
+                    DisableLinkButton(btnTaskComp);
+                    if (btnDetail != null)
+                    {
+                        btnDetail.Visible = false;
+                    }
+                }
+
 
             }
 
@@ -254,12 +259,19 @@ namespace TLGX_Consumer.controls.businessentities
 
         protected void grdSupplierScheduleTask_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-
+           
             if (e.CommandName.ToString() == "TaskComplete")
             {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+
                 MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
-                RQ.LogId = myRow_Id;
+               
+                RQ.Supplier_Id = (Guid)this.grdSupplierScheduleTask.DataKeys[index]["Suppllier_ID"];
+
+                RQ.Entity = grdSupplierScheduleTask.Rows[index].Cells[1].Text;
+                RQ.TaskId = myRow_Id;
                 RQ.Edit_User= System.Web.HttpContext.Current.User.Identity.Name;
                 RQ.Edit_Date = System.DateTime.Now;
                 MDMSVC.DC_Message _objMsg=_objScheduleDataSVCs.UpdateTaskLog(RQ);
