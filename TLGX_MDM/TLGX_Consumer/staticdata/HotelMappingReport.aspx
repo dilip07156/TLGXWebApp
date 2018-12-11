@@ -50,7 +50,7 @@
         function callajax() {
 
             var selected = [];
-            $('[id*=ddlCountry] option:selected').each(function () {
+            $('[id*=<%=ddlCountry.ClientID%>] option:selected').each(function () {
                 selected.push($(this).val());
             });
             var DC_CitywithMultipleCountry_Search_RQ = {};
@@ -90,7 +90,8 @@
                 },
 
                 select: function (event, ui) {
-                    $("#btnAdd").removeAttr("disabled");
+                    document.getElementById("<%=btnAdd.ClientID%>").disabled = false;
+                    //$("#btnAdd").removeAttr("disabled");
                 },
 
                 min_length: 3,
@@ -105,15 +106,9 @@
         </div>
     </div>
 
-    <asp:UpdatePanel runat="server" ID="UpdatePanel" UpdateMode="Conditional">
+    <asp:UpdatePanel runat="server" ID="UpdatePanel">
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="ddlRegion" EventName="SelectedIndexChanged" />
-            <asp:AsyncPostBackTrigger ControlID="ddlCountry" EventName="SelectedIndexChanged" />
-            <asp:AsyncPostBackTrigger ControlID="rdoIsAllCities" EventName="CheckedChanged" />
-            <asp:AsyncPostBackTrigger ControlID="rdoIsSelectiveCities" EventName="CheckedChanged" />
-            <asp:AsyncPostBackTrigger ControlID="btnAdd" EventName="Click" />
-            <asp:AsyncPostBackTrigger ControlID="repSelectedCity"  />
-            <asp:AsyncPostBackTrigger ControlID="btnViewReport" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="repSelectedCity" />
         </Triggers>
         <ContentTemplate>
             <div class="row">
@@ -127,7 +122,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <asp:ListBox runat="server" ID="ddlRegion" AutoPostBack="true" ClientIDMode="Static" SelectionMode="multiple" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged"></asp:ListBox>
+                                    <asp:ListBox runat="server" ID="ddlRegion" AutoPostBack="true" SelectionMode="multiple" OnSelectedIndexChanged="ddlRegion_SelectedIndexChanged"></asp:ListBox>
                                 </div>
                                 <div class="col-md-8">
                                 </div>
@@ -142,7 +137,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <asp:ListBox runat="server" ID="ddlCountry" AutoPostBack="true" ClientIDMode="Static" SelectionMode="multiple" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:ListBox>
+                                    <asp:ListBox runat="server" ID="ddlCountry" AutoPostBack="true" SelectionMode="multiple" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:ListBox>
                                 </div>
 
                                 <div class="col-md-2">
@@ -200,18 +195,18 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <asp:TextBox ID="txtCityLookup" onClientClick="callajax();" runat="server" class="form-control" ClientIDMode="Static" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtCityLookup" onClientClick="callajax();" runat="server" class="form-control" ReadOnly="true"></asp:TextBox>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-sm btn-primary" ClientIDMode="Static" Text="Add" Enabled="false" OnClick="btnAdd_Click"></asp:Button>
+                                    <asp:Button ID="btnAdd" runat="server" CssClass="btn btn-sm btn-primary" Text="Add" disabled OnClick="btnAdd_Click"></asp:Button>
                                 </div>
                             </div>
 
 
 
                             <div class="col-md-12">
-                                <asp:Repeater ID="repSelectedCity" runat="server" OnItemCommand="repSelectedCity_ItemCommand">
+                                <asp:Repeater ID="repSelectedCity" runat="server" ClientIDMode="AutoID" OnItemCommand="repSelectedCity_ItemCommand">
                                     <HeaderTemplate>
                                         <table class="table table-stripped table-hover" id="tblSelectedCity">
                                     </HeaderTemplate>
@@ -246,7 +241,7 @@
                                 </div>
 
                                 <div class="col-md-3">
-                                    <asp:ListBox runat="server" ID="ddlPriorities" ClientIDMode="Static" SelectionMode="multiple"></asp:ListBox>
+                                    <asp:ListBox runat="server" ID="ddlPriorities" SelectionMode="multiple"></asp:ListBox>
                                 </div>
 
                                 <div class="col-md-2">
