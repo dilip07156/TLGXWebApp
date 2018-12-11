@@ -19,8 +19,27 @@ namespace TLGX_Consumer.staticdata.files
             if (!IsPostBack)
             {
                 BindDropdown();
+                setdropdownlistvalues();
                 //btnUploadCompleted.Style.Add("display", "none");
             }
+        }
+
+        private void setdropdownlistvalues()
+        {
+            if (Request.QueryString.Count > 0)
+            {
+                Guid supplier_id = Guid.Empty;
+                supplier_id = Guid.Parse(Request.QueryString["Supplier_Id"]);
+                ddlSupplierList.SelectedValue = supplier_id.ToString();
+                ddlSupplierList.Enabled = false;
+
+                string MasterAttributeValue = string.Empty;
+                MasterAttributeValue = Request.QueryString["entity"].ToString();
+                if(ddlEntityList.Items.FindByText(MasterAttributeValue)!=null)
+                     ddlEntityList.Items.FindByText(MasterAttributeValue).Selected = true;
+                ddlEntityList.Enabled = false;
+            }
+
         }
 
         private void BindDropdown()
@@ -45,10 +64,10 @@ namespace TLGX_Consumer.staticdata.files
                 ddlSupplierList.DataTextField = "Name";
                 ddlSupplierList.DataBind();
                 ddlSupplierList.Items.RemoveAt(0);
-                ddlSupplierList.Items.Insert(0, new ListItem("--Select --", "0"));
+                ddlSupplierList.Items.Insert(0, new ListItem("--Select --", "0"));                
                 fillattributes("MappingFileConfig", "MappingEntity", ddlEntityList);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -64,7 +83,7 @@ namespace TLGX_Consumer.staticdata.files
             ddl.DataTextField = "AttributeValue";
             ddl.DataValueField = "MasterAttributeValue_Id";
             ddl.DataBind();
-            ddl.Items.Insert(0, new ListItem("--ALL--", "0"));
+            ddl.Items.Insert(0, new ListItem("--ALL--", "0"));            
             RQ = null;
             resvalues = null;
         }

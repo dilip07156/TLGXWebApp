@@ -329,6 +329,7 @@
     <Content Include="controls\businessentities\supplierProductCategory.ascx" />
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
     <Content Include="controls\businessentities\supplierStaticDownloadData.ascx" />
+    <Content Include="controls\businessentities\SupplierTaskLog.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
     <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
@@ -462,6 +463,9 @@
     <Content Include="Scripts\ChartJS\morris.min.js" />
     <Content Include="Scripts\ChartJS\raphael-min.js" />
     <Content Include="Scripts\ChartJS\xepOnline.jqPlugin.008.js" />
+    <Content Include="Scripts\Cron\later.min.js" />
+    <Content Include="Scripts\Cron\Moment.min.js" />
+    <Content Include="Scripts\Cron\prettycron.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.css" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\Google_Related\dataTables.bootstrap.min.css" />
@@ -538,7 +542,8 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
-    <Content Include="suppliers\SupplierScheduleTask.aspx" />
+    <Content Include="suppliers\SupplierSchedularTask.aspx" />
+    <Content Include="suppliers\SupplierTaskManage.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1125,10 +1130,13 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Priorities.datasource">
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.SupplierScheduledTask.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Keys.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Priorities.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Ranks.datasource">
@@ -1774,6 +1782,13 @@
     </Compile>
     <Compile Include="controls\businessentities\supplierStaticDownloadData.ascx.designer.cs">
       <DependentUpon>supplierStaticDownloadData.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskLog.ascx.cs">
+      <DependentUpon>SupplierTaskLog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskLog.ascx.designer.cs">
+      <DependentUpon>SupplierTaskLog.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\citySearchManager.ascx.cs">
       <DependentUpon>citySearchManager.ascx</DependentUpon>
@@ -2796,6 +2811,9 @@
     <Compile Include="Service\GetAttributeData.ashx.cs">
       <DependentUpon>GetAttributeData.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\GetScheduleTaskAssigned.ashx.cs">
+      <DependentUpon>GetScheduleTaskAssigned.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion_Supervised_Semantic.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion_Supervised_Semantic.ashx</DependentUpon>
     </Compile>
@@ -2807,6 +2825,9 @@
     </Compile>
     <Compile Include="Service\GetSRT_ML_suggestion.ashx.cs">
       <DependentUpon>GetSRT_ML_suggestion.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\GetTaskLogs.ashx.cs">
+      <DependentUpon>GetTaskLogs.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\HotelMappingAutoComplete.ashx.cs">
       <DependentUpon>HotelMappingAutoComplete.ashx</DependentUpon>
@@ -3057,12 +3078,19 @@
     <Compile Include="suppliers\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
-    <Compile Include="suppliers\SupplierScheduleTask.aspx.cs">
-      <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
+    <Compile Include="suppliers\SupplierSchedularTask.aspx.cs">
+      <DependentUpon>SupplierSchedularTask.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="suppliers\SupplierScheduleTask.aspx.designer.cs">
-      <DependentUpon>SupplierScheduleTask.aspx</DependentUpon>
+    <Compile Include="suppliers\SupplierSchedularTask.aspx.designer.cs">
+      <DependentUpon>SupplierSchedularTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskManage.aspx.cs">
+      <DependentUpon>SupplierTaskManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskManage.aspx.designer.cs">
+      <DependentUpon>SupplierTaskManage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

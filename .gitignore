@@ -240,3 +240,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/TLGX_MDM/TLGX_Consumer/controls/businessentities/manageSupplierScheduleTask.ascx.designer.cs
