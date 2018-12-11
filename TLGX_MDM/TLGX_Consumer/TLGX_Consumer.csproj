@@ -1142,9 +1142,13 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Ranks.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service\GetScheduleTaskAssigned.ashx" />
-    <Content Include="Service\GetTaskLogs.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Supplier_Task_Logs.datasource">
+    <Content Include="Service\SupplierRoomTypeReset.ashx" />
+    <Content Include="Service\CheckExistingSupplierData.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\AddUpdateMediaInfoReview.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -2785,6 +2789,9 @@
     </Compile>
     <Compile Include="Service\AddUpdateMappingDetails.ashx.cs">
       <DependentUpon>AddUpdateMappingDetails.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\AddUpdateMediaInfoReview.ashx.cs">
+      <DependentUpon>AddUpdateMediaInfoReview.ashx</DependentUpon>
     </Compile>
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>

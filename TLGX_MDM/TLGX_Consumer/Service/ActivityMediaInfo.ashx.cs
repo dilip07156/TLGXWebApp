@@ -25,8 +25,10 @@ namespace TLGX_Consumer.Service
             RQParams.Activity_Flavour_Id =  new Guid(Activity_Flavour_Id);
             
             var res = _Objmaster.GetActivityMedia(RQParams);
+            var resimagereview = _Objmaster.GetActivityMediaAttributesForImageReview(RQParams);
+            var data = new { ImageResult = res, ImageResultReview = resimagereview };
 
-            context.Response.Write(new JavaScriptSerializer().Serialize(res));
+            context.Response.Write(new JavaScriptSerializer().Serialize(data));
         }
 
         public bool IsReusable
