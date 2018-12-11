@@ -53,6 +53,14 @@ padding-bottom: 30px;*/
     .dataTables_paginate_css {
   float: left !important;
 }
+    .CustomStyle
+    {
+        top: 1% !important;
+        color: black;
+    }
+    .pagination a {
+  border: 1px solid #ddd; /* Gray */
+}
 </style>
 
 <script>
@@ -247,10 +255,12 @@ padding-bottom: 30px;*/
                         "searching": false,
                         "bLengthChange": false,
                         "bInfo": false,
-                        "pagingType": "full"
+                        "pagingType": "numbers"
+
                     });
                 
-                $(".dataTables_paginate").addClass("dataTables_paginate_css"); 
+                $(".dataTables_paginate").addClass("dataTables_paginate_css "); 
+               // $(".dataTables_paginate").addClass("pagination"); 
                 
 
             } else {
@@ -315,7 +325,7 @@ padding-bottom: 30px;*/
                         "searching": false,
                         "bLengthChange": false,
                          "bInfo": false,
-                         "pagingType": "full"
+                         "pagingType": "numbers"
                 });
             }
             
@@ -516,10 +526,10 @@ padding-bottom: 30px;*/
 
                 <!-- Controls left and right buttons-->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="CustomStyle glyphicon glyphicon-chevron-left"></span>
                 </a>
                 <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="CustomStyle glyphicon glyphicon-chevron-right"></span>
                 </a>
             </div>
 
