@@ -1,5 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ActivityMedia.ascx.cs" Inherits="TLGX_Consumer.controls.activity.ManageActivityFlavours.ActivityMedia" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<script src="../../../Scripts/JqueryUI/jquery-ui.js"></script>
+<link href="../../../Scripts/JqueryUI/jquery-ui.css" rel="stylesheet" /
+<link href="../../../Scripts/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="../../../Scripts/jquery.dataTables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="../../../Scripts/jquery.dataTables.min.js"></script>
 <style type="text/css">
     .carousel-control {
         width: 5%;
@@ -45,6 +50,9 @@ padding-bottom: 30px;*/
         width: 90%;
         overflow-y: hidden !important;
     }
+    .dataTables_paginate_css {
+  float: left !important;
+}
 </style>
 
 <script>
@@ -87,7 +95,7 @@ padding-bottom: 30px;*/
     });
 
     function renderImageDeatils(result, imagereviewresult) {
-        
+
         if (result != null && result.length > 0) {
             for (var i = 0; i < result.length; i++) {
                 if (result[i].Media_URL != null) {
@@ -146,93 +154,56 @@ padding-bottom: 30px;*/
                     }
                     tbltable = tbltable + "</table>";
                     d.append(tbltable);
+                    var ImagePreview = $("<div class='carousel-caption-ImagePreview' id='ImagePreview'/>");
+                   
 
-                    //if (result[i].Media_Caption != null) {
-                    //    d.append("<p><b>Caption</b> : " + (result[i].Media_Caption == null ? "Not given by supplier" : result[i].Media_Caption) + "</p>");
-                    //}
-                    //if (result[i].MediaName != null) {
-                    //    d.append("<p><b>Name</b> : " + (result[i].MediaName == null ? "Not given by supplier" : result[i].MediaName) + "</p>");
-                    //}
-                    //if (result[i].Description != null) {
-                    //    d.append("<p><b>Description</b> : " + (result[i].Description == null ? "Not given by supplier" : result[i].Description) + "</p>");
-                    //}
-                    //if (result[i].Media_Width != null) {
-                    //    d.append("<p><b>Width</b>  : " + (result[i].Media_Width == null ? "Not given by supplier" : result[i].Media_Width) + "</p>");
-                    //}
-                    //if (result[i].Media_Height != null) {
-                    //    d.append("<p><b>Height</b>  : " + (result[i].Media_Height == null ? "Not given by supplier" : result[i].Media_Height) + "</p>");
-                    //}
-                    //if (result[i].MediaType != null) {
-                    //    d.append("<p><b>Media Type</b>  : " + (result[i].MediaType == null ? "Not given by supplier" : result[i].MediaType) + "</p>");
-                    //}
-                    var ImagePreview = $("<div class='carousel-caption-ImagePreview'/>");
                     d.append(ImagePreview);
-
-                    var tblcheckbox = ""; "<table class='table table-striped table-bordered' style='width:80%'><tbody><tr><td><input type=" + 'checkbox runat=server' + " id=" + 'ckh_Watermarkx' + " checked  /></td><td><b>Has Watermark</b>";
-
-                    //tblcheckbox = tblcheckbox + "</td></tr></tbody></table>";
-
-                    //d.append(tblcheckbox);
+                    var tblcheckbox = "";// = "<table class='table table-striped table-bordered' style='width:80%'><tbody><tr><td><input type=" + 'checkbox runat=server' + " id=" + 'ckh_Watermarkx' + " checked  /></td><td><b>Has Watermark</b>";
 
                     if (result[i].IsWaterMark) {
                         tblcheckbox = tblcheckbox + "<table class='table table-striped table-bordered' style='width:80%'><tbody><tr><td><input type=" + 'checkbox runat=server' +
                             " id=" + 'ckh_Watermark' + " checked  /></td><td><b>Has Watermark</b>";
-                        //d.append("<input type=" + 'checkbox runat=server' + " id=" + 'ckh_Watermark' + " checked  /><b>Has Watermark</b>");
                     }
                     else {
                         tblcheckbox = tblcheckbox + "<table class='table table-striped table-bordered' style='width:80%'><tbody><tr><td><input type=" + 'checkbox runat=server' +
                             " id=" + 'ckh_Watermark' + " /></td><td><b>Has Watermark</b>";
-                        //d.append("<input type=" + 'checkbox runat=server' + " id=" + 'ckh_Watermark' + "   /><b> Has Watermark</b> ");
                     }
-
-                    //d.append("<br/>");
                     if (result[i].IsRelevent) {
                         tblcheckbox = tblcheckbox + "<tr><td><input type=" + 'checkbox runat=server' +
                             " id=" + 'cbk_relevent' + " checked  /></td><td><b>Is relevant</b>";
-
-                        //d.append("<input type=" + 'checkbox runat=server' + " id=" + 'cbk_relevent' + " checked /><b>Is relevant</b> ");
                     }
                     else {
                         tblcheckbox = tblcheckbox + "<tr><td><input type=" + 'checkbox runat=server' +
                             " id=" + 'cbk_relevent' + " /></td><td><b>Is relevant</b>";
-                        //d.append(" <input type=" + 'checkbox runat=server' + " id=" + 'cbk_relevent' + " /><b>Is relevant</b>");
                     }
-                    //d.append("<br/>");
+
                     if (result[i].IsDuplicate) {
                         tblcheckbox = tblcheckbox + "<tr><td><input type=" + 'checkbox runat=server' +
                             " id=" + 'chk_duplicate' + " checked  /></td><td><b>Is Duplicate</b>";
-                        //d.append("<input type=" + 'checkbox runat=server' + " id=" + 'chk_duplicate' + " checked  /><b>Is Duplicate</b> ");
+
                     }
                     else {
                         tblcheckbox = tblcheckbox + "<tr><td><input type=" + 'checkbox runat=server' +
                             " id=" + 'chk_duplicate' + " /></td><td><b>Is Duplicate</b>";
-                        //d.append("<input type=" + 'checkbox runat=server' + " id=" + 'chk_duplicate' + "  /><b>Is Duplicate</b>");
+
                     }
                     d.append("<br/>");
                     if (result[i].Media_Feedback != null) {
-                       tblcheckbox = tblcheckbox +"<tr> <td colspan='2'><b>Feedback</b>  : <textarea rows=" + '4' + " cols=" + '40' + "  id=" + 'txt_feedback' + " style='resize:none;border-radius:4px;' >" + result[i].Media_Feedback + "</textarea></td></tr>";
-                        //d.append("<tr> <td colspan='2'><b>Feedback</b>  : <textarea rows=" + '4' + " cols=" + '50' + "  id=" + 'txt_feedback' + " >" + result[i].Media_Feedback + "</textarea></td>");
+                        tblcheckbox = tblcheckbox + "<tr> <td colspan='2'><b>Feedback</b>  : <textarea rows=" + '4' + " cols=" + '40' + "  id=" + 'txt_feedback' + " style='resize:none;border-radius:4px;' >" + result[i].Media_Feedback + "</textarea></td></tr>";
+
                     }
                     else {
-                       tblcheckbox = tblcheckbox + "<tr> <td colspan='2'><b>Feedback</b>  : <textarea rows=" + '4' + " cols=" + '40' + "  id=" + 'txt_feedback' + " style='resize:none;border-radius:4px;' >" + '' + "</textarea></td></tr>";
+                        tblcheckbox = tblcheckbox + "<tr> <td colspan='2'><b>Feedback</b>  : <textarea rows=" + '4' + " cols=" + '40' + "  id=" + 'txt_feedback' + " style='resize:none;border-radius:4px;' >" + '' + "</textarea></td></tr>";
                     }
 
                     tblcheckbox = tblcheckbox + "</td></tr></tbody></table>";
 
                     d.append(tblcheckbox);
-
-                    // d.append("<p ><b>" + (i+1) + " Of "+ result.length+"</b></p>");
+                    //$('#ulRoomInfo').html(tblcheckbox);
                     d.append("<input type=" + 'hidden' + " id=" + 'hdn_activitymedia_id' + " value='" + result[i].Activity_Media_Id + "' />");
-
-
-
                     d.append("<br/>");
-
-
                     d.append("<div class='carousel-caption-imagedetails'/>");
-
                     capColDiv.append(d);
-
                     imgRowDiv.append(capColDiv);
                     div.append(imgRowDiv);
                     var imgRowCountDiv = $('<div class="row"/>');
@@ -243,6 +214,8 @@ padding-bottom: 30px;*/
 
 
                     $("#photolost").append(div);
+
+
                 }
             }
             if (imagereviewresult.length > 0) {
@@ -253,21 +226,38 @@ padding-bottom: 30px;*/
                 var td_close = "</td>";
                 var tr_close = "</tr>";
 
-                var tbltable = "<table class='table  table-striped table-bordered' style='width:80%'><tbody>"
+                var tbltable = "<table id='ImagePreviewTable' class='table  table-striped table-bordered' style='width:90%;margin:0px;'><thead><th class='col-sm-4'>Attribute Type</th><th class='col-sm-8'>Attribute Value</th></thead><tbody>"
                 captActive.empty();
                 captActive.append('<h4><b>Image Details -</b></h4>');
+
                 for (var i = 0; i < imagereviewresult.length; i++) {
                     if (imagereviewresult[i].Activity_Media_Id == ImageMediaId) {
                         tbltable = tbltable + tr + td + "<b>" + imagereviewresult[i].AttributeType + "</b>" + td_close;
                         tbltable = tbltable + td + imagereviewresult[i].AttributeValue + td_close + tr_close;
                     }
                 }
-                tbltable = tbltable + "</table>";
+                tbltable = tbltable + "</body></table>";
                 captActive.append(tbltable);
+                //$('#ImagePreview').html(tbltable);
+                if ($('#ImagePreviewTable').length > 0)
+                    $('#ImagePreviewTable').DataTable({
+                        "bPaginate": true,
+                        "bProcessing": true,
+                        "pageLength": 3,
+                        "searching": false,
+                        "bLengthChange": false,
+                        "bInfo": false,
+                        "pagingType": "full"
+                    });
+                
+                $(".dataTables_paginate").addClass("dataTables_paginate_css"); 
+                
 
             } else {
                 getMeta();
             }
+
+
             //getMeta();
         }
     }
@@ -280,7 +270,7 @@ padding-bottom: 30px;*/
             url: '/../../../../Service/ActivityMediaInfo.ashx?ActFlavID=' + ActFlavID,
             dataType: "json",
             success: function (result) {
-               
+
                 ImageAttribute = result.ImageResultReview;
                 renderImageDeatils(result.ImageResult, result.ImageResultReview);
 
@@ -290,7 +280,7 @@ padding-bottom: 30px;*/
     }
     // GET IMAGE DETAILS FROM SRC
     function getMeta() {
-        
+
         var captActive = $('.item.active').find('.carousel-caption').find('.carousel-caption-ImagePreview');
         var ImageMediaId = $("#photolost >.active >.row >.valuediv").find('#hdn_activitymedia_id').val();
         var found_Image = $.grep(ImageAttribute, function (v) {
@@ -302,8 +292,8 @@ padding-bottom: 30px;*/
             var tr = "<tr>";
             var td_close = "</td>";
             var tr_close = "</tr>";
-
-            var tbltable = "<table class='table  table-striped table-bordered' style='width:80%'><tbody>"
+            var table_id = 'ImagePreviewTable_' + ImageMediaId;
+            var tbltable = "<table id='"+table_id+"' class='table  table-striped table-bordered' style='width:90%;margin:0px;'><thead><th class='col-sm-4'>Attribute Type</th><th class='col-sm-8'>Attribute Value</th></thead><tbody>"
             captActive.empty();
             captActive.append('<h4><b>Image Details -</b></h4>');
             for (var i = 0; i < found_Image.length; i++) {
@@ -312,9 +302,26 @@ padding-bottom: 30px;*/
                 tbltable = tbltable + td + found_Image[i].AttributeValue + td_close + tr_close;
                 //}
             }
-            tbltable = tbltable + "</table>";
-            
+            tbltable = tbltable + "</tbody></table>";
+           
             captActive.append(tbltable);
+            //$('#ImagePreview').html(tbltable);
+            if ($('#'+table_id).length > 0) {
+               
+                $('#'+table_id).DataTable({                    
+                        "bPaginate": true,
+                        "bProcessing": true,
+                        "pageLength": 3,
+                        "searching": false,
+                        "bLengthChange": false,
+                         "bInfo": false,
+                         "pagingType": "full"
+                });
+            }
+            
+            $(".dataTables_paginate").addClass("dataTables_paginate_css"); 
+
+
         }
         else {
             var td = "<td>";
@@ -349,8 +356,6 @@ padding-bottom: 30px;*/
             //captActive.append("<p><b>Dimensions</b> : " + Naturalwidth + " x " + Naturalheight + " </p>");
             captActive.append("<br/>");
         }
-
-
 
 
 
