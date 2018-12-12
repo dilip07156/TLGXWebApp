@@ -330,6 +330,7 @@
     <Content Include="controls\businessentities\supplierStaticDataHandling.ascx" />
     <Content Include="controls\businessentities\supplierStaticDownloadData.ascx" />
     <Content Include="controls\businessentities\SupplierTaskLog.ascx" />
+    <Content Include="controls\businessentities\SupplierTaskCalender.ascx" />
     <Content Include="controls\geography\cityManager.ascx" />
     <Content Include="controls\geography\citySearchManager.ascx" />
     <Content Include="controls\geography\countryStateMgmt.ascx" />
@@ -503,42 +504,42 @@
     <None Include="Properties\PublishProfiles\TLGX_MDM_QAS_CI.pubxml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-    <None Include="Service References\MDMSVC\Arrays1.xsd">
+    <None Include="Service References\MDMSVC\Arrays.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\configuration91.svcinfo" />
     <None Include="Service References\MDMSVC\configuration.svcinfo" />
-    <None Include="Service References\MDMSVC\DataContracts.Admin1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Admin.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.DC_Address1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.DC_Address.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.FileTransfer1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.FileTransfer.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Mapping1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Mapping.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Masters1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Masters.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.ML1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.ML.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Pentaho1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Pentaho.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.Schedulers1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.Schedulers.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.STG1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.STG.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.UploadStaticData.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\DataContracts1.xsd">
+    <None Include="Service References\MDMSVC\DataContracts.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\MDMSVC\Reference.svcmap">
@@ -577,7 +578,8 @@
     <Content Include="staticdata\hotels\roomtype\manage.aspx" />
     <Content Include="staticdata\hotels\roomtype\search.aspx" />
     <Content Include="staticdata\manageSupplierImports.aspx" />
-    <Content Include="suppliers\SupplierSchedularTask.aspx" />
+    <Content Include="suppliers\SupplierScheduleTask.aspx" />
+    <Content Include="suppliers\SupplierTaskCalender.aspx" />
     <Content Include="suppliers\SupplierTaskManage.aspx" />
     <Content Include="TPDLLS\MultiLevelFormsBootstrapMenu.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1122,31 +1124,38 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Ranks.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service\GetScheduleTaskAssigned.ashx" />
-    <Content Include="Service\GetTaskLogs.ashx" />
-    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Supplier_Task_Logs.datasource">
+    <Content Include="Service\SupplierRoomTypeReset.ashx" />
+    <Content Include="Service\CheckExistingSupplierData.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Supplier_Schedule_RS.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service\AddUpdateMediaInfoReview.ashx" />
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Supplier_Task_Logs1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Supplier_Task_Notifications.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Service References\MDMSVC\service1.wsdl" />
-    <None Include="Service References\MDMSVC\service3.xsd">
+    <None Include="Service References\MDMSVC\service.wsdl" />
+    <None Include="Service References\MDMSVC\service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\service31.xsd">
+    <None Include="Service References\MDMSVC\service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\service32.xsd">
+    <None Include="Service References\MDMSVC\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\System.IO1.xsd">
+    <None Include="Service References\MDMSVC\System.IO.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\System.Net1.xsd">
+    <None Include="Service References\MDMSVC\System.Net.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MDMSVC\System1.xsd">
+    <None Include="Service References\MDMSVC\System.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Web.Debug.config">
@@ -1787,6 +1796,13 @@
     </Compile>
     <Compile Include="controls\businessentities\SupplierTaskLog.ascx.designer.cs">
       <DependentUpon>SupplierTaskLog.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskCalender.ascx.cs">
+      <DependentUpon>SupplierTaskCalender.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\businessentities\SupplierTaskCalender.ascx.designer.cs">
+      <DependentUpon>SupplierTaskCalender.ascx</DependentUpon>
     </Compile>
     <Compile Include="controls\geography\citySearchManager.ascx.cs">
       <DependentUpon>citySearchManager.ascx</DependentUpon>
@@ -2788,6 +2804,9 @@
     <Compile Include="Service\AddUpdateMappingDetails.ashx.cs">
       <DependentUpon>AddUpdateMappingDetails.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Service\AddUpdateMediaInfoReview.ashx.cs">
+      <DependentUpon>AddUpdateMediaInfoReview.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Service\AddUpdateNearByPlaces.ashx.cs">
       <DependentUpon>AddUpdateNearByPlaces.ashx</DependentUpon>
     </Compile>
@@ -3086,6 +3105,13 @@
     </Compile>
     <Compile Include="suppliers\SupplierTaskManage.aspx.designer.cs">
       <DependentUpon>SupplierTaskManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskCalender.aspx.cs">
+      <DependentUpon>SupplierTaskCalender.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="suppliers\SupplierTaskCalender.aspx.designer.cs">
+      <DependentUpon>SupplierTaskCalender.aspx</DependentUpon>
     </Compile>
     <Compile Include="UnAuthorized.aspx.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>

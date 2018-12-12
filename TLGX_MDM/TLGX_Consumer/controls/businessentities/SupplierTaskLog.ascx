@@ -1,12 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SupplierTaskLog.ascx.cs" Inherits="TLGX_Consumer.controls.businessentities.SupplierTaskLog" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <style type="text/css">
-    .AlgRgh
-    {
-    text-align:right;
-    font-family:Verdana, Arial, Helvetica, sans-serif;
+    .AlgRgh {
+        text-align: right;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
     }
-    
 </style>
 
 <%--<script src="../../Scripts/Cron/Moment.min.js"></script>
@@ -28,7 +26,7 @@
             document.getElementById("hdnPentahoid").value = pentahoid;
             getviewDetailsData(pentahoid);
             //start timer
-           // timer = setInterval(function () { myTimer() }, 3000);
+            // timer = setInterval(function () { myTimer() }, 3000);
 
         });
         //$('#moViewDetials').on('hidden.bs.modal', function () {
@@ -38,7 +36,7 @@
         //});
     }
 
-     function getviewDetailsData(pentahoid) {
+    function getviewDetailsData(pentahoid) {
         if (pentahoid != null && pentahoid != "") {
             $.ajax({
                 type: 'GET',
@@ -96,48 +94,48 @@
         $("#moFileUpload").modal('hide');
     }
 
-     function showlogModel(TaskId) {
-         $("#mologViewDetials").modal('show');
-         var Tasks = [];
+    function showlogModel(TaskId) {
+        $("#mologViewDetials").modal('show');
+        var Tasks = [];
 
-         $.ajax({
-                type: 'GET',
-                url: '../../../Service/GetTaskLogs.ashx?TaskId=' + TaskId,
-             dataType: "json",
-             async: false,
-             success: function (result) {
-                 
-                 if (result != null) {
-                        $("#tbllogsteps").empty();
-                        for (var i = 0; i < result.length; i++) {
-                            var a = result[i];
-                            var tr;
-                            tr = $('<tr/>');
-                            tr.append("<td>" + a.StatusMessage + "</td>");
-                            tr.append("<td>" + a.LogType + "</td>");
-                            tr.append("<td>" + a.Remarks + "</td>");
-                            tr.append("<td>" + convert(new Date(parseInt(a.CreateDate.replace("/Date(", "").replace(")/"))).toString()) + "</td>");
-                            $("#logsteps table").append(tr);
-                        }
+        $.ajax({
+            type: 'GET',
+            url: '../../../Service/GetTaskLogs.ashx?TaskId=' + TaskId,
+            dataType: "json",
+            async: false,
+            success: function (result) {
+
+                if (result != null) {
+                    $("#tbllogsteps").empty();
+                    for (var i = 0; i < result.length; i++) {
+                        var a = result[i];
+                        var tr;
+                        tr = $('<tr/>');
+                        tr.append("<td>" + a.StatusMessage + "</td>");
+                        tr.append("<td>" + a.LogType + "</td>");
+                        tr.append("<td>" + a.Remarks + "</td>");
+                        tr.append("<td>" + convert(new Date(parseInt(a.CreateDate.replace("/Date(", "").replace(")/"))).toString()) + "</td>");
+                        $("#logsteps table").append(tr);
                     }
-                    else {
+                }
+                else {
 
-                    }
-                },
-                error: function () {
-                },
-            });
+                }
+            },
+            error: function () {
+            },
+        });
 
-            
+
     }
 
     function convert(str) {
-        
-    var date = new Date(str),
-        mnth = ("0" + (date.getMonth()+1)).slice(-2),
-        day  = ("0" + date.getDate()).slice(-2);
-    return [ date.getFullYear(), mnth, day ].join("-");
-}
+
+        var date = new Date(str),
+            mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+            day = ("0" + date.getDate()).slice(-2);
+        return [date.getFullYear(), mnth, day].join("-");
+    }
 
 </script>
 
@@ -145,29 +143,20 @@
 <html lang="en">
 
 <head>
-    <%--<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">--%>
-    <title>
-
-    </title>
+    <title></title>
 </head>
 
 <body>
     <br>
     <div class="container">
-        <hr>
-        <h2>Main Navigation</h2>
-        <hr>
+        s
         <h1>Pending Static Data File Handling</h1>
         <br>
         <div class="card">
             <div class="card-header">
                 Search Tasks
-            </div>         
-                
+            </div>
+
             <%--<div class="card-body">
                 <div class="row">
                     <div class="col-6">
@@ -298,26 +287,26 @@
                             </div>
                         </div>
                     </div>
-                   
 
-            <br>
-            <div class="panel-body">
-            <div class="row">
-                <div class="col-4">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">page Size</label>
-                        <asp:DropDownList ID="ddlShowEntries" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
-                            <asp:ListItem Text="5" Value="5"></asp:ListItem>
-                            <asp:ListItem Text="10" Value="10"></asp:ListItem>
-                            <asp:ListItem Text="15" Value="15"></asp:ListItem>
-                            <asp:ListItem Text="20" Value="20"></asp:ListItem>
-                            <asp:ListItem Text="25" Value="25"></asp:ListItem>
-                        </asp:DropDownList>
+
+                    <br>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="exampleFormControlSelect1">page Size</label>
+                                    <asp:DropDownList ID="ddlShowEntries" runat="server" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlShowEntries_SelectedIndexChanged">
+                                        <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                                        <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                                        <asp:ListItem Text="15" Value="15"></asp:ListItem>
+                                        <asp:ListItem Text="20" Value="20"></asp:ListItem>
+                                        <asp:ListItem Text="25" Value="25"></asp:ListItem>
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-                </div>
-                    </ContentTemplate>
+                </ContentTemplate>
             </asp:UpdatePanel>
         </div>
 
@@ -329,196 +318,196 @@
                         <div class="panel-heading clearfix">
                             <h4 class="panel-title pull-left">
                                 <a data-toggle="collapse" data-parent="#accordionResult" href="#collapseSearchResult">Search Results (Total Count:
-                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>                           
+                                    <asp:Label ID="lblTotalCount" runat="server" Text="0"></asp:Label>)</a></h4>
                         </div>
                         <div id="msgAlert" runat="server" style="display: none;"></div>
-        <div id="collapseSearchResult" class="panel-collapse collapse in">
-            <div class="panel-body">
-                <asp:GridView ID="grdSupplierScheduleTask" runat="server" AllowPaging="True" AllowCustomPaging="true"  AutoGenerateColumns="False"
-                    EmptyDataText="No Data for search conditions" CssClass="table table-hover"
-                    OnPageIndexChanging="grdSupplierScheduleTask_PageIndexChanging" DataKeyNames="Suppllier_ID,LogType,Status,Pentahocall_id,ApiPath,APIStatus"
-                    OnRowCommand="grdSupplierScheduleTask_RowCommand" OnDataBound="grdSupplierScheduleTask_DataBound" OnRowDataBound="grdSupplierScheduleTask_RowDataBound">
-                    <Columns>
-                        <asp:BoundField DataField="SuppllierName" HeaderText="Supplier Name" SortExpression="SupplierName" />
-                        <asp:BoundField DataField="Entity" HeaderText="Entity" SortExpression="Entity" />
-                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
-                        <asp:BoundField DataField="ScheduledDate" HeaderText="Scheduled Date" SortExpression="ScheduledDate" />
-                        <asp:BoundField DataField="PendingFordays" HeaderText="Pending For Days" SortExpression="Status" />
-                        <asp:BoundField DataField="LogType" HeaderText="Job Type" SortExpression="SupplierName" />
+                        <div id="collapseSearchResult" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <asp:GridView ID="grdSupplierScheduleTask" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
+                                    EmptyDataText="No Data for search conditions" CssClass="table table-hover"
+                                    OnPageIndexChanging="grdSupplierScheduleTask_PageIndexChanging" DataKeyNames="Suppllier_ID,LogType,Status,Pentahocall_id,ApiPath,APIStatus"
+                                    OnRowCommand="grdSupplierScheduleTask_RowCommand" OnDataBound="grdSupplierScheduleTask_DataBound" OnRowDataBound="grdSupplierScheduleTask_RowDataBound">
+                                    <Columns>
+                                        <asp:BoundField DataField="SuppllierName" HeaderText="Supplier Name" SortExpression="SupplierName" />
+                                        <asp:BoundField DataField="Entity" HeaderText="Entity" SortExpression="Entity" />
+                                        <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                                        <asp:BoundField DataField="ScheduledDate" HeaderText="Scheduled Date" SortExpression="ScheduledDate" />
+                                        <asp:BoundField DataField="PendingFordays" HeaderText="Pending For Days" SortExpression="Status" />
+                                        <asp:BoundField DataField="LogType" HeaderText="Job Type" SortExpression="SupplierName" />
 
-                        <asp:TemplateField ShowHeader="true" HeaderText="View Logs" >
-                            <ItemTemplate>                               
-                                 <asp:LinkButton ID="btnlogs" runat="server" CausesValidation="false" CommandName="Upload" 
-                                     OnClientClick='<%# string.Format("return showlogModel(\"{0}\");", Eval("Task_Id")) %>'
-                                      CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
+                                        <asp:TemplateField ShowHeader="true" HeaderText="View Logs">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnlogs" runat="server" CausesValidation="false" CommandName="Upload"
+                                                    OnClientClick='<%# string.Format("return showlogModel(\"{0}\");", Eval("Task_Id")) %>'
+                                                    CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">View Logs</span>
-                                </asp:LinkButton>
-                                
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                                            
-                        <asp:TemplateField ShowHeader="true" HeaderText="Download Instruction" >
-                            <ItemTemplate>                               
-                                 <asp:LinkButton ID="btnDownload" runat="server" CausesValidation="false" CommandName="Upload" PostBackUrl="~/suppliers/Manage?Supplier_Id={0}&DownloadInfo=info"
-                                      CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
+                                                </asp:LinkButton>
+
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+
+                                        <asp:TemplateField ShowHeader="true" HeaderText="Download Instruction">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnDownload" runat="server" CausesValidation="false" CommandName="Upload" 
+                                                    CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">Download Instruction</span>
-                                </asp:LinkButton>
-                                <div id="download" style="text-align:center">
-                                        <asp:Label ID="lbldownload" runat="server" Text="API Call" Visible="false"></asp:Label>
-                                 </div>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="true" HeaderText="Upload File">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnupload" runat="server" CausesValidation="false" CommandName="Upload" 
-                                    OnClientClick= '<%# string.Format("return showFileUpload(\"{0}\", \"{1}\");", Eval("Suppllier_ID"), Eval("Entity")) %>'
-                                    CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
+                                                </asp:LinkButton>
+                                                <div id="download" style="text-align: center">
+                                                    <asp:Label ID="lbldownload" runat="server" Text="API Call" Visible="false"></asp:Label>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField ShowHeader="true" HeaderText="Upload File">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnupload" runat="server" CausesValidation="false" CommandName="Upload"
+                                                    OnClientClick='<%# string.Format("return showFileUpload(\"{0}\", \"{1}\");", Eval("Suppllier_ID"), Eval("Entity")) %>'
+                                                    CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">Upload File</span>
-                                </asp:LinkButton>
-                                <div id="download" style="text-align: center">
-                                    <asp:Label ID="lblUpload" runat="server" Text="API Call" Visible="false"></asp:Label>
-                                </div>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="true" HeaderText="Task Complete">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnTaskComp" runat="server" CausesValidation="false" CommandName="TaskComplete" CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
+                                                </asp:LinkButton>
+                                                <div id="download" style="text-align: center">
+                                                    <asp:Label ID="lblUpload" runat="server" Text="API Call" Visible="false"></asp:Label>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField ShowHeader="true" HeaderText="Task Complete">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnTaskComp" runat="server" CausesValidation="false" CommandName="TaskComplete" CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">Task Complete</span>
-                                </asp:LinkButton>
-                                <div id="download" style="text-align: center">
-                                    <asp:Label ID="lblTask" runat="server" Text="API Call" Visible="false"></asp:Label>
-                                </div>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField ShowHeader="true" HeaderText="View Detail">
-                            <ItemTemplate>
-                                <asp:LinkButton ID="btnDetail" runat="server" CausesValidation="false" CommandName="View"
-                                    OnClientClick='<%# string.Format("return showDetailsModal(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\");", Eval("Pentahocall_id"), Eval("SuppllierName"),Eval("Entity"),Eval("APIStatus"),Eval("ApiPath")) %>'
-                                    CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
+                                                </asp:LinkButton>
+                                                <div id="download" style="text-align: center">
+                                                    <asp:Label ID="lblTask" runat="server" Text="API Call" Visible="false"></asp:Label>
+                                                </div>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField ShowHeader="true" HeaderText="View Detail">
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="btnDetail" runat="server" CausesValidation="false" CommandName="View"
+                                                    OnClientClick='<%# string.Format("return showDetailsModal(\"{0}\", \"{1}\", \"{2}\", \"{3}\", \"{4}\");", Eval("Pentahocall_id"), Eval("SuppllierName"),Eval("Entity"),Eval("APIStatus"),Eval("ApiPath")) %>'
+                                                    CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">View Detail</span>
-                                </asp:LinkButton>
-                            </ItemTemplate>
-                        </asp:TemplateField>
+                                                </asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
 
-                    </Columns>
-                    <PagerStyle CssClass="pagination-ys" />
-                </asp:GridView>
-            </div>
-        </div>
-</div>
-                    </div>
-                </ContentTemplate>
-            </asp:UpdatePanel>
-
-    </div>
-    <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false" >
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title"><b>View Supplier API Progress Details </b></h4>
-                <br />
-                <div class="row">
-                    <div class="col-sm-3">
-                        <label class="col-form-label" for="txtSupplier">Supplier</label>
-                        <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-3">
-                        <label class="col-form-label " for="txtEntity">Entity</label>
-                        <%--<label id="lblEntity" class="form-control"></label>--%>
-                        <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-3">
-                        <label class="col-form-label">API Job Name</label>
-                        <asp:TextBox ID="txtPath" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
-                    </div>
-                    <div class="col-sm-3">
-                        <label class="col-form-label">Status</label>
-                        <asp:TextBox ID="txtStatus" CssClass="form-control" runat="server" value="" ReadOnly="true"></asp:TextBox>
+                                    </Columns>
+                                    <PagerStyle CssClass="pagination-ys" />
+                                </asp:GridView>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <input type="hidden" id="hdnPentahoid" name="hdnPentahoid" value="" />
-            <div class="modal-body modal-scroll">
-                <div id="steps">
-                    <table class="table  table-bordered border-collapse table-striped  table-fixed">
-                        <thead>
-                            <tr>
-                                <th>Stepname</th>
-                                <th>Copy</th>
-                                <th>Read</th>
-                                <th>Written</th>
-                                <th>Input</th>
-                                <th>Output</th>
-                                <th>Updated</th>
-                                <th>Rejected</th>
-                                <th>Errors</th>
-                                <th>Active</th>
-                                <th>Time</th>
-                                <th>Speed</th>
-                                <th>pr/in/out</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tblsteps">
-                        </tbody>
-                    </table>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+
+    </div>
+    <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"><b>View Supplier API Progress Details </b></h4>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <label class="col-form-label" for="txtSupplier">Supplier</label>
+                            <asp:TextBox ID="txtSupplier" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="col-form-label " for="txtEntity">Entity</label>
+                            <%--<label id="lblEntity" class="form-control"></label>--%>
+                            <asp:TextBox ID="txtEntity" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="col-form-label">API Job Name</label>
+                            <asp:TextBox ID="txtPath" CssClass="form-control" runat="server" ReadOnly="true"></asp:TextBox>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="col-form-label">Status</label>
+                            <asp:TextBox ID="txtStatus" CssClass="form-control" runat="server" value="" ReadOnly="true"></asp:TextBox>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                <input type="hidden" id="hdnPentahoid" name="hdnPentahoid" value="" />
+                <div class="modal-body modal-scroll">
+                    <div id="steps">
+                        <table class="table  table-bordered border-collapse table-striped  table-fixed">
+                            <thead>
+                                <tr>
+                                    <th>Stepname</th>
+                                    <th>Copy</th>
+                                    <th>Read</th>
+                                    <th>Written</th>
+                                    <th>Input</th>
+                                    <th>Output</th>
+                                    <th>Updated</th>
+                                    <th>Rejected</th>
+                                    <th>Errors</th>
+                                    <th>Active</th>
+                                    <th>Time</th>
+                                    <th>Speed</th>
+                                    <th>pr/in/out</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblsteps">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div class="modal fade" id="moFileUpload" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="panel-title">
-                            <h4 class="modal-title">File Upload</h4>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <iframe name="iframe_upload" class="col-md-12" src="~/staticdata/files/StaticFileupload.aspx" style="min-height: 500px;" frameborder="0" runat="server"></iframe>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="panel-title">
+                        <h4 class="modal-title">File Upload</h4>
                     </div>
                 </div>
-            </div>
-        </div>
-
-    <div class="modal fade" id="mologViewDetials" role="dialog" data-backdrop="static" data-keyboard="false" >
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            
-            <input type="hidden" id="hdnTaskid" name="hdnTaskid" value="" />
-            <div class="modal-body modal-scroll">
-                <div id="logsteps">
-                    <table class="table  table-bordered border-collapse table-striped  table-fixed">
-                        <thead>
-                            <tr>
-                                <th>StatusMessage</th>
-                                <th>LogType</th>
-                                <th>Remark</th>
-                                <th>CreateDate</th>                                
-                            </tr>
-                        </thead>
-                        <tbody id="tbllogsteps">
-                        </tbody>
-                    </table>
+                <div class="modal-body">
+                    <iframe name="iframe_upload" class="col-md-12" src="~/staticdata/files/StaticFileupload.aspx" style="min-height: 500px;" frameborder="0" runat="server"></iframe>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-            </div>
-
-            
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-</div>
 
-  
+    <div class="modal fade" id="mologViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <input type="hidden" id="hdnTaskid" name="hdnTaskid" value="" />
+                <div class="modal-body modal-scroll">
+                    <div id="logsteps">
+                        <table class="table  table-bordered border-collapse table-striped  table-fixed">
+                            <thead>
+                                <tr>
+                                    <th>StatusMessage</th>
+                                    <th>LogType</th>
+                                    <th>Remark</th>
+                                    <th>CreateDate</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbllogsteps">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 
 </html>
