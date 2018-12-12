@@ -1156,6 +1156,8 @@
     <Content Include="Service References\MDMSVC\TLGX_Consumer.MDMSVC.Supplier_Task_Logs1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service\GetScheduleTaskAssigned.ashx" />
+    <Content Include="Service\GetTaskLogs.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>
