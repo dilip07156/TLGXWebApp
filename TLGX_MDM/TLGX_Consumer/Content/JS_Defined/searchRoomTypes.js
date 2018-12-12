@@ -303,9 +303,9 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             //onchange = "ddlAttributeValueChange(this)
 
             //Construct mapped room list
-            //if (currentMappingStatus != "UNMAPPED") {
-            //    mappedRoomInfo += "<tr><td><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
-            //}
+            if (currentMappingStatus != "UNMAPPED") {
+                mappedRoomInfo += "<tr><td><label>" + result[i].RoomName + " : " + result[i].RoomCategory + " : " + currentMappingStatus + "</label></td></tr>";
+            }
 
             for (var j = 0; j < ddlStatusValues.length; j++) {
                 //don't allow user to select auto map
