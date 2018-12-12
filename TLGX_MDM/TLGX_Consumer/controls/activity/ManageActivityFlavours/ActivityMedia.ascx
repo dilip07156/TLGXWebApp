@@ -128,12 +128,12 @@ padding-bottom: 30px;*/
                     }
                     var imgRowDiv = $('<div class="row col-sm-12"/>');
 
-                    var imgColDiv = $('<div class="col-sm-9"/>');
+                    var imgColDiv = $('<div class="col-sm-9" style="overflow:auto;max-height:600px;max-height:600px;max-width:80%;"/>');
                     imgColDiv.append(" <img class='img-responsive' src= '" + result[i].Media_URL + "' alt=' Image Not Found'/>");
 
                     imgRowDiv.append(imgColDiv);
 
-                    var capColDiv = $('<div class="col-sm-3 valuediv" style="overflow:auto;max-height:400px;"/>');
+                    var capColDiv = $('<div class="col-sm-3 valuediv"/>');
                     var d = $("<div class='carousel-caption'/>");
                     d.append("<p><h5><b style='font-size:initial;'>Media Id:</b><strong style='font-size:initial;'>" + (result[i].MediaID == null ? "Not given by supplier" : result[i].MediaID) + "</strong></h5></p>");
                     d.append('<h4><b>Details by Supplier  - </b></h4>');
@@ -222,7 +222,7 @@ padding-bottom: 30px;*/
                     imgRowDiv.append(capColDiv);
                     div.append(imgRowDiv);
                     var imgRowCountDiv = $('<div class="row"/>');
-                    var imgCountDiv = $('<div class="col-sm-12" style="padding-right:30px;margin-top:10px; font-size: larger!important;"/>');
+                    var imgCountDiv = $('<div class="col-sm-12" style="padding-right:30px;margin-top:-25px; font-size: larger!important;"/>');
                     imgCountDiv.append("<p class='pull-right orange'><b>" + (i + 1) + " Of " + result.length + "</b></p>");
                     imgRowDiv.append(imgCountDiv);
                     div.append(imgRowCountDiv);
@@ -345,7 +345,7 @@ padding-bottom: 30px;*/
             var tr = "<tr>";
             var td_close = "</td>";
             var tr_close = "</tr>";
-            var tbltable = "<table class='table  table-striped table-bordered' style='width:80%'><tbody>"
+            var tbltable = "<table class='table  table-striped table-bordered' style='width:90%'><tbody>"
             var Naturalheight = $('.item.active').find('img').prop('naturalHeight');
             var Naturalwidth = $('.item.active').find('img').prop('naturalWidth');
             var captActive = $('.item.active').find('.carousel-caption').find('.carousel-caption-ImagePreview');
@@ -512,14 +512,17 @@ padding-bottom: 30px;*/
 
 <!--Start Image Gallery-->
 <div class="modal fade bs-example-modal-lg x-lg" tabindex="-1" role="dialog" aria-hidden="true" id="moImgGallery">
-    <div class="modal-dialog modal-lg x-lg  height60">
+    <div class="modal-dialog modal-lg x-lg">
         <div class="modal-content" style="width: auto;  overflow: hidden">
 
             <div class="modal-header">
                 <h4 class="modal-title">Image Details: <span>
                     <strong>Product ID:</strong></span>
                     <strong>
-                        <asp:Label ID="Product_Id" runat="server"></asp:Label></strong></h4>
+                        <asp:Label ID="Product_Id" runat="server"></asp:Label></strong>
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Close</button>
+                </h4>
+                     
             </div>
 
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" style="width: auto; overflow: hidden">
@@ -527,8 +530,6 @@ padding-bottom: 30px;*/
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner flex-container" id="photolost">
                     <!-- Dynamic Image Content from Ajax call -->
-
-
                 </div>
 
                 <!-- Controls left and right buttons-->
@@ -540,9 +541,9 @@ padding-bottom: 30px;*/
                 </a>
             </div>
 
-            <div class="modal-footer">
+            <%--<div class="modal-header">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+            </div>--%>
 
         </div>
     </div>
