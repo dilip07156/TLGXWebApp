@@ -16,6 +16,17 @@ $(document).ready(function () {
         });
 });
 
+function convertToDateStringFormat(str) {
+
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2),
+        hour = date.getHours(),
+        minute = date.getMinutes(),
+        second = date.getSeconds();
+    return [date.getFullYear(), mnth, day].join("-") + ' ' + [hour, minute, second].join(":");
+}
+
 function showOnlineSuggestionModal(controlval) {
     $('#lblForSupplierRoomTypeName').text($(controlval).parent().closest('td').prev().find('#lblSupplierRoomTypeName').text());
     $("#modalOnlineSuggestion").modal('show');
@@ -200,7 +211,9 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
     if (result != null) {
         var def = '<table id="tblTLGXRoomInfo" runat="server" class="table table-responsive table-hover table-striped table-bordered"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn" style="display: none;"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">MDM Room Name</th> <th class="col-md-2">MDM Room Category</th>';
-        def = def + '<th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
+        def = def + '<th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th>';
+        def = def + '<th class="col-md-1">EditUser</th><th class="col-md-1">EditDate</th>';
+        def = def + '<th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -208,6 +221,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
         var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
         var td1 = '<td class="col-md-1">';
+        var tdBreakAll = '<td class="col-md-1" style="word-wrap:  break-all;">';
         var tdCheckbox = '<td class="col-md-1 CheckboxColumn" style="display: none;">';
         //var td21 = '<td class="col-md-2">';
 
@@ -255,6 +269,8 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         var hdnAccommodation_RoomInfo_Id = '<input type="hidden" id="custId" name="custId" value="">';
         var hiddentd = '<td style="visibility:hidden" class="divOne">id2</td>';
         var currentMappingStatus = '';
+        var CurrentEditUser = '';
+        var CurrentEditDate = '';
 
         var mappedRoomInfo = "<tbody>";
 
@@ -274,9 +290,13 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
             if (new Date(parseInt(result[i].SystemEditDate.replace('/Date(', ''))) > new Date(parseInt(result[i].UserEditDate.replace('/Date(', '')))) {
                 currentMappingStatus = result[i].SystemMappingStatus;
+                CurrentEditUser = result[i].SystemEditUser;
+                CurrentEditDate = result[i].SystemEditDate;
             }
             else {
                 currentMappingStatus = result[i].UserMappingStatus;
+                CurrentEditUser = result[i].EditUser;
+                CurrentEditDate = result[i].UserEditDate;
             }
 
             var ddlStatusDetails = '<select id = ddlAttributeValues_' + result[i].Accommodation_RoomInfo_Id + '>';
@@ -304,6 +324,8 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             ddlStatusDetails += '</select>';
 
             li = li + td1 + '<label style="display:none">' + currentMappingStatus + '</label>' + ddlStatusDetails + tdc;
+            li = li + tdBreakAll + CurrentEditUser + tdc;
+            li = li + td1 + convertToDateStringFormat(new Date(parseInt(CurrentEditDate.replace("/Date(", "").replace(")/"))).toString()) + tdc;
             li = li + lic1 + acco_SupplierRoomTypeMapping_Id + tdc;
             li = li + lic2 + acco_id + tdc;
             li = li + lic3 + result[i].Accommodation_SupplierRoomTypeMapping_Value_Id + tdc;

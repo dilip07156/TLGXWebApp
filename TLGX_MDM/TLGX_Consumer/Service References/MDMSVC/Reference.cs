@@ -14923,6 +14923,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string BedTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EditUserField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string IsSmokingField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -14942,6 +14945,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> SystemEditDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemEditUserField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string SystemMappingStatusField;
@@ -15000,6 +15006,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.BedTypeField, value) != true)) {
                     this.BedTypeField = value;
                     this.RaisePropertyChanged("BedType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EditUser {
+            get {
+                return this.EditUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EditUserField, value) != true)) {
+                    this.EditUserField = value;
+                    this.RaisePropertyChanged("EditUser");
                 }
             }
         }
@@ -15091,6 +15110,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.SystemEditDateField.Equals(value) != true)) {
                     this.SystemEditDateField = value;
                     this.RaisePropertyChanged("SystemEditDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string SystemEditUser {
+            get {
+                return this.SystemEditUserField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemEditUserField, value) != true)) {
+                    this.SystemEditUserField = value;
+                    this.RaisePropertyChanged("SystemEditUser");
                 }
             }
         }
