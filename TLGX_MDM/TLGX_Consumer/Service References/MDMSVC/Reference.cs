@@ -8593,6 +8593,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Media_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Media[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Media))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaReview))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions))]
@@ -8654,6 +8655,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
@@ -9321,6 +9324,7 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Media_Search_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Media[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Media))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaReview))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions_RQ))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions))]
@@ -9382,6 +9386,8 @@ namespace TLGX_Consumer.MDMSVC {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributes))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(object[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Guid[]))]
@@ -43429,6 +43435,9 @@ namespace TLGX_Consumer.MDMSVC {
         private string CategoryField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CommonProductNameSubType_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> Create_DateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -43450,6 +43459,15 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Nullable<bool> IsActiveField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsDuplicateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsReleventField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsWaterMarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Legacy_Product_IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -43466,6 +43484,9 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Media_CaptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Media_FeedbackField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<int> Media_HeightField;
@@ -43555,6 +43576,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.CategoryField, value) != true)) {
                     this.CategoryField = value;
                     this.RaisePropertyChanged("Category");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CommonProductNameSubType_Id {
+            get {
+                return this.CommonProductNameSubType_IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CommonProductNameSubType_IdField, value) != true)) {
+                    this.CommonProductNameSubType_IdField = value;
+                    this.RaisePropertyChanged("CommonProductNameSubType_Id");
                 }
             }
         }
@@ -43651,6 +43685,45 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsDuplicate {
+            get {
+                return this.IsDuplicateField;
+            }
+            set {
+                if ((this.IsDuplicateField.Equals(value) != true)) {
+                    this.IsDuplicateField = value;
+                    this.RaisePropertyChanged("IsDuplicate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsRelevent {
+            get {
+                return this.IsReleventField;
+            }
+            set {
+                if ((this.IsReleventField.Equals(value) != true)) {
+                    this.IsReleventField = value;
+                    this.RaisePropertyChanged("IsRelevent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsWaterMark {
+            get {
+                return this.IsWaterMarkField;
+            }
+            set {
+                if ((this.IsWaterMarkField.Equals(value) != true)) {
+                    this.IsWaterMarkField = value;
+                    this.RaisePropertyChanged("IsWaterMark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<int> Legacy_Product_Id {
             get {
                 return this.Legacy_Product_IdField;
@@ -43724,6 +43797,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((object.ReferenceEquals(this.Media_CaptionField, value) != true)) {
                     this.Media_CaptionField = value;
                     this.RaisePropertyChanged("Media_Caption");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Media_Feedback {
+            get {
+                return this.Media_FeedbackField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Media_FeedbackField, value) != true)) {
+                    this.Media_FeedbackField = value;
+                    this.RaisePropertyChanged("Media_Feedback");
                 }
             }
         }
@@ -43854,6 +43940,115 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.ValidToField.Equals(value) != true)) {
                     this.ValidToField = value;
                     this.RaisePropertyChanged("ValidTo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_MediaReview", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_MediaReview : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_Media_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsDuplicateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsReleventField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> IsWaterMarkField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Media_ReviewFeedbackField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_Media_Id {
+            get {
+                return this.Activity_Media_IdField;
+            }
+            set {
+                if ((this.Activity_Media_IdField.Equals(value) != true)) {
+                    this.Activity_Media_IdField = value;
+                    this.RaisePropertyChanged("Activity_Media_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsDuplicate {
+            get {
+                return this.IsDuplicateField;
+            }
+            set {
+                if ((this.IsDuplicateField.Equals(value) != true)) {
+                    this.IsDuplicateField = value;
+                    this.RaisePropertyChanged("IsDuplicate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsRelevent {
+            get {
+                return this.IsReleventField;
+            }
+            set {
+                if ((this.IsReleventField.Equals(value) != true)) {
+                    this.IsReleventField = value;
+                    this.RaisePropertyChanged("IsRelevent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> IsWaterMark {
+            get {
+                return this.IsWaterMarkField;
+            }
+            set {
+                if ((this.IsWaterMarkField.Equals(value) != true)) {
+                    this.IsWaterMarkField = value;
+                    this.RaisePropertyChanged("IsWaterMark");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Media_ReviewFeedback {
+            get {
+                return this.Media_ReviewFeedbackField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Media_ReviewFeedbackField, value) != true)) {
+                    this.Media_ReviewFeedbackField = value;
+                    this.RaisePropertyChanged("Media_ReviewFeedback");
                 }
             }
         }
@@ -54553,6 +54748,99 @@ namespace TLGX_Consumer.MDMSVC {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DC_Activity_MediaAttributesForImageReview", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.Masters")]
+    [System.SerializableAttribute()]
+    public partial class DC_Activity_MediaAttributesForImageReview : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Guid Activity_MediaAttributes_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> Activity_Media_IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AttributeTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AttributeValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Guid Activity_MediaAttributes_Id {
+            get {
+                return this.Activity_MediaAttributes_IdField;
+            }
+            set {
+                if ((this.Activity_MediaAttributes_IdField.Equals(value) != true)) {
+                    this.Activity_MediaAttributes_IdField = value;
+                    this.RaisePropertyChanged("Activity_MediaAttributes_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.Guid> Activity_Media_Id {
+            get {
+                return this.Activity_Media_IdField;
+            }
+            set {
+                if ((this.Activity_Media_IdField.Equals(value) != true)) {
+                    this.Activity_Media_IdField = value;
+                    this.RaisePropertyChanged("Activity_Media_Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AttributeType {
+            get {
+                return this.AttributeTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttributeTypeField, value) != true)) {
+                    this.AttributeTypeField = value;
+                    this.RaisePropertyChanged("AttributeType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string AttributeValue {
+            get {
+                return this.AttributeValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttributeValueField, value) != true)) {
+                    this.AttributeValueField = value;
+                    this.RaisePropertyChanged("AttributeValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DC_Country_State_City_Area_Location", Namespace="http://schemas.datacontract.org/2004/07/DataContracts.DC_Address")]
     [System.SerializableAttribute()]
     public partial class DC_Country_State_City_Area_Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -58379,6 +58667,13 @@ namespace TLGX_Consumer.MDMSVC {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityMedia", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityMediaResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityMediaAsync(TLGX_Consumer.MDMSVC.DC_Activity_Media RQ);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityMediaReview", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityMediaReviewResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/AddUpdateActivityMediaReviewDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityMediaReview(TLGX_Consumer.MDMSVC.DC_Activity_MediaReview RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/AddUpdateActivityMediaReview", ReplyAction="http://tempuri.org/IActivity/AddUpdateActivityMediaReviewResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityMediaReviewAsync(TLGX_Consumer.MDMSVC.DC_Activity_MediaReview RQ);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityInclusions", ReplyAction="http://tempuri.org/IActivity/GetActivityInclusionsResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityInclusionsDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
         TLGX_Consumer.MDMSVC.DC_Activity_Inclusions[] GetActivityInclusions(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions_RQ RQ);
@@ -58672,6 +58967,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityMediaForAttributes", ReplyAction="http://tempuri.org/IActivity/GetActivityMediaForAttributesResponse")]
         System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]> GetActivityMediaForAttributesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityMediaAttributesForImageReview", ReplyAction="http://tempuri.org/IActivity/GetActivityMediaAttributesForImageReviewResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IActivity/GetActivityMediaAttributesForImageReviewDC_ErrorStat" +
+            "usFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
+        TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview[] GetActivityMediaAttributesForImageReview(TLGX_Consumer.MDMSVC.DC_Activity_Media_Search_RQ RQ);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IActivity/GetActivityMediaAttributesForImageReview", ReplyAction="http://tempuri.org/IActivity/GetActivityMediaAttributesForImageReviewResponse")]
+        System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview[]> GetActivityMediaAttributesForImageReviewAsync(TLGX_Consumer.MDMSVC.DC_Activity_Media_Search_RQ RQ);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFileTransfer/UploadFile", ReplyAction="http://tempuri.org/IFileTransfer/UploadFileResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(TLGX_Consumer.MDMSVC.DC_ErrorStatus), Action="http://tempuri.org/IFileTransfer/UploadFileDC_ErrorStatusFault", Name="DC_ErrorStatus", Namespace="http://schemas.datacontract.org/2004/07/DataContracts")]
@@ -61558,6 +61861,14 @@ namespace TLGX_Consumer.MDMSVC {
             return base.Channel.AddUpdateActivityMediaAsync(RQ);
         }
         
+        public TLGX_Consumer.MDMSVC.DC_Message AddUpdateActivityMediaReview(TLGX_Consumer.MDMSVC.DC_Activity_MediaReview RQ) {
+            return base.Channel.AddUpdateActivityMediaReview(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Message> AddUpdateActivityMediaReviewAsync(TLGX_Consumer.MDMSVC.DC_Activity_MediaReview RQ) {
+            return base.Channel.AddUpdateActivityMediaReviewAsync(RQ);
+        }
+        
         public TLGX_Consumer.MDMSVC.DC_Activity_Inclusions[] GetActivityInclusions(TLGX_Consumer.MDMSVC.DC_Activity_Inclusions_RQ RQ) {
             return base.Channel.GetActivityInclusions(RQ);
         }
@@ -61884,6 +62195,14 @@ namespace TLGX_Consumer.MDMSVC {
         
         public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.Activity_MediaDetailsForAttribute[]> GetActivityMediaForAttributesAsync() {
             return base.Channel.GetActivityMediaForAttributesAsync();
+        }
+        
+        public TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview[] GetActivityMediaAttributesForImageReview(TLGX_Consumer.MDMSVC.DC_Activity_Media_Search_RQ RQ) {
+            return base.Channel.GetActivityMediaAttributesForImageReview(RQ);
+        }
+        
+        public System.Threading.Tasks.Task<TLGX_Consumer.MDMSVC.DC_Activity_MediaAttributesForImageReview[]> GetActivityMediaAttributesForImageReviewAsync(TLGX_Consumer.MDMSVC.DC_Activity_Media_Search_RQ RQ) {
+            return base.Channel.GetActivityMediaAttributesForImageReviewAsync(RQ);
         }
         
         public TLGX_Consumer.MDMSVC.DC_FileUploadResponse UploadFile(TLGX_Consumer.MDMSVC.DC_RemoteFileInfo request) {
