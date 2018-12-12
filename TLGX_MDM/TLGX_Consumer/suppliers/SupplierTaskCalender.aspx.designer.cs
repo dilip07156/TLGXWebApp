@@ -13,12 +13,12 @@ namespace TLGX_Consumer.suppliers {
     public partial class SupplierTaskCalender {
         
         /// <summary>
-        /// SupplierTaskCalender control.
+        /// oSupplierTaskCalender control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::TLGX_Consumer.controls.businessentities.SupplierTaskCalender SupplierTaskCalender;
+        protected global::TLGX_Consumer.controls.businessentities.SupplierTaskCalender oSupplierTaskCalender;
     }
 }

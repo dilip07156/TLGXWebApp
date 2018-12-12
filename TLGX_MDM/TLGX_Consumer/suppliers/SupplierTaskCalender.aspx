@@ -6,5 +6,5 @@
     <div class="container">
         <h1 class="page-header">Supplier Search</h1>
     </div>
-    <uc1:SupplierTaskCalender runat="server" ID="SupplierTaskCalender" />
+    <uc1:SupplierTaskCalender runat="server" ID="oSupplierTaskCalender" />
 </asp:Content
