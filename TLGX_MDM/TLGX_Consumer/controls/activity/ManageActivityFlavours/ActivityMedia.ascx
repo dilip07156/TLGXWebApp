@@ -61,6 +61,13 @@ padding-bottom: 30px;*/
     .pagination a {
   border: 1px solid #ddd; /* Gray */
 }
+    .height60 {
+    height: 80%;
+}
+.height50 {
+    height: 50%;
+}
+
 </style>
 
 <script>
@@ -110,8 +117,8 @@ padding-bottom: 30px;*/
 
                     $('#<%=Product_Id.ClientID %>').text(result[i].CommonProductNameSubType_Id);
                     // $('#MainContent_ActivityMedia_hdn_activitymedia_id').val(result[i].Activity_Media_Id);                    
-                    var divcontrol = '<div class="item"/>';
-                    var divcontrolactive = '<div class="item active"/>';
+                    var divcontrol = '<div class="item" style="width:98%;"/>';
+                    var divcontrolactive = '<div class="item active" style="width:98%;"/>';
                     var div = null;
                     if (i == 0) {
                         div = $(divcontrolactive);
@@ -119,14 +126,14 @@ padding-bottom: 30px;*/
                     else {
                         div = $(divcontrol);
                     }
-                    var imgRowDiv = $('<div class="row"/>');
+                    var imgRowDiv = $('<div class="row col-sm-12"/>');
 
-                    var imgColDiv = $('<div class="col-sm-9" style="padding: 0px!important;"/>');
+                    var imgColDiv = $('<div class="col-sm-9"/>');
                     imgColDiv.append(" <img class='img-responsive' src= '" + result[i].Media_URL + "' alt=' Image Not Found'/>");
 
                     imgRowDiv.append(imgColDiv);
 
-                    var capColDiv = $('<div class="col-sm-3 valuediv"/>');
+                    var capColDiv = $('<div class="col-sm-3 valuediv" style="overflow:auto;max-height:400px;"/>');
                     var d = $("<div class='carousel-caption'/>");
                     d.append("<p><h5><b style='font-size:initial;'>Media Id:</b><strong style='font-size:initial;'>" + (result[i].MediaID == null ? "Not given by supplier" : result[i].MediaID) + "</strong></h5></p>");
                     d.append('<h4><b>Details by Supplier  - </b></h4>');
@@ -134,7 +141,7 @@ padding-bottom: 30px;*/
                     var tr = "<tr>";
                     var td_close = "</td>";
                     var tr_close = "</tr>";
-                    var tbltable = "<table class='table table-striped table-bordered' style='width:80%'><tbody>"
+                    var tbltable = "<table class='table table-striped table-bordered' style='width:90%'><tbody>"
                     tbltable = tbltable + '<th>Attribute Type</th><th>Attribute Value</th>'
                     if (result[i].Media_Caption != null) {
                         tbltable = tbltable + tr + td + '<b>Caption</b>' + td_close;
@@ -251,7 +258,7 @@ padding-bottom: 30px;*/
                     $('#ImagePreviewTable').DataTable({
                         "bPaginate": true,
                         "bProcessing": true,
-                        "pageLength": 3,
+                        "pageLength": 5,
                         "searching": false,
                         "bLengthChange": false,
                         "bInfo": false,
@@ -321,7 +328,7 @@ padding-bottom: 30px;*/
                 $('#'+table_id).DataTable({                    
                         "bPaginate": true,
                         "bProcessing": true,
-                        "pageLength": 3,
+                        "pageLength": 5,
                         "searching": false,
                         "bLengthChange": false,
                          "bInfo": false,
@@ -505,8 +512,8 @@ padding-bottom: 30px;*/
 
 <!--Start Image Gallery-->
 <div class="modal fade bs-example-modal-lg x-lg" tabindex="-1" role="dialog" aria-hidden="true" id="moImgGallery">
-    <div class="modal-dialog modal-lg x-lg">
-        <div class="modal-content" style="width: auto; min-height: 600px; overflow: hidden">
+    <div class="modal-dialog modal-lg x-lg  height60">
+        <div class="modal-content" style="width: auto;  overflow: hidden">
 
             <div class="modal-header">
                 <h4 class="modal-title">Image Details: <span>
@@ -515,7 +522,7 @@ padding-bottom: 30px;*/
                         <asp:Label ID="Product_Id" runat="server"></asp:Label></strong></h4>
             </div>
 
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" style="width: auto; min-height: 400px; overflow: hidden">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false" style="width: auto; overflow: hidden">
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner flex-container" id="photolost">
