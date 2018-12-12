@@ -335,7 +335,8 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             li = li + lic4 + currentMappingStatus + tdc;
             li = li + tdBreakAll + CurrentEditUser + tdc;
             li = li + td1 + convertToDateStringFormat(new Date(parseInt(CurrentEditDate.replace("/Date(", "").replace(")/"))).toString()) + tdc;
-            li = li + + "</tr>";
+            li = li + td1 + tdc;
+            li = li + "</tr>";
         }
 
         li = li + licClose;
@@ -355,7 +356,6 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
                 }
             }
         });
-
         hideLoadingImage();
         $('#ulRoomInfo').html(li);
         if ($('#tblTLGXRoomInfo').length > 0)
