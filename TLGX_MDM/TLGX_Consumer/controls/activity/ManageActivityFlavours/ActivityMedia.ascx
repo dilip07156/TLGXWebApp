@@ -128,7 +128,7 @@ padding-bottom: 30px;*/
                     }
                     var imgRowDiv = $('<div class="row col-sm-12"/>');
 
-                    var imgColDiv = $('<div class="col-sm-9"/>');
+                    var imgColDiv = $('<div class="col-sm-9" style="overflow:auto;max-height:600px;max-height:600px;max-width:80%;"/>');
                     imgColDiv.append(" <img class='img-responsive' src= '" + result[i].Media_URL + "' alt=' Image Not Found'/>");
 
                     imgRowDiv.append(imgColDiv);
