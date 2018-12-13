@@ -15,7 +15,7 @@ namespace TLGX_Consumer.controls.businessentities
         MasterDataSVCs _objMasterSVC = new MasterDataSVCs();
         MasterDataSVCs _objMaster = new MasterDataSVCs();
         ScheduleDataSVCs _objScheduleDataSVCs = new ScheduleDataSVCs();
-        string RedirectFromAlert = string.Empty;
+        string Notification = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -25,10 +25,10 @@ namespace TLGX_Consumer.controls.businessentities
                 fillentities();
                 if (Request.QueryString.Count > 1)
                 {
-                    RedirectFromAlert = Request.QueryString["RedirectFromAlert"].ToString();
+                    Notification = Request.QueryString["Notification"].ToString();
                     
                 }
-                fillgriddata(RedirectFromAlert,0,0);
+                fillgriddata(Notification, 0,0);
             }
         }
 
@@ -57,20 +57,20 @@ namespace TLGX_Consumer.controls.businessentities
 
         protected void btnSearch_Click(object sender, EventArgs args)
         {
-            fillgriddata(RedirectFromAlert,0,0);
+            fillgriddata(Notification, 0,0);
         }
 
-        private void fillgriddata(string RedirectFromAlert,int PageIndex,int PageSize)
+        private void fillgriddata(string Notification, int PageIndex,int PageSize)
         {
             Guid selSupplier_ID = Guid.Empty;
             Guid selCountry_ID = Guid.Empty;
             string strUserName = System.Web.HttpContext.Current.User.Identity.Name;
             MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
             RQ.UserName = System.Web.HttpContext.Current.User.Identity.Name;
-            string Notification = Request.QueryString["Notification"].ToString();
+            //string Notification = Request.QueryString["Notification"].ToString();
             if (Notification != string.Empty)
                 RQ.Notification = Notification;
-                RQ.RedirectFrom = RedirectFromAlert;
+                //RQ.RedirectFrom = RedirectFromAlert;
             if (txtFrom.Text != string.Empty)
 
                 RQ.FromDate = DateTime.ParseExact(txtFrom.Text, "dd/MM/yyyy", null); // DateTime.ParseExact(txtFrom.Text.Trim(), "yyyy/MM/dd", System.Globalization.CultureInfo.InvariantCulture);// Convert.ToDateTime(txtFrom.Text.ToString("yyyy-MM-dd"));
@@ -149,7 +149,7 @@ namespace TLGX_Consumer.controls.businessentities
                 Label lblUpload = e.Row.FindControl("lblUpload") as Label;
                 Label lblTask = e.Row.FindControl("lblTask") as Label;
 
-                btnDownload.PostBackUrl = string.Format("~/suppliers/Manage?Supplier_Id={0}&DownloadInfo=info", myGridView.DataKeys[index].Values[0]);
+                //btnDownload.PostBackUrl = string.Format("~/suppliers/Manage?Supplier_Id={0}&DownloadInfo=info", myGridView.DataKeys[index].Values[0]);
                 if (Status == "Completed")
                 {
                     e.Row.CssClass = "alert alert-success";
@@ -254,12 +254,27 @@ namespace TLGX_Consumer.controls.businessentities
                 
         private void LoadDownloadData(int pagesize, int pageno)
         {
-            fillgriddata(RedirectFromAlert,pageno,pagesize);
+            fillgriddata(Notification, pageno,pagesize);
         }
 
         protected void grdSupplierScheduleTask_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
+
+            if (e.CommandName.ToString() == "Download")
+            {
+                GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);
+                int index = row.RowIndex;
+
+                MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
+                Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
+
+                
+                supplierStaticDownloadData.mySupplier_Id = (Guid)this.grdSupplierScheduleTask.DataKeys[index]["Suppllier_ID"];
+                //supplierStaticDownloadData.BindData();
+                ScriptManager.RegisterStartupScript((Control)grdSupplierScheduleTask, ((Control)grdSupplierScheduleTask).GetType(), "Pop" + index.ToString(), "showInstruction();", true);
+
+
+            }
             if (e.CommandName.ToString() == "TaskComplete")
             {
                 GridViewRow row = (GridViewRow)(((LinkButton)e.CommandSource).NamingContainer);

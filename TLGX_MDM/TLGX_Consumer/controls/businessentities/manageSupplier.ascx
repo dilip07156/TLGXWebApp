@@ -305,13 +305,13 @@
 <script type="text/javascript">
     $(document).ready(function () {
         getChartData();
-        var DownloadInfo = $('<%=Request.QueryString["DownloadInfo"]%>');
-        if (DownloadInfo != null) {
-            $('#ShowSupplierStatusChart').removeClass('active');
-            $('#ShowSupplierStaticDownloadData').addClass('active');
-            $('ul#someList li:first').removeClass('active');
-            $('ul#someList li:nth-child(4)').addClass('active');
-        }
+        <%--var DownloadInfo = $('<%=Request.QueryString["DownloadInfo"]%>');
+        if (DownloadInfo != null) {--%>
+           // $('#ShowSupplierStatusChart').removeClass('active');
+        $('#ShowSupplierStatusChart').addClass('active');
+        $('ul#someList li:first').addClass('active');
+          //  $('ul#someList li:nth-child(4)').addClass('active');
+        //}
     });
 </script>
 

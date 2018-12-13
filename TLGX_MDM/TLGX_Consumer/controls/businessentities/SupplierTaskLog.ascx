@@ -1,10 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SupplierTaskLog.ascx.cs" Inherits="TLGX_Consumer.controls.businessentities.SupplierTaskLog" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<%@ Register Src="~/controls/businessentities/supplierStaticDownloadData.ascx" TagPrefix="uc1" TagName="supplierStaticDownloadData" %>
+
 <style type="text/css">
     .AlgRgh {
         text-align: right;
         font-family: Verdana, Arial, Helvetica, sans-serif;
     }
+    .x-lg {
+          width: 80%;          
+        }
 </style>
 
 <%--<script src="../../Scripts/Cron/Moment.min.js"></script>
@@ -89,6 +94,12 @@
         $('iframe').prop('src', url);
         $("#moFileUpload").modal('show');
     }
+    
+    function showInstruction() {       
+        //var url = "/suppliers/SupplierStaticDownloadData.aspx?Supplier_Id=" + suppilerid;       
+        //$('iframe').prop('src', url);
+        $("#moDownloadInstruction").modal('show');
+    }
 
     function closeFileUpload() {
         $("#moFileUpload").modal('hide');
@@ -148,8 +159,7 @@
 
 <body>
     <br>
-    <div class="container">
-        s
+    <div class="container">       
         <h1>Pending Static Data File Handling</h1>
         <br>
         <div class="card">
@@ -348,7 +358,7 @@
 
                                         <asp:TemplateField ShowHeader="true" HeaderText="Download Instruction">
                                             <ItemTemplate>
-                                                <asp:LinkButton ID="btnDownload" runat="server" CausesValidation="false" CommandName="Upload" 
+                                                <asp:LinkButton ID="btnDownload" runat="server" CausesValidation="false" CommandName="Download"                                                     
                                                     CommandArgument='<%#Bind("Task_Id") %>' CssClass="btn btn-default" Enabled="true">
                                             <span aria-hidden="true">Download Instruction</span>
                                                 </asp:LinkButton>
@@ -475,7 +485,31 @@
                 </div>
             </div>
         </div>
+    </div>    
+
+    <div class="modal fade" id="moDownloadInstruction" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg x-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="panel-heading">
+                    <h4 class="modal-title">Download Instruction</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <asp:UpdatePanel ID="UpdProductMapModal" runat="server">
+                    <ContentTemplate>
+                        <uc1:supplierStaticDownloadData runat="server" ID="supplierStaticDownloadData" />
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
+</div>
 
     <div class="modal fade" id="mologViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">

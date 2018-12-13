@@ -20,7 +20,10 @@ namespace TLGX_Consumer.controls.businessentities
         {
             if (!IsPostBack)
             {
-                mySupplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]);
+                if (Request.QueryString.Count > 0)
+                {
+                    mySupplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]);
+                }
                 LoadDownloadData(Convert.ToInt32(ddlShowEntries.SelectedItem.Text), 0);
             }
         }
