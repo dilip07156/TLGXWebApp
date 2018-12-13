@@ -53,11 +53,11 @@
     </style>
     <script type="text/javascript">
         function showLoadingImage() {
-        $('#loading').show();
-    }
-    function hideLoadingImage() {
-        $('#loading').hide();
-    }
+            $('#loading').show();
+        }
+        function hideLoadingImage() {
+            $('#loading').hide();
+        }
         var a = '';
         //handling post back - binding data again
         var prm = Sys.WebForms.PageRequestManager.getInstance();
@@ -172,7 +172,7 @@
             showLoadingImage();
             var sid = $('#MainContent_ddlSupplierName').val();
             var ProductCategory = $('#MainContent_ddlProductCategory').val();
-            var IsMDM ="false";
+            var IsMDM = "false";
             //var IsMDM = $("#IsMDM").is(":checked") ? "true" : "false";
             var PriorityId = "0";
             if (sid == '0') {
@@ -410,7 +410,7 @@
                     }
 
                     //if (result[0].MappingStatsForSuppliers.length > 0) {
-                        getAllSupplierData(result[0].MappingStatsForSuppliers);
+                    getAllSupplierData(result[0].MappingStatsForSuppliers);
                     //}
                     hideLoadingImage();
                 },
@@ -427,7 +427,7 @@
             var allproductArray = [];
             var allactivityArray = [];
             var allhotelroomArray = [];
-            if (result != null){
+            if (result != null) {
                 var inodes = 0;
                 for (; inodes < result.length; inodes++) {
                     if (result[inodes].Mappingfor == "Country") {
@@ -650,331 +650,336 @@
     <script src="../Scripts/ChartJS/raphael-min.js"></script>
     <script src="../Scripts/ChartJS/morris.min.js"></script>
     <script src="../Scripts/ChartJS/xepOnline.jqPlugin.008.js"></script>
-    <div id="loading" style="display:none;" role="status" aria-hidden="true">
-         <div class="progressbar">
+    <div id="loading" style="display: none;" role="status" aria-hidden="true">
+        <div class="progressbar">
             <div class="progressbar-content">
-                 <img alt="Loading..." src="../../../images/ajax-loader.gif">
+                <img alt="Loading..." src="../../../images/ajax-loader.gif">
             </div>
-        </div> 
+        </div>
     </div>
     <asp:UpdatePanel runat="server" ID="upPnlSupplierWise">
         <ContentTemplate>
-            <div class="row">
-                <div class="col-md-4">
-                    <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <h1 class="page-header" style="border-bottom: none">Suppliers Status</h1>
+                    </div>
+
+                    <div class="col-md-8 ">
+                        <div class="form-inline">
+                            <br />
+                            <br />
+                            <div class="form-group  ">
+                                <asp:UpdatePanel runat="server" ID="upPnlSearchFilters">
+                                    <ContentTemplate>
+                                        <%-- <label  for="IsMDM">IsMDM</label> &nbsp;&nbsp;<input type="checkbox" id="IsMDM" class="form-control"> &nbsp;--%>
+                                        <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged">
+                                            <asp:ListItem Value="0">--All Category--</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Value="0">--All Priority--</asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
+                                            <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="ddlProductCategory" EventName="SelectedIndexChanged" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                            </div>
+                            <div class="form-group  ">
+                                <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" OnClick="btnUpdateSupplier_Click" />
+                                <%--<button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>--%>
+                                <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <%--for SupplierNames Section--%>
+                <div class="row">
+                    <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
                 </div>
 
-                <div class="col-md-8 ">
-                    <div class="form-inline">
-                        <br />
-                        <br />
-                        <div class="form-group  ">
-                            <asp:UpdatePanel runat="server" ID="upPnlSearchFilters">
-                                <ContentTemplate>
-                                   <%-- <label  for="IsMDM">IsMDM</label> &nbsp;&nbsp;<input type="checkbox" id="IsMDM" class="form-control"> &nbsp;--%>
-                                    <asp:DropDownList runat="server" ID="ddlProductCategory" CssClass="form-control" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlProductCategory_SelectedIndexChanged">
-                                        <asp:ListItem Value="0">--All Category--</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="ddlPriority" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem Value="0">--All Priority--</asp:ListItem>
-                                    </asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="ddlSupplierName" CssClass="form-control" AppendDataBoundItems="true">
-                                        <asp:ListItem Value="0">--All Suppliers--</asp:ListItem>
-                                    </asp:DropDownList>
-                                </ContentTemplate>
-                                <Triggers>
-                                    <asp:AsyncPostBackTrigger ControlID="ddlProductCategory" EventName="SelectedIndexChanged" />
-                                </Triggers>
-                            </asp:UpdatePanel>
+                <%-- END for SupplierNames Section--%>
+                <%--for first three charts--%>
+                <div class="row" id="supplierwisedata" runat="server">
+                    <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Country Mapped</b><br />
+                                    <b class="countryper"></b></h3>
+                            </div>
+                            <div id="country" class="chartheight"></div>
+                            <div class="panel-body">
+                                <b><span id="detailcountry" style="font-size: small"></span></b>
+                            </div>
+                            <div class="panel-body" id="dvCountryReRun">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="btnCountryReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCountryReRun_Click" />
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btnCountryReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnCountryReRunSchedule_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div id="dvMsgCountry" runat="server" style="display: none;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-body">
+                                <b><span class="nxtrundate"></span></b>
+                            </div>
+                            <div class="panel-footer">
+                                <h4><b id="countryTotal"></b></h4>
+                                <h4><b id="countrySuppliersCount"></b></h4>
+                            </div>
                         </div>
-                        <div class="form-group  ">
-                            <asp:Button ID="btnUpdateSupplier" runat="server" CssClass="btn btn-primary btn-sm" Text="View Status" OnClick="btnUpdateSupplier_Click" />
-                            <%--<button id="btnUpdateSupplier" class="btn btn-primary btn-sm">View Status</button>--%>
-                            <asp:Button runat="server" Text="Export" CssClass="btn btn-sm btn-primary" ID="btnExportCsv" OnClick="btnExportCsv_Click"></asp:Button>
+                    </div>
+                    <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>City Mapped</b><br />
+                                    <b class="cityper"></b></h3>
+                            </div>
+                            <div id="city" class="chartheight"></div>
+                            <div class="panel-body">
+                                <b><span id="detailcity" style="font-size: small"></span></b>
+                            </div>
+                            <div class="panel-body" id="dvCityReRun">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="btnCityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCityReRun_Click" />
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btnCityReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnCityReRunSchedule_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div id="dvMsgCity" runat="server" style="display: none;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-body" style="text-align: center">
+                                <b><span class="nxtrundate"></span></b>
+                            </div>
+                            <div class="panel-footer ">
+                                <h4><b id="cityTotal"></b></h4>
+                                <h4><b id="citySuppliersCount"></b></h4>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Hotel Mapped</b><br />
+                                    <b class="productper"></b></h3>
+                            </div>
+                            <div id="product" class="chartheight"></div>
+                            <div class="panel-body">
+                                <b><span id="detailproduct" style="font-size: small"></span></b>
+                            </div>
+                            <div class="panel-body" id="dvHotelReRun">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
+                                        </td>
+                                        <td colspan="1">
+                                            <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" Width="70px" />
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btnHotelRun" runat="server" Text="ReRun HotelNameTx" class="btn btn-primary btn-sm" OnClick="btnHotelRun_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div id="dvMsgHotel" runat="server" style="display: none;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-body">
+                                <b><span class="nxtrundate"></span></b>
+                            </div>
+                            <div class="panel-footer">
+                                <h4><b id="productTotal"></b></h4>
+                                <h4><b id="productSuppliersCount"></b></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Room Mapped</b><br />
+                                    <b class="HotelRoomper"></b></h3>
+                            </div>
+                            <div id="HotelRoom" class="chartheight"></div>
+                            <div class="panel-body">
+                                <b><span id="detailHotelRoom" style="font-size: small"></span></b>
+                            </div>
+                            <div class="panel-body" id="dvRoomTypeReRun">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="btnRoomTypeReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRun_Click" />
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btnRoomTypeReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRunSchedule_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">
+                                            <asp:Button ID="btnRoomRun" runat="server" Text="ReRun RoomNameTx" class="btn btn-primary btn-sm" OnClick="btnRoomRun_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div id="dvMsgRoomType" runat="server" style="display: none;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-body">
+                                <b><span class="nxtrundate"></span></b>
+                            </div>
+                            <div class="panel-footer">
+                                <h4><b id="HotelRoomTotal"></b></h4>
+                                <h4><b id="HotelRoomSuppliersCount"></b></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Activity Mapped</b><br />
+                                    <b class="activityper"></b></h3>
+                            </div>
+                            <div id="activity" class="chartheight"></div>
+                            <div class="panel-body">
+                                <b><span id="detailactivity" style="font-size: small"></span></b>
+                            </div>
+                            <div class="panel-body" id="dvActivityReRun">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <asp:Button ID="btnActivityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnActivityReRun_Click" />
+                                        </td>
+                                        <td>
+                                            <asp:Button ID="btnActivityReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnActivityReRunSchedule_Click" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <div id="dvMsgActivity" runat="server" style="display: none;"></div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="panel-body">
+                                <b><span class="nxtrundate"></span></b>
+                            </div>
+                            <div class="panel-footer">
+                                <h4><b id="activityTotal"></b></h4>
+                                <h4><b id="activitySuppliersCount"></b></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%-- for last three pie charts--%>
+                <div class="row" id="allsupplierdata" runat="server">
+                    <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Country UnMapped</b></h3>
+                            </div>
+                            <div id="allcountry" class="chartheight"></div>
+                            <div class="panel-body">
+                                <div id="legendco" class="donut-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="allcitydiv" style="text-align: left">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>City UnMapped</b></h3>
+                            </div>
+                            <div id="allcity" class="chartheight"></div>
+                            <div class="panel-body">
+                                <div id="legendci" class="donut-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="allproductdiv" style="text-align: left">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Hotel UnMapped</b></h3>
+                            </div>
+                            <div id="allproduct" class="chartheight"></div>
+                            <div class="panel-body">
+                                <div id="legendpr" class="donut-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="allHotelRoomdiv" style="text-align: left">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Room UnMapped</b></h3>
+                            </div>
+                            <div id="allHotelRoom" class="chartheight"></div>
+                            <div class="panel-body">
+                                <div id="legendhr" class="donut-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col5 col-sm-6" id="allactivitydiv" style="text-align: left">
+                        <div class="panel  panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-bar-chart-o fa-fw"></i>
+                                <h3><b>Activity UnMapped</b></h3>
+                            </div>
+                            <div id="allactivity" class="chartheight"></div>
+                            <div class="panel-body">
+                                <div id="legendac" class="donut-legend"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--<input type="hidden" id="hdnFileId" name="hdnFileId" runat="server" />--%>
+                <asp:HiddenField ID="hdnFileId" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
-                    </div>
-                </div>
             </div>
-               <%--for SupplierNames Section--%>
-            <div class="row">
-                <b id="SupplierNames" style="margin-left: 20px; font-size: small"></b>
-            </div>
-
-             <%-- END for SupplierNames Section--%>
-            <%--for first three charts--%>
-            <div class="row" id="supplierwisedata" runat="server">
-                <div class="col5 col-sm-6" id="countrydiv" style="text-align: center">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Country Mapped</b><br />
-                                <b class="countryper"></b></h3>
-                        </div>
-                        <div id="country" class="chartheight"></div>
-                        <div class="panel-body">
-                            <b><span id="detailcountry" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body" id="dvCountryReRun">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnCountryReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCountryReRun_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnCountryReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnCountryReRunSchedule_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div id="dvMsgCountry" runat="server" style="display: none;"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="countryTotal"></b></h4>
-                            <h4><b id="countrySuppliersCount"></b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6 " id="citydiv" style="text-align: center">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>City Mapped</b><br />
-                                <b class="cityper"></b></h3>
-                        </div>
-                        <div id="city" class="chartheight"></div>
-                        <div class="panel-body">
-                            <b><span id="detailcity" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body" id="dvCityReRun">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnCityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnCityReRun_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnCityReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnCityReRunSchedule_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div id="dvMsgCity" runat="server" style="display: none;"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-body" style="text-align: center">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer ">
-                            <h4><b id="cityTotal"></b></h4>
-                            <h4><b id="citySuppliersCount"></b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="productdiv" style="text-align: center">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Hotel Mapped</b><br />
-                                <b class="productper"></b></h3>
-                        </div>
-                        <div id="product" class="chartheight"></div>
-                        <div class="panel-body">
-                            <b><span id="detailproduct" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body" id="dvHotelReRun">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnHotelReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnHotelReRun_Click" />
-                                    </td>
-                                    <td colspan="1">
-                                        <asp:Button ID="btnHotelReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnHotelReRunSchedule_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnHotelGeoCode" runat="server" Text="Geo Code" class="btn btn-primary btn-sm" OnClick="btnHotelGeoCode_Click" Width="70px" />
-                                        &nbsp;
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnHotelRun" runat="server" Text="ReRun HotelNameTx" class="btn btn-primary btn-sm" OnClick="btnHotelRun_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div id="dvMsgHotel" runat="server" style="display: none;"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="productTotal"></b></h4>
-                            <h4><b id="productSuppliersCount"></b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="HotelRoomdiv" style="text-align: center">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Room Mapped</b><br />
-                                <b class="HotelRoomper"></b></h3>
-                        </div>
-                        <div id="HotelRoom" class="chartheight"></div>
-                        <div class="panel-body">
-                            <b><span id="detailHotelRoom" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body" id="dvRoomTypeReRun">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnRoomTypeReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRun_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnRoomTypeReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnRoomTypeReRunSchedule_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">
-                                        <asp:Button ID="btnRoomRun" runat="server" Text="ReRun RoomNameTx" class="btn btn-primary btn-sm" OnClick="btnRoomRun_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div id="dvMsgRoomType" runat="server" style="display: none;"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="HotelRoomTotal"></b></h4>
-                            <h4><b id="HotelRoomSuppliersCount"></b></h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="activitydiv" style="text-align: center">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Activity Mapped</b><br />
-                                <b class="activityper"></b></h3>
-                        </div>
-                        <div id="activity" class="chartheight"></div>
-                        <div class="panel-body">
-                            <b><span id="detailactivity" style="font-size: small"></span></b>
-                        </div>
-                        <div class="panel-body" id="dvActivityReRun">
-                            <table>
-                                <tr>
-                                    <td>
-                                        <asp:Button ID="btnActivityReRun" runat="server" Text="Run Mapping" class="btn btn-primary btn-sm" OnClick="btnActivityReRun_Click" />
-                                    </td>
-                                    <td>
-                                        <asp:Button ID="btnActivityReRunSchedule" runat="server" Text="Schedule" class="btn btn-primary btn-sm" OnClick="btnActivityReRunSchedule_Click" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-                                        <div id="dvMsgActivity" runat="server" style="display: none;"></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="panel-body">
-                            <b><span class="nxtrundate"></span></b>
-                        </div>
-                        <div class="panel-footer">
-                            <h4><b id="activityTotal"></b></h4>
-                            <h4><b id="activitySuppliersCount"></b></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <%-- for last three pie charts--%>
-            <div class="row" id="allsupplierdata" runat="server">
-                <div class="col5 col-sm-6" id="allcountrydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Country UnMapped</b></h3>
-                        </div>
-                        <div id="allcountry" class="chartheight"></div>
-                        <div class="panel-body">
-                            <div id="legendco" class="donut-legend"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="allcitydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>City UnMapped</b></h3>
-                        </div>
-                        <div id="allcity" class="chartheight"></div>
-                        <div class="panel-body">
-                            <div id="legendci" class="donut-legend"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="allproductdiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Hotel UnMapped</b></h3>
-                        </div>
-                        <div id="allproduct" class="chartheight"></div>
-                        <div class="panel-body">
-                            <div id="legendpr" class="donut-legend"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="allHotelRoomdiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Room UnMapped</b></h3>
-                        </div>
-                        <div id="allHotelRoom" class="chartheight"></div>
-                        <div class="panel-body">
-                            <div id="legendhr" class="donut-legend"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col5 col-sm-6" id="allactivitydiv" style="text-align: left">
-                    <div class="panel  panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i>
-                            <h3><b>Activity UnMapped</b></h3>
-                        </div>
-                        <div id="allactivity" class="chartheight"></div>
-                        <div class="panel-body">
-                            <div id="legendac" class="donut-legend"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <%--<input type="hidden" id="hdnFileId" name="hdnFileId" runat="server" />--%>
-            <asp:HiddenField ID="hdnFileId" runat="server" ClientIDMode="Static" Value="" EnableViewState="false" />
 
             <%--Export Report--%>
             <div class="container" id="report" runat="server">

@@ -12,16 +12,15 @@
                 <asp:Image ID="Image2" Height="100" runat="server" ImageUrl="~/Content/ez1logo.jpg" />
                 <br />
                 <br />
-               <div class="well">Please log in to access the application.</div>
-
+                <div class="well">Please log in to access the application.</div>
             </div>
-
-
 
         </AnonymousTemplate>
 
         <LoggedInTemplate>
-          <uc1:allSupplierDataChart runat="server" id="allSupplierDataChart" />
+            <div class="container">
+                <uc1:allSupplierDataChart runat="server" ID="allSupplierDataChart" />
+            </div>
         </LoggedInTemplate>
     </asp:LoginView>
 </asp:Content>
