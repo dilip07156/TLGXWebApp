@@ -51462,13 +51462,16 @@ namespace TLGX_Consumer.MDMSVC {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LogTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Log_idField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NotificationTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int Notification_CountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string Status_MessageField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.Guid> Task_idField;
@@ -51480,19 +51483,6 @@ namespace TLGX_Consumer.MDMSVC {
             }
             set {
                 this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LogType {
-            get {
-                return this.LogTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LogTypeField, value) != true)) {
-                    this.LogTypeField = value;
-                    this.RaisePropertyChanged("LogType");
-                }
             }
         }
         
@@ -51510,6 +51500,19 @@ namespace TLGX_Consumer.MDMSVC {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NotificationType {
+            get {
+                return this.NotificationTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotificationTypeField, value) != true)) {
+                    this.NotificationTypeField = value;
+                    this.RaisePropertyChanged("NotificationType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public int Notification_Count {
             get {
                 return this.Notification_CountField;
@@ -51518,6 +51521,19 @@ namespace TLGX_Consumer.MDMSVC {
                 if ((this.Notification_CountField.Equals(value) != true)) {
                     this.Notification_CountField = value;
                     this.RaisePropertyChanged("Notification_Count");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Status_Message {
+            get {
+                return this.Status_MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.Status_MessageField, value) != true)) {
+                    this.Status_MessageField = value;
+                    this.RaisePropertyChanged("Status_Message");
                 }
             }
         }

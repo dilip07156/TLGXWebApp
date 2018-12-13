@@ -20,7 +20,7 @@ namespace TLGX_Consumer.controls.businessentities
         {
             if (!IsPostBack)
             {
-                if (Request.QueryString.Count > 0)
+                if (Request.QueryString.Count > 0 && Request.QueryString["Supplier_Id"]!=null)
                 {
                     mySupplier_Id = Guid.Parse(Request.QueryString["Supplier_Id"]);
                 }
@@ -110,7 +110,7 @@ namespace TLGX_Consumer.controls.businessentities
             }
         }
 
-        private void LoadDownloadData(int pagesize, int pageno)
+        public void LoadDownloadData(int pagesize, int pageno)
         {
             RQ.SupplierId = mySupplier_Id;
             RQ.PageNo = pageno;

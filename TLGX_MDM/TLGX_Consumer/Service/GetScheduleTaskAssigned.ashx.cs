@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
+using TLGX_Consumer.MDMSVC;
 
 namespace TLGX_Consumer.Service
 {
@@ -15,25 +16,20 @@ namespace TLGX_Consumer.Service
         public void ProcessRequest(HttpContext context)
         {
             MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
-            string strUserName = System.Web.HttpContext.Current.User.Identity.Name;
-            //string RedirectFromAlert = string.Empty;
+            string strUserName = System.Web.HttpContext.Current.User.Identity.Name;           
             RQ.UserName = strUserName;
-            //RQ.PageNo = 1;
-            //RQ.Notification = "Both";
-            //var resultboth = MapSvc.GetScheduleTaskByRoll(RQ);
-            //RQ.RedirectFrom = "Alert";
-            //RQ.Notification = "Alert";
-            //var Alertlog = MapSvc.GetScheduleTaskByRoll(RQ);
-            //List<int> response = new List<int>();
+            List<Supplier_Task_Notifications> notificationslist = new List<Supplier_Task_Notifications>();
+            notificationslist= MapSvc.GetScheduleNotificationTaskLog(RQ);
+            var bellNotificationCount = (from a in notificationslist
+                                         where a.NotificationType == "API" && a.Status_Message=="Error"
+                                         select a).FirstOrDefault().Notification_Count;
+            var bullhornNotificationCount = (from a in notificationslist
+                                             where a.NotificationType == "File" && a.Status_Message != "Completed"
+                                             select a.Notification_Count).Sum();
 
-            //int Alertlogcount = (Alertlog != null ? Alertlog.Count() : 0);
-            //response.Add(Alertlogcount);
-            //int logCount = (resultboth != null ? resultboth.Count() : 0);
-            //response.Add(logCount);
-
-            var response = MapSvc.GetScheduleNotificationTaskLog(RQ);
-
-            context.Response.Write(new JavaScriptSerializer().Serialize(response));
+            //var response = MapSvc.GetScheduleNotificationTaskLog(RQ);
+            var data = new { bellNotification = bellNotificationCount, bullhornNotification = bullhornNotificationCount };
+            context.Response.Write(new JavaScriptSerializer().Serialize(data));
         }
         public bool IsReusable
         {

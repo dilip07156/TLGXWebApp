@@ -192,7 +192,7 @@
                             </ul>--%>
                             <div class="row col-md-4">
                                 <div class="col-md-2">
-                                    <li><a href="/suppliers/SupplierTaskManage.aspx?Notification=log#accordionResult" class="btn btn-app no-radius" style="padding-top:0px;padding-left:0px">
+                                    <li><a href="/suppliers/SupplierTaskManage.aspx?Notification=Alert#accordionResult" class="btn btn-app no-radius" style="padding-top:0px;padding-left:0px">
                                         
                                         <i style="color: white; font-size: large" class="glyphicon glyphicon-bullhorn"></i>
                                         <span id="spnboth" class="label label-danger" runat="server"></span>
@@ -201,7 +201,7 @@
 
                                 </div>
                                 <div class="col-md-2">
-                                    <li><a href="/suppliers/SupplierTaskManage.aspx?RedirectFromAlert=Alert&Notification=Alert#accordionResult" class="btn btn-app no-radius" style="padding-top:0px;padding-left:0px">
+                                    <li><a href="/suppliers/SupplierTaskManage.aspx?Notification=log#accordionResult" class="btn btn-app no-radius" style="padding-top:0px;padding-left:0px">
                                         <i style="color: white; font-size: x-large" class="glyphicon glyphicon-bell"></i>
                                         <span id="spnbell" class="badge badge-warning badge-left" style="margin-left: -12px; margin-top: -4px; padding-bottom: 2px; padding-top: 2px; padding-left: 3px; padding-right: 3px;" runat="server">
                                             </span>                                        </a></li>
@@ -292,8 +292,8 @@
             data:"",                
             responseType: "json",
                 success: function (result) {
-                    $("#LoginViewForSiteMap_spnboth").text(result[1].Notification_Count);
-                    $("#LoginViewForSiteMap_spnbell").text(result[0].Notification_Count);
+                    $("#LoginViewForSiteMap_spnboth").text(result.bellNotification);
+                    $("#LoginViewForSiteMap_spnbell").text(result.bullhornNotification);
             },
             failure: function () {
                 

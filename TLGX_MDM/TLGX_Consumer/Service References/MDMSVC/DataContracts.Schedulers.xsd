@@ -150,9 +150,10 @@
   <xs:element name="ArrayOfSupplier_Task_Notifications" nillable="true" type="tns:ArrayOfSupplier_Task_Notifications" />
   <xs:complexType name="Supplier_Task_Notifications">
     <xs:sequence>
-      <xs:element minOccurs="0" name="LogType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Log_id" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="NotificationType" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Notification_Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Status_Message" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Task_id" nillable="true" type="ser:guid" />
     </xs:sequence>
   </xs:complexType>

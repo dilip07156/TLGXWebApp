@@ -268,9 +268,9 @@ namespace TLGX_Consumer.controls.businessentities
                 MDMSVC.DC_SupplierScheduledTaskRQ RQ = new MDMSVC.DC_SupplierScheduledTaskRQ();
                 Guid myRow_Id = Guid.Parse(e.CommandArgument.ToString());
 
-                
+
                 supplierStaticDownloadData.mySupplier_Id = (Guid)this.grdSupplierScheduleTask.DataKeys[index]["Suppllier_ID"];
-                //supplierStaticDownloadData.BindData();
+                supplierStaticDownloadData.LoadDownloadData(5, 0);
                 ScriptManager.RegisterStartupScript((Control)grdSupplierScheduleTask, ((Control)grdSupplierScheduleTask).GetType(), "Pop" + index.ToString(), "showInstruction();", true);
 
 
