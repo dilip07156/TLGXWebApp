@@ -5,8 +5,13 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <h1 class="page-header">Search Activity Master</h1>
 
-    <uc1:SearchActivityMasterControl runat="server" id="SearchActivityMasterControl" />
+    <div class="container">
 
-    </asp:Content>
+        <h1 class="page-header">Search Activity Master</h1>
+
+        <uc1:SearchActivityMasterControl runat="server" ID="SearchActivityMasterControl" />
+
+    </div>
+
+</asp:Content>

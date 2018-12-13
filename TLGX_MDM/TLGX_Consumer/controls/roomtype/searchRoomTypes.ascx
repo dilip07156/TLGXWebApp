@@ -247,7 +247,7 @@
                                         <ContentTemplate>
                                             <div id="divMsgForMapping" runat="server" style="display: none;"></div>
                                             <asp:GridView ID="grdRoomTypeMappingSearchResultsBySupplier" ClientIDMode="Static" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
-                                                DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id,Supplier_Id,SupplierProductId"
+                                                DataKeyNames="Accommodation_SupplierRoomTypeMapping_Id,Accommodation_Id,Supplier_Id,SupplierProductId" PagerSettings-Position="TopAndBottom"
                                                 CssClass="table table-responsive table-hover table-striped table-bordered" PagerStyle-CssClass="Page navigation" EmptyDataText="No Mapping Defined."
                                                 OnRowCommand="grdRoomTypeMappingSearchResultsBySupplier_RowCommand" OnPageIndexChanging="grdRoomTypeMappingSearchResultsBySupplier_PageIndexChanging">
                                                 <Columns>

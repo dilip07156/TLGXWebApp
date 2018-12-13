@@ -207,7 +207,7 @@
                         <asp:GridView ID="gvSupplierApiSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
                             AutoGenerateColumns="false" OnPageIndexChanging="gvSupplierApiSearch_PageIndexChanging"
-                            DataKeyNames="SupplierApiCallLog_Id,Pentahocall_id">
+                            DataKeyNames="SupplierApiCallLog_Id,Pentahocall_id" PagerSettings-Position="TopAndBottom">
                             <Columns>
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
                                 <asp:BoundField HeaderText="Entity" DataField="Entity" />

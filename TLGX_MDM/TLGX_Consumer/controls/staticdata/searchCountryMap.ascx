@@ -233,7 +233,7 @@
     -- > frmAddSupplierCountryMapping for MANUAL MAPPING 
  -->
                         <asp:GridView ID="grdCountryMaps" runat="server" AllowPaging="True" AutoGenerateColumns="False" AllowCustomPaging="True"
-                            EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped"
+                            EmptyDataText="No Mappings for search conditions" CssClass="table table-hover table-striped" PagerSettings-Position="TopAndBottom"
                             DataKeyNames="CountryMapping_ID,Supplier_Id,Country_Id,MasterCountry_Id,MasterNameWithCode" OnSelectedIndexChanged="grdCountryMaps_SelectedIndexChanged" OnPageIndexChanging="grdCountryMaps_PageIndexChanging"
                             OnRowCommand="grdCountryMaps_RowCommand" OnSorting="grdCountryMaps_Sorting" OnDataBound="grdCountryMaps_DataBound"
                             OnRowDataBound="grdCountryMaps_RowDataBound">

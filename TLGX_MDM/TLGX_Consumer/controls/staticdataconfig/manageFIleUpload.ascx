@@ -8,6 +8,7 @@
         width: 100%;
     }
 </style>
+
 <script type="text/javascript">
 
     function myTimer() {
@@ -59,6 +60,7 @@
 </script>
 <%--<script src="../../Scripts/ChartJS/raphael-min.js"></script>
 <script src="../../Scripts/ChartJS/morris.min.js"></script>--%>
+
 <style>
     .morris-hover {
         opacity: 0;
@@ -232,7 +234,6 @@
             </div>
         </div>
 
-
         <div class="panel-group" id="searchResult">
             <div class="panel panel-default">
 
@@ -253,7 +254,7 @@
 
                         <asp:GridView ID="gvFileUploadSearch" runat="server" AllowPaging="True" AllowCustomPaging="true"
                             EmptyDataText="No Files found for search conditions" CssClass="table table-hover table-striped"
-                            AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging"
+                            AutoGenerateColumns="false" OnPageIndexChanging="gvFileUploadSearch_PageIndexChanging" PagerSettings-Position="TopAndBottom"
                             OnRowCommand="gvFileUploadSearch_RowCommand" DataKeyNames="SupplierImportFile_Id,Supplier_Id" OnRowDataBound="gvFileUploadSearch_RowDataBound">
                             <Columns>
                                 <asp:BoundField HeaderText="Supplier Name" DataField="Supplier" />
@@ -311,27 +312,24 @@
     </ContentTemplate>
 </asp:UpdatePanel>
 
-
-
-        <div class="modal fade" id="moFileUpload" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <div class="panel-title">
-                            <h4 class="modal-title">File Upload</h4>
-                        </div>
-                    </div>
-                    <div class="modal-body">
-                        <iframe class="col-md-12" style="min-height: 500px;" frameborder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
+<div class="modal fade" id="moFileUpload" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="panel-title">
+                    <h4 class="modal-title">File Upload</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <iframe class="col-md-12" style="min-height: 500px;" frameborder="0" src="~/staticdata/files/StaticFileupload.aspx" runat="server"></iframe>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-   
 <div class="modal fade" id="moViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
