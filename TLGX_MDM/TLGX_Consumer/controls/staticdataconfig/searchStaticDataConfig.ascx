@@ -146,44 +146,42 @@
                 </div>
                 <div id="collapseSearchResult" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        <div class="container">
-                            <div class="panel-group" id="accordionSearchResult">
-                                <div class="form-group">
-                                    <div id="dvMsg" runat="server" style="display: none;"></div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <asp:GridView ID="grdMappingConfig" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Static Updates"
-                                        CssClass="table table-hover table-striped" OnDataBound="grdMappingConfig_DataBound" OnRowCommand="grdMappingConfig_RowCommand"
-                                        AllowCustomPaging="true" OnPageIndexChanging="grdMappingConfig_PageIndexChanging" DataKeyNames="SupplierImportAttribute_Id,Supplier_Id"
-                                        OnRowDataBound="grdMappingConfig_RowDataBound">
-                                        <Columns>
-                                            <asp:BoundField DataField="For" HeaderText="For" />
-                                            <asp:BoundField DataField="Supplier" HeaderText="Supplier Name" />
-                                            <asp:BoundField DataField="Entity" HeaderText="Entity" />
-                                            <asp:BoundField DataField="CREATE_DATE" HeaderText="Created" />
-                                            <asp:BoundField DataField="EDIT_DATE" HeaderText="Last Edited" />
-                                            <asp:BoundField DataField="Status" HeaderText="Status" />
-                                            <%-- <asp:HyperLinkField DataNavigateUrlFields="SupplierImportAttribute_Id" DataNavigateUrlFormatString="~/staticdata/config/manage.aspx?Config_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/staticdata/config/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />--%>
-                                            <asp:TemplateField HeaderText="view-Edit">
-                                                <ItemTemplate>
-                                                    <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-primary btn-sm"
-                                                        Enabled="true" CommandArgument='<%#Bind("SupplierImportAttribute_Id")%>'>Select</asp:LinkButton>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
-                                                <ItemTemplate>
-                                                    <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>'
-                                                        CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportAttribute_Id") %>'>
+                        <div class="panel-group" id="accordionSearchResult">
+                            <div class="form-group">
+                                <div id="dvMsg" runat="server" style="display: none;"></div>
+                            </div>
+
+                            <asp:GridView ID="grdMappingConfig" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Static Updates"
+                                CssClass="table table-hover table-striped" OnDataBound="grdMappingConfig_DataBound" OnRowCommand="grdMappingConfig_RowCommand"
+                                AllowCustomPaging="true" OnPageIndexChanging="grdMappingConfig_PageIndexChanging" DataKeyNames="SupplierImportAttribute_Id,Supplier_Id"
+                                OnRowDataBound="grdMappingConfig_RowDataBound" PagerSettings-Position="TopAndBottom">
+                                <Columns>
+                                    <asp:BoundField DataField="For" HeaderText="For" />
+                                    <asp:BoundField DataField="Supplier" HeaderText="Supplier Name" />
+                                    <asp:BoundField DataField="Entity" HeaderText="Entity" />
+                                    <asp:BoundField DataField="CREATE_DATE" HeaderText="Created" />
+                                    <asp:BoundField DataField="EDIT_DATE" HeaderText="Last Edited" />
+                                    <asp:BoundField DataField="Status" HeaderText="Status" />
+                                    <%-- <asp:HyperLinkField DataNavigateUrlFields="SupplierImportAttribute_Id" DataNavigateUrlFormatString="~/staticdata/config/manage.aspx?Config_Id={0}" Text="Select" ControlStyle-Font-Bold="true" NavigateUrl="~/staticdata/config/manage.aspx" ControlStyle-CssClass="btn btn-primary btn-sm" />--%>
+                                    <asp:TemplateField HeaderText="view-Edit">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnSelect" runat="server" CausesValidation="false" CommandName="Select" CssClass="btn btn-primary btn-sm"
+                                                Enabled="true" CommandArgument='<%#Bind("SupplierImportAttribute_Id")%>'>Select</asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField ShowHeader="false" HeaderStyle-CssClass="Info">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="false" CommandName='<%# Eval("Status").ToString() == "ACTIVE" ? "SoftDelete" : "UnDelete"   %>'
+                                                CssClass="btn btn-default" CommandArgument='<%# Bind("SupplierImportAttribute_Id") %>'>
                                          <span aria-hidden="true" class='<%# Eval("Status").ToString() == "ACTIVE" ? "glyphicon glyphicon-remove" : "glyphicon glyphicon-repeat" %>'></span>
                                         <%# Eval("Status").ToString() == "ACTIVE" ? "Delete" : "UnDelete"   %>
-                                                    </asp:LinkButton>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                        <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
-                                    </asp:GridView>
-                                </div>
-                            </div>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                                <PagerStyle CssClass="pagination-ys" HorizontalAlign="Left" />
+                            </asp:GridView>
+
                         </div>
                     </div>
                 </div>

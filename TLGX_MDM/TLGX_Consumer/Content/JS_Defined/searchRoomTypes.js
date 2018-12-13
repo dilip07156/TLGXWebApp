@@ -16,6 +16,17 @@ $(document).ready(function () {
         });
 });
 
+function convertToDateStringFormat(str) {
+
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2),
+        hour = date.getHours(),
+        minute = date.getMinutes(),
+        second = date.getSeconds();
+    return [date.getFullYear(), mnth, day].join("-") + ' ' + [hour, minute, second].join(":");
+}
+
 function showOnlineSuggestionModal(controlval) {
     $('#lblForSupplierRoomTypeName').text($(controlval).parent().closest('td').prev().find('#lblSupplierRoomTypeName').text());
     $("#modalOnlineSuggestion").modal('show');
@@ -200,7 +211,9 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
     if (result != null) {
         var def = '<table id="tblTLGXRoomInfo" runat="server" class="table table-responsive table-hover table-striped table-bordered"> <thead> <tr class="row"><th class="col-md-1  CheckboxColumn" style="display: none;"></th><th class="col-md-1">ROOMID</th><th class="col-md-2">MDM Room Name</th> <th class="col-md-2">MDM Room Category</th>';
-        def = def + '<th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th></tr></thead>';
+        def = def + '<th class="col-md-1">MDM Bed Type</th> <th class="col-md-2">MDM Room View </th> <th class="col-md-1">MDM Room Size</th>  <th class="col-md-1">MDM Smk Flag</th><th class="col-md-1">Matching Score</th><th class="col-md-1">Mapping Status</th>';
+        def = def + '<th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th><th style="display: none;"></th>';
+        def = def + '<th class="col-md-1">EditUser</th><th class="col-md-1">EditDate</th></tr></thead>';
         var li = def;
         var licheckbox = '<input type="checkbox" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
         var licheckboxWithChecked = '<input type="checkbox" checked="true" class="checkboxClass" id="myCheck" onclick="mySelectedID(this)">';
@@ -208,6 +221,7 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         var td2 = '<td class="col-md-2" style="word-wrap:  break-all;">';
         var td3 = '<td class="col-md-3" style="word-wrap:  break-all;">';
         var td1 = '<td class="col-md-1">';
+        var tdBreakAll = '<td class="col-md-1" style="word-wrap:  break-all;">';
         var tdCheckbox = '<td class="col-md-1 CheckboxColumn" style="display: none;">';
         //var td21 = '<td class="col-md-2">';
 
@@ -226,7 +240,19 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             success: function (resultStatusValues) {
                 ddlStatusValues = resultStatusValues;
             },
-            failure: function () {
+            failure: function (xsh) {
+                Console.log(xsh);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('An error occurred... Look at the console (F12 or Ctrl+Shift+I, Console tab) for more information!');
+                $("#responseMessage").removeAttr('class');
+                $("#responseMessage").css("display", "block").addClass("alert alert-danger").html('<p>status code: ' + jqXHR.status + '</p><p>errorThrown: ' + errorThrown + '</p><p>jqXHR.responseText:</p><div>' + jqXHR.responseText + '</div>').delay(2000).fadeOut();
+                console.log('jqXHR:');
+                console.log(jqXHR);
+                console.log('textStatus:');
+                console.log(textStatus);
+                console.log('errorThrown:');
+                console.log(errorThrown);
             }
         });
 
@@ -243,6 +269,8 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
         var hdnAccommodation_RoomInfo_Id = '<input type="hidden" id="custId" name="custId" value="">';
         var hiddentd = '<td style="visibility:hidden" class="divOne">id2</td>';
         var currentMappingStatus = '';
+        var CurrentEditUser = '';
+        var CurrentEditDate = '';
 
         var mappedRoomInfo = "<tbody>";
 
@@ -262,9 +290,13 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
 
             if (new Date(parseInt(result[i].SystemEditDate.replace('/Date(', ''))) > new Date(parseInt(result[i].UserEditDate.replace('/Date(', '')))) {
                 currentMappingStatus = result[i].SystemMappingStatus;
+                CurrentEditUser = result[i].SystemEditUser;
+                CurrentEditDate = result[i].SystemEditDate;
             }
             else {
                 currentMappingStatus = result[i].UserMappingStatus;
+                CurrentEditUser = result[i].EditUser;
+                CurrentEditDate = result[i].UserEditDate;
             }
 
             var ddlStatusDetails = '<select id = ddlAttributeValues_' + result[i].Accommodation_RoomInfo_Id + '>';
@@ -278,7 +310,10 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             for (var j = 0; j < ddlStatusValues.length; j++) {
                 //don't allow user to select auto map
                 var OptionDisable = '';
-                if ((currentMappingStatus != 'AUTOMAPPED' && ddlStatusValues[j].AttributeValue == 'AUTOMAPPED') || ddlStatusValues[j].AttributeValue == 'ADD') {
+                if (ddlStatusValues[j].AttributeValue == 'MAPPED' || ddlStatusValues[j].AttributeValue == 'UNMAPPED') {
+                    OptionDisable = '';
+                }
+                else {
                     OptionDisable = 'disabled="true"';
                 }
 
@@ -292,11 +327,15 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
             ddlStatusDetails += '</select>';
 
             li = li + td1 + '<label style="display:none">' + currentMappingStatus + '</label>' + ddlStatusDetails + tdc;
+
             li = li + lic1 + acco_SupplierRoomTypeMapping_Id + tdc;
             li = li + lic2 + acco_id + tdc;
             li = li + lic3 + result[i].Accommodation_SupplierRoomTypeMapping_Value_Id + tdc;
             li = li + lic + result[i].Accommodation_RoomInfo_Id + tdc;
-            li = li + lic4 + currentMappingStatus + tdc + "</tr>";
+            li = li + lic4 + currentMappingStatus + tdc;
+            li = li + tdBreakAll + CurrentEditUser + tdc;
+            li = li + td1 + convertToDateStringFormat(new Date(parseInt(CurrentEditDate.replace("/Date(", "").replace(")/"))).toString()) + tdc;
+            li = li + "</tr>";
         }
 
         li = li + licClose;
@@ -316,7 +355,6 @@ function BindRTDetailsInTable(result, acco_id, acco_SupplierRoomTypeMapping_Id) 
                 }
             }
         });
-
         hideLoadingImage();
         $('#ulRoomInfo').html(li);
         if ($('#tblTLGXRoomInfo').length > 0)
@@ -398,12 +436,12 @@ function BindRTDetails(controlval) {
     ActionButtons = ActionButtons + "<table cellspacing='10px' style='border - collapse: collapse;'><tbody><tr>" // ";
     ActionButtons = ActionButtons + "<td><input type='button' class='btn btn-primary btn-sm' value='Save'  onclick='submitSave();'/> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Perform Mapping'  onclick='submitTTFU()' /> </td>";
+    ActionButtons = ActionButtons + "<td> &nbsp; <input class='btn btn-primary btn-sm' type='button' value='Reset'  onclick='submitReSet()' /> </td>";
     ActionButtons = ActionButtons + "<td> &nbsp; <input type='checkbox' id='chkIsNotTraining' name='IsNotTraining' value='IsNotTraining' " + lblIsNotTraining;
-     //Logic to not send data for training if BedType is absent in Attribute
+    //Logic to not send data for training if BedType is absent in Attribute
     if (count < 2 || !isBedTypeAvailable) {
         ActionButtons = ActionButtons + " checked ";
     }
-   
     //End Here
     ActionButtons = ActionButtons + "  onchange = 'UpdateTrainingFlag(this)' > <strong>Don't Submit as Training Data</strong></td > ";
     ActionButtons = ActionButtons + "<td><input type='hidden' id='hdnAcco_SuppRoomTypeMapping_Id'  value='' /></td>";
@@ -448,12 +486,12 @@ function BindRTDetails(controlval) {
             }
         });
     }
-   
+
 }
 
 function UpdateTrainingFlag(check) {
 
-    
+
     showLoadingImage();
     var jsonObj = [];
     var item = {};
@@ -469,7 +507,7 @@ function UpdateTrainingFlag(check) {
         data: JSON.stringify(jsonObj),
         responseType: "json",
         success: function (result) {
-            
+
             $('#grdRoomTypeMappingSearchResultsBySupplier').find('tr').each(function (i) {
                 var row = $(this);
                 if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == $("#hdnAcco_SuppRoomTypeMapping_Id").val()) {
@@ -913,18 +951,32 @@ function RemoveExtra(record, onClick) {
 function submitSave() {
     var r = confirm("Are you really sure you want to do this ?");
     if (r == true) {
-
+        var intCountMapped = 0;
         showLoadingImage();
         var values = new Array();
         //var checkcount = $('#tblTLGXRoomInfo #myCheck:checked').length;
         var table = $("#tblTLGXRoomInfo");
         var jsonObj = [];
         var emptyGuid = '00000000-0000-0000-0000-000000000000';
+        // Logic to set No Training data push is more then one mapping set my user
+        table.find('tr').each(function (i) {
+            var row = $(this);
+            var $tds = $(this).find('td');
+            if ($tds.eq(13).text() != '') {
+                var ddlMapingStatusData = $('#ddlAttributeValues_' + $tds.eq(13).text() + ' :selected').text();
+                if (ddlMapingStatusData == 'MAPPED') {
+                    intCountMapped = intCountMapped + 1;
+                }
+            }
+        });
+        if (intCountMapped > 1) {
+            $('#chkIsNotTraining').prop('checked', true);
+        }
+        UpdateTrainingFlag($('#chkIsNotTraining'));
+        // End Here  Logic to set No Training data push is more then one mapping set my user
 
         //Check Training data push or not 
         var chk = $('#chkIsNotTraining');
-       
-
         table.find('tr').each(function (i) {
             var row = $(this);
             var $tds = $(this).find('td');
@@ -1007,7 +1059,7 @@ function submitTTFU() {
             success: function (result) {
                 reloadAttributeDataTable($("#hdnAcco_SuppRoomTypeMapping_Id").val());
                 reloadMappingDataTable($("#hdnAcco_Id").val(), $("#hdnAcco_SuppRoomTypeMapping_Id").val());
-                
+
                 hideLoadingImage();
                 $("#responseMessage").removeAttr('class');
                 $("#responseMessage").css("display", "block").addClass("alert alert-success").html("Mapping Updated Successfully.").delay(2000).fadeOut();
@@ -1046,8 +1098,7 @@ function reloadMappingDataTable(accoId, supplierRoomTypeMapId) {
     });
 }
 
-function reloadAttributeDataTable(supplierRoomTypeMapId)
-{
+function reloadAttributeDataTable(supplierRoomTypeMapId) {
     $.ajax({
         type: 'GET',
         url: '../../../Service/GetAttributeData.ashx',
@@ -1061,11 +1112,10 @@ function reloadAttributeDataTable(supplierRoomTypeMapId)
         success: function (resultRefresh) {
             $('#tblAttributes').empty();
 
-           // var td = '', tr = '';
+            // var td = '', tr = '';
             var listAttstr = '<tr>';
             var flg = 0;
-            for (var i = 0; i < resultRefresh.length; i++)
-            {
+            for (var i = 0; i < resultRefresh.length; i++) {
                 var td = '<td>' + resultRefresh[i].SystemAttributeKeyword + ':' + resultRefresh[i].SupplierRoomTypeAttribute + '</td>';
                 flg++;
                 if (flg > 4) {
@@ -1075,36 +1125,34 @@ function reloadAttributeDataTable(supplierRoomTypeMapId)
                 }
                 listAttstr = listAttstr + td;
             }
-            $('#tblAttributes').append(listAttstr+'</tr>');
+            $('#tblAttributes').append(listAttstr + '</tr>');
 
             //$('#tblAttributes').html(resultRefresh[0].SystemAttributeKeyword + " : " + resultRefresh[0].SupplierRoomTypeAttribute);
             $('#grdRoomTypeMappingSearchResultsBySupplier').find('tr').each(function (i) {
                 var row = $(this);
-                if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == $("#hdnAcco_SuppRoomTypeMapping_Id").val())
-                {
+                if ($(row).find('td').find('#hdnAccommodation_SupplierRoomTypeMapping_Id').val() == $("#hdnAcco_SuppRoomTypeMapping_Id").val()) {
                     if ($(row).find('td:nth-child(5)').find('#lstAlias').length == 0) {
                         $(row).find('td:nth-child(5)').append('<table id="lstAlias" cellspacing="0" style="border-collapse:collapse;"><tbody></tbody></table>');
                     }
-                    
+
                     var lstAliasTablebody = $(row).find('#lstAlias tbody');
                     lstAliasTablebody.empty();
-                    
+
                     var listAliastr = '<tr>';
                     var flag = 0;
-                        for (var j = 0; j < resultRefresh.length; j++)
-                        {
-                            var td = '<td><h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-' + resultRefresh[j].IconClass + '" title="' + resultRefresh[j].SystemAttributeKeyword + ':' + resultRefresh[j].SupplierRoomTypeAttribute + '"></span></h4></td>';
-                            flag++;
-                            if (flag > 3) {
-                                listAliastr = listAliastr + '</tr> <tr>';
-                                flag = 0;
-                            }
-                            listAliastr = listAliastr + td;
-                            
+                    for (var j = 0; j < resultRefresh.length; j++) {
+                        var td = '<td><h4><span aria-hidden="true" data-toggle="tooltip" data-placement="left" class="glyphicon glyphicon-' + resultRefresh[j].IconClass + '" title="' + resultRefresh[j].SystemAttributeKeyword + ':' + resultRefresh[j].SupplierRoomTypeAttribute + '"></span></h4></td>';
+                        flag++;
+                        if (flag > 3) {
+                            listAliastr = listAliastr + '</tr> <tr>';
+                            flag = 0;
                         }
-                    lstAliasTablebody.append(listAliastr+'</tr>');
+                        listAliastr = listAliastr + td;
+
+                    }
+                    lstAliasTablebody.append(listAliastr + '</tr>');
                     //}        
-             }
+                }
             });
         },
         failure: function () {
@@ -1120,9 +1168,9 @@ $("#modalOnlineSuggestion").on('shown.bs.modal', function (e) {
 //GAURAV_TMAP_746
 function submitReSet() {
     //debugger;
-    var r = confirm("This will remove any existing mappings and system will reset to unmapped except mapped data.\r\n Are you really sure you want to do this ?");
+    var r = confirm("This will remove any existing system mappings and system will reset to unmapped except mapped data.\r\n Are you really sure you want to do this ?");
     if (r == true) {
-        
+
         //showLoadingImage();
 
         //$('#ulRoomInfo').empty();
@@ -1139,13 +1187,13 @@ function submitReSet() {
 
         table.find('tr').each(function (i) {
             var row = $(this);
-            
+
             var $tds = $(this).find('td');
 
             if ($tds.eq(13).text() != '') {
                 item = {};
                 var ddlMapingStatusData = $('#ddlAttributeValues_' + $tds.eq(13).text() + ' :selected').text();
-                
+
 
                 if (ddlMapingStatusData != "MAPPED") {
                     $('#ddlAttributeValues_' + $tds.eq(13).text()).get(0).selectedIndex = 7;

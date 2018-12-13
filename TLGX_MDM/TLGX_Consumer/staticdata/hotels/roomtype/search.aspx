@@ -4,7 +4,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript" src="../../../Content/JS_Defined/searchRoomTypes.js"></script>
-
-    <h1 class="page-header">Room Type Mapping</h1>
-    <uc1:searchRoomTypes runat="server" ID="searchRoomTypes" />
+    <div class="container">
+        <h1 class="page-header">Room Type Mapping</h1>
+        <uc1:searchRoomTypes runat="server" ID="searchRoomTypes" />
+    </div>
 </asp:Content>

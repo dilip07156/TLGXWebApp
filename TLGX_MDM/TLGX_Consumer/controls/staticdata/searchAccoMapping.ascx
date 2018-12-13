@@ -742,7 +742,7 @@
                                     <div id="divMsgForMapping" runat="server" style="display: none;"></div>
                                     <!-- if you adjust the grid you will need to adjust the codebehin that is generating the super header -->
                                     <asp:GridView ID="grdAccoMaps" runat="server" AllowPaging="True" AutoGenerateColumns="False" EmptyDataText="No Static Updates"
-                                        CssClass="table table-hover table-striped" OnDataBound="grdAccoMaps_DataBound" OnRowCommand="grdAccoMaps_RowCommand"
+                                        CssClass="table table-hover table-striped" OnDataBound="grdAccoMaps_DataBound" OnRowCommand="grdAccoMaps_RowCommand" PagerSettings-Position="TopAndBottom"
                                         AllowCustomPaging="true" OnPageIndexChanging="grdAccoMaps_PageIndexChanging" DataKeyNames="Accommodation_ProductMapping_Id,Accommodation_Id,Supplier_Id,mstAcco_Id,mstHotelName"
                                         OnRowDataBound="grdAccoMaps_RowDataBound">
                                         <Columns>

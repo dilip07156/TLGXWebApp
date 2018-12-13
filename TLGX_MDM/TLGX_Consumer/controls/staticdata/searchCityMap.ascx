@@ -635,7 +635,7 @@
                                 <asp:GridView ID="grdCityMaps" runat="server" AllowPaging="True" AllowCustomPaging="true" AutoGenerateColumns="False"
                                     EmptyDataText="No Static Updates" CssClass="table table-hover table-striped" DataKeyNames="CityMapping_Id,Supplier_Id,Country_Id,City_Id,Master_CityName"
                                     OnSelectedIndexChanged="grdCityMaps_SelectedIndexChanged" OnPageIndexChanging="grdCityMaps_PageIndexChanging" OnRowCommand="grdCityMaps_RowCommand"
-                                    OnRowDataBound="grdCityMaps_RowDataBound" OnDataBound="grdCityMaps_DataBound">
+                                    OnRowDataBound="grdCityMaps_RowDataBound" OnDataBound="grdCityMaps_DataBound" PagerSettings-Position="TopAndBottom">
 
                                     <Columns>
                                         <asp:BoundField DataField="MapId" HeaderText="Map Id" />
