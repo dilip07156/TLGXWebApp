@@ -492,7 +492,7 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <div class="panel-heading">
+                <div class="panel-title">
                     <h4 class="modal-title">Download Instruction</h4>
                 </div>
             </div>
@@ -514,7 +514,11 @@
     <div class="modal fade" id="mologViewDetials" role="dialog" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
+                 <div class="modal-header">
+                <div class="panel-heading">
+                    <h4 class="modal-title">Logs for Job</h4>
+                </div>
+            </div>
                 <input type="hidden" id="hdnTaskid" name="hdnTaskid" value="" />
                 <div class="modal-body modal-scroll">
                     <div id="logsteps">
